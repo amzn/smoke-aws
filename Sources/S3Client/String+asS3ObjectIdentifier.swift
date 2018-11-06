@@ -40,9 +40,15 @@ public extension String {
         
         let droppedPrefix = self.dropFirst(S3ObjectIdentifer.s3Prefix.count)
         
+        #if swift(>=4.2)
         guard let bucketKeySeperatorIndex = droppedPrefix.firstIndex(of: "/") else {
             return nil
         }
+        #else
+        guard let bucketKeySeperatorIndex = droppedPrefix.index(of: "/") else {
+            return nil
+        }
+        #endif
         
         let bucketName = String(droppedPrefix[..<bucketKeySeperatorIndex])
         let keyPath = String(droppedPrefix[bucketKeySeperatorIndex...])
