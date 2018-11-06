@@ -2,7 +2,7 @@
 
 The SmokeAWS package is a library for communicating with AWS services written in the
 Swift programming language. Using [SwiftNIO](https://github.com/apple/swift-nio) 
-for its networking layer, the library provdes the ability to call API methods for AWS
+for its networking layer, the library provides the ability to call API methods for AWS
 services either synchronously or asynchronously.
 
 # Conceptual overview
