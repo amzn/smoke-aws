@@ -1,2 +1,11 @@
-Smoke Framework AWS integrations
-Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved. 
+SmokeAWS
+Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+--
+
+This library contains a derivation of swift-aws/aws-sdk-swift-core's V4 Signer.
+
+  * LICENSE (MIT License):
+    * https://github.com/swift-aws/aws-sdk-swift-core/blob/master/LICENSE
+  * HOMEPAGE:
+    * https://github.com/swift-aws/aws-sdk-swift-core 

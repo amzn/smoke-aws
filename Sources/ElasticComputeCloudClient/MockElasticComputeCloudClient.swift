@@ -1,0 +1,11356 @@
+// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License").
+// You may not use this file except in compliance with the License.
+// A copy of the License is located at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// or in the "license" file accompanying this file. This file is distributed
+// on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+// express or implied. See the License for the specific language governing
+// permissions and limitations under the License.
+//
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment type_body_length
+// -- Generated Code; do not edit --
+//
+// MockElasticComputeCloudClient.swift
+// ElasticComputeCloudClient
+//
+
+import Foundation
+import ElasticComputeCloudModel
+import SmokeHTTPClient
+
+/**
+ Mock Client for the ElasticComputeCloud service by default returns the `__default` property of its return type.
+ */
+public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
+    let acceptReservedInstancesExchangeQuoteAsyncOverride: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteAsyncType?
+    let acceptReservedInstancesExchangeQuoteSyncOverride: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteSyncType?
+    let acceptVpcEndpointConnectionsAsyncOverride: ElasticComputeCloudClientProtocol.AcceptVpcEndpointConnectionsAsyncType?
+    let acceptVpcEndpointConnectionsSyncOverride: ElasticComputeCloudClientProtocol.AcceptVpcEndpointConnectionsSyncType?
+    let acceptVpcPeeringConnectionAsyncOverride: ElasticComputeCloudClientProtocol.AcceptVpcPeeringConnectionAsyncType?
+    let acceptVpcPeeringConnectionSyncOverride: ElasticComputeCloudClientProtocol.AcceptVpcPeeringConnectionSyncType?
+    let advertiseByoipCidrAsyncOverride: ElasticComputeCloudClientProtocol.AdvertiseByoipCidrAsyncType?
+    let advertiseByoipCidrSyncOverride: ElasticComputeCloudClientProtocol.AdvertiseByoipCidrSyncType?
+    let allocateAddressAsyncOverride: ElasticComputeCloudClientProtocol.AllocateAddressAsyncType?
+    let allocateAddressSyncOverride: ElasticComputeCloudClientProtocol.AllocateAddressSyncType?
+    let allocateHostsAsyncOverride: ElasticComputeCloudClientProtocol.AllocateHostsAsyncType?
+    let allocateHostsSyncOverride: ElasticComputeCloudClientProtocol.AllocateHostsSyncType?
+    let assignIpv6AddressesAsyncOverride: ElasticComputeCloudClientProtocol.AssignIpv6AddressesAsyncType?
+    let assignIpv6AddressesSyncOverride: ElasticComputeCloudClientProtocol.AssignIpv6AddressesSyncType?
+    let assignPrivateIpAddressesAsyncOverride: ElasticComputeCloudClientProtocol.AssignPrivateIpAddressesAsyncType?
+    let assignPrivateIpAddressesSyncOverride: ElasticComputeCloudClientProtocol.AssignPrivateIpAddressesSyncType?
+    let associateAddressAsyncOverride: ElasticComputeCloudClientProtocol.AssociateAddressAsyncType?
+    let associateAddressSyncOverride: ElasticComputeCloudClientProtocol.AssociateAddressSyncType?
+    let associateDhcpOptionsAsyncOverride: ElasticComputeCloudClientProtocol.AssociateDhcpOptionsAsyncType?
+    let associateDhcpOptionsSyncOverride: ElasticComputeCloudClientProtocol.AssociateDhcpOptionsSyncType?
+    let associateIamInstanceProfileAsyncOverride: ElasticComputeCloudClientProtocol.AssociateIamInstanceProfileAsyncType?
+    let associateIamInstanceProfileSyncOverride: ElasticComputeCloudClientProtocol.AssociateIamInstanceProfileSyncType?
+    let associateRouteTableAsyncOverride: ElasticComputeCloudClientProtocol.AssociateRouteTableAsyncType?
+    let associateRouteTableSyncOverride: ElasticComputeCloudClientProtocol.AssociateRouteTableSyncType?
+    let associateSubnetCidrBlockAsyncOverride: ElasticComputeCloudClientProtocol.AssociateSubnetCidrBlockAsyncType?
+    let associateSubnetCidrBlockSyncOverride: ElasticComputeCloudClientProtocol.AssociateSubnetCidrBlockSyncType?
+    let associateVpcCidrBlockAsyncOverride: ElasticComputeCloudClientProtocol.AssociateVpcCidrBlockAsyncType?
+    let associateVpcCidrBlockSyncOverride: ElasticComputeCloudClientProtocol.AssociateVpcCidrBlockSyncType?
+    let attachClassicLinkVpcAsyncOverride: ElasticComputeCloudClientProtocol.AttachClassicLinkVpcAsyncType?
+    let attachClassicLinkVpcSyncOverride: ElasticComputeCloudClientProtocol.AttachClassicLinkVpcSyncType?
+    let attachInternetGatewayAsyncOverride: ElasticComputeCloudClientProtocol.AttachInternetGatewayAsyncType?
+    let attachInternetGatewaySyncOverride: ElasticComputeCloudClientProtocol.AttachInternetGatewaySyncType?
+    let attachNetworkInterfaceAsyncOverride: ElasticComputeCloudClientProtocol.AttachNetworkInterfaceAsyncType?
+    let attachNetworkInterfaceSyncOverride: ElasticComputeCloudClientProtocol.AttachNetworkInterfaceSyncType?
+    let attachVolumeAsyncOverride: ElasticComputeCloudClientProtocol.AttachVolumeAsyncType?
+    let attachVolumeSyncOverride: ElasticComputeCloudClientProtocol.AttachVolumeSyncType?
+    let attachVpnGatewayAsyncOverride: ElasticComputeCloudClientProtocol.AttachVpnGatewayAsyncType?
+    let attachVpnGatewaySyncOverride: ElasticComputeCloudClientProtocol.AttachVpnGatewaySyncType?
+    let authorizeSecurityGroupEgressAsyncOverride: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupEgressAsyncType?
+    let authorizeSecurityGroupEgressSyncOverride: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupEgressSyncType?
+    let authorizeSecurityGroupIngressAsyncOverride: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupIngressAsyncType?
+    let authorizeSecurityGroupIngressSyncOverride: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupIngressSyncType?
+    let bundleInstanceAsyncOverride: ElasticComputeCloudClientProtocol.BundleInstanceAsyncType?
+    let bundleInstanceSyncOverride: ElasticComputeCloudClientProtocol.BundleInstanceSyncType?
+    let cancelBundleTaskAsyncOverride: ElasticComputeCloudClientProtocol.CancelBundleTaskAsyncType?
+    let cancelBundleTaskSyncOverride: ElasticComputeCloudClientProtocol.CancelBundleTaskSyncType?
+    let cancelCapacityReservationAsyncOverride: ElasticComputeCloudClientProtocol.CancelCapacityReservationAsyncType?
+    let cancelCapacityReservationSyncOverride: ElasticComputeCloudClientProtocol.CancelCapacityReservationSyncType?
+    let cancelConversionTaskAsyncOverride: ElasticComputeCloudClientProtocol.CancelConversionTaskAsyncType?
+    let cancelConversionTaskSyncOverride: ElasticComputeCloudClientProtocol.CancelConversionTaskSyncType?
+    let cancelExportTaskAsyncOverride: ElasticComputeCloudClientProtocol.CancelExportTaskAsyncType?
+    let cancelExportTaskSyncOverride: ElasticComputeCloudClientProtocol.CancelExportTaskSyncType?
+    let cancelImportTaskAsyncOverride: ElasticComputeCloudClientProtocol.CancelImportTaskAsyncType?
+    let cancelImportTaskSyncOverride: ElasticComputeCloudClientProtocol.CancelImportTaskSyncType?
+    let cancelReservedInstancesListingAsyncOverride: ElasticComputeCloudClientProtocol.CancelReservedInstancesListingAsyncType?
+    let cancelReservedInstancesListingSyncOverride: ElasticComputeCloudClientProtocol.CancelReservedInstancesListingSyncType?
+    let cancelSpotFleetRequestsAsyncOverride: ElasticComputeCloudClientProtocol.CancelSpotFleetRequestsAsyncType?
+    let cancelSpotFleetRequestsSyncOverride: ElasticComputeCloudClientProtocol.CancelSpotFleetRequestsSyncType?
+    let cancelSpotInstanceRequestsAsyncOverride: ElasticComputeCloudClientProtocol.CancelSpotInstanceRequestsAsyncType?
+    let cancelSpotInstanceRequestsSyncOverride: ElasticComputeCloudClientProtocol.CancelSpotInstanceRequestsSyncType?
+    let confirmProductInstanceAsyncOverride: ElasticComputeCloudClientProtocol.ConfirmProductInstanceAsyncType?
+    let confirmProductInstanceSyncOverride: ElasticComputeCloudClientProtocol.ConfirmProductInstanceSyncType?
+    let copyFpgaImageAsyncOverride: ElasticComputeCloudClientProtocol.CopyFpgaImageAsyncType?
+    let copyFpgaImageSyncOverride: ElasticComputeCloudClientProtocol.CopyFpgaImageSyncType?
+    let copyImageAsyncOverride: ElasticComputeCloudClientProtocol.CopyImageAsyncType?
+    let copyImageSyncOverride: ElasticComputeCloudClientProtocol.CopyImageSyncType?
+    let copySnapshotAsyncOverride: ElasticComputeCloudClientProtocol.CopySnapshotAsyncType?
+    let copySnapshotSyncOverride: ElasticComputeCloudClientProtocol.CopySnapshotSyncType?
+    let createCapacityReservationAsyncOverride: ElasticComputeCloudClientProtocol.CreateCapacityReservationAsyncType?
+    let createCapacityReservationSyncOverride: ElasticComputeCloudClientProtocol.CreateCapacityReservationSyncType?
+    let createCustomerGatewayAsyncOverride: ElasticComputeCloudClientProtocol.CreateCustomerGatewayAsyncType?
+    let createCustomerGatewaySyncOverride: ElasticComputeCloudClientProtocol.CreateCustomerGatewaySyncType?
+    let createDefaultSubnetAsyncOverride: ElasticComputeCloudClientProtocol.CreateDefaultSubnetAsyncType?
+    let createDefaultSubnetSyncOverride: ElasticComputeCloudClientProtocol.CreateDefaultSubnetSyncType?
+    let createDefaultVpcAsyncOverride: ElasticComputeCloudClientProtocol.CreateDefaultVpcAsyncType?
+    let createDefaultVpcSyncOverride: ElasticComputeCloudClientProtocol.CreateDefaultVpcSyncType?
+    let createDhcpOptionsAsyncOverride: ElasticComputeCloudClientProtocol.CreateDhcpOptionsAsyncType?
+    let createDhcpOptionsSyncOverride: ElasticComputeCloudClientProtocol.CreateDhcpOptionsSyncType?
+    let createEgressOnlyInternetGatewayAsyncOverride: ElasticComputeCloudClientProtocol.CreateEgressOnlyInternetGatewayAsyncType?
+    let createEgressOnlyInternetGatewaySyncOverride: ElasticComputeCloudClientProtocol.CreateEgressOnlyInternetGatewaySyncType?
+    let createFleetAsyncOverride: ElasticComputeCloudClientProtocol.CreateFleetAsyncType?
+    let createFleetSyncOverride: ElasticComputeCloudClientProtocol.CreateFleetSyncType?
+    let createFlowLogsAsyncOverride: ElasticComputeCloudClientProtocol.CreateFlowLogsAsyncType?
+    let createFlowLogsSyncOverride: ElasticComputeCloudClientProtocol.CreateFlowLogsSyncType?
+    let createFpgaImageAsyncOverride: ElasticComputeCloudClientProtocol.CreateFpgaImageAsyncType?
+    let createFpgaImageSyncOverride: ElasticComputeCloudClientProtocol.CreateFpgaImageSyncType?
+    let createImageAsyncOverride: ElasticComputeCloudClientProtocol.CreateImageAsyncType?
+    let createImageSyncOverride: ElasticComputeCloudClientProtocol.CreateImageSyncType?
+    let createInstanceExportTaskAsyncOverride: ElasticComputeCloudClientProtocol.CreateInstanceExportTaskAsyncType?
+    let createInstanceExportTaskSyncOverride: ElasticComputeCloudClientProtocol.CreateInstanceExportTaskSyncType?
+    let createInternetGatewayAsyncOverride: ElasticComputeCloudClientProtocol.CreateInternetGatewayAsyncType?
+    let createInternetGatewaySyncOverride: ElasticComputeCloudClientProtocol.CreateInternetGatewaySyncType?
+    let createKeyPairAsyncOverride: ElasticComputeCloudClientProtocol.CreateKeyPairAsyncType?
+    let createKeyPairSyncOverride: ElasticComputeCloudClientProtocol.CreateKeyPairSyncType?
+    let createLaunchTemplateAsyncOverride: ElasticComputeCloudClientProtocol.CreateLaunchTemplateAsyncType?
+    let createLaunchTemplateSyncOverride: ElasticComputeCloudClientProtocol.CreateLaunchTemplateSyncType?
+    let createLaunchTemplateVersionAsyncOverride: ElasticComputeCloudClientProtocol.CreateLaunchTemplateVersionAsyncType?
+    let createLaunchTemplateVersionSyncOverride: ElasticComputeCloudClientProtocol.CreateLaunchTemplateVersionSyncType?
+    let createNatGatewayAsyncOverride: ElasticComputeCloudClientProtocol.CreateNatGatewayAsyncType?
+    let createNatGatewaySyncOverride: ElasticComputeCloudClientProtocol.CreateNatGatewaySyncType?
+    let createNetworkAclAsyncOverride: ElasticComputeCloudClientProtocol.CreateNetworkAclAsyncType?
+    let createNetworkAclSyncOverride: ElasticComputeCloudClientProtocol.CreateNetworkAclSyncType?
+    let createNetworkAclEntryAsyncOverride: ElasticComputeCloudClientProtocol.CreateNetworkAclEntryAsyncType?
+    let createNetworkAclEntrySyncOverride: ElasticComputeCloudClientProtocol.CreateNetworkAclEntrySyncType?
+    let createNetworkInterfaceAsyncOverride: ElasticComputeCloudClientProtocol.CreateNetworkInterfaceAsyncType?
+    let createNetworkInterfaceSyncOverride: ElasticComputeCloudClientProtocol.CreateNetworkInterfaceSyncType?
+    let createNetworkInterfacePermissionAsyncOverride: ElasticComputeCloudClientProtocol.CreateNetworkInterfacePermissionAsyncType?
+    let createNetworkInterfacePermissionSyncOverride: ElasticComputeCloudClientProtocol.CreateNetworkInterfacePermissionSyncType?
+    let createPlacementGroupAsyncOverride: ElasticComputeCloudClientProtocol.CreatePlacementGroupAsyncType?
+    let createPlacementGroupSyncOverride: ElasticComputeCloudClientProtocol.CreatePlacementGroupSyncType?
+    let createReservedInstancesListingAsyncOverride: ElasticComputeCloudClientProtocol.CreateReservedInstancesListingAsyncType?
+    let createReservedInstancesListingSyncOverride: ElasticComputeCloudClientProtocol.CreateReservedInstancesListingSyncType?
+    let createRouteAsyncOverride: ElasticComputeCloudClientProtocol.CreateRouteAsyncType?
+    let createRouteSyncOverride: ElasticComputeCloudClientProtocol.CreateRouteSyncType?
+    let createRouteTableAsyncOverride: ElasticComputeCloudClientProtocol.CreateRouteTableAsyncType?
+    let createRouteTableSyncOverride: ElasticComputeCloudClientProtocol.CreateRouteTableSyncType?
+    let createSecurityGroupAsyncOverride: ElasticComputeCloudClientProtocol.CreateSecurityGroupAsyncType?
+    let createSecurityGroupSyncOverride: ElasticComputeCloudClientProtocol.CreateSecurityGroupSyncType?
+    let createSnapshotAsyncOverride: ElasticComputeCloudClientProtocol.CreateSnapshotAsyncType?
+    let createSnapshotSyncOverride: ElasticComputeCloudClientProtocol.CreateSnapshotSyncType?
+    let createSpotDatafeedSubscriptionAsyncOverride: ElasticComputeCloudClientProtocol.CreateSpotDatafeedSubscriptionAsyncType?
+    let createSpotDatafeedSubscriptionSyncOverride: ElasticComputeCloudClientProtocol.CreateSpotDatafeedSubscriptionSyncType?
+    let createSubnetAsyncOverride: ElasticComputeCloudClientProtocol.CreateSubnetAsyncType?
+    let createSubnetSyncOverride: ElasticComputeCloudClientProtocol.CreateSubnetSyncType?
+    let createTagsAsyncOverride: ElasticComputeCloudClientProtocol.CreateTagsAsyncType?
+    let createTagsSyncOverride: ElasticComputeCloudClientProtocol.CreateTagsSyncType?
+    let createVolumeAsyncOverride: ElasticComputeCloudClientProtocol.CreateVolumeAsyncType?
+    let createVolumeSyncOverride: ElasticComputeCloudClientProtocol.CreateVolumeSyncType?
+    let createVpcAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpcAsyncType?
+    let createVpcSyncOverride: ElasticComputeCloudClientProtocol.CreateVpcSyncType?
+    let createVpcEndpointAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpcEndpointAsyncType?
+    let createVpcEndpointSyncOverride: ElasticComputeCloudClientProtocol.CreateVpcEndpointSyncType?
+    let createVpcEndpointConnectionNotificationAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpcEndpointConnectionNotificationAsyncType?
+    let createVpcEndpointConnectionNotificationSyncOverride: ElasticComputeCloudClientProtocol.CreateVpcEndpointConnectionNotificationSyncType?
+    let createVpcEndpointServiceConfigurationAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpcEndpointServiceConfigurationAsyncType?
+    let createVpcEndpointServiceConfigurationSyncOverride: ElasticComputeCloudClientProtocol.CreateVpcEndpointServiceConfigurationSyncType?
+    let createVpcPeeringConnectionAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpcPeeringConnectionAsyncType?
+    let createVpcPeeringConnectionSyncOverride: ElasticComputeCloudClientProtocol.CreateVpcPeeringConnectionSyncType?
+    let createVpnConnectionAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpnConnectionAsyncType?
+    let createVpnConnectionSyncOverride: ElasticComputeCloudClientProtocol.CreateVpnConnectionSyncType?
+    let createVpnConnectionRouteAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpnConnectionRouteAsyncType?
+    let createVpnConnectionRouteSyncOverride: ElasticComputeCloudClientProtocol.CreateVpnConnectionRouteSyncType?
+    let createVpnGatewayAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpnGatewayAsyncType?
+    let createVpnGatewaySyncOverride: ElasticComputeCloudClientProtocol.CreateVpnGatewaySyncType?
+    let deleteCustomerGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DeleteCustomerGatewayAsyncType?
+    let deleteCustomerGatewaySyncOverride: ElasticComputeCloudClientProtocol.DeleteCustomerGatewaySyncType?
+    let deleteDhcpOptionsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteDhcpOptionsAsyncType?
+    let deleteDhcpOptionsSyncOverride: ElasticComputeCloudClientProtocol.DeleteDhcpOptionsSyncType?
+    let deleteEgressOnlyInternetGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DeleteEgressOnlyInternetGatewayAsyncType?
+    let deleteEgressOnlyInternetGatewaySyncOverride: ElasticComputeCloudClientProtocol.DeleteEgressOnlyInternetGatewaySyncType?
+    let deleteFleetsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteFleetsAsyncType?
+    let deleteFleetsSyncOverride: ElasticComputeCloudClientProtocol.DeleteFleetsSyncType?
+    let deleteFlowLogsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteFlowLogsAsyncType?
+    let deleteFlowLogsSyncOverride: ElasticComputeCloudClientProtocol.DeleteFlowLogsSyncType?
+    let deleteFpgaImageAsyncOverride: ElasticComputeCloudClientProtocol.DeleteFpgaImageAsyncType?
+    let deleteFpgaImageSyncOverride: ElasticComputeCloudClientProtocol.DeleteFpgaImageSyncType?
+    let deleteInternetGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DeleteInternetGatewayAsyncType?
+    let deleteInternetGatewaySyncOverride: ElasticComputeCloudClientProtocol.DeleteInternetGatewaySyncType?
+    let deleteKeyPairAsyncOverride: ElasticComputeCloudClientProtocol.DeleteKeyPairAsyncType?
+    let deleteKeyPairSyncOverride: ElasticComputeCloudClientProtocol.DeleteKeyPairSyncType?
+    let deleteLaunchTemplateAsyncOverride: ElasticComputeCloudClientProtocol.DeleteLaunchTemplateAsyncType?
+    let deleteLaunchTemplateSyncOverride: ElasticComputeCloudClientProtocol.DeleteLaunchTemplateSyncType?
+    let deleteLaunchTemplateVersionsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteLaunchTemplateVersionsAsyncType?
+    let deleteLaunchTemplateVersionsSyncOverride: ElasticComputeCloudClientProtocol.DeleteLaunchTemplateVersionsSyncType?
+    let deleteNatGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DeleteNatGatewayAsyncType?
+    let deleteNatGatewaySyncOverride: ElasticComputeCloudClientProtocol.DeleteNatGatewaySyncType?
+    let deleteNetworkAclAsyncOverride: ElasticComputeCloudClientProtocol.DeleteNetworkAclAsyncType?
+    let deleteNetworkAclSyncOverride: ElasticComputeCloudClientProtocol.DeleteNetworkAclSyncType?
+    let deleteNetworkAclEntryAsyncOverride: ElasticComputeCloudClientProtocol.DeleteNetworkAclEntryAsyncType?
+    let deleteNetworkAclEntrySyncOverride: ElasticComputeCloudClientProtocol.DeleteNetworkAclEntrySyncType?
+    let deleteNetworkInterfaceAsyncOverride: ElasticComputeCloudClientProtocol.DeleteNetworkInterfaceAsyncType?
+    let deleteNetworkInterfaceSyncOverride: ElasticComputeCloudClientProtocol.DeleteNetworkInterfaceSyncType?
+    let deleteNetworkInterfacePermissionAsyncOverride: ElasticComputeCloudClientProtocol.DeleteNetworkInterfacePermissionAsyncType?
+    let deleteNetworkInterfacePermissionSyncOverride: ElasticComputeCloudClientProtocol.DeleteNetworkInterfacePermissionSyncType?
+    let deletePlacementGroupAsyncOverride: ElasticComputeCloudClientProtocol.DeletePlacementGroupAsyncType?
+    let deletePlacementGroupSyncOverride: ElasticComputeCloudClientProtocol.DeletePlacementGroupSyncType?
+    let deleteRouteAsyncOverride: ElasticComputeCloudClientProtocol.DeleteRouteAsyncType?
+    let deleteRouteSyncOverride: ElasticComputeCloudClientProtocol.DeleteRouteSyncType?
+    let deleteRouteTableAsyncOverride: ElasticComputeCloudClientProtocol.DeleteRouteTableAsyncType?
+    let deleteRouteTableSyncOverride: ElasticComputeCloudClientProtocol.DeleteRouteTableSyncType?
+    let deleteSecurityGroupAsyncOverride: ElasticComputeCloudClientProtocol.DeleteSecurityGroupAsyncType?
+    let deleteSecurityGroupSyncOverride: ElasticComputeCloudClientProtocol.DeleteSecurityGroupSyncType?
+    let deleteSnapshotAsyncOverride: ElasticComputeCloudClientProtocol.DeleteSnapshotAsyncType?
+    let deleteSnapshotSyncOverride: ElasticComputeCloudClientProtocol.DeleteSnapshotSyncType?
+    let deleteSpotDatafeedSubscriptionAsyncOverride: ElasticComputeCloudClientProtocol.DeleteSpotDatafeedSubscriptionAsyncType?
+    let deleteSpotDatafeedSubscriptionSyncOverride: ElasticComputeCloudClientProtocol.DeleteSpotDatafeedSubscriptionSyncType?
+    let deleteSubnetAsyncOverride: ElasticComputeCloudClientProtocol.DeleteSubnetAsyncType?
+    let deleteSubnetSyncOverride: ElasticComputeCloudClientProtocol.DeleteSubnetSyncType?
+    let deleteTagsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTagsAsyncType?
+    let deleteTagsSyncOverride: ElasticComputeCloudClientProtocol.DeleteTagsSyncType?
+    let deleteVolumeAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVolumeAsyncType?
+    let deleteVolumeSyncOverride: ElasticComputeCloudClientProtocol.DeleteVolumeSyncType?
+    let deleteVpcAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcAsyncType?
+    let deleteVpcSyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcSyncType?
+    let deleteVpcEndpointConnectionNotificationsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcEndpointConnectionNotificationsAsyncType?
+    let deleteVpcEndpointConnectionNotificationsSyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcEndpointConnectionNotificationsSyncType?
+    let deleteVpcEndpointServiceConfigurationsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcEndpointServiceConfigurationsAsyncType?
+    let deleteVpcEndpointServiceConfigurationsSyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcEndpointServiceConfigurationsSyncType?
+    let deleteVpcEndpointsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcEndpointsAsyncType?
+    let deleteVpcEndpointsSyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcEndpointsSyncType?
+    let deleteVpcPeeringConnectionAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcPeeringConnectionAsyncType?
+    let deleteVpcPeeringConnectionSyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcPeeringConnectionSyncType?
+    let deleteVpnConnectionAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVpnConnectionAsyncType?
+    let deleteVpnConnectionSyncOverride: ElasticComputeCloudClientProtocol.DeleteVpnConnectionSyncType?
+    let deleteVpnConnectionRouteAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVpnConnectionRouteAsyncType?
+    let deleteVpnConnectionRouteSyncOverride: ElasticComputeCloudClientProtocol.DeleteVpnConnectionRouteSyncType?
+    let deleteVpnGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVpnGatewayAsyncType?
+    let deleteVpnGatewaySyncOverride: ElasticComputeCloudClientProtocol.DeleteVpnGatewaySyncType?
+    let deprovisionByoipCidrAsyncOverride: ElasticComputeCloudClientProtocol.DeprovisionByoipCidrAsyncType?
+    let deprovisionByoipCidrSyncOverride: ElasticComputeCloudClientProtocol.DeprovisionByoipCidrSyncType?
+    let deregisterImageAsyncOverride: ElasticComputeCloudClientProtocol.DeregisterImageAsyncType?
+    let deregisterImageSyncOverride: ElasticComputeCloudClientProtocol.DeregisterImageSyncType?
+    let describeAccountAttributesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeAccountAttributesAsyncType?
+    let describeAccountAttributesSyncOverride: ElasticComputeCloudClientProtocol.DescribeAccountAttributesSyncType?
+    let describeAddressesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeAddressesAsyncType?
+    let describeAddressesSyncOverride: ElasticComputeCloudClientProtocol.DescribeAddressesSyncType?
+    let describeAggregateIdFormatAsyncOverride: ElasticComputeCloudClientProtocol.DescribeAggregateIdFormatAsyncType?
+    let describeAggregateIdFormatSyncOverride: ElasticComputeCloudClientProtocol.DescribeAggregateIdFormatSyncType?
+    let describeAvailabilityZonesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeAvailabilityZonesAsyncType?
+    let describeAvailabilityZonesSyncOverride: ElasticComputeCloudClientProtocol.DescribeAvailabilityZonesSyncType?
+    let describeBundleTasksAsyncOverride: ElasticComputeCloudClientProtocol.DescribeBundleTasksAsyncType?
+    let describeBundleTasksSyncOverride: ElasticComputeCloudClientProtocol.DescribeBundleTasksSyncType?
+    let describeByoipCidrsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeByoipCidrsAsyncType?
+    let describeByoipCidrsSyncOverride: ElasticComputeCloudClientProtocol.DescribeByoipCidrsSyncType?
+    let describeCapacityReservationsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeCapacityReservationsAsyncType?
+    let describeCapacityReservationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeCapacityReservationsSyncType?
+    let describeClassicLinkInstancesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeClassicLinkInstancesAsyncType?
+    let describeClassicLinkInstancesSyncOverride: ElasticComputeCloudClientProtocol.DescribeClassicLinkInstancesSyncType?
+    let describeConversionTasksAsyncOverride: ElasticComputeCloudClientProtocol.DescribeConversionTasksAsyncType?
+    let describeConversionTasksSyncOverride: ElasticComputeCloudClientProtocol.DescribeConversionTasksSyncType?
+    let describeCustomerGatewaysAsyncOverride: ElasticComputeCloudClientProtocol.DescribeCustomerGatewaysAsyncType?
+    let describeCustomerGatewaysSyncOverride: ElasticComputeCloudClientProtocol.DescribeCustomerGatewaysSyncType?
+    let describeDhcpOptionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeDhcpOptionsAsyncType?
+    let describeDhcpOptionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeDhcpOptionsSyncType?
+    let describeEgressOnlyInternetGatewaysAsyncOverride: ElasticComputeCloudClientProtocol.DescribeEgressOnlyInternetGatewaysAsyncType?
+    let describeEgressOnlyInternetGatewaysSyncOverride: ElasticComputeCloudClientProtocol.DescribeEgressOnlyInternetGatewaysSyncType?
+    let describeElasticGpusAsyncOverride: ElasticComputeCloudClientProtocol.DescribeElasticGpusAsyncType?
+    let describeElasticGpusSyncOverride: ElasticComputeCloudClientProtocol.DescribeElasticGpusSyncType?
+    let describeExportTasksAsyncOverride: ElasticComputeCloudClientProtocol.DescribeExportTasksAsyncType?
+    let describeExportTasksSyncOverride: ElasticComputeCloudClientProtocol.DescribeExportTasksSyncType?
+    let describeFleetHistoryAsyncOverride: ElasticComputeCloudClientProtocol.DescribeFleetHistoryAsyncType?
+    let describeFleetHistorySyncOverride: ElasticComputeCloudClientProtocol.DescribeFleetHistorySyncType?
+    let describeFleetInstancesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeFleetInstancesAsyncType?
+    let describeFleetInstancesSyncOverride: ElasticComputeCloudClientProtocol.DescribeFleetInstancesSyncType?
+    let describeFleetsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeFleetsAsyncType?
+    let describeFleetsSyncOverride: ElasticComputeCloudClientProtocol.DescribeFleetsSyncType?
+    let describeFlowLogsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeFlowLogsAsyncType?
+    let describeFlowLogsSyncOverride: ElasticComputeCloudClientProtocol.DescribeFlowLogsSyncType?
+    let describeFpgaImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.DescribeFpgaImageAttributeAsyncType?
+    let describeFpgaImageAttributeSyncOverride: ElasticComputeCloudClientProtocol.DescribeFpgaImageAttributeSyncType?
+    let describeFpgaImagesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeFpgaImagesAsyncType?
+    let describeFpgaImagesSyncOverride: ElasticComputeCloudClientProtocol.DescribeFpgaImagesSyncType?
+    let describeHostReservationOfferingsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeHostReservationOfferingsAsyncType?
+    let describeHostReservationOfferingsSyncOverride: ElasticComputeCloudClientProtocol.DescribeHostReservationOfferingsSyncType?
+    let describeHostReservationsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeHostReservationsAsyncType?
+    let describeHostReservationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeHostReservationsSyncType?
+    let describeHostsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeHostsAsyncType?
+    let describeHostsSyncOverride: ElasticComputeCloudClientProtocol.DescribeHostsSyncType?
+    let describeIamInstanceProfileAssociationsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeIamInstanceProfileAssociationsAsyncType?
+    let describeIamInstanceProfileAssociationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeIamInstanceProfileAssociationsSyncType?
+    let describeIdFormatAsyncOverride: ElasticComputeCloudClientProtocol.DescribeIdFormatAsyncType?
+    let describeIdFormatSyncOverride: ElasticComputeCloudClientProtocol.DescribeIdFormatSyncType?
+    let describeIdentityIdFormatAsyncOverride: ElasticComputeCloudClientProtocol.DescribeIdentityIdFormatAsyncType?
+    let describeIdentityIdFormatSyncOverride: ElasticComputeCloudClientProtocol.DescribeIdentityIdFormatSyncType?
+    let describeImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.DescribeImageAttributeAsyncType?
+    let describeImageAttributeSyncOverride: ElasticComputeCloudClientProtocol.DescribeImageAttributeSyncType?
+    let describeImagesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeImagesAsyncType?
+    let describeImagesSyncOverride: ElasticComputeCloudClientProtocol.DescribeImagesSyncType?
+    let describeImportImageTasksAsyncOverride: ElasticComputeCloudClientProtocol.DescribeImportImageTasksAsyncType?
+    let describeImportImageTasksSyncOverride: ElasticComputeCloudClientProtocol.DescribeImportImageTasksSyncType?
+    let describeImportSnapshotTasksAsyncOverride: ElasticComputeCloudClientProtocol.DescribeImportSnapshotTasksAsyncType?
+    let describeImportSnapshotTasksSyncOverride: ElasticComputeCloudClientProtocol.DescribeImportSnapshotTasksSyncType?
+    let describeInstanceAttributeAsyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceAttributeAsyncType?
+    let describeInstanceAttributeSyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceAttributeSyncType?
+    let describeInstanceCreditSpecificationsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceCreditSpecificationsAsyncType?
+    let describeInstanceCreditSpecificationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceCreditSpecificationsSyncType?
+    let describeInstanceStatusAsyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceStatusAsyncType?
+    let describeInstanceStatusSyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceStatusSyncType?
+    let describeInstancesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeInstancesAsyncType?
+    let describeInstancesSyncOverride: ElasticComputeCloudClientProtocol.DescribeInstancesSyncType?
+    let describeInternetGatewaysAsyncOverride: ElasticComputeCloudClientProtocol.DescribeInternetGatewaysAsyncType?
+    let describeInternetGatewaysSyncOverride: ElasticComputeCloudClientProtocol.DescribeInternetGatewaysSyncType?
+    let describeKeyPairsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeKeyPairsAsyncType?
+    let describeKeyPairsSyncOverride: ElasticComputeCloudClientProtocol.DescribeKeyPairsSyncType?
+    let describeLaunchTemplateVersionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeLaunchTemplateVersionsAsyncType?
+    let describeLaunchTemplateVersionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeLaunchTemplateVersionsSyncType?
+    let describeLaunchTemplatesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeLaunchTemplatesAsyncType?
+    let describeLaunchTemplatesSyncOverride: ElasticComputeCloudClientProtocol.DescribeLaunchTemplatesSyncType?
+    let describeMovingAddressesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeMovingAddressesAsyncType?
+    let describeMovingAddressesSyncOverride: ElasticComputeCloudClientProtocol.DescribeMovingAddressesSyncType?
+    let describeNatGatewaysAsyncOverride: ElasticComputeCloudClientProtocol.DescribeNatGatewaysAsyncType?
+    let describeNatGatewaysSyncOverride: ElasticComputeCloudClientProtocol.DescribeNatGatewaysSyncType?
+    let describeNetworkAclsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeNetworkAclsAsyncType?
+    let describeNetworkAclsSyncOverride: ElasticComputeCloudClientProtocol.DescribeNetworkAclsSyncType?
+    let describeNetworkInterfaceAttributeAsyncOverride: ElasticComputeCloudClientProtocol.DescribeNetworkInterfaceAttributeAsyncType?
+    let describeNetworkInterfaceAttributeSyncOverride: ElasticComputeCloudClientProtocol.DescribeNetworkInterfaceAttributeSyncType?
+    let describeNetworkInterfacePermissionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeNetworkInterfacePermissionsAsyncType?
+    let describeNetworkInterfacePermissionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeNetworkInterfacePermissionsSyncType?
+    let describeNetworkInterfacesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeNetworkInterfacesAsyncType?
+    let describeNetworkInterfacesSyncOverride: ElasticComputeCloudClientProtocol.DescribeNetworkInterfacesSyncType?
+    let describePlacementGroupsAsyncOverride: ElasticComputeCloudClientProtocol.DescribePlacementGroupsAsyncType?
+    let describePlacementGroupsSyncOverride: ElasticComputeCloudClientProtocol.DescribePlacementGroupsSyncType?
+    let describePrefixListsAsyncOverride: ElasticComputeCloudClientProtocol.DescribePrefixListsAsyncType?
+    let describePrefixListsSyncOverride: ElasticComputeCloudClientProtocol.DescribePrefixListsSyncType?
+    let describePrincipalIdFormatAsyncOverride: ElasticComputeCloudClientProtocol.DescribePrincipalIdFormatAsyncType?
+    let describePrincipalIdFormatSyncOverride: ElasticComputeCloudClientProtocol.DescribePrincipalIdFormatSyncType?
+    let describePublicIpv4PoolsAsyncOverride: ElasticComputeCloudClientProtocol.DescribePublicIpv4PoolsAsyncType?
+    let describePublicIpv4PoolsSyncOverride: ElasticComputeCloudClientProtocol.DescribePublicIpv4PoolsSyncType?
+    let describeRegionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeRegionsAsyncType?
+    let describeRegionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeRegionsSyncType?
+    let describeReservedInstancesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeReservedInstancesAsyncType?
+    let describeReservedInstancesSyncOverride: ElasticComputeCloudClientProtocol.DescribeReservedInstancesSyncType?
+    let describeReservedInstancesListingsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeReservedInstancesListingsAsyncType?
+    let describeReservedInstancesListingsSyncOverride: ElasticComputeCloudClientProtocol.DescribeReservedInstancesListingsSyncType?
+    let describeReservedInstancesModificationsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeReservedInstancesModificationsAsyncType?
+    let describeReservedInstancesModificationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeReservedInstancesModificationsSyncType?
+    let describeReservedInstancesOfferingsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeReservedInstancesOfferingsAsyncType?
+    let describeReservedInstancesOfferingsSyncOverride: ElasticComputeCloudClientProtocol.DescribeReservedInstancesOfferingsSyncType?
+    let describeRouteTablesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeRouteTablesAsyncType?
+    let describeRouteTablesSyncOverride: ElasticComputeCloudClientProtocol.DescribeRouteTablesSyncType?
+    let describeScheduledInstanceAvailabilityAsyncOverride: ElasticComputeCloudClientProtocol.DescribeScheduledInstanceAvailabilityAsyncType?
+    let describeScheduledInstanceAvailabilitySyncOverride: ElasticComputeCloudClientProtocol.DescribeScheduledInstanceAvailabilitySyncType?
+    let describeScheduledInstancesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeScheduledInstancesAsyncType?
+    let describeScheduledInstancesSyncOverride: ElasticComputeCloudClientProtocol.DescribeScheduledInstancesSyncType?
+    let describeSecurityGroupReferencesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSecurityGroupReferencesAsyncType?
+    let describeSecurityGroupReferencesSyncOverride: ElasticComputeCloudClientProtocol.DescribeSecurityGroupReferencesSyncType?
+    let describeSecurityGroupsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSecurityGroupsAsyncType?
+    let describeSecurityGroupsSyncOverride: ElasticComputeCloudClientProtocol.DescribeSecurityGroupsSyncType?
+    let describeSnapshotAttributeAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSnapshotAttributeAsyncType?
+    let describeSnapshotAttributeSyncOverride: ElasticComputeCloudClientProtocol.DescribeSnapshotAttributeSyncType?
+    let describeSnapshotsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSnapshotsAsyncType?
+    let describeSnapshotsSyncOverride: ElasticComputeCloudClientProtocol.DescribeSnapshotsSyncType?
+    let describeSpotDatafeedSubscriptionAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotDatafeedSubscriptionAsyncType?
+    let describeSpotDatafeedSubscriptionSyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotDatafeedSubscriptionSyncType?
+    let describeSpotFleetInstancesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotFleetInstancesAsyncType?
+    let describeSpotFleetInstancesSyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotFleetInstancesSyncType?
+    let describeSpotFleetRequestHistoryAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotFleetRequestHistoryAsyncType?
+    let describeSpotFleetRequestHistorySyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotFleetRequestHistorySyncType?
+    let describeSpotFleetRequestsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotFleetRequestsAsyncType?
+    let describeSpotFleetRequestsSyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotFleetRequestsSyncType?
+    let describeSpotInstanceRequestsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotInstanceRequestsAsyncType?
+    let describeSpotInstanceRequestsSyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotInstanceRequestsSyncType?
+    let describeSpotPriceHistoryAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotPriceHistoryAsyncType?
+    let describeSpotPriceHistorySyncOverride: ElasticComputeCloudClientProtocol.DescribeSpotPriceHistorySyncType?
+    let describeStaleSecurityGroupsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeStaleSecurityGroupsAsyncType?
+    let describeStaleSecurityGroupsSyncOverride: ElasticComputeCloudClientProtocol.DescribeStaleSecurityGroupsSyncType?
+    let describeSubnetsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeSubnetsAsyncType?
+    let describeSubnetsSyncOverride: ElasticComputeCloudClientProtocol.DescribeSubnetsSyncType?
+    let describeTagsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTagsAsyncType?
+    let describeTagsSyncOverride: ElasticComputeCloudClientProtocol.DescribeTagsSyncType?
+    let describeVolumeAttributeAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumeAttributeAsyncType?
+    let describeVolumeAttributeSyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumeAttributeSyncType?
+    let describeVolumeStatusAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumeStatusAsyncType?
+    let describeVolumeStatusSyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumeStatusSyncType?
+    let describeVolumesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumesAsyncType?
+    let describeVolumesSyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumesSyncType?
+    let describeVolumesModificationsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumesModificationsAsyncType?
+    let describeVolumesModificationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumesModificationsSyncType?
+    let describeVpcAttributeAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcAttributeAsyncType?
+    let describeVpcAttributeSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcAttributeSyncType?
+    let describeVpcClassicLinkAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcClassicLinkAsyncType?
+    let describeVpcClassicLinkSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcClassicLinkSyncType?
+    let describeVpcClassicLinkDnsSupportAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcClassicLinkDnsSupportAsyncType?
+    let describeVpcClassicLinkDnsSupportSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcClassicLinkDnsSupportSyncType?
+    let describeVpcEndpointConnectionNotificationsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointConnectionNotificationsAsyncType?
+    let describeVpcEndpointConnectionNotificationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointConnectionNotificationsSyncType?
+    let describeVpcEndpointConnectionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointConnectionsAsyncType?
+    let describeVpcEndpointConnectionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointConnectionsSyncType?
+    let describeVpcEndpointServiceConfigurationsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServiceConfigurationsAsyncType?
+    let describeVpcEndpointServiceConfigurationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServiceConfigurationsSyncType?
+    let describeVpcEndpointServicePermissionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServicePermissionsAsyncType?
+    let describeVpcEndpointServicePermissionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServicePermissionsSyncType?
+    let describeVpcEndpointServicesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServicesAsyncType?
+    let describeVpcEndpointServicesSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServicesSyncType?
+    let describeVpcEndpointsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointsAsyncType?
+    let describeVpcEndpointsSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcEndpointsSyncType?
+    let describeVpcPeeringConnectionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcPeeringConnectionsAsyncType?
+    let describeVpcPeeringConnectionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcPeeringConnectionsSyncType?
+    let describeVpcsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcsAsyncType?
+    let describeVpcsSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpcsSyncType?
+    let describeVpnConnectionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpnConnectionsAsyncType?
+    let describeVpnConnectionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpnConnectionsSyncType?
+    let describeVpnGatewaysAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVpnGatewaysAsyncType?
+    let describeVpnGatewaysSyncOverride: ElasticComputeCloudClientProtocol.DescribeVpnGatewaysSyncType?
+    let detachClassicLinkVpcAsyncOverride: ElasticComputeCloudClientProtocol.DetachClassicLinkVpcAsyncType?
+    let detachClassicLinkVpcSyncOverride: ElasticComputeCloudClientProtocol.DetachClassicLinkVpcSyncType?
+    let detachInternetGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DetachInternetGatewayAsyncType?
+    let detachInternetGatewaySyncOverride: ElasticComputeCloudClientProtocol.DetachInternetGatewaySyncType?
+    let detachNetworkInterfaceAsyncOverride: ElasticComputeCloudClientProtocol.DetachNetworkInterfaceAsyncType?
+    let detachNetworkInterfaceSyncOverride: ElasticComputeCloudClientProtocol.DetachNetworkInterfaceSyncType?
+    let detachVolumeAsyncOverride: ElasticComputeCloudClientProtocol.DetachVolumeAsyncType?
+    let detachVolumeSyncOverride: ElasticComputeCloudClientProtocol.DetachVolumeSyncType?
+    let detachVpnGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DetachVpnGatewayAsyncType?
+    let detachVpnGatewaySyncOverride: ElasticComputeCloudClientProtocol.DetachVpnGatewaySyncType?
+    let disableVgwRoutePropagationAsyncOverride: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationAsyncType?
+    let disableVgwRoutePropagationSyncOverride: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationSyncType?
+    let disableVpcClassicLinkAsyncOverride: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkAsyncType?
+    let disableVpcClassicLinkSyncOverride: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkSyncType?
+    let disableVpcClassicLinkDnsSupportAsyncOverride: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkDnsSupportAsyncType?
+    let disableVpcClassicLinkDnsSupportSyncOverride: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkDnsSupportSyncType?
+    let disassociateAddressAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateAddressAsyncType?
+    let disassociateAddressSyncOverride: ElasticComputeCloudClientProtocol.DisassociateAddressSyncType?
+    let disassociateIamInstanceProfileAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateIamInstanceProfileAsyncType?
+    let disassociateIamInstanceProfileSyncOverride: ElasticComputeCloudClientProtocol.DisassociateIamInstanceProfileSyncType?
+    let disassociateRouteTableAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateRouteTableAsyncType?
+    let disassociateRouteTableSyncOverride: ElasticComputeCloudClientProtocol.DisassociateRouteTableSyncType?
+    let disassociateSubnetCidrBlockAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateSubnetCidrBlockAsyncType?
+    let disassociateSubnetCidrBlockSyncOverride: ElasticComputeCloudClientProtocol.DisassociateSubnetCidrBlockSyncType?
+    let disassociateVpcCidrBlockAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockAsyncType?
+    let disassociateVpcCidrBlockSyncOverride: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockSyncType?
+    let enableVgwRoutePropagationAsyncOverride: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationAsyncType?
+    let enableVgwRoutePropagationSyncOverride: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationSyncType?
+    let enableVolumeIOAsyncOverride: ElasticComputeCloudClientProtocol.EnableVolumeIOAsyncType?
+    let enableVolumeIOSyncOverride: ElasticComputeCloudClientProtocol.EnableVolumeIOSyncType?
+    let enableVpcClassicLinkAsyncOverride: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkAsyncType?
+    let enableVpcClassicLinkSyncOverride: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkSyncType?
+    let enableVpcClassicLinkDnsSupportAsyncOverride: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkDnsSupportAsyncType?
+    let enableVpcClassicLinkDnsSupportSyncOverride: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkDnsSupportSyncType?
+    let getConsoleOutputAsyncOverride: ElasticComputeCloudClientProtocol.GetConsoleOutputAsyncType?
+    let getConsoleOutputSyncOverride: ElasticComputeCloudClientProtocol.GetConsoleOutputSyncType?
+    let getConsoleScreenshotAsyncOverride: ElasticComputeCloudClientProtocol.GetConsoleScreenshotAsyncType?
+    let getConsoleScreenshotSyncOverride: ElasticComputeCloudClientProtocol.GetConsoleScreenshotSyncType?
+    let getHostReservationPurchasePreviewAsyncOverride: ElasticComputeCloudClientProtocol.GetHostReservationPurchasePreviewAsyncType?
+    let getHostReservationPurchasePreviewSyncOverride: ElasticComputeCloudClientProtocol.GetHostReservationPurchasePreviewSyncType?
+    let getLaunchTemplateDataAsyncOverride: ElasticComputeCloudClientProtocol.GetLaunchTemplateDataAsyncType?
+    let getLaunchTemplateDataSyncOverride: ElasticComputeCloudClientProtocol.GetLaunchTemplateDataSyncType?
+    let getPasswordDataAsyncOverride: ElasticComputeCloudClientProtocol.GetPasswordDataAsyncType?
+    let getPasswordDataSyncOverride: ElasticComputeCloudClientProtocol.GetPasswordDataSyncType?
+    let getReservedInstancesExchangeQuoteAsyncOverride: ElasticComputeCloudClientProtocol.GetReservedInstancesExchangeQuoteAsyncType?
+    let getReservedInstancesExchangeQuoteSyncOverride: ElasticComputeCloudClientProtocol.GetReservedInstancesExchangeQuoteSyncType?
+    let importImageAsyncOverride: ElasticComputeCloudClientProtocol.ImportImageAsyncType?
+    let importImageSyncOverride: ElasticComputeCloudClientProtocol.ImportImageSyncType?
+    let importInstanceAsyncOverride: ElasticComputeCloudClientProtocol.ImportInstanceAsyncType?
+    let importInstanceSyncOverride: ElasticComputeCloudClientProtocol.ImportInstanceSyncType?
+    let importKeyPairAsyncOverride: ElasticComputeCloudClientProtocol.ImportKeyPairAsyncType?
+    let importKeyPairSyncOverride: ElasticComputeCloudClientProtocol.ImportKeyPairSyncType?
+    let importSnapshotAsyncOverride: ElasticComputeCloudClientProtocol.ImportSnapshotAsyncType?
+    let importSnapshotSyncOverride: ElasticComputeCloudClientProtocol.ImportSnapshotSyncType?
+    let importVolumeAsyncOverride: ElasticComputeCloudClientProtocol.ImportVolumeAsyncType?
+    let importVolumeSyncOverride: ElasticComputeCloudClientProtocol.ImportVolumeSyncType?
+    let modifyCapacityReservationAsyncOverride: ElasticComputeCloudClientProtocol.ModifyCapacityReservationAsyncType?
+    let modifyCapacityReservationSyncOverride: ElasticComputeCloudClientProtocol.ModifyCapacityReservationSyncType?
+    let modifyFleetAsyncOverride: ElasticComputeCloudClientProtocol.ModifyFleetAsyncType?
+    let modifyFleetSyncOverride: ElasticComputeCloudClientProtocol.ModifyFleetSyncType?
+    let modifyFpgaImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyFpgaImageAttributeAsyncType?
+    let modifyFpgaImageAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifyFpgaImageAttributeSyncType?
+    let modifyHostsAsyncOverride: ElasticComputeCloudClientProtocol.ModifyHostsAsyncType?
+    let modifyHostsSyncOverride: ElasticComputeCloudClientProtocol.ModifyHostsSyncType?
+    let modifyIdFormatAsyncOverride: ElasticComputeCloudClientProtocol.ModifyIdFormatAsyncType?
+    let modifyIdFormatSyncOverride: ElasticComputeCloudClientProtocol.ModifyIdFormatSyncType?
+    let modifyIdentityIdFormatAsyncOverride: ElasticComputeCloudClientProtocol.ModifyIdentityIdFormatAsyncType?
+    let modifyIdentityIdFormatSyncOverride: ElasticComputeCloudClientProtocol.ModifyIdentityIdFormatSyncType?
+    let modifyImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyImageAttributeAsyncType?
+    let modifyImageAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifyImageAttributeSyncType?
+    let modifyInstanceAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceAttributeAsyncType?
+    let modifyInstanceAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceAttributeSyncType?
+    let modifyInstanceCapacityReservationAttributesAsyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceCapacityReservationAttributesAsyncType?
+    let modifyInstanceCapacityReservationAttributesSyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceCapacityReservationAttributesSyncType?
+    let modifyInstanceCreditSpecificationAsyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceCreditSpecificationAsyncType?
+    let modifyInstanceCreditSpecificationSyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceCreditSpecificationSyncType?
+    let modifyInstancePlacementAsyncOverride: ElasticComputeCloudClientProtocol.ModifyInstancePlacementAsyncType?
+    let modifyInstancePlacementSyncOverride: ElasticComputeCloudClientProtocol.ModifyInstancePlacementSyncType?
+    let modifyLaunchTemplateAsyncOverride: ElasticComputeCloudClientProtocol.ModifyLaunchTemplateAsyncType?
+    let modifyLaunchTemplateSyncOverride: ElasticComputeCloudClientProtocol.ModifyLaunchTemplateSyncType?
+    let modifyNetworkInterfaceAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyNetworkInterfaceAttributeAsyncType?
+    let modifyNetworkInterfaceAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifyNetworkInterfaceAttributeSyncType?
+    let modifyReservedInstancesAsyncOverride: ElasticComputeCloudClientProtocol.ModifyReservedInstancesAsyncType?
+    let modifyReservedInstancesSyncOverride: ElasticComputeCloudClientProtocol.ModifyReservedInstancesSyncType?
+    let modifySnapshotAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifySnapshotAttributeAsyncType?
+    let modifySnapshotAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifySnapshotAttributeSyncType?
+    let modifySpotFleetRequestAsyncOverride: ElasticComputeCloudClientProtocol.ModifySpotFleetRequestAsyncType?
+    let modifySpotFleetRequestSyncOverride: ElasticComputeCloudClientProtocol.ModifySpotFleetRequestSyncType?
+    let modifySubnetAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifySubnetAttributeAsyncType?
+    let modifySubnetAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifySubnetAttributeSyncType?
+    let modifyVolumeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVolumeAsyncType?
+    let modifyVolumeSyncOverride: ElasticComputeCloudClientProtocol.ModifyVolumeSyncType?
+    let modifyVolumeAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVolumeAttributeAsyncType?
+    let modifyVolumeAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifyVolumeAttributeSyncType?
+    let modifyVpcAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcAttributeAsyncType?
+    let modifyVpcAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcAttributeSyncType?
+    let modifyVpcEndpointAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcEndpointAsyncType?
+    let modifyVpcEndpointSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcEndpointSyncType?
+    let modifyVpcEndpointConnectionNotificationAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcEndpointConnectionNotificationAsyncType?
+    let modifyVpcEndpointConnectionNotificationSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcEndpointConnectionNotificationSyncType?
+    let modifyVpcEndpointServiceConfigurationAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcEndpointServiceConfigurationAsyncType?
+    let modifyVpcEndpointServiceConfigurationSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcEndpointServiceConfigurationSyncType?
+    let modifyVpcEndpointServicePermissionsAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcEndpointServicePermissionsAsyncType?
+    let modifyVpcEndpointServicePermissionsSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcEndpointServicePermissionsSyncType?
+    let modifyVpcPeeringConnectionOptionsAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcPeeringConnectionOptionsAsyncType?
+    let modifyVpcPeeringConnectionOptionsSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcPeeringConnectionOptionsSyncType?
+    let modifyVpcTenancyAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcTenancyAsyncType?
+    let modifyVpcTenancySyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcTenancySyncType?
+    let monitorInstancesAsyncOverride: ElasticComputeCloudClientProtocol.MonitorInstancesAsyncType?
+    let monitorInstancesSyncOverride: ElasticComputeCloudClientProtocol.MonitorInstancesSyncType?
+    let moveAddressToVpcAsyncOverride: ElasticComputeCloudClientProtocol.MoveAddressToVpcAsyncType?
+    let moveAddressToVpcSyncOverride: ElasticComputeCloudClientProtocol.MoveAddressToVpcSyncType?
+    let provisionByoipCidrAsyncOverride: ElasticComputeCloudClientProtocol.ProvisionByoipCidrAsyncType?
+    let provisionByoipCidrSyncOverride: ElasticComputeCloudClientProtocol.ProvisionByoipCidrSyncType?
+    let purchaseHostReservationAsyncOverride: ElasticComputeCloudClientProtocol.PurchaseHostReservationAsyncType?
+    let purchaseHostReservationSyncOverride: ElasticComputeCloudClientProtocol.PurchaseHostReservationSyncType?
+    let purchaseReservedInstancesOfferingAsyncOverride: ElasticComputeCloudClientProtocol.PurchaseReservedInstancesOfferingAsyncType?
+    let purchaseReservedInstancesOfferingSyncOverride: ElasticComputeCloudClientProtocol.PurchaseReservedInstancesOfferingSyncType?
+    let purchaseScheduledInstancesAsyncOverride: ElasticComputeCloudClientProtocol.PurchaseScheduledInstancesAsyncType?
+    let purchaseScheduledInstancesSyncOverride: ElasticComputeCloudClientProtocol.PurchaseScheduledInstancesSyncType?
+    let rebootInstancesAsyncOverride: ElasticComputeCloudClientProtocol.RebootInstancesAsyncType?
+    let rebootInstancesSyncOverride: ElasticComputeCloudClientProtocol.RebootInstancesSyncType?
+    let registerImageAsyncOverride: ElasticComputeCloudClientProtocol.RegisterImageAsyncType?
+    let registerImageSyncOverride: ElasticComputeCloudClientProtocol.RegisterImageSyncType?
+    let rejectVpcEndpointConnectionsAsyncOverride: ElasticComputeCloudClientProtocol.RejectVpcEndpointConnectionsAsyncType?
+    let rejectVpcEndpointConnectionsSyncOverride: ElasticComputeCloudClientProtocol.RejectVpcEndpointConnectionsSyncType?
+    let rejectVpcPeeringConnectionAsyncOverride: ElasticComputeCloudClientProtocol.RejectVpcPeeringConnectionAsyncType?
+    let rejectVpcPeeringConnectionSyncOverride: ElasticComputeCloudClientProtocol.RejectVpcPeeringConnectionSyncType?
+    let releaseAddressAsyncOverride: ElasticComputeCloudClientProtocol.ReleaseAddressAsyncType?
+    let releaseAddressSyncOverride: ElasticComputeCloudClientProtocol.ReleaseAddressSyncType?
+    let releaseHostsAsyncOverride: ElasticComputeCloudClientProtocol.ReleaseHostsAsyncType?
+    let releaseHostsSyncOverride: ElasticComputeCloudClientProtocol.ReleaseHostsSyncType?
+    let replaceIamInstanceProfileAssociationAsyncOverride: ElasticComputeCloudClientProtocol.ReplaceIamInstanceProfileAssociationAsyncType?
+    let replaceIamInstanceProfileAssociationSyncOverride: ElasticComputeCloudClientProtocol.ReplaceIamInstanceProfileAssociationSyncType?
+    let replaceNetworkAclAssociationAsyncOverride: ElasticComputeCloudClientProtocol.ReplaceNetworkAclAssociationAsyncType?
+    let replaceNetworkAclAssociationSyncOverride: ElasticComputeCloudClientProtocol.ReplaceNetworkAclAssociationSyncType?
+    let replaceNetworkAclEntryAsyncOverride: ElasticComputeCloudClientProtocol.ReplaceNetworkAclEntryAsyncType?
+    let replaceNetworkAclEntrySyncOverride: ElasticComputeCloudClientProtocol.ReplaceNetworkAclEntrySyncType?
+    let replaceRouteAsyncOverride: ElasticComputeCloudClientProtocol.ReplaceRouteAsyncType?
+    let replaceRouteSyncOverride: ElasticComputeCloudClientProtocol.ReplaceRouteSyncType?
+    let replaceRouteTableAssociationAsyncOverride: ElasticComputeCloudClientProtocol.ReplaceRouteTableAssociationAsyncType?
+    let replaceRouteTableAssociationSyncOverride: ElasticComputeCloudClientProtocol.ReplaceRouteTableAssociationSyncType?
+    let reportInstanceStatusAsyncOverride: ElasticComputeCloudClientProtocol.ReportInstanceStatusAsyncType?
+    let reportInstanceStatusSyncOverride: ElasticComputeCloudClientProtocol.ReportInstanceStatusSyncType?
+    let requestSpotFleetAsyncOverride: ElasticComputeCloudClientProtocol.RequestSpotFleetAsyncType?
+    let requestSpotFleetSyncOverride: ElasticComputeCloudClientProtocol.RequestSpotFleetSyncType?
+    let requestSpotInstancesAsyncOverride: ElasticComputeCloudClientProtocol.RequestSpotInstancesAsyncType?
+    let requestSpotInstancesSyncOverride: ElasticComputeCloudClientProtocol.RequestSpotInstancesSyncType?
+    let resetFpgaImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ResetFpgaImageAttributeAsyncType?
+    let resetFpgaImageAttributeSyncOverride: ElasticComputeCloudClientProtocol.ResetFpgaImageAttributeSyncType?
+    let resetImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ResetImageAttributeAsyncType?
+    let resetImageAttributeSyncOverride: ElasticComputeCloudClientProtocol.ResetImageAttributeSyncType?
+    let resetInstanceAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ResetInstanceAttributeAsyncType?
+    let resetInstanceAttributeSyncOverride: ElasticComputeCloudClientProtocol.ResetInstanceAttributeSyncType?
+    let resetNetworkInterfaceAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ResetNetworkInterfaceAttributeAsyncType?
+    let resetNetworkInterfaceAttributeSyncOverride: ElasticComputeCloudClientProtocol.ResetNetworkInterfaceAttributeSyncType?
+    let resetSnapshotAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ResetSnapshotAttributeAsyncType?
+    let resetSnapshotAttributeSyncOverride: ElasticComputeCloudClientProtocol.ResetSnapshotAttributeSyncType?
+    let restoreAddressToClassicAsyncOverride: ElasticComputeCloudClientProtocol.RestoreAddressToClassicAsyncType?
+    let restoreAddressToClassicSyncOverride: ElasticComputeCloudClientProtocol.RestoreAddressToClassicSyncType?
+    let revokeSecurityGroupEgressAsyncOverride: ElasticComputeCloudClientProtocol.RevokeSecurityGroupEgressAsyncType?
+    let revokeSecurityGroupEgressSyncOverride: ElasticComputeCloudClientProtocol.RevokeSecurityGroupEgressSyncType?
+    let revokeSecurityGroupIngressAsyncOverride: ElasticComputeCloudClientProtocol.RevokeSecurityGroupIngressAsyncType?
+    let revokeSecurityGroupIngressSyncOverride: ElasticComputeCloudClientProtocol.RevokeSecurityGroupIngressSyncType?
+    let runInstancesAsyncOverride: ElasticComputeCloudClientProtocol.RunInstancesAsyncType?
+    let runInstancesSyncOverride: ElasticComputeCloudClientProtocol.RunInstancesSyncType?
+    let runScheduledInstancesAsyncOverride: ElasticComputeCloudClientProtocol.RunScheduledInstancesAsyncType?
+    let runScheduledInstancesSyncOverride: ElasticComputeCloudClientProtocol.RunScheduledInstancesSyncType?
+    let startInstancesAsyncOverride: ElasticComputeCloudClientProtocol.StartInstancesAsyncType?
+    let startInstancesSyncOverride: ElasticComputeCloudClientProtocol.StartInstancesSyncType?
+    let stopInstancesAsyncOverride: ElasticComputeCloudClientProtocol.StopInstancesAsyncType?
+    let stopInstancesSyncOverride: ElasticComputeCloudClientProtocol.StopInstancesSyncType?
+    let terminateInstancesAsyncOverride: ElasticComputeCloudClientProtocol.TerminateInstancesAsyncType?
+    let terminateInstancesSyncOverride: ElasticComputeCloudClientProtocol.TerminateInstancesSyncType?
+    let unassignIpv6AddressesAsyncOverride: ElasticComputeCloudClientProtocol.UnassignIpv6AddressesAsyncType?
+    let unassignIpv6AddressesSyncOverride: ElasticComputeCloudClientProtocol.UnassignIpv6AddressesSyncType?
+    let unassignPrivateIpAddressesAsyncOverride: ElasticComputeCloudClientProtocol.UnassignPrivateIpAddressesAsyncType?
+    let unassignPrivateIpAddressesSyncOverride: ElasticComputeCloudClientProtocol.UnassignPrivateIpAddressesSyncType?
+    let unmonitorInstancesAsyncOverride: ElasticComputeCloudClientProtocol.UnmonitorInstancesAsyncType?
+    let unmonitorInstancesSyncOverride: ElasticComputeCloudClientProtocol.UnmonitorInstancesSyncType?
+    let updateSecurityGroupRuleDescriptionsEgressAsyncOverride: ElasticComputeCloudClientProtocol.UpdateSecurityGroupRuleDescriptionsEgressAsyncType?
+    let updateSecurityGroupRuleDescriptionsEgressSyncOverride: ElasticComputeCloudClientProtocol.UpdateSecurityGroupRuleDescriptionsEgressSyncType?
+    let updateSecurityGroupRuleDescriptionsIngressAsyncOverride: ElasticComputeCloudClientProtocol.UpdateSecurityGroupRuleDescriptionsIngressAsyncType?
+    let updateSecurityGroupRuleDescriptionsIngressSyncOverride: ElasticComputeCloudClientProtocol.UpdateSecurityGroupRuleDescriptionsIngressSyncType?
+    let withdrawByoipCidrAsyncOverride: ElasticComputeCloudClientProtocol.WithdrawByoipCidrAsyncType?
+    let withdrawByoipCidrSyncOverride: ElasticComputeCloudClientProtocol.WithdrawByoipCidrSyncType?
+
+    /**
+     Initializer that creates an instance of this clients. The behavior of individual
+     functions can be overridden by passing them to this initializer.
+     */
+    public init(
+            acceptReservedInstancesExchangeQuoteAsync: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteAsyncType? = nil,
+            acceptReservedInstancesExchangeQuoteSync: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteSyncType? = nil,
+            acceptVpcEndpointConnectionsAsync: ElasticComputeCloudClientProtocol.AcceptVpcEndpointConnectionsAsyncType? = nil,
+            acceptVpcEndpointConnectionsSync: ElasticComputeCloudClientProtocol.AcceptVpcEndpointConnectionsSyncType? = nil,
+            acceptVpcPeeringConnectionAsync: ElasticComputeCloudClientProtocol.AcceptVpcPeeringConnectionAsyncType? = nil,
+            acceptVpcPeeringConnectionSync: ElasticComputeCloudClientProtocol.AcceptVpcPeeringConnectionSyncType? = nil,
+            advertiseByoipCidrAsync: ElasticComputeCloudClientProtocol.AdvertiseByoipCidrAsyncType? = nil,
+            advertiseByoipCidrSync: ElasticComputeCloudClientProtocol.AdvertiseByoipCidrSyncType? = nil,
+            allocateAddressAsync: ElasticComputeCloudClientProtocol.AllocateAddressAsyncType? = nil,
+            allocateAddressSync: ElasticComputeCloudClientProtocol.AllocateAddressSyncType? = nil,
+            allocateHostsAsync: ElasticComputeCloudClientProtocol.AllocateHostsAsyncType? = nil,
+            allocateHostsSync: ElasticComputeCloudClientProtocol.AllocateHostsSyncType? = nil,
+            assignIpv6AddressesAsync: ElasticComputeCloudClientProtocol.AssignIpv6AddressesAsyncType? = nil,
+            assignIpv6AddressesSync: ElasticComputeCloudClientProtocol.AssignIpv6AddressesSyncType? = nil,
+            assignPrivateIpAddressesAsync: ElasticComputeCloudClientProtocol.AssignPrivateIpAddressesAsyncType? = nil,
+            assignPrivateIpAddressesSync: ElasticComputeCloudClientProtocol.AssignPrivateIpAddressesSyncType? = nil,
+            associateAddressAsync: ElasticComputeCloudClientProtocol.AssociateAddressAsyncType? = nil,
+            associateAddressSync: ElasticComputeCloudClientProtocol.AssociateAddressSyncType? = nil,
+            associateDhcpOptionsAsync: ElasticComputeCloudClientProtocol.AssociateDhcpOptionsAsyncType? = nil,
+            associateDhcpOptionsSync: ElasticComputeCloudClientProtocol.AssociateDhcpOptionsSyncType? = nil,
+            associateIamInstanceProfileAsync: ElasticComputeCloudClientProtocol.AssociateIamInstanceProfileAsyncType? = nil,
+            associateIamInstanceProfileSync: ElasticComputeCloudClientProtocol.AssociateIamInstanceProfileSyncType? = nil,
+            associateRouteTableAsync: ElasticComputeCloudClientProtocol.AssociateRouteTableAsyncType? = nil,
+            associateRouteTableSync: ElasticComputeCloudClientProtocol.AssociateRouteTableSyncType? = nil,
+            associateSubnetCidrBlockAsync: ElasticComputeCloudClientProtocol.AssociateSubnetCidrBlockAsyncType? = nil,
+            associateSubnetCidrBlockSync: ElasticComputeCloudClientProtocol.AssociateSubnetCidrBlockSyncType? = nil,
+            associateVpcCidrBlockAsync: ElasticComputeCloudClientProtocol.AssociateVpcCidrBlockAsyncType? = nil,
+            associateVpcCidrBlockSync: ElasticComputeCloudClientProtocol.AssociateVpcCidrBlockSyncType? = nil,
+            attachClassicLinkVpcAsync: ElasticComputeCloudClientProtocol.AttachClassicLinkVpcAsyncType? = nil,
+            attachClassicLinkVpcSync: ElasticComputeCloudClientProtocol.AttachClassicLinkVpcSyncType? = nil,
+            attachInternetGatewayAsync: ElasticComputeCloudClientProtocol.AttachInternetGatewayAsyncType? = nil,
+            attachInternetGatewaySync: ElasticComputeCloudClientProtocol.AttachInternetGatewaySyncType? = nil,
+            attachNetworkInterfaceAsync: ElasticComputeCloudClientProtocol.AttachNetworkInterfaceAsyncType? = nil,
+            attachNetworkInterfaceSync: ElasticComputeCloudClientProtocol.AttachNetworkInterfaceSyncType? = nil,
+            attachVolumeAsync: ElasticComputeCloudClientProtocol.AttachVolumeAsyncType? = nil,
+            attachVolumeSync: ElasticComputeCloudClientProtocol.AttachVolumeSyncType? = nil,
+            attachVpnGatewayAsync: ElasticComputeCloudClientProtocol.AttachVpnGatewayAsyncType? = nil,
+            attachVpnGatewaySync: ElasticComputeCloudClientProtocol.AttachVpnGatewaySyncType? = nil,
+            authorizeSecurityGroupEgressAsync: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupEgressAsyncType? = nil,
+            authorizeSecurityGroupEgressSync: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupEgressSyncType? = nil,
+            authorizeSecurityGroupIngressAsync: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupIngressAsyncType? = nil,
+            authorizeSecurityGroupIngressSync: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupIngressSyncType? = nil,
+            bundleInstanceAsync: ElasticComputeCloudClientProtocol.BundleInstanceAsyncType? = nil,
+            bundleInstanceSync: ElasticComputeCloudClientProtocol.BundleInstanceSyncType? = nil,
+            cancelBundleTaskAsync: ElasticComputeCloudClientProtocol.CancelBundleTaskAsyncType? = nil,
+            cancelBundleTaskSync: ElasticComputeCloudClientProtocol.CancelBundleTaskSyncType? = nil,
+            cancelCapacityReservationAsync: ElasticComputeCloudClientProtocol.CancelCapacityReservationAsyncType? = nil,
+            cancelCapacityReservationSync: ElasticComputeCloudClientProtocol.CancelCapacityReservationSyncType? = nil,
+            cancelConversionTaskAsync: ElasticComputeCloudClientProtocol.CancelConversionTaskAsyncType? = nil,
+            cancelConversionTaskSync: ElasticComputeCloudClientProtocol.CancelConversionTaskSyncType? = nil,
+            cancelExportTaskAsync: ElasticComputeCloudClientProtocol.CancelExportTaskAsyncType? = nil,
+            cancelExportTaskSync: ElasticComputeCloudClientProtocol.CancelExportTaskSyncType? = nil,
+            cancelImportTaskAsync: ElasticComputeCloudClientProtocol.CancelImportTaskAsyncType? = nil,
+            cancelImportTaskSync: ElasticComputeCloudClientProtocol.CancelImportTaskSyncType? = nil,
+            cancelReservedInstancesListingAsync: ElasticComputeCloudClientProtocol.CancelReservedInstancesListingAsyncType? = nil,
+            cancelReservedInstancesListingSync: ElasticComputeCloudClientProtocol.CancelReservedInstancesListingSyncType? = nil,
+            cancelSpotFleetRequestsAsync: ElasticComputeCloudClientProtocol.CancelSpotFleetRequestsAsyncType? = nil,
+            cancelSpotFleetRequestsSync: ElasticComputeCloudClientProtocol.CancelSpotFleetRequestsSyncType? = nil,
+            cancelSpotInstanceRequestsAsync: ElasticComputeCloudClientProtocol.CancelSpotInstanceRequestsAsyncType? = nil,
+            cancelSpotInstanceRequestsSync: ElasticComputeCloudClientProtocol.CancelSpotInstanceRequestsSyncType? = nil,
+            confirmProductInstanceAsync: ElasticComputeCloudClientProtocol.ConfirmProductInstanceAsyncType? = nil,
+            confirmProductInstanceSync: ElasticComputeCloudClientProtocol.ConfirmProductInstanceSyncType? = nil,
+            copyFpgaImageAsync: ElasticComputeCloudClientProtocol.CopyFpgaImageAsyncType? = nil,
+            copyFpgaImageSync: ElasticComputeCloudClientProtocol.CopyFpgaImageSyncType? = nil,
+            copyImageAsync: ElasticComputeCloudClientProtocol.CopyImageAsyncType? = nil,
+            copyImageSync: ElasticComputeCloudClientProtocol.CopyImageSyncType? = nil,
+            copySnapshotAsync: ElasticComputeCloudClientProtocol.CopySnapshotAsyncType? = nil,
+            copySnapshotSync: ElasticComputeCloudClientProtocol.CopySnapshotSyncType? = nil,
+            createCapacityReservationAsync: ElasticComputeCloudClientProtocol.CreateCapacityReservationAsyncType? = nil,
+            createCapacityReservationSync: ElasticComputeCloudClientProtocol.CreateCapacityReservationSyncType? = nil,
+            createCustomerGatewayAsync: ElasticComputeCloudClientProtocol.CreateCustomerGatewayAsyncType? = nil,
+            createCustomerGatewaySync: ElasticComputeCloudClientProtocol.CreateCustomerGatewaySyncType? = nil,
+            createDefaultSubnetAsync: ElasticComputeCloudClientProtocol.CreateDefaultSubnetAsyncType? = nil,
+            createDefaultSubnetSync: ElasticComputeCloudClientProtocol.CreateDefaultSubnetSyncType? = nil,
+            createDefaultVpcAsync: ElasticComputeCloudClientProtocol.CreateDefaultVpcAsyncType? = nil,
+            createDefaultVpcSync: ElasticComputeCloudClientProtocol.CreateDefaultVpcSyncType? = nil,
+            createDhcpOptionsAsync: ElasticComputeCloudClientProtocol.CreateDhcpOptionsAsyncType? = nil,
+            createDhcpOptionsSync: ElasticComputeCloudClientProtocol.CreateDhcpOptionsSyncType? = nil,
+            createEgressOnlyInternetGatewayAsync: ElasticComputeCloudClientProtocol.CreateEgressOnlyInternetGatewayAsyncType? = nil,
+            createEgressOnlyInternetGatewaySync: ElasticComputeCloudClientProtocol.CreateEgressOnlyInternetGatewaySyncType? = nil,
+            createFleetAsync: ElasticComputeCloudClientProtocol.CreateFleetAsyncType? = nil,
+            createFleetSync: ElasticComputeCloudClientProtocol.CreateFleetSyncType? = nil,
+            createFlowLogsAsync: ElasticComputeCloudClientProtocol.CreateFlowLogsAsyncType? = nil,
+            createFlowLogsSync: ElasticComputeCloudClientProtocol.CreateFlowLogsSyncType? = nil,
+            createFpgaImageAsync: ElasticComputeCloudClientProtocol.CreateFpgaImageAsyncType? = nil,
+            createFpgaImageSync: ElasticComputeCloudClientProtocol.CreateFpgaImageSyncType? = nil,
+            createImageAsync: ElasticComputeCloudClientProtocol.CreateImageAsyncType? = nil,
+            createImageSync: ElasticComputeCloudClientProtocol.CreateImageSyncType? = nil,
+            createInstanceExportTaskAsync: ElasticComputeCloudClientProtocol.CreateInstanceExportTaskAsyncType? = nil,
+            createInstanceExportTaskSync: ElasticComputeCloudClientProtocol.CreateInstanceExportTaskSyncType? = nil,
+            createInternetGatewayAsync: ElasticComputeCloudClientProtocol.CreateInternetGatewayAsyncType? = nil,
+            createInternetGatewaySync: ElasticComputeCloudClientProtocol.CreateInternetGatewaySyncType? = nil,
+            createKeyPairAsync: ElasticComputeCloudClientProtocol.CreateKeyPairAsyncType? = nil,
+            createKeyPairSync: ElasticComputeCloudClientProtocol.CreateKeyPairSyncType? = nil,
+            createLaunchTemplateAsync: ElasticComputeCloudClientProtocol.CreateLaunchTemplateAsyncType? = nil,
+            createLaunchTemplateSync: ElasticComputeCloudClientProtocol.CreateLaunchTemplateSyncType? = nil,
+            createLaunchTemplateVersionAsync: ElasticComputeCloudClientProtocol.CreateLaunchTemplateVersionAsyncType? = nil,
+            createLaunchTemplateVersionSync: ElasticComputeCloudClientProtocol.CreateLaunchTemplateVersionSyncType? = nil,
+            createNatGatewayAsync: ElasticComputeCloudClientProtocol.CreateNatGatewayAsyncType? = nil,
+            createNatGatewaySync: ElasticComputeCloudClientProtocol.CreateNatGatewaySyncType? = nil,
+            createNetworkAclAsync: ElasticComputeCloudClientProtocol.CreateNetworkAclAsyncType? = nil,
+            createNetworkAclSync: ElasticComputeCloudClientProtocol.CreateNetworkAclSyncType? = nil,
+            createNetworkAclEntryAsync: ElasticComputeCloudClientProtocol.CreateNetworkAclEntryAsyncType? = nil,
+            createNetworkAclEntrySync: ElasticComputeCloudClientProtocol.CreateNetworkAclEntrySyncType? = nil,
+            createNetworkInterfaceAsync: ElasticComputeCloudClientProtocol.CreateNetworkInterfaceAsyncType? = nil,
+            createNetworkInterfaceSync: ElasticComputeCloudClientProtocol.CreateNetworkInterfaceSyncType? = nil,
+            createNetworkInterfacePermissionAsync: ElasticComputeCloudClientProtocol.CreateNetworkInterfacePermissionAsyncType? = nil,
+            createNetworkInterfacePermissionSync: ElasticComputeCloudClientProtocol.CreateNetworkInterfacePermissionSyncType? = nil,
+            createPlacementGroupAsync: ElasticComputeCloudClientProtocol.CreatePlacementGroupAsyncType? = nil,
+            createPlacementGroupSync: ElasticComputeCloudClientProtocol.CreatePlacementGroupSyncType? = nil,
+            createReservedInstancesListingAsync: ElasticComputeCloudClientProtocol.CreateReservedInstancesListingAsyncType? = nil,
+            createReservedInstancesListingSync: ElasticComputeCloudClientProtocol.CreateReservedInstancesListingSyncType? = nil,
+            createRouteAsync: ElasticComputeCloudClientProtocol.CreateRouteAsyncType? = nil,
+            createRouteSync: ElasticComputeCloudClientProtocol.CreateRouteSyncType? = nil,
+            createRouteTableAsync: ElasticComputeCloudClientProtocol.CreateRouteTableAsyncType? = nil,
+            createRouteTableSync: ElasticComputeCloudClientProtocol.CreateRouteTableSyncType? = nil,
+            createSecurityGroupAsync: ElasticComputeCloudClientProtocol.CreateSecurityGroupAsyncType? = nil,
+            createSecurityGroupSync: ElasticComputeCloudClientProtocol.CreateSecurityGroupSyncType? = nil,
+            createSnapshotAsync: ElasticComputeCloudClientProtocol.CreateSnapshotAsyncType? = nil,
+            createSnapshotSync: ElasticComputeCloudClientProtocol.CreateSnapshotSyncType? = nil,
+            createSpotDatafeedSubscriptionAsync: ElasticComputeCloudClientProtocol.CreateSpotDatafeedSubscriptionAsyncType? = nil,
+            createSpotDatafeedSubscriptionSync: ElasticComputeCloudClientProtocol.CreateSpotDatafeedSubscriptionSyncType? = nil,
+            createSubnetAsync: ElasticComputeCloudClientProtocol.CreateSubnetAsyncType? = nil,
+            createSubnetSync: ElasticComputeCloudClientProtocol.CreateSubnetSyncType? = nil,
+            createTagsAsync: ElasticComputeCloudClientProtocol.CreateTagsAsyncType? = nil,
+            createTagsSync: ElasticComputeCloudClientProtocol.CreateTagsSyncType? = nil,
+            createVolumeAsync: ElasticComputeCloudClientProtocol.CreateVolumeAsyncType? = nil,
+            createVolumeSync: ElasticComputeCloudClientProtocol.CreateVolumeSyncType? = nil,
+            createVpcAsync: ElasticComputeCloudClientProtocol.CreateVpcAsyncType? = nil,
+            createVpcSync: ElasticComputeCloudClientProtocol.CreateVpcSyncType? = nil,
+            createVpcEndpointAsync: ElasticComputeCloudClientProtocol.CreateVpcEndpointAsyncType? = nil,
+            createVpcEndpointSync: ElasticComputeCloudClientProtocol.CreateVpcEndpointSyncType? = nil,
+            createVpcEndpointConnectionNotificationAsync: ElasticComputeCloudClientProtocol.CreateVpcEndpointConnectionNotificationAsyncType? = nil,
+            createVpcEndpointConnectionNotificationSync: ElasticComputeCloudClientProtocol.CreateVpcEndpointConnectionNotificationSyncType? = nil,
+            createVpcEndpointServiceConfigurationAsync: ElasticComputeCloudClientProtocol.CreateVpcEndpointServiceConfigurationAsyncType? = nil,
+            createVpcEndpointServiceConfigurationSync: ElasticComputeCloudClientProtocol.CreateVpcEndpointServiceConfigurationSyncType? = nil,
+            createVpcPeeringConnectionAsync: ElasticComputeCloudClientProtocol.CreateVpcPeeringConnectionAsyncType? = nil,
+            createVpcPeeringConnectionSync: ElasticComputeCloudClientProtocol.CreateVpcPeeringConnectionSyncType? = nil,
+            createVpnConnectionAsync: ElasticComputeCloudClientProtocol.CreateVpnConnectionAsyncType? = nil,
+            createVpnConnectionSync: ElasticComputeCloudClientProtocol.CreateVpnConnectionSyncType? = nil,
+            createVpnConnectionRouteAsync: ElasticComputeCloudClientProtocol.CreateVpnConnectionRouteAsyncType? = nil,
+            createVpnConnectionRouteSync: ElasticComputeCloudClientProtocol.CreateVpnConnectionRouteSyncType? = nil,
+            createVpnGatewayAsync: ElasticComputeCloudClientProtocol.CreateVpnGatewayAsyncType? = nil,
+            createVpnGatewaySync: ElasticComputeCloudClientProtocol.CreateVpnGatewaySyncType? = nil,
+            deleteCustomerGatewayAsync: ElasticComputeCloudClientProtocol.DeleteCustomerGatewayAsyncType? = nil,
+            deleteCustomerGatewaySync: ElasticComputeCloudClientProtocol.DeleteCustomerGatewaySyncType? = nil,
+            deleteDhcpOptionsAsync: ElasticComputeCloudClientProtocol.DeleteDhcpOptionsAsyncType? = nil,
+            deleteDhcpOptionsSync: ElasticComputeCloudClientProtocol.DeleteDhcpOptionsSyncType? = nil,
+            deleteEgressOnlyInternetGatewayAsync: ElasticComputeCloudClientProtocol.DeleteEgressOnlyInternetGatewayAsyncType? = nil,
+            deleteEgressOnlyInternetGatewaySync: ElasticComputeCloudClientProtocol.DeleteEgressOnlyInternetGatewaySyncType? = nil,
+            deleteFleetsAsync: ElasticComputeCloudClientProtocol.DeleteFleetsAsyncType? = nil,
+            deleteFleetsSync: ElasticComputeCloudClientProtocol.DeleteFleetsSyncType? = nil,
+            deleteFlowLogsAsync: ElasticComputeCloudClientProtocol.DeleteFlowLogsAsyncType? = nil,
+            deleteFlowLogsSync: ElasticComputeCloudClientProtocol.DeleteFlowLogsSyncType? = nil,
+            deleteFpgaImageAsync: ElasticComputeCloudClientProtocol.DeleteFpgaImageAsyncType? = nil,
+            deleteFpgaImageSync: ElasticComputeCloudClientProtocol.DeleteFpgaImageSyncType? = nil,
+            deleteInternetGatewayAsync: ElasticComputeCloudClientProtocol.DeleteInternetGatewayAsyncType? = nil,
+            deleteInternetGatewaySync: ElasticComputeCloudClientProtocol.DeleteInternetGatewaySyncType? = nil,
+            deleteKeyPairAsync: ElasticComputeCloudClientProtocol.DeleteKeyPairAsyncType? = nil,
+            deleteKeyPairSync: ElasticComputeCloudClientProtocol.DeleteKeyPairSyncType? = nil,
+            deleteLaunchTemplateAsync: ElasticComputeCloudClientProtocol.DeleteLaunchTemplateAsyncType? = nil,
+            deleteLaunchTemplateSync: ElasticComputeCloudClientProtocol.DeleteLaunchTemplateSyncType? = nil,
+            deleteLaunchTemplateVersionsAsync: ElasticComputeCloudClientProtocol.DeleteLaunchTemplateVersionsAsyncType? = nil,
+            deleteLaunchTemplateVersionsSync: ElasticComputeCloudClientProtocol.DeleteLaunchTemplateVersionsSyncType? = nil,
+            deleteNatGatewayAsync: ElasticComputeCloudClientProtocol.DeleteNatGatewayAsyncType? = nil,
+            deleteNatGatewaySync: ElasticComputeCloudClientProtocol.DeleteNatGatewaySyncType? = nil,
+            deleteNetworkAclAsync: ElasticComputeCloudClientProtocol.DeleteNetworkAclAsyncType? = nil,
+            deleteNetworkAclSync: ElasticComputeCloudClientProtocol.DeleteNetworkAclSyncType? = nil,
+            deleteNetworkAclEntryAsync: ElasticComputeCloudClientProtocol.DeleteNetworkAclEntryAsyncType? = nil,
+            deleteNetworkAclEntrySync: ElasticComputeCloudClientProtocol.DeleteNetworkAclEntrySyncType? = nil,
+            deleteNetworkInterfaceAsync: ElasticComputeCloudClientProtocol.DeleteNetworkInterfaceAsyncType? = nil,
+            deleteNetworkInterfaceSync: ElasticComputeCloudClientProtocol.DeleteNetworkInterfaceSyncType? = nil,
+            deleteNetworkInterfacePermissionAsync: ElasticComputeCloudClientProtocol.DeleteNetworkInterfacePermissionAsyncType? = nil,
+            deleteNetworkInterfacePermissionSync: ElasticComputeCloudClientProtocol.DeleteNetworkInterfacePermissionSyncType? = nil,
+            deletePlacementGroupAsync: ElasticComputeCloudClientProtocol.DeletePlacementGroupAsyncType? = nil,
+            deletePlacementGroupSync: ElasticComputeCloudClientProtocol.DeletePlacementGroupSyncType? = nil,
+            deleteRouteAsync: ElasticComputeCloudClientProtocol.DeleteRouteAsyncType? = nil,
+            deleteRouteSync: ElasticComputeCloudClientProtocol.DeleteRouteSyncType? = nil,
+            deleteRouteTableAsync: ElasticComputeCloudClientProtocol.DeleteRouteTableAsyncType? = nil,
+            deleteRouteTableSync: ElasticComputeCloudClientProtocol.DeleteRouteTableSyncType? = nil,
+            deleteSecurityGroupAsync: ElasticComputeCloudClientProtocol.DeleteSecurityGroupAsyncType? = nil,
+            deleteSecurityGroupSync: ElasticComputeCloudClientProtocol.DeleteSecurityGroupSyncType? = nil,
+            deleteSnapshotAsync: ElasticComputeCloudClientProtocol.DeleteSnapshotAsyncType? = nil,
+            deleteSnapshotSync: ElasticComputeCloudClientProtocol.DeleteSnapshotSyncType? = nil,
+            deleteSpotDatafeedSubscriptionAsync: ElasticComputeCloudClientProtocol.DeleteSpotDatafeedSubscriptionAsyncType? = nil,
+            deleteSpotDatafeedSubscriptionSync: ElasticComputeCloudClientProtocol.DeleteSpotDatafeedSubscriptionSyncType? = nil,
+            deleteSubnetAsync: ElasticComputeCloudClientProtocol.DeleteSubnetAsyncType? = nil,
+            deleteSubnetSync: ElasticComputeCloudClientProtocol.DeleteSubnetSyncType? = nil,
+            deleteTagsAsync: ElasticComputeCloudClientProtocol.DeleteTagsAsyncType? = nil,
+            deleteTagsSync: ElasticComputeCloudClientProtocol.DeleteTagsSyncType? = nil,
+            deleteVolumeAsync: ElasticComputeCloudClientProtocol.DeleteVolumeAsyncType? = nil,
+            deleteVolumeSync: ElasticComputeCloudClientProtocol.DeleteVolumeSyncType? = nil,
+            deleteVpcAsync: ElasticComputeCloudClientProtocol.DeleteVpcAsyncType? = nil,
+            deleteVpcSync: ElasticComputeCloudClientProtocol.DeleteVpcSyncType? = nil,
+            deleteVpcEndpointConnectionNotificationsAsync: ElasticComputeCloudClientProtocol.DeleteVpcEndpointConnectionNotificationsAsyncType? = nil,
+            deleteVpcEndpointConnectionNotificationsSync: ElasticComputeCloudClientProtocol.DeleteVpcEndpointConnectionNotificationsSyncType? = nil,
+            deleteVpcEndpointServiceConfigurationsAsync: ElasticComputeCloudClientProtocol.DeleteVpcEndpointServiceConfigurationsAsyncType? = nil,
+            deleteVpcEndpointServiceConfigurationsSync: ElasticComputeCloudClientProtocol.DeleteVpcEndpointServiceConfigurationsSyncType? = nil,
+            deleteVpcEndpointsAsync: ElasticComputeCloudClientProtocol.DeleteVpcEndpointsAsyncType? = nil,
+            deleteVpcEndpointsSync: ElasticComputeCloudClientProtocol.DeleteVpcEndpointsSyncType? = nil,
+            deleteVpcPeeringConnectionAsync: ElasticComputeCloudClientProtocol.DeleteVpcPeeringConnectionAsyncType? = nil,
+            deleteVpcPeeringConnectionSync: ElasticComputeCloudClientProtocol.DeleteVpcPeeringConnectionSyncType? = nil,
+            deleteVpnConnectionAsync: ElasticComputeCloudClientProtocol.DeleteVpnConnectionAsyncType? = nil,
+            deleteVpnConnectionSync: ElasticComputeCloudClientProtocol.DeleteVpnConnectionSyncType? = nil,
+            deleteVpnConnectionRouteAsync: ElasticComputeCloudClientProtocol.DeleteVpnConnectionRouteAsyncType? = nil,
+            deleteVpnConnectionRouteSync: ElasticComputeCloudClientProtocol.DeleteVpnConnectionRouteSyncType? = nil,
+            deleteVpnGatewayAsync: ElasticComputeCloudClientProtocol.DeleteVpnGatewayAsyncType? = nil,
+            deleteVpnGatewaySync: ElasticComputeCloudClientProtocol.DeleteVpnGatewaySyncType? = nil,
+            deprovisionByoipCidrAsync: ElasticComputeCloudClientProtocol.DeprovisionByoipCidrAsyncType? = nil,
+            deprovisionByoipCidrSync: ElasticComputeCloudClientProtocol.DeprovisionByoipCidrSyncType? = nil,
+            deregisterImageAsync: ElasticComputeCloudClientProtocol.DeregisterImageAsyncType? = nil,
+            deregisterImageSync: ElasticComputeCloudClientProtocol.DeregisterImageSyncType? = nil,
+            describeAccountAttributesAsync: ElasticComputeCloudClientProtocol.DescribeAccountAttributesAsyncType? = nil,
+            describeAccountAttributesSync: ElasticComputeCloudClientProtocol.DescribeAccountAttributesSyncType? = nil,
+            describeAddressesAsync: ElasticComputeCloudClientProtocol.DescribeAddressesAsyncType? = nil,
+            describeAddressesSync: ElasticComputeCloudClientProtocol.DescribeAddressesSyncType? = nil,
+            describeAggregateIdFormatAsync: ElasticComputeCloudClientProtocol.DescribeAggregateIdFormatAsyncType? = nil,
+            describeAggregateIdFormatSync: ElasticComputeCloudClientProtocol.DescribeAggregateIdFormatSyncType? = nil,
+            describeAvailabilityZonesAsync: ElasticComputeCloudClientProtocol.DescribeAvailabilityZonesAsyncType? = nil,
+            describeAvailabilityZonesSync: ElasticComputeCloudClientProtocol.DescribeAvailabilityZonesSyncType? = nil,
+            describeBundleTasksAsync: ElasticComputeCloudClientProtocol.DescribeBundleTasksAsyncType? = nil,
+            describeBundleTasksSync: ElasticComputeCloudClientProtocol.DescribeBundleTasksSyncType? = nil,
+            describeByoipCidrsAsync: ElasticComputeCloudClientProtocol.DescribeByoipCidrsAsyncType? = nil,
+            describeByoipCidrsSync: ElasticComputeCloudClientProtocol.DescribeByoipCidrsSyncType? = nil,
+            describeCapacityReservationsAsync: ElasticComputeCloudClientProtocol.DescribeCapacityReservationsAsyncType? = nil,
+            describeCapacityReservationsSync: ElasticComputeCloudClientProtocol.DescribeCapacityReservationsSyncType? = nil,
+            describeClassicLinkInstancesAsync: ElasticComputeCloudClientProtocol.DescribeClassicLinkInstancesAsyncType? = nil,
+            describeClassicLinkInstancesSync: ElasticComputeCloudClientProtocol.DescribeClassicLinkInstancesSyncType? = nil,
+            describeConversionTasksAsync: ElasticComputeCloudClientProtocol.DescribeConversionTasksAsyncType? = nil,
+            describeConversionTasksSync: ElasticComputeCloudClientProtocol.DescribeConversionTasksSyncType? = nil,
+            describeCustomerGatewaysAsync: ElasticComputeCloudClientProtocol.DescribeCustomerGatewaysAsyncType? = nil,
+            describeCustomerGatewaysSync: ElasticComputeCloudClientProtocol.DescribeCustomerGatewaysSyncType? = nil,
+            describeDhcpOptionsAsync: ElasticComputeCloudClientProtocol.DescribeDhcpOptionsAsyncType? = nil,
+            describeDhcpOptionsSync: ElasticComputeCloudClientProtocol.DescribeDhcpOptionsSyncType? = nil,
+            describeEgressOnlyInternetGatewaysAsync: ElasticComputeCloudClientProtocol.DescribeEgressOnlyInternetGatewaysAsyncType? = nil,
+            describeEgressOnlyInternetGatewaysSync: ElasticComputeCloudClientProtocol.DescribeEgressOnlyInternetGatewaysSyncType? = nil,
+            describeElasticGpusAsync: ElasticComputeCloudClientProtocol.DescribeElasticGpusAsyncType? = nil,
+            describeElasticGpusSync: ElasticComputeCloudClientProtocol.DescribeElasticGpusSyncType? = nil,
+            describeExportTasksAsync: ElasticComputeCloudClientProtocol.DescribeExportTasksAsyncType? = nil,
+            describeExportTasksSync: ElasticComputeCloudClientProtocol.DescribeExportTasksSyncType? = nil,
+            describeFleetHistoryAsync: ElasticComputeCloudClientProtocol.DescribeFleetHistoryAsyncType? = nil,
+            describeFleetHistorySync: ElasticComputeCloudClientProtocol.DescribeFleetHistorySyncType? = nil,
+            describeFleetInstancesAsync: ElasticComputeCloudClientProtocol.DescribeFleetInstancesAsyncType? = nil,
+            describeFleetInstancesSync: ElasticComputeCloudClientProtocol.DescribeFleetInstancesSyncType? = nil,
+            describeFleetsAsync: ElasticComputeCloudClientProtocol.DescribeFleetsAsyncType? = nil,
+            describeFleetsSync: ElasticComputeCloudClientProtocol.DescribeFleetsSyncType? = nil,
+            describeFlowLogsAsync: ElasticComputeCloudClientProtocol.DescribeFlowLogsAsyncType? = nil,
+            describeFlowLogsSync: ElasticComputeCloudClientProtocol.DescribeFlowLogsSyncType? = nil,
+            describeFpgaImageAttributeAsync: ElasticComputeCloudClientProtocol.DescribeFpgaImageAttributeAsyncType? = nil,
+            describeFpgaImageAttributeSync: ElasticComputeCloudClientProtocol.DescribeFpgaImageAttributeSyncType? = nil,
+            describeFpgaImagesAsync: ElasticComputeCloudClientProtocol.DescribeFpgaImagesAsyncType? = nil,
+            describeFpgaImagesSync: ElasticComputeCloudClientProtocol.DescribeFpgaImagesSyncType? = nil,
+            describeHostReservationOfferingsAsync: ElasticComputeCloudClientProtocol.DescribeHostReservationOfferingsAsyncType? = nil,
+            describeHostReservationOfferingsSync: ElasticComputeCloudClientProtocol.DescribeHostReservationOfferingsSyncType? = nil,
+            describeHostReservationsAsync: ElasticComputeCloudClientProtocol.DescribeHostReservationsAsyncType? = nil,
+            describeHostReservationsSync: ElasticComputeCloudClientProtocol.DescribeHostReservationsSyncType? = nil,
+            describeHostsAsync: ElasticComputeCloudClientProtocol.DescribeHostsAsyncType? = nil,
+            describeHostsSync: ElasticComputeCloudClientProtocol.DescribeHostsSyncType? = nil,
+            describeIamInstanceProfileAssociationsAsync: ElasticComputeCloudClientProtocol.DescribeIamInstanceProfileAssociationsAsyncType? = nil,
+            describeIamInstanceProfileAssociationsSync: ElasticComputeCloudClientProtocol.DescribeIamInstanceProfileAssociationsSyncType? = nil,
+            describeIdFormatAsync: ElasticComputeCloudClientProtocol.DescribeIdFormatAsyncType? = nil,
+            describeIdFormatSync: ElasticComputeCloudClientProtocol.DescribeIdFormatSyncType? = nil,
+            describeIdentityIdFormatAsync: ElasticComputeCloudClientProtocol.DescribeIdentityIdFormatAsyncType? = nil,
+            describeIdentityIdFormatSync: ElasticComputeCloudClientProtocol.DescribeIdentityIdFormatSyncType? = nil,
+            describeImageAttributeAsync: ElasticComputeCloudClientProtocol.DescribeImageAttributeAsyncType? = nil,
+            describeImageAttributeSync: ElasticComputeCloudClientProtocol.DescribeImageAttributeSyncType? = nil,
+            describeImagesAsync: ElasticComputeCloudClientProtocol.DescribeImagesAsyncType? = nil,
+            describeImagesSync: ElasticComputeCloudClientProtocol.DescribeImagesSyncType? = nil,
+            describeImportImageTasksAsync: ElasticComputeCloudClientProtocol.DescribeImportImageTasksAsyncType? = nil,
+            describeImportImageTasksSync: ElasticComputeCloudClientProtocol.DescribeImportImageTasksSyncType? = nil,
+            describeImportSnapshotTasksAsync: ElasticComputeCloudClientProtocol.DescribeImportSnapshotTasksAsyncType? = nil,
+            describeImportSnapshotTasksSync: ElasticComputeCloudClientProtocol.DescribeImportSnapshotTasksSyncType? = nil,
+            describeInstanceAttributeAsync: ElasticComputeCloudClientProtocol.DescribeInstanceAttributeAsyncType? = nil,
+            describeInstanceAttributeSync: ElasticComputeCloudClientProtocol.DescribeInstanceAttributeSyncType? = nil,
+            describeInstanceCreditSpecificationsAsync: ElasticComputeCloudClientProtocol.DescribeInstanceCreditSpecificationsAsyncType? = nil,
+            describeInstanceCreditSpecificationsSync: ElasticComputeCloudClientProtocol.DescribeInstanceCreditSpecificationsSyncType? = nil,
+            describeInstanceStatusAsync: ElasticComputeCloudClientProtocol.DescribeInstanceStatusAsyncType? = nil,
+            describeInstanceStatusSync: ElasticComputeCloudClientProtocol.DescribeInstanceStatusSyncType? = nil,
+            describeInstancesAsync: ElasticComputeCloudClientProtocol.DescribeInstancesAsyncType? = nil,
+            describeInstancesSync: ElasticComputeCloudClientProtocol.DescribeInstancesSyncType? = nil,
+            describeInternetGatewaysAsync: ElasticComputeCloudClientProtocol.DescribeInternetGatewaysAsyncType? = nil,
+            describeInternetGatewaysSync: ElasticComputeCloudClientProtocol.DescribeInternetGatewaysSyncType? = nil,
+            describeKeyPairsAsync: ElasticComputeCloudClientProtocol.DescribeKeyPairsAsyncType? = nil,
+            describeKeyPairsSync: ElasticComputeCloudClientProtocol.DescribeKeyPairsSyncType? = nil,
+            describeLaunchTemplateVersionsAsync: ElasticComputeCloudClientProtocol.DescribeLaunchTemplateVersionsAsyncType? = nil,
+            describeLaunchTemplateVersionsSync: ElasticComputeCloudClientProtocol.DescribeLaunchTemplateVersionsSyncType? = nil,
+            describeLaunchTemplatesAsync: ElasticComputeCloudClientProtocol.DescribeLaunchTemplatesAsyncType? = nil,
+            describeLaunchTemplatesSync: ElasticComputeCloudClientProtocol.DescribeLaunchTemplatesSyncType? = nil,
+            describeMovingAddressesAsync: ElasticComputeCloudClientProtocol.DescribeMovingAddressesAsyncType? = nil,
+            describeMovingAddressesSync: ElasticComputeCloudClientProtocol.DescribeMovingAddressesSyncType? = nil,
+            describeNatGatewaysAsync: ElasticComputeCloudClientProtocol.DescribeNatGatewaysAsyncType? = nil,
+            describeNatGatewaysSync: ElasticComputeCloudClientProtocol.DescribeNatGatewaysSyncType? = nil,
+            describeNetworkAclsAsync: ElasticComputeCloudClientProtocol.DescribeNetworkAclsAsyncType? = nil,
+            describeNetworkAclsSync: ElasticComputeCloudClientProtocol.DescribeNetworkAclsSyncType? = nil,
+            describeNetworkInterfaceAttributeAsync: ElasticComputeCloudClientProtocol.DescribeNetworkInterfaceAttributeAsyncType? = nil,
+            describeNetworkInterfaceAttributeSync: ElasticComputeCloudClientProtocol.DescribeNetworkInterfaceAttributeSyncType? = nil,
+            describeNetworkInterfacePermissionsAsync: ElasticComputeCloudClientProtocol.DescribeNetworkInterfacePermissionsAsyncType? = nil,
+            describeNetworkInterfacePermissionsSync: ElasticComputeCloudClientProtocol.DescribeNetworkInterfacePermissionsSyncType? = nil,
+            describeNetworkInterfacesAsync: ElasticComputeCloudClientProtocol.DescribeNetworkInterfacesAsyncType? = nil,
+            describeNetworkInterfacesSync: ElasticComputeCloudClientProtocol.DescribeNetworkInterfacesSyncType? = nil,
+            describePlacementGroupsAsync: ElasticComputeCloudClientProtocol.DescribePlacementGroupsAsyncType? = nil,
+            describePlacementGroupsSync: ElasticComputeCloudClientProtocol.DescribePlacementGroupsSyncType? = nil,
+            describePrefixListsAsync: ElasticComputeCloudClientProtocol.DescribePrefixListsAsyncType? = nil,
+            describePrefixListsSync: ElasticComputeCloudClientProtocol.DescribePrefixListsSyncType? = nil,
+            describePrincipalIdFormatAsync: ElasticComputeCloudClientProtocol.DescribePrincipalIdFormatAsyncType? = nil,
+            describePrincipalIdFormatSync: ElasticComputeCloudClientProtocol.DescribePrincipalIdFormatSyncType? = nil,
+            describePublicIpv4PoolsAsync: ElasticComputeCloudClientProtocol.DescribePublicIpv4PoolsAsyncType? = nil,
+            describePublicIpv4PoolsSync: ElasticComputeCloudClientProtocol.DescribePublicIpv4PoolsSyncType? = nil,
+            describeRegionsAsync: ElasticComputeCloudClientProtocol.DescribeRegionsAsyncType? = nil,
+            describeRegionsSync: ElasticComputeCloudClientProtocol.DescribeRegionsSyncType? = nil,
+            describeReservedInstancesAsync: ElasticComputeCloudClientProtocol.DescribeReservedInstancesAsyncType? = nil,
+            describeReservedInstancesSync: ElasticComputeCloudClientProtocol.DescribeReservedInstancesSyncType? = nil,
+            describeReservedInstancesListingsAsync: ElasticComputeCloudClientProtocol.DescribeReservedInstancesListingsAsyncType? = nil,
+            describeReservedInstancesListingsSync: ElasticComputeCloudClientProtocol.DescribeReservedInstancesListingsSyncType? = nil,
+            describeReservedInstancesModificationsAsync: ElasticComputeCloudClientProtocol.DescribeReservedInstancesModificationsAsyncType? = nil,
+            describeReservedInstancesModificationsSync: ElasticComputeCloudClientProtocol.DescribeReservedInstancesModificationsSyncType? = nil,
+            describeReservedInstancesOfferingsAsync: ElasticComputeCloudClientProtocol.DescribeReservedInstancesOfferingsAsyncType? = nil,
+            describeReservedInstancesOfferingsSync: ElasticComputeCloudClientProtocol.DescribeReservedInstancesOfferingsSyncType? = nil,
+            describeRouteTablesAsync: ElasticComputeCloudClientProtocol.DescribeRouteTablesAsyncType? = nil,
+            describeRouteTablesSync: ElasticComputeCloudClientProtocol.DescribeRouteTablesSyncType? = nil,
+            describeScheduledInstanceAvailabilityAsync: ElasticComputeCloudClientProtocol.DescribeScheduledInstanceAvailabilityAsyncType? = nil,
+            describeScheduledInstanceAvailabilitySync: ElasticComputeCloudClientProtocol.DescribeScheduledInstanceAvailabilitySyncType? = nil,
+            describeScheduledInstancesAsync: ElasticComputeCloudClientProtocol.DescribeScheduledInstancesAsyncType? = nil,
+            describeScheduledInstancesSync: ElasticComputeCloudClientProtocol.DescribeScheduledInstancesSyncType? = nil,
+            describeSecurityGroupReferencesAsync: ElasticComputeCloudClientProtocol.DescribeSecurityGroupReferencesAsyncType? = nil,
+            describeSecurityGroupReferencesSync: ElasticComputeCloudClientProtocol.DescribeSecurityGroupReferencesSyncType? = nil,
+            describeSecurityGroupsAsync: ElasticComputeCloudClientProtocol.DescribeSecurityGroupsAsyncType? = nil,
+            describeSecurityGroupsSync: ElasticComputeCloudClientProtocol.DescribeSecurityGroupsSyncType? = nil,
+            describeSnapshotAttributeAsync: ElasticComputeCloudClientProtocol.DescribeSnapshotAttributeAsyncType? = nil,
+            describeSnapshotAttributeSync: ElasticComputeCloudClientProtocol.DescribeSnapshotAttributeSyncType? = nil,
+            describeSnapshotsAsync: ElasticComputeCloudClientProtocol.DescribeSnapshotsAsyncType? = nil,
+            describeSnapshotsSync: ElasticComputeCloudClientProtocol.DescribeSnapshotsSyncType? = nil,
+            describeSpotDatafeedSubscriptionAsync: ElasticComputeCloudClientProtocol.DescribeSpotDatafeedSubscriptionAsyncType? = nil,
+            describeSpotDatafeedSubscriptionSync: ElasticComputeCloudClientProtocol.DescribeSpotDatafeedSubscriptionSyncType? = nil,
+            describeSpotFleetInstancesAsync: ElasticComputeCloudClientProtocol.DescribeSpotFleetInstancesAsyncType? = nil,
+            describeSpotFleetInstancesSync: ElasticComputeCloudClientProtocol.DescribeSpotFleetInstancesSyncType? = nil,
+            describeSpotFleetRequestHistoryAsync: ElasticComputeCloudClientProtocol.DescribeSpotFleetRequestHistoryAsyncType? = nil,
+            describeSpotFleetRequestHistorySync: ElasticComputeCloudClientProtocol.DescribeSpotFleetRequestHistorySyncType? = nil,
+            describeSpotFleetRequestsAsync: ElasticComputeCloudClientProtocol.DescribeSpotFleetRequestsAsyncType? = nil,
+            describeSpotFleetRequestsSync: ElasticComputeCloudClientProtocol.DescribeSpotFleetRequestsSyncType? = nil,
+            describeSpotInstanceRequestsAsync: ElasticComputeCloudClientProtocol.DescribeSpotInstanceRequestsAsyncType? = nil,
+            describeSpotInstanceRequestsSync: ElasticComputeCloudClientProtocol.DescribeSpotInstanceRequestsSyncType? = nil,
+            describeSpotPriceHistoryAsync: ElasticComputeCloudClientProtocol.DescribeSpotPriceHistoryAsyncType? = nil,
+            describeSpotPriceHistorySync: ElasticComputeCloudClientProtocol.DescribeSpotPriceHistorySyncType? = nil,
+            describeStaleSecurityGroupsAsync: ElasticComputeCloudClientProtocol.DescribeStaleSecurityGroupsAsyncType? = nil,
+            describeStaleSecurityGroupsSync: ElasticComputeCloudClientProtocol.DescribeStaleSecurityGroupsSyncType? = nil,
+            describeSubnetsAsync: ElasticComputeCloudClientProtocol.DescribeSubnetsAsyncType? = nil,
+            describeSubnetsSync: ElasticComputeCloudClientProtocol.DescribeSubnetsSyncType? = nil,
+            describeTagsAsync: ElasticComputeCloudClientProtocol.DescribeTagsAsyncType? = nil,
+            describeTagsSync: ElasticComputeCloudClientProtocol.DescribeTagsSyncType? = nil,
+            describeVolumeAttributeAsync: ElasticComputeCloudClientProtocol.DescribeVolumeAttributeAsyncType? = nil,
+            describeVolumeAttributeSync: ElasticComputeCloudClientProtocol.DescribeVolumeAttributeSyncType? = nil,
+            describeVolumeStatusAsync: ElasticComputeCloudClientProtocol.DescribeVolumeStatusAsyncType? = nil,
+            describeVolumeStatusSync: ElasticComputeCloudClientProtocol.DescribeVolumeStatusSyncType? = nil,
+            describeVolumesAsync: ElasticComputeCloudClientProtocol.DescribeVolumesAsyncType? = nil,
+            describeVolumesSync: ElasticComputeCloudClientProtocol.DescribeVolumesSyncType? = nil,
+            describeVolumesModificationsAsync: ElasticComputeCloudClientProtocol.DescribeVolumesModificationsAsyncType? = nil,
+            describeVolumesModificationsSync: ElasticComputeCloudClientProtocol.DescribeVolumesModificationsSyncType? = nil,
+            describeVpcAttributeAsync: ElasticComputeCloudClientProtocol.DescribeVpcAttributeAsyncType? = nil,
+            describeVpcAttributeSync: ElasticComputeCloudClientProtocol.DescribeVpcAttributeSyncType? = nil,
+            describeVpcClassicLinkAsync: ElasticComputeCloudClientProtocol.DescribeVpcClassicLinkAsyncType? = nil,
+            describeVpcClassicLinkSync: ElasticComputeCloudClientProtocol.DescribeVpcClassicLinkSyncType? = nil,
+            describeVpcClassicLinkDnsSupportAsync: ElasticComputeCloudClientProtocol.DescribeVpcClassicLinkDnsSupportAsyncType? = nil,
+            describeVpcClassicLinkDnsSupportSync: ElasticComputeCloudClientProtocol.DescribeVpcClassicLinkDnsSupportSyncType? = nil,
+            describeVpcEndpointConnectionNotificationsAsync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointConnectionNotificationsAsyncType? = nil,
+            describeVpcEndpointConnectionNotificationsSync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointConnectionNotificationsSyncType? = nil,
+            describeVpcEndpointConnectionsAsync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointConnectionsAsyncType? = nil,
+            describeVpcEndpointConnectionsSync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointConnectionsSyncType? = nil,
+            describeVpcEndpointServiceConfigurationsAsync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServiceConfigurationsAsyncType? = nil,
+            describeVpcEndpointServiceConfigurationsSync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServiceConfigurationsSyncType? = nil,
+            describeVpcEndpointServicePermissionsAsync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServicePermissionsAsyncType? = nil,
+            describeVpcEndpointServicePermissionsSync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServicePermissionsSyncType? = nil,
+            describeVpcEndpointServicesAsync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServicesAsyncType? = nil,
+            describeVpcEndpointServicesSync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointServicesSyncType? = nil,
+            describeVpcEndpointsAsync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointsAsyncType? = nil,
+            describeVpcEndpointsSync: ElasticComputeCloudClientProtocol.DescribeVpcEndpointsSyncType? = nil,
+            describeVpcPeeringConnectionsAsync: ElasticComputeCloudClientProtocol.DescribeVpcPeeringConnectionsAsyncType? = nil,
+            describeVpcPeeringConnectionsSync: ElasticComputeCloudClientProtocol.DescribeVpcPeeringConnectionsSyncType? = nil,
+            describeVpcsAsync: ElasticComputeCloudClientProtocol.DescribeVpcsAsyncType? = nil,
+            describeVpcsSync: ElasticComputeCloudClientProtocol.DescribeVpcsSyncType? = nil,
+            describeVpnConnectionsAsync: ElasticComputeCloudClientProtocol.DescribeVpnConnectionsAsyncType? = nil,
+            describeVpnConnectionsSync: ElasticComputeCloudClientProtocol.DescribeVpnConnectionsSyncType? = nil,
+            describeVpnGatewaysAsync: ElasticComputeCloudClientProtocol.DescribeVpnGatewaysAsyncType? = nil,
+            describeVpnGatewaysSync: ElasticComputeCloudClientProtocol.DescribeVpnGatewaysSyncType? = nil,
+            detachClassicLinkVpcAsync: ElasticComputeCloudClientProtocol.DetachClassicLinkVpcAsyncType? = nil,
+            detachClassicLinkVpcSync: ElasticComputeCloudClientProtocol.DetachClassicLinkVpcSyncType? = nil,
+            detachInternetGatewayAsync: ElasticComputeCloudClientProtocol.DetachInternetGatewayAsyncType? = nil,
+            detachInternetGatewaySync: ElasticComputeCloudClientProtocol.DetachInternetGatewaySyncType? = nil,
+            detachNetworkInterfaceAsync: ElasticComputeCloudClientProtocol.DetachNetworkInterfaceAsyncType? = nil,
+            detachNetworkInterfaceSync: ElasticComputeCloudClientProtocol.DetachNetworkInterfaceSyncType? = nil,
+            detachVolumeAsync: ElasticComputeCloudClientProtocol.DetachVolumeAsyncType? = nil,
+            detachVolumeSync: ElasticComputeCloudClientProtocol.DetachVolumeSyncType? = nil,
+            detachVpnGatewayAsync: ElasticComputeCloudClientProtocol.DetachVpnGatewayAsyncType? = nil,
+            detachVpnGatewaySync: ElasticComputeCloudClientProtocol.DetachVpnGatewaySyncType? = nil,
+            disableVgwRoutePropagationAsync: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationAsyncType? = nil,
+            disableVgwRoutePropagationSync: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationSyncType? = nil,
+            disableVpcClassicLinkAsync: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkAsyncType? = nil,
+            disableVpcClassicLinkSync: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkSyncType? = nil,
+            disableVpcClassicLinkDnsSupportAsync: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkDnsSupportAsyncType? = nil,
+            disableVpcClassicLinkDnsSupportSync: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkDnsSupportSyncType? = nil,
+            disassociateAddressAsync: ElasticComputeCloudClientProtocol.DisassociateAddressAsyncType? = nil,
+            disassociateAddressSync: ElasticComputeCloudClientProtocol.DisassociateAddressSyncType? = nil,
+            disassociateIamInstanceProfileAsync: ElasticComputeCloudClientProtocol.DisassociateIamInstanceProfileAsyncType? = nil,
+            disassociateIamInstanceProfileSync: ElasticComputeCloudClientProtocol.DisassociateIamInstanceProfileSyncType? = nil,
+            disassociateRouteTableAsync: ElasticComputeCloudClientProtocol.DisassociateRouteTableAsyncType? = nil,
+            disassociateRouteTableSync: ElasticComputeCloudClientProtocol.DisassociateRouteTableSyncType? = nil,
+            disassociateSubnetCidrBlockAsync: ElasticComputeCloudClientProtocol.DisassociateSubnetCidrBlockAsyncType? = nil,
+            disassociateSubnetCidrBlockSync: ElasticComputeCloudClientProtocol.DisassociateSubnetCidrBlockSyncType? = nil,
+            disassociateVpcCidrBlockAsync: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockAsyncType? = nil,
+            disassociateVpcCidrBlockSync: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockSyncType? = nil,
+            enableVgwRoutePropagationAsync: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationAsyncType? = nil,
+            enableVgwRoutePropagationSync: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationSyncType? = nil,
+            enableVolumeIOAsync: ElasticComputeCloudClientProtocol.EnableVolumeIOAsyncType? = nil,
+            enableVolumeIOSync: ElasticComputeCloudClientProtocol.EnableVolumeIOSyncType? = nil,
+            enableVpcClassicLinkAsync: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkAsyncType? = nil,
+            enableVpcClassicLinkSync: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkSyncType? = nil,
+            enableVpcClassicLinkDnsSupportAsync: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkDnsSupportAsyncType? = nil,
+            enableVpcClassicLinkDnsSupportSync: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkDnsSupportSyncType? = nil,
+            getConsoleOutputAsync: ElasticComputeCloudClientProtocol.GetConsoleOutputAsyncType? = nil,
+            getConsoleOutputSync: ElasticComputeCloudClientProtocol.GetConsoleOutputSyncType? = nil,
+            getConsoleScreenshotAsync: ElasticComputeCloudClientProtocol.GetConsoleScreenshotAsyncType? = nil,
+            getConsoleScreenshotSync: ElasticComputeCloudClientProtocol.GetConsoleScreenshotSyncType? = nil,
+            getHostReservationPurchasePreviewAsync: ElasticComputeCloudClientProtocol.GetHostReservationPurchasePreviewAsyncType? = nil,
+            getHostReservationPurchasePreviewSync: ElasticComputeCloudClientProtocol.GetHostReservationPurchasePreviewSyncType? = nil,
+            getLaunchTemplateDataAsync: ElasticComputeCloudClientProtocol.GetLaunchTemplateDataAsyncType? = nil,
+            getLaunchTemplateDataSync: ElasticComputeCloudClientProtocol.GetLaunchTemplateDataSyncType? = nil,
+            getPasswordDataAsync: ElasticComputeCloudClientProtocol.GetPasswordDataAsyncType? = nil,
+            getPasswordDataSync: ElasticComputeCloudClientProtocol.GetPasswordDataSyncType? = nil,
+            getReservedInstancesExchangeQuoteAsync: ElasticComputeCloudClientProtocol.GetReservedInstancesExchangeQuoteAsyncType? = nil,
+            getReservedInstancesExchangeQuoteSync: ElasticComputeCloudClientProtocol.GetReservedInstancesExchangeQuoteSyncType? = nil,
+            importImageAsync: ElasticComputeCloudClientProtocol.ImportImageAsyncType? = nil,
+            importImageSync: ElasticComputeCloudClientProtocol.ImportImageSyncType? = nil,
+            importInstanceAsync: ElasticComputeCloudClientProtocol.ImportInstanceAsyncType? = nil,
+            importInstanceSync: ElasticComputeCloudClientProtocol.ImportInstanceSyncType? = nil,
+            importKeyPairAsync: ElasticComputeCloudClientProtocol.ImportKeyPairAsyncType? = nil,
+            importKeyPairSync: ElasticComputeCloudClientProtocol.ImportKeyPairSyncType? = nil,
+            importSnapshotAsync: ElasticComputeCloudClientProtocol.ImportSnapshotAsyncType? = nil,
+            importSnapshotSync: ElasticComputeCloudClientProtocol.ImportSnapshotSyncType? = nil,
+            importVolumeAsync: ElasticComputeCloudClientProtocol.ImportVolumeAsyncType? = nil,
+            importVolumeSync: ElasticComputeCloudClientProtocol.ImportVolumeSyncType? = nil,
+            modifyCapacityReservationAsync: ElasticComputeCloudClientProtocol.ModifyCapacityReservationAsyncType? = nil,
+            modifyCapacityReservationSync: ElasticComputeCloudClientProtocol.ModifyCapacityReservationSyncType? = nil,
+            modifyFleetAsync: ElasticComputeCloudClientProtocol.ModifyFleetAsyncType? = nil,
+            modifyFleetSync: ElasticComputeCloudClientProtocol.ModifyFleetSyncType? = nil,
+            modifyFpgaImageAttributeAsync: ElasticComputeCloudClientProtocol.ModifyFpgaImageAttributeAsyncType? = nil,
+            modifyFpgaImageAttributeSync: ElasticComputeCloudClientProtocol.ModifyFpgaImageAttributeSyncType? = nil,
+            modifyHostsAsync: ElasticComputeCloudClientProtocol.ModifyHostsAsyncType? = nil,
+            modifyHostsSync: ElasticComputeCloudClientProtocol.ModifyHostsSyncType? = nil,
+            modifyIdFormatAsync: ElasticComputeCloudClientProtocol.ModifyIdFormatAsyncType? = nil,
+            modifyIdFormatSync: ElasticComputeCloudClientProtocol.ModifyIdFormatSyncType? = nil,
+            modifyIdentityIdFormatAsync: ElasticComputeCloudClientProtocol.ModifyIdentityIdFormatAsyncType? = nil,
+            modifyIdentityIdFormatSync: ElasticComputeCloudClientProtocol.ModifyIdentityIdFormatSyncType? = nil,
+            modifyImageAttributeAsync: ElasticComputeCloudClientProtocol.ModifyImageAttributeAsyncType? = nil,
+            modifyImageAttributeSync: ElasticComputeCloudClientProtocol.ModifyImageAttributeSyncType? = nil,
+            modifyInstanceAttributeAsync: ElasticComputeCloudClientProtocol.ModifyInstanceAttributeAsyncType? = nil,
+            modifyInstanceAttributeSync: ElasticComputeCloudClientProtocol.ModifyInstanceAttributeSyncType? = nil,
+            modifyInstanceCapacityReservationAttributesAsync: ElasticComputeCloudClientProtocol.ModifyInstanceCapacityReservationAttributesAsyncType? = nil,
+            modifyInstanceCapacityReservationAttributesSync: ElasticComputeCloudClientProtocol.ModifyInstanceCapacityReservationAttributesSyncType? = nil,
+            modifyInstanceCreditSpecificationAsync: ElasticComputeCloudClientProtocol.ModifyInstanceCreditSpecificationAsyncType? = nil,
+            modifyInstanceCreditSpecificationSync: ElasticComputeCloudClientProtocol.ModifyInstanceCreditSpecificationSyncType? = nil,
+            modifyInstancePlacementAsync: ElasticComputeCloudClientProtocol.ModifyInstancePlacementAsyncType? = nil,
+            modifyInstancePlacementSync: ElasticComputeCloudClientProtocol.ModifyInstancePlacementSyncType? = nil,
+            modifyLaunchTemplateAsync: ElasticComputeCloudClientProtocol.ModifyLaunchTemplateAsyncType? = nil,
+            modifyLaunchTemplateSync: ElasticComputeCloudClientProtocol.ModifyLaunchTemplateSyncType? = nil,
+            modifyNetworkInterfaceAttributeAsync: ElasticComputeCloudClientProtocol.ModifyNetworkInterfaceAttributeAsyncType? = nil,
+            modifyNetworkInterfaceAttributeSync: ElasticComputeCloudClientProtocol.ModifyNetworkInterfaceAttributeSyncType? = nil,
+            modifyReservedInstancesAsync: ElasticComputeCloudClientProtocol.ModifyReservedInstancesAsyncType? = nil,
+            modifyReservedInstancesSync: ElasticComputeCloudClientProtocol.ModifyReservedInstancesSyncType? = nil,
+            modifySnapshotAttributeAsync: ElasticComputeCloudClientProtocol.ModifySnapshotAttributeAsyncType? = nil,
+            modifySnapshotAttributeSync: ElasticComputeCloudClientProtocol.ModifySnapshotAttributeSyncType? = nil,
+            modifySpotFleetRequestAsync: ElasticComputeCloudClientProtocol.ModifySpotFleetRequestAsyncType? = nil,
+            modifySpotFleetRequestSync: ElasticComputeCloudClientProtocol.ModifySpotFleetRequestSyncType? = nil,
+            modifySubnetAttributeAsync: ElasticComputeCloudClientProtocol.ModifySubnetAttributeAsyncType? = nil,
+            modifySubnetAttributeSync: ElasticComputeCloudClientProtocol.ModifySubnetAttributeSyncType? = nil,
+            modifyVolumeAsync: ElasticComputeCloudClientProtocol.ModifyVolumeAsyncType? = nil,
+            modifyVolumeSync: ElasticComputeCloudClientProtocol.ModifyVolumeSyncType? = nil,
+            modifyVolumeAttributeAsync: ElasticComputeCloudClientProtocol.ModifyVolumeAttributeAsyncType? = nil,
+            modifyVolumeAttributeSync: ElasticComputeCloudClientProtocol.ModifyVolumeAttributeSyncType? = nil,
+            modifyVpcAttributeAsync: ElasticComputeCloudClientProtocol.ModifyVpcAttributeAsyncType? = nil,
+            modifyVpcAttributeSync: ElasticComputeCloudClientProtocol.ModifyVpcAttributeSyncType? = nil,
+            modifyVpcEndpointAsync: ElasticComputeCloudClientProtocol.ModifyVpcEndpointAsyncType? = nil,
+            modifyVpcEndpointSync: ElasticComputeCloudClientProtocol.ModifyVpcEndpointSyncType? = nil,
+            modifyVpcEndpointConnectionNotificationAsync: ElasticComputeCloudClientProtocol.ModifyVpcEndpointConnectionNotificationAsyncType? = nil,
+            modifyVpcEndpointConnectionNotificationSync: ElasticComputeCloudClientProtocol.ModifyVpcEndpointConnectionNotificationSyncType? = nil,
+            modifyVpcEndpointServiceConfigurationAsync: ElasticComputeCloudClientProtocol.ModifyVpcEndpointServiceConfigurationAsyncType? = nil,
+            modifyVpcEndpointServiceConfigurationSync: ElasticComputeCloudClientProtocol.ModifyVpcEndpointServiceConfigurationSyncType? = nil,
+            modifyVpcEndpointServicePermissionsAsync: ElasticComputeCloudClientProtocol.ModifyVpcEndpointServicePermissionsAsyncType? = nil,
+            modifyVpcEndpointServicePermissionsSync: ElasticComputeCloudClientProtocol.ModifyVpcEndpointServicePermissionsSyncType? = nil,
+            modifyVpcPeeringConnectionOptionsAsync: ElasticComputeCloudClientProtocol.ModifyVpcPeeringConnectionOptionsAsyncType? = nil,
+            modifyVpcPeeringConnectionOptionsSync: ElasticComputeCloudClientProtocol.ModifyVpcPeeringConnectionOptionsSyncType? = nil,
+            modifyVpcTenancyAsync: ElasticComputeCloudClientProtocol.ModifyVpcTenancyAsyncType? = nil,
+            modifyVpcTenancySync: ElasticComputeCloudClientProtocol.ModifyVpcTenancySyncType? = nil,
+            monitorInstancesAsync: ElasticComputeCloudClientProtocol.MonitorInstancesAsyncType? = nil,
+            monitorInstancesSync: ElasticComputeCloudClientProtocol.MonitorInstancesSyncType? = nil,
+            moveAddressToVpcAsync: ElasticComputeCloudClientProtocol.MoveAddressToVpcAsyncType? = nil,
+            moveAddressToVpcSync: ElasticComputeCloudClientProtocol.MoveAddressToVpcSyncType? = nil,
+            provisionByoipCidrAsync: ElasticComputeCloudClientProtocol.ProvisionByoipCidrAsyncType? = nil,
+            provisionByoipCidrSync: ElasticComputeCloudClientProtocol.ProvisionByoipCidrSyncType? = nil,
+            purchaseHostReservationAsync: ElasticComputeCloudClientProtocol.PurchaseHostReservationAsyncType? = nil,
+            purchaseHostReservationSync: ElasticComputeCloudClientProtocol.PurchaseHostReservationSyncType? = nil,
+            purchaseReservedInstancesOfferingAsync: ElasticComputeCloudClientProtocol.PurchaseReservedInstancesOfferingAsyncType? = nil,
+            purchaseReservedInstancesOfferingSync: ElasticComputeCloudClientProtocol.PurchaseReservedInstancesOfferingSyncType? = nil,
+            purchaseScheduledInstancesAsync: ElasticComputeCloudClientProtocol.PurchaseScheduledInstancesAsyncType? = nil,
+            purchaseScheduledInstancesSync: ElasticComputeCloudClientProtocol.PurchaseScheduledInstancesSyncType? = nil,
+            rebootInstancesAsync: ElasticComputeCloudClientProtocol.RebootInstancesAsyncType? = nil,
+            rebootInstancesSync: ElasticComputeCloudClientProtocol.RebootInstancesSyncType? = nil,
+            registerImageAsync: ElasticComputeCloudClientProtocol.RegisterImageAsyncType? = nil,
+            registerImageSync: ElasticComputeCloudClientProtocol.RegisterImageSyncType? = nil,
+            rejectVpcEndpointConnectionsAsync: ElasticComputeCloudClientProtocol.RejectVpcEndpointConnectionsAsyncType? = nil,
+            rejectVpcEndpointConnectionsSync: ElasticComputeCloudClientProtocol.RejectVpcEndpointConnectionsSyncType? = nil,
+            rejectVpcPeeringConnectionAsync: ElasticComputeCloudClientProtocol.RejectVpcPeeringConnectionAsyncType? = nil,
+            rejectVpcPeeringConnectionSync: ElasticComputeCloudClientProtocol.RejectVpcPeeringConnectionSyncType? = nil,
+            releaseAddressAsync: ElasticComputeCloudClientProtocol.ReleaseAddressAsyncType? = nil,
+            releaseAddressSync: ElasticComputeCloudClientProtocol.ReleaseAddressSyncType? = nil,
+            releaseHostsAsync: ElasticComputeCloudClientProtocol.ReleaseHostsAsyncType? = nil,
+            releaseHostsSync: ElasticComputeCloudClientProtocol.ReleaseHostsSyncType? = nil,
+            replaceIamInstanceProfileAssociationAsync: ElasticComputeCloudClientProtocol.ReplaceIamInstanceProfileAssociationAsyncType? = nil,
+            replaceIamInstanceProfileAssociationSync: ElasticComputeCloudClientProtocol.ReplaceIamInstanceProfileAssociationSyncType? = nil,
+            replaceNetworkAclAssociationAsync: ElasticComputeCloudClientProtocol.ReplaceNetworkAclAssociationAsyncType? = nil,
+            replaceNetworkAclAssociationSync: ElasticComputeCloudClientProtocol.ReplaceNetworkAclAssociationSyncType? = nil,
+            replaceNetworkAclEntryAsync: ElasticComputeCloudClientProtocol.ReplaceNetworkAclEntryAsyncType? = nil,
+            replaceNetworkAclEntrySync: ElasticComputeCloudClientProtocol.ReplaceNetworkAclEntrySyncType? = nil,
+            replaceRouteAsync: ElasticComputeCloudClientProtocol.ReplaceRouteAsyncType? = nil,
+            replaceRouteSync: ElasticComputeCloudClientProtocol.ReplaceRouteSyncType? = nil,
+            replaceRouteTableAssociationAsync: ElasticComputeCloudClientProtocol.ReplaceRouteTableAssociationAsyncType? = nil,
+            replaceRouteTableAssociationSync: ElasticComputeCloudClientProtocol.ReplaceRouteTableAssociationSyncType? = nil,
+            reportInstanceStatusAsync: ElasticComputeCloudClientProtocol.ReportInstanceStatusAsyncType? = nil,
+            reportInstanceStatusSync: ElasticComputeCloudClientProtocol.ReportInstanceStatusSyncType? = nil,
+            requestSpotFleetAsync: ElasticComputeCloudClientProtocol.RequestSpotFleetAsyncType? = nil,
+            requestSpotFleetSync: ElasticComputeCloudClientProtocol.RequestSpotFleetSyncType? = nil,
+            requestSpotInstancesAsync: ElasticComputeCloudClientProtocol.RequestSpotInstancesAsyncType? = nil,
+            requestSpotInstancesSync: ElasticComputeCloudClientProtocol.RequestSpotInstancesSyncType? = nil,
+            resetFpgaImageAttributeAsync: ElasticComputeCloudClientProtocol.ResetFpgaImageAttributeAsyncType? = nil,
+            resetFpgaImageAttributeSync: ElasticComputeCloudClientProtocol.ResetFpgaImageAttributeSyncType? = nil,
+            resetImageAttributeAsync: ElasticComputeCloudClientProtocol.ResetImageAttributeAsyncType? = nil,
+            resetImageAttributeSync: ElasticComputeCloudClientProtocol.ResetImageAttributeSyncType? = nil,
+            resetInstanceAttributeAsync: ElasticComputeCloudClientProtocol.ResetInstanceAttributeAsyncType? = nil,
+            resetInstanceAttributeSync: ElasticComputeCloudClientProtocol.ResetInstanceAttributeSyncType? = nil,
+            resetNetworkInterfaceAttributeAsync: ElasticComputeCloudClientProtocol.ResetNetworkInterfaceAttributeAsyncType? = nil,
+            resetNetworkInterfaceAttributeSync: ElasticComputeCloudClientProtocol.ResetNetworkInterfaceAttributeSyncType? = nil,
+            resetSnapshotAttributeAsync: ElasticComputeCloudClientProtocol.ResetSnapshotAttributeAsyncType? = nil,
+            resetSnapshotAttributeSync: ElasticComputeCloudClientProtocol.ResetSnapshotAttributeSyncType? = nil,
+            restoreAddressToClassicAsync: ElasticComputeCloudClientProtocol.RestoreAddressToClassicAsyncType? = nil,
+            restoreAddressToClassicSync: ElasticComputeCloudClientProtocol.RestoreAddressToClassicSyncType? = nil,
+            revokeSecurityGroupEgressAsync: ElasticComputeCloudClientProtocol.RevokeSecurityGroupEgressAsyncType? = nil,
+            revokeSecurityGroupEgressSync: ElasticComputeCloudClientProtocol.RevokeSecurityGroupEgressSyncType? = nil,
+            revokeSecurityGroupIngressAsync: ElasticComputeCloudClientProtocol.RevokeSecurityGroupIngressAsyncType? = nil,
+            revokeSecurityGroupIngressSync: ElasticComputeCloudClientProtocol.RevokeSecurityGroupIngressSyncType? = nil,
+            runInstancesAsync: ElasticComputeCloudClientProtocol.RunInstancesAsyncType? = nil,
+            runInstancesSync: ElasticComputeCloudClientProtocol.RunInstancesSyncType? = nil,
+            runScheduledInstancesAsync: ElasticComputeCloudClientProtocol.RunScheduledInstancesAsyncType? = nil,
+            runScheduledInstancesSync: ElasticComputeCloudClientProtocol.RunScheduledInstancesSyncType? = nil,
+            startInstancesAsync: ElasticComputeCloudClientProtocol.StartInstancesAsyncType? = nil,
+            startInstancesSync: ElasticComputeCloudClientProtocol.StartInstancesSyncType? = nil,
+            stopInstancesAsync: ElasticComputeCloudClientProtocol.StopInstancesAsyncType? = nil,
+            stopInstancesSync: ElasticComputeCloudClientProtocol.StopInstancesSyncType? = nil,
+            terminateInstancesAsync: ElasticComputeCloudClientProtocol.TerminateInstancesAsyncType? = nil,
+            terminateInstancesSync: ElasticComputeCloudClientProtocol.TerminateInstancesSyncType? = nil,
+            unassignIpv6AddressesAsync: ElasticComputeCloudClientProtocol.UnassignIpv6AddressesAsyncType? = nil,
+            unassignIpv6AddressesSync: ElasticComputeCloudClientProtocol.UnassignIpv6AddressesSyncType? = nil,
+            unassignPrivateIpAddressesAsync: ElasticComputeCloudClientProtocol.UnassignPrivateIpAddressesAsyncType? = nil,
+            unassignPrivateIpAddressesSync: ElasticComputeCloudClientProtocol.UnassignPrivateIpAddressesSyncType? = nil,
+            unmonitorInstancesAsync: ElasticComputeCloudClientProtocol.UnmonitorInstancesAsyncType? = nil,
+            unmonitorInstancesSync: ElasticComputeCloudClientProtocol.UnmonitorInstancesSyncType? = nil,
+            updateSecurityGroupRuleDescriptionsEgressAsync: ElasticComputeCloudClientProtocol.UpdateSecurityGroupRuleDescriptionsEgressAsyncType? = nil,
+            updateSecurityGroupRuleDescriptionsEgressSync: ElasticComputeCloudClientProtocol.UpdateSecurityGroupRuleDescriptionsEgressSyncType? = nil,
+            updateSecurityGroupRuleDescriptionsIngressAsync: ElasticComputeCloudClientProtocol.UpdateSecurityGroupRuleDescriptionsIngressAsyncType? = nil,
+            updateSecurityGroupRuleDescriptionsIngressSync: ElasticComputeCloudClientProtocol.UpdateSecurityGroupRuleDescriptionsIngressSyncType? = nil,
+            withdrawByoipCidrAsync: ElasticComputeCloudClientProtocol.WithdrawByoipCidrAsyncType? = nil,
+            withdrawByoipCidrSync: ElasticComputeCloudClientProtocol.WithdrawByoipCidrSyncType? = nil) {
+        self.acceptReservedInstancesExchangeQuoteAsyncOverride = acceptReservedInstancesExchangeQuoteAsync
+        self.acceptReservedInstancesExchangeQuoteSyncOverride = acceptReservedInstancesExchangeQuoteSync
+        self.acceptVpcEndpointConnectionsAsyncOverride = acceptVpcEndpointConnectionsAsync
+        self.acceptVpcEndpointConnectionsSyncOverride = acceptVpcEndpointConnectionsSync
+        self.acceptVpcPeeringConnectionAsyncOverride = acceptVpcPeeringConnectionAsync
+        self.acceptVpcPeeringConnectionSyncOverride = acceptVpcPeeringConnectionSync
+        self.advertiseByoipCidrAsyncOverride = advertiseByoipCidrAsync
+        self.advertiseByoipCidrSyncOverride = advertiseByoipCidrSync
+        self.allocateAddressAsyncOverride = allocateAddressAsync
+        self.allocateAddressSyncOverride = allocateAddressSync
+        self.allocateHostsAsyncOverride = allocateHostsAsync
+        self.allocateHostsSyncOverride = allocateHostsSync
+        self.assignIpv6AddressesAsyncOverride = assignIpv6AddressesAsync
+        self.assignIpv6AddressesSyncOverride = assignIpv6AddressesSync
+        self.assignPrivateIpAddressesAsyncOverride = assignPrivateIpAddressesAsync
+        self.assignPrivateIpAddressesSyncOverride = assignPrivateIpAddressesSync
+        self.associateAddressAsyncOverride = associateAddressAsync
+        self.associateAddressSyncOverride = associateAddressSync
+        self.associateDhcpOptionsAsyncOverride = associateDhcpOptionsAsync
+        self.associateDhcpOptionsSyncOverride = associateDhcpOptionsSync
+        self.associateIamInstanceProfileAsyncOverride = associateIamInstanceProfileAsync
+        self.associateIamInstanceProfileSyncOverride = associateIamInstanceProfileSync
+        self.associateRouteTableAsyncOverride = associateRouteTableAsync
+        self.associateRouteTableSyncOverride = associateRouteTableSync
+        self.associateSubnetCidrBlockAsyncOverride = associateSubnetCidrBlockAsync
+        self.associateSubnetCidrBlockSyncOverride = associateSubnetCidrBlockSync
+        self.associateVpcCidrBlockAsyncOverride = associateVpcCidrBlockAsync
+        self.associateVpcCidrBlockSyncOverride = associateVpcCidrBlockSync
+        self.attachClassicLinkVpcAsyncOverride = attachClassicLinkVpcAsync
+        self.attachClassicLinkVpcSyncOverride = attachClassicLinkVpcSync
+        self.attachInternetGatewayAsyncOverride = attachInternetGatewayAsync
+        self.attachInternetGatewaySyncOverride = attachInternetGatewaySync
+        self.attachNetworkInterfaceAsyncOverride = attachNetworkInterfaceAsync
+        self.attachNetworkInterfaceSyncOverride = attachNetworkInterfaceSync
+        self.attachVolumeAsyncOverride = attachVolumeAsync
+        self.attachVolumeSyncOverride = attachVolumeSync
+        self.attachVpnGatewayAsyncOverride = attachVpnGatewayAsync
+        self.attachVpnGatewaySyncOverride = attachVpnGatewaySync
+        self.authorizeSecurityGroupEgressAsyncOverride = authorizeSecurityGroupEgressAsync
+        self.authorizeSecurityGroupEgressSyncOverride = authorizeSecurityGroupEgressSync
+        self.authorizeSecurityGroupIngressAsyncOverride = authorizeSecurityGroupIngressAsync
+        self.authorizeSecurityGroupIngressSyncOverride = authorizeSecurityGroupIngressSync
+        self.bundleInstanceAsyncOverride = bundleInstanceAsync
+        self.bundleInstanceSyncOverride = bundleInstanceSync
+        self.cancelBundleTaskAsyncOverride = cancelBundleTaskAsync
+        self.cancelBundleTaskSyncOverride = cancelBundleTaskSync
+        self.cancelCapacityReservationAsyncOverride = cancelCapacityReservationAsync
+        self.cancelCapacityReservationSyncOverride = cancelCapacityReservationSync
+        self.cancelConversionTaskAsyncOverride = cancelConversionTaskAsync
+        self.cancelConversionTaskSyncOverride = cancelConversionTaskSync
+        self.cancelExportTaskAsyncOverride = cancelExportTaskAsync
+        self.cancelExportTaskSyncOverride = cancelExportTaskSync
+        self.cancelImportTaskAsyncOverride = cancelImportTaskAsync
+        self.cancelImportTaskSyncOverride = cancelImportTaskSync
+        self.cancelReservedInstancesListingAsyncOverride = cancelReservedInstancesListingAsync
+        self.cancelReservedInstancesListingSyncOverride = cancelReservedInstancesListingSync
+        self.cancelSpotFleetRequestsAsyncOverride = cancelSpotFleetRequestsAsync
+        self.cancelSpotFleetRequestsSyncOverride = cancelSpotFleetRequestsSync
+        self.cancelSpotInstanceRequestsAsyncOverride = cancelSpotInstanceRequestsAsync
+        self.cancelSpotInstanceRequestsSyncOverride = cancelSpotInstanceRequestsSync
+        self.confirmProductInstanceAsyncOverride = confirmProductInstanceAsync
+        self.confirmProductInstanceSyncOverride = confirmProductInstanceSync
+        self.copyFpgaImageAsyncOverride = copyFpgaImageAsync
+        self.copyFpgaImageSyncOverride = copyFpgaImageSync
+        self.copyImageAsyncOverride = copyImageAsync
+        self.copyImageSyncOverride = copyImageSync
+        self.copySnapshotAsyncOverride = copySnapshotAsync
+        self.copySnapshotSyncOverride = copySnapshotSync
+        self.createCapacityReservationAsyncOverride = createCapacityReservationAsync
+        self.createCapacityReservationSyncOverride = createCapacityReservationSync
+        self.createCustomerGatewayAsyncOverride = createCustomerGatewayAsync
+        self.createCustomerGatewaySyncOverride = createCustomerGatewaySync
+        self.createDefaultSubnetAsyncOverride = createDefaultSubnetAsync
+        self.createDefaultSubnetSyncOverride = createDefaultSubnetSync
+        self.createDefaultVpcAsyncOverride = createDefaultVpcAsync
+        self.createDefaultVpcSyncOverride = createDefaultVpcSync
+        self.createDhcpOptionsAsyncOverride = createDhcpOptionsAsync
+        self.createDhcpOptionsSyncOverride = createDhcpOptionsSync
+        self.createEgressOnlyInternetGatewayAsyncOverride = createEgressOnlyInternetGatewayAsync
+        self.createEgressOnlyInternetGatewaySyncOverride = createEgressOnlyInternetGatewaySync
+        self.createFleetAsyncOverride = createFleetAsync
+        self.createFleetSyncOverride = createFleetSync
+        self.createFlowLogsAsyncOverride = createFlowLogsAsync
+        self.createFlowLogsSyncOverride = createFlowLogsSync
+        self.createFpgaImageAsyncOverride = createFpgaImageAsync
+        self.createFpgaImageSyncOverride = createFpgaImageSync
+        self.createImageAsyncOverride = createImageAsync
+        self.createImageSyncOverride = createImageSync
+        self.createInstanceExportTaskAsyncOverride = createInstanceExportTaskAsync
+        self.createInstanceExportTaskSyncOverride = createInstanceExportTaskSync
+        self.createInternetGatewayAsyncOverride = createInternetGatewayAsync
+        self.createInternetGatewaySyncOverride = createInternetGatewaySync
+        self.createKeyPairAsyncOverride = createKeyPairAsync
+        self.createKeyPairSyncOverride = createKeyPairSync
+        self.createLaunchTemplateAsyncOverride = createLaunchTemplateAsync
+        self.createLaunchTemplateSyncOverride = createLaunchTemplateSync
+        self.createLaunchTemplateVersionAsyncOverride = createLaunchTemplateVersionAsync
+        self.createLaunchTemplateVersionSyncOverride = createLaunchTemplateVersionSync
+        self.createNatGatewayAsyncOverride = createNatGatewayAsync
+        self.createNatGatewaySyncOverride = createNatGatewaySync
+        self.createNetworkAclAsyncOverride = createNetworkAclAsync
+        self.createNetworkAclSyncOverride = createNetworkAclSync
+        self.createNetworkAclEntryAsyncOverride = createNetworkAclEntryAsync
+        self.createNetworkAclEntrySyncOverride = createNetworkAclEntrySync
+        self.createNetworkInterfaceAsyncOverride = createNetworkInterfaceAsync
+        self.createNetworkInterfaceSyncOverride = createNetworkInterfaceSync
+        self.createNetworkInterfacePermissionAsyncOverride = createNetworkInterfacePermissionAsync
+        self.createNetworkInterfacePermissionSyncOverride = createNetworkInterfacePermissionSync
+        self.createPlacementGroupAsyncOverride = createPlacementGroupAsync
+        self.createPlacementGroupSyncOverride = createPlacementGroupSync
+        self.createReservedInstancesListingAsyncOverride = createReservedInstancesListingAsync
+        self.createReservedInstancesListingSyncOverride = createReservedInstancesListingSync
+        self.createRouteAsyncOverride = createRouteAsync
+        self.createRouteSyncOverride = createRouteSync
+        self.createRouteTableAsyncOverride = createRouteTableAsync
+        self.createRouteTableSyncOverride = createRouteTableSync
+        self.createSecurityGroupAsyncOverride = createSecurityGroupAsync
+        self.createSecurityGroupSyncOverride = createSecurityGroupSync
+        self.createSnapshotAsyncOverride = createSnapshotAsync
+        self.createSnapshotSyncOverride = createSnapshotSync
+        self.createSpotDatafeedSubscriptionAsyncOverride = createSpotDatafeedSubscriptionAsync
+        self.createSpotDatafeedSubscriptionSyncOverride = createSpotDatafeedSubscriptionSync
+        self.createSubnetAsyncOverride = createSubnetAsync
+        self.createSubnetSyncOverride = createSubnetSync
+        self.createTagsAsyncOverride = createTagsAsync
+        self.createTagsSyncOverride = createTagsSync
+        self.createVolumeAsyncOverride = createVolumeAsync
+        self.createVolumeSyncOverride = createVolumeSync
+        self.createVpcAsyncOverride = createVpcAsync
+        self.createVpcSyncOverride = createVpcSync
+        self.createVpcEndpointAsyncOverride = createVpcEndpointAsync
+        self.createVpcEndpointSyncOverride = createVpcEndpointSync
+        self.createVpcEndpointConnectionNotificationAsyncOverride = createVpcEndpointConnectionNotificationAsync
+        self.createVpcEndpointConnectionNotificationSyncOverride = createVpcEndpointConnectionNotificationSync
+        self.createVpcEndpointServiceConfigurationAsyncOverride = createVpcEndpointServiceConfigurationAsync
+        self.createVpcEndpointServiceConfigurationSyncOverride = createVpcEndpointServiceConfigurationSync
+        self.createVpcPeeringConnectionAsyncOverride = createVpcPeeringConnectionAsync
+        self.createVpcPeeringConnectionSyncOverride = createVpcPeeringConnectionSync
+        self.createVpnConnectionAsyncOverride = createVpnConnectionAsync
+        self.createVpnConnectionSyncOverride = createVpnConnectionSync
+        self.createVpnConnectionRouteAsyncOverride = createVpnConnectionRouteAsync
+        self.createVpnConnectionRouteSyncOverride = createVpnConnectionRouteSync
+        self.createVpnGatewayAsyncOverride = createVpnGatewayAsync
+        self.createVpnGatewaySyncOverride = createVpnGatewaySync
+        self.deleteCustomerGatewayAsyncOverride = deleteCustomerGatewayAsync
+        self.deleteCustomerGatewaySyncOverride = deleteCustomerGatewaySync
+        self.deleteDhcpOptionsAsyncOverride = deleteDhcpOptionsAsync
+        self.deleteDhcpOptionsSyncOverride = deleteDhcpOptionsSync
+        self.deleteEgressOnlyInternetGatewayAsyncOverride = deleteEgressOnlyInternetGatewayAsync
+        self.deleteEgressOnlyInternetGatewaySyncOverride = deleteEgressOnlyInternetGatewaySync
+        self.deleteFleetsAsyncOverride = deleteFleetsAsync
+        self.deleteFleetsSyncOverride = deleteFleetsSync
+        self.deleteFlowLogsAsyncOverride = deleteFlowLogsAsync
+        self.deleteFlowLogsSyncOverride = deleteFlowLogsSync
+        self.deleteFpgaImageAsyncOverride = deleteFpgaImageAsync
+        self.deleteFpgaImageSyncOverride = deleteFpgaImageSync
+        self.deleteInternetGatewayAsyncOverride = deleteInternetGatewayAsync
+        self.deleteInternetGatewaySyncOverride = deleteInternetGatewaySync
+        self.deleteKeyPairAsyncOverride = deleteKeyPairAsync
+        self.deleteKeyPairSyncOverride = deleteKeyPairSync
+        self.deleteLaunchTemplateAsyncOverride = deleteLaunchTemplateAsync
+        self.deleteLaunchTemplateSyncOverride = deleteLaunchTemplateSync
+        self.deleteLaunchTemplateVersionsAsyncOverride = deleteLaunchTemplateVersionsAsync
+        self.deleteLaunchTemplateVersionsSyncOverride = deleteLaunchTemplateVersionsSync
+        self.deleteNatGatewayAsyncOverride = deleteNatGatewayAsync
+        self.deleteNatGatewaySyncOverride = deleteNatGatewaySync
+        self.deleteNetworkAclAsyncOverride = deleteNetworkAclAsync
+        self.deleteNetworkAclSyncOverride = deleteNetworkAclSync
+        self.deleteNetworkAclEntryAsyncOverride = deleteNetworkAclEntryAsync
+        self.deleteNetworkAclEntrySyncOverride = deleteNetworkAclEntrySync
+        self.deleteNetworkInterfaceAsyncOverride = deleteNetworkInterfaceAsync
+        self.deleteNetworkInterfaceSyncOverride = deleteNetworkInterfaceSync
+        self.deleteNetworkInterfacePermissionAsyncOverride = deleteNetworkInterfacePermissionAsync
+        self.deleteNetworkInterfacePermissionSyncOverride = deleteNetworkInterfacePermissionSync
+        self.deletePlacementGroupAsyncOverride = deletePlacementGroupAsync
+        self.deletePlacementGroupSyncOverride = deletePlacementGroupSync
+        self.deleteRouteAsyncOverride = deleteRouteAsync
+        self.deleteRouteSyncOverride = deleteRouteSync
+        self.deleteRouteTableAsyncOverride = deleteRouteTableAsync
+        self.deleteRouteTableSyncOverride = deleteRouteTableSync
+        self.deleteSecurityGroupAsyncOverride = deleteSecurityGroupAsync
+        self.deleteSecurityGroupSyncOverride = deleteSecurityGroupSync
+        self.deleteSnapshotAsyncOverride = deleteSnapshotAsync
+        self.deleteSnapshotSyncOverride = deleteSnapshotSync
+        self.deleteSpotDatafeedSubscriptionAsyncOverride = deleteSpotDatafeedSubscriptionAsync
+        self.deleteSpotDatafeedSubscriptionSyncOverride = deleteSpotDatafeedSubscriptionSync
+        self.deleteSubnetAsyncOverride = deleteSubnetAsync
+        self.deleteSubnetSyncOverride = deleteSubnetSync
+        self.deleteTagsAsyncOverride = deleteTagsAsync
+        self.deleteTagsSyncOverride = deleteTagsSync
+        self.deleteVolumeAsyncOverride = deleteVolumeAsync
+        self.deleteVolumeSyncOverride = deleteVolumeSync
+        self.deleteVpcAsyncOverride = deleteVpcAsync
+        self.deleteVpcSyncOverride = deleteVpcSync
+        self.deleteVpcEndpointConnectionNotificationsAsyncOverride = deleteVpcEndpointConnectionNotificationsAsync
+        self.deleteVpcEndpointConnectionNotificationsSyncOverride = deleteVpcEndpointConnectionNotificationsSync
+        self.deleteVpcEndpointServiceConfigurationsAsyncOverride = deleteVpcEndpointServiceConfigurationsAsync
+        self.deleteVpcEndpointServiceConfigurationsSyncOverride = deleteVpcEndpointServiceConfigurationsSync
+        self.deleteVpcEndpointsAsyncOverride = deleteVpcEndpointsAsync
+        self.deleteVpcEndpointsSyncOverride = deleteVpcEndpointsSync
+        self.deleteVpcPeeringConnectionAsyncOverride = deleteVpcPeeringConnectionAsync
+        self.deleteVpcPeeringConnectionSyncOverride = deleteVpcPeeringConnectionSync
+        self.deleteVpnConnectionAsyncOverride = deleteVpnConnectionAsync
+        self.deleteVpnConnectionSyncOverride = deleteVpnConnectionSync
+        self.deleteVpnConnectionRouteAsyncOverride = deleteVpnConnectionRouteAsync
+        self.deleteVpnConnectionRouteSyncOverride = deleteVpnConnectionRouteSync
+        self.deleteVpnGatewayAsyncOverride = deleteVpnGatewayAsync
+        self.deleteVpnGatewaySyncOverride = deleteVpnGatewaySync
+        self.deprovisionByoipCidrAsyncOverride = deprovisionByoipCidrAsync
+        self.deprovisionByoipCidrSyncOverride = deprovisionByoipCidrSync
+        self.deregisterImageAsyncOverride = deregisterImageAsync
+        self.deregisterImageSyncOverride = deregisterImageSync
+        self.describeAccountAttributesAsyncOverride = describeAccountAttributesAsync
+        self.describeAccountAttributesSyncOverride = describeAccountAttributesSync
+        self.describeAddressesAsyncOverride = describeAddressesAsync
+        self.describeAddressesSyncOverride = describeAddressesSync
+        self.describeAggregateIdFormatAsyncOverride = describeAggregateIdFormatAsync
+        self.describeAggregateIdFormatSyncOverride = describeAggregateIdFormatSync
+        self.describeAvailabilityZonesAsyncOverride = describeAvailabilityZonesAsync
+        self.describeAvailabilityZonesSyncOverride = describeAvailabilityZonesSync
+        self.describeBundleTasksAsyncOverride = describeBundleTasksAsync
+        self.describeBundleTasksSyncOverride = describeBundleTasksSync
+        self.describeByoipCidrsAsyncOverride = describeByoipCidrsAsync
+        self.describeByoipCidrsSyncOverride = describeByoipCidrsSync
+        self.describeCapacityReservationsAsyncOverride = describeCapacityReservationsAsync
+        self.describeCapacityReservationsSyncOverride = describeCapacityReservationsSync
+        self.describeClassicLinkInstancesAsyncOverride = describeClassicLinkInstancesAsync
+        self.describeClassicLinkInstancesSyncOverride = describeClassicLinkInstancesSync
+        self.describeConversionTasksAsyncOverride = describeConversionTasksAsync
+        self.describeConversionTasksSyncOverride = describeConversionTasksSync
+        self.describeCustomerGatewaysAsyncOverride = describeCustomerGatewaysAsync
+        self.describeCustomerGatewaysSyncOverride = describeCustomerGatewaysSync
+        self.describeDhcpOptionsAsyncOverride = describeDhcpOptionsAsync
+        self.describeDhcpOptionsSyncOverride = describeDhcpOptionsSync
+        self.describeEgressOnlyInternetGatewaysAsyncOverride = describeEgressOnlyInternetGatewaysAsync
+        self.describeEgressOnlyInternetGatewaysSyncOverride = describeEgressOnlyInternetGatewaysSync
+        self.describeElasticGpusAsyncOverride = describeElasticGpusAsync
+        self.describeElasticGpusSyncOverride = describeElasticGpusSync
+        self.describeExportTasksAsyncOverride = describeExportTasksAsync
+        self.describeExportTasksSyncOverride = describeExportTasksSync
+        self.describeFleetHistoryAsyncOverride = describeFleetHistoryAsync
+        self.describeFleetHistorySyncOverride = describeFleetHistorySync
+        self.describeFleetInstancesAsyncOverride = describeFleetInstancesAsync
+        self.describeFleetInstancesSyncOverride = describeFleetInstancesSync
+        self.describeFleetsAsyncOverride = describeFleetsAsync
+        self.describeFleetsSyncOverride = describeFleetsSync
+        self.describeFlowLogsAsyncOverride = describeFlowLogsAsync
+        self.describeFlowLogsSyncOverride = describeFlowLogsSync
+        self.describeFpgaImageAttributeAsyncOverride = describeFpgaImageAttributeAsync
+        self.describeFpgaImageAttributeSyncOverride = describeFpgaImageAttributeSync
+        self.describeFpgaImagesAsyncOverride = describeFpgaImagesAsync
+        self.describeFpgaImagesSyncOverride = describeFpgaImagesSync
+        self.describeHostReservationOfferingsAsyncOverride = describeHostReservationOfferingsAsync
+        self.describeHostReservationOfferingsSyncOverride = describeHostReservationOfferingsSync
+        self.describeHostReservationsAsyncOverride = describeHostReservationsAsync
+        self.describeHostReservationsSyncOverride = describeHostReservationsSync
+        self.describeHostsAsyncOverride = describeHostsAsync
+        self.describeHostsSyncOverride = describeHostsSync
+        self.describeIamInstanceProfileAssociationsAsyncOverride = describeIamInstanceProfileAssociationsAsync
+        self.describeIamInstanceProfileAssociationsSyncOverride = describeIamInstanceProfileAssociationsSync
+        self.describeIdFormatAsyncOverride = describeIdFormatAsync
+        self.describeIdFormatSyncOverride = describeIdFormatSync
+        self.describeIdentityIdFormatAsyncOverride = describeIdentityIdFormatAsync
+        self.describeIdentityIdFormatSyncOverride = describeIdentityIdFormatSync
+        self.describeImageAttributeAsyncOverride = describeImageAttributeAsync
+        self.describeImageAttributeSyncOverride = describeImageAttributeSync
+        self.describeImagesAsyncOverride = describeImagesAsync
+        self.describeImagesSyncOverride = describeImagesSync
+        self.describeImportImageTasksAsyncOverride = describeImportImageTasksAsync
+        self.describeImportImageTasksSyncOverride = describeImportImageTasksSync
+        self.describeImportSnapshotTasksAsyncOverride = describeImportSnapshotTasksAsync
+        self.describeImportSnapshotTasksSyncOverride = describeImportSnapshotTasksSync
+        self.describeInstanceAttributeAsyncOverride = describeInstanceAttributeAsync
+        self.describeInstanceAttributeSyncOverride = describeInstanceAttributeSync
+        self.describeInstanceCreditSpecificationsAsyncOverride = describeInstanceCreditSpecificationsAsync
+        self.describeInstanceCreditSpecificationsSyncOverride = describeInstanceCreditSpecificationsSync
+        self.describeInstanceStatusAsyncOverride = describeInstanceStatusAsync
+        self.describeInstanceStatusSyncOverride = describeInstanceStatusSync
+        self.describeInstancesAsyncOverride = describeInstancesAsync
+        self.describeInstancesSyncOverride = describeInstancesSync
+        self.describeInternetGatewaysAsyncOverride = describeInternetGatewaysAsync
+        self.describeInternetGatewaysSyncOverride = describeInternetGatewaysSync
+        self.describeKeyPairsAsyncOverride = describeKeyPairsAsync
+        self.describeKeyPairsSyncOverride = describeKeyPairsSync
+        self.describeLaunchTemplateVersionsAsyncOverride = describeLaunchTemplateVersionsAsync
+        self.describeLaunchTemplateVersionsSyncOverride = describeLaunchTemplateVersionsSync
+        self.describeLaunchTemplatesAsyncOverride = describeLaunchTemplatesAsync
+        self.describeLaunchTemplatesSyncOverride = describeLaunchTemplatesSync
+        self.describeMovingAddressesAsyncOverride = describeMovingAddressesAsync
+        self.describeMovingAddressesSyncOverride = describeMovingAddressesSync
+        self.describeNatGatewaysAsyncOverride = describeNatGatewaysAsync
+        self.describeNatGatewaysSyncOverride = describeNatGatewaysSync
+        self.describeNetworkAclsAsyncOverride = describeNetworkAclsAsync
+        self.describeNetworkAclsSyncOverride = describeNetworkAclsSync
+        self.describeNetworkInterfaceAttributeAsyncOverride = describeNetworkInterfaceAttributeAsync
+        self.describeNetworkInterfaceAttributeSyncOverride = describeNetworkInterfaceAttributeSync
+        self.describeNetworkInterfacePermissionsAsyncOverride = describeNetworkInterfacePermissionsAsync
+        self.describeNetworkInterfacePermissionsSyncOverride = describeNetworkInterfacePermissionsSync
+        self.describeNetworkInterfacesAsyncOverride = describeNetworkInterfacesAsync
+        self.describeNetworkInterfacesSyncOverride = describeNetworkInterfacesSync
+        self.describePlacementGroupsAsyncOverride = describePlacementGroupsAsync
+        self.describePlacementGroupsSyncOverride = describePlacementGroupsSync
+        self.describePrefixListsAsyncOverride = describePrefixListsAsync
+        self.describePrefixListsSyncOverride = describePrefixListsSync
+        self.describePrincipalIdFormatAsyncOverride = describePrincipalIdFormatAsync
+        self.describePrincipalIdFormatSyncOverride = describePrincipalIdFormatSync
+        self.describePublicIpv4PoolsAsyncOverride = describePublicIpv4PoolsAsync
+        self.describePublicIpv4PoolsSyncOverride = describePublicIpv4PoolsSync
+        self.describeRegionsAsyncOverride = describeRegionsAsync
+        self.describeRegionsSyncOverride = describeRegionsSync
+        self.describeReservedInstancesAsyncOverride = describeReservedInstancesAsync
+        self.describeReservedInstancesSyncOverride = describeReservedInstancesSync
+        self.describeReservedInstancesListingsAsyncOverride = describeReservedInstancesListingsAsync
+        self.describeReservedInstancesListingsSyncOverride = describeReservedInstancesListingsSync
+        self.describeReservedInstancesModificationsAsyncOverride = describeReservedInstancesModificationsAsync
+        self.describeReservedInstancesModificationsSyncOverride = describeReservedInstancesModificationsSync
+        self.describeReservedInstancesOfferingsAsyncOverride = describeReservedInstancesOfferingsAsync
+        self.describeReservedInstancesOfferingsSyncOverride = describeReservedInstancesOfferingsSync
+        self.describeRouteTablesAsyncOverride = describeRouteTablesAsync
+        self.describeRouteTablesSyncOverride = describeRouteTablesSync
+        self.describeScheduledInstanceAvailabilityAsyncOverride = describeScheduledInstanceAvailabilityAsync
+        self.describeScheduledInstanceAvailabilitySyncOverride = describeScheduledInstanceAvailabilitySync
+        self.describeScheduledInstancesAsyncOverride = describeScheduledInstancesAsync
+        self.describeScheduledInstancesSyncOverride = describeScheduledInstancesSync
+        self.describeSecurityGroupReferencesAsyncOverride = describeSecurityGroupReferencesAsync
+        self.describeSecurityGroupReferencesSyncOverride = describeSecurityGroupReferencesSync
+        self.describeSecurityGroupsAsyncOverride = describeSecurityGroupsAsync
+        self.describeSecurityGroupsSyncOverride = describeSecurityGroupsSync
+        self.describeSnapshotAttributeAsyncOverride = describeSnapshotAttributeAsync
+        self.describeSnapshotAttributeSyncOverride = describeSnapshotAttributeSync
+        self.describeSnapshotsAsyncOverride = describeSnapshotsAsync
+        self.describeSnapshotsSyncOverride = describeSnapshotsSync
+        self.describeSpotDatafeedSubscriptionAsyncOverride = describeSpotDatafeedSubscriptionAsync
+        self.describeSpotDatafeedSubscriptionSyncOverride = describeSpotDatafeedSubscriptionSync
+        self.describeSpotFleetInstancesAsyncOverride = describeSpotFleetInstancesAsync
+        self.describeSpotFleetInstancesSyncOverride = describeSpotFleetInstancesSync
+        self.describeSpotFleetRequestHistoryAsyncOverride = describeSpotFleetRequestHistoryAsync
+        self.describeSpotFleetRequestHistorySyncOverride = describeSpotFleetRequestHistorySync
+        self.describeSpotFleetRequestsAsyncOverride = describeSpotFleetRequestsAsync
+        self.describeSpotFleetRequestsSyncOverride = describeSpotFleetRequestsSync
+        self.describeSpotInstanceRequestsAsyncOverride = describeSpotInstanceRequestsAsync
+        self.describeSpotInstanceRequestsSyncOverride = describeSpotInstanceRequestsSync
+        self.describeSpotPriceHistoryAsyncOverride = describeSpotPriceHistoryAsync
+        self.describeSpotPriceHistorySyncOverride = describeSpotPriceHistorySync
+        self.describeStaleSecurityGroupsAsyncOverride = describeStaleSecurityGroupsAsync
+        self.describeStaleSecurityGroupsSyncOverride = describeStaleSecurityGroupsSync
+        self.describeSubnetsAsyncOverride = describeSubnetsAsync
+        self.describeSubnetsSyncOverride = describeSubnetsSync
+        self.describeTagsAsyncOverride = describeTagsAsync
+        self.describeTagsSyncOverride = describeTagsSync
+        self.describeVolumeAttributeAsyncOverride = describeVolumeAttributeAsync
+        self.describeVolumeAttributeSyncOverride = describeVolumeAttributeSync
+        self.describeVolumeStatusAsyncOverride = describeVolumeStatusAsync
+        self.describeVolumeStatusSyncOverride = describeVolumeStatusSync
+        self.describeVolumesAsyncOverride = describeVolumesAsync
+        self.describeVolumesSyncOverride = describeVolumesSync
+        self.describeVolumesModificationsAsyncOverride = describeVolumesModificationsAsync
+        self.describeVolumesModificationsSyncOverride = describeVolumesModificationsSync
+        self.describeVpcAttributeAsyncOverride = describeVpcAttributeAsync
+        self.describeVpcAttributeSyncOverride = describeVpcAttributeSync
+        self.describeVpcClassicLinkAsyncOverride = describeVpcClassicLinkAsync
+        self.describeVpcClassicLinkSyncOverride = describeVpcClassicLinkSync
+        self.describeVpcClassicLinkDnsSupportAsyncOverride = describeVpcClassicLinkDnsSupportAsync
+        self.describeVpcClassicLinkDnsSupportSyncOverride = describeVpcClassicLinkDnsSupportSync
+        self.describeVpcEndpointConnectionNotificationsAsyncOverride = describeVpcEndpointConnectionNotificationsAsync
+        self.describeVpcEndpointConnectionNotificationsSyncOverride = describeVpcEndpointConnectionNotificationsSync
+        self.describeVpcEndpointConnectionsAsyncOverride = describeVpcEndpointConnectionsAsync
+        self.describeVpcEndpointConnectionsSyncOverride = describeVpcEndpointConnectionsSync
+        self.describeVpcEndpointServiceConfigurationsAsyncOverride = describeVpcEndpointServiceConfigurationsAsync
+        self.describeVpcEndpointServiceConfigurationsSyncOverride = describeVpcEndpointServiceConfigurationsSync
+        self.describeVpcEndpointServicePermissionsAsyncOverride = describeVpcEndpointServicePermissionsAsync
+        self.describeVpcEndpointServicePermissionsSyncOverride = describeVpcEndpointServicePermissionsSync
+        self.describeVpcEndpointServicesAsyncOverride = describeVpcEndpointServicesAsync
+        self.describeVpcEndpointServicesSyncOverride = describeVpcEndpointServicesSync
+        self.describeVpcEndpointsAsyncOverride = describeVpcEndpointsAsync
+        self.describeVpcEndpointsSyncOverride = describeVpcEndpointsSync
+        self.describeVpcPeeringConnectionsAsyncOverride = describeVpcPeeringConnectionsAsync
+        self.describeVpcPeeringConnectionsSyncOverride = describeVpcPeeringConnectionsSync
+        self.describeVpcsAsyncOverride = describeVpcsAsync
+        self.describeVpcsSyncOverride = describeVpcsSync
+        self.describeVpnConnectionsAsyncOverride = describeVpnConnectionsAsync
+        self.describeVpnConnectionsSyncOverride = describeVpnConnectionsSync
+        self.describeVpnGatewaysAsyncOverride = describeVpnGatewaysAsync
+        self.describeVpnGatewaysSyncOverride = describeVpnGatewaysSync
+        self.detachClassicLinkVpcAsyncOverride = detachClassicLinkVpcAsync
+        self.detachClassicLinkVpcSyncOverride = detachClassicLinkVpcSync
+        self.detachInternetGatewayAsyncOverride = detachInternetGatewayAsync
+        self.detachInternetGatewaySyncOverride = detachInternetGatewaySync
+        self.detachNetworkInterfaceAsyncOverride = detachNetworkInterfaceAsync
+        self.detachNetworkInterfaceSyncOverride = detachNetworkInterfaceSync
+        self.detachVolumeAsyncOverride = detachVolumeAsync
+        self.detachVolumeSyncOverride = detachVolumeSync
+        self.detachVpnGatewayAsyncOverride = detachVpnGatewayAsync
+        self.detachVpnGatewaySyncOverride = detachVpnGatewaySync
+        self.disableVgwRoutePropagationAsyncOverride = disableVgwRoutePropagationAsync
+        self.disableVgwRoutePropagationSyncOverride = disableVgwRoutePropagationSync
+        self.disableVpcClassicLinkAsyncOverride = disableVpcClassicLinkAsync
+        self.disableVpcClassicLinkSyncOverride = disableVpcClassicLinkSync
+        self.disableVpcClassicLinkDnsSupportAsyncOverride = disableVpcClassicLinkDnsSupportAsync
+        self.disableVpcClassicLinkDnsSupportSyncOverride = disableVpcClassicLinkDnsSupportSync
+        self.disassociateAddressAsyncOverride = disassociateAddressAsync
+        self.disassociateAddressSyncOverride = disassociateAddressSync
+        self.disassociateIamInstanceProfileAsyncOverride = disassociateIamInstanceProfileAsync
+        self.disassociateIamInstanceProfileSyncOverride = disassociateIamInstanceProfileSync
+        self.disassociateRouteTableAsyncOverride = disassociateRouteTableAsync
+        self.disassociateRouteTableSyncOverride = disassociateRouteTableSync
+        self.disassociateSubnetCidrBlockAsyncOverride = disassociateSubnetCidrBlockAsync
+        self.disassociateSubnetCidrBlockSyncOverride = disassociateSubnetCidrBlockSync
+        self.disassociateVpcCidrBlockAsyncOverride = disassociateVpcCidrBlockAsync
+        self.disassociateVpcCidrBlockSyncOverride = disassociateVpcCidrBlockSync
+        self.enableVgwRoutePropagationAsyncOverride = enableVgwRoutePropagationAsync
+        self.enableVgwRoutePropagationSyncOverride = enableVgwRoutePropagationSync
+        self.enableVolumeIOAsyncOverride = enableVolumeIOAsync
+        self.enableVolumeIOSyncOverride = enableVolumeIOSync
+        self.enableVpcClassicLinkAsyncOverride = enableVpcClassicLinkAsync
+        self.enableVpcClassicLinkSyncOverride = enableVpcClassicLinkSync
+        self.enableVpcClassicLinkDnsSupportAsyncOverride = enableVpcClassicLinkDnsSupportAsync
+        self.enableVpcClassicLinkDnsSupportSyncOverride = enableVpcClassicLinkDnsSupportSync
+        self.getConsoleOutputAsyncOverride = getConsoleOutputAsync
+        self.getConsoleOutputSyncOverride = getConsoleOutputSync
+        self.getConsoleScreenshotAsyncOverride = getConsoleScreenshotAsync
+        self.getConsoleScreenshotSyncOverride = getConsoleScreenshotSync
+        self.getHostReservationPurchasePreviewAsyncOverride = getHostReservationPurchasePreviewAsync
+        self.getHostReservationPurchasePreviewSyncOverride = getHostReservationPurchasePreviewSync
+        self.getLaunchTemplateDataAsyncOverride = getLaunchTemplateDataAsync
+        self.getLaunchTemplateDataSyncOverride = getLaunchTemplateDataSync
+        self.getPasswordDataAsyncOverride = getPasswordDataAsync
+        self.getPasswordDataSyncOverride = getPasswordDataSync
+        self.getReservedInstancesExchangeQuoteAsyncOverride = getReservedInstancesExchangeQuoteAsync
+        self.getReservedInstancesExchangeQuoteSyncOverride = getReservedInstancesExchangeQuoteSync
+        self.importImageAsyncOverride = importImageAsync
+        self.importImageSyncOverride = importImageSync
+        self.importInstanceAsyncOverride = importInstanceAsync
+        self.importInstanceSyncOverride = importInstanceSync
+        self.importKeyPairAsyncOverride = importKeyPairAsync
+        self.importKeyPairSyncOverride = importKeyPairSync
+        self.importSnapshotAsyncOverride = importSnapshotAsync
+        self.importSnapshotSyncOverride = importSnapshotSync
+        self.importVolumeAsyncOverride = importVolumeAsync
+        self.importVolumeSyncOverride = importVolumeSync
+        self.modifyCapacityReservationAsyncOverride = modifyCapacityReservationAsync
+        self.modifyCapacityReservationSyncOverride = modifyCapacityReservationSync
+        self.modifyFleetAsyncOverride = modifyFleetAsync
+        self.modifyFleetSyncOverride = modifyFleetSync
+        self.modifyFpgaImageAttributeAsyncOverride = modifyFpgaImageAttributeAsync
+        self.modifyFpgaImageAttributeSyncOverride = modifyFpgaImageAttributeSync
+        self.modifyHostsAsyncOverride = modifyHostsAsync
+        self.modifyHostsSyncOverride = modifyHostsSync
+        self.modifyIdFormatAsyncOverride = modifyIdFormatAsync
+        self.modifyIdFormatSyncOverride = modifyIdFormatSync
+        self.modifyIdentityIdFormatAsyncOverride = modifyIdentityIdFormatAsync
+        self.modifyIdentityIdFormatSyncOverride = modifyIdentityIdFormatSync
+        self.modifyImageAttributeAsyncOverride = modifyImageAttributeAsync
+        self.modifyImageAttributeSyncOverride = modifyImageAttributeSync
+        self.modifyInstanceAttributeAsyncOverride = modifyInstanceAttributeAsync
+        self.modifyInstanceAttributeSyncOverride = modifyInstanceAttributeSync
+        self.modifyInstanceCapacityReservationAttributesAsyncOverride = modifyInstanceCapacityReservationAttributesAsync
+        self.modifyInstanceCapacityReservationAttributesSyncOverride = modifyInstanceCapacityReservationAttributesSync
+        self.modifyInstanceCreditSpecificationAsyncOverride = modifyInstanceCreditSpecificationAsync
+        self.modifyInstanceCreditSpecificationSyncOverride = modifyInstanceCreditSpecificationSync
+        self.modifyInstancePlacementAsyncOverride = modifyInstancePlacementAsync
+        self.modifyInstancePlacementSyncOverride = modifyInstancePlacementSync
+        self.modifyLaunchTemplateAsyncOverride = modifyLaunchTemplateAsync
+        self.modifyLaunchTemplateSyncOverride = modifyLaunchTemplateSync
+        self.modifyNetworkInterfaceAttributeAsyncOverride = modifyNetworkInterfaceAttributeAsync
+        self.modifyNetworkInterfaceAttributeSyncOverride = modifyNetworkInterfaceAttributeSync
+        self.modifyReservedInstancesAsyncOverride = modifyReservedInstancesAsync
+        self.modifyReservedInstancesSyncOverride = modifyReservedInstancesSync
+        self.modifySnapshotAttributeAsyncOverride = modifySnapshotAttributeAsync
+        self.modifySnapshotAttributeSyncOverride = modifySnapshotAttributeSync
+        self.modifySpotFleetRequestAsyncOverride = modifySpotFleetRequestAsync
+        self.modifySpotFleetRequestSyncOverride = modifySpotFleetRequestSync
+        self.modifySubnetAttributeAsyncOverride = modifySubnetAttributeAsync
+        self.modifySubnetAttributeSyncOverride = modifySubnetAttributeSync
+        self.modifyVolumeAsyncOverride = modifyVolumeAsync
+        self.modifyVolumeSyncOverride = modifyVolumeSync
+        self.modifyVolumeAttributeAsyncOverride = modifyVolumeAttributeAsync
+        self.modifyVolumeAttributeSyncOverride = modifyVolumeAttributeSync
+        self.modifyVpcAttributeAsyncOverride = modifyVpcAttributeAsync
+        self.modifyVpcAttributeSyncOverride = modifyVpcAttributeSync
+        self.modifyVpcEndpointAsyncOverride = modifyVpcEndpointAsync
+        self.modifyVpcEndpointSyncOverride = modifyVpcEndpointSync
+        self.modifyVpcEndpointConnectionNotificationAsyncOverride = modifyVpcEndpointConnectionNotificationAsync
+        self.modifyVpcEndpointConnectionNotificationSyncOverride = modifyVpcEndpointConnectionNotificationSync
+        self.modifyVpcEndpointServiceConfigurationAsyncOverride = modifyVpcEndpointServiceConfigurationAsync
+        self.modifyVpcEndpointServiceConfigurationSyncOverride = modifyVpcEndpointServiceConfigurationSync
+        self.modifyVpcEndpointServicePermissionsAsyncOverride = modifyVpcEndpointServicePermissionsAsync
+        self.modifyVpcEndpointServicePermissionsSyncOverride = modifyVpcEndpointServicePermissionsSync
+        self.modifyVpcPeeringConnectionOptionsAsyncOverride = modifyVpcPeeringConnectionOptionsAsync
+        self.modifyVpcPeeringConnectionOptionsSyncOverride = modifyVpcPeeringConnectionOptionsSync
+        self.modifyVpcTenancyAsyncOverride = modifyVpcTenancyAsync
+        self.modifyVpcTenancySyncOverride = modifyVpcTenancySync
+        self.monitorInstancesAsyncOverride = monitorInstancesAsync
+        self.monitorInstancesSyncOverride = monitorInstancesSync
+        self.moveAddressToVpcAsyncOverride = moveAddressToVpcAsync
+        self.moveAddressToVpcSyncOverride = moveAddressToVpcSync
+        self.provisionByoipCidrAsyncOverride = provisionByoipCidrAsync
+        self.provisionByoipCidrSyncOverride = provisionByoipCidrSync
+        self.purchaseHostReservationAsyncOverride = purchaseHostReservationAsync
+        self.purchaseHostReservationSyncOverride = purchaseHostReservationSync
+        self.purchaseReservedInstancesOfferingAsyncOverride = purchaseReservedInstancesOfferingAsync
+        self.purchaseReservedInstancesOfferingSyncOverride = purchaseReservedInstancesOfferingSync
+        self.purchaseScheduledInstancesAsyncOverride = purchaseScheduledInstancesAsync
+        self.purchaseScheduledInstancesSyncOverride = purchaseScheduledInstancesSync
+        self.rebootInstancesAsyncOverride = rebootInstancesAsync
+        self.rebootInstancesSyncOverride = rebootInstancesSync
+        self.registerImageAsyncOverride = registerImageAsync
+        self.registerImageSyncOverride = registerImageSync
+        self.rejectVpcEndpointConnectionsAsyncOverride = rejectVpcEndpointConnectionsAsync
+        self.rejectVpcEndpointConnectionsSyncOverride = rejectVpcEndpointConnectionsSync
+        self.rejectVpcPeeringConnectionAsyncOverride = rejectVpcPeeringConnectionAsync
+        self.rejectVpcPeeringConnectionSyncOverride = rejectVpcPeeringConnectionSync
+        self.releaseAddressAsyncOverride = releaseAddressAsync
+        self.releaseAddressSyncOverride = releaseAddressSync
+        self.releaseHostsAsyncOverride = releaseHostsAsync
+        self.releaseHostsSyncOverride = releaseHostsSync
+        self.replaceIamInstanceProfileAssociationAsyncOverride = replaceIamInstanceProfileAssociationAsync
+        self.replaceIamInstanceProfileAssociationSyncOverride = replaceIamInstanceProfileAssociationSync
+        self.replaceNetworkAclAssociationAsyncOverride = replaceNetworkAclAssociationAsync
+        self.replaceNetworkAclAssociationSyncOverride = replaceNetworkAclAssociationSync
+        self.replaceNetworkAclEntryAsyncOverride = replaceNetworkAclEntryAsync
+        self.replaceNetworkAclEntrySyncOverride = replaceNetworkAclEntrySync
+        self.replaceRouteAsyncOverride = replaceRouteAsync
+        self.replaceRouteSyncOverride = replaceRouteSync
+        self.replaceRouteTableAssociationAsyncOverride = replaceRouteTableAssociationAsync
+        self.replaceRouteTableAssociationSyncOverride = replaceRouteTableAssociationSync
+        self.reportInstanceStatusAsyncOverride = reportInstanceStatusAsync
+        self.reportInstanceStatusSyncOverride = reportInstanceStatusSync
+        self.requestSpotFleetAsyncOverride = requestSpotFleetAsync
+        self.requestSpotFleetSyncOverride = requestSpotFleetSync
+        self.requestSpotInstancesAsyncOverride = requestSpotInstancesAsync
+        self.requestSpotInstancesSyncOverride = requestSpotInstancesSync
+        self.resetFpgaImageAttributeAsyncOverride = resetFpgaImageAttributeAsync
+        self.resetFpgaImageAttributeSyncOverride = resetFpgaImageAttributeSync
+        self.resetImageAttributeAsyncOverride = resetImageAttributeAsync
+        self.resetImageAttributeSyncOverride = resetImageAttributeSync
+        self.resetInstanceAttributeAsyncOverride = resetInstanceAttributeAsync
+        self.resetInstanceAttributeSyncOverride = resetInstanceAttributeSync
+        self.resetNetworkInterfaceAttributeAsyncOverride = resetNetworkInterfaceAttributeAsync
+        self.resetNetworkInterfaceAttributeSyncOverride = resetNetworkInterfaceAttributeSync
+        self.resetSnapshotAttributeAsyncOverride = resetSnapshotAttributeAsync
+        self.resetSnapshotAttributeSyncOverride = resetSnapshotAttributeSync
+        self.restoreAddressToClassicAsyncOverride = restoreAddressToClassicAsync
+        self.restoreAddressToClassicSyncOverride = restoreAddressToClassicSync
+        self.revokeSecurityGroupEgressAsyncOverride = revokeSecurityGroupEgressAsync
+        self.revokeSecurityGroupEgressSyncOverride = revokeSecurityGroupEgressSync
+        self.revokeSecurityGroupIngressAsyncOverride = revokeSecurityGroupIngressAsync
+        self.revokeSecurityGroupIngressSyncOverride = revokeSecurityGroupIngressSync
+        self.runInstancesAsyncOverride = runInstancesAsync
+        self.runInstancesSyncOverride = runInstancesSync
+        self.runScheduledInstancesAsyncOverride = runScheduledInstancesAsync
+        self.runScheduledInstancesSyncOverride = runScheduledInstancesSync
+        self.startInstancesAsyncOverride = startInstancesAsync
+        self.startInstancesSyncOverride = startInstancesSync
+        self.stopInstancesAsyncOverride = stopInstancesAsync
+        self.stopInstancesSyncOverride = stopInstancesSync
+        self.terminateInstancesAsyncOverride = terminateInstancesAsync
+        self.terminateInstancesSyncOverride = terminateInstancesSync
+        self.unassignIpv6AddressesAsyncOverride = unassignIpv6AddressesAsync
+        self.unassignIpv6AddressesSyncOverride = unassignIpv6AddressesSync
+        self.unassignPrivateIpAddressesAsyncOverride = unassignPrivateIpAddressesAsync
+        self.unassignPrivateIpAddressesSyncOverride = unassignPrivateIpAddressesSync
+        self.unmonitorInstancesAsyncOverride = unmonitorInstancesAsync
+        self.unmonitorInstancesSyncOverride = unmonitorInstancesSync
+        self.updateSecurityGroupRuleDescriptionsEgressAsyncOverride = updateSecurityGroupRuleDescriptionsEgressAsync
+        self.updateSecurityGroupRuleDescriptionsEgressSyncOverride = updateSecurityGroupRuleDescriptionsEgressSync
+        self.updateSecurityGroupRuleDescriptionsIngressAsyncOverride = updateSecurityGroupRuleDescriptionsIngressAsync
+        self.updateSecurityGroupRuleDescriptionsIngressSyncOverride = updateSecurityGroupRuleDescriptionsIngressSync
+        self.withdrawByoipCidrAsyncOverride = withdrawByoipCidrAsync
+        self.withdrawByoipCidrSyncOverride = withdrawByoipCidrSync
+    }
+
+    /**
+     Invokes the AcceptReservedInstancesExchangeQuote operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptReservedInstancesExchangeQuoteRequest object being passed to this operation.
+         - completion: The AcceptReservedInstancesExchangeQuoteResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptReservedInstancesExchangeQuoteResult
+           object will be validated before being returned to caller.
+     */
+    public func acceptReservedInstancesExchangeQuoteAsync(input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult>) -> ()) throws {
+        if let acceptReservedInstancesExchangeQuoteAsyncOverride = acceptReservedInstancesExchangeQuoteAsyncOverride {
+            return try acceptReservedInstancesExchangeQuoteAsyncOverride(input, completion)
+        }
+
+        let result = AcceptReservedInstancesExchangeQuoteResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AcceptReservedInstancesExchangeQuote operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptReservedInstancesExchangeQuoteRequest object being passed to this operation.
+     - Returns: The AcceptReservedInstancesExchangeQuoteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func acceptReservedInstancesExchangeQuoteSync(input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
+        if let acceptReservedInstancesExchangeQuoteSyncOverride = acceptReservedInstancesExchangeQuoteSyncOverride {
+            return try acceptReservedInstancesExchangeQuoteSyncOverride(input)
+        }
+
+        return AcceptReservedInstancesExchangeQuoteResult.__default
+    }
+
+    /**
+     Invokes the AcceptVpcEndpointConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptVpcEndpointConnectionsRequest object being passed to this operation.
+         - completion: The AcceptVpcEndpointConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptVpcEndpointConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    public func acceptVpcEndpointConnectionsAsync(input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult>) -> ()) throws {
+        if let acceptVpcEndpointConnectionsAsyncOverride = acceptVpcEndpointConnectionsAsyncOverride {
+            return try acceptVpcEndpointConnectionsAsyncOverride(input, completion)
+        }
+
+        let result = AcceptVpcEndpointConnectionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AcceptVpcEndpointConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptVpcEndpointConnectionsRequest object being passed to this operation.
+     - Returns: The AcceptVpcEndpointConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func acceptVpcEndpointConnectionsSync(input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult {
+        if let acceptVpcEndpointConnectionsSyncOverride = acceptVpcEndpointConnectionsSyncOverride {
+            return try acceptVpcEndpointConnectionsSyncOverride(input)
+        }
+
+        return AcceptVpcEndpointConnectionsResult.__default
+    }
+
+    /**
+     Invokes the AcceptVpcPeeringConnection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptVpcPeeringConnectionRequest object being passed to this operation.
+         - completion: The AcceptVpcPeeringConnectionResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptVpcPeeringConnectionResult
+           object will be validated before being returned to caller.
+     */
+    public func acceptVpcPeeringConnectionAsync(input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult>) -> ()) throws {
+        if let acceptVpcPeeringConnectionAsyncOverride = acceptVpcPeeringConnectionAsyncOverride {
+            return try acceptVpcPeeringConnectionAsyncOverride(input, completion)
+        }
+
+        let result = AcceptVpcPeeringConnectionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AcceptVpcPeeringConnection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptVpcPeeringConnectionRequest object being passed to this operation.
+     - Returns: The AcceptVpcPeeringConnectionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func acceptVpcPeeringConnectionSync(input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult {
+        if let acceptVpcPeeringConnectionSyncOverride = acceptVpcPeeringConnectionSyncOverride {
+            return try acceptVpcPeeringConnectionSyncOverride(input)
+        }
+
+        return AcceptVpcPeeringConnectionResult.__default
+    }
+
+    /**
+     Invokes the AdvertiseByoipCidr operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AdvertiseByoipCidrRequest object being passed to this operation.
+         - completion: The AdvertiseByoipCidrResult object or an error will be passed to this 
+           callback when the operation is complete. The AdvertiseByoipCidrResult
+           object will be validated before being returned to caller.
+     */
+    public func advertiseByoipCidrAsync(input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AdvertiseByoipCidrResult>) -> ()) throws {
+        if let advertiseByoipCidrAsyncOverride = advertiseByoipCidrAsyncOverride {
+            return try advertiseByoipCidrAsyncOverride(input, completion)
+        }
+
+        let result = AdvertiseByoipCidrResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AdvertiseByoipCidr operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AdvertiseByoipCidrRequest object being passed to this operation.
+     - Returns: The AdvertiseByoipCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func advertiseByoipCidrSync(input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest) throws -> ElasticComputeCloudModel.AdvertiseByoipCidrResult {
+        if let advertiseByoipCidrSyncOverride = advertiseByoipCidrSyncOverride {
+            return try advertiseByoipCidrSyncOverride(input)
+        }
+
+        return AdvertiseByoipCidrResult.__default
+    }
+
+    /**
+     Invokes the AllocateAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AllocateAddressRequest object being passed to this operation.
+         - completion: The AllocateAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The AllocateAddressResult
+           object will be validated before being returned to caller.
+     */
+    public func allocateAddressAsync(input: ElasticComputeCloudModel.AllocateAddressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AllocateAddressResult>) -> ()) throws {
+        if let allocateAddressAsyncOverride = allocateAddressAsyncOverride {
+            return try allocateAddressAsyncOverride(input, completion)
+        }
+
+        let result = AllocateAddressResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AllocateAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AllocateAddressRequest object being passed to this operation.
+     - Returns: The AllocateAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func allocateAddressSync(input: ElasticComputeCloudModel.AllocateAddressRequest) throws -> ElasticComputeCloudModel.AllocateAddressResult {
+        if let allocateAddressSyncOverride = allocateAddressSyncOverride {
+            return try allocateAddressSyncOverride(input)
+        }
+
+        return AllocateAddressResult.__default
+    }
+
+    /**
+     Invokes the AllocateHosts operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AllocateHostsRequest object being passed to this operation.
+         - completion: The AllocateHostsResult object or an error will be passed to this 
+           callback when the operation is complete. The AllocateHostsResult
+           object will be validated before being returned to caller.
+     */
+    public func allocateHostsAsync(input: ElasticComputeCloudModel.AllocateHostsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AllocateHostsResult>) -> ()) throws {
+        if let allocateHostsAsyncOverride = allocateHostsAsyncOverride {
+            return try allocateHostsAsyncOverride(input, completion)
+        }
+
+        let result = AllocateHostsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AllocateHosts operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AllocateHostsRequest object being passed to this operation.
+     - Returns: The AllocateHostsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func allocateHostsSync(input: ElasticComputeCloudModel.AllocateHostsRequest) throws -> ElasticComputeCloudModel.AllocateHostsResult {
+        if let allocateHostsSyncOverride = allocateHostsSyncOverride {
+            return try allocateHostsSyncOverride(input)
+        }
+
+        return AllocateHostsResult.__default
+    }
+
+    /**
+     Invokes the AssignIpv6Addresses operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssignIpv6AddressesRequest object being passed to this operation.
+         - completion: The AssignIpv6AddressesResult object or an error will be passed to this 
+           callback when the operation is complete. The AssignIpv6AddressesResult
+           object will be validated before being returned to caller.
+     */
+    public func assignIpv6AddressesAsync(input: ElasticComputeCloudModel.AssignIpv6AddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssignIpv6AddressesResult>) -> ()) throws {
+        if let assignIpv6AddressesAsyncOverride = assignIpv6AddressesAsyncOverride {
+            return try assignIpv6AddressesAsyncOverride(input, completion)
+        }
+
+        let result = AssignIpv6AddressesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AssignIpv6Addresses operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssignIpv6AddressesRequest object being passed to this operation.
+     - Returns: The AssignIpv6AddressesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func assignIpv6AddressesSync(input: ElasticComputeCloudModel.AssignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.AssignIpv6AddressesResult {
+        if let assignIpv6AddressesSyncOverride = assignIpv6AddressesSyncOverride {
+            return try assignIpv6AddressesSyncOverride(input)
+        }
+
+        return AssignIpv6AddressesResult.__default
+    }
+
+    /**
+     Invokes the AssignPrivateIpAddresses operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssignPrivateIpAddressesRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Error?) -> ()) throws {
+        if let assignPrivateIpAddressesAsyncOverride = assignPrivateIpAddressesAsyncOverride {
+            return try assignPrivateIpAddressesAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the AssignPrivateIpAddresses operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssignPrivateIpAddressesRequest object being passed to this operation.
+     */
+    public func assignPrivateIpAddressesSync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws {
+        if let assignPrivateIpAddressesSyncOverride = assignPrivateIpAddressesSyncOverride {
+            return try assignPrivateIpAddressesSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the AssociateAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateAddressRequest object being passed to this operation.
+         - completion: The AssociateAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateAddressResult
+           object will be validated before being returned to caller.
+     */
+    public func associateAddressAsync(input: ElasticComputeCloudModel.AssociateAddressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateAddressResult>) -> ()) throws {
+        if let associateAddressAsyncOverride = associateAddressAsyncOverride {
+            return try associateAddressAsyncOverride(input, completion)
+        }
+
+        let result = AssociateAddressResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AssociateAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateAddressRequest object being passed to this operation.
+     - Returns: The AssociateAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateAddressSync(input: ElasticComputeCloudModel.AssociateAddressRequest) throws -> ElasticComputeCloudModel.AssociateAddressResult {
+        if let associateAddressSyncOverride = associateAddressSyncOverride {
+            return try associateAddressSyncOverride(input)
+        }
+
+        return AssociateAddressResult.__default
+    }
+
+    /**
+     Invokes the AssociateDhcpOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateDhcpOptionsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func associateDhcpOptionsAsync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, completion: @escaping (Error?) -> ()) throws {
+        if let associateDhcpOptionsAsyncOverride = associateDhcpOptionsAsyncOverride {
+            return try associateDhcpOptionsAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the AssociateDhcpOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateDhcpOptionsRequest object being passed to this operation.
+     */
+    public func associateDhcpOptionsSync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest) throws {
+        if let associateDhcpOptionsSyncOverride = associateDhcpOptionsSyncOverride {
+            return try associateDhcpOptionsSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the AssociateIamInstanceProfile operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateIamInstanceProfileRequest object being passed to this operation.
+         - completion: The AssociateIamInstanceProfileResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateIamInstanceProfileResult
+           object will be validated before being returned to caller.
+     */
+    public func associateIamInstanceProfileAsync(input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateIamInstanceProfileResult>) -> ()) throws {
+        if let associateIamInstanceProfileAsyncOverride = associateIamInstanceProfileAsyncOverride {
+            return try associateIamInstanceProfileAsyncOverride(input, completion)
+        }
+
+        let result = AssociateIamInstanceProfileResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AssociateIamInstanceProfile operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateIamInstanceProfileRequest object being passed to this operation.
+     - Returns: The AssociateIamInstanceProfileResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateIamInstanceProfileSync(input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult {
+        if let associateIamInstanceProfileSyncOverride = associateIamInstanceProfileSyncOverride {
+            return try associateIamInstanceProfileSyncOverride(input)
+        }
+
+        return AssociateIamInstanceProfileResult.__default
+    }
+
+    /**
+     Invokes the AssociateRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateRouteTableRequest object being passed to this operation.
+         - completion: The AssociateRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func associateRouteTableAsync(input: ElasticComputeCloudModel.AssociateRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateRouteTableResult>) -> ()) throws {
+        if let associateRouteTableAsyncOverride = associateRouteTableAsyncOverride {
+            return try associateRouteTableAsyncOverride(input, completion)
+        }
+
+        let result = AssociateRouteTableResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AssociateRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateRouteTableRequest object being passed to this operation.
+     - Returns: The AssociateRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateRouteTableSync(input: ElasticComputeCloudModel.AssociateRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateRouteTableResult {
+        if let associateRouteTableSyncOverride = associateRouteTableSyncOverride {
+            return try associateRouteTableSyncOverride(input)
+        }
+
+        return AssociateRouteTableResult.__default
+    }
+
+    /**
+     Invokes the AssociateSubnetCidrBlock operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateSubnetCidrBlockRequest object being passed to this operation.
+         - completion: The AssociateSubnetCidrBlockResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateSubnetCidrBlockResult
+           object will be validated before being returned to caller.
+     */
+    public func associateSubnetCidrBlockAsync(input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult>) -> ()) throws {
+        if let associateSubnetCidrBlockAsyncOverride = associateSubnetCidrBlockAsyncOverride {
+            return try associateSubnetCidrBlockAsyncOverride(input, completion)
+        }
+
+        let result = AssociateSubnetCidrBlockResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AssociateSubnetCidrBlock operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateSubnetCidrBlockRequest object being passed to this operation.
+     - Returns: The AssociateSubnetCidrBlockResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateSubnetCidrBlockSync(input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult {
+        if let associateSubnetCidrBlockSyncOverride = associateSubnetCidrBlockSyncOverride {
+            return try associateSubnetCidrBlockSyncOverride(input)
+        }
+
+        return AssociateSubnetCidrBlockResult.__default
+    }
+
+    /**
+     Invokes the AssociateVpcCidrBlock operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateVpcCidrBlockRequest object being passed to this operation.
+         - completion: The AssociateVpcCidrBlockResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateVpcCidrBlockResult
+           object will be validated before being returned to caller.
+     */
+    public func associateVpcCidrBlockAsync(input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateVpcCidrBlockResult>) -> ()) throws {
+        if let associateVpcCidrBlockAsyncOverride = associateVpcCidrBlockAsyncOverride {
+            return try associateVpcCidrBlockAsyncOverride(input, completion)
+        }
+
+        let result = AssociateVpcCidrBlockResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AssociateVpcCidrBlock operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateVpcCidrBlockRequest object being passed to this operation.
+     - Returns: The AssociateVpcCidrBlockResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateVpcCidrBlockSync(input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult {
+        if let associateVpcCidrBlockSyncOverride = associateVpcCidrBlockSyncOverride {
+            return try associateVpcCidrBlockSyncOverride(input)
+        }
+
+        return AssociateVpcCidrBlockResult.__default
+    }
+
+    /**
+     Invokes the AttachClassicLinkVpc operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AttachClassicLinkVpcRequest object being passed to this operation.
+         - completion: The AttachClassicLinkVpcResult object or an error will be passed to this 
+           callback when the operation is complete. The AttachClassicLinkVpcResult
+           object will be validated before being returned to caller.
+     */
+    public func attachClassicLinkVpcAsync(input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachClassicLinkVpcResult>) -> ()) throws {
+        if let attachClassicLinkVpcAsyncOverride = attachClassicLinkVpcAsyncOverride {
+            return try attachClassicLinkVpcAsyncOverride(input, completion)
+        }
+
+        let result = AttachClassicLinkVpcResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AttachClassicLinkVpc operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AttachClassicLinkVpcRequest object being passed to this operation.
+     - Returns: The AttachClassicLinkVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func attachClassicLinkVpcSync(input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest) throws -> ElasticComputeCloudModel.AttachClassicLinkVpcResult {
+        if let attachClassicLinkVpcSyncOverride = attachClassicLinkVpcSyncOverride {
+            return try attachClassicLinkVpcSyncOverride(input)
+        }
+
+        return AttachClassicLinkVpcResult.__default
+    }
+
+    /**
+     Invokes the AttachInternetGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AttachInternetGatewayRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func attachInternetGatewayAsync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+        if let attachInternetGatewayAsyncOverride = attachInternetGatewayAsyncOverride {
+            return try attachInternetGatewayAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the AttachInternetGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AttachInternetGatewayRequest object being passed to this operation.
+     */
+    public func attachInternetGatewaySync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest) throws {
+        if let attachInternetGatewaySyncOverride = attachInternetGatewaySyncOverride {
+            return try attachInternetGatewaySyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the AttachNetworkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AttachNetworkInterfaceRequest object being passed to this operation.
+         - completion: The AttachNetworkInterfaceResult object or an error will be passed to this 
+           callback when the operation is complete. The AttachNetworkInterfaceResult
+           object will be validated before being returned to caller.
+     */
+    public func attachNetworkInterfaceAsync(input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachNetworkInterfaceResult>) -> ()) throws {
+        if let attachNetworkInterfaceAsyncOverride = attachNetworkInterfaceAsyncOverride {
+            return try attachNetworkInterfaceAsyncOverride(input, completion)
+        }
+
+        let result = AttachNetworkInterfaceResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AttachNetworkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AttachNetworkInterfaceRequest object being passed to this operation.
+     - Returns: The AttachNetworkInterfaceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func attachNetworkInterfaceSync(input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.AttachNetworkInterfaceResult {
+        if let attachNetworkInterfaceSyncOverride = attachNetworkInterfaceSyncOverride {
+            return try attachNetworkInterfaceSyncOverride(input)
+        }
+
+        return AttachNetworkInterfaceResult.__default
+    }
+
+    /**
+     Invokes the AttachVolume operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AttachVolumeRequest object being passed to this operation.
+         - completion: The VolumeAttachment object or an error will be passed to this 
+           callback when the operation is complete. The VolumeAttachment
+           object will be validated before being returned to caller.
+     */
+    public func attachVolumeAsync(input: ElasticComputeCloudModel.AttachVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.VolumeAttachment>) -> ()) throws {
+        if let attachVolumeAsyncOverride = attachVolumeAsyncOverride {
+            return try attachVolumeAsyncOverride(input, completion)
+        }
+
+        let result = VolumeAttachment.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AttachVolume operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AttachVolumeRequest object being passed to this operation.
+     - Returns: The VolumeAttachment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func attachVolumeSync(input: ElasticComputeCloudModel.AttachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment {
+        if let attachVolumeSyncOverride = attachVolumeSyncOverride {
+            return try attachVolumeSyncOverride(input)
+        }
+
+        return VolumeAttachment.__default
+    }
+
+    /**
+     Invokes the AttachVpnGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AttachVpnGatewayRequest object being passed to this operation.
+         - completion: The AttachVpnGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The AttachVpnGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func attachVpnGatewayAsync(input: ElasticComputeCloudModel.AttachVpnGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachVpnGatewayResult>) -> ()) throws {
+        if let attachVpnGatewayAsyncOverride = attachVpnGatewayAsyncOverride {
+            return try attachVpnGatewayAsyncOverride(input, completion)
+        }
+
+        let result = AttachVpnGatewayResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the AttachVpnGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AttachVpnGatewayRequest object being passed to this operation.
+     - Returns: The AttachVpnGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func attachVpnGatewaySync(input: ElasticComputeCloudModel.AttachVpnGatewayRequest) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult {
+        if let attachVpnGatewaySyncOverride = attachVpnGatewaySyncOverride {
+            return try attachVpnGatewaySyncOverride(input)
+        }
+
+        return AttachVpnGatewayResult.__default
+    }
+
+    /**
+     Invokes the AuthorizeSecurityGroupEgress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func authorizeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, completion: @escaping (Error?) -> ()) throws {
+        if let authorizeSecurityGroupEgressAsyncOverride = authorizeSecurityGroupEgressAsyncOverride {
+            return try authorizeSecurityGroupEgressAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the AuthorizeSecurityGroupEgress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
+     */
+    public func authorizeSecurityGroupEgressSync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws {
+        if let authorizeSecurityGroupEgressSyncOverride = authorizeSecurityGroupEgressSyncOverride {
+            return try authorizeSecurityGroupEgressSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the AuthorizeSecurityGroupIngress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func authorizeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, completion: @escaping (Error?) -> ()) throws {
+        if let authorizeSecurityGroupIngressAsyncOverride = authorizeSecurityGroupIngressAsyncOverride {
+            return try authorizeSecurityGroupIngressAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the AuthorizeSecurityGroupIngress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
+     */
+    public func authorizeSecurityGroupIngressSync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws {
+        if let authorizeSecurityGroupIngressSyncOverride = authorizeSecurityGroupIngressSyncOverride {
+            return try authorizeSecurityGroupIngressSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the BundleInstance operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated BundleInstanceRequest object being passed to this operation.
+         - completion: The BundleInstanceResult object or an error will be passed to this 
+           callback when the operation is complete. The BundleInstanceResult
+           object will be validated before being returned to caller.
+     */
+    public func bundleInstanceAsync(input: ElasticComputeCloudModel.BundleInstanceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.BundleInstanceResult>) -> ()) throws {
+        if let bundleInstanceAsyncOverride = bundleInstanceAsyncOverride {
+            return try bundleInstanceAsyncOverride(input, completion)
+        }
+
+        let result = BundleInstanceResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the BundleInstance operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated BundleInstanceRequest object being passed to this operation.
+     - Returns: The BundleInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func bundleInstanceSync(input: ElasticComputeCloudModel.BundleInstanceRequest) throws -> ElasticComputeCloudModel.BundleInstanceResult {
+        if let bundleInstanceSyncOverride = bundleInstanceSyncOverride {
+            return try bundleInstanceSyncOverride(input)
+        }
+
+        return BundleInstanceResult.__default
+    }
+
+    /**
+     Invokes the CancelBundleTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelBundleTaskRequest object being passed to this operation.
+         - completion: The CancelBundleTaskResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelBundleTaskResult
+           object will be validated before being returned to caller.
+     */
+    public func cancelBundleTaskAsync(input: ElasticComputeCloudModel.CancelBundleTaskRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelBundleTaskResult>) -> ()) throws {
+        if let cancelBundleTaskAsyncOverride = cancelBundleTaskAsyncOverride {
+            return try cancelBundleTaskAsyncOverride(input, completion)
+        }
+
+        let result = CancelBundleTaskResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CancelBundleTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelBundleTaskRequest object being passed to this operation.
+     - Returns: The CancelBundleTaskResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func cancelBundleTaskSync(input: ElasticComputeCloudModel.CancelBundleTaskRequest) throws -> ElasticComputeCloudModel.CancelBundleTaskResult {
+        if let cancelBundleTaskSyncOverride = cancelBundleTaskSyncOverride {
+            return try cancelBundleTaskSyncOverride(input)
+        }
+
+        return CancelBundleTaskResult.__default
+    }
+
+    /**
+     Invokes the CancelCapacityReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelCapacityReservationRequest object being passed to this operation.
+         - completion: The CancelCapacityReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelCapacityReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func cancelCapacityReservationAsync(input: ElasticComputeCloudModel.CancelCapacityReservationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelCapacityReservationResult>) -> ()) throws {
+        if let cancelCapacityReservationAsyncOverride = cancelCapacityReservationAsyncOverride {
+            return try cancelCapacityReservationAsyncOverride(input, completion)
+        }
+
+        let result = CancelCapacityReservationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CancelCapacityReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelCapacityReservationRequest object being passed to this operation.
+     - Returns: The CancelCapacityReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func cancelCapacityReservationSync(input: ElasticComputeCloudModel.CancelCapacityReservationRequest) throws -> ElasticComputeCloudModel.CancelCapacityReservationResult {
+        if let cancelCapacityReservationSyncOverride = cancelCapacityReservationSyncOverride {
+            return try cancelCapacityReservationSyncOverride(input)
+        }
+
+        return CancelCapacityReservationResult.__default
+    }
+
+    /**
+     Invokes the CancelConversionTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelConversionRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func cancelConversionTaskAsync(input: ElasticComputeCloudModel.CancelConversionRequest, completion: @escaping (Error?) -> ()) throws {
+        if let cancelConversionTaskAsyncOverride = cancelConversionTaskAsyncOverride {
+            return try cancelConversionTaskAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the CancelConversionTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelConversionRequest object being passed to this operation.
+     */
+    public func cancelConversionTaskSync(input: ElasticComputeCloudModel.CancelConversionRequest) throws {
+        if let cancelConversionTaskSyncOverride = cancelConversionTaskSyncOverride {
+            return try cancelConversionTaskSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the CancelExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelExportTaskRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func cancelExportTaskAsync(input: ElasticComputeCloudModel.CancelExportTaskRequest, completion: @escaping (Error?) -> ()) throws {
+        if let cancelExportTaskAsyncOverride = cancelExportTaskAsyncOverride {
+            return try cancelExportTaskAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the CancelExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelExportTaskRequest object being passed to this operation.
+     */
+    public func cancelExportTaskSync(input: ElasticComputeCloudModel.CancelExportTaskRequest) throws {
+        if let cancelExportTaskSyncOverride = cancelExportTaskSyncOverride {
+            return try cancelExportTaskSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the CancelImportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelImportTaskRequest object being passed to this operation.
+         - completion: The CancelImportTaskResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelImportTaskResult
+           object will be validated before being returned to caller.
+     */
+    public func cancelImportTaskAsync(input: ElasticComputeCloudModel.CancelImportTaskRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelImportTaskResult>) -> ()) throws {
+        if let cancelImportTaskAsyncOverride = cancelImportTaskAsyncOverride {
+            return try cancelImportTaskAsyncOverride(input, completion)
+        }
+
+        let result = CancelImportTaskResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CancelImportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelImportTaskRequest object being passed to this operation.
+     - Returns: The CancelImportTaskResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func cancelImportTaskSync(input: ElasticComputeCloudModel.CancelImportTaskRequest) throws -> ElasticComputeCloudModel.CancelImportTaskResult {
+        if let cancelImportTaskSyncOverride = cancelImportTaskSyncOverride {
+            return try cancelImportTaskSyncOverride(input)
+        }
+
+        return CancelImportTaskResult.__default
+    }
+
+    /**
+     Invokes the CancelReservedInstancesListing operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelReservedInstancesListingRequest object being passed to this operation.
+         - completion: The CancelReservedInstancesListingResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelReservedInstancesListingResult
+           object will be validated before being returned to caller.
+     */
+    public func cancelReservedInstancesListingAsync(input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelReservedInstancesListingResult>) -> ()) throws {
+        if let cancelReservedInstancesListingAsyncOverride = cancelReservedInstancesListingAsyncOverride {
+            return try cancelReservedInstancesListingAsyncOverride(input, completion)
+        }
+
+        let result = CancelReservedInstancesListingResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CancelReservedInstancesListing operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelReservedInstancesListingRequest object being passed to this operation.
+     - Returns: The CancelReservedInstancesListingResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func cancelReservedInstancesListingSync(input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CancelReservedInstancesListingResult {
+        if let cancelReservedInstancesListingSyncOverride = cancelReservedInstancesListingSyncOverride {
+            return try cancelReservedInstancesListingSyncOverride(input)
+        }
+
+        return CancelReservedInstancesListingResult.__default
+    }
+
+    /**
+     Invokes the CancelSpotFleetRequests operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelSpotFleetRequestsRequest object being passed to this operation.
+         - completion: The CancelSpotFleetRequestsResponse object or an error will be passed to this 
+           callback when the operation is complete. The CancelSpotFleetRequestsResponse
+           object will be validated before being returned to caller.
+     */
+    public func cancelSpotFleetRequestsAsync(input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse>) -> ()) throws {
+        if let cancelSpotFleetRequestsAsyncOverride = cancelSpotFleetRequestsAsyncOverride {
+            return try cancelSpotFleetRequestsAsyncOverride(input, completion)
+        }
+
+        let result = CancelSpotFleetRequestsResponse.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CancelSpotFleetRequests operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelSpotFleetRequestsRequest object being passed to this operation.
+     - Returns: The CancelSpotFleetRequestsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func cancelSpotFleetRequestsSync(input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest) throws -> ElasticComputeCloudModel.CancelSpotFleetRequestsResponse {
+        if let cancelSpotFleetRequestsSyncOverride = cancelSpotFleetRequestsSyncOverride {
+            return try cancelSpotFleetRequestsSyncOverride(input)
+        }
+
+        return CancelSpotFleetRequestsResponse.__default
+    }
+
+    /**
+     Invokes the CancelSpotInstanceRequests operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelSpotInstanceRequestsRequest object being passed to this operation.
+         - completion: The CancelSpotInstanceRequestsResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelSpotInstanceRequestsResult
+           object will be validated before being returned to caller.
+     */
+    public func cancelSpotInstanceRequestsAsync(input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult>) -> ()) throws {
+        if let cancelSpotInstanceRequestsAsyncOverride = cancelSpotInstanceRequestsAsyncOverride {
+            return try cancelSpotInstanceRequestsAsyncOverride(input, completion)
+        }
+
+        let result = CancelSpotInstanceRequestsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CancelSpotInstanceRequests operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelSpotInstanceRequestsRequest object being passed to this operation.
+     - Returns: The CancelSpotInstanceRequestsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func cancelSpotInstanceRequestsSync(input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest) throws -> ElasticComputeCloudModel.CancelSpotInstanceRequestsResult {
+        if let cancelSpotInstanceRequestsSyncOverride = cancelSpotInstanceRequestsSyncOverride {
+            return try cancelSpotInstanceRequestsSyncOverride(input)
+        }
+
+        return CancelSpotInstanceRequestsResult.__default
+    }
+
+    /**
+     Invokes the ConfirmProductInstance operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ConfirmProductInstanceRequest object being passed to this operation.
+         - completion: The ConfirmProductInstanceResult object or an error will be passed to this 
+           callback when the operation is complete. The ConfirmProductInstanceResult
+           object will be validated before being returned to caller.
+     */
+    public func confirmProductInstanceAsync(input: ElasticComputeCloudModel.ConfirmProductInstanceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ConfirmProductInstanceResult>) -> ()) throws {
+        if let confirmProductInstanceAsyncOverride = confirmProductInstanceAsyncOverride {
+            return try confirmProductInstanceAsyncOverride(input, completion)
+        }
+
+        let result = ConfirmProductInstanceResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ConfirmProductInstance operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ConfirmProductInstanceRequest object being passed to this operation.
+     - Returns: The ConfirmProductInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func confirmProductInstanceSync(input: ElasticComputeCloudModel.ConfirmProductInstanceRequest) throws -> ElasticComputeCloudModel.ConfirmProductInstanceResult {
+        if let confirmProductInstanceSyncOverride = confirmProductInstanceSyncOverride {
+            return try confirmProductInstanceSyncOverride(input)
+        }
+
+        return ConfirmProductInstanceResult.__default
+    }
+
+    /**
+     Invokes the CopyFpgaImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CopyFpgaImageRequest object being passed to this operation.
+         - completion: The CopyFpgaImageResult object or an error will be passed to this 
+           callback when the operation is complete. The CopyFpgaImageResult
+           object will be validated before being returned to caller.
+     */
+    public func copyFpgaImageAsync(input: ElasticComputeCloudModel.CopyFpgaImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CopyFpgaImageResult>) -> ()) throws {
+        if let copyFpgaImageAsyncOverride = copyFpgaImageAsyncOverride {
+            return try copyFpgaImageAsyncOverride(input, completion)
+        }
+
+        let result = CopyFpgaImageResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CopyFpgaImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CopyFpgaImageRequest object being passed to this operation.
+     - Returns: The CopyFpgaImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func copyFpgaImageSync(input: ElasticComputeCloudModel.CopyFpgaImageRequest) throws -> ElasticComputeCloudModel.CopyFpgaImageResult {
+        if let copyFpgaImageSyncOverride = copyFpgaImageSyncOverride {
+            return try copyFpgaImageSyncOverride(input)
+        }
+
+        return CopyFpgaImageResult.__default
+    }
+
+    /**
+     Invokes the CopyImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CopyImageRequest object being passed to this operation.
+         - completion: The CopyImageResult object or an error will be passed to this 
+           callback when the operation is complete. The CopyImageResult
+           object will be validated before being returned to caller.
+     */
+    public func copyImageAsync(input: ElasticComputeCloudModel.CopyImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CopyImageResult>) -> ()) throws {
+        if let copyImageAsyncOverride = copyImageAsyncOverride {
+            return try copyImageAsyncOverride(input, completion)
+        }
+
+        let result = CopyImageResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CopyImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CopyImageRequest object being passed to this operation.
+     - Returns: The CopyImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func copyImageSync(input: ElasticComputeCloudModel.CopyImageRequest) throws -> ElasticComputeCloudModel.CopyImageResult {
+        if let copyImageSyncOverride = copyImageSyncOverride {
+            return try copyImageSyncOverride(input)
+        }
+
+        return CopyImageResult.__default
+    }
+
+    /**
+     Invokes the CopySnapshot operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CopySnapshotRequest object being passed to this operation.
+         - completion: The CopySnapshotResult object or an error will be passed to this 
+           callback when the operation is complete. The CopySnapshotResult
+           object will be validated before being returned to caller.
+     */
+    public func copySnapshotAsync(input: ElasticComputeCloudModel.CopySnapshotRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CopySnapshotResult>) -> ()) throws {
+        if let copySnapshotAsyncOverride = copySnapshotAsyncOverride {
+            return try copySnapshotAsyncOverride(input, completion)
+        }
+
+        let result = CopySnapshotResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CopySnapshot operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CopySnapshotRequest object being passed to this operation.
+     - Returns: The CopySnapshotResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func copySnapshotSync(input: ElasticComputeCloudModel.CopySnapshotRequest) throws -> ElasticComputeCloudModel.CopySnapshotResult {
+        if let copySnapshotSyncOverride = copySnapshotSyncOverride {
+            return try copySnapshotSyncOverride(input)
+        }
+
+        return CopySnapshotResult.__default
+    }
+
+    /**
+     Invokes the CreateCapacityReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCapacityReservationRequest object being passed to this operation.
+         - completion: The CreateCapacityReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateCapacityReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func createCapacityReservationAsync(input: ElasticComputeCloudModel.CreateCapacityReservationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateCapacityReservationResult>) -> ()) throws {
+        if let createCapacityReservationAsyncOverride = createCapacityReservationAsyncOverride {
+            return try createCapacityReservationAsyncOverride(input, completion)
+        }
+
+        let result = CreateCapacityReservationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateCapacityReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCapacityReservationRequest object being passed to this operation.
+     - Returns: The CreateCapacityReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createCapacityReservationSync(input: ElasticComputeCloudModel.CreateCapacityReservationRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult {
+        if let createCapacityReservationSyncOverride = createCapacityReservationSyncOverride {
+            return try createCapacityReservationSyncOverride(input)
+        }
+
+        return CreateCapacityReservationResult.__default
+    }
+
+    /**
+     Invokes the CreateCustomerGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCustomerGatewayRequest object being passed to this operation.
+         - completion: The CreateCustomerGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateCustomerGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func createCustomerGatewayAsync(input: ElasticComputeCloudModel.CreateCustomerGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateCustomerGatewayResult>) -> ()) throws {
+        if let createCustomerGatewayAsyncOverride = createCustomerGatewayAsyncOverride {
+            return try createCustomerGatewayAsyncOverride(input, completion)
+        }
+
+        let result = CreateCustomerGatewayResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateCustomerGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCustomerGatewayRequest object being passed to this operation.
+     - Returns: The CreateCustomerGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createCustomerGatewaySync(input: ElasticComputeCloudModel.CreateCustomerGatewayRequest) throws -> ElasticComputeCloudModel.CreateCustomerGatewayResult {
+        if let createCustomerGatewaySyncOverride = createCustomerGatewaySyncOverride {
+            return try createCustomerGatewaySyncOverride(input)
+        }
+
+        return CreateCustomerGatewayResult.__default
+    }
+
+    /**
+     Invokes the CreateDefaultSubnet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDefaultSubnetRequest object being passed to this operation.
+         - completion: The CreateDefaultSubnetResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateDefaultSubnetResult
+           object will be validated before being returned to caller.
+     */
+    public func createDefaultSubnetAsync(input: ElasticComputeCloudModel.CreateDefaultSubnetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateDefaultSubnetResult>) -> ()) throws {
+        if let createDefaultSubnetAsyncOverride = createDefaultSubnetAsyncOverride {
+            return try createDefaultSubnetAsyncOverride(input, completion)
+        }
+
+        let result = CreateDefaultSubnetResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateDefaultSubnet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDefaultSubnetRequest object being passed to this operation.
+     - Returns: The CreateDefaultSubnetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createDefaultSubnetSync(input: ElasticComputeCloudModel.CreateDefaultSubnetRequest) throws -> ElasticComputeCloudModel.CreateDefaultSubnetResult {
+        if let createDefaultSubnetSyncOverride = createDefaultSubnetSyncOverride {
+            return try createDefaultSubnetSyncOverride(input)
+        }
+
+        return CreateDefaultSubnetResult.__default
+    }
+
+    /**
+     Invokes the CreateDefaultVpc operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDefaultVpcRequest object being passed to this operation.
+         - completion: The CreateDefaultVpcResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateDefaultVpcResult
+           object will be validated before being returned to caller.
+     */
+    public func createDefaultVpcAsync(input: ElasticComputeCloudModel.CreateDefaultVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateDefaultVpcResult>) -> ()) throws {
+        if let createDefaultVpcAsyncOverride = createDefaultVpcAsyncOverride {
+            return try createDefaultVpcAsyncOverride(input, completion)
+        }
+
+        let result = CreateDefaultVpcResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateDefaultVpc operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDefaultVpcRequest object being passed to this operation.
+     - Returns: The CreateDefaultVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createDefaultVpcSync(input: ElasticComputeCloudModel.CreateDefaultVpcRequest) throws -> ElasticComputeCloudModel.CreateDefaultVpcResult {
+        if let createDefaultVpcSyncOverride = createDefaultVpcSyncOverride {
+            return try createDefaultVpcSyncOverride(input)
+        }
+
+        return CreateDefaultVpcResult.__default
+    }
+
+    /**
+     Invokes the CreateDhcpOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDhcpOptionsRequest object being passed to this operation.
+         - completion: The CreateDhcpOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateDhcpOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func createDhcpOptionsAsync(input: ElasticComputeCloudModel.CreateDhcpOptionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateDhcpOptionsResult>) -> ()) throws {
+        if let createDhcpOptionsAsyncOverride = createDhcpOptionsAsyncOverride {
+            return try createDhcpOptionsAsyncOverride(input, completion)
+        }
+
+        let result = CreateDhcpOptionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateDhcpOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDhcpOptionsRequest object being passed to this operation.
+     - Returns: The CreateDhcpOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createDhcpOptionsSync(input: ElasticComputeCloudModel.CreateDhcpOptionsRequest) throws -> ElasticComputeCloudModel.CreateDhcpOptionsResult {
+        if let createDhcpOptionsSyncOverride = createDhcpOptionsSyncOverride {
+            return try createDhcpOptionsSyncOverride(input)
+        }
+
+        return CreateDhcpOptionsResult.__default
+    }
+
+    /**
+     Invokes the CreateEgressOnlyInternetGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateEgressOnlyInternetGatewayRequest object being passed to this operation.
+         - completion: The CreateEgressOnlyInternetGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateEgressOnlyInternetGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func createEgressOnlyInternetGatewayAsync(input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult>) -> ()) throws {
+        if let createEgressOnlyInternetGatewayAsyncOverride = createEgressOnlyInternetGatewayAsyncOverride {
+            return try createEgressOnlyInternetGatewayAsyncOverride(input, completion)
+        }
+
+        let result = CreateEgressOnlyInternetGatewayResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateEgressOnlyInternetGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateEgressOnlyInternetGatewayRequest object being passed to this operation.
+     - Returns: The CreateEgressOnlyInternetGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createEgressOnlyInternetGatewaySync(input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest) throws -> ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult {
+        if let createEgressOnlyInternetGatewaySyncOverride = createEgressOnlyInternetGatewaySyncOverride {
+            return try createEgressOnlyInternetGatewaySyncOverride(input)
+        }
+
+        return CreateEgressOnlyInternetGatewayResult.__default
+    }
+
+    /**
+     Invokes the CreateFleet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateFleetRequest object being passed to this operation.
+         - completion: The CreateFleetResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateFleetResult
+           object will be validated before being returned to caller.
+     */
+    public func createFleetAsync(input: ElasticComputeCloudModel.CreateFleetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateFleetResult>) -> ()) throws {
+        if let createFleetAsyncOverride = createFleetAsyncOverride {
+            return try createFleetAsyncOverride(input, completion)
+        }
+
+        let result = CreateFleetResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateFleet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateFleetRequest object being passed to this operation.
+     - Returns: The CreateFleetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createFleetSync(input: ElasticComputeCloudModel.CreateFleetRequest) throws -> ElasticComputeCloudModel.CreateFleetResult {
+        if let createFleetSyncOverride = createFleetSyncOverride {
+            return try createFleetSyncOverride(input)
+        }
+
+        return CreateFleetResult.__default
+    }
+
+    /**
+     Invokes the CreateFlowLogs operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateFlowLogsRequest object being passed to this operation.
+         - completion: The CreateFlowLogsResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateFlowLogsResult
+           object will be validated before being returned to caller.
+     */
+    public func createFlowLogsAsync(input: ElasticComputeCloudModel.CreateFlowLogsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateFlowLogsResult>) -> ()) throws {
+        if let createFlowLogsAsyncOverride = createFlowLogsAsyncOverride {
+            return try createFlowLogsAsyncOverride(input, completion)
+        }
+
+        let result = CreateFlowLogsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateFlowLogs operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateFlowLogsRequest object being passed to this operation.
+     - Returns: The CreateFlowLogsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createFlowLogsSync(input: ElasticComputeCloudModel.CreateFlowLogsRequest) throws -> ElasticComputeCloudModel.CreateFlowLogsResult {
+        if let createFlowLogsSyncOverride = createFlowLogsSyncOverride {
+            return try createFlowLogsSyncOverride(input)
+        }
+
+        return CreateFlowLogsResult.__default
+    }
+
+    /**
+     Invokes the CreateFpgaImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateFpgaImageRequest object being passed to this operation.
+         - completion: The CreateFpgaImageResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateFpgaImageResult
+           object will be validated before being returned to caller.
+     */
+    public func createFpgaImageAsync(input: ElasticComputeCloudModel.CreateFpgaImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateFpgaImageResult>) -> ()) throws {
+        if let createFpgaImageAsyncOverride = createFpgaImageAsyncOverride {
+            return try createFpgaImageAsyncOverride(input, completion)
+        }
+
+        let result = CreateFpgaImageResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateFpgaImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateFpgaImageRequest object being passed to this operation.
+     - Returns: The CreateFpgaImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createFpgaImageSync(input: ElasticComputeCloudModel.CreateFpgaImageRequest) throws -> ElasticComputeCloudModel.CreateFpgaImageResult {
+        if let createFpgaImageSyncOverride = createFpgaImageSyncOverride {
+            return try createFpgaImageSyncOverride(input)
+        }
+
+        return CreateFpgaImageResult.__default
+    }
+
+    /**
+     Invokes the CreateImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateImageRequest object being passed to this operation.
+         - completion: The CreateImageResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateImageResult
+           object will be validated before being returned to caller.
+     */
+    public func createImageAsync(input: ElasticComputeCloudModel.CreateImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateImageResult>) -> ()) throws {
+        if let createImageAsyncOverride = createImageAsyncOverride {
+            return try createImageAsyncOverride(input, completion)
+        }
+
+        let result = CreateImageResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateImageRequest object being passed to this operation.
+     - Returns: The CreateImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createImageSync(input: ElasticComputeCloudModel.CreateImageRequest) throws -> ElasticComputeCloudModel.CreateImageResult {
+        if let createImageSyncOverride = createImageSyncOverride {
+            return try createImageSyncOverride(input)
+        }
+
+        return CreateImageResult.__default
+    }
+
+    /**
+     Invokes the CreateInstanceExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateInstanceExportTaskRequest object being passed to this operation.
+         - completion: The CreateInstanceExportTaskResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateInstanceExportTaskResult
+           object will be validated before being returned to caller.
+     */
+    public func createInstanceExportTaskAsync(input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateInstanceExportTaskResult>) -> ()) throws {
+        if let createInstanceExportTaskAsyncOverride = createInstanceExportTaskAsyncOverride {
+            return try createInstanceExportTaskAsyncOverride(input, completion)
+        }
+
+        let result = CreateInstanceExportTaskResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateInstanceExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateInstanceExportTaskRequest object being passed to this operation.
+     - Returns: The CreateInstanceExportTaskResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createInstanceExportTaskSync(input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest) throws -> ElasticComputeCloudModel.CreateInstanceExportTaskResult {
+        if let createInstanceExportTaskSyncOverride = createInstanceExportTaskSyncOverride {
+            return try createInstanceExportTaskSyncOverride(input)
+        }
+
+        return CreateInstanceExportTaskResult.__default
+    }
+
+    /**
+     Invokes the CreateInternetGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateInternetGatewayRequest object being passed to this operation.
+         - completion: The CreateInternetGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateInternetGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func createInternetGatewayAsync(input: ElasticComputeCloudModel.CreateInternetGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateInternetGatewayResult>) -> ()) throws {
+        if let createInternetGatewayAsyncOverride = createInternetGatewayAsyncOverride {
+            return try createInternetGatewayAsyncOverride(input, completion)
+        }
+
+        let result = CreateInternetGatewayResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateInternetGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateInternetGatewayRequest object being passed to this operation.
+     - Returns: The CreateInternetGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createInternetGatewaySync(input: ElasticComputeCloudModel.CreateInternetGatewayRequest) throws -> ElasticComputeCloudModel.CreateInternetGatewayResult {
+        if let createInternetGatewaySyncOverride = createInternetGatewaySyncOverride {
+            return try createInternetGatewaySyncOverride(input)
+        }
+
+        return CreateInternetGatewayResult.__default
+    }
+
+    /**
+     Invokes the CreateKeyPair operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateKeyPairRequest object being passed to this operation.
+         - completion: The KeyPair object or an error will be passed to this 
+           callback when the operation is complete. The KeyPair
+           object will be validated before being returned to caller.
+     */
+    public func createKeyPairAsync(input: ElasticComputeCloudModel.CreateKeyPairRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.KeyPair>) -> ()) throws {
+        if let createKeyPairAsyncOverride = createKeyPairAsyncOverride {
+            return try createKeyPairAsyncOverride(input, completion)
+        }
+
+        let result = KeyPair.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateKeyPair operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateKeyPairRequest object being passed to this operation.
+     - Returns: The KeyPair object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createKeyPairSync(input: ElasticComputeCloudModel.CreateKeyPairRequest) throws -> ElasticComputeCloudModel.KeyPair {
+        if let createKeyPairSyncOverride = createKeyPairSyncOverride {
+            return try createKeyPairSyncOverride(input)
+        }
+
+        return KeyPair.__default
+    }
+
+    /**
+     Invokes the CreateLaunchTemplate operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateLaunchTemplateRequest object being passed to this operation.
+         - completion: The CreateLaunchTemplateResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateLaunchTemplateResult
+           object will be validated before being returned to caller.
+     */
+    public func createLaunchTemplateAsync(input: ElasticComputeCloudModel.CreateLaunchTemplateRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateLaunchTemplateResult>) -> ()) throws {
+        if let createLaunchTemplateAsyncOverride = createLaunchTemplateAsyncOverride {
+            return try createLaunchTemplateAsyncOverride(input, completion)
+        }
+
+        let result = CreateLaunchTemplateResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateLaunchTemplate operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateLaunchTemplateRequest object being passed to this operation.
+     - Returns: The CreateLaunchTemplateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createLaunchTemplateSync(input: ElasticComputeCloudModel.CreateLaunchTemplateRequest) throws -> ElasticComputeCloudModel.CreateLaunchTemplateResult {
+        if let createLaunchTemplateSyncOverride = createLaunchTemplateSyncOverride {
+            return try createLaunchTemplateSyncOverride(input)
+        }
+
+        return CreateLaunchTemplateResult.__default
+    }
+
+    /**
+     Invokes the CreateLaunchTemplateVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateLaunchTemplateVersionRequest object being passed to this operation.
+         - completion: The CreateLaunchTemplateVersionResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateLaunchTemplateVersionResult
+           object will be validated before being returned to caller.
+     */
+    public func createLaunchTemplateVersionAsync(input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult>) -> ()) throws {
+        if let createLaunchTemplateVersionAsyncOverride = createLaunchTemplateVersionAsyncOverride {
+            return try createLaunchTemplateVersionAsyncOverride(input, completion)
+        }
+
+        let result = CreateLaunchTemplateVersionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateLaunchTemplateVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateLaunchTemplateVersionRequest object being passed to this operation.
+     - Returns: The CreateLaunchTemplateVersionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createLaunchTemplateVersionSync(input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest) throws -> ElasticComputeCloudModel.CreateLaunchTemplateVersionResult {
+        if let createLaunchTemplateVersionSyncOverride = createLaunchTemplateVersionSyncOverride {
+            return try createLaunchTemplateVersionSyncOverride(input)
+        }
+
+        return CreateLaunchTemplateVersionResult.__default
+    }
+
+    /**
+     Invokes the CreateNatGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateNatGatewayRequest object being passed to this operation.
+         - completion: The CreateNatGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateNatGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func createNatGatewayAsync(input: ElasticComputeCloudModel.CreateNatGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNatGatewayResult>) -> ()) throws {
+        if let createNatGatewayAsyncOverride = createNatGatewayAsyncOverride {
+            return try createNatGatewayAsyncOverride(input, completion)
+        }
+
+        let result = CreateNatGatewayResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateNatGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateNatGatewayRequest object being passed to this operation.
+     - Returns: The CreateNatGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createNatGatewaySync(input: ElasticComputeCloudModel.CreateNatGatewayRequest) throws -> ElasticComputeCloudModel.CreateNatGatewayResult {
+        if let createNatGatewaySyncOverride = createNatGatewaySyncOverride {
+            return try createNatGatewaySyncOverride(input)
+        }
+
+        return CreateNatGatewayResult.__default
+    }
+
+    /**
+     Invokes the CreateNetworkAcl operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateNetworkAclRequest object being passed to this operation.
+         - completion: The CreateNetworkAclResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateNetworkAclResult
+           object will be validated before being returned to caller.
+     */
+    public func createNetworkAclAsync(input: ElasticComputeCloudModel.CreateNetworkAclRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNetworkAclResult>) -> ()) throws {
+        if let createNetworkAclAsyncOverride = createNetworkAclAsyncOverride {
+            return try createNetworkAclAsyncOverride(input, completion)
+        }
+
+        let result = CreateNetworkAclResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateNetworkAcl operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateNetworkAclRequest object being passed to this operation.
+     - Returns: The CreateNetworkAclResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createNetworkAclSync(input: ElasticComputeCloudModel.CreateNetworkAclRequest) throws -> ElasticComputeCloudModel.CreateNetworkAclResult {
+        if let createNetworkAclSyncOverride = createNetworkAclSyncOverride {
+            return try createNetworkAclSyncOverride(input)
+        }
+
+        return CreateNetworkAclResult.__default
+    }
+
+    /**
+     Invokes the CreateNetworkAclEntry operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateNetworkAclEntryRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func createNetworkAclEntryAsync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws {
+        if let createNetworkAclEntryAsyncOverride = createNetworkAclEntryAsyncOverride {
+            return try createNetworkAclEntryAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the CreateNetworkAclEntry operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateNetworkAclEntryRequest object being passed to this operation.
+     */
+    public func createNetworkAclEntrySync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest) throws {
+        if let createNetworkAclEntrySyncOverride = createNetworkAclEntrySyncOverride {
+            return try createNetworkAclEntrySyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the CreateNetworkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateNetworkInterfaceRequest object being passed to this operation.
+         - completion: The CreateNetworkInterfaceResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateNetworkInterfaceResult
+           object will be validated before being returned to caller.
+     */
+    public func createNetworkInterfaceAsync(input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNetworkInterfaceResult>) -> ()) throws {
+        if let createNetworkInterfaceAsyncOverride = createNetworkInterfaceAsyncOverride {
+            return try createNetworkInterfaceAsyncOverride(input, completion)
+        }
+
+        let result = CreateNetworkInterfaceResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateNetworkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateNetworkInterfaceRequest object being passed to this operation.
+     - Returns: The CreateNetworkInterfaceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createNetworkInterfaceSync(input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.CreateNetworkInterfaceResult {
+        if let createNetworkInterfaceSyncOverride = createNetworkInterfaceSyncOverride {
+            return try createNetworkInterfaceSyncOverride(input)
+        }
+
+        return CreateNetworkInterfaceResult.__default
+    }
+
+    /**
+     Invokes the CreateNetworkInterfacePermission operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateNetworkInterfacePermissionRequest object being passed to this operation.
+         - completion: The CreateNetworkInterfacePermissionResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateNetworkInterfacePermissionResult
+           object will be validated before being returned to caller.
+     */
+    public func createNetworkInterfacePermissionAsync(input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult>) -> ()) throws {
+        if let createNetworkInterfacePermissionAsyncOverride = createNetworkInterfacePermissionAsyncOverride {
+            return try createNetworkInterfacePermissionAsyncOverride(input, completion)
+        }
+
+        let result = CreateNetworkInterfacePermissionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateNetworkInterfacePermission operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateNetworkInterfacePermissionRequest object being passed to this operation.
+     - Returns: The CreateNetworkInterfacePermissionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createNetworkInterfacePermissionSync(input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest) throws -> ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult {
+        if let createNetworkInterfacePermissionSyncOverride = createNetworkInterfacePermissionSyncOverride {
+            return try createNetworkInterfacePermissionSyncOverride(input)
+        }
+
+        return CreateNetworkInterfacePermissionResult.__default
+    }
+
+    /**
+     Invokes the CreatePlacementGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreatePlacementGroupRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (Error?) -> ()) throws {
+        if let createPlacementGroupAsyncOverride = createPlacementGroupAsyncOverride {
+            return try createPlacementGroupAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the CreatePlacementGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreatePlacementGroupRequest object being passed to this operation.
+     */
+    public func createPlacementGroupSync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws {
+        if let createPlacementGroupSyncOverride = createPlacementGroupSyncOverride {
+            return try createPlacementGroupSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the CreateReservedInstancesListing operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateReservedInstancesListingRequest object being passed to this operation.
+         - completion: The CreateReservedInstancesListingResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateReservedInstancesListingResult
+           object will be validated before being returned to caller.
+     */
+    public func createReservedInstancesListingAsync(input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateReservedInstancesListingResult>) -> ()) throws {
+        if let createReservedInstancesListingAsyncOverride = createReservedInstancesListingAsyncOverride {
+            return try createReservedInstancesListingAsyncOverride(input, completion)
+        }
+
+        let result = CreateReservedInstancesListingResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateReservedInstancesListing operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateReservedInstancesListingRequest object being passed to this operation.
+     - Returns: The CreateReservedInstancesListingResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createReservedInstancesListingSync(input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult {
+        if let createReservedInstancesListingSyncOverride = createReservedInstancesListingSyncOverride {
+            return try createReservedInstancesListingSyncOverride(input)
+        }
+
+        return CreateReservedInstancesListingResult.__default
+    }
+
+    /**
+     Invokes the CreateRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateRouteRequest object being passed to this operation.
+         - completion: The CreateRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func createRouteAsync(input: ElasticComputeCloudModel.CreateRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateRouteResult>) -> ()) throws {
+        if let createRouteAsyncOverride = createRouteAsyncOverride {
+            return try createRouteAsyncOverride(input, completion)
+        }
+
+        let result = CreateRouteResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateRouteRequest object being passed to this operation.
+     - Returns: The CreateRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createRouteSync(input: ElasticComputeCloudModel.CreateRouteRequest) throws -> ElasticComputeCloudModel.CreateRouteResult {
+        if let createRouteSyncOverride = createRouteSyncOverride {
+            return try createRouteSyncOverride(input)
+        }
+
+        return CreateRouteResult.__default
+    }
+
+    /**
+     Invokes the CreateRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateRouteTableRequest object being passed to this operation.
+         - completion: The CreateRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func createRouteTableAsync(input: ElasticComputeCloudModel.CreateRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateRouteTableResult>) -> ()) throws {
+        if let createRouteTableAsyncOverride = createRouteTableAsyncOverride {
+            return try createRouteTableAsyncOverride(input, completion)
+        }
+
+        let result = CreateRouteTableResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateRouteTableRequest object being passed to this operation.
+     - Returns: The CreateRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createRouteTableSync(input: ElasticComputeCloudModel.CreateRouteTableRequest) throws -> ElasticComputeCloudModel.CreateRouteTableResult {
+        if let createRouteTableSyncOverride = createRouteTableSyncOverride {
+            return try createRouteTableSyncOverride(input)
+        }
+
+        return CreateRouteTableResult.__default
+    }
+
+    /**
+     Invokes the CreateSecurityGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSecurityGroupRequest object being passed to this operation.
+         - completion: The CreateSecurityGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateSecurityGroupResult
+           object will be validated before being returned to caller.
+     */
+    public func createSecurityGroupAsync(input: ElasticComputeCloudModel.CreateSecurityGroupRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSecurityGroupResult>) -> ()) throws {
+        if let createSecurityGroupAsyncOverride = createSecurityGroupAsyncOverride {
+            return try createSecurityGroupAsyncOverride(input, completion)
+        }
+
+        let result = CreateSecurityGroupResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateSecurityGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSecurityGroupRequest object being passed to this operation.
+     - Returns: The CreateSecurityGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createSecurityGroupSync(input: ElasticComputeCloudModel.CreateSecurityGroupRequest) throws -> ElasticComputeCloudModel.CreateSecurityGroupResult {
+        if let createSecurityGroupSyncOverride = createSecurityGroupSyncOverride {
+            return try createSecurityGroupSyncOverride(input)
+        }
+
+        return CreateSecurityGroupResult.__default
+    }
+
+    /**
+     Invokes the CreateSnapshot operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSnapshotRequest object being passed to this operation.
+         - completion: The Snapshot object or an error will be passed to this 
+           callback when the operation is complete. The Snapshot
+           object will be validated before being returned to caller.
+     */
+    public func createSnapshotAsync(input: ElasticComputeCloudModel.CreateSnapshotRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.Snapshot>) -> ()) throws {
+        if let createSnapshotAsyncOverride = createSnapshotAsyncOverride {
+            return try createSnapshotAsyncOverride(input, completion)
+        }
+
+        let result = Snapshot.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateSnapshot operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSnapshotRequest object being passed to this operation.
+     - Returns: The Snapshot object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createSnapshotSync(input: ElasticComputeCloudModel.CreateSnapshotRequest) throws -> ElasticComputeCloudModel.Snapshot {
+        if let createSnapshotSyncOverride = createSnapshotSyncOverride {
+            return try createSnapshotSyncOverride(input)
+        }
+
+        return Snapshot.__default
+    }
+
+    /**
+     Invokes the CreateSpotDatafeedSubscription operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSpotDatafeedSubscriptionRequest object being passed to this operation.
+         - completion: The CreateSpotDatafeedSubscriptionResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateSpotDatafeedSubscriptionResult
+           object will be validated before being returned to caller.
+     */
+    public func createSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult>) -> ()) throws {
+        if let createSpotDatafeedSubscriptionAsyncOverride = createSpotDatafeedSubscriptionAsyncOverride {
+            return try createSpotDatafeedSubscriptionAsyncOverride(input, completion)
+        }
+
+        let result = CreateSpotDatafeedSubscriptionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateSpotDatafeedSubscription operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSpotDatafeedSubscriptionRequest object being passed to this operation.
+     - Returns: The CreateSpotDatafeedSubscriptionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createSpotDatafeedSubscriptionSync(input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest) throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult {
+        if let createSpotDatafeedSubscriptionSyncOverride = createSpotDatafeedSubscriptionSyncOverride {
+            return try createSpotDatafeedSubscriptionSyncOverride(input)
+        }
+
+        return CreateSpotDatafeedSubscriptionResult.__default
+    }
+
+    /**
+     Invokes the CreateSubnet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSubnetRequest object being passed to this operation.
+         - completion: The CreateSubnetResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateSubnetResult
+           object will be validated before being returned to caller.
+     */
+    public func createSubnetAsync(input: ElasticComputeCloudModel.CreateSubnetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSubnetResult>) -> ()) throws {
+        if let createSubnetAsyncOverride = createSubnetAsyncOverride {
+            return try createSubnetAsyncOverride(input, completion)
+        }
+
+        let result = CreateSubnetResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateSubnet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSubnetRequest object being passed to this operation.
+     - Returns: The CreateSubnetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createSubnetSync(input: ElasticComputeCloudModel.CreateSubnetRequest) throws -> ElasticComputeCloudModel.CreateSubnetResult {
+        if let createSubnetSyncOverride = createSubnetSyncOverride {
+            return try createSubnetSyncOverride(input)
+        }
+
+        return CreateSubnetResult.__default
+    }
+
+    /**
+     Invokes the CreateTags operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTagsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func createTagsAsync(input: ElasticComputeCloudModel.CreateTagsRequest, completion: @escaping (Error?) -> ()) throws {
+        if let createTagsAsyncOverride = createTagsAsyncOverride {
+            return try createTagsAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the CreateTags operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTagsRequest object being passed to this operation.
+     */
+    public func createTagsSync(input: ElasticComputeCloudModel.CreateTagsRequest) throws {
+        if let createTagsSyncOverride = createTagsSyncOverride {
+            return try createTagsSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the CreateVolume operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVolumeRequest object being passed to this operation.
+         - completion: The Volume object or an error will be passed to this 
+           callback when the operation is complete. The Volume
+           object will be validated before being returned to caller.
+     */
+    public func createVolumeAsync(input: ElasticComputeCloudModel.CreateVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.Volume>) -> ()) throws {
+        if let createVolumeAsyncOverride = createVolumeAsyncOverride {
+            return try createVolumeAsyncOverride(input, completion)
+        }
+
+        let result = Volume.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateVolume operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVolumeRequest object being passed to this operation.
+     - Returns: The Volume object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVolumeSync(input: ElasticComputeCloudModel.CreateVolumeRequest) throws -> ElasticComputeCloudModel.Volume {
+        if let createVolumeSyncOverride = createVolumeSyncOverride {
+            return try createVolumeSyncOverride(input)
+        }
+
+        return Volume.__default
+    }
+
+    /**
+     Invokes the CreateVpc operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVpcRequest object being passed to this operation.
+         - completion: The CreateVpcResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVpcResult
+           object will be validated before being returned to caller.
+     */
+    public func createVpcAsync(input: ElasticComputeCloudModel.CreateVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcResult>) -> ()) throws {
+        if let createVpcAsyncOverride = createVpcAsyncOverride {
+            return try createVpcAsyncOverride(input, completion)
+        }
+
+        let result = CreateVpcResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateVpc operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVpcRequest object being passed to this operation.
+     - Returns: The CreateVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVpcSync(input: ElasticComputeCloudModel.CreateVpcRequest) throws -> ElasticComputeCloudModel.CreateVpcResult {
+        if let createVpcSyncOverride = createVpcSyncOverride {
+            return try createVpcSyncOverride(input)
+        }
+
+        return CreateVpcResult.__default
+    }
+
+    /**
+     Invokes the CreateVpcEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVpcEndpointRequest object being passed to this operation.
+         - completion: The CreateVpcEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVpcEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func createVpcEndpointAsync(input: ElasticComputeCloudModel.CreateVpcEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcEndpointResult>) -> ()) throws {
+        if let createVpcEndpointAsyncOverride = createVpcEndpointAsyncOverride {
+            return try createVpcEndpointAsyncOverride(input, completion)
+        }
+
+        let result = CreateVpcEndpointResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateVpcEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVpcEndpointRequest object being passed to this operation.
+     - Returns: The CreateVpcEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVpcEndpointSync(input: ElasticComputeCloudModel.CreateVpcEndpointRequest) throws -> ElasticComputeCloudModel.CreateVpcEndpointResult {
+        if let createVpcEndpointSyncOverride = createVpcEndpointSyncOverride {
+            return try createVpcEndpointSyncOverride(input)
+        }
+
+        return CreateVpcEndpointResult.__default
+    }
+
+    /**
+     Invokes the CreateVpcEndpointConnectionNotification operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVpcEndpointConnectionNotificationRequest object being passed to this operation.
+         - completion: The CreateVpcEndpointConnectionNotificationResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVpcEndpointConnectionNotificationResult
+           object will be validated before being returned to caller.
+     */
+    public func createVpcEndpointConnectionNotificationAsync(input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult>) -> ()) throws {
+        if let createVpcEndpointConnectionNotificationAsyncOverride = createVpcEndpointConnectionNotificationAsyncOverride {
+            return try createVpcEndpointConnectionNotificationAsyncOverride(input, completion)
+        }
+
+        let result = CreateVpcEndpointConnectionNotificationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateVpcEndpointConnectionNotification operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVpcEndpointConnectionNotificationRequest object being passed to this operation.
+     - Returns: The CreateVpcEndpointConnectionNotificationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVpcEndpointConnectionNotificationSync(input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest) throws -> ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult {
+        if let createVpcEndpointConnectionNotificationSyncOverride = createVpcEndpointConnectionNotificationSyncOverride {
+            return try createVpcEndpointConnectionNotificationSyncOverride(input)
+        }
+
+        return CreateVpcEndpointConnectionNotificationResult.__default
+    }
+
+    /**
+     Invokes the CreateVpcEndpointServiceConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVpcEndpointServiceConfigurationRequest object being passed to this operation.
+         - completion: The CreateVpcEndpointServiceConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVpcEndpointServiceConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    public func createVpcEndpointServiceConfigurationAsync(input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult>) -> ()) throws {
+        if let createVpcEndpointServiceConfigurationAsyncOverride = createVpcEndpointServiceConfigurationAsyncOverride {
+            return try createVpcEndpointServiceConfigurationAsyncOverride(input, completion)
+        }
+
+        let result = CreateVpcEndpointServiceConfigurationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateVpcEndpointServiceConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVpcEndpointServiceConfigurationRequest object being passed to this operation.
+     - Returns: The CreateVpcEndpointServiceConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVpcEndpointServiceConfigurationSync(input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest) throws -> ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult {
+        if let createVpcEndpointServiceConfigurationSyncOverride = createVpcEndpointServiceConfigurationSyncOverride {
+            return try createVpcEndpointServiceConfigurationSyncOverride(input)
+        }
+
+        return CreateVpcEndpointServiceConfigurationResult.__default
+    }
+
+    /**
+     Invokes the CreateVpcPeeringConnection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVpcPeeringConnectionRequest object being passed to this operation.
+         - completion: The CreateVpcPeeringConnectionResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVpcPeeringConnectionResult
+           object will be validated before being returned to caller.
+     */
+    public func createVpcPeeringConnectionAsync(input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult>) -> ()) throws {
+        if let createVpcPeeringConnectionAsyncOverride = createVpcPeeringConnectionAsyncOverride {
+            return try createVpcPeeringConnectionAsyncOverride(input, completion)
+        }
+
+        let result = CreateVpcPeeringConnectionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateVpcPeeringConnection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVpcPeeringConnectionRequest object being passed to this operation.
+     - Returns: The CreateVpcPeeringConnectionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVpcPeeringConnectionSync(input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.CreateVpcPeeringConnectionResult {
+        if let createVpcPeeringConnectionSyncOverride = createVpcPeeringConnectionSyncOverride {
+            return try createVpcPeeringConnectionSyncOverride(input)
+        }
+
+        return CreateVpcPeeringConnectionResult.__default
+    }
+
+    /**
+     Invokes the CreateVpnConnection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVpnConnectionRequest object being passed to this operation.
+         - completion: The CreateVpnConnectionResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVpnConnectionResult
+           object will be validated before being returned to caller.
+     */
+    public func createVpnConnectionAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpnConnectionResult>) -> ()) throws {
+        if let createVpnConnectionAsyncOverride = createVpnConnectionAsyncOverride {
+            return try createVpnConnectionAsyncOverride(input, completion)
+        }
+
+        let result = CreateVpnConnectionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateVpnConnection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVpnConnectionRequest object being passed to this operation.
+     - Returns: The CreateVpnConnectionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVpnConnectionSync(input: ElasticComputeCloudModel.CreateVpnConnectionRequest) throws -> ElasticComputeCloudModel.CreateVpnConnectionResult {
+        if let createVpnConnectionSyncOverride = createVpnConnectionSyncOverride {
+            return try createVpnConnectionSyncOverride(input)
+        }
+
+        return CreateVpnConnectionResult.__default
+    }
+
+    /**
+     Invokes the CreateVpnConnectionRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVpnConnectionRouteRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func createVpnConnectionRouteAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, completion: @escaping (Error?) -> ()) throws {
+        if let createVpnConnectionRouteAsyncOverride = createVpnConnectionRouteAsyncOverride {
+            return try createVpnConnectionRouteAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the CreateVpnConnectionRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVpnConnectionRouteRequest object being passed to this operation.
+     */
+    public func createVpnConnectionRouteSync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest) throws {
+        if let createVpnConnectionRouteSyncOverride = createVpnConnectionRouteSyncOverride {
+            return try createVpnConnectionRouteSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the CreateVpnGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVpnGatewayRequest object being passed to this operation.
+         - completion: The CreateVpnGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVpnGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func createVpnGatewayAsync(input: ElasticComputeCloudModel.CreateVpnGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpnGatewayResult>) -> ()) throws {
+        if let createVpnGatewayAsyncOverride = createVpnGatewayAsyncOverride {
+            return try createVpnGatewayAsyncOverride(input, completion)
+        }
+
+        let result = CreateVpnGatewayResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the CreateVpnGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVpnGatewayRequest object being passed to this operation.
+     - Returns: The CreateVpnGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVpnGatewaySync(input: ElasticComputeCloudModel.CreateVpnGatewayRequest) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult {
+        if let createVpnGatewaySyncOverride = createVpnGatewaySyncOverride {
+            return try createVpnGatewaySyncOverride(input)
+        }
+
+        return CreateVpnGatewayResult.__default
+    }
+
+    /**
+     Invokes the DeleteCustomerGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCustomerGatewayRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteCustomerGatewayAsync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteCustomerGatewayAsyncOverride = deleteCustomerGatewayAsyncOverride {
+            return try deleteCustomerGatewayAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteCustomerGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCustomerGatewayRequest object being passed to this operation.
+     */
+    public func deleteCustomerGatewaySync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest) throws {
+        if let deleteCustomerGatewaySyncOverride = deleteCustomerGatewaySyncOverride {
+            return try deleteCustomerGatewaySyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteDhcpOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteDhcpOptionsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteDhcpOptionsAsync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteDhcpOptionsAsyncOverride = deleteDhcpOptionsAsyncOverride {
+            return try deleteDhcpOptionsAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteDhcpOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteDhcpOptionsRequest object being passed to this operation.
+     */
+    public func deleteDhcpOptionsSync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest) throws {
+        if let deleteDhcpOptionsSyncOverride = deleteDhcpOptionsSyncOverride {
+            return try deleteDhcpOptionsSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteEgressOnlyInternetGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteEgressOnlyInternetGatewayRequest object being passed to this operation.
+         - completion: The DeleteEgressOnlyInternetGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteEgressOnlyInternetGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteEgressOnlyInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult>) -> ()) throws {
+        if let deleteEgressOnlyInternetGatewayAsyncOverride = deleteEgressOnlyInternetGatewayAsyncOverride {
+            return try deleteEgressOnlyInternetGatewayAsyncOverride(input, completion)
+        }
+
+        let result = DeleteEgressOnlyInternetGatewayResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteEgressOnlyInternetGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteEgressOnlyInternetGatewayRequest object being passed to this operation.
+     - Returns: The DeleteEgressOnlyInternetGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteEgressOnlyInternetGatewaySync(input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest) throws -> ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult {
+        if let deleteEgressOnlyInternetGatewaySyncOverride = deleteEgressOnlyInternetGatewaySyncOverride {
+            return try deleteEgressOnlyInternetGatewaySyncOverride(input)
+        }
+
+        return DeleteEgressOnlyInternetGatewayResult.__default
+    }
+
+    /**
+     Invokes the DeleteFleets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteFleetsRequest object being passed to this operation.
+         - completion: The DeleteFleetsResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteFleetsResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteFleetsAsync(input: ElasticComputeCloudModel.DeleteFleetsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteFleetsResult>) -> ()) throws {
+        if let deleteFleetsAsyncOverride = deleteFleetsAsyncOverride {
+            return try deleteFleetsAsyncOverride(input, completion)
+        }
+
+        let result = DeleteFleetsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteFleets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteFleetsRequest object being passed to this operation.
+     - Returns: The DeleteFleetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteFleetsSync(input: ElasticComputeCloudModel.DeleteFleetsRequest) throws -> ElasticComputeCloudModel.DeleteFleetsResult {
+        if let deleteFleetsSyncOverride = deleteFleetsSyncOverride {
+            return try deleteFleetsSyncOverride(input)
+        }
+
+        return DeleteFleetsResult.__default
+    }
+
+    /**
+     Invokes the DeleteFlowLogs operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteFlowLogsRequest object being passed to this operation.
+         - completion: The DeleteFlowLogsResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteFlowLogsResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteFlowLogsAsync(input: ElasticComputeCloudModel.DeleteFlowLogsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteFlowLogsResult>) -> ()) throws {
+        if let deleteFlowLogsAsyncOverride = deleteFlowLogsAsyncOverride {
+            return try deleteFlowLogsAsyncOverride(input, completion)
+        }
+
+        let result = DeleteFlowLogsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteFlowLogs operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteFlowLogsRequest object being passed to this operation.
+     - Returns: The DeleteFlowLogsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteFlowLogsSync(input: ElasticComputeCloudModel.DeleteFlowLogsRequest) throws -> ElasticComputeCloudModel.DeleteFlowLogsResult {
+        if let deleteFlowLogsSyncOverride = deleteFlowLogsSyncOverride {
+            return try deleteFlowLogsSyncOverride(input)
+        }
+
+        return DeleteFlowLogsResult.__default
+    }
+
+    /**
+     Invokes the DeleteFpgaImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteFpgaImageRequest object being passed to this operation.
+         - completion: The DeleteFpgaImageResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteFpgaImageResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteFpgaImageAsync(input: ElasticComputeCloudModel.DeleteFpgaImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteFpgaImageResult>) -> ()) throws {
+        if let deleteFpgaImageAsyncOverride = deleteFpgaImageAsyncOverride {
+            return try deleteFpgaImageAsyncOverride(input, completion)
+        }
+
+        let result = DeleteFpgaImageResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteFpgaImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteFpgaImageRequest object being passed to this operation.
+     - Returns: The DeleteFpgaImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteFpgaImageSync(input: ElasticComputeCloudModel.DeleteFpgaImageRequest) throws -> ElasticComputeCloudModel.DeleteFpgaImageResult {
+        if let deleteFpgaImageSyncOverride = deleteFpgaImageSyncOverride {
+            return try deleteFpgaImageSyncOverride(input)
+        }
+
+        return DeleteFpgaImageResult.__default
+    }
+
+    /**
+     Invokes the DeleteInternetGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInternetGatewayRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteInternetGatewayAsyncOverride = deleteInternetGatewayAsyncOverride {
+            return try deleteInternetGatewayAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteInternetGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInternetGatewayRequest object being passed to this operation.
+     */
+    public func deleteInternetGatewaySync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest) throws {
+        if let deleteInternetGatewaySyncOverride = deleteInternetGatewaySyncOverride {
+            return try deleteInternetGatewaySyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteKeyPair operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteKeyPairRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteKeyPairAsync(input: ElasticComputeCloudModel.DeleteKeyPairRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteKeyPairAsyncOverride = deleteKeyPairAsyncOverride {
+            return try deleteKeyPairAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteKeyPair operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteKeyPairRequest object being passed to this operation.
+     */
+    public func deleteKeyPairSync(input: ElasticComputeCloudModel.DeleteKeyPairRequest) throws {
+        if let deleteKeyPairSyncOverride = deleteKeyPairSyncOverride {
+            return try deleteKeyPairSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteLaunchTemplate operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteLaunchTemplateRequest object being passed to this operation.
+         - completion: The DeleteLaunchTemplateResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteLaunchTemplateResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteLaunchTemplateAsync(input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteLaunchTemplateResult>) -> ()) throws {
+        if let deleteLaunchTemplateAsyncOverride = deleteLaunchTemplateAsyncOverride {
+            return try deleteLaunchTemplateAsyncOverride(input, completion)
+        }
+
+        let result = DeleteLaunchTemplateResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteLaunchTemplate operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteLaunchTemplateRequest object being passed to this operation.
+     - Returns: The DeleteLaunchTemplateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteLaunchTemplateSync(input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateResult {
+        if let deleteLaunchTemplateSyncOverride = deleteLaunchTemplateSyncOverride {
+            return try deleteLaunchTemplateSyncOverride(input)
+        }
+
+        return DeleteLaunchTemplateResult.__default
+    }
+
+    /**
+     Invokes the DeleteLaunchTemplateVersions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteLaunchTemplateVersionsRequest object being passed to this operation.
+         - completion: The DeleteLaunchTemplateVersionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteLaunchTemplateVersionsResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteLaunchTemplateVersionsAsync(input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult>) -> ()) throws {
+        if let deleteLaunchTemplateVersionsAsyncOverride = deleteLaunchTemplateVersionsAsyncOverride {
+            return try deleteLaunchTemplateVersionsAsyncOverride(input, completion)
+        }
+
+        let result = DeleteLaunchTemplateVersionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteLaunchTemplateVersions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteLaunchTemplateVersionsRequest object being passed to this operation.
+     - Returns: The DeleteLaunchTemplateVersionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteLaunchTemplateVersionsSync(input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult {
+        if let deleteLaunchTemplateVersionsSyncOverride = deleteLaunchTemplateVersionsSyncOverride {
+            return try deleteLaunchTemplateVersionsSyncOverride(input)
+        }
+
+        return DeleteLaunchTemplateVersionsResult.__default
+    }
+
+    /**
+     Invokes the DeleteNatGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNatGatewayRequest object being passed to this operation.
+         - completion: The DeleteNatGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteNatGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteNatGatewayAsync(input: ElasticComputeCloudModel.DeleteNatGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteNatGatewayResult>) -> ()) throws {
+        if let deleteNatGatewayAsyncOverride = deleteNatGatewayAsyncOverride {
+            return try deleteNatGatewayAsyncOverride(input, completion)
+        }
+
+        let result = DeleteNatGatewayResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteNatGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNatGatewayRequest object being passed to this operation.
+     - Returns: The DeleteNatGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteNatGatewaySync(input: ElasticComputeCloudModel.DeleteNatGatewayRequest) throws -> ElasticComputeCloudModel.DeleteNatGatewayResult {
+        if let deleteNatGatewaySyncOverride = deleteNatGatewaySyncOverride {
+            return try deleteNatGatewaySyncOverride(input)
+        }
+
+        return DeleteNatGatewayResult.__default
+    }
+
+    /**
+     Invokes the DeleteNetworkAcl operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkAclRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteNetworkAclAsync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteNetworkAclAsyncOverride = deleteNetworkAclAsyncOverride {
+            return try deleteNetworkAclAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteNetworkAcl operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkAclRequest object being passed to this operation.
+     */
+    public func deleteNetworkAclSync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest) throws {
+        if let deleteNetworkAclSyncOverride = deleteNetworkAclSyncOverride {
+            return try deleteNetworkAclSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteNetworkAclEntry operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkAclEntryRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteNetworkAclEntryAsync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteNetworkAclEntryAsyncOverride = deleteNetworkAclEntryAsyncOverride {
+            return try deleteNetworkAclEntryAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteNetworkAclEntry operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkAclEntryRequest object being passed to this operation.
+     */
+    public func deleteNetworkAclEntrySync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest) throws {
+        if let deleteNetworkAclEntrySyncOverride = deleteNetworkAclEntrySyncOverride {
+            return try deleteNetworkAclEntrySyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteNetworkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInterfaceRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteNetworkInterfaceAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteNetworkInterfaceAsyncOverride = deleteNetworkInterfaceAsyncOverride {
+            return try deleteNetworkInterfaceAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteNetworkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInterfaceRequest object being passed to this operation.
+     */
+    public func deleteNetworkInterfaceSync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest) throws {
+        if let deleteNetworkInterfaceSyncOverride = deleteNetworkInterfaceSyncOverride {
+            return try deleteNetworkInterfaceSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteNetworkInterfacePermission operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInterfacePermissionRequest object being passed to this operation.
+         - completion: The DeleteNetworkInterfacePermissionResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteNetworkInterfacePermissionResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteNetworkInterfacePermissionAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult>) -> ()) throws {
+        if let deleteNetworkInterfacePermissionAsyncOverride = deleteNetworkInterfacePermissionAsyncOverride {
+            return try deleteNetworkInterfacePermissionAsyncOverride(input, completion)
+        }
+
+        let result = DeleteNetworkInterfacePermissionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteNetworkInterfacePermission operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInterfacePermissionRequest object being passed to this operation.
+     - Returns: The DeleteNetworkInterfacePermissionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteNetworkInterfacePermissionSync(input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult {
+        if let deleteNetworkInterfacePermissionSyncOverride = deleteNetworkInterfacePermissionSyncOverride {
+            return try deleteNetworkInterfacePermissionSyncOverride(input)
+        }
+
+        return DeleteNetworkInterfacePermissionResult.__default
+    }
+
+    /**
+     Invokes the DeletePlacementGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeletePlacementGroupRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deletePlacementGroupAsync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deletePlacementGroupAsyncOverride = deletePlacementGroupAsyncOverride {
+            return try deletePlacementGroupAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeletePlacementGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeletePlacementGroupRequest object being passed to this operation.
+     */
+    public func deletePlacementGroupSync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest) throws {
+        if let deletePlacementGroupSyncOverride = deletePlacementGroupSyncOverride {
+            return try deletePlacementGroupSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteRouteRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteRouteAsync(input: ElasticComputeCloudModel.DeleteRouteRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteRouteAsyncOverride = deleteRouteAsyncOverride {
+            return try deleteRouteAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteRouteRequest object being passed to this operation.
+     */
+    public func deleteRouteSync(input: ElasticComputeCloudModel.DeleteRouteRequest) throws {
+        if let deleteRouteSyncOverride = deleteRouteSyncOverride {
+            return try deleteRouteSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteRouteTableRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteRouteTableAsync(input: ElasticComputeCloudModel.DeleteRouteTableRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteRouteTableAsyncOverride = deleteRouteTableAsyncOverride {
+            return try deleteRouteTableAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteRouteTableRequest object being passed to this operation.
+     */
+    public func deleteRouteTableSync(input: ElasticComputeCloudModel.DeleteRouteTableRequest) throws {
+        if let deleteRouteTableSyncOverride = deleteRouteTableSyncOverride {
+            return try deleteRouteTableSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteSecurityGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSecurityGroupRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteSecurityGroupAsync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteSecurityGroupAsyncOverride = deleteSecurityGroupAsyncOverride {
+            return try deleteSecurityGroupAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteSecurityGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSecurityGroupRequest object being passed to this operation.
+     */
+    public func deleteSecurityGroupSync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest) throws {
+        if let deleteSecurityGroupSyncOverride = deleteSecurityGroupSyncOverride {
+            return try deleteSecurityGroupSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteSnapshot operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSnapshotRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteSnapshotAsync(input: ElasticComputeCloudModel.DeleteSnapshotRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteSnapshotAsyncOverride = deleteSnapshotAsyncOverride {
+            return try deleteSnapshotAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteSnapshot operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSnapshotRequest object being passed to this operation.
+     */
+    public func deleteSnapshotSync(input: ElasticComputeCloudModel.DeleteSnapshotRequest) throws {
+        if let deleteSnapshotSyncOverride = deleteSnapshotSyncOverride {
+            return try deleteSnapshotSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteSpotDatafeedSubscription operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSpotDatafeedSubscriptionRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteSpotDatafeedSubscriptionAsyncOverride = deleteSpotDatafeedSubscriptionAsyncOverride {
+            return try deleteSpotDatafeedSubscriptionAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteSpotDatafeedSubscription operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSpotDatafeedSubscriptionRequest object being passed to this operation.
+     */
+    public func deleteSpotDatafeedSubscriptionSync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest) throws {
+        if let deleteSpotDatafeedSubscriptionSyncOverride = deleteSpotDatafeedSubscriptionSyncOverride {
+            return try deleteSpotDatafeedSubscriptionSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteSubnet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSubnetRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteSubnetAsync(input: ElasticComputeCloudModel.DeleteSubnetRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteSubnetAsyncOverride = deleteSubnetAsyncOverride {
+            return try deleteSubnetAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteSubnet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSubnetRequest object being passed to this operation.
+     */
+    public func deleteSubnetSync(input: ElasticComputeCloudModel.DeleteSubnetRequest) throws {
+        if let deleteSubnetSyncOverride = deleteSubnetSyncOverride {
+            return try deleteSubnetSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteTags operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTagsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteTagsAsync(input: ElasticComputeCloudModel.DeleteTagsRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteTagsAsyncOverride = deleteTagsAsyncOverride {
+            return try deleteTagsAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteTags operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTagsRequest object being passed to this operation.
+     */
+    public func deleteTagsSync(input: ElasticComputeCloudModel.DeleteTagsRequest) throws {
+        if let deleteTagsSyncOverride = deleteTagsSyncOverride {
+            return try deleteTagsSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteVolume operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVolumeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteVolumeAsync(input: ElasticComputeCloudModel.DeleteVolumeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteVolumeAsyncOverride = deleteVolumeAsyncOverride {
+            return try deleteVolumeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteVolume operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVolumeRequest object being passed to this operation.
+     */
+    public func deleteVolumeSync(input: ElasticComputeCloudModel.DeleteVolumeRequest) throws {
+        if let deleteVolumeSyncOverride = deleteVolumeSyncOverride {
+            return try deleteVolumeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteVpc operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVpcRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteVpcAsync(input: ElasticComputeCloudModel.DeleteVpcRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteVpcAsyncOverride = deleteVpcAsyncOverride {
+            return try deleteVpcAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteVpc operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVpcRequest object being passed to this operation.
+     */
+    public func deleteVpcSync(input: ElasticComputeCloudModel.DeleteVpcRequest) throws {
+        if let deleteVpcSyncOverride = deleteVpcSyncOverride {
+            return try deleteVpcSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteVpcEndpointConnectionNotifications operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVpcEndpointConnectionNotificationsRequest object being passed to this operation.
+         - completion: The DeleteVpcEndpointConnectionNotificationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVpcEndpointConnectionNotificationsResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteVpcEndpointConnectionNotificationsAsync(input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult>) -> ()) throws {
+        if let deleteVpcEndpointConnectionNotificationsAsyncOverride = deleteVpcEndpointConnectionNotificationsAsyncOverride {
+            return try deleteVpcEndpointConnectionNotificationsAsyncOverride(input, completion)
+        }
+
+        let result = DeleteVpcEndpointConnectionNotificationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteVpcEndpointConnectionNotifications operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVpcEndpointConnectionNotificationsRequest object being passed to this operation.
+     - Returns: The DeleteVpcEndpointConnectionNotificationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteVpcEndpointConnectionNotificationsSync(input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult {
+        if let deleteVpcEndpointConnectionNotificationsSyncOverride = deleteVpcEndpointConnectionNotificationsSyncOverride {
+            return try deleteVpcEndpointConnectionNotificationsSyncOverride(input)
+        }
+
+        return DeleteVpcEndpointConnectionNotificationsResult.__default
+    }
+
+    /**
+     Invokes the DeleteVpcEndpointServiceConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVpcEndpointServiceConfigurationsRequest object being passed to this operation.
+         - completion: The DeleteVpcEndpointServiceConfigurationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVpcEndpointServiceConfigurationsResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteVpcEndpointServiceConfigurationsAsync(input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult>) -> ()) throws {
+        if let deleteVpcEndpointServiceConfigurationsAsyncOverride = deleteVpcEndpointServiceConfigurationsAsyncOverride {
+            return try deleteVpcEndpointServiceConfigurationsAsyncOverride(input, completion)
+        }
+
+        let result = DeleteVpcEndpointServiceConfigurationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteVpcEndpointServiceConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVpcEndpointServiceConfigurationsRequest object being passed to this operation.
+     - Returns: The DeleteVpcEndpointServiceConfigurationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteVpcEndpointServiceConfigurationsSync(input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult {
+        if let deleteVpcEndpointServiceConfigurationsSyncOverride = deleteVpcEndpointServiceConfigurationsSyncOverride {
+            return try deleteVpcEndpointServiceConfigurationsSyncOverride(input)
+        }
+
+        return DeleteVpcEndpointServiceConfigurationsResult.__default
+    }
+
+    /**
+     Invokes the DeleteVpcEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVpcEndpointsRequest object being passed to this operation.
+         - completion: The DeleteVpcEndpointsResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVpcEndpointsResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteVpcEndpointsAsync(input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcEndpointsResult>) -> ()) throws {
+        if let deleteVpcEndpointsAsyncOverride = deleteVpcEndpointsAsyncOverride {
+            return try deleteVpcEndpointsAsyncOverride(input, completion)
+        }
+
+        let result = DeleteVpcEndpointsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteVpcEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVpcEndpointsRequest object being passed to this operation.
+     - Returns: The DeleteVpcEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteVpcEndpointsSync(input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointsResult {
+        if let deleteVpcEndpointsSyncOverride = deleteVpcEndpointsSyncOverride {
+            return try deleteVpcEndpointsSyncOverride(input)
+        }
+
+        return DeleteVpcEndpointsResult.__default
+    }
+
+    /**
+     Invokes the DeleteVpcPeeringConnection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVpcPeeringConnectionRequest object being passed to this operation.
+         - completion: The DeleteVpcPeeringConnectionResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVpcPeeringConnectionResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteVpcPeeringConnectionAsync(input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult>) -> ()) throws {
+        if let deleteVpcPeeringConnectionAsyncOverride = deleteVpcPeeringConnectionAsyncOverride {
+            return try deleteVpcPeeringConnectionAsyncOverride(input, completion)
+        }
+
+        let result = DeleteVpcPeeringConnectionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteVpcPeeringConnection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVpcPeeringConnectionRequest object being passed to this operation.
+     - Returns: The DeleteVpcPeeringConnectionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteVpcPeeringConnectionSync(input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult {
+        if let deleteVpcPeeringConnectionSyncOverride = deleteVpcPeeringConnectionSyncOverride {
+            return try deleteVpcPeeringConnectionSyncOverride(input)
+        }
+
+        return DeleteVpcPeeringConnectionResult.__default
+    }
+
+    /**
+     Invokes the DeleteVpnConnection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVpnConnectionRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteVpnConnectionAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteVpnConnectionAsyncOverride = deleteVpnConnectionAsyncOverride {
+            return try deleteVpnConnectionAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteVpnConnection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVpnConnectionRequest object being passed to this operation.
+     */
+    public func deleteVpnConnectionSync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest) throws {
+        if let deleteVpnConnectionSyncOverride = deleteVpnConnectionSyncOverride {
+            return try deleteVpnConnectionSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteVpnConnectionRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVpnConnectionRouteRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteVpnConnectionRouteAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteVpnConnectionRouteAsyncOverride = deleteVpnConnectionRouteAsyncOverride {
+            return try deleteVpnConnectionRouteAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteVpnConnectionRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVpnConnectionRouteRequest object being passed to this operation.
+     */
+    public func deleteVpnConnectionRouteSync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest) throws {
+        if let deleteVpnConnectionRouteSyncOverride = deleteVpnConnectionRouteSyncOverride {
+            return try deleteVpnConnectionRouteSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeleteVpnGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVpnGatewayRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteVpnGatewayAsync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deleteVpnGatewayAsyncOverride = deleteVpnGatewayAsyncOverride {
+            return try deleteVpnGatewayAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeleteVpnGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVpnGatewayRequest object being passed to this operation.
+     */
+    public func deleteVpnGatewaySync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest) throws {
+        if let deleteVpnGatewaySyncOverride = deleteVpnGatewaySyncOverride {
+            return try deleteVpnGatewaySyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DeprovisionByoipCidr operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeprovisionByoipCidrRequest object being passed to this operation.
+         - completion: The DeprovisionByoipCidrResult object or an error will be passed to this 
+           callback when the operation is complete. The DeprovisionByoipCidrResult
+           object will be validated before being returned to caller.
+     */
+    public func deprovisionByoipCidrAsync(input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeprovisionByoipCidrResult>) -> ()) throws {
+        if let deprovisionByoipCidrAsyncOverride = deprovisionByoipCidrAsyncOverride {
+            return try deprovisionByoipCidrAsyncOverride(input, completion)
+        }
+
+        let result = DeprovisionByoipCidrResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeprovisionByoipCidr operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeprovisionByoipCidrRequest object being passed to this operation.
+     - Returns: The DeprovisionByoipCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deprovisionByoipCidrSync(input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest) throws -> ElasticComputeCloudModel.DeprovisionByoipCidrResult {
+        if let deprovisionByoipCidrSyncOverride = deprovisionByoipCidrSyncOverride {
+            return try deprovisionByoipCidrSyncOverride(input)
+        }
+
+        return DeprovisionByoipCidrResult.__default
+    }
+
+    /**
+     Invokes the DeregisterImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterImageRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deregisterImageAsync(input: ElasticComputeCloudModel.DeregisterImageRequest, completion: @escaping (Error?) -> ()) throws {
+        if let deregisterImageAsyncOverride = deregisterImageAsyncOverride {
+            return try deregisterImageAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DeregisterImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterImageRequest object being passed to this operation.
+     */
+    public func deregisterImageSync(input: ElasticComputeCloudModel.DeregisterImageRequest) throws {
+        if let deregisterImageSyncOverride = deregisterImageSyncOverride {
+            return try deregisterImageSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DescribeAccountAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAccountAttributesRequest object being passed to this operation.
+         - completion: The DescribeAccountAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAccountAttributesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeAccountAttributesAsync(input: ElasticComputeCloudModel.DescribeAccountAttributesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeAccountAttributesResult>) -> ()) throws {
+        if let describeAccountAttributesAsyncOverride = describeAccountAttributesAsyncOverride {
+            return try describeAccountAttributesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeAccountAttributesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeAccountAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAccountAttributesRequest object being passed to this operation.
+     - Returns: The DescribeAccountAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeAccountAttributesSync(input: ElasticComputeCloudModel.DescribeAccountAttributesRequest) throws -> ElasticComputeCloudModel.DescribeAccountAttributesResult {
+        if let describeAccountAttributesSyncOverride = describeAccountAttributesSyncOverride {
+            return try describeAccountAttributesSyncOverride(input)
+        }
+
+        return DescribeAccountAttributesResult.__default
+    }
+
+    /**
+     Invokes the DescribeAddresses operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAddressesRequest object being passed to this operation.
+         - completion: The DescribeAddressesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAddressesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeAddressesAsync(input: ElasticComputeCloudModel.DescribeAddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeAddressesResult>) -> ()) throws {
+        if let describeAddressesAsyncOverride = describeAddressesAsyncOverride {
+            return try describeAddressesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeAddressesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeAddresses operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAddressesRequest object being passed to this operation.
+     - Returns: The DescribeAddressesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeAddressesSync(input: ElasticComputeCloudModel.DescribeAddressesRequest) throws -> ElasticComputeCloudModel.DescribeAddressesResult {
+        if let describeAddressesSyncOverride = describeAddressesSyncOverride {
+            return try describeAddressesSyncOverride(input)
+        }
+
+        return DescribeAddressesResult.__default
+    }
+
+    /**
+     Invokes the DescribeAggregateIdFormat operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAggregateIdFormatRequest object being passed to this operation.
+         - completion: The DescribeAggregateIdFormatResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAggregateIdFormatResult
+           object will be validated before being returned to caller.
+     */
+    public func describeAggregateIdFormatAsync(input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeAggregateIdFormatResult>) -> ()) throws {
+        if let describeAggregateIdFormatAsyncOverride = describeAggregateIdFormatAsyncOverride {
+            return try describeAggregateIdFormatAsyncOverride(input, completion)
+        }
+
+        let result = DescribeAggregateIdFormatResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeAggregateIdFormat operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAggregateIdFormatRequest object being passed to this operation.
+     - Returns: The DescribeAggregateIdFormatResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeAggregateIdFormatSync(input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeAggregateIdFormatResult {
+        if let describeAggregateIdFormatSyncOverride = describeAggregateIdFormatSyncOverride {
+            return try describeAggregateIdFormatSyncOverride(input)
+        }
+
+        return DescribeAggregateIdFormatResult.__default
+    }
+
+    /**
+     Invokes the DescribeAvailabilityZones operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAvailabilityZonesRequest object being passed to this operation.
+         - completion: The DescribeAvailabilityZonesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAvailabilityZonesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeAvailabilityZonesAsync(input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeAvailabilityZonesResult>) -> ()) throws {
+        if let describeAvailabilityZonesAsyncOverride = describeAvailabilityZonesAsyncOverride {
+            return try describeAvailabilityZonesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeAvailabilityZonesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeAvailabilityZones operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAvailabilityZonesRequest object being passed to this operation.
+     - Returns: The DescribeAvailabilityZonesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeAvailabilityZonesSync(input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest) throws -> ElasticComputeCloudModel.DescribeAvailabilityZonesResult {
+        if let describeAvailabilityZonesSyncOverride = describeAvailabilityZonesSyncOverride {
+            return try describeAvailabilityZonesSyncOverride(input)
+        }
+
+        return DescribeAvailabilityZonesResult.__default
+    }
+
+    /**
+     Invokes the DescribeBundleTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeBundleTasksRequest object being passed to this operation.
+         - completion: The DescribeBundleTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeBundleTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeBundleTasksAsync(input: ElasticComputeCloudModel.DescribeBundleTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeBundleTasksResult>) -> ()) throws {
+        if let describeBundleTasksAsyncOverride = describeBundleTasksAsyncOverride {
+            return try describeBundleTasksAsyncOverride(input, completion)
+        }
+
+        let result = DescribeBundleTasksResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeBundleTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeBundleTasksRequest object being passed to this operation.
+     - Returns: The DescribeBundleTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeBundleTasksSync(input: ElasticComputeCloudModel.DescribeBundleTasksRequest) throws -> ElasticComputeCloudModel.DescribeBundleTasksResult {
+        if let describeBundleTasksSyncOverride = describeBundleTasksSyncOverride {
+            return try describeBundleTasksSyncOverride(input)
+        }
+
+        return DescribeBundleTasksResult.__default
+    }
+
+    /**
+     Invokes the DescribeByoipCidrs operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeByoipCidrsRequest object being passed to this operation.
+         - completion: The DescribeByoipCidrsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeByoipCidrsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeByoipCidrsAsync(input: ElasticComputeCloudModel.DescribeByoipCidrsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeByoipCidrsResult>) -> ()) throws {
+        if let describeByoipCidrsAsyncOverride = describeByoipCidrsAsyncOverride {
+            return try describeByoipCidrsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeByoipCidrsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeByoipCidrs operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeByoipCidrsRequest object being passed to this operation.
+     - Returns: The DescribeByoipCidrsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeByoipCidrsSync(input: ElasticComputeCloudModel.DescribeByoipCidrsRequest) throws -> ElasticComputeCloudModel.DescribeByoipCidrsResult {
+        if let describeByoipCidrsSyncOverride = describeByoipCidrsSyncOverride {
+            return try describeByoipCidrsSyncOverride(input)
+        }
+
+        return DescribeByoipCidrsResult.__default
+    }
+
+    /**
+     Invokes the DescribeCapacityReservations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCapacityReservationsRequest object being passed to this operation.
+         - completion: The DescribeCapacityReservationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCapacityReservationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeCapacityReservationsAsync(input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeCapacityReservationsResult>) -> ()) throws {
+        if let describeCapacityReservationsAsyncOverride = describeCapacityReservationsAsyncOverride {
+            return try describeCapacityReservationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeCapacityReservationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeCapacityReservations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCapacityReservationsRequest object being passed to this operation.
+     - Returns: The DescribeCapacityReservationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeCapacityReservationsSync(input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest) throws -> ElasticComputeCloudModel.DescribeCapacityReservationsResult {
+        if let describeCapacityReservationsSyncOverride = describeCapacityReservationsSyncOverride {
+            return try describeCapacityReservationsSyncOverride(input)
+        }
+
+        return DescribeCapacityReservationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeClassicLinkInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClassicLinkInstancesRequest object being passed to this operation.
+         - completion: The DescribeClassicLinkInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClassicLinkInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClassicLinkInstancesAsync(input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult>) -> ()) throws {
+        if let describeClassicLinkInstancesAsyncOverride = describeClassicLinkInstancesAsyncOverride {
+            return try describeClassicLinkInstancesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeClassicLinkInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeClassicLinkInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClassicLinkInstancesRequest object being passed to this operation.
+     - Returns: The DescribeClassicLinkInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClassicLinkInstancesSync(input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult {
+        if let describeClassicLinkInstancesSyncOverride = describeClassicLinkInstancesSyncOverride {
+            return try describeClassicLinkInstancesSyncOverride(input)
+        }
+
+        return DescribeClassicLinkInstancesResult.__default
+    }
+
+    /**
+     Invokes the DescribeConversionTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeConversionTasksRequest object being passed to this operation.
+         - completion: The DescribeConversionTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeConversionTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeConversionTasksAsync(input: ElasticComputeCloudModel.DescribeConversionTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeConversionTasksResult>) -> ()) throws {
+        if let describeConversionTasksAsyncOverride = describeConversionTasksAsyncOverride {
+            return try describeConversionTasksAsyncOverride(input, completion)
+        }
+
+        let result = DescribeConversionTasksResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeConversionTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeConversionTasksRequest object being passed to this operation.
+     - Returns: The DescribeConversionTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeConversionTasksSync(input: ElasticComputeCloudModel.DescribeConversionTasksRequest) throws -> ElasticComputeCloudModel.DescribeConversionTasksResult {
+        if let describeConversionTasksSyncOverride = describeConversionTasksSyncOverride {
+            return try describeConversionTasksSyncOverride(input)
+        }
+
+        return DescribeConversionTasksResult.__default
+    }
+
+    /**
+     Invokes the DescribeCustomerGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCustomerGatewaysRequest object being passed to this operation.
+         - completion: The DescribeCustomerGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCustomerGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeCustomerGatewaysAsync(input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeCustomerGatewaysResult>) -> ()) throws {
+        if let describeCustomerGatewaysAsyncOverride = describeCustomerGatewaysAsyncOverride {
+            return try describeCustomerGatewaysAsyncOverride(input, completion)
+        }
+
+        let result = DescribeCustomerGatewaysResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeCustomerGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCustomerGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeCustomerGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeCustomerGatewaysSync(input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeCustomerGatewaysResult {
+        if let describeCustomerGatewaysSyncOverride = describeCustomerGatewaysSyncOverride {
+            return try describeCustomerGatewaysSyncOverride(input)
+        }
+
+        return DescribeCustomerGatewaysResult.__default
+    }
+
+    /**
+     Invokes the DescribeDhcpOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDhcpOptionsRequest object being passed to this operation.
+         - completion: The DescribeDhcpOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDhcpOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeDhcpOptionsAsync(input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeDhcpOptionsResult>) -> ()) throws {
+        if let describeDhcpOptionsAsyncOverride = describeDhcpOptionsAsyncOverride {
+            return try describeDhcpOptionsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeDhcpOptionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeDhcpOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDhcpOptionsRequest object being passed to this operation.
+     - Returns: The DescribeDhcpOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeDhcpOptionsSync(input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest) throws -> ElasticComputeCloudModel.DescribeDhcpOptionsResult {
+        if let describeDhcpOptionsSyncOverride = describeDhcpOptionsSyncOverride {
+            return try describeDhcpOptionsSyncOverride(input)
+        }
+
+        return DescribeDhcpOptionsResult.__default
+    }
+
+    /**
+     Invokes the DescribeEgressOnlyInternetGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeEgressOnlyInternetGatewaysRequest object being passed to this operation.
+         - completion: The DescribeEgressOnlyInternetGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeEgressOnlyInternetGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeEgressOnlyInternetGatewaysAsync(input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult>) -> ()) throws {
+        if let describeEgressOnlyInternetGatewaysAsyncOverride = describeEgressOnlyInternetGatewaysAsyncOverride {
+            return try describeEgressOnlyInternetGatewaysAsyncOverride(input, completion)
+        }
+
+        let result = DescribeEgressOnlyInternetGatewaysResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeEgressOnlyInternetGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeEgressOnlyInternetGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeEgressOnlyInternetGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeEgressOnlyInternetGatewaysSync(input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult {
+        if let describeEgressOnlyInternetGatewaysSyncOverride = describeEgressOnlyInternetGatewaysSyncOverride {
+            return try describeEgressOnlyInternetGatewaysSyncOverride(input)
+        }
+
+        return DescribeEgressOnlyInternetGatewaysResult.__default
+    }
+
+    /**
+     Invokes the DescribeElasticGpus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeElasticGpusRequest object being passed to this operation.
+         - completion: The DescribeElasticGpusResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeElasticGpusResult
+           object will be validated before being returned to caller.
+     */
+    public func describeElasticGpusAsync(input: ElasticComputeCloudModel.DescribeElasticGpusRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeElasticGpusResult>) -> ()) throws {
+        if let describeElasticGpusAsyncOverride = describeElasticGpusAsyncOverride {
+            return try describeElasticGpusAsyncOverride(input, completion)
+        }
+
+        let result = DescribeElasticGpusResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeElasticGpus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeElasticGpusRequest object being passed to this operation.
+     - Returns: The DescribeElasticGpusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeElasticGpusSync(input: ElasticComputeCloudModel.DescribeElasticGpusRequest) throws -> ElasticComputeCloudModel.DescribeElasticGpusResult {
+        if let describeElasticGpusSyncOverride = describeElasticGpusSyncOverride {
+            return try describeElasticGpusSyncOverride(input)
+        }
+
+        return DescribeElasticGpusResult.__default
+    }
+
+    /**
+     Invokes the DescribeExportTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksRequest object being passed to this operation.
+         - completion: The DescribeExportTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeExportTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeExportTasksAsync(input: ElasticComputeCloudModel.DescribeExportTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeExportTasksResult>) -> ()) throws {
+        if let describeExportTasksAsyncOverride = describeExportTasksAsyncOverride {
+            return try describeExportTasksAsyncOverride(input, completion)
+        }
+
+        let result = DescribeExportTasksResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeExportTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksRequest object being passed to this operation.
+     - Returns: The DescribeExportTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeExportTasksSync(input: ElasticComputeCloudModel.DescribeExportTasksRequest) throws -> ElasticComputeCloudModel.DescribeExportTasksResult {
+        if let describeExportTasksSyncOverride = describeExportTasksSyncOverride {
+            return try describeExportTasksSyncOverride(input)
+        }
+
+        return DescribeExportTasksResult.__default
+    }
+
+    /**
+     Invokes the DescribeFleetHistory operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeFleetHistoryRequest object being passed to this operation.
+         - completion: The DescribeFleetHistoryResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeFleetHistoryResult
+           object will be validated before being returned to caller.
+     */
+    public func describeFleetHistoryAsync(input: ElasticComputeCloudModel.DescribeFleetHistoryRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFleetHistoryResult>) -> ()) throws {
+        if let describeFleetHistoryAsyncOverride = describeFleetHistoryAsyncOverride {
+            return try describeFleetHistoryAsyncOverride(input, completion)
+        }
+
+        let result = DescribeFleetHistoryResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeFleetHistory operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeFleetHistoryRequest object being passed to this operation.
+     - Returns: The DescribeFleetHistoryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeFleetHistorySync(input: ElasticComputeCloudModel.DescribeFleetHistoryRequest) throws -> ElasticComputeCloudModel.DescribeFleetHistoryResult {
+        if let describeFleetHistorySyncOverride = describeFleetHistorySyncOverride {
+            return try describeFleetHistorySyncOverride(input)
+        }
+
+        return DescribeFleetHistoryResult.__default
+    }
+
+    /**
+     Invokes the DescribeFleetInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeFleetInstancesRequest object being passed to this operation.
+         - completion: The DescribeFleetInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeFleetInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeFleetInstancesAsync(input: ElasticComputeCloudModel.DescribeFleetInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFleetInstancesResult>) -> ()) throws {
+        if let describeFleetInstancesAsyncOverride = describeFleetInstancesAsyncOverride {
+            return try describeFleetInstancesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeFleetInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeFleetInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeFleetInstancesRequest object being passed to this operation.
+     - Returns: The DescribeFleetInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeFleetInstancesSync(input: ElasticComputeCloudModel.DescribeFleetInstancesRequest) throws -> ElasticComputeCloudModel.DescribeFleetInstancesResult {
+        if let describeFleetInstancesSyncOverride = describeFleetInstancesSyncOverride {
+            return try describeFleetInstancesSyncOverride(input)
+        }
+
+        return DescribeFleetInstancesResult.__default
+    }
+
+    /**
+     Invokes the DescribeFleets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeFleetsRequest object being passed to this operation.
+         - completion: The DescribeFleetsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeFleetsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeFleetsAsync(input: ElasticComputeCloudModel.DescribeFleetsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFleetsResult>) -> ()) throws {
+        if let describeFleetsAsyncOverride = describeFleetsAsyncOverride {
+            return try describeFleetsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeFleetsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeFleets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeFleetsRequest object being passed to this operation.
+     - Returns: The DescribeFleetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeFleetsSync(input: ElasticComputeCloudModel.DescribeFleetsRequest) throws -> ElasticComputeCloudModel.DescribeFleetsResult {
+        if let describeFleetsSyncOverride = describeFleetsSyncOverride {
+            return try describeFleetsSyncOverride(input)
+        }
+
+        return DescribeFleetsResult.__default
+    }
+
+    /**
+     Invokes the DescribeFlowLogs operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeFlowLogsRequest object being passed to this operation.
+         - completion: The DescribeFlowLogsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeFlowLogsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeFlowLogsAsync(input: ElasticComputeCloudModel.DescribeFlowLogsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFlowLogsResult>) -> ()) throws {
+        if let describeFlowLogsAsyncOverride = describeFlowLogsAsyncOverride {
+            return try describeFlowLogsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeFlowLogsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeFlowLogs operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeFlowLogsRequest object being passed to this operation.
+     - Returns: The DescribeFlowLogsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeFlowLogsSync(input: ElasticComputeCloudModel.DescribeFlowLogsRequest) throws -> ElasticComputeCloudModel.DescribeFlowLogsResult {
+        if let describeFlowLogsSyncOverride = describeFlowLogsSyncOverride {
+            return try describeFlowLogsSyncOverride(input)
+        }
+
+        return DescribeFlowLogsResult.__default
+    }
+
+    /**
+     Invokes the DescribeFpgaImageAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeFpgaImageAttributeRequest object being passed to this operation.
+         - completion: The DescribeFpgaImageAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeFpgaImageAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func describeFpgaImageAttributeAsync(input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult>) -> ()) throws {
+        if let describeFpgaImageAttributeAsyncOverride = describeFpgaImageAttributeAsyncOverride {
+            return try describeFpgaImageAttributeAsyncOverride(input, completion)
+        }
+
+        let result = DescribeFpgaImageAttributeResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeFpgaImageAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeFpgaImageAttributeRequest object being passed to this operation.
+     - Returns: The DescribeFpgaImageAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeFpgaImageAttributeSync(input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.DescribeFpgaImageAttributeResult {
+        if let describeFpgaImageAttributeSyncOverride = describeFpgaImageAttributeSyncOverride {
+            return try describeFpgaImageAttributeSyncOverride(input)
+        }
+
+        return DescribeFpgaImageAttributeResult.__default
+    }
+
+    /**
+     Invokes the DescribeFpgaImages operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeFpgaImagesRequest object being passed to this operation.
+         - completion: The DescribeFpgaImagesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeFpgaImagesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeFpgaImagesAsync(input: ElasticComputeCloudModel.DescribeFpgaImagesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFpgaImagesResult>) -> ()) throws {
+        if let describeFpgaImagesAsyncOverride = describeFpgaImagesAsyncOverride {
+            return try describeFpgaImagesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeFpgaImagesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeFpgaImages operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeFpgaImagesRequest object being passed to this operation.
+     - Returns: The DescribeFpgaImagesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeFpgaImagesSync(input: ElasticComputeCloudModel.DescribeFpgaImagesRequest) throws -> ElasticComputeCloudModel.DescribeFpgaImagesResult {
+        if let describeFpgaImagesSyncOverride = describeFpgaImagesSyncOverride {
+            return try describeFpgaImagesSyncOverride(input)
+        }
+
+        return DescribeFpgaImagesResult.__default
+    }
+
+    /**
+     Invokes the DescribeHostReservationOfferings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeHostReservationOfferingsRequest object being passed to this operation.
+         - completion: The DescribeHostReservationOfferingsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeHostReservationOfferingsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeHostReservationOfferingsAsync(input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult>) -> ()) throws {
+        if let describeHostReservationOfferingsAsyncOverride = describeHostReservationOfferingsAsyncOverride {
+            return try describeHostReservationOfferingsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeHostReservationOfferingsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeHostReservationOfferings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeHostReservationOfferingsRequest object being passed to this operation.
+     - Returns: The DescribeHostReservationOfferingsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeHostReservationOfferingsSync(input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest) throws -> ElasticComputeCloudModel.DescribeHostReservationOfferingsResult {
+        if let describeHostReservationOfferingsSyncOverride = describeHostReservationOfferingsSyncOverride {
+            return try describeHostReservationOfferingsSyncOverride(input)
+        }
+
+        return DescribeHostReservationOfferingsResult.__default
+    }
+
+    /**
+     Invokes the DescribeHostReservations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeHostReservationsRequest object being passed to this operation.
+         - completion: The DescribeHostReservationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeHostReservationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeHostReservationsAsync(input: ElasticComputeCloudModel.DescribeHostReservationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeHostReservationsResult>) -> ()) throws {
+        if let describeHostReservationsAsyncOverride = describeHostReservationsAsyncOverride {
+            return try describeHostReservationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeHostReservationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeHostReservations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeHostReservationsRequest object being passed to this operation.
+     - Returns: The DescribeHostReservationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeHostReservationsSync(input: ElasticComputeCloudModel.DescribeHostReservationsRequest) throws -> ElasticComputeCloudModel.DescribeHostReservationsResult {
+        if let describeHostReservationsSyncOverride = describeHostReservationsSyncOverride {
+            return try describeHostReservationsSyncOverride(input)
+        }
+
+        return DescribeHostReservationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeHosts operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeHostsRequest object being passed to this operation.
+         - completion: The DescribeHostsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeHostsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeHostsAsync(input: ElasticComputeCloudModel.DescribeHostsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeHostsResult>) -> ()) throws {
+        if let describeHostsAsyncOverride = describeHostsAsyncOverride {
+            return try describeHostsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeHostsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeHosts operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeHostsRequest object being passed to this operation.
+     - Returns: The DescribeHostsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeHostsSync(input: ElasticComputeCloudModel.DescribeHostsRequest) throws -> ElasticComputeCloudModel.DescribeHostsResult {
+        if let describeHostsSyncOverride = describeHostsSyncOverride {
+            return try describeHostsSyncOverride(input)
+        }
+
+        return DescribeHostsResult.__default
+    }
+
+    /**
+     Invokes the DescribeIamInstanceProfileAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeIamInstanceProfileAssociationsRequest object being passed to this operation.
+         - completion: The DescribeIamInstanceProfileAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeIamInstanceProfileAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeIamInstanceProfileAssociationsAsync(input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult>) -> ()) throws {
+        if let describeIamInstanceProfileAssociationsAsyncOverride = describeIamInstanceProfileAssociationsAsyncOverride {
+            return try describeIamInstanceProfileAssociationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeIamInstanceProfileAssociationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeIamInstanceProfileAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeIamInstanceProfileAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeIamInstanceProfileAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIamInstanceProfileAssociationsSync(input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult {
+        if let describeIamInstanceProfileAssociationsSyncOverride = describeIamInstanceProfileAssociationsSyncOverride {
+            return try describeIamInstanceProfileAssociationsSyncOverride(input)
+        }
+
+        return DescribeIamInstanceProfileAssociationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeIdFormat operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeIdFormatRequest object being passed to this operation.
+         - completion: The DescribeIdFormatResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeIdFormatResult
+           object will be validated before being returned to caller.
+     */
+    public func describeIdFormatAsync(input: ElasticComputeCloudModel.DescribeIdFormatRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeIdFormatResult>) -> ()) throws {
+        if let describeIdFormatAsyncOverride = describeIdFormatAsyncOverride {
+            return try describeIdFormatAsyncOverride(input, completion)
+        }
+
+        let result = DescribeIdFormatResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeIdFormat operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeIdFormatRequest object being passed to this operation.
+     - Returns: The DescribeIdFormatResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIdFormatSync(input: ElasticComputeCloudModel.DescribeIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeIdFormatResult {
+        if let describeIdFormatSyncOverride = describeIdFormatSyncOverride {
+            return try describeIdFormatSyncOverride(input)
+        }
+
+        return DescribeIdFormatResult.__default
+    }
+
+    /**
+     Invokes the DescribeIdentityIdFormat operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeIdentityIdFormatRequest object being passed to this operation.
+         - completion: The DescribeIdentityIdFormatResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeIdentityIdFormatResult
+           object will be validated before being returned to caller.
+     */
+    public func describeIdentityIdFormatAsync(input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeIdentityIdFormatResult>) -> ()) throws {
+        if let describeIdentityIdFormatAsyncOverride = describeIdentityIdFormatAsyncOverride {
+            return try describeIdentityIdFormatAsyncOverride(input, completion)
+        }
+
+        let result = DescribeIdentityIdFormatResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeIdentityIdFormat operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeIdentityIdFormatRequest object being passed to this operation.
+     - Returns: The DescribeIdentityIdFormatResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIdentityIdFormatSync(input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeIdentityIdFormatResult {
+        if let describeIdentityIdFormatSyncOverride = describeIdentityIdFormatSyncOverride {
+            return try describeIdentityIdFormatSyncOverride(input)
+        }
+
+        return DescribeIdentityIdFormatResult.__default
+    }
+
+    /**
+     Invokes the DescribeImageAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImageAttributeRequest object being passed to this operation.
+         - completion: The ImageAttribute object or an error will be passed to this 
+           callback when the operation is complete. The ImageAttribute
+           object will be validated before being returned to caller.
+     */
+    public func describeImageAttributeAsync(input: ElasticComputeCloudModel.DescribeImageAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImageAttribute>) -> ()) throws {
+        if let describeImageAttributeAsyncOverride = describeImageAttributeAsyncOverride {
+            return try describeImageAttributeAsyncOverride(input, completion)
+        }
+
+        let result = ImageAttribute.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeImageAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImageAttributeRequest object being passed to this operation.
+     - Returns: The ImageAttribute object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeImageAttributeSync(input: ElasticComputeCloudModel.DescribeImageAttributeRequest) throws -> ElasticComputeCloudModel.ImageAttribute {
+        if let describeImageAttributeSyncOverride = describeImageAttributeSyncOverride {
+            return try describeImageAttributeSyncOverride(input)
+        }
+
+        return ImageAttribute.__default
+    }
+
+    /**
+     Invokes the DescribeImages operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImagesRequest object being passed to this operation.
+         - completion: The DescribeImagesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeImagesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeImagesAsync(input: ElasticComputeCloudModel.DescribeImagesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeImagesResult>) -> ()) throws {
+        if let describeImagesAsyncOverride = describeImagesAsyncOverride {
+            return try describeImagesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeImagesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeImages operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImagesRequest object being passed to this operation.
+     - Returns: The DescribeImagesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeImagesSync(input: ElasticComputeCloudModel.DescribeImagesRequest) throws -> ElasticComputeCloudModel.DescribeImagesResult {
+        if let describeImagesSyncOverride = describeImagesSyncOverride {
+            return try describeImagesSyncOverride(input)
+        }
+
+        return DescribeImagesResult.__default
+    }
+
+    /**
+     Invokes the DescribeImportImageTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImportImageTasksRequest object being passed to this operation.
+         - completion: The DescribeImportImageTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeImportImageTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeImportImageTasksAsync(input: ElasticComputeCloudModel.DescribeImportImageTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeImportImageTasksResult>) -> ()) throws {
+        if let describeImportImageTasksAsyncOverride = describeImportImageTasksAsyncOverride {
+            return try describeImportImageTasksAsyncOverride(input, completion)
+        }
+
+        let result = DescribeImportImageTasksResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeImportImageTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImportImageTasksRequest object being passed to this operation.
+     - Returns: The DescribeImportImageTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeImportImageTasksSync(input: ElasticComputeCloudModel.DescribeImportImageTasksRequest) throws -> ElasticComputeCloudModel.DescribeImportImageTasksResult {
+        if let describeImportImageTasksSyncOverride = describeImportImageTasksSyncOverride {
+            return try describeImportImageTasksSyncOverride(input)
+        }
+
+        return DescribeImportImageTasksResult.__default
+    }
+
+    /**
+     Invokes the DescribeImportSnapshotTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImportSnapshotTasksRequest object being passed to this operation.
+         - completion: The DescribeImportSnapshotTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeImportSnapshotTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeImportSnapshotTasksAsync(input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult>) -> ()) throws {
+        if let describeImportSnapshotTasksAsyncOverride = describeImportSnapshotTasksAsyncOverride {
+            return try describeImportSnapshotTasksAsyncOverride(input, completion)
+        }
+
+        let result = DescribeImportSnapshotTasksResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeImportSnapshotTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImportSnapshotTasksRequest object being passed to this operation.
+     - Returns: The DescribeImportSnapshotTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeImportSnapshotTasksSync(input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest) throws -> ElasticComputeCloudModel.DescribeImportSnapshotTasksResult {
+        if let describeImportSnapshotTasksSyncOverride = describeImportSnapshotTasksSyncOverride {
+            return try describeImportSnapshotTasksSyncOverride(input)
+        }
+
+        return DescribeImportSnapshotTasksResult.__default
+    }
+
+    /**
+     Invokes the DescribeInstanceAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceAttributeRequest object being passed to this operation.
+         - completion: The InstanceAttribute object or an error will be passed to this 
+           callback when the operation is complete. The InstanceAttribute
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceAttributeAsync(input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.InstanceAttribute>) -> ()) throws {
+        if let describeInstanceAttributeAsyncOverride = describeInstanceAttributeAsyncOverride {
+            return try describeInstanceAttributeAsyncOverride(input, completion)
+        }
+
+        let result = InstanceAttribute.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeInstanceAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceAttributeRequest object being passed to this operation.
+     - Returns: The InstanceAttribute object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceAttributeSync(input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest) throws -> ElasticComputeCloudModel.InstanceAttribute {
+        if let describeInstanceAttributeSyncOverride = describeInstanceAttributeSyncOverride {
+            return try describeInstanceAttributeSyncOverride(input)
+        }
+
+        return InstanceAttribute.__default
+    }
+
+    /**
+     Invokes the DescribeInstanceCreditSpecifications operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceCreditSpecificationsRequest object being passed to this operation.
+         - completion: The DescribeInstanceCreditSpecificationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceCreditSpecificationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceCreditSpecificationsAsync(input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult>) -> ()) throws {
+        if let describeInstanceCreditSpecificationsAsyncOverride = describeInstanceCreditSpecificationsAsyncOverride {
+            return try describeInstanceCreditSpecificationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeInstanceCreditSpecificationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeInstanceCreditSpecifications operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceCreditSpecificationsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceCreditSpecificationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceCreditSpecificationsSync(input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult {
+        if let describeInstanceCreditSpecificationsSyncOverride = describeInstanceCreditSpecificationsSyncOverride {
+            return try describeInstanceCreditSpecificationsSyncOverride(input)
+        }
+
+        return DescribeInstanceCreditSpecificationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeInstanceStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceStatusRequest object being passed to this operation.
+         - completion: The DescribeInstanceStatusResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceStatusResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceStatusAsync(input: ElasticComputeCloudModel.DescribeInstanceStatusRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeInstanceStatusResult>) -> ()) throws {
+        if let describeInstanceStatusAsyncOverride = describeInstanceStatusAsyncOverride {
+            return try describeInstanceStatusAsyncOverride(input, completion)
+        }
+
+        let result = DescribeInstanceStatusResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeInstanceStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceStatusRequest object being passed to this operation.
+     - Returns: The DescribeInstanceStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceStatusSync(input: ElasticComputeCloudModel.DescribeInstanceStatusRequest) throws -> ElasticComputeCloudModel.DescribeInstanceStatusResult {
+        if let describeInstanceStatusSyncOverride = describeInstanceStatusSyncOverride {
+            return try describeInstanceStatusSyncOverride(input)
+        }
+
+        return DescribeInstanceStatusResult.__default
+    }
+
+    /**
+     Invokes the DescribeInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstancesRequest object being passed to this operation.
+         - completion: The DescribeInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstancesAsync(input: ElasticComputeCloudModel.DescribeInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeInstancesResult>) -> ()) throws {
+        if let describeInstancesAsyncOverride = describeInstancesAsyncOverride {
+            return try describeInstancesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstancesRequest object being passed to this operation.
+     - Returns: The DescribeInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstancesSync(input: ElasticComputeCloudModel.DescribeInstancesRequest) throws -> ElasticComputeCloudModel.DescribeInstancesResult {
+        if let describeInstancesSyncOverride = describeInstancesSyncOverride {
+            return try describeInstancesSyncOverride(input)
+        }
+
+        return DescribeInstancesResult.__default
+    }
+
+    /**
+     Invokes the DescribeInternetGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInternetGatewaysRequest object being passed to this operation.
+         - completion: The DescribeInternetGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInternetGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInternetGatewaysAsync(input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeInternetGatewaysResult>) -> ()) throws {
+        if let describeInternetGatewaysAsyncOverride = describeInternetGatewaysAsyncOverride {
+            return try describeInternetGatewaysAsyncOverride(input, completion)
+        }
+
+        let result = DescribeInternetGatewaysResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeInternetGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInternetGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeInternetGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInternetGatewaysSync(input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeInternetGatewaysResult {
+        if let describeInternetGatewaysSyncOverride = describeInternetGatewaysSyncOverride {
+            return try describeInternetGatewaysSyncOverride(input)
+        }
+
+        return DescribeInternetGatewaysResult.__default
+    }
+
+    /**
+     Invokes the DescribeKeyPairs operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeKeyPairsRequest object being passed to this operation.
+         - completion: The DescribeKeyPairsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeKeyPairsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeKeyPairsAsync(input: ElasticComputeCloudModel.DescribeKeyPairsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeKeyPairsResult>) -> ()) throws {
+        if let describeKeyPairsAsyncOverride = describeKeyPairsAsyncOverride {
+            return try describeKeyPairsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeKeyPairsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeKeyPairs operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeKeyPairsRequest object being passed to this operation.
+     - Returns: The DescribeKeyPairsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeKeyPairsSync(input: ElasticComputeCloudModel.DescribeKeyPairsRequest) throws -> ElasticComputeCloudModel.DescribeKeyPairsResult {
+        if let describeKeyPairsSyncOverride = describeKeyPairsSyncOverride {
+            return try describeKeyPairsSyncOverride(input)
+        }
+
+        return DescribeKeyPairsResult.__default
+    }
+
+    /**
+     Invokes the DescribeLaunchTemplateVersions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeLaunchTemplateVersionsRequest object being passed to this operation.
+         - completion: The DescribeLaunchTemplateVersionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeLaunchTemplateVersionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeLaunchTemplateVersionsAsync(input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult>) -> ()) throws {
+        if let describeLaunchTemplateVersionsAsyncOverride = describeLaunchTemplateVersionsAsyncOverride {
+            return try describeLaunchTemplateVersionsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeLaunchTemplateVersionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeLaunchTemplateVersions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeLaunchTemplateVersionsRequest object being passed to this operation.
+     - Returns: The DescribeLaunchTemplateVersionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeLaunchTemplateVersionsSync(input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest) throws -> ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult {
+        if let describeLaunchTemplateVersionsSyncOverride = describeLaunchTemplateVersionsSyncOverride {
+            return try describeLaunchTemplateVersionsSyncOverride(input)
+        }
+
+        return DescribeLaunchTemplateVersionsResult.__default
+    }
+
+    /**
+     Invokes the DescribeLaunchTemplates operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeLaunchTemplatesRequest object being passed to this operation.
+         - completion: The DescribeLaunchTemplatesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeLaunchTemplatesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeLaunchTemplatesAsync(input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeLaunchTemplatesResult>) -> ()) throws {
+        if let describeLaunchTemplatesAsyncOverride = describeLaunchTemplatesAsyncOverride {
+            return try describeLaunchTemplatesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeLaunchTemplatesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeLaunchTemplates operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeLaunchTemplatesRequest object being passed to this operation.
+     - Returns: The DescribeLaunchTemplatesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeLaunchTemplatesSync(input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest) throws -> ElasticComputeCloudModel.DescribeLaunchTemplatesResult {
+        if let describeLaunchTemplatesSyncOverride = describeLaunchTemplatesSyncOverride {
+            return try describeLaunchTemplatesSyncOverride(input)
+        }
+
+        return DescribeLaunchTemplatesResult.__default
+    }
+
+    /**
+     Invokes the DescribeMovingAddresses operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeMovingAddressesRequest object being passed to this operation.
+         - completion: The DescribeMovingAddressesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeMovingAddressesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeMovingAddressesAsync(input: ElasticComputeCloudModel.DescribeMovingAddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeMovingAddressesResult>) -> ()) throws {
+        if let describeMovingAddressesAsyncOverride = describeMovingAddressesAsyncOverride {
+            return try describeMovingAddressesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeMovingAddressesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeMovingAddresses operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeMovingAddressesRequest object being passed to this operation.
+     - Returns: The DescribeMovingAddressesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeMovingAddressesSync(input: ElasticComputeCloudModel.DescribeMovingAddressesRequest) throws -> ElasticComputeCloudModel.DescribeMovingAddressesResult {
+        if let describeMovingAddressesSyncOverride = describeMovingAddressesSyncOverride {
+            return try describeMovingAddressesSyncOverride(input)
+        }
+
+        return DescribeMovingAddressesResult.__default
+    }
+
+    /**
+     Invokes the DescribeNatGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNatGatewaysRequest object being passed to this operation.
+         - completion: The DescribeNatGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNatGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeNatGatewaysAsync(input: ElasticComputeCloudModel.DescribeNatGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNatGatewaysResult>) -> ()) throws {
+        if let describeNatGatewaysAsyncOverride = describeNatGatewaysAsyncOverride {
+            return try describeNatGatewaysAsyncOverride(input, completion)
+        }
+
+        let result = DescribeNatGatewaysResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeNatGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNatGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeNatGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeNatGatewaysSync(input: ElasticComputeCloudModel.DescribeNatGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeNatGatewaysResult {
+        if let describeNatGatewaysSyncOverride = describeNatGatewaysSyncOverride {
+            return try describeNatGatewaysSyncOverride(input)
+        }
+
+        return DescribeNatGatewaysResult.__default
+    }
+
+    /**
+     Invokes the DescribeNetworkAcls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkAclsRequest object being passed to this operation.
+         - completion: The DescribeNetworkAclsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkAclsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeNetworkAclsAsync(input: ElasticComputeCloudModel.DescribeNetworkAclsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNetworkAclsResult>) -> ()) throws {
+        if let describeNetworkAclsAsyncOverride = describeNetworkAclsAsyncOverride {
+            return try describeNetworkAclsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeNetworkAclsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeNetworkAcls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkAclsRequest object being passed to this operation.
+     - Returns: The DescribeNetworkAclsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeNetworkAclsSync(input: ElasticComputeCloudModel.DescribeNetworkAclsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkAclsResult {
+        if let describeNetworkAclsSyncOverride = describeNetworkAclsSyncOverride {
+            return try describeNetworkAclsSyncOverride(input)
+        }
+
+        return DescribeNetworkAclsResult.__default
+    }
+
+    /**
+     Invokes the DescribeNetworkInterfaceAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInterfaceAttributeRequest object being passed to this operation.
+         - completion: The DescribeNetworkInterfaceAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkInterfaceAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func describeNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult>) -> ()) throws {
+        if let describeNetworkInterfaceAttributeAsyncOverride = describeNetworkInterfaceAttributeAsyncOverride {
+            return try describeNetworkInterfaceAttributeAsyncOverride(input, completion)
+        }
+
+        let result = DescribeNetworkInterfaceAttributeResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeNetworkInterfaceAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInterfaceAttributeRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInterfaceAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeNetworkInterfaceAttributeSync(input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult {
+        if let describeNetworkInterfaceAttributeSyncOverride = describeNetworkInterfaceAttributeSyncOverride {
+            return try describeNetworkInterfaceAttributeSyncOverride(input)
+        }
+
+        return DescribeNetworkInterfaceAttributeResult.__default
+    }
+
+    /**
+     Invokes the DescribeNetworkInterfacePermissions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInterfacePermissionsRequest object being passed to this operation.
+         - completion: The DescribeNetworkInterfacePermissionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkInterfacePermissionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeNetworkInterfacePermissionsAsync(input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult>) -> ()) throws {
+        if let describeNetworkInterfacePermissionsAsyncOverride = describeNetworkInterfacePermissionsAsyncOverride {
+            return try describeNetworkInterfacePermissionsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeNetworkInterfacePermissionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeNetworkInterfacePermissions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInterfacePermissionsRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInterfacePermissionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeNetworkInterfacePermissionsSync(input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult {
+        if let describeNetworkInterfacePermissionsSyncOverride = describeNetworkInterfacePermissionsSyncOverride {
+            return try describeNetworkInterfacePermissionsSyncOverride(input)
+        }
+
+        return DescribeNetworkInterfacePermissionsResult.__default
+    }
+
+    /**
+     Invokes the DescribeNetworkInterfaces operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInterfacesRequest object being passed to this operation.
+         - completion: The DescribeNetworkInterfacesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkInterfacesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeNetworkInterfacesAsync(input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNetworkInterfacesResult>) -> ()) throws {
+        if let describeNetworkInterfacesAsyncOverride = describeNetworkInterfacesAsyncOverride {
+            return try describeNetworkInterfacesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeNetworkInterfacesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeNetworkInterfaces operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInterfacesRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInterfacesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeNetworkInterfacesSync(input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacesResult {
+        if let describeNetworkInterfacesSyncOverride = describeNetworkInterfacesSyncOverride {
+            return try describeNetworkInterfacesSyncOverride(input)
+        }
+
+        return DescribeNetworkInterfacesResult.__default
+    }
+
+    /**
+     Invokes the DescribePlacementGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribePlacementGroupsRequest object being passed to this operation.
+         - completion: The DescribePlacementGroupsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribePlacementGroupsResult
+           object will be validated before being returned to caller.
+     */
+    public func describePlacementGroupsAsync(input: ElasticComputeCloudModel.DescribePlacementGroupsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribePlacementGroupsResult>) -> ()) throws {
+        if let describePlacementGroupsAsyncOverride = describePlacementGroupsAsyncOverride {
+            return try describePlacementGroupsAsyncOverride(input, completion)
+        }
+
+        let result = DescribePlacementGroupsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribePlacementGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribePlacementGroupsRequest object being passed to this operation.
+     - Returns: The DescribePlacementGroupsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describePlacementGroupsSync(input: ElasticComputeCloudModel.DescribePlacementGroupsRequest) throws -> ElasticComputeCloudModel.DescribePlacementGroupsResult {
+        if let describePlacementGroupsSyncOverride = describePlacementGroupsSyncOverride {
+            return try describePlacementGroupsSyncOverride(input)
+        }
+
+        return DescribePlacementGroupsResult.__default
+    }
+
+    /**
+     Invokes the DescribePrefixLists operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribePrefixListsRequest object being passed to this operation.
+         - completion: The DescribePrefixListsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribePrefixListsResult
+           object will be validated before being returned to caller.
+     */
+    public func describePrefixListsAsync(input: ElasticComputeCloudModel.DescribePrefixListsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribePrefixListsResult>) -> ()) throws {
+        if let describePrefixListsAsyncOverride = describePrefixListsAsyncOverride {
+            return try describePrefixListsAsyncOverride(input, completion)
+        }
+
+        let result = DescribePrefixListsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribePrefixLists operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribePrefixListsRequest object being passed to this operation.
+     - Returns: The DescribePrefixListsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describePrefixListsSync(input: ElasticComputeCloudModel.DescribePrefixListsRequest) throws -> ElasticComputeCloudModel.DescribePrefixListsResult {
+        if let describePrefixListsSyncOverride = describePrefixListsSyncOverride {
+            return try describePrefixListsSyncOverride(input)
+        }
+
+        return DescribePrefixListsResult.__default
+    }
+
+    /**
+     Invokes the DescribePrincipalIdFormat operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribePrincipalIdFormatRequest object being passed to this operation.
+         - completion: The DescribePrincipalIdFormatResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribePrincipalIdFormatResult
+           object will be validated before being returned to caller.
+     */
+    public func describePrincipalIdFormatAsync(input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribePrincipalIdFormatResult>) -> ()) throws {
+        if let describePrincipalIdFormatAsyncOverride = describePrincipalIdFormatAsyncOverride {
+            return try describePrincipalIdFormatAsyncOverride(input, completion)
+        }
+
+        let result = DescribePrincipalIdFormatResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribePrincipalIdFormat operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribePrincipalIdFormatRequest object being passed to this operation.
+     - Returns: The DescribePrincipalIdFormatResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describePrincipalIdFormatSync(input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest) throws -> ElasticComputeCloudModel.DescribePrincipalIdFormatResult {
+        if let describePrincipalIdFormatSyncOverride = describePrincipalIdFormatSyncOverride {
+            return try describePrincipalIdFormatSyncOverride(input)
+        }
+
+        return DescribePrincipalIdFormatResult.__default
+    }
+
+    /**
+     Invokes the DescribePublicIpv4Pools operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribePublicIpv4PoolsRequest object being passed to this operation.
+         - completion: The DescribePublicIpv4PoolsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribePublicIpv4PoolsResult
+           object will be validated before being returned to caller.
+     */
+    public func describePublicIpv4PoolsAsync(input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult>) -> ()) throws {
+        if let describePublicIpv4PoolsAsyncOverride = describePublicIpv4PoolsAsyncOverride {
+            return try describePublicIpv4PoolsAsyncOverride(input, completion)
+        }
+
+        let result = DescribePublicIpv4PoolsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribePublicIpv4Pools operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribePublicIpv4PoolsRequest object being passed to this operation.
+     - Returns: The DescribePublicIpv4PoolsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describePublicIpv4PoolsSync(input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest) throws -> ElasticComputeCloudModel.DescribePublicIpv4PoolsResult {
+        if let describePublicIpv4PoolsSyncOverride = describePublicIpv4PoolsSyncOverride {
+            return try describePublicIpv4PoolsSyncOverride(input)
+        }
+
+        return DescribePublicIpv4PoolsResult.__default
+    }
+
+    /**
+     Invokes the DescribeRegions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeRegionsRequest object being passed to this operation.
+         - completion: The DescribeRegionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeRegionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeRegionsAsync(input: ElasticComputeCloudModel.DescribeRegionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeRegionsResult>) -> ()) throws {
+        if let describeRegionsAsyncOverride = describeRegionsAsyncOverride {
+            return try describeRegionsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeRegionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeRegions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeRegionsRequest object being passed to this operation.
+     - Returns: The DescribeRegionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeRegionsSync(input: ElasticComputeCloudModel.DescribeRegionsRequest) throws -> ElasticComputeCloudModel.DescribeRegionsResult {
+        if let describeRegionsSyncOverride = describeRegionsSyncOverride {
+            return try describeRegionsSyncOverride(input)
+        }
+
+        return DescribeRegionsResult.__default
+    }
+
+    /**
+     Invokes the DescribeReservedInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeReservedInstancesRequest object being passed to this operation.
+         - completion: The DescribeReservedInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeReservedInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeReservedInstancesAsync(input: ElasticComputeCloudModel.DescribeReservedInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeReservedInstancesResult>) -> ()) throws {
+        if let describeReservedInstancesAsyncOverride = describeReservedInstancesAsyncOverride {
+            return try describeReservedInstancesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeReservedInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeReservedInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeReservedInstancesRequest object being passed to this operation.
+     - Returns: The DescribeReservedInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeReservedInstancesSync(input: ElasticComputeCloudModel.DescribeReservedInstancesRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesResult {
+        if let describeReservedInstancesSyncOverride = describeReservedInstancesSyncOverride {
+            return try describeReservedInstancesSyncOverride(input)
+        }
+
+        return DescribeReservedInstancesResult.__default
+    }
+
+    /**
+     Invokes the DescribeReservedInstancesListings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeReservedInstancesListingsRequest object being passed to this operation.
+         - completion: The DescribeReservedInstancesListingsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeReservedInstancesListingsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeReservedInstancesListingsAsync(input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult>) -> ()) throws {
+        if let describeReservedInstancesListingsAsyncOverride = describeReservedInstancesListingsAsyncOverride {
+            return try describeReservedInstancesListingsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeReservedInstancesListingsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeReservedInstancesListings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeReservedInstancesListingsRequest object being passed to this operation.
+     - Returns: The DescribeReservedInstancesListingsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeReservedInstancesListingsSync(input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesListingsResult {
+        if let describeReservedInstancesListingsSyncOverride = describeReservedInstancesListingsSyncOverride {
+            return try describeReservedInstancesListingsSyncOverride(input)
+        }
+
+        return DescribeReservedInstancesListingsResult.__default
+    }
+
+    /**
+     Invokes the DescribeReservedInstancesModifications operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeReservedInstancesModificationsRequest object being passed to this operation.
+         - completion: The DescribeReservedInstancesModificationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeReservedInstancesModificationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeReservedInstancesModificationsAsync(input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult>) -> ()) throws {
+        if let describeReservedInstancesModificationsAsyncOverride = describeReservedInstancesModificationsAsyncOverride {
+            return try describeReservedInstancesModificationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeReservedInstancesModificationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeReservedInstancesModifications operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeReservedInstancesModificationsRequest object being passed to this operation.
+     - Returns: The DescribeReservedInstancesModificationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeReservedInstancesModificationsSync(input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult {
+        if let describeReservedInstancesModificationsSyncOverride = describeReservedInstancesModificationsSyncOverride {
+            return try describeReservedInstancesModificationsSyncOverride(input)
+        }
+
+        return DescribeReservedInstancesModificationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeReservedInstancesOfferings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeReservedInstancesOfferingsRequest object being passed to this operation.
+         - completion: The DescribeReservedInstancesOfferingsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeReservedInstancesOfferingsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeReservedInstancesOfferingsAsync(input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult>) -> ()) throws {
+        if let describeReservedInstancesOfferingsAsyncOverride = describeReservedInstancesOfferingsAsyncOverride {
+            return try describeReservedInstancesOfferingsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeReservedInstancesOfferingsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeReservedInstancesOfferings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeReservedInstancesOfferingsRequest object being passed to this operation.
+     - Returns: The DescribeReservedInstancesOfferingsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeReservedInstancesOfferingsSync(input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult {
+        if let describeReservedInstancesOfferingsSyncOverride = describeReservedInstancesOfferingsSyncOverride {
+            return try describeReservedInstancesOfferingsSyncOverride(input)
+        }
+
+        return DescribeReservedInstancesOfferingsResult.__default
+    }
+
+    /**
+     Invokes the DescribeRouteTables operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeRouteTablesRequest object being passed to this operation.
+         - completion: The DescribeRouteTablesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeRouteTablesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeRouteTablesAsync(input: ElasticComputeCloudModel.DescribeRouteTablesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeRouteTablesResult>) -> ()) throws {
+        if let describeRouteTablesAsyncOverride = describeRouteTablesAsyncOverride {
+            return try describeRouteTablesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeRouteTablesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeRouteTables operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeRouteTablesRequest object being passed to this operation.
+     - Returns: The DescribeRouteTablesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeRouteTablesSync(input: ElasticComputeCloudModel.DescribeRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeRouteTablesResult {
+        if let describeRouteTablesSyncOverride = describeRouteTablesSyncOverride {
+            return try describeRouteTablesSyncOverride(input)
+        }
+
+        return DescribeRouteTablesResult.__default
+    }
+
+    /**
+     Invokes the DescribeScheduledInstanceAvailability operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeScheduledInstanceAvailabilityRequest object being passed to this operation.
+         - completion: The DescribeScheduledInstanceAvailabilityResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeScheduledInstanceAvailabilityResult
+           object will be validated before being returned to caller.
+     */
+    public func describeScheduledInstanceAvailabilityAsync(input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult>) -> ()) throws {
+        if let describeScheduledInstanceAvailabilityAsyncOverride = describeScheduledInstanceAvailabilityAsyncOverride {
+            return try describeScheduledInstanceAvailabilityAsyncOverride(input, completion)
+        }
+
+        let result = DescribeScheduledInstanceAvailabilityResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeScheduledInstanceAvailability operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeScheduledInstanceAvailabilityRequest object being passed to this operation.
+     - Returns: The DescribeScheduledInstanceAvailabilityResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeScheduledInstanceAvailabilitySync(input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest) throws -> ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult {
+        if let describeScheduledInstanceAvailabilitySyncOverride = describeScheduledInstanceAvailabilitySyncOverride {
+            return try describeScheduledInstanceAvailabilitySyncOverride(input)
+        }
+
+        return DescribeScheduledInstanceAvailabilityResult.__default
+    }
+
+    /**
+     Invokes the DescribeScheduledInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeScheduledInstancesRequest object being passed to this operation.
+         - completion: The DescribeScheduledInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeScheduledInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeScheduledInstancesAsync(input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeScheduledInstancesResult>) -> ()) throws {
+        if let describeScheduledInstancesAsyncOverride = describeScheduledInstancesAsyncOverride {
+            return try describeScheduledInstancesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeScheduledInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeScheduledInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeScheduledInstancesRequest object being passed to this operation.
+     - Returns: The DescribeScheduledInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeScheduledInstancesSync(input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest) throws -> ElasticComputeCloudModel.DescribeScheduledInstancesResult {
+        if let describeScheduledInstancesSyncOverride = describeScheduledInstancesSyncOverride {
+            return try describeScheduledInstancesSyncOverride(input)
+        }
+
+        return DescribeScheduledInstancesResult.__default
+    }
+
+    /**
+     Invokes the DescribeSecurityGroupReferences operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupReferencesRequest object being passed to this operation.
+         - completion: The DescribeSecurityGroupReferencesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSecurityGroupReferencesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSecurityGroupReferencesAsync(input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult>) -> ()) throws {
+        if let describeSecurityGroupReferencesAsyncOverride = describeSecurityGroupReferencesAsyncOverride {
+            return try describeSecurityGroupReferencesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSecurityGroupReferencesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSecurityGroupReferences operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupReferencesRequest object being passed to this operation.
+     - Returns: The DescribeSecurityGroupReferencesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSecurityGroupReferencesSync(input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult {
+        if let describeSecurityGroupReferencesSyncOverride = describeSecurityGroupReferencesSyncOverride {
+            return try describeSecurityGroupReferencesSyncOverride(input)
+        }
+
+        return DescribeSecurityGroupReferencesResult.__default
+    }
+
+    /**
+     Invokes the DescribeSecurityGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupsRequest object being passed to this operation.
+         - completion: The DescribeSecurityGroupsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSecurityGroupsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSecurityGroupsAsync(input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSecurityGroupsResult>) -> ()) throws {
+        if let describeSecurityGroupsAsyncOverride = describeSecurityGroupsAsyncOverride {
+            return try describeSecurityGroupsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSecurityGroupsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSecurityGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupsRequest object being passed to this operation.
+     - Returns: The DescribeSecurityGroupsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSecurityGroupsSync(input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupsResult {
+        if let describeSecurityGroupsSyncOverride = describeSecurityGroupsSyncOverride {
+            return try describeSecurityGroupsSyncOverride(input)
+        }
+
+        return DescribeSecurityGroupsResult.__default
+    }
+
+    /**
+     Invokes the DescribeSnapshotAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSnapshotAttributeRequest object being passed to this operation.
+         - completion: The DescribeSnapshotAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSnapshotAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSnapshotAttributeAsync(input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSnapshotAttributeResult>) -> ()) throws {
+        if let describeSnapshotAttributeAsyncOverride = describeSnapshotAttributeAsyncOverride {
+            return try describeSnapshotAttributeAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSnapshotAttributeResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSnapshotAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSnapshotAttributeRequest object being passed to this operation.
+     - Returns: The DescribeSnapshotAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSnapshotAttributeSync(input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotAttributeResult {
+        if let describeSnapshotAttributeSyncOverride = describeSnapshotAttributeSyncOverride {
+            return try describeSnapshotAttributeSyncOverride(input)
+        }
+
+        return DescribeSnapshotAttributeResult.__default
+    }
+
+    /**
+     Invokes the DescribeSnapshots operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSnapshotsRequest object being passed to this operation.
+         - completion: The DescribeSnapshotsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSnapshotsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSnapshotsAsync(input: ElasticComputeCloudModel.DescribeSnapshotsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSnapshotsResult>) -> ()) throws {
+        if let describeSnapshotsAsyncOverride = describeSnapshotsAsyncOverride {
+            return try describeSnapshotsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSnapshotsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSnapshots operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSnapshotsRequest object being passed to this operation.
+     - Returns: The DescribeSnapshotsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSnapshotsSync(input: ElasticComputeCloudModel.DescribeSnapshotsRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotsResult {
+        if let describeSnapshotsSyncOverride = describeSnapshotsSyncOverride {
+            return try describeSnapshotsSyncOverride(input)
+        }
+
+        return DescribeSnapshotsResult.__default
+    }
+
+    /**
+     Invokes the DescribeSpotDatafeedSubscription operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSpotDatafeedSubscriptionRequest object being passed to this operation.
+         - completion: The DescribeSpotDatafeedSubscriptionResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSpotDatafeedSubscriptionResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult>) -> ()) throws {
+        if let describeSpotDatafeedSubscriptionAsyncOverride = describeSpotDatafeedSubscriptionAsyncOverride {
+            return try describeSpotDatafeedSubscriptionAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSpotDatafeedSubscriptionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSpotDatafeedSubscription operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSpotDatafeedSubscriptionRequest object being passed to this operation.
+     - Returns: The DescribeSpotDatafeedSubscriptionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSpotDatafeedSubscriptionSync(input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest) throws -> ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult {
+        if let describeSpotDatafeedSubscriptionSyncOverride = describeSpotDatafeedSubscriptionSyncOverride {
+            return try describeSpotDatafeedSubscriptionSyncOverride(input)
+        }
+
+        return DescribeSpotDatafeedSubscriptionResult.__default
+    }
+
+    /**
+     Invokes the DescribeSpotFleetInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSpotFleetInstancesRequest object being passed to this operation.
+         - completion: The DescribeSpotFleetInstancesResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSpotFleetInstancesResponse
+           object will be validated before being returned to caller.
+     */
+    public func describeSpotFleetInstancesAsync(input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse>) -> ()) throws {
+        if let describeSpotFleetInstancesAsyncOverride = describeSpotFleetInstancesAsyncOverride {
+            return try describeSpotFleetInstancesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSpotFleetInstancesResponse.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSpotFleetInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSpotFleetInstancesRequest object being passed to this operation.
+     - Returns: The DescribeSpotFleetInstancesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSpotFleetInstancesSync(input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest) throws -> ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse {
+        if let describeSpotFleetInstancesSyncOverride = describeSpotFleetInstancesSyncOverride {
+            return try describeSpotFleetInstancesSyncOverride(input)
+        }
+
+        return DescribeSpotFleetInstancesResponse.__default
+    }
+
+    /**
+     Invokes the DescribeSpotFleetRequestHistory operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSpotFleetRequestHistoryRequest object being passed to this operation.
+         - completion: The DescribeSpotFleetRequestHistoryResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSpotFleetRequestHistoryResponse
+           object will be validated before being returned to caller.
+     */
+    public func describeSpotFleetRequestHistoryAsync(input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse>) -> ()) throws {
+        if let describeSpotFleetRequestHistoryAsyncOverride = describeSpotFleetRequestHistoryAsyncOverride {
+            return try describeSpotFleetRequestHistoryAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSpotFleetRequestHistoryResponse.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSpotFleetRequestHistory operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSpotFleetRequestHistoryRequest object being passed to this operation.
+     - Returns: The DescribeSpotFleetRequestHistoryResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSpotFleetRequestHistorySync(input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse {
+        if let describeSpotFleetRequestHistorySyncOverride = describeSpotFleetRequestHistorySyncOverride {
+            return try describeSpotFleetRequestHistorySyncOverride(input)
+        }
+
+        return DescribeSpotFleetRequestHistoryResponse.__default
+    }
+
+    /**
+     Invokes the DescribeSpotFleetRequests operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSpotFleetRequestsRequest object being passed to this operation.
+         - completion: The DescribeSpotFleetRequestsResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSpotFleetRequestsResponse
+           object will be validated before being returned to caller.
+     */
+    public func describeSpotFleetRequestsAsync(input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse>) -> ()) throws {
+        if let describeSpotFleetRequestsAsyncOverride = describeSpotFleetRequestsAsyncOverride {
+            return try describeSpotFleetRequestsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSpotFleetRequestsResponse.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSpotFleetRequests operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSpotFleetRequestsRequest object being passed to this operation.
+     - Returns: The DescribeSpotFleetRequestsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSpotFleetRequestsSync(input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse {
+        if let describeSpotFleetRequestsSyncOverride = describeSpotFleetRequestsSyncOverride {
+            return try describeSpotFleetRequestsSyncOverride(input)
+        }
+
+        return DescribeSpotFleetRequestsResponse.__default
+    }
+
+    /**
+     Invokes the DescribeSpotInstanceRequests operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSpotInstanceRequestsRequest object being passed to this operation.
+         - completion: The DescribeSpotInstanceRequestsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSpotInstanceRequestsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSpotInstanceRequestsAsync(input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult>) -> ()) throws {
+        if let describeSpotInstanceRequestsAsyncOverride = describeSpotInstanceRequestsAsyncOverride {
+            return try describeSpotInstanceRequestsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSpotInstanceRequestsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSpotInstanceRequests operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSpotInstanceRequestsRequest object being passed to this operation.
+     - Returns: The DescribeSpotInstanceRequestsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSpotInstanceRequestsSync(input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest) throws -> ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult {
+        if let describeSpotInstanceRequestsSyncOverride = describeSpotInstanceRequestsSyncOverride {
+            return try describeSpotInstanceRequestsSyncOverride(input)
+        }
+
+        return DescribeSpotInstanceRequestsResult.__default
+    }
+
+    /**
+     Invokes the DescribeSpotPriceHistory operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSpotPriceHistoryRequest object being passed to this operation.
+         - completion: The DescribeSpotPriceHistoryResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSpotPriceHistoryResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSpotPriceHistoryAsync(input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult>) -> ()) throws {
+        if let describeSpotPriceHistoryAsyncOverride = describeSpotPriceHistoryAsyncOverride {
+            return try describeSpotPriceHistoryAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSpotPriceHistoryResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSpotPriceHistory operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSpotPriceHistoryRequest object being passed to this operation.
+     - Returns: The DescribeSpotPriceHistoryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSpotPriceHistorySync(input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest) throws -> ElasticComputeCloudModel.DescribeSpotPriceHistoryResult {
+        if let describeSpotPriceHistorySyncOverride = describeSpotPriceHistorySyncOverride {
+            return try describeSpotPriceHistorySyncOverride(input)
+        }
+
+        return DescribeSpotPriceHistoryResult.__default
+    }
+
+    /**
+     Invokes the DescribeStaleSecurityGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeStaleSecurityGroupsRequest object being passed to this operation.
+         - completion: The DescribeStaleSecurityGroupsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeStaleSecurityGroupsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeStaleSecurityGroupsAsync(input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult>) -> ()) throws {
+        if let describeStaleSecurityGroupsAsyncOverride = describeStaleSecurityGroupsAsyncOverride {
+            return try describeStaleSecurityGroupsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeStaleSecurityGroupsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeStaleSecurityGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeStaleSecurityGroupsRequest object being passed to this operation.
+     - Returns: The DescribeStaleSecurityGroupsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeStaleSecurityGroupsSync(input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest) throws -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult {
+        if let describeStaleSecurityGroupsSyncOverride = describeStaleSecurityGroupsSyncOverride {
+            return try describeStaleSecurityGroupsSyncOverride(input)
+        }
+
+        return DescribeStaleSecurityGroupsResult.__default
+    }
+
+    /**
+     Invokes the DescribeSubnets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSubnetsRequest object being passed to this operation.
+         - completion: The DescribeSubnetsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSubnetsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSubnetsAsync(input: ElasticComputeCloudModel.DescribeSubnetsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSubnetsResult>) -> ()) throws {
+        if let describeSubnetsAsyncOverride = describeSubnetsAsyncOverride {
+            return try describeSubnetsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSubnetsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeSubnets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSubnetsRequest object being passed to this operation.
+     - Returns: The DescribeSubnetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSubnetsSync(input: ElasticComputeCloudModel.DescribeSubnetsRequest) throws -> ElasticComputeCloudModel.DescribeSubnetsResult {
+        if let describeSubnetsSyncOverride = describeSubnetsSyncOverride {
+            return try describeSubnetsSyncOverride(input)
+        }
+
+        return DescribeSubnetsResult.__default
+    }
+
+    /**
+     Invokes the DescribeTags operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTagsRequest object being passed to this operation.
+         - completion: The DescribeTagsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTagsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTagsAsync(input: ElasticComputeCloudModel.DescribeTagsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTagsResult>) -> ()) throws {
+        if let describeTagsAsyncOverride = describeTagsAsyncOverride {
+            return try describeTagsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeTagsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeTags operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTagsRequest object being passed to this operation.
+     - Returns: The DescribeTagsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTagsSync(input: ElasticComputeCloudModel.DescribeTagsRequest) throws -> ElasticComputeCloudModel.DescribeTagsResult {
+        if let describeTagsSyncOverride = describeTagsSyncOverride {
+            return try describeTagsSyncOverride(input)
+        }
+
+        return DescribeTagsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVolumeAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVolumeAttributeRequest object being passed to this operation.
+         - completion: The DescribeVolumeAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVolumeAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVolumeAttributeAsync(input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVolumeAttributeResult>) -> ()) throws {
+        if let describeVolumeAttributeAsyncOverride = describeVolumeAttributeAsyncOverride {
+            return try describeVolumeAttributeAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVolumeAttributeResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVolumeAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVolumeAttributeRequest object being passed to this operation.
+     - Returns: The DescribeVolumeAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVolumeAttributeSync(input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest) throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult {
+        if let describeVolumeAttributeSyncOverride = describeVolumeAttributeSyncOverride {
+            return try describeVolumeAttributeSyncOverride(input)
+        }
+
+        return DescribeVolumeAttributeResult.__default
+    }
+
+    /**
+     Invokes the DescribeVolumeStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVolumeStatusRequest object being passed to this operation.
+         - completion: The DescribeVolumeStatusResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVolumeStatusResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVolumeStatusAsync(input: ElasticComputeCloudModel.DescribeVolumeStatusRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVolumeStatusResult>) -> ()) throws {
+        if let describeVolumeStatusAsyncOverride = describeVolumeStatusAsyncOverride {
+            return try describeVolumeStatusAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVolumeStatusResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVolumeStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVolumeStatusRequest object being passed to this operation.
+     - Returns: The DescribeVolumeStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVolumeStatusSync(input: ElasticComputeCloudModel.DescribeVolumeStatusRequest) throws -> ElasticComputeCloudModel.DescribeVolumeStatusResult {
+        if let describeVolumeStatusSyncOverride = describeVolumeStatusSyncOverride {
+            return try describeVolumeStatusSyncOverride(input)
+        }
+
+        return DescribeVolumeStatusResult.__default
+    }
+
+    /**
+     Invokes the DescribeVolumes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVolumesRequest object being passed to this operation.
+         - completion: The DescribeVolumesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVolumesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVolumesAsync(input: ElasticComputeCloudModel.DescribeVolumesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVolumesResult>) -> ()) throws {
+        if let describeVolumesAsyncOverride = describeVolumesAsyncOverride {
+            return try describeVolumesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVolumesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVolumes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVolumesRequest object being passed to this operation.
+     - Returns: The DescribeVolumesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVolumesSync(input: ElasticComputeCloudModel.DescribeVolumesRequest) throws -> ElasticComputeCloudModel.DescribeVolumesResult {
+        if let describeVolumesSyncOverride = describeVolumesSyncOverride {
+            return try describeVolumesSyncOverride(input)
+        }
+
+        return DescribeVolumesResult.__default
+    }
+
+    /**
+     Invokes the DescribeVolumesModifications operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVolumesModificationsRequest object being passed to this operation.
+         - completion: The DescribeVolumesModificationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVolumesModificationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVolumesModificationsAsync(input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVolumesModificationsResult>) -> ()) throws {
+        if let describeVolumesModificationsAsyncOverride = describeVolumesModificationsAsyncOverride {
+            return try describeVolumesModificationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVolumesModificationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVolumesModifications operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVolumesModificationsRequest object being passed to this operation.
+     - Returns: The DescribeVolumesModificationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVolumesModificationsSync(input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest) throws -> ElasticComputeCloudModel.DescribeVolumesModificationsResult {
+        if let describeVolumesModificationsSyncOverride = describeVolumesModificationsSyncOverride {
+            return try describeVolumesModificationsSyncOverride(input)
+        }
+
+        return DescribeVolumesModificationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcAttributeRequest object being passed to this operation.
+         - completion: The DescribeVpcAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcAttributeAsync(input: ElasticComputeCloudModel.DescribeVpcAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcAttributeResult>) -> ()) throws {
+        if let describeVpcAttributeAsyncOverride = describeVpcAttributeAsyncOverride {
+            return try describeVpcAttributeAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcAttributeResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcAttributeRequest object being passed to this operation.
+     - Returns: The DescribeVpcAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcAttributeSync(input: ElasticComputeCloudModel.DescribeVpcAttributeRequest) throws -> ElasticComputeCloudModel.DescribeVpcAttributeResult {
+        if let describeVpcAttributeSyncOverride = describeVpcAttributeSyncOverride {
+            return try describeVpcAttributeSyncOverride(input)
+        }
+
+        return DescribeVpcAttributeResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcClassicLink operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcClassicLinkRequest object being passed to this operation.
+         - completion: The DescribeVpcClassicLinkResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcClassicLinkResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcClassicLinkAsync(input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcClassicLinkResult>) -> ()) throws {
+        if let describeVpcClassicLinkAsyncOverride = describeVpcClassicLinkAsyncOverride {
+            return try describeVpcClassicLinkAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcClassicLinkResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcClassicLink operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcClassicLinkRequest object being passed to this operation.
+     - Returns: The DescribeVpcClassicLinkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcClassicLinkSync(input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkResult {
+        if let describeVpcClassicLinkSyncOverride = describeVpcClassicLinkSyncOverride {
+            return try describeVpcClassicLinkSyncOverride(input)
+        }
+
+        return DescribeVpcClassicLinkResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcClassicLinkDnsSupport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcClassicLinkDnsSupportRequest object being passed to this operation.
+         - completion: The DescribeVpcClassicLinkDnsSupportResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcClassicLinkDnsSupportResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcClassicLinkDnsSupportAsync(input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult>) -> ()) throws {
+        if let describeVpcClassicLinkDnsSupportAsyncOverride = describeVpcClassicLinkDnsSupportAsyncOverride {
+            return try describeVpcClassicLinkDnsSupportAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcClassicLinkDnsSupportResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcClassicLinkDnsSupport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcClassicLinkDnsSupportRequest object being passed to this operation.
+     - Returns: The DescribeVpcClassicLinkDnsSupportResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcClassicLinkDnsSupportSync(input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult {
+        if let describeVpcClassicLinkDnsSupportSyncOverride = describeVpcClassicLinkDnsSupportSyncOverride {
+            return try describeVpcClassicLinkDnsSupportSyncOverride(input)
+        }
+
+        return DescribeVpcClassicLinkDnsSupportResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointConnectionNotifications operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointConnectionNotificationsRequest object being passed to this operation.
+         - completion: The DescribeVpcEndpointConnectionNotificationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcEndpointConnectionNotificationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointConnectionNotificationsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult>) -> ()) throws {
+        if let describeVpcEndpointConnectionNotificationsAsyncOverride = describeVpcEndpointConnectionNotificationsAsyncOverride {
+            return try describeVpcEndpointConnectionNotificationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcEndpointConnectionNotificationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointConnectionNotifications operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointConnectionNotificationsRequest object being passed to this operation.
+     - Returns: The DescribeVpcEndpointConnectionNotificationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointConnectionNotificationsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult {
+        if let describeVpcEndpointConnectionNotificationsSyncOverride = describeVpcEndpointConnectionNotificationsSyncOverride {
+            return try describeVpcEndpointConnectionNotificationsSyncOverride(input)
+        }
+
+        return DescribeVpcEndpointConnectionNotificationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointConnectionsRequest object being passed to this operation.
+         - completion: The DescribeVpcEndpointConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcEndpointConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointConnectionsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult>) -> ()) throws {
+        if let describeVpcEndpointConnectionsAsyncOverride = describeVpcEndpointConnectionsAsyncOverride {
+            return try describeVpcEndpointConnectionsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcEndpointConnectionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointConnectionsRequest object being passed to this operation.
+     - Returns: The DescribeVpcEndpointConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointConnectionsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult {
+        if let describeVpcEndpointConnectionsSyncOverride = describeVpcEndpointConnectionsSyncOverride {
+            return try describeVpcEndpointConnectionsSyncOverride(input)
+        }
+
+        return DescribeVpcEndpointConnectionsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointServiceConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointServiceConfigurationsRequest object being passed to this operation.
+         - completion: The DescribeVpcEndpointServiceConfigurationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcEndpointServiceConfigurationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointServiceConfigurationsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult>) -> ()) throws {
+        if let describeVpcEndpointServiceConfigurationsAsyncOverride = describeVpcEndpointServiceConfigurationsAsyncOverride {
+            return try describeVpcEndpointServiceConfigurationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcEndpointServiceConfigurationsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointServiceConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointServiceConfigurationsRequest object being passed to this operation.
+     - Returns: The DescribeVpcEndpointServiceConfigurationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointServiceConfigurationsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult {
+        if let describeVpcEndpointServiceConfigurationsSyncOverride = describeVpcEndpointServiceConfigurationsSyncOverride {
+            return try describeVpcEndpointServiceConfigurationsSyncOverride(input)
+        }
+
+        return DescribeVpcEndpointServiceConfigurationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointServicePermissions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointServicePermissionsRequest object being passed to this operation.
+         - completion: The DescribeVpcEndpointServicePermissionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcEndpointServicePermissionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointServicePermissionsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult>) -> ()) throws {
+        if let describeVpcEndpointServicePermissionsAsyncOverride = describeVpcEndpointServicePermissionsAsyncOverride {
+            return try describeVpcEndpointServicePermissionsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcEndpointServicePermissionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointServicePermissions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointServicePermissionsRequest object being passed to this operation.
+     - Returns: The DescribeVpcEndpointServicePermissionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointServicePermissionsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult {
+        if let describeVpcEndpointServicePermissionsSyncOverride = describeVpcEndpointServicePermissionsSyncOverride {
+            return try describeVpcEndpointServicePermissionsSyncOverride(input)
+        }
+
+        return DescribeVpcEndpointServicePermissionsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointServices operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointServicesRequest object being passed to this operation.
+         - completion: The DescribeVpcEndpointServicesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcEndpointServicesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointServicesAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult>) -> ()) throws {
+        if let describeVpcEndpointServicesAsyncOverride = describeVpcEndpointServicesAsyncOverride {
+            return try describeVpcEndpointServicesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcEndpointServicesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcEndpointServices operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointServicesRequest object being passed to this operation.
+     - Returns: The DescribeVpcEndpointServicesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointServicesSync(input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicesResult {
+        if let describeVpcEndpointServicesSyncOverride = describeVpcEndpointServicesSyncOverride {
+            return try describeVpcEndpointServicesSyncOverride(input)
+        }
+
+        return DescribeVpcEndpointServicesResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointsRequest object being passed to this operation.
+         - completion: The DescribeVpcEndpointsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcEndpointsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointsResult>) -> ()) throws {
+        if let describeVpcEndpointsAsyncOverride = describeVpcEndpointsAsyncOverride {
+            return try describeVpcEndpointsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcEndpointsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeVpcEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcEndpointsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointsResult {
+        if let describeVpcEndpointsSyncOverride = describeVpcEndpointsSyncOverride {
+            return try describeVpcEndpointsSyncOverride(input)
+        }
+
+        return DescribeVpcEndpointsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcPeeringConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcPeeringConnectionsRequest object being passed to this operation.
+         - completion: The DescribeVpcPeeringConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcPeeringConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcPeeringConnectionsAsync(input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult>) -> ()) throws {
+        if let describeVpcPeeringConnectionsAsyncOverride = describeVpcPeeringConnectionsAsyncOverride {
+            return try describeVpcPeeringConnectionsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcPeeringConnectionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcPeeringConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcPeeringConnectionsRequest object being passed to this operation.
+     - Returns: The DescribeVpcPeeringConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcPeeringConnectionsSync(input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult {
+        if let describeVpcPeeringConnectionsSyncOverride = describeVpcPeeringConnectionsSyncOverride {
+            return try describeVpcPeeringConnectionsSyncOverride(input)
+        }
+
+        return DescribeVpcPeeringConnectionsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpcs operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpcsRequest object being passed to this operation.
+         - completion: The DescribeVpcsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpcsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpcsAsync(input: ElasticComputeCloudModel.DescribeVpcsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcsResult>) -> ()) throws {
+        if let describeVpcsAsyncOverride = describeVpcsAsyncOverride {
+            return try describeVpcsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpcsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpcs operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpcsRequest object being passed to this operation.
+     - Returns: The DescribeVpcsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpcsSync(input: ElasticComputeCloudModel.DescribeVpcsRequest) throws -> ElasticComputeCloudModel.DescribeVpcsResult {
+        if let describeVpcsSyncOverride = describeVpcsSyncOverride {
+            return try describeVpcsSyncOverride(input)
+        }
+
+        return DescribeVpcsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpnConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpnConnectionsRequest object being passed to this operation.
+         - completion: The DescribeVpnConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpnConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpnConnectionsAsync(input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpnConnectionsResult>) -> ()) throws {
+        if let describeVpnConnectionsAsyncOverride = describeVpnConnectionsAsyncOverride {
+            return try describeVpnConnectionsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpnConnectionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpnConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpnConnectionsRequest object being passed to this operation.
+     - Returns: The DescribeVpnConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpnConnectionsSync(input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeVpnConnectionsResult {
+        if let describeVpnConnectionsSyncOverride = describeVpnConnectionsSyncOverride {
+            return try describeVpnConnectionsSyncOverride(input)
+        }
+
+        return DescribeVpnConnectionsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVpnGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVpnGatewaysRequest object being passed to this operation.
+         - completion: The DescribeVpnGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVpnGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVpnGatewaysAsync(input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpnGatewaysResult>) -> ()) throws {
+        if let describeVpnGatewaysAsyncOverride = describeVpnGatewaysAsyncOverride {
+            return try describeVpnGatewaysAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVpnGatewaysResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeVpnGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVpnGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeVpnGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVpnGatewaysSync(input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeVpnGatewaysResult {
+        if let describeVpnGatewaysSyncOverride = describeVpnGatewaysSyncOverride {
+            return try describeVpnGatewaysSyncOverride(input)
+        }
+
+        return DescribeVpnGatewaysResult.__default
+    }
+
+    /**
+     Invokes the DetachClassicLinkVpc operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DetachClassicLinkVpcRequest object being passed to this operation.
+         - completion: The DetachClassicLinkVpcResult object or an error will be passed to this 
+           callback when the operation is complete. The DetachClassicLinkVpcResult
+           object will be validated before being returned to caller.
+     */
+    public func detachClassicLinkVpcAsync(input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DetachClassicLinkVpcResult>) -> ()) throws {
+        if let detachClassicLinkVpcAsyncOverride = detachClassicLinkVpcAsyncOverride {
+            return try detachClassicLinkVpcAsyncOverride(input, completion)
+        }
+
+        let result = DetachClassicLinkVpcResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DetachClassicLinkVpc operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DetachClassicLinkVpcRequest object being passed to this operation.
+     - Returns: The DetachClassicLinkVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func detachClassicLinkVpcSync(input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest) throws -> ElasticComputeCloudModel.DetachClassicLinkVpcResult {
+        if let detachClassicLinkVpcSyncOverride = detachClassicLinkVpcSyncOverride {
+            return try detachClassicLinkVpcSyncOverride(input)
+        }
+
+        return DetachClassicLinkVpcResult.__default
+    }
+
+    /**
+     Invokes the DetachInternetGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DetachInternetGatewayRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func detachInternetGatewayAsync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+        if let detachInternetGatewayAsyncOverride = detachInternetGatewayAsyncOverride {
+            return try detachInternetGatewayAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DetachInternetGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DetachInternetGatewayRequest object being passed to this operation.
+     */
+    public func detachInternetGatewaySync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest) throws {
+        if let detachInternetGatewaySyncOverride = detachInternetGatewaySyncOverride {
+            return try detachInternetGatewaySyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DetachNetworkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DetachNetworkInterfaceRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func detachNetworkInterfaceAsync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, completion: @escaping (Error?) -> ()) throws {
+        if let detachNetworkInterfaceAsyncOverride = detachNetworkInterfaceAsyncOverride {
+            return try detachNetworkInterfaceAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DetachNetworkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DetachNetworkInterfaceRequest object being passed to this operation.
+     */
+    public func detachNetworkInterfaceSync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest) throws {
+        if let detachNetworkInterfaceSyncOverride = detachNetworkInterfaceSyncOverride {
+            return try detachNetworkInterfaceSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DetachVolume operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DetachVolumeRequest object being passed to this operation.
+         - completion: The VolumeAttachment object or an error will be passed to this 
+           callback when the operation is complete. The VolumeAttachment
+           object will be validated before being returned to caller.
+     */
+    public func detachVolumeAsync(input: ElasticComputeCloudModel.DetachVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.VolumeAttachment>) -> ()) throws {
+        if let detachVolumeAsyncOverride = detachVolumeAsyncOverride {
+            return try detachVolumeAsyncOverride(input, completion)
+        }
+
+        let result = VolumeAttachment.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DetachVolume operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DetachVolumeRequest object being passed to this operation.
+     - Returns: The VolumeAttachment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func detachVolumeSync(input: ElasticComputeCloudModel.DetachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment {
+        if let detachVolumeSyncOverride = detachVolumeSyncOverride {
+            return try detachVolumeSyncOverride(input)
+        }
+
+        return VolumeAttachment.__default
+    }
+
+    /**
+     Invokes the DetachVpnGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DetachVpnGatewayRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func detachVpnGatewayAsync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+        if let detachVpnGatewayAsyncOverride = detachVpnGatewayAsyncOverride {
+            return try detachVpnGatewayAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DetachVpnGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DetachVpnGatewayRequest object being passed to this operation.
+     */
+    public func detachVpnGatewaySync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest) throws {
+        if let detachVpnGatewaySyncOverride = detachVpnGatewaySyncOverride {
+            return try detachVpnGatewaySyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DisableVgwRoutePropagation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableVgwRoutePropagationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func disableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, completion: @escaping (Error?) -> ()) throws {
+        if let disableVgwRoutePropagationAsyncOverride = disableVgwRoutePropagationAsyncOverride {
+            return try disableVgwRoutePropagationAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DisableVgwRoutePropagation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableVgwRoutePropagationRequest object being passed to this operation.
+     */
+    public func disableVgwRoutePropagationSync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest) throws {
+        if let disableVgwRoutePropagationSyncOverride = disableVgwRoutePropagationSyncOverride {
+            return try disableVgwRoutePropagationSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DisableVpcClassicLink operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableVpcClassicLinkRequest object being passed to this operation.
+         - completion: The DisableVpcClassicLinkResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableVpcClassicLinkResult
+           object will be validated before being returned to caller.
+     */
+    public func disableVpcClassicLinkAsync(input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableVpcClassicLinkResult>) -> ()) throws {
+        if let disableVpcClassicLinkAsyncOverride = disableVpcClassicLinkAsyncOverride {
+            return try disableVpcClassicLinkAsyncOverride(input, completion)
+        }
+
+        let result = DisableVpcClassicLinkResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DisableVpcClassicLink operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableVpcClassicLinkRequest object being passed to this operation.
+     - Returns: The DisableVpcClassicLinkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableVpcClassicLinkSync(input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkResult {
+        if let disableVpcClassicLinkSyncOverride = disableVpcClassicLinkSyncOverride {
+            return try disableVpcClassicLinkSyncOverride(input)
+        }
+
+        return DisableVpcClassicLinkResult.__default
+    }
+
+    /**
+     Invokes the DisableVpcClassicLinkDnsSupport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableVpcClassicLinkDnsSupportRequest object being passed to this operation.
+         - completion: The DisableVpcClassicLinkDnsSupportResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableVpcClassicLinkDnsSupportResult
+           object will be validated before being returned to caller.
+     */
+    public func disableVpcClassicLinkDnsSupportAsync(input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult>) -> ()) throws {
+        if let disableVpcClassicLinkDnsSupportAsyncOverride = disableVpcClassicLinkDnsSupportAsyncOverride {
+            return try disableVpcClassicLinkDnsSupportAsyncOverride(input, completion)
+        }
+
+        let result = DisableVpcClassicLinkDnsSupportResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DisableVpcClassicLinkDnsSupport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableVpcClassicLinkDnsSupportRequest object being passed to this operation.
+     - Returns: The DisableVpcClassicLinkDnsSupportResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableVpcClassicLinkDnsSupportSync(input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult {
+        if let disableVpcClassicLinkDnsSupportSyncOverride = disableVpcClassicLinkDnsSupportSyncOverride {
+            return try disableVpcClassicLinkDnsSupportSyncOverride(input)
+        }
+
+        return DisableVpcClassicLinkDnsSupportResult.__default
+    }
+
+    /**
+     Invokes the DisassociateAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateAddressRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func disassociateAddressAsync(input: ElasticComputeCloudModel.DisassociateAddressRequest, completion: @escaping (Error?) -> ()) throws {
+        if let disassociateAddressAsyncOverride = disassociateAddressAsyncOverride {
+            return try disassociateAddressAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DisassociateAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateAddressRequest object being passed to this operation.
+     */
+    public func disassociateAddressSync(input: ElasticComputeCloudModel.DisassociateAddressRequest) throws {
+        if let disassociateAddressSyncOverride = disassociateAddressSyncOverride {
+            return try disassociateAddressSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DisassociateIamInstanceProfile operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateIamInstanceProfileRequest object being passed to this operation.
+         - completion: The DisassociateIamInstanceProfileResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateIamInstanceProfileResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateIamInstanceProfileAsync(input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult>) -> ()) throws {
+        if let disassociateIamInstanceProfileAsyncOverride = disassociateIamInstanceProfileAsyncOverride {
+            return try disassociateIamInstanceProfileAsyncOverride(input, completion)
+        }
+
+        let result = DisassociateIamInstanceProfileResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DisassociateIamInstanceProfile operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateIamInstanceProfileRequest object being passed to this operation.
+     - Returns: The DisassociateIamInstanceProfileResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateIamInstanceProfileSync(input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult {
+        if let disassociateIamInstanceProfileSyncOverride = disassociateIamInstanceProfileSyncOverride {
+            return try disassociateIamInstanceProfileSyncOverride(input)
+        }
+
+        return DisassociateIamInstanceProfileResult.__default
+    }
+
+    /**
+     Invokes the DisassociateRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateRouteTableRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func disassociateRouteTableAsync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest, completion: @escaping (Error?) -> ()) throws {
+        if let disassociateRouteTableAsyncOverride = disassociateRouteTableAsyncOverride {
+            return try disassociateRouteTableAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the DisassociateRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateRouteTableRequest object being passed to this operation.
+     */
+    public func disassociateRouteTableSync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest) throws {
+        if let disassociateRouteTableSyncOverride = disassociateRouteTableSyncOverride {
+            return try disassociateRouteTableSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the DisassociateSubnetCidrBlock operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateSubnetCidrBlockRequest object being passed to this operation.
+         - completion: The DisassociateSubnetCidrBlockResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateSubnetCidrBlockResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateSubnetCidrBlockAsync(input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult>) -> ()) throws {
+        if let disassociateSubnetCidrBlockAsyncOverride = disassociateSubnetCidrBlockAsyncOverride {
+            return try disassociateSubnetCidrBlockAsyncOverride(input, completion)
+        }
+
+        let result = DisassociateSubnetCidrBlockResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DisassociateSubnetCidrBlock operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateSubnetCidrBlockRequest object being passed to this operation.
+     - Returns: The DisassociateSubnetCidrBlockResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateSubnetCidrBlockSync(input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult {
+        if let disassociateSubnetCidrBlockSyncOverride = disassociateSubnetCidrBlockSyncOverride {
+            return try disassociateSubnetCidrBlockSyncOverride(input)
+        }
+
+        return DisassociateSubnetCidrBlockResult.__default
+    }
+
+    /**
+     Invokes the DisassociateVpcCidrBlock operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateVpcCidrBlockRequest object being passed to this operation.
+         - completion: The DisassociateVpcCidrBlockResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateVpcCidrBlockResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateVpcCidrBlockAsync(input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult>) -> ()) throws {
+        if let disassociateVpcCidrBlockAsyncOverride = disassociateVpcCidrBlockAsyncOverride {
+            return try disassociateVpcCidrBlockAsyncOverride(input, completion)
+        }
+
+        let result = DisassociateVpcCidrBlockResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DisassociateVpcCidrBlock operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateVpcCidrBlockRequest object being passed to this operation.
+     - Returns: The DisassociateVpcCidrBlockResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateVpcCidrBlockSync(input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult {
+        if let disassociateVpcCidrBlockSyncOverride = disassociateVpcCidrBlockSyncOverride {
+            return try disassociateVpcCidrBlockSyncOverride(input)
+        }
+
+        return DisassociateVpcCidrBlockResult.__default
+    }
+
+    /**
+     Invokes the EnableVgwRoutePropagation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableVgwRoutePropagationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func enableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, completion: @escaping (Error?) -> ()) throws {
+        if let enableVgwRoutePropagationAsyncOverride = enableVgwRoutePropagationAsyncOverride {
+            return try enableVgwRoutePropagationAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the EnableVgwRoutePropagation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableVgwRoutePropagationRequest object being passed to this operation.
+     */
+    public func enableVgwRoutePropagationSync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest) throws {
+        if let enableVgwRoutePropagationSyncOverride = enableVgwRoutePropagationSyncOverride {
+            return try enableVgwRoutePropagationSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the EnableVolumeIO operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableVolumeIORequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func enableVolumeIOAsync(input: ElasticComputeCloudModel.EnableVolumeIORequest, completion: @escaping (Error?) -> ()) throws {
+        if let enableVolumeIOAsyncOverride = enableVolumeIOAsyncOverride {
+            return try enableVolumeIOAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the EnableVolumeIO operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableVolumeIORequest object being passed to this operation.
+     */
+    public func enableVolumeIOSync(input: ElasticComputeCloudModel.EnableVolumeIORequest) throws {
+        if let enableVolumeIOSyncOverride = enableVolumeIOSyncOverride {
+            return try enableVolumeIOSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the EnableVpcClassicLink operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableVpcClassicLinkRequest object being passed to this operation.
+         - completion: The EnableVpcClassicLinkResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableVpcClassicLinkResult
+           object will be validated before being returned to caller.
+     */
+    public func enableVpcClassicLinkAsync(input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableVpcClassicLinkResult>) -> ()) throws {
+        if let enableVpcClassicLinkAsyncOverride = enableVpcClassicLinkAsyncOverride {
+            return try enableVpcClassicLinkAsyncOverride(input, completion)
+        }
+
+        let result = EnableVpcClassicLinkResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the EnableVpcClassicLink operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableVpcClassicLinkRequest object being passed to this operation.
+     - Returns: The EnableVpcClassicLinkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableVpcClassicLinkSync(input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkResult {
+        if let enableVpcClassicLinkSyncOverride = enableVpcClassicLinkSyncOverride {
+            return try enableVpcClassicLinkSyncOverride(input)
+        }
+
+        return EnableVpcClassicLinkResult.__default
+    }
+
+    /**
+     Invokes the EnableVpcClassicLinkDnsSupport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableVpcClassicLinkDnsSupportRequest object being passed to this operation.
+         - completion: The EnableVpcClassicLinkDnsSupportResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableVpcClassicLinkDnsSupportResult
+           object will be validated before being returned to caller.
+     */
+    public func enableVpcClassicLinkDnsSupportAsync(input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult>) -> ()) throws {
+        if let enableVpcClassicLinkDnsSupportAsyncOverride = enableVpcClassicLinkDnsSupportAsyncOverride {
+            return try enableVpcClassicLinkDnsSupportAsyncOverride(input, completion)
+        }
+
+        let result = EnableVpcClassicLinkDnsSupportResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the EnableVpcClassicLinkDnsSupport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableVpcClassicLinkDnsSupportRequest object being passed to this operation.
+     - Returns: The EnableVpcClassicLinkDnsSupportResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableVpcClassicLinkDnsSupportSync(input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult {
+        if let enableVpcClassicLinkDnsSupportSyncOverride = enableVpcClassicLinkDnsSupportSyncOverride {
+            return try enableVpcClassicLinkDnsSupportSyncOverride(input)
+        }
+
+        return EnableVpcClassicLinkDnsSupportResult.__default
+    }
+
+    /**
+     Invokes the GetConsoleOutput operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetConsoleOutputRequest object being passed to this operation.
+         - completion: The GetConsoleOutputResult object or an error will be passed to this 
+           callback when the operation is complete. The GetConsoleOutputResult
+           object will be validated before being returned to caller.
+     */
+    public func getConsoleOutputAsync(input: ElasticComputeCloudModel.GetConsoleOutputRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetConsoleOutputResult>) -> ()) throws {
+        if let getConsoleOutputAsyncOverride = getConsoleOutputAsyncOverride {
+            return try getConsoleOutputAsyncOverride(input, completion)
+        }
+
+        let result = GetConsoleOutputResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the GetConsoleOutput operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetConsoleOutputRequest object being passed to this operation.
+     - Returns: The GetConsoleOutputResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getConsoleOutputSync(input: ElasticComputeCloudModel.GetConsoleOutputRequest) throws -> ElasticComputeCloudModel.GetConsoleOutputResult {
+        if let getConsoleOutputSyncOverride = getConsoleOutputSyncOverride {
+            return try getConsoleOutputSyncOverride(input)
+        }
+
+        return GetConsoleOutputResult.__default
+    }
+
+    /**
+     Invokes the GetConsoleScreenshot operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetConsoleScreenshotRequest object being passed to this operation.
+         - completion: The GetConsoleScreenshotResult object or an error will be passed to this 
+           callback when the operation is complete. The GetConsoleScreenshotResult
+           object will be validated before being returned to caller.
+     */
+    public func getConsoleScreenshotAsync(input: ElasticComputeCloudModel.GetConsoleScreenshotRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetConsoleScreenshotResult>) -> ()) throws {
+        if let getConsoleScreenshotAsyncOverride = getConsoleScreenshotAsyncOverride {
+            return try getConsoleScreenshotAsyncOverride(input, completion)
+        }
+
+        let result = GetConsoleScreenshotResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the GetConsoleScreenshot operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetConsoleScreenshotRequest object being passed to this operation.
+     - Returns: The GetConsoleScreenshotResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getConsoleScreenshotSync(input: ElasticComputeCloudModel.GetConsoleScreenshotRequest) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult {
+        if let getConsoleScreenshotSyncOverride = getConsoleScreenshotSyncOverride {
+            return try getConsoleScreenshotSyncOverride(input)
+        }
+
+        return GetConsoleScreenshotResult.__default
+    }
+
+    /**
+     Invokes the GetHostReservationPurchasePreview operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetHostReservationPurchasePreviewRequest object being passed to this operation.
+         - completion: The GetHostReservationPurchasePreviewResult object or an error will be passed to this 
+           callback when the operation is complete. The GetHostReservationPurchasePreviewResult
+           object will be validated before being returned to caller.
+     */
+    public func getHostReservationPurchasePreviewAsync(input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult>) -> ()) throws {
+        if let getHostReservationPurchasePreviewAsyncOverride = getHostReservationPurchasePreviewAsyncOverride {
+            return try getHostReservationPurchasePreviewAsyncOverride(input, completion)
+        }
+
+        let result = GetHostReservationPurchasePreviewResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the GetHostReservationPurchasePreview operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetHostReservationPurchasePreviewRequest object being passed to this operation.
+     - Returns: The GetHostReservationPurchasePreviewResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getHostReservationPurchasePreviewSync(input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult {
+        if let getHostReservationPurchasePreviewSyncOverride = getHostReservationPurchasePreviewSyncOverride {
+            return try getHostReservationPurchasePreviewSyncOverride(input)
+        }
+
+        return GetHostReservationPurchasePreviewResult.__default
+    }
+
+    /**
+     Invokes the GetLaunchTemplateData operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetLaunchTemplateDataRequest object being passed to this operation.
+         - completion: The GetLaunchTemplateDataResult object or an error will be passed to this 
+           callback when the operation is complete. The GetLaunchTemplateDataResult
+           object will be validated before being returned to caller.
+     */
+    public func getLaunchTemplateDataAsync(input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetLaunchTemplateDataResult>) -> ()) throws {
+        if let getLaunchTemplateDataAsyncOverride = getLaunchTemplateDataAsyncOverride {
+            return try getLaunchTemplateDataAsyncOverride(input, completion)
+        }
+
+        let result = GetLaunchTemplateDataResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the GetLaunchTemplateData operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetLaunchTemplateDataRequest object being passed to this operation.
+     - Returns: The GetLaunchTemplateDataResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getLaunchTemplateDataSync(input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult {
+        if let getLaunchTemplateDataSyncOverride = getLaunchTemplateDataSyncOverride {
+            return try getLaunchTemplateDataSyncOverride(input)
+        }
+
+        return GetLaunchTemplateDataResult.__default
+    }
+
+    /**
+     Invokes the GetPasswordData operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetPasswordDataRequest object being passed to this operation.
+         - completion: The GetPasswordDataResult object or an error will be passed to this 
+           callback when the operation is complete. The GetPasswordDataResult
+           object will be validated before being returned to caller.
+     */
+    public func getPasswordDataAsync(input: ElasticComputeCloudModel.GetPasswordDataRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetPasswordDataResult>) -> ()) throws {
+        if let getPasswordDataAsyncOverride = getPasswordDataAsyncOverride {
+            return try getPasswordDataAsyncOverride(input, completion)
+        }
+
+        let result = GetPasswordDataResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the GetPasswordData operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetPasswordDataRequest object being passed to this operation.
+     - Returns: The GetPasswordDataResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getPasswordDataSync(input: ElasticComputeCloudModel.GetPasswordDataRequest) throws -> ElasticComputeCloudModel.GetPasswordDataResult {
+        if let getPasswordDataSyncOverride = getPasswordDataSyncOverride {
+            return try getPasswordDataSyncOverride(input)
+        }
+
+        return GetPasswordDataResult.__default
+    }
+
+    /**
+     Invokes the GetReservedInstancesExchangeQuote operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetReservedInstancesExchangeQuoteRequest object being passed to this operation.
+         - completion: The GetReservedInstancesExchangeQuoteResult object or an error will be passed to this 
+           callback when the operation is complete. The GetReservedInstancesExchangeQuoteResult
+           object will be validated before being returned to caller.
+     */
+    public func getReservedInstancesExchangeQuoteAsync(input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult>) -> ()) throws {
+        if let getReservedInstancesExchangeQuoteAsyncOverride = getReservedInstancesExchangeQuoteAsyncOverride {
+            return try getReservedInstancesExchangeQuoteAsyncOverride(input, completion)
+        }
+
+        let result = GetReservedInstancesExchangeQuoteResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the GetReservedInstancesExchangeQuote operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetReservedInstancesExchangeQuoteRequest object being passed to this operation.
+     - Returns: The GetReservedInstancesExchangeQuoteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getReservedInstancesExchangeQuoteSync(input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult {
+        if let getReservedInstancesExchangeQuoteSyncOverride = getReservedInstancesExchangeQuoteSyncOverride {
+            return try getReservedInstancesExchangeQuoteSyncOverride(input)
+        }
+
+        return GetReservedInstancesExchangeQuoteResult.__default
+    }
+
+    /**
+     Invokes the ImportImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportImageRequest object being passed to this operation.
+         - completion: The ImportImageResult object or an error will be passed to this 
+           callback when the operation is complete. The ImportImageResult
+           object will be validated before being returned to caller.
+     */
+    public func importImageAsync(input: ElasticComputeCloudModel.ImportImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportImageResult>) -> ()) throws {
+        if let importImageAsyncOverride = importImageAsyncOverride {
+            return try importImageAsyncOverride(input, completion)
+        }
+
+        let result = ImportImageResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ImportImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportImageRequest object being passed to this operation.
+     - Returns: The ImportImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func importImageSync(input: ElasticComputeCloudModel.ImportImageRequest) throws -> ElasticComputeCloudModel.ImportImageResult {
+        if let importImageSyncOverride = importImageSyncOverride {
+            return try importImageSyncOverride(input)
+        }
+
+        return ImportImageResult.__default
+    }
+
+    /**
+     Invokes the ImportInstance operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportInstanceRequest object being passed to this operation.
+         - completion: The ImportInstanceResult object or an error will be passed to this 
+           callback when the operation is complete. The ImportInstanceResult
+           object will be validated before being returned to caller.
+     */
+    public func importInstanceAsync(input: ElasticComputeCloudModel.ImportInstanceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportInstanceResult>) -> ()) throws {
+        if let importInstanceAsyncOverride = importInstanceAsyncOverride {
+            return try importInstanceAsyncOverride(input, completion)
+        }
+
+        let result = ImportInstanceResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ImportInstance operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportInstanceRequest object being passed to this operation.
+     - Returns: The ImportInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func importInstanceSync(input: ElasticComputeCloudModel.ImportInstanceRequest) throws -> ElasticComputeCloudModel.ImportInstanceResult {
+        if let importInstanceSyncOverride = importInstanceSyncOverride {
+            return try importInstanceSyncOverride(input)
+        }
+
+        return ImportInstanceResult.__default
+    }
+
+    /**
+     Invokes the ImportKeyPair operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportKeyPairRequest object being passed to this operation.
+         - completion: The ImportKeyPairResult object or an error will be passed to this 
+           callback when the operation is complete. The ImportKeyPairResult
+           object will be validated before being returned to caller.
+     */
+    public func importKeyPairAsync(input: ElasticComputeCloudModel.ImportKeyPairRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportKeyPairResult>) -> ()) throws {
+        if let importKeyPairAsyncOverride = importKeyPairAsyncOverride {
+            return try importKeyPairAsyncOverride(input, completion)
+        }
+
+        let result = ImportKeyPairResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ImportKeyPair operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportKeyPairRequest object being passed to this operation.
+     - Returns: The ImportKeyPairResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func importKeyPairSync(input: ElasticComputeCloudModel.ImportKeyPairRequest) throws -> ElasticComputeCloudModel.ImportKeyPairResult {
+        if let importKeyPairSyncOverride = importKeyPairSyncOverride {
+            return try importKeyPairSyncOverride(input)
+        }
+
+        return ImportKeyPairResult.__default
+    }
+
+    /**
+     Invokes the ImportSnapshot operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportSnapshotRequest object being passed to this operation.
+         - completion: The ImportSnapshotResult object or an error will be passed to this 
+           callback when the operation is complete. The ImportSnapshotResult
+           object will be validated before being returned to caller.
+     */
+    public func importSnapshotAsync(input: ElasticComputeCloudModel.ImportSnapshotRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportSnapshotResult>) -> ()) throws {
+        if let importSnapshotAsyncOverride = importSnapshotAsyncOverride {
+            return try importSnapshotAsyncOverride(input, completion)
+        }
+
+        let result = ImportSnapshotResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ImportSnapshot operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportSnapshotRequest object being passed to this operation.
+     - Returns: The ImportSnapshotResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func importSnapshotSync(input: ElasticComputeCloudModel.ImportSnapshotRequest) throws -> ElasticComputeCloudModel.ImportSnapshotResult {
+        if let importSnapshotSyncOverride = importSnapshotSyncOverride {
+            return try importSnapshotSyncOverride(input)
+        }
+
+        return ImportSnapshotResult.__default
+    }
+
+    /**
+     Invokes the ImportVolume operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportVolumeRequest object being passed to this operation.
+         - completion: The ImportVolumeResult object or an error will be passed to this 
+           callback when the operation is complete. The ImportVolumeResult
+           object will be validated before being returned to caller.
+     */
+    public func importVolumeAsync(input: ElasticComputeCloudModel.ImportVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportVolumeResult>) -> ()) throws {
+        if let importVolumeAsyncOverride = importVolumeAsyncOverride {
+            return try importVolumeAsyncOverride(input, completion)
+        }
+
+        let result = ImportVolumeResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ImportVolume operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportVolumeRequest object being passed to this operation.
+     - Returns: The ImportVolumeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func importVolumeSync(input: ElasticComputeCloudModel.ImportVolumeRequest) throws -> ElasticComputeCloudModel.ImportVolumeResult {
+        if let importVolumeSyncOverride = importVolumeSyncOverride {
+            return try importVolumeSyncOverride(input)
+        }
+
+        return ImportVolumeResult.__default
+    }
+
+    /**
+     Invokes the ModifyCapacityReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCapacityReservationRequest object being passed to this operation.
+         - completion: The ModifyCapacityReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyCapacityReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyCapacityReservationAsync(input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyCapacityReservationResult>) -> ()) throws {
+        if let modifyCapacityReservationAsyncOverride = modifyCapacityReservationAsyncOverride {
+            return try modifyCapacityReservationAsyncOverride(input, completion)
+        }
+
+        let result = ModifyCapacityReservationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyCapacityReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCapacityReservationRequest object being passed to this operation.
+     - Returns: The ModifyCapacityReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyCapacityReservationSync(input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
+        if let modifyCapacityReservationSyncOverride = modifyCapacityReservationSyncOverride {
+            return try modifyCapacityReservationSyncOverride(input)
+        }
+
+        return ModifyCapacityReservationResult.__default
+    }
+
+    /**
+     Invokes the ModifyFleet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyFleetRequest object being passed to this operation.
+         - completion: The ModifyFleetResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyFleetResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyFleetAsync(input: ElasticComputeCloudModel.ModifyFleetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyFleetResult>) -> ()) throws {
+        if let modifyFleetAsyncOverride = modifyFleetAsyncOverride {
+            return try modifyFleetAsyncOverride(input, completion)
+        }
+
+        let result = ModifyFleetResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyFleet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyFleetRequest object being passed to this operation.
+     - Returns: The ModifyFleetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyFleetSync(input: ElasticComputeCloudModel.ModifyFleetRequest) throws -> ElasticComputeCloudModel.ModifyFleetResult {
+        if let modifyFleetSyncOverride = modifyFleetSyncOverride {
+            return try modifyFleetSyncOverride(input)
+        }
+
+        return ModifyFleetResult.__default
+    }
+
+    /**
+     Invokes the ModifyFpgaImageAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyFpgaImageAttributeRequest object being passed to this operation.
+         - completion: The ModifyFpgaImageAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyFpgaImageAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyFpgaImageAttributeAsync(input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult>) -> ()) throws {
+        if let modifyFpgaImageAttributeAsyncOverride = modifyFpgaImageAttributeAsyncOverride {
+            return try modifyFpgaImageAttributeAsyncOverride(input, completion)
+        }
+
+        let result = ModifyFpgaImageAttributeResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyFpgaImageAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyFpgaImageAttributeRequest object being passed to this operation.
+     - Returns: The ModifyFpgaImageAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyFpgaImageAttributeSync(input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult {
+        if let modifyFpgaImageAttributeSyncOverride = modifyFpgaImageAttributeSyncOverride {
+            return try modifyFpgaImageAttributeSyncOverride(input)
+        }
+
+        return ModifyFpgaImageAttributeResult.__default
+    }
+
+    /**
+     Invokes the ModifyHosts operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyHostsRequest object being passed to this operation.
+         - completion: The ModifyHostsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyHostsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyHostsAsync(input: ElasticComputeCloudModel.ModifyHostsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyHostsResult>) -> ()) throws {
+        if let modifyHostsAsyncOverride = modifyHostsAsyncOverride {
+            return try modifyHostsAsyncOverride(input, completion)
+        }
+
+        let result = ModifyHostsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyHosts operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyHostsRequest object being passed to this operation.
+     - Returns: The ModifyHostsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyHostsSync(input: ElasticComputeCloudModel.ModifyHostsRequest) throws -> ElasticComputeCloudModel.ModifyHostsResult {
+        if let modifyHostsSyncOverride = modifyHostsSyncOverride {
+            return try modifyHostsSyncOverride(input)
+        }
+
+        return ModifyHostsResult.__default
+    }
+
+    /**
+     Invokes the ModifyIdFormat operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyIdFormatRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func modifyIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdFormatRequest, completion: @escaping (Error?) -> ()) throws {
+        if let modifyIdFormatAsyncOverride = modifyIdFormatAsyncOverride {
+            return try modifyIdFormatAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ModifyIdFormat operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyIdFormatRequest object being passed to this operation.
+     */
+    public func modifyIdFormatSync(input: ElasticComputeCloudModel.ModifyIdFormatRequest) throws {
+        if let modifyIdFormatSyncOverride = modifyIdFormatSyncOverride {
+            return try modifyIdFormatSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ModifyIdentityIdFormat operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyIdentityIdFormatRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func modifyIdentityIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, completion: @escaping (Error?) -> ()) throws {
+        if let modifyIdentityIdFormatAsyncOverride = modifyIdentityIdFormatAsyncOverride {
+            return try modifyIdentityIdFormatAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ModifyIdentityIdFormat operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyIdentityIdFormatRequest object being passed to this operation.
+     */
+    public func modifyIdentityIdFormatSync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest) throws {
+        if let modifyIdentityIdFormatSyncOverride = modifyIdentityIdFormatSyncOverride {
+            return try modifyIdentityIdFormatSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ModifyImageAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyImageAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func modifyImageAttributeAsync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let modifyImageAttributeAsyncOverride = modifyImageAttributeAsyncOverride {
+            return try modifyImageAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ModifyImageAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyImageAttributeRequest object being passed to this operation.
+     */
+    public func modifyImageAttributeSync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest) throws {
+        if let modifyImageAttributeSyncOverride = modifyImageAttributeSyncOverride {
+            return try modifyImageAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ModifyInstanceAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstanceAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func modifyInstanceAttributeAsync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let modifyInstanceAttributeAsyncOverride = modifyInstanceAttributeAsyncOverride {
+            return try modifyInstanceAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ModifyInstanceAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstanceAttributeRequest object being passed to this operation.
+     */
+    public func modifyInstanceAttributeSync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest) throws {
+        if let modifyInstanceAttributeSyncOverride = modifyInstanceAttributeSyncOverride {
+            return try modifyInstanceAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ModifyInstanceCapacityReservationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstanceCapacityReservationAttributesRequest object being passed to this operation.
+         - completion: The ModifyInstanceCapacityReservationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyInstanceCapacityReservationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyInstanceCapacityReservationAttributesAsync(input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult>) -> ()) throws {
+        if let modifyInstanceCapacityReservationAttributesAsyncOverride = modifyInstanceCapacityReservationAttributesAsyncOverride {
+            return try modifyInstanceCapacityReservationAttributesAsyncOverride(input, completion)
+        }
+
+        let result = ModifyInstanceCapacityReservationAttributesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyInstanceCapacityReservationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstanceCapacityReservationAttributesRequest object being passed to this operation.
+     - Returns: The ModifyInstanceCapacityReservationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyInstanceCapacityReservationAttributesSync(input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult {
+        if let modifyInstanceCapacityReservationAttributesSyncOverride = modifyInstanceCapacityReservationAttributesSyncOverride {
+            return try modifyInstanceCapacityReservationAttributesSyncOverride(input)
+        }
+
+        return ModifyInstanceCapacityReservationAttributesResult.__default
+    }
+
+    /**
+     Invokes the ModifyInstanceCreditSpecification operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstanceCreditSpecificationRequest object being passed to this operation.
+         - completion: The ModifyInstanceCreditSpecificationResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyInstanceCreditSpecificationResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyInstanceCreditSpecificationAsync(input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult>) -> ()) throws {
+        if let modifyInstanceCreditSpecificationAsyncOverride = modifyInstanceCreditSpecificationAsyncOverride {
+            return try modifyInstanceCreditSpecificationAsyncOverride(input, completion)
+        }
+
+        let result = ModifyInstanceCreditSpecificationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyInstanceCreditSpecification operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstanceCreditSpecificationRequest object being passed to this operation.
+     - Returns: The ModifyInstanceCreditSpecificationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyInstanceCreditSpecificationSync(input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult {
+        if let modifyInstanceCreditSpecificationSyncOverride = modifyInstanceCreditSpecificationSyncOverride {
+            return try modifyInstanceCreditSpecificationSyncOverride(input)
+        }
+
+        return ModifyInstanceCreditSpecificationResult.__default
+    }
+
+    /**
+     Invokes the ModifyInstancePlacement operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstancePlacementRequest object being passed to this operation.
+         - completion: The ModifyInstancePlacementResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyInstancePlacementResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyInstancePlacementAsync(input: ElasticComputeCloudModel.ModifyInstancePlacementRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstancePlacementResult>) -> ()) throws {
+        if let modifyInstancePlacementAsyncOverride = modifyInstancePlacementAsyncOverride {
+            return try modifyInstancePlacementAsyncOverride(input, completion)
+        }
+
+        let result = ModifyInstancePlacementResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyInstancePlacement operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstancePlacementRequest object being passed to this operation.
+     - Returns: The ModifyInstancePlacementResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyInstancePlacementSync(input: ElasticComputeCloudModel.ModifyInstancePlacementRequest) throws -> ElasticComputeCloudModel.ModifyInstancePlacementResult {
+        if let modifyInstancePlacementSyncOverride = modifyInstancePlacementSyncOverride {
+            return try modifyInstancePlacementSyncOverride(input)
+        }
+
+        return ModifyInstancePlacementResult.__default
+    }
+
+    /**
+     Invokes the ModifyLaunchTemplate operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyLaunchTemplateRequest object being passed to this operation.
+         - completion: The ModifyLaunchTemplateResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyLaunchTemplateResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyLaunchTemplateAsync(input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyLaunchTemplateResult>) -> ()) throws {
+        if let modifyLaunchTemplateAsyncOverride = modifyLaunchTemplateAsyncOverride {
+            return try modifyLaunchTemplateAsyncOverride(input, completion)
+        }
+
+        let result = ModifyLaunchTemplateResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyLaunchTemplate operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyLaunchTemplateRequest object being passed to this operation.
+     - Returns: The ModifyLaunchTemplateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyLaunchTemplateSync(input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult {
+        if let modifyLaunchTemplateSyncOverride = modifyLaunchTemplateSyncOverride {
+            return try modifyLaunchTemplateSyncOverride(input)
+        }
+
+        return ModifyLaunchTemplateResult.__default
+    }
+
+    /**
+     Invokes the ModifyNetworkInterfaceAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyNetworkInterfaceAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func modifyNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let modifyNetworkInterfaceAttributeAsyncOverride = modifyNetworkInterfaceAttributeAsyncOverride {
+            return try modifyNetworkInterfaceAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ModifyNetworkInterfaceAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyNetworkInterfaceAttributeRequest object being passed to this operation.
+     */
+    public func modifyNetworkInterfaceAttributeSync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest) throws {
+        if let modifyNetworkInterfaceAttributeSyncOverride = modifyNetworkInterfaceAttributeSyncOverride {
+            return try modifyNetworkInterfaceAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ModifyReservedInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyReservedInstancesRequest object being passed to this operation.
+         - completion: The ModifyReservedInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyReservedInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyReservedInstancesAsync(input: ElasticComputeCloudModel.ModifyReservedInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyReservedInstancesResult>) -> ()) throws {
+        if let modifyReservedInstancesAsyncOverride = modifyReservedInstancesAsyncOverride {
+            return try modifyReservedInstancesAsyncOverride(input, completion)
+        }
+
+        let result = ModifyReservedInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyReservedInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyReservedInstancesRequest object being passed to this operation.
+     - Returns: The ModifyReservedInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyReservedInstancesSync(input: ElasticComputeCloudModel.ModifyReservedInstancesRequest) throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult {
+        if let modifyReservedInstancesSyncOverride = modifyReservedInstancesSyncOverride {
+            return try modifyReservedInstancesSyncOverride(input)
+        }
+
+        return ModifyReservedInstancesResult.__default
+    }
+
+    /**
+     Invokes the ModifySnapshotAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifySnapshotAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func modifySnapshotAttributeAsync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let modifySnapshotAttributeAsyncOverride = modifySnapshotAttributeAsyncOverride {
+            return try modifySnapshotAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ModifySnapshotAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifySnapshotAttributeRequest object being passed to this operation.
+     */
+    public func modifySnapshotAttributeSync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest) throws {
+        if let modifySnapshotAttributeSyncOverride = modifySnapshotAttributeSyncOverride {
+            return try modifySnapshotAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ModifySpotFleetRequest operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifySpotFleetRequestRequest object being passed to this operation.
+         - completion: The ModifySpotFleetRequestResponse object or an error will be passed to this 
+           callback when the operation is complete. The ModifySpotFleetRequestResponse
+           object will be validated before being returned to caller.
+     */
+    public func modifySpotFleetRequestAsync(input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifySpotFleetRequestResponse>) -> ()) throws {
+        if let modifySpotFleetRequestAsyncOverride = modifySpotFleetRequestAsyncOverride {
+            return try modifySpotFleetRequestAsyncOverride(input, completion)
+        }
+
+        let result = ModifySpotFleetRequestResponse.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifySpotFleetRequest operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifySpotFleetRequestRequest object being passed to this operation.
+     - Returns: The ModifySpotFleetRequestResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifySpotFleetRequestSync(input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest) throws -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse {
+        if let modifySpotFleetRequestSyncOverride = modifySpotFleetRequestSyncOverride {
+            return try modifySpotFleetRequestSyncOverride(input)
+        }
+
+        return ModifySpotFleetRequestResponse.__default
+    }
+
+    /**
+     Invokes the ModifySubnetAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifySubnetAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func modifySubnetAttributeAsync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let modifySubnetAttributeAsyncOverride = modifySubnetAttributeAsyncOverride {
+            return try modifySubnetAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ModifySubnetAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifySubnetAttributeRequest object being passed to this operation.
+     */
+    public func modifySubnetAttributeSync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest) throws {
+        if let modifySubnetAttributeSyncOverride = modifySubnetAttributeSyncOverride {
+            return try modifySubnetAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ModifyVolume operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVolumeRequest object being passed to this operation.
+         - completion: The ModifyVolumeResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVolumeResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVolumeAsync(input: ElasticComputeCloudModel.ModifyVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVolumeResult>) -> ()) throws {
+        if let modifyVolumeAsyncOverride = modifyVolumeAsyncOverride {
+            return try modifyVolumeAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVolumeResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyVolume operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVolumeRequest object being passed to this operation.
+     - Returns: The ModifyVolumeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVolumeSync(input: ElasticComputeCloudModel.ModifyVolumeRequest) throws -> ElasticComputeCloudModel.ModifyVolumeResult {
+        if let modifyVolumeSyncOverride = modifyVolumeSyncOverride {
+            return try modifyVolumeSyncOverride(input)
+        }
+
+        return ModifyVolumeResult.__default
+    }
+
+    /**
+     Invokes the ModifyVolumeAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVolumeAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func modifyVolumeAttributeAsync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let modifyVolumeAttributeAsyncOverride = modifyVolumeAttributeAsyncOverride {
+            return try modifyVolumeAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ModifyVolumeAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVolumeAttributeRequest object being passed to this operation.
+     */
+    public func modifyVolumeAttributeSync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest) throws {
+        if let modifyVolumeAttributeSyncOverride = modifyVolumeAttributeSyncOverride {
+            return try modifyVolumeAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ModifyVpcAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpcAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func modifyVpcAttributeAsync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let modifyVpcAttributeAsyncOverride = modifyVpcAttributeAsyncOverride {
+            return try modifyVpcAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ModifyVpcAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpcAttributeRequest object being passed to this operation.
+     */
+    public func modifyVpcAttributeSync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest) throws {
+        if let modifyVpcAttributeSyncOverride = modifyVpcAttributeSyncOverride {
+            return try modifyVpcAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ModifyVpcEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpcEndpointRequest object being passed to this operation.
+         - completion: The ModifyVpcEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpcEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpcEndpointAsync(input: ElasticComputeCloudModel.ModifyVpcEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcEndpointResult>) -> ()) throws {
+        if let modifyVpcEndpointAsyncOverride = modifyVpcEndpointAsyncOverride {
+            return try modifyVpcEndpointAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVpcEndpointResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyVpcEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpcEndpointRequest object being passed to this operation.
+     - Returns: The ModifyVpcEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpcEndpointSync(input: ElasticComputeCloudModel.ModifyVpcEndpointRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointResult {
+        if let modifyVpcEndpointSyncOverride = modifyVpcEndpointSyncOverride {
+            return try modifyVpcEndpointSyncOverride(input)
+        }
+
+        return ModifyVpcEndpointResult.__default
+    }
+
+    /**
+     Invokes the ModifyVpcEndpointConnectionNotification operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpcEndpointConnectionNotificationRequest object being passed to this operation.
+         - completion: The ModifyVpcEndpointConnectionNotificationResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpcEndpointConnectionNotificationResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpcEndpointConnectionNotificationAsync(input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult>) -> ()) throws {
+        if let modifyVpcEndpointConnectionNotificationAsyncOverride = modifyVpcEndpointConnectionNotificationAsyncOverride {
+            return try modifyVpcEndpointConnectionNotificationAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVpcEndpointConnectionNotificationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyVpcEndpointConnectionNotification operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpcEndpointConnectionNotificationRequest object being passed to this operation.
+     - Returns: The ModifyVpcEndpointConnectionNotificationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpcEndpointConnectionNotificationSync(input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult {
+        if let modifyVpcEndpointConnectionNotificationSyncOverride = modifyVpcEndpointConnectionNotificationSyncOverride {
+            return try modifyVpcEndpointConnectionNotificationSyncOverride(input)
+        }
+
+        return ModifyVpcEndpointConnectionNotificationResult.__default
+    }
+
+    /**
+     Invokes the ModifyVpcEndpointServiceConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpcEndpointServiceConfigurationRequest object being passed to this operation.
+         - completion: The ModifyVpcEndpointServiceConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpcEndpointServiceConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpcEndpointServiceConfigurationAsync(input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult>) -> ()) throws {
+        if let modifyVpcEndpointServiceConfigurationAsyncOverride = modifyVpcEndpointServiceConfigurationAsyncOverride {
+            return try modifyVpcEndpointServiceConfigurationAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVpcEndpointServiceConfigurationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyVpcEndpointServiceConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpcEndpointServiceConfigurationRequest object being passed to this operation.
+     - Returns: The ModifyVpcEndpointServiceConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpcEndpointServiceConfigurationSync(input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult {
+        if let modifyVpcEndpointServiceConfigurationSyncOverride = modifyVpcEndpointServiceConfigurationSyncOverride {
+            return try modifyVpcEndpointServiceConfigurationSyncOverride(input)
+        }
+
+        return ModifyVpcEndpointServiceConfigurationResult.__default
+    }
+
+    /**
+     Invokes the ModifyVpcEndpointServicePermissions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpcEndpointServicePermissionsRequest object being passed to this operation.
+         - completion: The ModifyVpcEndpointServicePermissionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpcEndpointServicePermissionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpcEndpointServicePermissionsAsync(input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult>) -> ()) throws {
+        if let modifyVpcEndpointServicePermissionsAsyncOverride = modifyVpcEndpointServicePermissionsAsyncOverride {
+            return try modifyVpcEndpointServicePermissionsAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVpcEndpointServicePermissionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyVpcEndpointServicePermissions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpcEndpointServicePermissionsRequest object being passed to this operation.
+     - Returns: The ModifyVpcEndpointServicePermissionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpcEndpointServicePermissionsSync(input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult {
+        if let modifyVpcEndpointServicePermissionsSyncOverride = modifyVpcEndpointServicePermissionsSyncOverride {
+            return try modifyVpcEndpointServicePermissionsSyncOverride(input)
+        }
+
+        return ModifyVpcEndpointServicePermissionsResult.__default
+    }
+
+    /**
+     Invokes the ModifyVpcPeeringConnectionOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpcPeeringConnectionOptionsRequest object being passed to this operation.
+         - completion: The ModifyVpcPeeringConnectionOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpcPeeringConnectionOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpcPeeringConnectionOptionsAsync(input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult>) -> ()) throws {
+        if let modifyVpcPeeringConnectionOptionsAsyncOverride = modifyVpcPeeringConnectionOptionsAsyncOverride {
+            return try modifyVpcPeeringConnectionOptionsAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVpcPeeringConnectionOptionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyVpcPeeringConnectionOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpcPeeringConnectionOptionsRequest object being passed to this operation.
+     - Returns: The ModifyVpcPeeringConnectionOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpcPeeringConnectionOptionsSync(input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult {
+        if let modifyVpcPeeringConnectionOptionsSyncOverride = modifyVpcPeeringConnectionOptionsSyncOverride {
+            return try modifyVpcPeeringConnectionOptionsSyncOverride(input)
+        }
+
+        return ModifyVpcPeeringConnectionOptionsResult.__default
+    }
+
+    /**
+     Invokes the ModifyVpcTenancy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpcTenancyRequest object being passed to this operation.
+         - completion: The ModifyVpcTenancyResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpcTenancyResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpcTenancyAsync(input: ElasticComputeCloudModel.ModifyVpcTenancyRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcTenancyResult>) -> ()) throws {
+        if let modifyVpcTenancyAsyncOverride = modifyVpcTenancyAsyncOverride {
+            return try modifyVpcTenancyAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVpcTenancyResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ModifyVpcTenancy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpcTenancyRequest object being passed to this operation.
+     - Returns: The ModifyVpcTenancyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpcTenancySync(input: ElasticComputeCloudModel.ModifyVpcTenancyRequest) throws -> ElasticComputeCloudModel.ModifyVpcTenancyResult {
+        if let modifyVpcTenancySyncOverride = modifyVpcTenancySyncOverride {
+            return try modifyVpcTenancySyncOverride(input)
+        }
+
+        return ModifyVpcTenancyResult.__default
+    }
+
+    /**
+     Invokes the MonitorInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated MonitorInstancesRequest object being passed to this operation.
+         - completion: The MonitorInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The MonitorInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func monitorInstancesAsync(input: ElasticComputeCloudModel.MonitorInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.MonitorInstancesResult>) -> ()) throws {
+        if let monitorInstancesAsyncOverride = monitorInstancesAsyncOverride {
+            return try monitorInstancesAsyncOverride(input, completion)
+        }
+
+        let result = MonitorInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the MonitorInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated MonitorInstancesRequest object being passed to this operation.
+     - Returns: The MonitorInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func monitorInstancesSync(input: ElasticComputeCloudModel.MonitorInstancesRequest) throws -> ElasticComputeCloudModel.MonitorInstancesResult {
+        if let monitorInstancesSyncOverride = monitorInstancesSyncOverride {
+            return try monitorInstancesSyncOverride(input)
+        }
+
+        return MonitorInstancesResult.__default
+    }
+
+    /**
+     Invokes the MoveAddressToVpc operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated MoveAddressToVpcRequest object being passed to this operation.
+         - completion: The MoveAddressToVpcResult object or an error will be passed to this 
+           callback when the operation is complete. The MoveAddressToVpcResult
+           object will be validated before being returned to caller.
+     */
+    public func moveAddressToVpcAsync(input: ElasticComputeCloudModel.MoveAddressToVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.MoveAddressToVpcResult>) -> ()) throws {
+        if let moveAddressToVpcAsyncOverride = moveAddressToVpcAsyncOverride {
+            return try moveAddressToVpcAsyncOverride(input, completion)
+        }
+
+        let result = MoveAddressToVpcResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the MoveAddressToVpc operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated MoveAddressToVpcRequest object being passed to this operation.
+     - Returns: The MoveAddressToVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func moveAddressToVpcSync(input: ElasticComputeCloudModel.MoveAddressToVpcRequest) throws -> ElasticComputeCloudModel.MoveAddressToVpcResult {
+        if let moveAddressToVpcSyncOverride = moveAddressToVpcSyncOverride {
+            return try moveAddressToVpcSyncOverride(input)
+        }
+
+        return MoveAddressToVpcResult.__default
+    }
+
+    /**
+     Invokes the ProvisionByoipCidr operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ProvisionByoipCidrRequest object being passed to this operation.
+         - completion: The ProvisionByoipCidrResult object or an error will be passed to this 
+           callback when the operation is complete. The ProvisionByoipCidrResult
+           object will be validated before being returned to caller.
+     */
+    public func provisionByoipCidrAsync(input: ElasticComputeCloudModel.ProvisionByoipCidrRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ProvisionByoipCidrResult>) -> ()) throws {
+        if let provisionByoipCidrAsyncOverride = provisionByoipCidrAsyncOverride {
+            return try provisionByoipCidrAsyncOverride(input, completion)
+        }
+
+        let result = ProvisionByoipCidrResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ProvisionByoipCidr operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ProvisionByoipCidrRequest object being passed to this operation.
+     - Returns: The ProvisionByoipCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func provisionByoipCidrSync(input: ElasticComputeCloudModel.ProvisionByoipCidrRequest) throws -> ElasticComputeCloudModel.ProvisionByoipCidrResult {
+        if let provisionByoipCidrSyncOverride = provisionByoipCidrSyncOverride {
+            return try provisionByoipCidrSyncOverride(input)
+        }
+
+        return ProvisionByoipCidrResult.__default
+    }
+
+    /**
+     Invokes the PurchaseHostReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PurchaseHostReservationRequest object being passed to this operation.
+         - completion: The PurchaseHostReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The PurchaseHostReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func purchaseHostReservationAsync(input: ElasticComputeCloudModel.PurchaseHostReservationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.PurchaseHostReservationResult>) -> ()) throws {
+        if let purchaseHostReservationAsyncOverride = purchaseHostReservationAsyncOverride {
+            return try purchaseHostReservationAsyncOverride(input, completion)
+        }
+
+        let result = PurchaseHostReservationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the PurchaseHostReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PurchaseHostReservationRequest object being passed to this operation.
+     - Returns: The PurchaseHostReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func purchaseHostReservationSync(input: ElasticComputeCloudModel.PurchaseHostReservationRequest) throws -> ElasticComputeCloudModel.PurchaseHostReservationResult {
+        if let purchaseHostReservationSyncOverride = purchaseHostReservationSyncOverride {
+            return try purchaseHostReservationSyncOverride(input)
+        }
+
+        return PurchaseHostReservationResult.__default
+    }
+
+    /**
+     Invokes the PurchaseReservedInstancesOffering operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PurchaseReservedInstancesOfferingRequest object being passed to this operation.
+         - completion: The PurchaseReservedInstancesOfferingResult object or an error will be passed to this 
+           callback when the operation is complete. The PurchaseReservedInstancesOfferingResult
+           object will be validated before being returned to caller.
+     */
+    public func purchaseReservedInstancesOfferingAsync(input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult>) -> ()) throws {
+        if let purchaseReservedInstancesOfferingAsyncOverride = purchaseReservedInstancesOfferingAsyncOverride {
+            return try purchaseReservedInstancesOfferingAsyncOverride(input, completion)
+        }
+
+        let result = PurchaseReservedInstancesOfferingResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the PurchaseReservedInstancesOffering operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PurchaseReservedInstancesOfferingRequest object being passed to this operation.
+     - Returns: The PurchaseReservedInstancesOfferingResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func purchaseReservedInstancesOfferingSync(input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest) throws -> ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult {
+        if let purchaseReservedInstancesOfferingSyncOverride = purchaseReservedInstancesOfferingSyncOverride {
+            return try purchaseReservedInstancesOfferingSyncOverride(input)
+        }
+
+        return PurchaseReservedInstancesOfferingResult.__default
+    }
+
+    /**
+     Invokes the PurchaseScheduledInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PurchaseScheduledInstancesRequest object being passed to this operation.
+         - completion: The PurchaseScheduledInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The PurchaseScheduledInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func purchaseScheduledInstancesAsync(input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.PurchaseScheduledInstancesResult>) -> ()) throws {
+        if let purchaseScheduledInstancesAsyncOverride = purchaseScheduledInstancesAsyncOverride {
+            return try purchaseScheduledInstancesAsyncOverride(input, completion)
+        }
+
+        let result = PurchaseScheduledInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the PurchaseScheduledInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PurchaseScheduledInstancesRequest object being passed to this operation.
+     - Returns: The PurchaseScheduledInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func purchaseScheduledInstancesSync(input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest) throws -> ElasticComputeCloudModel.PurchaseScheduledInstancesResult {
+        if let purchaseScheduledInstancesSyncOverride = purchaseScheduledInstancesSyncOverride {
+            return try purchaseScheduledInstancesSyncOverride(input)
+        }
+
+        return PurchaseScheduledInstancesResult.__default
+    }
+
+    /**
+     Invokes the RebootInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RebootInstancesRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func rebootInstancesAsync(input: ElasticComputeCloudModel.RebootInstancesRequest, completion: @escaping (Error?) -> ()) throws {
+        if let rebootInstancesAsyncOverride = rebootInstancesAsyncOverride {
+            return try rebootInstancesAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the RebootInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RebootInstancesRequest object being passed to this operation.
+     */
+    public func rebootInstancesSync(input: ElasticComputeCloudModel.RebootInstancesRequest) throws {
+        if let rebootInstancesSyncOverride = rebootInstancesSyncOverride {
+            return try rebootInstancesSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the RegisterImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterImageRequest object being passed to this operation.
+         - completion: The RegisterImageResult object or an error will be passed to this 
+           callback when the operation is complete. The RegisterImageResult
+           object will be validated before being returned to caller.
+     */
+    public func registerImageAsync(input: ElasticComputeCloudModel.RegisterImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RegisterImageResult>) -> ()) throws {
+        if let registerImageAsyncOverride = registerImageAsyncOverride {
+            return try registerImageAsyncOverride(input, completion)
+        }
+
+        let result = RegisterImageResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the RegisterImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterImageRequest object being passed to this operation.
+     - Returns: The RegisterImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func registerImageSync(input: ElasticComputeCloudModel.RegisterImageRequest) throws -> ElasticComputeCloudModel.RegisterImageResult {
+        if let registerImageSyncOverride = registerImageSyncOverride {
+            return try registerImageSyncOverride(input)
+        }
+
+        return RegisterImageResult.__default
+    }
+
+    /**
+     Invokes the RejectVpcEndpointConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RejectVpcEndpointConnectionsRequest object being passed to this operation.
+         - completion: The RejectVpcEndpointConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The RejectVpcEndpointConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    public func rejectVpcEndpointConnectionsAsync(input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult>) -> ()) throws {
+        if let rejectVpcEndpointConnectionsAsyncOverride = rejectVpcEndpointConnectionsAsyncOverride {
+            return try rejectVpcEndpointConnectionsAsyncOverride(input, completion)
+        }
+
+        let result = RejectVpcEndpointConnectionsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the RejectVpcEndpointConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RejectVpcEndpointConnectionsRequest object being passed to this operation.
+     - Returns: The RejectVpcEndpointConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func rejectVpcEndpointConnectionsSync(input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult {
+        if let rejectVpcEndpointConnectionsSyncOverride = rejectVpcEndpointConnectionsSyncOverride {
+            return try rejectVpcEndpointConnectionsSyncOverride(input)
+        }
+
+        return RejectVpcEndpointConnectionsResult.__default
+    }
+
+    /**
+     Invokes the RejectVpcPeeringConnection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RejectVpcPeeringConnectionRequest object being passed to this operation.
+         - completion: The RejectVpcPeeringConnectionResult object or an error will be passed to this 
+           callback when the operation is complete. The RejectVpcPeeringConnectionResult
+           object will be validated before being returned to caller.
+     */
+    public func rejectVpcPeeringConnectionAsync(input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult>) -> ()) throws {
+        if let rejectVpcPeeringConnectionAsyncOverride = rejectVpcPeeringConnectionAsyncOverride {
+            return try rejectVpcPeeringConnectionAsyncOverride(input, completion)
+        }
+
+        let result = RejectVpcPeeringConnectionResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the RejectVpcPeeringConnection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RejectVpcPeeringConnectionRequest object being passed to this operation.
+     - Returns: The RejectVpcPeeringConnectionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func rejectVpcPeeringConnectionSync(input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult {
+        if let rejectVpcPeeringConnectionSyncOverride = rejectVpcPeeringConnectionSyncOverride {
+            return try rejectVpcPeeringConnectionSyncOverride(input)
+        }
+
+        return RejectVpcPeeringConnectionResult.__default
+    }
+
+    /**
+     Invokes the ReleaseAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReleaseAddressRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func releaseAddressAsync(input: ElasticComputeCloudModel.ReleaseAddressRequest, completion: @escaping (Error?) -> ()) throws {
+        if let releaseAddressAsyncOverride = releaseAddressAsyncOverride {
+            return try releaseAddressAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ReleaseAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReleaseAddressRequest object being passed to this operation.
+     */
+    public func releaseAddressSync(input: ElasticComputeCloudModel.ReleaseAddressRequest) throws {
+        if let releaseAddressSyncOverride = releaseAddressSyncOverride {
+            return try releaseAddressSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ReleaseHosts operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReleaseHostsRequest object being passed to this operation.
+         - completion: The ReleaseHostsResult object or an error will be passed to this 
+           callback when the operation is complete. The ReleaseHostsResult
+           object will be validated before being returned to caller.
+     */
+    public func releaseHostsAsync(input: ElasticComputeCloudModel.ReleaseHostsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReleaseHostsResult>) -> ()) throws {
+        if let releaseHostsAsyncOverride = releaseHostsAsyncOverride {
+            return try releaseHostsAsyncOverride(input, completion)
+        }
+
+        let result = ReleaseHostsResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ReleaseHosts operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReleaseHostsRequest object being passed to this operation.
+     - Returns: The ReleaseHostsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func releaseHostsSync(input: ElasticComputeCloudModel.ReleaseHostsRequest) throws -> ElasticComputeCloudModel.ReleaseHostsResult {
+        if let releaseHostsSyncOverride = releaseHostsSyncOverride {
+            return try releaseHostsSyncOverride(input)
+        }
+
+        return ReleaseHostsResult.__default
+    }
+
+    /**
+     Invokes the ReplaceIamInstanceProfileAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceIamInstanceProfileAssociationRequest object being passed to this operation.
+         - completion: The ReplaceIamInstanceProfileAssociationResult object or an error will be passed to this 
+           callback when the operation is complete. The ReplaceIamInstanceProfileAssociationResult
+           object will be validated before being returned to caller.
+     */
+    public func replaceIamInstanceProfileAssociationAsync(input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult>) -> ()) throws {
+        if let replaceIamInstanceProfileAssociationAsyncOverride = replaceIamInstanceProfileAssociationAsyncOverride {
+            return try replaceIamInstanceProfileAssociationAsyncOverride(input, completion)
+        }
+
+        let result = ReplaceIamInstanceProfileAssociationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ReplaceIamInstanceProfileAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceIamInstanceProfileAssociationRequest object being passed to this operation.
+     - Returns: The ReplaceIamInstanceProfileAssociationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func replaceIamInstanceProfileAssociationSync(input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult {
+        if let replaceIamInstanceProfileAssociationSyncOverride = replaceIamInstanceProfileAssociationSyncOverride {
+            return try replaceIamInstanceProfileAssociationSyncOverride(input)
+        }
+
+        return ReplaceIamInstanceProfileAssociationResult.__default
+    }
+
+    /**
+     Invokes the ReplaceNetworkAclAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceNetworkAclAssociationRequest object being passed to this operation.
+         - completion: The ReplaceNetworkAclAssociationResult object or an error will be passed to this 
+           callback when the operation is complete. The ReplaceNetworkAclAssociationResult
+           object will be validated before being returned to caller.
+     */
+    public func replaceNetworkAclAssociationAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult>) -> ()) throws {
+        if let replaceNetworkAclAssociationAsyncOverride = replaceNetworkAclAssociationAsyncOverride {
+            return try replaceNetworkAclAssociationAsyncOverride(input, completion)
+        }
+
+        let result = ReplaceNetworkAclAssociationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ReplaceNetworkAclAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceNetworkAclAssociationRequest object being passed to this operation.
+     - Returns: The ReplaceNetworkAclAssociationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func replaceNetworkAclAssociationSync(input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult {
+        if let replaceNetworkAclAssociationSyncOverride = replaceNetworkAclAssociationSyncOverride {
+            return try replaceNetworkAclAssociationSyncOverride(input)
+        }
+
+        return ReplaceNetworkAclAssociationResult.__default
+    }
+
+    /**
+     Invokes the ReplaceNetworkAclEntry operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceNetworkAclEntryRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func replaceNetworkAclEntryAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws {
+        if let replaceNetworkAclEntryAsyncOverride = replaceNetworkAclEntryAsyncOverride {
+            return try replaceNetworkAclEntryAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ReplaceNetworkAclEntry operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceNetworkAclEntryRequest object being passed to this operation.
+     */
+    public func replaceNetworkAclEntrySync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest) throws {
+        if let replaceNetworkAclEntrySyncOverride = replaceNetworkAclEntrySyncOverride {
+            return try replaceNetworkAclEntrySyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ReplaceRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceRouteRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func replaceRouteAsync(input: ElasticComputeCloudModel.ReplaceRouteRequest, completion: @escaping (Error?) -> ()) throws {
+        if let replaceRouteAsyncOverride = replaceRouteAsyncOverride {
+            return try replaceRouteAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ReplaceRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceRouteRequest object being passed to this operation.
+     */
+    public func replaceRouteSync(input: ElasticComputeCloudModel.ReplaceRouteRequest) throws {
+        if let replaceRouteSyncOverride = replaceRouteSyncOverride {
+            return try replaceRouteSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ReplaceRouteTableAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceRouteTableAssociationRequest object being passed to this operation.
+         - completion: The ReplaceRouteTableAssociationResult object or an error will be passed to this 
+           callback when the operation is complete. The ReplaceRouteTableAssociationResult
+           object will be validated before being returned to caller.
+     */
+    public func replaceRouteTableAssociationAsync(input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult>) -> ()) throws {
+        if let replaceRouteTableAssociationAsyncOverride = replaceRouteTableAssociationAsyncOverride {
+            return try replaceRouteTableAssociationAsyncOverride(input, completion)
+        }
+
+        let result = ReplaceRouteTableAssociationResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ReplaceRouteTableAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceRouteTableAssociationRequest object being passed to this operation.
+     - Returns: The ReplaceRouteTableAssociationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func replaceRouteTableAssociationSync(input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult {
+        if let replaceRouteTableAssociationSyncOverride = replaceRouteTableAssociationSyncOverride {
+            return try replaceRouteTableAssociationSyncOverride(input)
+        }
+
+        return ReplaceRouteTableAssociationResult.__default
+    }
+
+    /**
+     Invokes the ReportInstanceStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReportInstanceStatusRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func reportInstanceStatusAsync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest, completion: @escaping (Error?) -> ()) throws {
+        if let reportInstanceStatusAsyncOverride = reportInstanceStatusAsyncOverride {
+            return try reportInstanceStatusAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ReportInstanceStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReportInstanceStatusRequest object being passed to this operation.
+     */
+    public func reportInstanceStatusSync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest) throws {
+        if let reportInstanceStatusSyncOverride = reportInstanceStatusSyncOverride {
+            return try reportInstanceStatusSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the RequestSpotFleet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RequestSpotFleetRequest object being passed to this operation.
+         - completion: The RequestSpotFleetResponse object or an error will be passed to this 
+           callback when the operation is complete. The RequestSpotFleetResponse
+           object will be validated before being returned to caller.
+     */
+    public func requestSpotFleetAsync(input: ElasticComputeCloudModel.RequestSpotFleetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RequestSpotFleetResponse>) -> ()) throws {
+        if let requestSpotFleetAsyncOverride = requestSpotFleetAsyncOverride {
+            return try requestSpotFleetAsyncOverride(input, completion)
+        }
+
+        let result = RequestSpotFleetResponse.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the RequestSpotFleet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RequestSpotFleetRequest object being passed to this operation.
+     - Returns: The RequestSpotFleetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func requestSpotFleetSync(input: ElasticComputeCloudModel.RequestSpotFleetRequest) throws -> ElasticComputeCloudModel.RequestSpotFleetResponse {
+        if let requestSpotFleetSyncOverride = requestSpotFleetSyncOverride {
+            return try requestSpotFleetSyncOverride(input)
+        }
+
+        return RequestSpotFleetResponse.__default
+    }
+
+    /**
+     Invokes the RequestSpotInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RequestSpotInstancesRequest object being passed to this operation.
+         - completion: The RequestSpotInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The RequestSpotInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func requestSpotInstancesAsync(input: ElasticComputeCloudModel.RequestSpotInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RequestSpotInstancesResult>) -> ()) throws {
+        if let requestSpotInstancesAsyncOverride = requestSpotInstancesAsyncOverride {
+            return try requestSpotInstancesAsyncOverride(input, completion)
+        }
+
+        let result = RequestSpotInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the RequestSpotInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RequestSpotInstancesRequest object being passed to this operation.
+     - Returns: The RequestSpotInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func requestSpotInstancesSync(input: ElasticComputeCloudModel.RequestSpotInstancesRequest) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult {
+        if let requestSpotInstancesSyncOverride = requestSpotInstancesSyncOverride {
+            return try requestSpotInstancesSyncOverride(input)
+        }
+
+        return RequestSpotInstancesResult.__default
+    }
+
+    /**
+     Invokes the ResetFpgaImageAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetFpgaImageAttributeRequest object being passed to this operation.
+         - completion: The ResetFpgaImageAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The ResetFpgaImageAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func resetFpgaImageAttributeAsync(input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ResetFpgaImageAttributeResult>) -> ()) throws {
+        if let resetFpgaImageAttributeAsyncOverride = resetFpgaImageAttributeAsyncOverride {
+            return try resetFpgaImageAttributeAsyncOverride(input, completion)
+        }
+
+        let result = ResetFpgaImageAttributeResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ResetFpgaImageAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetFpgaImageAttributeRequest object being passed to this operation.
+     - Returns: The ResetFpgaImageAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func resetFpgaImageAttributeSync(input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult {
+        if let resetFpgaImageAttributeSyncOverride = resetFpgaImageAttributeSyncOverride {
+            return try resetFpgaImageAttributeSyncOverride(input)
+        }
+
+        return ResetFpgaImageAttributeResult.__default
+    }
+
+    /**
+     Invokes the ResetImageAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetImageAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func resetImageAttributeAsync(input: ElasticComputeCloudModel.ResetImageAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let resetImageAttributeAsyncOverride = resetImageAttributeAsyncOverride {
+            return try resetImageAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ResetImageAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetImageAttributeRequest object being passed to this operation.
+     */
+    public func resetImageAttributeSync(input: ElasticComputeCloudModel.ResetImageAttributeRequest) throws {
+        if let resetImageAttributeSyncOverride = resetImageAttributeSyncOverride {
+            return try resetImageAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ResetInstanceAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetInstanceAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func resetInstanceAttributeAsync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let resetInstanceAttributeAsyncOverride = resetInstanceAttributeAsyncOverride {
+            return try resetInstanceAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ResetInstanceAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetInstanceAttributeRequest object being passed to this operation.
+     */
+    public func resetInstanceAttributeSync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest) throws {
+        if let resetInstanceAttributeSyncOverride = resetInstanceAttributeSyncOverride {
+            return try resetInstanceAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ResetNetworkInterfaceAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetNetworkInterfaceAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func resetNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let resetNetworkInterfaceAttributeAsyncOverride = resetNetworkInterfaceAttributeAsyncOverride {
+            return try resetNetworkInterfaceAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ResetNetworkInterfaceAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetNetworkInterfaceAttributeRequest object being passed to this operation.
+     */
+    public func resetNetworkInterfaceAttributeSync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest) throws {
+        if let resetNetworkInterfaceAttributeSyncOverride = resetNetworkInterfaceAttributeSyncOverride {
+            return try resetNetworkInterfaceAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the ResetSnapshotAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetSnapshotAttributeRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func resetSnapshotAttributeAsync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+        if let resetSnapshotAttributeAsyncOverride = resetSnapshotAttributeAsyncOverride {
+            return try resetSnapshotAttributeAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the ResetSnapshotAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetSnapshotAttributeRequest object being passed to this operation.
+     */
+    public func resetSnapshotAttributeSync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest) throws {
+        if let resetSnapshotAttributeSyncOverride = resetSnapshotAttributeSyncOverride {
+            return try resetSnapshotAttributeSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the RestoreAddressToClassic operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RestoreAddressToClassicRequest object being passed to this operation.
+         - completion: The RestoreAddressToClassicResult object or an error will be passed to this 
+           callback when the operation is complete. The RestoreAddressToClassicResult
+           object will be validated before being returned to caller.
+     */
+    public func restoreAddressToClassicAsync(input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RestoreAddressToClassicResult>) -> ()) throws {
+        if let restoreAddressToClassicAsyncOverride = restoreAddressToClassicAsyncOverride {
+            return try restoreAddressToClassicAsyncOverride(input, completion)
+        }
+
+        let result = RestoreAddressToClassicResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the RestoreAddressToClassic operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RestoreAddressToClassicRequest object being passed to this operation.
+     - Returns: The RestoreAddressToClassicResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func restoreAddressToClassicSync(input: ElasticComputeCloudModel.RestoreAddressToClassicRequest) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult {
+        if let restoreAddressToClassicSyncOverride = restoreAddressToClassicSyncOverride {
+            return try restoreAddressToClassicSyncOverride(input)
+        }
+
+        return RestoreAddressToClassicResult.__default
+    }
+
+    /**
+     Invokes the RevokeSecurityGroupEgress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func revokeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, completion: @escaping (Error?) -> ()) throws {
+        if let revokeSecurityGroupEgressAsyncOverride = revokeSecurityGroupEgressAsyncOverride {
+            return try revokeSecurityGroupEgressAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the RevokeSecurityGroupEgress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
+     */
+    public func revokeSecurityGroupEgressSync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws {
+        if let revokeSecurityGroupEgressSyncOverride = revokeSecurityGroupEgressSyncOverride {
+            return try revokeSecurityGroupEgressSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the RevokeSecurityGroupIngress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func revokeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, completion: @escaping (Error?) -> ()) throws {
+        if let revokeSecurityGroupIngressAsyncOverride = revokeSecurityGroupIngressAsyncOverride {
+            return try revokeSecurityGroupIngressAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the RevokeSecurityGroupIngress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
+     */
+    public func revokeSecurityGroupIngressSync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws {
+        if let revokeSecurityGroupIngressSyncOverride = revokeSecurityGroupIngressSyncOverride {
+            return try revokeSecurityGroupIngressSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the RunInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RunInstancesRequest object being passed to this operation.
+         - completion: The Reservation object or an error will be passed to this 
+           callback when the operation is complete. The Reservation
+           object will be validated before being returned to caller.
+     */
+    public func runInstancesAsync(input: ElasticComputeCloudModel.RunInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.Reservation>) -> ()) throws {
+        if let runInstancesAsyncOverride = runInstancesAsyncOverride {
+            return try runInstancesAsyncOverride(input, completion)
+        }
+
+        let result = Reservation.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the RunInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RunInstancesRequest object being passed to this operation.
+     - Returns: The Reservation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func runInstancesSync(input: ElasticComputeCloudModel.RunInstancesRequest) throws -> ElasticComputeCloudModel.Reservation {
+        if let runInstancesSyncOverride = runInstancesSyncOverride {
+            return try runInstancesSyncOverride(input)
+        }
+
+        return Reservation.__default
+    }
+
+    /**
+     Invokes the RunScheduledInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RunScheduledInstancesRequest object being passed to this operation.
+         - completion: The RunScheduledInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The RunScheduledInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func runScheduledInstancesAsync(input: ElasticComputeCloudModel.RunScheduledInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RunScheduledInstancesResult>) -> ()) throws {
+        if let runScheduledInstancesAsyncOverride = runScheduledInstancesAsyncOverride {
+            return try runScheduledInstancesAsyncOverride(input, completion)
+        }
+
+        let result = RunScheduledInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the RunScheduledInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RunScheduledInstancesRequest object being passed to this operation.
+     - Returns: The RunScheduledInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func runScheduledInstancesSync(input: ElasticComputeCloudModel.RunScheduledInstancesRequest) throws -> ElasticComputeCloudModel.RunScheduledInstancesResult {
+        if let runScheduledInstancesSyncOverride = runScheduledInstancesSyncOverride {
+            return try runScheduledInstancesSyncOverride(input)
+        }
+
+        return RunScheduledInstancesResult.__default
+    }
+
+    /**
+     Invokes the StartInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartInstancesRequest object being passed to this operation.
+         - completion: The StartInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The StartInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func startInstancesAsync(input: ElasticComputeCloudModel.StartInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.StartInstancesResult>) -> ()) throws {
+        if let startInstancesAsyncOverride = startInstancesAsyncOverride {
+            return try startInstancesAsyncOverride(input, completion)
+        }
+
+        let result = StartInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the StartInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartInstancesRequest object being passed to this operation.
+     - Returns: The StartInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func startInstancesSync(input: ElasticComputeCloudModel.StartInstancesRequest) throws -> ElasticComputeCloudModel.StartInstancesResult {
+        if let startInstancesSyncOverride = startInstancesSyncOverride {
+            return try startInstancesSyncOverride(input)
+        }
+
+        return StartInstancesResult.__default
+    }
+
+    /**
+     Invokes the StopInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopInstancesRequest object being passed to this operation.
+         - completion: The StopInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The StopInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func stopInstancesAsync(input: ElasticComputeCloudModel.StopInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.StopInstancesResult>) -> ()) throws {
+        if let stopInstancesAsyncOverride = stopInstancesAsyncOverride {
+            return try stopInstancesAsyncOverride(input, completion)
+        }
+
+        let result = StopInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the StopInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopInstancesRequest object being passed to this operation.
+     - Returns: The StopInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func stopInstancesSync(input: ElasticComputeCloudModel.StopInstancesRequest) throws -> ElasticComputeCloudModel.StopInstancesResult {
+        if let stopInstancesSyncOverride = stopInstancesSyncOverride {
+            return try stopInstancesSyncOverride(input)
+        }
+
+        return StopInstancesResult.__default
+    }
+
+    /**
+     Invokes the TerminateInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TerminateInstancesRequest object being passed to this operation.
+         - completion: The TerminateInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The TerminateInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func terminateInstancesAsync(input: ElasticComputeCloudModel.TerminateInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.TerminateInstancesResult>) -> ()) throws {
+        if let terminateInstancesAsyncOverride = terminateInstancesAsyncOverride {
+            return try terminateInstancesAsyncOverride(input, completion)
+        }
+
+        let result = TerminateInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the TerminateInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TerminateInstancesRequest object being passed to this operation.
+     - Returns: The TerminateInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func terminateInstancesSync(input: ElasticComputeCloudModel.TerminateInstancesRequest) throws -> ElasticComputeCloudModel.TerminateInstancesResult {
+        if let terminateInstancesSyncOverride = terminateInstancesSyncOverride {
+            return try terminateInstancesSyncOverride(input)
+        }
+
+        return TerminateInstancesResult.__default
+    }
+
+    /**
+     Invokes the UnassignIpv6Addresses operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UnassignIpv6AddressesRequest object being passed to this operation.
+         - completion: The UnassignIpv6AddressesResult object or an error will be passed to this 
+           callback when the operation is complete. The UnassignIpv6AddressesResult
+           object will be validated before being returned to caller.
+     */
+    public func unassignIpv6AddressesAsync(input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.UnassignIpv6AddressesResult>) -> ()) throws {
+        if let unassignIpv6AddressesAsyncOverride = unassignIpv6AddressesAsyncOverride {
+            return try unassignIpv6AddressesAsyncOverride(input, completion)
+        }
+
+        let result = UnassignIpv6AddressesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the UnassignIpv6Addresses operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UnassignIpv6AddressesRequest object being passed to this operation.
+     - Returns: The UnassignIpv6AddressesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func unassignIpv6AddressesSync(input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.UnassignIpv6AddressesResult {
+        if let unassignIpv6AddressesSyncOverride = unassignIpv6AddressesSyncOverride {
+            return try unassignIpv6AddressesSyncOverride(input)
+        }
+
+        return UnassignIpv6AddressesResult.__default
+    }
+
+    /**
+     Invokes the UnassignPrivateIpAddresses operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UnassignPrivateIpAddressesRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func unassignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, completion: @escaping (Error?) -> ()) throws {
+        if let unassignPrivateIpAddressesAsyncOverride = unassignPrivateIpAddressesAsyncOverride {
+            return try unassignPrivateIpAddressesAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the UnassignPrivateIpAddresses operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UnassignPrivateIpAddressesRequest object being passed to this operation.
+     */
+    public func unassignPrivateIpAddressesSync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest) throws {
+        if let unassignPrivateIpAddressesSyncOverride = unassignPrivateIpAddressesSyncOverride {
+            return try unassignPrivateIpAddressesSyncOverride(input)
+        }
+
+    }
+
+    /**
+     Invokes the UnmonitorInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UnmonitorInstancesRequest object being passed to this operation.
+         - completion: The UnmonitorInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The UnmonitorInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func unmonitorInstancesAsync(input: ElasticComputeCloudModel.UnmonitorInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.UnmonitorInstancesResult>) -> ()) throws {
+        if let unmonitorInstancesAsyncOverride = unmonitorInstancesAsyncOverride {
+            return try unmonitorInstancesAsyncOverride(input, completion)
+        }
+
+        let result = UnmonitorInstancesResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the UnmonitorInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UnmonitorInstancesRequest object being passed to this operation.
+     - Returns: The UnmonitorInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func unmonitorInstancesSync(input: ElasticComputeCloudModel.UnmonitorInstancesRequest) throws -> ElasticComputeCloudModel.UnmonitorInstancesResult {
+        if let unmonitorInstancesSyncOverride = unmonitorInstancesSyncOverride {
+            return try unmonitorInstancesSyncOverride(input)
+        }
+
+        return UnmonitorInstancesResult.__default
+    }
+
+    /**
+     Invokes the UpdateSecurityGroupRuleDescriptionsEgress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateSecurityGroupRuleDescriptionsEgressRequest object being passed to this operation.
+         - completion: The UpdateSecurityGroupRuleDescriptionsEgressResult object or an error will be passed to this 
+           callback when the operation is complete. The UpdateSecurityGroupRuleDescriptionsEgressResult
+           object will be validated before being returned to caller.
+     */
+    public func updateSecurityGroupRuleDescriptionsEgressAsync(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult>) -> ()) throws {
+        if let updateSecurityGroupRuleDescriptionsEgressAsyncOverride = updateSecurityGroupRuleDescriptionsEgressAsyncOverride {
+            return try updateSecurityGroupRuleDescriptionsEgressAsyncOverride(input, completion)
+        }
+
+        let result = UpdateSecurityGroupRuleDescriptionsEgressResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the UpdateSecurityGroupRuleDescriptionsEgress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateSecurityGroupRuleDescriptionsEgressRequest object being passed to this operation.
+     - Returns: The UpdateSecurityGroupRuleDescriptionsEgressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func updateSecurityGroupRuleDescriptionsEgressSync(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult {
+        if let updateSecurityGroupRuleDescriptionsEgressSyncOverride = updateSecurityGroupRuleDescriptionsEgressSyncOverride {
+            return try updateSecurityGroupRuleDescriptionsEgressSyncOverride(input)
+        }
+
+        return UpdateSecurityGroupRuleDescriptionsEgressResult.__default
+    }
+
+    /**
+     Invokes the UpdateSecurityGroupRuleDescriptionsIngress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateSecurityGroupRuleDescriptionsIngressRequest object being passed to this operation.
+         - completion: The UpdateSecurityGroupRuleDescriptionsIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The UpdateSecurityGroupRuleDescriptionsIngressResult
+           object will be validated before being returned to caller.
+     */
+    public func updateSecurityGroupRuleDescriptionsIngressAsync(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult>) -> ()) throws {
+        if let updateSecurityGroupRuleDescriptionsIngressAsyncOverride = updateSecurityGroupRuleDescriptionsIngressAsyncOverride {
+            return try updateSecurityGroupRuleDescriptionsIngressAsyncOverride(input, completion)
+        }
+
+        let result = UpdateSecurityGroupRuleDescriptionsIngressResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the UpdateSecurityGroupRuleDescriptionsIngress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateSecurityGroupRuleDescriptionsIngressRequest object being passed to this operation.
+     - Returns: The UpdateSecurityGroupRuleDescriptionsIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func updateSecurityGroupRuleDescriptionsIngressSync(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult {
+        if let updateSecurityGroupRuleDescriptionsIngressSyncOverride = updateSecurityGroupRuleDescriptionsIngressSyncOverride {
+            return try updateSecurityGroupRuleDescriptionsIngressSyncOverride(input)
+        }
+
+        return UpdateSecurityGroupRuleDescriptionsIngressResult.__default
+    }
+
+    /**
+     Invokes the WithdrawByoipCidr operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated WithdrawByoipCidrRequest object being passed to this operation.
+         - completion: The WithdrawByoipCidrResult object or an error will be passed to this 
+           callback when the operation is complete. The WithdrawByoipCidrResult
+           object will be validated before being returned to caller.
+     */
+    public func withdrawByoipCidrAsync(input: ElasticComputeCloudModel.WithdrawByoipCidrRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.WithdrawByoipCidrResult>) -> ()) throws {
+        if let withdrawByoipCidrAsyncOverride = withdrawByoipCidrAsyncOverride {
+            return try withdrawByoipCidrAsyncOverride(input, completion)
+        }
+
+        let result = WithdrawByoipCidrResult.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the WithdrawByoipCidr operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated WithdrawByoipCidrRequest object being passed to this operation.
+     - Returns: The WithdrawByoipCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func withdrawByoipCidrSync(input: ElasticComputeCloudModel.WithdrawByoipCidrRequest) throws -> ElasticComputeCloudModel.WithdrawByoipCidrResult {
+        if let withdrawByoipCidrSyncOverride = withdrawByoipCidrSyncOverride {
+            return try withdrawByoipCidrSyncOverride(input)
+        }
+
+        return WithdrawByoipCidrResult.__default
+    }
+}
