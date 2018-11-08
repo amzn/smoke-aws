@@ -22,7 +22,7 @@ Each AWS service has two libraries and corresponding targets in this package-
 SmokeAWS uses the Swift Package Manager. To use the framework, add the following dependency
 to your Package.swift-
 
-```
+```swift
 dependencies: [
     .package(url: "https://github.com/amzn/smoke-aws.git", .upToNextMajor(from: "0.5.0"))
 ]
@@ -34,7 +34,7 @@ Once you have specified the SmokeAWS package as a dependency, you can specify th
 that your application needs to depend on. Swift Package Manager will compile these targets as part of your 
 application for you to use. It will not compile the targets in the SmokeAWS package that you don't depend on.
  
-```
+```swift
     targets: [
         .target(
             name: "SampleServiceOperations",
@@ -51,7 +51,7 @@ While it is possible to use the AWS clients directly, in most cases you will wan
 so you can unit test your code without contacting the AWS service, rather using one of the mock clients to handle 
 service calls locally.
 
-```
+```swift
 import ElasticComputeCloudClient
 
 public struct SampleServiceOperationsContext {
@@ -65,7 +65,7 @@ public struct SampleServiceOperationsContext {
 
 Using this protocol you can call service API methods and get results-
 
-```
+```swift
 import ElasticComputeCloudModel
 ...
 
@@ -85,7 +85,7 @@ import ElasticComputeCloudModel
 When starting your application in production, you can instantiate an instance of the AWS client
 and pass it in the place of the protocol to contact the actual AWS service.
 
-```
+```swift
 import ElasticComputeCloudClient
 import SmokeAWSCredentials
 ...
@@ -109,7 +109,7 @@ In unit tests, you can instantiate an instance of the mock or throwing client an
 to verify your code acts as expected. Both mock clients allow you to optionally pass closures to override the default
 behavior for particular API methods, allowing you to provide custom mock behavior for some but not all API methods.
 
-```
+```swift
     var instances: [(instanceId: String, subnetId: String)] = []
     var terminatedInstanceIds: [String] = []
     
