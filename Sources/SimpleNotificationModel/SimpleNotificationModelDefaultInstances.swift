@@ -205,6 +205,7 @@ public extension CreateTopicInput {
      */
     public static let __default: SimpleNotificationModel.CreateTopicInput = {
         let defaultInstance = SimpleNotificationModel.CreateTopicInput(
+            attributes: nil,
             name: "value")
 
         return defaultInstance
@@ -518,6 +519,90 @@ public extension InvalidParameterValueException {
      */
     public static let __default: SimpleNotificationModel.InvalidParameterValueException = {
         let defaultInstance = SimpleNotificationModel.InvalidParameterValueException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InvalidSecurityException {
+    /**
+     Default instance of the InvalidSecurityException structure.
+     */
+    public static let __default: SimpleNotificationModel.InvalidSecurityException = {
+        let defaultInstance = SimpleNotificationModel.InvalidSecurityException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension KMSAccessDeniedException {
+    /**
+     Default instance of the KMSAccessDeniedException structure.
+     */
+    public static let __default: SimpleNotificationModel.KMSAccessDeniedException = {
+        let defaultInstance = SimpleNotificationModel.KMSAccessDeniedException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension KMSDisabledException {
+    /**
+     Default instance of the KMSDisabledException structure.
+     */
+    public static let __default: SimpleNotificationModel.KMSDisabledException = {
+        let defaultInstance = SimpleNotificationModel.KMSDisabledException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension KMSInvalidStateException {
+    /**
+     Default instance of the KMSInvalidStateException structure.
+     */
+    public static let __default: SimpleNotificationModel.KMSInvalidStateException = {
+        let defaultInstance = SimpleNotificationModel.KMSInvalidStateException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension KMSNotFoundException {
+    /**
+     Default instance of the KMSNotFoundException structure.
+     */
+    public static let __default: SimpleNotificationModel.KMSNotFoundException = {
+        let defaultInstance = SimpleNotificationModel.KMSNotFoundException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension KMSOptInRequired {
+    /**
+     Default instance of the KMSOptInRequired structure.
+     */
+    public static let __default: SimpleNotificationModel.KMSOptInRequired = {
+        let defaultInstance = SimpleNotificationModel.KMSOptInRequired(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension KMSThrottlingException {
+    /**
+     Default instance of the KMSThrottlingException structure.
+     */
+    public static let __default: SimpleNotificationModel.KMSThrottlingException = {
+        let defaultInstance = SimpleNotificationModel.KMSThrottlingException(
             message: nil)
 
         return defaultInstance

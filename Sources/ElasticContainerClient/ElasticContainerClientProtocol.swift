@@ -31,6 +31,8 @@ public protocol ElasticContainerClientProtocol {
     typealias CreateClusterAsyncType = (_ input: ElasticContainerModel.CreateClusterRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.CreateClusterResponse>) -> ()) throws -> ()
     typealias CreateServiceSyncType = (_ input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse
     typealias CreateServiceAsyncType = (_ input: ElasticContainerModel.CreateServiceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.CreateServiceResponse>) -> ()) throws -> ()
+    typealias DeleteAccountSettingSyncType = (_ input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse
+    typealias DeleteAccountSettingAsyncType = (_ input: ElasticContainerModel.DeleteAccountSettingRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DeleteAccountSettingResponse>) -> ()) throws -> ()
     typealias DeleteAttributesSyncType = (_ input: ElasticContainerModel.DeleteAttributesRequest) throws -> ElasticContainerModel.DeleteAttributesResponse
     typealias DeleteAttributesAsyncType = (_ input: ElasticContainerModel.DeleteAttributesRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DeleteAttributesResponse>) -> ()) throws -> ()
     typealias DeleteClusterSyncType = (_ input: ElasticContainerModel.DeleteClusterRequest) throws -> ElasticContainerModel.DeleteClusterResponse
@@ -53,6 +55,8 @@ public protocol ElasticContainerClientProtocol {
     typealias DescribeTasksAsyncType = (_ input: ElasticContainerModel.DescribeTasksRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTasksResponse>) -> ()) throws -> ()
     typealias DiscoverPollEndpointSyncType = (_ input: ElasticContainerModel.DiscoverPollEndpointRequest) throws -> ElasticContainerModel.DiscoverPollEndpointResponse
     typealias DiscoverPollEndpointAsyncType = (_ input: ElasticContainerModel.DiscoverPollEndpointRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DiscoverPollEndpointResponse>) -> ()) throws -> ()
+    typealias ListAccountSettingsSyncType = (_ input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse
+    typealias ListAccountSettingsAsyncType = (_ input: ElasticContainerModel.ListAccountSettingsRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.ListAccountSettingsResponse>) -> ()) throws -> ()
     typealias ListAttributesSyncType = (_ input: ElasticContainerModel.ListAttributesRequest) throws -> ElasticContainerModel.ListAttributesResponse
     typealias ListAttributesAsyncType = (_ input: ElasticContainerModel.ListAttributesRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.ListAttributesResponse>) -> ()) throws -> ()
     typealias ListClustersSyncType = (_ input: ElasticContainerModel.ListClustersRequest) throws -> ElasticContainerModel.ListClustersResponse
@@ -61,12 +65,16 @@ public protocol ElasticContainerClientProtocol {
     typealias ListContainerInstancesAsyncType = (_ input: ElasticContainerModel.ListContainerInstancesRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.ListContainerInstancesResponse>) -> ()) throws -> ()
     typealias ListServicesSyncType = (_ input: ElasticContainerModel.ListServicesRequest) throws -> ElasticContainerModel.ListServicesResponse
     typealias ListServicesAsyncType = (_ input: ElasticContainerModel.ListServicesRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.ListServicesResponse>) -> ()) throws -> ()
+    typealias ListTagsForResourceSyncType = (_ input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse
+    typealias ListTagsForResourceAsyncType = (_ input: ElasticContainerModel.ListTagsForResourceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.ListTagsForResourceResponse>) -> ()) throws -> ()
     typealias ListTaskDefinitionFamiliesSyncType = (_ input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse
     typealias ListTaskDefinitionFamiliesAsyncType = (_ input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.ListTaskDefinitionFamiliesResponse>) -> ()) throws -> ()
     typealias ListTaskDefinitionsSyncType = (_ input: ElasticContainerModel.ListTaskDefinitionsRequest) throws -> ElasticContainerModel.ListTaskDefinitionsResponse
     typealias ListTaskDefinitionsAsyncType = (_ input: ElasticContainerModel.ListTaskDefinitionsRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.ListTaskDefinitionsResponse>) -> ()) throws -> ()
     typealias ListTasksSyncType = (_ input: ElasticContainerModel.ListTasksRequest) throws -> ElasticContainerModel.ListTasksResponse
     typealias ListTasksAsyncType = (_ input: ElasticContainerModel.ListTasksRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.ListTasksResponse>) -> ()) throws -> ()
+    typealias PutAccountSettingSyncType = (_ input: ElasticContainerModel.PutAccountSettingRequest) throws -> ElasticContainerModel.PutAccountSettingResponse
+    typealias PutAccountSettingAsyncType = (_ input: ElasticContainerModel.PutAccountSettingRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.PutAccountSettingResponse>) -> ()) throws -> ()
     typealias PutAttributesSyncType = (_ input: ElasticContainerModel.PutAttributesRequest) throws -> ElasticContainerModel.PutAttributesResponse
     typealias PutAttributesAsyncType = (_ input: ElasticContainerModel.PutAttributesRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.PutAttributesResponse>) -> ()) throws -> ()
     typealias RegisterContainerInstanceSyncType = (_ input: ElasticContainerModel.RegisterContainerInstanceRequest) throws -> ElasticContainerModel.RegisterContainerInstanceResponse
@@ -83,6 +91,10 @@ public protocol ElasticContainerClientProtocol {
     typealias SubmitContainerStateChangeAsyncType = (_ input: ElasticContainerModel.SubmitContainerStateChangeRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.SubmitContainerStateChangeResponse>) -> ()) throws -> ()
     typealias SubmitTaskStateChangeSyncType = (_ input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse
     typealias SubmitTaskStateChangeAsyncType = (_ input: ElasticContainerModel.SubmitTaskStateChangeRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.SubmitTaskStateChangeResponse>) -> ()) throws -> ()
+    typealias TagResourceSyncType = (_ input: ElasticContainerModel.TagResourceRequest) throws -> ElasticContainerModel.TagResourceResponse
+    typealias TagResourceAsyncType = (_ input: ElasticContainerModel.TagResourceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.TagResourceResponse>) -> ()) throws -> ()
+    typealias UntagResourceSyncType = (_ input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse
+    typealias UntagResourceAsyncType = (_ input: ElasticContainerModel.UntagResourceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UntagResourceResponse>) -> ()) throws -> ()
     typealias UpdateContainerAgentSyncType = (_ input: ElasticContainerModel.UpdateContainerAgentRequest) throws -> ElasticContainerModel.UpdateContainerAgentResponse
     typealias UpdateContainerAgentAsyncType = (_ input: ElasticContainerModel.UpdateContainerAgentRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UpdateContainerAgentResponse>) -> ()) throws -> ()
     typealias UpdateContainerInstancesStateSyncType = (_ input: ElasticContainerModel.UpdateContainerInstancesStateRequest) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse
@@ -135,6 +147,29 @@ public protocol ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
     func createServiceSync(input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse
+
+    /**
+     Invokes the DeleteAccountSetting operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteAccountSettingRequest object being passed to this operation.
+         - completion: The DeleteAccountSettingResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteAccountSettingResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    func deleteAccountSettingAsync(input: ElasticContainerModel.DeleteAccountSettingRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteAccountSettingResponse>) -> ()) throws
+
+    /**
+     Invokes the DeleteAccountSetting operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteAccountSettingRequest object being passed to this operation.
+     - Returns: The DeleteAccountSettingResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    func deleteAccountSettingSync(input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse
 
     /**
      Invokes the DeleteAttributes operation returning immediately and passing the response to a callback.
@@ -390,6 +425,29 @@ public protocol ElasticContainerClientProtocol {
     func discoverPollEndpointSync(input: ElasticContainerModel.DiscoverPollEndpointRequest) throws -> ElasticContainerModel.DiscoverPollEndpointResponse
 
     /**
+     Invokes the ListAccountSettings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListAccountSettingsRequest object being passed to this operation.
+         - completion: The ListAccountSettingsResponse object or an error will be passed to this 
+           callback when the operation is complete. The ListAccountSettingsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    func listAccountSettingsAsync(input: ElasticContainerModel.ListAccountSettingsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListAccountSettingsResponse>) -> ()) throws
+
+    /**
+     Invokes the ListAccountSettings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListAccountSettingsRequest object being passed to this operation.
+     - Returns: The ListAccountSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    func listAccountSettingsSync(input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse
+
+    /**
      Invokes the ListAttributes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -482,6 +540,29 @@ public protocol ElasticContainerClientProtocol {
     func listServicesSync(input: ElasticContainerModel.ListServicesRequest) throws -> ElasticContainerModel.ListServicesResponse
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+         - completion: The ListTagsForResourceResponse object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    func listTagsForResourceAsync(input: ElasticContainerModel.ListTagsForResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListTagsForResourceResponse>) -> ()) throws
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+     - Returns: The ListTagsForResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    func listTagsForResourceSync(input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse
+
+    /**
      Invokes the ListTaskDefinitionFamilies operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -549,6 +630,29 @@ public protocol ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
     func listTasksSync(input: ElasticContainerModel.ListTasksRequest) throws -> ElasticContainerModel.ListTasksResponse
+
+    /**
+     Invokes the PutAccountSetting operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutAccountSettingRequest object being passed to this operation.
+         - completion: The PutAccountSettingResponse object or an error will be passed to this 
+           callback when the operation is complete. The PutAccountSettingResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    func putAccountSettingAsync(input: ElasticContainerModel.PutAccountSettingRequest, completion: @escaping (HTTPResult<ElasticContainerModel.PutAccountSettingResponse>) -> ()) throws
+
+    /**
+     Invokes the PutAccountSetting operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutAccountSettingRequest object being passed to this operation.
+     - Returns: The PutAccountSettingResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    func putAccountSettingSync(input: ElasticContainerModel.PutAccountSettingRequest) throws -> ElasticContainerModel.PutAccountSettingResponse
 
     /**
      Invokes the PutAttributes operation returning immediately and passing the response to a callback.
@@ -733,6 +837,52 @@ public protocol ElasticContainerClientProtocol {
      - Throws: accessDenied, client, server.
      */
     func submitTaskStateChangeSync(input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse
+
+    /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+         - completion: The TagResourceResponse object or an error will be passed to this 
+           callback when the operation is complete. The TagResourceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    func tagResourceAsync(input: ElasticContainerModel.TagResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.TagResourceResponse>) -> ()) throws
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+     - Returns: The TagResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    func tagResourceSync(input: ElasticContainerModel.TagResourceRequest) throws -> ElasticContainerModel.TagResourceResponse
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+         - completion: The UntagResourceResponse object or an error will be passed to this 
+           callback when the operation is complete. The UntagResourceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    func untagResourceAsync(input: ElasticContainerModel.UntagResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UntagResourceResponse>) -> ()) throws
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+     - Returns: The UntagResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    func untagResourceSync(input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse
 
     /**
      Invokes the UpdateContainerAgent operation returning immediately and passing the response to a callback.

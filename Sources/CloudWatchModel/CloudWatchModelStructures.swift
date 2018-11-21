@@ -1073,6 +1073,7 @@ public struct MetricAlarm: Codable, Equatable {
     public var extendedStatistic: ExtendedStatistic?
     public var insufficientDataActions: ResourceList?
     public var metricName: MetricName?
+    public var metrics: MetricDataQueries?
     public var namespace: Namespace?
     public var oKActions: ResourceList?
     public var period: Period?
@@ -1099,6 +1100,7 @@ public struct MetricAlarm: Codable, Equatable {
                 extendedStatistic: ExtendedStatistic? = nil,
                 insufficientDataActions: ResourceList? = nil,
                 metricName: MetricName? = nil,
+                metrics: MetricDataQueries? = nil,
                 namespace: Namespace? = nil,
                 oKActions: ResourceList? = nil,
                 period: Period? = nil,
@@ -1124,6 +1126,7 @@ public struct MetricAlarm: Codable, Equatable {
         self.extendedStatistic = extendedStatistic
         self.insufficientDataActions = insufficientDataActions
         self.metricName = metricName
+        self.metrics = metrics
         self.namespace = namespace
         self.oKActions = oKActions
         self.period = period
@@ -1152,6 +1155,7 @@ public struct MetricAlarm: Codable, Equatable {
         case extendedStatistic = "ExtendedStatistic"
         case insufficientDataActions = "InsufficientDataActions"
         case metricName = "MetricName"
+        case metrics = "Metrics"
         case namespace = "Namespace"
         case oKActions = "OKActions"
         case period = "Period"
@@ -1413,10 +1417,11 @@ public struct PutMetricAlarmInput: Codable, Equatable {
     public var evaluationPeriods: EvaluationPeriods
     public var extendedStatistic: ExtendedStatistic?
     public var insufficientDataActions: ResourceList?
-    public var metricName: MetricName
-    public var namespace: Namespace
+    public var metricName: MetricName?
+    public var metrics: MetricDataQueries?
+    public var namespace: Namespace?
     public var oKActions: ResourceList?
-    public var period: Period
+    public var period: Period?
     public var statistic: Statistic?
     public var threshold: Threshold
     public var treatMissingData: TreatMissingData?
@@ -1433,10 +1438,11 @@ public struct PutMetricAlarmInput: Codable, Equatable {
                 evaluationPeriods: EvaluationPeriods,
                 extendedStatistic: ExtendedStatistic? = nil,
                 insufficientDataActions: ResourceList? = nil,
-                metricName: MetricName,
-                namespace: Namespace,
+                metricName: MetricName? = nil,
+                metrics: MetricDataQueries? = nil,
+                namespace: Namespace? = nil,
                 oKActions: ResourceList? = nil,
-                period: Period,
+                period: Period? = nil,
                 statistic: Statistic? = nil,
                 threshold: Threshold,
                 treatMissingData: TreatMissingData? = nil,
@@ -1453,6 +1459,7 @@ public struct PutMetricAlarmInput: Codable, Equatable {
         self.extendedStatistic = extendedStatistic
         self.insufficientDataActions = insufficientDataActions
         self.metricName = metricName
+        self.metrics = metrics
         self.namespace = namespace
         self.oKActions = oKActions
         self.period = period
@@ -1475,6 +1482,7 @@ public struct PutMetricAlarmInput: Codable, Equatable {
         case extendedStatistic = "ExtendedStatistic"
         case insufficientDataActions = "InsufficientDataActions"
         case metricName = "MetricName"
+        case metrics = "Metrics"
         case namespace = "Namespace"
         case oKActions = "OKActions"
         case period = "Period"
@@ -1494,10 +1502,10 @@ public struct PutMetricAlarmInput: Codable, Equatable {
         try evaluationPeriods.validateAsEvaluationPeriods()
         try extendedStatistic?.validateAsExtendedStatistic()
         try insufficientDataActions?.validateAsResourceList()
-        try metricName.validateAsMetricName()
-        try namespace.validateAsNamespace()
+        try metricName?.validateAsMetricName()
+        try namespace?.validateAsNamespace()
         try oKActions?.validateAsResourceList()
-        try period.validateAsPeriod()
+        try period?.validateAsPeriod()
         try treatMissingData?.validateAsTreatMissingData()
     }
 }

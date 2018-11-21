@@ -172,6 +172,60 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the DeleteAccountSetting operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteAccountSettingRequest object being passed to this operation.
+         - completion: The DeleteAccountSettingResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteAccountSettingResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func deleteAccountSettingAsync(input: ElasticContainerModel.DeleteAccountSettingRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteAccountSettingResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteAccountSetting.rawValue,
+                    target: target)
+        
+        let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteAccountSetting operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteAccountSettingRequest object being passed to this operation.
+     - Returns: The DeleteAccountSettingResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func deleteAccountSettingSync(input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteAccountSetting.rawValue,
+                    target: target)
+        
+        let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the DeleteAttributes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -766,6 +820,60 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the ListAccountSettings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListAccountSettingsRequest object being passed to this operation.
+         - completion: The ListAccountSettingsResponse object or an error will be passed to this 
+           callback when the operation is complete. The ListAccountSettingsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func listAccountSettingsAsync(input: ElasticContainerModel.ListAccountSettingsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListAccountSettingsResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listAccountSettings.rawValue,
+                    target: target)
+        
+        let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ListAccountSettings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListAccountSettingsRequest object being passed to this operation.
+     - Returns: The ListAccountSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func listAccountSettingsSync(input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listAccountSettings.rawValue,
+                    target: target)
+        
+        let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the ListAttributes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -982,6 +1090,60 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+         - completion: The ListTagsForResourceResponse object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    public func listTagsForResourceAsync(input: ElasticContainerModel.ListTagsForResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListTagsForResourceResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listTagsForResource.rawValue,
+                    target: target)
+        
+        let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+     - Returns: The ListTagsForResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func listTagsForResourceSync(input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listTagsForResource.rawValue,
+                    target: target)
+        
+        let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the ListTaskDefinitionFamilies operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1135,6 +1297,60 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     target: target)
         
         let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the PutAccountSetting operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutAccountSettingRequest object being passed to this operation.
+         - completion: The PutAccountSettingResponse object or an error will be passed to this 
+           callback when the operation is complete. The PutAccountSettingResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func putAccountSettingAsync(input: ElasticContainerModel.PutAccountSettingRequest, completion: @escaping (HTTPResult<ElasticContainerModel.PutAccountSettingResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.putAccountSetting.rawValue,
+                    target: target)
+        
+        let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the PutAccountSetting operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutAccountSettingRequest object being passed to this operation.
+     - Returns: The PutAccountSettingResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func putAccountSettingSync(input: ElasticContainerModel.PutAccountSettingRequest) throws -> ElasticContainerModel.PutAccountSettingResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.putAccountSetting.rawValue,
+                    target: target)
+        
+        let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
             endpointPath: "/",
@@ -1567,6 +1783,114 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     target: target)
         
         let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+         - completion: The TagResourceResponse object or an error will be passed to this 
+           callback when the operation is complete. The TagResourceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func tagResourceAsync(input: ElasticContainerModel.TagResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.TagResourceResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.tagResource.rawValue,
+                    target: target)
+        
+        let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+     - Returns: The TagResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func tagResourceSync(input: ElasticContainerModel.TagResourceRequest) throws -> ElasticContainerModel.TagResourceResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.tagResource.rawValue,
+                    target: target)
+        
+        let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+         - completion: The UntagResourceResponse object or an error will be passed to this 
+           callback when the operation is complete. The UntagResourceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func untagResourceAsync(input: ElasticContainerModel.UntagResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UntagResourceResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.untagResource.rawValue,
+                    target: target)
+        
+        let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+     - Returns: The UntagResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func untagResourceSync(input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.untagResource.rawValue,
+                    target: target)
+        
+        let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
             endpointPath: "/",

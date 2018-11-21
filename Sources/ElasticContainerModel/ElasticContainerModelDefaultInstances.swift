@@ -136,7 +136,8 @@ public extension Cluster {
             registeredContainerInstancesCount: nil,
             runningTasksCount: nil,
             statistics: nil,
-            status: nil)
+            status: nil,
+            tags: nil)
 
         return defaultInstance
     }()
@@ -239,6 +240,7 @@ public extension ContainerDefinition {
             pseudoTerminal: nil,
             readonlyRootFilesystem: nil,
             repositoryCredentials: nil,
+            secrets: nil,
             systemControls: nil,
             ulimits: nil,
             user: nil,
@@ -267,6 +269,7 @@ public extension ContainerInstance {
             remainingResources: nil,
             runningTasksCount: nil,
             status: nil,
+            tags: nil,
             version: nil,
             versionInfo: nil)
 
@@ -313,7 +316,8 @@ public extension CreateClusterRequest {
      */
     public static let __default: ElasticContainerModel.CreateClusterRequest = {
         let defaultInstance = ElasticContainerModel.CreateClusterRequest(
-            clusterName: nil)
+            clusterName: nil,
+            tags: nil)
 
         return defaultInstance
     }()
@@ -341,6 +345,7 @@ public extension CreateServiceRequest {
             cluster: nil,
             deploymentConfiguration: nil,
             desiredCount: nil,
+            enableECSManagedTags: nil,
             healthCheckGracePeriodSeconds: nil,
             launchType: nil,
             loadBalancers: nil,
@@ -348,10 +353,12 @@ public extension CreateServiceRequest {
             placementConstraints: nil,
             placementStrategy: nil,
             platformVersion: nil,
+            propagateTags: nil,
             role: nil,
             schedulingStrategy: nil,
             serviceName: "value",
             serviceRegistries: nil,
+            tags: nil,
             taskDefinition: "value")
 
         return defaultInstance
@@ -365,6 +372,31 @@ public extension CreateServiceResponse {
     public static let __default: ElasticContainerModel.CreateServiceResponse = {
         let defaultInstance = ElasticContainerModel.CreateServiceResponse(
             service: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteAccountSettingRequest {
+    /**
+     Default instance of the DeleteAccountSettingRequest structure.
+     */
+    public static let __default: ElasticContainerModel.DeleteAccountSettingRequest = {
+        let defaultInstance = ElasticContainerModel.DeleteAccountSettingRequest(
+            name: .__default,
+            principalArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteAccountSettingResponse {
+    /**
+     Default instance of the DeleteAccountSettingResponse structure.
+     */
+    public static let __default: ElasticContainerModel.DeleteAccountSettingResponse = {
+        let defaultInstance = ElasticContainerModel.DeleteAccountSettingResponse(
+            setting: nil)
 
         return defaultInstance
     }()
@@ -563,7 +595,8 @@ public extension DescribeContainerInstancesRequest {
     public static let __default: ElasticContainerModel.DescribeContainerInstancesRequest = {
         let defaultInstance = ElasticContainerModel.DescribeContainerInstancesRequest(
             cluster: nil,
-            containerInstances: [])
+            containerInstances: [],
+            include: nil)
 
         return defaultInstance
     }()
@@ -589,6 +622,7 @@ public extension DescribeServicesRequest {
     public static let __default: ElasticContainerModel.DescribeServicesRequest = {
         let defaultInstance = ElasticContainerModel.DescribeServicesRequest(
             cluster: nil,
+            include: nil,
             services: [])
 
         return defaultInstance
@@ -614,6 +648,7 @@ public extension DescribeTaskDefinitionRequest {
      */
     public static let __default: ElasticContainerModel.DescribeTaskDefinitionRequest = {
         let defaultInstance = ElasticContainerModel.DescribeTaskDefinitionRequest(
+            include: nil,
             taskDefinition: "value")
 
         return defaultInstance
@@ -626,6 +661,7 @@ public extension DescribeTaskDefinitionResponse {
      */
     public static let __default: ElasticContainerModel.DescribeTaskDefinitionResponse = {
         let defaultInstance = ElasticContainerModel.DescribeTaskDefinitionResponse(
+            tags: nil,
             taskDefinition: nil)
 
         return defaultInstance
@@ -639,6 +675,7 @@ public extension DescribeTasksRequest {
     public static let __default: ElasticContainerModel.DescribeTasksRequest = {
         let defaultInstance = ElasticContainerModel.DescribeTasksRequest(
             cluster: nil,
+            include: nil,
             tasks: [])
 
         return defaultInstance
@@ -821,6 +858,36 @@ public extension LinuxParameters {
     }()
 }
 
+public extension ListAccountSettingsRequest {
+    /**
+     Default instance of the ListAccountSettingsRequest structure.
+     */
+    public static let __default: ElasticContainerModel.ListAccountSettingsRequest = {
+        let defaultInstance = ElasticContainerModel.ListAccountSettingsRequest(
+            effectiveSettings: nil,
+            maxResults: nil,
+            name: nil,
+            nextToken: nil,
+            principalArn: nil,
+            value: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListAccountSettingsResponse {
+    /**
+     Default instance of the ListAccountSettingsResponse structure.
+     */
+    public static let __default: ElasticContainerModel.ListAccountSettingsResponse = {
+        let defaultInstance = ElasticContainerModel.ListAccountSettingsResponse(
+            nextToken: nil,
+            settings: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListAttributesRequest {
     /**
      Default instance of the ListAttributesRequest structure.
@@ -930,6 +997,30 @@ public extension ListServicesResponse {
         let defaultInstance = ElasticContainerModel.ListServicesResponse(
             nextToken: nil,
             serviceArns: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListTagsForResourceRequest {
+    /**
+     Default instance of the ListTagsForResourceRequest structure.
+     */
+    public static let __default: ElasticContainerModel.ListTagsForResourceRequest = {
+        let defaultInstance = ElasticContainerModel.ListTagsForResourceRequest(
+            resourceArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ListTagsForResourceResponse {
+    /**
+     Default instance of the ListTagsForResourceResponse structure.
+     */
+    public static let __default: ElasticContainerModel.ListTagsForResourceResponse = {
+        let defaultInstance = ElasticContainerModel.ListTagsForResourceResponse(
+            tags: nil)
 
         return defaultInstance
     }()
@@ -1192,6 +1283,32 @@ public extension PortMapping {
     }()
 }
 
+public extension PutAccountSettingRequest {
+    /**
+     Default instance of the PutAccountSettingRequest structure.
+     */
+    public static let __default: ElasticContainerModel.PutAccountSettingRequest = {
+        let defaultInstance = ElasticContainerModel.PutAccountSettingRequest(
+            name: .__default,
+            principalArn: nil,
+            value: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension PutAccountSettingResponse {
+    /**
+     Default instance of the PutAccountSettingResponse structure.
+     */
+    public static let __default: ElasticContainerModel.PutAccountSettingResponse = {
+        let defaultInstance = ElasticContainerModel.PutAccountSettingResponse(
+            setting: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension PutAttributesRequest {
     /**
      Default instance of the PutAttributesRequest structure.
@@ -1228,6 +1345,7 @@ public extension RegisterContainerInstanceRequest {
             containerInstanceArn: nil,
             instanceIdentityDocument: nil,
             instanceIdentityDocumentSignature: nil,
+            tags: nil,
             totalResources: nil,
             versionInfo: nil)
 
@@ -1257,10 +1375,13 @@ public extension RegisterTaskDefinitionRequest {
             cpu: nil,
             executionRoleArn: nil,
             family: "value",
+            ipcMode: nil,
             memory: nil,
             networkMode: nil,
+            pidMode: nil,
             placementConstraints: nil,
             requiresCompatibilities: nil,
+            tags: nil,
             taskRoleArn: nil,
             volumes: nil)
 
@@ -1274,6 +1395,7 @@ public extension RegisterTaskDefinitionResponse {
      */
     public static let __default: ElasticContainerModel.RegisterTaskDefinitionResponse = {
         let defaultInstance = ElasticContainerModel.RegisterTaskDefinitionResponse(
+            tags: nil,
             taskDefinition: nil)
 
         return defaultInstance
@@ -1309,6 +1431,17 @@ public extension Resource {
     }()
 }
 
+public extension ResourceNotFoundException {
+    /**
+     Default instance of the ResourceNotFoundException structure.
+     */
+    public static let __default: ElasticContainerModel.ResourceNotFoundException = {
+        let defaultInstance = ElasticContainerModel.ResourceNotFoundException()
+
+        return defaultInstance
+    }()
+}
+
 public extension RunTaskRequest {
     /**
      Default instance of the RunTaskRequest structure.
@@ -1317,6 +1450,7 @@ public extension RunTaskRequest {
         let defaultInstance = ElasticContainerModel.RunTaskRequest(
             cluster: nil,
             count: nil,
+            enableECSManagedTags: nil,
             group: nil,
             launchType: nil,
             networkConfiguration: nil,
@@ -1324,7 +1458,9 @@ public extension RunTaskRequest {
             placementConstraints: nil,
             placementStrategy: nil,
             platformVersion: nil,
+            propagateTags: nil,
             startedBy: nil,
+            tags: nil,
             taskDefinition: "value")
 
         return defaultInstance
@@ -1339,6 +1475,19 @@ public extension RunTaskResponse {
         let defaultInstance = ElasticContainerModel.RunTaskResponse(
             failures: nil,
             tasks: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension Secret {
+    /**
+     Default instance of the Secret structure.
+     */
+    public static let __default: ElasticContainerModel.Secret = {
+        let defaultInstance = ElasticContainerModel.Secret(
+            name: "value",
+            valueFrom: "value")
 
         return defaultInstance
     }()
@@ -1364,9 +1513,11 @@ public extension Service {
         let defaultInstance = ElasticContainerModel.Service(
             clusterArn: nil,
             createdAt: nil,
+            createdBy: nil,
             deploymentConfiguration: nil,
             deployments: nil,
             desiredCount: nil,
+            enableECSManagedTags: nil,
             events: nil,
             healthCheckGracePeriodSeconds: nil,
             launchType: nil,
@@ -1376,6 +1527,7 @@ public extension Service {
             placementConstraints: nil,
             placementStrategy: nil,
             platformVersion: nil,
+            propagateTags: nil,
             roleArn: nil,
             runningCount: nil,
             schedulingStrategy: nil,
@@ -1383,6 +1535,7 @@ public extension Service {
             serviceName: nil,
             serviceRegistries: nil,
             status: nil,
+            tags: nil,
             taskDefinition: nil)
 
         return defaultInstance
@@ -1440,6 +1593,20 @@ public extension ServiceRegistry {
     }()
 }
 
+public extension Setting {
+    /**
+     Default instance of the Setting structure.
+     */
+    public static let __default: ElasticContainerModel.Setting = {
+        let defaultInstance = ElasticContainerModel.Setting(
+            name: nil,
+            principalArn: nil,
+            value: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension StartTaskRequest {
     /**
      Default instance of the StartTaskRequest structure.
@@ -1448,10 +1615,13 @@ public extension StartTaskRequest {
         let defaultInstance = ElasticContainerModel.StartTaskRequest(
             cluster: nil,
             containerInstances: [],
+            enableECSManagedTags: nil,
             group: nil,
             networkConfiguration: nil,
             overrides: nil,
+            propagateTags: nil,
             startedBy: nil,
+            tags: nil,
             taskDefinition: "value")
 
         return defaultInstance
@@ -1572,6 +1742,43 @@ public extension SystemControl {
     }()
 }
 
+public extension Tag {
+    /**
+     Default instance of the Tag structure.
+     */
+    public static let __default: ElasticContainerModel.Tag = {
+        let defaultInstance = ElasticContainerModel.Tag(
+            key: nil,
+            value: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceRequest {
+    /**
+     Default instance of the TagResourceRequest structure.
+     */
+    public static let __default: ElasticContainerModel.TagResourceRequest = {
+        let defaultInstance = ElasticContainerModel.TagResourceRequest(
+            resourceArn: "value",
+            tags: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceResponse {
+    /**
+     Default instance of the TagResourceResponse structure.
+     */
+    public static let __default: ElasticContainerModel.TagResourceResponse = {
+        let defaultInstance = ElasticContainerModel.TagResourceResponse()
+
+        return defaultInstance
+    }()
+}
+
 public extension TargetNotFoundException {
     /**
      Default instance of the TargetNotFoundException structure.
@@ -1610,9 +1817,11 @@ public extension Task {
             pullStoppedAt: nil,
             startedAt: nil,
             startedBy: nil,
+            stopCode: nil,
             stoppedAt: nil,
             stoppedReason: nil,
             stoppingAt: nil,
+            tags: nil,
             taskArn: nil,
             taskDefinitionArn: nil,
             version: nil)
@@ -1632,8 +1841,10 @@ public extension TaskDefinition {
             cpu: nil,
             executionRoleArn: nil,
             family: nil,
+            ipcMode: nil,
             memory: nil,
             networkMode: nil,
+            pidMode: nil,
             placementConstraints: nil,
             requiresAttributes: nil,
             requiresCompatibilities: nil,
@@ -1708,6 +1919,30 @@ public extension UnsupportedFeatureException {
      */
     public static let __default: ElasticContainerModel.UnsupportedFeatureException = {
         let defaultInstance = ElasticContainerModel.UnsupportedFeatureException()
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceRequest {
+    /**
+     Default instance of the UntagResourceRequest structure.
+     */
+    public static let __default: ElasticContainerModel.UntagResourceRequest = {
+        let defaultInstance = ElasticContainerModel.UntagResourceRequest(
+            resourceArn: "value",
+            tagKeys: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceResponse {
+    /**
+     Default instance of the UntagResourceResponse structure.
+     */
+    public static let __default: ElasticContainerModel.UntagResourceResponse = {
+        let defaultInstance = ElasticContainerModel.UntagResourceResponse()
 
         return defaultInstance
     }()

@@ -35,6 +35,7 @@ private let missingVersionIdentity = "MissingVersionException"
 private let noUpdateAvailableIdentity = "NoUpdateAvailableException"
 private let platformTaskDefinitionIncompatibilityIdentity = "PlatformTaskDefinitionIncompatibilityException"
 private let platformUnknownIdentity = "PlatformUnknownException"
+private let resourceNotFoundIdentity = "ResourceNotFoundException"
 private let serverIdentity = "ServerException"
 private let serviceNotActiveIdentity = "ServiceNotActiveException"
 private let serviceNotFoundIdentity = "ServiceNotFoundException"
@@ -62,6 +63,7 @@ public enum ElasticContainerError: Swift.Error, Decodable {
     case noUpdateAvailable(NoUpdateAvailableException)
     case platformTaskDefinitionIncompatibility(PlatformTaskDefinitionIncompatibilityException)
     case platformUnknown(PlatformUnknownException)
+    case resourceNotFound(ResourceNotFoundException)
     case server(ServerException)
     case serviceNotActive(ServiceNotActiveException)
     case serviceNotFound(ServiceNotFoundException)
@@ -123,6 +125,9 @@ public enum ElasticContainerError: Swift.Error, Decodable {
         case platformUnknownIdentity:
             let errorPayload = try PlatformUnknownException(from: decoder)
             self = ElasticContainerError.platformUnknown(errorPayload)
+        case resourceNotFoundIdentity:
+            let errorPayload = try ResourceNotFoundException(from: decoder)
+            self = ElasticContainerError.resourceNotFound(errorPayload)
         case serverIdentity:
             let errorPayload = try ServerException(from: decoder)
             self = ElasticContainerError.server(errorPayload)

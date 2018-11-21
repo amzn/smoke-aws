@@ -630,6 +630,7 @@ public extension AvailabilityZone {
             messages: nil,
             regionName: nil,
             state: nil,
+            zoneId: nil,
             zoneName: nil)
 
         return defaultInstance
@@ -1506,6 +1507,37 @@ public extension CreateEgressOnlyInternetGatewayResult {
     }()
 }
 
+public extension CreateFleetError {
+    /**
+     Default instance of the CreateFleetError structure.
+     */
+    public static let __default: ElasticComputeCloudModel.CreateFleetError = {
+        let defaultInstance = ElasticComputeCloudModel.CreateFleetError(
+            errorCode: nil,
+            errorMessage: nil,
+            launchTemplateAndOverrides: nil,
+            lifecycle: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateFleetInstance {
+    /**
+     Default instance of the CreateFleetInstance structure.
+     */
+    public static let __default: ElasticComputeCloudModel.CreateFleetInstance = {
+        let defaultInstance = ElasticComputeCloudModel.CreateFleetInstance(
+            instanceIds: nil,
+            instanceType: nil,
+            launchTemplateAndOverrides: nil,
+            lifecycle: nil,
+            platform: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateFleetRequest {
     /**
      Default instance of the CreateFleetRequest structure.
@@ -1536,7 +1568,9 @@ public extension CreateFleetResult {
      */
     public static let __default: ElasticComputeCloudModel.CreateFleetResult = {
         let defaultInstance = ElasticComputeCloudModel.CreateFleetResult(
-            fleetId: nil)
+            errors: nil,
+            fleetId: nil,
+            instances: nil)
 
         return defaultInstance
     }()
@@ -3164,6 +3198,7 @@ public extension DescribeAvailabilityZonesRequest {
         let defaultInstance = ElasticComputeCloudModel.DescribeAvailabilityZonesRequest(
             dryRun: nil,
             filters: nil,
+            zoneIds: nil,
             zoneNames: nil)
 
         return defaultInstance
@@ -3452,6 +3487,21 @@ public extension DescribeExportTasksResult {
     }()
 }
 
+public extension DescribeFleetError {
+    /**
+     Default instance of the DescribeFleetError structure.
+     */
+    public static let __default: ElasticComputeCloudModel.DescribeFleetError = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeFleetError(
+            errorCode: nil,
+            errorMessage: nil,
+            launchTemplateAndOverrides: nil,
+            lifecycle: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeFleetHistoryRequest {
     /**
      Default instance of the DescribeFleetHistoryRequest structure.
@@ -3510,6 +3560,22 @@ public extension DescribeFleetInstancesResult {
             activeInstances: nil,
             fleetId: nil,
             nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeFleetsInstances {
+    /**
+     Default instance of the DescribeFleetsInstances structure.
+     */
+    public static let __default: ElasticComputeCloudModel.DescribeFleetsInstances = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeFleetsInstances(
+            instanceIds: nil,
+            instanceType: nil,
+            launchTemplateAndOverrides: nil,
+            lifecycle: nil,
+            platform: nil)
 
         return defaultInstance
     }()
@@ -6098,11 +6164,13 @@ public extension FleetData {
             activityStatus: nil,
             clientToken: nil,
             createTime: nil,
+            errors: nil,
             excessCapacityTerminationPolicy: nil,
             fleetId: nil,
             fleetState: nil,
             fulfilledCapacity: nil,
             fulfilledOnDemandCapacity: nil,
+            instances: nil,
             launchTemplateConfigs: nil,
             onDemandOptions: nil,
             replaceUnhealthyInstances: nil,
@@ -6153,6 +6221,7 @@ public extension FleetLaunchTemplateOverrides {
             availabilityZone: nil,
             instanceType: nil,
             maxPrice: nil,
+            placement: nil,
             priority: nil,
             subnetId: nil,
             weightedCapacity: nil)
@@ -6170,6 +6239,7 @@ public extension FleetLaunchTemplateOverridesRequest {
             availabilityZone: nil,
             instanceType: nil,
             maxPrice: nil,
+            placement: nil,
             priority: nil,
             subnetId: nil,
             weightedCapacity: nil)
@@ -6737,7 +6807,9 @@ public extension ImportImageRequest {
             description: nil,
             diskContainers: nil,
             dryRun: nil,
+            encrypted: nil,
             hypervisor: nil,
+            kmsKeyId: nil,
             licenseType: nil,
             platform: nil,
             roleName: nil)
@@ -6754,9 +6826,11 @@ public extension ImportImageResult {
         let defaultInstance = ElasticComputeCloudModel.ImportImageResult(
             architecture: nil,
             description: nil,
+            encrypted: nil,
             hypervisor: nil,
             imageId: nil,
             importTaskId: nil,
+            kmsKeyId: nil,
             licenseType: nil,
             platform: nil,
             progress: nil,
@@ -6776,9 +6850,11 @@ public extension ImportImageTask {
         let defaultInstance = ElasticComputeCloudModel.ImportImageTask(
             architecture: nil,
             description: nil,
+            encrypted: nil,
             hypervisor: nil,
             imageId: nil,
             importTaskId: nil,
+            kmsKeyId: nil,
             licenseType: nil,
             platform: nil,
             progress: nil,
@@ -6861,13 +6937,13 @@ public extension ImportInstanceVolumeDetailItem {
      */
     public static let __default: ElasticComputeCloudModel.ImportInstanceVolumeDetailItem = {
         let defaultInstance = ElasticComputeCloudModel.ImportInstanceVolumeDetailItem(
-            availabilityZone: "value",
-            bytesConverted: 0,
+            availabilityZone: nil,
+            bytesConverted: nil,
             description: nil,
-            image: DiskImageDescription.__default,
-            status: "value",
+            image: nil,
+            status: nil,
             statusMessage: nil,
-            volume: DiskImageVolumeDescription.__default)
+            volume: nil)
 
         return defaultInstance
     }()
@@ -6911,6 +6987,8 @@ public extension ImportSnapshotRequest {
             description: nil,
             diskContainer: nil,
             dryRun: nil,
+            encrypted: nil,
+            kmsKeyId: nil,
             roleName: nil)
 
         return defaultInstance
@@ -7567,6 +7645,19 @@ public extension LaunchTemplate {
             launchTemplateId: nil,
             launchTemplateName: nil,
             tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension LaunchTemplateAndOverridesResponse {
+    /**
+     Default instance of the LaunchTemplateAndOverridesResponse structure.
+     */
+    public static let __default: ElasticComputeCloudModel.LaunchTemplateAndOverridesResponse = {
+        let defaultInstance = ElasticComputeCloudModel.LaunchTemplateAndOverridesResponse(
+            launchTemplateSpecification: nil,
+            overrides: nil)
 
         return defaultInstance
     }()
@@ -8961,7 +9052,9 @@ public extension OnDemandOptions {
      */
     public static let __default: ElasticComputeCloudModel.OnDemandOptions = {
         let defaultInstance = ElasticComputeCloudModel.OnDemandOptions(
-            allocationStrategy: nil)
+            allocationStrategy: nil,
+            minTargetCapacity: nil,
+            singleInstanceType: nil)
 
         return defaultInstance
     }()
@@ -8973,7 +9066,9 @@ public extension OnDemandOptionsRequest {
      */
     public static let __default: ElasticComputeCloudModel.OnDemandOptionsRequest = {
         let defaultInstance = ElasticComputeCloudModel.OnDemandOptionsRequest(
-            allocationStrategy: nil)
+            allocationStrategy: nil,
+            minTargetCapacity: nil,
+            singleInstanceType: nil)
 
         return defaultInstance
     }()
@@ -9048,6 +9143,18 @@ public extension PlacementGroup {
             groupName: nil,
             state: nil,
             strategy: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PlacementResponse {
+    /**
+     Default instance of the PlacementResponse structure.
+     */
+    public static let __default: ElasticComputeCloudModel.PlacementResponse = {
+        let defaultInstance = ElasticComputeCloudModel.PlacementResponse(
+            groupName: nil)
 
         return defaultInstance
     }()
@@ -10604,8 +10711,8 @@ public extension SecurityGroupReference {
      */
     public static let __default: ElasticComputeCloudModel.SecurityGroupReference = {
         let defaultInstance = ElasticComputeCloudModel.SecurityGroupReference(
-            groupId: "value",
-            referencingVpcId: "value",
+            groupId: nil,
+            referencingVpcId: nil,
             vpcPeeringConnectionId: nil)
 
         return defaultInstance
@@ -10758,7 +10865,9 @@ public extension SnapshotTaskDetail {
         let defaultInstance = ElasticComputeCloudModel.SnapshotTaskDetail(
             description: nil,
             diskImageSize: nil,
+            encrypted: nil,
             format: nil,
+            kmsKeyId: nil,
             progress: nil,
             snapshotId: nil,
             status: nil,
@@ -10968,7 +11077,9 @@ public extension SpotOptions {
         let defaultInstance = ElasticComputeCloudModel.SpotOptions(
             allocationStrategy: nil,
             instanceInterruptionBehavior: nil,
-            instancePoolsToUseCount: nil)
+            instancePoolsToUseCount: nil,
+            minTargetCapacity: nil,
+            singleInstanceType: nil)
 
         return defaultInstance
     }()
@@ -10982,7 +11093,9 @@ public extension SpotOptionsRequest {
         let defaultInstance = ElasticComputeCloudModel.SpotOptionsRequest(
             allocationStrategy: nil,
             instanceInterruptionBehavior: nil,
-            instancePoolsToUseCount: nil)
+            instancePoolsToUseCount: nil,
+            minTargetCapacity: nil,
+            singleInstanceType: nil)
 
         return defaultInstance
     }()
@@ -11042,7 +11155,7 @@ public extension StaleSecurityGroup {
     public static let __default: ElasticComputeCloudModel.StaleSecurityGroup = {
         let defaultInstance = ElasticComputeCloudModel.StaleSecurityGroup(
             description: nil,
-            groupId: "value",
+            groupId: nil,
             groupName: nil,
             staleIpPermissions: nil,
             staleIpPermissionsEgress: nil,

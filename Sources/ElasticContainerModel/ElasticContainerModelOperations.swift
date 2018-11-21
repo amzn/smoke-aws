@@ -27,6 +27,7 @@ import Foundation
 public enum ElasticContainerModelOperations: String {
     case createCluster = "CreateCluster"
     case createService = "CreateService"
+    case deleteAccountSetting = "DeleteAccountSetting"
     case deleteAttributes = "DeleteAttributes"
     case deleteCluster = "DeleteCluster"
     case deleteService = "DeleteService"
@@ -38,13 +39,16 @@ public enum ElasticContainerModelOperations: String {
     case describeTaskDefinition = "DescribeTaskDefinition"
     case describeTasks = "DescribeTasks"
     case discoverPollEndpoint = "DiscoverPollEndpoint"
+    case listAccountSettings = "ListAccountSettings"
     case listAttributes = "ListAttributes"
     case listClusters = "ListClusters"
     case listContainerInstances = "ListContainerInstances"
     case listServices = "ListServices"
+    case listTagsForResource = "ListTagsForResource"
     case listTaskDefinitionFamilies = "ListTaskDefinitionFamilies"
     case listTaskDefinitions = "ListTaskDefinitions"
     case listTasks = "ListTasks"
+    case putAccountSetting = "PutAccountSetting"
     case putAttributes = "PutAttributes"
     case registerContainerInstance = "RegisterContainerInstance"
     case registerTaskDefinition = "RegisterTaskDefinition"
@@ -53,6 +57,8 @@ public enum ElasticContainerModelOperations: String {
     case stopTask = "StopTask"
     case submitContainerStateChange = "SubmitContainerStateChange"
     case submitTaskStateChange = "SubmitTaskStateChange"
+    case tagResource = "TagResource"
+    case untagResource = "UntagResource"
     case updateContainerAgent = "UpdateContainerAgent"
     case updateContainerInstancesState = "UpdateContainerInstancesState"
     case updateService = "UpdateService"
@@ -62,6 +68,8 @@ public enum ElasticContainerModelOperations: String {
         case .createCluster:
             return "/"
         case .createService:
+            return "/"
+        case .deleteAccountSetting:
             return "/"
         case .deleteAttributes:
             return "/"
@@ -85,6 +93,8 @@ public enum ElasticContainerModelOperations: String {
             return "/"
         case .discoverPollEndpoint:
             return "/"
+        case .listAccountSettings:
+            return "/"
         case .listAttributes:
             return "/"
         case .listClusters:
@@ -93,11 +103,15 @@ public enum ElasticContainerModelOperations: String {
             return "/"
         case .listServices:
             return "/"
+        case .listTagsForResource:
+            return "/"
         case .listTaskDefinitionFamilies:
             return "/"
         case .listTaskDefinitions:
             return "/"
         case .listTasks:
+            return "/"
+        case .putAccountSetting:
             return "/"
         case .putAttributes:
             return "/"
@@ -114,6 +128,10 @@ public enum ElasticContainerModelOperations: String {
         case .submitContainerStateChange:
             return "/"
         case .submitTaskStateChange:
+            return "/"
+        case .tagResource:
+            return "/"
+        case .untagResource:
             return "/"
         case .updateContainerAgent:
             return "/"

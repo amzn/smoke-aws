@@ -1014,15 +1014,18 @@ public struct AvailabilityZone: Codable, Equatable {
     public var messages: AvailabilityZoneMessageList?
     public var regionName: String?
     public var state: AvailabilityZoneState?
+    public var zoneId: String?
     public var zoneName: String?
 
     public init(messages: AvailabilityZoneMessageList? = nil,
                 regionName: String? = nil,
                 state: AvailabilityZoneState? = nil,
+                zoneId: String? = nil,
                 zoneName: String? = nil) {
         self.messages = messages
         self.regionName = regionName
         self.state = state
+        self.zoneId = zoneId
         self.zoneName = zoneName
     }
 
@@ -1030,6 +1033,7 @@ public struct AvailabilityZone: Codable, Equatable {
         case messages = "messageSet"
         case regionName
         case state = "zoneState"
+        case zoneId
         case zoneName
     }
 
@@ -2456,6 +2460,66 @@ public struct CreateEgressOnlyInternetGatewayResult: Codable, Equatable {
     }
 }
 
+public struct CreateFleetError: Codable, Equatable {
+    public var errorCode: String?
+    public var errorMessage: String?
+    public var launchTemplateAndOverrides: LaunchTemplateAndOverridesResponse?
+    public var lifecycle: InstanceLifecycle?
+
+    public init(errorCode: String? = nil,
+                errorMessage: String? = nil,
+                launchTemplateAndOverrides: LaunchTemplateAndOverridesResponse? = nil,
+                lifecycle: InstanceLifecycle? = nil) {
+        self.errorCode = errorCode
+        self.errorMessage = errorMessage
+        self.launchTemplateAndOverrides = launchTemplateAndOverrides
+        self.lifecycle = lifecycle
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case errorCode
+        case errorMessage
+        case launchTemplateAndOverrides
+        case lifecycle
+    }
+
+    public func validate() throws {
+        try launchTemplateAndOverrides?.validate()
+    }
+}
+
+public struct CreateFleetInstance: Codable, Equatable {
+    public var instanceIds: InstanceIdsSet?
+    public var instanceType: InstanceType?
+    public var launchTemplateAndOverrides: LaunchTemplateAndOverridesResponse?
+    public var lifecycle: InstanceLifecycle?
+    public var platform: PlatformValues?
+
+    public init(instanceIds: InstanceIdsSet? = nil,
+                instanceType: InstanceType? = nil,
+                launchTemplateAndOverrides: LaunchTemplateAndOverridesResponse? = nil,
+                lifecycle: InstanceLifecycle? = nil,
+                platform: PlatformValues? = nil) {
+        self.instanceIds = instanceIds
+        self.instanceType = instanceType
+        self.launchTemplateAndOverrides = launchTemplateAndOverrides
+        self.lifecycle = lifecycle
+        self.platform = platform
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceIds
+        case instanceType
+        case launchTemplateAndOverrides
+        case lifecycle
+        case platform
+    }
+
+    public func validate() throws {
+        try launchTemplateAndOverrides?.validate()
+    }
+}
+
 public struct CreateFleetRequest: Codable, Equatable {
     public var clientToken: String?
     public var dryRun: Boolean?
@@ -2524,14 +2588,22 @@ public struct CreateFleetRequest: Codable, Equatable {
 }
 
 public struct CreateFleetResult: Codable, Equatable {
+    public var errors: CreateFleetErrorsSet?
     public var fleetId: FleetIdentifier?
+    public var instances: CreateFleetInstancesSet?
 
-    public init(fleetId: FleetIdentifier? = nil) {
+    public init(errors: CreateFleetErrorsSet? = nil,
+                fleetId: FleetIdentifier? = nil,
+                instances: CreateFleetInstancesSet? = nil) {
+        self.errors = errors
         self.fleetId = fleetId
+        self.instances = instances
     }
 
     enum CodingKeys: String, CodingKey {
+        case errors = "errorSet"
         case fleetId
+        case instances = "fleetInstanceSet"
     }
 
     public func validate() throws {
@@ -5139,19 +5211,23 @@ public struct DescribeAggregateIdFormatResult: Codable, Equatable {
 public struct DescribeAvailabilityZonesRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var filters: FilterList?
+    public var zoneIds: ZoneIdStringList?
     public var zoneNames: ZoneNameStringList?
 
     public init(dryRun: Boolean? = nil,
                 filters: FilterList? = nil,
+                zoneIds: ZoneIdStringList? = nil,
                 zoneNames: ZoneNameStringList? = nil) {
         self.dryRun = dryRun
         self.filters = filters
+        self.zoneIds = zoneIds
         self.zoneNames = zoneNames
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case filters = "Filter"
+        case zoneIds = "ZoneId"
         case zoneNames = "ZoneName"
     }
 
@@ -5596,6 +5672,34 @@ public struct DescribeExportTasksResult: Codable, Equatable {
     }
 }
 
+public struct DescribeFleetError: Codable, Equatable {
+    public var errorCode: String?
+    public var errorMessage: String?
+    public var launchTemplateAndOverrides: LaunchTemplateAndOverridesResponse?
+    public var lifecycle: InstanceLifecycle?
+
+    public init(errorCode: String? = nil,
+                errorMessage: String? = nil,
+                launchTemplateAndOverrides: LaunchTemplateAndOverridesResponse? = nil,
+                lifecycle: InstanceLifecycle? = nil) {
+        self.errorCode = errorCode
+        self.errorMessage = errorMessage
+        self.launchTemplateAndOverrides = launchTemplateAndOverrides
+        self.lifecycle = lifecycle
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case errorCode
+        case errorMessage
+        case launchTemplateAndOverrides
+        case lifecycle
+    }
+
+    public func validate() throws {
+        try launchTemplateAndOverrides?.validate()
+    }
+}
+
 public struct DescribeFleetHistoryRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var eventType: FleetEventType?
@@ -5713,6 +5817,38 @@ public struct DescribeFleetInstancesResult: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct DescribeFleetsInstances: Codable, Equatable {
+    public var instanceIds: InstanceIdsSet?
+    public var instanceType: InstanceType?
+    public var launchTemplateAndOverrides: LaunchTemplateAndOverridesResponse?
+    public var lifecycle: InstanceLifecycle?
+    public var platform: PlatformValues?
+
+    public init(instanceIds: InstanceIdsSet? = nil,
+                instanceType: InstanceType? = nil,
+                launchTemplateAndOverrides: LaunchTemplateAndOverridesResponse? = nil,
+                lifecycle: InstanceLifecycle? = nil,
+                platform: PlatformValues? = nil) {
+        self.instanceIds = instanceIds
+        self.instanceType = instanceType
+        self.launchTemplateAndOverrides = launchTemplateAndOverrides
+        self.lifecycle = lifecycle
+        self.platform = platform
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceIds
+        case instanceType
+        case launchTemplateAndOverrides
+        case lifecycle
+        case platform
+    }
+
+    public func validate() throws {
+        try launchTemplateAndOverrides?.validate()
     }
 }
 
@@ -9978,11 +10114,13 @@ public struct FleetData: Codable, Equatable {
     public var activityStatus: FleetActivityStatus?
     public var clientToken: String?
     public var createTime: DateTime?
+    public var errors: DescribeFleetsErrorSet?
     public var excessCapacityTerminationPolicy: FleetExcessCapacityTerminationPolicy?
     public var fleetId: FleetIdentifier?
     public var fleetState: FleetStateCode?
     public var fulfilledCapacity: Double?
     public var fulfilledOnDemandCapacity: Double?
+    public var instances: DescribeFleetsInstancesSet?
     public var launchTemplateConfigs: FleetLaunchTemplateConfigList?
     public var onDemandOptions: OnDemandOptions?
     public var replaceUnhealthyInstances: Boolean?
@@ -9997,11 +10135,13 @@ public struct FleetData: Codable, Equatable {
     public init(activityStatus: FleetActivityStatus? = nil,
                 clientToken: String? = nil,
                 createTime: DateTime? = nil,
+                errors: DescribeFleetsErrorSet? = nil,
                 excessCapacityTerminationPolicy: FleetExcessCapacityTerminationPolicy? = nil,
                 fleetId: FleetIdentifier? = nil,
                 fleetState: FleetStateCode? = nil,
                 fulfilledCapacity: Double? = nil,
                 fulfilledOnDemandCapacity: Double? = nil,
+                instances: DescribeFleetsInstancesSet? = nil,
                 launchTemplateConfigs: FleetLaunchTemplateConfigList? = nil,
                 onDemandOptions: OnDemandOptions? = nil,
                 replaceUnhealthyInstances: Boolean? = nil,
@@ -10015,11 +10155,13 @@ public struct FleetData: Codable, Equatable {
         self.activityStatus = activityStatus
         self.clientToken = clientToken
         self.createTime = createTime
+        self.errors = errors
         self.excessCapacityTerminationPolicy = excessCapacityTerminationPolicy
         self.fleetId = fleetId
         self.fleetState = fleetState
         self.fulfilledCapacity = fulfilledCapacity
         self.fulfilledOnDemandCapacity = fulfilledOnDemandCapacity
+        self.instances = instances
         self.launchTemplateConfigs = launchTemplateConfigs
         self.onDemandOptions = onDemandOptions
         self.replaceUnhealthyInstances = replaceUnhealthyInstances
@@ -10036,11 +10178,13 @@ public struct FleetData: Codable, Equatable {
         case activityStatus
         case clientToken
         case createTime
+        case errors = "errorSet"
         case excessCapacityTerminationPolicy
         case fleetId
         case fleetState
         case fulfilledCapacity
         case fulfilledOnDemandCapacity
+        case instances = "fleetInstanceSet"
         case launchTemplateConfigs
         case onDemandOptions
         case replaceUnhealthyInstances
@@ -10105,6 +10249,7 @@ public struct FleetLaunchTemplateOverrides: Codable, Equatable {
     public var availabilityZone: String?
     public var instanceType: InstanceType?
     public var maxPrice: String?
+    public var placement: PlacementResponse?
     public var priority: Double?
     public var subnetId: String?
     public var weightedCapacity: Double?
@@ -10112,12 +10257,14 @@ public struct FleetLaunchTemplateOverrides: Codable, Equatable {
     public init(availabilityZone: String? = nil,
                 instanceType: InstanceType? = nil,
                 maxPrice: String? = nil,
+                placement: PlacementResponse? = nil,
                 priority: Double? = nil,
                 subnetId: String? = nil,
                 weightedCapacity: Double? = nil) {
         self.availabilityZone = availabilityZone
         self.instanceType = instanceType
         self.maxPrice = maxPrice
+        self.placement = placement
         self.priority = priority
         self.subnetId = subnetId
         self.weightedCapacity = weightedCapacity
@@ -10127,12 +10274,14 @@ public struct FleetLaunchTemplateOverrides: Codable, Equatable {
         case availabilityZone
         case instanceType
         case maxPrice
+        case placement
         case priority
         case subnetId
         case weightedCapacity
     }
 
     public func validate() throws {
+        try placement?.validate()
     }
 }
 
@@ -10140,6 +10289,7 @@ public struct FleetLaunchTemplateOverridesRequest: Codable, Equatable {
     public var availabilityZone: String?
     public var instanceType: InstanceType?
     public var maxPrice: String?
+    public var placement: Placement?
     public var priority: Double?
     public var subnetId: String?
     public var weightedCapacity: Double?
@@ -10147,12 +10297,14 @@ public struct FleetLaunchTemplateOverridesRequest: Codable, Equatable {
     public init(availabilityZone: String? = nil,
                 instanceType: InstanceType? = nil,
                 maxPrice: String? = nil,
+                placement: Placement? = nil,
                 priority: Double? = nil,
                 subnetId: String? = nil,
                 weightedCapacity: Double? = nil) {
         self.availabilityZone = availabilityZone
         self.instanceType = instanceType
         self.maxPrice = maxPrice
+        self.placement = placement
         self.priority = priority
         self.subnetId = subnetId
         self.weightedCapacity = weightedCapacity
@@ -10162,12 +10314,14 @@ public struct FleetLaunchTemplateOverridesRequest: Codable, Equatable {
         case availabilityZone = "AvailabilityZone"
         case instanceType = "InstanceType"
         case maxPrice = "MaxPrice"
+        case placement = "Placement"
         case priority = "Priority"
         case subnetId = "SubnetId"
         case weightedCapacity = "WeightedCapacity"
     }
 
     public func validate() throws {
+        try placement?.validate()
     }
 }
 
@@ -11262,7 +11416,9 @@ public struct ImportImageRequest: Codable, Equatable {
     public var description: String?
     public var diskContainers: ImageDiskContainerList?
     public var dryRun: Boolean?
+    public var encrypted: Boolean?
     public var hypervisor: String?
+    public var kmsKeyId: String?
     public var licenseType: String?
     public var platform: String?
     public var roleName: String?
@@ -11273,7 +11429,9 @@ public struct ImportImageRequest: Codable, Equatable {
                 description: String? = nil,
                 diskContainers: ImageDiskContainerList? = nil,
                 dryRun: Boolean? = nil,
+                encrypted: Boolean? = nil,
                 hypervisor: String? = nil,
+                kmsKeyId: String? = nil,
                 licenseType: String? = nil,
                 platform: String? = nil,
                 roleName: String? = nil) {
@@ -11283,7 +11441,9 @@ public struct ImportImageRequest: Codable, Equatable {
         self.description = description
         self.diskContainers = diskContainers
         self.dryRun = dryRun
+        self.encrypted = encrypted
         self.hypervisor = hypervisor
+        self.kmsKeyId = kmsKeyId
         self.licenseType = licenseType
         self.platform = platform
         self.roleName = roleName
@@ -11296,7 +11456,9 @@ public struct ImportImageRequest: Codable, Equatable {
         case description = "Description"
         case diskContainers = "DiskContainer"
         case dryRun = "DryRun"
+        case encrypted = "Encrypted"
         case hypervisor = "Hypervisor"
+        case kmsKeyId = "KmsKeyId"
         case licenseType = "LicenseType"
         case platform = "Platform"
         case roleName = "RoleName"
@@ -11310,9 +11472,11 @@ public struct ImportImageRequest: Codable, Equatable {
 public struct ImportImageResult: Codable, Equatable {
     public var architecture: String?
     public var description: String?
+    public var encrypted: Boolean?
     public var hypervisor: String?
     public var imageId: String?
     public var importTaskId: String?
+    public var kmsKeyId: String?
     public var licenseType: String?
     public var platform: String?
     public var progress: String?
@@ -11322,9 +11486,11 @@ public struct ImportImageResult: Codable, Equatable {
 
     public init(architecture: String? = nil,
                 description: String? = nil,
+                encrypted: Boolean? = nil,
                 hypervisor: String? = nil,
                 imageId: String? = nil,
                 importTaskId: String? = nil,
+                kmsKeyId: String? = nil,
                 licenseType: String? = nil,
                 platform: String? = nil,
                 progress: String? = nil,
@@ -11333,9 +11499,11 @@ public struct ImportImageResult: Codable, Equatable {
                 statusMessage: String? = nil) {
         self.architecture = architecture
         self.description = description
+        self.encrypted = encrypted
         self.hypervisor = hypervisor
         self.imageId = imageId
         self.importTaskId = importTaskId
+        self.kmsKeyId = kmsKeyId
         self.licenseType = licenseType
         self.platform = platform
         self.progress = progress
@@ -11347,9 +11515,11 @@ public struct ImportImageResult: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case architecture
         case description
+        case encrypted
         case hypervisor
         case imageId
         case importTaskId
+        case kmsKeyId
         case licenseType
         case platform
         case progress
@@ -11365,9 +11535,11 @@ public struct ImportImageResult: Codable, Equatable {
 public struct ImportImageTask: Codable, Equatable {
     public var architecture: String?
     public var description: String?
+    public var encrypted: Boolean?
     public var hypervisor: String?
     public var imageId: String?
     public var importTaskId: String?
+    public var kmsKeyId: String?
     public var licenseType: String?
     public var platform: String?
     public var progress: String?
@@ -11377,9 +11549,11 @@ public struct ImportImageTask: Codable, Equatable {
 
     public init(architecture: String? = nil,
                 description: String? = nil,
+                encrypted: Boolean? = nil,
                 hypervisor: String? = nil,
                 imageId: String? = nil,
                 importTaskId: String? = nil,
+                kmsKeyId: String? = nil,
                 licenseType: String? = nil,
                 platform: String? = nil,
                 progress: String? = nil,
@@ -11388,9 +11562,11 @@ public struct ImportImageTask: Codable, Equatable {
                 statusMessage: String? = nil) {
         self.architecture = architecture
         self.description = description
+        self.encrypted = encrypted
         self.hypervisor = hypervisor
         self.imageId = imageId
         self.importTaskId = importTaskId
+        self.kmsKeyId = kmsKeyId
         self.licenseType = licenseType
         self.platform = platform
         self.progress = progress
@@ -11402,9 +11578,11 @@ public struct ImportImageTask: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case architecture
         case description
+        case encrypted
         case hypervisor
         case imageId
         case importTaskId
+        case kmsKeyId
         case licenseType
         case platform
         case progress
@@ -11550,21 +11728,21 @@ public struct ImportInstanceTaskDetails: Codable, Equatable {
 }
 
 public struct ImportInstanceVolumeDetailItem: Codable, Equatable {
-    public var availabilityZone: String
-    public var bytesConverted: Long
+    public var availabilityZone: String?
+    public var bytesConverted: Long?
     public var description: String?
-    public var image: DiskImageDescription
-    public var status: String
+    public var image: DiskImageDescription?
+    public var status: String?
     public var statusMessage: String?
-    public var volume: DiskImageVolumeDescription
+    public var volume: DiskImageVolumeDescription?
 
-    public init(availabilityZone: String,
-                bytesConverted: Long,
+    public init(availabilityZone: String? = nil,
+                bytesConverted: Long? = nil,
                 description: String? = nil,
-                image: DiskImageDescription,
-                status: String,
+                image: DiskImageDescription? = nil,
+                status: String? = nil,
                 statusMessage: String? = nil,
-                volume: DiskImageVolumeDescription) {
+                volume: DiskImageVolumeDescription? = nil) {
         self.availabilityZone = availabilityZone
         self.bytesConverted = bytesConverted
         self.description = description
@@ -11585,8 +11763,8 @@ public struct ImportInstanceVolumeDetailItem: Codable, Equatable {
     }
 
     public func validate() throws {
-        try image.validate()
-        try volume.validate()
+        try image?.validate()
+        try volume?.validate()
     }
 }
 
@@ -11638,6 +11816,8 @@ public struct ImportSnapshotRequest: Codable, Equatable {
     public var description: String?
     public var diskContainer: SnapshotDiskContainer?
     public var dryRun: Boolean?
+    public var encrypted: Boolean?
+    public var kmsKeyId: String?
     public var roleName: String?
 
     public init(clientData: ClientData? = nil,
@@ -11645,12 +11825,16 @@ public struct ImportSnapshotRequest: Codable, Equatable {
                 description: String? = nil,
                 diskContainer: SnapshotDiskContainer? = nil,
                 dryRun: Boolean? = nil,
+                encrypted: Boolean? = nil,
+                kmsKeyId: String? = nil,
                 roleName: String? = nil) {
         self.clientData = clientData
         self.clientToken = clientToken
         self.description = description
         self.diskContainer = diskContainer
         self.dryRun = dryRun
+        self.encrypted = encrypted
+        self.kmsKeyId = kmsKeyId
         self.roleName = roleName
     }
 
@@ -11660,6 +11844,8 @@ public struct ImportSnapshotRequest: Codable, Equatable {
         case description = "Description"
         case diskContainer = "DiskContainer"
         case dryRun = "DryRun"
+        case encrypted = "Encrypted"
+        case kmsKeyId = "KmsKeyId"
         case roleName = "RoleName"
     }
 
@@ -12974,6 +13160,27 @@ public struct LaunchTemplate: Codable, Equatable {
 
     public func validate() throws {
         try launchTemplateName?.validateAsLaunchTemplateName()
+    }
+}
+
+public struct LaunchTemplateAndOverridesResponse: Codable, Equatable {
+    public var launchTemplateSpecification: FleetLaunchTemplateSpecification?
+    public var overrides: FleetLaunchTemplateOverrides?
+
+    public init(launchTemplateSpecification: FleetLaunchTemplateSpecification? = nil,
+                overrides: FleetLaunchTemplateOverrides? = nil) {
+        self.launchTemplateSpecification = launchTemplateSpecification
+        self.overrides = overrides
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case launchTemplateSpecification
+        case overrides
+    }
+
+    public func validate() throws {
+        try launchTemplateSpecification?.validate()
+        try overrides?.validate()
     }
 }
 
@@ -15493,13 +15700,21 @@ public struct NewDhcpConfiguration: Codable, Equatable {
 
 public struct OnDemandOptions: Codable, Equatable {
     public var allocationStrategy: FleetOnDemandAllocationStrategy?
+    public var minTargetCapacity: Integer?
+    public var singleInstanceType: Boolean?
 
-    public init(allocationStrategy: FleetOnDemandAllocationStrategy? = nil) {
+    public init(allocationStrategy: FleetOnDemandAllocationStrategy? = nil,
+                minTargetCapacity: Integer? = nil,
+                singleInstanceType: Boolean? = nil) {
         self.allocationStrategy = allocationStrategy
+        self.minTargetCapacity = minTargetCapacity
+        self.singleInstanceType = singleInstanceType
     }
 
     enum CodingKeys: String, CodingKey {
         case allocationStrategy
+        case minTargetCapacity
+        case singleInstanceType
     }
 
     public func validate() throws {
@@ -15508,13 +15723,21 @@ public struct OnDemandOptions: Codable, Equatable {
 
 public struct OnDemandOptionsRequest: Codable, Equatable {
     public var allocationStrategy: FleetOnDemandAllocationStrategy?
+    public var minTargetCapacity: Integer?
+    public var singleInstanceType: Boolean?
 
-    public init(allocationStrategy: FleetOnDemandAllocationStrategy? = nil) {
+    public init(allocationStrategy: FleetOnDemandAllocationStrategy? = nil,
+                minTargetCapacity: Integer? = nil,
+                singleInstanceType: Boolean? = nil) {
         self.allocationStrategy = allocationStrategy
+        self.minTargetCapacity = minTargetCapacity
+        self.singleInstanceType = singleInstanceType
     }
 
     enum CodingKeys: String, CodingKey {
         case allocationStrategy = "AllocationStrategy"
+        case minTargetCapacity = "MinTargetCapacity"
+        case singleInstanceType = "SingleInstanceType"
     }
 
     public func validate() throws {
@@ -15646,6 +15869,21 @@ public struct PlacementGroup: Codable, Equatable {
         case groupName
         case state
         case strategy
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PlacementResponse: Codable, Equatable {
+    public var groupName: String?
+
+    public init(groupName: String? = nil) {
+        self.groupName = groupName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case groupName
     }
 
     public func validate() throws {
@@ -18709,12 +18947,12 @@ public struct SecurityGroupIdentifier: Codable, Equatable {
 }
 
 public struct SecurityGroupReference: Codable, Equatable {
-    public var groupId: String
-    public var referencingVpcId: String
+    public var groupId: String?
+    public var referencingVpcId: String?
     public var vpcPeeringConnectionId: String?
 
-    public init(groupId: String,
-                referencingVpcId: String,
+    public init(groupId: String? = nil,
+                referencingVpcId: String? = nil,
                 vpcPeeringConnectionId: String? = nil) {
         self.groupId = groupId
         self.referencingVpcId = referencingVpcId
@@ -19024,7 +19262,9 @@ public struct SnapshotDiskContainer: Codable, Equatable {
 public struct SnapshotTaskDetail: Codable, Equatable {
     public var description: String?
     public var diskImageSize: Double?
+    public var encrypted: Boolean?
     public var format: String?
+    public var kmsKeyId: String?
     public var progress: String?
     public var snapshotId: String?
     public var status: String?
@@ -19034,7 +19274,9 @@ public struct SnapshotTaskDetail: Codable, Equatable {
 
     public init(description: String? = nil,
                 diskImageSize: Double? = nil,
+                encrypted: Boolean? = nil,
                 format: String? = nil,
+                kmsKeyId: String? = nil,
                 progress: String? = nil,
                 snapshotId: String? = nil,
                 status: String? = nil,
@@ -19043,7 +19285,9 @@ public struct SnapshotTaskDetail: Codable, Equatable {
                 userBucket: UserBucketDetails? = nil) {
         self.description = description
         self.diskImageSize = diskImageSize
+        self.encrypted = encrypted
         self.format = format
+        self.kmsKeyId = kmsKeyId
         self.progress = progress
         self.snapshotId = snapshotId
         self.status = status
@@ -19055,7 +19299,9 @@ public struct SnapshotTaskDetail: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case description
         case diskImageSize
+        case encrypted
         case format
+        case kmsKeyId
         case progress
         case snapshotId
         case status
@@ -19512,19 +19758,27 @@ public struct SpotOptions: Codable, Equatable {
     public var allocationStrategy: SpotAllocationStrategy?
     public var instanceInterruptionBehavior: SpotInstanceInterruptionBehavior?
     public var instancePoolsToUseCount: Integer?
+    public var minTargetCapacity: Integer?
+    public var singleInstanceType: Boolean?
 
     public init(allocationStrategy: SpotAllocationStrategy? = nil,
                 instanceInterruptionBehavior: SpotInstanceInterruptionBehavior? = nil,
-                instancePoolsToUseCount: Integer? = nil) {
+                instancePoolsToUseCount: Integer? = nil,
+                minTargetCapacity: Integer? = nil,
+                singleInstanceType: Boolean? = nil) {
         self.allocationStrategy = allocationStrategy
         self.instanceInterruptionBehavior = instanceInterruptionBehavior
         self.instancePoolsToUseCount = instancePoolsToUseCount
+        self.minTargetCapacity = minTargetCapacity
+        self.singleInstanceType = singleInstanceType
     }
 
     enum CodingKeys: String, CodingKey {
         case allocationStrategy
         case instanceInterruptionBehavior
         case instancePoolsToUseCount
+        case minTargetCapacity
+        case singleInstanceType
     }
 
     public func validate() throws {
@@ -19535,19 +19789,27 @@ public struct SpotOptionsRequest: Codable, Equatable {
     public var allocationStrategy: SpotAllocationStrategy?
     public var instanceInterruptionBehavior: SpotInstanceInterruptionBehavior?
     public var instancePoolsToUseCount: Integer?
+    public var minTargetCapacity: Integer?
+    public var singleInstanceType: Boolean?
 
     public init(allocationStrategy: SpotAllocationStrategy? = nil,
                 instanceInterruptionBehavior: SpotInstanceInterruptionBehavior? = nil,
-                instancePoolsToUseCount: Integer? = nil) {
+                instancePoolsToUseCount: Integer? = nil,
+                minTargetCapacity: Integer? = nil,
+                singleInstanceType: Boolean? = nil) {
         self.allocationStrategy = allocationStrategy
         self.instanceInterruptionBehavior = instanceInterruptionBehavior
         self.instancePoolsToUseCount = instancePoolsToUseCount
+        self.minTargetCapacity = minTargetCapacity
+        self.singleInstanceType = singleInstanceType
     }
 
     enum CodingKeys: String, CodingKey {
         case allocationStrategy = "AllocationStrategy"
         case instanceInterruptionBehavior = "InstanceInterruptionBehavior"
         case instancePoolsToUseCount = "InstancePoolsToUseCount"
+        case minTargetCapacity = "MinTargetCapacity"
+        case singleInstanceType = "SingleInstanceType"
     }
 
     public func validate() throws {
@@ -19645,14 +19907,14 @@ public struct StaleIpPermission: Codable, Equatable {
 
 public struct StaleSecurityGroup: Codable, Equatable {
     public var description: String?
-    public var groupId: String
+    public var groupId: String?
     public var groupName: String?
     public var staleIpPermissions: StaleIpPermissionSet?
     public var staleIpPermissionsEgress: StaleIpPermissionSet?
     public var vpcId: String?
 
     public init(description: String? = nil,
-                groupId: String,
+                groupId: String? = nil,
                 groupName: String? = nil,
                 staleIpPermissions: StaleIpPermissionSet? = nil,
                 staleIpPermissionsEgress: StaleIpPermissionSet? = nil,

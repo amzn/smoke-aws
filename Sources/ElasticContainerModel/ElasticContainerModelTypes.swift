@@ -93,6 +93,7 @@ public typealias BoxedInteger = Int
  */
 public enum ClusterField: String, Codable, CustomStringConvertible {
     case statistics = "STATISTICS"
+    case tags = "TAGS"
 
     public var description: String {
         return rawValue
@@ -148,6 +149,24 @@ public enum Connectivity: String, Codable, CustomStringConvertible {
  Type definition for the ContainerDefinitions field.
  */
 public typealias ContainerDefinitions = [ContainerDefinition]
+
+/**
+ Enumeration restricting the values of the ContainerInstanceField field.
+ */
+public enum ContainerInstanceField: String, Codable, CustomStringConvertible {
+    case tags = "TAGS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ContainerInstanceField = .tags
+}
+
+/**
+ Type definition for the ContainerInstanceFieldList field.
+ */
+public typealias ContainerInstanceFieldList = [ContainerInstanceField]
 
 /**
  Enumeration restricting the values of the ContainerInstanceStatus field.
@@ -269,6 +288,21 @@ public typealias HostEntryList = [HostEntry]
 public typealias Integer = Int
 
 /**
+ Enumeration restricting the values of the IpcMode field.
+ */
+public enum IpcMode: String, Codable, CustomStringConvertible {
+    case host
+    case none
+    case task
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpcMode = .host
+}
+
+/**
  Enumeration restricting the values of the LaunchType field.
  */
 public enum LaunchType: String, Codable, CustomStringConvertible {
@@ -348,6 +382,20 @@ public enum NetworkMode: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the PidMode field.
+ */
+public enum PidMode: String, Codable, CustomStringConvertible {
+    case host
+    case task
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: PidMode = .host
+}
+
+/**
  Enumeration restricting the values of the PlacementConstraintType field.
  */
 public enum PlacementConstraintType: String, Codable, CustomStringConvertible {
@@ -392,6 +440,20 @@ public enum PlacementStrategyType: String, Codable, CustomStringConvertible {
 public typealias PortMappingList = [PortMapping]
 
 /**
+ Enumeration restricting the values of the PropagateTags field.
+ */
+public enum PropagateTags: String, Codable, CustomStringConvertible {
+    case service = "SERVICE"
+    case taskDefinition = "TASK_DEFINITION"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: PropagateTags = .service
+}
+
+/**
  Type definition for the RequiresAttributes field.
  */
 public typealias RequiresAttributes = [Attribute]
@@ -430,9 +492,32 @@ public enum Scope: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the SecretList field.
+ */
+public typealias SecretList = [Secret]
+
+/**
  Type definition for the ServiceEvents field.
  */
 public typealias ServiceEvents = [ServiceEvent]
+
+/**
+ Enumeration restricting the values of the ServiceField field.
+ */
+public enum ServiceField: String, Codable, CustomStringConvertible {
+    case tags = "TAGS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ServiceField = .tags
+}
+
+/**
+ Type definition for the ServiceFieldList field.
+ */
+public typealias ServiceFieldList = [ServiceField]
 
 /**
  Type definition for the ServiceRegistries field.
@@ -443,6 +528,26 @@ public typealias ServiceRegistries = [ServiceRegistry]
  Type definition for the Services field.
  */
 public typealias Services = [Service]
+
+/**
+ Enumeration restricting the values of the SettingName field.
+ */
+public enum SettingName: String, Codable, CustomStringConvertible {
+    case containerinstancelongarnformat = "containerInstanceLongArnFormat"
+    case servicelongarnformat = "serviceLongArnFormat"
+    case tasklongarnformat = "taskLongArnFormat"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: SettingName = .containerinstancelongarnformat
+}
+
+/**
+ Type definition for the Settings field.
+ */
+public typealias Settings = [Setting]
 
 /**
  Enumeration restricting the values of the SortOrder field.
@@ -479,6 +584,26 @@ public typealias StringMap = [String: String]
 public typealias SystemControls = [SystemControl]
 
 /**
+ Type definition for the TagKey field.
+ */
+public typealias TagKey = String
+
+/**
+ Type definition for the TagKeys field.
+ */
+public typealias TagKeys = [TagKey]
+
+/**
+ Type definition for the TagValue field.
+ */
+public typealias TagValue = String
+
+/**
+ Type definition for the Tags field.
+ */
+public typealias Tags = [Tag]
+
+/**
  Enumeration restricting the values of the TargetType field.
  */
 public enum TargetType: String, Codable, CustomStringConvertible {
@@ -505,6 +630,24 @@ public enum TaskDefinitionFamilyStatus: String, Codable, CustomStringConvertible
     
     public static let __default: TaskDefinitionFamilyStatus = .active
 }
+
+/**
+ Enumeration restricting the values of the TaskDefinitionField field.
+ */
+public enum TaskDefinitionField: String, Codable, CustomStringConvertible {
+    case tags = "TAGS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TaskDefinitionField = .tags
+}
+
+/**
+ Type definition for the TaskDefinitionFieldList field.
+ */
+public typealias TaskDefinitionFieldList = [TaskDefinitionField]
 
 /**
  Enumeration restricting the values of the TaskDefinitionPlacementConstraintType field.
@@ -536,6 +679,39 @@ public enum TaskDefinitionStatus: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: TaskDefinitionStatus = .active
+}
+
+/**
+ Enumeration restricting the values of the TaskField field.
+ */
+public enum TaskField: String, Codable, CustomStringConvertible {
+    case tags = "TAGS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TaskField = .tags
+}
+
+/**
+ Type definition for the TaskFieldList field.
+ */
+public typealias TaskFieldList = [TaskField]
+
+/**
+ Enumeration restricting the values of the TaskStopCode field.
+ */
+public enum TaskStopCode: String, Codable, CustomStringConvertible {
+    case essentialcontainerexited = "EssentialContainerExited"
+    case taskfailedtostart = "TaskFailedToStart"
+    case userinitiated = "UserInitiated"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TaskStopCode = .essentialcontainerexited
 }
 
 /**
@@ -608,3 +784,58 @@ public typealias VolumeFromList = [VolumeFrom]
  Type definition for the VolumeList field.
  */
 public typealias VolumeList = [Volume]
+
+/**
+ Validation for the TagKey field.
+*/
+extension ElasticContainerModel.TagKey {
+    public func validateAsTagKey() throws {
+        if self.count < 1 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ElasticContainerCodingError.validationError(reason: "The provided value to TagKey violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagValue field.
+*/
+extension ElasticContainerModel.TagValue {
+    public func validateAsTagValue() throws {
+        if self.count < 0 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ElasticContainerCodingError.validationError(reason: "The provided value to TagValue violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the Tags field.
+*/
+extension Array where Element == ElasticContainerModel.Tag {
+    public func validateAsTags() throws {
+        if self.count < 0 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to Tags violated the minimum length constraint.")
+        }
+
+        if self.count > 50 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to Tags violated the maximum length constraint.")
+        }
+    }
+}

@@ -518,6 +518,16 @@ public enum ConversionTaskState: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the CreateFleetErrorsSet field.
+ */
+public typealias CreateFleetErrorsSet = [CreateFleetError]
+
+/**
+ Type definition for the CreateFleetInstancesSet field.
+ */
+public typealias CreateFleetInstancesSet = [CreateFleetInstance]
+
+/**
  Type definition for the CreateVolumePermissionList field.
  */
 public typealias CreateVolumePermissionList = [CreateVolumePermission]
@@ -618,6 +628,16 @@ public typealias DeleteLaunchTemplateVersionsResponseSuccessSet = [DeleteLaunchT
  Type definition for the DescribeConversionTaskList field.
  */
 public typealias DescribeConversionTaskList = [ConversionTask]
+
+/**
+ Type definition for the DescribeFleetsErrorSet field.
+ */
+public typealias DescribeFleetsErrorSet = [DescribeFleetError]
+
+/**
+ Type definition for the DescribeFleetsInstancesSet field.
+ */
+public typealias DescribeFleetsInstancesSet = [DescribeFleetsInstances]
 
 /**
  Enumeration restricting the values of the DeviceType field.
@@ -992,6 +1012,7 @@ public enum FleetStateCode: String, Codable, CustomStringConvertible {
  Enumeration restricting the values of the FleetType field.
  */
 public enum FleetType: String, Codable, CustomStringConvertible {
+    case instant
     case maintain
     case request
 
@@ -999,7 +1020,7 @@ public enum FleetType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: FleetType = .maintain
+    public static let __default: FleetType = .instant
 }
 
 /**
@@ -1350,6 +1371,11 @@ public enum InstanceHealthStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the InstanceId field.
+ */
+public typealias InstanceId = String
+
+/**
  Type definition for the InstanceIdSet field.
  */
 public typealias InstanceIdSet = [String]
@@ -1358,6 +1384,11 @@ public typealias InstanceIdSet = [String]
  Type definition for the InstanceIdStringList field.
  */
 public typealias InstanceIdStringList = [String]
+
+/**
+ Type definition for the InstanceIdsSet field.
+ */
+public typealias InstanceIdsSet = [InstanceId]
 
 /**
  Enumeration restricting the values of the InstanceInterruptionBehavior field.
@@ -1383,6 +1414,20 @@ public typealias InstanceIpv6AddressList = [InstanceIpv6Address]
  Type definition for the InstanceIpv6AddressListRequest field.
  */
 public typealias InstanceIpv6AddressListRequest = [InstanceIpv6AddressRequest]
+
+/**
+ Enumeration restricting the values of the InstanceLifecycle field.
+ */
+public enum InstanceLifecycle: String, Codable, CustomStringConvertible {
+    case onDemand = "on-demand"
+    case spot
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InstanceLifecycle = .onDemand
+}
 
 /**
  Enumeration restricting the values of the InstanceLifecycleType field.
@@ -1560,6 +1605,12 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m54xlarge = "m5.4xlarge"
     case m5Large = "m5.large"
     case m5Xlarge = "m5.xlarge"
+    case m5a12xlarge = "m5a.12xlarge"
+    case m5a24xlarge = "m5a.24xlarge"
+    case m5a2xlarge = "m5a.2xlarge"
+    case m5a4xlarge = "m5a.4xlarge"
+    case m5aLarge = "m5a.large"
+    case m5aXlarge = "m5a.xlarge"
     case m5d12xlarge = "m5d.12xlarge"
     case m5d24xlarge = "m5d.24xlarge"
     case m5d2xlarge = "m5d.2xlarge"
@@ -1592,6 +1643,12 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case r5Large = "r5.large"
     case r5Metal = "r5.metal"
     case r5Xlarge = "r5.xlarge"
+    case r5a12xlarge = "r5a.12xlarge"
+    case r5a24xlarge = "r5a.24xlarge"
+    case r5a2xlarge = "r5a.2xlarge"
+    case r5a4xlarge = "r5a.4xlarge"
+    case r5aLarge = "r5a.large"
+    case r5aXlarge = "r5a.xlarge"
     case r5d12xlarge = "r5d.12xlarge"
     case r5d16xlarge = "r5d.16xlarge"
     case r5d24xlarge = "r5d.24xlarge"
@@ -2594,9 +2651,14 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case customerGateway = "customer-gateway"
     case dedicatedHost = "dedicated-host"
     case dhcpOptions = "dhcp-options"
+    case elasticIp = "elastic-ip"
+    case fleet
+    case fpgaImage = "fpga-image"
     case image
     case instance
     case internetGateway = "internet-gateway"
+    case launchTemplate = "launch-template"
+    case natgateway
     case networkAcl = "network-acl"
     case networkInterface = "network-interface"
     case reservedInstances = "reserved-instances"
@@ -2607,6 +2669,7 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case subnet
     case volume
     case vpc
+    case vpcPeeringConnection = "vpc-peering-connection"
     case vpnConnection = "vpn-connection"
     case vpnGateway = "vpn-gateway"
 
@@ -3589,6 +3652,11 @@ public enum VpnStaticRouteSource: String, Codable, CustomStringConvertible {
     
     public static let __default: VpnStaticRouteSource = .`static`
 }
+
+/**
+ Type definition for the ZoneIdStringList field.
+ */
+public typealias ZoneIdStringList = [String]
 
 /**
  Type definition for the ZoneNameStringList field.

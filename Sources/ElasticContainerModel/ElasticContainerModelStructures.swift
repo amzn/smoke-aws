@@ -168,6 +168,7 @@ public struct Cluster: Codable, Equatable {
     public var runningTasksCount: Integer?
     public var statistics: Statistics?
     public var status: String?
+    public var tags: Tags?
 
     public init(activeServicesCount: Integer? = nil,
                 clusterArn: String? = nil,
@@ -176,7 +177,8 @@ public struct Cluster: Codable, Equatable {
                 registeredContainerInstancesCount: Integer? = nil,
                 runningTasksCount: Integer? = nil,
                 statistics: Statistics? = nil,
-                status: String? = nil) {
+                status: String? = nil,
+                tags: Tags? = nil) {
         self.activeServicesCount = activeServicesCount
         self.clusterArn = clusterArn
         self.clusterName = clusterName
@@ -185,6 +187,7 @@ public struct Cluster: Codable, Equatable {
         self.runningTasksCount = runningTasksCount
         self.statistics = statistics
         self.status = status
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
@@ -196,9 +199,11 @@ public struct Cluster: Codable, Equatable {
         case runningTasksCount
         case statistics
         case status
+        case tags
     }
 
     public func validate() throws {
+        try tags?.validateAsTags()
     }
 }
 
@@ -313,6 +318,7 @@ public struct ContainerDefinition: Codable, Equatable {
     public var pseudoTerminal: BoxedBoolean?
     public var readonlyRootFilesystem: BoxedBoolean?
     public var repositoryCredentials: RepositoryCredentials?
+    public var secrets: SecretList?
     public var systemControls: SystemControls?
     public var ulimits: UlimitList?
     public var user: String?
@@ -346,6 +352,7 @@ public struct ContainerDefinition: Codable, Equatable {
                 pseudoTerminal: BoxedBoolean? = nil,
                 readonlyRootFilesystem: BoxedBoolean? = nil,
                 repositoryCredentials: RepositoryCredentials? = nil,
+                secrets: SecretList? = nil,
                 systemControls: SystemControls? = nil,
                 ulimits: UlimitList? = nil,
                 user: String? = nil,
@@ -378,6 +385,7 @@ public struct ContainerDefinition: Codable, Equatable {
         self.pseudoTerminal = pseudoTerminal
         self.readonlyRootFilesystem = readonlyRootFilesystem
         self.repositoryCredentials = repositoryCredentials
+        self.secrets = secrets
         self.systemControls = systemControls
         self.ulimits = ulimits
         self.user = user
@@ -413,6 +421,7 @@ public struct ContainerDefinition: Codable, Equatable {
         case pseudoTerminal
         case readonlyRootFilesystem
         case repositoryCredentials
+        case secrets
         case systemControls
         case ulimits
         case user
@@ -441,6 +450,7 @@ public struct ContainerInstance: Codable, Equatable {
     public var remainingResources: Resources?
     public var runningTasksCount: Integer?
     public var status: String?
+    public var tags: Tags?
     public var version: Long?
     public var versionInfo: VersionInfo?
 
@@ -456,6 +466,7 @@ public struct ContainerInstance: Codable, Equatable {
                 remainingResources: Resources? = nil,
                 runningTasksCount: Integer? = nil,
                 status: String? = nil,
+                tags: Tags? = nil,
                 version: Long? = nil,
                 versionInfo: VersionInfo? = nil) {
         self.agentConnected = agentConnected
@@ -470,6 +481,7 @@ public struct ContainerInstance: Codable, Equatable {
         self.remainingResources = remainingResources
         self.runningTasksCount = runningTasksCount
         self.status = status
+        self.tags = tags
         self.version = version
         self.versionInfo = versionInfo
     }
@@ -487,11 +499,13 @@ public struct ContainerInstance: Codable, Equatable {
         case remainingResources
         case runningTasksCount
         case status
+        case tags
         case version
         case versionInfo
     }
 
     public func validate() throws {
+        try tags?.validateAsTags()
         try versionInfo?.validate()
     }
 }
@@ -564,16 +578,21 @@ public struct ContainerStateChange: Codable, Equatable {
 
 public struct CreateClusterRequest: Codable, Equatable {
     public var clusterName: String?
+    public var tags: Tags?
 
-    public init(clusterName: String? = nil) {
+    public init(clusterName: String? = nil,
+                tags: Tags? = nil) {
         self.clusterName = clusterName
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
         case clusterName
+        case tags
     }
 
     public func validate() throws {
+        try tags?.validateAsTags()
     }
 }
 
@@ -598,6 +617,7 @@ public struct CreateServiceRequest: Codable, Equatable {
     public var cluster: String?
     public var deploymentConfiguration: DeploymentConfiguration?
     public var desiredCount: BoxedInteger?
+    public var enableECSManagedTags: Boolean?
     public var healthCheckGracePeriodSeconds: BoxedInteger?
     public var launchType: LaunchType?
     public var loadBalancers: LoadBalancers?
@@ -605,16 +625,19 @@ public struct CreateServiceRequest: Codable, Equatable {
     public var placementConstraints: PlacementConstraints?
     public var placementStrategy: PlacementStrategies?
     public var platformVersion: String?
+    public var propagateTags: PropagateTags?
     public var role: String?
     public var schedulingStrategy: SchedulingStrategy?
     public var serviceName: String
     public var serviceRegistries: ServiceRegistries?
+    public var tags: Tags?
     public var taskDefinition: String
 
     public init(clientToken: String? = nil,
                 cluster: String? = nil,
                 deploymentConfiguration: DeploymentConfiguration? = nil,
                 desiredCount: BoxedInteger? = nil,
+                enableECSManagedTags: Boolean? = nil,
                 healthCheckGracePeriodSeconds: BoxedInteger? = nil,
                 launchType: LaunchType? = nil,
                 loadBalancers: LoadBalancers? = nil,
@@ -622,15 +645,18 @@ public struct CreateServiceRequest: Codable, Equatable {
                 placementConstraints: PlacementConstraints? = nil,
                 placementStrategy: PlacementStrategies? = nil,
                 platformVersion: String? = nil,
+                propagateTags: PropagateTags? = nil,
                 role: String? = nil,
                 schedulingStrategy: SchedulingStrategy? = nil,
                 serviceName: String,
                 serviceRegistries: ServiceRegistries? = nil,
+                tags: Tags? = nil,
                 taskDefinition: String) {
         self.clientToken = clientToken
         self.cluster = cluster
         self.deploymentConfiguration = deploymentConfiguration
         self.desiredCount = desiredCount
+        self.enableECSManagedTags = enableECSManagedTags
         self.healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds
         self.launchType = launchType
         self.loadBalancers = loadBalancers
@@ -638,10 +664,12 @@ public struct CreateServiceRequest: Codable, Equatable {
         self.placementConstraints = placementConstraints
         self.placementStrategy = placementStrategy
         self.platformVersion = platformVersion
+        self.propagateTags = propagateTags
         self.role = role
         self.schedulingStrategy = schedulingStrategy
         self.serviceName = serviceName
         self.serviceRegistries = serviceRegistries
+        self.tags = tags
         self.taskDefinition = taskDefinition
     }
 
@@ -650,6 +678,7 @@ public struct CreateServiceRequest: Codable, Equatable {
         case cluster
         case deploymentConfiguration
         case desiredCount
+        case enableECSManagedTags
         case healthCheckGracePeriodSeconds
         case launchType
         case loadBalancers
@@ -657,16 +686,19 @@ public struct CreateServiceRequest: Codable, Equatable {
         case placementConstraints
         case placementStrategy
         case platformVersion
+        case propagateTags
         case role
         case schedulingStrategy
         case serviceName
         case serviceRegistries
+        case tags
         case taskDefinition
     }
 
     public func validate() throws {
         try deploymentConfiguration?.validate()
         try networkConfiguration?.validate()
+        try tags?.validateAsTags()
     }
 }
 
@@ -683,6 +715,41 @@ public struct CreateServiceResponse: Codable, Equatable {
 
     public func validate() throws {
         try service?.validate()
+    }
+}
+
+public struct DeleteAccountSettingRequest: Codable, Equatable {
+    public var name: SettingName
+    public var principalArn: String?
+
+    public init(name: SettingName,
+                principalArn: String? = nil) {
+        self.name = name
+        self.principalArn = principalArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case principalArn
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteAccountSettingResponse: Codable, Equatable {
+    public var setting: Setting?
+
+    public init(setting: Setting? = nil) {
+        self.setting = setting
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case setting
+    }
+
+    public func validate() throws {
+        try setting?.validate()
     }
 }
 
@@ -976,16 +1043,20 @@ public struct DescribeClustersResponse: Codable, Equatable {
 public struct DescribeContainerInstancesRequest: Codable, Equatable {
     public var cluster: String?
     public var containerInstances: StringList
+    public var include: ContainerInstanceFieldList?
 
     public init(cluster: String? = nil,
-                containerInstances: StringList) {
+                containerInstances: StringList,
+                include: ContainerInstanceFieldList? = nil) {
         self.cluster = cluster
         self.containerInstances = containerInstances
+        self.include = include
     }
 
     enum CodingKeys: String, CodingKey {
         case cluster
         case containerInstances
+        case include
     }
 
     public func validate() throws {
@@ -1013,16 +1084,20 @@ public struct DescribeContainerInstancesResponse: Codable, Equatable {
 
 public struct DescribeServicesRequest: Codable, Equatable {
     public var cluster: String?
+    public var include: ServiceFieldList?
     public var services: StringList
 
     public init(cluster: String? = nil,
+                include: ServiceFieldList? = nil,
                 services: StringList) {
         self.cluster = cluster
+        self.include = include
         self.services = services
     }
 
     enum CodingKeys: String, CodingKey {
         case cluster
+        case include
         case services
     }
 
@@ -1050,13 +1125,17 @@ public struct DescribeServicesResponse: Codable, Equatable {
 }
 
 public struct DescribeTaskDefinitionRequest: Codable, Equatable {
+    public var include: TaskDefinitionFieldList?
     public var taskDefinition: String
 
-    public init(taskDefinition: String) {
+    public init(include: TaskDefinitionFieldList? = nil,
+                taskDefinition: String) {
+        self.include = include
         self.taskDefinition = taskDefinition
     }
 
     enum CodingKeys: String, CodingKey {
+        case include
         case taskDefinition
     }
 
@@ -1065,33 +1144,42 @@ public struct DescribeTaskDefinitionRequest: Codable, Equatable {
 }
 
 public struct DescribeTaskDefinitionResponse: Codable, Equatable {
+    public var tags: Tags?
     public var taskDefinition: TaskDefinition?
 
-    public init(taskDefinition: TaskDefinition? = nil) {
+    public init(tags: Tags? = nil,
+                taskDefinition: TaskDefinition? = nil) {
+        self.tags = tags
         self.taskDefinition = taskDefinition
     }
 
     enum CodingKeys: String, CodingKey {
+        case tags
         case taskDefinition
     }
 
     public func validate() throws {
+        try tags?.validateAsTags()
         try taskDefinition?.validate()
     }
 }
 
 public struct DescribeTasksRequest: Codable, Equatable {
     public var cluster: String?
+    public var include: TaskFieldList?
     public var tasks: StringList
 
     public init(cluster: String? = nil,
+                include: TaskFieldList? = nil,
                 tasks: StringList) {
         self.cluster = cluster
+        self.include = include
         self.tasks = tasks
     }
 
     enum CodingKeys: String, CodingKey {
         case cluster
+        case include
         case tasks
     }
 
@@ -1373,6 +1461,60 @@ public struct LinuxParameters: Codable, Equatable {
     }
 }
 
+public struct ListAccountSettingsRequest: Codable, Equatable {
+    public var effectiveSettings: Boolean?
+    public var maxResults: Integer?
+    public var name: SettingName?
+    public var nextToken: String?
+    public var principalArn: String?
+    public var value: String?
+
+    public init(effectiveSettings: Boolean? = nil,
+                maxResults: Integer? = nil,
+                name: SettingName? = nil,
+                nextToken: String? = nil,
+                principalArn: String? = nil,
+                value: String? = nil) {
+        self.effectiveSettings = effectiveSettings
+        self.maxResults = maxResults
+        self.name = name
+        self.nextToken = nextToken
+        self.principalArn = principalArn
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case effectiveSettings
+        case maxResults
+        case name
+        case nextToken
+        case principalArn
+        case value
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListAccountSettingsResponse: Codable, Equatable {
+    public var nextToken: String?
+    public var settings: Settings?
+
+    public init(nextToken: String? = nil,
+                settings: Settings? = nil) {
+        self.nextToken = nextToken
+        self.settings = settings
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case settings
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ListAttributesRequest: Codable, Equatable {
     public var attributeName: String?
     public var attributeValue: String?
@@ -1562,6 +1704,37 @@ public struct ListServicesResponse: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ListTagsForResourceRequest: Codable, Equatable {
+    public var resourceArn: String
+
+    public init(resourceArn: String) {
+        self.resourceArn = resourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListTagsForResourceResponse: Codable, Equatable {
+    public var tags: Tags?
+
+    public init(tags: Tags? = nil) {
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tags
+    }
+
+    public func validate() throws {
+        try tags?.validateAsTags()
     }
 }
 
@@ -1959,6 +2132,45 @@ public struct PortMapping: Codable, Equatable {
     }
 }
 
+public struct PutAccountSettingRequest: Codable, Equatable {
+    public var name: SettingName
+    public var principalArn: String?
+    public var value: String
+
+    public init(name: SettingName,
+                principalArn: String? = nil,
+                value: String) {
+        self.name = name
+        self.principalArn = principalArn
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case principalArn
+        case value
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PutAccountSettingResponse: Codable, Equatable {
+    public var setting: Setting?
+
+    public init(setting: Setting? = nil) {
+        self.setting = setting
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case setting
+    }
+
+    public func validate() throws {
+        try setting?.validate()
+    }
+}
+
 public struct PutAttributesRequest: Codable, Equatable {
     public var attributes: Attributes
     public var cluster: String?
@@ -1999,6 +2211,7 @@ public struct RegisterContainerInstanceRequest: Codable, Equatable {
     public var containerInstanceArn: String?
     public var instanceIdentityDocument: String?
     public var instanceIdentityDocumentSignature: String?
+    public var tags: Tags?
     public var totalResources: Resources?
     public var versionInfo: VersionInfo?
 
@@ -2007,6 +2220,7 @@ public struct RegisterContainerInstanceRequest: Codable, Equatable {
                 containerInstanceArn: String? = nil,
                 instanceIdentityDocument: String? = nil,
                 instanceIdentityDocumentSignature: String? = nil,
+                tags: Tags? = nil,
                 totalResources: Resources? = nil,
                 versionInfo: VersionInfo? = nil) {
         self.attributes = attributes
@@ -2014,6 +2228,7 @@ public struct RegisterContainerInstanceRequest: Codable, Equatable {
         self.containerInstanceArn = containerInstanceArn
         self.instanceIdentityDocument = instanceIdentityDocument
         self.instanceIdentityDocumentSignature = instanceIdentityDocumentSignature
+        self.tags = tags
         self.totalResources = totalResources
         self.versionInfo = versionInfo
     }
@@ -2024,11 +2239,13 @@ public struct RegisterContainerInstanceRequest: Codable, Equatable {
         case containerInstanceArn
         case instanceIdentityDocument
         case instanceIdentityDocumentSignature
+        case tags
         case totalResources
         case versionInfo
     }
 
     public func validate() throws {
+        try tags?.validateAsTags()
         try versionInfo?.validate()
     }
 }
@@ -2054,10 +2271,13 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     public var cpu: String?
     public var executionRoleArn: String?
     public var family: String
+    public var ipcMode: IpcMode?
     public var memory: String?
     public var networkMode: NetworkMode?
+    public var pidMode: PidMode?
     public var placementConstraints: TaskDefinitionPlacementConstraints?
     public var requiresCompatibilities: CompatibilityList?
+    public var tags: Tags?
     public var taskRoleArn: String?
     public var volumes: VolumeList?
 
@@ -2065,20 +2285,26 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
                 cpu: String? = nil,
                 executionRoleArn: String? = nil,
                 family: String,
+                ipcMode: IpcMode? = nil,
                 memory: String? = nil,
                 networkMode: NetworkMode? = nil,
+                pidMode: PidMode? = nil,
                 placementConstraints: TaskDefinitionPlacementConstraints? = nil,
                 requiresCompatibilities: CompatibilityList? = nil,
+                tags: Tags? = nil,
                 taskRoleArn: String? = nil,
                 volumes: VolumeList? = nil) {
         self.containerDefinitions = containerDefinitions
         self.cpu = cpu
         self.executionRoleArn = executionRoleArn
         self.family = family
+        self.ipcMode = ipcMode
         self.memory = memory
         self.networkMode = networkMode
+        self.pidMode = pidMode
         self.placementConstraints = placementConstraints
         self.requiresCompatibilities = requiresCompatibilities
+        self.tags = tags
         self.taskRoleArn = taskRoleArn
         self.volumes = volumes
     }
@@ -2088,30 +2314,39 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
         case cpu
         case executionRoleArn
         case family
+        case ipcMode
         case memory
         case networkMode
+        case pidMode
         case placementConstraints
         case requiresCompatibilities
+        case tags
         case taskRoleArn
         case volumes
     }
 
     public func validate() throws {
+        try tags?.validateAsTags()
     }
 }
 
 public struct RegisterTaskDefinitionResponse: Codable, Equatable {
+    public var tags: Tags?
     public var taskDefinition: TaskDefinition?
 
-    public init(taskDefinition: TaskDefinition? = nil) {
+    public init(tags: Tags? = nil,
+                taskDefinition: TaskDefinition? = nil) {
+        self.tags = tags
         self.taskDefinition = taskDefinition
     }
 
     enum CodingKeys: String, CodingKey {
+        case tags
         case taskDefinition
     }
 
     public func validate() throws {
+        try tags?.validateAsTags()
         try taskDefinition?.validate()
     }
 }
@@ -2166,9 +2401,19 @@ public struct Resource: Codable, Equatable {
     }
 }
 
+public struct ResourceNotFoundException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct RunTaskRequest: Codable, Equatable {
     public var cluster: String?
     public var count: BoxedInteger?
+    public var enableECSManagedTags: Boolean?
     public var group: String?
     public var launchType: LaunchType?
     public var networkConfiguration: NetworkConfiguration?
@@ -2176,11 +2421,14 @@ public struct RunTaskRequest: Codable, Equatable {
     public var placementConstraints: PlacementConstraints?
     public var placementStrategy: PlacementStrategies?
     public var platformVersion: String?
+    public var propagateTags: PropagateTags?
     public var startedBy: String?
+    public var tags: Tags?
     public var taskDefinition: String
 
     public init(cluster: String? = nil,
                 count: BoxedInteger? = nil,
+                enableECSManagedTags: Boolean? = nil,
                 group: String? = nil,
                 launchType: LaunchType? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
@@ -2188,10 +2436,13 @@ public struct RunTaskRequest: Codable, Equatable {
                 placementConstraints: PlacementConstraints? = nil,
                 placementStrategy: PlacementStrategies? = nil,
                 platformVersion: String? = nil,
+                propagateTags: PropagateTags? = nil,
                 startedBy: String? = nil,
+                tags: Tags? = nil,
                 taskDefinition: String) {
         self.cluster = cluster
         self.count = count
+        self.enableECSManagedTags = enableECSManagedTags
         self.group = group
         self.launchType = launchType
         self.networkConfiguration = networkConfiguration
@@ -2199,13 +2450,16 @@ public struct RunTaskRequest: Codable, Equatable {
         self.placementConstraints = placementConstraints
         self.placementStrategy = placementStrategy
         self.platformVersion = platformVersion
+        self.propagateTags = propagateTags
         self.startedBy = startedBy
+        self.tags = tags
         self.taskDefinition = taskDefinition
     }
 
     enum CodingKeys: String, CodingKey {
         case cluster
         case count
+        case enableECSManagedTags
         case group
         case launchType
         case networkConfiguration
@@ -2213,13 +2467,16 @@ public struct RunTaskRequest: Codable, Equatable {
         case placementConstraints
         case placementStrategy
         case platformVersion
+        case propagateTags
         case startedBy
+        case tags
         case taskDefinition
     }
 
     public func validate() throws {
         try networkConfiguration?.validate()
         try overrides?.validate()
+        try tags?.validateAsTags()
     }
 }
 
@@ -2236,6 +2493,25 @@ public struct RunTaskResponse: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case failures
         case tasks
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct Secret: Codable, Equatable {
+    public var name: String
+    public var valueFrom: String
+
+    public init(name: String,
+                valueFrom: String) {
+        self.name = name
+        self.valueFrom = valueFrom
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case valueFrom
     }
 
     public func validate() throws {
@@ -2260,9 +2536,11 @@ public struct ServerException: Codable, Equatable {
 public struct Service: Codable, Equatable {
     public var clusterArn: String?
     public var createdAt: Timestamp?
+    public var createdBy: String?
     public var deploymentConfiguration: DeploymentConfiguration?
     public var deployments: Deployments?
     public var desiredCount: Integer?
+    public var enableECSManagedTags: Boolean?
     public var events: ServiceEvents?
     public var healthCheckGracePeriodSeconds: BoxedInteger?
     public var launchType: LaunchType?
@@ -2272,6 +2550,7 @@ public struct Service: Codable, Equatable {
     public var placementConstraints: PlacementConstraints?
     public var placementStrategy: PlacementStrategies?
     public var platformVersion: String?
+    public var propagateTags: PropagateTags?
     public var roleArn: String?
     public var runningCount: Integer?
     public var schedulingStrategy: SchedulingStrategy?
@@ -2279,13 +2558,16 @@ public struct Service: Codable, Equatable {
     public var serviceName: String?
     public var serviceRegistries: ServiceRegistries?
     public var status: String?
+    public var tags: Tags?
     public var taskDefinition: String?
 
     public init(clusterArn: String? = nil,
                 createdAt: Timestamp? = nil,
+                createdBy: String? = nil,
                 deploymentConfiguration: DeploymentConfiguration? = nil,
                 deployments: Deployments? = nil,
                 desiredCount: Integer? = nil,
+                enableECSManagedTags: Boolean? = nil,
                 events: ServiceEvents? = nil,
                 healthCheckGracePeriodSeconds: BoxedInteger? = nil,
                 launchType: LaunchType? = nil,
@@ -2295,6 +2577,7 @@ public struct Service: Codable, Equatable {
                 placementConstraints: PlacementConstraints? = nil,
                 placementStrategy: PlacementStrategies? = nil,
                 platformVersion: String? = nil,
+                propagateTags: PropagateTags? = nil,
                 roleArn: String? = nil,
                 runningCount: Integer? = nil,
                 schedulingStrategy: SchedulingStrategy? = nil,
@@ -2302,12 +2585,15 @@ public struct Service: Codable, Equatable {
                 serviceName: String? = nil,
                 serviceRegistries: ServiceRegistries? = nil,
                 status: String? = nil,
+                tags: Tags? = nil,
                 taskDefinition: String? = nil) {
         self.clusterArn = clusterArn
         self.createdAt = createdAt
+        self.createdBy = createdBy
         self.deploymentConfiguration = deploymentConfiguration
         self.deployments = deployments
         self.desiredCount = desiredCount
+        self.enableECSManagedTags = enableECSManagedTags
         self.events = events
         self.healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds
         self.launchType = launchType
@@ -2317,6 +2603,7 @@ public struct Service: Codable, Equatable {
         self.placementConstraints = placementConstraints
         self.placementStrategy = placementStrategy
         self.platformVersion = platformVersion
+        self.propagateTags = propagateTags
         self.roleArn = roleArn
         self.runningCount = runningCount
         self.schedulingStrategy = schedulingStrategy
@@ -2324,15 +2611,18 @@ public struct Service: Codable, Equatable {
         self.serviceName = serviceName
         self.serviceRegistries = serviceRegistries
         self.status = status
+        self.tags = tags
         self.taskDefinition = taskDefinition
     }
 
     enum CodingKeys: String, CodingKey {
         case clusterArn
         case createdAt
+        case createdBy
         case deploymentConfiguration
         case deployments
         case desiredCount
+        case enableECSManagedTags
         case events
         case healthCheckGracePeriodSeconds
         case launchType
@@ -2342,6 +2632,7 @@ public struct Service: Codable, Equatable {
         case placementConstraints
         case placementStrategy
         case platformVersion
+        case propagateTags
         case roleArn
         case runningCount
         case schedulingStrategy
@@ -2349,12 +2640,14 @@ public struct Service: Codable, Equatable {
         case serviceName
         case serviceRegistries
         case status
+        case tags
         case taskDefinition
     }
 
     public func validate() throws {
         try deploymentConfiguration?.validate()
         try networkConfiguration?.validate()
+        try tags?.validateAsTags()
     }
 }
 
@@ -2426,44 +2719,80 @@ public struct ServiceRegistry: Codable, Equatable {
     }
 }
 
+public struct Setting: Codable, Equatable {
+    public var name: SettingName?
+    public var principalArn: String?
+    public var value: String?
+
+    public init(name: SettingName? = nil,
+                principalArn: String? = nil,
+                value: String? = nil) {
+        self.name = name
+        self.principalArn = principalArn
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case principalArn
+        case value
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct StartTaskRequest: Codable, Equatable {
     public var cluster: String?
     public var containerInstances: StringList
+    public var enableECSManagedTags: Boolean?
     public var group: String?
     public var networkConfiguration: NetworkConfiguration?
     public var overrides: TaskOverride?
+    public var propagateTags: PropagateTags?
     public var startedBy: String?
+    public var tags: Tags?
     public var taskDefinition: String
 
     public init(cluster: String? = nil,
                 containerInstances: StringList,
+                enableECSManagedTags: Boolean? = nil,
                 group: String? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
                 overrides: TaskOverride? = nil,
+                propagateTags: PropagateTags? = nil,
                 startedBy: String? = nil,
+                tags: Tags? = nil,
                 taskDefinition: String) {
         self.cluster = cluster
         self.containerInstances = containerInstances
+        self.enableECSManagedTags = enableECSManagedTags
         self.group = group
         self.networkConfiguration = networkConfiguration
         self.overrides = overrides
+        self.propagateTags = propagateTags
         self.startedBy = startedBy
+        self.tags = tags
         self.taskDefinition = taskDefinition
     }
 
     enum CodingKeys: String, CodingKey {
         case cluster
         case containerInstances
+        case enableECSManagedTags
         case group
         case networkConfiguration
         case overrides
+        case propagateTags
         case startedBy
+        case tags
         case taskDefinition
     }
 
     public func validate() throws {
         try networkConfiguration?.validate()
         try overrides?.validate()
+        try tags?.validateAsTags()
     }
 }
 
@@ -2660,6 +2989,56 @@ public struct SystemControl: Codable, Equatable {
     }
 }
 
+public struct Tag: Codable, Equatable {
+    public var key: TagKey?
+    public var value: TagValue?
+
+    public init(key: TagKey? = nil,
+                value: TagValue? = nil) {
+        self.key = key
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case key
+        case value
+    }
+
+    public func validate() throws {
+        try key?.validateAsTagKey()
+        try value?.validateAsTagValue()
+    }
+}
+
+public struct TagResourceRequest: Codable, Equatable {
+    public var resourceArn: String
+    public var tags: Tags
+
+    public init(resourceArn: String,
+                tags: Tags) {
+        self.resourceArn = resourceArn
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn
+        case tags
+    }
+
+    public func validate() throws {
+        try tags.validateAsTags()
+    }
+}
+
+public struct TagResourceResponse: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct TargetNotFoundException: Codable, Equatable {
 
     public init() {
@@ -2691,9 +3070,11 @@ public struct Task: Codable, Equatable {
     public var pullStoppedAt: Timestamp?
     public var startedAt: Timestamp?
     public var startedBy: String?
+    public var stopCode: TaskStopCode?
     public var stoppedAt: Timestamp?
     public var stoppedReason: String?
     public var stoppingAt: Timestamp?
+    public var tags: Tags?
     public var taskArn: String?
     public var taskDefinitionArn: String?
     public var version: Long?
@@ -2719,9 +3100,11 @@ public struct Task: Codable, Equatable {
                 pullStoppedAt: Timestamp? = nil,
                 startedAt: Timestamp? = nil,
                 startedBy: String? = nil,
+                stopCode: TaskStopCode? = nil,
                 stoppedAt: Timestamp? = nil,
                 stoppedReason: String? = nil,
                 stoppingAt: Timestamp? = nil,
+                tags: Tags? = nil,
                 taskArn: String? = nil,
                 taskDefinitionArn: String? = nil,
                 version: Long? = nil) {
@@ -2746,9 +3129,11 @@ public struct Task: Codable, Equatable {
         self.pullStoppedAt = pullStoppedAt
         self.startedAt = startedAt
         self.startedBy = startedBy
+        self.stopCode = stopCode
         self.stoppedAt = stoppedAt
         self.stoppedReason = stoppedReason
         self.stoppingAt = stoppingAt
+        self.tags = tags
         self.taskArn = taskArn
         self.taskDefinitionArn = taskDefinitionArn
         self.version = version
@@ -2776,9 +3161,11 @@ public struct Task: Codable, Equatable {
         case pullStoppedAt
         case startedAt
         case startedBy
+        case stopCode
         case stoppedAt
         case stoppedReason
         case stoppingAt
+        case tags
         case taskArn
         case taskDefinitionArn
         case version
@@ -2786,6 +3173,7 @@ public struct Task: Codable, Equatable {
 
     public func validate() throws {
         try overrides?.validate()
+        try tags?.validateAsTags()
     }
 }
 
@@ -2795,8 +3183,10 @@ public struct TaskDefinition: Codable, Equatable {
     public var cpu: String?
     public var executionRoleArn: String?
     public var family: String?
+    public var ipcMode: IpcMode?
     public var memory: String?
     public var networkMode: NetworkMode?
+    public var pidMode: PidMode?
     public var placementConstraints: TaskDefinitionPlacementConstraints?
     public var requiresAttributes: RequiresAttributes?
     public var requiresCompatibilities: CompatibilityList?
@@ -2811,8 +3201,10 @@ public struct TaskDefinition: Codable, Equatable {
                 cpu: String? = nil,
                 executionRoleArn: String? = nil,
                 family: String? = nil,
+                ipcMode: IpcMode? = nil,
                 memory: String? = nil,
                 networkMode: NetworkMode? = nil,
+                pidMode: PidMode? = nil,
                 placementConstraints: TaskDefinitionPlacementConstraints? = nil,
                 requiresAttributes: RequiresAttributes? = nil,
                 requiresCompatibilities: CompatibilityList? = nil,
@@ -2826,8 +3218,10 @@ public struct TaskDefinition: Codable, Equatable {
         self.cpu = cpu
         self.executionRoleArn = executionRoleArn
         self.family = family
+        self.ipcMode = ipcMode
         self.memory = memory
         self.networkMode = networkMode
+        self.pidMode = pidMode
         self.placementConstraints = placementConstraints
         self.requiresAttributes = requiresAttributes
         self.requiresCompatibilities = requiresCompatibilities
@@ -2844,8 +3238,10 @@ public struct TaskDefinition: Codable, Equatable {
         case cpu
         case executionRoleArn
         case family
+        case ipcMode
         case memory
         case networkMode
+        case pidMode
         case placementConstraints
         case requiresAttributes
         case requiresCompatibilities
@@ -2949,6 +3345,34 @@ public struct Ulimit: Codable, Equatable {
 }
 
 public struct UnsupportedFeatureException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct UntagResourceRequest: Codable, Equatable {
+    public var resourceArn: String
+    public var tagKeys: TagKeys
+
+    public init(resourceArn: String,
+                tagKeys: TagKeys) {
+        self.resourceArn = resourceArn
+        self.tagKeys = tagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn
+        case tagKeys
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct UntagResourceResponse: Codable, Equatable {
 
     public init() {
     }

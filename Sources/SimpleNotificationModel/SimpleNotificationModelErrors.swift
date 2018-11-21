@@ -28,6 +28,13 @@ private let filterPolicyLimitExceededIdentity = "FilterPolicyLimitExceededExcept
 private let internalErrorIdentity = "InternalErrorException"
 private let invalidParameterIdentity = "InvalidParameterException"
 private let invalidParameterValueIdentity = "InvalidParameterValueException"
+private let invalidSecurityIdentity = "InvalidSecurityException"
+private let kMSAccessDeniedIdentity = "KMSAccessDeniedException"
+private let kMSDisabledIdentity = "KMSDisabledException"
+private let kMSInvalidStateIdentity = "KMSInvalidStateException"
+private let kMSNotFoundIdentity = "KMSNotFoundException"
+private let kMSOptInRequiredIdentity = "KMSOptInRequired"
+private let kMSThrottlingIdentity = "KMSThrottlingException"
 private let notFoundIdentity = "NotFoundException"
 private let platformApplicationDisabledIdentity = "PlatformApplicationDisabledException"
 private let subscriptionLimitExceededIdentity = "SubscriptionLimitExceededException"
@@ -47,6 +54,13 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case internalError(InternalErrorException)
     case invalidParameter(InvalidParameterException)
     case invalidParameterValue(InvalidParameterValueException)
+    case invalidSecurity(InvalidSecurityException)
+    case kMSAccessDenied(KMSAccessDeniedException)
+    case kMSDisabled(KMSDisabledException)
+    case kMSInvalidState(KMSInvalidStateException)
+    case kMSNotFound(KMSNotFoundException)
+    case kMSOptInRequired(KMSOptInRequired)
+    case kMSThrottling(KMSThrottlingException)
     case notFound(NotFoundException)
     case platformApplicationDisabled(PlatformApplicationDisabledException)
     case subscriptionLimitExceeded(SubscriptionLimitExceededException)
@@ -86,6 +100,27 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case invalidParameterValueIdentity:
             let errorPayload = try InvalidParameterValueException(from: decoder)
             self = SimpleNotificationError.invalidParameterValue(errorPayload)
+        case invalidSecurityIdentity:
+            let errorPayload = try InvalidSecurityException(from: decoder)
+            self = SimpleNotificationError.invalidSecurity(errorPayload)
+        case kMSAccessDeniedIdentity:
+            let errorPayload = try KMSAccessDeniedException(from: decoder)
+            self = SimpleNotificationError.kMSAccessDenied(errorPayload)
+        case kMSDisabledIdentity:
+            let errorPayload = try KMSDisabledException(from: decoder)
+            self = SimpleNotificationError.kMSDisabled(errorPayload)
+        case kMSInvalidStateIdentity:
+            let errorPayload = try KMSInvalidStateException(from: decoder)
+            self = SimpleNotificationError.kMSInvalidState(errorPayload)
+        case kMSNotFoundIdentity:
+            let errorPayload = try KMSNotFoundException(from: decoder)
+            self = SimpleNotificationError.kMSNotFound(errorPayload)
+        case kMSOptInRequiredIdentity:
+            let errorPayload = try KMSOptInRequired(from: decoder)
+            self = SimpleNotificationError.kMSOptInRequired(errorPayload)
+        case kMSThrottlingIdentity:
+            let errorPayload = try KMSThrottlingException(from: decoder)
+            self = SimpleNotificationError.kMSThrottling(errorPayload)
         case notFoundIdentity:
             let errorPayload = try NotFoundException(from: decoder)
             self = SimpleNotificationError.notFound(errorPayload)

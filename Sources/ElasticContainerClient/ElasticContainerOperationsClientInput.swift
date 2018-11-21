@@ -34,6 +34,11 @@ public typealias CreateClusterOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias CreateServiceOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteAccountSetting operation in a HTTP client.
+ */
+public typealias DeleteAccountSettingOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteAttributes operation in a HTTP client.
  */
 public typealias DeleteAttributesOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -89,6 +94,11 @@ public typealias DescribeTasksOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias DiscoverPollEndpointOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the ListAccountSettings operation in a HTTP client.
+ */
+public typealias ListAccountSettingsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the ListAttributes operation in a HTTP client.
  */
 public typealias ListAttributesOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -109,6 +119,11 @@ public typealias ListContainerInstancesOperationHTTPRequestInput = BodyHTTPReque
 public typealias ListServicesOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the ListTagsForResource operation in a HTTP client.
+ */
+public typealias ListTagsForResourceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the ListTaskDefinitionFamilies operation in a HTTP client.
  */
 public typealias ListTaskDefinitionFamiliesOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -122,6 +137,11 @@ public typealias ListTaskDefinitionsOperationHTTPRequestInput = BodyHTTPRequestI
  Type to handle the input to the ListTasks operation in a HTTP client.
  */
 public typealias ListTasksOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the PutAccountSetting operation in a HTTP client.
+ */
+public typealias PutAccountSettingOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the PutAttributes operation in a HTTP client.
@@ -162,6 +182,16 @@ public typealias SubmitContainerStateChangeOperationHTTPRequestInput = BodyHTTPR
  Type to handle the input to the SubmitTaskStateChange operation in a HTTP client.
  */
 public typealias SubmitTaskStateChangeOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the TagResource operation in a HTTP client.
+ */
+public typealias TagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UntagResource operation in a HTTP client.
+ */
+public typealias UntagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the UpdateContainerAgent operation in a HTTP client.

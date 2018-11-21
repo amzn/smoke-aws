@@ -397,7 +397,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - completion: The CreateTopicResponseForCreateTopic object or an error will be passed to this 
            callback when the operation is complete. The CreateTopicResponseForCreateTopic
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, internalError, invalidParameter, topicLimitExceeded.
+           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, topicLimitExceeded.
      */
     public func createTopicAsync(input: SimpleNotificationModel.CreateTopicInput, completion: @escaping (HTTPResult<SimpleNotificationModel.CreateTopicResponseForCreateTopic>) -> ()) throws {
         if let createTopicAsyncOverride = createTopicAsyncOverride {
@@ -414,7 +414,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated CreateTopicInput object being passed to this operation.
      - Returns: The CreateTopicResponseForCreateTopic object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, internalError, invalidParameter, topicLimitExceeded.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, topicLimitExceeded.
      */
     public func createTopicSync(input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
         if let createTopicSyncOverride = createTopicSyncOverride {
@@ -668,7 +668,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - completion: The GetTopicAttributesResponseForGetTopicAttributes object or an error will be passed to this 
            callback when the operation is complete. The GetTopicAttributesResponseForGetTopicAttributes
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, internalError, invalidParameter, notFound.
+           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     public func getTopicAttributesAsync(input: SimpleNotificationModel.GetTopicAttributesInput, completion: @escaping (HTTPResult<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes>) -> ()) throws {
         if let getTopicAttributesAsyncOverride = getTopicAttributesAsyncOverride {
@@ -685,7 +685,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated GetTopicAttributesInput object being passed to this operation.
      - Returns: The GetTopicAttributesResponseForGetTopicAttributes object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     public func getTopicAttributesSync(input: SimpleNotificationModel.GetTopicAttributesInput) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
         if let getTopicAttributesSyncOverride = getTopicAttributesSyncOverride {
@@ -948,7 +948,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - completion: The PublishResponseForPublish object or an error will be passed to this 
            callback when the operation is complete. The PublishResponseForPublish
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, notFound, platformApplicationDisabled.
+           The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
     public func publishAsync(input: SimpleNotificationModel.PublishInput, completion: @escaping (HTTPResult<SimpleNotificationModel.PublishResponseForPublish>) -> ()) throws {
         if let publishAsyncOverride = publishAsyncOverride {
@@ -965,7 +965,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated PublishInput object being passed to this operation.
      - Returns: The PublishResponseForPublish object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, notFound, platformApplicationDisabled.
+     - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
     public func publishSync(input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish {
         if let publishSyncOverride = publishSyncOverride {
@@ -1145,7 +1145,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated SetTopicAttributesInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: authorizationError, internalError, invalidParameter, notFound.
+           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     public func setTopicAttributesAsync(input: SimpleNotificationModel.SetTopicAttributesInput, completion: @escaping (Error?) -> ()) throws {
         if let setTopicAttributesAsyncOverride = setTopicAttributesAsyncOverride {
@@ -1160,7 +1160,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
 
      - Parameters:
          - input: The validated SetTopicAttributesInput object being passed to this operation.
-     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     public func setTopicAttributesSync(input: SimpleNotificationModel.SetTopicAttributesInput) throws {
         if let setTopicAttributesSyncOverride = setTopicAttributesSyncOverride {
@@ -1178,7 +1178,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - completion: The SubscribeResponseForSubscribe object or an error will be passed to this 
            callback when the operation is complete. The SubscribeResponseForSubscribe
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
     public func subscribeAsync(input: SimpleNotificationModel.SubscribeInput, completion: @escaping (HTTPResult<SimpleNotificationModel.SubscribeResponseForSubscribe>) -> ()) throws {
         if let subscribeAsyncOverride = subscribeAsyncOverride {
@@ -1195,7 +1195,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated SubscribeInput object being passed to this operation.
      - Returns: The SubscribeResponseForSubscribe object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
     public func subscribeSync(input: SimpleNotificationModel.SubscribeInput) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
         if let subscribeSyncOverride = subscribeSyncOverride {
@@ -1212,7 +1212,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated UnsubscribeInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: authorizationError, internalError, invalidParameter, notFound.
+           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     public func unsubscribeAsync(input: SimpleNotificationModel.UnsubscribeInput, completion: @escaping (Error?) -> ()) throws {
         if let unsubscribeAsyncOverride = unsubscribeAsyncOverride {
@@ -1227,7 +1227,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
 
      - Parameters:
          - input: The validated UnsubscribeInput object being passed to this operation.
-     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     public func unsubscribeSync(input: SimpleNotificationModel.UnsubscribeInput) throws {
         if let unsubscribeSyncOverride = unsubscribeSyncOverride {

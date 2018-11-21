@@ -32,6 +32,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let createClusterSyncOverride: ElasticContainerClientProtocol.CreateClusterSyncType?
     let createServiceAsyncOverride: ElasticContainerClientProtocol.CreateServiceAsyncType?
     let createServiceSyncOverride: ElasticContainerClientProtocol.CreateServiceSyncType?
+    let deleteAccountSettingAsyncOverride: ElasticContainerClientProtocol.DeleteAccountSettingAsyncType?
+    let deleteAccountSettingSyncOverride: ElasticContainerClientProtocol.DeleteAccountSettingSyncType?
     let deleteAttributesAsyncOverride: ElasticContainerClientProtocol.DeleteAttributesAsyncType?
     let deleteAttributesSyncOverride: ElasticContainerClientProtocol.DeleteAttributesSyncType?
     let deleteClusterAsyncOverride: ElasticContainerClientProtocol.DeleteClusterAsyncType?
@@ -54,6 +56,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let describeTasksSyncOverride: ElasticContainerClientProtocol.DescribeTasksSyncType?
     let discoverPollEndpointAsyncOverride: ElasticContainerClientProtocol.DiscoverPollEndpointAsyncType?
     let discoverPollEndpointSyncOverride: ElasticContainerClientProtocol.DiscoverPollEndpointSyncType?
+    let listAccountSettingsAsyncOverride: ElasticContainerClientProtocol.ListAccountSettingsAsyncType?
+    let listAccountSettingsSyncOverride: ElasticContainerClientProtocol.ListAccountSettingsSyncType?
     let listAttributesAsyncOverride: ElasticContainerClientProtocol.ListAttributesAsyncType?
     let listAttributesSyncOverride: ElasticContainerClientProtocol.ListAttributesSyncType?
     let listClustersAsyncOverride: ElasticContainerClientProtocol.ListClustersAsyncType?
@@ -62,12 +66,16 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let listContainerInstancesSyncOverride: ElasticContainerClientProtocol.ListContainerInstancesSyncType?
     let listServicesAsyncOverride: ElasticContainerClientProtocol.ListServicesAsyncType?
     let listServicesSyncOverride: ElasticContainerClientProtocol.ListServicesSyncType?
+    let listTagsForResourceAsyncOverride: ElasticContainerClientProtocol.ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: ElasticContainerClientProtocol.ListTagsForResourceSyncType?
     let listTaskDefinitionFamiliesAsyncOverride: ElasticContainerClientProtocol.ListTaskDefinitionFamiliesAsyncType?
     let listTaskDefinitionFamiliesSyncOverride: ElasticContainerClientProtocol.ListTaskDefinitionFamiliesSyncType?
     let listTaskDefinitionsAsyncOverride: ElasticContainerClientProtocol.ListTaskDefinitionsAsyncType?
     let listTaskDefinitionsSyncOverride: ElasticContainerClientProtocol.ListTaskDefinitionsSyncType?
     let listTasksAsyncOverride: ElasticContainerClientProtocol.ListTasksAsyncType?
     let listTasksSyncOverride: ElasticContainerClientProtocol.ListTasksSyncType?
+    let putAccountSettingAsyncOverride: ElasticContainerClientProtocol.PutAccountSettingAsyncType?
+    let putAccountSettingSyncOverride: ElasticContainerClientProtocol.PutAccountSettingSyncType?
     let putAttributesAsyncOverride: ElasticContainerClientProtocol.PutAttributesAsyncType?
     let putAttributesSyncOverride: ElasticContainerClientProtocol.PutAttributesSyncType?
     let registerContainerInstanceAsyncOverride: ElasticContainerClientProtocol.RegisterContainerInstanceAsyncType?
@@ -84,6 +92,10 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let submitContainerStateChangeSyncOverride: ElasticContainerClientProtocol.SubmitContainerStateChangeSyncType?
     let submitTaskStateChangeAsyncOverride: ElasticContainerClientProtocol.SubmitTaskStateChangeAsyncType?
     let submitTaskStateChangeSyncOverride: ElasticContainerClientProtocol.SubmitTaskStateChangeSyncType?
+    let tagResourceAsyncOverride: ElasticContainerClientProtocol.TagResourceAsyncType?
+    let tagResourceSyncOverride: ElasticContainerClientProtocol.TagResourceSyncType?
+    let untagResourceAsyncOverride: ElasticContainerClientProtocol.UntagResourceAsyncType?
+    let untagResourceSyncOverride: ElasticContainerClientProtocol.UntagResourceSyncType?
     let updateContainerAgentAsyncOverride: ElasticContainerClientProtocol.UpdateContainerAgentAsyncType?
     let updateContainerAgentSyncOverride: ElasticContainerClientProtocol.UpdateContainerAgentSyncType?
     let updateContainerInstancesStateAsyncOverride: ElasticContainerClientProtocol.UpdateContainerInstancesStateAsyncType?
@@ -100,6 +112,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             createClusterSync: ElasticContainerClientProtocol.CreateClusterSyncType? = nil,
             createServiceAsync: ElasticContainerClientProtocol.CreateServiceAsyncType? = nil,
             createServiceSync: ElasticContainerClientProtocol.CreateServiceSyncType? = nil,
+            deleteAccountSettingAsync: ElasticContainerClientProtocol.DeleteAccountSettingAsyncType? = nil,
+            deleteAccountSettingSync: ElasticContainerClientProtocol.DeleteAccountSettingSyncType? = nil,
             deleteAttributesAsync: ElasticContainerClientProtocol.DeleteAttributesAsyncType? = nil,
             deleteAttributesSync: ElasticContainerClientProtocol.DeleteAttributesSyncType? = nil,
             deleteClusterAsync: ElasticContainerClientProtocol.DeleteClusterAsyncType? = nil,
@@ -122,6 +136,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             describeTasksSync: ElasticContainerClientProtocol.DescribeTasksSyncType? = nil,
             discoverPollEndpointAsync: ElasticContainerClientProtocol.DiscoverPollEndpointAsyncType? = nil,
             discoverPollEndpointSync: ElasticContainerClientProtocol.DiscoverPollEndpointSyncType? = nil,
+            listAccountSettingsAsync: ElasticContainerClientProtocol.ListAccountSettingsAsyncType? = nil,
+            listAccountSettingsSync: ElasticContainerClientProtocol.ListAccountSettingsSyncType? = nil,
             listAttributesAsync: ElasticContainerClientProtocol.ListAttributesAsyncType? = nil,
             listAttributesSync: ElasticContainerClientProtocol.ListAttributesSyncType? = nil,
             listClustersAsync: ElasticContainerClientProtocol.ListClustersAsyncType? = nil,
@@ -130,12 +146,16 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             listContainerInstancesSync: ElasticContainerClientProtocol.ListContainerInstancesSyncType? = nil,
             listServicesAsync: ElasticContainerClientProtocol.ListServicesAsyncType? = nil,
             listServicesSync: ElasticContainerClientProtocol.ListServicesSyncType? = nil,
+            listTagsForResourceAsync: ElasticContainerClientProtocol.ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: ElasticContainerClientProtocol.ListTagsForResourceSyncType? = nil,
             listTaskDefinitionFamiliesAsync: ElasticContainerClientProtocol.ListTaskDefinitionFamiliesAsyncType? = nil,
             listTaskDefinitionFamiliesSync: ElasticContainerClientProtocol.ListTaskDefinitionFamiliesSyncType? = nil,
             listTaskDefinitionsAsync: ElasticContainerClientProtocol.ListTaskDefinitionsAsyncType? = nil,
             listTaskDefinitionsSync: ElasticContainerClientProtocol.ListTaskDefinitionsSyncType? = nil,
             listTasksAsync: ElasticContainerClientProtocol.ListTasksAsyncType? = nil,
             listTasksSync: ElasticContainerClientProtocol.ListTasksSyncType? = nil,
+            putAccountSettingAsync: ElasticContainerClientProtocol.PutAccountSettingAsyncType? = nil,
+            putAccountSettingSync: ElasticContainerClientProtocol.PutAccountSettingSyncType? = nil,
             putAttributesAsync: ElasticContainerClientProtocol.PutAttributesAsyncType? = nil,
             putAttributesSync: ElasticContainerClientProtocol.PutAttributesSyncType? = nil,
             registerContainerInstanceAsync: ElasticContainerClientProtocol.RegisterContainerInstanceAsyncType? = nil,
@@ -152,6 +172,10 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             submitContainerStateChangeSync: ElasticContainerClientProtocol.SubmitContainerStateChangeSyncType? = nil,
             submitTaskStateChangeAsync: ElasticContainerClientProtocol.SubmitTaskStateChangeAsyncType? = nil,
             submitTaskStateChangeSync: ElasticContainerClientProtocol.SubmitTaskStateChangeSyncType? = nil,
+            tagResourceAsync: ElasticContainerClientProtocol.TagResourceAsyncType? = nil,
+            tagResourceSync: ElasticContainerClientProtocol.TagResourceSyncType? = nil,
+            untagResourceAsync: ElasticContainerClientProtocol.UntagResourceAsyncType? = nil,
+            untagResourceSync: ElasticContainerClientProtocol.UntagResourceSyncType? = nil,
             updateContainerAgentAsync: ElasticContainerClientProtocol.UpdateContainerAgentAsyncType? = nil,
             updateContainerAgentSync: ElasticContainerClientProtocol.UpdateContainerAgentSyncType? = nil,
             updateContainerInstancesStateAsync: ElasticContainerClientProtocol.UpdateContainerInstancesStateAsyncType? = nil,
@@ -163,6 +187,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.createClusterSyncOverride = createClusterSync
         self.createServiceAsyncOverride = createServiceAsync
         self.createServiceSyncOverride = createServiceSync
+        self.deleteAccountSettingAsyncOverride = deleteAccountSettingAsync
+        self.deleteAccountSettingSyncOverride = deleteAccountSettingSync
         self.deleteAttributesAsyncOverride = deleteAttributesAsync
         self.deleteAttributesSyncOverride = deleteAttributesSync
         self.deleteClusterAsyncOverride = deleteClusterAsync
@@ -185,6 +211,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.describeTasksSyncOverride = describeTasksSync
         self.discoverPollEndpointAsyncOverride = discoverPollEndpointAsync
         self.discoverPollEndpointSyncOverride = discoverPollEndpointSync
+        self.listAccountSettingsAsyncOverride = listAccountSettingsAsync
+        self.listAccountSettingsSyncOverride = listAccountSettingsSync
         self.listAttributesAsyncOverride = listAttributesAsync
         self.listAttributesSyncOverride = listAttributesSync
         self.listClustersAsyncOverride = listClustersAsync
@@ -193,12 +221,16 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.listContainerInstancesSyncOverride = listContainerInstancesSync
         self.listServicesAsyncOverride = listServicesAsync
         self.listServicesSyncOverride = listServicesSync
+        self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
+        self.listTagsForResourceSyncOverride = listTagsForResourceSync
         self.listTaskDefinitionFamiliesAsyncOverride = listTaskDefinitionFamiliesAsync
         self.listTaskDefinitionFamiliesSyncOverride = listTaskDefinitionFamiliesSync
         self.listTaskDefinitionsAsyncOverride = listTaskDefinitionsAsync
         self.listTaskDefinitionsSyncOverride = listTaskDefinitionsSync
         self.listTasksAsyncOverride = listTasksAsync
         self.listTasksSyncOverride = listTasksSync
+        self.putAccountSettingAsyncOverride = putAccountSettingAsync
+        self.putAccountSettingSyncOverride = putAccountSettingSync
         self.putAttributesAsyncOverride = putAttributesAsync
         self.putAttributesSyncOverride = putAttributesSync
         self.registerContainerInstanceAsyncOverride = registerContainerInstanceAsync
@@ -215,6 +247,10 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.submitContainerStateChangeSyncOverride = submitContainerStateChangeSync
         self.submitTaskStateChangeAsyncOverride = submitTaskStateChangeAsync
         self.submitTaskStateChangeSyncOverride = submitTaskStateChangeSync
+        self.tagResourceAsyncOverride = tagResourceAsync
+        self.tagResourceSyncOverride = tagResourceSync
+        self.untagResourceAsyncOverride = untagResourceAsync
+        self.untagResourceSyncOverride = untagResourceSync
         self.updateContainerAgentAsyncOverride = updateContainerAgentAsync
         self.updateContainerAgentSyncOverride = updateContainerAgentSync
         self.updateContainerInstancesStateAsyncOverride = updateContainerInstancesStateAsync
@@ -288,6 +324,41 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     public func createServiceSync(input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse {
         if let createServiceSyncOverride = createServiceSyncOverride {
             return try createServiceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteAccountSetting operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteAccountSettingRequest object being passed to this operation.
+         - completion: The DeleteAccountSettingResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteAccountSettingResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func deleteAccountSettingAsync(input: ElasticContainerModel.DeleteAccountSettingRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteAccountSettingResponse>) -> ()) throws {
+        if let deleteAccountSettingAsyncOverride = deleteAccountSettingAsyncOverride {
+            return try deleteAccountSettingAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteAccountSetting operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteAccountSettingRequest object being passed to this operation.
+     - Returns: The DeleteAccountSettingResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func deleteAccountSettingSync(input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
+        if let deleteAccountSettingSyncOverride = deleteAccountSettingSyncOverride {
+            return try deleteAccountSettingSyncOverride(input)
         }
 
         throw error
@@ -679,6 +750,41 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the ListAccountSettings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListAccountSettingsRequest object being passed to this operation.
+         - completion: The ListAccountSettingsResponse object or an error will be passed to this 
+           callback when the operation is complete. The ListAccountSettingsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func listAccountSettingsAsync(input: ElasticContainerModel.ListAccountSettingsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListAccountSettingsResponse>) -> ()) throws {
+        if let listAccountSettingsAsyncOverride = listAccountSettingsAsyncOverride {
+            return try listAccountSettingsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ListAccountSettings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListAccountSettingsRequest object being passed to this operation.
+     - Returns: The ListAccountSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func listAccountSettingsSync(input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse {
+        if let listAccountSettingsSyncOverride = listAccountSettingsSyncOverride {
+            return try listAccountSettingsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ListAttributes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -819,6 +925,41 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+         - completion: The ListTagsForResourceResponse object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    public func listTagsForResourceAsync(input: ElasticContainerModel.ListTagsForResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListTagsForResourceResponse>) -> ()) throws {
+        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
+            return try listTagsForResourceAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+     - Returns: The ListTagsForResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func listTagsForResourceSync(input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse {
+        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
+            return try listTagsForResourceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ListTaskDefinitionFamilies operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -918,6 +1059,41 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     public func listTasksSync(input: ElasticContainerModel.ListTasksRequest) throws -> ElasticContainerModel.ListTasksResponse {
         if let listTasksSyncOverride = listTasksSyncOverride {
             return try listTasksSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the PutAccountSetting operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutAccountSettingRequest object being passed to this operation.
+         - completion: The PutAccountSettingResponse object or an error will be passed to this 
+           callback when the operation is complete. The PutAccountSettingResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func putAccountSettingAsync(input: ElasticContainerModel.PutAccountSettingRequest, completion: @escaping (HTTPResult<ElasticContainerModel.PutAccountSettingResponse>) -> ()) throws {
+        if let putAccountSettingAsyncOverride = putAccountSettingAsyncOverride {
+            return try putAccountSettingAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the PutAccountSetting operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutAccountSettingRequest object being passed to this operation.
+     - Returns: The PutAccountSettingResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func putAccountSettingSync(input: ElasticContainerModel.PutAccountSettingRequest) throws -> ElasticContainerModel.PutAccountSettingResponse {
+        if let putAccountSettingSyncOverride = putAccountSettingSyncOverride {
+            return try putAccountSettingSyncOverride(input)
         }
 
         throw error
@@ -1198,6 +1374,76 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     public func submitTaskStateChangeSync(input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
         if let submitTaskStateChangeSyncOverride = submitTaskStateChangeSyncOverride {
             return try submitTaskStateChangeSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+         - completion: The TagResourceResponse object or an error will be passed to this 
+           callback when the operation is complete. The TagResourceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func tagResourceAsync(input: ElasticContainerModel.TagResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.TagResourceResponse>) -> ()) throws {
+        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
+            return try tagResourceAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+     - Returns: The TagResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func tagResourceSync(input: ElasticContainerModel.TagResourceRequest) throws -> ElasticContainerModel.TagResourceResponse {
+        if let tagResourceSyncOverride = tagResourceSyncOverride {
+            return try tagResourceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+         - completion: The UntagResourceResponse object or an error will be passed to this 
+           callback when the operation is complete. The UntagResourceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func untagResourceAsync(input: ElasticContainerModel.UntagResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UntagResourceResponse>) -> ()) throws {
+        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
+            return try untagResourceAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+     - Returns: The UntagResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func untagResourceSync(input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse {
+        if let untagResourceSyncOverride = untagResourceSyncOverride {
+            return try untagResourceSyncOverride(input)
         }
 
         throw error
