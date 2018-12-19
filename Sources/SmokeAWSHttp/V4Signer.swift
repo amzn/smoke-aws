@@ -228,12 +228,14 @@ struct V4Signer {
             urlPath = url.path
         }
         
+        // make sure the query string is in canonical form required by signing
         let query: String
         if let rawQuery = url.query {
             let queryComponents = rawQuery.split(separator: "&")
             
             let mappedComponents: [String] = queryComponents.map { component in
                 if component.index(of: "=") == nil {
+                    // query keys without values require '=' at the end
                     return "\(component)="
                 } else {
                     return String(component)
