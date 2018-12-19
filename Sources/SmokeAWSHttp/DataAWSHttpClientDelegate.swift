@@ -11,93 +11,32 @@
 // express or implied. See the License for the specific language governing
 // permissions and limitations under the License.
 //
-//  XMLAWSHttpClientDelegate.swift
+//  DataAWSHttpClientDelegate.swift
 //  SmokeAWSHttp
 //
 
 import Foundation
 import NIOHTTP1
-import XMLCoding
-import SmokeAWSCore
-import LoggerAPI
 import SmokeHTTPClient
+import SmokeAWSCore
 import QueryCoding
 import HTTPHeadersCoding
 import HTTPPathCoding
+import LoggerAPI
 
-extension CharacterSet {
-    public static let uriAWSQueryValueAllowed: CharacterSet = ["&", "\'", "(", ")", "-", ".", "0", "1", "2", "3",
-                                                               "4", "5", "6", "7", "8", "9", "A", "B", "C",
-                                                               "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
-                                                               "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
-                                                               "X", "Y", "Z", "_", "a", "b", "c", "d", "e", "f",
-                                                               "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-                                                               "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-}
-
-struct ErrorWrapper<ErrorType: Error & Decodable>: Error & Decodable {
-    let errors: [ErrorType]
-    
-    enum CodingKeys: String, CodingKey {
-        case errors = "Errors"
-        case errorUppercase = "Error"
-        case errorLowercase = "error"
-    }
-    
-    // TODO: This can be removed if XMLCoding is fixed to handle singleton lists with multiple keys
-    private static func getErrors(forKey key: CodingKeys,
-                           values: KeyedDecodingContainer<CodingKeys>) throws -> [ErrorType]? {
-        // try as list of errors
-        do {
-            if let currentErrors = try values.decodeIfPresent([ErrorType].self,
-                                                              forKey: key) {
-                return currentErrors
-            }
-        } catch {
-            // try as a single error
-            if let currentError = try values.decodeIfPresent(ErrorType.self,
-                                                              forKey: key) {
-                return [currentError]
-            }
-        }
-        
-        return nil
-    }
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        
-        // The error list may be under slightly different keys, so check all the places
-        if let currentErrors = try ErrorWrapper.getErrors(forKey: .errors, values: values) {
-            self.errors = currentErrors
-        } else if let currentErrors = try ErrorWrapper.getErrors(forKey: .errorUppercase, values: values) {
-            self.errors = currentErrors
-        } else if let currentErrors = try ErrorWrapper.getErrors(forKey: .errorLowercase, values: values) {
-            self.errors = currentErrors
-        } else {
-            self.errors = []
-        }
-    }
+enum DataAWSHttpClientDelegateError: Error {
+    case invalidPayloadNotData
 }
 
 /**
- Struct conforming to the AWSHttpClientDelegate protocol that encodes and decode the request
- and response body to and from XML. The generic ErrorType is used to generate errors based
- on the decoding a XML error payload from the response body. 
+ Struct conforming to the AWSHttpClientDelegate protocol passes the body directly to
+ and from the request and response. The generic ErrorType is used to generate errors based
+ on the decoding a JSON error payload from the response body. 
  */
-public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
-    private let inputBodyRootKey: String?
-    private let outputListDecodingStrategy: XMLDecoder.ListDecodingStrategy?
-    private let outputMapDecodingStrategy: XMLDecoder.MapDecodingStrategy?
+public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
     private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
     
-    public init(inputBodyRootKey: String? = nil,
-                outputListDecodingStrategy: XMLDecoder.ListDecodingStrategy? = nil,
-                outputMapDecodingStrategy: XMLDecoder.MapDecodingStrategy? = nil,
-                inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
-        self.inputBodyRootKey = inputBodyRootKey
-        self.outputListDecodingStrategy = outputListDecodingStrategy
-        self.outputMapDecodingStrategy = outputMapDecodingStrategy
+    public init(inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
         self.inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy
     }
     
@@ -107,18 +46,14 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
         }
         
-        let decoder = XMLDecoder.awsCompatibleDecoder
-        
-        //if Log.isLogging(.debug) {
+        if Log.isLogging(.debug) {
             let asString = String(data: bodyData, encoding: .utf8) ?? ""
             
-            Log.debug("Attempting to decode error data into XML: \(asString)")
-        //}
+            Log.debug("Attempting to decode error data into JSON: \(asString)")
+        }
         
-        // attempt to decode the output body from an XML payload
-        let result = try decoder.decode(ErrorWrapper<ErrorType>.self, from: bodyData)
-        
-        return result
+        // attempt to get an error of Error type by decoding the body data
+        return try JSONDecoder.awsCompatibleDecoder.decode(ErrorType.self, from: bodyData)
     }
     
     public func encodeInputAndQueryString<InputType>(
@@ -160,14 +95,10 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             
             let body: Data
             if let bodyEncodable = input.bodyEncodable {
-                let encoder = XMLEncoder.awsCompatibleEncoder
-                encoder.listEncodingStrategy = .expandListWithItemTag("item")
-                
-                guard let inputBodyRootKey = inputBodyRootKey else {
-                    throw SmokeAWSError.invalidRequest("Unable to encode input body without root key.")
+                guard let bodyData = bodyEncodable as? Data else {
+                    throw DataAWSHttpClientDelegateError.invalidPayloadNotData
                 }
-                
-                body = try encoder.encode(bodyEncodable, withRootKey: inputBodyRootKey)
+                body = bodyData
             } else {
                 body = Data()
             }
@@ -199,19 +130,15 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
                                          body: body)
     }
     
+    public func encodeInputAndQueryString<InputType: Encodable>(input: InputType, httpPath: String) throws
+        -> (pathWithQuery: String, body: Data) {
+            // there is no query; encode the body as a JSON payload
+            return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder.encode(input))
+    }
+    
     public func decodeOutput<OutputType>(output: Data?,
                                   headers: [(String, String)]) throws -> OutputType
     where OutputType: HTTPResponseOutputProtocol {
-        let decoder = XMLDecoder.awsCompatibleDecoder
-        
-        if let outputListDecodingStrategy = outputListDecodingStrategy {
-            decoder.listDecodingStrategy = outputListDecodingStrategy
-        }
-        
-        if let outputMapDecodingStrategy = outputMapDecodingStrategy {
-            decoder.mapDecodingStrategy = outputMapDecodingStrategy
-        }
-        
         if Log.isLogging(.debug) {
             let asString: String
             if let output = output {
@@ -220,7 +147,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
                 asString = ""
             }
             
-            Log.debug("Attempting to decode result data into XML: \(asString)")
+            Log.debug("Attempting to decode result data into JSON: \(asString)")
         }
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
@@ -229,7 +156,11 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
                 throw HTTPError.badResponse("Unexpected empty response.")
             }
             
-            return try decoder.decode(OutputType.BodyType.self, from: responseBody)
+            guard let bodyEncodable = responseBody as? OutputType.BodyType else {
+                throw DataAWSHttpClientDelegateError.invalidPayloadNotData
+            }
+            
+            return bodyEncodable
         }
         
         let mappedHeaders: [(String, String?)] = headers.map { ($0.0, $0.1) }

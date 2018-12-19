@@ -42,11 +42,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AssignIpv6AddressesSyncType = (_ input: ElasticComputeCloudModel.AssignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.AssignIpv6AddressesResult
     typealias AssignIpv6AddressesAsyncType = (_ input: ElasticComputeCloudModel.AssignIpv6AddressesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssignIpv6AddressesResult>) -> ()) throws -> ()
     typealias AssignPrivateIpAddressesSyncType = (_ input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws -> ()
-    typealias AssignPrivateIpAddressesAsyncType = (_ input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias AssignPrivateIpAddressesAsyncType = (_ input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias AssociateAddressSyncType = (_ input: ElasticComputeCloudModel.AssociateAddressRequest) throws -> ElasticComputeCloudModel.AssociateAddressResult
     typealias AssociateAddressAsyncType = (_ input: ElasticComputeCloudModel.AssociateAddressRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateAddressResult>) -> ()) throws -> ()
     typealias AssociateDhcpOptionsSyncType = (_ input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest) throws -> ()
-    typealias AssociateDhcpOptionsAsyncType = (_ input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias AssociateDhcpOptionsAsyncType = (_ input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias AssociateIamInstanceProfileSyncType = (_ input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult
     typealias AssociateIamInstanceProfileAsyncType = (_ input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateIamInstanceProfileResult>) -> ()) throws -> ()
     typealias AssociateRouteTableSyncType = (_ input: ElasticComputeCloudModel.AssociateRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateRouteTableResult
@@ -58,7 +58,7 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AttachClassicLinkVpcSyncType = (_ input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest) throws -> ElasticComputeCloudModel.AttachClassicLinkVpcResult
     typealias AttachClassicLinkVpcAsyncType = (_ input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachClassicLinkVpcResult>) -> ()) throws -> ()
     typealias AttachInternetGatewaySyncType = (_ input: ElasticComputeCloudModel.AttachInternetGatewayRequest) throws -> ()
-    typealias AttachInternetGatewayAsyncType = (_ input: ElasticComputeCloudModel.AttachInternetGatewayRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias AttachInternetGatewayAsyncType = (_ input: ElasticComputeCloudModel.AttachInternetGatewayRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias AttachNetworkInterfaceSyncType = (_ input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.AttachNetworkInterfaceResult
     typealias AttachNetworkInterfaceAsyncType = (_ input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachNetworkInterfaceResult>) -> ()) throws -> ()
     typealias AttachVolumeSyncType = (_ input: ElasticComputeCloudModel.AttachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment
@@ -66,9 +66,9 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AttachVpnGatewaySyncType = (_ input: ElasticComputeCloudModel.AttachVpnGatewayRequest) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult
     typealias AttachVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.AttachVpnGatewayRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachVpnGatewayResult>) -> ()) throws -> ()
     typealias AuthorizeSecurityGroupEgressSyncType = (_ input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws -> ()
-    typealias AuthorizeSecurityGroupEgressAsyncType = (_ input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias AuthorizeSecurityGroupEgressAsyncType = (_ input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias AuthorizeSecurityGroupIngressSyncType = (_ input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws -> ()
-    typealias AuthorizeSecurityGroupIngressAsyncType = (_ input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias AuthorizeSecurityGroupIngressAsyncType = (_ input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias BundleInstanceSyncType = (_ input: ElasticComputeCloudModel.BundleInstanceRequest) throws -> ElasticComputeCloudModel.BundleInstanceResult
     typealias BundleInstanceAsyncType = (_ input: ElasticComputeCloudModel.BundleInstanceRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.BundleInstanceResult>) -> ()) throws -> ()
     typealias CancelBundleTaskSyncType = (_ input: ElasticComputeCloudModel.CancelBundleTaskRequest) throws -> ElasticComputeCloudModel.CancelBundleTaskResult
@@ -76,9 +76,9 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CancelCapacityReservationSyncType = (_ input: ElasticComputeCloudModel.CancelCapacityReservationRequest) throws -> ElasticComputeCloudModel.CancelCapacityReservationResult
     typealias CancelCapacityReservationAsyncType = (_ input: ElasticComputeCloudModel.CancelCapacityReservationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelCapacityReservationResult>) -> ()) throws -> ()
     typealias CancelConversionTaskSyncType = (_ input: ElasticComputeCloudModel.CancelConversionRequest) throws -> ()
-    typealias CancelConversionTaskAsyncType = (_ input: ElasticComputeCloudModel.CancelConversionRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias CancelConversionTaskAsyncType = (_ input: ElasticComputeCloudModel.CancelConversionRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias CancelExportTaskSyncType = (_ input: ElasticComputeCloudModel.CancelExportTaskRequest) throws -> ()
-    typealias CancelExportTaskAsyncType = (_ input: ElasticComputeCloudModel.CancelExportTaskRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias CancelExportTaskAsyncType = (_ input: ElasticComputeCloudModel.CancelExportTaskRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias CancelImportTaskSyncType = (_ input: ElasticComputeCloudModel.CancelImportTaskRequest) throws -> ElasticComputeCloudModel.CancelImportTaskResult
     typealias CancelImportTaskAsyncType = (_ input: ElasticComputeCloudModel.CancelImportTaskRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelImportTaskResult>) -> ()) throws -> ()
     typealias CancelReservedInstancesListingSyncType = (_ input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CancelReservedInstancesListingResult
@@ -130,13 +130,13 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateNetworkAclSyncType = (_ input: ElasticComputeCloudModel.CreateNetworkAclRequest) throws -> ElasticComputeCloudModel.CreateNetworkAclResult
     typealias CreateNetworkAclAsyncType = (_ input: ElasticComputeCloudModel.CreateNetworkAclRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNetworkAclResult>) -> ()) throws -> ()
     typealias CreateNetworkAclEntrySyncType = (_ input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest) throws -> ()
-    typealias CreateNetworkAclEntryAsyncType = (_ input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias CreateNetworkAclEntryAsyncType = (_ input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias CreateNetworkInterfaceSyncType = (_ input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.CreateNetworkInterfaceResult
     typealias CreateNetworkInterfaceAsyncType = (_ input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNetworkInterfaceResult>) -> ()) throws -> ()
     typealias CreateNetworkInterfacePermissionSyncType = (_ input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest) throws -> ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult
     typealias CreateNetworkInterfacePermissionAsyncType = (_ input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult>) -> ()) throws -> ()
     typealias CreatePlacementGroupSyncType = (_ input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws -> ()
-    typealias CreatePlacementGroupAsyncType = (_ input: ElasticComputeCloudModel.CreatePlacementGroupRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias CreatePlacementGroupAsyncType = (_ input: ElasticComputeCloudModel.CreatePlacementGroupRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias CreateReservedInstancesListingSyncType = (_ input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult
     typealias CreateReservedInstancesListingAsyncType = (_ input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateReservedInstancesListingResult>) -> ()) throws -> ()
     typealias CreateRouteSyncType = (_ input: ElasticComputeCloudModel.CreateRouteRequest) throws -> ElasticComputeCloudModel.CreateRouteResult
@@ -152,7 +152,7 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateSubnetSyncType = (_ input: ElasticComputeCloudModel.CreateSubnetRequest) throws -> ElasticComputeCloudModel.CreateSubnetResult
     typealias CreateSubnetAsyncType = (_ input: ElasticComputeCloudModel.CreateSubnetRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSubnetResult>) -> ()) throws -> ()
     typealias CreateTagsSyncType = (_ input: ElasticComputeCloudModel.CreateTagsRequest) throws -> ()
-    typealias CreateTagsAsyncType = (_ input: ElasticComputeCloudModel.CreateTagsRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias CreateTagsAsyncType = (_ input: ElasticComputeCloudModel.CreateTagsRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias CreateVolumeSyncType = (_ input: ElasticComputeCloudModel.CreateVolumeRequest) throws -> ElasticComputeCloudModel.Volume
     typealias CreateVolumeAsyncType = (_ input: ElasticComputeCloudModel.CreateVolumeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.Volume>) -> ()) throws -> ()
     typealias CreateVpcSyncType = (_ input: ElasticComputeCloudModel.CreateVpcRequest) throws -> ElasticComputeCloudModel.CreateVpcResult
@@ -168,13 +168,13 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateVpnConnectionSyncType = (_ input: ElasticComputeCloudModel.CreateVpnConnectionRequest) throws -> ElasticComputeCloudModel.CreateVpnConnectionResult
     typealias CreateVpnConnectionAsyncType = (_ input: ElasticComputeCloudModel.CreateVpnConnectionRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpnConnectionResult>) -> ()) throws -> ()
     typealias CreateVpnConnectionRouteSyncType = (_ input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest) throws -> ()
-    typealias CreateVpnConnectionRouteAsyncType = (_ input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias CreateVpnConnectionRouteAsyncType = (_ input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias CreateVpnGatewaySyncType = (_ input: ElasticComputeCloudModel.CreateVpnGatewayRequest) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult
     typealias CreateVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.CreateVpnGatewayRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpnGatewayResult>) -> ()) throws -> ()
     typealias DeleteCustomerGatewaySyncType = (_ input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest) throws -> ()
-    typealias DeleteCustomerGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteCustomerGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteDhcpOptionsSyncType = (_ input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest) throws -> ()
-    typealias DeleteDhcpOptionsAsyncType = (_ input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteDhcpOptionsAsyncType = (_ input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteEgressOnlyInternetGatewaySyncType = (_ input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest) throws -> ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult
     typealias DeleteEgressOnlyInternetGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult>) -> ()) throws -> ()
     typealias DeleteFleetsSyncType = (_ input: ElasticComputeCloudModel.DeleteFleetsRequest) throws -> ElasticComputeCloudModel.DeleteFleetsResult
@@ -184,9 +184,9 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteFpgaImageSyncType = (_ input: ElasticComputeCloudModel.DeleteFpgaImageRequest) throws -> ElasticComputeCloudModel.DeleteFpgaImageResult
     typealias DeleteFpgaImageAsyncType = (_ input: ElasticComputeCloudModel.DeleteFpgaImageRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteFpgaImageResult>) -> ()) throws -> ()
     typealias DeleteInternetGatewaySyncType = (_ input: ElasticComputeCloudModel.DeleteInternetGatewayRequest) throws -> ()
-    typealias DeleteInternetGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteInternetGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteKeyPairSyncType = (_ input: ElasticComputeCloudModel.DeleteKeyPairRequest) throws -> ()
-    typealias DeleteKeyPairAsyncType = (_ input: ElasticComputeCloudModel.DeleteKeyPairRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteKeyPairAsyncType = (_ input: ElasticComputeCloudModel.DeleteKeyPairRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteLaunchTemplateSyncType = (_ input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateResult
     typealias DeleteLaunchTemplateAsyncType = (_ input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteLaunchTemplateResult>) -> ()) throws -> ()
     typealias DeleteLaunchTemplateVersionsSyncType = (_ input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult
@@ -194,33 +194,33 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteNatGatewaySyncType = (_ input: ElasticComputeCloudModel.DeleteNatGatewayRequest) throws -> ElasticComputeCloudModel.DeleteNatGatewayResult
     typealias DeleteNatGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteNatGatewayRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteNatGatewayResult>) -> ()) throws -> ()
     typealias DeleteNetworkAclSyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkAclRequest) throws -> ()
-    typealias DeleteNetworkAclAsyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkAclRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteNetworkAclAsyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkAclRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteNetworkAclEntrySyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest) throws -> ()
-    typealias DeleteNetworkAclEntryAsyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteNetworkAclEntryAsyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteNetworkInterfaceSyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest) throws -> ()
-    typealias DeleteNetworkInterfaceAsyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteNetworkInterfaceAsyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteNetworkInterfacePermissionSyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult
     typealias DeleteNetworkInterfacePermissionAsyncType = (_ input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult>) -> ()) throws -> ()
     typealias DeletePlacementGroupSyncType = (_ input: ElasticComputeCloudModel.DeletePlacementGroupRequest) throws -> ()
-    typealias DeletePlacementGroupAsyncType = (_ input: ElasticComputeCloudModel.DeletePlacementGroupRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeletePlacementGroupAsyncType = (_ input: ElasticComputeCloudModel.DeletePlacementGroupRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteRouteSyncType = (_ input: ElasticComputeCloudModel.DeleteRouteRequest) throws -> ()
-    typealias DeleteRouteAsyncType = (_ input: ElasticComputeCloudModel.DeleteRouteRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteRouteAsyncType = (_ input: ElasticComputeCloudModel.DeleteRouteRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteRouteTableSyncType = (_ input: ElasticComputeCloudModel.DeleteRouteTableRequest) throws -> ()
-    typealias DeleteRouteTableAsyncType = (_ input: ElasticComputeCloudModel.DeleteRouteTableRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteRouteTableAsyncType = (_ input: ElasticComputeCloudModel.DeleteRouteTableRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteSecurityGroupSyncType = (_ input: ElasticComputeCloudModel.DeleteSecurityGroupRequest) throws -> ()
-    typealias DeleteSecurityGroupAsyncType = (_ input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteSecurityGroupAsyncType = (_ input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteSnapshotSyncType = (_ input: ElasticComputeCloudModel.DeleteSnapshotRequest) throws -> ()
-    typealias DeleteSnapshotAsyncType = (_ input: ElasticComputeCloudModel.DeleteSnapshotRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteSnapshotAsyncType = (_ input: ElasticComputeCloudModel.DeleteSnapshotRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteSpotDatafeedSubscriptionSyncType = (_ input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest) throws -> ()
-    typealias DeleteSpotDatafeedSubscriptionAsyncType = (_ input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteSpotDatafeedSubscriptionAsyncType = (_ input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteSubnetSyncType = (_ input: ElasticComputeCloudModel.DeleteSubnetRequest) throws -> ()
-    typealias DeleteSubnetAsyncType = (_ input: ElasticComputeCloudModel.DeleteSubnetRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteSubnetAsyncType = (_ input: ElasticComputeCloudModel.DeleteSubnetRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteTagsSyncType = (_ input: ElasticComputeCloudModel.DeleteTagsRequest) throws -> ()
-    typealias DeleteTagsAsyncType = (_ input: ElasticComputeCloudModel.DeleteTagsRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteTagsAsyncType = (_ input: ElasticComputeCloudModel.DeleteTagsRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteVolumeSyncType = (_ input: ElasticComputeCloudModel.DeleteVolumeRequest) throws -> ()
-    typealias DeleteVolumeAsyncType = (_ input: ElasticComputeCloudModel.DeleteVolumeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteVolumeAsyncType = (_ input: ElasticComputeCloudModel.DeleteVolumeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteVpcSyncType = (_ input: ElasticComputeCloudModel.DeleteVpcRequest) throws -> ()
-    typealias DeleteVpcAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpcRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteVpcAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpcRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteVpcEndpointConnectionNotificationsSyncType = (_ input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult
     typealias DeleteVpcEndpointConnectionNotificationsAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult>) -> ()) throws -> ()
     typealias DeleteVpcEndpointServiceConfigurationsSyncType = (_ input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult
@@ -230,15 +230,15 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteVpcPeeringConnectionSyncType = (_ input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult
     typealias DeleteVpcPeeringConnectionAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult>) -> ()) throws -> ()
     typealias DeleteVpnConnectionSyncType = (_ input: ElasticComputeCloudModel.DeleteVpnConnectionRequest) throws -> ()
-    typealias DeleteVpnConnectionAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteVpnConnectionAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteVpnConnectionRouteSyncType = (_ input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest) throws -> ()
-    typealias DeleteVpnConnectionRouteAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteVpnConnectionRouteAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteVpnGatewaySyncType = (_ input: ElasticComputeCloudModel.DeleteVpnGatewayRequest) throws -> ()
-    typealias DeleteVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeprovisionByoipCidrSyncType = (_ input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest) throws -> ElasticComputeCloudModel.DeprovisionByoipCidrResult
     typealias DeprovisionByoipCidrAsyncType = (_ input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeprovisionByoipCidrResult>) -> ()) throws -> ()
     typealias DeregisterImageSyncType = (_ input: ElasticComputeCloudModel.DeregisterImageRequest) throws -> ()
-    typealias DeregisterImageAsyncType = (_ input: ElasticComputeCloudModel.DeregisterImageRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeregisterImageAsyncType = (_ input: ElasticComputeCloudModel.DeregisterImageRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DescribeAccountAttributesSyncType = (_ input: ElasticComputeCloudModel.DescribeAccountAttributesRequest) throws -> ElasticComputeCloudModel.DescribeAccountAttributesResult
     typealias DescribeAccountAttributesAsyncType = (_ input: ElasticComputeCloudModel.DescribeAccountAttributesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeAccountAttributesResult>) -> ()) throws -> ()
     typealias DescribeAddressesSyncType = (_ input: ElasticComputeCloudModel.DescribeAddressesRequest) throws -> ElasticComputeCloudModel.DescribeAddressesResult
@@ -414,33 +414,33 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DetachClassicLinkVpcSyncType = (_ input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest) throws -> ElasticComputeCloudModel.DetachClassicLinkVpcResult
     typealias DetachClassicLinkVpcAsyncType = (_ input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DetachClassicLinkVpcResult>) -> ()) throws -> ()
     typealias DetachInternetGatewaySyncType = (_ input: ElasticComputeCloudModel.DetachInternetGatewayRequest) throws -> ()
-    typealias DetachInternetGatewayAsyncType = (_ input: ElasticComputeCloudModel.DetachInternetGatewayRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DetachInternetGatewayAsyncType = (_ input: ElasticComputeCloudModel.DetachInternetGatewayRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DetachNetworkInterfaceSyncType = (_ input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest) throws -> ()
-    typealias DetachNetworkInterfaceAsyncType = (_ input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DetachNetworkInterfaceAsyncType = (_ input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DetachVolumeSyncType = (_ input: ElasticComputeCloudModel.DetachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment
     typealias DetachVolumeAsyncType = (_ input: ElasticComputeCloudModel.DetachVolumeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.VolumeAttachment>) -> ()) throws -> ()
     typealias DetachVpnGatewaySyncType = (_ input: ElasticComputeCloudModel.DetachVpnGatewayRequest) throws -> ()
-    typealias DetachVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.DetachVpnGatewayRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DetachVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.DetachVpnGatewayRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DisableVgwRoutePropagationSyncType = (_ input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest) throws -> ()
-    typealias DisableVgwRoutePropagationAsyncType = (_ input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DisableVgwRoutePropagationAsyncType = (_ input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DisableVpcClassicLinkSyncType = (_ input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkResult
     typealias DisableVpcClassicLinkAsyncType = (_ input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableVpcClassicLinkResult>) -> ()) throws -> ()
     typealias DisableVpcClassicLinkDnsSupportSyncType = (_ input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult
     typealias DisableVpcClassicLinkDnsSupportAsyncType = (_ input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult>) -> ()) throws -> ()
     typealias DisassociateAddressSyncType = (_ input: ElasticComputeCloudModel.DisassociateAddressRequest) throws -> ()
-    typealias DisassociateAddressAsyncType = (_ input: ElasticComputeCloudModel.DisassociateAddressRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DisassociateAddressAsyncType = (_ input: ElasticComputeCloudModel.DisassociateAddressRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DisassociateIamInstanceProfileSyncType = (_ input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult
     typealias DisassociateIamInstanceProfileAsyncType = (_ input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult>) -> ()) throws -> ()
     typealias DisassociateRouteTableSyncType = (_ input: ElasticComputeCloudModel.DisassociateRouteTableRequest) throws -> ()
-    typealias DisassociateRouteTableAsyncType = (_ input: ElasticComputeCloudModel.DisassociateRouteTableRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DisassociateRouteTableAsyncType = (_ input: ElasticComputeCloudModel.DisassociateRouteTableRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DisassociateSubnetCidrBlockSyncType = (_ input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult
     typealias DisassociateSubnetCidrBlockAsyncType = (_ input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult>) -> ()) throws -> ()
     typealias DisassociateVpcCidrBlockSyncType = (_ input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult
     typealias DisassociateVpcCidrBlockAsyncType = (_ input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult>) -> ()) throws -> ()
     typealias EnableVgwRoutePropagationSyncType = (_ input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest) throws -> ()
-    typealias EnableVgwRoutePropagationAsyncType = (_ input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias EnableVgwRoutePropagationAsyncType = (_ input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias EnableVolumeIOSyncType = (_ input: ElasticComputeCloudModel.EnableVolumeIORequest) throws -> ()
-    typealias EnableVolumeIOAsyncType = (_ input: ElasticComputeCloudModel.EnableVolumeIORequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias EnableVolumeIOAsyncType = (_ input: ElasticComputeCloudModel.EnableVolumeIORequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias EnableVpcClassicLinkSyncType = (_ input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkResult
     typealias EnableVpcClassicLinkAsyncType = (_ input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableVpcClassicLinkResult>) -> ()) throws -> ()
     typealias EnableVpcClassicLinkDnsSupportSyncType = (_ input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult
@@ -476,13 +476,13 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyHostsSyncType = (_ input: ElasticComputeCloudModel.ModifyHostsRequest) throws -> ElasticComputeCloudModel.ModifyHostsResult
     typealias ModifyHostsAsyncType = (_ input: ElasticComputeCloudModel.ModifyHostsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyHostsResult>) -> ()) throws -> ()
     typealias ModifyIdFormatSyncType = (_ input: ElasticComputeCloudModel.ModifyIdFormatRequest) throws -> ()
-    typealias ModifyIdFormatAsyncType = (_ input: ElasticComputeCloudModel.ModifyIdFormatRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ModifyIdFormatAsyncType = (_ input: ElasticComputeCloudModel.ModifyIdFormatRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ModifyIdentityIdFormatSyncType = (_ input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest) throws -> ()
-    typealias ModifyIdentityIdFormatAsyncType = (_ input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ModifyIdentityIdFormatAsyncType = (_ input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ModifyImageAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifyImageAttributeRequest) throws -> ()
-    typealias ModifyImageAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyImageAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ModifyImageAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyImageAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ModifyInstanceAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest) throws -> ()
-    typealias ModifyInstanceAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ModifyInstanceAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ModifyInstanceCapacityReservationAttributesSyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult
     typealias ModifyInstanceCapacityReservationAttributesAsyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult>) -> ()) throws -> ()
     typealias ModifyInstanceCreditSpecificationSyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult
@@ -492,21 +492,21 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyLaunchTemplateSyncType = (_ input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult
     typealias ModifyLaunchTemplateAsyncType = (_ input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyLaunchTemplateResult>) -> ()) throws -> ()
     typealias ModifyNetworkInterfaceAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest) throws -> ()
-    typealias ModifyNetworkInterfaceAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ModifyNetworkInterfaceAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ModifyReservedInstancesSyncType = (_ input: ElasticComputeCloudModel.ModifyReservedInstancesRequest) throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult
     typealias ModifyReservedInstancesAsyncType = (_ input: ElasticComputeCloudModel.ModifyReservedInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyReservedInstancesResult>) -> ()) throws -> ()
     typealias ModifySnapshotAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest) throws -> ()
-    typealias ModifySnapshotAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ModifySnapshotAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ModifySpotFleetRequestSyncType = (_ input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest) throws -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse
     typealias ModifySpotFleetRequestAsyncType = (_ input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifySpotFleetRequestResponse>) -> ()) throws -> ()
     typealias ModifySubnetAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifySubnetAttributeRequest) throws -> ()
-    typealias ModifySubnetAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ModifySubnetAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ModifyVolumeSyncType = (_ input: ElasticComputeCloudModel.ModifyVolumeRequest) throws -> ElasticComputeCloudModel.ModifyVolumeResult
     typealias ModifyVolumeAsyncType = (_ input: ElasticComputeCloudModel.ModifyVolumeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVolumeResult>) -> ()) throws -> ()
     typealias ModifyVolumeAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest) throws -> ()
-    typealias ModifyVolumeAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ModifyVolumeAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ModifyVpcAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifyVpcAttributeRequest) throws -> ()
-    typealias ModifyVpcAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ModifyVpcAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ModifyVpcEndpointSyncType = (_ input: ElasticComputeCloudModel.ModifyVpcEndpointRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointResult
     typealias ModifyVpcEndpointAsyncType = (_ input: ElasticComputeCloudModel.ModifyVpcEndpointRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcEndpointResult>) -> ()) throws -> ()
     typealias ModifyVpcEndpointConnectionNotificationSyncType = (_ input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult
@@ -532,7 +532,7 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias PurchaseScheduledInstancesSyncType = (_ input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest) throws -> ElasticComputeCloudModel.PurchaseScheduledInstancesResult
     typealias PurchaseScheduledInstancesAsyncType = (_ input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.PurchaseScheduledInstancesResult>) -> ()) throws -> ()
     typealias RebootInstancesSyncType = (_ input: ElasticComputeCloudModel.RebootInstancesRequest) throws -> ()
-    typealias RebootInstancesAsyncType = (_ input: ElasticComputeCloudModel.RebootInstancesRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RebootInstancesAsyncType = (_ input: ElasticComputeCloudModel.RebootInstancesRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RegisterImageSyncType = (_ input: ElasticComputeCloudModel.RegisterImageRequest) throws -> ElasticComputeCloudModel.RegisterImageResult
     typealias RegisterImageAsyncType = (_ input: ElasticComputeCloudModel.RegisterImageRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RegisterImageResult>) -> ()) throws -> ()
     typealias RejectVpcEndpointConnectionsSyncType = (_ input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult
@@ -540,7 +540,7 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias RejectVpcPeeringConnectionSyncType = (_ input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult
     typealias RejectVpcPeeringConnectionAsyncType = (_ input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult>) -> ()) throws -> ()
     typealias ReleaseAddressSyncType = (_ input: ElasticComputeCloudModel.ReleaseAddressRequest) throws -> ()
-    typealias ReleaseAddressAsyncType = (_ input: ElasticComputeCloudModel.ReleaseAddressRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ReleaseAddressAsyncType = (_ input: ElasticComputeCloudModel.ReleaseAddressRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ReleaseHostsSyncType = (_ input: ElasticComputeCloudModel.ReleaseHostsRequest) throws -> ElasticComputeCloudModel.ReleaseHostsResult
     typealias ReleaseHostsAsyncType = (_ input: ElasticComputeCloudModel.ReleaseHostsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReleaseHostsResult>) -> ()) throws -> ()
     typealias ReplaceIamInstanceProfileAssociationSyncType = (_ input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult
@@ -548,13 +548,13 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ReplaceNetworkAclAssociationSyncType = (_ input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult
     typealias ReplaceNetworkAclAssociationAsyncType = (_ input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult>) -> ()) throws -> ()
     typealias ReplaceNetworkAclEntrySyncType = (_ input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest) throws -> ()
-    typealias ReplaceNetworkAclEntryAsyncType = (_ input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ReplaceNetworkAclEntryAsyncType = (_ input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ReplaceRouteSyncType = (_ input: ElasticComputeCloudModel.ReplaceRouteRequest) throws -> ()
-    typealias ReplaceRouteAsyncType = (_ input: ElasticComputeCloudModel.ReplaceRouteRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ReplaceRouteAsyncType = (_ input: ElasticComputeCloudModel.ReplaceRouteRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ReplaceRouteTableAssociationSyncType = (_ input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult
     typealias ReplaceRouteTableAssociationAsyncType = (_ input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult>) -> ()) throws -> ()
     typealias ReportInstanceStatusSyncType = (_ input: ElasticComputeCloudModel.ReportInstanceStatusRequest) throws -> ()
-    typealias ReportInstanceStatusAsyncType = (_ input: ElasticComputeCloudModel.ReportInstanceStatusRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ReportInstanceStatusAsyncType = (_ input: ElasticComputeCloudModel.ReportInstanceStatusRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RequestSpotFleetSyncType = (_ input: ElasticComputeCloudModel.RequestSpotFleetRequest) throws -> ElasticComputeCloudModel.RequestSpotFleetResponse
     typealias RequestSpotFleetAsyncType = (_ input: ElasticComputeCloudModel.RequestSpotFleetRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RequestSpotFleetResponse>) -> ()) throws -> ()
     typealias RequestSpotInstancesSyncType = (_ input: ElasticComputeCloudModel.RequestSpotInstancesRequest) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult
@@ -562,19 +562,19 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ResetFpgaImageAttributeSyncType = (_ input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult
     typealias ResetFpgaImageAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ResetFpgaImageAttributeResult>) -> ()) throws -> ()
     typealias ResetImageAttributeSyncType = (_ input: ElasticComputeCloudModel.ResetImageAttributeRequest) throws -> ()
-    typealias ResetImageAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetImageAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ResetImageAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetImageAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ResetInstanceAttributeSyncType = (_ input: ElasticComputeCloudModel.ResetInstanceAttributeRequest) throws -> ()
-    typealias ResetInstanceAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ResetInstanceAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ResetNetworkInterfaceAttributeSyncType = (_ input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest) throws -> ()
-    typealias ResetNetworkInterfaceAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ResetNetworkInterfaceAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ResetSnapshotAttributeSyncType = (_ input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest) throws -> ()
-    typealias ResetSnapshotAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias ResetSnapshotAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RestoreAddressToClassicSyncType = (_ input: ElasticComputeCloudModel.RestoreAddressToClassicRequest) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult
     typealias RestoreAddressToClassicAsyncType = (_ input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RestoreAddressToClassicResult>) -> ()) throws -> ()
     typealias RevokeSecurityGroupEgressSyncType = (_ input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws -> ()
-    typealias RevokeSecurityGroupEgressAsyncType = (_ input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RevokeSecurityGroupEgressAsyncType = (_ input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RevokeSecurityGroupIngressSyncType = (_ input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws -> ()
-    typealias RevokeSecurityGroupIngressAsyncType = (_ input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RevokeSecurityGroupIngressAsyncType = (_ input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RunInstancesSyncType = (_ input: ElasticComputeCloudModel.RunInstancesRequest) throws -> ElasticComputeCloudModel.Reservation
     typealias RunInstancesAsyncType = (_ input: ElasticComputeCloudModel.RunInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.Reservation>) -> ()) throws -> ()
     typealias RunScheduledInstancesSyncType = (_ input: ElasticComputeCloudModel.RunScheduledInstancesRequest) throws -> ElasticComputeCloudModel.RunScheduledInstancesResult
@@ -588,7 +588,7 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias UnassignIpv6AddressesSyncType = (_ input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.UnassignIpv6AddressesResult
     typealias UnassignIpv6AddressesAsyncType = (_ input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.UnassignIpv6AddressesResult>) -> ()) throws -> ()
     typealias UnassignPrivateIpAddressesSyncType = (_ input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest) throws -> ()
-    typealias UnassignPrivateIpAddressesAsyncType = (_ input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias UnassignPrivateIpAddressesAsyncType = (_ input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias UnmonitorInstancesSyncType = (_ input: ElasticComputeCloudModel.UnmonitorInstancesRequest) throws -> ElasticComputeCloudModel.UnmonitorInstancesResult
     typealias UnmonitorInstancesAsyncType = (_ input: ElasticComputeCloudModel.UnmonitorInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.UnmonitorInstancesResult>) -> ()) throws -> ()
     typealias UpdateSecurityGroupRuleDescriptionsEgressSyncType = (_ input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult
@@ -753,7 +753,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Error?) -> ()) throws
+    func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the AssignPrivateIpAddresses operation waiting for the response before returning.
@@ -792,7 +792,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func associateDhcpOptionsAsync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, completion: @escaping (Error?) -> ()) throws
+    func associateDhcpOptionsAsync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the AssociateDhcpOptions operation waiting for the response before returning.
@@ -915,7 +915,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func attachInternetGatewayAsync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws
+    func attachInternetGatewayAsync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the AttachInternetGateway operation waiting for the response before returning.
@@ -996,7 +996,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func authorizeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, completion: @escaping (Error?) -> ()) throws
+    func authorizeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the AuthorizeSecurityGroupEgress operation waiting for the response before returning.
@@ -1014,7 +1014,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func authorizeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, completion: @escaping (Error?) -> ()) throws
+    func authorizeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the AuthorizeSecurityGroupIngress operation waiting for the response before returning.
@@ -1095,7 +1095,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func cancelConversionTaskAsync(input: ElasticComputeCloudModel.CancelConversionRequest, completion: @escaping (Error?) -> ()) throws
+    func cancelConversionTaskAsync(input: ElasticComputeCloudModel.CancelConversionRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the CancelConversionTask operation waiting for the response before returning.
@@ -1113,7 +1113,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func cancelExportTaskAsync(input: ElasticComputeCloudModel.CancelExportTaskRequest, completion: @escaping (Error?) -> ()) throws
+    func cancelExportTaskAsync(input: ElasticComputeCloudModel.CancelExportTaskRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the CancelExportTask operation waiting for the response before returning.
@@ -1656,7 +1656,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func createNetworkAclEntryAsync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws
+    func createNetworkAclEntryAsync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the CreateNetworkAclEntry operation waiting for the response before returning.
@@ -1716,7 +1716,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (Error?) -> ()) throws
+    func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the CreatePlacementGroup operation waiting for the response before returning.
@@ -1881,7 +1881,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func createTagsAsync(input: ElasticComputeCloudModel.CreateTagsRequest, completion: @escaping (Error?) -> ()) throws
+    func createTagsAsync(input: ElasticComputeCloudModel.CreateTagsRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the CreateTags operation waiting for the response before returning.
@@ -2046,7 +2046,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func createVpnConnectionRouteAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, completion: @escaping (Error?) -> ()) throws
+    func createVpnConnectionRouteAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the CreateVpnConnectionRoute operation waiting for the response before returning.
@@ -2085,7 +2085,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteCustomerGatewayAsync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteCustomerGatewayAsync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteCustomerGateway operation waiting for the response before returning.
@@ -2103,7 +2103,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteDhcpOptionsAsync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteDhcpOptionsAsync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteDhcpOptions operation waiting for the response before returning.
@@ -2205,7 +2205,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteInternetGateway operation waiting for the response before returning.
@@ -2223,7 +2223,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteKeyPairAsync(input: ElasticComputeCloudModel.DeleteKeyPairRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteKeyPairAsync(input: ElasticComputeCloudModel.DeleteKeyPairRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteKeyPair operation waiting for the response before returning.
@@ -2304,7 +2304,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteNetworkAclAsync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteNetworkAclAsync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteNetworkAcl operation waiting for the response before returning.
@@ -2322,7 +2322,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteNetworkAclEntryAsync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteNetworkAclEntryAsync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteNetworkAclEntry operation waiting for the response before returning.
@@ -2340,7 +2340,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteNetworkInterfaceAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteNetworkInterfaceAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteNetworkInterface operation waiting for the response before returning.
@@ -2379,7 +2379,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deletePlacementGroupAsync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest, completion: @escaping (Error?) -> ()) throws
+    func deletePlacementGroupAsync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeletePlacementGroup operation waiting for the response before returning.
@@ -2397,7 +2397,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteRouteAsync(input: ElasticComputeCloudModel.DeleteRouteRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteRouteAsync(input: ElasticComputeCloudModel.DeleteRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteRoute operation waiting for the response before returning.
@@ -2415,7 +2415,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteRouteTableAsync(input: ElasticComputeCloudModel.DeleteRouteTableRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteRouteTableAsync(input: ElasticComputeCloudModel.DeleteRouteTableRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteRouteTable operation waiting for the response before returning.
@@ -2433,7 +2433,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteSecurityGroupAsync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteSecurityGroupAsync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteSecurityGroup operation waiting for the response before returning.
@@ -2451,7 +2451,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteSnapshotAsync(input: ElasticComputeCloudModel.DeleteSnapshotRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteSnapshotAsync(input: ElasticComputeCloudModel.DeleteSnapshotRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteSnapshot operation waiting for the response before returning.
@@ -2469,7 +2469,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteSpotDatafeedSubscription operation waiting for the response before returning.
@@ -2487,7 +2487,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteSubnetAsync(input: ElasticComputeCloudModel.DeleteSubnetRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteSubnetAsync(input: ElasticComputeCloudModel.DeleteSubnetRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteSubnet operation waiting for the response before returning.
@@ -2505,7 +2505,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteTagsAsync(input: ElasticComputeCloudModel.DeleteTagsRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteTagsAsync(input: ElasticComputeCloudModel.DeleteTagsRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteTags operation waiting for the response before returning.
@@ -2523,7 +2523,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteVolumeAsync(input: ElasticComputeCloudModel.DeleteVolumeRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteVolumeAsync(input: ElasticComputeCloudModel.DeleteVolumeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteVolume operation waiting for the response before returning.
@@ -2541,7 +2541,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteVpcAsync(input: ElasticComputeCloudModel.DeleteVpcRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteVpcAsync(input: ElasticComputeCloudModel.DeleteVpcRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteVpc operation waiting for the response before returning.
@@ -2643,7 +2643,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteVpnConnectionAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteVpnConnectionAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteVpnConnection operation waiting for the response before returning.
@@ -2661,7 +2661,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteVpnConnectionRouteAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteVpnConnectionRouteAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteVpnConnectionRoute operation waiting for the response before returning.
@@ -2679,7 +2679,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteVpnGatewayAsync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, completion: @escaping (Error?) -> ()) throws
+    func deleteVpnGatewayAsync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteVpnGateway operation waiting for the response before returning.
@@ -2718,7 +2718,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deregisterImageAsync(input: ElasticComputeCloudModel.DeregisterImageRequest, completion: @escaping (Error?) -> ()) throws
+    func deregisterImageAsync(input: ElasticComputeCloudModel.DeregisterImageRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeregisterImage operation waiting for the response before returning.
@@ -4563,7 +4563,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func detachInternetGatewayAsync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws
+    func detachInternetGatewayAsync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DetachInternetGateway operation waiting for the response before returning.
@@ -4581,7 +4581,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func detachNetworkInterfaceAsync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, completion: @escaping (Error?) -> ()) throws
+    func detachNetworkInterfaceAsync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DetachNetworkInterface operation waiting for the response before returning.
@@ -4620,7 +4620,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func detachVpnGatewayAsync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest, completion: @escaping (Error?) -> ()) throws
+    func detachVpnGatewayAsync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DetachVpnGateway operation waiting for the response before returning.
@@ -4638,7 +4638,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func disableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, completion: @escaping (Error?) -> ()) throws
+    func disableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DisableVgwRoutePropagation operation waiting for the response before returning.
@@ -4698,7 +4698,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func disassociateAddressAsync(input: ElasticComputeCloudModel.DisassociateAddressRequest, completion: @escaping (Error?) -> ()) throws
+    func disassociateAddressAsync(input: ElasticComputeCloudModel.DisassociateAddressRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DisassociateAddress operation waiting for the response before returning.
@@ -4737,7 +4737,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func disassociateRouteTableAsync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest, completion: @escaping (Error?) -> ()) throws
+    func disassociateRouteTableAsync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DisassociateRouteTable operation waiting for the response before returning.
@@ -4797,7 +4797,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func enableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, completion: @escaping (Error?) -> ()) throws
+    func enableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the EnableVgwRoutePropagation operation waiting for the response before returning.
@@ -4815,7 +4815,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func enableVolumeIOAsync(input: ElasticComputeCloudModel.EnableVolumeIORequest, completion: @escaping (Error?) -> ()) throws
+    func enableVolumeIOAsync(input: ElasticComputeCloudModel.EnableVolumeIORequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the EnableVolumeIO operation waiting for the response before returning.
@@ -5190,7 +5190,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func modifyIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdFormatRequest, completion: @escaping (Error?) -> ()) throws
+    func modifyIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdFormatRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ModifyIdFormat operation waiting for the response before returning.
@@ -5208,7 +5208,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func modifyIdentityIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, completion: @escaping (Error?) -> ()) throws
+    func modifyIdentityIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ModifyIdentityIdFormat operation waiting for the response before returning.
@@ -5226,7 +5226,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func modifyImageAttributeAsync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func modifyImageAttributeAsync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ModifyImageAttribute operation waiting for the response before returning.
@@ -5244,7 +5244,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func modifyInstanceAttributeAsync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func modifyInstanceAttributeAsync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ModifyInstanceAttribute operation waiting for the response before returning.
@@ -5346,7 +5346,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func modifyNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func modifyNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ModifyNetworkInterfaceAttribute operation waiting for the response before returning.
@@ -5385,7 +5385,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func modifySnapshotAttributeAsync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func modifySnapshotAttributeAsync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ModifySnapshotAttribute operation waiting for the response before returning.
@@ -5424,7 +5424,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func modifySubnetAttributeAsync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func modifySubnetAttributeAsync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ModifySubnetAttribute operation waiting for the response before returning.
@@ -5463,7 +5463,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func modifyVolumeAttributeAsync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func modifyVolumeAttributeAsync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ModifyVolumeAttribute operation waiting for the response before returning.
@@ -5481,7 +5481,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func modifyVpcAttributeAsync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func modifyVpcAttributeAsync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ModifyVpcAttribute operation waiting for the response before returning.
@@ -5751,7 +5751,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func rebootInstancesAsync(input: ElasticComputeCloudModel.RebootInstancesRequest, completion: @escaping (Error?) -> ()) throws
+    func rebootInstancesAsync(input: ElasticComputeCloudModel.RebootInstancesRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RebootInstances operation waiting for the response before returning.
@@ -5832,7 +5832,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func releaseAddressAsync(input: ElasticComputeCloudModel.ReleaseAddressRequest, completion: @escaping (Error?) -> ()) throws
+    func releaseAddressAsync(input: ElasticComputeCloudModel.ReleaseAddressRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ReleaseAddress operation waiting for the response before returning.
@@ -5913,7 +5913,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func replaceNetworkAclEntryAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws
+    func replaceNetworkAclEntryAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ReplaceNetworkAclEntry operation waiting for the response before returning.
@@ -5931,7 +5931,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func replaceRouteAsync(input: ElasticComputeCloudModel.ReplaceRouteRequest, completion: @escaping (Error?) -> ()) throws
+    func replaceRouteAsync(input: ElasticComputeCloudModel.ReplaceRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ReplaceRoute operation waiting for the response before returning.
@@ -5970,7 +5970,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func reportInstanceStatusAsync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest, completion: @escaping (Error?) -> ()) throws
+    func reportInstanceStatusAsync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ReportInstanceStatus operation waiting for the response before returning.
@@ -6051,7 +6051,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func resetImageAttributeAsync(input: ElasticComputeCloudModel.ResetImageAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func resetImageAttributeAsync(input: ElasticComputeCloudModel.ResetImageAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ResetImageAttribute operation waiting for the response before returning.
@@ -6069,7 +6069,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func resetInstanceAttributeAsync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func resetInstanceAttributeAsync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ResetInstanceAttribute operation waiting for the response before returning.
@@ -6087,7 +6087,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func resetNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func resetNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ResetNetworkInterfaceAttribute operation waiting for the response before returning.
@@ -6105,7 +6105,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func resetSnapshotAttributeAsync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, completion: @escaping (Error?) -> ()) throws
+    func resetSnapshotAttributeAsync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the ResetSnapshotAttribute operation waiting for the response before returning.
@@ -6144,7 +6144,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func revokeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, completion: @escaping (Error?) -> ()) throws
+    func revokeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RevokeSecurityGroupEgress operation waiting for the response before returning.
@@ -6162,7 +6162,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func revokeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, completion: @escaping (Error?) -> ()) throws
+    func revokeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RevokeSecurityGroupIngress operation waiting for the response before returning.
@@ -6306,7 +6306,7 @@ public protocol ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func unassignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, completion: @escaping (Error?) -> ()) throws
+    func unassignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the UnassignPrivateIpAddresses operation waiting for the response before returning.

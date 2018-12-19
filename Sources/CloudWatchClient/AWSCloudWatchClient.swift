@@ -66,6 +66,22 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+    }
+
+    /**
      Invokes the DeleteAlarms operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -74,14 +90,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: resourceNotFound.
      */
-    public func deleteAlarmsAsync(input: CloudWatchModel.DeleteAlarmsInput, completion: @escaping (Error?) -> ()) throws {
+    public func deleteAlarmsAsync(input: CloudWatchModel.DeleteAlarmsInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteAlarmsOperationHTTPRequestInput<CloudWatchModel.DeleteAlarmsInput>(encodable: input)
+        let wrappedInput = DeleteAlarmsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -110,7 +126,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteAlarmsOperationHTTPRequestInput<CloudWatchModel.DeleteAlarmsInput>(encodable: input)
+        let wrappedInput = DeleteAlarmsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -141,7 +157,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteDashboardsOperationHTTPRequestInput<CloudWatchModel.DeleteDashboardsInput>(encodable: input)
+        let wrappedInput = DeleteDashboardsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -172,7 +188,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteDashboardsOperationHTTPRequestInput<CloudWatchModel.DeleteDashboardsInput>(encodable: input)
+        let wrappedInput = DeleteDashboardsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -203,7 +219,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAlarmHistoryOperationHTTPRequestInput<CloudWatchModel.DescribeAlarmHistoryInput>(encodable: input)
+        let wrappedInput = DescribeAlarmHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -234,7 +250,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAlarmHistoryOperationHTTPRequestInput<CloudWatchModel.DescribeAlarmHistoryInput>(encodable: input)
+        let wrappedInput = DescribeAlarmHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -265,7 +281,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAlarmsOperationHTTPRequestInput<CloudWatchModel.DescribeAlarmsInput>(encodable: input)
+        let wrappedInput = DescribeAlarmsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -296,7 +312,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAlarmsOperationHTTPRequestInput<CloudWatchModel.DescribeAlarmsInput>(encodable: input)
+        let wrappedInput = DescribeAlarmsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -326,7 +342,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAlarmsForMetricOperationHTTPRequestInput<CloudWatchModel.DescribeAlarmsForMetricInput>(encodable: input)
+        let wrappedInput = DescribeAlarmsForMetricOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -356,7 +372,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAlarmsForMetricOperationHTTPRequestInput<CloudWatchModel.DescribeAlarmsForMetricInput>(encodable: input)
+        let wrappedInput = DescribeAlarmsForMetricOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -378,14 +394,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableAlarmActionsAsync(input: CloudWatchModel.DisableAlarmActionsInput, completion: @escaping (Error?) -> ()) throws {
+    public func disableAlarmActionsAsync(input: CloudWatchModel.DisableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DisableAlarmActionsOperationHTTPRequestInput<CloudWatchModel.DisableAlarmActionsInput>(encodable: input)
+        let wrappedInput = DisableAlarmActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -413,7 +429,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisableAlarmActionsOperationHTTPRequestInput<CloudWatchModel.DisableAlarmActionsInput>(encodable: input)
+        let wrappedInput = DisableAlarmActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -435,14 +451,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableAlarmActionsAsync(input: CloudWatchModel.EnableAlarmActionsInput, completion: @escaping (Error?) -> ()) throws {
+    public func enableAlarmActionsAsync(input: CloudWatchModel.EnableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableAlarmActionsOperationHTTPRequestInput<CloudWatchModel.EnableAlarmActionsInput>(encodable: input)
+        let wrappedInput = EnableAlarmActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -470,7 +486,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableAlarmActionsOperationHTTPRequestInput<CloudWatchModel.EnableAlarmActionsInput>(encodable: input)
+        let wrappedInput = EnableAlarmActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -501,7 +517,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetDashboardOperationHTTPRequestInput<CloudWatchModel.GetDashboardInput>(encodable: input)
+        let wrappedInput = GetDashboardOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -532,7 +548,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetDashboardOperationHTTPRequestInput<CloudWatchModel.GetDashboardInput>(encodable: input)
+        let wrappedInput = GetDashboardOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -563,7 +579,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetMetricDataOperationHTTPRequestInput<CloudWatchModel.GetMetricDataInput>(encodable: input)
+        let wrappedInput = GetMetricDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -594,7 +610,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetMetricDataOperationHTTPRequestInput<CloudWatchModel.GetMetricDataInput>(encodable: input)
+        let wrappedInput = GetMetricDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -625,7 +641,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetMetricStatisticsOperationHTTPRequestInput<CloudWatchModel.GetMetricStatisticsInput>(encodable: input)
+        let wrappedInput = GetMetricStatisticsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -656,7 +672,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetMetricStatisticsOperationHTTPRequestInput<CloudWatchModel.GetMetricStatisticsInput>(encodable: input)
+        let wrappedInput = GetMetricStatisticsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -686,7 +702,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetMetricWidgetImageOperationHTTPRequestInput<CloudWatchModel.GetMetricWidgetImageInput>(encodable: input)
+        let wrappedInput = GetMetricWidgetImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -716,7 +732,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetMetricWidgetImageOperationHTTPRequestInput<CloudWatchModel.GetMetricWidgetImageInput>(encodable: input)
+        let wrappedInput = GetMetricWidgetImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -747,7 +763,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListDashboardsOperationHTTPRequestInput<CloudWatchModel.ListDashboardsInput>(encodable: input)
+        let wrappedInput = ListDashboardsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -778,7 +794,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListDashboardsOperationHTTPRequestInput<CloudWatchModel.ListDashboardsInput>(encodable: input)
+        let wrappedInput = ListDashboardsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -809,7 +825,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListMetricsOperationHTTPRequestInput<CloudWatchModel.ListMetricsInput>(encodable: input)
+        let wrappedInput = ListMetricsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -840,7 +856,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListMetricsOperationHTTPRequestInput<CloudWatchModel.ListMetricsInput>(encodable: input)
+        let wrappedInput = ListMetricsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -871,7 +887,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PutDashboardOperationHTTPRequestInput<CloudWatchModel.PutDashboardInput>(encodable: input)
+        let wrappedInput = PutDashboardOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -902,7 +918,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PutDashboardOperationHTTPRequestInput<CloudWatchModel.PutDashboardInput>(encodable: input)
+        let wrappedInput = PutDashboardOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -925,14 +941,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: limitExceeded.
      */
-    public func putMetricAlarmAsync(input: CloudWatchModel.PutMetricAlarmInput, completion: @escaping (Error?) -> ()) throws {
+    public func putMetricAlarmAsync(input: CloudWatchModel.PutMetricAlarmInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = PutMetricAlarmOperationHTTPRequestInput<CloudWatchModel.PutMetricAlarmInput>(encodable: input)
+        let wrappedInput = PutMetricAlarmOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -961,7 +977,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PutMetricAlarmOperationHTTPRequestInput<CloudWatchModel.PutMetricAlarmInput>(encodable: input)
+        let wrappedInput = PutMetricAlarmOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -984,14 +1000,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataAsync(input: CloudWatchModel.PutMetricDataInput, completion: @escaping (Error?) -> ()) throws {
+    public func putMetricDataAsync(input: CloudWatchModel.PutMetricDataInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = PutMetricDataOperationHTTPRequestInput<CloudWatchModel.PutMetricDataInput>(encodable: input)
+        let wrappedInput = PutMetricDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1020,7 +1036,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PutMetricDataOperationHTTPRequestInput<CloudWatchModel.PutMetricDataInput>(encodable: input)
+        let wrappedInput = PutMetricDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1043,14 +1059,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateAsync(input: CloudWatchModel.SetAlarmStateInput, completion: @escaping (Error?) -> ()) throws {
+    public func setAlarmStateAsync(input: CloudWatchModel.SetAlarmStateInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = SetAlarmStateOperationHTTPRequestInput<CloudWatchModel.SetAlarmStateInput>(encodable: input)
+        let wrappedInput = SetAlarmStateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1079,7 +1095,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SetAlarmStateOperationHTTPRequestInput<CloudWatchModel.SetAlarmStateInput>(encodable: input)
+        let wrappedInput = SetAlarmStateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,

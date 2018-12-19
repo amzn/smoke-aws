@@ -76,6 +76,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
     }
 
     /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+        listHttpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+        listHttpClient.wait()
+    }
+
+    /**
      Invokes the AddPermission operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -84,14 +102,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: overLimit.
      */
-    public func addPermissionAsync(input: SimpleQueueModel.AddPermissionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func addPermissionAsync(input: SimpleQueueModel.AddPermissionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = AddPermissionOperationHTTPRequestInput<SimpleQueueModel.AddPermissionRequest>(encodable: input)
+        let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -120,7 +138,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AddPermissionOperationHTTPRequestInput<SimpleQueueModel.AddPermissionRequest>(encodable: input)
+        let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -143,14 +161,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: messageNotInflight, receiptHandleIsInvalid.
      */
-    public func changeMessageVisibilityAsync(input: SimpleQueueModel.ChangeMessageVisibilityRequest, completion: @escaping (Error?) -> ()) throws {
+    public func changeMessageVisibilityAsync(input: SimpleQueueModel.ChangeMessageVisibilityRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ChangeMessageVisibilityOperationHTTPRequestInput<SimpleQueueModel.ChangeMessageVisibilityRequest>(encodable: input)
+        let wrappedInput = ChangeMessageVisibilityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -179,7 +197,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ChangeMessageVisibilityOperationHTTPRequestInput<SimpleQueueModel.ChangeMessageVisibilityRequest>(encodable: input)
+        let wrappedInput = ChangeMessageVisibilityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -210,7 +228,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ChangeMessageVisibilityBatchOperationHTTPRequestInput<SimpleQueueModel.ChangeMessageVisibilityBatchRequest>(encodable: input)
+        let wrappedInput = ChangeMessageVisibilityBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -241,7 +259,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ChangeMessageVisibilityBatchOperationHTTPRequestInput<SimpleQueueModel.ChangeMessageVisibilityBatchRequest>(encodable: input)
+        let wrappedInput = ChangeMessageVisibilityBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -272,7 +290,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateQueueOperationHTTPRequestInput<SimpleQueueModel.CreateQueueRequest>(encodable: input)
+        let wrappedInput = CreateQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -303,7 +321,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateQueueOperationHTTPRequestInput<SimpleQueueModel.CreateQueueRequest>(encodable: input)
+        let wrappedInput = CreateQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -326,14 +344,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidIdFormat, receiptHandleIsInvalid.
      */
-    public func deleteMessageAsync(input: SimpleQueueModel.DeleteMessageRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteMessageAsync(input: SimpleQueueModel.DeleteMessageRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteMessageOperationHTTPRequestInput<SimpleQueueModel.DeleteMessageRequest>(encodable: input)
+        let wrappedInput = DeleteMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -362,7 +380,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteMessageOperationHTTPRequestInput<SimpleQueueModel.DeleteMessageRequest>(encodable: input)
+        let wrappedInput = DeleteMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -393,7 +411,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteMessageBatchOperationHTTPRequestInput<SimpleQueueModel.DeleteMessageBatchRequest>(encodable: input)
+        let wrappedInput = DeleteMessageBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -424,7 +442,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteMessageBatchOperationHTTPRequestInput<SimpleQueueModel.DeleteMessageBatchRequest>(encodable: input)
+        let wrappedInput = DeleteMessageBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -446,14 +464,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteQueueAsync(input: SimpleQueueModel.DeleteQueueRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteQueueAsync(input: SimpleQueueModel.DeleteQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteQueueOperationHTTPRequestInput<SimpleQueueModel.DeleteQueueRequest>(encodable: input)
+        let wrappedInput = DeleteQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -481,7 +499,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteQueueOperationHTTPRequestInput<SimpleQueueModel.DeleteQueueRequest>(encodable: input)
+        let wrappedInput = DeleteQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -512,7 +530,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetQueueAttributesOperationHTTPRequestInput<SimpleQueueModel.GetQueueAttributesRequest>(encodable: input)
+        let wrappedInput = GetQueueAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -543,7 +561,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetQueueAttributesOperationHTTPRequestInput<SimpleQueueModel.GetQueueAttributesRequest>(encodable: input)
+        let wrappedInput = GetQueueAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -574,7 +592,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetQueueUrlOperationHTTPRequestInput<SimpleQueueModel.GetQueueUrlRequest>(encodable: input)
+        let wrappedInput = GetQueueUrlOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -605,7 +623,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetQueueUrlOperationHTTPRequestInput<SimpleQueueModel.GetQueueUrlRequest>(encodable: input)
+        let wrappedInput = GetQueueUrlOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -636,7 +654,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListDeadLetterSourceQueuesOperationHTTPRequestInput<SimpleQueueModel.ListDeadLetterSourceQueuesRequest>(encodable: input)
+        let wrappedInput = ListDeadLetterSourceQueuesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -667,7 +685,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListDeadLetterSourceQueuesOperationHTTPRequestInput<SimpleQueueModel.ListDeadLetterSourceQueuesRequest>(encodable: input)
+        let wrappedInput = ListDeadLetterSourceQueuesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -697,7 +715,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListQueueTagsOperationHTTPRequestInput<SimpleQueueModel.ListQueueTagsRequest>(encodable: input)
+        let wrappedInput = ListQueueTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -727,7 +745,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListQueueTagsOperationHTTPRequestInput<SimpleQueueModel.ListQueueTagsRequest>(encodable: input)
+        let wrappedInput = ListQueueTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -757,7 +775,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListQueuesOperationHTTPRequestInput<SimpleQueueModel.ListQueuesRequest>(encodable: input)
+        let wrappedInput = ListQueuesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -787,7 +805,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListQueuesOperationHTTPRequestInput<SimpleQueueModel.ListQueuesRequest>(encodable: input)
+        let wrappedInput = ListQueuesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -810,14 +828,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: purgeQueueInProgress, queueDoesNotExist.
      */
-    public func purgeQueueAsync(input: SimpleQueueModel.PurgeQueueRequest, completion: @escaping (Error?) -> ()) throws {
+    public func purgeQueueAsync(input: SimpleQueueModel.PurgeQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = PurgeQueueOperationHTTPRequestInput<SimpleQueueModel.PurgeQueueRequest>(encodable: input)
+        let wrappedInput = PurgeQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -846,7 +864,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PurgeQueueOperationHTTPRequestInput<SimpleQueueModel.PurgeQueueRequest>(encodable: input)
+        let wrappedInput = PurgeQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -877,7 +895,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReceiveMessageOperationHTTPRequestInput<SimpleQueueModel.ReceiveMessageRequest>(encodable: input)
+        let wrappedInput = ReceiveMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -908,7 +926,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReceiveMessageOperationHTTPRequestInput<SimpleQueueModel.ReceiveMessageRequest>(encodable: input)
+        let wrappedInput = ReceiveMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -930,14 +948,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func removePermissionAsync(input: SimpleQueueModel.RemovePermissionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func removePermissionAsync(input: SimpleQueueModel.RemovePermissionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = RemovePermissionOperationHTTPRequestInput<SimpleQueueModel.RemovePermissionRequest>(encodable: input)
+        let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -965,7 +983,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RemovePermissionOperationHTTPRequestInput<SimpleQueueModel.RemovePermissionRequest>(encodable: input)
+        let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -996,7 +1014,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SendMessageOperationHTTPRequestInput<SimpleQueueModel.SendMessageRequest>(encodable: input)
+        let wrappedInput = SendMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1027,7 +1045,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SendMessageOperationHTTPRequestInput<SimpleQueueModel.SendMessageRequest>(encodable: input)
+        let wrappedInput = SendMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1058,7 +1076,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SendMessageBatchOperationHTTPRequestInput<SimpleQueueModel.SendMessageBatchRequest>(encodable: input)
+        let wrappedInput = SendMessageBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1089,7 +1107,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SendMessageBatchOperationHTTPRequestInput<SimpleQueueModel.SendMessageBatchRequest>(encodable: input)
+        let wrappedInput = SendMessageBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1112,14 +1130,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidAttributeName.
      */
-    public func setQueueAttributesAsync(input: SimpleQueueModel.SetQueueAttributesRequest, completion: @escaping (Error?) -> ()) throws {
+    public func setQueueAttributesAsync(input: SimpleQueueModel.SetQueueAttributesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = SetQueueAttributesOperationHTTPRequestInput<SimpleQueueModel.SetQueueAttributesRequest>(encodable: input)
+        let wrappedInput = SetQueueAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1148,7 +1166,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SetQueueAttributesOperationHTTPRequestInput<SimpleQueueModel.SetQueueAttributesRequest>(encodable: input)
+        let wrappedInput = SetQueueAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1170,14 +1188,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func tagQueueAsync(input: SimpleQueueModel.TagQueueRequest, completion: @escaping (Error?) -> ()) throws {
+    public func tagQueueAsync(input: SimpleQueueModel.TagQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = TagQueueOperationHTTPRequestInput<SimpleQueueModel.TagQueueRequest>(encodable: input)
+        let wrappedInput = TagQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1205,7 +1223,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = TagQueueOperationHTTPRequestInput<SimpleQueueModel.TagQueueRequest>(encodable: input)
+        let wrappedInput = TagQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1227,14 +1245,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func untagQueueAsync(input: SimpleQueueModel.UntagQueueRequest, completion: @escaping (Error?) -> ()) throws {
+    public func untagQueueAsync(input: SimpleQueueModel.UntagQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = UntagQueueOperationHTTPRequestInput<SimpleQueueModel.UntagQueueRequest>(encodable: input)
+        let wrappedInput = UntagQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1262,7 +1280,7 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UntagQueueOperationHTTPRequestInput<SimpleQueueModel.UntagQueueRequest>(encodable: input)
+        let wrappedInput = UntagQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,

@@ -64,6 +64,22 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     }
 
     /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+    }
+
+    /**
      Invokes the CountClosedWorkflowExecutions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -80,7 +96,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.countClosedWorkflowExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = CountClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -107,7 +123,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.countClosedWorkflowExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = CountClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -134,7 +150,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.countOpenWorkflowExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = CountOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -161,7 +177,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.countOpenWorkflowExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = CountOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -188,7 +204,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.countPendingActivityTasks.rawValue,
                     target: target)
-        
+
         let requestInput = CountPendingActivityTasksOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -215,7 +231,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.countPendingActivityTasks.rawValue,
                     target: target)
-        
+
         let requestInput = CountPendingActivityTasksOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -242,7 +258,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.countPendingDecisionTasks.rawValue,
                     target: target)
-        
+
         let requestInput = CountPendingDecisionTasksOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -269,7 +285,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.countPendingDecisionTasks.rawValue,
                     target: target)
-        
+
         let requestInput = CountPendingDecisionTasksOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -288,14 +304,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateActivityTypeAsync(input: SimpleWorkflowModel.DeprecateActivityTypeInput, completion: @escaping (Error?) -> ()) throws {
+    public func deprecateActivityTypeAsync(input: SimpleWorkflowModel.DeprecateActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.deprecateActivityType.rawValue,
                     target: target)
-        
+
         let requestInput = DeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -320,7 +336,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.deprecateActivityType.rawValue,
                     target: target)
-        
+
         let requestInput = DeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -339,14 +355,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainDeprecated, operationNotPermitted, unknownResource.
      */
-    public func deprecateDomainAsync(input: SimpleWorkflowModel.DeprecateDomainInput, completion: @escaping (Error?) -> ()) throws {
+    public func deprecateDomainAsync(input: SimpleWorkflowModel.DeprecateDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.deprecateDomain.rawValue,
                     target: target)
-        
+
         let requestInput = DeprecateDomainOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -371,7 +387,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.deprecateDomain.rawValue,
                     target: target)
-        
+
         let requestInput = DeprecateDomainOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -390,14 +406,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateWorkflowTypeAsync(input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, completion: @escaping (Error?) -> ()) throws {
+    public func deprecateWorkflowTypeAsync(input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.deprecateWorkflowType.rawValue,
                     target: target)
-        
+
         let requestInput = DeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -422,7 +438,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.deprecateWorkflowType.rawValue,
                     target: target)
-        
+
         let requestInput = DeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -449,7 +465,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.describeActivityType.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeActivityTypeOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -476,7 +492,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.describeActivityType.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeActivityTypeOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -503,7 +519,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.describeDomain.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeDomainOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -530,7 +546,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.describeDomain.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeDomainOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -557,7 +573,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.describeWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -584,7 +600,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.describeWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -611,7 +627,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.describeWorkflowType.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -638,7 +654,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.describeWorkflowType.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -665,7 +681,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.getWorkflowExecutionHistory.rawValue,
                     target: target)
-        
+
         let requestInput = GetWorkflowExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -692,7 +708,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.getWorkflowExecutionHistory.rawValue,
                     target: target)
-        
+
         let requestInput = GetWorkflowExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -719,7 +735,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listActivityTypes.rawValue,
                     target: target)
-        
+
         let requestInput = ListActivityTypesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -746,7 +762,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listActivityTypes.rawValue,
                     target: target)
-        
+
         let requestInput = ListActivityTypesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -773,7 +789,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listClosedWorkflowExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = ListClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -800,7 +816,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listClosedWorkflowExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = ListClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -827,7 +843,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listDomains.rawValue,
                     target: target)
-        
+
         let requestInput = ListDomainsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -854,7 +870,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listDomains.rawValue,
                     target: target)
-        
+
         let requestInput = ListDomainsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -881,7 +897,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listOpenWorkflowExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = ListOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -908,7 +924,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listOpenWorkflowExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = ListOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -935,7 +951,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listWorkflowTypes.rawValue,
                     target: target)
-        
+
         let requestInput = ListWorkflowTypesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -962,7 +978,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.listWorkflowTypes.rawValue,
                     target: target)
-        
+
         let requestInput = ListWorkflowTypesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -989,7 +1005,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.pollForActivityTask.rawValue,
                     target: target)
-        
+
         let requestInput = PollForActivityTaskOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1016,7 +1032,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.pollForActivityTask.rawValue,
                     target: target)
-        
+
         let requestInput = PollForActivityTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1043,7 +1059,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.pollForDecisionTask.rawValue,
                     target: target)
-        
+
         let requestInput = PollForDecisionTaskOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1070,7 +1086,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.pollForDecisionTask.rawValue,
                     target: target)
-        
+
         let requestInput = PollForDecisionTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1097,7 +1113,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.recordActivityTaskHeartbeat.rawValue,
                     target: target)
-        
+
         let requestInput = RecordActivityTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1124,7 +1140,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.recordActivityTaskHeartbeat.rawValue,
                     target: target)
-        
+
         let requestInput = RecordActivityTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1143,14 +1159,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerActivityTypeAsync(input: SimpleWorkflowModel.RegisterActivityTypeInput, completion: @escaping (Error?) -> ()) throws {
+    public func registerActivityTypeAsync(input: SimpleWorkflowModel.RegisterActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.registerActivityType.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterActivityTypeOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1175,7 +1191,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.registerActivityType.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterActivityTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1194,14 +1210,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted.
      */
-    public func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Error?) -> ()) throws {
+    public func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.registerDomain.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterDomainOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1226,7 +1242,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.registerDomain.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterDomainOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1245,14 +1261,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerWorkflowTypeAsync(input: SimpleWorkflowModel.RegisterWorkflowTypeInput, completion: @escaping (Error?) -> ()) throws {
+    public func registerWorkflowTypeAsync(input: SimpleWorkflowModel.RegisterWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.registerWorkflowType.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1277,7 +1293,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.registerWorkflowType.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1296,14 +1312,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func requestCancelWorkflowExecutionAsync(input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, completion: @escaping (Error?) -> ()) throws {
+    public func requestCancelWorkflowExecutionAsync(input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.requestCancelWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = RequestCancelWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1328,7 +1344,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.requestCancelWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = RequestCancelWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1347,14 +1363,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCanceledAsync(input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, completion: @escaping (Error?) -> ()) throws {
+    public func respondActivityTaskCanceledAsync(input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.respondActivityTaskCanceled.rawValue,
                     target: target)
-        
+
         let requestInput = RespondActivityTaskCanceledOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1379,7 +1395,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.respondActivityTaskCanceled.rawValue,
                     target: target)
-        
+
         let requestInput = RespondActivityTaskCanceledOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1398,14 +1414,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCompletedAsync(input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, completion: @escaping (Error?) -> ()) throws {
+    public func respondActivityTaskCompletedAsync(input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.respondActivityTaskCompleted.rawValue,
                     target: target)
-        
+
         let requestInput = RespondActivityTaskCompletedOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1430,7 +1446,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.respondActivityTaskCompleted.rawValue,
                     target: target)
-        
+
         let requestInput = RespondActivityTaskCompletedOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1449,14 +1465,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskFailedAsync(input: SimpleWorkflowModel.RespondActivityTaskFailedInput, completion: @escaping (Error?) -> ()) throws {
+    public func respondActivityTaskFailedAsync(input: SimpleWorkflowModel.RespondActivityTaskFailedInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.respondActivityTaskFailed.rawValue,
                     target: target)
-        
+
         let requestInput = RespondActivityTaskFailedOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1481,7 +1497,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.respondActivityTaskFailed.rawValue,
                     target: target)
-        
+
         let requestInput = RespondActivityTaskFailedOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1500,14 +1516,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondDecisionTaskCompletedAsync(input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, completion: @escaping (Error?) -> ()) throws {
+    public func respondDecisionTaskCompletedAsync(input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.respondDecisionTaskCompleted.rawValue,
                     target: target)
-        
+
         let requestInput = RespondDecisionTaskCompletedOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1532,7 +1548,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.respondDecisionTaskCompleted.rawValue,
                     target: target)
-        
+
         let requestInput = RespondDecisionTaskCompletedOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1551,14 +1567,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func signalWorkflowExecutionAsync(input: SimpleWorkflowModel.SignalWorkflowExecutionInput, completion: @escaping (Error?) -> ()) throws {
+    public func signalWorkflowExecutionAsync(input: SimpleWorkflowModel.SignalWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.signalWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = SignalWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1583,7 +1599,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.signalWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = SignalWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1610,7 +1626,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.startWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = StartWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1637,7 +1653,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.startWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = StartWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1656,14 +1672,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func terminateWorkflowExecutionAsync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, completion: @escaping (Error?) -> ()) throws {
+    public func terminateWorkflowExecutionAsync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: SimpleWorkflowModelOperations.terminateWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = TerminateWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1688,7 +1704,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     service: service,
                     operation: SimpleWorkflowModelOperations.terminateWorkflowExecution.rawValue,
                     target: target)
-        
+
         let requestInput = TerminateWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(

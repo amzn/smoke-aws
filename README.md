@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://travis-ci.org/amzn/smoke-aws">
+<a href="https://travis-ci.com/amzn/smoke-aws">
 <img src="https://travis-ci.com/amzn/smoke-aws.svg?branch=master" alt="Build - Master Branch">
 </a>
 <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">

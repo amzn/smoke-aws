@@ -226,7 +226,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func addPermissionAsync(input: SimpleNotificationModel.AddPermissionInput, completion: @escaping (Error?) -> ()) throws {
+    public func addPermissionAsync(input: SimpleNotificationModel.AddPermissionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let addPermissionAsyncOverride = addPermissionAsyncOverride {
             return try addPermissionAsyncOverride(input, completion)
         }
@@ -433,7 +433,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deleteEndpointAsync(input: SimpleNotificationModel.DeleteEndpointInput, completion: @escaping (Error?) -> ()) throws {
+    public func deleteEndpointAsync(input: SimpleNotificationModel.DeleteEndpointInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteEndpointAsyncOverride = deleteEndpointAsyncOverride {
             return try deleteEndpointAsyncOverride(input, completion)
         }
@@ -465,7 +465,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deletePlatformApplicationAsync(input: SimpleNotificationModel.DeletePlatformApplicationInput, completion: @escaping (Error?) -> ()) throws {
+    public func deletePlatformApplicationAsync(input: SimpleNotificationModel.DeletePlatformApplicationInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deletePlatformApplicationAsyncOverride = deletePlatformApplicationAsyncOverride {
             return try deletePlatformApplicationAsyncOverride(input, completion)
         }
@@ -497,7 +497,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func deleteTopicAsync(input: SimpleNotificationModel.DeleteTopicInput, completion: @escaping (Error?) -> ()) throws {
+    public func deleteTopicAsync(input: SimpleNotificationModel.DeleteTopicInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteTopicAsyncOverride = deleteTopicAsyncOverride {
             return try deleteTopicAsyncOverride(input, completion)
         }
@@ -984,7 +984,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func removePermissionAsync(input: SimpleNotificationModel.RemovePermissionInput, completion: @escaping (Error?) -> ()) throws {
+    public func removePermissionAsync(input: SimpleNotificationModel.RemovePermissionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let removePermissionAsyncOverride = removePermissionAsyncOverride {
             return try removePermissionAsyncOverride(input, completion)
         }
@@ -1016,7 +1016,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setEndpointAttributesAsync(input: SimpleNotificationModel.SetEndpointAttributesInput, completion: @escaping (Error?) -> ()) throws {
+    public func setEndpointAttributesAsync(input: SimpleNotificationModel.SetEndpointAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let setEndpointAttributesAsyncOverride = setEndpointAttributesAsyncOverride {
             return try setEndpointAttributesAsyncOverride(input, completion)
         }
@@ -1048,7 +1048,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setPlatformApplicationAttributesAsync(input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, completion: @escaping (Error?) -> ()) throws {
+    public func setPlatformApplicationAttributesAsync(input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let setPlatformApplicationAttributesAsyncOverride = setPlatformApplicationAttributesAsyncOverride {
             return try setPlatformApplicationAttributesAsyncOverride(input, completion)
         }
@@ -1115,7 +1115,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    public func setSubscriptionAttributesAsync(input: SimpleNotificationModel.SetSubscriptionAttributesInput, completion: @escaping (Error?) -> ()) throws {
+    public func setSubscriptionAttributesAsync(input: SimpleNotificationModel.SetSubscriptionAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let setSubscriptionAttributesAsyncOverride = setSubscriptionAttributesAsyncOverride {
             return try setSubscriptionAttributesAsyncOverride(input, completion)
         }
@@ -1147,7 +1147,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func setTopicAttributesAsync(input: SimpleNotificationModel.SetTopicAttributesInput, completion: @escaping (Error?) -> ()) throws {
+    public func setTopicAttributesAsync(input: SimpleNotificationModel.SetTopicAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let setTopicAttributesAsyncOverride = setTopicAttributesAsyncOverride {
             return try setTopicAttributesAsyncOverride(input, completion)
         }
@@ -1214,7 +1214,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func unsubscribeAsync(input: SimpleNotificationModel.UnsubscribeInput, completion: @escaping (Error?) -> ()) throws {
+    public func unsubscribeAsync(input: SimpleNotificationModel.UnsubscribeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let unsubscribeAsyncOverride = unsubscribeAsyncOverride {
             return try unsubscribeAsyncOverride(input, completion)
         }

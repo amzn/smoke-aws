@@ -25,7 +25,7 @@ struct V4Signer {
     let credentials: Credentials
     let region: AWSRegion
     let service: String
-    let signCredentialsSecurityToken: Bool
+    let signAllHeaders: Bool
     
     let identifier = "aws4_request"
     let algorithm = "AWS4-HMAC-SHA256"
@@ -38,11 +38,11 @@ struct V4Signer {
     }
 
     init(credentials: Credentials, region: AWSRegion, service: String,
-         signCredentialsSecurityToken: Bool = false) {
+         signAllHeaders: Bool = false) {
         self.credentials = credentials
         self.region = region
         self.service = service
-        self.signCredentialsSecurityToken = signCredentialsSecurityToken
+        self.signAllHeaders = signAllHeaders
     }
 
     func getSignedURL(url: URL, date: Date = Date(), expires: Int = 86400) -> URL {
@@ -98,7 +98,7 @@ struct V4Signer {
             headersForSign[header.key] = header.value
         }
         
-        if signCredentialsSecurityToken, let token = self.credentials.sessionToken {
+        if signAllHeaders, let token = self.credentials.sessionToken {
             headersForSign["x-amz-security-token"] = token
         }
         
@@ -110,7 +110,7 @@ struct V4Signer {
             bodyDigest: bodyDigest
         )
         
-        if !signCredentialsSecurityToken, let token = self.credentials.sessionToken {
+        if !signAllHeaders, let token = self.credentials.sessionToken {
             headersForSign["x-amz-security-token"] = token
         }
         
@@ -228,10 +228,27 @@ struct V4Signer {
             urlPath = url.path
         }
         
+        let query: String
+        if let rawQuery = url.query {
+            let queryComponents = rawQuery.split(separator: "&")
+            
+            let mappedComponents: [String] = queryComponents.map { component in
+                if component.index(of: "=") == nil {
+                    return "\(component)="
+                } else {
+                    return String(component)
+                }
+            }
+            
+            query = mappedComponents.joined(separator: "&")
+        } else {
+            query = ""
+        }
+        
         return [
             method,
             urlPath,
-            url.query ?? "",
+            query,
             "\(canonicalHeaders(headers))\n",
             signedHeaders(headers),
             bodyDigest

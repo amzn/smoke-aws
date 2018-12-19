@@ -64,6 +64,22 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+    }
+
+    /**
      Invokes the CreateCluster operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -80,7 +96,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.createCluster.rawValue,
                     target: target)
-        
+
         let requestInput = CreateClusterOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -107,7 +123,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.createCluster.rawValue,
                     target: target)
-        
+
         let requestInput = CreateClusterOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -134,7 +150,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.createService.rawValue,
                     target: target)
-        
+
         let requestInput = CreateServiceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -161,7 +177,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.createService.rawValue,
                     target: target)
-        
+
         let requestInput = CreateServiceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -188,7 +204,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deleteAccountSetting.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -215,7 +231,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deleteAccountSetting.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -242,7 +258,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deleteAttributes.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -269,7 +285,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deleteAttributes.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -296,7 +312,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deleteCluster.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteClusterOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -323,7 +339,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deleteCluster.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteClusterOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -350,7 +366,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deleteService.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -377,7 +393,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deleteService.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -404,7 +420,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deregisterContainerInstance.rawValue,
                     target: target)
-        
+
         let requestInput = DeregisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -431,7 +447,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deregisterContainerInstance.rawValue,
                     target: target)
-        
+
         let requestInput = DeregisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -458,7 +474,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deregisterTaskDefinition.rawValue,
                     target: target)
-        
+
         let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -485,7 +501,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.deregisterTaskDefinition.rawValue,
                     target: target)
-        
+
         let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -512,7 +528,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeClusters.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeClustersOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -539,7 +555,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeClusters.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeClustersOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -566,7 +582,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeContainerInstances.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeContainerInstancesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -593,7 +609,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeContainerInstances.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeContainerInstancesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -620,7 +636,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeServices.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeServicesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -647,7 +663,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeServices.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeServicesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -674,7 +690,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeTaskDefinition.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -701,7 +717,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeTaskDefinition.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -728,7 +744,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeTasks.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeTasksOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -755,7 +771,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.describeTasks.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeTasksOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -782,7 +798,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.discoverPollEndpoint.rawValue,
                     target: target)
-        
+
         let requestInput = DiscoverPollEndpointOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -809,7 +825,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.discoverPollEndpoint.rawValue,
                     target: target)
-        
+
         let requestInput = DiscoverPollEndpointOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -836,7 +852,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listAccountSettings.rawValue,
                     target: target)
-        
+
         let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -863,7 +879,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listAccountSettings.rawValue,
                     target: target)
-        
+
         let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -890,7 +906,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listAttributes.rawValue,
                     target: target)
-        
+
         let requestInput = ListAttributesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -917,7 +933,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listAttributes.rawValue,
                     target: target)
-        
+
         let requestInput = ListAttributesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -944,7 +960,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listClusters.rawValue,
                     target: target)
-        
+
         let requestInput = ListClustersOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -971,7 +987,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listClusters.rawValue,
                     target: target)
-        
+
         let requestInput = ListClustersOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -998,7 +1014,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listContainerInstances.rawValue,
                     target: target)
-        
+
         let requestInput = ListContainerInstancesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1025,7 +1041,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listContainerInstances.rawValue,
                     target: target)
-        
+
         let requestInput = ListContainerInstancesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1052,7 +1068,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listServices.rawValue,
                     target: target)
-        
+
         let requestInput = ListServicesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1079,7 +1095,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listServices.rawValue,
                     target: target)
-        
+
         let requestInput = ListServicesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1106,7 +1122,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listTagsForResource.rawValue,
                     target: target)
-        
+
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1133,7 +1149,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listTagsForResource.rawValue,
                     target: target)
-        
+
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1160,7 +1176,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listTaskDefinitionFamilies.rawValue,
                     target: target)
-        
+
         let requestInput = ListTaskDefinitionFamiliesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1187,7 +1203,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listTaskDefinitionFamilies.rawValue,
                     target: target)
-        
+
         let requestInput = ListTaskDefinitionFamiliesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1214,7 +1230,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listTaskDefinitions.rawValue,
                     target: target)
-        
+
         let requestInput = ListTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1241,7 +1257,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listTaskDefinitions.rawValue,
                     target: target)
-        
+
         let requestInput = ListTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1268,7 +1284,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listTasks.rawValue,
                     target: target)
-        
+
         let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1295,7 +1311,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.listTasks.rawValue,
                     target: target)
-        
+
         let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1322,7 +1338,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.putAccountSetting.rawValue,
                     target: target)
-        
+
         let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1349,7 +1365,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.putAccountSetting.rawValue,
                     target: target)
-        
+
         let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1376,7 +1392,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.putAttributes.rawValue,
                     target: target)
-        
+
         let requestInput = PutAttributesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1403,7 +1419,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.putAttributes.rawValue,
                     target: target)
-        
+
         let requestInput = PutAttributesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1430,7 +1446,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.registerContainerInstance.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1457,7 +1473,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.registerContainerInstance.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1484,7 +1500,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.registerTaskDefinition.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1511,7 +1527,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.registerTaskDefinition.rawValue,
                     target: target)
-        
+
         let requestInput = RegisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1538,7 +1554,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.runTask.rawValue,
                     target: target)
-        
+
         let requestInput = RunTaskOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1565,7 +1581,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.runTask.rawValue,
                     target: target)
-        
+
         let requestInput = RunTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1592,7 +1608,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.startTask.rawValue,
                     target: target)
-        
+
         let requestInput = StartTaskOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1619,7 +1635,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.startTask.rawValue,
                     target: target)
-        
+
         let requestInput = StartTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1646,7 +1662,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.stopTask.rawValue,
                     target: target)
-        
+
         let requestInput = StopTaskOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1673,7 +1689,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.stopTask.rawValue,
                     target: target)
-        
+
         let requestInput = StopTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1700,7 +1716,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.submitContainerStateChange.rawValue,
                     target: target)
-        
+
         let requestInput = SubmitContainerStateChangeOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1727,7 +1743,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.submitContainerStateChange.rawValue,
                     target: target)
-        
+
         let requestInput = SubmitContainerStateChangeOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1754,7 +1770,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.submitTaskStateChange.rawValue,
                     target: target)
-        
+
         let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1781,7 +1797,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.submitTaskStateChange.rawValue,
                     target: target)
-        
+
         let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1808,7 +1824,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.tagResource.rawValue,
                     target: target)
-        
+
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1835,7 +1851,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.tagResource.rawValue,
                     target: target)
-        
+
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1862,7 +1878,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.untagResource.rawValue,
                     target: target)
-        
+
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1889,7 +1905,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.untagResource.rawValue,
                     target: target)
-        
+
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1916,7 +1932,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.updateContainerAgent.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateContainerAgentOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1943,7 +1959,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.updateContainerAgent.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateContainerAgentOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1970,7 +1986,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.updateContainerInstancesState.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateContainerInstancesStateOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1997,7 +2013,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.updateContainerInstancesState.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateContainerInstancesStateOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -2024,7 +2040,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.updateService.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -2051,7 +2067,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     service: service,
                     operation: ElasticContainerModelOperations.updateService.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(

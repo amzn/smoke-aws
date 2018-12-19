@@ -36,11 +36,11 @@ public protocol SimpleWorkflowClientProtocol {
     typealias CountPendingDecisionTasksSyncType = (_ input: SimpleWorkflowModel.CountPendingDecisionTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount
     typealias CountPendingDecisionTasksAsyncType = (_ input: SimpleWorkflowModel.CountPendingDecisionTasksInput, _ completion: @escaping (HTTPResult<SimpleWorkflowModel.PendingTaskCount>) -> ()) throws -> ()
     typealias DeprecateActivityTypeSyncType = (_ input: SimpleWorkflowModel.DeprecateActivityTypeInput) throws -> ()
-    typealias DeprecateActivityTypeAsyncType = (_ input: SimpleWorkflowModel.DeprecateActivityTypeInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeprecateActivityTypeAsyncType = (_ input: SimpleWorkflowModel.DeprecateActivityTypeInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeprecateDomainSyncType = (_ input: SimpleWorkflowModel.DeprecateDomainInput) throws -> ()
-    typealias DeprecateDomainAsyncType = (_ input: SimpleWorkflowModel.DeprecateDomainInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeprecateDomainAsyncType = (_ input: SimpleWorkflowModel.DeprecateDomainInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeprecateWorkflowTypeSyncType = (_ input: SimpleWorkflowModel.DeprecateWorkflowTypeInput) throws -> ()
-    typealias DeprecateWorkflowTypeAsyncType = (_ input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeprecateWorkflowTypeAsyncType = (_ input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DescribeActivityTypeSyncType = (_ input: SimpleWorkflowModel.DescribeActivityTypeInput) throws -> SimpleWorkflowModel.ActivityTypeDetail
     typealias DescribeActivityTypeAsyncType = (_ input: SimpleWorkflowModel.DescribeActivityTypeInput, _ completion: @escaping (HTTPResult<SimpleWorkflowModel.ActivityTypeDetail>) -> ()) throws -> ()
     typealias DescribeDomainSyncType = (_ input: SimpleWorkflowModel.DescribeDomainInput) throws -> SimpleWorkflowModel.DomainDetail
@@ -68,27 +68,27 @@ public protocol SimpleWorkflowClientProtocol {
     typealias RecordActivityTaskHeartbeatSyncType = (_ input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput) throws -> SimpleWorkflowModel.ActivityTaskStatus
     typealias RecordActivityTaskHeartbeatAsyncType = (_ input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, _ completion: @escaping (HTTPResult<SimpleWorkflowModel.ActivityTaskStatus>) -> ()) throws -> ()
     typealias RegisterActivityTypeSyncType = (_ input: SimpleWorkflowModel.RegisterActivityTypeInput) throws -> ()
-    typealias RegisterActivityTypeAsyncType = (_ input: SimpleWorkflowModel.RegisterActivityTypeInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RegisterActivityTypeAsyncType = (_ input: SimpleWorkflowModel.RegisterActivityTypeInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RegisterDomainSyncType = (_ input: SimpleWorkflowModel.RegisterDomainInput) throws -> ()
-    typealias RegisterDomainAsyncType = (_ input: SimpleWorkflowModel.RegisterDomainInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RegisterDomainAsyncType = (_ input: SimpleWorkflowModel.RegisterDomainInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RegisterWorkflowTypeSyncType = (_ input: SimpleWorkflowModel.RegisterWorkflowTypeInput) throws -> ()
-    typealias RegisterWorkflowTypeAsyncType = (_ input: SimpleWorkflowModel.RegisterWorkflowTypeInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RegisterWorkflowTypeAsyncType = (_ input: SimpleWorkflowModel.RegisterWorkflowTypeInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RequestCancelWorkflowExecutionSyncType = (_ input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput) throws -> ()
-    typealias RequestCancelWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RequestCancelWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RespondActivityTaskCanceledSyncType = (_ input: SimpleWorkflowModel.RespondActivityTaskCanceledInput) throws -> ()
-    typealias RespondActivityTaskCanceledAsyncType = (_ input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RespondActivityTaskCanceledAsyncType = (_ input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RespondActivityTaskCompletedSyncType = (_ input: SimpleWorkflowModel.RespondActivityTaskCompletedInput) throws -> ()
-    typealias RespondActivityTaskCompletedAsyncType = (_ input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RespondActivityTaskCompletedAsyncType = (_ input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RespondActivityTaskFailedSyncType = (_ input: SimpleWorkflowModel.RespondActivityTaskFailedInput) throws -> ()
-    typealias RespondActivityTaskFailedAsyncType = (_ input: SimpleWorkflowModel.RespondActivityTaskFailedInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RespondActivityTaskFailedAsyncType = (_ input: SimpleWorkflowModel.RespondActivityTaskFailedInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RespondDecisionTaskCompletedSyncType = (_ input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput) throws -> ()
-    typealias RespondDecisionTaskCompletedAsyncType = (_ input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RespondDecisionTaskCompletedAsyncType = (_ input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias SignalWorkflowExecutionSyncType = (_ input: SimpleWorkflowModel.SignalWorkflowExecutionInput) throws -> ()
-    typealias SignalWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.SignalWorkflowExecutionInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias SignalWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.SignalWorkflowExecutionInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias StartWorkflowExecutionSyncType = (_ input: SimpleWorkflowModel.StartWorkflowExecutionInput) throws -> SimpleWorkflowModel.Run
     typealias StartWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.StartWorkflowExecutionInput, _ completion: @escaping (HTTPResult<SimpleWorkflowModel.Run>) -> ()) throws -> ()
     typealias TerminateWorkflowExecutionSyncType = (_ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws -> ()
-    typealias TerminateWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias TerminateWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
 
     /**
      Invokes the CountClosedWorkflowExecutions operation returning immediately and passing the response to a callback.
@@ -191,7 +191,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    func deprecateActivityTypeAsync(input: SimpleWorkflowModel.DeprecateActivityTypeInput, completion: @escaping (Error?) -> ()) throws
+    func deprecateActivityTypeAsync(input: SimpleWorkflowModel.DeprecateActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeprecateActivityType operation waiting for the response before returning.
@@ -211,7 +211,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainDeprecated, operationNotPermitted, unknownResource.
      */
-    func deprecateDomainAsync(input: SimpleWorkflowModel.DeprecateDomainInput, completion: @escaping (Error?) -> ()) throws
+    func deprecateDomainAsync(input: SimpleWorkflowModel.DeprecateDomainInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeprecateDomain operation waiting for the response before returning.
@@ -231,7 +231,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    func deprecateWorkflowTypeAsync(input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, completion: @escaping (Error?) -> ()) throws
+    func deprecateWorkflowTypeAsync(input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeprecateWorkflowType operation waiting for the response before returning.
@@ -550,7 +550,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    func registerActivityTypeAsync(input: SimpleWorkflowModel.RegisterActivityTypeInput, completion: @escaping (Error?) -> ()) throws
+    func registerActivityTypeAsync(input: SimpleWorkflowModel.RegisterActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RegisterActivityType operation waiting for the response before returning.
@@ -570,7 +570,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted.
      */
-    func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Error?) -> ()) throws
+    func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RegisterDomain operation waiting for the response before returning.
@@ -590,7 +590,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    func registerWorkflowTypeAsync(input: SimpleWorkflowModel.RegisterWorkflowTypeInput, completion: @escaping (Error?) -> ()) throws
+    func registerWorkflowTypeAsync(input: SimpleWorkflowModel.RegisterWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RegisterWorkflowType operation waiting for the response before returning.
@@ -610,7 +610,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    func requestCancelWorkflowExecutionAsync(input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, completion: @escaping (Error?) -> ()) throws
+    func requestCancelWorkflowExecutionAsync(input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RequestCancelWorkflowExecution operation waiting for the response before returning.
@@ -630,7 +630,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    func respondActivityTaskCanceledAsync(input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, completion: @escaping (Error?) -> ()) throws
+    func respondActivityTaskCanceledAsync(input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RespondActivityTaskCanceled operation waiting for the response before returning.
@@ -650,7 +650,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    func respondActivityTaskCompletedAsync(input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, completion: @escaping (Error?) -> ()) throws
+    func respondActivityTaskCompletedAsync(input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RespondActivityTaskCompleted operation waiting for the response before returning.
@@ -670,7 +670,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    func respondActivityTaskFailedAsync(input: SimpleWorkflowModel.RespondActivityTaskFailedInput, completion: @escaping (Error?) -> ()) throws
+    func respondActivityTaskFailedAsync(input: SimpleWorkflowModel.RespondActivityTaskFailedInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RespondActivityTaskFailed operation waiting for the response before returning.
@@ -690,7 +690,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    func respondDecisionTaskCompletedAsync(input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, completion: @escaping (Error?) -> ()) throws
+    func respondDecisionTaskCompletedAsync(input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RespondDecisionTaskCompleted operation waiting for the response before returning.
@@ -710,7 +710,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    func signalWorkflowExecutionAsync(input: SimpleWorkflowModel.SignalWorkflowExecutionInput, completion: @escaping (Error?) -> ()) throws
+    func signalWorkflowExecutionAsync(input: SimpleWorkflowModel.SignalWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the SignalWorkflowExecution operation waiting for the response before returning.
@@ -753,7 +753,7 @@ public protocol SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    func terminateWorkflowExecutionAsync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, completion: @escaping (Error?) -> ()) throws
+    func terminateWorkflowExecutionAsync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the TerminateWorkflowExecution operation waiting for the response before returning.

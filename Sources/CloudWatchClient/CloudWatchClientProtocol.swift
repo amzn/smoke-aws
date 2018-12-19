@@ -28,7 +28,7 @@ import SmokeHTTPClient
  */
 public protocol CloudWatchClientProtocol {
     typealias DeleteAlarmsSyncType = (_ input: CloudWatchModel.DeleteAlarmsInput) throws -> ()
-    typealias DeleteAlarmsAsyncType = (_ input: CloudWatchModel.DeleteAlarmsInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteAlarmsAsyncType = (_ input: CloudWatchModel.DeleteAlarmsInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteDashboardsSyncType = (_ input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards
     typealias DeleteDashboardsAsyncType = (_ input: CloudWatchModel.DeleteDashboardsInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards>) -> ()) throws -> ()
     typealias DescribeAlarmHistorySyncType = (_ input: CloudWatchModel.DescribeAlarmHistoryInput) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory
@@ -38,9 +38,9 @@ public protocol CloudWatchClientProtocol {
     typealias DescribeAlarmsForMetricSyncType = (_ input: CloudWatchModel.DescribeAlarmsForMetricInput) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
     typealias DescribeAlarmsForMetricAsyncType = (_ input: CloudWatchModel.DescribeAlarmsForMetricInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric>) -> ()) throws -> ()
     typealias DisableAlarmActionsSyncType = (_ input: CloudWatchModel.DisableAlarmActionsInput) throws -> ()
-    typealias DisableAlarmActionsAsyncType = (_ input: CloudWatchModel.DisableAlarmActionsInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DisableAlarmActionsAsyncType = (_ input: CloudWatchModel.DisableAlarmActionsInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias EnableAlarmActionsSyncType = (_ input: CloudWatchModel.EnableAlarmActionsInput) throws -> ()
-    typealias EnableAlarmActionsAsyncType = (_ input: CloudWatchModel.EnableAlarmActionsInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias EnableAlarmActionsAsyncType = (_ input: CloudWatchModel.EnableAlarmActionsInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias GetDashboardSyncType = (_ input: CloudWatchModel.GetDashboardInput) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard
     typealias GetDashboardAsyncType = (_ input: CloudWatchModel.GetDashboardInput, _ completion: @escaping (HTTPResult<CloudWatchModel.GetDashboardOutputForGetDashboard>) -> ()) throws -> ()
     typealias GetMetricDataSyncType = (_ input: CloudWatchModel.GetMetricDataInput) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData
@@ -56,11 +56,11 @@ public protocol CloudWatchClientProtocol {
     typealias PutDashboardSyncType = (_ input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
     typealias PutDashboardAsyncType = (_ input: CloudWatchModel.PutDashboardInput, _ completion: @escaping (HTTPResult<CloudWatchModel.PutDashboardOutputForPutDashboard>) -> ()) throws -> ()
     typealias PutMetricAlarmSyncType = (_ input: CloudWatchModel.PutMetricAlarmInput) throws -> ()
-    typealias PutMetricAlarmAsyncType = (_ input: CloudWatchModel.PutMetricAlarmInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias PutMetricAlarmAsyncType = (_ input: CloudWatchModel.PutMetricAlarmInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias PutMetricDataSyncType = (_ input: CloudWatchModel.PutMetricDataInput) throws -> ()
-    typealias PutMetricDataAsyncType = (_ input: CloudWatchModel.PutMetricDataInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias PutMetricDataAsyncType = (_ input: CloudWatchModel.PutMetricDataInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias SetAlarmStateSyncType = (_ input: CloudWatchModel.SetAlarmStateInput) throws -> ()
-    typealias SetAlarmStateAsyncType = (_ input: CloudWatchModel.SetAlarmStateInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias SetAlarmStateAsyncType = (_ input: CloudWatchModel.SetAlarmStateInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
 
     /**
      Invokes the DeleteAlarms operation returning immediately and passing the response to a callback.
@@ -71,7 +71,7 @@ public protocol CloudWatchClientProtocol {
            is complete.
            The possible errors are: resourceNotFound.
      */
-    func deleteAlarmsAsync(input: CloudWatchModel.DeleteAlarmsInput, completion: @escaping (Error?) -> ()) throws
+    func deleteAlarmsAsync(input: CloudWatchModel.DeleteAlarmsInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteAlarms operation waiting for the response before returning.
@@ -180,7 +180,7 @@ public protocol CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func disableAlarmActionsAsync(input: CloudWatchModel.DisableAlarmActionsInput, completion: @escaping (Error?) -> ()) throws
+    func disableAlarmActionsAsync(input: CloudWatchModel.DisableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DisableAlarmActions operation waiting for the response before returning.
@@ -198,7 +198,7 @@ public protocol CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func enableAlarmActionsAsync(input: CloudWatchModel.EnableAlarmActionsInput, completion: @escaping (Error?) -> ()) throws
+    func enableAlarmActionsAsync(input: CloudWatchModel.EnableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the EnableAlarmActions operation waiting for the response before returning.
@@ -376,7 +376,7 @@ public protocol CloudWatchClientProtocol {
            is complete.
            The possible errors are: limitExceeded.
      */
-    func putMetricAlarmAsync(input: CloudWatchModel.PutMetricAlarmInput, completion: @escaping (Error?) -> ()) throws
+    func putMetricAlarmAsync(input: CloudWatchModel.PutMetricAlarmInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the PutMetricAlarm operation waiting for the response before returning.
@@ -396,7 +396,7 @@ public protocol CloudWatchClientProtocol {
            is complete.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    func putMetricDataAsync(input: CloudWatchModel.PutMetricDataInput, completion: @escaping (Error?) -> ()) throws
+    func putMetricDataAsync(input: CloudWatchModel.PutMetricDataInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the PutMetricData operation waiting for the response before returning.
@@ -416,7 +416,7 @@ public protocol CloudWatchClientProtocol {
            is complete.
            The possible errors are: invalidFormat, resourceNotFound.
      */
-    func setAlarmStateAsync(input: CloudWatchModel.SetAlarmStateInput, completion: @escaping (Error?) -> ()) throws
+    func setAlarmStateAsync(input: CloudWatchModel.SetAlarmStateInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the SetAlarmState operation waiting for the response before returning.

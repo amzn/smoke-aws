@@ -80,9 +80,9 @@ public protocol DynamoDBClientProtocol {
     typealias ScanSyncType = (_ input: DynamoDBModel.ScanInput) throws -> DynamoDBModel.ScanOutput
     typealias ScanAsyncType = (_ input: DynamoDBModel.ScanInput, _ completion: @escaping (HTTPResult<DynamoDBModel.ScanOutput>) -> ()) throws -> ()
     typealias TagResourceSyncType = (_ input: DynamoDBModel.TagResourceInput) throws -> ()
-    typealias TagResourceAsyncType = (_ input: DynamoDBModel.TagResourceInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias TagResourceAsyncType = (_ input: DynamoDBModel.TagResourceInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias UntagResourceSyncType = (_ input: DynamoDBModel.UntagResourceInput) throws -> ()
-    typealias UntagResourceAsyncType = (_ input: DynamoDBModel.UntagResourceInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias UntagResourceAsyncType = (_ input: DynamoDBModel.UntagResourceInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias UpdateContinuousBackupsSyncType = (_ input: DynamoDBModel.UpdateContinuousBackupsInput) throws -> DynamoDBModel.UpdateContinuousBackupsOutput
     typealias UpdateContinuousBackupsAsyncType = (_ input: DynamoDBModel.UpdateContinuousBackupsInput, _ completion: @escaping (HTTPResult<DynamoDBModel.UpdateContinuousBackupsOutput>) -> ()) throws -> ()
     typealias UpdateGlobalTableSyncType = (_ input: DynamoDBModel.UpdateGlobalTableInput) throws -> DynamoDBModel.UpdateGlobalTableOutput
@@ -701,7 +701,7 @@ public protocol DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func tagResourceAsync(input: DynamoDBModel.TagResourceInput, completion: @escaping (Error?) -> ()) throws
+    func tagResourceAsync(input: DynamoDBModel.TagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the TagResource operation waiting for the response before returning.
@@ -721,7 +721,7 @@ public protocol DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func untagResourceAsync(input: DynamoDBModel.UntagResourceInput, completion: @escaping (Error?) -> ()) throws
+    func untagResourceAsync(input: DynamoDBModel.UntagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the UntagResource operation waiting for the response before returning.

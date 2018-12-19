@@ -67,6 +67,22 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+    }
+
+    /**
      Invokes the AcceptReservedInstancesExchangeQuote operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -82,7 +98,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AcceptReservedInstancesExchangeQuoteOperationHTTPRequestInput<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest>(encodable: input)
+        let wrappedInput = AcceptReservedInstancesExchangeQuoteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -112,7 +128,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AcceptReservedInstancesExchangeQuoteOperationHTTPRequestInput<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest>(encodable: input)
+        let wrappedInput = AcceptReservedInstancesExchangeQuoteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -142,7 +158,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AcceptVpcEndpointConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest>(encodable: input)
+        let wrappedInput = AcceptVpcEndpointConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -172,7 +188,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AcceptVpcEndpointConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest>(encodable: input)
+        let wrappedInput = AcceptVpcEndpointConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -202,7 +218,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AcceptVpcPeeringConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest>(encodable: input)
+        let wrappedInput = AcceptVpcPeeringConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -232,7 +248,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AcceptVpcPeeringConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest>(encodable: input)
+        let wrappedInput = AcceptVpcPeeringConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -262,7 +278,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AdvertiseByoipCidrOperationHTTPRequestInput<ElasticComputeCloudModel.AdvertiseByoipCidrRequest>(encodable: input)
+        let wrappedInput = AdvertiseByoipCidrOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -292,7 +308,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AdvertiseByoipCidrOperationHTTPRequestInput<ElasticComputeCloudModel.AdvertiseByoipCidrRequest>(encodable: input)
+        let wrappedInput = AdvertiseByoipCidrOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -322,7 +338,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AllocateAddressOperationHTTPRequestInput<ElasticComputeCloudModel.AllocateAddressRequest>(encodable: input)
+        let wrappedInput = AllocateAddressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -352,7 +368,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AllocateAddressOperationHTTPRequestInput<ElasticComputeCloudModel.AllocateAddressRequest>(encodable: input)
+        let wrappedInput = AllocateAddressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -382,7 +398,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AllocateHostsOperationHTTPRequestInput<ElasticComputeCloudModel.AllocateHostsRequest>(encodable: input)
+        let wrappedInput = AllocateHostsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -412,7 +428,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AllocateHostsOperationHTTPRequestInput<ElasticComputeCloudModel.AllocateHostsRequest>(encodable: input)
+        let wrappedInput = AllocateHostsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -442,7 +458,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssignIpv6AddressesOperationHTTPRequestInput<ElasticComputeCloudModel.AssignIpv6AddressesRequest>(encodable: input)
+        let wrappedInput = AssignIpv6AddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -472,7 +488,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssignIpv6AddressesOperationHTTPRequestInput<ElasticComputeCloudModel.AssignIpv6AddressesRequest>(encodable: input)
+        let wrappedInput = AssignIpv6AddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -494,14 +510,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Error?) -> ()) throws {
+    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = AssignPrivateIpAddressesOperationHTTPRequestInput<ElasticComputeCloudModel.AssignPrivateIpAddressesRequest>(encodable: input)
+        let wrappedInput = AssignPrivateIpAddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -529,7 +545,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssignPrivateIpAddressesOperationHTTPRequestInput<ElasticComputeCloudModel.AssignPrivateIpAddressesRequest>(encodable: input)
+        let wrappedInput = AssignPrivateIpAddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -559,7 +575,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateAddressOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateAddressRequest>(encodable: input)
+        let wrappedInput = AssociateAddressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -589,7 +605,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateAddressOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateAddressRequest>(encodable: input)
+        let wrappedInput = AssociateAddressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -611,14 +627,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func associateDhcpOptionsAsync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, completion: @escaping (Error?) -> ()) throws {
+    public func associateDhcpOptionsAsync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateDhcpOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateDhcpOptionsRequest>(encodable: input)
+        let wrappedInput = AssociateDhcpOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -646,7 +662,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateDhcpOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateDhcpOptionsRequest>(encodable: input)
+        let wrappedInput = AssociateDhcpOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -676,7 +692,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateIamInstanceProfileOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateIamInstanceProfileRequest>(encodable: input)
+        let wrappedInput = AssociateIamInstanceProfileOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -706,7 +722,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateIamInstanceProfileOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateIamInstanceProfileRequest>(encodable: input)
+        let wrappedInput = AssociateIamInstanceProfileOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -736,7 +752,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateRouteTableOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateRouteTableRequest>(encodable: input)
+        let wrappedInput = AssociateRouteTableOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -766,7 +782,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateRouteTableOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateRouteTableRequest>(encodable: input)
+        let wrappedInput = AssociateRouteTableOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -796,7 +812,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateSubnetCidrBlockOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest>(encodable: input)
+        let wrappedInput = AssociateSubnetCidrBlockOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -826,7 +842,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateSubnetCidrBlockOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest>(encodable: input)
+        let wrappedInput = AssociateSubnetCidrBlockOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -856,7 +872,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateVpcCidrBlockOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateVpcCidrBlockRequest>(encodable: input)
+        let wrappedInput = AssociateVpcCidrBlockOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -886,7 +902,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssociateVpcCidrBlockOperationHTTPRequestInput<ElasticComputeCloudModel.AssociateVpcCidrBlockRequest>(encodable: input)
+        let wrappedInput = AssociateVpcCidrBlockOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -916,7 +932,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachClassicLinkVpcOperationHTTPRequestInput<ElasticComputeCloudModel.AttachClassicLinkVpcRequest>(encodable: input)
+        let wrappedInput = AttachClassicLinkVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -946,7 +962,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachClassicLinkVpcOperationHTTPRequestInput<ElasticComputeCloudModel.AttachClassicLinkVpcRequest>(encodable: input)
+        let wrappedInput = AttachClassicLinkVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -968,14 +984,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func attachInternetGatewayAsync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func attachInternetGatewayAsync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.AttachInternetGatewayRequest>(encodable: input)
+        let wrappedInput = AttachInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1003,7 +1019,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.AttachInternetGatewayRequest>(encodable: input)
+        let wrappedInput = AttachInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1033,7 +1049,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachNetworkInterfaceOperationHTTPRequestInput<ElasticComputeCloudModel.AttachNetworkInterfaceRequest>(encodable: input)
+        let wrappedInput = AttachNetworkInterfaceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1063,7 +1079,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachNetworkInterfaceOperationHTTPRequestInput<ElasticComputeCloudModel.AttachNetworkInterfaceRequest>(encodable: input)
+        let wrappedInput = AttachNetworkInterfaceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1093,7 +1109,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.AttachVolumeRequest>(encodable: input)
+        let wrappedInput = AttachVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1123,7 +1139,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.AttachVolumeRequest>(encodable: input)
+        let wrappedInput = AttachVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1153,7 +1169,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachVpnGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.AttachVpnGatewayRequest>(encodable: input)
+        let wrappedInput = AttachVpnGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1183,7 +1199,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AttachVpnGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.AttachVpnGatewayRequest>(encodable: input)
+        let wrappedInput = AttachVpnGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1205,14 +1221,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func authorizeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func authorizeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = AuthorizeSecurityGroupEgressOperationHTTPRequestInput<ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest>(encodable: input)
+        let wrappedInput = AuthorizeSecurityGroupEgressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1240,7 +1256,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AuthorizeSecurityGroupEgressOperationHTTPRequestInput<ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest>(encodable: input)
+        let wrappedInput = AuthorizeSecurityGroupEgressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1262,14 +1278,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func authorizeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func authorizeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = AuthorizeSecurityGroupIngressOperationHTTPRequestInput<ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest>(encodable: input)
+        let wrappedInput = AuthorizeSecurityGroupIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1297,7 +1313,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AuthorizeSecurityGroupIngressOperationHTTPRequestInput<ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest>(encodable: input)
+        let wrappedInput = AuthorizeSecurityGroupIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1327,7 +1343,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = BundleInstanceOperationHTTPRequestInput<ElasticComputeCloudModel.BundleInstanceRequest>(encodable: input)
+        let wrappedInput = BundleInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1357,7 +1373,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = BundleInstanceOperationHTTPRequestInput<ElasticComputeCloudModel.BundleInstanceRequest>(encodable: input)
+        let wrappedInput = BundleInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1387,7 +1403,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelBundleTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CancelBundleTaskRequest>(encodable: input)
+        let wrappedInput = CancelBundleTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1417,7 +1433,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelBundleTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CancelBundleTaskRequest>(encodable: input)
+        let wrappedInput = CancelBundleTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1447,7 +1463,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelCapacityReservationOperationHTTPRequestInput<ElasticComputeCloudModel.CancelCapacityReservationRequest>(encodable: input)
+        let wrappedInput = CancelCapacityReservationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1477,7 +1493,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelCapacityReservationOperationHTTPRequestInput<ElasticComputeCloudModel.CancelCapacityReservationRequest>(encodable: input)
+        let wrappedInput = CancelCapacityReservationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1499,14 +1515,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func cancelConversionTaskAsync(input: ElasticComputeCloudModel.CancelConversionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func cancelConversionTaskAsync(input: ElasticComputeCloudModel.CancelConversionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelConversionTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CancelConversionRequest>(encodable: input)
+        let wrappedInput = CancelConversionTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1534,7 +1550,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelConversionTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CancelConversionRequest>(encodable: input)
+        let wrappedInput = CancelConversionTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1556,14 +1572,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func cancelExportTaskAsync(input: ElasticComputeCloudModel.CancelExportTaskRequest, completion: @escaping (Error?) -> ()) throws {
+    public func cancelExportTaskAsync(input: ElasticComputeCloudModel.CancelExportTaskRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelExportTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CancelExportTaskRequest>(encodable: input)
+        let wrappedInput = CancelExportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1591,7 +1607,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelExportTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CancelExportTaskRequest>(encodable: input)
+        let wrappedInput = CancelExportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1621,7 +1637,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelImportTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CancelImportTaskRequest>(encodable: input)
+        let wrappedInput = CancelImportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1651,7 +1667,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelImportTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CancelImportTaskRequest>(encodable: input)
+        let wrappedInput = CancelImportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1681,7 +1697,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelReservedInstancesListingOperationHTTPRequestInput<ElasticComputeCloudModel.CancelReservedInstancesListingRequest>(encodable: input)
+        let wrappedInput = CancelReservedInstancesListingOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1711,7 +1727,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelReservedInstancesListingOperationHTTPRequestInput<ElasticComputeCloudModel.CancelReservedInstancesListingRequest>(encodable: input)
+        let wrappedInput = CancelReservedInstancesListingOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1741,7 +1757,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelSpotFleetRequestsOperationHTTPRequestInput<ElasticComputeCloudModel.CancelSpotFleetRequestsRequest>(encodable: input)
+        let wrappedInput = CancelSpotFleetRequestsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1771,7 +1787,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelSpotFleetRequestsOperationHTTPRequestInput<ElasticComputeCloudModel.CancelSpotFleetRequestsRequest>(encodable: input)
+        let wrappedInput = CancelSpotFleetRequestsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1801,7 +1817,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelSpotInstanceRequestsOperationHTTPRequestInput<ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest>(encodable: input)
+        let wrappedInput = CancelSpotInstanceRequestsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1831,7 +1847,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CancelSpotInstanceRequestsOperationHTTPRequestInput<ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest>(encodable: input)
+        let wrappedInput = CancelSpotInstanceRequestsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1861,7 +1877,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ConfirmProductInstanceOperationHTTPRequestInput<ElasticComputeCloudModel.ConfirmProductInstanceRequest>(encodable: input)
+        let wrappedInput = ConfirmProductInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1891,7 +1907,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ConfirmProductInstanceOperationHTTPRequestInput<ElasticComputeCloudModel.ConfirmProductInstanceRequest>(encodable: input)
+        let wrappedInput = ConfirmProductInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1921,7 +1937,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CopyFpgaImageOperationHTTPRequestInput<ElasticComputeCloudModel.CopyFpgaImageRequest>(encodable: input)
+        let wrappedInput = CopyFpgaImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1951,7 +1967,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CopyFpgaImageOperationHTTPRequestInput<ElasticComputeCloudModel.CopyFpgaImageRequest>(encodable: input)
+        let wrappedInput = CopyFpgaImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1981,7 +1997,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CopyImageOperationHTTPRequestInput<ElasticComputeCloudModel.CopyImageRequest>(encodable: input)
+        let wrappedInput = CopyImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2011,7 +2027,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CopyImageOperationHTTPRequestInput<ElasticComputeCloudModel.CopyImageRequest>(encodable: input)
+        let wrappedInput = CopyImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2041,7 +2057,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CopySnapshotOperationHTTPRequestInput<ElasticComputeCloudModel.CopySnapshotRequest>(encodable: input)
+        let wrappedInput = CopySnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2071,7 +2087,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CopySnapshotOperationHTTPRequestInput<ElasticComputeCloudModel.CopySnapshotRequest>(encodable: input)
+        let wrappedInput = CopySnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2101,7 +2117,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateCapacityReservationOperationHTTPRequestInput<ElasticComputeCloudModel.CreateCapacityReservationRequest>(encodable: input)
+        let wrappedInput = CreateCapacityReservationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2131,7 +2147,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateCapacityReservationOperationHTTPRequestInput<ElasticComputeCloudModel.CreateCapacityReservationRequest>(encodable: input)
+        let wrappedInput = CreateCapacityReservationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2161,7 +2177,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateCustomerGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateCustomerGatewayRequest>(encodable: input)
+        let wrappedInput = CreateCustomerGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2191,7 +2207,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateCustomerGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateCustomerGatewayRequest>(encodable: input)
+        let wrappedInput = CreateCustomerGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2221,7 +2237,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateDefaultSubnetOperationHTTPRequestInput<ElasticComputeCloudModel.CreateDefaultSubnetRequest>(encodable: input)
+        let wrappedInput = CreateDefaultSubnetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2251,7 +2267,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateDefaultSubnetOperationHTTPRequestInput<ElasticComputeCloudModel.CreateDefaultSubnetRequest>(encodable: input)
+        let wrappedInput = CreateDefaultSubnetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2281,7 +2297,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateDefaultVpcOperationHTTPRequestInput<ElasticComputeCloudModel.CreateDefaultVpcRequest>(encodable: input)
+        let wrappedInput = CreateDefaultVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2311,7 +2327,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateDefaultVpcOperationHTTPRequestInput<ElasticComputeCloudModel.CreateDefaultVpcRequest>(encodable: input)
+        let wrappedInput = CreateDefaultVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2341,7 +2357,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateDhcpOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.CreateDhcpOptionsRequest>(encodable: input)
+        let wrappedInput = CreateDhcpOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2371,7 +2387,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateDhcpOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.CreateDhcpOptionsRequest>(encodable: input)
+        let wrappedInput = CreateDhcpOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2401,7 +2417,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateEgressOnlyInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest>(encodable: input)
+        let wrappedInput = CreateEgressOnlyInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2431,7 +2447,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateEgressOnlyInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest>(encodable: input)
+        let wrappedInput = CreateEgressOnlyInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2461,7 +2477,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateFleetOperationHTTPRequestInput<ElasticComputeCloudModel.CreateFleetRequest>(encodable: input)
+        let wrappedInput = CreateFleetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2491,7 +2507,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateFleetOperationHTTPRequestInput<ElasticComputeCloudModel.CreateFleetRequest>(encodable: input)
+        let wrappedInput = CreateFleetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2521,7 +2537,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateFlowLogsOperationHTTPRequestInput<ElasticComputeCloudModel.CreateFlowLogsRequest>(encodable: input)
+        let wrappedInput = CreateFlowLogsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2551,7 +2567,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateFlowLogsOperationHTTPRequestInput<ElasticComputeCloudModel.CreateFlowLogsRequest>(encodable: input)
+        let wrappedInput = CreateFlowLogsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2581,7 +2597,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateFpgaImageOperationHTTPRequestInput<ElasticComputeCloudModel.CreateFpgaImageRequest>(encodable: input)
+        let wrappedInput = CreateFpgaImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2611,7 +2627,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateFpgaImageOperationHTTPRequestInput<ElasticComputeCloudModel.CreateFpgaImageRequest>(encodable: input)
+        let wrappedInput = CreateFpgaImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2641,7 +2657,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateImageOperationHTTPRequestInput<ElasticComputeCloudModel.CreateImageRequest>(encodable: input)
+        let wrappedInput = CreateImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2671,7 +2687,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateImageOperationHTTPRequestInput<ElasticComputeCloudModel.CreateImageRequest>(encodable: input)
+        let wrappedInput = CreateImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2701,7 +2717,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateInstanceExportTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CreateInstanceExportTaskRequest>(encodable: input)
+        let wrappedInput = CreateInstanceExportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2731,7 +2747,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateInstanceExportTaskOperationHTTPRequestInput<ElasticComputeCloudModel.CreateInstanceExportTaskRequest>(encodable: input)
+        let wrappedInput = CreateInstanceExportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2761,7 +2777,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateInternetGatewayRequest>(encodable: input)
+        let wrappedInput = CreateInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2791,7 +2807,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateInternetGatewayRequest>(encodable: input)
+        let wrappedInput = CreateInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2821,7 +2837,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateKeyPairOperationHTTPRequestInput<ElasticComputeCloudModel.CreateKeyPairRequest>(encodable: input)
+        let wrappedInput = CreateKeyPairOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2851,7 +2867,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateKeyPairOperationHTTPRequestInput<ElasticComputeCloudModel.CreateKeyPairRequest>(encodable: input)
+        let wrappedInput = CreateKeyPairOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2881,7 +2897,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateLaunchTemplateOperationHTTPRequestInput<ElasticComputeCloudModel.CreateLaunchTemplateRequest>(encodable: input)
+        let wrappedInput = CreateLaunchTemplateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2911,7 +2927,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateLaunchTemplateOperationHTTPRequestInput<ElasticComputeCloudModel.CreateLaunchTemplateRequest>(encodable: input)
+        let wrappedInput = CreateLaunchTemplateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2941,7 +2957,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateLaunchTemplateVersionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest>(encodable: input)
+        let wrappedInput = CreateLaunchTemplateVersionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -2971,7 +2987,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateLaunchTemplateVersionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest>(encodable: input)
+        let wrappedInput = CreateLaunchTemplateVersionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3001,7 +3017,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNatGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNatGatewayRequest>(encodable: input)
+        let wrappedInput = CreateNatGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3031,7 +3047,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNatGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNatGatewayRequest>(encodable: input)
+        let wrappedInput = CreateNatGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3061,7 +3077,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNetworkAclOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNetworkAclRequest>(encodable: input)
+        let wrappedInput = CreateNetworkAclOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3091,7 +3107,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNetworkAclOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNetworkAclRequest>(encodable: input)
+        let wrappedInput = CreateNetworkAclOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3113,14 +3129,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createNetworkAclEntryAsync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws {
+    public func createNetworkAclEntryAsync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNetworkAclEntryOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNetworkAclEntryRequest>(encodable: input)
+        let wrappedInput = CreateNetworkAclEntryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3148,7 +3164,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNetworkAclEntryOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNetworkAclEntryRequest>(encodable: input)
+        let wrappedInput = CreateNetworkAclEntryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3178,7 +3194,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNetworkInterfaceOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNetworkInterfaceRequest>(encodable: input)
+        let wrappedInput = CreateNetworkInterfaceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3208,7 +3224,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNetworkInterfaceOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNetworkInterfaceRequest>(encodable: input)
+        let wrappedInput = CreateNetworkInterfaceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3238,7 +3254,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNetworkInterfacePermissionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest>(encodable: input)
+        let wrappedInput = CreateNetworkInterfacePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3268,7 +3284,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateNetworkInterfacePermissionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest>(encodable: input)
+        let wrappedInput = CreateNetworkInterfacePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3290,14 +3306,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (Error?) -> ()) throws {
+    public func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = CreatePlacementGroupOperationHTTPRequestInput<ElasticComputeCloudModel.CreatePlacementGroupRequest>(encodable: input)
+        let wrappedInput = CreatePlacementGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3325,7 +3341,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreatePlacementGroupOperationHTTPRequestInput<ElasticComputeCloudModel.CreatePlacementGroupRequest>(encodable: input)
+        let wrappedInput = CreatePlacementGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3355,7 +3371,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateReservedInstancesListingOperationHTTPRequestInput<ElasticComputeCloudModel.CreateReservedInstancesListingRequest>(encodable: input)
+        let wrappedInput = CreateReservedInstancesListingOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3385,7 +3401,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateReservedInstancesListingOperationHTTPRequestInput<ElasticComputeCloudModel.CreateReservedInstancesListingRequest>(encodable: input)
+        let wrappedInput = CreateReservedInstancesListingOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3415,7 +3431,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateRouteOperationHTTPRequestInput<ElasticComputeCloudModel.CreateRouteRequest>(encodable: input)
+        let wrappedInput = CreateRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3445,7 +3461,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateRouteOperationHTTPRequestInput<ElasticComputeCloudModel.CreateRouteRequest>(encodable: input)
+        let wrappedInput = CreateRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3475,7 +3491,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateRouteTableOperationHTTPRequestInput<ElasticComputeCloudModel.CreateRouteTableRequest>(encodable: input)
+        let wrappedInput = CreateRouteTableOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3505,7 +3521,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateRouteTableOperationHTTPRequestInput<ElasticComputeCloudModel.CreateRouteTableRequest>(encodable: input)
+        let wrappedInput = CreateRouteTableOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3535,7 +3551,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateSecurityGroupOperationHTTPRequestInput<ElasticComputeCloudModel.CreateSecurityGroupRequest>(encodable: input)
+        let wrappedInput = CreateSecurityGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3565,7 +3581,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateSecurityGroupOperationHTTPRequestInput<ElasticComputeCloudModel.CreateSecurityGroupRequest>(encodable: input)
+        let wrappedInput = CreateSecurityGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3595,7 +3611,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateSnapshotOperationHTTPRequestInput<ElasticComputeCloudModel.CreateSnapshotRequest>(encodable: input)
+        let wrappedInput = CreateSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3625,7 +3641,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateSnapshotOperationHTTPRequestInput<ElasticComputeCloudModel.CreateSnapshotRequest>(encodable: input)
+        let wrappedInput = CreateSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3655,7 +3671,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateSpotDatafeedSubscriptionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest>(encodable: input)
+        let wrappedInput = CreateSpotDatafeedSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3685,7 +3701,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateSpotDatafeedSubscriptionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest>(encodable: input)
+        let wrappedInput = CreateSpotDatafeedSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3715,7 +3731,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateSubnetOperationHTTPRequestInput<ElasticComputeCloudModel.CreateSubnetRequest>(encodable: input)
+        let wrappedInput = CreateSubnetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3745,7 +3761,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateSubnetOperationHTTPRequestInput<ElasticComputeCloudModel.CreateSubnetRequest>(encodable: input)
+        let wrappedInput = CreateSubnetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3767,14 +3783,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createTagsAsync(input: ElasticComputeCloudModel.CreateTagsRequest, completion: @escaping (Error?) -> ()) throws {
+    public func createTagsAsync(input: ElasticComputeCloudModel.CreateTagsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateTagsOperationHTTPRequestInput<ElasticComputeCloudModel.CreateTagsRequest>(encodable: input)
+        let wrappedInput = CreateTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3802,7 +3818,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateTagsOperationHTTPRequestInput<ElasticComputeCloudModel.CreateTagsRequest>(encodable: input)
+        let wrappedInput = CreateTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3832,7 +3848,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVolumeRequest>(encodable: input)
+        let wrappedInput = CreateVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3862,7 +3878,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVolumeRequest>(encodable: input)
+        let wrappedInput = CreateVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3892,7 +3908,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcRequest>(encodable: input)
+        let wrappedInput = CreateVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3922,7 +3938,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcRequest>(encodable: input)
+        let wrappedInput = CreateVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3952,7 +3968,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcEndpointOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcEndpointRequest>(encodable: input)
+        let wrappedInput = CreateVpcEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -3982,7 +3998,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcEndpointOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcEndpointRequest>(encodable: input)
+        let wrappedInput = CreateVpcEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4012,7 +4028,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcEndpointConnectionNotificationOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest>(encodable: input)
+        let wrappedInput = CreateVpcEndpointConnectionNotificationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4042,7 +4058,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcEndpointConnectionNotificationOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest>(encodable: input)
+        let wrappedInput = CreateVpcEndpointConnectionNotificationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4072,7 +4088,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcEndpointServiceConfigurationOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest>(encodable: input)
+        let wrappedInput = CreateVpcEndpointServiceConfigurationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4102,7 +4118,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcEndpointServiceConfigurationOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest>(encodable: input)
+        let wrappedInput = CreateVpcEndpointServiceConfigurationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4132,7 +4148,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcPeeringConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest>(encodable: input)
+        let wrappedInput = CreateVpcPeeringConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4162,7 +4178,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpcPeeringConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest>(encodable: input)
+        let wrappedInput = CreateVpcPeeringConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4192,7 +4208,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpnConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpnConnectionRequest>(encodable: input)
+        let wrappedInput = CreateVpnConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4222,7 +4238,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpnConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpnConnectionRequest>(encodable: input)
+        let wrappedInput = CreateVpnConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4244,14 +4260,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createVpnConnectionRouteAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, completion: @escaping (Error?) -> ()) throws {
+    public func createVpnConnectionRouteAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpnConnectionRouteOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpnConnectionRouteRequest>(encodable: input)
+        let wrappedInput = CreateVpnConnectionRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4279,7 +4295,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpnConnectionRouteOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpnConnectionRouteRequest>(encodable: input)
+        let wrappedInput = CreateVpnConnectionRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4309,7 +4325,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpnGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpnGatewayRequest>(encodable: input)
+        let wrappedInput = CreateVpnGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4339,7 +4355,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateVpnGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.CreateVpnGatewayRequest>(encodable: input)
+        let wrappedInput = CreateVpnGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4361,14 +4377,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteCustomerGatewayAsync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteCustomerGatewayAsync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteCustomerGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteCustomerGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteCustomerGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4396,7 +4412,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteCustomerGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteCustomerGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteCustomerGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4418,14 +4434,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteDhcpOptionsAsync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteDhcpOptionsAsync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteDhcpOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteDhcpOptionsRequest>(encodable: input)
+        let wrappedInput = DeleteDhcpOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4453,7 +4469,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteDhcpOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteDhcpOptionsRequest>(encodable: input)
+        let wrappedInput = DeleteDhcpOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4483,7 +4499,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteEgressOnlyInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteEgressOnlyInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4513,7 +4529,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteEgressOnlyInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteEgressOnlyInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4543,7 +4559,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteFleetsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteFleetsRequest>(encodable: input)
+        let wrappedInput = DeleteFleetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4573,7 +4589,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteFleetsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteFleetsRequest>(encodable: input)
+        let wrappedInput = DeleteFleetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4603,7 +4619,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteFlowLogsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteFlowLogsRequest>(encodable: input)
+        let wrappedInput = DeleteFlowLogsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4633,7 +4649,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteFlowLogsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteFlowLogsRequest>(encodable: input)
+        let wrappedInput = DeleteFlowLogsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4663,7 +4679,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteFpgaImageOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteFpgaImageRequest>(encodable: input)
+        let wrappedInput = DeleteFpgaImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4693,7 +4709,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteFpgaImageOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteFpgaImageRequest>(encodable: input)
+        let wrappedInput = DeleteFpgaImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4715,14 +4731,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteInternetGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4750,7 +4766,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteInternetGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4772,14 +4788,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteKeyPairAsync(input: ElasticComputeCloudModel.DeleteKeyPairRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteKeyPairAsync(input: ElasticComputeCloudModel.DeleteKeyPairRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteKeyPairOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteKeyPairRequest>(encodable: input)
+        let wrappedInput = DeleteKeyPairOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4807,7 +4823,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteKeyPairOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteKeyPairRequest>(encodable: input)
+        let wrappedInput = DeleteKeyPairOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4837,7 +4853,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteLaunchTemplateOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteLaunchTemplateRequest>(encodable: input)
+        let wrappedInput = DeleteLaunchTemplateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4867,7 +4883,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteLaunchTemplateOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteLaunchTemplateRequest>(encodable: input)
+        let wrappedInput = DeleteLaunchTemplateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4897,7 +4913,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteLaunchTemplateVersionsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest>(encodable: input)
+        let wrappedInput = DeleteLaunchTemplateVersionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4927,7 +4943,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteLaunchTemplateVersionsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest>(encodable: input)
+        let wrappedInput = DeleteLaunchTemplateVersionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4957,7 +4973,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNatGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNatGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteNatGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -4987,7 +5003,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNatGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNatGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteNatGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5009,14 +5025,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkAclAsync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteNetworkAclAsync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNetworkAclOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNetworkAclRequest>(encodable: input)
+        let wrappedInput = DeleteNetworkAclOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5044,7 +5060,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNetworkAclOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNetworkAclRequest>(encodable: input)
+        let wrappedInput = DeleteNetworkAclOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5066,14 +5082,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkAclEntryAsync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteNetworkAclEntryAsync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNetworkAclEntryOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNetworkAclEntryRequest>(encodable: input)
+        let wrappedInput = DeleteNetworkAclEntryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5101,7 +5117,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNetworkAclEntryOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNetworkAclEntryRequest>(encodable: input)
+        let wrappedInput = DeleteNetworkAclEntryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5123,14 +5139,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkInterfaceAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteNetworkInterfaceAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNetworkInterfaceOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNetworkInterfaceRequest>(encodable: input)
+        let wrappedInput = DeleteNetworkInterfaceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5158,7 +5174,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNetworkInterfaceOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNetworkInterfaceRequest>(encodable: input)
+        let wrappedInput = DeleteNetworkInterfaceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5188,7 +5204,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNetworkInterfacePermissionOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest>(encodable: input)
+        let wrappedInput = DeleteNetworkInterfacePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5218,7 +5234,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteNetworkInterfacePermissionOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest>(encodable: input)
+        let wrappedInput = DeleteNetworkInterfacePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5240,14 +5256,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deletePlacementGroupAsync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deletePlacementGroupAsync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeletePlacementGroupOperationHTTPRequestInput<ElasticComputeCloudModel.DeletePlacementGroupRequest>(encodable: input)
+        let wrappedInput = DeletePlacementGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5275,7 +5291,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeletePlacementGroupOperationHTTPRequestInput<ElasticComputeCloudModel.DeletePlacementGroupRequest>(encodable: input)
+        let wrappedInput = DeletePlacementGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5297,14 +5313,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteRouteAsync(input: ElasticComputeCloudModel.DeleteRouteRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteRouteAsync(input: ElasticComputeCloudModel.DeleteRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteRouteOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteRouteRequest>(encodable: input)
+        let wrappedInput = DeleteRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5332,7 +5348,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteRouteOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteRouteRequest>(encodable: input)
+        let wrappedInput = DeleteRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5354,14 +5370,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteRouteTableAsync(input: ElasticComputeCloudModel.DeleteRouteTableRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteRouteTableAsync(input: ElasticComputeCloudModel.DeleteRouteTableRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteRouteTableOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteRouteTableRequest>(encodable: input)
+        let wrappedInput = DeleteRouteTableOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5389,7 +5405,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteRouteTableOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteRouteTableRequest>(encodable: input)
+        let wrappedInput = DeleteRouteTableOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5411,14 +5427,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSecurityGroupAsync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteSecurityGroupAsync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteSecurityGroupOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteSecurityGroupRequest>(encodable: input)
+        let wrappedInput = DeleteSecurityGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5446,7 +5462,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteSecurityGroupOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteSecurityGroupRequest>(encodable: input)
+        let wrappedInput = DeleteSecurityGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5468,14 +5484,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSnapshotAsync(input: ElasticComputeCloudModel.DeleteSnapshotRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteSnapshotAsync(input: ElasticComputeCloudModel.DeleteSnapshotRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteSnapshotOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteSnapshotRequest>(encodable: input)
+        let wrappedInput = DeleteSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5503,7 +5519,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteSnapshotOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteSnapshotRequest>(encodable: input)
+        let wrappedInput = DeleteSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5525,14 +5541,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteSpotDatafeedSubscriptionOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest>(encodable: input)
+        let wrappedInput = DeleteSpotDatafeedSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5560,7 +5576,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteSpotDatafeedSubscriptionOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest>(encodable: input)
+        let wrappedInput = DeleteSpotDatafeedSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5582,14 +5598,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSubnetAsync(input: ElasticComputeCloudModel.DeleteSubnetRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteSubnetAsync(input: ElasticComputeCloudModel.DeleteSubnetRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteSubnetOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteSubnetRequest>(encodable: input)
+        let wrappedInput = DeleteSubnetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5617,7 +5633,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteSubnetOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteSubnetRequest>(encodable: input)
+        let wrappedInput = DeleteSubnetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5639,14 +5655,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteTagsAsync(input: ElasticComputeCloudModel.DeleteTagsRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteTagsAsync(input: ElasticComputeCloudModel.DeleteTagsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteTagsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteTagsRequest>(encodable: input)
+        let wrappedInput = DeleteTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5674,7 +5690,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteTagsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteTagsRequest>(encodable: input)
+        let wrappedInput = DeleteTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5696,14 +5712,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVolumeAsync(input: ElasticComputeCloudModel.DeleteVolumeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVolumeAsync(input: ElasticComputeCloudModel.DeleteVolumeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVolumeRequest>(encodable: input)
+        let wrappedInput = DeleteVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5731,7 +5747,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVolumeRequest>(encodable: input)
+        let wrappedInput = DeleteVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5753,14 +5769,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpcAsync(input: ElasticComputeCloudModel.DeleteVpcRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVpcAsync(input: ElasticComputeCloudModel.DeleteVpcRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcRequest>(encodable: input)
+        let wrappedInput = DeleteVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5788,7 +5804,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcRequest>(encodable: input)
+        let wrappedInput = DeleteVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5818,7 +5834,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcEndpointConnectionNotificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest>(encodable: input)
+        let wrappedInput = DeleteVpcEndpointConnectionNotificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5848,7 +5864,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcEndpointConnectionNotificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest>(encodable: input)
+        let wrappedInput = DeleteVpcEndpointConnectionNotificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5878,7 +5894,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcEndpointServiceConfigurationsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest>(encodable: input)
+        let wrappedInput = DeleteVpcEndpointServiceConfigurationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5908,7 +5924,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcEndpointServiceConfigurationsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest>(encodable: input)
+        let wrappedInput = DeleteVpcEndpointServiceConfigurationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5938,7 +5954,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcEndpointsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcEndpointsRequest>(encodable: input)
+        let wrappedInput = DeleteVpcEndpointsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5968,7 +5984,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcEndpointsOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcEndpointsRequest>(encodable: input)
+        let wrappedInput = DeleteVpcEndpointsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -5998,7 +6014,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcPeeringConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest>(encodable: input)
+        let wrappedInput = DeleteVpcPeeringConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6028,7 +6044,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpcPeeringConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest>(encodable: input)
+        let wrappedInput = DeleteVpcPeeringConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6050,14 +6066,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnConnectionAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVpnConnectionAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpnConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpnConnectionRequest>(encodable: input)
+        let wrappedInput = DeleteVpnConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6085,7 +6101,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpnConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpnConnectionRequest>(encodable: input)
+        let wrappedInput = DeleteVpnConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6107,14 +6123,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnConnectionRouteAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVpnConnectionRouteAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpnConnectionRouteOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest>(encodable: input)
+        let wrappedInput = DeleteVpnConnectionRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6142,7 +6158,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpnConnectionRouteOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest>(encodable: input)
+        let wrappedInput = DeleteVpnConnectionRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6164,14 +6180,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnGatewayAsync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVpnGatewayAsync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpnGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpnGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteVpnGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6199,7 +6215,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteVpnGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DeleteVpnGatewayRequest>(encodable: input)
+        let wrappedInput = DeleteVpnGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6229,7 +6245,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeprovisionByoipCidrOperationHTTPRequestInput<ElasticComputeCloudModel.DeprovisionByoipCidrRequest>(encodable: input)
+        let wrappedInput = DeprovisionByoipCidrOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6259,7 +6275,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeprovisionByoipCidrOperationHTTPRequestInput<ElasticComputeCloudModel.DeprovisionByoipCidrRequest>(encodable: input)
+        let wrappedInput = DeprovisionByoipCidrOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6281,14 +6297,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deregisterImageAsync(input: ElasticComputeCloudModel.DeregisterImageRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deregisterImageAsync(input: ElasticComputeCloudModel.DeregisterImageRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeregisterImageOperationHTTPRequestInput<ElasticComputeCloudModel.DeregisterImageRequest>(encodable: input)
+        let wrappedInput = DeregisterImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6316,7 +6332,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeregisterImageOperationHTTPRequestInput<ElasticComputeCloudModel.DeregisterImageRequest>(encodable: input)
+        let wrappedInput = DeregisterImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6346,7 +6362,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAccountAttributesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeAccountAttributesRequest>(encodable: input)
+        let wrappedInput = DescribeAccountAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6376,7 +6392,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAccountAttributesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeAccountAttributesRequest>(encodable: input)
+        let wrappedInput = DescribeAccountAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6406,7 +6422,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAddressesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeAddressesRequest>(encodable: input)
+        let wrappedInput = DescribeAddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6436,7 +6452,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAddressesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeAddressesRequest>(encodable: input)
+        let wrappedInput = DescribeAddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6466,7 +6482,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAggregateIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeAggregateIdFormatRequest>(encodable: input)
+        let wrappedInput = DescribeAggregateIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6496,7 +6512,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAggregateIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeAggregateIdFormatRequest>(encodable: input)
+        let wrappedInput = DescribeAggregateIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6526,7 +6542,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAvailabilityZonesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeAvailabilityZonesRequest>(encodable: input)
+        let wrappedInput = DescribeAvailabilityZonesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6556,7 +6572,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeAvailabilityZonesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeAvailabilityZonesRequest>(encodable: input)
+        let wrappedInput = DescribeAvailabilityZonesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6586,7 +6602,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeBundleTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeBundleTasksRequest>(encodable: input)
+        let wrappedInput = DescribeBundleTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6616,7 +6632,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeBundleTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeBundleTasksRequest>(encodable: input)
+        let wrappedInput = DescribeBundleTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6646,7 +6662,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeByoipCidrsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeByoipCidrsRequest>(encodable: input)
+        let wrappedInput = DescribeByoipCidrsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6676,7 +6692,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeByoipCidrsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeByoipCidrsRequest>(encodable: input)
+        let wrappedInput = DescribeByoipCidrsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6706,7 +6722,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeCapacityReservationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeCapacityReservationsRequest>(encodable: input)
+        let wrappedInput = DescribeCapacityReservationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6736,7 +6752,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeCapacityReservationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeCapacityReservationsRequest>(encodable: input)
+        let wrappedInput = DescribeCapacityReservationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6766,7 +6782,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeClassicLinkInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeClassicLinkInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6796,7 +6812,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeClassicLinkInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeClassicLinkInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6826,7 +6842,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeConversionTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeConversionTasksRequest>(encodable: input)
+        let wrappedInput = DescribeConversionTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6856,7 +6872,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeConversionTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeConversionTasksRequest>(encodable: input)
+        let wrappedInput = DescribeConversionTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6886,7 +6902,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeCustomerGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeCustomerGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeCustomerGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6916,7 +6932,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeCustomerGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeCustomerGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeCustomerGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6946,7 +6962,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeDhcpOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeDhcpOptionsRequest>(encodable: input)
+        let wrappedInput = DescribeDhcpOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -6976,7 +6992,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeDhcpOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeDhcpOptionsRequest>(encodable: input)
+        let wrappedInput = DescribeDhcpOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7006,7 +7022,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeEgressOnlyInternetGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeEgressOnlyInternetGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7036,7 +7052,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeEgressOnlyInternetGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeEgressOnlyInternetGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7066,7 +7082,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeElasticGpusOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeElasticGpusRequest>(encodable: input)
+        let wrappedInput = DescribeElasticGpusOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7096,7 +7112,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeElasticGpusOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeElasticGpusRequest>(encodable: input)
+        let wrappedInput = DescribeElasticGpusOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7126,7 +7142,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeExportTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeExportTasksRequest>(encodable: input)
+        let wrappedInput = DescribeExportTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7156,7 +7172,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeExportTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeExportTasksRequest>(encodable: input)
+        let wrappedInput = DescribeExportTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7186,7 +7202,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFleetHistoryOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFleetHistoryRequest>(encodable: input)
+        let wrappedInput = DescribeFleetHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7216,7 +7232,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFleetHistoryOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFleetHistoryRequest>(encodable: input)
+        let wrappedInput = DescribeFleetHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7246,7 +7262,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFleetInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFleetInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeFleetInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7276,7 +7292,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFleetInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFleetInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeFleetInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7306,7 +7322,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFleetsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFleetsRequest>(encodable: input)
+        let wrappedInput = DescribeFleetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7336,7 +7352,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFleetsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFleetsRequest>(encodable: input)
+        let wrappedInput = DescribeFleetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7366,7 +7382,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFlowLogsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFlowLogsRequest>(encodable: input)
+        let wrappedInput = DescribeFlowLogsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7396,7 +7412,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFlowLogsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFlowLogsRequest>(encodable: input)
+        let wrappedInput = DescribeFlowLogsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7426,7 +7442,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFpgaImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeFpgaImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7456,7 +7472,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFpgaImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeFpgaImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7486,7 +7502,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFpgaImagesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFpgaImagesRequest>(encodable: input)
+        let wrappedInput = DescribeFpgaImagesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7516,7 +7532,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeFpgaImagesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeFpgaImagesRequest>(encodable: input)
+        let wrappedInput = DescribeFpgaImagesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7546,7 +7562,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeHostReservationOfferingsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest>(encodable: input)
+        let wrappedInput = DescribeHostReservationOfferingsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7576,7 +7592,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeHostReservationOfferingsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest>(encodable: input)
+        let wrappedInput = DescribeHostReservationOfferingsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7606,7 +7622,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeHostReservationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeHostReservationsRequest>(encodable: input)
+        let wrappedInput = DescribeHostReservationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7636,7 +7652,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeHostReservationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeHostReservationsRequest>(encodable: input)
+        let wrappedInput = DescribeHostReservationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7666,7 +7682,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeHostsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeHostsRequest>(encodable: input)
+        let wrappedInput = DescribeHostsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7696,7 +7712,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeHostsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeHostsRequest>(encodable: input)
+        let wrappedInput = DescribeHostsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7726,7 +7742,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeIamInstanceProfileAssociationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest>(encodable: input)
+        let wrappedInput = DescribeIamInstanceProfileAssociationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7756,7 +7772,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeIamInstanceProfileAssociationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest>(encodable: input)
+        let wrappedInput = DescribeIamInstanceProfileAssociationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7786,7 +7802,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeIdFormatRequest>(encodable: input)
+        let wrappedInput = DescribeIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7816,7 +7832,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeIdFormatRequest>(encodable: input)
+        let wrappedInput = DescribeIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7846,7 +7862,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeIdentityIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeIdentityIdFormatRequest>(encodable: input)
+        let wrappedInput = DescribeIdentityIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7876,7 +7892,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeIdentityIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeIdentityIdFormatRequest>(encodable: input)
+        let wrappedInput = DescribeIdentityIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7906,7 +7922,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeImageAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7936,7 +7952,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeImageAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7966,7 +7982,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeImagesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeImagesRequest>(encodable: input)
+        let wrappedInput = DescribeImagesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -7996,7 +8012,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeImagesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeImagesRequest>(encodable: input)
+        let wrappedInput = DescribeImagesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8026,7 +8042,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeImportImageTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeImportImageTasksRequest>(encodable: input)
+        let wrappedInput = DescribeImportImageTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8056,7 +8072,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeImportImageTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeImportImageTasksRequest>(encodable: input)
+        let wrappedInput = DescribeImportImageTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8086,7 +8102,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeImportSnapshotTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest>(encodable: input)
+        let wrappedInput = DescribeImportSnapshotTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8116,7 +8132,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeImportSnapshotTasksOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest>(encodable: input)
+        let wrappedInput = DescribeImportSnapshotTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8146,7 +8162,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInstanceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInstanceAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeInstanceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8176,7 +8192,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInstanceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInstanceAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeInstanceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8206,7 +8222,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInstanceCreditSpecificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest>(encodable: input)
+        let wrappedInput = DescribeInstanceCreditSpecificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8236,7 +8252,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInstanceCreditSpecificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest>(encodable: input)
+        let wrappedInput = DescribeInstanceCreditSpecificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8266,7 +8282,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInstanceStatusOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInstanceStatusRequest>(encodable: input)
+        let wrappedInput = DescribeInstanceStatusOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8296,7 +8312,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInstanceStatusOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInstanceStatusRequest>(encodable: input)
+        let wrappedInput = DescribeInstanceStatusOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8326,7 +8342,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8356,7 +8372,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8386,7 +8402,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInternetGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInternetGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeInternetGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8416,7 +8432,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeInternetGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeInternetGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeInternetGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8446,7 +8462,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeKeyPairsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeKeyPairsRequest>(encodable: input)
+        let wrappedInput = DescribeKeyPairsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8476,7 +8492,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeKeyPairsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeKeyPairsRequest>(encodable: input)
+        let wrappedInput = DescribeKeyPairsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8506,7 +8522,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeLaunchTemplateVersionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest>(encodable: input)
+        let wrappedInput = DescribeLaunchTemplateVersionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8536,7 +8552,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeLaunchTemplateVersionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest>(encodable: input)
+        let wrappedInput = DescribeLaunchTemplateVersionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8566,7 +8582,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeLaunchTemplatesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeLaunchTemplatesRequest>(encodable: input)
+        let wrappedInput = DescribeLaunchTemplatesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8596,7 +8612,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeLaunchTemplatesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeLaunchTemplatesRequest>(encodable: input)
+        let wrappedInput = DescribeLaunchTemplatesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8626,7 +8642,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeMovingAddressesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeMovingAddressesRequest>(encodable: input)
+        let wrappedInput = DescribeMovingAddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8656,7 +8672,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeMovingAddressesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeMovingAddressesRequest>(encodable: input)
+        let wrappedInput = DescribeMovingAddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8686,7 +8702,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNatGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNatGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeNatGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8716,7 +8732,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNatGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNatGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeNatGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8746,7 +8762,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNetworkAclsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNetworkAclsRequest>(encodable: input)
+        let wrappedInput = DescribeNetworkAclsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8776,7 +8792,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNetworkAclsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNetworkAclsRequest>(encodable: input)
+        let wrappedInput = DescribeNetworkAclsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8806,7 +8822,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNetworkInterfaceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeNetworkInterfaceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8836,7 +8852,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNetworkInterfaceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeNetworkInterfaceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8866,7 +8882,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNetworkInterfacePermissionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest>(encodable: input)
+        let wrappedInput = DescribeNetworkInterfacePermissionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8896,7 +8912,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNetworkInterfacePermissionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest>(encodable: input)
+        let wrappedInput = DescribeNetworkInterfacePermissionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8926,7 +8942,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNetworkInterfacesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNetworkInterfacesRequest>(encodable: input)
+        let wrappedInput = DescribeNetworkInterfacesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8956,7 +8972,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeNetworkInterfacesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeNetworkInterfacesRequest>(encodable: input)
+        let wrappedInput = DescribeNetworkInterfacesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -8986,7 +9002,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribePlacementGroupsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribePlacementGroupsRequest>(encodable: input)
+        let wrappedInput = DescribePlacementGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9016,7 +9032,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribePlacementGroupsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribePlacementGroupsRequest>(encodable: input)
+        let wrappedInput = DescribePlacementGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9046,7 +9062,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribePrefixListsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribePrefixListsRequest>(encodable: input)
+        let wrappedInput = DescribePrefixListsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9076,7 +9092,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribePrefixListsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribePrefixListsRequest>(encodable: input)
+        let wrappedInput = DescribePrefixListsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9106,7 +9122,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribePrincipalIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.DescribePrincipalIdFormatRequest>(encodable: input)
+        let wrappedInput = DescribePrincipalIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9136,7 +9152,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribePrincipalIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.DescribePrincipalIdFormatRequest>(encodable: input)
+        let wrappedInput = DescribePrincipalIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9166,7 +9182,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribePublicIpv4PoolsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest>(encodable: input)
+        let wrappedInput = DescribePublicIpv4PoolsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9196,7 +9212,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribePublicIpv4PoolsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest>(encodable: input)
+        let wrappedInput = DescribePublicIpv4PoolsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9226,7 +9242,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeRegionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeRegionsRequest>(encodable: input)
+        let wrappedInput = DescribeRegionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9256,7 +9272,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeRegionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeRegionsRequest>(encodable: input)
+        let wrappedInput = DescribeRegionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9286,7 +9302,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeReservedInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeReservedInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeReservedInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9316,7 +9332,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeReservedInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeReservedInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeReservedInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9346,7 +9362,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeReservedInstancesListingsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest>(encodable: input)
+        let wrappedInput = DescribeReservedInstancesListingsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9376,7 +9392,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeReservedInstancesListingsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest>(encodable: input)
+        let wrappedInput = DescribeReservedInstancesListingsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9406,7 +9422,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeReservedInstancesModificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest>(encodable: input)
+        let wrappedInput = DescribeReservedInstancesModificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9436,7 +9452,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeReservedInstancesModificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest>(encodable: input)
+        let wrappedInput = DescribeReservedInstancesModificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9466,7 +9482,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeReservedInstancesOfferingsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest>(encodable: input)
+        let wrappedInput = DescribeReservedInstancesOfferingsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9496,7 +9512,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeReservedInstancesOfferingsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest>(encodable: input)
+        let wrappedInput = DescribeReservedInstancesOfferingsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9526,7 +9542,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeRouteTablesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeRouteTablesRequest>(encodable: input)
+        let wrappedInput = DescribeRouteTablesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9556,7 +9572,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeRouteTablesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeRouteTablesRequest>(encodable: input)
+        let wrappedInput = DescribeRouteTablesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9586,7 +9602,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeScheduledInstanceAvailabilityOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest>(encodable: input)
+        let wrappedInput = DescribeScheduledInstanceAvailabilityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9616,7 +9632,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeScheduledInstanceAvailabilityOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest>(encodable: input)
+        let wrappedInput = DescribeScheduledInstanceAvailabilityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9646,7 +9662,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeScheduledInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeScheduledInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeScheduledInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9676,7 +9692,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeScheduledInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeScheduledInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeScheduledInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9706,7 +9722,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSecurityGroupReferencesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest>(encodable: input)
+        let wrappedInput = DescribeSecurityGroupReferencesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9736,7 +9752,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSecurityGroupReferencesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest>(encodable: input)
+        let wrappedInput = DescribeSecurityGroupReferencesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9766,7 +9782,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSecurityGroupsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSecurityGroupsRequest>(encodable: input)
+        let wrappedInput = DescribeSecurityGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9796,7 +9812,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSecurityGroupsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSecurityGroupsRequest>(encodable: input)
+        let wrappedInput = DescribeSecurityGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9826,7 +9842,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSnapshotAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSnapshotAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeSnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9856,7 +9872,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSnapshotAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSnapshotAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeSnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9886,7 +9902,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSnapshotsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSnapshotsRequest>(encodable: input)
+        let wrappedInput = DescribeSnapshotsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9916,7 +9932,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSnapshotsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSnapshotsRequest>(encodable: input)
+        let wrappedInput = DescribeSnapshotsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9946,7 +9962,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotDatafeedSubscriptionOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest>(encodable: input)
+        let wrappedInput = DescribeSpotDatafeedSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -9976,7 +9992,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotDatafeedSubscriptionOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest>(encodable: input)
+        let wrappedInput = DescribeSpotDatafeedSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10006,7 +10022,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotFleetInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeSpotFleetInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10036,7 +10052,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotFleetInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest>(encodable: input)
+        let wrappedInput = DescribeSpotFleetInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10066,7 +10082,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotFleetRequestHistoryOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest>(encodable: input)
+        let wrappedInput = DescribeSpotFleetRequestHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10096,7 +10112,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotFleetRequestHistoryOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest>(encodable: input)
+        let wrappedInput = DescribeSpotFleetRequestHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10126,7 +10142,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotFleetRequestsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest>(encodable: input)
+        let wrappedInput = DescribeSpotFleetRequestsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10156,7 +10172,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotFleetRequestsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest>(encodable: input)
+        let wrappedInput = DescribeSpotFleetRequestsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10186,7 +10202,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotInstanceRequestsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest>(encodable: input)
+        let wrappedInput = DescribeSpotInstanceRequestsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10216,7 +10232,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotInstanceRequestsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest>(encodable: input)
+        let wrappedInput = DescribeSpotInstanceRequestsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10246,7 +10262,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotPriceHistoryOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest>(encodable: input)
+        let wrappedInput = DescribeSpotPriceHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10276,7 +10292,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSpotPriceHistoryOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest>(encodable: input)
+        let wrappedInput = DescribeSpotPriceHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10306,7 +10322,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeStaleSecurityGroupsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest>(encodable: input)
+        let wrappedInput = DescribeStaleSecurityGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10336,7 +10352,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeStaleSecurityGroupsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest>(encodable: input)
+        let wrappedInput = DescribeStaleSecurityGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10366,7 +10382,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSubnetsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSubnetsRequest>(encodable: input)
+        let wrappedInput = DescribeSubnetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10396,7 +10412,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeSubnetsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeSubnetsRequest>(encodable: input)
+        let wrappedInput = DescribeSubnetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10426,7 +10442,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeTagsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeTagsRequest>(encodable: input)
+        let wrappedInput = DescribeTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10456,7 +10472,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeTagsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeTagsRequest>(encodable: input)
+        let wrappedInput = DescribeTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10486,7 +10502,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVolumeAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVolumeAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeVolumeAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10516,7 +10532,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVolumeAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVolumeAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeVolumeAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10546,7 +10562,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVolumeStatusOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVolumeStatusRequest>(encodable: input)
+        let wrappedInput = DescribeVolumeStatusOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10576,7 +10592,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVolumeStatusOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVolumeStatusRequest>(encodable: input)
+        let wrappedInput = DescribeVolumeStatusOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10606,7 +10622,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVolumesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVolumesRequest>(encodable: input)
+        let wrappedInput = DescribeVolumesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10636,7 +10652,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVolumesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVolumesRequest>(encodable: input)
+        let wrappedInput = DescribeVolumesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10666,7 +10682,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVolumesModificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVolumesModificationsRequest>(encodable: input)
+        let wrappedInput = DescribeVolumesModificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10696,7 +10712,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVolumesModificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVolumesModificationsRequest>(encodable: input)
+        let wrappedInput = DescribeVolumesModificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10726,7 +10742,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeVpcAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10756,7 +10772,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcAttributeRequest>(encodable: input)
+        let wrappedInput = DescribeVpcAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10786,7 +10802,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcClassicLinkOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcClassicLinkRequest>(encodable: input)
+        let wrappedInput = DescribeVpcClassicLinkOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10816,7 +10832,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcClassicLinkOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcClassicLinkRequest>(encodable: input)
+        let wrappedInput = DescribeVpcClassicLinkOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10846,7 +10862,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcClassicLinkDnsSupportOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest>(encodable: input)
+        let wrappedInput = DescribeVpcClassicLinkDnsSupportOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10876,7 +10892,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcClassicLinkDnsSupportOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest>(encodable: input)
+        let wrappedInput = DescribeVpcClassicLinkDnsSupportOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10906,7 +10922,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointConnectionNotificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointConnectionNotificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10936,7 +10952,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointConnectionNotificationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointConnectionNotificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10966,7 +10982,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -10996,7 +11012,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11026,7 +11042,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointServiceConfigurationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointServiceConfigurationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11056,7 +11072,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointServiceConfigurationsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointServiceConfigurationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11086,7 +11102,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointServicePermissionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointServicePermissionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11116,7 +11132,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointServicePermissionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointServicePermissionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11146,7 +11162,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointServicesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointServicesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11176,7 +11192,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointServicesOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointServicesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11206,7 +11222,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11236,7 +11252,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcEndpointsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcEndpointsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcEndpointsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11266,7 +11282,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcPeeringConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcPeeringConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11296,7 +11312,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcPeeringConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcPeeringConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11326,7 +11342,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11356,7 +11372,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpcsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpcsRequest>(encodable: input)
+        let wrappedInput = DescribeVpcsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11386,7 +11402,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpnConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpnConnectionsRequest>(encodable: input)
+        let wrappedInput = DescribeVpnConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11416,7 +11432,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpnConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpnConnectionsRequest>(encodable: input)
+        let wrappedInput = DescribeVpnConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11446,7 +11462,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpnGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpnGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeVpnGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11476,7 +11492,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DescribeVpnGatewaysOperationHTTPRequestInput<ElasticComputeCloudModel.DescribeVpnGatewaysRequest>(encodable: input)
+        let wrappedInput = DescribeVpnGatewaysOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11506,7 +11522,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachClassicLinkVpcOperationHTTPRequestInput<ElasticComputeCloudModel.DetachClassicLinkVpcRequest>(encodable: input)
+        let wrappedInput = DetachClassicLinkVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11536,7 +11552,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachClassicLinkVpcOperationHTTPRequestInput<ElasticComputeCloudModel.DetachClassicLinkVpcRequest>(encodable: input)
+        let wrappedInput = DetachClassicLinkVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11558,14 +11574,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachInternetGatewayAsync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func detachInternetGatewayAsync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DetachInternetGatewayRequest>(encodable: input)
+        let wrappedInput = DetachInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11593,7 +11609,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachInternetGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DetachInternetGatewayRequest>(encodable: input)
+        let wrappedInput = DetachInternetGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11615,14 +11631,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachNetworkInterfaceAsync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, completion: @escaping (Error?) -> ()) throws {
+    public func detachNetworkInterfaceAsync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachNetworkInterfaceOperationHTTPRequestInput<ElasticComputeCloudModel.DetachNetworkInterfaceRequest>(encodable: input)
+        let wrappedInput = DetachNetworkInterfaceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11650,7 +11666,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachNetworkInterfaceOperationHTTPRequestInput<ElasticComputeCloudModel.DetachNetworkInterfaceRequest>(encodable: input)
+        let wrappedInput = DetachNetworkInterfaceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11680,7 +11696,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.DetachVolumeRequest>(encodable: input)
+        let wrappedInput = DetachVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11710,7 +11726,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.DetachVolumeRequest>(encodable: input)
+        let wrappedInput = DetachVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11732,14 +11748,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachVpnGatewayAsync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func detachVpnGatewayAsync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachVpnGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DetachVpnGatewayRequest>(encodable: input)
+        let wrappedInput = DetachVpnGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11767,7 +11783,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DetachVpnGatewayOperationHTTPRequestInput<ElasticComputeCloudModel.DetachVpnGatewayRequest>(encodable: input)
+        let wrappedInput = DetachVpnGatewayOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11789,14 +11805,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, completion: @escaping (Error?) -> ()) throws {
+    public func disableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DisableVgwRoutePropagationOperationHTTPRequestInput<ElasticComputeCloudModel.DisableVgwRoutePropagationRequest>(encodable: input)
+        let wrappedInput = DisableVgwRoutePropagationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11824,7 +11840,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisableVgwRoutePropagationOperationHTTPRequestInput<ElasticComputeCloudModel.DisableVgwRoutePropagationRequest>(encodable: input)
+        let wrappedInput = DisableVgwRoutePropagationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11854,7 +11870,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisableVpcClassicLinkOperationHTTPRequestInput<ElasticComputeCloudModel.DisableVpcClassicLinkRequest>(encodable: input)
+        let wrappedInput = DisableVpcClassicLinkOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11884,7 +11900,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisableVpcClassicLinkOperationHTTPRequestInput<ElasticComputeCloudModel.DisableVpcClassicLinkRequest>(encodable: input)
+        let wrappedInput = DisableVpcClassicLinkOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11914,7 +11930,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisableVpcClassicLinkDnsSupportOperationHTTPRequestInput<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest>(encodable: input)
+        let wrappedInput = DisableVpcClassicLinkDnsSupportOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11944,7 +11960,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisableVpcClassicLinkDnsSupportOperationHTTPRequestInput<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest>(encodable: input)
+        let wrappedInput = DisableVpcClassicLinkDnsSupportOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -11966,14 +11982,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disassociateAddressAsync(input: ElasticComputeCloudModel.DisassociateAddressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func disassociateAddressAsync(input: ElasticComputeCloudModel.DisassociateAddressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateAddressOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateAddressRequest>(encodable: input)
+        let wrappedInput = DisassociateAddressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12001,7 +12017,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateAddressOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateAddressRequest>(encodable: input)
+        let wrappedInput = DisassociateAddressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12031,7 +12047,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateIamInstanceProfileOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest>(encodable: input)
+        let wrappedInput = DisassociateIamInstanceProfileOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12061,7 +12077,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateIamInstanceProfileOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest>(encodable: input)
+        let wrappedInput = DisassociateIamInstanceProfileOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12083,14 +12099,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disassociateRouteTableAsync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest, completion: @escaping (Error?) -> ()) throws {
+    public func disassociateRouteTableAsync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateRouteTableOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateRouteTableRequest>(encodable: input)
+        let wrappedInput = DisassociateRouteTableOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12118,7 +12134,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateRouteTableOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateRouteTableRequest>(encodable: input)
+        let wrappedInput = DisassociateRouteTableOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12148,7 +12164,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateSubnetCidrBlockOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest>(encodable: input)
+        let wrappedInput = DisassociateSubnetCidrBlockOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12178,7 +12194,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateSubnetCidrBlockOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest>(encodable: input)
+        let wrappedInput = DisassociateSubnetCidrBlockOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12208,7 +12224,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateVpcCidrBlockOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest>(encodable: input)
+        let wrappedInput = DisassociateVpcCidrBlockOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12238,7 +12254,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DisassociateVpcCidrBlockOperationHTTPRequestInput<ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest>(encodable: input)
+        let wrappedInput = DisassociateVpcCidrBlockOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12260,14 +12276,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, completion: @escaping (Error?) -> ()) throws {
+    public func enableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableVgwRoutePropagationOperationHTTPRequestInput<ElasticComputeCloudModel.EnableVgwRoutePropagationRequest>(encodable: input)
+        let wrappedInput = EnableVgwRoutePropagationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12295,7 +12311,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableVgwRoutePropagationOperationHTTPRequestInput<ElasticComputeCloudModel.EnableVgwRoutePropagationRequest>(encodable: input)
+        let wrappedInput = EnableVgwRoutePropagationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12317,14 +12333,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableVolumeIOAsync(input: ElasticComputeCloudModel.EnableVolumeIORequest, completion: @escaping (Error?) -> ()) throws {
+    public func enableVolumeIOAsync(input: ElasticComputeCloudModel.EnableVolumeIORequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableVolumeIOOperationHTTPRequestInput<ElasticComputeCloudModel.EnableVolumeIORequest>(encodable: input)
+        let wrappedInput = EnableVolumeIOOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12352,7 +12368,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableVolumeIOOperationHTTPRequestInput<ElasticComputeCloudModel.EnableVolumeIORequest>(encodable: input)
+        let wrappedInput = EnableVolumeIOOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12382,7 +12398,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableVpcClassicLinkOperationHTTPRequestInput<ElasticComputeCloudModel.EnableVpcClassicLinkRequest>(encodable: input)
+        let wrappedInput = EnableVpcClassicLinkOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12412,7 +12428,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableVpcClassicLinkOperationHTTPRequestInput<ElasticComputeCloudModel.EnableVpcClassicLinkRequest>(encodable: input)
+        let wrappedInput = EnableVpcClassicLinkOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12442,7 +12458,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableVpcClassicLinkDnsSupportOperationHTTPRequestInput<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest>(encodable: input)
+        let wrappedInput = EnableVpcClassicLinkDnsSupportOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12472,7 +12488,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = EnableVpcClassicLinkDnsSupportOperationHTTPRequestInput<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest>(encodable: input)
+        let wrappedInput = EnableVpcClassicLinkDnsSupportOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12502,7 +12518,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetConsoleOutputOperationHTTPRequestInput<ElasticComputeCloudModel.GetConsoleOutputRequest>(encodable: input)
+        let wrappedInput = GetConsoleOutputOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12532,7 +12548,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetConsoleOutputOperationHTTPRequestInput<ElasticComputeCloudModel.GetConsoleOutputRequest>(encodable: input)
+        let wrappedInput = GetConsoleOutputOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12562,7 +12578,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetConsoleScreenshotOperationHTTPRequestInput<ElasticComputeCloudModel.GetConsoleScreenshotRequest>(encodable: input)
+        let wrappedInput = GetConsoleScreenshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12592,7 +12608,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetConsoleScreenshotOperationHTTPRequestInput<ElasticComputeCloudModel.GetConsoleScreenshotRequest>(encodable: input)
+        let wrappedInput = GetConsoleScreenshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12622,7 +12638,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetHostReservationPurchasePreviewOperationHTTPRequestInput<ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest>(encodable: input)
+        let wrappedInput = GetHostReservationPurchasePreviewOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12652,7 +12668,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetHostReservationPurchasePreviewOperationHTTPRequestInput<ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest>(encodable: input)
+        let wrappedInput = GetHostReservationPurchasePreviewOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12682,7 +12698,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetLaunchTemplateDataOperationHTTPRequestInput<ElasticComputeCloudModel.GetLaunchTemplateDataRequest>(encodable: input)
+        let wrappedInput = GetLaunchTemplateDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12712,7 +12728,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetLaunchTemplateDataOperationHTTPRequestInput<ElasticComputeCloudModel.GetLaunchTemplateDataRequest>(encodable: input)
+        let wrappedInput = GetLaunchTemplateDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12742,7 +12758,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetPasswordDataOperationHTTPRequestInput<ElasticComputeCloudModel.GetPasswordDataRequest>(encodable: input)
+        let wrappedInput = GetPasswordDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12772,7 +12788,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetPasswordDataOperationHTTPRequestInput<ElasticComputeCloudModel.GetPasswordDataRequest>(encodable: input)
+        let wrappedInput = GetPasswordDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12802,7 +12818,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetReservedInstancesExchangeQuoteOperationHTTPRequestInput<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest>(encodable: input)
+        let wrappedInput = GetReservedInstancesExchangeQuoteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12832,7 +12848,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetReservedInstancesExchangeQuoteOperationHTTPRequestInput<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest>(encodable: input)
+        let wrappedInput = GetReservedInstancesExchangeQuoteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12862,7 +12878,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportImageOperationHTTPRequestInput<ElasticComputeCloudModel.ImportImageRequest>(encodable: input)
+        let wrappedInput = ImportImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12892,7 +12908,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportImageOperationHTTPRequestInput<ElasticComputeCloudModel.ImportImageRequest>(encodable: input)
+        let wrappedInput = ImportImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12922,7 +12938,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportInstanceOperationHTTPRequestInput<ElasticComputeCloudModel.ImportInstanceRequest>(encodable: input)
+        let wrappedInput = ImportInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12952,7 +12968,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportInstanceOperationHTTPRequestInput<ElasticComputeCloudModel.ImportInstanceRequest>(encodable: input)
+        let wrappedInput = ImportInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -12982,7 +12998,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportKeyPairOperationHTTPRequestInput<ElasticComputeCloudModel.ImportKeyPairRequest>(encodable: input)
+        let wrappedInput = ImportKeyPairOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13012,7 +13028,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportKeyPairOperationHTTPRequestInput<ElasticComputeCloudModel.ImportKeyPairRequest>(encodable: input)
+        let wrappedInput = ImportKeyPairOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13042,7 +13058,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportSnapshotOperationHTTPRequestInput<ElasticComputeCloudModel.ImportSnapshotRequest>(encodable: input)
+        let wrappedInput = ImportSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13072,7 +13088,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportSnapshotOperationHTTPRequestInput<ElasticComputeCloudModel.ImportSnapshotRequest>(encodable: input)
+        let wrappedInput = ImportSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13102,7 +13118,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.ImportVolumeRequest>(encodable: input)
+        let wrappedInput = ImportVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13132,7 +13148,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ImportVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.ImportVolumeRequest>(encodable: input)
+        let wrappedInput = ImportVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13162,7 +13178,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyCapacityReservationOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyCapacityReservationRequest>(encodable: input)
+        let wrappedInput = ModifyCapacityReservationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13192,7 +13208,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyCapacityReservationOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyCapacityReservationRequest>(encodable: input)
+        let wrappedInput = ModifyCapacityReservationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13222,7 +13238,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyFleetOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyFleetRequest>(encodable: input)
+        let wrappedInput = ModifyFleetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13252,7 +13268,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyFleetOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyFleetRequest>(encodable: input)
+        let wrappedInput = ModifyFleetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13282,7 +13298,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyFpgaImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyFpgaImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13312,7 +13328,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyFpgaImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyFpgaImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13342,7 +13358,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyHostsOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyHostsRequest>(encodable: input)
+        let wrappedInput = ModifyHostsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13372,7 +13388,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyHostsOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyHostsRequest>(encodable: input)
+        let wrappedInput = ModifyHostsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13394,14 +13410,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdFormatRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdFormatRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyIdFormatRequest>(encodable: input)
+        let wrappedInput = ModifyIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13429,7 +13445,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyIdFormatRequest>(encodable: input)
+        let wrappedInput = ModifyIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13451,14 +13467,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyIdentityIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyIdentityIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyIdentityIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyIdentityIdFormatRequest>(encodable: input)
+        let wrappedInput = ModifyIdentityIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13486,7 +13502,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyIdentityIdFormatOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyIdentityIdFormatRequest>(encodable: input)
+        let wrappedInput = ModifyIdentityIdFormatOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13508,14 +13524,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyImageAttributeAsync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyImageAttributeAsync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyImageAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13543,7 +13559,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyImageAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13565,14 +13581,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyInstanceAttributeAsync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyInstanceAttributeAsync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyInstanceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyInstanceAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyInstanceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13600,7 +13616,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyInstanceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyInstanceAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyInstanceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13630,7 +13646,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyInstanceCapacityReservationAttributesOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest>(encodable: input)
+        let wrappedInput = ModifyInstanceCapacityReservationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13660,7 +13676,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyInstanceCapacityReservationAttributesOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest>(encodable: input)
+        let wrappedInput = ModifyInstanceCapacityReservationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13690,7 +13706,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyInstanceCreditSpecificationOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest>(encodable: input)
+        let wrappedInput = ModifyInstanceCreditSpecificationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13720,7 +13736,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyInstanceCreditSpecificationOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest>(encodable: input)
+        let wrappedInput = ModifyInstanceCreditSpecificationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13750,7 +13766,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyInstancePlacementOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyInstancePlacementRequest>(encodable: input)
+        let wrappedInput = ModifyInstancePlacementOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13780,7 +13796,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyInstancePlacementOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyInstancePlacementRequest>(encodable: input)
+        let wrappedInput = ModifyInstancePlacementOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13810,7 +13826,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyLaunchTemplateOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyLaunchTemplateRequest>(encodable: input)
+        let wrappedInput = ModifyLaunchTemplateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13840,7 +13856,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyLaunchTemplateOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyLaunchTemplateRequest>(encodable: input)
+        let wrappedInput = ModifyLaunchTemplateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13862,14 +13878,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyNetworkInterfaceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyNetworkInterfaceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13897,7 +13913,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyNetworkInterfaceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyNetworkInterfaceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13927,7 +13943,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyReservedInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyReservedInstancesRequest>(encodable: input)
+        let wrappedInput = ModifyReservedInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13957,7 +13973,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyReservedInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyReservedInstancesRequest>(encodable: input)
+        let wrappedInput = ModifyReservedInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -13979,14 +13995,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifySnapshotAttributeAsync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifySnapshotAttributeAsync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifySnapshotAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifySnapshotAttributeRequest>(encodable: input)
+        let wrappedInput = ModifySnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14014,7 +14030,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifySnapshotAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifySnapshotAttributeRequest>(encodable: input)
+        let wrappedInput = ModifySnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14044,7 +14060,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifySpotFleetRequestOperationHTTPRequestInput<ElasticComputeCloudModel.ModifySpotFleetRequestRequest>(encodable: input)
+        let wrappedInput = ModifySpotFleetRequestOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14074,7 +14090,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifySpotFleetRequestOperationHTTPRequestInput<ElasticComputeCloudModel.ModifySpotFleetRequestRequest>(encodable: input)
+        let wrappedInput = ModifySpotFleetRequestOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14096,14 +14112,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifySubnetAttributeAsync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifySubnetAttributeAsync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifySubnetAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifySubnetAttributeRequest>(encodable: input)
+        let wrappedInput = ModifySubnetAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14131,7 +14147,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifySubnetAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifySubnetAttributeRequest>(encodable: input)
+        let wrappedInput = ModifySubnetAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14161,7 +14177,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVolumeRequest>(encodable: input)
+        let wrappedInput = ModifyVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14191,7 +14207,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVolumeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVolumeRequest>(encodable: input)
+        let wrappedInput = ModifyVolumeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14213,14 +14229,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyVolumeAttributeAsync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyVolumeAttributeAsync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVolumeAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVolumeAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyVolumeAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14248,7 +14264,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVolumeAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVolumeAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyVolumeAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14270,14 +14286,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyVpcAttributeAsync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyVpcAttributeAsync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyVpcAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14305,7 +14321,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcAttributeRequest>(encodable: input)
+        let wrappedInput = ModifyVpcAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14335,7 +14351,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcEndpointOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcEndpointRequest>(encodable: input)
+        let wrappedInput = ModifyVpcEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14365,7 +14381,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcEndpointOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcEndpointRequest>(encodable: input)
+        let wrappedInput = ModifyVpcEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14395,7 +14411,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcEndpointConnectionNotificationOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest>(encodable: input)
+        let wrappedInput = ModifyVpcEndpointConnectionNotificationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14425,7 +14441,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcEndpointConnectionNotificationOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest>(encodable: input)
+        let wrappedInput = ModifyVpcEndpointConnectionNotificationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14455,7 +14471,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcEndpointServiceConfigurationOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest>(encodable: input)
+        let wrappedInput = ModifyVpcEndpointServiceConfigurationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14485,7 +14501,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcEndpointServiceConfigurationOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest>(encodable: input)
+        let wrappedInput = ModifyVpcEndpointServiceConfigurationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14515,7 +14531,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcEndpointServicePermissionsOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest>(encodable: input)
+        let wrappedInput = ModifyVpcEndpointServicePermissionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14545,7 +14561,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcEndpointServicePermissionsOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest>(encodable: input)
+        let wrappedInput = ModifyVpcEndpointServicePermissionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14575,7 +14591,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcPeeringConnectionOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest>(encodable: input)
+        let wrappedInput = ModifyVpcPeeringConnectionOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14605,7 +14621,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcPeeringConnectionOptionsOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest>(encodable: input)
+        let wrappedInput = ModifyVpcPeeringConnectionOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14635,7 +14651,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcTenancyOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcTenancyRequest>(encodable: input)
+        let wrappedInput = ModifyVpcTenancyOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14665,7 +14681,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ModifyVpcTenancyOperationHTTPRequestInput<ElasticComputeCloudModel.ModifyVpcTenancyRequest>(encodable: input)
+        let wrappedInput = ModifyVpcTenancyOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14695,7 +14711,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = MonitorInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.MonitorInstancesRequest>(encodable: input)
+        let wrappedInput = MonitorInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14725,7 +14741,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = MonitorInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.MonitorInstancesRequest>(encodable: input)
+        let wrappedInput = MonitorInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14755,7 +14771,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = MoveAddressToVpcOperationHTTPRequestInput<ElasticComputeCloudModel.MoveAddressToVpcRequest>(encodable: input)
+        let wrappedInput = MoveAddressToVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14785,7 +14801,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = MoveAddressToVpcOperationHTTPRequestInput<ElasticComputeCloudModel.MoveAddressToVpcRequest>(encodable: input)
+        let wrappedInput = MoveAddressToVpcOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14815,7 +14831,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ProvisionByoipCidrOperationHTTPRequestInput<ElasticComputeCloudModel.ProvisionByoipCidrRequest>(encodable: input)
+        let wrappedInput = ProvisionByoipCidrOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14845,7 +14861,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ProvisionByoipCidrOperationHTTPRequestInput<ElasticComputeCloudModel.ProvisionByoipCidrRequest>(encodable: input)
+        let wrappedInput = ProvisionByoipCidrOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14875,7 +14891,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PurchaseHostReservationOperationHTTPRequestInput<ElasticComputeCloudModel.PurchaseHostReservationRequest>(encodable: input)
+        let wrappedInput = PurchaseHostReservationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14905,7 +14921,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PurchaseHostReservationOperationHTTPRequestInput<ElasticComputeCloudModel.PurchaseHostReservationRequest>(encodable: input)
+        let wrappedInput = PurchaseHostReservationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14935,7 +14951,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PurchaseReservedInstancesOfferingOperationHTTPRequestInput<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest>(encodable: input)
+        let wrappedInput = PurchaseReservedInstancesOfferingOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14965,7 +14981,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PurchaseReservedInstancesOfferingOperationHTTPRequestInput<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest>(encodable: input)
+        let wrappedInput = PurchaseReservedInstancesOfferingOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -14995,7 +15011,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PurchaseScheduledInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.PurchaseScheduledInstancesRequest>(encodable: input)
+        let wrappedInput = PurchaseScheduledInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15025,7 +15041,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PurchaseScheduledInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.PurchaseScheduledInstancesRequest>(encodable: input)
+        let wrappedInput = PurchaseScheduledInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15047,14 +15063,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func rebootInstancesAsync(input: ElasticComputeCloudModel.RebootInstancesRequest, completion: @escaping (Error?) -> ()) throws {
+    public func rebootInstancesAsync(input: ElasticComputeCloudModel.RebootInstancesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = RebootInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.RebootInstancesRequest>(encodable: input)
+        let wrappedInput = RebootInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15082,7 +15098,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RebootInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.RebootInstancesRequest>(encodable: input)
+        let wrappedInput = RebootInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15112,7 +15128,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RegisterImageOperationHTTPRequestInput<ElasticComputeCloudModel.RegisterImageRequest>(encodable: input)
+        let wrappedInput = RegisterImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15142,7 +15158,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RegisterImageOperationHTTPRequestInput<ElasticComputeCloudModel.RegisterImageRequest>(encodable: input)
+        let wrappedInput = RegisterImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15172,7 +15188,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RejectVpcEndpointConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest>(encodable: input)
+        let wrappedInput = RejectVpcEndpointConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15202,7 +15218,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RejectVpcEndpointConnectionsOperationHTTPRequestInput<ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest>(encodable: input)
+        let wrappedInput = RejectVpcEndpointConnectionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15232,7 +15248,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RejectVpcPeeringConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest>(encodable: input)
+        let wrappedInput = RejectVpcPeeringConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15262,7 +15278,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RejectVpcPeeringConnectionOperationHTTPRequestInput<ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest>(encodable: input)
+        let wrappedInput = RejectVpcPeeringConnectionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15284,14 +15300,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func releaseAddressAsync(input: ElasticComputeCloudModel.ReleaseAddressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func releaseAddressAsync(input: ElasticComputeCloudModel.ReleaseAddressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ReleaseAddressOperationHTTPRequestInput<ElasticComputeCloudModel.ReleaseAddressRequest>(encodable: input)
+        let wrappedInput = ReleaseAddressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15319,7 +15335,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReleaseAddressOperationHTTPRequestInput<ElasticComputeCloudModel.ReleaseAddressRequest>(encodable: input)
+        let wrappedInput = ReleaseAddressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15349,7 +15365,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReleaseHostsOperationHTTPRequestInput<ElasticComputeCloudModel.ReleaseHostsRequest>(encodable: input)
+        let wrappedInput = ReleaseHostsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15379,7 +15395,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReleaseHostsOperationHTTPRequestInput<ElasticComputeCloudModel.ReleaseHostsRequest>(encodable: input)
+        let wrappedInput = ReleaseHostsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15409,7 +15425,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceIamInstanceProfileAssociationOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest>(encodable: input)
+        let wrappedInput = ReplaceIamInstanceProfileAssociationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15439,7 +15455,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceIamInstanceProfileAssociationOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest>(encodable: input)
+        let wrappedInput = ReplaceIamInstanceProfileAssociationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15469,7 +15485,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceNetworkAclAssociationOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest>(encodable: input)
+        let wrappedInput = ReplaceNetworkAclAssociationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15499,7 +15515,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceNetworkAclAssociationOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest>(encodable: input)
+        let wrappedInput = ReplaceNetworkAclAssociationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15521,14 +15537,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func replaceNetworkAclEntryAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws {
+    public func replaceNetworkAclEntryAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceNetworkAclEntryOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest>(encodable: input)
+        let wrappedInput = ReplaceNetworkAclEntryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15556,7 +15572,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceNetworkAclEntryOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest>(encodable: input)
+        let wrappedInput = ReplaceNetworkAclEntryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15578,14 +15594,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func replaceRouteAsync(input: ElasticComputeCloudModel.ReplaceRouteRequest, completion: @escaping (Error?) -> ()) throws {
+    public func replaceRouteAsync(input: ElasticComputeCloudModel.ReplaceRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceRouteOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceRouteRequest>(encodable: input)
+        let wrappedInput = ReplaceRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15613,7 +15629,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceRouteOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceRouteRequest>(encodable: input)
+        let wrappedInput = ReplaceRouteOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15643,7 +15659,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceRouteTableAssociationOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest>(encodable: input)
+        let wrappedInput = ReplaceRouteTableAssociationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15673,7 +15689,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReplaceRouteTableAssociationOperationHTTPRequestInput<ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest>(encodable: input)
+        let wrappedInput = ReplaceRouteTableAssociationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15695,14 +15711,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func reportInstanceStatusAsync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest, completion: @escaping (Error?) -> ()) throws {
+    public func reportInstanceStatusAsync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ReportInstanceStatusOperationHTTPRequestInput<ElasticComputeCloudModel.ReportInstanceStatusRequest>(encodable: input)
+        let wrappedInput = ReportInstanceStatusOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15730,7 +15746,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ReportInstanceStatusOperationHTTPRequestInput<ElasticComputeCloudModel.ReportInstanceStatusRequest>(encodable: input)
+        let wrappedInput = ReportInstanceStatusOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15760,7 +15776,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RequestSpotFleetOperationHTTPRequestInput<ElasticComputeCloudModel.RequestSpotFleetRequest>(encodable: input)
+        let wrappedInput = RequestSpotFleetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15790,7 +15806,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RequestSpotFleetOperationHTTPRequestInput<ElasticComputeCloudModel.RequestSpotFleetRequest>(encodable: input)
+        let wrappedInput = RequestSpotFleetOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15820,7 +15836,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RequestSpotInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.RequestSpotInstancesRequest>(encodable: input)
+        let wrappedInput = RequestSpotInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15850,7 +15866,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RequestSpotInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.RequestSpotInstancesRequest>(encodable: input)
+        let wrappedInput = RequestSpotInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15880,7 +15896,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetFpgaImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetFpgaImageAttributeRequest>(encodable: input)
+        let wrappedInput = ResetFpgaImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15910,7 +15926,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetFpgaImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetFpgaImageAttributeRequest>(encodable: input)
+        let wrappedInput = ResetFpgaImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15932,14 +15948,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetImageAttributeAsync(input: ElasticComputeCloudModel.ResetImageAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func resetImageAttributeAsync(input: ElasticComputeCloudModel.ResetImageAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetImageAttributeRequest>(encodable: input)
+        let wrappedInput = ResetImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15967,7 +15983,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetImageAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetImageAttributeRequest>(encodable: input)
+        let wrappedInput = ResetImageAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -15989,14 +16005,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetInstanceAttributeAsync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func resetInstanceAttributeAsync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetInstanceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetInstanceAttributeRequest>(encodable: input)
+        let wrappedInput = ResetInstanceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16024,7 +16040,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetInstanceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetInstanceAttributeRequest>(encodable: input)
+        let wrappedInput = ResetInstanceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16046,14 +16062,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func resetNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetNetworkInterfaceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest>(encodable: input)
+        let wrappedInput = ResetNetworkInterfaceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16081,7 +16097,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetNetworkInterfaceAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest>(encodable: input)
+        let wrappedInput = ResetNetworkInterfaceAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16103,14 +16119,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetSnapshotAttributeAsync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func resetSnapshotAttributeAsync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetSnapshotAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetSnapshotAttributeRequest>(encodable: input)
+        let wrappedInput = ResetSnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16138,7 +16154,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ResetSnapshotAttributeOperationHTTPRequestInput<ElasticComputeCloudModel.ResetSnapshotAttributeRequest>(encodable: input)
+        let wrappedInput = ResetSnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16168,7 +16184,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RestoreAddressToClassicOperationHTTPRequestInput<ElasticComputeCloudModel.RestoreAddressToClassicRequest>(encodable: input)
+        let wrappedInput = RestoreAddressToClassicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16198,7 +16214,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RestoreAddressToClassicOperationHTTPRequestInput<ElasticComputeCloudModel.RestoreAddressToClassicRequest>(encodable: input)
+        let wrappedInput = RestoreAddressToClassicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16220,14 +16236,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func revokeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func revokeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = RevokeSecurityGroupEgressOperationHTTPRequestInput<ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest>(encodable: input)
+        let wrappedInput = RevokeSecurityGroupEgressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16255,7 +16271,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RevokeSecurityGroupEgressOperationHTTPRequestInput<ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest>(encodable: input)
+        let wrappedInput = RevokeSecurityGroupEgressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16277,14 +16293,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func revokeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func revokeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = RevokeSecurityGroupIngressOperationHTTPRequestInput<ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest>(encodable: input)
+        let wrappedInput = RevokeSecurityGroupIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16312,7 +16328,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RevokeSecurityGroupIngressOperationHTTPRequestInput<ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest>(encodable: input)
+        let wrappedInput = RevokeSecurityGroupIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16342,7 +16358,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RunInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.RunInstancesRequest>(encodable: input)
+        let wrappedInput = RunInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16372,7 +16388,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RunInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.RunInstancesRequest>(encodable: input)
+        let wrappedInput = RunInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16402,7 +16418,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RunScheduledInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.RunScheduledInstancesRequest>(encodable: input)
+        let wrappedInput = RunScheduledInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16432,7 +16448,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RunScheduledInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.RunScheduledInstancesRequest>(encodable: input)
+        let wrappedInput = RunScheduledInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16462,7 +16478,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = StartInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.StartInstancesRequest>(encodable: input)
+        let wrappedInput = StartInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16492,7 +16508,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = StartInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.StartInstancesRequest>(encodable: input)
+        let wrappedInput = StartInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16522,7 +16538,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = StopInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.StopInstancesRequest>(encodable: input)
+        let wrappedInput = StopInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16552,7 +16568,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = StopInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.StopInstancesRequest>(encodable: input)
+        let wrappedInput = StopInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16582,7 +16598,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = TerminateInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.TerminateInstancesRequest>(encodable: input)
+        let wrappedInput = TerminateInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16612,7 +16628,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = TerminateInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.TerminateInstancesRequest>(encodable: input)
+        let wrappedInput = TerminateInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16642,7 +16658,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UnassignIpv6AddressesOperationHTTPRequestInput<ElasticComputeCloudModel.UnassignIpv6AddressesRequest>(encodable: input)
+        let wrappedInput = UnassignIpv6AddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16672,7 +16688,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UnassignIpv6AddressesOperationHTTPRequestInput<ElasticComputeCloudModel.UnassignIpv6AddressesRequest>(encodable: input)
+        let wrappedInput = UnassignIpv6AddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16694,14 +16710,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func unassignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, completion: @escaping (Error?) -> ()) throws {
+    public func unassignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = UnassignPrivateIpAddressesOperationHTTPRequestInput<ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest>(encodable: input)
+        let wrappedInput = UnassignPrivateIpAddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16729,7 +16745,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UnassignPrivateIpAddressesOperationHTTPRequestInput<ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest>(encodable: input)
+        let wrappedInput = UnassignPrivateIpAddressesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16759,7 +16775,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UnmonitorInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.UnmonitorInstancesRequest>(encodable: input)
+        let wrappedInput = UnmonitorInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16789,7 +16805,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UnmonitorInstancesOperationHTTPRequestInput<ElasticComputeCloudModel.UnmonitorInstancesRequest>(encodable: input)
+        let wrappedInput = UnmonitorInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16819,7 +16835,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UpdateSecurityGroupRuleDescriptionsEgressOperationHTTPRequestInput<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest>(encodable: input)
+        let wrappedInput = UpdateSecurityGroupRuleDescriptionsEgressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16849,7 +16865,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UpdateSecurityGroupRuleDescriptionsEgressOperationHTTPRequestInput<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest>(encodable: input)
+        let wrappedInput = UpdateSecurityGroupRuleDescriptionsEgressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16879,7 +16895,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UpdateSecurityGroupRuleDescriptionsIngressOperationHTTPRequestInput<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest>(encodable: input)
+        let wrappedInput = UpdateSecurityGroupRuleDescriptionsIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16909,7 +16925,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UpdateSecurityGroupRuleDescriptionsIngressOperationHTTPRequestInput<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest>(encodable: input)
+        let wrappedInput = UpdateSecurityGroupRuleDescriptionsIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16939,7 +16955,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = WithdrawByoipCidrOperationHTTPRequestInput<ElasticComputeCloudModel.WithdrawByoipCidrRequest>(encodable: input)
+        let wrappedInput = WithdrawByoipCidrOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -16969,7 +16985,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = WithdrawByoipCidrOperationHTTPRequestInput<ElasticComputeCloudModel.WithdrawByoipCidrRequest>(encodable: input)
+        let wrappedInput = WithdrawByoipCidrOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,

@@ -372,7 +372,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateActivityTypeAsync(input: SimpleWorkflowModel.DeprecateActivityTypeInput, completion: @escaping (Error?) -> ()) throws {
+    public func deprecateActivityTypeAsync(input: SimpleWorkflowModel.DeprecateActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deprecateActivityTypeAsyncOverride = deprecateActivityTypeAsyncOverride {
             return try deprecateActivityTypeAsyncOverride(input, completion)
         }
@@ -404,7 +404,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainDeprecated, operationNotPermitted, unknownResource.
      */
-    public func deprecateDomainAsync(input: SimpleWorkflowModel.DeprecateDomainInput, completion: @escaping (Error?) -> ()) throws {
+    public func deprecateDomainAsync(input: SimpleWorkflowModel.DeprecateDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deprecateDomainAsyncOverride = deprecateDomainAsyncOverride {
             return try deprecateDomainAsyncOverride(input, completion)
         }
@@ -436,7 +436,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateWorkflowTypeAsync(input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, completion: @escaping (Error?) -> ()) throws {
+    public func deprecateWorkflowTypeAsync(input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deprecateWorkflowTypeAsyncOverride = deprecateWorkflowTypeAsyncOverride {
             return try deprecateWorkflowTypeAsyncOverride(input, completion)
         }
@@ -923,7 +923,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerActivityTypeAsync(input: SimpleWorkflowModel.RegisterActivityTypeInput, completion: @escaping (Error?) -> ()) throws {
+    public func registerActivityTypeAsync(input: SimpleWorkflowModel.RegisterActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let registerActivityTypeAsyncOverride = registerActivityTypeAsyncOverride {
             return try registerActivityTypeAsyncOverride(input, completion)
         }
@@ -955,7 +955,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted.
      */
-    public func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Error?) -> ()) throws {
+    public func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let registerDomainAsyncOverride = registerDomainAsyncOverride {
             return try registerDomainAsyncOverride(input, completion)
         }
@@ -987,7 +987,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerWorkflowTypeAsync(input: SimpleWorkflowModel.RegisterWorkflowTypeInput, completion: @escaping (Error?) -> ()) throws {
+    public func registerWorkflowTypeAsync(input: SimpleWorkflowModel.RegisterWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let registerWorkflowTypeAsyncOverride = registerWorkflowTypeAsyncOverride {
             return try registerWorkflowTypeAsyncOverride(input, completion)
         }
@@ -1019,7 +1019,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func requestCancelWorkflowExecutionAsync(input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, completion: @escaping (Error?) -> ()) throws {
+    public func requestCancelWorkflowExecutionAsync(input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let requestCancelWorkflowExecutionAsyncOverride = requestCancelWorkflowExecutionAsyncOverride {
             return try requestCancelWorkflowExecutionAsyncOverride(input, completion)
         }
@@ -1051,7 +1051,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCanceledAsync(input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, completion: @escaping (Error?) -> ()) throws {
+    public func respondActivityTaskCanceledAsync(input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let respondActivityTaskCanceledAsyncOverride = respondActivityTaskCanceledAsyncOverride {
             return try respondActivityTaskCanceledAsyncOverride(input, completion)
         }
@@ -1083,7 +1083,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCompletedAsync(input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, completion: @escaping (Error?) -> ()) throws {
+    public func respondActivityTaskCompletedAsync(input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let respondActivityTaskCompletedAsyncOverride = respondActivityTaskCompletedAsyncOverride {
             return try respondActivityTaskCompletedAsyncOverride(input, completion)
         }
@@ -1115,7 +1115,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskFailedAsync(input: SimpleWorkflowModel.RespondActivityTaskFailedInput, completion: @escaping (Error?) -> ()) throws {
+    public func respondActivityTaskFailedAsync(input: SimpleWorkflowModel.RespondActivityTaskFailedInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let respondActivityTaskFailedAsyncOverride = respondActivityTaskFailedAsyncOverride {
             return try respondActivityTaskFailedAsyncOverride(input, completion)
         }
@@ -1147,7 +1147,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondDecisionTaskCompletedAsync(input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, completion: @escaping (Error?) -> ()) throws {
+    public func respondDecisionTaskCompletedAsync(input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let respondDecisionTaskCompletedAsyncOverride = respondDecisionTaskCompletedAsyncOverride {
             return try respondDecisionTaskCompletedAsyncOverride(input, completion)
         }
@@ -1179,7 +1179,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func signalWorkflowExecutionAsync(input: SimpleWorkflowModel.SignalWorkflowExecutionInput, completion: @escaping (Error?) -> ()) throws {
+    public func signalWorkflowExecutionAsync(input: SimpleWorkflowModel.SignalWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let signalWorkflowExecutionAsyncOverride = signalWorkflowExecutionAsyncOverride {
             return try signalWorkflowExecutionAsyncOverride(input, completion)
         }
@@ -1246,7 +1246,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func terminateWorkflowExecutionAsync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, completion: @escaping (Error?) -> ()) throws {
+    public func terminateWorkflowExecutionAsync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let terminateWorkflowExecutionAsyncOverride = terminateWorkflowExecutionAsyncOverride {
             return try terminateWorkflowExecutionAsyncOverride(input, completion)
         }

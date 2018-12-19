@@ -28,7 +28,7 @@ import SmokeHTTPClient
  */
 public protocol SimpleNotificationClientProtocol {
     typealias AddPermissionSyncType = (_ input: SimpleNotificationModel.AddPermissionInput) throws -> ()
-    typealias AddPermissionAsyncType = (_ input: SimpleNotificationModel.AddPermissionInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias AddPermissionAsyncType = (_ input: SimpleNotificationModel.AddPermissionInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias CheckIfPhoneNumberIsOptedOutSyncType = (_ input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut
     typealias CheckIfPhoneNumberIsOptedOutAsyncType = (_ input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, _ completion: @escaping (HTTPResult<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut>) -> ()) throws -> ()
     typealias ConfirmSubscriptionSyncType = (_ input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription
@@ -40,11 +40,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias CreateTopicSyncType = (_ input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic
     typealias CreateTopicAsyncType = (_ input: SimpleNotificationModel.CreateTopicInput, _ completion: @escaping (HTTPResult<SimpleNotificationModel.CreateTopicResponseForCreateTopic>) -> ()) throws -> ()
     typealias DeleteEndpointSyncType = (_ input: SimpleNotificationModel.DeleteEndpointInput) throws -> ()
-    typealias DeleteEndpointAsyncType = (_ input: SimpleNotificationModel.DeleteEndpointInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteEndpointAsyncType = (_ input: SimpleNotificationModel.DeleteEndpointInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeletePlatformApplicationSyncType = (_ input: SimpleNotificationModel.DeletePlatformApplicationInput) throws -> ()
-    typealias DeletePlatformApplicationAsyncType = (_ input: SimpleNotificationModel.DeletePlatformApplicationInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeletePlatformApplicationAsyncType = (_ input: SimpleNotificationModel.DeletePlatformApplicationInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteTopicSyncType = (_ input: SimpleNotificationModel.DeleteTopicInput) throws -> ()
-    typealias DeleteTopicAsyncType = (_ input: SimpleNotificationModel.DeleteTopicInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias DeleteTopicAsyncType = (_ input: SimpleNotificationModel.DeleteTopicInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias GetEndpointAttributesSyncType = (_ input: SimpleNotificationModel.GetEndpointAttributesInput) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes
     typealias GetEndpointAttributesAsyncType = (_ input: SimpleNotificationModel.GetEndpointAttributesInput, _ completion: @escaping (HTTPResult<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes>) -> ()) throws -> ()
     typealias GetPlatformApplicationAttributesSyncType = (_ input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes
@@ -72,21 +72,21 @@ public protocol SimpleNotificationClientProtocol {
     typealias PublishSyncType = (_ input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish
     typealias PublishAsyncType = (_ input: SimpleNotificationModel.PublishInput, _ completion: @escaping (HTTPResult<SimpleNotificationModel.PublishResponseForPublish>) -> ()) throws -> ()
     typealias RemovePermissionSyncType = (_ input: SimpleNotificationModel.RemovePermissionInput) throws -> ()
-    typealias RemovePermissionAsyncType = (_ input: SimpleNotificationModel.RemovePermissionInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias RemovePermissionAsyncType = (_ input: SimpleNotificationModel.RemovePermissionInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias SetEndpointAttributesSyncType = (_ input: SimpleNotificationModel.SetEndpointAttributesInput) throws -> ()
-    typealias SetEndpointAttributesAsyncType = (_ input: SimpleNotificationModel.SetEndpointAttributesInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias SetEndpointAttributesAsyncType = (_ input: SimpleNotificationModel.SetEndpointAttributesInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias SetPlatformApplicationAttributesSyncType = (_ input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) throws -> ()
-    typealias SetPlatformApplicationAttributesAsyncType = (_ input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias SetPlatformApplicationAttributesAsyncType = (_ input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias SetSMSAttributesSyncType = (_ input: SimpleNotificationModel.SetSMSAttributesInput) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes
     typealias SetSMSAttributesAsyncType = (_ input: SimpleNotificationModel.SetSMSAttributesInput, _ completion: @escaping (HTTPResult<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes>) -> ()) throws -> ()
     typealias SetSubscriptionAttributesSyncType = (_ input: SimpleNotificationModel.SetSubscriptionAttributesInput) throws -> ()
-    typealias SetSubscriptionAttributesAsyncType = (_ input: SimpleNotificationModel.SetSubscriptionAttributesInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias SetSubscriptionAttributesAsyncType = (_ input: SimpleNotificationModel.SetSubscriptionAttributesInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias SetTopicAttributesSyncType = (_ input: SimpleNotificationModel.SetTopicAttributesInput) throws -> ()
-    typealias SetTopicAttributesAsyncType = (_ input: SimpleNotificationModel.SetTopicAttributesInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias SetTopicAttributesAsyncType = (_ input: SimpleNotificationModel.SetTopicAttributesInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias SubscribeSyncType = (_ input: SimpleNotificationModel.SubscribeInput) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe
     typealias SubscribeAsyncType = (_ input: SimpleNotificationModel.SubscribeInput, _ completion: @escaping (HTTPResult<SimpleNotificationModel.SubscribeResponseForSubscribe>) -> ()) throws -> ()
     typealias UnsubscribeSyncType = (_ input: SimpleNotificationModel.UnsubscribeInput) throws -> ()
-    typealias UnsubscribeAsyncType = (_ input: SimpleNotificationModel.UnsubscribeInput, _ completion: @escaping (Error?) -> ()) throws -> ()
+    typealias UnsubscribeAsyncType = (_ input: SimpleNotificationModel.UnsubscribeInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
 
     /**
      Invokes the AddPermission operation returning immediately and passing the response to a callback.
@@ -97,7 +97,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func addPermissionAsync(input: SimpleNotificationModel.AddPermissionInput, completion: @escaping (Error?) -> ()) throws
+    func addPermissionAsync(input: SimpleNotificationModel.AddPermissionInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the AddPermission operation waiting for the response before returning.
@@ -232,7 +232,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    func deleteEndpointAsync(input: SimpleNotificationModel.DeleteEndpointInput, completion: @escaping (Error?) -> ()) throws
+    func deleteEndpointAsync(input: SimpleNotificationModel.DeleteEndpointInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteEndpoint operation waiting for the response before returning.
@@ -252,7 +252,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    func deletePlatformApplicationAsync(input: SimpleNotificationModel.DeletePlatformApplicationInput, completion: @escaping (Error?) -> ()) throws
+    func deletePlatformApplicationAsync(input: SimpleNotificationModel.DeletePlatformApplicationInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeletePlatformApplication operation waiting for the response before returning.
@@ -272,7 +272,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func deleteTopicAsync(input: SimpleNotificationModel.DeleteTopicInput, completion: @escaping (Error?) -> ()) throws
+    func deleteTopicAsync(input: SimpleNotificationModel.DeleteTopicInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the DeleteTopic operation waiting for the response before returning.
@@ -591,7 +591,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func removePermissionAsync(input: SimpleNotificationModel.RemovePermissionInput, completion: @escaping (Error?) -> ()) throws
+    func removePermissionAsync(input: SimpleNotificationModel.RemovePermissionInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the RemovePermission operation waiting for the response before returning.
@@ -611,7 +611,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func setEndpointAttributesAsync(input: SimpleNotificationModel.SetEndpointAttributesInput, completion: @escaping (Error?) -> ()) throws
+    func setEndpointAttributesAsync(input: SimpleNotificationModel.SetEndpointAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the SetEndpointAttributes operation waiting for the response before returning.
@@ -631,7 +631,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func setPlatformApplicationAttributesAsync(input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, completion: @escaping (Error?) -> ()) throws
+    func setPlatformApplicationAttributesAsync(input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the SetPlatformApplicationAttributes operation waiting for the response before returning.
@@ -674,7 +674,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    func setSubscriptionAttributesAsync(input: SimpleNotificationModel.SetSubscriptionAttributesInput, completion: @escaping (Error?) -> ()) throws
+    func setSubscriptionAttributesAsync(input: SimpleNotificationModel.SetSubscriptionAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the SetSubscriptionAttributes operation waiting for the response before returning.
@@ -694,7 +694,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    func setTopicAttributesAsync(input: SimpleNotificationModel.SetTopicAttributesInput, completion: @escaping (Error?) -> ()) throws
+    func setTopicAttributesAsync(input: SimpleNotificationModel.SetTopicAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the SetTopicAttributes operation waiting for the response before returning.
@@ -737,7 +737,7 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    func unsubscribeAsync(input: SimpleNotificationModel.UnsubscribeInput, completion: @escaping (Error?) -> ()) throws
+    func unsubscribeAsync(input: SimpleNotificationModel.UnsubscribeInput, completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
      Invokes the Unsubscribe operation waiting for the response before returning.

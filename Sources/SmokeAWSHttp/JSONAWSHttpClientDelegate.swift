@@ -19,15 +19,15 @@ import Foundation
 import NIOHTTP1
 import SmokeHTTPClient
 import SmokeAWSCore
-import QueryCoder
+import QueryCoding
+import HTTPHeadersCoding
+import HTTPPathCoding
 import LoggerAPI
 
 /**
  Struct conforming to the AWSHttpClientDelegate protocol that encodes and decode the request
  and response body to and from JSON. The generic ErrorType is used to generate errors based
  on the decoding a JSON error payload from the response body.
- 
- Currently disregards the additional headers and path encodable properties from the input.
  */
 public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
     private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
@@ -36,12 +36,17 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
         self.inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy
     }
     
-    public func getResponseError(responseHead: HTTPResponseHead, bodyData: Data) throws -> Error {
-        if Log.isLogging(.debug) {
+    public func getResponseError(responseHead: HTTPResponseHead,
+                                 responseComponents: HTTPResponseComponents) throws -> Error {
+        guard let bodyData = responseComponents.body else {
+            throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
+        }
+        
+        //if Log.isLogging(.debug) {
             let asString = String(data: bodyData, encoding: .utf8) ?? ""
             
             Log.debug("Attempting to decode error data into JSON: \(asString)")
-        }
+        //}
         
         // attempt to get an error of Error type by decoding the body data
         return try JSONDecoder.awsCompatibleDecoder.decode(ErrorType.self, from: bodyData)
@@ -59,7 +64,30 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
                 pathPostfix = ""
             }
             
-            let path = "\(httpPath)\(pathPostfix)"
+            let pathTemplate = "\(httpPath)\(pathPostfix)"
+            let path: String
+            if let pathEncodable = input.pathEncodable {
+                path = try HTTPPathEncoder().encode(pathEncodable,
+                                                    withTemplate: pathTemplate)
+            } else {
+                path = pathTemplate
+            }
+            
+            let additionalHeaders: [(String, String)]
+            if let additionalHeadersEncodable = input.additionalHeadersEncodable {
+                let headersEncoder = HTTPHeadersEncoder(keyEncodingStrategy: .noSeparator)
+                let headers = try headersEncoder.encode(additionalHeadersEncodable)
+                
+                additionalHeaders = headers.compactMap { entry in
+                    guard let value = entry.1 else {
+                        return nil
+                    }
+                    
+                    return (entry.0, value)
+                }
+            } else {
+                additionalHeaders = []
+            }
             
             let body: Data
             if let bodyEncodable = input.bodyEncodable {
@@ -79,7 +107,11 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
                 let encodedQuery = try queryEncoder.encode(queryEncodable,
                                                            allowedCharacterSet: .uriAWSQueryValueAllowed)
                 
-                query = "?" + encodedQuery
+                if !encodedQuery.isEmpty {
+                    query = "?" + encodedQuery
+                } else {
+                    query = ""
+                }
             } else {
                 query = ""
             }
@@ -87,7 +119,7 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
             let pathWithQuery = path + query
             
             return HTTPRequestComponents(pathWithQuery: pathWithQuery,
-                                         additionalHeaders: [],
+                                         additionalHeaders: additionalHeaders,
                                          body: body)
     }
     
@@ -97,15 +129,38 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
             return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder.encode(input))
     }
     
-    public func decodeOutput<OutputType>(output: Data) throws -> OutputType where OutputType : Decodable {
+    public func decodeOutput<OutputType>(output: Data?,
+                                  headers: [(String, String)]) throws -> OutputType
+    where OutputType: HTTPResponseOutputProtocol {
         if Log.isLogging(.debug) {
-            let asString = String(data: output, encoding: .utf8) ?? ""
+            let asString: String
+            if let output = output {
+                asString = String(data: output, encoding: .utf8) ?? ""
+            } else {
+                asString = ""
+            }
             
             Log.debug("Attempting to decode result data into JSON: \(asString)")
         }
         
-        // attempt to decode the ouput data to the OutputType
-        return try JSONDecoder.awsCompatibleDecoder.decode(OutputType.self,
-                                                           from: output)
+        func bodyDecodableProvider() throws -> OutputType.BodyType {
+            // we are expecting a response body
+            guard let responseBody = output else {
+                throw HTTPError.badResponse("Unexpected empty response.")
+            }
+            
+            return try JSONDecoder.awsCompatibleDecoder.decode(OutputType.BodyType.self,
+                                                               from: responseBody)
+        }
+        
+        let mappedHeaders: [(String, String?)] = headers.map { ($0.0, $0.1) }
+        func headersDecodableProvider() throws -> OutputType.HeadersType {
+            let headersDecoder = HTTPHeadersDecoder(keyDecodingStrategy: .useShapePrefix)
+            return try headersDecoder.decode(OutputType.HeadersType.self,
+                                                   from: mappedHeaders)
+        }
+        
+        return try OutputType.compose(bodyDecodableProvider: bodyDecodableProvider,
+                                      headersDecodableProvider: headersDecodableProvider)
     }
 }
