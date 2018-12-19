@@ -44,6 +44,17 @@ struct ErrorWrapper<ErrorType: Error & Decodable>: Error & Decodable {
         case errorLowercase = "error"
     }
     
+    private static func getError(forKey key: CodingKeys,
+                                 values: KeyedDecodingContainer<CodingKeys>) throws -> [ErrorType]? {
+        // try as a single error
+        if let currentError = try values.decodeIfPresent(ErrorType.self,
+                                                         forKey: key) {
+            return [currentError]
+        }
+        
+        return nil
+    }
+    
     // TODO: This can be removed if XMLCoding is fixed to handle singleton lists with multiple keys
     private static func getErrors(forKey key: CodingKeys,
                            values: KeyedDecodingContainer<CodingKeys>) throws -> [ErrorType]? {
@@ -53,15 +64,11 @@ struct ErrorWrapper<ErrorType: Error & Decodable>: Error & Decodable {
                                                               forKey: key) {
                 return currentErrors
             }
+            
+            return try getError(forKey: key, values: values)
         } catch {
-            // try as a single error
-            if let currentError = try values.decodeIfPresent(ErrorType.self,
-                                                              forKey: key) {
-                return [currentError]
-            }
+            return try getError(forKey: key, values: values)
         }
-        
-        return nil
     }
     
     init(from decoder: Decoder) throws {
@@ -109,14 +116,22 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         
         let decoder = XMLDecoder.awsCompatibleDecoder
         
-        //if Log.isLogging(.debug) {
+        if Log.isLogging(.debug) {
             let asString = String(data: bodyData, encoding: .utf8) ?? ""
             
             Log.debug("Attempting to decode error data into XML: \(asString)")
-        //}
+        }
         
         // attempt to decode the output body from an XML payload
-        let result = try decoder.decode(ErrorWrapper<ErrorType>.self, from: bodyData)
+        let result: Error
+        
+        // the error is not wrapped
+        do {
+            result = try decoder.decode(ErrorType.self, from: bodyData)
+        } catch is DecodingError {
+            // if the error is wrapped
+            result = try decoder.decode(ErrorWrapper<ErrorType>.self, from: bodyData)
+        }
         
         return result
     }

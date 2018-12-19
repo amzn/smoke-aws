@@ -42,11 +42,11 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
             throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
         }
         
-        //if Log.isLogging(.debug) {
+        if Log.isLogging(.debug) {
             let asString = String(data: bodyData, encoding: .utf8) ?? ""
             
             Log.debug("Attempting to decode error data into JSON: \(asString)")
-        //}
+        }
         
         // attempt to get an error of Error type by decoding the body data
         return try JSONDecoder.awsCompatibleDecoder.decode(ErrorType.self, from: bodyData)
