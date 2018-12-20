@@ -30,6 +30,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let error: Swift.Error
     let acceptReservedInstancesExchangeQuoteAsyncOverride: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteAsyncType?
     let acceptReservedInstancesExchangeQuoteSyncOverride: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteSyncType?
+    let acceptTransitGatewayVpcAttachmentAsyncOverride: ElasticComputeCloudClientProtocol.AcceptTransitGatewayVpcAttachmentAsyncType?
+    let acceptTransitGatewayVpcAttachmentSyncOverride: ElasticComputeCloudClientProtocol.AcceptTransitGatewayVpcAttachmentSyncType?
     let acceptVpcEndpointConnectionsAsyncOverride: ElasticComputeCloudClientProtocol.AcceptVpcEndpointConnectionsAsyncType?
     let acceptVpcEndpointConnectionsSyncOverride: ElasticComputeCloudClientProtocol.AcceptVpcEndpointConnectionsSyncType?
     let acceptVpcPeeringConnectionAsyncOverride: ElasticComputeCloudClientProtocol.AcceptVpcPeeringConnectionAsyncType?
@@ -40,12 +42,16 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let allocateAddressSyncOverride: ElasticComputeCloudClientProtocol.AllocateAddressSyncType?
     let allocateHostsAsyncOverride: ElasticComputeCloudClientProtocol.AllocateHostsAsyncType?
     let allocateHostsSyncOverride: ElasticComputeCloudClientProtocol.AllocateHostsSyncType?
+    let applySecurityGroupsToClientVpnTargetNetworkAsyncOverride: ElasticComputeCloudClientProtocol.ApplySecurityGroupsToClientVpnTargetNetworkAsyncType?
+    let applySecurityGroupsToClientVpnTargetNetworkSyncOverride: ElasticComputeCloudClientProtocol.ApplySecurityGroupsToClientVpnTargetNetworkSyncType?
     let assignIpv6AddressesAsyncOverride: ElasticComputeCloudClientProtocol.AssignIpv6AddressesAsyncType?
     let assignIpv6AddressesSyncOverride: ElasticComputeCloudClientProtocol.AssignIpv6AddressesSyncType?
     let assignPrivateIpAddressesAsyncOverride: ElasticComputeCloudClientProtocol.AssignPrivateIpAddressesAsyncType?
     let assignPrivateIpAddressesSyncOverride: ElasticComputeCloudClientProtocol.AssignPrivateIpAddressesSyncType?
     let associateAddressAsyncOverride: ElasticComputeCloudClientProtocol.AssociateAddressAsyncType?
     let associateAddressSyncOverride: ElasticComputeCloudClientProtocol.AssociateAddressSyncType?
+    let associateClientVpnTargetNetworkAsyncOverride: ElasticComputeCloudClientProtocol.AssociateClientVpnTargetNetworkAsyncType?
+    let associateClientVpnTargetNetworkSyncOverride: ElasticComputeCloudClientProtocol.AssociateClientVpnTargetNetworkSyncType?
     let associateDhcpOptionsAsyncOverride: ElasticComputeCloudClientProtocol.AssociateDhcpOptionsAsyncType?
     let associateDhcpOptionsSyncOverride: ElasticComputeCloudClientProtocol.AssociateDhcpOptionsSyncType?
     let associateIamInstanceProfileAsyncOverride: ElasticComputeCloudClientProtocol.AssociateIamInstanceProfileAsyncType?
@@ -54,6 +60,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let associateRouteTableSyncOverride: ElasticComputeCloudClientProtocol.AssociateRouteTableSyncType?
     let associateSubnetCidrBlockAsyncOverride: ElasticComputeCloudClientProtocol.AssociateSubnetCidrBlockAsyncType?
     let associateSubnetCidrBlockSyncOverride: ElasticComputeCloudClientProtocol.AssociateSubnetCidrBlockSyncType?
+    let associateTransitGatewayRouteTableAsyncOverride: ElasticComputeCloudClientProtocol.AssociateTransitGatewayRouteTableAsyncType?
+    let associateTransitGatewayRouteTableSyncOverride: ElasticComputeCloudClientProtocol.AssociateTransitGatewayRouteTableSyncType?
     let associateVpcCidrBlockAsyncOverride: ElasticComputeCloudClientProtocol.AssociateVpcCidrBlockAsyncType?
     let associateVpcCidrBlockSyncOverride: ElasticComputeCloudClientProtocol.AssociateVpcCidrBlockSyncType?
     let attachClassicLinkVpcAsyncOverride: ElasticComputeCloudClientProtocol.AttachClassicLinkVpcAsyncType?
@@ -66,6 +74,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let attachVolumeSyncOverride: ElasticComputeCloudClientProtocol.AttachVolumeSyncType?
     let attachVpnGatewayAsyncOverride: ElasticComputeCloudClientProtocol.AttachVpnGatewayAsyncType?
     let attachVpnGatewaySyncOverride: ElasticComputeCloudClientProtocol.AttachVpnGatewaySyncType?
+    let authorizeClientVpnIngressAsyncOverride: ElasticComputeCloudClientProtocol.AuthorizeClientVpnIngressAsyncType?
+    let authorizeClientVpnIngressSyncOverride: ElasticComputeCloudClientProtocol.AuthorizeClientVpnIngressSyncType?
     let authorizeSecurityGroupEgressAsyncOverride: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupEgressAsyncType?
     let authorizeSecurityGroupEgressSyncOverride: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupEgressSyncType?
     let authorizeSecurityGroupIngressAsyncOverride: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupIngressAsyncType?
@@ -98,6 +108,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let copySnapshotSyncOverride: ElasticComputeCloudClientProtocol.CopySnapshotSyncType?
     let createCapacityReservationAsyncOverride: ElasticComputeCloudClientProtocol.CreateCapacityReservationAsyncType?
     let createCapacityReservationSyncOverride: ElasticComputeCloudClientProtocol.CreateCapacityReservationSyncType?
+    let createClientVpnEndpointAsyncOverride: ElasticComputeCloudClientProtocol.CreateClientVpnEndpointAsyncType?
+    let createClientVpnEndpointSyncOverride: ElasticComputeCloudClientProtocol.CreateClientVpnEndpointSyncType?
+    let createClientVpnRouteAsyncOverride: ElasticComputeCloudClientProtocol.CreateClientVpnRouteAsyncType?
+    let createClientVpnRouteSyncOverride: ElasticComputeCloudClientProtocol.CreateClientVpnRouteSyncType?
     let createCustomerGatewayAsyncOverride: ElasticComputeCloudClientProtocol.CreateCustomerGatewayAsyncType?
     let createCustomerGatewaySyncOverride: ElasticComputeCloudClientProtocol.CreateCustomerGatewaySyncType?
     let createDefaultSubnetAsyncOverride: ElasticComputeCloudClientProtocol.CreateDefaultSubnetAsyncType?
@@ -154,6 +168,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let createSubnetSyncOverride: ElasticComputeCloudClientProtocol.CreateSubnetSyncType?
     let createTagsAsyncOverride: ElasticComputeCloudClientProtocol.CreateTagsAsyncType?
     let createTagsSyncOverride: ElasticComputeCloudClientProtocol.CreateTagsSyncType?
+    let createTransitGatewayAsyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewayAsyncType?
+    let createTransitGatewaySyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewaySyncType?
+    let createTransitGatewayRouteAsyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteAsyncType?
+    let createTransitGatewayRouteSyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteSyncType?
+    let createTransitGatewayRouteTableAsyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteTableAsyncType?
+    let createTransitGatewayRouteTableSyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteTableSyncType?
+    let createTransitGatewayVpcAttachmentAsyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewayVpcAttachmentAsyncType?
+    let createTransitGatewayVpcAttachmentSyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewayVpcAttachmentSyncType?
     let createVolumeAsyncOverride: ElasticComputeCloudClientProtocol.CreateVolumeAsyncType?
     let createVolumeSyncOverride: ElasticComputeCloudClientProtocol.CreateVolumeSyncType?
     let createVpcAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpcAsyncType?
@@ -172,6 +194,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let createVpnConnectionRouteSyncOverride: ElasticComputeCloudClientProtocol.CreateVpnConnectionRouteSyncType?
     let createVpnGatewayAsyncOverride: ElasticComputeCloudClientProtocol.CreateVpnGatewayAsyncType?
     let createVpnGatewaySyncOverride: ElasticComputeCloudClientProtocol.CreateVpnGatewaySyncType?
+    let deleteClientVpnEndpointAsyncOverride: ElasticComputeCloudClientProtocol.DeleteClientVpnEndpointAsyncType?
+    let deleteClientVpnEndpointSyncOverride: ElasticComputeCloudClientProtocol.DeleteClientVpnEndpointSyncType?
+    let deleteClientVpnRouteAsyncOverride: ElasticComputeCloudClientProtocol.DeleteClientVpnRouteAsyncType?
+    let deleteClientVpnRouteSyncOverride: ElasticComputeCloudClientProtocol.DeleteClientVpnRouteSyncType?
     let deleteCustomerGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DeleteCustomerGatewayAsyncType?
     let deleteCustomerGatewaySyncOverride: ElasticComputeCloudClientProtocol.DeleteCustomerGatewaySyncType?
     let deleteDhcpOptionsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteDhcpOptionsAsyncType?
@@ -218,6 +244,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let deleteSubnetSyncOverride: ElasticComputeCloudClientProtocol.DeleteSubnetSyncType?
     let deleteTagsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTagsAsyncType?
     let deleteTagsSyncOverride: ElasticComputeCloudClientProtocol.DeleteTagsSyncType?
+    let deleteTransitGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewayAsyncType?
+    let deleteTransitGatewaySyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewaySyncType?
+    let deleteTransitGatewayRouteAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteAsyncType?
+    let deleteTransitGatewayRouteSyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteSyncType?
+    let deleteTransitGatewayRouteTableAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteTableAsyncType?
+    let deleteTransitGatewayRouteTableSyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteTableSyncType?
+    let deleteTransitGatewayVpcAttachmentAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewayVpcAttachmentAsyncType?
+    let deleteTransitGatewayVpcAttachmentSyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewayVpcAttachmentSyncType?
     let deleteVolumeAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVolumeAsyncType?
     let deleteVolumeSyncOverride: ElasticComputeCloudClientProtocol.DeleteVolumeSyncType?
     let deleteVpcAsyncOverride: ElasticComputeCloudClientProtocol.DeleteVpcAsyncType?
@@ -256,6 +290,16 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describeCapacityReservationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeCapacityReservationsSyncType?
     let describeClassicLinkInstancesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeClassicLinkInstancesAsyncType?
     let describeClassicLinkInstancesSyncOverride: ElasticComputeCloudClientProtocol.DescribeClassicLinkInstancesSyncType?
+    let describeClientVpnAuthorizationRulesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnAuthorizationRulesAsyncType?
+    let describeClientVpnAuthorizationRulesSyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnAuthorizationRulesSyncType?
+    let describeClientVpnConnectionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnConnectionsAsyncType?
+    let describeClientVpnConnectionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnConnectionsSyncType?
+    let describeClientVpnEndpointsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnEndpointsAsyncType?
+    let describeClientVpnEndpointsSyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnEndpointsSyncType?
+    let describeClientVpnRoutesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnRoutesAsyncType?
+    let describeClientVpnRoutesSyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnRoutesSyncType?
+    let describeClientVpnTargetNetworksAsyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnTargetNetworksAsyncType?
+    let describeClientVpnTargetNetworksSyncOverride: ElasticComputeCloudClientProtocol.DescribeClientVpnTargetNetworksSyncType?
     let describeConversionTasksAsyncOverride: ElasticComputeCloudClientProtocol.DescribeConversionTasksAsyncType?
     let describeConversionTasksSyncOverride: ElasticComputeCloudClientProtocol.DescribeConversionTasksSyncType?
     let describeCustomerGatewaysAsyncOverride: ElasticComputeCloudClientProtocol.DescribeCustomerGatewaysAsyncType?
@@ -378,6 +422,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describeSubnetsSyncOverride: ElasticComputeCloudClientProtocol.DescribeSubnetsSyncType?
     let describeTagsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTagsAsyncType?
     let describeTagsSyncOverride: ElasticComputeCloudClientProtocol.DescribeTagsSyncType?
+    let describeTransitGatewayAttachmentsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewayAttachmentsAsyncType?
+    let describeTransitGatewayAttachmentsSyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewayAttachmentsSyncType?
+    let describeTransitGatewayRouteTablesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewayRouteTablesAsyncType?
+    let describeTransitGatewayRouteTablesSyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewayRouteTablesSyncType?
+    let describeTransitGatewayVpcAttachmentsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewayVpcAttachmentsAsyncType?
+    let describeTransitGatewayVpcAttachmentsSyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewayVpcAttachmentsSyncType?
+    let describeTransitGatewaysAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewaysAsyncType?
+    let describeTransitGatewaysSyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewaysSyncType?
     let describeVolumeAttributeAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumeAttributeAsyncType?
     let describeVolumeAttributeSyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumeAttributeSyncType?
     let describeVolumeStatusAsyncOverride: ElasticComputeCloudClientProtocol.DescribeVolumeStatusAsyncType?
@@ -422,6 +474,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let detachVolumeSyncOverride: ElasticComputeCloudClientProtocol.DetachVolumeSyncType?
     let detachVpnGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DetachVpnGatewayAsyncType?
     let detachVpnGatewaySyncOverride: ElasticComputeCloudClientProtocol.DetachVpnGatewaySyncType?
+    let disableTransitGatewayRouteTablePropagationAsyncOverride: ElasticComputeCloudClientProtocol.DisableTransitGatewayRouteTablePropagationAsyncType?
+    let disableTransitGatewayRouteTablePropagationSyncOverride: ElasticComputeCloudClientProtocol.DisableTransitGatewayRouteTablePropagationSyncType?
     let disableVgwRoutePropagationAsyncOverride: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationAsyncType?
     let disableVgwRoutePropagationSyncOverride: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationSyncType?
     let disableVpcClassicLinkAsyncOverride: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkAsyncType?
@@ -430,14 +484,20 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let disableVpcClassicLinkDnsSupportSyncOverride: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkDnsSupportSyncType?
     let disassociateAddressAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateAddressAsyncType?
     let disassociateAddressSyncOverride: ElasticComputeCloudClientProtocol.DisassociateAddressSyncType?
+    let disassociateClientVpnTargetNetworkAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateClientVpnTargetNetworkAsyncType?
+    let disassociateClientVpnTargetNetworkSyncOverride: ElasticComputeCloudClientProtocol.DisassociateClientVpnTargetNetworkSyncType?
     let disassociateIamInstanceProfileAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateIamInstanceProfileAsyncType?
     let disassociateIamInstanceProfileSyncOverride: ElasticComputeCloudClientProtocol.DisassociateIamInstanceProfileSyncType?
     let disassociateRouteTableAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateRouteTableAsyncType?
     let disassociateRouteTableSyncOverride: ElasticComputeCloudClientProtocol.DisassociateRouteTableSyncType?
     let disassociateSubnetCidrBlockAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateSubnetCidrBlockAsyncType?
     let disassociateSubnetCidrBlockSyncOverride: ElasticComputeCloudClientProtocol.DisassociateSubnetCidrBlockSyncType?
+    let disassociateTransitGatewayRouteTableAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateTransitGatewayRouteTableAsyncType?
+    let disassociateTransitGatewayRouteTableSyncOverride: ElasticComputeCloudClientProtocol.DisassociateTransitGatewayRouteTableSyncType?
     let disassociateVpcCidrBlockAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockAsyncType?
     let disassociateVpcCidrBlockSyncOverride: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockSyncType?
+    let enableTransitGatewayRouteTablePropagationAsyncOverride: ElasticComputeCloudClientProtocol.EnableTransitGatewayRouteTablePropagationAsyncType?
+    let enableTransitGatewayRouteTablePropagationSyncOverride: ElasticComputeCloudClientProtocol.EnableTransitGatewayRouteTablePropagationSyncType?
     let enableVgwRoutePropagationAsyncOverride: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationAsyncType?
     let enableVgwRoutePropagationSyncOverride: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationSyncType?
     let enableVolumeIOAsyncOverride: ElasticComputeCloudClientProtocol.EnableVolumeIOAsyncType?
@@ -446,6 +506,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let enableVpcClassicLinkSyncOverride: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkSyncType?
     let enableVpcClassicLinkDnsSupportAsyncOverride: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkDnsSupportAsyncType?
     let enableVpcClassicLinkDnsSupportSyncOverride: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkDnsSupportSyncType?
+    let exportClientVpnClientCertificateRevocationListAsyncOverride: ElasticComputeCloudClientProtocol.ExportClientVpnClientCertificateRevocationListAsyncType?
+    let exportClientVpnClientCertificateRevocationListSyncOverride: ElasticComputeCloudClientProtocol.ExportClientVpnClientCertificateRevocationListSyncType?
+    let exportClientVpnClientConfigurationAsyncOverride: ElasticComputeCloudClientProtocol.ExportClientVpnClientConfigurationAsyncType?
+    let exportClientVpnClientConfigurationSyncOverride: ElasticComputeCloudClientProtocol.ExportClientVpnClientConfigurationSyncType?
+    let exportTransitGatewayRoutesAsyncOverride: ElasticComputeCloudClientProtocol.ExportTransitGatewayRoutesAsyncType?
+    let exportTransitGatewayRoutesSyncOverride: ElasticComputeCloudClientProtocol.ExportTransitGatewayRoutesSyncType?
     let getConsoleOutputAsyncOverride: ElasticComputeCloudClientProtocol.GetConsoleOutputAsyncType?
     let getConsoleOutputSyncOverride: ElasticComputeCloudClientProtocol.GetConsoleOutputSyncType?
     let getConsoleScreenshotAsyncOverride: ElasticComputeCloudClientProtocol.GetConsoleScreenshotAsyncType?
@@ -458,6 +524,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let getPasswordDataSyncOverride: ElasticComputeCloudClientProtocol.GetPasswordDataSyncType?
     let getReservedInstancesExchangeQuoteAsyncOverride: ElasticComputeCloudClientProtocol.GetReservedInstancesExchangeQuoteAsyncType?
     let getReservedInstancesExchangeQuoteSyncOverride: ElasticComputeCloudClientProtocol.GetReservedInstancesExchangeQuoteSyncType?
+    let getTransitGatewayAttachmentPropagationsAsyncOverride: ElasticComputeCloudClientProtocol.GetTransitGatewayAttachmentPropagationsAsyncType?
+    let getTransitGatewayAttachmentPropagationsSyncOverride: ElasticComputeCloudClientProtocol.GetTransitGatewayAttachmentPropagationsSyncType?
+    let getTransitGatewayRouteTableAssociationsAsyncOverride: ElasticComputeCloudClientProtocol.GetTransitGatewayRouteTableAssociationsAsyncType?
+    let getTransitGatewayRouteTableAssociationsSyncOverride: ElasticComputeCloudClientProtocol.GetTransitGatewayRouteTableAssociationsSyncType?
+    let getTransitGatewayRouteTablePropagationsAsyncOverride: ElasticComputeCloudClientProtocol.GetTransitGatewayRouteTablePropagationsAsyncType?
+    let getTransitGatewayRouteTablePropagationsSyncOverride: ElasticComputeCloudClientProtocol.GetTransitGatewayRouteTablePropagationsSyncType?
+    let importClientVpnClientCertificateRevocationListAsyncOverride: ElasticComputeCloudClientProtocol.ImportClientVpnClientCertificateRevocationListAsyncType?
+    let importClientVpnClientCertificateRevocationListSyncOverride: ElasticComputeCloudClientProtocol.ImportClientVpnClientCertificateRevocationListSyncType?
     let importImageAsyncOverride: ElasticComputeCloudClientProtocol.ImportImageAsyncType?
     let importImageSyncOverride: ElasticComputeCloudClientProtocol.ImportImageSyncType?
     let importInstanceAsyncOverride: ElasticComputeCloudClientProtocol.ImportInstanceAsyncType?
@@ -470,6 +544,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let importVolumeSyncOverride: ElasticComputeCloudClientProtocol.ImportVolumeSyncType?
     let modifyCapacityReservationAsyncOverride: ElasticComputeCloudClientProtocol.ModifyCapacityReservationAsyncType?
     let modifyCapacityReservationSyncOverride: ElasticComputeCloudClientProtocol.ModifyCapacityReservationSyncType?
+    let modifyClientVpnEndpointAsyncOverride: ElasticComputeCloudClientProtocol.ModifyClientVpnEndpointAsyncType?
+    let modifyClientVpnEndpointSyncOverride: ElasticComputeCloudClientProtocol.ModifyClientVpnEndpointSyncType?
     let modifyFleetAsyncOverride: ElasticComputeCloudClientProtocol.ModifyFleetAsyncType?
     let modifyFleetSyncOverride: ElasticComputeCloudClientProtocol.ModifyFleetSyncType?
     let modifyFpgaImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyFpgaImageAttributeAsyncType?
@@ -502,6 +578,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let modifySpotFleetRequestSyncOverride: ElasticComputeCloudClientProtocol.ModifySpotFleetRequestSyncType?
     let modifySubnetAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifySubnetAttributeAsyncType?
     let modifySubnetAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifySubnetAttributeSyncType?
+    let modifyTransitGatewayVpcAttachmentAsyncOverride: ElasticComputeCloudClientProtocol.ModifyTransitGatewayVpcAttachmentAsyncType?
+    let modifyTransitGatewayVpcAttachmentSyncOverride: ElasticComputeCloudClientProtocol.ModifyTransitGatewayVpcAttachmentSyncType?
     let modifyVolumeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVolumeAsyncType?
     let modifyVolumeSyncOverride: ElasticComputeCloudClientProtocol.ModifyVolumeSyncType?
     let modifyVolumeAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVolumeAttributeAsyncType?
@@ -536,6 +614,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let rebootInstancesSyncOverride: ElasticComputeCloudClientProtocol.RebootInstancesSyncType?
     let registerImageAsyncOverride: ElasticComputeCloudClientProtocol.RegisterImageAsyncType?
     let registerImageSyncOverride: ElasticComputeCloudClientProtocol.RegisterImageSyncType?
+    let rejectTransitGatewayVpcAttachmentAsyncOverride: ElasticComputeCloudClientProtocol.RejectTransitGatewayVpcAttachmentAsyncType?
+    let rejectTransitGatewayVpcAttachmentSyncOverride: ElasticComputeCloudClientProtocol.RejectTransitGatewayVpcAttachmentSyncType?
     let rejectVpcEndpointConnectionsAsyncOverride: ElasticComputeCloudClientProtocol.RejectVpcEndpointConnectionsAsyncType?
     let rejectVpcEndpointConnectionsSyncOverride: ElasticComputeCloudClientProtocol.RejectVpcEndpointConnectionsSyncType?
     let rejectVpcPeeringConnectionAsyncOverride: ElasticComputeCloudClientProtocol.RejectVpcPeeringConnectionAsyncType?
@@ -554,6 +634,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let replaceRouteSyncOverride: ElasticComputeCloudClientProtocol.ReplaceRouteSyncType?
     let replaceRouteTableAssociationAsyncOverride: ElasticComputeCloudClientProtocol.ReplaceRouteTableAssociationAsyncType?
     let replaceRouteTableAssociationSyncOverride: ElasticComputeCloudClientProtocol.ReplaceRouteTableAssociationSyncType?
+    let replaceTransitGatewayRouteAsyncOverride: ElasticComputeCloudClientProtocol.ReplaceTransitGatewayRouteAsyncType?
+    let replaceTransitGatewayRouteSyncOverride: ElasticComputeCloudClientProtocol.ReplaceTransitGatewayRouteSyncType?
     let reportInstanceStatusAsyncOverride: ElasticComputeCloudClientProtocol.ReportInstanceStatusAsyncType?
     let reportInstanceStatusSyncOverride: ElasticComputeCloudClientProtocol.ReportInstanceStatusSyncType?
     let requestSpotFleetAsyncOverride: ElasticComputeCloudClientProtocol.RequestSpotFleetAsyncType?
@@ -572,6 +654,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let resetSnapshotAttributeSyncOverride: ElasticComputeCloudClientProtocol.ResetSnapshotAttributeSyncType?
     let restoreAddressToClassicAsyncOverride: ElasticComputeCloudClientProtocol.RestoreAddressToClassicAsyncType?
     let restoreAddressToClassicSyncOverride: ElasticComputeCloudClientProtocol.RestoreAddressToClassicSyncType?
+    let revokeClientVpnIngressAsyncOverride: ElasticComputeCloudClientProtocol.RevokeClientVpnIngressAsyncType?
+    let revokeClientVpnIngressSyncOverride: ElasticComputeCloudClientProtocol.RevokeClientVpnIngressSyncType?
     let revokeSecurityGroupEgressAsyncOverride: ElasticComputeCloudClientProtocol.RevokeSecurityGroupEgressAsyncType?
     let revokeSecurityGroupEgressSyncOverride: ElasticComputeCloudClientProtocol.RevokeSecurityGroupEgressSyncType?
     let revokeSecurityGroupIngressAsyncOverride: ElasticComputeCloudClientProtocol.RevokeSecurityGroupIngressAsyncType?
@@ -580,10 +664,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let runInstancesSyncOverride: ElasticComputeCloudClientProtocol.RunInstancesSyncType?
     let runScheduledInstancesAsyncOverride: ElasticComputeCloudClientProtocol.RunScheduledInstancesAsyncType?
     let runScheduledInstancesSyncOverride: ElasticComputeCloudClientProtocol.RunScheduledInstancesSyncType?
+    let searchTransitGatewayRoutesAsyncOverride: ElasticComputeCloudClientProtocol.SearchTransitGatewayRoutesAsyncType?
+    let searchTransitGatewayRoutesSyncOverride: ElasticComputeCloudClientProtocol.SearchTransitGatewayRoutesSyncType?
     let startInstancesAsyncOverride: ElasticComputeCloudClientProtocol.StartInstancesAsyncType?
     let startInstancesSyncOverride: ElasticComputeCloudClientProtocol.StartInstancesSyncType?
     let stopInstancesAsyncOverride: ElasticComputeCloudClientProtocol.StopInstancesAsyncType?
     let stopInstancesSyncOverride: ElasticComputeCloudClientProtocol.StopInstancesSyncType?
+    let terminateClientVpnConnectionsAsyncOverride: ElasticComputeCloudClientProtocol.TerminateClientVpnConnectionsAsyncType?
+    let terminateClientVpnConnectionsSyncOverride: ElasticComputeCloudClientProtocol.TerminateClientVpnConnectionsSyncType?
     let terminateInstancesAsyncOverride: ElasticComputeCloudClientProtocol.TerminateInstancesAsyncType?
     let terminateInstancesSyncOverride: ElasticComputeCloudClientProtocol.TerminateInstancesSyncType?
     let unassignIpv6AddressesAsyncOverride: ElasticComputeCloudClientProtocol.UnassignIpv6AddressesAsyncType?
@@ -606,6 +694,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public init(error: Swift.Error,
             acceptReservedInstancesExchangeQuoteAsync: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteAsyncType? = nil,
             acceptReservedInstancesExchangeQuoteSync: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteSyncType? = nil,
+            acceptTransitGatewayVpcAttachmentAsync: ElasticComputeCloudClientProtocol.AcceptTransitGatewayVpcAttachmentAsyncType? = nil,
+            acceptTransitGatewayVpcAttachmentSync: ElasticComputeCloudClientProtocol.AcceptTransitGatewayVpcAttachmentSyncType? = nil,
             acceptVpcEndpointConnectionsAsync: ElasticComputeCloudClientProtocol.AcceptVpcEndpointConnectionsAsyncType? = nil,
             acceptVpcEndpointConnectionsSync: ElasticComputeCloudClientProtocol.AcceptVpcEndpointConnectionsSyncType? = nil,
             acceptVpcPeeringConnectionAsync: ElasticComputeCloudClientProtocol.AcceptVpcPeeringConnectionAsyncType? = nil,
@@ -616,12 +706,16 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             allocateAddressSync: ElasticComputeCloudClientProtocol.AllocateAddressSyncType? = nil,
             allocateHostsAsync: ElasticComputeCloudClientProtocol.AllocateHostsAsyncType? = nil,
             allocateHostsSync: ElasticComputeCloudClientProtocol.AllocateHostsSyncType? = nil,
+            applySecurityGroupsToClientVpnTargetNetworkAsync: ElasticComputeCloudClientProtocol.ApplySecurityGroupsToClientVpnTargetNetworkAsyncType? = nil,
+            applySecurityGroupsToClientVpnTargetNetworkSync: ElasticComputeCloudClientProtocol.ApplySecurityGroupsToClientVpnTargetNetworkSyncType? = nil,
             assignIpv6AddressesAsync: ElasticComputeCloudClientProtocol.AssignIpv6AddressesAsyncType? = nil,
             assignIpv6AddressesSync: ElasticComputeCloudClientProtocol.AssignIpv6AddressesSyncType? = nil,
             assignPrivateIpAddressesAsync: ElasticComputeCloudClientProtocol.AssignPrivateIpAddressesAsyncType? = nil,
             assignPrivateIpAddressesSync: ElasticComputeCloudClientProtocol.AssignPrivateIpAddressesSyncType? = nil,
             associateAddressAsync: ElasticComputeCloudClientProtocol.AssociateAddressAsyncType? = nil,
             associateAddressSync: ElasticComputeCloudClientProtocol.AssociateAddressSyncType? = nil,
+            associateClientVpnTargetNetworkAsync: ElasticComputeCloudClientProtocol.AssociateClientVpnTargetNetworkAsyncType? = nil,
+            associateClientVpnTargetNetworkSync: ElasticComputeCloudClientProtocol.AssociateClientVpnTargetNetworkSyncType? = nil,
             associateDhcpOptionsAsync: ElasticComputeCloudClientProtocol.AssociateDhcpOptionsAsyncType? = nil,
             associateDhcpOptionsSync: ElasticComputeCloudClientProtocol.AssociateDhcpOptionsSyncType? = nil,
             associateIamInstanceProfileAsync: ElasticComputeCloudClientProtocol.AssociateIamInstanceProfileAsyncType? = nil,
@@ -630,6 +724,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             associateRouteTableSync: ElasticComputeCloudClientProtocol.AssociateRouteTableSyncType? = nil,
             associateSubnetCidrBlockAsync: ElasticComputeCloudClientProtocol.AssociateSubnetCidrBlockAsyncType? = nil,
             associateSubnetCidrBlockSync: ElasticComputeCloudClientProtocol.AssociateSubnetCidrBlockSyncType? = nil,
+            associateTransitGatewayRouteTableAsync: ElasticComputeCloudClientProtocol.AssociateTransitGatewayRouteTableAsyncType? = nil,
+            associateTransitGatewayRouteTableSync: ElasticComputeCloudClientProtocol.AssociateTransitGatewayRouteTableSyncType? = nil,
             associateVpcCidrBlockAsync: ElasticComputeCloudClientProtocol.AssociateVpcCidrBlockAsyncType? = nil,
             associateVpcCidrBlockSync: ElasticComputeCloudClientProtocol.AssociateVpcCidrBlockSyncType? = nil,
             attachClassicLinkVpcAsync: ElasticComputeCloudClientProtocol.AttachClassicLinkVpcAsyncType? = nil,
@@ -642,6 +738,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             attachVolumeSync: ElasticComputeCloudClientProtocol.AttachVolumeSyncType? = nil,
             attachVpnGatewayAsync: ElasticComputeCloudClientProtocol.AttachVpnGatewayAsyncType? = nil,
             attachVpnGatewaySync: ElasticComputeCloudClientProtocol.AttachVpnGatewaySyncType? = nil,
+            authorizeClientVpnIngressAsync: ElasticComputeCloudClientProtocol.AuthorizeClientVpnIngressAsyncType? = nil,
+            authorizeClientVpnIngressSync: ElasticComputeCloudClientProtocol.AuthorizeClientVpnIngressSyncType? = nil,
             authorizeSecurityGroupEgressAsync: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupEgressAsyncType? = nil,
             authorizeSecurityGroupEgressSync: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupEgressSyncType? = nil,
             authorizeSecurityGroupIngressAsync: ElasticComputeCloudClientProtocol.AuthorizeSecurityGroupIngressAsyncType? = nil,
@@ -674,6 +772,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             copySnapshotSync: ElasticComputeCloudClientProtocol.CopySnapshotSyncType? = nil,
             createCapacityReservationAsync: ElasticComputeCloudClientProtocol.CreateCapacityReservationAsyncType? = nil,
             createCapacityReservationSync: ElasticComputeCloudClientProtocol.CreateCapacityReservationSyncType? = nil,
+            createClientVpnEndpointAsync: ElasticComputeCloudClientProtocol.CreateClientVpnEndpointAsyncType? = nil,
+            createClientVpnEndpointSync: ElasticComputeCloudClientProtocol.CreateClientVpnEndpointSyncType? = nil,
+            createClientVpnRouteAsync: ElasticComputeCloudClientProtocol.CreateClientVpnRouteAsyncType? = nil,
+            createClientVpnRouteSync: ElasticComputeCloudClientProtocol.CreateClientVpnRouteSyncType? = nil,
             createCustomerGatewayAsync: ElasticComputeCloudClientProtocol.CreateCustomerGatewayAsyncType? = nil,
             createCustomerGatewaySync: ElasticComputeCloudClientProtocol.CreateCustomerGatewaySyncType? = nil,
             createDefaultSubnetAsync: ElasticComputeCloudClientProtocol.CreateDefaultSubnetAsyncType? = nil,
@@ -730,6 +832,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             createSubnetSync: ElasticComputeCloudClientProtocol.CreateSubnetSyncType? = nil,
             createTagsAsync: ElasticComputeCloudClientProtocol.CreateTagsAsyncType? = nil,
             createTagsSync: ElasticComputeCloudClientProtocol.CreateTagsSyncType? = nil,
+            createTransitGatewayAsync: ElasticComputeCloudClientProtocol.CreateTransitGatewayAsyncType? = nil,
+            createTransitGatewaySync: ElasticComputeCloudClientProtocol.CreateTransitGatewaySyncType? = nil,
+            createTransitGatewayRouteAsync: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteAsyncType? = nil,
+            createTransitGatewayRouteSync: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteSyncType? = nil,
+            createTransitGatewayRouteTableAsync: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteTableAsyncType? = nil,
+            createTransitGatewayRouteTableSync: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteTableSyncType? = nil,
+            createTransitGatewayVpcAttachmentAsync: ElasticComputeCloudClientProtocol.CreateTransitGatewayVpcAttachmentAsyncType? = nil,
+            createTransitGatewayVpcAttachmentSync: ElasticComputeCloudClientProtocol.CreateTransitGatewayVpcAttachmentSyncType? = nil,
             createVolumeAsync: ElasticComputeCloudClientProtocol.CreateVolumeAsyncType? = nil,
             createVolumeSync: ElasticComputeCloudClientProtocol.CreateVolumeSyncType? = nil,
             createVpcAsync: ElasticComputeCloudClientProtocol.CreateVpcAsyncType? = nil,
@@ -748,6 +858,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             createVpnConnectionRouteSync: ElasticComputeCloudClientProtocol.CreateVpnConnectionRouteSyncType? = nil,
             createVpnGatewayAsync: ElasticComputeCloudClientProtocol.CreateVpnGatewayAsyncType? = nil,
             createVpnGatewaySync: ElasticComputeCloudClientProtocol.CreateVpnGatewaySyncType? = nil,
+            deleteClientVpnEndpointAsync: ElasticComputeCloudClientProtocol.DeleteClientVpnEndpointAsyncType? = nil,
+            deleteClientVpnEndpointSync: ElasticComputeCloudClientProtocol.DeleteClientVpnEndpointSyncType? = nil,
+            deleteClientVpnRouteAsync: ElasticComputeCloudClientProtocol.DeleteClientVpnRouteAsyncType? = nil,
+            deleteClientVpnRouteSync: ElasticComputeCloudClientProtocol.DeleteClientVpnRouteSyncType? = nil,
             deleteCustomerGatewayAsync: ElasticComputeCloudClientProtocol.DeleteCustomerGatewayAsyncType? = nil,
             deleteCustomerGatewaySync: ElasticComputeCloudClientProtocol.DeleteCustomerGatewaySyncType? = nil,
             deleteDhcpOptionsAsync: ElasticComputeCloudClientProtocol.DeleteDhcpOptionsAsyncType? = nil,
@@ -794,6 +908,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             deleteSubnetSync: ElasticComputeCloudClientProtocol.DeleteSubnetSyncType? = nil,
             deleteTagsAsync: ElasticComputeCloudClientProtocol.DeleteTagsAsyncType? = nil,
             deleteTagsSync: ElasticComputeCloudClientProtocol.DeleteTagsSyncType? = nil,
+            deleteTransitGatewayAsync: ElasticComputeCloudClientProtocol.DeleteTransitGatewayAsyncType? = nil,
+            deleteTransitGatewaySync: ElasticComputeCloudClientProtocol.DeleteTransitGatewaySyncType? = nil,
+            deleteTransitGatewayRouteAsync: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteAsyncType? = nil,
+            deleteTransitGatewayRouteSync: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteSyncType? = nil,
+            deleteTransitGatewayRouteTableAsync: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteTableAsyncType? = nil,
+            deleteTransitGatewayRouteTableSync: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteTableSyncType? = nil,
+            deleteTransitGatewayVpcAttachmentAsync: ElasticComputeCloudClientProtocol.DeleteTransitGatewayVpcAttachmentAsyncType? = nil,
+            deleteTransitGatewayVpcAttachmentSync: ElasticComputeCloudClientProtocol.DeleteTransitGatewayVpcAttachmentSyncType? = nil,
             deleteVolumeAsync: ElasticComputeCloudClientProtocol.DeleteVolumeAsyncType? = nil,
             deleteVolumeSync: ElasticComputeCloudClientProtocol.DeleteVolumeSyncType? = nil,
             deleteVpcAsync: ElasticComputeCloudClientProtocol.DeleteVpcAsyncType? = nil,
@@ -832,6 +954,16 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describeCapacityReservationsSync: ElasticComputeCloudClientProtocol.DescribeCapacityReservationsSyncType? = nil,
             describeClassicLinkInstancesAsync: ElasticComputeCloudClientProtocol.DescribeClassicLinkInstancesAsyncType? = nil,
             describeClassicLinkInstancesSync: ElasticComputeCloudClientProtocol.DescribeClassicLinkInstancesSyncType? = nil,
+            describeClientVpnAuthorizationRulesAsync: ElasticComputeCloudClientProtocol.DescribeClientVpnAuthorizationRulesAsyncType? = nil,
+            describeClientVpnAuthorizationRulesSync: ElasticComputeCloudClientProtocol.DescribeClientVpnAuthorizationRulesSyncType? = nil,
+            describeClientVpnConnectionsAsync: ElasticComputeCloudClientProtocol.DescribeClientVpnConnectionsAsyncType? = nil,
+            describeClientVpnConnectionsSync: ElasticComputeCloudClientProtocol.DescribeClientVpnConnectionsSyncType? = nil,
+            describeClientVpnEndpointsAsync: ElasticComputeCloudClientProtocol.DescribeClientVpnEndpointsAsyncType? = nil,
+            describeClientVpnEndpointsSync: ElasticComputeCloudClientProtocol.DescribeClientVpnEndpointsSyncType? = nil,
+            describeClientVpnRoutesAsync: ElasticComputeCloudClientProtocol.DescribeClientVpnRoutesAsyncType? = nil,
+            describeClientVpnRoutesSync: ElasticComputeCloudClientProtocol.DescribeClientVpnRoutesSyncType? = nil,
+            describeClientVpnTargetNetworksAsync: ElasticComputeCloudClientProtocol.DescribeClientVpnTargetNetworksAsyncType? = nil,
+            describeClientVpnTargetNetworksSync: ElasticComputeCloudClientProtocol.DescribeClientVpnTargetNetworksSyncType? = nil,
             describeConversionTasksAsync: ElasticComputeCloudClientProtocol.DescribeConversionTasksAsyncType? = nil,
             describeConversionTasksSync: ElasticComputeCloudClientProtocol.DescribeConversionTasksSyncType? = nil,
             describeCustomerGatewaysAsync: ElasticComputeCloudClientProtocol.DescribeCustomerGatewaysAsyncType? = nil,
@@ -954,6 +1086,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describeSubnetsSync: ElasticComputeCloudClientProtocol.DescribeSubnetsSyncType? = nil,
             describeTagsAsync: ElasticComputeCloudClientProtocol.DescribeTagsAsyncType? = nil,
             describeTagsSync: ElasticComputeCloudClientProtocol.DescribeTagsSyncType? = nil,
+            describeTransitGatewayAttachmentsAsync: ElasticComputeCloudClientProtocol.DescribeTransitGatewayAttachmentsAsyncType? = nil,
+            describeTransitGatewayAttachmentsSync: ElasticComputeCloudClientProtocol.DescribeTransitGatewayAttachmentsSyncType? = nil,
+            describeTransitGatewayRouteTablesAsync: ElasticComputeCloudClientProtocol.DescribeTransitGatewayRouteTablesAsyncType? = nil,
+            describeTransitGatewayRouteTablesSync: ElasticComputeCloudClientProtocol.DescribeTransitGatewayRouteTablesSyncType? = nil,
+            describeTransitGatewayVpcAttachmentsAsync: ElasticComputeCloudClientProtocol.DescribeTransitGatewayVpcAttachmentsAsyncType? = nil,
+            describeTransitGatewayVpcAttachmentsSync: ElasticComputeCloudClientProtocol.DescribeTransitGatewayVpcAttachmentsSyncType? = nil,
+            describeTransitGatewaysAsync: ElasticComputeCloudClientProtocol.DescribeTransitGatewaysAsyncType? = nil,
+            describeTransitGatewaysSync: ElasticComputeCloudClientProtocol.DescribeTransitGatewaysSyncType? = nil,
             describeVolumeAttributeAsync: ElasticComputeCloudClientProtocol.DescribeVolumeAttributeAsyncType? = nil,
             describeVolumeAttributeSync: ElasticComputeCloudClientProtocol.DescribeVolumeAttributeSyncType? = nil,
             describeVolumeStatusAsync: ElasticComputeCloudClientProtocol.DescribeVolumeStatusAsyncType? = nil,
@@ -998,6 +1138,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             detachVolumeSync: ElasticComputeCloudClientProtocol.DetachVolumeSyncType? = nil,
             detachVpnGatewayAsync: ElasticComputeCloudClientProtocol.DetachVpnGatewayAsyncType? = nil,
             detachVpnGatewaySync: ElasticComputeCloudClientProtocol.DetachVpnGatewaySyncType? = nil,
+            disableTransitGatewayRouteTablePropagationAsync: ElasticComputeCloudClientProtocol.DisableTransitGatewayRouteTablePropagationAsyncType? = nil,
+            disableTransitGatewayRouteTablePropagationSync: ElasticComputeCloudClientProtocol.DisableTransitGatewayRouteTablePropagationSyncType? = nil,
             disableVgwRoutePropagationAsync: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationAsyncType? = nil,
             disableVgwRoutePropagationSync: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationSyncType? = nil,
             disableVpcClassicLinkAsync: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkAsyncType? = nil,
@@ -1006,14 +1148,20 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             disableVpcClassicLinkDnsSupportSync: ElasticComputeCloudClientProtocol.DisableVpcClassicLinkDnsSupportSyncType? = nil,
             disassociateAddressAsync: ElasticComputeCloudClientProtocol.DisassociateAddressAsyncType? = nil,
             disassociateAddressSync: ElasticComputeCloudClientProtocol.DisassociateAddressSyncType? = nil,
+            disassociateClientVpnTargetNetworkAsync: ElasticComputeCloudClientProtocol.DisassociateClientVpnTargetNetworkAsyncType? = nil,
+            disassociateClientVpnTargetNetworkSync: ElasticComputeCloudClientProtocol.DisassociateClientVpnTargetNetworkSyncType? = nil,
             disassociateIamInstanceProfileAsync: ElasticComputeCloudClientProtocol.DisassociateIamInstanceProfileAsyncType? = nil,
             disassociateIamInstanceProfileSync: ElasticComputeCloudClientProtocol.DisassociateIamInstanceProfileSyncType? = nil,
             disassociateRouteTableAsync: ElasticComputeCloudClientProtocol.DisassociateRouteTableAsyncType? = nil,
             disassociateRouteTableSync: ElasticComputeCloudClientProtocol.DisassociateRouteTableSyncType? = nil,
             disassociateSubnetCidrBlockAsync: ElasticComputeCloudClientProtocol.DisassociateSubnetCidrBlockAsyncType? = nil,
             disassociateSubnetCidrBlockSync: ElasticComputeCloudClientProtocol.DisassociateSubnetCidrBlockSyncType? = nil,
+            disassociateTransitGatewayRouteTableAsync: ElasticComputeCloudClientProtocol.DisassociateTransitGatewayRouteTableAsyncType? = nil,
+            disassociateTransitGatewayRouteTableSync: ElasticComputeCloudClientProtocol.DisassociateTransitGatewayRouteTableSyncType? = nil,
             disassociateVpcCidrBlockAsync: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockAsyncType? = nil,
             disassociateVpcCidrBlockSync: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockSyncType? = nil,
+            enableTransitGatewayRouteTablePropagationAsync: ElasticComputeCloudClientProtocol.EnableTransitGatewayRouteTablePropagationAsyncType? = nil,
+            enableTransitGatewayRouteTablePropagationSync: ElasticComputeCloudClientProtocol.EnableTransitGatewayRouteTablePropagationSyncType? = nil,
             enableVgwRoutePropagationAsync: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationAsyncType? = nil,
             enableVgwRoutePropagationSync: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationSyncType? = nil,
             enableVolumeIOAsync: ElasticComputeCloudClientProtocol.EnableVolumeIOAsyncType? = nil,
@@ -1022,6 +1170,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             enableVpcClassicLinkSync: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkSyncType? = nil,
             enableVpcClassicLinkDnsSupportAsync: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkDnsSupportAsyncType? = nil,
             enableVpcClassicLinkDnsSupportSync: ElasticComputeCloudClientProtocol.EnableVpcClassicLinkDnsSupportSyncType? = nil,
+            exportClientVpnClientCertificateRevocationListAsync: ElasticComputeCloudClientProtocol.ExportClientVpnClientCertificateRevocationListAsyncType? = nil,
+            exportClientVpnClientCertificateRevocationListSync: ElasticComputeCloudClientProtocol.ExportClientVpnClientCertificateRevocationListSyncType? = nil,
+            exportClientVpnClientConfigurationAsync: ElasticComputeCloudClientProtocol.ExportClientVpnClientConfigurationAsyncType? = nil,
+            exportClientVpnClientConfigurationSync: ElasticComputeCloudClientProtocol.ExportClientVpnClientConfigurationSyncType? = nil,
+            exportTransitGatewayRoutesAsync: ElasticComputeCloudClientProtocol.ExportTransitGatewayRoutesAsyncType? = nil,
+            exportTransitGatewayRoutesSync: ElasticComputeCloudClientProtocol.ExportTransitGatewayRoutesSyncType? = nil,
             getConsoleOutputAsync: ElasticComputeCloudClientProtocol.GetConsoleOutputAsyncType? = nil,
             getConsoleOutputSync: ElasticComputeCloudClientProtocol.GetConsoleOutputSyncType? = nil,
             getConsoleScreenshotAsync: ElasticComputeCloudClientProtocol.GetConsoleScreenshotAsyncType? = nil,
@@ -1034,6 +1188,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             getPasswordDataSync: ElasticComputeCloudClientProtocol.GetPasswordDataSyncType? = nil,
             getReservedInstancesExchangeQuoteAsync: ElasticComputeCloudClientProtocol.GetReservedInstancesExchangeQuoteAsyncType? = nil,
             getReservedInstancesExchangeQuoteSync: ElasticComputeCloudClientProtocol.GetReservedInstancesExchangeQuoteSyncType? = nil,
+            getTransitGatewayAttachmentPropagationsAsync: ElasticComputeCloudClientProtocol.GetTransitGatewayAttachmentPropagationsAsyncType? = nil,
+            getTransitGatewayAttachmentPropagationsSync: ElasticComputeCloudClientProtocol.GetTransitGatewayAttachmentPropagationsSyncType? = nil,
+            getTransitGatewayRouteTableAssociationsAsync: ElasticComputeCloudClientProtocol.GetTransitGatewayRouteTableAssociationsAsyncType? = nil,
+            getTransitGatewayRouteTableAssociationsSync: ElasticComputeCloudClientProtocol.GetTransitGatewayRouteTableAssociationsSyncType? = nil,
+            getTransitGatewayRouteTablePropagationsAsync: ElasticComputeCloudClientProtocol.GetTransitGatewayRouteTablePropagationsAsyncType? = nil,
+            getTransitGatewayRouteTablePropagationsSync: ElasticComputeCloudClientProtocol.GetTransitGatewayRouteTablePropagationsSyncType? = nil,
+            importClientVpnClientCertificateRevocationListAsync: ElasticComputeCloudClientProtocol.ImportClientVpnClientCertificateRevocationListAsyncType? = nil,
+            importClientVpnClientCertificateRevocationListSync: ElasticComputeCloudClientProtocol.ImportClientVpnClientCertificateRevocationListSyncType? = nil,
             importImageAsync: ElasticComputeCloudClientProtocol.ImportImageAsyncType? = nil,
             importImageSync: ElasticComputeCloudClientProtocol.ImportImageSyncType? = nil,
             importInstanceAsync: ElasticComputeCloudClientProtocol.ImportInstanceAsyncType? = nil,
@@ -1046,6 +1208,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             importVolumeSync: ElasticComputeCloudClientProtocol.ImportVolumeSyncType? = nil,
             modifyCapacityReservationAsync: ElasticComputeCloudClientProtocol.ModifyCapacityReservationAsyncType? = nil,
             modifyCapacityReservationSync: ElasticComputeCloudClientProtocol.ModifyCapacityReservationSyncType? = nil,
+            modifyClientVpnEndpointAsync: ElasticComputeCloudClientProtocol.ModifyClientVpnEndpointAsyncType? = nil,
+            modifyClientVpnEndpointSync: ElasticComputeCloudClientProtocol.ModifyClientVpnEndpointSyncType? = nil,
             modifyFleetAsync: ElasticComputeCloudClientProtocol.ModifyFleetAsyncType? = nil,
             modifyFleetSync: ElasticComputeCloudClientProtocol.ModifyFleetSyncType? = nil,
             modifyFpgaImageAttributeAsync: ElasticComputeCloudClientProtocol.ModifyFpgaImageAttributeAsyncType? = nil,
@@ -1078,6 +1242,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             modifySpotFleetRequestSync: ElasticComputeCloudClientProtocol.ModifySpotFleetRequestSyncType? = nil,
             modifySubnetAttributeAsync: ElasticComputeCloudClientProtocol.ModifySubnetAttributeAsyncType? = nil,
             modifySubnetAttributeSync: ElasticComputeCloudClientProtocol.ModifySubnetAttributeSyncType? = nil,
+            modifyTransitGatewayVpcAttachmentAsync: ElasticComputeCloudClientProtocol.ModifyTransitGatewayVpcAttachmentAsyncType? = nil,
+            modifyTransitGatewayVpcAttachmentSync: ElasticComputeCloudClientProtocol.ModifyTransitGatewayVpcAttachmentSyncType? = nil,
             modifyVolumeAsync: ElasticComputeCloudClientProtocol.ModifyVolumeAsyncType? = nil,
             modifyVolumeSync: ElasticComputeCloudClientProtocol.ModifyVolumeSyncType? = nil,
             modifyVolumeAttributeAsync: ElasticComputeCloudClientProtocol.ModifyVolumeAttributeAsyncType? = nil,
@@ -1112,6 +1278,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             rebootInstancesSync: ElasticComputeCloudClientProtocol.RebootInstancesSyncType? = nil,
             registerImageAsync: ElasticComputeCloudClientProtocol.RegisterImageAsyncType? = nil,
             registerImageSync: ElasticComputeCloudClientProtocol.RegisterImageSyncType? = nil,
+            rejectTransitGatewayVpcAttachmentAsync: ElasticComputeCloudClientProtocol.RejectTransitGatewayVpcAttachmentAsyncType? = nil,
+            rejectTransitGatewayVpcAttachmentSync: ElasticComputeCloudClientProtocol.RejectTransitGatewayVpcAttachmentSyncType? = nil,
             rejectVpcEndpointConnectionsAsync: ElasticComputeCloudClientProtocol.RejectVpcEndpointConnectionsAsyncType? = nil,
             rejectVpcEndpointConnectionsSync: ElasticComputeCloudClientProtocol.RejectVpcEndpointConnectionsSyncType? = nil,
             rejectVpcPeeringConnectionAsync: ElasticComputeCloudClientProtocol.RejectVpcPeeringConnectionAsyncType? = nil,
@@ -1130,6 +1298,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             replaceRouteSync: ElasticComputeCloudClientProtocol.ReplaceRouteSyncType? = nil,
             replaceRouteTableAssociationAsync: ElasticComputeCloudClientProtocol.ReplaceRouteTableAssociationAsyncType? = nil,
             replaceRouteTableAssociationSync: ElasticComputeCloudClientProtocol.ReplaceRouteTableAssociationSyncType? = nil,
+            replaceTransitGatewayRouteAsync: ElasticComputeCloudClientProtocol.ReplaceTransitGatewayRouteAsyncType? = nil,
+            replaceTransitGatewayRouteSync: ElasticComputeCloudClientProtocol.ReplaceTransitGatewayRouteSyncType? = nil,
             reportInstanceStatusAsync: ElasticComputeCloudClientProtocol.ReportInstanceStatusAsyncType? = nil,
             reportInstanceStatusSync: ElasticComputeCloudClientProtocol.ReportInstanceStatusSyncType? = nil,
             requestSpotFleetAsync: ElasticComputeCloudClientProtocol.RequestSpotFleetAsyncType? = nil,
@@ -1148,6 +1318,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             resetSnapshotAttributeSync: ElasticComputeCloudClientProtocol.ResetSnapshotAttributeSyncType? = nil,
             restoreAddressToClassicAsync: ElasticComputeCloudClientProtocol.RestoreAddressToClassicAsyncType? = nil,
             restoreAddressToClassicSync: ElasticComputeCloudClientProtocol.RestoreAddressToClassicSyncType? = nil,
+            revokeClientVpnIngressAsync: ElasticComputeCloudClientProtocol.RevokeClientVpnIngressAsyncType? = nil,
+            revokeClientVpnIngressSync: ElasticComputeCloudClientProtocol.RevokeClientVpnIngressSyncType? = nil,
             revokeSecurityGroupEgressAsync: ElasticComputeCloudClientProtocol.RevokeSecurityGroupEgressAsyncType? = nil,
             revokeSecurityGroupEgressSync: ElasticComputeCloudClientProtocol.RevokeSecurityGroupEgressSyncType? = nil,
             revokeSecurityGroupIngressAsync: ElasticComputeCloudClientProtocol.RevokeSecurityGroupIngressAsyncType? = nil,
@@ -1156,10 +1328,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             runInstancesSync: ElasticComputeCloudClientProtocol.RunInstancesSyncType? = nil,
             runScheduledInstancesAsync: ElasticComputeCloudClientProtocol.RunScheduledInstancesAsyncType? = nil,
             runScheduledInstancesSync: ElasticComputeCloudClientProtocol.RunScheduledInstancesSyncType? = nil,
+            searchTransitGatewayRoutesAsync: ElasticComputeCloudClientProtocol.SearchTransitGatewayRoutesAsyncType? = nil,
+            searchTransitGatewayRoutesSync: ElasticComputeCloudClientProtocol.SearchTransitGatewayRoutesSyncType? = nil,
             startInstancesAsync: ElasticComputeCloudClientProtocol.StartInstancesAsyncType? = nil,
             startInstancesSync: ElasticComputeCloudClientProtocol.StartInstancesSyncType? = nil,
             stopInstancesAsync: ElasticComputeCloudClientProtocol.StopInstancesAsyncType? = nil,
             stopInstancesSync: ElasticComputeCloudClientProtocol.StopInstancesSyncType? = nil,
+            terminateClientVpnConnectionsAsync: ElasticComputeCloudClientProtocol.TerminateClientVpnConnectionsAsyncType? = nil,
+            terminateClientVpnConnectionsSync: ElasticComputeCloudClientProtocol.TerminateClientVpnConnectionsSyncType? = nil,
             terminateInstancesAsync: ElasticComputeCloudClientProtocol.TerminateInstancesAsyncType? = nil,
             terminateInstancesSync: ElasticComputeCloudClientProtocol.TerminateInstancesSyncType? = nil,
             unassignIpv6AddressesAsync: ElasticComputeCloudClientProtocol.UnassignIpv6AddressesAsyncType? = nil,
@@ -1177,6 +1353,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.error = error
         self.acceptReservedInstancesExchangeQuoteAsyncOverride = acceptReservedInstancesExchangeQuoteAsync
         self.acceptReservedInstancesExchangeQuoteSyncOverride = acceptReservedInstancesExchangeQuoteSync
+        self.acceptTransitGatewayVpcAttachmentAsyncOverride = acceptTransitGatewayVpcAttachmentAsync
+        self.acceptTransitGatewayVpcAttachmentSyncOverride = acceptTransitGatewayVpcAttachmentSync
         self.acceptVpcEndpointConnectionsAsyncOverride = acceptVpcEndpointConnectionsAsync
         self.acceptVpcEndpointConnectionsSyncOverride = acceptVpcEndpointConnectionsSync
         self.acceptVpcPeeringConnectionAsyncOverride = acceptVpcPeeringConnectionAsync
@@ -1187,12 +1365,16 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.allocateAddressSyncOverride = allocateAddressSync
         self.allocateHostsAsyncOverride = allocateHostsAsync
         self.allocateHostsSyncOverride = allocateHostsSync
+        self.applySecurityGroupsToClientVpnTargetNetworkAsyncOverride = applySecurityGroupsToClientVpnTargetNetworkAsync
+        self.applySecurityGroupsToClientVpnTargetNetworkSyncOverride = applySecurityGroupsToClientVpnTargetNetworkSync
         self.assignIpv6AddressesAsyncOverride = assignIpv6AddressesAsync
         self.assignIpv6AddressesSyncOverride = assignIpv6AddressesSync
         self.assignPrivateIpAddressesAsyncOverride = assignPrivateIpAddressesAsync
         self.assignPrivateIpAddressesSyncOverride = assignPrivateIpAddressesSync
         self.associateAddressAsyncOverride = associateAddressAsync
         self.associateAddressSyncOverride = associateAddressSync
+        self.associateClientVpnTargetNetworkAsyncOverride = associateClientVpnTargetNetworkAsync
+        self.associateClientVpnTargetNetworkSyncOverride = associateClientVpnTargetNetworkSync
         self.associateDhcpOptionsAsyncOverride = associateDhcpOptionsAsync
         self.associateDhcpOptionsSyncOverride = associateDhcpOptionsSync
         self.associateIamInstanceProfileAsyncOverride = associateIamInstanceProfileAsync
@@ -1201,6 +1383,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.associateRouteTableSyncOverride = associateRouteTableSync
         self.associateSubnetCidrBlockAsyncOverride = associateSubnetCidrBlockAsync
         self.associateSubnetCidrBlockSyncOverride = associateSubnetCidrBlockSync
+        self.associateTransitGatewayRouteTableAsyncOverride = associateTransitGatewayRouteTableAsync
+        self.associateTransitGatewayRouteTableSyncOverride = associateTransitGatewayRouteTableSync
         self.associateVpcCidrBlockAsyncOverride = associateVpcCidrBlockAsync
         self.associateVpcCidrBlockSyncOverride = associateVpcCidrBlockSync
         self.attachClassicLinkVpcAsyncOverride = attachClassicLinkVpcAsync
@@ -1213,6 +1397,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.attachVolumeSyncOverride = attachVolumeSync
         self.attachVpnGatewayAsyncOverride = attachVpnGatewayAsync
         self.attachVpnGatewaySyncOverride = attachVpnGatewaySync
+        self.authorizeClientVpnIngressAsyncOverride = authorizeClientVpnIngressAsync
+        self.authorizeClientVpnIngressSyncOverride = authorizeClientVpnIngressSync
         self.authorizeSecurityGroupEgressAsyncOverride = authorizeSecurityGroupEgressAsync
         self.authorizeSecurityGroupEgressSyncOverride = authorizeSecurityGroupEgressSync
         self.authorizeSecurityGroupIngressAsyncOverride = authorizeSecurityGroupIngressAsync
@@ -1245,6 +1431,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.copySnapshotSyncOverride = copySnapshotSync
         self.createCapacityReservationAsyncOverride = createCapacityReservationAsync
         self.createCapacityReservationSyncOverride = createCapacityReservationSync
+        self.createClientVpnEndpointAsyncOverride = createClientVpnEndpointAsync
+        self.createClientVpnEndpointSyncOverride = createClientVpnEndpointSync
+        self.createClientVpnRouteAsyncOverride = createClientVpnRouteAsync
+        self.createClientVpnRouteSyncOverride = createClientVpnRouteSync
         self.createCustomerGatewayAsyncOverride = createCustomerGatewayAsync
         self.createCustomerGatewaySyncOverride = createCustomerGatewaySync
         self.createDefaultSubnetAsyncOverride = createDefaultSubnetAsync
@@ -1301,6 +1491,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.createSubnetSyncOverride = createSubnetSync
         self.createTagsAsyncOverride = createTagsAsync
         self.createTagsSyncOverride = createTagsSync
+        self.createTransitGatewayAsyncOverride = createTransitGatewayAsync
+        self.createTransitGatewaySyncOverride = createTransitGatewaySync
+        self.createTransitGatewayRouteAsyncOverride = createTransitGatewayRouteAsync
+        self.createTransitGatewayRouteSyncOverride = createTransitGatewayRouteSync
+        self.createTransitGatewayRouteTableAsyncOverride = createTransitGatewayRouteTableAsync
+        self.createTransitGatewayRouteTableSyncOverride = createTransitGatewayRouteTableSync
+        self.createTransitGatewayVpcAttachmentAsyncOverride = createTransitGatewayVpcAttachmentAsync
+        self.createTransitGatewayVpcAttachmentSyncOverride = createTransitGatewayVpcAttachmentSync
         self.createVolumeAsyncOverride = createVolumeAsync
         self.createVolumeSyncOverride = createVolumeSync
         self.createVpcAsyncOverride = createVpcAsync
@@ -1319,6 +1517,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.createVpnConnectionRouteSyncOverride = createVpnConnectionRouteSync
         self.createVpnGatewayAsyncOverride = createVpnGatewayAsync
         self.createVpnGatewaySyncOverride = createVpnGatewaySync
+        self.deleteClientVpnEndpointAsyncOverride = deleteClientVpnEndpointAsync
+        self.deleteClientVpnEndpointSyncOverride = deleteClientVpnEndpointSync
+        self.deleteClientVpnRouteAsyncOverride = deleteClientVpnRouteAsync
+        self.deleteClientVpnRouteSyncOverride = deleteClientVpnRouteSync
         self.deleteCustomerGatewayAsyncOverride = deleteCustomerGatewayAsync
         self.deleteCustomerGatewaySyncOverride = deleteCustomerGatewaySync
         self.deleteDhcpOptionsAsyncOverride = deleteDhcpOptionsAsync
@@ -1365,6 +1567,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.deleteSubnetSyncOverride = deleteSubnetSync
         self.deleteTagsAsyncOverride = deleteTagsAsync
         self.deleteTagsSyncOverride = deleteTagsSync
+        self.deleteTransitGatewayAsyncOverride = deleteTransitGatewayAsync
+        self.deleteTransitGatewaySyncOverride = deleteTransitGatewaySync
+        self.deleteTransitGatewayRouteAsyncOverride = deleteTransitGatewayRouteAsync
+        self.deleteTransitGatewayRouteSyncOverride = deleteTransitGatewayRouteSync
+        self.deleteTransitGatewayRouteTableAsyncOverride = deleteTransitGatewayRouteTableAsync
+        self.deleteTransitGatewayRouteTableSyncOverride = deleteTransitGatewayRouteTableSync
+        self.deleteTransitGatewayVpcAttachmentAsyncOverride = deleteTransitGatewayVpcAttachmentAsync
+        self.deleteTransitGatewayVpcAttachmentSyncOverride = deleteTransitGatewayVpcAttachmentSync
         self.deleteVolumeAsyncOverride = deleteVolumeAsync
         self.deleteVolumeSyncOverride = deleteVolumeSync
         self.deleteVpcAsyncOverride = deleteVpcAsync
@@ -1403,6 +1613,16 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describeCapacityReservationsSyncOverride = describeCapacityReservationsSync
         self.describeClassicLinkInstancesAsyncOverride = describeClassicLinkInstancesAsync
         self.describeClassicLinkInstancesSyncOverride = describeClassicLinkInstancesSync
+        self.describeClientVpnAuthorizationRulesAsyncOverride = describeClientVpnAuthorizationRulesAsync
+        self.describeClientVpnAuthorizationRulesSyncOverride = describeClientVpnAuthorizationRulesSync
+        self.describeClientVpnConnectionsAsyncOverride = describeClientVpnConnectionsAsync
+        self.describeClientVpnConnectionsSyncOverride = describeClientVpnConnectionsSync
+        self.describeClientVpnEndpointsAsyncOverride = describeClientVpnEndpointsAsync
+        self.describeClientVpnEndpointsSyncOverride = describeClientVpnEndpointsSync
+        self.describeClientVpnRoutesAsyncOverride = describeClientVpnRoutesAsync
+        self.describeClientVpnRoutesSyncOverride = describeClientVpnRoutesSync
+        self.describeClientVpnTargetNetworksAsyncOverride = describeClientVpnTargetNetworksAsync
+        self.describeClientVpnTargetNetworksSyncOverride = describeClientVpnTargetNetworksSync
         self.describeConversionTasksAsyncOverride = describeConversionTasksAsync
         self.describeConversionTasksSyncOverride = describeConversionTasksSync
         self.describeCustomerGatewaysAsyncOverride = describeCustomerGatewaysAsync
@@ -1525,6 +1745,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describeSubnetsSyncOverride = describeSubnetsSync
         self.describeTagsAsyncOverride = describeTagsAsync
         self.describeTagsSyncOverride = describeTagsSync
+        self.describeTransitGatewayAttachmentsAsyncOverride = describeTransitGatewayAttachmentsAsync
+        self.describeTransitGatewayAttachmentsSyncOverride = describeTransitGatewayAttachmentsSync
+        self.describeTransitGatewayRouteTablesAsyncOverride = describeTransitGatewayRouteTablesAsync
+        self.describeTransitGatewayRouteTablesSyncOverride = describeTransitGatewayRouteTablesSync
+        self.describeTransitGatewayVpcAttachmentsAsyncOverride = describeTransitGatewayVpcAttachmentsAsync
+        self.describeTransitGatewayVpcAttachmentsSyncOverride = describeTransitGatewayVpcAttachmentsSync
+        self.describeTransitGatewaysAsyncOverride = describeTransitGatewaysAsync
+        self.describeTransitGatewaysSyncOverride = describeTransitGatewaysSync
         self.describeVolumeAttributeAsyncOverride = describeVolumeAttributeAsync
         self.describeVolumeAttributeSyncOverride = describeVolumeAttributeSync
         self.describeVolumeStatusAsyncOverride = describeVolumeStatusAsync
@@ -1569,6 +1797,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.detachVolumeSyncOverride = detachVolumeSync
         self.detachVpnGatewayAsyncOverride = detachVpnGatewayAsync
         self.detachVpnGatewaySyncOverride = detachVpnGatewaySync
+        self.disableTransitGatewayRouteTablePropagationAsyncOverride = disableTransitGatewayRouteTablePropagationAsync
+        self.disableTransitGatewayRouteTablePropagationSyncOverride = disableTransitGatewayRouteTablePropagationSync
         self.disableVgwRoutePropagationAsyncOverride = disableVgwRoutePropagationAsync
         self.disableVgwRoutePropagationSyncOverride = disableVgwRoutePropagationSync
         self.disableVpcClassicLinkAsyncOverride = disableVpcClassicLinkAsync
@@ -1577,14 +1807,20 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.disableVpcClassicLinkDnsSupportSyncOverride = disableVpcClassicLinkDnsSupportSync
         self.disassociateAddressAsyncOverride = disassociateAddressAsync
         self.disassociateAddressSyncOverride = disassociateAddressSync
+        self.disassociateClientVpnTargetNetworkAsyncOverride = disassociateClientVpnTargetNetworkAsync
+        self.disassociateClientVpnTargetNetworkSyncOverride = disassociateClientVpnTargetNetworkSync
         self.disassociateIamInstanceProfileAsyncOverride = disassociateIamInstanceProfileAsync
         self.disassociateIamInstanceProfileSyncOverride = disassociateIamInstanceProfileSync
         self.disassociateRouteTableAsyncOverride = disassociateRouteTableAsync
         self.disassociateRouteTableSyncOverride = disassociateRouteTableSync
         self.disassociateSubnetCidrBlockAsyncOverride = disassociateSubnetCidrBlockAsync
         self.disassociateSubnetCidrBlockSyncOverride = disassociateSubnetCidrBlockSync
+        self.disassociateTransitGatewayRouteTableAsyncOverride = disassociateTransitGatewayRouteTableAsync
+        self.disassociateTransitGatewayRouteTableSyncOverride = disassociateTransitGatewayRouteTableSync
         self.disassociateVpcCidrBlockAsyncOverride = disassociateVpcCidrBlockAsync
         self.disassociateVpcCidrBlockSyncOverride = disassociateVpcCidrBlockSync
+        self.enableTransitGatewayRouteTablePropagationAsyncOverride = enableTransitGatewayRouteTablePropagationAsync
+        self.enableTransitGatewayRouteTablePropagationSyncOverride = enableTransitGatewayRouteTablePropagationSync
         self.enableVgwRoutePropagationAsyncOverride = enableVgwRoutePropagationAsync
         self.enableVgwRoutePropagationSyncOverride = enableVgwRoutePropagationSync
         self.enableVolumeIOAsyncOverride = enableVolumeIOAsync
@@ -1593,6 +1829,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.enableVpcClassicLinkSyncOverride = enableVpcClassicLinkSync
         self.enableVpcClassicLinkDnsSupportAsyncOverride = enableVpcClassicLinkDnsSupportAsync
         self.enableVpcClassicLinkDnsSupportSyncOverride = enableVpcClassicLinkDnsSupportSync
+        self.exportClientVpnClientCertificateRevocationListAsyncOverride = exportClientVpnClientCertificateRevocationListAsync
+        self.exportClientVpnClientCertificateRevocationListSyncOverride = exportClientVpnClientCertificateRevocationListSync
+        self.exportClientVpnClientConfigurationAsyncOverride = exportClientVpnClientConfigurationAsync
+        self.exportClientVpnClientConfigurationSyncOverride = exportClientVpnClientConfigurationSync
+        self.exportTransitGatewayRoutesAsyncOverride = exportTransitGatewayRoutesAsync
+        self.exportTransitGatewayRoutesSyncOverride = exportTransitGatewayRoutesSync
         self.getConsoleOutputAsyncOverride = getConsoleOutputAsync
         self.getConsoleOutputSyncOverride = getConsoleOutputSync
         self.getConsoleScreenshotAsyncOverride = getConsoleScreenshotAsync
@@ -1605,6 +1847,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.getPasswordDataSyncOverride = getPasswordDataSync
         self.getReservedInstancesExchangeQuoteAsyncOverride = getReservedInstancesExchangeQuoteAsync
         self.getReservedInstancesExchangeQuoteSyncOverride = getReservedInstancesExchangeQuoteSync
+        self.getTransitGatewayAttachmentPropagationsAsyncOverride = getTransitGatewayAttachmentPropagationsAsync
+        self.getTransitGatewayAttachmentPropagationsSyncOverride = getTransitGatewayAttachmentPropagationsSync
+        self.getTransitGatewayRouteTableAssociationsAsyncOverride = getTransitGatewayRouteTableAssociationsAsync
+        self.getTransitGatewayRouteTableAssociationsSyncOverride = getTransitGatewayRouteTableAssociationsSync
+        self.getTransitGatewayRouteTablePropagationsAsyncOverride = getTransitGatewayRouteTablePropagationsAsync
+        self.getTransitGatewayRouteTablePropagationsSyncOverride = getTransitGatewayRouteTablePropagationsSync
+        self.importClientVpnClientCertificateRevocationListAsyncOverride = importClientVpnClientCertificateRevocationListAsync
+        self.importClientVpnClientCertificateRevocationListSyncOverride = importClientVpnClientCertificateRevocationListSync
         self.importImageAsyncOverride = importImageAsync
         self.importImageSyncOverride = importImageSync
         self.importInstanceAsyncOverride = importInstanceAsync
@@ -1617,6 +1867,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.importVolumeSyncOverride = importVolumeSync
         self.modifyCapacityReservationAsyncOverride = modifyCapacityReservationAsync
         self.modifyCapacityReservationSyncOverride = modifyCapacityReservationSync
+        self.modifyClientVpnEndpointAsyncOverride = modifyClientVpnEndpointAsync
+        self.modifyClientVpnEndpointSyncOverride = modifyClientVpnEndpointSync
         self.modifyFleetAsyncOverride = modifyFleetAsync
         self.modifyFleetSyncOverride = modifyFleetSync
         self.modifyFpgaImageAttributeAsyncOverride = modifyFpgaImageAttributeAsync
@@ -1649,6 +1901,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.modifySpotFleetRequestSyncOverride = modifySpotFleetRequestSync
         self.modifySubnetAttributeAsyncOverride = modifySubnetAttributeAsync
         self.modifySubnetAttributeSyncOverride = modifySubnetAttributeSync
+        self.modifyTransitGatewayVpcAttachmentAsyncOverride = modifyTransitGatewayVpcAttachmentAsync
+        self.modifyTransitGatewayVpcAttachmentSyncOverride = modifyTransitGatewayVpcAttachmentSync
         self.modifyVolumeAsyncOverride = modifyVolumeAsync
         self.modifyVolumeSyncOverride = modifyVolumeSync
         self.modifyVolumeAttributeAsyncOverride = modifyVolumeAttributeAsync
@@ -1683,6 +1937,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.rebootInstancesSyncOverride = rebootInstancesSync
         self.registerImageAsyncOverride = registerImageAsync
         self.registerImageSyncOverride = registerImageSync
+        self.rejectTransitGatewayVpcAttachmentAsyncOverride = rejectTransitGatewayVpcAttachmentAsync
+        self.rejectTransitGatewayVpcAttachmentSyncOverride = rejectTransitGatewayVpcAttachmentSync
         self.rejectVpcEndpointConnectionsAsyncOverride = rejectVpcEndpointConnectionsAsync
         self.rejectVpcEndpointConnectionsSyncOverride = rejectVpcEndpointConnectionsSync
         self.rejectVpcPeeringConnectionAsyncOverride = rejectVpcPeeringConnectionAsync
@@ -1701,6 +1957,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.replaceRouteSyncOverride = replaceRouteSync
         self.replaceRouteTableAssociationAsyncOverride = replaceRouteTableAssociationAsync
         self.replaceRouteTableAssociationSyncOverride = replaceRouteTableAssociationSync
+        self.replaceTransitGatewayRouteAsyncOverride = replaceTransitGatewayRouteAsync
+        self.replaceTransitGatewayRouteSyncOverride = replaceTransitGatewayRouteSync
         self.reportInstanceStatusAsyncOverride = reportInstanceStatusAsync
         self.reportInstanceStatusSyncOverride = reportInstanceStatusSync
         self.requestSpotFleetAsyncOverride = requestSpotFleetAsync
@@ -1719,6 +1977,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.resetSnapshotAttributeSyncOverride = resetSnapshotAttributeSync
         self.restoreAddressToClassicAsyncOverride = restoreAddressToClassicAsync
         self.restoreAddressToClassicSyncOverride = restoreAddressToClassicSync
+        self.revokeClientVpnIngressAsyncOverride = revokeClientVpnIngressAsync
+        self.revokeClientVpnIngressSyncOverride = revokeClientVpnIngressSync
         self.revokeSecurityGroupEgressAsyncOverride = revokeSecurityGroupEgressAsync
         self.revokeSecurityGroupEgressSyncOverride = revokeSecurityGroupEgressSync
         self.revokeSecurityGroupIngressAsyncOverride = revokeSecurityGroupIngressAsync
@@ -1727,10 +1987,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.runInstancesSyncOverride = runInstancesSync
         self.runScheduledInstancesAsyncOverride = runScheduledInstancesAsync
         self.runScheduledInstancesSyncOverride = runScheduledInstancesSync
+        self.searchTransitGatewayRoutesAsyncOverride = searchTransitGatewayRoutesAsync
+        self.searchTransitGatewayRoutesSyncOverride = searchTransitGatewayRoutesSync
         self.startInstancesAsyncOverride = startInstancesAsync
         self.startInstancesSyncOverride = startInstancesSync
         self.stopInstancesAsyncOverride = stopInstancesAsync
         self.stopInstancesSyncOverride = stopInstancesSync
+        self.terminateClientVpnConnectionsAsyncOverride = terminateClientVpnConnectionsAsync
+        self.terminateClientVpnConnectionsSyncOverride = terminateClientVpnConnectionsSync
         self.terminateInstancesAsyncOverride = terminateInstancesAsync
         self.terminateInstancesSyncOverride = terminateInstancesSync
         self.unassignIpv6AddressesAsyncOverride = unassignIpv6AddressesAsync
@@ -1775,6 +2039,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func acceptReservedInstancesExchangeQuoteSync(input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
         if let acceptReservedInstancesExchangeQuoteSyncOverride = acceptReservedInstancesExchangeQuoteSyncOverride {
             return try acceptReservedInstancesExchangeQuoteSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the AcceptTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The AcceptTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        if let acceptTransitGatewayVpcAttachmentAsyncOverride = acceptTransitGatewayVpcAttachmentAsyncOverride {
+            return try acceptTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the AcceptTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The AcceptTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult {
+        if let acceptTransitGatewayVpcAttachmentSyncOverride = acceptTransitGatewayVpcAttachmentSyncOverride {
+            return try acceptTransitGatewayVpcAttachmentSyncOverride(input)
         }
 
         throw error
@@ -1946,6 +2243,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the ApplySecurityGroupsToClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ApplySecurityGroupsToClientVpnTargetNetworkRequest object being passed to this operation.
+         - completion: The ApplySecurityGroupsToClientVpnTargetNetworkResult object or an error will be passed to this 
+           callback when the operation is complete. The ApplySecurityGroupsToClientVpnTargetNetworkResult
+           object will be validated before being returned to caller.
+     */
+    public func applySecurityGroupsToClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult>) -> ()) throws {
+        if let applySecurityGroupsToClientVpnTargetNetworkAsyncOverride = applySecurityGroupsToClientVpnTargetNetworkAsyncOverride {
+            return try applySecurityGroupsToClientVpnTargetNetworkAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ApplySecurityGroupsToClientVpnTargetNetwork operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ApplySecurityGroupsToClientVpnTargetNetworkRequest object being passed to this operation.
+     - Returns: The ApplySecurityGroupsToClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func applySecurityGroupsToClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult {
+        if let applySecurityGroupsToClientVpnTargetNetworkSyncOverride = applySecurityGroupsToClientVpnTargetNetworkSyncOverride {
+            return try applySecurityGroupsToClientVpnTargetNetworkSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the AssignIpv6Addresses operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2036,6 +2366,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func associateAddressSync(input: ElasticComputeCloudModel.AssociateAddressRequest) throws -> ElasticComputeCloudModel.AssociateAddressResult {
         if let associateAddressSyncOverride = associateAddressSyncOverride {
             return try associateAddressSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the AssociateClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateClientVpnTargetNetworkRequest object being passed to this operation.
+         - completion: The AssociateClientVpnTargetNetworkResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateClientVpnTargetNetworkResult
+           object will be validated before being returned to caller.
+     */
+    public func associateClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult>) -> ()) throws {
+        if let associateClientVpnTargetNetworkAsyncOverride = associateClientVpnTargetNetworkAsyncOverride {
+            return try associateClientVpnTargetNetworkAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the AssociateClientVpnTargetNetwork operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateClientVpnTargetNetworkRequest object being passed to this operation.
+     - Returns: The AssociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult {
+        if let associateClientVpnTargetNetworkSyncOverride = associateClientVpnTargetNetworkSyncOverride {
+            return try associateClientVpnTargetNetworkSyncOverride(input)
         }
 
         throw error
@@ -2165,6 +2528,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func associateSubnetCidrBlockSync(input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult {
         if let associateSubnetCidrBlockSyncOverride = associateSubnetCidrBlockSyncOverride {
             return try associateSubnetCidrBlockSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the AssociateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The AssociateTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func associateTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult>) -> ()) throws {
+        if let associateTransitGatewayRouteTableAsyncOverride = associateTransitGatewayRouteTableAsyncOverride {
+            return try associateTransitGatewayRouteTableAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the AssociateTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The AssociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult {
+        if let associateTransitGatewayRouteTableSyncOverride = associateTransitGatewayRouteTableSyncOverride {
+            return try associateTransitGatewayRouteTableSyncOverride(input)
         }
 
         throw error
@@ -2360,6 +2756,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func attachVpnGatewaySync(input: ElasticComputeCloudModel.AttachVpnGatewayRequest) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult {
         if let attachVpnGatewaySyncOverride = attachVpnGatewaySyncOverride {
             return try attachVpnGatewaySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the AuthorizeClientVpnIngress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AuthorizeClientVpnIngressRequest object being passed to this operation.
+         - completion: The AuthorizeClientVpnIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The AuthorizeClientVpnIngressResult
+           object will be validated before being returned to caller.
+     */
+    public func authorizeClientVpnIngressAsync(input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult>) -> ()) throws {
+        if let authorizeClientVpnIngressAsyncOverride = authorizeClientVpnIngressAsyncOverride {
+            return try authorizeClientVpnIngressAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the AuthorizeClientVpnIngress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AuthorizeClientVpnIngressRequest object being passed to this operation.
+     - Returns: The AuthorizeClientVpnIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func authorizeClientVpnIngressSync(input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult {
+        if let authorizeClientVpnIngressSyncOverride = authorizeClientVpnIngressSyncOverride {
+            return try authorizeClientVpnIngressSyncOverride(input)
         }
 
         throw error
@@ -2876,6 +3305,72 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func createCapacityReservationSync(input: ElasticComputeCloudModel.CreateCapacityReservationRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult {
         if let createCapacityReservationSyncOverride = createCapacityReservationSyncOverride {
             return try createCapacityReservationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateClientVpnEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateClientVpnEndpointRequest object being passed to this operation.
+         - completion: The CreateClientVpnEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateClientVpnEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func createClientVpnEndpointAsync(input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnEndpointResult>) -> ()) throws {
+        if let createClientVpnEndpointAsyncOverride = createClientVpnEndpointAsyncOverride {
+            return try createClientVpnEndpointAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateClientVpnEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateClientVpnEndpointRequest object being passed to this operation.
+     - Returns: The CreateClientVpnEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createClientVpnEndpointSync(input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult {
+        if let createClientVpnEndpointSyncOverride = createClientVpnEndpointSyncOverride {
+            return try createClientVpnEndpointSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateClientVpnRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateClientVpnRouteRequest object being passed to this operation.
+         - completion: The CreateClientVpnRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateClientVpnRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func createClientVpnRouteAsync(input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnRouteResult>) -> ()) throws {
+        if let createClientVpnRouteAsyncOverride = createClientVpnRouteAsyncOverride {
+            return try createClientVpnRouteAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateClientVpnRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateClientVpnRouteRequest object being passed to this operation.
+     - Returns: The CreateClientVpnRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createClientVpnRouteSync(input: ElasticComputeCloudModel.CreateClientVpnRouteRequest) throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult {
+        if let createClientVpnRouteSyncOverride = createClientVpnRouteSyncOverride {
+            return try createClientVpnRouteSyncOverride(input)
         }
 
         throw error
@@ -3797,6 +4292,138 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the CreateTransitGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayResult>) -> ()) throws {
+        if let createTransitGatewayAsyncOverride = createTransitGatewayAsyncOverride {
+            return try createTransitGatewayAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateTransitGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewaySync(input: ElasticComputeCloudModel.CreateTransitGatewayRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult {
+        if let createTransitGatewaySyncOverride = createTransitGatewaySyncOverride {
+            return try createTransitGatewaySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateTransitGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayRouteAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteResult>) -> ()) throws {
+        if let createTransitGatewayRouteAsyncOverride = createTransitGatewayRouteAsyncOverride {
+            return try createTransitGatewayRouteAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateTransitGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayRouteSync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult {
+        if let createTransitGatewayRouteSyncOverride = createTransitGatewayRouteSyncOverride {
+            return try createTransitGatewayRouteSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult>) -> ()) throws {
+        if let createTransitGatewayRouteTableAsyncOverride = createTransitGatewayRouteTableAsyncOverride {
+            return try createTransitGatewayRouteTableAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult {
+        if let createTransitGatewayRouteTableSyncOverride = createTransitGatewayRouteTableSyncOverride {
+            return try createTransitGatewayRouteTableSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        if let createTransitGatewayVpcAttachmentAsyncOverride = createTransitGatewayVpcAttachmentAsyncOverride {
+            return try createTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult {
+        if let createTransitGatewayVpcAttachmentSyncOverride = createTransitGatewayVpcAttachmentSyncOverride {
+            return try createTransitGatewayVpcAttachmentSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the CreateVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4085,6 +4712,72 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func createVpnGatewaySync(input: ElasticComputeCloudModel.CreateVpnGatewayRequest) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult {
         if let createVpnGatewaySyncOverride = createVpnGatewaySyncOverride {
             return try createVpnGatewaySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteClientVpnEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnEndpointRequest object being passed to this operation.
+         - completion: The DeleteClientVpnEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteClientVpnEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteClientVpnEndpointAsync(input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnEndpointResult>) -> ()) throws {
+        if let deleteClientVpnEndpointAsyncOverride = deleteClientVpnEndpointAsyncOverride {
+            return try deleteClientVpnEndpointAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteClientVpnEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnEndpointRequest object being passed to this operation.
+     - Returns: The DeleteClientVpnEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteClientVpnEndpointSync(input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult {
+        if let deleteClientVpnEndpointSyncOverride = deleteClientVpnEndpointSyncOverride {
+            return try deleteClientVpnEndpointSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteClientVpnRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnRouteRequest object being passed to this operation.
+         - completion: The DeleteClientVpnRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteClientVpnRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteClientVpnRouteAsync(input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnRouteResult>) -> ()) throws {
+        if let deleteClientVpnRouteAsyncOverride = deleteClientVpnRouteAsyncOverride {
+            return try deleteClientVpnRouteAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteClientVpnRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnRouteRequest object being passed to this operation.
+     - Returns: The DeleteClientVpnRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteClientVpnRouteSync(input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult {
+        if let deleteClientVpnRouteSyncOverride = deleteClientVpnRouteSyncOverride {
+            return try deleteClientVpnRouteSyncOverride(input)
         }
 
         throw error
@@ -4805,6 +5498,138 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DeleteTransitGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayResult>) -> ()) throws {
+        if let deleteTransitGatewayAsyncOverride = deleteTransitGatewayAsyncOverride {
+            return try deleteTransitGatewayAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteTransitGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewaySync(input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
+        if let deleteTransitGatewaySyncOverride = deleteTransitGatewaySyncOverride {
+            return try deleteTransitGatewaySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayRouteAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult>) -> ()) throws {
+        if let deleteTransitGatewayRouteAsyncOverride = deleteTransitGatewayRouteAsyncOverride {
+            return try deleteTransitGatewayRouteAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayRouteSync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult {
+        if let deleteTransitGatewayRouteSyncOverride = deleteTransitGatewayRouteSyncOverride {
+            return try deleteTransitGatewayRouteSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult>) -> ()) throws {
+        if let deleteTransitGatewayRouteTableAsyncOverride = deleteTransitGatewayRouteTableAsyncOverride {
+            return try deleteTransitGatewayRouteTableAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult {
+        if let deleteTransitGatewayRouteTableSyncOverride = deleteTransitGatewayRouteTableSyncOverride {
+            return try deleteTransitGatewayRouteTableSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        if let deleteTransitGatewayVpcAttachmentAsyncOverride = deleteTransitGatewayVpcAttachmentAsyncOverride {
+            return try deleteTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult {
+        if let deleteTransitGatewayVpcAttachmentSyncOverride = deleteTransitGatewayVpcAttachmentSyncOverride {
+            return try deleteTransitGatewayVpcAttachmentSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DeleteVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5408,6 +6233,171 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func describeClassicLinkInstancesSync(input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult {
         if let describeClassicLinkInstancesSyncOverride = describeClassicLinkInstancesSyncOverride {
             return try describeClassicLinkInstancesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeClientVpnAuthorizationRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnAuthorizationRulesRequest object being passed to this operation.
+         - completion: The DescribeClientVpnAuthorizationRulesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnAuthorizationRulesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnAuthorizationRulesAsync(input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult>) -> ()) throws {
+        if let describeClientVpnAuthorizationRulesAsyncOverride = describeClientVpnAuthorizationRulesAsyncOverride {
+            return try describeClientVpnAuthorizationRulesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeClientVpnAuthorizationRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnAuthorizationRulesRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnAuthorizationRulesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnAuthorizationRulesSync(input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult {
+        if let describeClientVpnAuthorizationRulesSyncOverride = describeClientVpnAuthorizationRulesSyncOverride {
+            return try describeClientVpnAuthorizationRulesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeClientVpnConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnConnectionsRequest object being passed to this operation.
+         - completion: The DescribeClientVpnConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnConnectionsAsync(input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult>) -> ()) throws {
+        if let describeClientVpnConnectionsAsyncOverride = describeClientVpnConnectionsAsyncOverride {
+            return try describeClientVpnConnectionsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeClientVpnConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnConnectionsRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnConnectionsSync(input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult {
+        if let describeClientVpnConnectionsSyncOverride = describeClientVpnConnectionsSyncOverride {
+            return try describeClientVpnConnectionsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeClientVpnEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnEndpointsRequest object being passed to this operation.
+         - completion: The DescribeClientVpnEndpointsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnEndpointsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnEndpointsAsync(input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult>) -> ()) throws {
+        if let describeClientVpnEndpointsAsyncOverride = describeClientVpnEndpointsAsyncOverride {
+            return try describeClientVpnEndpointsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeClientVpnEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnEndpointsSync(input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult {
+        if let describeClientVpnEndpointsSyncOverride = describeClientVpnEndpointsSyncOverride {
+            return try describeClientVpnEndpointsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeClientVpnRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnRoutesRequest object being passed to this operation.
+         - completion: The DescribeClientVpnRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnRoutesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnRoutesAsync(input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnRoutesResult>) -> ()) throws {
+        if let describeClientVpnRoutesAsyncOverride = describeClientVpnRoutesAsyncOverride {
+            return try describeClientVpnRoutesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeClientVpnRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnRoutesRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnRoutesSync(input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult {
+        if let describeClientVpnRoutesSyncOverride = describeClientVpnRoutesSyncOverride {
+            return try describeClientVpnRoutesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeClientVpnTargetNetworks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnTargetNetworksRequest object being passed to this operation.
+         - completion: The DescribeClientVpnTargetNetworksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnTargetNetworksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnTargetNetworksAsync(input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult>) -> ()) throws {
+        if let describeClientVpnTargetNetworksAsyncOverride = describeClientVpnTargetNetworksAsyncOverride {
+            return try describeClientVpnTargetNetworksAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeClientVpnTargetNetworks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnTargetNetworksRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnTargetNetworksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnTargetNetworksSync(input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult {
+        if let describeClientVpnTargetNetworksSyncOverride = describeClientVpnTargetNetworksSyncOverride {
+            return try describeClientVpnTargetNetworksSyncOverride(input)
         }
 
         throw error
@@ -7427,6 +8417,138 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DescribeTransitGatewayAttachments operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayAttachmentsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayAttachmentsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayAttachmentsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayAttachmentsAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult>) -> ()) throws {
+        if let describeTransitGatewayAttachmentsAsyncOverride = describeTransitGatewayAttachmentsAsyncOverride {
+            return try describeTransitGatewayAttachmentsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayAttachments operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayAttachmentsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayAttachmentsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayAttachmentsSync(input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
+        if let describeTransitGatewayAttachmentsSyncOverride = describeTransitGatewayAttachmentsSyncOverride {
+            return try describeTransitGatewayAttachmentsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayRouteTables operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayRouteTablesRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayRouteTablesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayRouteTablesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayRouteTablesAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult>) -> ()) throws {
+        if let describeTransitGatewayRouteTablesAsyncOverride = describeTransitGatewayRouteTablesAsyncOverride {
+            return try describeTransitGatewayRouteTablesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayRouteTables operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayRouteTablesRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayRouteTablesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayRouteTablesSync(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult {
+        if let describeTransitGatewayRouteTablesSyncOverride = describeTransitGatewayRouteTablesSyncOverride {
+            return try describeTransitGatewayRouteTablesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayVpcAttachments operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayVpcAttachmentsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayVpcAttachmentsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayVpcAttachmentsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayVpcAttachmentsAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult>) -> ()) throws {
+        if let describeTransitGatewayVpcAttachmentsAsyncOverride = describeTransitGatewayVpcAttachmentsAsyncOverride {
+            return try describeTransitGatewayVpcAttachmentsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayVpcAttachments operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayVpcAttachmentsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayVpcAttachmentsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayVpcAttachmentsSync(input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult {
+        if let describeTransitGatewayVpcAttachmentsSyncOverride = describeTransitGatewayVpcAttachmentsSyncOverride {
+            return try describeTransitGatewayVpcAttachmentsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeTransitGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewaysRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewaysAsync(input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewaysResult>) -> ()) throws {
+        if let describeTransitGatewaysAsyncOverride = describeTransitGatewaysAsyncOverride {
+            return try describeTransitGatewaysAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeTransitGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewaysSync(input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult {
+        if let describeTransitGatewaysSyncOverride = describeTransitGatewaysSyncOverride {
+            return try describeTransitGatewaysSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DescribeVolumeAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8144,6 +9266,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DisableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+         - completion: The DisableTransitGatewayRouteTablePropagationResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableTransitGatewayRouteTablePropagationResult
+           object will be validated before being returned to caller.
+     */
+    public func disableTransitGatewayRouteTablePropagationAsync(input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult>) -> ()) throws {
+        if let disableTransitGatewayRouteTablePropagationAsyncOverride = disableTransitGatewayRouteTablePropagationAsyncOverride {
+            return try disableTransitGatewayRouteTablePropagationAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DisableTransitGatewayRouteTablePropagation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+     - Returns: The DisableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableTransitGatewayRouteTablePropagationSync(input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult {
+        if let disableTransitGatewayRouteTablePropagationSyncOverride = disableTransitGatewayRouteTablePropagationSyncOverride {
+            return try disableTransitGatewayRouteTablePropagationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DisableVgwRoutePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8270,6 +9425,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DisassociateClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateClientVpnTargetNetworkRequest object being passed to this operation.
+         - completion: The DisassociateClientVpnTargetNetworkResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateClientVpnTargetNetworkResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult>) -> ()) throws {
+        if let disassociateClientVpnTargetNetworkAsyncOverride = disassociateClientVpnTargetNetworkAsyncOverride {
+            return try disassociateClientVpnTargetNetworkAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DisassociateClientVpnTargetNetwork operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateClientVpnTargetNetworkRequest object being passed to this operation.
+     - Returns: The DisassociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult {
+        if let disassociateClientVpnTargetNetworkSyncOverride = disassociateClientVpnTargetNetworkSyncOverride {
+            return try disassociateClientVpnTargetNetworkSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DisassociateIamInstanceProfile operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8366,6 +9554,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DisassociateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The DisassociateTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult>) -> ()) throws {
+        if let disassociateTransitGatewayRouteTableAsyncOverride = disassociateTransitGatewayRouteTableAsyncOverride {
+            return try disassociateTransitGatewayRouteTableAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DisassociateTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The DisassociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult {
+        if let disassociateTransitGatewayRouteTableSyncOverride = disassociateTransitGatewayRouteTableSyncOverride {
+            return try disassociateTransitGatewayRouteTableSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DisassociateVpcCidrBlock operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8393,6 +9614,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func disassociateVpcCidrBlockSync(input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult {
         if let disassociateVpcCidrBlockSyncOverride = disassociateVpcCidrBlockSyncOverride {
             return try disassociateVpcCidrBlockSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the EnableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+         - completion: The EnableTransitGatewayRouteTablePropagationResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableTransitGatewayRouteTablePropagationResult
+           object will be validated before being returned to caller.
+     */
+    public func enableTransitGatewayRouteTablePropagationAsync(input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult>) -> ()) throws {
+        if let enableTransitGatewayRouteTablePropagationAsyncOverride = enableTransitGatewayRouteTablePropagationAsyncOverride {
+            return try enableTransitGatewayRouteTablePropagationAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the EnableTransitGatewayRouteTablePropagation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+     - Returns: The EnableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableTransitGatewayRouteTablePropagationSync(input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult {
+        if let enableTransitGatewayRouteTablePropagationSyncOverride = enableTransitGatewayRouteTablePropagationSyncOverride {
+            return try enableTransitGatewayRouteTablePropagationSyncOverride(input)
         }
 
         throw error
@@ -8519,6 +9773,105 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func enableVpcClassicLinkDnsSupportSync(input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult {
         if let enableVpcClassicLinkDnsSupportSyncOverride = enableVpcClassicLinkDnsSupportSyncOverride {
             return try enableVpcClassicLinkDnsSupportSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ExportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+         - completion: The ExportClientVpnClientCertificateRevocationListResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportClientVpnClientCertificateRevocationListResult
+           object will be validated before being returned to caller.
+     */
+    public func exportClientVpnClientCertificateRevocationListAsync(input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult>) -> ()) throws {
+        if let exportClientVpnClientCertificateRevocationListAsyncOverride = exportClientVpnClientCertificateRevocationListAsyncOverride {
+            return try exportClientVpnClientCertificateRevocationListAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ExportClientVpnClientCertificateRevocationList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+     - Returns: The ExportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func exportClientVpnClientCertificateRevocationListSync(input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult {
+        if let exportClientVpnClientCertificateRevocationListSyncOverride = exportClientVpnClientCertificateRevocationListSyncOverride {
+            return try exportClientVpnClientCertificateRevocationListSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ExportClientVpnClientConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientConfigurationRequest object being passed to this operation.
+         - completion: The ExportClientVpnClientConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportClientVpnClientConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    public func exportClientVpnClientConfigurationAsync(input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult>) -> ()) throws {
+        if let exportClientVpnClientConfigurationAsyncOverride = exportClientVpnClientConfigurationAsyncOverride {
+            return try exportClientVpnClientConfigurationAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ExportClientVpnClientConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientConfigurationRequest object being passed to this operation.
+     - Returns: The ExportClientVpnClientConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func exportClientVpnClientConfigurationSync(input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult {
+        if let exportClientVpnClientConfigurationSyncOverride = exportClientVpnClientConfigurationSyncOverride {
+            return try exportClientVpnClientConfigurationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ExportTransitGatewayRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportTransitGatewayRoutesRequest object being passed to this operation.
+         - completion: The ExportTransitGatewayRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportTransitGatewayRoutesResult
+           object will be validated before being returned to caller.
+     */
+    public func exportTransitGatewayRoutesAsync(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult>) -> ()) throws {
+        if let exportTransitGatewayRoutesAsyncOverride = exportTransitGatewayRoutesAsyncOverride {
+            return try exportTransitGatewayRoutesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ExportTransitGatewayRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportTransitGatewayRoutesRequest object being passed to this operation.
+     - Returns: The ExportTransitGatewayRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func exportTransitGatewayRoutesSync(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
+        if let exportTransitGatewayRoutesSyncOverride = exportTransitGatewayRoutesSyncOverride {
+            return try exportTransitGatewayRoutesSyncOverride(input)
         }
 
         throw error
@@ -8723,6 +10076,138 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the GetTransitGatewayAttachmentPropagations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayAttachmentPropagationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayAttachmentPropagationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayAttachmentPropagationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getTransitGatewayAttachmentPropagationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult>) -> ()) throws {
+        if let getTransitGatewayAttachmentPropagationsAsyncOverride = getTransitGatewayAttachmentPropagationsAsyncOverride {
+            return try getTransitGatewayAttachmentPropagationsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the GetTransitGatewayAttachmentPropagations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayAttachmentPropagationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayAttachmentPropagationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getTransitGatewayAttachmentPropagationsSync(input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult {
+        if let getTransitGatewayAttachmentPropagationsSyncOverride = getTransitGatewayAttachmentPropagationsSyncOverride {
+            return try getTransitGatewayAttachmentPropagationsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetTransitGatewayRouteTableAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTableAssociationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayRouteTableAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayRouteTableAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getTransitGatewayRouteTableAssociationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult>) -> ()) throws {
+        if let getTransitGatewayRouteTableAssociationsAsyncOverride = getTransitGatewayRouteTableAssociationsAsyncOverride {
+            return try getTransitGatewayRouteTableAssociationsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the GetTransitGatewayRouteTableAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTableAssociationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayRouteTableAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getTransitGatewayRouteTableAssociationsSync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult {
+        if let getTransitGatewayRouteTableAssociationsSyncOverride = getTransitGatewayRouteTableAssociationsSyncOverride {
+            return try getTransitGatewayRouteTableAssociationsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetTransitGatewayRouteTablePropagations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTablePropagationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayRouteTablePropagationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayRouteTablePropagationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getTransitGatewayRouteTablePropagationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult>) -> ()) throws {
+        if let getTransitGatewayRouteTablePropagationsAsyncOverride = getTransitGatewayRouteTablePropagationsAsyncOverride {
+            return try getTransitGatewayRouteTablePropagationsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the GetTransitGatewayRouteTablePropagations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTablePropagationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayRouteTablePropagationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getTransitGatewayRouteTablePropagationsSync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult {
+        if let getTransitGatewayRouteTablePropagationsSyncOverride = getTransitGatewayRouteTablePropagationsSyncOverride {
+            return try getTransitGatewayRouteTablePropagationsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ImportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+         - completion: The ImportClientVpnClientCertificateRevocationListResult object or an error will be passed to this 
+           callback when the operation is complete. The ImportClientVpnClientCertificateRevocationListResult
+           object will be validated before being returned to caller.
+     */
+    public func importClientVpnClientCertificateRevocationListAsync(input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult>) -> ()) throws {
+        if let importClientVpnClientCertificateRevocationListAsyncOverride = importClientVpnClientCertificateRevocationListAsyncOverride {
+            return try importClientVpnClientCertificateRevocationListAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ImportClientVpnClientCertificateRevocationList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+     - Returns: The ImportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func importClientVpnClientCertificateRevocationListSync(input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult {
+        if let importClientVpnClientCertificateRevocationListSyncOverride = importClientVpnClientCertificateRevocationListSyncOverride {
+            return try importClientVpnClientCertificateRevocationListSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ImportImage operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8915,6 +10400,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func modifyCapacityReservationSync(input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
         if let modifyCapacityReservationSyncOverride = modifyCapacityReservationSyncOverride {
             return try modifyCapacityReservationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyClientVpnEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyClientVpnEndpointRequest object being passed to this operation.
+         - completion: The ModifyClientVpnEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyClientVpnEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyClientVpnEndpointAsync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyClientVpnEndpointResult>) -> ()) throws {
+        if let modifyClientVpnEndpointAsyncOverride = modifyClientVpnEndpointAsyncOverride {
+            return try modifyClientVpnEndpointAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyClientVpnEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyClientVpnEndpointRequest object being passed to this operation.
+     - Returns: The ModifyClientVpnEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyClientVpnEndpointSync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
+        if let modifyClientVpnEndpointSyncOverride = modifyClientVpnEndpointSyncOverride {
+            return try modifyClientVpnEndpointSyncOverride(input)
         }
 
         throw error
@@ -9422,6 +10940,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func modifySubnetAttributeSync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest) throws {
         if let modifySubnetAttributeSyncOverride = modifySubnetAttributeSyncOverride {
             return try modifySubnetAttributeSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The ModifyTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        if let modifyTransitGatewayVpcAttachmentAsyncOverride = modifyTransitGatewayVpcAttachmentAsyncOverride {
+            return try modifyTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The ModifyTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult {
+        if let modifyTransitGatewayVpcAttachmentSyncOverride = modifyTransitGatewayVpcAttachmentSyncOverride {
+            return try modifyTransitGatewayVpcAttachmentSyncOverride(input)
         }
 
         throw error
@@ -9980,6 +11531,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the RejectTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The RejectTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The RejectTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        if let rejectTransitGatewayVpcAttachmentAsyncOverride = rejectTransitGatewayVpcAttachmentAsyncOverride {
+            return try rejectTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the RejectTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The RejectTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult {
+        if let rejectTransitGatewayVpcAttachmentSyncOverride = rejectTransitGatewayVpcAttachmentSyncOverride {
+            return try rejectTransitGatewayVpcAttachmentSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the RejectVpcEndpointConnections operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10268,6 +11852,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the ReplaceTransitGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceTransitGatewayRouteRequest object being passed to this operation.
+         - completion: The ReplaceTransitGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The ReplaceTransitGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func replaceTransitGatewayRouteAsync(input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult>) -> ()) throws {
+        if let replaceTransitGatewayRouteAsyncOverride = replaceTransitGatewayRouteAsyncOverride {
+            return try replaceTransitGatewayRouteAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ReplaceTransitGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceTransitGatewayRouteRequest object being passed to this operation.
+     - Returns: The ReplaceTransitGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func replaceTransitGatewayRouteSync(input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult {
+        if let replaceTransitGatewayRouteSyncOverride = replaceTransitGatewayRouteSyncOverride {
+            return try replaceTransitGatewayRouteSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ReportInstanceStatus operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10550,6 +12167,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the RevokeClientVpnIngress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RevokeClientVpnIngressRequest object being passed to this operation.
+         - completion: The RevokeClientVpnIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The RevokeClientVpnIngressResult
+           object will be validated before being returned to caller.
+     */
+    public func revokeClientVpnIngressAsync(input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RevokeClientVpnIngressResult>) -> ()) throws {
+        if let revokeClientVpnIngressAsyncOverride = revokeClientVpnIngressAsyncOverride {
+            return try revokeClientVpnIngressAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the RevokeClientVpnIngress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RevokeClientVpnIngressRequest object being passed to this operation.
+     - Returns: The RevokeClientVpnIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func revokeClientVpnIngressSync(input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult {
+        if let revokeClientVpnIngressSyncOverride = revokeClientVpnIngressSyncOverride {
+            return try revokeClientVpnIngressSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the RevokeSecurityGroupEgress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10676,6 +12326,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the SearchTransitGatewayRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SearchTransitGatewayRoutesRequest object being passed to this operation.
+         - completion: The SearchTransitGatewayRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The SearchTransitGatewayRoutesResult
+           object will be validated before being returned to caller.
+     */
+    public func searchTransitGatewayRoutesAsync(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult>) -> ()) throws {
+        if let searchTransitGatewayRoutesAsyncOverride = searchTransitGatewayRoutesAsyncOverride {
+            return try searchTransitGatewayRoutesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the SearchTransitGatewayRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SearchTransitGatewayRoutesRequest object being passed to this operation.
+     - Returns: The SearchTransitGatewayRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func searchTransitGatewayRoutesSync(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
+        if let searchTransitGatewayRoutesSyncOverride = searchTransitGatewayRoutesSyncOverride {
+            return try searchTransitGatewayRoutesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the StartInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10736,6 +12419,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func stopInstancesSync(input: ElasticComputeCloudModel.StopInstancesRequest) throws -> ElasticComputeCloudModel.StopInstancesResult {
         if let stopInstancesSyncOverride = stopInstancesSyncOverride {
             return try stopInstancesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the TerminateClientVpnConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TerminateClientVpnConnectionsRequest object being passed to this operation.
+         - completion: The TerminateClientVpnConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The TerminateClientVpnConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    public func terminateClientVpnConnectionsAsync(input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult>) -> ()) throws {
+        if let terminateClientVpnConnectionsAsyncOverride = terminateClientVpnConnectionsAsyncOverride {
+            return try terminateClientVpnConnectionsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the TerminateClientVpnConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TerminateClientVpnConnectionsRequest object being passed to this operation.
+     - Returns: The TerminateClientVpnConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func terminateClientVpnConnectionsSync(input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult {
+        if let terminateClientVpnConnectionsSyncOverride = terminateClientVpnConnectionsSyncOverride {
+            return try terminateClientVpnConnectionsSyncOverride(input)
         }
 
         throw error

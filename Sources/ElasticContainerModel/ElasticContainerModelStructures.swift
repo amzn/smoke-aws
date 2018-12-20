@@ -616,6 +616,7 @@ public struct CreateServiceRequest: Codable, Equatable {
     public var clientToken: String?
     public var cluster: String?
     public var deploymentConfiguration: DeploymentConfiguration?
+    public var deploymentController: DeploymentController?
     public var desiredCount: BoxedInteger?
     public var enableECSManagedTags: Boolean?
     public var healthCheckGracePeriodSeconds: BoxedInteger?
@@ -636,6 +637,7 @@ public struct CreateServiceRequest: Codable, Equatable {
     public init(clientToken: String? = nil,
                 cluster: String? = nil,
                 deploymentConfiguration: DeploymentConfiguration? = nil,
+                deploymentController: DeploymentController? = nil,
                 desiredCount: BoxedInteger? = nil,
                 enableECSManagedTags: Boolean? = nil,
                 healthCheckGracePeriodSeconds: BoxedInteger? = nil,
@@ -655,6 +657,7 @@ public struct CreateServiceRequest: Codable, Equatable {
         self.clientToken = clientToken
         self.cluster = cluster
         self.deploymentConfiguration = deploymentConfiguration
+        self.deploymentController = deploymentController
         self.desiredCount = desiredCount
         self.enableECSManagedTags = enableECSManagedTags
         self.healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds
@@ -677,6 +680,7 @@ public struct CreateServiceRequest: Codable, Equatable {
         case clientToken
         case cluster
         case deploymentConfiguration
+        case deploymentController
         case desiredCount
         case enableECSManagedTags
         case healthCheckGracePeriodSeconds
@@ -697,6 +701,7 @@ public struct CreateServiceRequest: Codable, Equatable {
 
     public func validate() throws {
         try deploymentConfiguration?.validate()
+        try deploymentController?.validate()
         try networkConfiguration?.validate()
         try tags?.validateAsTags()
     }
@@ -926,6 +931,21 @@ public struct DeploymentConfiguration: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case maximumPercent
         case minimumHealthyPercent
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeploymentController: Codable, Equatable {
+    public var type: DeploymentControllerType
+
+    public init(type: DeploymentControllerType) {
+        self.type = type
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case type
     }
 
     public func validate() throws {
@@ -2499,6 +2519,25 @@ public struct RunTaskResponse: Codable, Equatable {
     }
 }
 
+public struct Scale: Codable, Equatable {
+    public var unit: ScaleUnit?
+    public var value: Double?
+
+    public init(unit: ScaleUnit? = nil,
+                value: Double? = nil) {
+        self.unit = unit
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case unit
+        case value
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Secret: Codable, Equatable {
     public var name: String
     public var valueFrom: String
@@ -2538,6 +2577,7 @@ public struct Service: Codable, Equatable {
     public var createdAt: Timestamp?
     public var createdBy: String?
     public var deploymentConfiguration: DeploymentConfiguration?
+    public var deploymentController: DeploymentController?
     public var deployments: Deployments?
     public var desiredCount: Integer?
     public var enableECSManagedTags: Boolean?
@@ -2560,11 +2600,13 @@ public struct Service: Codable, Equatable {
     public var status: String?
     public var tags: Tags?
     public var taskDefinition: String?
+    public var taskSets: TaskSets?
 
     public init(clusterArn: String? = nil,
                 createdAt: Timestamp? = nil,
                 createdBy: String? = nil,
                 deploymentConfiguration: DeploymentConfiguration? = nil,
+                deploymentController: DeploymentController? = nil,
                 deployments: Deployments? = nil,
                 desiredCount: Integer? = nil,
                 enableECSManagedTags: Boolean? = nil,
@@ -2586,11 +2628,13 @@ public struct Service: Codable, Equatable {
                 serviceRegistries: ServiceRegistries? = nil,
                 status: String? = nil,
                 tags: Tags? = nil,
-                taskDefinition: String? = nil) {
+                taskDefinition: String? = nil,
+                taskSets: TaskSets? = nil) {
         self.clusterArn = clusterArn
         self.createdAt = createdAt
         self.createdBy = createdBy
         self.deploymentConfiguration = deploymentConfiguration
+        self.deploymentController = deploymentController
         self.deployments = deployments
         self.desiredCount = desiredCount
         self.enableECSManagedTags = enableECSManagedTags
@@ -2613,6 +2657,7 @@ public struct Service: Codable, Equatable {
         self.status = status
         self.tags = tags
         self.taskDefinition = taskDefinition
+        self.taskSets = taskSets
     }
 
     enum CodingKeys: String, CodingKey {
@@ -2620,6 +2665,7 @@ public struct Service: Codable, Equatable {
         case createdAt
         case createdBy
         case deploymentConfiguration
+        case deploymentController
         case deployments
         case desiredCount
         case enableECSManagedTags
@@ -2642,10 +2688,12 @@ public struct Service: Codable, Equatable {
         case status
         case tags
         case taskDefinition
+        case taskSets
     }
 
     public func validate() throws {
         try deploymentConfiguration?.validate()
+        try deploymentController?.validate()
         try networkConfiguration?.validate()
         try tags?.validateAsTags()
     }
@@ -3295,6 +3343,91 @@ public struct TaskOverride: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct TaskSet: Codable, Equatable {
+    public var computedDesiredCount: Integer?
+    public var createdAt: Timestamp?
+    public var externalId: String?
+    public var id: String?
+    public var launchType: LaunchType?
+    public var loadBalancers: LoadBalancers?
+    public var networkConfiguration: NetworkConfiguration?
+    public var pendingCount: Integer?
+    public var platformVersion: String?
+    public var runningCount: Integer?
+    public var scale: Scale?
+    public var stabilityStatus: StabilityStatus?
+    public var stabilityStatusAt: Timestamp?
+    public var startedBy: String?
+    public var status: String?
+    public var taskDefinition: String?
+    public var taskSetArn: String?
+    public var updatedAt: Timestamp?
+
+    public init(computedDesiredCount: Integer? = nil,
+                createdAt: Timestamp? = nil,
+                externalId: String? = nil,
+                id: String? = nil,
+                launchType: LaunchType? = nil,
+                loadBalancers: LoadBalancers? = nil,
+                networkConfiguration: NetworkConfiguration? = nil,
+                pendingCount: Integer? = nil,
+                platformVersion: String? = nil,
+                runningCount: Integer? = nil,
+                scale: Scale? = nil,
+                stabilityStatus: StabilityStatus? = nil,
+                stabilityStatusAt: Timestamp? = nil,
+                startedBy: String? = nil,
+                status: String? = nil,
+                taskDefinition: String? = nil,
+                taskSetArn: String? = nil,
+                updatedAt: Timestamp? = nil) {
+        self.computedDesiredCount = computedDesiredCount
+        self.createdAt = createdAt
+        self.externalId = externalId
+        self.id = id
+        self.launchType = launchType
+        self.loadBalancers = loadBalancers
+        self.networkConfiguration = networkConfiguration
+        self.pendingCount = pendingCount
+        self.platformVersion = platformVersion
+        self.runningCount = runningCount
+        self.scale = scale
+        self.stabilityStatus = stabilityStatus
+        self.stabilityStatusAt = stabilityStatusAt
+        self.startedBy = startedBy
+        self.status = status
+        self.taskDefinition = taskDefinition
+        self.taskSetArn = taskSetArn
+        self.updatedAt = updatedAt
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case computedDesiredCount
+        case createdAt
+        case externalId
+        case id
+        case launchType
+        case loadBalancers
+        case networkConfiguration
+        case pendingCount
+        case platformVersion
+        case runningCount
+        case scale
+        case stabilityStatus
+        case stabilityStatusAt
+        case startedBy
+        case status
+        case taskDefinition
+        case taskSetArn
+        case updatedAt
+    }
+
+    public func validate() throws {
+        try networkConfiguration?.validate()
+        try scale?.validate()
     }
 }
 

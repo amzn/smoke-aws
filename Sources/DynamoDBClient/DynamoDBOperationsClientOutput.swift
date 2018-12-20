@@ -362,6 +362,32 @@ extension ScanOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the TransactGetItems operation in a HTTP client.
+ */
+extension TransactGetItemsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = TransactGetItemsOutput
+    public typealias HeadersType = TransactGetItemsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> TransactGetItemsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the TransactWriteItems operation in a HTTP client.
+ */
+extension TransactWriteItemsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = TransactWriteItemsOutput
+    public typealias HeadersType = TransactWriteItemsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> TransactWriteItemsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the UpdateContinuousBackups operation in a HTTP client.
  */
 extension UpdateContinuousBackupsOutput: HTTPResponseOutputProtocol {

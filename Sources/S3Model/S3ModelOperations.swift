@@ -67,6 +67,9 @@ public enum S3ModelOperations: String {
     case getBucketWebsite = "GetBucketWebsite"
     case getObject = "GetObject"
     case getObjectAcl = "GetObjectAcl"
+    case getObjectLegalHold = "GetObjectLegalHold"
+    case getObjectLockConfiguration = "GetObjectLockConfiguration"
+    case getObjectRetention = "GetObjectRetention"
     case getObjectTagging = "GetObjectTagging"
     case getObjectTorrent = "GetObjectTorrent"
     case getPublicAccessBlock = "GetPublicAccessBlock"
@@ -101,6 +104,9 @@ public enum S3ModelOperations: String {
     case putBucketWebsite = "PutBucketWebsite"
     case putObject = "PutObject"
     case putObjectAcl = "PutObjectAcl"
+    case putObjectLegalHold = "PutObjectLegalHold"
+    case putObjectLockConfiguration = "PutObjectLockConfiguration"
+    case putObjectRetention = "PutObjectRetention"
     case putObjectTagging = "PutObjectTagging"
     case putPublicAccessBlock = "PutPublicAccessBlock"
     case restoreObject = "RestoreObject"
@@ -194,6 +200,12 @@ public enum S3ModelOperations: String {
             return "/{Bucket}/{Key+}"
         case .getObjectAcl:
             return "/{Bucket}/{Key+}?acl"
+        case .getObjectLegalHold:
+            return "/{Bucket}/{Key+}?legal-hold"
+        case .getObjectLockConfiguration:
+            return "/{Bucket}?object-lock"
+        case .getObjectRetention:
+            return "/{Bucket}/{Key+}?retention"
         case .getObjectTagging:
             return "/{Bucket}/{Key+}?tagging"
         case .getObjectTorrent:
@@ -262,6 +274,12 @@ public enum S3ModelOperations: String {
             return "/{Bucket}/{Key+}"
         case .putObjectAcl:
             return "/{Bucket}/{Key+}?acl"
+        case .putObjectLegalHold:
+            return "/{Bucket}/{Key+}?legal-hold"
+        case .putObjectLockConfiguration:
+            return "/{Bucket}?object-lock"
+        case .putObjectRetention:
+            return "/{Bucket}/{Key+}?retention"
         case .putObjectTagging:
             return "/{Bucket}/{Key+}?tagging"
         case .putPublicAccessBlock:
@@ -602,6 +620,9 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var grantWriteACP: GrantWriteACP?
     public var metadata: Metadata?
     public var metadataDirective: MetadataDirective?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
     public var requestPayer: RequestPayer?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
@@ -634,6 +655,9 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 grantWriteACP: GrantWriteACP? = nil,
                 metadata: Metadata? = nil,
                 metadataDirective: MetadataDirective? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
                 requestPayer: RequestPayer? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
@@ -665,6 +689,9 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.grantWriteACP = grantWriteACP
         self.metadata = metadata
         self.metadataDirective = metadataDirective
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
         self.requestPayer = requestPayer
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
@@ -699,6 +726,9 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case grantWriteACP = "x-amz-grant-write-acp"
         case metadata = "x-amz-meta-"
         case metadataDirective = "x-amz-metadata-directive"
+        case objectLockLegalHoldStatus = "x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-object-lock-retain-until-date"
         case requestPayer = "x-amz-request-payer"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
@@ -740,6 +770,9 @@ public extension CopyObjectRequest {
             grantWriteACP: grantWriteACP,
             metadata: metadata,
             metadataDirective: metadataDirective,
+            objectLockLegalHoldStatus: objectLockLegalHoldStatus,
+            objectLockMode: objectLockMode,
+            objectLockRetainUntilDate: objectLockRetainUntilDate,
             requestPayer: requestPayer,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
@@ -854,19 +887,22 @@ public struct CreateBucketOperationInputAdditionalHeaders: Codable, Equatable {
     public var grantReadACP: GrantReadACP?
     public var grantWrite: GrantWrite?
     public var grantWriteACP: GrantWriteACP?
+    public var objectLockEnabledForBucket: ObjectLockEnabledForBucket?
 
     public init(aCL: BucketCannedACL? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
                 grantWrite: GrantWrite? = nil,
-                grantWriteACP: GrantWriteACP? = nil) {
+                grantWriteACP: GrantWriteACP? = nil,
+                objectLockEnabledForBucket: ObjectLockEnabledForBucket? = nil) {
         self.aCL = aCL
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
         self.grantReadACP = grantReadACP
         self.grantWrite = grantWrite
         self.grantWriteACP = grantWriteACP
+        self.objectLockEnabledForBucket = objectLockEnabledForBucket
     }
 
     enum CodingKeys: String, CodingKey {
@@ -876,6 +912,7 @@ public struct CreateBucketOperationInputAdditionalHeaders: Codable, Equatable {
         case grantReadACP = "x-amz-grant-read-acp"
         case grantWrite = "x-amz-grant-write"
         case grantWriteACP = "x-amz-grant-write-acp"
+        case objectLockEnabledForBucket = "x-amz-bucket-object-lock-enabled"
     }
 
     public func validate() throws {
@@ -890,7 +927,8 @@ public extension CreateBucketRequest {
             grantRead: grantRead,
             grantReadACP: grantReadACP,
             grantWrite: grantWrite,
-            grantWriteACP: grantWriteACP)
+            grantWriteACP: grantWriteACP,
+            objectLockEnabledForBucket: objectLockEnabledForBucket)
     }
 }
 
@@ -945,6 +983,9 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
     public var grantReadACP: GrantReadACP?
     public var grantWriteACP: GrantWriteACP?
     public var metadata: Metadata?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
     public var requestPayer: RequestPayer?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
@@ -967,6 +1008,9 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
                 grantReadACP: GrantReadACP? = nil,
                 grantWriteACP: GrantWriteACP? = nil,
                 metadata: Metadata? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
                 requestPayer: RequestPayer? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
@@ -988,6 +1032,9 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         self.grantReadACP = grantReadACP
         self.grantWriteACP = grantWriteACP
         self.metadata = metadata
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
         self.requestPayer = requestPayer
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
@@ -1012,6 +1059,9 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         case grantReadACP = "x-amz-grant-read-acp"
         case grantWriteACP = "x-amz-grant-write-acp"
         case metadata = "x-amz-meta-"
+        case objectLockLegalHoldStatus = "x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-object-lock-retain-until-date"
         case requestPayer = "x-amz-request-payer"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
@@ -1042,6 +1092,9 @@ public extension CreateMultipartUploadRequest {
             grantReadACP: grantReadACP,
             grantWriteACP: grantWriteACP,
             metadata: metadata,
+            objectLockLegalHoldStatus: objectLockLegalHoldStatus,
+            objectLockMode: objectLockMode,
+            objectLockRetainUntilDate: objectLockRetainUntilDate,
             requestPayer: requestPayer,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
@@ -1593,16 +1646,20 @@ public extension DeleteObjectRequest {
  operation.
  */
 public struct DeleteObjectOperationInputAdditionalHeaders: Codable, Equatable {
+    public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var mFA: MFA?
     public var requestPayer: RequestPayer?
 
-    public init(mFA: MFA? = nil,
+    public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                mFA: MFA? = nil,
                 requestPayer: RequestPayer? = nil) {
+        self.bypassGovernanceRetention = bypassGovernanceRetention
         self.mFA = mFA
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
         case mFA = "x-amz-mfa"
         case requestPayer = "x-amz-request-payer"
     }
@@ -1614,6 +1671,7 @@ public struct DeleteObjectOperationInputAdditionalHeaders: Codable, Equatable {
 public extension DeleteObjectRequest {
     public func asS3ModelDeleteObjectOperationInputAdditionalHeaders() -> DeleteObjectOperationInputAdditionalHeaders {
         return DeleteObjectOperationInputAdditionalHeaders(
+            bypassGovernanceRetention: bypassGovernanceRetention,
             mFA: mFA,
             requestPayer: requestPayer)
     }
@@ -1712,16 +1770,20 @@ public extension DeleteObjectsRequest {
  operation.
  */
 public struct DeleteObjectsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var mFA: MFA?
     public var requestPayer: RequestPayer?
 
-    public init(mFA: MFA? = nil,
+    public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                mFA: MFA? = nil,
                 requestPayer: RequestPayer? = nil) {
+        self.bypassGovernanceRetention = bypassGovernanceRetention
         self.mFA = mFA
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
         case mFA = "x-amz-mfa"
         case requestPayer = "x-amz-request-payer"
     }
@@ -1733,6 +1795,7 @@ public struct DeleteObjectsOperationInputAdditionalHeaders: Codable, Equatable {
 public extension DeleteObjectsRequest {
     public func asS3ModelDeleteObjectsOperationInputAdditionalHeaders() -> DeleteObjectsOperationInputAdditionalHeaders {
         return DeleteObjectsOperationInputAdditionalHeaders(
+            bypassGovernanceRetention: bypassGovernanceRetention,
             mFA: mFA,
             requestPayer: requestPayer)
     }
@@ -2628,6 +2691,9 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
     public var lastModified: LastModified?
     public var metadata: Metadata?
     public var missingMeta: MissingMeta?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
     public var partsCount: PartsCount?
     public var replicationStatus: ReplicationStatus?
     public var requestCharged: RequestCharged?
@@ -2656,6 +2722,9 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
                 lastModified: LastModified? = nil,
                 metadata: Metadata? = nil,
                 missingMeta: MissingMeta? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
                 partsCount: PartsCount? = nil,
                 replicationStatus: ReplicationStatus? = nil,
                 requestCharged: RequestCharged? = nil,
@@ -2683,6 +2752,9 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
         self.lastModified = lastModified
         self.metadata = metadata
         self.missingMeta = missingMeta
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
         self.partsCount = partsCount
         self.replicationStatus = replicationStatus
         self.requestCharged = requestCharged
@@ -2713,6 +2785,9 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
         case lastModified = "Last-Modified"
         case metadata = "x-amz-meta-"
         case missingMeta = "x-amz-missing-meta"
+        case objectLockLegalHoldStatus = "x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-object-lock-retain-until-date"
         case partsCount = "x-amz-mp-parts-count"
         case replicationStatus = "x-amz-replication-status"
         case requestCharged = "x-amz-request-charged"
@@ -2749,6 +2824,9 @@ public extension GetObjectOutput {
             lastModified: lastModified,
             metadata: metadata,
             missingMeta: missingMeta,
+            objectLockLegalHoldStatus: objectLockLegalHoldStatus,
+            objectLockMode: objectLockMode,
+            objectLockRetainUntilDate: objectLockRetainUntilDate,
             partsCount: partsCount,
             replicationStatus: replicationStatus,
             requestCharged: requestCharged,
@@ -2908,6 +2986,207 @@ public extension GetObjectAclOutput {
     public func asS3ModelGetObjectAclOperationOutputHeaders() -> GetObjectAclOperationOutputHeaders {
         return GetObjectAclOperationOutputHeaders(
             requestCharged: requestCharged)
+    }
+}
+
+
+/**
+ Structure to encode the path input for the GetObjectLegalHold
+ operation.
+ */
+public struct GetObjectLegalHoldOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+    public var key: ObjectKey
+
+    public init(bucket: BucketName,
+                key: ObjectKey) {
+        self.bucket = bucket
+        self.key = key
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case key = "Key"
+    }
+
+    public func validate() throws {
+        try key.validateAsObjectKey()
+    }
+}
+
+public extension GetObjectLegalHoldRequest {
+    public func asS3ModelGetObjectLegalHoldOperationInputPath() -> GetObjectLegalHoldOperationInputPath {
+        return GetObjectLegalHoldOperationInputPath(
+            bucket: bucket,
+            key: key)
+    }
+}
+
+
+/**
+ Structure to encode the query input for the GetObjectLegalHold
+ operation.
+ */
+public struct GetObjectLegalHoldOperationInputQuery: Codable, Equatable {
+    public var versionId: ObjectVersionId?
+
+    public init(versionId: ObjectVersionId? = nil) {
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case versionId
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectLegalHoldRequest {
+    public func asS3ModelGetObjectLegalHoldOperationInputQuery() -> GetObjectLegalHoldOperationInputQuery {
+        return GetObjectLegalHoldOperationInputQuery(
+            versionId: versionId)
+    }
+}
+
+
+/**
+ Structure to encode the body input for the GetObjectLegalHold
+ operation.
+ */
+public struct GetObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable {
+    public var requestPayer: RequestPayer?
+
+    public init(requestPayer: RequestPayer? = nil) {
+        self.requestPayer = requestPayer
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestPayer = "x-amz-request-payer"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectLegalHoldRequest {
+    public func asS3ModelGetObjectLegalHoldOperationInputAdditionalHeaders() -> GetObjectLegalHoldOperationInputAdditionalHeaders {
+        return GetObjectLegalHoldOperationInputAdditionalHeaders(
+            requestPayer: requestPayer)
+    }
+}
+
+
+/**
+ Structure to encode the path input for the GetObjectLockConfiguration
+ operation.
+ */
+public struct GetObjectLockConfigurationOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectLockConfigurationRequest {
+    public func asS3ModelGetObjectLockConfigurationOperationInputPath() -> GetObjectLockConfigurationOperationInputPath {
+        return GetObjectLockConfigurationOperationInputPath(
+            bucket: bucket)
+    }
+}
+
+
+/**
+ Structure to encode the path input for the GetObjectRetention
+ operation.
+ */
+public struct GetObjectRetentionOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+    public var key: ObjectKey
+
+    public init(bucket: BucketName,
+                key: ObjectKey) {
+        self.bucket = bucket
+        self.key = key
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case key = "Key"
+    }
+
+    public func validate() throws {
+        try key.validateAsObjectKey()
+    }
+}
+
+public extension GetObjectRetentionRequest {
+    public func asS3ModelGetObjectRetentionOperationInputPath() -> GetObjectRetentionOperationInputPath {
+        return GetObjectRetentionOperationInputPath(
+            bucket: bucket,
+            key: key)
+    }
+}
+
+
+/**
+ Structure to encode the query input for the GetObjectRetention
+ operation.
+ */
+public struct GetObjectRetentionOperationInputQuery: Codable, Equatable {
+    public var versionId: ObjectVersionId?
+
+    public init(versionId: ObjectVersionId? = nil) {
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case versionId
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectRetentionRequest {
+    public func asS3ModelGetObjectRetentionOperationInputQuery() -> GetObjectRetentionOperationInputQuery {
+        return GetObjectRetentionOperationInputQuery(
+            versionId: versionId)
+    }
+}
+
+
+/**
+ Structure to encode the body input for the GetObjectRetention
+ operation.
+ */
+public struct GetObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable {
+    public var requestPayer: RequestPayer?
+
+    public init(requestPayer: RequestPayer? = nil) {
+        self.requestPayer = requestPayer
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestPayer = "x-amz-request-payer"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectRetentionRequest {
+    public func asS3ModelGetObjectRetentionOperationInputAdditionalHeaders() -> GetObjectRetentionOperationInputAdditionalHeaders {
+        return GetObjectRetentionOperationInputAdditionalHeaders(
+            requestPayer: requestPayer)
     }
 }
 
@@ -5028,6 +5307,9 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var grantReadACP: GrantReadACP?
     public var grantWriteACP: GrantWriteACP?
     public var metadata: Metadata?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
     public var requestPayer: RequestPayer?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
@@ -5052,6 +5334,9 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 grantReadACP: GrantReadACP? = nil,
                 grantWriteACP: GrantWriteACP? = nil,
                 metadata: Metadata? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
                 requestPayer: RequestPayer? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
@@ -5075,6 +5360,9 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.grantReadACP = grantReadACP
         self.grantWriteACP = grantWriteACP
         self.metadata = metadata
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
         self.requestPayer = requestPayer
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
@@ -5101,6 +5389,9 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case grantReadACP = "x-amz-grant-read-acp"
         case grantWriteACP = "x-amz-grant-write-acp"
         case metadata = "x-amz-meta-"
+        case objectLockLegalHoldStatus = "x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-object-lock-retain-until-date"
         case requestPayer = "x-amz-request-payer"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
@@ -5133,6 +5424,9 @@ public extension PutObjectRequest {
             grantReadACP: grantReadACP,
             grantWriteACP: grantWriteACP,
             metadata: metadata,
+            objectLockLegalHoldStatus: objectLockLegalHoldStatus,
+            objectLockMode: objectLockMode,
+            objectLockRetainUntilDate: objectLockRetainUntilDate,
             requestPayer: requestPayer,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
@@ -5263,6 +5557,259 @@ public extension PutObjectAclRequest {
             grantReadACP: grantReadACP,
             grantWrite: grantWrite,
             grantWriteACP: grantWriteACP,
+            requestPayer: requestPayer)
+    }
+}
+
+
+/**
+ Structure to encode the path input for the PutObjectLegalHold
+ operation.
+ */
+public struct PutObjectLegalHoldOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+    public var key: ObjectKey
+
+    public init(bucket: BucketName,
+                key: ObjectKey) {
+        self.bucket = bucket
+        self.key = key
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case key = "Key"
+    }
+
+    public func validate() throws {
+        try key.validateAsObjectKey()
+    }
+}
+
+public extension PutObjectLegalHoldRequest {
+    public func asS3ModelPutObjectLegalHoldOperationInputPath() -> PutObjectLegalHoldOperationInputPath {
+        return PutObjectLegalHoldOperationInputPath(
+            bucket: bucket,
+            key: key)
+    }
+}
+
+
+/**
+ Structure to encode the query input for the PutObjectLegalHold
+ operation.
+ */
+public struct PutObjectLegalHoldOperationInputQuery: Codable, Equatable {
+    public var versionId: ObjectVersionId?
+
+    public init(versionId: ObjectVersionId? = nil) {
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case versionId
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutObjectLegalHoldRequest {
+    public func asS3ModelPutObjectLegalHoldOperationInputQuery() -> PutObjectLegalHoldOperationInputQuery {
+        return PutObjectLegalHoldOperationInputQuery(
+            versionId: versionId)
+    }
+}
+
+
+/**
+ Structure to encode the body input for the PutObjectLegalHold
+ operation.
+ */
+public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
+    public var requestPayer: RequestPayer?
+
+    public init(contentMD5: ContentMD5? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.contentMD5 = contentMD5
+        self.requestPayer = requestPayer
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
+        case requestPayer = "x-amz-request-payer"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutObjectLegalHoldRequest {
+    public func asS3ModelPutObjectLegalHoldOperationInputAdditionalHeaders() -> PutObjectLegalHoldOperationInputAdditionalHeaders {
+        return PutObjectLegalHoldOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
+            requestPayer: requestPayer)
+    }
+}
+
+
+/**
+ Structure to encode the path input for the PutObjectLockConfiguration
+ operation.
+ */
+public struct PutObjectLockConfigurationOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutObjectLockConfigurationRequest {
+    public func asS3ModelPutObjectLockConfigurationOperationInputPath() -> PutObjectLockConfigurationOperationInputPath {
+        return PutObjectLockConfigurationOperationInputPath(
+            bucket: bucket)
+    }
+}
+
+
+/**
+ Structure to encode the body input for the PutObjectLockConfiguration
+ operation.
+ */
+public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
+    public var requestPayer: RequestPayer?
+    public var token: ObjectLockToken?
+
+    public init(contentMD5: ContentMD5? = nil,
+                requestPayer: RequestPayer? = nil,
+                token: ObjectLockToken? = nil) {
+        self.contentMD5 = contentMD5
+        self.requestPayer = requestPayer
+        self.token = token
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
+        case requestPayer = "x-amz-request-payer"
+        case token = "x-amz-bucket-object-lock-token"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutObjectLockConfigurationRequest {
+    public func asS3ModelPutObjectLockConfigurationOperationInputAdditionalHeaders() -> PutObjectLockConfigurationOperationInputAdditionalHeaders {
+        return PutObjectLockConfigurationOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
+            requestPayer: requestPayer,
+            token: token)
+    }
+}
+
+
+/**
+ Structure to encode the path input for the PutObjectRetention
+ operation.
+ */
+public struct PutObjectRetentionOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+    public var key: ObjectKey
+
+    public init(bucket: BucketName,
+                key: ObjectKey) {
+        self.bucket = bucket
+        self.key = key
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case key = "Key"
+    }
+
+    public func validate() throws {
+        try key.validateAsObjectKey()
+    }
+}
+
+public extension PutObjectRetentionRequest {
+    public func asS3ModelPutObjectRetentionOperationInputPath() -> PutObjectRetentionOperationInputPath {
+        return PutObjectRetentionOperationInputPath(
+            bucket: bucket,
+            key: key)
+    }
+}
+
+
+/**
+ Structure to encode the query input for the PutObjectRetention
+ operation.
+ */
+public struct PutObjectRetentionOperationInputQuery: Codable, Equatable {
+    public var versionId: ObjectVersionId?
+
+    public init(versionId: ObjectVersionId? = nil) {
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case versionId
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutObjectRetentionRequest {
+    public func asS3ModelPutObjectRetentionOperationInputQuery() -> PutObjectRetentionOperationInputQuery {
+        return PutObjectRetentionOperationInputQuery(
+            versionId: versionId)
+    }
+}
+
+
+/**
+ Structure to encode the body input for the PutObjectRetention
+ operation.
+ */
+public struct PutObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable {
+    public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var contentMD5: ContentMD5?
+    public var requestPayer: RequestPayer?
+
+    public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                contentMD5: ContentMD5? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.contentMD5 = contentMD5
+        self.requestPayer = requestPayer
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case contentMD5 = "Content-MD5"
+        case requestPayer = "x-amz-request-payer"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutObjectRetentionRequest {
+    public func asS3ModelPutObjectRetentionOperationInputAdditionalHeaders() -> PutObjectRetentionOperationInputAdditionalHeaders {
+        return PutObjectRetentionOperationInputAdditionalHeaders(
+            bypassGovernanceRetention: bypassGovernanceRetention,
+            contentMD5: contentMD5,
             requestPayer: requestPayer)
     }
 }

@@ -344,6 +344,7 @@ public extension CreateServiceRequest {
             clientToken: nil,
             cluster: nil,
             deploymentConfiguration: nil,
+            deploymentController: nil,
             desiredCount: nil,
             enableECSManagedTags: nil,
             healthCheckGracePeriodSeconds: nil,
@@ -507,6 +508,18 @@ public extension DeploymentConfiguration {
         let defaultInstance = ElasticContainerModel.DeploymentConfiguration(
             maximumPercent: nil,
             minimumHealthyPercent: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeploymentController {
+    /**
+     Default instance of the DeploymentController structure.
+     */
+    public static let __default: ElasticContainerModel.DeploymentController = {
+        let defaultInstance = ElasticContainerModel.DeploymentController(
+            type: .__default)
 
         return defaultInstance
     }()
@@ -1480,6 +1493,19 @@ public extension RunTaskResponse {
     }()
 }
 
+public extension Scale {
+    /**
+     Default instance of the Scale structure.
+     */
+    public static let __default: ElasticContainerModel.Scale = {
+        let defaultInstance = ElasticContainerModel.Scale(
+            unit: nil,
+            value: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Secret {
     /**
      Default instance of the Secret structure.
@@ -1515,6 +1541,7 @@ public extension Service {
             createdAt: nil,
             createdBy: nil,
             deploymentConfiguration: nil,
+            deploymentController: nil,
             deployments: nil,
             desiredCount: nil,
             enableECSManagedTags: nil,
@@ -1536,7 +1563,8 @@ public extension Service {
             serviceRegistries: nil,
             status: nil,
             tags: nil,
-            taskDefinition: nil)
+            taskDefinition: nil,
+            taskSets: nil)
 
         return defaultInstance
     }()
@@ -1880,6 +1908,35 @@ public extension TaskOverride {
             containerOverrides: nil,
             executionRoleArn: nil,
             taskRoleArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TaskSet {
+    /**
+     Default instance of the TaskSet structure.
+     */
+    public static let __default: ElasticContainerModel.TaskSet = {
+        let defaultInstance = ElasticContainerModel.TaskSet(
+            computedDesiredCount: nil,
+            createdAt: nil,
+            externalId: nil,
+            id: nil,
+            launchType: nil,
+            loadBalancers: nil,
+            networkConfiguration: nil,
+            pendingCount: nil,
+            platformVersion: nil,
+            runningCount: nil,
+            scale: nil,
+            stabilityStatus: nil,
+            stabilityStatusAt: nil,
+            startedBy: nil,
+            status: nil,
+            taskDefinition: nil,
+            taskSetArn: nil,
+            updatedAt: nil)
 
         return defaultInstance
     }()

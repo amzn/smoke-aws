@@ -559,6 +559,14 @@ public extension HistoryEvent {
             previousEventId: nil,
             stateEnteredEventDetails: nil,
             stateExitedEventDetails: nil,
+            taskFailedEventDetails: nil,
+            taskScheduledEventDetails: nil,
+            taskStartFailedEventDetails: nil,
+            taskStartedEventDetails: nil,
+            taskSubmitFailedEventDetails: nil,
+            taskSubmittedEventDetails: nil,
+            taskSucceededEventDetails: nil,
+            taskTimedOutEventDetails: nil,
             timestamp: 1.52953091375E9,
             type: .__default)
 
@@ -1033,6 +1041,108 @@ public extension TaskDoesNotExist {
     }()
 }
 
+public extension TaskFailedEventDetails {
+    /**
+     Default instance of the TaskFailedEventDetails structure.
+     */
+    public static let __default: StepFunctionsModel.TaskFailedEventDetails = {
+        let defaultInstance = StepFunctionsModel.TaskFailedEventDetails(
+            cause: nil,
+            error: nil,
+            resource: "0",
+            resourceType: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension TaskScheduledEventDetails {
+    /**
+     Default instance of the TaskScheduledEventDetails structure.
+     */
+    public static let __default: StepFunctionsModel.TaskScheduledEventDetails = {
+        let defaultInstance = StepFunctionsModel.TaskScheduledEventDetails(
+            parameters: "",
+            region: "0",
+            resource: "0",
+            resourceType: "0",
+            timeoutInSeconds: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TaskStartFailedEventDetails {
+    /**
+     Default instance of the TaskStartFailedEventDetails structure.
+     */
+    public static let __default: StepFunctionsModel.TaskStartFailedEventDetails = {
+        let defaultInstance = StepFunctionsModel.TaskStartFailedEventDetails(
+            cause: nil,
+            error: nil,
+            resource: "0",
+            resourceType: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension TaskStartedEventDetails {
+    /**
+     Default instance of the TaskStartedEventDetails structure.
+     */
+    public static let __default: StepFunctionsModel.TaskStartedEventDetails = {
+        let defaultInstance = StepFunctionsModel.TaskStartedEventDetails(
+            resource: "0",
+            resourceType: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension TaskSubmitFailedEventDetails {
+    /**
+     Default instance of the TaskSubmitFailedEventDetails structure.
+     */
+    public static let __default: StepFunctionsModel.TaskSubmitFailedEventDetails = {
+        let defaultInstance = StepFunctionsModel.TaskSubmitFailedEventDetails(
+            cause: nil,
+            error: nil,
+            resource: "0",
+            resourceType: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension TaskSubmittedEventDetails {
+    /**
+     Default instance of the TaskSubmittedEventDetails structure.
+     */
+    public static let __default: StepFunctionsModel.TaskSubmittedEventDetails = {
+        let defaultInstance = StepFunctionsModel.TaskSubmittedEventDetails(
+            output: nil,
+            resource: "0",
+            resourceType: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension TaskSucceededEventDetails {
+    /**
+     Default instance of the TaskSucceededEventDetails structure.
+     */
+    public static let __default: StepFunctionsModel.TaskSucceededEventDetails = {
+        let defaultInstance = StepFunctionsModel.TaskSucceededEventDetails(
+            output: nil,
+            resource: "0",
+            resourceType: "0")
+
+        return defaultInstance
+    }()
+}
+
 public extension TaskTimedOut {
     /**
      Default instance of the TaskTimedOut structure.
@@ -1040,6 +1150,21 @@ public extension TaskTimedOut {
     public static let __default: StepFunctionsModel.TaskTimedOut = {
         let defaultInstance = StepFunctionsModel.TaskTimedOut(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TaskTimedOutEventDetails {
+    /**
+     Default instance of the TaskTimedOutEventDetails structure.
+     */
+    public static let __default: StepFunctionsModel.TaskTimedOutEventDetails = {
+        let defaultInstance = StepFunctionsModel.TaskTimedOutEventDetails(
+            cause: nil,
+            error: nil,
+            resource: "0",
+            resourceType: "0")
 
         return defaultInstance
     }()

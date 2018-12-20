@@ -52,6 +52,8 @@ public enum DynamoDBModelOperations: String {
     case restoreTableToPointInTime = "RestoreTableToPointInTime"
     case scan = "Scan"
     case tagResource = "TagResource"
+    case transactGetItems = "TransactGetItems"
+    case transactWriteItems = "TransactWriteItems"
     case untagResource = "UntagResource"
     case updateContinuousBackups = "UpdateContinuousBackups"
     case updateGlobalTable = "UpdateGlobalTable"
@@ -115,6 +117,10 @@ public enum DynamoDBModelOperations: String {
         case .scan:
             return "/"
         case .tagResource:
+            return "/"
+        case .transactGetItems:
+            return "/"
+        case .transactWriteItems:
             return "/"
         case .untagResource:
             return "/"

@@ -459,6 +459,9 @@ extension GetObjectOutput: HTTPResponseOutputProtocol {
             lastModified: headers.lastModified,
             metadata: headers.metadata,
             missingMeta: headers.missingMeta,
+            objectLockLegalHoldStatus: headers.objectLockLegalHoldStatus,
+            objectLockMode: headers.objectLockMode,
+            objectLockRetainUntilDate: headers.objectLockRetainUntilDate,
             partsCount: headers.partsCount,
             replicationStatus: headers.replicationStatus,
             requestCharged: headers.requestCharged,
@@ -490,6 +493,45 @@ extension GetObjectAclOutput: HTTPResponseOutputProtocol {
             grants: body.grants,
             owner: body.owner,
             requestCharged: headers.requestCharged)
+    }
+}
+
+/**
+ Type to handle the output from the GetObjectLegalHold operation in a HTTP client.
+ */
+extension GetObjectLegalHoldOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetObjectLegalHoldOutput
+    public typealias HeadersType = GetObjectLegalHoldOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetObjectLegalHoldOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetObjectLockConfiguration operation in a HTTP client.
+ */
+extension GetObjectLockConfigurationOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetObjectLockConfigurationOutput
+    public typealias HeadersType = GetObjectLockConfigurationOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetObjectLockConfigurationOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetObjectRetention operation in a HTTP client.
+ */
+extension GetObjectRetentionOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetObjectRetentionOutput
+    public typealias HeadersType = GetObjectRetentionOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetObjectRetentionOutput {
+        return try bodyDecodableProvider()
     }
 }
 
@@ -711,6 +753,45 @@ extension PutObjectAclOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> PutObjectAclOutput {
+        return try headersDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutObjectLegalHold operation in a HTTP client.
+ */
+extension PutObjectLegalHoldOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutObjectLegalHoldOutput
+    public typealias HeadersType = PutObjectLegalHoldOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutObjectLegalHoldOutput {
+        return try headersDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutObjectLockConfiguration operation in a HTTP client.
+ */
+extension PutObjectLockConfigurationOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutObjectLockConfigurationOutput
+    public typealias HeadersType = PutObjectLockConfigurationOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutObjectLockConfigurationOutput {
+        return try headersDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutObjectRetention operation in a HTTP client.
+ */
+extension PutObjectRetentionOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutObjectRetentionOutput
+    public typealias HeadersType = PutObjectRetentionOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutObjectRetentionOutput {
         return try headersDecodableProvider()
     }
 }

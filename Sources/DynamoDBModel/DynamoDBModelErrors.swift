@@ -28,6 +28,7 @@ private let conditionalCheckFailedIdentity = "ConditionalCheckFailedException"
 private let continuousBackupsUnavailableIdentity = "ContinuousBackupsUnavailableException"
 private let globalTableAlreadyExistsIdentity = "GlobalTableAlreadyExistsException"
 private let globalTableNotFoundIdentity = "GlobalTableNotFoundException"
+private let idempotentParameterMismatchIdentity = "IdempotentParameterMismatchException"
 private let indexNotFoundIdentity = "IndexNotFoundException"
 private let internalServerIdentity = "InternalServerError"
 private let invalidRestoreTimeIdentity = "InvalidRestoreTimeException"
@@ -37,11 +38,15 @@ private let pointInTimeRecoveryUnavailableIdentity = "PointInTimeRecoveryUnavail
 private let provisionedThroughputExceededIdentity = "ProvisionedThroughputExceededException"
 private let replicaAlreadyExistsIdentity = "ReplicaAlreadyExistsException"
 private let replicaNotFoundIdentity = "ReplicaNotFoundException"
+private let requestLimitExceededIdentity = "RequestLimitExceeded"
 private let resourceInUseIdentity = "ResourceInUseException"
 private let resourceNotFoundIdentity = "ResourceNotFoundException"
 private let tableAlreadyExistsIdentity = "TableAlreadyExistsException"
 private let tableInUseIdentity = "TableInUseException"
 private let tableNotFoundIdentity = "TableNotFoundException"
+private let transactionCanceledIdentity = "TransactionCanceledException"
+private let transactionConflictIdentity = "TransactionConflictException"
+private let transactionInProgressIdentity = "TransactionInProgressException"
 
 public enum DynamoDBCodingError: Swift.Error {
     case unknownError
@@ -56,6 +61,7 @@ public enum DynamoDBError: Swift.Error, Decodable {
     case continuousBackupsUnavailable(ContinuousBackupsUnavailableException)
     case globalTableAlreadyExists(GlobalTableAlreadyExistsException)
     case globalTableNotFound(GlobalTableNotFoundException)
+    case idempotentParameterMismatch(IdempotentParameterMismatchException)
     case indexNotFound(IndexNotFoundException)
     case internalServer(InternalServerError)
     case invalidRestoreTime(InvalidRestoreTimeException)
@@ -65,11 +71,15 @@ public enum DynamoDBError: Swift.Error, Decodable {
     case provisionedThroughputExceeded(ProvisionedThroughputExceededException)
     case replicaAlreadyExists(ReplicaAlreadyExistsException)
     case replicaNotFound(ReplicaNotFoundException)
+    case requestLimitExceeded(RequestLimitExceeded)
     case resourceInUse(ResourceInUseException)
     case resourceNotFound(ResourceNotFoundException)
     case tableAlreadyExists(TableAlreadyExistsException)
     case tableInUse(TableInUseException)
     case tableNotFound(TableNotFoundException)
+    case transactionCanceled(TransactionCanceledException)
+    case transactionConflict(TransactionConflictException)
+    case transactionInProgress(TransactionInProgressException)
     
     enum CodingKeys: String, CodingKey {
         case type = "__type"
@@ -104,6 +114,9 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case globalTableNotFoundIdentity:
             let errorPayload = try GlobalTableNotFoundException(from: decoder)
             self = DynamoDBError.globalTableNotFound(errorPayload)
+        case idempotentParameterMismatchIdentity:
+            let errorPayload = try IdempotentParameterMismatchException(from: decoder)
+            self = DynamoDBError.idempotentParameterMismatch(errorPayload)
         case indexNotFoundIdentity:
             let errorPayload = try IndexNotFoundException(from: decoder)
             self = DynamoDBError.indexNotFound(errorPayload)
@@ -131,6 +144,9 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case replicaNotFoundIdentity:
             let errorPayload = try ReplicaNotFoundException(from: decoder)
             self = DynamoDBError.replicaNotFound(errorPayload)
+        case requestLimitExceededIdentity:
+            let errorPayload = try RequestLimitExceeded(from: decoder)
+            self = DynamoDBError.requestLimitExceeded(errorPayload)
         case resourceInUseIdentity:
             let errorPayload = try ResourceInUseException(from: decoder)
             self = DynamoDBError.resourceInUse(errorPayload)
@@ -146,6 +162,15 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case tableNotFoundIdentity:
             let errorPayload = try TableNotFoundException(from: decoder)
             self = DynamoDBError.tableNotFound(errorPayload)
+        case transactionCanceledIdentity:
+            let errorPayload = try TransactionCanceledException(from: decoder)
+            self = DynamoDBError.transactionCanceled(errorPayload)
+        case transactionConflictIdentity:
+            let errorPayload = try TransactionConflictException(from: decoder)
+            self = DynamoDBError.transactionConflict(errorPayload)
+        case transactionInProgressIdentity:
+            let errorPayload = try TransactionInProgressException(from: decoder)
+            self = DynamoDBError.transactionInProgress(errorPayload)
         default:
             throw DynamoDBCodingError.unrecognizedError(errorReason, errorMessage)
         }

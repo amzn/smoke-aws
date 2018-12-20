@@ -29,6 +29,8 @@ import SmokeHTTPClient
 public protocol ElasticComputeCloudClientProtocol {
     typealias AcceptReservedInstancesExchangeQuoteSyncType = (_ input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult
     typealias AcceptReservedInstancesExchangeQuoteAsyncType = (_ input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult>) -> ()) throws -> ()
+    typealias AcceptTransitGatewayVpcAttachmentSyncType = (_ input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult
+    typealias AcceptTransitGatewayVpcAttachmentAsyncType = (_ input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult>) -> ()) throws -> ()
     typealias AcceptVpcEndpointConnectionsSyncType = (_ input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult
     typealias AcceptVpcEndpointConnectionsAsyncType = (_ input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult>) -> ()) throws -> ()
     typealias AcceptVpcPeeringConnectionSyncType = (_ input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult
@@ -39,12 +41,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AllocateAddressAsyncType = (_ input: ElasticComputeCloudModel.AllocateAddressRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AllocateAddressResult>) -> ()) throws -> ()
     typealias AllocateHostsSyncType = (_ input: ElasticComputeCloudModel.AllocateHostsRequest) throws -> ElasticComputeCloudModel.AllocateHostsResult
     typealias AllocateHostsAsyncType = (_ input: ElasticComputeCloudModel.AllocateHostsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AllocateHostsResult>) -> ()) throws -> ()
+    typealias ApplySecurityGroupsToClientVpnTargetNetworkSyncType = (_ input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult
+    typealias ApplySecurityGroupsToClientVpnTargetNetworkAsyncType = (_ input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult>) -> ()) throws -> ()
     typealias AssignIpv6AddressesSyncType = (_ input: ElasticComputeCloudModel.AssignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.AssignIpv6AddressesResult
     typealias AssignIpv6AddressesAsyncType = (_ input: ElasticComputeCloudModel.AssignIpv6AddressesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssignIpv6AddressesResult>) -> ()) throws -> ()
     typealias AssignPrivateIpAddressesSyncType = (_ input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws -> ()
     typealias AssignPrivateIpAddressesAsyncType = (_ input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias AssociateAddressSyncType = (_ input: ElasticComputeCloudModel.AssociateAddressRequest) throws -> ElasticComputeCloudModel.AssociateAddressResult
     typealias AssociateAddressAsyncType = (_ input: ElasticComputeCloudModel.AssociateAddressRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateAddressResult>) -> ()) throws -> ()
+    typealias AssociateClientVpnTargetNetworkSyncType = (_ input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult
+    typealias AssociateClientVpnTargetNetworkAsyncType = (_ input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult>) -> ()) throws -> ()
     typealias AssociateDhcpOptionsSyncType = (_ input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest) throws -> ()
     typealias AssociateDhcpOptionsAsyncType = (_ input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias AssociateIamInstanceProfileSyncType = (_ input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult
@@ -53,6 +59,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AssociateRouteTableAsyncType = (_ input: ElasticComputeCloudModel.AssociateRouteTableRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateRouteTableResult>) -> ()) throws -> ()
     typealias AssociateSubnetCidrBlockSyncType = (_ input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult
     typealias AssociateSubnetCidrBlockAsyncType = (_ input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult>) -> ()) throws -> ()
+    typealias AssociateTransitGatewayRouteTableSyncType = (_ input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult
+    typealias AssociateTransitGatewayRouteTableAsyncType = (_ input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult>) -> ()) throws -> ()
     typealias AssociateVpcCidrBlockSyncType = (_ input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult
     typealias AssociateVpcCidrBlockAsyncType = (_ input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateVpcCidrBlockResult>) -> ()) throws -> ()
     typealias AttachClassicLinkVpcSyncType = (_ input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest) throws -> ElasticComputeCloudModel.AttachClassicLinkVpcResult
@@ -65,6 +73,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AttachVolumeAsyncType = (_ input: ElasticComputeCloudModel.AttachVolumeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.VolumeAttachment>) -> ()) throws -> ()
     typealias AttachVpnGatewaySyncType = (_ input: ElasticComputeCloudModel.AttachVpnGatewayRequest) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult
     typealias AttachVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.AttachVpnGatewayRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachVpnGatewayResult>) -> ()) throws -> ()
+    typealias AuthorizeClientVpnIngressSyncType = (_ input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult
+    typealias AuthorizeClientVpnIngressAsyncType = (_ input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult>) -> ()) throws -> ()
     typealias AuthorizeSecurityGroupEgressSyncType = (_ input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws -> ()
     typealias AuthorizeSecurityGroupEgressAsyncType = (_ input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias AuthorizeSecurityGroupIngressSyncType = (_ input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws -> ()
@@ -97,6 +107,10 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CopySnapshotAsyncType = (_ input: ElasticComputeCloudModel.CopySnapshotRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CopySnapshotResult>) -> ()) throws -> ()
     typealias CreateCapacityReservationSyncType = (_ input: ElasticComputeCloudModel.CreateCapacityReservationRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult
     typealias CreateCapacityReservationAsyncType = (_ input: ElasticComputeCloudModel.CreateCapacityReservationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateCapacityReservationResult>) -> ()) throws -> ()
+    typealias CreateClientVpnEndpointSyncType = (_ input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult
+    typealias CreateClientVpnEndpointAsyncType = (_ input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnEndpointResult>) -> ()) throws -> ()
+    typealias CreateClientVpnRouteSyncType = (_ input: ElasticComputeCloudModel.CreateClientVpnRouteRequest) throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult
+    typealias CreateClientVpnRouteAsyncType = (_ input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnRouteResult>) -> ()) throws -> ()
     typealias CreateCustomerGatewaySyncType = (_ input: ElasticComputeCloudModel.CreateCustomerGatewayRequest) throws -> ElasticComputeCloudModel.CreateCustomerGatewayResult
     typealias CreateCustomerGatewayAsyncType = (_ input: ElasticComputeCloudModel.CreateCustomerGatewayRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateCustomerGatewayResult>) -> ()) throws -> ()
     typealias CreateDefaultSubnetSyncType = (_ input: ElasticComputeCloudModel.CreateDefaultSubnetRequest) throws -> ElasticComputeCloudModel.CreateDefaultSubnetResult
@@ -153,6 +167,14 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateSubnetAsyncType = (_ input: ElasticComputeCloudModel.CreateSubnetRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSubnetResult>) -> ()) throws -> ()
     typealias CreateTagsSyncType = (_ input: ElasticComputeCloudModel.CreateTagsRequest) throws -> ()
     typealias CreateTagsAsyncType = (_ input: ElasticComputeCloudModel.CreateTagsRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias CreateTransitGatewaySyncType = (_ input: ElasticComputeCloudModel.CreateTransitGatewayRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult
+    typealias CreateTransitGatewayAsyncType = (_ input: ElasticComputeCloudModel.CreateTransitGatewayRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayResult>) -> ()) throws -> ()
+    typealias CreateTransitGatewayRouteSyncType = (_ input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult
+    typealias CreateTransitGatewayRouteAsyncType = (_ input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteResult>) -> ()) throws -> ()
+    typealias CreateTransitGatewayRouteTableSyncType = (_ input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult
+    typealias CreateTransitGatewayRouteTableAsyncType = (_ input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult>) -> ()) throws -> ()
+    typealias CreateTransitGatewayVpcAttachmentSyncType = (_ input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult
+    typealias CreateTransitGatewayVpcAttachmentAsyncType = (_ input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult>) -> ()) throws -> ()
     typealias CreateVolumeSyncType = (_ input: ElasticComputeCloudModel.CreateVolumeRequest) throws -> ElasticComputeCloudModel.Volume
     typealias CreateVolumeAsyncType = (_ input: ElasticComputeCloudModel.CreateVolumeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.Volume>) -> ()) throws -> ()
     typealias CreateVpcSyncType = (_ input: ElasticComputeCloudModel.CreateVpcRequest) throws -> ElasticComputeCloudModel.CreateVpcResult
@@ -171,6 +193,10 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateVpnConnectionRouteAsyncType = (_ input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias CreateVpnGatewaySyncType = (_ input: ElasticComputeCloudModel.CreateVpnGatewayRequest) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult
     typealias CreateVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.CreateVpnGatewayRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpnGatewayResult>) -> ()) throws -> ()
+    typealias DeleteClientVpnEndpointSyncType = (_ input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult
+    typealias DeleteClientVpnEndpointAsyncType = (_ input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnEndpointResult>) -> ()) throws -> ()
+    typealias DeleteClientVpnRouteSyncType = (_ input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult
+    typealias DeleteClientVpnRouteAsyncType = (_ input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnRouteResult>) -> ()) throws -> ()
     typealias DeleteCustomerGatewaySyncType = (_ input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest) throws -> ()
     typealias DeleteCustomerGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteDhcpOptionsSyncType = (_ input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest) throws -> ()
@@ -217,6 +243,14 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteSubnetAsyncType = (_ input: ElasticComputeCloudModel.DeleteSubnetRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteTagsSyncType = (_ input: ElasticComputeCloudModel.DeleteTagsRequest) throws -> ()
     typealias DeleteTagsAsyncType = (_ input: ElasticComputeCloudModel.DeleteTagsRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DeleteTransitGatewaySyncType = (_ input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult
+    typealias DeleteTransitGatewayAsyncType = (_ input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayResult>) -> ()) throws -> ()
+    typealias DeleteTransitGatewayRouteSyncType = (_ input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult
+    typealias DeleteTransitGatewayRouteAsyncType = (_ input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult>) -> ()) throws -> ()
+    typealias DeleteTransitGatewayRouteTableSyncType = (_ input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult
+    typealias DeleteTransitGatewayRouteTableAsyncType = (_ input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult>) -> ()) throws -> ()
+    typealias DeleteTransitGatewayVpcAttachmentSyncType = (_ input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult
+    typealias DeleteTransitGatewayVpcAttachmentAsyncType = (_ input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult>) -> ()) throws -> ()
     typealias DeleteVolumeSyncType = (_ input: ElasticComputeCloudModel.DeleteVolumeRequest) throws -> ()
     typealias DeleteVolumeAsyncType = (_ input: ElasticComputeCloudModel.DeleteVolumeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteVpcSyncType = (_ input: ElasticComputeCloudModel.DeleteVpcRequest) throws -> ()
@@ -255,6 +289,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeCapacityReservationsAsyncType = (_ input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeCapacityReservationsResult>) -> ()) throws -> ()
     typealias DescribeClassicLinkInstancesSyncType = (_ input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult
     typealias DescribeClassicLinkInstancesAsyncType = (_ input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult>) -> ()) throws -> ()
+    typealias DescribeClientVpnAuthorizationRulesSyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult
+    typealias DescribeClientVpnAuthorizationRulesAsyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult>) -> ()) throws -> ()
+    typealias DescribeClientVpnConnectionsSyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult
+    typealias DescribeClientVpnConnectionsAsyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult>) -> ()) throws -> ()
+    typealias DescribeClientVpnEndpointsSyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult
+    typealias DescribeClientVpnEndpointsAsyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult>) -> ()) throws -> ()
+    typealias DescribeClientVpnRoutesSyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult
+    typealias DescribeClientVpnRoutesAsyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnRoutesResult>) -> ()) throws -> ()
+    typealias DescribeClientVpnTargetNetworksSyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult
+    typealias DescribeClientVpnTargetNetworksAsyncType = (_ input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult>) -> ()) throws -> ()
     typealias DescribeConversionTasksSyncType = (_ input: ElasticComputeCloudModel.DescribeConversionTasksRequest) throws -> ElasticComputeCloudModel.DescribeConversionTasksResult
     typealias DescribeConversionTasksAsyncType = (_ input: ElasticComputeCloudModel.DescribeConversionTasksRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeConversionTasksResult>) -> ()) throws -> ()
     typealias DescribeCustomerGatewaysSyncType = (_ input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeCustomerGatewaysResult
@@ -377,6 +421,14 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeSubnetsAsyncType = (_ input: ElasticComputeCloudModel.DescribeSubnetsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSubnetsResult>) -> ()) throws -> ()
     typealias DescribeTagsSyncType = (_ input: ElasticComputeCloudModel.DescribeTagsRequest) throws -> ElasticComputeCloudModel.DescribeTagsResult
     typealias DescribeTagsAsyncType = (_ input: ElasticComputeCloudModel.DescribeTagsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTagsResult>) -> ()) throws -> ()
+    typealias DescribeTransitGatewayAttachmentsSyncType = (_ input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult
+    typealias DescribeTransitGatewayAttachmentsAsyncType = (_ input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult>) -> ()) throws -> ()
+    typealias DescribeTransitGatewayRouteTablesSyncType = (_ input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult
+    typealias DescribeTransitGatewayRouteTablesAsyncType = (_ input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult>) -> ()) throws -> ()
+    typealias DescribeTransitGatewayVpcAttachmentsSyncType = (_ input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult
+    typealias DescribeTransitGatewayVpcAttachmentsAsyncType = (_ input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult>) -> ()) throws -> ()
+    typealias DescribeTransitGatewaysSyncType = (_ input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult
+    typealias DescribeTransitGatewaysAsyncType = (_ input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewaysResult>) -> ()) throws -> ()
     typealias DescribeVolumeAttributeSyncType = (_ input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest) throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult
     typealias DescribeVolumeAttributeAsyncType = (_ input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVolumeAttributeResult>) -> ()) throws -> ()
     typealias DescribeVolumeStatusSyncType = (_ input: ElasticComputeCloudModel.DescribeVolumeStatusRequest) throws -> ElasticComputeCloudModel.DescribeVolumeStatusResult
@@ -421,6 +473,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DetachVolumeAsyncType = (_ input: ElasticComputeCloudModel.DetachVolumeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.VolumeAttachment>) -> ()) throws -> ()
     typealias DetachVpnGatewaySyncType = (_ input: ElasticComputeCloudModel.DetachVpnGatewayRequest) throws -> ()
     typealias DetachVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.DetachVpnGatewayRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DisableTransitGatewayRouteTablePropagationSyncType = (_ input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult
+    typealias DisableTransitGatewayRouteTablePropagationAsyncType = (_ input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult>) -> ()) throws -> ()
     typealias DisableVgwRoutePropagationSyncType = (_ input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest) throws -> ()
     typealias DisableVgwRoutePropagationAsyncType = (_ input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DisableVpcClassicLinkSyncType = (_ input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkResult
@@ -429,14 +483,20 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisableVpcClassicLinkDnsSupportAsyncType = (_ input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult>) -> ()) throws -> ()
     typealias DisassociateAddressSyncType = (_ input: ElasticComputeCloudModel.DisassociateAddressRequest) throws -> ()
     typealias DisassociateAddressAsyncType = (_ input: ElasticComputeCloudModel.DisassociateAddressRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DisassociateClientVpnTargetNetworkSyncType = (_ input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult
+    typealias DisassociateClientVpnTargetNetworkAsyncType = (_ input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult>) -> ()) throws -> ()
     typealias DisassociateIamInstanceProfileSyncType = (_ input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult
     typealias DisassociateIamInstanceProfileAsyncType = (_ input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult>) -> ()) throws -> ()
     typealias DisassociateRouteTableSyncType = (_ input: ElasticComputeCloudModel.DisassociateRouteTableRequest) throws -> ()
     typealias DisassociateRouteTableAsyncType = (_ input: ElasticComputeCloudModel.DisassociateRouteTableRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DisassociateSubnetCidrBlockSyncType = (_ input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult
     typealias DisassociateSubnetCidrBlockAsyncType = (_ input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult>) -> ()) throws -> ()
+    typealias DisassociateTransitGatewayRouteTableSyncType = (_ input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult
+    typealias DisassociateTransitGatewayRouteTableAsyncType = (_ input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult>) -> ()) throws -> ()
     typealias DisassociateVpcCidrBlockSyncType = (_ input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult
     typealias DisassociateVpcCidrBlockAsyncType = (_ input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult>) -> ()) throws -> ()
+    typealias EnableTransitGatewayRouteTablePropagationSyncType = (_ input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult
+    typealias EnableTransitGatewayRouteTablePropagationAsyncType = (_ input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult>) -> ()) throws -> ()
     typealias EnableVgwRoutePropagationSyncType = (_ input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest) throws -> ()
     typealias EnableVgwRoutePropagationAsyncType = (_ input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias EnableVolumeIOSyncType = (_ input: ElasticComputeCloudModel.EnableVolumeIORequest) throws -> ()
@@ -445,6 +505,12 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias EnableVpcClassicLinkAsyncType = (_ input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableVpcClassicLinkResult>) -> ()) throws -> ()
     typealias EnableVpcClassicLinkDnsSupportSyncType = (_ input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult
     typealias EnableVpcClassicLinkDnsSupportAsyncType = (_ input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult>) -> ()) throws -> ()
+    typealias ExportClientVpnClientCertificateRevocationListSyncType = (_ input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult
+    typealias ExportClientVpnClientCertificateRevocationListAsyncType = (_ input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult>) -> ()) throws -> ()
+    typealias ExportClientVpnClientConfigurationSyncType = (_ input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult
+    typealias ExportClientVpnClientConfigurationAsyncType = (_ input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult>) -> ()) throws -> ()
+    typealias ExportTransitGatewayRoutesSyncType = (_ input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult
+    typealias ExportTransitGatewayRoutesAsyncType = (_ input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult>) -> ()) throws -> ()
     typealias GetConsoleOutputSyncType = (_ input: ElasticComputeCloudModel.GetConsoleOutputRequest) throws -> ElasticComputeCloudModel.GetConsoleOutputResult
     typealias GetConsoleOutputAsyncType = (_ input: ElasticComputeCloudModel.GetConsoleOutputRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetConsoleOutputResult>) -> ()) throws -> ()
     typealias GetConsoleScreenshotSyncType = (_ input: ElasticComputeCloudModel.GetConsoleScreenshotRequest) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult
@@ -457,6 +523,14 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetPasswordDataAsyncType = (_ input: ElasticComputeCloudModel.GetPasswordDataRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetPasswordDataResult>) -> ()) throws -> ()
     typealias GetReservedInstancesExchangeQuoteSyncType = (_ input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult
     typealias GetReservedInstancesExchangeQuoteAsyncType = (_ input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult>) -> ()) throws -> ()
+    typealias GetTransitGatewayAttachmentPropagationsSyncType = (_ input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult
+    typealias GetTransitGatewayAttachmentPropagationsAsyncType = (_ input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult>) -> ()) throws -> ()
+    typealias GetTransitGatewayRouteTableAssociationsSyncType = (_ input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult
+    typealias GetTransitGatewayRouteTableAssociationsAsyncType = (_ input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult>) -> ()) throws -> ()
+    typealias GetTransitGatewayRouteTablePropagationsSyncType = (_ input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult
+    typealias GetTransitGatewayRouteTablePropagationsAsyncType = (_ input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult>) -> ()) throws -> ()
+    typealias ImportClientVpnClientCertificateRevocationListSyncType = (_ input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult
+    typealias ImportClientVpnClientCertificateRevocationListAsyncType = (_ input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult>) -> ()) throws -> ()
     typealias ImportImageSyncType = (_ input: ElasticComputeCloudModel.ImportImageRequest) throws -> ElasticComputeCloudModel.ImportImageResult
     typealias ImportImageAsyncType = (_ input: ElasticComputeCloudModel.ImportImageRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportImageResult>) -> ()) throws -> ()
     typealias ImportInstanceSyncType = (_ input: ElasticComputeCloudModel.ImportInstanceRequest) throws -> ElasticComputeCloudModel.ImportInstanceResult
@@ -469,6 +543,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ImportVolumeAsyncType = (_ input: ElasticComputeCloudModel.ImportVolumeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportVolumeResult>) -> ()) throws -> ()
     typealias ModifyCapacityReservationSyncType = (_ input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult
     typealias ModifyCapacityReservationAsyncType = (_ input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyCapacityReservationResult>) -> ()) throws -> ()
+    typealias ModifyClientVpnEndpointSyncType = (_ input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult
+    typealias ModifyClientVpnEndpointAsyncType = (_ input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyClientVpnEndpointResult>) -> ()) throws -> ()
     typealias ModifyFleetSyncType = (_ input: ElasticComputeCloudModel.ModifyFleetRequest) throws -> ElasticComputeCloudModel.ModifyFleetResult
     typealias ModifyFleetAsyncType = (_ input: ElasticComputeCloudModel.ModifyFleetRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyFleetResult>) -> ()) throws -> ()
     typealias ModifyFpgaImageAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult
@@ -501,6 +577,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifySpotFleetRequestAsyncType = (_ input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifySpotFleetRequestResponse>) -> ()) throws -> ()
     typealias ModifySubnetAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifySubnetAttributeRequest) throws -> ()
     typealias ModifySubnetAttributeAsyncType = (_ input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias ModifyTransitGatewayVpcAttachmentSyncType = (_ input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult
+    typealias ModifyTransitGatewayVpcAttachmentAsyncType = (_ input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult>) -> ()) throws -> ()
     typealias ModifyVolumeSyncType = (_ input: ElasticComputeCloudModel.ModifyVolumeRequest) throws -> ElasticComputeCloudModel.ModifyVolumeResult
     typealias ModifyVolumeAsyncType = (_ input: ElasticComputeCloudModel.ModifyVolumeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVolumeResult>) -> ()) throws -> ()
     typealias ModifyVolumeAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest) throws -> ()
@@ -535,6 +613,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias RebootInstancesAsyncType = (_ input: ElasticComputeCloudModel.RebootInstancesRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RegisterImageSyncType = (_ input: ElasticComputeCloudModel.RegisterImageRequest) throws -> ElasticComputeCloudModel.RegisterImageResult
     typealias RegisterImageAsyncType = (_ input: ElasticComputeCloudModel.RegisterImageRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RegisterImageResult>) -> ()) throws -> ()
+    typealias RejectTransitGatewayVpcAttachmentSyncType = (_ input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult
+    typealias RejectTransitGatewayVpcAttachmentAsyncType = (_ input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult>) -> ()) throws -> ()
     typealias RejectVpcEndpointConnectionsSyncType = (_ input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult
     typealias RejectVpcEndpointConnectionsAsyncType = (_ input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult>) -> ()) throws -> ()
     typealias RejectVpcPeeringConnectionSyncType = (_ input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult
@@ -553,6 +633,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ReplaceRouteAsyncType = (_ input: ElasticComputeCloudModel.ReplaceRouteRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias ReplaceRouteTableAssociationSyncType = (_ input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult
     typealias ReplaceRouteTableAssociationAsyncType = (_ input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult>) -> ()) throws -> ()
+    typealias ReplaceTransitGatewayRouteSyncType = (_ input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult
+    typealias ReplaceTransitGatewayRouteAsyncType = (_ input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult>) -> ()) throws -> ()
     typealias ReportInstanceStatusSyncType = (_ input: ElasticComputeCloudModel.ReportInstanceStatusRequest) throws -> ()
     typealias ReportInstanceStatusAsyncType = (_ input: ElasticComputeCloudModel.ReportInstanceStatusRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RequestSpotFleetSyncType = (_ input: ElasticComputeCloudModel.RequestSpotFleetRequest) throws -> ElasticComputeCloudModel.RequestSpotFleetResponse
@@ -571,6 +653,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ResetSnapshotAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RestoreAddressToClassicSyncType = (_ input: ElasticComputeCloudModel.RestoreAddressToClassicRequest) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult
     typealias RestoreAddressToClassicAsyncType = (_ input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RestoreAddressToClassicResult>) -> ()) throws -> ()
+    typealias RevokeClientVpnIngressSyncType = (_ input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult
+    typealias RevokeClientVpnIngressAsyncType = (_ input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RevokeClientVpnIngressResult>) -> ()) throws -> ()
     typealias RevokeSecurityGroupEgressSyncType = (_ input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws -> ()
     typealias RevokeSecurityGroupEgressAsyncType = (_ input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias RevokeSecurityGroupIngressSyncType = (_ input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws -> ()
@@ -579,10 +663,14 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias RunInstancesAsyncType = (_ input: ElasticComputeCloudModel.RunInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.Reservation>) -> ()) throws -> ()
     typealias RunScheduledInstancesSyncType = (_ input: ElasticComputeCloudModel.RunScheduledInstancesRequest) throws -> ElasticComputeCloudModel.RunScheduledInstancesResult
     typealias RunScheduledInstancesAsyncType = (_ input: ElasticComputeCloudModel.RunScheduledInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RunScheduledInstancesResult>) -> ()) throws -> ()
+    typealias SearchTransitGatewayRoutesSyncType = (_ input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult
+    typealias SearchTransitGatewayRoutesAsyncType = (_ input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult>) -> ()) throws -> ()
     typealias StartInstancesSyncType = (_ input: ElasticComputeCloudModel.StartInstancesRequest) throws -> ElasticComputeCloudModel.StartInstancesResult
     typealias StartInstancesAsyncType = (_ input: ElasticComputeCloudModel.StartInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.StartInstancesResult>) -> ()) throws -> ()
     typealias StopInstancesSyncType = (_ input: ElasticComputeCloudModel.StopInstancesRequest) throws -> ElasticComputeCloudModel.StopInstancesResult
     typealias StopInstancesAsyncType = (_ input: ElasticComputeCloudModel.StopInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.StopInstancesResult>) -> ()) throws -> ()
+    typealias TerminateClientVpnConnectionsSyncType = (_ input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult
+    typealias TerminateClientVpnConnectionsAsyncType = (_ input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult>) -> ()) throws -> ()
     typealias TerminateInstancesSyncType = (_ input: ElasticComputeCloudModel.TerminateInstancesRequest) throws -> ElasticComputeCloudModel.TerminateInstancesResult
     typealias TerminateInstancesAsyncType = (_ input: ElasticComputeCloudModel.TerminateInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.TerminateInstancesResult>) -> ()) throws -> ()
     typealias UnassignIpv6AddressesSyncType = (_ input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.UnassignIpv6AddressesResult
@@ -618,6 +706,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func acceptReservedInstancesExchangeQuoteSync(input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult
+
+    /**
+     Invokes the AcceptTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The AcceptTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    func acceptTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult>) -> ()) throws
+
+    /**
+     Invokes the AcceptTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The AcceptTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func acceptTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult
 
     /**
      Invokes the AcceptVpcEndpointConnections operation returning immediately and passing the response to a callback.
@@ -725,6 +834,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func allocateHostsSync(input: ElasticComputeCloudModel.AllocateHostsRequest) throws -> ElasticComputeCloudModel.AllocateHostsResult
 
     /**
+     Invokes the ApplySecurityGroupsToClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ApplySecurityGroupsToClientVpnTargetNetworkRequest object being passed to this operation.
+         - completion: The ApplySecurityGroupsToClientVpnTargetNetworkResult object or an error will be passed to this 
+           callback when the operation is complete. The ApplySecurityGroupsToClientVpnTargetNetworkResult
+           object will be validated before being returned to caller.
+     */
+    func applySecurityGroupsToClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult>) -> ()) throws
+
+    /**
+     Invokes the ApplySecurityGroupsToClientVpnTargetNetwork operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ApplySecurityGroupsToClientVpnTargetNetworkRequest object being passed to this operation.
+     - Returns: The ApplySecurityGroupsToClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func applySecurityGroupsToClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult
+
+    /**
      Invokes the AssignIpv6Addresses operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -783,6 +913,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func associateAddressSync(input: ElasticComputeCloudModel.AssociateAddressRequest) throws -> ElasticComputeCloudModel.AssociateAddressResult
+
+    /**
+     Invokes the AssociateClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateClientVpnTargetNetworkRequest object being passed to this operation.
+         - completion: The AssociateClientVpnTargetNetworkResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateClientVpnTargetNetworkResult
+           object will be validated before being returned to caller.
+     */
+    func associateClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult>) -> ()) throws
+
+    /**
+     Invokes the AssociateClientVpnTargetNetwork operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateClientVpnTargetNetworkRequest object being passed to this operation.
+     - Returns: The AssociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult
 
     /**
      Invokes the AssociateDhcpOptions operation returning immediately and passing the response to a callback.
@@ -864,6 +1015,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func associateSubnetCidrBlockSync(input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult
+
+    /**
+     Invokes the AssociateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The AssociateTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    func associateTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult>) -> ()) throws
+
+    /**
+     Invokes the AssociateTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The AssociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult
 
     /**
      Invokes the AssociateVpcCidrBlock operation returning immediately and passing the response to a callback.
@@ -987,6 +1159,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func attachVpnGatewaySync(input: ElasticComputeCloudModel.AttachVpnGatewayRequest) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult
+
+    /**
+     Invokes the AuthorizeClientVpnIngress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AuthorizeClientVpnIngressRequest object being passed to this operation.
+         - completion: The AuthorizeClientVpnIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The AuthorizeClientVpnIngressResult
+           object will be validated before being returned to caller.
+     */
+    func authorizeClientVpnIngressAsync(input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult>) -> ()) throws
+
+    /**
+     Invokes the AuthorizeClientVpnIngress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AuthorizeClientVpnIngressRequest object being passed to this operation.
+     - Returns: The AuthorizeClientVpnIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func authorizeClientVpnIngressSync(input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult
 
     /**
      Invokes the AuthorizeSecurityGroupEgress operation returning immediately and passing the response to a callback.
@@ -1311,6 +1504,48 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func createCapacityReservationSync(input: ElasticComputeCloudModel.CreateCapacityReservationRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult
+
+    /**
+     Invokes the CreateClientVpnEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateClientVpnEndpointRequest object being passed to this operation.
+         - completion: The CreateClientVpnEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateClientVpnEndpointResult
+           object will be validated before being returned to caller.
+     */
+    func createClientVpnEndpointAsync(input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnEndpointResult>) -> ()) throws
+
+    /**
+     Invokes the CreateClientVpnEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateClientVpnEndpointRequest object being passed to this operation.
+     - Returns: The CreateClientVpnEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createClientVpnEndpointSync(input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult
+
+    /**
+     Invokes the CreateClientVpnRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateClientVpnRouteRequest object being passed to this operation.
+         - completion: The CreateClientVpnRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateClientVpnRouteResult
+           object will be validated before being returned to caller.
+     */
+    func createClientVpnRouteAsync(input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnRouteResult>) -> ()) throws
+
+    /**
+     Invokes the CreateClientVpnRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateClientVpnRouteRequest object being passed to this operation.
+     - Returns: The CreateClientVpnRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createClientVpnRouteSync(input: ElasticComputeCloudModel.CreateClientVpnRouteRequest) throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult
 
     /**
      Invokes the CreateCustomerGateway operation returning immediately and passing the response to a callback.
@@ -1892,6 +2127,90 @@ public protocol ElasticComputeCloudClientProtocol {
     func createTagsSync(input: ElasticComputeCloudModel.CreateTagsRequest) throws
 
     /**
+     Invokes the CreateTransitGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayResult
+           object will be validated before being returned to caller.
+     */
+    func createTransitGatewayAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayResult>) -> ()) throws
+
+    /**
+     Invokes the CreateTransitGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createTransitGatewaySync(input: ElasticComputeCloudModel.CreateTransitGatewayRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult
+
+    /**
+     Invokes the CreateTransitGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    func createTransitGatewayRouteAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteResult>) -> ()) throws
+
+    /**
+     Invokes the CreateTransitGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createTransitGatewayRouteSync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult
+
+    /**
+     Invokes the CreateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    func createTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult>) -> ()) throws
+
+    /**
+     Invokes the CreateTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult
+
+    /**
+     Invokes the CreateTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    func createTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult>) -> ()) throws
+
+    /**
+     Invokes the CreateTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult
+
+    /**
      Invokes the CreateVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2076,6 +2395,48 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func createVpnGatewaySync(input: ElasticComputeCloudModel.CreateVpnGatewayRequest) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult
+
+    /**
+     Invokes the DeleteClientVpnEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnEndpointRequest object being passed to this operation.
+         - completion: The DeleteClientVpnEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteClientVpnEndpointResult
+           object will be validated before being returned to caller.
+     */
+    func deleteClientVpnEndpointAsync(input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnEndpointResult>) -> ()) throws
+
+    /**
+     Invokes the DeleteClientVpnEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnEndpointRequest object being passed to this operation.
+     - Returns: The DeleteClientVpnEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteClientVpnEndpointSync(input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult
+
+    /**
+     Invokes the DeleteClientVpnRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnRouteRequest object being passed to this operation.
+         - completion: The DeleteClientVpnRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteClientVpnRouteResult
+           object will be validated before being returned to caller.
+     */
+    func deleteClientVpnRouteAsync(input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnRouteResult>) -> ()) throws
+
+    /**
+     Invokes the DeleteClientVpnRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnRouteRequest object being passed to this operation.
+     - Returns: The DeleteClientVpnRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteClientVpnRouteSync(input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult
 
     /**
      Invokes the DeleteCustomerGateway operation returning immediately and passing the response to a callback.
@@ -2516,6 +2877,90 @@ public protocol ElasticComputeCloudClientProtocol {
     func deleteTagsSync(input: ElasticComputeCloudModel.DeleteTagsRequest) throws
 
     /**
+     Invokes the DeleteTransitGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayResult
+           object will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayResult>) -> ()) throws
+
+    /**
+     Invokes the DeleteTransitGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteTransitGatewaySync(input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult
+
+    /**
+     Invokes the DeleteTransitGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayRouteAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult>) -> ()) throws
+
+    /**
+     Invokes the DeleteTransitGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayRouteSync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult
+
+    /**
+     Invokes the DeleteTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult>) -> ()) throws
+
+    /**
+     Invokes the DeleteTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult
+
+    /**
+     Invokes the DeleteTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult>) -> ()) throws
+
+    /**
+     Invokes the DeleteTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult
+
+    /**
      Invokes the DeleteVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2895,6 +3340,111 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeClassicLinkInstancesSync(input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult
+
+    /**
+     Invokes the DescribeClientVpnAuthorizationRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnAuthorizationRulesRequest object being passed to this operation.
+         - completion: The DescribeClientVpnAuthorizationRulesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnAuthorizationRulesResult
+           object will be validated before being returned to caller.
+     */
+    func describeClientVpnAuthorizationRulesAsync(input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult>) -> ()) throws
+
+    /**
+     Invokes the DescribeClientVpnAuthorizationRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnAuthorizationRulesRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnAuthorizationRulesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeClientVpnAuthorizationRulesSync(input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult
+
+    /**
+     Invokes the DescribeClientVpnConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnConnectionsRequest object being passed to this operation.
+         - completion: The DescribeClientVpnConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    func describeClientVpnConnectionsAsync(input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult>) -> ()) throws
+
+    /**
+     Invokes the DescribeClientVpnConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnConnectionsRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeClientVpnConnectionsSync(input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult
+
+    /**
+     Invokes the DescribeClientVpnEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnEndpointsRequest object being passed to this operation.
+         - completion: The DescribeClientVpnEndpointsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnEndpointsResult
+           object will be validated before being returned to caller.
+     */
+    func describeClientVpnEndpointsAsync(input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult>) -> ()) throws
+
+    /**
+     Invokes the DescribeClientVpnEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeClientVpnEndpointsSync(input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult
+
+    /**
+     Invokes the DescribeClientVpnRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnRoutesRequest object being passed to this operation.
+         - completion: The DescribeClientVpnRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnRoutesResult
+           object will be validated before being returned to caller.
+     */
+    func describeClientVpnRoutesAsync(input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnRoutesResult>) -> ()) throws
+
+    /**
+     Invokes the DescribeClientVpnRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnRoutesRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeClientVpnRoutesSync(input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult
+
+    /**
+     Invokes the DescribeClientVpnTargetNetworks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnTargetNetworksRequest object being passed to this operation.
+         - completion: The DescribeClientVpnTargetNetworksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnTargetNetworksResult
+           object will be validated before being returned to caller.
+     */
+    func describeClientVpnTargetNetworksAsync(input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult>) -> ()) throws
+
+    /**
+     Invokes the DescribeClientVpnTargetNetworks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnTargetNetworksRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnTargetNetworksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeClientVpnTargetNetworksSync(input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult
 
     /**
      Invokes the DescribeConversionTasks operation returning immediately and passing the response to a callback.
@@ -4178,6 +4728,90 @@ public protocol ElasticComputeCloudClientProtocol {
     func describeTagsSync(input: ElasticComputeCloudModel.DescribeTagsRequest) throws -> ElasticComputeCloudModel.DescribeTagsResult
 
     /**
+     Invokes the DescribeTransitGatewayAttachments operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayAttachmentsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayAttachmentsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayAttachmentsResult
+           object will be validated before being returned to caller.
+     */
+    func describeTransitGatewayAttachmentsAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult>) -> ()) throws
+
+    /**
+     Invokes the DescribeTransitGatewayAttachments operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayAttachmentsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayAttachmentsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeTransitGatewayAttachmentsSync(input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult
+
+    /**
+     Invokes the DescribeTransitGatewayRouteTables operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayRouteTablesRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayRouteTablesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayRouteTablesResult
+           object will be validated before being returned to caller.
+     */
+    func describeTransitGatewayRouteTablesAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult>) -> ()) throws
+
+    /**
+     Invokes the DescribeTransitGatewayRouteTables operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayRouteTablesRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayRouteTablesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeTransitGatewayRouteTablesSync(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult
+
+    /**
+     Invokes the DescribeTransitGatewayVpcAttachments operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayVpcAttachmentsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayVpcAttachmentsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayVpcAttachmentsResult
+           object will be validated before being returned to caller.
+     */
+    func describeTransitGatewayVpcAttachmentsAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult>) -> ()) throws
+
+    /**
+     Invokes the DescribeTransitGatewayVpcAttachments operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayVpcAttachmentsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayVpcAttachmentsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeTransitGatewayVpcAttachmentsSync(input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult
+
+    /**
+     Invokes the DescribeTransitGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewaysRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    func describeTransitGatewaysAsync(input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewaysResult>) -> ()) throws
+
+    /**
+     Invokes the DescribeTransitGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeTransitGatewaysSync(input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult
+
+    /**
      Invokes the DescribeVolumeAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4631,6 +5265,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func detachVpnGatewaySync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest) throws
 
     /**
+     Invokes the DisableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+         - completion: The DisableTransitGatewayRouteTablePropagationResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableTransitGatewayRouteTablePropagationResult
+           object will be validated before being returned to caller.
+     */
+    func disableTransitGatewayRouteTablePropagationAsync(input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult>) -> ()) throws
+
+    /**
+     Invokes the DisableTransitGatewayRouteTablePropagation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+     - Returns: The DisableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableTransitGatewayRouteTablePropagationSync(input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult
+
+    /**
      Invokes the DisableVgwRoutePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4709,6 +5364,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func disassociateAddressSync(input: ElasticComputeCloudModel.DisassociateAddressRequest) throws
 
     /**
+     Invokes the DisassociateClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateClientVpnTargetNetworkRequest object being passed to this operation.
+         - completion: The DisassociateClientVpnTargetNetworkResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateClientVpnTargetNetworkResult
+           object will be validated before being returned to caller.
+     */
+    func disassociateClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult>) -> ()) throws
+
+    /**
+     Invokes the DisassociateClientVpnTargetNetwork operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateClientVpnTargetNetworkRequest object being passed to this operation.
+     - Returns: The DisassociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult
+
+    /**
      Invokes the DisassociateIamInstanceProfile operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4769,6 +5445,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func disassociateSubnetCidrBlockSync(input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult
 
     /**
+     Invokes the DisassociateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The DisassociateTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    func disassociateTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult>) -> ()) throws
+
+    /**
+     Invokes the DisassociateTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The DisassociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult
+
+    /**
      Invokes the DisassociateVpcCidrBlock operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4788,6 +5485,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func disassociateVpcCidrBlockSync(input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult
+
+    /**
+     Invokes the EnableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+         - completion: The EnableTransitGatewayRouteTablePropagationResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableTransitGatewayRouteTablePropagationResult
+           object will be validated before being returned to caller.
+     */
+    func enableTransitGatewayRouteTablePropagationAsync(input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult>) -> ()) throws
+
+    /**
+     Invokes the EnableTransitGatewayRouteTablePropagation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+     - Returns: The EnableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableTransitGatewayRouteTablePropagationSync(input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult
 
     /**
      Invokes the EnableVgwRoutePropagation operation returning immediately and passing the response to a callback.
@@ -4866,6 +5584,69 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func enableVpcClassicLinkDnsSupportSync(input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult
+
+    /**
+     Invokes the ExportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+         - completion: The ExportClientVpnClientCertificateRevocationListResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportClientVpnClientCertificateRevocationListResult
+           object will be validated before being returned to caller.
+     */
+    func exportClientVpnClientCertificateRevocationListAsync(input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult>) -> ()) throws
+
+    /**
+     Invokes the ExportClientVpnClientCertificateRevocationList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+     - Returns: The ExportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func exportClientVpnClientCertificateRevocationListSync(input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult
+
+    /**
+     Invokes the ExportClientVpnClientConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientConfigurationRequest object being passed to this operation.
+         - completion: The ExportClientVpnClientConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportClientVpnClientConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    func exportClientVpnClientConfigurationAsync(input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult>) -> ()) throws
+
+    /**
+     Invokes the ExportClientVpnClientConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientConfigurationRequest object being passed to this operation.
+     - Returns: The ExportClientVpnClientConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func exportClientVpnClientConfigurationSync(input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult
+
+    /**
+     Invokes the ExportTransitGatewayRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportTransitGatewayRoutesRequest object being passed to this operation.
+         - completion: The ExportTransitGatewayRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportTransitGatewayRoutesResult
+           object will be validated before being returned to caller.
+     */
+    func exportTransitGatewayRoutesAsync(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult>) -> ()) throws
+
+    /**
+     Invokes the ExportTransitGatewayRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportTransitGatewayRoutesRequest object being passed to this operation.
+     - Returns: The ExportTransitGatewayRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func exportTransitGatewayRoutesSync(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult
 
     /**
      Invokes the GetConsoleOutput operation returning immediately and passing the response to a callback.
@@ -4994,6 +5775,90 @@ public protocol ElasticComputeCloudClientProtocol {
     func getReservedInstancesExchangeQuoteSync(input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult
 
     /**
+     Invokes the GetTransitGatewayAttachmentPropagations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayAttachmentPropagationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayAttachmentPropagationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayAttachmentPropagationsResult
+           object will be validated before being returned to caller.
+     */
+    func getTransitGatewayAttachmentPropagationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult>) -> ()) throws
+
+    /**
+     Invokes the GetTransitGatewayAttachmentPropagations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayAttachmentPropagationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayAttachmentPropagationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getTransitGatewayAttachmentPropagationsSync(input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult
+
+    /**
+     Invokes the GetTransitGatewayRouteTableAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTableAssociationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayRouteTableAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayRouteTableAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    func getTransitGatewayRouteTableAssociationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult>) -> ()) throws
+
+    /**
+     Invokes the GetTransitGatewayRouteTableAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTableAssociationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayRouteTableAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getTransitGatewayRouteTableAssociationsSync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult
+
+    /**
+     Invokes the GetTransitGatewayRouteTablePropagations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTablePropagationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayRouteTablePropagationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayRouteTablePropagationsResult
+           object will be validated before being returned to caller.
+     */
+    func getTransitGatewayRouteTablePropagationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult>) -> ()) throws
+
+    /**
+     Invokes the GetTransitGatewayRouteTablePropagations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTablePropagationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayRouteTablePropagationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getTransitGatewayRouteTablePropagationsSync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult
+
+    /**
+     Invokes the ImportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+         - completion: The ImportClientVpnClientCertificateRevocationListResult object or an error will be passed to this 
+           callback when the operation is complete. The ImportClientVpnClientCertificateRevocationListResult
+           object will be validated before being returned to caller.
+     */
+    func importClientVpnClientCertificateRevocationListAsync(input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult>) -> ()) throws
+
+    /**
+     Invokes the ImportClientVpnClientCertificateRevocationList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+     - Returns: The ImportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func importClientVpnClientCertificateRevocationListSync(input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult
+
+    /**
      Invokes the ImportImage operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5118,6 +5983,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func modifyCapacityReservationSync(input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult
+
+    /**
+     Invokes the ModifyClientVpnEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyClientVpnEndpointRequest object being passed to this operation.
+         - completion: The ModifyClientVpnEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyClientVpnEndpointResult
+           object will be validated before being returned to caller.
+     */
+    func modifyClientVpnEndpointAsync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyClientVpnEndpointResult>) -> ()) throws
+
+    /**
+     Invokes the ModifyClientVpnEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyClientVpnEndpointRequest object being passed to this operation.
+     - Returns: The ModifyClientVpnEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyClientVpnEndpointSync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult
 
     /**
      Invokes the ModifyFleet operation returning immediately and passing the response to a callback.
@@ -5433,6 +6319,27 @@ public protocol ElasticComputeCloudClientProtocol {
          - input: The validated ModifySubnetAttributeRequest object being passed to this operation.
      */
     func modifySubnetAttributeSync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest) throws
+
+    /**
+     Invokes the ModifyTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The ModifyTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    func modifyTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult>) -> ()) throws
+
+    /**
+     Invokes the ModifyTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The ModifyTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult
 
     /**
      Invokes the ModifyVolume operation returning immediately and passing the response to a callback.
@@ -5783,6 +6690,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func registerImageSync(input: ElasticComputeCloudModel.RegisterImageRequest) throws -> ElasticComputeCloudModel.RegisterImageResult
 
     /**
+     Invokes the RejectTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The RejectTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The RejectTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    func rejectTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult>) -> ()) throws
+
+    /**
+     Invokes the RejectTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The RejectTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func rejectTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult
+
+    /**
      Invokes the RejectVpcEndpointConnections operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5963,6 +6891,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func replaceRouteTableAssociationSync(input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult
 
     /**
+     Invokes the ReplaceTransitGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceTransitGatewayRouteRequest object being passed to this operation.
+         - completion: The ReplaceTransitGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The ReplaceTransitGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    func replaceTransitGatewayRouteAsync(input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult>) -> ()) throws
+
+    /**
+     Invokes the ReplaceTransitGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceTransitGatewayRouteRequest object being passed to this operation.
+     - Returns: The ReplaceTransitGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func replaceTransitGatewayRouteSync(input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult
+
+    /**
      Invokes the ReportInstanceStatus operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6137,6 +7086,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func restoreAddressToClassicSync(input: ElasticComputeCloudModel.RestoreAddressToClassicRequest) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult
 
     /**
+     Invokes the RevokeClientVpnIngress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RevokeClientVpnIngressRequest object being passed to this operation.
+         - completion: The RevokeClientVpnIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The RevokeClientVpnIngressResult
+           object will be validated before being returned to caller.
+     */
+    func revokeClientVpnIngressAsync(input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RevokeClientVpnIngressResult>) -> ()) throws
+
+    /**
+     Invokes the RevokeClientVpnIngress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RevokeClientVpnIngressRequest object being passed to this operation.
+     - Returns: The RevokeClientVpnIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func revokeClientVpnIngressSync(input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult
+
+    /**
      Invokes the RevokeSecurityGroupEgress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6215,6 +7185,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func runScheduledInstancesSync(input: ElasticComputeCloudModel.RunScheduledInstancesRequest) throws -> ElasticComputeCloudModel.RunScheduledInstancesResult
 
     /**
+     Invokes the SearchTransitGatewayRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SearchTransitGatewayRoutesRequest object being passed to this operation.
+         - completion: The SearchTransitGatewayRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The SearchTransitGatewayRoutesResult
+           object will be validated before being returned to caller.
+     */
+    func searchTransitGatewayRoutesAsync(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult>) -> ()) throws
+
+    /**
+     Invokes the SearchTransitGatewayRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SearchTransitGatewayRoutesRequest object being passed to this operation.
+     - Returns: The SearchTransitGatewayRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func searchTransitGatewayRoutesSync(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult
+
+    /**
      Invokes the StartInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6255,6 +7246,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func stopInstancesSync(input: ElasticComputeCloudModel.StopInstancesRequest) throws -> ElasticComputeCloudModel.StopInstancesResult
+
+    /**
+     Invokes the TerminateClientVpnConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TerminateClientVpnConnectionsRequest object being passed to this operation.
+         - completion: The TerminateClientVpnConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The TerminateClientVpnConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    func terminateClientVpnConnectionsAsync(input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult>) -> ()) throws
+
+    /**
+     Invokes the TerminateClientVpnConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TerminateClientVpnConnectionsRequest object being passed to this operation.
+     - Returns: The TerminateClientVpnConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func terminateClientVpnConnectionsSync(input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult
 
     /**
      Invokes the TerminateInstances operation returning immediately and passing the response to a callback.

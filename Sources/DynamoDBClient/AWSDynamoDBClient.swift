@@ -87,7 +87,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The BatchGetItemOutput object or an error will be passed to this 
            callback when the operation is complete. The BatchGetItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchGetItemAsync(input: DynamoDBModel.BatchGetItemInput, completion: @escaping (HTTPResult<DynamoDBModel.BatchGetItemOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -114,7 +114,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated BatchGetItemInput object being passed to this operation.
      - Returns: The BatchGetItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchGetItemSync(input: DynamoDBModel.BatchGetItemInput) throws -> DynamoDBModel.BatchGetItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -141,7 +141,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The BatchWriteItemOutput object or an error will be passed to this 
            callback when the operation is complete. The BatchWriteItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchWriteItemAsync(input: DynamoDBModel.BatchWriteItemInput, completion: @escaping (HTTPResult<DynamoDBModel.BatchWriteItemOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -168,7 +168,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated BatchWriteItemInput object being passed to this operation.
      - Returns: The BatchWriteItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchWriteItemSync(input: DynamoDBModel.BatchWriteItemInput) throws -> DynamoDBModel.BatchWriteItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -411,7 +411,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The DeleteItemOutput object or an error will be passed to this 
            callback when the operation is complete. The DeleteItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func deleteItemAsync(input: DynamoDBModel.DeleteItemInput, completion: @escaping (HTTPResult<DynamoDBModel.DeleteItemOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -438,7 +438,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated DeleteItemInput object being passed to this operation.
      - Returns: The DeleteItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func deleteItemSync(input: DynamoDBModel.DeleteItemInput) throws -> DynamoDBModel.DeleteItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -949,7 +949,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The GetItemOutput object or an error will be passed to this 
            callback when the operation is complete. The GetItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func getItemAsync(input: DynamoDBModel.GetItemInput, completion: @escaping (HTTPResult<DynamoDBModel.GetItemOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -976,7 +976,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated GetItemInput object being passed to this operation.
      - Returns: The GetItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func getItemSync(input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1219,7 +1219,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The PutItemOutput object or an error will be passed to this 
            callback when the operation is complete. The PutItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func putItemAsync(input: DynamoDBModel.PutItemInput, completion: @escaping (HTTPResult<DynamoDBModel.PutItemOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1246,7 +1246,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated PutItemInput object being passed to this operation.
      - Returns: The PutItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func putItemSync(input: DynamoDBModel.PutItemInput) throws -> DynamoDBModel.PutItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1273,7 +1273,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The QueryOutput object or an error will be passed to this 
            callback when the operation is complete. The QueryOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func queryAsync(input: DynamoDBModel.QueryInput, completion: @escaping (HTTPResult<DynamoDBModel.QueryOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1300,7 +1300,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated QueryInput object being passed to this operation.
      - Returns: The QueryOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func querySync(input: DynamoDBModel.QueryInput) throws -> DynamoDBModel.QueryOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1435,7 +1435,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The ScanOutput object or an error will be passed to this 
            callback when the operation is complete. The ScanOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func scanAsync(input: DynamoDBModel.ScanInput, completion: @escaping (HTTPResult<DynamoDBModel.ScanOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1462,7 +1462,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated ScanInput object being passed to this operation.
      - Returns: The ScanOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func scanSync(input: DynamoDBModel.ScanInput) throws -> DynamoDBModel.ScanOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1526,6 +1526,114 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the TransactGetItems operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TransactGetItemsInput object being passed to this operation.
+         - completion: The TransactGetItemsOutput object or an error will be passed to this 
+           callback when the operation is complete. The TransactGetItemsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound, transactionCanceled.
+     */
+    public func transactGetItemsAsync(input: DynamoDBModel.TransactGetItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactGetItemsOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.transactGetItems.rawValue,
+                    target: target)
+
+        let requestInput = TransactGetItemsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the TransactGetItems operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TransactGetItemsInput object being passed to this operation.
+     - Returns: The TransactGetItemsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound, transactionCanceled.
+     */
+    public func transactGetItemsSync(input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.transactGetItems.rawValue,
+                    target: target)
+
+        let requestInput = TransactGetItemsOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the TransactWriteItems operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TransactWriteItemsInput object being passed to this operation.
+         - completion: The TransactWriteItemsOutput object or an error will be passed to this 
+           callback when the operation is complete. The TransactWriteItemsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: idempotentParameterMismatch, internalServer, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    public func transactWriteItemsAsync(input: DynamoDBModel.TransactWriteItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactWriteItemsOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.transactWriteItems.rawValue,
+                    target: target)
+
+        let requestInput = TransactWriteItemsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the TransactWriteItems operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TransactWriteItemsInput object being passed to this operation.
+     - Returns: The TransactWriteItemsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: idempotentParameterMismatch, internalServer, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    public func transactWriteItemsSync(input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.transactWriteItems.rawValue,
+                    target: target)
+
+        let requestInput = TransactWriteItemsOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -1753,7 +1861,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The UpdateItemOutput object or an error will be passed to this 
            callback when the operation is complete. The UpdateItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func updateItemAsync(input: DynamoDBModel.UpdateItemInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateItemOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1780,7 +1888,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated UpdateItemInput object being passed to this operation.
      - Returns: The UpdateItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func updateItemSync(input: DynamoDBModel.UpdateItemInput) throws -> DynamoDBModel.UpdateItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(

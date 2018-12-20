@@ -29,6 +29,11 @@ import ElasticComputeCloudModel
 public typealias AcceptReservedInstancesExchangeQuoteOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the AcceptTransitGatewayVpcAttachment operation in a HTTP client.
+ */
+public typealias AcceptTransitGatewayVpcAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the AcceptVpcEndpointConnections operation in a HTTP client.
  */
 public typealias AcceptVpcEndpointConnectionsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -54,6 +59,11 @@ public typealias AllocateAddressOperationHTTPRequestInput = QueryHTTPRequestInpu
 public typealias AllocateHostsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ApplySecurityGroupsToClientVpnTargetNetwork operation in a HTTP client.
+ */
+public typealias ApplySecurityGroupsToClientVpnTargetNetworkOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the AssignIpv6Addresses operation in a HTTP client.
  */
 public typealias AssignIpv6AddressesOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -67,6 +77,11 @@ public typealias AssignPrivateIpAddressesOperationHTTPRequestInput = QueryHTTPRe
  Type to handle the input to the AssociateAddress operation in a HTTP client.
  */
 public typealias AssociateAddressOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the AssociateClientVpnTargetNetwork operation in a HTTP client.
+ */
+public typealias AssociateClientVpnTargetNetworkOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the AssociateDhcpOptions operation in a HTTP client.
@@ -87,6 +102,11 @@ public typealias AssociateRouteTableOperationHTTPRequestInput = QueryHTTPRequest
  Type to handle the input to the AssociateSubnetCidrBlock operation in a HTTP client.
  */
 public typealias AssociateSubnetCidrBlockOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the AssociateTransitGatewayRouteTable operation in a HTTP client.
+ */
+public typealias AssociateTransitGatewayRouteTableOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the AssociateVpcCidrBlock operation in a HTTP client.
@@ -117,6 +137,11 @@ public typealias AttachVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the AttachVpnGateway operation in a HTTP client.
  */
 public typealias AttachVpnGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the AuthorizeClientVpnIngress operation in a HTTP client.
+ */
+public typealias AuthorizeClientVpnIngressOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the AuthorizeSecurityGroupEgress operation in a HTTP client.
@@ -197,6 +222,16 @@ public typealias CopySnapshotOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the CreateCapacityReservation operation in a HTTP client.
  */
 public typealias CreateCapacityReservationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateClientVpnEndpoint operation in a HTTP client.
+ */
+public typealias CreateClientVpnEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateClientVpnRoute operation in a HTTP client.
+ */
+public typealias CreateClientVpnRouteOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the CreateCustomerGateway operation in a HTTP client.
@@ -339,6 +374,26 @@ public typealias CreateSubnetOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias CreateTagsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateTransitGateway operation in a HTTP client.
+ */
+public typealias CreateTransitGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateTransitGatewayRoute operation in a HTTP client.
+ */
+public typealias CreateTransitGatewayRouteOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateTransitGatewayRouteTable operation in a HTTP client.
+ */
+public typealias CreateTransitGatewayRouteTableOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateTransitGatewayVpcAttachment operation in a HTTP client.
+ */
+public typealias CreateTransitGatewayVpcAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateVolume operation in a HTTP client.
  */
 public typealias CreateVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -382,6 +437,16 @@ public typealias CreateVpnConnectionRouteOperationHTTPRequestInput = QueryHTTPRe
  Type to handle the input to the CreateVpnGateway operation in a HTTP client.
  */
 public typealias CreateVpnGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteClientVpnEndpoint operation in a HTTP client.
+ */
+public typealias DeleteClientVpnEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteClientVpnRoute operation in a HTTP client.
+ */
+public typealias DeleteClientVpnRouteOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteCustomerGateway operation in a HTTP client.
@@ -499,6 +564,26 @@ public typealias DeleteSubnetOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias DeleteTagsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteTransitGateway operation in a HTTP client.
+ */
+public typealias DeleteTransitGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTransitGatewayRoute operation in a HTTP client.
+ */
+public typealias DeleteTransitGatewayRouteOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTransitGatewayRouteTable operation in a HTTP client.
+ */
+public typealias DeleteTransitGatewayRouteTableOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTransitGatewayVpcAttachment operation in a HTTP client.
+ */
+public typealias DeleteTransitGatewayVpcAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteVolume operation in a HTTP client.
  */
 public typealias DeleteVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -592,6 +677,31 @@ public typealias DescribeCapacityReservationsOperationHTTPRequestInput = QueryHT
  Type to handle the input to the DescribeClassicLinkInstances operation in a HTTP client.
  */
 public typealias DescribeClassicLinkInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeClientVpnAuthorizationRules operation in a HTTP client.
+ */
+public typealias DescribeClientVpnAuthorizationRulesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeClientVpnConnections operation in a HTTP client.
+ */
+public typealias DescribeClientVpnConnectionsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeClientVpnEndpoints operation in a HTTP client.
+ */
+public typealias DescribeClientVpnEndpointsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeClientVpnRoutes operation in a HTTP client.
+ */
+public typealias DescribeClientVpnRoutesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeClientVpnTargetNetworks operation in a HTTP client.
+ */
+public typealias DescribeClientVpnTargetNetworksOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeConversionTasks operation in a HTTP client.
@@ -899,6 +1009,26 @@ public typealias DescribeSubnetsOperationHTTPRequestInput = QueryHTTPRequestInpu
 public typealias DescribeTagsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeTransitGatewayAttachments operation in a HTTP client.
+ */
+public typealias DescribeTransitGatewayAttachmentsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeTransitGatewayRouteTables operation in a HTTP client.
+ */
+public typealias DescribeTransitGatewayRouteTablesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeTransitGatewayVpcAttachments operation in a HTTP client.
+ */
+public typealias DescribeTransitGatewayVpcAttachmentsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeTransitGateways operation in a HTTP client.
+ */
+public typealias DescribeTransitGatewaysOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeVolumeAttribute operation in a HTTP client.
  */
 public typealias DescribeVolumeAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1009,6 +1139,11 @@ public typealias DetachVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias DetachVpnGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisableTransitGatewayRouteTablePropagation operation in a HTTP client.
+ */
+public typealias DisableTransitGatewayRouteTablePropagationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisableVgwRoutePropagation operation in a HTTP client.
  */
 public typealias DisableVgwRoutePropagationOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1029,6 +1164,11 @@ public typealias DisableVpcClassicLinkDnsSupportOperationHTTPRequestInput = Quer
 public typealias DisassociateAddressOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisassociateClientVpnTargetNetwork operation in a HTTP client.
+ */
+public typealias DisassociateClientVpnTargetNetworkOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisassociateIamInstanceProfile operation in a HTTP client.
  */
 public typealias DisassociateIamInstanceProfileOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1044,9 +1184,19 @@ public typealias DisassociateRouteTableOperationHTTPRequestInput = QueryHTTPRequ
 public typealias DisassociateSubnetCidrBlockOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisassociateTransitGatewayRouteTable operation in a HTTP client.
+ */
+public typealias DisassociateTransitGatewayRouteTableOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisassociateVpcCidrBlock operation in a HTTP client.
  */
 public typealias DisassociateVpcCidrBlockOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the EnableTransitGatewayRouteTablePropagation operation in a HTTP client.
+ */
+public typealias EnableTransitGatewayRouteTablePropagationOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the EnableVgwRoutePropagation operation in a HTTP client.
@@ -1067,6 +1217,21 @@ public typealias EnableVpcClassicLinkOperationHTTPRequestInput = QueryHTTPReques
  Type to handle the input to the EnableVpcClassicLinkDnsSupport operation in a HTTP client.
  */
 public typealias EnableVpcClassicLinkDnsSupportOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ExportClientVpnClientCertificateRevocationList operation in a HTTP client.
+ */
+public typealias ExportClientVpnClientCertificateRevocationListOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ExportClientVpnClientConfiguration operation in a HTTP client.
+ */
+public typealias ExportClientVpnClientConfigurationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ExportTransitGatewayRoutes operation in a HTTP client.
+ */
+public typealias ExportTransitGatewayRoutesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetConsoleOutput operation in a HTTP client.
@@ -1099,6 +1264,26 @@ public typealias GetPasswordDataOperationHTTPRequestInput = QueryHTTPRequestInpu
 public typealias GetReservedInstancesExchangeQuoteOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetTransitGatewayAttachmentPropagations operation in a HTTP client.
+ */
+public typealias GetTransitGatewayAttachmentPropagationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetTransitGatewayRouteTableAssociations operation in a HTTP client.
+ */
+public typealias GetTransitGatewayRouteTableAssociationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetTransitGatewayRouteTablePropagations operation in a HTTP client.
+ */
+public typealias GetTransitGatewayRouteTablePropagationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ImportClientVpnClientCertificateRevocationList operation in a HTTP client.
+ */
+public typealias ImportClientVpnClientCertificateRevocationListOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ImportImage operation in a HTTP client.
  */
 public typealias ImportImageOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1127,6 +1312,11 @@ public typealias ImportVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the ModifyCapacityReservation operation in a HTTP client.
  */
 public typealias ModifyCapacityReservationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyClientVpnEndpoint operation in a HTTP client.
+ */
+public typealias ModifyClientVpnEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyFleet operation in a HTTP client.
@@ -1207,6 +1397,11 @@ public typealias ModifySpotFleetRequestOperationHTTPRequestInput = QueryHTTPRequ
  Type to handle the input to the ModifySubnetAttribute operation in a HTTP client.
  */
 public typealias ModifySubnetAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyTransitGatewayVpcAttachment operation in a HTTP client.
+ */
+public typealias ModifyTransitGatewayVpcAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyVolume operation in a HTTP client.
@@ -1294,6 +1489,11 @@ public typealias RebootInstancesOperationHTTPRequestInput = QueryHTTPRequestInpu
 public typealias RegisterImageOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the RejectTransitGatewayVpcAttachment operation in a HTTP client.
+ */
+public typealias RejectTransitGatewayVpcAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the RejectVpcEndpointConnections operation in a HTTP client.
  */
 public typealias RejectVpcEndpointConnectionsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1337,6 +1537,11 @@ public typealias ReplaceRouteOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the ReplaceRouteTableAssociation operation in a HTTP client.
  */
 public typealias ReplaceRouteTableAssociationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ReplaceTransitGatewayRoute operation in a HTTP client.
+ */
+public typealias ReplaceTransitGatewayRouteOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ReportInstanceStatus operation in a HTTP client.
@@ -1384,6 +1589,11 @@ public typealias ResetSnapshotAttributeOperationHTTPRequestInput = QueryHTTPRequ
 public typealias RestoreAddressToClassicOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the RevokeClientVpnIngress operation in a HTTP client.
+ */
+public typealias RevokeClientVpnIngressOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the RevokeSecurityGroupEgress operation in a HTTP client.
  */
 public typealias RevokeSecurityGroupEgressOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1404,6 +1614,11 @@ public typealias RunInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias RunScheduledInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the SearchTransitGatewayRoutes operation in a HTTP client.
+ */
+public typealias SearchTransitGatewayRoutesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the StartInstances operation in a HTTP client.
  */
 public typealias StartInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1412,6 +1627,11 @@ public typealias StartInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the StopInstances operation in a HTTP client.
  */
 public typealias StopInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the TerminateClientVpnConnections operation in a HTTP client.
+ */
+public typealias TerminateClientVpnConnectionsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the TerminateInstances operation in a HTTP client.
