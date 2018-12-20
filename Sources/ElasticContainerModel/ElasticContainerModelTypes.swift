@@ -203,6 +203,20 @@ public typealias ContainerStateChanges = [ContainerStateChange]
 public typealias Containers = [Container]
 
 /**
+ Enumeration restricting the values of the DeploymentControllerType field.
+ */
+public enum DeploymentControllerType: String, Codable, CustomStringConvertible {
+    case codeDeploy = "CODE_DEPLOY"
+    case ecs = "ECS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DeploymentControllerType = .codeDeploy
+}
+
+/**
  Type definition for the Deployments field.
  */
 public typealias Deployments = [Deployment]
@@ -464,6 +478,19 @@ public typealias RequiresAttributes = [Attribute]
 public typealias Resources = [Resource]
 
 /**
+ Enumeration restricting the values of the ScaleUnit field.
+ */
+public enum ScaleUnit: String, Codable, CustomStringConvertible {
+    case percent = "PERCENT"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ScaleUnit = .percent
+}
+
+/**
  Enumeration restricting the values of the SchedulingStrategy field.
  */
 public enum SchedulingStrategy: String, Codable, CustomStringConvertible {
@@ -561,6 +588,20 @@ public enum SortOrder: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: SortOrder = .asc
+}
+
+/**
+ Enumeration restricting the values of the StabilityStatus field.
+ */
+public enum StabilityStatus: String, Codable, CustomStringConvertible {
+    case stabilizing = "STABILIZING"
+    case steadyState = "STEADY_STATE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: StabilityStatus = .stabilizing
 }
 
 /**
@@ -698,6 +739,11 @@ public enum TaskField: String, Codable, CustomStringConvertible {
  Type definition for the TaskFieldList field.
  */
 public typealias TaskFieldList = [TaskField]
+
+/**
+ Type definition for the TaskSets field.
+ */
+public typealias TaskSets = [TaskSet]
 
 /**
  Enumeration restricting the values of the TaskStopCode field.

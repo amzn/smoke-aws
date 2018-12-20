@@ -82,6 +82,10 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
     let scanSyncOverride: DynamoDBClientProtocol.ScanSyncType?
     let tagResourceAsyncOverride: DynamoDBClientProtocol.TagResourceAsyncType?
     let tagResourceSyncOverride: DynamoDBClientProtocol.TagResourceSyncType?
+    let transactGetItemsAsyncOverride: DynamoDBClientProtocol.TransactGetItemsAsyncType?
+    let transactGetItemsSyncOverride: DynamoDBClientProtocol.TransactGetItemsSyncType?
+    let transactWriteItemsAsyncOverride: DynamoDBClientProtocol.TransactWriteItemsAsyncType?
+    let transactWriteItemsSyncOverride: DynamoDBClientProtocol.TransactWriteItemsSyncType?
     let untagResourceAsyncOverride: DynamoDBClientProtocol.UntagResourceAsyncType?
     let untagResourceSyncOverride: DynamoDBClientProtocol.UntagResourceSyncType?
     let updateContinuousBackupsAsyncOverride: DynamoDBClientProtocol.UpdateContinuousBackupsAsyncType?
@@ -156,6 +160,10 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
             scanSync: DynamoDBClientProtocol.ScanSyncType? = nil,
             tagResourceAsync: DynamoDBClientProtocol.TagResourceAsyncType? = nil,
             tagResourceSync: DynamoDBClientProtocol.TagResourceSyncType? = nil,
+            transactGetItemsAsync: DynamoDBClientProtocol.TransactGetItemsAsyncType? = nil,
+            transactGetItemsSync: DynamoDBClientProtocol.TransactGetItemsSyncType? = nil,
+            transactWriteItemsAsync: DynamoDBClientProtocol.TransactWriteItemsAsyncType? = nil,
+            transactWriteItemsSync: DynamoDBClientProtocol.TransactWriteItemsSyncType? = nil,
             untagResourceAsync: DynamoDBClientProtocol.UntagResourceAsyncType? = nil,
             untagResourceSync: DynamoDBClientProtocol.UntagResourceSyncType? = nil,
             updateContinuousBackupsAsync: DynamoDBClientProtocol.UpdateContinuousBackupsAsyncType? = nil,
@@ -225,6 +233,10 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
         self.scanSyncOverride = scanSync
         self.tagResourceAsyncOverride = tagResourceAsync
         self.tagResourceSyncOverride = tagResourceSync
+        self.transactGetItemsAsyncOverride = transactGetItemsAsync
+        self.transactGetItemsSyncOverride = transactGetItemsSync
+        self.transactWriteItemsAsyncOverride = transactWriteItemsAsync
+        self.transactWriteItemsSyncOverride = transactWriteItemsSync
         self.untagResourceAsyncOverride = untagResourceAsync
         self.untagResourceSyncOverride = untagResourceSync
         self.updateContinuousBackupsAsyncOverride = updateContinuousBackupsAsync
@@ -249,7 +261,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The BatchGetItemOutput object or an error will be passed to this 
            callback when the operation is complete. The BatchGetItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchGetItemAsync(input: DynamoDBModel.BatchGetItemInput, completion: @escaping (HTTPResult<DynamoDBModel.BatchGetItemOutput>) -> ()) throws {
         if let batchGetItemAsyncOverride = batchGetItemAsyncOverride {
@@ -266,7 +278,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated BatchGetItemInput object being passed to this operation.
      - Returns: The BatchGetItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchGetItemSync(input: DynamoDBModel.BatchGetItemInput) throws -> DynamoDBModel.BatchGetItemOutput {
         if let batchGetItemSyncOverride = batchGetItemSyncOverride {
@@ -284,7 +296,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The BatchWriteItemOutput object or an error will be passed to this 
            callback when the operation is complete. The BatchWriteItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchWriteItemAsync(input: DynamoDBModel.BatchWriteItemInput, completion: @escaping (HTTPResult<DynamoDBModel.BatchWriteItemOutput>) -> ()) throws {
         if let batchWriteItemAsyncOverride = batchWriteItemAsyncOverride {
@@ -301,7 +313,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated BatchWriteItemInput object being passed to this operation.
      - Returns: The BatchWriteItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchWriteItemSync(input: DynamoDBModel.BatchWriteItemInput) throws -> DynamoDBModel.BatchWriteItemOutput {
         if let batchWriteItemSyncOverride = batchWriteItemSyncOverride {
@@ -459,7 +471,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The DeleteItemOutput object or an error will be passed to this 
            callback when the operation is complete. The DeleteItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func deleteItemAsync(input: DynamoDBModel.DeleteItemInput, completion: @escaping (HTTPResult<DynamoDBModel.DeleteItemOutput>) -> ()) throws {
         if let deleteItemAsyncOverride = deleteItemAsyncOverride {
@@ -476,7 +488,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated DeleteItemInput object being passed to this operation.
      - Returns: The DeleteItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func deleteItemSync(input: DynamoDBModel.DeleteItemInput) throws -> DynamoDBModel.DeleteItemOutput {
         if let deleteItemSyncOverride = deleteItemSyncOverride {
@@ -807,7 +819,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The GetItemOutput object or an error will be passed to this 
            callback when the operation is complete. The GetItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func getItemAsync(input: DynamoDBModel.GetItemInput, completion: @escaping (HTTPResult<DynamoDBModel.GetItemOutput>) -> ()) throws {
         if let getItemAsyncOverride = getItemAsyncOverride {
@@ -824,7 +836,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated GetItemInput object being passed to this operation.
      - Returns: The GetItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func getItemSync(input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput {
         if let getItemSyncOverride = getItemSyncOverride {
@@ -982,7 +994,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The PutItemOutput object or an error will be passed to this 
            callback when the operation is complete. The PutItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func putItemAsync(input: DynamoDBModel.PutItemInput, completion: @escaping (HTTPResult<DynamoDBModel.PutItemOutput>) -> ()) throws {
         if let putItemAsyncOverride = putItemAsyncOverride {
@@ -999,7 +1011,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated PutItemInput object being passed to this operation.
      - Returns: The PutItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func putItemSync(input: DynamoDBModel.PutItemInput) throws -> DynamoDBModel.PutItemOutput {
         if let putItemSyncOverride = putItemSyncOverride {
@@ -1017,7 +1029,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The QueryOutput object or an error will be passed to this 
            callback when the operation is complete. The QueryOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func queryAsync(input: DynamoDBModel.QueryInput, completion: @escaping (HTTPResult<DynamoDBModel.QueryOutput>) -> ()) throws {
         if let queryAsyncOverride = queryAsyncOverride {
@@ -1034,7 +1046,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated QueryInput object being passed to this operation.
      - Returns: The QueryOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func querySync(input: DynamoDBModel.QueryInput) throws -> DynamoDBModel.QueryOutput {
         if let querySyncOverride = querySyncOverride {
@@ -1122,7 +1134,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The ScanOutput object or an error will be passed to this 
            callback when the operation is complete. The ScanOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func scanAsync(input: DynamoDBModel.ScanInput, completion: @escaping (HTTPResult<DynamoDBModel.ScanOutput>) -> ()) throws {
         if let scanAsyncOverride = scanAsyncOverride {
@@ -1139,7 +1151,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated ScanInput object being passed to this operation.
      - Returns: The ScanOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func scanSync(input: DynamoDBModel.ScanInput) throws -> DynamoDBModel.ScanOutput {
         if let scanSyncOverride = scanSyncOverride {
@@ -1176,6 +1188,76 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
     public func tagResourceSync(input: DynamoDBModel.TagResourceInput) throws {
         if let tagResourceSyncOverride = tagResourceSyncOverride {
             return try tagResourceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the TransactGetItems operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TransactGetItemsInput object being passed to this operation.
+         - completion: The TransactGetItemsOutput object or an error will be passed to this 
+           callback when the operation is complete. The TransactGetItemsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound, transactionCanceled.
+     */
+    public func transactGetItemsAsync(input: DynamoDBModel.TransactGetItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactGetItemsOutput>) -> ()) throws {
+        if let transactGetItemsAsyncOverride = transactGetItemsAsyncOverride {
+            return try transactGetItemsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the TransactGetItems operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TransactGetItemsInput object being passed to this operation.
+     - Returns: The TransactGetItemsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound, transactionCanceled.
+     */
+    public func transactGetItemsSync(input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput {
+        if let transactGetItemsSyncOverride = transactGetItemsSyncOverride {
+            return try transactGetItemsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the TransactWriteItems operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TransactWriteItemsInput object being passed to this operation.
+         - completion: The TransactWriteItemsOutput object or an error will be passed to this 
+           callback when the operation is complete. The TransactWriteItemsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: idempotentParameterMismatch, internalServer, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    public func transactWriteItemsAsync(input: DynamoDBModel.TransactWriteItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactWriteItemsOutput>) -> ()) throws {
+        if let transactWriteItemsAsyncOverride = transactWriteItemsAsyncOverride {
+            return try transactWriteItemsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the TransactWriteItems operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TransactWriteItemsInput object being passed to this operation.
+     - Returns: The TransactWriteItemsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: idempotentParameterMismatch, internalServer, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    public func transactWriteItemsSync(input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput {
+        if let transactWriteItemsSyncOverride = transactWriteItemsSyncOverride {
+            return try transactWriteItemsSyncOverride(input)
         }
 
         throw error
@@ -1326,7 +1408,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The UpdateItemOutput object or an error will be passed to this 
            callback when the operation is complete. The UpdateItemOutput
            object will be validated before being returned to caller.
-           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+           The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func updateItemAsync(input: DynamoDBModel.UpdateItemInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateItemOutput>) -> ()) throws {
         if let updateItemAsyncOverride = updateItemAsyncOverride {
@@ -1343,7 +1425,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated UpdateItemInput object being passed to this operation.
      - Returns: The UpdateItemOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, resourceNotFound.
+     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func updateItemSync(input: DynamoDBModel.UpdateItemInput) throws -> DynamoDBModel.UpdateItemOutput {
         if let updateItemSyncOverride = updateItemSyncOverride {

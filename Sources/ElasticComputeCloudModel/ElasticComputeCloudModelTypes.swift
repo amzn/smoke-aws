@@ -135,6 +135,7 @@ public typealias AllowedPrincipalSet = [AllowedPrincipal]
  Enumeration restricting the values of the ArchitectureValues field.
  */
 public enum ArchitectureValues: String, Codable, CustomStringConvertible {
+    case arm64
     case i386
     case x8664 = "x86_64"
 
@@ -142,13 +143,48 @@ public enum ArchitectureValues: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: ArchitectureValues = .i386
+    public static let __default: ArchitectureValues = .arm64
 }
+
+/**
+ Enumeration restricting the values of the AssociatedNetworkType field.
+ */
+public enum AssociatedNetworkType: String, Codable, CustomStringConvertible {
+    case vpc
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AssociatedNetworkType = .vpc
+}
+
+/**
+ Type definition for the AssociatedTargetNetworkSet field.
+ */
+public typealias AssociatedTargetNetworkSet = [AssociatedTargetNetwork]
 
 /**
  Type definition for the AssociationIdList field.
  */
 public typealias AssociationIdList = [String]
+
+/**
+ Enumeration restricting the values of the AssociationStatusCode field.
+ */
+public enum AssociationStatusCode: String, Codable, CustomStringConvertible {
+    case associated
+    case associating
+    case associationFailed = "association-failed"
+    case disassociated
+    case disassociating
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AssociationStatusCode = .associated
+}
 
 /**
  Enumeration restricting the values of the AttachmentStatus field.
@@ -164,6 +200,25 @@ public enum AttachmentStatus: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: AttachmentStatus = .attached
+}
+
+/**
+ Type definition for the AuthorizationRuleSet field.
+ */
+public typealias AuthorizationRuleSet = [AuthorizationRule]
+
+/**
+ Enumeration restricting the values of the AutoAcceptSharedAttachmentsValue field.
+ */
+public enum AutoAcceptSharedAttachmentsValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AutoAcceptSharedAttachmentsValue = .disable
 }
 
 /**
@@ -452,6 +507,123 @@ public typealias ClassicLinkInstanceList = [ClassicLinkInstance]
 public typealias ClassicLoadBalancers = [ClassicLoadBalancer]
 
 /**
+ Enumeration restricting the values of the ClientCertificateRevocationListStatusCode field.
+ */
+public enum ClientCertificateRevocationListStatusCode: String, Codable, CustomStringConvertible {
+    case active
+    case pending
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ClientCertificateRevocationListStatusCode = .active
+}
+
+/**
+ Type definition for the ClientVpnAuthenticationList field.
+ */
+public typealias ClientVpnAuthenticationList = [ClientVpnAuthentication]
+
+/**
+ Type definition for the ClientVpnAuthenticationRequestList field.
+ */
+public typealias ClientVpnAuthenticationRequestList = [ClientVpnAuthenticationRequest]
+
+/**
+ Enumeration restricting the values of the ClientVpnAuthenticationType field.
+ */
+public enum ClientVpnAuthenticationType: String, Codable, CustomStringConvertible {
+    case certificateAuthentication = "certificate-authentication"
+    case directoryServiceAuthentication = "directory-service-authentication"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ClientVpnAuthenticationType = .certificateAuthentication
+}
+
+/**
+ Enumeration restricting the values of the ClientVpnAuthorizationRuleStatusCode field.
+ */
+public enum ClientVpnAuthorizationRuleStatusCode: String, Codable, CustomStringConvertible {
+    case active
+    case authorizing
+    case failed
+    case revoking
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ClientVpnAuthorizationRuleStatusCode = .active
+}
+
+/**
+ Type definition for the ClientVpnConnectionSet field.
+ */
+public typealias ClientVpnConnectionSet = [ClientVpnConnection]
+
+/**
+ Enumeration restricting the values of the ClientVpnConnectionStatusCode field.
+ */
+public enum ClientVpnConnectionStatusCode: String, Codable, CustomStringConvertible {
+    case active
+    case failedToTerminate = "failed-to-terminate"
+    case terminated
+    case terminating
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ClientVpnConnectionStatusCode = .active
+}
+
+/**
+ Enumeration restricting the values of the ClientVpnEndpointStatusCode field.
+ */
+public enum ClientVpnEndpointStatusCode: String, Codable, CustomStringConvertible {
+    case available
+    case deleted
+    case deleting
+    case pendingAssociate = "pending-associate"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ClientVpnEndpointStatusCode = .available
+}
+
+/**
+ Type definition for the ClientVpnRouteSet field.
+ */
+public typealias ClientVpnRouteSet = [ClientVpnRoute]
+
+/**
+ Enumeration restricting the values of the ClientVpnRouteStatusCode field.
+ */
+public enum ClientVpnRouteStatusCode: String, Codable, CustomStringConvertible {
+    case active
+    case creating
+    case deleting
+    case failed
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ClientVpnRouteStatusCode = .active
+}
+
+/**
+ Type definition for the ClientVpnSecurityGroupIdSet field.
+ */
+public typealias ClientVpnSecurityGroupIdSet = [String]
+
+/**
  Type definition for the ConnectionNotificationSet field.
  */
 public typealias ConnectionNotificationSet = [ConnectionNotification]
@@ -573,6 +745,34 @@ public enum DatafeedSubscriptionState: String, Codable, CustomStringConvertible 
  Type definition for the DateTime field.
  */
 public typealias DateTime = String
+
+/**
+ Enumeration restricting the values of the DefaultRouteTableAssociationValue field.
+ */
+public enum DefaultRouteTableAssociationValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DefaultRouteTableAssociationValue = .disable
+}
+
+/**
+ Enumeration restricting the values of the DefaultRouteTablePropagationValue field.
+ */
+public enum DefaultRouteTablePropagationValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DefaultRouteTablePropagationValue = .disable
+}
 
 /**
  Enumeration restricting the values of the DefaultTargetCapacityType field.
@@ -699,6 +899,20 @@ public typealias DiskImageList = [DiskImage]
 public typealias DnsEntrySet = [DnsEntry]
 
 /**
+ Enumeration restricting the values of the DnsSupportValue field.
+ */
+public enum DnsSupportValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DnsSupportValue = .disable
+}
+
+/**
  Enumeration restricting the values of the DomainType field.
  */
 public enum DomainType: String, Codable, CustomStringConvertible {
@@ -785,6 +999,16 @@ public enum ElasticGpuStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ElasticInferenceAcceleratorAssociationList field.
+ */
+public typealias ElasticInferenceAcceleratorAssociationList = [ElasticInferenceAcceleratorAssociation]
+
+/**
+ Type definition for the ElasticInferenceAccelerators field.
+ */
+public typealias ElasticInferenceAccelerators = [ElasticInferenceAccelerator]
+
+/**
  Enumeration restricting the values of the EndDateType field.
  */
 public enum EndDateType: String, Codable, CustomStringConvertible {
@@ -797,6 +1021,11 @@ public enum EndDateType: String, Codable, CustomStringConvertible {
     
     public static let __default: EndDateType = .limited
 }
+
+/**
+ Type definition for the EndpointSet field.
+ */
+public typealias EndpointSet = [ClientVpnEndpoint]
 
 /**
  Enumeration restricting the values of the EventCode field.
@@ -1524,6 +1753,11 @@ public typealias InstanceStatusList = [InstanceStatus]
  Enumeration restricting the values of the InstanceType field.
  */
 public enum InstanceType: String, Codable, CustomStringConvertible {
+    case a12xlarge = "a1.2xlarge"
+    case a14xlarge = "a1.4xlarge"
+    case a1Large = "a1.large"
+    case a1Medium = "a1.medium"
+    case a1Xlarge = "a1.xlarge"
     case c1Medium = "c1.medium"
     case c1Xlarge = "c1.xlarge"
     case c32xlarge = "c3.2xlarge"
@@ -1548,6 +1782,12 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case c5d9xlarge = "c5d.9xlarge"
     case c5dLarge = "c5d.large"
     case c5dXlarge = "c5d.xlarge"
+    case c5n18xlarge = "c5n.18xlarge"
+    case c5n2xlarge = "c5n.2xlarge"
+    case c5n4xlarge = "c5n.4xlarge"
+    case c5n9xlarge = "c5n.9xlarge"
+    case c5nLarge = "c5n.large"
+    case c5nXlarge = "c5n.xlarge"
     case cc14xlarge = "cc1.4xlarge"
     case cc28xlarge = "cc2.8xlarge"
     case cg14xlarge = "cg1.4xlarge"
@@ -1623,6 +1863,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case p316xlarge = "p3.16xlarge"
     case p32xlarge = "p3.2xlarge"
     case p38xlarge = "p3.8xlarge"
+    case p3dn24xlarge = "p3dn.24xlarge"
     case r32xlarge = "r3.2xlarge"
     case r34xlarge = "r3.4xlarge"
     case r38xlarge = "r3.8xlarge"
@@ -1695,7 +1936,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: InstanceType = .c1Medium
+    public static let __default: InstanceType = .a12xlarge
 }
 
 /**
@@ -1768,6 +2009,20 @@ public typealias Ipv6CidrBlockSet = [Ipv6CidrBlock]
 public typealias Ipv6RangeList = [Ipv6Range]
 
 /**
+ Enumeration restricting the values of the Ipv6SupportValue field.
+ */
+public enum Ipv6SupportValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: Ipv6SupportValue = .disable
+}
+
+/**
  Type definition for the KeyNameStringList field.
  */
 public typealias KeyNameStringList = [String]
@@ -1803,6 +2058,16 @@ public typealias LaunchTemplateBlockDeviceMappingRequestList = [LaunchTemplateBl
 public typealias LaunchTemplateConfigList = [LaunchTemplateConfig]
 
 /**
+ Type definition for the LaunchTemplateElasticInferenceAcceleratorList field.
+ */
+public typealias LaunchTemplateElasticInferenceAcceleratorList = [LaunchTemplateElasticInferenceAccelerator]
+
+/**
+ Type definition for the LaunchTemplateElasticInferenceAcceleratorResponseList field.
+ */
+public typealias LaunchTemplateElasticInferenceAcceleratorResponseList = [LaunchTemplateElasticInferenceAcceleratorResponse]
+
+/**
  Enumeration restricting the values of the LaunchTemplateErrorCode field.
  */
 public enum LaunchTemplateErrorCode: String, Codable, CustomStringConvertible {
@@ -1829,6 +2094,16 @@ public typealias LaunchTemplateInstanceNetworkInterfaceSpecificationList = [Laun
  Type definition for the LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList field.
  */
 public typealias LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList = [LaunchTemplateInstanceNetworkInterfaceSpecificationRequest]
+
+/**
+ Type definition for the LaunchTemplateLicenseList field.
+ */
+public typealias LaunchTemplateLicenseList = [LaunchTemplateLicenseConfiguration]
+
+/**
+ Type definition for the LaunchTemplateLicenseSpecificationListRequest field.
+ */
+public typealias LaunchTemplateLicenseSpecificationListRequest = [LaunchTemplateLicenseConfigurationRequest]
 
 /**
  Type definition for the LaunchTemplateName field.
@@ -1864,6 +2139,16 @@ public typealias LaunchTemplateTagSpecificationRequestList = [LaunchTemplateTagS
  Type definition for the LaunchTemplateVersionSet field.
  */
 public typealias LaunchTemplateVersionSet = [LaunchTemplateVersion]
+
+/**
+ Type definition for the LicenseList field.
+ */
+public typealias LicenseList = [LicenseConfiguration]
+
+/**
+ Type definition for the LicenseSpecificationListRequest field.
+ */
+public typealias LicenseSpecificationListRequest = [LicenseConfigurationRequest]
 
 /**
  Enumeration restricting the values of the ListingState field.
@@ -2258,6 +2543,7 @@ public typealias PlacementGroupStringList = [String]
  */
 public enum PlacementStrategy: String, Codable, CustomStringConvertible {
     case cluster
+    case partition
     case spread
 
     public var description: String {
@@ -2667,6 +2953,9 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case snapshot
     case spotInstancesRequest = "spot-instances-request"
     case subnet
+    case transitGateway = "transit-gateway"
+    case transitGatewayAttachment = "transit-gateway-attachment"
+    case transitGatewayRouteTable = "transit-gateway-route-table"
     case volume
     case vpc
     case vpcPeeringConnection = "vpc-peering-connection"
@@ -3166,6 +3455,11 @@ public typealias TargetConfigurationRequestSet = [TargetConfigurationRequest]
 public typealias TargetGroups = [TargetGroup]
 
 /**
+ Type definition for the TargetNetworkSet field.
+ */
+public typealias TargetNetworkSet = [TargetNetwork]
+
+/**
  Type definition for the TargetReservationValueSet field.
  */
 public typealias TargetReservationValueSet = [TargetReservationValue]
@@ -3200,6 +3494,11 @@ public enum Tenancy: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the TerminateConnectionStatusSet field.
+ */
+public typealias TerminateConnectionStatusSet = [TerminateConnectionStatus]
+
+/**
  Enumeration restricting the values of the TrafficType field.
  */
 public enum TrafficType: String, Codable, CustomStringConvertible {
@@ -3212,6 +3511,218 @@ public enum TrafficType: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: TrafficType = .accept
+}
+
+/**
+ Enumeration restricting the values of the TransitGatewayAssociationState field.
+ */
+public enum TransitGatewayAssociationState: String, Codable, CustomStringConvertible {
+    case associated
+    case associating
+    case disassociated
+    case disassociating
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransitGatewayAssociationState = .associated
+}
+
+/**
+ Type definition for the TransitGatewayAttachmentIdStringList field.
+ */
+public typealias TransitGatewayAttachmentIdStringList = [String]
+
+/**
+ Type definition for the TransitGatewayAttachmentList field.
+ */
+public typealias TransitGatewayAttachmentList = [TransitGatewayAttachment]
+
+/**
+ Type definition for the TransitGatewayAttachmentPropagationList field.
+ */
+public typealias TransitGatewayAttachmentPropagationList = [TransitGatewayAttachmentPropagation]
+
+/**
+ Enumeration restricting the values of the TransitGatewayAttachmentResourceType field.
+ */
+public enum TransitGatewayAttachmentResourceType: String, Codable, CustomStringConvertible {
+    case vpc
+    case vpn
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransitGatewayAttachmentResourceType = .vpc
+}
+
+/**
+ Enumeration restricting the values of the TransitGatewayAttachmentState field.
+ */
+public enum TransitGatewayAttachmentState: String, Codable, CustomStringConvertible {
+    case available
+    case deleted
+    case deleting
+    case failed
+    case failing
+    case modifying
+    case pending
+    case pendingacceptance = "pendingAcceptance"
+    case rejected
+    case rejecting
+    case rollingback = "rollingBack"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransitGatewayAttachmentState = .available
+}
+
+/**
+ Type definition for the TransitGatewayIdStringList field.
+ */
+public typealias TransitGatewayIdStringList = [String]
+
+/**
+ Type definition for the TransitGatewayList field.
+ */
+public typealias TransitGatewayList = [TransitGateway]
+
+/**
+ Type definition for the TransitGatewayMaxResults field.
+ */
+public typealias TransitGatewayMaxResults = Int
+
+/**
+ Enumeration restricting the values of the TransitGatewayPropagationState field.
+ */
+public enum TransitGatewayPropagationState: String, Codable, CustomStringConvertible {
+    case disabled
+    case disabling
+    case enabled
+    case enabling
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransitGatewayPropagationState = .disabled
+}
+
+/**
+ Type definition for the TransitGatewayRouteAttachmentList field.
+ */
+public typealias TransitGatewayRouteAttachmentList = [TransitGatewayRouteAttachment]
+
+/**
+ Type definition for the TransitGatewayRouteList field.
+ */
+public typealias TransitGatewayRouteList = [TransitGatewayRoute]
+
+/**
+ Enumeration restricting the values of the TransitGatewayRouteState field.
+ */
+public enum TransitGatewayRouteState: String, Codable, CustomStringConvertible {
+    case active
+    case blackhole
+    case deleted
+    case deleting
+    case pending
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransitGatewayRouteState = .active
+}
+
+/**
+ Type definition for the TransitGatewayRouteTableAssociationList field.
+ */
+public typealias TransitGatewayRouteTableAssociationList = [TransitGatewayRouteTableAssociation]
+
+/**
+ Type definition for the TransitGatewayRouteTableIdStringList field.
+ */
+public typealias TransitGatewayRouteTableIdStringList = [String]
+
+/**
+ Type definition for the TransitGatewayRouteTableList field.
+ */
+public typealias TransitGatewayRouteTableList = [TransitGatewayRouteTable]
+
+/**
+ Type definition for the TransitGatewayRouteTablePropagationList field.
+ */
+public typealias TransitGatewayRouteTablePropagationList = [TransitGatewayRouteTablePropagation]
+
+/**
+ Enumeration restricting the values of the TransitGatewayRouteTableState field.
+ */
+public enum TransitGatewayRouteTableState: String, Codable, CustomStringConvertible {
+    case available
+    case deleted
+    case deleting
+    case pending
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransitGatewayRouteTableState = .available
+}
+
+/**
+ Enumeration restricting the values of the TransitGatewayRouteType field.
+ */
+public enum TransitGatewayRouteType: String, Codable, CustomStringConvertible {
+    case propagated
+    case `static` = "static"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransitGatewayRouteType = .propagated
+}
+
+/**
+ Enumeration restricting the values of the TransitGatewayState field.
+ */
+public enum TransitGatewayState: String, Codable, CustomStringConvertible {
+    case available
+    case deleted
+    case deleting
+    case modifying
+    case pending
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransitGatewayState = .available
+}
+
+/**
+ Type definition for the TransitGatewayVpcAttachmentList field.
+ */
+public typealias TransitGatewayVpcAttachmentList = [TransitGatewayVpcAttachment]
+
+/**
+ Enumeration restricting the values of the TransportProtocol field.
+ */
+public enum TransportProtocol: String, Codable, CustomStringConvertible {
+    case tcp
+    case udp
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransportProtocol = .tcp
 }
 
 /**
@@ -3610,6 +4121,20 @@ public typealias VpnConnectionIdStringList = [String]
 public typealias VpnConnectionList = [VpnConnection]
 
 /**
+ Enumeration restricting the values of the VpnEcmpSupportValue field.
+ */
+public enum VpnEcmpSupportValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: VpnEcmpSupportValue = .disable
+}
+
+/**
  Type definition for the VpnGatewayIdStringList field.
  */
 public typealias VpnGatewayIdStringList = [String]
@@ -3618,6 +4143,19 @@ public typealias VpnGatewayIdStringList = [String]
  Type definition for the VpnGatewayList field.
  */
 public typealias VpnGatewayList = [VpnGateway]
+
+/**
+ Enumeration restricting the values of the VpnProtocol field.
+ */
+public enum VpnProtocol: String, Codable, CustomStringConvertible {
+    case openvpn
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: VpnProtocol = .openvpn
+}
 
 /**
  Enumeration restricting the values of the VpnState field.
@@ -3729,7 +4267,7 @@ extension ElasticComputeCloudModel.LaunchTemplateName {
             throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to LaunchTemplateName violated the maximum length constraint.")
         }
 
-        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\(\\)\\.-/_]+", options: .regularExpression),
+        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\(\\)\\.\\-/_]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
                 throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to LaunchTemplateName violated the regular expression constraint.")
         }
@@ -3804,6 +4342,21 @@ extension Array where Element == ElasticComputeCloudModel.TargetGroup {
 
         if self.count > 5 {
             throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to TargetGroups violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TransitGatewayMaxResults field.
+*/
+extension ElasticComputeCloudModel.TransitGatewayMaxResults {
+    public func validateAsTransitGatewayMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to TransitGatewayMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to TransitGatewayMaxResults violated the maximum range constraint.")
         }
     }
 }

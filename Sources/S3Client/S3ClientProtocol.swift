@@ -111,6 +111,12 @@ public protocol S3ClientProtocol {
     typealias GetObjectAsyncType = (_ input: S3Model.GetObjectRequest, _ completion: @escaping (HTTPResult<S3Model.GetObjectOutput>) -> ()) throws -> ()
     typealias GetObjectAclSyncType = (_ input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput
     typealias GetObjectAclAsyncType = (_ input: S3Model.GetObjectAclRequest, _ completion: @escaping (HTTPResult<S3Model.GetObjectAclOutput>) -> ()) throws -> ()
+    typealias GetObjectLegalHoldSyncType = (_ input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput
+    typealias GetObjectLegalHoldAsyncType = (_ input: S3Model.GetObjectLegalHoldRequest, _ completion: @escaping (HTTPResult<S3Model.GetObjectLegalHoldOutput>) -> ()) throws -> ()
+    typealias GetObjectLockConfigurationSyncType = (_ input: S3Model.GetObjectLockConfigurationRequest) throws -> S3Model.GetObjectLockConfigurationOutput
+    typealias GetObjectLockConfigurationAsyncType = (_ input: S3Model.GetObjectLockConfigurationRequest, _ completion: @escaping (HTTPResult<S3Model.GetObjectLockConfigurationOutput>) -> ()) throws -> ()
+    typealias GetObjectRetentionSyncType = (_ input: S3Model.GetObjectRetentionRequest) throws -> S3Model.GetObjectRetentionOutput
+    typealias GetObjectRetentionAsyncType = (_ input: S3Model.GetObjectRetentionRequest, _ completion: @escaping (HTTPResult<S3Model.GetObjectRetentionOutput>) -> ()) throws -> ()
     typealias GetObjectTaggingSyncType = (_ input: S3Model.GetObjectTaggingRequest) throws -> S3Model.GetObjectTaggingOutput
     typealias GetObjectTaggingAsyncType = (_ input: S3Model.GetObjectTaggingRequest, _ completion: @escaping (HTTPResult<S3Model.GetObjectTaggingOutput>) -> ()) throws -> ()
     typealias GetObjectTorrentSyncType = (_ input: S3Model.GetObjectTorrentRequest) throws -> S3Model.GetObjectTorrentOutput
@@ -179,6 +185,12 @@ public protocol S3ClientProtocol {
     typealias PutObjectAsyncType = (_ input: S3Model.PutObjectRequest, _ completion: @escaping (HTTPResult<S3Model.PutObjectOutput>) -> ()) throws -> ()
     typealias PutObjectAclSyncType = (_ input: S3Model.PutObjectAclRequest) throws -> S3Model.PutObjectAclOutput
     typealias PutObjectAclAsyncType = (_ input: S3Model.PutObjectAclRequest, _ completion: @escaping (HTTPResult<S3Model.PutObjectAclOutput>) -> ()) throws -> ()
+    typealias PutObjectLegalHoldSyncType = (_ input: S3Model.PutObjectLegalHoldRequest) throws -> S3Model.PutObjectLegalHoldOutput
+    typealias PutObjectLegalHoldAsyncType = (_ input: S3Model.PutObjectLegalHoldRequest, _ completion: @escaping (HTTPResult<S3Model.PutObjectLegalHoldOutput>) -> ()) throws -> ()
+    typealias PutObjectLockConfigurationSyncType = (_ input: S3Model.PutObjectLockConfigurationRequest) throws -> S3Model.PutObjectLockConfigurationOutput
+    typealias PutObjectLockConfigurationAsyncType = (_ input: S3Model.PutObjectLockConfigurationRequest, _ completion: @escaping (HTTPResult<S3Model.PutObjectLockConfigurationOutput>) -> ()) throws -> ()
+    typealias PutObjectRetentionSyncType = (_ input: S3Model.PutObjectRetentionRequest) throws -> S3Model.PutObjectRetentionOutput
+    typealias PutObjectRetentionAsyncType = (_ input: S3Model.PutObjectRetentionRequest, _ completion: @escaping (HTTPResult<S3Model.PutObjectRetentionOutput>) -> ()) throws -> ()
     typealias PutObjectTaggingSyncType = (_ input: S3Model.PutObjectTaggingRequest) throws -> S3Model.PutObjectTaggingOutput
     typealias PutObjectTaggingAsyncType = (_ input: S3Model.PutObjectTaggingRequest, _ completion: @escaping (HTTPResult<S3Model.PutObjectTaggingOutput>) -> ()) throws -> ()
     typealias PutPublicAccessBlockSyncType = (_ input: S3Model.PutPublicAccessBlockRequest) throws -> ()
@@ -1049,6 +1061,69 @@ public protocol S3ClientProtocol {
     func getObjectAclSync(input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput
 
     /**
+     Invokes the GetObjectLegalHold operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetObjectLegalHoldRequest object being passed to this operation.
+         - completion: The GetObjectLegalHoldOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetObjectLegalHoldOutput
+           object will be validated before being returned to caller.
+     */
+    func getObjectLegalHoldAsync(input: S3Model.GetObjectLegalHoldRequest, completion: @escaping (HTTPResult<S3Model.GetObjectLegalHoldOutput>) -> ()) throws
+
+    /**
+     Invokes the GetObjectLegalHold operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetObjectLegalHoldRequest object being passed to this operation.
+     - Returns: The GetObjectLegalHoldOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getObjectLegalHoldSync(input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput
+
+    /**
+     Invokes the GetObjectLockConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetObjectLockConfigurationRequest object being passed to this operation.
+         - completion: The GetObjectLockConfigurationOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetObjectLockConfigurationOutput
+           object will be validated before being returned to caller.
+     */
+    func getObjectLockConfigurationAsync(input: S3Model.GetObjectLockConfigurationRequest, completion: @escaping (HTTPResult<S3Model.GetObjectLockConfigurationOutput>) -> ()) throws
+
+    /**
+     Invokes the GetObjectLockConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetObjectLockConfigurationRequest object being passed to this operation.
+     - Returns: The GetObjectLockConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getObjectLockConfigurationSync(input: S3Model.GetObjectLockConfigurationRequest) throws -> S3Model.GetObjectLockConfigurationOutput
+
+    /**
+     Invokes the GetObjectRetention operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetObjectRetentionRequest object being passed to this operation.
+         - completion: The GetObjectRetentionOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetObjectRetentionOutput
+           object will be validated before being returned to caller.
+     */
+    func getObjectRetentionAsync(input: S3Model.GetObjectRetentionRequest, completion: @escaping (HTTPResult<S3Model.GetObjectRetentionOutput>) -> ()) throws
+
+    /**
+     Invokes the GetObjectRetention operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetObjectRetentionRequest object being passed to this operation.
+     - Returns: The GetObjectRetentionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getObjectRetentionSync(input: S3Model.GetObjectRetentionRequest) throws -> S3Model.GetObjectRetentionOutput
+
+    /**
      Invokes the GetObjectTagging operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1708,6 +1783,69 @@ public protocol S3ClientProtocol {
      - Throws: noSuchKey.
      */
     func putObjectAclSync(input: S3Model.PutObjectAclRequest) throws -> S3Model.PutObjectAclOutput
+
+    /**
+     Invokes the PutObjectLegalHold operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutObjectLegalHoldRequest object being passed to this operation.
+         - completion: The PutObjectLegalHoldOutput object or an error will be passed to this 
+           callback when the operation is complete. The PutObjectLegalHoldOutput
+           object will be validated before being returned to caller.
+     */
+    func putObjectLegalHoldAsync(input: S3Model.PutObjectLegalHoldRequest, completion: @escaping (HTTPResult<S3Model.PutObjectLegalHoldOutput>) -> ()) throws
+
+    /**
+     Invokes the PutObjectLegalHold operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutObjectLegalHoldRequest object being passed to this operation.
+     - Returns: The PutObjectLegalHoldOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func putObjectLegalHoldSync(input: S3Model.PutObjectLegalHoldRequest) throws -> S3Model.PutObjectLegalHoldOutput
+
+    /**
+     Invokes the PutObjectLockConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutObjectLockConfigurationRequest object being passed to this operation.
+         - completion: The PutObjectLockConfigurationOutput object or an error will be passed to this 
+           callback when the operation is complete. The PutObjectLockConfigurationOutput
+           object will be validated before being returned to caller.
+     */
+    func putObjectLockConfigurationAsync(input: S3Model.PutObjectLockConfigurationRequest, completion: @escaping (HTTPResult<S3Model.PutObjectLockConfigurationOutput>) -> ()) throws
+
+    /**
+     Invokes the PutObjectLockConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutObjectLockConfigurationRequest object being passed to this operation.
+     - Returns: The PutObjectLockConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func putObjectLockConfigurationSync(input: S3Model.PutObjectLockConfigurationRequest) throws -> S3Model.PutObjectLockConfigurationOutput
+
+    /**
+     Invokes the PutObjectRetention operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutObjectRetentionRequest object being passed to this operation.
+         - completion: The PutObjectRetentionOutput object or an error will be passed to this 
+           callback when the operation is complete. The PutObjectRetentionOutput
+           object will be validated before being returned to caller.
+     */
+    func putObjectRetentionAsync(input: S3Model.PutObjectRetentionRequest, completion: @escaping (HTTPResult<S3Model.PutObjectRetentionOutput>) -> ()) throws
+
+    /**
+     Invokes the PutObjectRetention operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutObjectRetentionRequest object being passed to this operation.
+     - Returns: The PutObjectRetentionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func putObjectRetentionSync(input: S3Model.PutObjectRetentionRequest) throws -> S3Model.PutObjectRetentionOutput
 
     /**
      Invokes the PutObjectTagging operation returning immediately and passing the response to a callback.

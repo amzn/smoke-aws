@@ -197,6 +197,11 @@ public enum BucketVersioningStatus: String, Codable, CustomStringConvertible {
 public typealias Buckets = [Bucket]
 
 /**
+ Type definition for the BypassGovernanceRetention field.
+ */
+public typealias BypassGovernanceRetention = Bool
+
+/**
  Type definition for the BytesProcessed field.
  */
 public typealias BytesProcessed = Int
@@ -470,6 +475,8 @@ public enum Event: String, Codable, CustomStringConvertible {
     case s3ObjectRemovedStar = "s3:ObjectRemoved:*"
     case s3ObjectRemovedDelete = "s3:ObjectRemoved:Delete"
     case s3ObjectRemovedDeleteMarkerCreated = "s3:ObjectRemoved:DeleteMarkerCreated"
+    case s3ObjectRestoreCompleted = "s3:ObjectRestore:Completed"
+    case s3ObjectRestorePost = "s3:ObjectRestore:Post"
     case s3ReducedRedundancyLostObject = "s3:ReducedRedundancyLostObject"
 
     public var description: String {
@@ -676,6 +683,7 @@ public typealias InventoryConfigurationList = [InventoryConfiguration]
 public enum InventoryFormat: String, Codable, CustomStringConvertible {
     case csv = "CSV"
     case orc = "ORC"
+    case parquet = "Parquet"
 
     public var description: String {
         return rawValue
@@ -725,6 +733,9 @@ public enum InventoryOptionalField: String, Codable, CustomStringConvertible {
     case encryptionstatus = "EncryptionStatus"
     case ismultipartuploaded = "IsMultipartUploaded"
     case lastmodifieddate = "LastModifiedDate"
+    case objectlocklegalholdstatus = "ObjectLockLegalHoldStatus"
+    case objectlockmode = "ObjectLockMode"
+    case objectlockretainuntildate = "ObjectLockRetainUntilDate"
     case replicationstatus = "ReplicationStatus"
     case size = "Size"
     case storageclass = "StorageClass"
@@ -1017,10 +1028,81 @@ public typealias ObjectKey = String
 public typealias ObjectList = [Object]
 
 /**
+ Enumeration restricting the values of the ObjectLockEnabled field.
+ */
+public enum ObjectLockEnabled: String, Codable, CustomStringConvertible {
+    case enabled = "Enabled"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ObjectLockEnabled = .enabled
+}
+
+/**
+ Type definition for the ObjectLockEnabledForBucket field.
+ */
+public typealias ObjectLockEnabledForBucket = Bool
+
+/**
+ Enumeration restricting the values of the ObjectLockLegalHoldStatus field.
+ */
+public enum ObjectLockLegalHoldStatus: String, Codable, CustomStringConvertible {
+    case off = "OFF"
+    case on = "ON"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ObjectLockLegalHoldStatus = .off
+}
+
+/**
+ Enumeration restricting the values of the ObjectLockMode field.
+ */
+public enum ObjectLockMode: String, Codable, CustomStringConvertible {
+    case compliance = "COMPLIANCE"
+    case governance = "GOVERNANCE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ObjectLockMode = .compliance
+}
+
+/**
+ Type definition for the ObjectLockRetainUntilDate field.
+ */
+public typealias ObjectLockRetainUntilDate = String
+
+/**
+ Enumeration restricting the values of the ObjectLockRetentionMode field.
+ */
+public enum ObjectLockRetentionMode: String, Codable, CustomStringConvertible {
+    case compliance = "COMPLIANCE"
+    case governance = "GOVERNANCE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ObjectLockRetentionMode = .compliance
+}
+
+/**
+ Type definition for the ObjectLockToken field.
+ */
+public typealias ObjectLockToken = String
+
+/**
  Enumeration restricting the values of the ObjectStorageClass field.
  */
 public enum ObjectStorageClass: String, Codable, CustomStringConvertible {
     case glacier = "GLACIER"
+    case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
     case reducedRedundancy = "REDUCED_REDUNDANCY"
     case standard = "STANDARD"
@@ -1414,6 +1496,8 @@ public typealias StartAfter = String
  Enumeration restricting the values of the StorageClass field.
  */
 public enum StorageClass: String, Codable, CustomStringConvertible {
+    case glacier = "GLACIER"
+    case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
     case reducedRedundancy = "REDUCED_REDUNDANCY"
     case standard = "STANDARD"
@@ -1423,7 +1507,7 @@ public enum StorageClass: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: StorageClass = .onezoneIa
+    public static let __default: StorageClass = .glacier
 }
 
 /**
@@ -1528,6 +1612,7 @@ public typealias TransitionList = [Transition]
  */
 public enum TransitionStorageClass: String, Codable, CustomStringConvertible {
     case glacier = "GLACIER"
+    case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
     case standardIa = "STANDARD_IA"
 
@@ -1582,6 +1667,11 @@ public typealias VersionIdMarker = String
  Type definition for the WebsiteRedirectLocation field.
  */
 public typealias WebsiteRedirectLocation = String
+
+/**
+ Type definition for the Years field.
+ */
+public typealias Years = Int
 
 /**
  Validation for the CopySource field.

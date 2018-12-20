@@ -159,6 +159,16 @@ public typealias ScanOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias TagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the TransactGetItems operation in a HTTP client.
+ */
+public typealias TransactGetItemsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the TransactWriteItems operation in a HTTP client.
+ */
+public typealias TransactWriteItemsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the UntagResource operation in a HTTP client.
  */
 public typealias UntagResourceOperationHTTPRequestInput = BodyHTTPRequestInput

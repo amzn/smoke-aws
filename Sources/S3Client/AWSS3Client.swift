@@ -2332,6 +2332,168 @@ public struct AWSS3Client: S3ClientProtocol {
     }
 
     /**
+     Invokes the GetObjectLegalHold operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetObjectLegalHoldRequest object being passed to this operation.
+         - completion: The GetObjectLegalHoldOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetObjectLegalHoldOutput
+           object will be validated before being returned to caller.
+     */
+    public func getObjectLegalHoldAsync(input: S3Model.GetObjectLegalHoldRequest, completion: @escaping (HTTPResult<S3Model.GetObjectLegalHoldOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectLegalHold.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = GetObjectLegalHoldOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/{Bucket}/{Key+}?legal-hold",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetObjectLegalHold operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetObjectLegalHoldRequest object being passed to this operation.
+     - Returns: The GetObjectLegalHoldOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getObjectLegalHoldSync(input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectLegalHold.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = GetObjectLegalHoldOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/{Bucket}/{Key+}?legal-hold",
+            httpMethod: .GET,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetObjectLockConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetObjectLockConfigurationRequest object being passed to this operation.
+         - completion: The GetObjectLockConfigurationOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetObjectLockConfigurationOutput
+           object will be validated before being returned to caller.
+     */
+    public func getObjectLockConfigurationAsync(input: S3Model.GetObjectLockConfigurationRequest, completion: @escaping (HTTPResult<S3Model.GetObjectLockConfigurationOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectLockConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = GetObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/{Bucket}?object-lock",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetObjectLockConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetObjectLockConfigurationRequest object being passed to this operation.
+     - Returns: The GetObjectLockConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getObjectLockConfigurationSync(input: S3Model.GetObjectLockConfigurationRequest) throws -> S3Model.GetObjectLockConfigurationOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectLockConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = GetObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/{Bucket}?object-lock",
+            httpMethod: .GET,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetObjectRetention operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetObjectRetentionRequest object being passed to this operation.
+         - completion: The GetObjectRetentionOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetObjectRetentionOutput
+           object will be validated before being returned to caller.
+     */
+    public func getObjectRetentionAsync(input: S3Model.GetObjectRetentionRequest, completion: @escaping (HTTPResult<S3Model.GetObjectRetentionOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectRetention.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = GetObjectRetentionOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/{Bucket}/{Key+}?retention",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetObjectRetention operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetObjectRetentionRequest object being passed to this operation.
+     - Returns: The GetObjectRetentionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getObjectRetentionSync(input: S3Model.GetObjectRetentionRequest) throws -> S3Model.GetObjectRetentionOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectRetention.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = GetObjectRetentionOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/{Bucket}/{Key+}?retention",
+            httpMethod: .GET,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the GetObjectTagging operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4109,6 +4271,168 @@ public struct AWSS3Client: S3ClientProtocol {
 
         return try httpClient.executeSyncWithOutput(
             endpointPath: "/{Bucket}/{Key+}?acl",
+            httpMethod: .PUT,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the PutObjectLegalHold operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutObjectLegalHoldRequest object being passed to this operation.
+         - completion: The PutObjectLegalHoldOutput object or an error will be passed to this 
+           callback when the operation is complete. The PutObjectLegalHoldOutput
+           object will be validated before being returned to caller.
+     */
+    public func putObjectLegalHoldAsync(input: S3Model.PutObjectLegalHoldRequest, completion: @escaping (HTTPResult<S3Model.PutObjectLegalHoldOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectLegalHold.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = PutObjectLegalHoldOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/{Bucket}/{Key+}?legal-hold",
+            httpMethod: .PUT,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the PutObjectLegalHold operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutObjectLegalHoldRequest object being passed to this operation.
+     - Returns: The PutObjectLegalHoldOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func putObjectLegalHoldSync(input: S3Model.PutObjectLegalHoldRequest) throws -> S3Model.PutObjectLegalHoldOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectLegalHold.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = PutObjectLegalHoldOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/{Bucket}/{Key+}?legal-hold",
+            httpMethod: .PUT,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the PutObjectLockConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutObjectLockConfigurationRequest object being passed to this operation.
+         - completion: The PutObjectLockConfigurationOutput object or an error will be passed to this 
+           callback when the operation is complete. The PutObjectLockConfigurationOutput
+           object will be validated before being returned to caller.
+     */
+    public func putObjectLockConfigurationAsync(input: S3Model.PutObjectLockConfigurationRequest, completion: @escaping (HTTPResult<S3Model.PutObjectLockConfigurationOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectLockConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = PutObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/{Bucket}?object-lock",
+            httpMethod: .PUT,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the PutObjectLockConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutObjectLockConfigurationRequest object being passed to this operation.
+     - Returns: The PutObjectLockConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func putObjectLockConfigurationSync(input: S3Model.PutObjectLockConfigurationRequest) throws -> S3Model.PutObjectLockConfigurationOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectLockConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = PutObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/{Bucket}?object-lock",
+            httpMethod: .PUT,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the PutObjectRetention operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutObjectRetentionRequest object being passed to this operation.
+         - completion: The PutObjectRetentionOutput object or an error will be passed to this 
+           callback when the operation is complete. The PutObjectRetentionOutput
+           object will be validated before being returned to caller.
+     */
+    public func putObjectRetentionAsync(input: S3Model.PutObjectRetentionRequest, completion: @escaping (HTTPResult<S3Model.PutObjectRetentionOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectRetention.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = PutObjectRetentionOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/{Bucket}/{Key+}?retention",
+            httpMethod: .PUT,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the PutObjectRetention operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutObjectRetentionRequest object being passed to this operation.
+     - Returns: The PutObjectRetentionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func putObjectRetentionSync(input: S3Model.PutObjectRetentionRequest) throws -> S3Model.PutObjectRetentionOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectRetention.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let requestInput = PutObjectRetentionOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/{Bucket}/{Key+}?retention",
             httpMethod: .PUT,
             input: requestInput,
             handlerDelegate: handlerDelegate)

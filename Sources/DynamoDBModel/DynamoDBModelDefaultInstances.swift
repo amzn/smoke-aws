@@ -288,13 +288,42 @@ public extension BatchWriteItemOutput {
     }()
 }
 
+public extension BillingModeSummary {
+    /**
+     Default instance of the BillingModeSummary structure.
+     */
+    public static let __default: DynamoDBModel.BillingModeSummary = {
+        let defaultInstance = DynamoDBModel.BillingModeSummary(
+            billingMode: nil,
+            lastUpdateToPayPerRequestDateTime: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CancellationReason {
+    /**
+     Default instance of the CancellationReason structure.
+     */
+    public static let __default: DynamoDBModel.CancellationReason = {
+        let defaultInstance = DynamoDBModel.CancellationReason(
+            code: nil,
+            item: nil,
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Capacity {
     /**
      Default instance of the Capacity structure.
      */
     public static let __default: DynamoDBModel.Capacity = {
         let defaultInstance = DynamoDBModel.Capacity(
-            capacityUnits: nil)
+            capacityUnits: nil,
+            readCapacityUnits: nil,
+            writeCapacityUnits: nil)
 
         return defaultInstance
     }()
@@ -308,6 +337,23 @@ public extension Condition {
         let defaultInstance = DynamoDBModel.Condition(
             attributeValueList: nil,
             comparisonOperator: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ConditionCheck {
+    /**
+     Default instance of the ConditionCheck structure.
+     */
+    public static let __default: DynamoDBModel.ConditionCheck = {
+        let defaultInstance = DynamoDBModel.ConditionCheck(
+            conditionExpression: "value",
+            expressionAttributeNames: nil,
+            expressionAttributeValues: nil,
+            key: [:],
+            returnValuesOnConditionCheckFailure: nil,
+            tableName: "012")
 
         return defaultInstance
     }()
@@ -334,8 +380,10 @@ public extension ConsumedCapacity {
             capacityUnits: nil,
             globalSecondaryIndexes: nil,
             localSecondaryIndexes: nil,
+            readCapacityUnits: nil,
             table: nil,
-            tableName: nil)
+            tableName: nil,
+            writeCapacityUnits: nil)
 
         return defaultInstance
     }()
@@ -400,7 +448,7 @@ public extension CreateGlobalSecondaryIndexAction {
             indexName: "012",
             keySchema: [KeySchemaElement.__default],
             projection: Projection.__default,
-            provisionedThroughput: ProvisionedThroughput.__default)
+            provisionedThroughput: nil)
 
         return defaultInstance
     }()
@@ -450,10 +498,11 @@ public extension CreateTableInput {
     public static let __default: DynamoDBModel.CreateTableInput = {
         let defaultInstance = DynamoDBModel.CreateTableInput(
             attributeDefinitions: [],
+            billingMode: nil,
             globalSecondaryIndexes: nil,
             keySchema: [KeySchemaElement.__default],
             localSecondaryIndexes: nil,
-            provisionedThroughput: ProvisionedThroughput.__default,
+            provisionedThroughput: nil,
             sSESpecification: nil,
             streamSpecification: nil,
             tableName: "012")
@@ -469,6 +518,23 @@ public extension CreateTableOutput {
     public static let __default: DynamoDBModel.CreateTableOutput = {
         let defaultInstance = DynamoDBModel.CreateTableOutput(
             tableDescription: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension Delete {
+    /**
+     Default instance of the Delete structure.
+     */
+    public static let __default: DynamoDBModel.Delete = {
+        let defaultInstance = DynamoDBModel.Delete(
+            conditionExpression: nil,
+            expressionAttributeNames: nil,
+            expressionAttributeValues: nil,
+            key: [:],
+            returnValuesOnConditionCheckFailure: nil,
+            tableName: "012")
 
         return defaultInstance
     }()
@@ -815,6 +881,21 @@ public extension ExpectedAttributeValue {
     }()
 }
 
+public extension Get {
+    /**
+     Default instance of the Get structure.
+     */
+    public static let __default: DynamoDBModel.Get = {
+        let defaultInstance = DynamoDBModel.Get(
+            expressionAttributeNames: nil,
+            key: [:],
+            projectionExpression: nil,
+            tableName: "012")
+
+        return defaultInstance
+    }()
+}
+
 public extension GetItemInput {
     /**
      Default instance of the GetItemInput structure.
@@ -855,7 +936,7 @@ public extension GlobalSecondaryIndex {
             indexName: "012",
             keySchema: [KeySchemaElement.__default],
             projection: Projection.__default,
-            provisionedThroughput: ProvisionedThroughput.__default)
+            provisionedThroughput: nil)
 
         return defaultInstance
     }()
@@ -977,6 +1058,18 @@ public extension GlobalTableNotFoundException {
     }()
 }
 
+public extension IdempotentParameterMismatchException {
+    /**
+     Default instance of the IdempotentParameterMismatchException structure.
+     */
+    public static let __default: DynamoDBModel.IdempotentParameterMismatchException = {
+        let defaultInstance = DynamoDBModel.IdempotentParameterMismatchException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension IndexNotFoundException {
     /**
      Default instance of the IndexNotFoundException structure.
@@ -1033,6 +1126,18 @@ public extension ItemCollectionSizeLimitExceededException {
     public static let __default: DynamoDBModel.ItemCollectionSizeLimitExceededException = {
         let defaultInstance = DynamoDBModel.ItemCollectionSizeLimitExceededException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ItemResponse {
+    /**
+     Default instance of the ItemResponse structure.
+     */
+    public static let __default: DynamoDBModel.ItemResponse = {
+        let defaultInstance = DynamoDBModel.ItemResponse(
+            item: nil)
 
         return defaultInstance
     }()
@@ -1325,6 +1430,23 @@ public extension ProvisionedThroughputExceededException {
     }()
 }
 
+public extension Put {
+    /**
+     Default instance of the Put structure.
+     */
+    public static let __default: DynamoDBModel.Put = {
+        let defaultInstance = DynamoDBModel.Put(
+            conditionExpression: nil,
+            expressionAttributeNames: nil,
+            expressionAttributeValues: nil,
+            item: [:],
+            returnValuesOnConditionCheckFailure: nil,
+            tableName: "012")
+
+        return defaultInstance
+    }()
+}
+
 public extension PutItemInput {
     /**
      Default instance of the PutItemInput structure.
@@ -1502,6 +1624,7 @@ public extension ReplicaSettingsDescription {
     public static let __default: DynamoDBModel.ReplicaSettingsDescription = {
         let defaultInstance = DynamoDBModel.ReplicaSettingsDescription(
             regionName: "value",
+            replicaBillingModeSummary: nil,
             replicaGlobalSecondaryIndexSettings: nil,
             replicaProvisionedReadCapacityAutoScalingSettings: nil,
             replicaProvisionedReadCapacityUnits: nil,
@@ -1536,6 +1659,18 @@ public extension ReplicaUpdate {
         let defaultInstance = DynamoDBModel.ReplicaUpdate(
             create: nil,
             delete: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RequestLimitExceeded {
+    /**
+     Default instance of the RequestLimitExceeded structure.
+     */
+    public static let __default: DynamoDBModel.RequestLimitExceeded = {
+        let defaultInstance = DynamoDBModel.RequestLimitExceeded(
+            message: nil)
 
         return defaultInstance
     }()
@@ -1709,6 +1844,7 @@ public extension SourceTableDetails {
      */
     public static let __default: DynamoDBModel.SourceTableDetails = {
         let defaultInstance = DynamoDBModel.SourceTableDetails(
+            billingMode: nil,
             itemCount: nil,
             keySchema: [KeySchemaElement.__default],
             provisionedThroughput: ProvisionedThroughput.__default,
@@ -1770,6 +1906,7 @@ public extension TableDescription {
     public static let __default: DynamoDBModel.TableDescription = {
         let defaultInstance = DynamoDBModel.TableDescription(
             attributeDefinitions: nil,
+            billingModeSummary: nil,
             creationDateTime: nil,
             globalSecondaryIndexes: nil,
             itemCount: nil,
@@ -1867,6 +2004,124 @@ public extension TimeToLiveSpecification {
     }()
 }
 
+public extension TransactGetItem {
+    /**
+     Default instance of the TransactGetItem structure.
+     */
+    public static let __default: DynamoDBModel.TransactGetItem = {
+        let defaultInstance = DynamoDBModel.TransactGetItem(
+            get: Get.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransactGetItemsInput {
+    /**
+     Default instance of the TransactGetItemsInput structure.
+     */
+    public static let __default: DynamoDBModel.TransactGetItemsInput = {
+        let defaultInstance = DynamoDBModel.TransactGetItemsInput(
+            returnConsumedCapacity: nil,
+            transactItems: [TransactGetItem.__default])
+
+        return defaultInstance
+    }()
+}
+
+public extension TransactGetItemsOutput {
+    /**
+     Default instance of the TransactGetItemsOutput structure.
+     */
+    public static let __default: DynamoDBModel.TransactGetItemsOutput = {
+        let defaultInstance = DynamoDBModel.TransactGetItemsOutput(
+            consumedCapacity: nil,
+            responses: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransactWriteItem {
+    /**
+     Default instance of the TransactWriteItem structure.
+     */
+    public static let __default: DynamoDBModel.TransactWriteItem = {
+        let defaultInstance = DynamoDBModel.TransactWriteItem(
+            conditionCheck: nil,
+            delete: nil,
+            put: nil,
+            update: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransactWriteItemsInput {
+    /**
+     Default instance of the TransactWriteItemsInput structure.
+     */
+    public static let __default: DynamoDBModel.TransactWriteItemsInput = {
+        let defaultInstance = DynamoDBModel.TransactWriteItemsInput(
+            clientRequestToken: nil,
+            returnConsumedCapacity: nil,
+            returnItemCollectionMetrics: nil,
+            transactItems: [TransactWriteItem.__default])
+
+        return defaultInstance
+    }()
+}
+
+public extension TransactWriteItemsOutput {
+    /**
+     Default instance of the TransactWriteItemsOutput structure.
+     */
+    public static let __default: DynamoDBModel.TransactWriteItemsOutput = {
+        let defaultInstance = DynamoDBModel.TransactWriteItemsOutput(
+            consumedCapacity: nil,
+            itemCollectionMetrics: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransactionCanceledException {
+    /**
+     Default instance of the TransactionCanceledException structure.
+     */
+    public static let __default: DynamoDBModel.TransactionCanceledException = {
+        let defaultInstance = DynamoDBModel.TransactionCanceledException(
+            cancellationReasons: nil,
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransactionConflictException {
+    /**
+     Default instance of the TransactionConflictException structure.
+     */
+    public static let __default: DynamoDBModel.TransactionConflictException = {
+        let defaultInstance = DynamoDBModel.TransactionConflictException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransactionInProgressException {
+    /**
+     Default instance of the TransactionInProgressException structure.
+     */
+    public static let __default: DynamoDBModel.TransactionInProgressException = {
+        let defaultInstance = DynamoDBModel.TransactionInProgressException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension UntagResourceInput {
     /**
      Default instance of the UntagResourceInput structure.
@@ -1875,6 +2130,24 @@ public extension UntagResourceInput {
         let defaultInstance = DynamoDBModel.UntagResourceInput(
             resourceArn: "0",
             tagKeys: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension Update {
+    /**
+     Default instance of the Update structure.
+     */
+    public static let __default: DynamoDBModel.Update = {
+        let defaultInstance = DynamoDBModel.Update(
+            conditionExpression: nil,
+            expressionAttributeNames: nil,
+            expressionAttributeValues: nil,
+            key: [:],
+            returnValuesOnConditionCheckFailure: nil,
+            tableName: "012",
+            updateExpression: "value")
 
         return defaultInstance
     }()
@@ -1949,6 +2222,7 @@ public extension UpdateGlobalTableSettingsInput {
      */
     public static let __default: DynamoDBModel.UpdateGlobalTableSettingsInput = {
         let defaultInstance = DynamoDBModel.UpdateGlobalTableSettingsInput(
+            globalTableBillingMode: nil,
             globalTableGlobalSecondaryIndexSettingsUpdate: nil,
             globalTableName: "012",
             globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate: nil,
@@ -2016,6 +2290,7 @@ public extension UpdateTableInput {
     public static let __default: DynamoDBModel.UpdateTableInput = {
         let defaultInstance = DynamoDBModel.UpdateTableInput(
             attributeDefinitions: nil,
+            billingMode: nil,
             globalSecondaryIndexUpdates: nil,
             provisionedThroughput: nil,
             sSESpecification: nil,

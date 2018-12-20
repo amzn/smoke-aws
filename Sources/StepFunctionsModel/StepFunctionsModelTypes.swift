@@ -32,24 +32,14 @@ public typealias ActivityList = [ActivityListItem]
 public typealias Arn = String
 
 /**
- Type definition for the Cause field.
+ Type definition for the ConnectorParameters field.
  */
-public typealias Cause = String
-
-/**
- Type definition for the Data field.
- */
-public typealias Data = String
+public typealias ConnectorParameters = String
 
 /**
  Type definition for the Definition field.
  */
 public typealias Definition = String
-
-/**
- Type definition for the Error field.
- */
-public typealias Error = String
 
 /**
  Type definition for the ErrorMessage field.
@@ -123,9 +113,17 @@ public enum HistoryEventType: String, Codable, CustomStringConvertible {
     case passStateExited = "PassStateExited"
     case succeedStateEntered = "SucceedStateEntered"
     case succeedStateExited = "SucceedStateExited"
+    case taskFailed = "TaskFailed"
+    case taskScheduled = "TaskScheduled"
+    case taskStartFailed = "TaskStartFailed"
+    case taskStarted = "TaskStarted"
     case taskStateAborted = "TaskStateAborted"
     case taskStateEntered = "TaskStateEntered"
     case taskStateExited = "TaskStateExited"
+    case taskSubmitFailed = "TaskSubmitFailed"
+    case taskSubmitted = "TaskSubmitted"
+    case taskSucceeded = "TaskSucceeded"
+    case taskTimedOut = "TaskTimedOut"
     case waitStateAborted = "WaitStateAborted"
     case waitStateEntered = "WaitStateEntered"
     case waitStateExited = "WaitStateExited"
@@ -161,6 +159,21 @@ public typealias PageToken = String
  Type definition for the ReverseOrder field.
  */
 public typealias ReverseOrder = Bool
+
+/**
+ Type definition for the SensitiveCause field.
+ */
+public typealias SensitiveCause = String
+
+/**
+ Type definition for the SensitiveData field.
+ */
+public typealias SensitiveData = String
+
+/**
+ Type definition for the SensitiveError field.
+ */
+public typealias SensitiveError = String
 
 /**
  Type definition for the StateMachineList field.
@@ -212,28 +225,16 @@ extension StepFunctionsModel.Arn {
 }
 
 /**
- Validation for the Cause field.
+ Validation for the ConnectorParameters field.
 */
-extension StepFunctionsModel.Cause {
-    public func validateAsCause() throws {
+extension StepFunctionsModel.ConnectorParameters {
+    public func validateAsConnectorParameters() throws {
         if self.count < 0 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Cause violated the minimum length constraint.")
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to ConnectorParameters violated the minimum length constraint.")
         }
 
         if self.count > 32768 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Cause violated the maximum length constraint.")
-        }
-    }
-}
-
-/**
- Validation for the Data field.
-*/
-extension StepFunctionsModel.Data {
-    public func validateAsData() throws {
-
-        if self.count > 32768 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Data violated the maximum length constraint.")
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to ConnectorParameters violated the maximum length constraint.")
         }
     }
 }
@@ -249,21 +250,6 @@ extension StepFunctionsModel.Definition {
 
         if self.count > 1048576 {
             throw StepFunctionsCodingError.validationError(reason: "The provided value to Definition violated the maximum length constraint.")
-        }
-    }
-}
-
-/**
- Validation for the Error field.
-*/
-extension StepFunctionsModel.Error {
-    public func validateAsError() throws {
-        if self.count < 0 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Error violated the minimum length constraint.")
-        }
-
-        if self.count > 256 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Error violated the maximum length constraint.")
         }
     }
 }
@@ -321,6 +307,48 @@ extension StepFunctionsModel.PageToken {
 
         if self.count > 1024 {
             throw StepFunctionsCodingError.validationError(reason: "The provided value to PageToken violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the SensitiveCause field.
+*/
+extension StepFunctionsModel.SensitiveCause {
+    public func validateAsSensitiveCause() throws {
+        if self.count < 0 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveCause violated the minimum length constraint.")
+        }
+
+        if self.count > 32768 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveCause violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the SensitiveData field.
+*/
+extension StepFunctionsModel.SensitiveData {
+    public func validateAsSensitiveData() throws {
+
+        if self.count > 32768 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveData violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the SensitiveError field.
+*/
+extension StepFunctionsModel.SensitiveError {
+    public func validateAsSensitiveError() throws {
+        if self.count < 0 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveError violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveError violated the maximum length constraint.")
         }
     }
 }

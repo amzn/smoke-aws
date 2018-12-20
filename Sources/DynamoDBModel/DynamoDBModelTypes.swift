@@ -176,6 +176,20 @@ public typealias BatchGetResponseMap = [TableName: ItemList]
 public typealias BatchWriteItemRequestMap = [TableName: WriteRequests]
 
 /**
+ Enumeration restricting the values of the BillingMode field.
+ */
+public enum BillingMode: String, Codable, CustomStringConvertible {
+    case payPerRequest = "PAY_PER_REQUEST"
+    case provisioned = "PROVISIONED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: BillingMode = .payPerRequest
+}
+
+/**
  Type definition for the BinaryAttributeValue field.
  */
 public typealias BinaryAttributeValue = Data
@@ -194,6 +208,16 @@ public typealias BooleanAttributeValue = Bool
  Type definition for the BooleanObject field.
  */
 public typealias BooleanObject = Bool
+
+/**
+ Type definition for the CancellationReasonList field.
+ */
+public typealias CancellationReasonList = [CancellationReason]
+
+/**
+ Type definition for the Code field.
+ */
+public typealias Code = String
 
 /**
  Enumeration restricting the values of the ComparisonOperator field.
@@ -431,6 +455,11 @@ public typealias ItemCount = Int
 public typealias ItemList = [AttributeMap]
 
 /**
+ Type definition for the ItemResponseList field.
+ */
+public typealias ItemResponseList = [ItemResponse]
+
+/**
  Type definition for the KMSMasterKeyArn field.
  */
 public typealias KMSMasterKeyArn = String
@@ -533,6 +562,11 @@ public typealias NonKeyAttributeName = String
  Type definition for the NonKeyAttributeNameList field.
  */
 public typealias NonKeyAttributeNameList = [NonKeyAttributeName]
+
+/**
+ Type definition for the NonNegativeLongObject field.
+ */
+public typealias NonNegativeLongObject = Int
 
 /**
  Type definition for the NullAttributeValue field.
@@ -708,6 +742,20 @@ public enum ReturnValue: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: ReturnValue = .allNew
+}
+
+/**
+ Enumeration restricting the values of the ReturnValuesOnConditionCheckFailure field.
+ */
+public enum ReturnValuesOnConditionCheckFailure: String, Codable, CustomStringConvertible {
+    case allOld = "ALL_OLD"
+    case none = "NONE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ReturnValuesOnConditionCheckFailure = .allOld
 }
 
 /**
@@ -926,6 +974,16 @@ public enum TimeToLiveStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the TransactGetItemList field.
+ */
+public typealias TransactGetItemList = [TransactGetItem]
+
+/**
+ Type definition for the TransactWriteItemList field.
+ */
+public typealias TransactWriteItemList = [TransactWriteItem]
+
+/**
  Type definition for the UpdateExpression field.
  */
 public typealias UpdateExpression = String
@@ -1062,6 +1120,21 @@ extension DynamoDBModel.BackupsInputLimit {
 }
 
 /**
+ Validation for the CancellationReasonList field.
+*/
+extension Array where Element == DynamoDBModel.CancellationReason {
+    public func validateAsCancellationReasonList() throws {
+        if self.count < 1 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to CancellationReasonList violated the minimum length constraint.")
+        }
+
+        if self.count > 10 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to CancellationReasonList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the GlobalTableGlobalSecondaryIndexSettingsUpdateList field.
 */
 extension Array where Element == DynamoDBModel.GlobalTableGlobalSecondaryIndexSettingsUpdate {
@@ -1105,6 +1178,21 @@ extension DynamoDBModel.ItemCount {
             throw DynamoDBCodingError.validationError(reason: "The provided value to ItemCount violated the minimum range constraint.")
         }
 
+    }
+}
+
+/**
+ Validation for the ItemResponseList field.
+*/
+extension Array where Element == DynamoDBModel.ItemResponse {
+    public func validateAsItemResponseList() throws {
+        if self.count < 1 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to ItemResponseList violated the minimum length constraint.")
+        }
+
+        if self.count > 10 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to ItemResponseList violated the maximum length constraint.")
+        }
     }
 }
 
@@ -1195,6 +1283,18 @@ extension Array where Element == DynamoDBModel.NonKeyAttributeName {
         if self.count > 20 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to NonKeyAttributeNameList violated the maximum length constraint.")
         }
+    }
+}
+
+/**
+ Validation for the NonNegativeLongObject field.
+*/
+extension DynamoDBModel.NonNegativeLongObject {
+    public func validateAsNonNegativeLongObject() throws {
+        if self < 0 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to NonNegativeLongObject violated the minimum range constraint.")
+        }
+
     }
 }
 
@@ -1385,6 +1485,36 @@ extension DynamoDBModel.TimeToLiveAttributeName {
 
         if self.count > 255 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to TimeToLiveAttributeName violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TransactGetItemList field.
+*/
+extension Array where Element == DynamoDBModel.TransactGetItem {
+    public func validateAsTransactGetItemList() throws {
+        if self.count < 1 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to TransactGetItemList violated the minimum length constraint.")
+        }
+
+        if self.count > 10 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to TransactGetItemList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TransactWriteItemList field.
+*/
+extension Array where Element == DynamoDBModel.TransactWriteItem {
+    public func validateAsTransactWriteItemList() throws {
+        if self.count < 1 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to TransactWriteItemList violated the minimum length constraint.")
+        }
+
+        if self.count > 10 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to TransactWriteItemList violated the maximum length constraint.")
         }
     }
 }

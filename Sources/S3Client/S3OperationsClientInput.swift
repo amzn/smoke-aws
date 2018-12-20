@@ -780,6 +780,60 @@ public struct GetObjectAclOperationHTTPRequestInput: HTTPRequestInputProtocol {
     }
 }
 /**
+ Type to handle the input to the GetObjectLegalHold operation in a HTTP client.
+ */
+public struct GetObjectLegalHoldOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: GetObjectLegalHoldOperationInputQuery?
+    public let pathEncodable: GetObjectLegalHoldOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: GetObjectLegalHoldOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: GetObjectLegalHoldRequest) {
+        self.queryEncodable = encodable.asS3ModelGetObjectLegalHoldOperationInputQuery()
+        self.pathEncodable = encodable.asS3ModelGetObjectLegalHoldOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetObjectLegalHoldOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+/**
+ Type to handle the input to the GetObjectLockConfiguration operation in a HTTP client.
+ */
+public struct GetObjectLockConfigurationOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: GetObjectLockConfigurationOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: GetObjectLockConfigurationRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = encodable.asS3ModelGetObjectLockConfigurationOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+/**
+ Type to handle the input to the GetObjectRetention operation in a HTTP client.
+ */
+public struct GetObjectRetentionOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: GetObjectRetentionOperationInputQuery?
+    public let pathEncodable: GetObjectRetentionOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: GetObjectRetentionOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: GetObjectRetentionRequest) {
+        self.queryEncodable = encodable.asS3ModelGetObjectRetentionOperationInputQuery()
+        self.pathEncodable = encodable.asS3ModelGetObjectRetentionOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetObjectRetentionOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+/**
  Type to handle the input to the GetObjectTagging operation in a HTTP client.
  */
 public struct GetObjectTaggingOperationHTTPRequestInput: HTTPRequestInputProtocol {
@@ -1370,6 +1424,60 @@ public struct PutObjectAclOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathEncodable = encodable.asS3ModelPutObjectAclOperationInputPath()
         self.bodyEncodable = encodable.accessControlPolicy
         self.additionalHeadersEncodable = encodable.asS3ModelPutObjectAclOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+/**
+ Type to handle the input to the PutObjectLegalHold operation in a HTTP client.
+ */
+public struct PutObjectLegalHoldOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: PutObjectLegalHoldOperationInputQuery?
+    public let pathEncodable: PutObjectLegalHoldOperationInputPath?
+    public let bodyEncodable: ObjectLockLegalHold?
+    public let additionalHeadersEncodable: PutObjectLegalHoldOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: PutObjectLegalHoldRequest) {
+        self.queryEncodable = encodable.asS3ModelPutObjectLegalHoldOperationInputQuery()
+        self.pathEncodable = encodable.asS3ModelPutObjectLegalHoldOperationInputPath()
+        self.bodyEncodable = encodable.legalHold
+        self.additionalHeadersEncodable = encodable.asS3ModelPutObjectLegalHoldOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+/**
+ Type to handle the input to the PutObjectLockConfiguration operation in a HTTP client.
+ */
+public struct PutObjectLockConfigurationOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: PutObjectLockConfigurationOperationInputPath?
+    public let bodyEncodable: ObjectLockConfiguration?
+    public let additionalHeadersEncodable: PutObjectLockConfigurationOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: PutObjectLockConfigurationRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = encodable.asS3ModelPutObjectLockConfigurationOperationInputPath()
+        self.bodyEncodable = encodable.objectLockConfiguration
+        self.additionalHeadersEncodable = encodable.asS3ModelPutObjectLockConfigurationOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+/**
+ Type to handle the input to the PutObjectRetention operation in a HTTP client.
+ */
+public struct PutObjectRetentionOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: PutObjectRetentionOperationInputQuery?
+    public let pathEncodable: PutObjectRetentionOperationInputPath?
+    public let bodyEncodable: ObjectLockRetention?
+    public let additionalHeadersEncodable: PutObjectRetentionOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: PutObjectRetentionRequest) {
+        self.queryEncodable = encodable.asS3ModelPutObjectRetentionOperationInputQuery()
+        self.pathEncodable = encodable.asS3ModelPutObjectRetentionOperationInputPath()
+        self.bodyEncodable = encodable.retention
+        self.additionalHeadersEncodable = encodable.asS3ModelPutObjectRetentionOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }

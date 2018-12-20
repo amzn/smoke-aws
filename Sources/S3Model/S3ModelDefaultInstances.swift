@@ -447,6 +447,9 @@ public extension CopyObjectRequest {
             key: "0",
             metadata: nil,
             metadataDirective: nil,
+            objectLockLegalHoldStatus: nil,
+            objectLockMode: nil,
+            objectLockRetainUntilDate: nil,
             requestPayer: nil,
             sSECustomerAlgorithm: nil,
             sSECustomerKey: nil,
@@ -525,7 +528,8 @@ public extension CreateBucketRequest {
             grantRead: nil,
             grantReadACP: nil,
             grantWrite: nil,
-            grantWriteACP: nil)
+            grantWriteACP: nil,
+            objectLockEnabledForBucket: nil)
 
         return defaultInstance
     }()
@@ -572,6 +576,9 @@ public extension CreateMultipartUploadRequest {
             grantWriteACP: nil,
             key: "0",
             metadata: nil,
+            objectLockLegalHoldStatus: nil,
+            objectLockMode: nil,
+            objectLockRetainUntilDate: nil,
             requestPayer: nil,
             sSECustomerAlgorithm: nil,
             sSECustomerKey: nil,
@@ -581,6 +588,20 @@ public extension CreateMultipartUploadRequest {
             storageClass: nil,
             tagging: nil,
             websiteRedirectLocation: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DefaultRetention {
+    /**
+     Default instance of the DefaultRetention structure.
+     */
+    public static let __default: S3Model.DefaultRetention = {
+        let defaultInstance = S3Model.DefaultRetention(
+            days: nil,
+            mode: nil,
+            years: nil)
 
         return defaultInstance
     }()
@@ -783,6 +804,7 @@ public extension DeleteObjectRequest {
     public static let __default: S3Model.DeleteObjectRequest = {
         let defaultInstance = S3Model.DeleteObjectRequest(
             bucket: "value",
+            bypassGovernanceRetention: nil,
             key: "0",
             mFA: nil,
             requestPayer: nil,
@@ -839,6 +861,7 @@ public extension DeleteObjectsRequest {
     public static let __default: S3Model.DeleteObjectsRequest = {
         let defaultInstance = S3Model.DeleteObjectsRequest(
             bucket: "value",
+            bypassGovernanceRetention: nil,
             delete: Delete.__default,
             mFA: nil,
             requestPayer: nil)
@@ -1448,6 +1471,57 @@ public extension GetObjectAclRequest {
     }()
 }
 
+public extension GetObjectLegalHoldOutput {
+    /**
+     Default instance of the GetObjectLegalHoldOutput structure.
+     */
+    public static let __default: S3Model.GetObjectLegalHoldOutput = {
+        let defaultInstance = S3Model.GetObjectLegalHoldOutput(
+            legalHold: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetObjectLegalHoldRequest {
+    /**
+     Default instance of the GetObjectLegalHoldRequest structure.
+     */
+    public static let __default: S3Model.GetObjectLegalHoldRequest = {
+        let defaultInstance = S3Model.GetObjectLegalHoldRequest(
+            bucket: "value",
+            key: "0",
+            requestPayer: nil,
+            versionId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetObjectLockConfigurationOutput {
+    /**
+     Default instance of the GetObjectLockConfigurationOutput structure.
+     */
+    public static let __default: S3Model.GetObjectLockConfigurationOutput = {
+        let defaultInstance = S3Model.GetObjectLockConfigurationOutput(
+            objectLockConfiguration: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetObjectLockConfigurationRequest {
+    /**
+     Default instance of the GetObjectLockConfigurationRequest structure.
+     */
+    public static let __default: S3Model.GetObjectLockConfigurationRequest = {
+        let defaultInstance = S3Model.GetObjectLockConfigurationRequest(
+            bucket: "value")
+
+        return defaultInstance
+    }()
+}
+
 public extension GetObjectOutput {
     /**
      Default instance of the GetObjectOutput structure.
@@ -1470,6 +1544,9 @@ public extension GetObjectOutput {
             lastModified: nil,
             metadata: nil,
             missingMeta: nil,
+            objectLockLegalHoldStatus: nil,
+            objectLockMode: nil,
+            objectLockRetainUntilDate: nil,
             partsCount: nil,
             replicationStatus: nil,
             requestCharged: nil,
@@ -1511,6 +1588,33 @@ public extension GetObjectRequest {
             sSECustomerAlgorithm: nil,
             sSECustomerKey: nil,
             sSECustomerKeyMD5: nil,
+            versionId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetObjectRetentionOutput {
+    /**
+     Default instance of the GetObjectRetentionOutput structure.
+     */
+    public static let __default: S3Model.GetObjectRetentionOutput = {
+        let defaultInstance = S3Model.GetObjectRetentionOutput(
+            retention: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetObjectRetentionRequest {
+    /**
+     Default instance of the GetObjectRetentionRequest structure.
+     */
+    public static let __default: S3Model.GetObjectRetentionRequest = {
+        let defaultInstance = S3Model.GetObjectRetentionRequest(
+            bucket: "value",
+            key: "0",
+            requestPayer: nil,
             versionId: nil)
 
         return defaultInstance
@@ -1668,6 +1772,9 @@ public extension HeadObjectOutput {
             lastModified: nil,
             metadata: nil,
             missingMeta: nil,
+            objectLockLegalHoldStatus: nil,
+            objectLockMode: nil,
+            objectLockRetainUntilDate: nil,
             partsCount: nil,
             replicationStatus: nil,
             requestCharged: nil,
@@ -2469,6 +2576,56 @@ public extension ObjectIdentifier {
     }()
 }
 
+public extension ObjectLockConfiguration {
+    /**
+     Default instance of the ObjectLockConfiguration structure.
+     */
+    public static let __default: S3Model.ObjectLockConfiguration = {
+        let defaultInstance = S3Model.ObjectLockConfiguration(
+            objectLockEnabled: nil,
+            rule: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ObjectLockLegalHold {
+    /**
+     Default instance of the ObjectLockLegalHold structure.
+     */
+    public static let __default: S3Model.ObjectLockLegalHold = {
+        let defaultInstance = S3Model.ObjectLockLegalHold(
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ObjectLockRetention {
+    /**
+     Default instance of the ObjectLockRetention structure.
+     */
+    public static let __default: S3Model.ObjectLockRetention = {
+        let defaultInstance = S3Model.ObjectLockRetention(
+            mode: nil,
+            retainUntilDate: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ObjectLockRule {
+    /**
+     Default instance of the ObjectLockRule structure.
+     */
+    public static let __default: S3Model.ObjectLockRule = {
+        let defaultInstance = S3Model.ObjectLockRule(
+            defaultRetention: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ObjectNotInActiveTierError {
     /**
      Default instance of the ObjectNotInActiveTierError structure.
@@ -2908,6 +3065,63 @@ public extension PutObjectAclRequest {
     }()
 }
 
+public extension PutObjectLegalHoldOutput {
+    /**
+     Default instance of the PutObjectLegalHoldOutput structure.
+     */
+    public static let __default: S3Model.PutObjectLegalHoldOutput = {
+        let defaultInstance = S3Model.PutObjectLegalHoldOutput(
+            requestCharged: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutObjectLegalHoldRequest {
+    /**
+     Default instance of the PutObjectLegalHoldRequest structure.
+     */
+    public static let __default: S3Model.PutObjectLegalHoldRequest = {
+        let defaultInstance = S3Model.PutObjectLegalHoldRequest(
+            bucket: "value",
+            contentMD5: nil,
+            key: "0",
+            legalHold: nil,
+            requestPayer: nil,
+            versionId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutObjectLockConfigurationOutput {
+    /**
+     Default instance of the PutObjectLockConfigurationOutput structure.
+     */
+    public static let __default: S3Model.PutObjectLockConfigurationOutput = {
+        let defaultInstance = S3Model.PutObjectLockConfigurationOutput(
+            requestCharged: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutObjectLockConfigurationRequest {
+    /**
+     Default instance of the PutObjectLockConfigurationRequest structure.
+     */
+    public static let __default: S3Model.PutObjectLockConfigurationRequest = {
+        let defaultInstance = S3Model.PutObjectLockConfigurationRequest(
+            bucket: "value",
+            contentMD5: nil,
+            objectLockConfiguration: nil,
+            requestPayer: nil,
+            token: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension PutObjectOutput {
     /**
      Default instance of the PutObjectOutput structure.
@@ -2950,6 +3164,9 @@ public extension PutObjectRequest {
             grantWriteACP: nil,
             key: "0",
             metadata: nil,
+            objectLockLegalHoldStatus: nil,
+            objectLockMode: nil,
+            objectLockRetainUntilDate: nil,
             requestPayer: nil,
             sSECustomerAlgorithm: nil,
             sSECustomerKey: nil,
@@ -2959,6 +3176,36 @@ public extension PutObjectRequest {
             storageClass: nil,
             tagging: nil,
             websiteRedirectLocation: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutObjectRetentionOutput {
+    /**
+     Default instance of the PutObjectRetentionOutput structure.
+     */
+    public static let __default: S3Model.PutObjectRetentionOutput = {
+        let defaultInstance = S3Model.PutObjectRetentionOutput(
+            requestCharged: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutObjectRetentionRequest {
+    /**
+     Default instance of the PutObjectRetentionRequest structure.
+     */
+    public static let __default: S3Model.PutObjectRetentionRequest = {
+        let defaultInstance = S3Model.PutObjectRetentionRequest(
+            bucket: "value",
+            bypassGovernanceRetention: nil,
+            contentMD5: nil,
+            key: "0",
+            requestPayer: nil,
+            retention: nil,
+            versionId: nil)
 
         return defaultInstance
     }()

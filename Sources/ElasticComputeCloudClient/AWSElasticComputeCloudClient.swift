@@ -143,6 +143,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the AcceptTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The AcceptTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = AcceptTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.acceptTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the AcceptTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The AcceptTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = AcceptTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.acceptTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the AcceptVpcEndpointConnections operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -443,6 +503,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ApplySecurityGroupsToClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ApplySecurityGroupsToClientVpnTargetNetworkRequest object being passed to this operation.
+         - completion: The ApplySecurityGroupsToClientVpnTargetNetworkResult object or an error will be passed to this 
+           callback when the operation is complete. The ApplySecurityGroupsToClientVpnTargetNetworkResult
+           object will be validated before being returned to caller.
+     */
+    public func applySecurityGroupsToClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ApplySecurityGroupsToClientVpnTargetNetworkOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.applySecurityGroupsToClientVpnTargetNetwork.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ApplySecurityGroupsToClientVpnTargetNetwork operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ApplySecurityGroupsToClientVpnTargetNetworkRequest object being passed to this operation.
+     - Returns: The ApplySecurityGroupsToClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func applySecurityGroupsToClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ApplySecurityGroupsToClientVpnTargetNetworkOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.applySecurityGroupsToClientVpnTargetNetwork.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the AssignIpv6Addresses operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -610,6 +730,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.associateAddress.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the AssociateClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateClientVpnTargetNetworkRequest object being passed to this operation.
+         - completion: The AssociateClientVpnTargetNetworkResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateClientVpnTargetNetworkResult
+           object will be validated before being returned to caller.
+     */
+    public func associateClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = AssociateClientVpnTargetNetworkOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateClientVpnTargetNetwork.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the AssociateClientVpnTargetNetwork operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateClientVpnTargetNetworkRequest object being passed to this operation.
+     - Returns: The AssociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = AssociateClientVpnTargetNetworkOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -847,6 +1027,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.associateSubnetCidrBlock.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the AssociateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The AssociateTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func associateTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = AssociateTransitGatewayRouteTableOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateTransitGatewayRouteTable.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the AssociateTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The AssociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = AssociateTransitGatewayRouteTableOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -1204,6 +1444,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.attachVpnGateway.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the AuthorizeClientVpnIngress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AuthorizeClientVpnIngressRequest object being passed to this operation.
+         - completion: The AuthorizeClientVpnIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The AuthorizeClientVpnIngressResult
+           object will be validated before being returned to caller.
+     */
+    public func authorizeClientVpnIngressAsync(input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = AuthorizeClientVpnIngressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.authorizeClientVpnIngress.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the AuthorizeClientVpnIngress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AuthorizeClientVpnIngressRequest object being passed to this operation.
+     - Returns: The AuthorizeClientVpnIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func authorizeClientVpnIngressSync(input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = AuthorizeClientVpnIngressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.authorizeClientVpnIngress.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -2152,6 +2452,126 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createCapacityReservation.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateClientVpnEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateClientVpnEndpointRequest object being passed to this operation.
+         - completion: The CreateClientVpnEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateClientVpnEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func createClientVpnEndpointAsync(input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnEndpointResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateClientVpnEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createClientVpnEndpoint.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateClientVpnEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateClientVpnEndpointRequest object being passed to this operation.
+     - Returns: The CreateClientVpnEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createClientVpnEndpointSync(input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateClientVpnEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createClientVpnEndpoint.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateClientVpnRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateClientVpnRouteRequest object being passed to this operation.
+         - completion: The CreateClientVpnRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateClientVpnRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func createClientVpnRouteAsync(input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnRouteResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateClientVpnRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createClientVpnRoute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateClientVpnRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateClientVpnRouteRequest object being passed to this operation.
+     - Returns: The CreateClientVpnRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createClientVpnRouteSync(input: ElasticComputeCloudModel.CreateClientVpnRouteRequest) throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateClientVpnRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createClientVpnRoute.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -3833,6 +4253,246 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateTransitGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTransitGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGateway.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateTransitGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewaySync(input: ElasticComputeCloudModel.CreateTransitGatewayRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTransitGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGateway.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayRouteAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTransitGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayRoute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayRouteSync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTransitGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayRoute.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTransitGatewayRouteTableOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayRouteTable.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTransitGatewayRouteTableOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayRouteTable.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the CreateVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4360,6 +5020,126 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createVpnGateway.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteClientVpnEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnEndpointRequest object being passed to this operation.
+         - completion: The DeleteClientVpnEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteClientVpnEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteClientVpnEndpointAsync(input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnEndpointResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteClientVpnEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteClientVpnEndpoint.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteClientVpnEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnEndpointRequest object being passed to this operation.
+     - Returns: The DeleteClientVpnEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteClientVpnEndpointSync(input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteClientVpnEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteClientVpnEndpoint.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteClientVpnRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnRouteRequest object being passed to this operation.
+         - completion: The DeleteClientVpnRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteClientVpnRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteClientVpnRouteAsync(input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnRouteResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteClientVpnRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteClientVpnRoute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteClientVpnRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteClientVpnRouteRequest object being passed to this operation.
+     - Returns: The DeleteClientVpnRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteClientVpnRouteSync(input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteClientVpnRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteClientVpnRoute.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -5705,6 +6485,246 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteTransitGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTransitGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGateway.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteTransitGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewaySync(input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTransitGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGateway.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayRouteAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTransitGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayRoute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayRouteSync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTransitGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayRoute.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTransitGatewayRouteTableOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayRouteTable.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTransitGatewayRouteTableOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayRouteTable.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the DeleteVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6817,6 +7837,306 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeClassicLinkInstances.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnAuthorizationRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnAuthorizationRulesRequest object being passed to this operation.
+         - completion: The DescribeClientVpnAuthorizationRulesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnAuthorizationRulesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnAuthorizationRulesAsync(input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnAuthorizationRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnAuthorizationRules.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnAuthorizationRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnAuthorizationRulesRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnAuthorizationRulesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnAuthorizationRulesSync(input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnAuthorizationRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnAuthorizationRules.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnConnectionsRequest object being passed to this operation.
+         - completion: The DescribeClientVpnConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnConnectionsAsync(input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnConnectionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnConnections.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnConnectionsRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnConnectionsSync(input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnConnectionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnConnections.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnEndpointsRequest object being passed to this operation.
+         - completion: The DescribeClientVpnEndpointsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnEndpointsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnEndpointsAsync(input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnEndpointsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnEndpoints.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnEndpointsSync(input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnEndpointsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnEndpoints.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnRoutesRequest object being passed to this operation.
+         - completion: The DescribeClientVpnRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnRoutesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnRoutesAsync(input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnRoutesResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnRoutesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnRoutes.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnRoutesRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnRoutesSync(input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnRoutesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnRoutes.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnTargetNetworks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnTargetNetworksRequest object being passed to this operation.
+         - completion: The DescribeClientVpnTargetNetworksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeClientVpnTargetNetworksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeClientVpnTargetNetworksAsync(input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnTargetNetworksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnTargetNetworks.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeClientVpnTargetNetworks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeClientVpnTargetNetworksRequest object being passed to this operation.
+     - Returns: The DescribeClientVpnTargetNetworksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeClientVpnTargetNetworksSync(input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeClientVpnTargetNetworksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeClientVpnTargetNetworks.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -10487,6 +11807,246 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeTransitGatewayAttachments operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayAttachmentsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayAttachmentsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayAttachmentsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayAttachmentsAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTransitGatewayAttachmentsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayAttachments.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayAttachments operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayAttachmentsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayAttachmentsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayAttachmentsSync(input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTransitGatewayAttachmentsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayAttachments.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayRouteTables operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayRouteTablesRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayRouteTablesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayRouteTablesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayRouteTablesAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTransitGatewayRouteTablesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayRouteTables.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayRouteTables operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayRouteTablesRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayRouteTablesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayRouteTablesSync(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTransitGatewayRouteTablesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayRouteTables.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayVpcAttachments operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayVpcAttachmentsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayVpcAttachmentsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayVpcAttachmentsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayVpcAttachmentsAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTransitGatewayVpcAttachmentsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayVpcAttachments.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayVpcAttachments operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayVpcAttachmentsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayVpcAttachmentsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayVpcAttachmentsSync(input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTransitGatewayVpcAttachmentsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayVpcAttachments.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeTransitGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewaysRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewaysAsync(input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewaysResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTransitGatewaysOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGateways.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DescribeTransitGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewaysSync(input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTransitGatewaysOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGateways.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the DescribeVolumeAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11798,6 +13358,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+         - completion: The DisableTransitGatewayRouteTablePropagationResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableTransitGatewayRouteTablePropagationResult
+           object will be validated before being returned to caller.
+     */
+    public func disableTransitGatewayRouteTablePropagationAsync(input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DisableTransitGatewayRouteTablePropagationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableTransitGatewayRouteTablePropagation.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DisableTransitGatewayRouteTablePropagation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+     - Returns: The DisableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableTransitGatewayRouteTablePropagationSync(input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DisableTransitGatewayRouteTablePropagationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableTransitGatewayRouteTablePropagation.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the DisableVgwRoutePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -12032,6 +13652,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisassociateClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateClientVpnTargetNetworkRequest object being passed to this operation.
+         - completion: The DisassociateClientVpnTargetNetworkResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateClientVpnTargetNetworkResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DisassociateClientVpnTargetNetworkOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateClientVpnTargetNetwork.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DisassociateClientVpnTargetNetwork operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateClientVpnTargetNetworkRequest object being passed to this operation.
+     - Returns: The DisassociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DisassociateClientVpnTargetNetworkOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateClientVpnTargetNetwork.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the DisassociateIamInstanceProfile operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -12209,6 +13889,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisassociateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateTransitGatewayRouteTableRequest object being passed to this operation.
+         - completion: The DisassociateTransitGatewayRouteTableResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateTransitGatewayRouteTableResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DisassociateTransitGatewayRouteTableOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateTransitGatewayRouteTable.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the DisassociateTransitGatewayRouteTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateTransitGatewayRouteTableRequest object being passed to this operation.
+     - Returns: The DisassociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DisassociateTransitGatewayRouteTableOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateTransitGatewayRouteTable.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the DisassociateVpcCidrBlock operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -12259,6 +13999,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.disassociateVpcCidrBlock.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the EnableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+         - completion: The EnableTransitGatewayRouteTablePropagationResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableTransitGatewayRouteTablePropagationResult
+           object will be validated before being returned to caller.
+     */
+    public func enableTransitGatewayRouteTablePropagationAsync(input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = EnableTransitGatewayRouteTablePropagationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableTransitGatewayRouteTablePropagation.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the EnableTransitGatewayRouteTablePropagation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableTransitGatewayRouteTablePropagationRequest object being passed to this operation.
+     - Returns: The EnableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableTransitGatewayRouteTablePropagationSync(input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = EnableTransitGatewayRouteTablePropagationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableTransitGatewayRouteTablePropagation.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -12493,6 +14293,186 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.enableVpcClassicLinkDnsSupport.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ExportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+         - completion: The ExportClientVpnClientCertificateRevocationListResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportClientVpnClientCertificateRevocationListResult
+           object will be validated before being returned to caller.
+     */
+    public func exportClientVpnClientCertificateRevocationListAsync(input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ExportClientVpnClientCertificateRevocationListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportClientVpnClientCertificateRevocationList.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ExportClientVpnClientCertificateRevocationList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+     - Returns: The ExportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func exportClientVpnClientCertificateRevocationListSync(input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ExportClientVpnClientCertificateRevocationListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportClientVpnClientCertificateRevocationList.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ExportClientVpnClientConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientConfigurationRequest object being passed to this operation.
+         - completion: The ExportClientVpnClientConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportClientVpnClientConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    public func exportClientVpnClientConfigurationAsync(input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ExportClientVpnClientConfigurationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportClientVpnClientConfiguration.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ExportClientVpnClientConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportClientVpnClientConfigurationRequest object being passed to this operation.
+     - Returns: The ExportClientVpnClientConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func exportClientVpnClientConfigurationSync(input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ExportClientVpnClientConfigurationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportClientVpnClientConfiguration.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ExportTransitGatewayRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportTransitGatewayRoutesRequest object being passed to this operation.
+         - completion: The ExportTransitGatewayRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportTransitGatewayRoutesResult
+           object will be validated before being returned to caller.
+     */
+    public func exportTransitGatewayRoutesAsync(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ExportTransitGatewayRoutesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportTransitGatewayRoutes.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ExportTransitGatewayRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportTransitGatewayRoutesRequest object being passed to this operation.
+     - Returns: The ExportTransitGatewayRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func exportTransitGatewayRoutesSync(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ExportTransitGatewayRoutesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportTransitGatewayRoutes.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -12863,6 +14843,246 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the GetTransitGatewayAttachmentPropagations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayAttachmentPropagationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayAttachmentPropagationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayAttachmentPropagationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getTransitGatewayAttachmentPropagationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetTransitGatewayAttachmentPropagationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayAttachmentPropagations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetTransitGatewayAttachmentPropagations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayAttachmentPropagationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayAttachmentPropagationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getTransitGatewayAttachmentPropagationsSync(input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetTransitGatewayAttachmentPropagationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayAttachmentPropagations.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetTransitGatewayRouteTableAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTableAssociationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayRouteTableAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayRouteTableAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getTransitGatewayRouteTableAssociationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetTransitGatewayRouteTableAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTableAssociations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetTransitGatewayRouteTableAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTableAssociationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayRouteTableAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getTransitGatewayRouteTableAssociationsSync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetTransitGatewayRouteTableAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTableAssociations.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetTransitGatewayRouteTablePropagations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTablePropagationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayRouteTablePropagationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayRouteTablePropagationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getTransitGatewayRouteTablePropagationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetTransitGatewayRouteTablePropagationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTablePropagations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the GetTransitGatewayRouteTablePropagations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayRouteTablePropagationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayRouteTablePropagationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getTransitGatewayRouteTablePropagationsSync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetTransitGatewayRouteTablePropagationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTablePropagations.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ImportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+         - completion: The ImportClientVpnClientCertificateRevocationListResult object or an error will be passed to this 
+           callback when the operation is complete. The ImportClientVpnClientCertificateRevocationListResult
+           object will be validated before being returned to caller.
+     */
+    public func importClientVpnClientCertificateRevocationListAsync(input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ImportClientVpnClientCertificateRevocationListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.importClientVpnClientCertificateRevocationList.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ImportClientVpnClientCertificateRevocationList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportClientVpnClientCertificateRevocationListRequest object being passed to this operation.
+     - Returns: The ImportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func importClientVpnClientCertificateRevocationListSync(input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ImportClientVpnClientCertificateRevocationListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.importClientVpnClientCertificateRevocationList.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the ImportImage operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -13213,6 +15433,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyCapacityReservation.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ModifyClientVpnEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyClientVpnEndpointRequest object being passed to this operation.
+         - completion: The ModifyClientVpnEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyClientVpnEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyClientVpnEndpointAsync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyClientVpnEndpointResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyClientVpnEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyClientVpnEndpoint.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ModifyClientVpnEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyClientVpnEndpointRequest object being passed to this operation.
+     - Returns: The ModifyClientVpnEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyClientVpnEndpointSync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyClientVpnEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyClientVpnEndpoint.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -14155,6 +16435,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             version: apiVersion)
 
         try httpClient.executeSyncWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ModifyTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The ModifyTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ModifyTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The ModifyTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -15173,6 +17513,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the RejectTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayVpcAttachmentRequest object being passed to this operation.
+         - completion: The RejectTransitGatewayVpcAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The RejectTransitGatewayVpcAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = RejectTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.rejectTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the RejectTransitGatewayVpcAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayVpcAttachmentRequest object being passed to this operation.
+     - Returns: The RejectTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = RejectTransitGatewayVpcAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.rejectTransitGatewayVpcAttachment.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the RejectVpcEndpointConnections operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -15694,6 +18094,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.replaceRouteTableAssociation.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ReplaceTransitGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceTransitGatewayRouteRequest object being passed to this operation.
+         - completion: The ReplaceTransitGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The ReplaceTransitGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func replaceTransitGatewayRouteAsync(input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ReplaceTransitGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.replaceTransitGatewayRoute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the ReplaceTransitGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceTransitGatewayRouteRequest object being passed to this operation.
+     - Returns: The ReplaceTransitGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func replaceTransitGatewayRouteSync(input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ReplaceTransitGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.replaceTransitGatewayRoute.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(
@@ -16229,6 +18689,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the RevokeClientVpnIngress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RevokeClientVpnIngressRequest object being passed to this operation.
+         - completion: The RevokeClientVpnIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The RevokeClientVpnIngressResult
+           object will be validated before being returned to caller.
+     */
+    public func revokeClientVpnIngressAsync(input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RevokeClientVpnIngressResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = RevokeClientVpnIngressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.revokeClientVpnIngress.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the RevokeClientVpnIngress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RevokeClientVpnIngressRequest object being passed to this operation.
+     - Returns: The RevokeClientVpnIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func revokeClientVpnIngressSync(input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = RevokeClientVpnIngressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.revokeClientVpnIngress.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the RevokeSecurityGroupEgress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -16463,6 +18983,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the SearchTransitGatewayRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SearchTransitGatewayRoutesRequest object being passed to this operation.
+         - completion: The SearchTransitGatewayRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The SearchTransitGatewayRoutesResult
+           object will be validated before being returned to caller.
+     */
+    public func searchTransitGatewayRoutesAsync(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = SearchTransitGatewayRoutesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.searchTransitGatewayRoutes.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the SearchTransitGatewayRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SearchTransitGatewayRoutesRequest object being passed to this operation.
+     - Returns: The SearchTransitGatewayRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func searchTransitGatewayRoutesSync(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = SearchTransitGatewayRoutesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.searchTransitGatewayRoutes.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
      Invokes the StartInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -16573,6 +19153,66 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.stopInstances.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the TerminateClientVpnConnections operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TerminateClientVpnConnectionsRequest object being passed to this operation.
+         - completion: The TerminateClientVpnConnectionsResult object or an error will be passed to this 
+           callback when the operation is complete. The TerminateClientVpnConnectionsResult
+           object will be validated before being returned to caller.
+     */
+    public func terminateClientVpnConnectionsAsync(input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = TerminateClientVpnConnectionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.terminateClientVpnConnections.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate)
+    }
+
+    /**
+     Invokes the TerminateClientVpnConnections operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TerminateClientVpnConnectionsRequest object being passed to this operation.
+     - Returns: The TerminateClientVpnConnectionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func terminateClientVpnConnectionsSync(input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = TerminateClientVpnConnectionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.terminateClientVpnConnections.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncWithOutput(

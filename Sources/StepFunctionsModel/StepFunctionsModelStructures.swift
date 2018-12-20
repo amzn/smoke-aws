@@ -37,11 +37,11 @@ public struct ActivityDoesNotExist: Codable, Equatable {
 }
 
 public struct ActivityFailedEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -52,8 +52,8 @@ public struct ActivityFailedEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
@@ -98,11 +98,11 @@ public struct ActivityListItem: Codable, Equatable {
 }
 
 public struct ActivityScheduleFailedEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -113,19 +113,19 @@ public struct ActivityScheduleFailedEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
 public struct ActivityScheduledEventDetails: Codable, Equatable {
     public var heartbeatInSeconds: TimeoutInSeconds?
-    public var input: Data?
+    public var input: SensitiveData?
     public var resource: Arn
     public var timeoutInSeconds: TimeoutInSeconds?
 
     public init(heartbeatInSeconds: TimeoutInSeconds? = nil,
-                input: Data? = nil,
+                input: SensitiveData? = nil,
                 resource: Arn,
                 timeoutInSeconds: TimeoutInSeconds? = nil) {
         self.heartbeatInSeconds = heartbeatInSeconds
@@ -142,7 +142,7 @@ public struct ActivityScheduledEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try input?.validateAsData()
+        try input?.validateAsSensitiveData()
         try resource.validateAsArn()
     }
 }
@@ -164,9 +164,9 @@ public struct ActivityStartedEventDetails: Codable, Equatable {
 }
 
 public struct ActivitySucceededEventDetails: Codable, Equatable {
-    public var output: Data?
+    public var output: SensitiveData?
 
-    public init(output: Data? = nil) {
+    public init(output: SensitiveData? = nil) {
         self.output = output
     }
 
@@ -175,16 +175,16 @@ public struct ActivitySucceededEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try output?.validateAsData()
+        try output?.validateAsSensitiveData()
     }
 }
 
 public struct ActivityTimedOutEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -195,8 +195,8 @@ public struct ActivityTimedOutEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
@@ -406,18 +406,18 @@ public struct DescribeExecutionInput: Codable, Equatable {
 
 public struct DescribeExecutionOutput: Codable, Equatable {
     public var executionArn: Arn
-    public var input: Data
+    public var input: SensitiveData
     public var name: Name?
-    public var output: Data?
+    public var output: SensitiveData?
     public var startDate: Timestamp
     public var stateMachineArn: Arn
     public var status: ExecutionStatus
     public var stopDate: Timestamp?
 
     public init(executionArn: Arn,
-                input: Data,
+                input: SensitiveData,
                 name: Name? = nil,
-                output: Data? = nil,
+                output: SensitiveData? = nil,
                 startDate: Timestamp,
                 stateMachineArn: Arn,
                 status: ExecutionStatus,
@@ -445,9 +445,9 @@ public struct DescribeExecutionOutput: Codable, Equatable {
 
     public func validate() throws {
         try executionArn.validateAsArn()
-        try input.validateAsData()
+        try input.validateAsSensitiveData()
         try name?.validateAsName()
-        try output?.validateAsData()
+        try output?.validateAsSensitiveData()
         try stateMachineArn.validateAsArn()
     }
 }
@@ -559,11 +559,11 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
 }
 
 public struct ExecutionAbortedEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -574,8 +574,8 @@ public struct ExecutionAbortedEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
@@ -610,11 +610,11 @@ public struct ExecutionDoesNotExist: Codable, Equatable {
 }
 
 public struct ExecutionFailedEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -625,8 +625,8 @@ public struct ExecutionFailedEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
@@ -684,10 +684,10 @@ public struct ExecutionListItem: Codable, Equatable {
 }
 
 public struct ExecutionStartedEventDetails: Codable, Equatable {
-    public var input: Data?
+    public var input: SensitiveData?
     public var roleArn: Arn?
 
-    public init(input: Data? = nil,
+    public init(input: SensitiveData? = nil,
                 roleArn: Arn? = nil) {
         self.input = input
         self.roleArn = roleArn
@@ -699,15 +699,15 @@ public struct ExecutionStartedEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try input?.validateAsData()
+        try input?.validateAsSensitiveData()
         try roleArn?.validateAsArn()
     }
 }
 
 public struct ExecutionSucceededEventDetails: Codable, Equatable {
-    public var output: Data?
+    public var output: SensitiveData?
 
-    public init(output: Data? = nil) {
+    public init(output: SensitiveData? = nil) {
         self.output = output
     }
 
@@ -716,16 +716,16 @@ public struct ExecutionSucceededEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try output?.validateAsData()
+        try output?.validateAsSensitiveData()
     }
 }
 
 public struct ExecutionTimedOutEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -736,8 +736,8 @@ public struct ExecutionTimedOutEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
@@ -763,10 +763,10 @@ public struct GetActivityTaskInput: Codable, Equatable {
 }
 
 public struct GetActivityTaskOutput: Codable, Equatable {
-    public var input: Data?
+    public var input: SensitiveData?
     public var taskToken: TaskToken?
 
-    public init(input: Data? = nil,
+    public init(input: SensitiveData? = nil,
                 taskToken: TaskToken? = nil) {
         self.input = input
         self.taskToken = taskToken
@@ -778,7 +778,7 @@ public struct GetActivityTaskOutput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try input?.validateAsData()
+        try input?.validateAsSensitiveData()
         try taskToken?.validateAsTaskToken()
     }
 }
@@ -855,6 +855,14 @@ public struct HistoryEvent: Codable, Equatable {
     public var previousEventId: EventId?
     public var stateEnteredEventDetails: StateEnteredEventDetails?
     public var stateExitedEventDetails: StateExitedEventDetails?
+    public var taskFailedEventDetails: TaskFailedEventDetails?
+    public var taskScheduledEventDetails: TaskScheduledEventDetails?
+    public var taskStartFailedEventDetails: TaskStartFailedEventDetails?
+    public var taskStartedEventDetails: TaskStartedEventDetails?
+    public var taskSubmitFailedEventDetails: TaskSubmitFailedEventDetails?
+    public var taskSubmittedEventDetails: TaskSubmittedEventDetails?
+    public var taskSucceededEventDetails: TaskSucceededEventDetails?
+    public var taskTimedOutEventDetails: TaskTimedOutEventDetails?
     public var timestamp: Timestamp
     public var type: HistoryEventType
 
@@ -879,6 +887,14 @@ public struct HistoryEvent: Codable, Equatable {
                 previousEventId: EventId? = nil,
                 stateEnteredEventDetails: StateEnteredEventDetails? = nil,
                 stateExitedEventDetails: StateExitedEventDetails? = nil,
+                taskFailedEventDetails: TaskFailedEventDetails? = nil,
+                taskScheduledEventDetails: TaskScheduledEventDetails? = nil,
+                taskStartFailedEventDetails: TaskStartFailedEventDetails? = nil,
+                taskStartedEventDetails: TaskStartedEventDetails? = nil,
+                taskSubmitFailedEventDetails: TaskSubmitFailedEventDetails? = nil,
+                taskSubmittedEventDetails: TaskSubmittedEventDetails? = nil,
+                taskSucceededEventDetails: TaskSucceededEventDetails? = nil,
+                taskTimedOutEventDetails: TaskTimedOutEventDetails? = nil,
                 timestamp: Timestamp,
                 type: HistoryEventType) {
         self.activityFailedEventDetails = activityFailedEventDetails
@@ -902,6 +918,14 @@ public struct HistoryEvent: Codable, Equatable {
         self.previousEventId = previousEventId
         self.stateEnteredEventDetails = stateEnteredEventDetails
         self.stateExitedEventDetails = stateExitedEventDetails
+        self.taskFailedEventDetails = taskFailedEventDetails
+        self.taskScheduledEventDetails = taskScheduledEventDetails
+        self.taskStartFailedEventDetails = taskStartFailedEventDetails
+        self.taskStartedEventDetails = taskStartedEventDetails
+        self.taskSubmitFailedEventDetails = taskSubmitFailedEventDetails
+        self.taskSubmittedEventDetails = taskSubmittedEventDetails
+        self.taskSucceededEventDetails = taskSucceededEventDetails
+        self.taskTimedOutEventDetails = taskTimedOutEventDetails
         self.timestamp = timestamp
         self.type = type
     }
@@ -928,6 +952,14 @@ public struct HistoryEvent: Codable, Equatable {
         case previousEventId
         case stateEnteredEventDetails
         case stateExitedEventDetails
+        case taskFailedEventDetails
+        case taskScheduledEventDetails
+        case taskStartFailedEventDetails
+        case taskStartedEventDetails
+        case taskSubmitFailedEventDetails
+        case taskSubmittedEventDetails
+        case taskSucceededEventDetails
+        case taskTimedOutEventDetails
         case timestamp
         case type
     }
@@ -952,6 +984,14 @@ public struct HistoryEvent: Codable, Equatable {
         try lambdaFunctionTimedOutEventDetails?.validate()
         try stateEnteredEventDetails?.validate()
         try stateExitedEventDetails?.validate()
+        try taskFailedEventDetails?.validate()
+        try taskScheduledEventDetails?.validate()
+        try taskStartFailedEventDetails?.validate()
+        try taskStartedEventDetails?.validate()
+        try taskSubmitFailedEventDetails?.validate()
+        try taskSubmittedEventDetails?.validate()
+        try taskSucceededEventDetails?.validate()
+        try taskTimedOutEventDetails?.validate()
     }
 }
 
@@ -1046,11 +1086,11 @@ public struct InvalidToken: Codable, Equatable {
 }
 
 public struct LambdaFunctionFailedEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -1061,17 +1101,17 @@ public struct LambdaFunctionFailedEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
 public struct LambdaFunctionScheduleFailedEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -1082,17 +1122,17 @@ public struct LambdaFunctionScheduleFailedEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
 public struct LambdaFunctionScheduledEventDetails: Codable, Equatable {
-    public var input: Data?
+    public var input: SensitiveData?
     public var resource: Arn
     public var timeoutInSeconds: TimeoutInSeconds?
 
-    public init(input: Data? = nil,
+    public init(input: SensitiveData? = nil,
                 resource: Arn,
                 timeoutInSeconds: TimeoutInSeconds? = nil) {
         self.input = input
@@ -1107,17 +1147,17 @@ public struct LambdaFunctionScheduledEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try input?.validateAsData()
+        try input?.validateAsSensitiveData()
         try resource.validateAsArn()
     }
 }
 
 public struct LambdaFunctionStartFailedEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -1128,15 +1168,15 @@ public struct LambdaFunctionStartFailedEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
 public struct LambdaFunctionSucceededEventDetails: Codable, Equatable {
-    public var output: Data?
+    public var output: SensitiveData?
 
-    public init(output: Data? = nil) {
+    public init(output: SensitiveData? = nil) {
         self.output = output
     }
 
@@ -1145,16 +1185,16 @@ public struct LambdaFunctionSucceededEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try output?.validateAsData()
+        try output?.validateAsSensitiveData()
     }
 }
 
 public struct LambdaFunctionTimedOutEventDetails: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil) {
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
         self.cause = cause
         self.error = error
     }
@@ -1165,8 +1205,8 @@ public struct LambdaFunctionTimedOutEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
     }
 }
 
@@ -1318,12 +1358,12 @@ public struct MissingRequiredParameter: Codable, Equatable {
 }
 
 public struct SendTaskFailureInput: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
     public var taskToken: TaskToken
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil,
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil,
                 taskToken: TaskToken) {
         self.cause = cause
         self.error = error
@@ -1337,8 +1377,8 @@ public struct SendTaskFailureInput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
         try taskToken.validateAsTaskToken()
     }
 }
@@ -1378,10 +1418,10 @@ public struct SendTaskHeartbeatOutput: Codable, Equatable {
 }
 
 public struct SendTaskSuccessInput: Codable, Equatable {
-    public var output: Data
+    public var output: SensitiveData
     public var taskToken: TaskToken
 
-    public init(output: Data,
+    public init(output: SensitiveData,
                 taskToken: TaskToken) {
         self.output = output
         self.taskToken = taskToken
@@ -1393,7 +1433,7 @@ public struct SendTaskSuccessInput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try output.validateAsData()
+        try output.validateAsSensitiveData()
         try taskToken.validateAsTaskToken()
     }
 }
@@ -1408,11 +1448,11 @@ public struct SendTaskSuccessOutput: Codable, Equatable {
 }
 
 public struct StartExecutionInput: Codable, Equatable {
-    public var input: Data?
+    public var input: SensitiveData?
     public var name: Name?
     public var stateMachineArn: Arn
 
-    public init(input: Data? = nil,
+    public init(input: SensitiveData? = nil,
                 name: Name? = nil,
                 stateMachineArn: Arn) {
         self.input = input
@@ -1427,7 +1467,7 @@ public struct StartExecutionInput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try input?.validateAsData()
+        try input?.validateAsSensitiveData()
         try name?.validateAsName()
         try stateMachineArn.validateAsArn()
     }
@@ -1454,10 +1494,10 @@ public struct StartExecutionOutput: Codable, Equatable {
 }
 
 public struct StateEnteredEventDetails: Codable, Equatable {
-    public var input: Data?
+    public var input: SensitiveData?
     public var name: Name
 
-    public init(input: Data? = nil,
+    public init(input: SensitiveData? = nil,
                 name: Name) {
         self.input = input
         self.name = name
@@ -1469,17 +1509,17 @@ public struct StateEnteredEventDetails: Codable, Equatable {
     }
 
     public func validate() throws {
-        try input?.validateAsData()
+        try input?.validateAsSensitiveData()
         try name.validateAsName()
     }
 }
 
 public struct StateExitedEventDetails: Codable, Equatable {
     public var name: Name
-    public var output: Data?
+    public var output: SensitiveData?
 
     public init(name: Name,
-                output: Data? = nil) {
+                output: SensitiveData? = nil) {
         self.name = name
         self.output = output
     }
@@ -1491,7 +1531,7 @@ public struct StateExitedEventDetails: Codable, Equatable {
 
     public func validate() throws {
         try name.validateAsName()
-        try output?.validateAsData()
+        try output?.validateAsSensitiveData()
     }
 }
 
@@ -1581,12 +1621,12 @@ public struct StateMachineListItem: Codable, Equatable {
 }
 
 public struct StopExecutionInput: Codable, Equatable {
-    public var cause: Cause?
-    public var error: Error?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
     public var executionArn: Arn
 
-    public init(cause: Cause? = nil,
-                error: Error? = nil,
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil,
                 executionArn: Arn) {
         self.cause = cause
         self.error = error
@@ -1600,8 +1640,8 @@ public struct StopExecutionInput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try cause?.validateAsCause()
-        try error?.validateAsError()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
         try executionArn.validateAsArn()
     }
 }
@@ -1636,6 +1676,207 @@ public struct TaskDoesNotExist: Codable, Equatable {
     }
 }
 
+public struct TaskFailedEventDetails: Codable, Equatable {
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
+    public var resource: Name
+    public var resourceType: Name
+
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil,
+                resource: Name,
+                resourceType: Name) {
+        self.cause = cause
+        self.error = error
+        self.resource = resource
+        self.resourceType = resourceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cause
+        case error
+        case resource
+        case resourceType
+    }
+
+    public func validate() throws {
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
+        try resource.validateAsName()
+        try resourceType.validateAsName()
+    }
+}
+
+public struct TaskScheduledEventDetails: Codable, Equatable {
+    public var parameters: ConnectorParameters
+    public var region: Name
+    public var resource: Name
+    public var resourceType: Name
+    public var timeoutInSeconds: TimeoutInSeconds?
+
+    public init(parameters: ConnectorParameters,
+                region: Name,
+                resource: Name,
+                resourceType: Name,
+                timeoutInSeconds: TimeoutInSeconds? = nil) {
+        self.parameters = parameters
+        self.region = region
+        self.resource = resource
+        self.resourceType = resourceType
+        self.timeoutInSeconds = timeoutInSeconds
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case parameters
+        case region
+        case resource
+        case resourceType
+        case timeoutInSeconds
+    }
+
+    public func validate() throws {
+        try parameters.validateAsConnectorParameters()
+        try region.validateAsName()
+        try resource.validateAsName()
+        try resourceType.validateAsName()
+    }
+}
+
+public struct TaskStartFailedEventDetails: Codable, Equatable {
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
+    public var resource: Name
+    public var resourceType: Name
+
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil,
+                resource: Name,
+                resourceType: Name) {
+        self.cause = cause
+        self.error = error
+        self.resource = resource
+        self.resourceType = resourceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cause
+        case error
+        case resource
+        case resourceType
+    }
+
+    public func validate() throws {
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
+        try resource.validateAsName()
+        try resourceType.validateAsName()
+    }
+}
+
+public struct TaskStartedEventDetails: Codable, Equatable {
+    public var resource: Name
+    public var resourceType: Name
+
+    public init(resource: Name,
+                resourceType: Name) {
+        self.resource = resource
+        self.resourceType = resourceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resource
+        case resourceType
+    }
+
+    public func validate() throws {
+        try resource.validateAsName()
+        try resourceType.validateAsName()
+    }
+}
+
+public struct TaskSubmitFailedEventDetails: Codable, Equatable {
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
+    public var resource: Name
+    public var resourceType: Name
+
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil,
+                resource: Name,
+                resourceType: Name) {
+        self.cause = cause
+        self.error = error
+        self.resource = resource
+        self.resourceType = resourceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cause
+        case error
+        case resource
+        case resourceType
+    }
+
+    public func validate() throws {
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
+        try resource.validateAsName()
+        try resourceType.validateAsName()
+    }
+}
+
+public struct TaskSubmittedEventDetails: Codable, Equatable {
+    public var output: SensitiveData?
+    public var resource: Name
+    public var resourceType: Name
+
+    public init(output: SensitiveData? = nil,
+                resource: Name,
+                resourceType: Name) {
+        self.output = output
+        self.resource = resource
+        self.resourceType = resourceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case output
+        case resource
+        case resourceType
+    }
+
+    public func validate() throws {
+        try output?.validateAsSensitiveData()
+        try resource.validateAsName()
+        try resourceType.validateAsName()
+    }
+}
+
+public struct TaskSucceededEventDetails: Codable, Equatable {
+    public var output: SensitiveData?
+    public var resource: Name
+    public var resourceType: Name
+
+    public init(output: SensitiveData? = nil,
+                resource: Name,
+                resourceType: Name) {
+        self.output = output
+        self.resource = resource
+        self.resourceType = resourceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case output
+        case resource
+        case resourceType
+    }
+
+    public func validate() throws {
+        try output?.validateAsSensitiveData()
+        try resource.validateAsName()
+        try resourceType.validateAsName()
+    }
+}
+
 public struct TaskTimedOut: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -1648,6 +1889,37 @@ public struct TaskTimedOut: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct TaskTimedOutEventDetails: Codable, Equatable {
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
+    public var resource: Name
+    public var resourceType: Name
+
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil,
+                resource: Name,
+                resourceType: Name) {
+        self.cause = cause
+        self.error = error
+        self.resource = resource
+        self.resourceType = resourceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cause
+        case error
+        case resource
+        case resourceType
+    }
+
+    public func validate() throws {
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
+        try resource.validateAsName()
+        try resourceType.validateAsName()
     }
 }
 

@@ -682,6 +682,9 @@ public struct CopyObjectRequest: Codable, Equatable {
     public var key: ObjectKey
     public var metadata: Metadata?
     public var metadataDirective: MetadataDirective?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
     public var requestPayer: RequestPayer?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
@@ -716,6 +719,9 @@ public struct CopyObjectRequest: Codable, Equatable {
                 key: ObjectKey,
                 metadata: Metadata? = nil,
                 metadataDirective: MetadataDirective? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
                 requestPayer: RequestPayer? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
@@ -749,6 +755,9 @@ public struct CopyObjectRequest: Codable, Equatable {
         self.key = key
         self.metadata = metadata
         self.metadataDirective = metadataDirective
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
         self.requestPayer = requestPayer
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
@@ -785,6 +794,9 @@ public struct CopyObjectRequest: Codable, Equatable {
         case key = "Key"
         case metadata = "x-amz-meta-"
         case metadataDirective = "x-amz-metadata-directive"
+        case objectLockLegalHoldStatus = "x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-object-lock-retain-until-date"
         case requestPayer = "x-amz-request-payer"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
@@ -880,6 +892,7 @@ public struct CreateBucketRequest: Codable, Equatable {
     public var grantReadACP: GrantReadACP?
     public var grantWrite: GrantWrite?
     public var grantWriteACP: GrantWriteACP?
+    public var objectLockEnabledForBucket: ObjectLockEnabledForBucket?
 
     public init(aCL: BucketCannedACL? = nil,
                 bucket: BucketName,
@@ -888,7 +901,8 @@ public struct CreateBucketRequest: Codable, Equatable {
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
                 grantWrite: GrantWrite? = nil,
-                grantWriteACP: GrantWriteACP? = nil) {
+                grantWriteACP: GrantWriteACP? = nil,
+                objectLockEnabledForBucket: ObjectLockEnabledForBucket? = nil) {
         self.aCL = aCL
         self.bucket = bucket
         self.createBucketConfiguration = createBucketConfiguration
@@ -897,6 +911,7 @@ public struct CreateBucketRequest: Codable, Equatable {
         self.grantReadACP = grantReadACP
         self.grantWrite = grantWrite
         self.grantWriteACP = grantWriteACP
+        self.objectLockEnabledForBucket = objectLockEnabledForBucket
     }
 
     enum CodingKeys: String, CodingKey {
@@ -908,6 +923,7 @@ public struct CreateBucketRequest: Codable, Equatable {
         case grantReadACP = "x-amz-grant-read-acp"
         case grantWrite = "x-amz-grant-write"
         case grantWriteACP = "x-amz-grant-write-acp"
+        case objectLockEnabledForBucket = "x-amz-bucket-object-lock-enabled"
     }
 
     public func validate() throws {
@@ -982,6 +998,9 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
     public var grantWriteACP: GrantWriteACP?
     public var key: ObjectKey
     public var metadata: Metadata?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
     public var requestPayer: RequestPayer?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
@@ -1006,6 +1025,9 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
                 grantWriteACP: GrantWriteACP? = nil,
                 key: ObjectKey,
                 metadata: Metadata? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
                 requestPayer: RequestPayer? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
@@ -1029,6 +1051,9 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
         self.grantWriteACP = grantWriteACP
         self.key = key
         self.metadata = metadata
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
         self.requestPayer = requestPayer
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
@@ -1055,6 +1080,9 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
         case grantWriteACP = "x-amz-grant-write-acp"
         case key = "Key"
         case metadata = "x-amz-meta-"
+        case objectLockLegalHoldStatus = "x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-object-lock-retain-until-date"
         case requestPayer = "x-amz-request-payer"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
@@ -1068,6 +1096,29 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
 
     public func validate() throws {
         try key.validateAsObjectKey()
+    }
+}
+
+public struct DefaultRetention: Codable, Equatable {
+    public var days: Days?
+    public var mode: ObjectLockRetentionMode?
+    public var years: Years?
+
+    public init(days: Days? = nil,
+                mode: ObjectLockRetentionMode? = nil,
+                years: Years? = nil) {
+        self.days = days
+        self.mode = mode
+        self.years = years
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case days = "Days"
+        case mode = "Mode"
+        case years = "Years"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -1340,17 +1391,20 @@ public struct DeleteObjectOutput: Codable, Equatable {
 
 public struct DeleteObjectRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var key: ObjectKey
     public var mFA: MFA?
     public var requestPayer: RequestPayer?
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                bypassGovernanceRetention: BypassGovernanceRetention? = nil,
                 key: ObjectKey,
                 mFA: MFA? = nil,
                 requestPayer: RequestPayer? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.bypassGovernanceRetention = bypassGovernanceRetention
         self.key = key
         self.mFA = mFA
         self.requestPayer = requestPayer
@@ -1359,6 +1413,7 @@ public struct DeleteObjectRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
         case key = "Key"
         case mFA = "x-amz-mfa"
         case requestPayer = "x-amz-request-payer"
@@ -1434,15 +1489,18 @@ public struct DeleteObjectsOutput: Codable, Equatable {
 
 public struct DeleteObjectsRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var delete: Delete
     public var mFA: MFA?
     public var requestPayer: RequestPayer?
 
     public init(bucket: BucketName,
+                bypassGovernanceRetention: BypassGovernanceRetention? = nil,
                 delete: Delete,
                 mFA: MFA? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bucket = bucket
+        self.bypassGovernanceRetention = bypassGovernanceRetention
         self.delete = delete
         self.mFA = mFA
         self.requestPayer = requestPayer
@@ -1450,6 +1508,7 @@ public struct DeleteObjectsRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
         case delete = "Delete"
         case mFA = "x-amz-mfa"
         case requestPayer = "x-amz-request-payer"
@@ -2296,6 +2355,81 @@ public struct GetObjectAclRequest: Codable, Equatable {
     }
 }
 
+public struct GetObjectLegalHoldOutput: Codable, Equatable {
+    public var legalHold: ObjectLockLegalHold?
+
+    public init(legalHold: ObjectLockLegalHold? = nil) {
+        self.legalHold = legalHold
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case legalHold = "LegalHold"
+    }
+
+    public func validate() throws {
+        try legalHold?.validate()
+    }
+}
+
+public struct GetObjectLegalHoldRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var key: ObjectKey
+    public var requestPayer: RequestPayer?
+    public var versionId: ObjectVersionId?
+
+    public init(bucket: BucketName,
+                key: ObjectKey,
+                requestPayer: RequestPayer? = nil,
+                versionId: ObjectVersionId? = nil) {
+        self.bucket = bucket
+        self.key = key
+        self.requestPayer = requestPayer
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case key = "Key"
+        case requestPayer = "x-amz-request-payer"
+        case versionId
+    }
+
+    public func validate() throws {
+        try key.validateAsObjectKey()
+    }
+}
+
+public struct GetObjectLockConfigurationOutput: Codable, Equatable {
+    public var objectLockConfiguration: ObjectLockConfiguration?
+
+    public init(objectLockConfiguration: ObjectLockConfiguration? = nil) {
+        self.objectLockConfiguration = objectLockConfiguration
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case objectLockConfiguration = "ObjectLockConfiguration"
+    }
+
+    public func validate() throws {
+        try objectLockConfiguration?.validate()
+    }
+}
+
+public struct GetObjectLockConfigurationRequest: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct GetObjectOutput: Codable, Equatable {
     public var acceptRanges: AcceptRanges?
     public var body: Body?
@@ -2313,6 +2447,9 @@ public struct GetObjectOutput: Codable, Equatable {
     public var lastModified: LastModified?
     public var metadata: Metadata?
     public var missingMeta: MissingMeta?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
     public var partsCount: PartsCount?
     public var replicationStatus: ReplicationStatus?
     public var requestCharged: RequestCharged?
@@ -2342,6 +2479,9 @@ public struct GetObjectOutput: Codable, Equatable {
                 lastModified: LastModified? = nil,
                 metadata: Metadata? = nil,
                 missingMeta: MissingMeta? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
                 partsCount: PartsCount? = nil,
                 replicationStatus: ReplicationStatus? = nil,
                 requestCharged: RequestCharged? = nil,
@@ -2370,6 +2510,9 @@ public struct GetObjectOutput: Codable, Equatable {
         self.lastModified = lastModified
         self.metadata = metadata
         self.missingMeta = missingMeta
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
         self.partsCount = partsCount
         self.replicationStatus = replicationStatus
         self.requestCharged = requestCharged
@@ -2401,6 +2544,9 @@ public struct GetObjectOutput: Codable, Equatable {
         case lastModified = "Last-Modified"
         case metadata = "x-amz-meta-"
         case missingMeta = "x-amz-missing-meta"
+        case objectLockLegalHoldStatus = "x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-object-lock-retain-until-date"
         case partsCount = "x-amz-mp-parts-count"
         case replicationStatus = "x-amz-replication-status"
         case requestCharged = "x-amz-request-charged"
@@ -2499,6 +2645,50 @@ public struct GetObjectRequest: Codable, Equatable {
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case versionId
+    }
+
+    public func validate() throws {
+        try key.validateAsObjectKey()
+    }
+}
+
+public struct GetObjectRetentionOutput: Codable, Equatable {
+    public var retention: ObjectLockRetention?
+
+    public init(retention: ObjectLockRetention? = nil) {
+        self.retention = retention
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case retention = "Retention"
+    }
+
+    public func validate() throws {
+        try retention?.validate()
+    }
+}
+
+public struct GetObjectRetentionRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var key: ObjectKey
+    public var requestPayer: RequestPayer?
+    public var versionId: ObjectVersionId?
+
+    public init(bucket: BucketName,
+                key: ObjectKey,
+                requestPayer: RequestPayer? = nil,
+                versionId: ObjectVersionId? = nil) {
+        self.bucket = bucket
+        self.key = key
+        self.requestPayer = requestPayer
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case key = "Key"
+        case requestPayer = "x-amz-request-payer"
         case versionId
     }
 
@@ -2720,6 +2910,9 @@ public struct HeadObjectOutput: Codable, Equatable {
     public var lastModified: LastModified?
     public var metadata: Metadata?
     public var missingMeta: MissingMeta?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
     public var partsCount: PartsCount?
     public var replicationStatus: ReplicationStatus?
     public var requestCharged: RequestCharged?
@@ -2746,6 +2939,9 @@ public struct HeadObjectOutput: Codable, Equatable {
                 lastModified: LastModified? = nil,
                 metadata: Metadata? = nil,
                 missingMeta: MissingMeta? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
                 partsCount: PartsCount? = nil,
                 replicationStatus: ReplicationStatus? = nil,
                 requestCharged: RequestCharged? = nil,
@@ -2771,6 +2967,9 @@ public struct HeadObjectOutput: Codable, Equatable {
         self.lastModified = lastModified
         self.metadata = metadata
         self.missingMeta = missingMeta
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
         self.partsCount = partsCount
         self.replicationStatus = replicationStatus
         self.requestCharged = requestCharged
@@ -2799,6 +2998,9 @@ public struct HeadObjectOutput: Codable, Equatable {
         case lastModified = "Last-Modified"
         case metadata = "x-amz-meta-"
         case missingMeta = "x-amz-missing-meta"
+        case objectLockLegalHoldStatus = "x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-object-lock-retain-until-date"
         case partsCount = "x-amz-mp-parts-count"
         case replicationStatus = "x-amz-replication-status"
         case requestCharged = "x-amz-request-charged"
@@ -4268,6 +4470,76 @@ public struct ObjectIdentifier: Codable, Equatable {
     }
 }
 
+public struct ObjectLockConfiguration: Codable, Equatable {
+    public var objectLockEnabled: ObjectLockEnabled?
+    public var rule: ObjectLockRule?
+
+    public init(objectLockEnabled: ObjectLockEnabled? = nil,
+                rule: ObjectLockRule? = nil) {
+        self.objectLockEnabled = objectLockEnabled
+        self.rule = rule
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case objectLockEnabled = "ObjectLockEnabled"
+        case rule = "Rule"
+    }
+
+    public func validate() throws {
+        try rule?.validate()
+    }
+}
+
+public struct ObjectLockLegalHold: Codable, Equatable {
+    public var status: ObjectLockLegalHoldStatus?
+
+    public init(status: ObjectLockLegalHoldStatus? = nil) {
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case status = "Status"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ObjectLockRetention: Codable, Equatable {
+    public var mode: ObjectLockRetentionMode?
+    public var retainUntilDate: Date?
+
+    public init(mode: ObjectLockRetentionMode? = nil,
+                retainUntilDate: Date? = nil) {
+        self.mode = mode
+        self.retainUntilDate = retainUntilDate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case mode = "Mode"
+        case retainUntilDate = "RetainUntilDate"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ObjectLockRule: Codable, Equatable {
+    public var defaultRetention: DefaultRetention?
+
+    public init(defaultRetention: DefaultRetention? = nil) {
+        self.defaultRetention = defaultRetention
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case defaultRetention = "DefaultRetention"
+    }
+
+    public func validate() throws {
+        try defaultRetention?.validate()
+    }
+}
+
 public struct ObjectNotInActiveTierError: Codable, Equatable {
 
     public init() {
@@ -5022,6 +5294,105 @@ public struct PutObjectAclRequest: Codable, Equatable {
     }
 }
 
+public struct PutObjectLegalHoldOutput: Codable, Equatable {
+    public var requestCharged: RequestCharged?
+
+    public init(requestCharged: RequestCharged? = nil) {
+        self.requestCharged = requestCharged
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestCharged = "x-amz-request-charged"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PutObjectLegalHoldRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var contentMD5: ContentMD5?
+    public var key: ObjectKey
+    public var legalHold: ObjectLockLegalHold?
+    public var requestPayer: RequestPayer?
+    public var versionId: ObjectVersionId?
+
+    public init(bucket: BucketName,
+                contentMD5: ContentMD5? = nil,
+                key: ObjectKey,
+                legalHold: ObjectLockLegalHold? = nil,
+                requestPayer: RequestPayer? = nil,
+                versionId: ObjectVersionId? = nil) {
+        self.bucket = bucket
+        self.contentMD5 = contentMD5
+        self.key = key
+        self.legalHold = legalHold
+        self.requestPayer = requestPayer
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case contentMD5 = "Content-MD5"
+        case key = "Key"
+        case legalHold = "LegalHold"
+        case requestPayer = "x-amz-request-payer"
+        case versionId
+    }
+
+    public func validate() throws {
+        try key.validateAsObjectKey()
+        try legalHold?.validate()
+    }
+}
+
+public struct PutObjectLockConfigurationOutput: Codable, Equatable {
+    public var requestCharged: RequestCharged?
+
+    public init(requestCharged: RequestCharged? = nil) {
+        self.requestCharged = requestCharged
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestCharged = "x-amz-request-charged"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PutObjectLockConfigurationRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var contentMD5: ContentMD5?
+    public var objectLockConfiguration: ObjectLockConfiguration?
+    public var requestPayer: RequestPayer?
+    public var token: ObjectLockToken?
+
+    public init(bucket: BucketName,
+                contentMD5: ContentMD5? = nil,
+                objectLockConfiguration: ObjectLockConfiguration? = nil,
+                requestPayer: RequestPayer? = nil,
+                token: ObjectLockToken? = nil) {
+        self.bucket = bucket
+        self.contentMD5 = contentMD5
+        self.objectLockConfiguration = objectLockConfiguration
+        self.requestPayer = requestPayer
+        self.token = token
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case contentMD5 = "Content-MD5"
+        case objectLockConfiguration = "ObjectLockConfiguration"
+        case requestPayer = "x-amz-request-payer"
+        case token = "x-amz-bucket-object-lock-token"
+    }
+
+    public func validate() throws {
+        try objectLockConfiguration?.validate()
+    }
+}
+
 public struct PutObjectOutput: Codable, Equatable {
     public var eTag: ETag?
     public var expiration: Expiration?
@@ -5083,6 +5454,9 @@ public struct PutObjectRequest: Codable, Equatable {
     public var grantWriteACP: GrantWriteACP?
     public var key: ObjectKey
     public var metadata: Metadata?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
     public var requestPayer: RequestPayer?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
@@ -5110,6 +5484,9 @@ public struct PutObjectRequest: Codable, Equatable {
                 grantWriteACP: GrantWriteACP? = nil,
                 key: ObjectKey,
                 metadata: Metadata? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
                 requestPayer: RequestPayer? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
@@ -5136,6 +5513,9 @@ public struct PutObjectRequest: Codable, Equatable {
         self.grantWriteACP = grantWriteACP
         self.key = key
         self.metadata = metadata
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
         self.requestPayer = requestPayer
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
@@ -5165,6 +5545,9 @@ public struct PutObjectRequest: Codable, Equatable {
         case grantWriteACP = "x-amz-grant-write-acp"
         case key = "Key"
         case metadata = "x-amz-meta-"
+        case objectLockLegalHoldStatus = "x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-object-lock-retain-until-date"
         case requestPayer = "x-amz-request-payer"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
@@ -5178,6 +5561,62 @@ public struct PutObjectRequest: Codable, Equatable {
 
     public func validate() throws {
         try key.validateAsObjectKey()
+    }
+}
+
+public struct PutObjectRetentionOutput: Codable, Equatable {
+    public var requestCharged: RequestCharged?
+
+    public init(requestCharged: RequestCharged? = nil) {
+        self.requestCharged = requestCharged
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestCharged = "x-amz-request-charged"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PutObjectRetentionRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var contentMD5: ContentMD5?
+    public var key: ObjectKey
+    public var requestPayer: RequestPayer?
+    public var retention: ObjectLockRetention?
+    public var versionId: ObjectVersionId?
+
+    public init(bucket: BucketName,
+                bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                contentMD5: ContentMD5? = nil,
+                key: ObjectKey,
+                requestPayer: RequestPayer? = nil,
+                retention: ObjectLockRetention? = nil,
+                versionId: ObjectVersionId? = nil) {
+        self.bucket = bucket
+        self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.contentMD5 = contentMD5
+        self.key = key
+        self.requestPayer = requestPayer
+        self.retention = retention
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case contentMD5 = "Content-MD5"
+        case key = "Key"
+        case requestPayer = "x-amz-request-payer"
+        case retention = "Retention"
+        case versionId
+    }
+
+    public func validate() throws {
+        try key.validateAsObjectKey()
+        try retention?.validate()
     }
 }
 
