@@ -49,9 +49,9 @@ public struct AddPermissionInput: Codable, Equatable {
 }
 
 public struct AuthorizationErrorException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -164,9 +164,9 @@ public struct ConfirmSubscriptionResponseForConfirmSubscription: Codable, Equata
 }
 
 public struct CreateEndpointResponse: Codable, Equatable {
-    public var endpointArn: String2?
+    public var endpointArn: String?
 
-    public init(endpointArn: String2? = nil) {
+    public init(endpointArn: String? = nil) {
         self.endpointArn = endpointArn
     }
 
@@ -196,12 +196,12 @@ public struct CreateEndpointResponseForCreatePlatformEndpoint: Codable, Equatabl
 
 public struct CreatePlatformApplicationInput: Codable, Equatable {
     public var attributes: MapStringToString
-    public var name: String2
-    public var platform: String2
+    public var name: String
+    public var platform: String
 
     public init(attributes: MapStringToString,
-                name: String2,
-                platform: String2) {
+                name: String,
+                platform: String) {
         self.attributes = attributes
         self.name = name
         self.platform = platform
@@ -218,9 +218,9 @@ public struct CreatePlatformApplicationInput: Codable, Equatable {
 }
 
 public struct CreatePlatformApplicationResponse: Codable, Equatable {
-    public var platformApplicationArn: String2?
+    public var platformApplicationArn: String?
 
-    public init(platformApplicationArn: String2? = nil) {
+    public init(platformApplicationArn: String? = nil) {
         self.platformApplicationArn = platformApplicationArn
     }
 
@@ -250,14 +250,14 @@ public struct CreatePlatformApplicationResponseForCreatePlatformApplication: Cod
 
 public struct CreatePlatformEndpointInput: Codable, Equatable {
     public var attributes: MapStringToString?
-    public var customUserData: String2?
-    public var platformApplicationArn: String2
-    public var token: String2
+    public var customUserData: String?
+    public var platformApplicationArn: String
+    public var token: String
 
     public init(attributes: MapStringToString? = nil,
-                customUserData: String2? = nil,
-                platformApplicationArn: String2,
-                token: String2) {
+                customUserData: String? = nil,
+                platformApplicationArn: String,
+                token: String) {
         self.attributes = attributes
         self.customUserData = customUserData
         self.platformApplicationArn = platformApplicationArn
@@ -326,9 +326,9 @@ public struct CreateTopicResponseForCreateTopic: Codable, Equatable {
 }
 
 public struct DeleteEndpointInput: Codable, Equatable {
-    public var endpointArn: String2
+    public var endpointArn: String
 
-    public init(endpointArn: String2) {
+    public init(endpointArn: String) {
         self.endpointArn = endpointArn
     }
 
@@ -341,9 +341,9 @@ public struct DeleteEndpointInput: Codable, Equatable {
 }
 
 public struct DeletePlatformApplicationInput: Codable, Equatable {
-    public var platformApplicationArn: String2
+    public var platformApplicationArn: String
 
-    public init(platformApplicationArn: String2) {
+    public init(platformApplicationArn: String) {
         self.platformApplicationArn = platformApplicationArn
     }
 
@@ -372,10 +372,10 @@ public struct DeleteTopicInput: Codable, Equatable {
 
 public struct Endpoint: Codable, Equatable {
     public var attributes: MapStringToString?
-    public var endpointArn: String2?
+    public var endpointArn: String?
 
     public init(attributes: MapStringToString? = nil,
-                endpointArn: String2? = nil) {
+                endpointArn: String? = nil) {
         self.attributes = attributes
         self.endpointArn = endpointArn
     }
@@ -390,9 +390,9 @@ public struct Endpoint: Codable, Equatable {
 }
 
 public struct EndpointDisabledException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -405,9 +405,9 @@ public struct EndpointDisabledException: Codable, Equatable {
 }
 
 public struct FilterPolicyLimitExceededException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -420,9 +420,9 @@ public struct FilterPolicyLimitExceededException: Codable, Equatable {
 }
 
 public struct GetEndpointAttributesInput: Codable, Equatable {
-    public var endpointArn: String2
+    public var endpointArn: String
 
-    public init(endpointArn: String2) {
+    public init(endpointArn: String) {
         self.endpointArn = endpointArn
     }
 
@@ -466,9 +466,9 @@ public struct GetEndpointAttributesResponseForGetEndpointAttributes: Codable, Eq
 }
 
 public struct GetPlatformApplicationAttributesInput: Codable, Equatable {
-    public var platformApplicationArn: String2
+    public var platformApplicationArn: String
 
-    public init(platformApplicationArn: String2) {
+    public init(platformApplicationArn: String) {
         self.platformApplicationArn = platformApplicationArn
     }
 
@@ -650,9 +650,9 @@ public struct GetTopicAttributesResponseForGetTopicAttributes: Codable, Equatabl
 }
 
 public struct InternalErrorException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -665,9 +665,9 @@ public struct InternalErrorException: Codable, Equatable {
 }
 
 public struct InvalidParameterException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -680,9 +680,9 @@ public struct InvalidParameterException: Codable, Equatable {
 }
 
 public struct InvalidParameterValueException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -695,9 +695,9 @@ public struct InvalidParameterValueException: Codable, Equatable {
 }
 
 public struct InvalidSecurityException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -710,9 +710,9 @@ public struct InvalidSecurityException: Codable, Equatable {
 }
 
 public struct KMSAccessDeniedException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -725,9 +725,9 @@ public struct KMSAccessDeniedException: Codable, Equatable {
 }
 
 public struct KMSDisabledException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -740,9 +740,9 @@ public struct KMSDisabledException: Codable, Equatable {
 }
 
 public struct KMSInvalidStateException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -755,9 +755,9 @@ public struct KMSInvalidStateException: Codable, Equatable {
 }
 
 public struct KMSNotFoundException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -770,9 +770,9 @@ public struct KMSNotFoundException: Codable, Equatable {
 }
 
 public struct KMSOptInRequired: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -785,9 +785,9 @@ public struct KMSOptInRequired: Codable, Equatable {
 }
 
 public struct KMSThrottlingException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -800,11 +800,11 @@ public struct KMSThrottlingException: Codable, Equatable {
 }
 
 public struct ListEndpointsByPlatformApplicationInput: Codable, Equatable {
-    public var nextToken: String2?
-    public var platformApplicationArn: String2
+    public var nextToken: String?
+    public var platformApplicationArn: String
 
-    public init(nextToken: String2? = nil,
-                platformApplicationArn: String2) {
+    public init(nextToken: String? = nil,
+                platformApplicationArn: String) {
         self.nextToken = nextToken
         self.platformApplicationArn = platformApplicationArn
     }
@@ -820,10 +820,10 @@ public struct ListEndpointsByPlatformApplicationInput: Codable, Equatable {
 
 public struct ListEndpointsByPlatformApplicationResponse: Codable, Equatable {
     public var endpoints: ListOfEndpoints?
-    public var nextToken: String2?
+    public var nextToken: String?
 
     public init(endpoints: ListOfEndpoints? = nil,
-                nextToken: String2? = nil) {
+                nextToken: String? = nil) {
         self.endpoints = endpoints
         self.nextToken = nextToken
     }
@@ -854,9 +854,9 @@ public struct ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatfo
 }
 
 public struct ListPhoneNumbersOptedOutInput: Codable, Equatable {
-    public var nextToken: String1?
+    public var nextToken: String?
 
-    public init(nextToken: String1? = nil) {
+    public init(nextToken: String? = nil) {
         self.nextToken = nextToken
     }
 
@@ -869,10 +869,10 @@ public struct ListPhoneNumbersOptedOutInput: Codable, Equatable {
 }
 
 public struct ListPhoneNumbersOptedOutResponse: Codable, Equatable {
-    public var nextToken: String1?
+    public var nextToken: String?
     public var phoneNumbers: PhoneNumberList?
 
-    public init(nextToken: String1? = nil,
+    public init(nextToken: String? = nil,
                 phoneNumbers: PhoneNumberList? = nil) {
         self.nextToken = nextToken
         self.phoneNumbers = phoneNumbers
@@ -904,9 +904,9 @@ public struct ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut: Codab
 }
 
 public struct ListPlatformApplicationsInput: Codable, Equatable {
-    public var nextToken: String2?
+    public var nextToken: String?
 
-    public init(nextToken: String2? = nil) {
+    public init(nextToken: String? = nil) {
         self.nextToken = nextToken
     }
 
@@ -919,10 +919,10 @@ public struct ListPlatformApplicationsInput: Codable, Equatable {
 }
 
 public struct ListPlatformApplicationsResponse: Codable, Equatable {
-    public var nextToken: String2?
+    public var nextToken: String?
     public var platformApplications: ListOfPlatformApplications?
 
-    public init(nextToken: String2? = nil,
+    public init(nextToken: String? = nil,
                 platformApplications: ListOfPlatformApplications? = nil) {
         self.nextToken = nextToken
         self.platformApplications = platformApplications
@@ -1109,12 +1109,12 @@ public struct ListTopicsResponseForListTopics: Codable, Equatable {
 
 public struct MessageAttributeValue: Codable, Equatable {
     public var binaryValue: Binary?
-    public var dataType: String2
-    public var stringValue: String2?
+    public var dataType: String
+    public var stringValue: String?
 
     public init(binaryValue: Binary? = nil,
-                dataType: String2,
-                stringValue: String2? = nil) {
+                dataType: String,
+                stringValue: String? = nil) {
         self.binaryValue = binaryValue
         self.dataType = dataType
         self.stringValue = stringValue
@@ -1131,9 +1131,9 @@ public struct MessageAttributeValue: Codable, Equatable {
 }
 
 public struct NotFoundException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -1187,10 +1187,10 @@ public struct OptInPhoneNumberResponseForOptInPhoneNumber: Codable, Equatable {
 
 public struct PlatformApplication: Codable, Equatable {
     public var attributes: MapStringToString?
-    public var platformApplicationArn: String2?
+    public var platformApplicationArn: String?
 
     public init(attributes: MapStringToString? = nil,
-                platformApplicationArn: String2? = nil) {
+                platformApplicationArn: String? = nil) {
         self.attributes = attributes
         self.platformApplicationArn = platformApplicationArn
     }
@@ -1205,9 +1205,9 @@ public struct PlatformApplication: Codable, Equatable {
 }
 
 public struct PlatformApplicationDisabledException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -1223,17 +1223,17 @@ public struct PublishInput: Codable, Equatable {
     public var message: Message
     public var messageAttributes: MessageAttributeMap?
     public var messageStructure: MessageStructure?
-    public var phoneNumber: String2?
+    public var phoneNumber: String?
     public var subject: Subject?
-    public var targetArn: String2?
+    public var targetArn: String?
     public var topicArn: TopicARN?
 
     public init(message: Message,
                 messageAttributes: MessageAttributeMap? = nil,
                 messageStructure: MessageStructure? = nil,
-                phoneNumber: String2? = nil,
+                phoneNumber: String? = nil,
                 subject: Subject? = nil,
-                targetArn: String2? = nil,
+                targetArn: String? = nil,
                 topicArn: TopicARN? = nil) {
         self.message = message
         self.messageAttributes = messageAttributes
@@ -1310,10 +1310,10 @@ public struct RemovePermissionInput: Codable, Equatable {
 
 public struct SetEndpointAttributesInput: Codable, Equatable {
     public var attributes: MapStringToString
-    public var endpointArn: String2
+    public var endpointArn: String
 
     public init(attributes: MapStringToString,
-                endpointArn: String2) {
+                endpointArn: String) {
         self.attributes = attributes
         self.endpointArn = endpointArn
     }
@@ -1329,10 +1329,10 @@ public struct SetEndpointAttributesInput: Codable, Equatable {
 
 public struct SetPlatformApplicationAttributesInput: Codable, Equatable {
     public var attributes: MapStringToString
-    public var platformApplicationArn: String2
+    public var platformApplicationArn: String
 
     public init(attributes: MapStringToString,
-                platformApplicationArn: String2) {
+                platformApplicationArn: String) {
         self.attributes = attributes
         self.platformApplicationArn = platformApplicationArn
     }
@@ -1526,9 +1526,9 @@ public struct Subscription: Codable, Equatable {
 }
 
 public struct SubscriptionLimitExceededException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -1541,9 +1541,9 @@ public struct SubscriptionLimitExceededException: Codable, Equatable {
 }
 
 public struct ThrottledException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
@@ -1571,9 +1571,9 @@ public struct Topic: Codable, Equatable {
 }
 
 public struct TopicLimitExceededException: Codable, Equatable {
-    public var message: String1?
+    public var message: String?
 
-    public init(message: String1? = nil) {
+    public init(message: String? = nil) {
         self.message = message
     }
 
