@@ -116,11 +116,8 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         
         let decoder = XMLDecoder.awsCompatibleDecoder
         
-        if Log.isLogging(.debug) {
-            let asString = String(data: bodyData, encoding: .utf8) ?? ""
-            
-            Log.debug("Attempting to decode error data into XML: \(asString)")
-        }
+        // Convert bodyData to a debug string only if debug logging is enabled
+        Log.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
         
         // attempt to decode the output body from an XML payload
         let result: Error
@@ -141,12 +138,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         httpPath: String) throws -> HTTPRequestComponents
         where InputType: HTTPRequestInputProtocol {
             
-            let pathPostfix: String
-            if let thePathPostfix = input.pathPostfix {
-                pathPostfix = thePathPostfix
-            } else {
-                pathPostfix = ""
-            }
+            let pathPostfix = input.pathPostfix ?? ""
             
             let pathTemplate = "\(httpPath)\(pathPostfix)"
             let path: String
@@ -227,16 +219,8 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             decoder.mapDecodingStrategy = outputMapDecodingStrategy
         }
         
-        if Log.isLogging(.debug) {
-            let asString: String
-            if let output = output {
-                asString = String(data: output, encoding: .utf8) ?? ""
-            } else {
-                asString = ""
-            }
-            
-            Log.debug("Attempting to decode result data into XML: \(asString)")
-        }
+        // Convert output to a debug string only if debug logging is enabled
+        Log.debug("Attempting to decode result data into XML: \(output.debugString)")
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
             // we are expecting a response body

@@ -42,11 +42,8 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
             throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
         }
         
-        if Log.isLogging(.debug) {
-            let asString = String(data: bodyData, encoding: .utf8) ?? ""
-            
-            Log.debug("Attempting to decode error data into JSON: \(asString)")
-        }
+        // Convert bodyData to a debug string only if debug logging is enabled
+        Log.debug("Attempting to decode error data into JSON: \(bodyData.debugString)")
         
         // attempt to get an error of Error type by decoding the body data
         return try JSONDecoder.awsCompatibleDecoder.decode(ErrorType.self, from: bodyData)
@@ -57,12 +54,7 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
         httpPath: String) throws -> HTTPRequestComponents
         where InputType: HTTPRequestInputProtocol {
             
-            let pathPostfix: String
-            if let thePathPostfix = input.pathPostfix {
-                pathPostfix = thePathPostfix
-            } else {
-                pathPostfix = ""
-            }
+            let pathPostfix = input.pathPostfix ?? ""
             
             let pathTemplate = "\(httpPath)\(pathPostfix)"
             let path: String
@@ -132,16 +124,8 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
     public func decodeOutput<OutputType>(output: Data?,
                                   headers: [(String, String)]) throws -> OutputType
     where OutputType: HTTPResponseOutputProtocol {
-        if Log.isLogging(.debug) {
-            let asString: String
-            if let output = output {
-                asString = String(data: output, encoding: .utf8) ?? ""
-            } else {
-                asString = ""
-            }
-            
-            Log.debug("Attempting to decode result data into JSON: \(asString)")
-        }
+        // Convert output to a debug string only if debug logging is enabled
+        Log.debug("Attempting to decode result data into JSON: \(output.debugString)")
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
             // we are expecting a response body
