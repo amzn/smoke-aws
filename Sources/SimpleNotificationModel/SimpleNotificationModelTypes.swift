@@ -49,17 +49,17 @@ public typealias ListOfPlatformApplications = [PlatformApplication]
 /**
  Type definition for the ListString field.
  */
-public typealias ListString = [String2]
+public typealias ListString = [String]
 
 /**
  Type definition for the MapStringToString field.
  */
-public typealias MapStringToString = [String2: String2]
+public typealias MapStringToString = [String: String]
 
 /**
  Type definition for the MessageAttributeMap field.
  */
-public typealias MessageAttributeMap = [String2: MessageAttributeValue]
+public typealias MessageAttributeMap = [String: MessageAttributeValue]
 
 /**
  Type definition for the PhoneNumber field.
@@ -70,11 +70,6 @@ public typealias PhoneNumber = String
  Type definition for the PhoneNumberList field.
  */
 public typealias PhoneNumberList = [PhoneNumber]
-
-/**
- Type definition for the String2 field.
- */
-public typealias String2 = String
 
 /**
  Type definition for the SubscriptionAttributesMap field.
@@ -165,11 +160,6 @@ public typealias NextToken = String
  Type definition for the Protocol field.
  */
 public typealias Protocol = String
-
-/**
- Type definition for the String1 field.
- */
-public typealias String1 = String
 
 /**
  Type definition for the Subject field.
