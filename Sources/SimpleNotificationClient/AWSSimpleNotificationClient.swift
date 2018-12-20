@@ -66,6 +66,22 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
     }
 
     /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+    }
+
+    /**
      Invokes the AddPermission operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -74,14 +90,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func addPermissionAsync(input: SimpleNotificationModel.AddPermissionInput, completion: @escaping (Error?) -> ()) throws {
+    public func addPermissionAsync(input: SimpleNotificationModel.AddPermissionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = AddPermissionOperationHTTPRequestInput<SimpleNotificationModel.AddPermissionInput>(encodable: input)
+        let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -110,7 +126,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AddPermissionOperationHTTPRequestInput<SimpleNotificationModel.AddPermissionInput>(encodable: input)
+        let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -141,7 +157,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CheckIfPhoneNumberIsOptedOutOperationHTTPRequestInput<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput>(encodable: input)
+        let wrappedInput = CheckIfPhoneNumberIsOptedOutOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -172,7 +188,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CheckIfPhoneNumberIsOptedOutOperationHTTPRequestInput<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput>(encodable: input)
+        let wrappedInput = CheckIfPhoneNumberIsOptedOutOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -203,7 +219,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ConfirmSubscriptionOperationHTTPRequestInput<SimpleNotificationModel.ConfirmSubscriptionInput>(encodable: input)
+        let wrappedInput = ConfirmSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -234,7 +250,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ConfirmSubscriptionOperationHTTPRequestInput<SimpleNotificationModel.ConfirmSubscriptionInput>(encodable: input)
+        let wrappedInput = ConfirmSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -265,7 +281,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreatePlatformApplicationOperationHTTPRequestInput<SimpleNotificationModel.CreatePlatformApplicationInput>(encodable: input)
+        let wrappedInput = CreatePlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -296,7 +312,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreatePlatformApplicationOperationHTTPRequestInput<SimpleNotificationModel.CreatePlatformApplicationInput>(encodable: input)
+        let wrappedInput = CreatePlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -327,7 +343,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreatePlatformEndpointOperationHTTPRequestInput<SimpleNotificationModel.CreatePlatformEndpointInput>(encodable: input)
+        let wrappedInput = CreatePlatformEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -358,7 +374,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreatePlatformEndpointOperationHTTPRequestInput<SimpleNotificationModel.CreatePlatformEndpointInput>(encodable: input)
+        let wrappedInput = CreatePlatformEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -389,7 +405,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateTopicOperationHTTPRequestInput<SimpleNotificationModel.CreateTopicInput>(encodable: input)
+        let wrappedInput = CreateTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -420,7 +436,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = CreateTopicOperationHTTPRequestInput<SimpleNotificationModel.CreateTopicInput>(encodable: input)
+        let wrappedInput = CreateTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -443,14 +459,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deleteEndpointAsync(input: SimpleNotificationModel.DeleteEndpointInput, completion: @escaping (Error?) -> ()) throws {
+    public func deleteEndpointAsync(input: SimpleNotificationModel.DeleteEndpointInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteEndpointOperationHTTPRequestInput<SimpleNotificationModel.DeleteEndpointInput>(encodable: input)
+        let wrappedInput = DeleteEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -479,7 +495,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteEndpointOperationHTTPRequestInput<SimpleNotificationModel.DeleteEndpointInput>(encodable: input)
+        let wrappedInput = DeleteEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -502,14 +518,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deletePlatformApplicationAsync(input: SimpleNotificationModel.DeletePlatformApplicationInput, completion: @escaping (Error?) -> ()) throws {
+    public func deletePlatformApplicationAsync(input: SimpleNotificationModel.DeletePlatformApplicationInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeletePlatformApplicationOperationHTTPRequestInput<SimpleNotificationModel.DeletePlatformApplicationInput>(encodable: input)
+        let wrappedInput = DeletePlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -538,7 +554,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeletePlatformApplicationOperationHTTPRequestInput<SimpleNotificationModel.DeletePlatformApplicationInput>(encodable: input)
+        let wrappedInput = DeletePlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -561,14 +577,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func deleteTopicAsync(input: SimpleNotificationModel.DeleteTopicInput, completion: @escaping (Error?) -> ()) throws {
+    public func deleteTopicAsync(input: SimpleNotificationModel.DeleteTopicInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteTopicOperationHTTPRequestInput<SimpleNotificationModel.DeleteTopicInput>(encodable: input)
+        let wrappedInput = DeleteTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -597,7 +613,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DeleteTopicOperationHTTPRequestInput<SimpleNotificationModel.DeleteTopicInput>(encodable: input)
+        let wrappedInput = DeleteTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -628,7 +644,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetEndpointAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetEndpointAttributesInput>(encodable: input)
+        let wrappedInput = GetEndpointAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -659,7 +675,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetEndpointAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetEndpointAttributesInput>(encodable: input)
+        let wrappedInput = GetEndpointAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -690,7 +706,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetPlatformApplicationAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetPlatformApplicationAttributesInput>(encodable: input)
+        let wrappedInput = GetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -721,7 +737,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetPlatformApplicationAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetPlatformApplicationAttributesInput>(encodable: input)
+        let wrappedInput = GetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -752,7 +768,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetSMSAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetSMSAttributesInput>(encodable: input)
+        let wrappedInput = GetSMSAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -783,7 +799,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetSMSAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetSMSAttributesInput>(encodable: input)
+        let wrappedInput = GetSMSAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -814,7 +830,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetSubscriptionAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetSubscriptionAttributesInput>(encodable: input)
+        let wrappedInput = GetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -845,7 +861,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetSubscriptionAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetSubscriptionAttributesInput>(encodable: input)
+        let wrappedInput = GetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -876,7 +892,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetTopicAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetTopicAttributesInput>(encodable: input)
+        let wrappedInput = GetTopicAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -907,7 +923,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetTopicAttributesOperationHTTPRequestInput<SimpleNotificationModel.GetTopicAttributesInput>(encodable: input)
+        let wrappedInput = GetTopicAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -938,7 +954,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListEndpointsByPlatformApplicationOperationHTTPRequestInput<SimpleNotificationModel.ListEndpointsByPlatformApplicationInput>(encodable: input)
+        let wrappedInput = ListEndpointsByPlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -969,7 +985,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListEndpointsByPlatformApplicationOperationHTTPRequestInput<SimpleNotificationModel.ListEndpointsByPlatformApplicationInput>(encodable: input)
+        let wrappedInput = ListEndpointsByPlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1000,7 +1016,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListPhoneNumbersOptedOutOperationHTTPRequestInput<SimpleNotificationModel.ListPhoneNumbersOptedOutInput>(encodable: input)
+        let wrappedInput = ListPhoneNumbersOptedOutOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1031,7 +1047,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListPhoneNumbersOptedOutOperationHTTPRequestInput<SimpleNotificationModel.ListPhoneNumbersOptedOutInput>(encodable: input)
+        let wrappedInput = ListPhoneNumbersOptedOutOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1062,7 +1078,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListPlatformApplicationsOperationHTTPRequestInput<SimpleNotificationModel.ListPlatformApplicationsInput>(encodable: input)
+        let wrappedInput = ListPlatformApplicationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1093,7 +1109,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListPlatformApplicationsOperationHTTPRequestInput<SimpleNotificationModel.ListPlatformApplicationsInput>(encodable: input)
+        let wrappedInput = ListPlatformApplicationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1124,7 +1140,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListSubscriptionsOperationHTTPRequestInput<SimpleNotificationModel.ListSubscriptionsInput>(encodable: input)
+        let wrappedInput = ListSubscriptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1155,7 +1171,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListSubscriptionsOperationHTTPRequestInput<SimpleNotificationModel.ListSubscriptionsInput>(encodable: input)
+        let wrappedInput = ListSubscriptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1186,7 +1202,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListSubscriptionsByTopicOperationHTTPRequestInput<SimpleNotificationModel.ListSubscriptionsByTopicInput>(encodable: input)
+        let wrappedInput = ListSubscriptionsByTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1217,7 +1233,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListSubscriptionsByTopicOperationHTTPRequestInput<SimpleNotificationModel.ListSubscriptionsByTopicInput>(encodable: input)
+        let wrappedInput = ListSubscriptionsByTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1248,7 +1264,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListTopicsOperationHTTPRequestInput<SimpleNotificationModel.ListTopicsInput>(encodable: input)
+        let wrappedInput = ListTopicsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1279,7 +1295,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = ListTopicsOperationHTTPRequestInput<SimpleNotificationModel.ListTopicsInput>(encodable: input)
+        let wrappedInput = ListTopicsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1310,7 +1326,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = OptInPhoneNumberOperationHTTPRequestInput<SimpleNotificationModel.OptInPhoneNumberInput>(encodable: input)
+        let wrappedInput = OptInPhoneNumberOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1341,7 +1357,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = OptInPhoneNumberOperationHTTPRequestInput<SimpleNotificationModel.OptInPhoneNumberInput>(encodable: input)
+        let wrappedInput = OptInPhoneNumberOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1372,7 +1388,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PublishOperationHTTPRequestInput<SimpleNotificationModel.PublishInput>(encodable: input)
+        let wrappedInput = PublishOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1403,7 +1419,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = PublishOperationHTTPRequestInput<SimpleNotificationModel.PublishInput>(encodable: input)
+        let wrappedInput = PublishOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1426,14 +1442,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func removePermissionAsync(input: SimpleNotificationModel.RemovePermissionInput, completion: @escaping (Error?) -> ()) throws {
+    public func removePermissionAsync(input: SimpleNotificationModel.RemovePermissionInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = RemovePermissionOperationHTTPRequestInput<SimpleNotificationModel.RemovePermissionInput>(encodable: input)
+        let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1462,7 +1478,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = RemovePermissionOperationHTTPRequestInput<SimpleNotificationModel.RemovePermissionInput>(encodable: input)
+        let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1485,14 +1501,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setEndpointAttributesAsync(input: SimpleNotificationModel.SetEndpointAttributesInput, completion: @escaping (Error?) -> ()) throws {
+    public func setEndpointAttributesAsync(input: SimpleNotificationModel.SetEndpointAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = SetEndpointAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetEndpointAttributesInput>(encodable: input)
+        let wrappedInput = SetEndpointAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1521,7 +1537,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SetEndpointAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetEndpointAttributesInput>(encodable: input)
+        let wrappedInput = SetEndpointAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1544,14 +1560,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setPlatformApplicationAttributesAsync(input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, completion: @escaping (Error?) -> ()) throws {
+    public func setPlatformApplicationAttributesAsync(input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = SetPlatformApplicationAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetPlatformApplicationAttributesInput>(encodable: input)
+        let wrappedInput = SetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1580,7 +1596,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SetPlatformApplicationAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetPlatformApplicationAttributesInput>(encodable: input)
+        let wrappedInput = SetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1611,7 +1627,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SetSMSAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetSMSAttributesInput>(encodable: input)
+        let wrappedInput = SetSMSAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1642,7 +1658,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SetSMSAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetSMSAttributesInput>(encodable: input)
+        let wrappedInput = SetSMSAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1665,14 +1681,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    public func setSubscriptionAttributesAsync(input: SimpleNotificationModel.SetSubscriptionAttributesInput, completion: @escaping (Error?) -> ()) throws {
+    public func setSubscriptionAttributesAsync(input: SimpleNotificationModel.SetSubscriptionAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = SetSubscriptionAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetSubscriptionAttributesInput>(encodable: input)
+        let wrappedInput = SetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1701,7 +1717,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SetSubscriptionAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetSubscriptionAttributesInput>(encodable: input)
+        let wrappedInput = SetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1724,14 +1740,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func setTopicAttributesAsync(input: SimpleNotificationModel.SetTopicAttributesInput, completion: @escaping (Error?) -> ()) throws {
+    public func setTopicAttributesAsync(input: SimpleNotificationModel.SetTopicAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = SetTopicAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetTopicAttributesInput>(encodable: input)
+        let wrappedInput = SetTopicAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1760,7 +1776,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SetTopicAttributesOperationHTTPRequestInput<SimpleNotificationModel.SetTopicAttributesInput>(encodable: input)
+        let wrappedInput = SetTopicAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1791,7 +1807,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SubscribeOperationHTTPRequestInput<SimpleNotificationModel.SubscribeInput>(encodable: input)
+        let wrappedInput = SubscribeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1822,7 +1838,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = SubscribeOperationHTTPRequestInput<SimpleNotificationModel.SubscribeInput>(encodable: input)
+        let wrappedInput = SubscribeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1845,14 +1861,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func unsubscribeAsync(input: SimpleNotificationModel.UnsubscribeInput, completion: @escaping (Error?) -> ()) throws {
+    public func unsubscribeAsync(input: SimpleNotificationModel.UnsubscribeInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let wrappedInput = UnsubscribeOperationHTTPRequestInput<SimpleNotificationModel.UnsubscribeInput>(encodable: input)
+        let wrappedInput = UnsubscribeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -1881,7 +1897,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = UnsubscribeOperationHTTPRequestInput<SimpleNotificationModel.UnsubscribeInput>(encodable: input)
+        let wrappedInput = UnsubscribeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,

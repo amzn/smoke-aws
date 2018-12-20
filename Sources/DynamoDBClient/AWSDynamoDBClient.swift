@@ -64,6 +64,22 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+    }
+
+    /**
      Invokes the BatchGetItem operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -80,7 +96,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.batchGetItem.rawValue,
                     target: target)
-        
+
         let requestInput = BatchGetItemOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -107,7 +123,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.batchGetItem.rawValue,
                     target: target)
-        
+
         let requestInput = BatchGetItemOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -134,7 +150,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.batchWriteItem.rawValue,
                     target: target)
-        
+
         let requestInput = BatchWriteItemOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -161,7 +177,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.batchWriteItem.rawValue,
                     target: target)
-        
+
         let requestInput = BatchWriteItemOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -188,7 +204,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.createBackup.rawValue,
                     target: target)
-        
+
         let requestInput = CreateBackupOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -215,7 +231,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.createBackup.rawValue,
                     target: target)
-        
+
         let requestInput = CreateBackupOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -242,7 +258,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.createGlobalTable.rawValue,
                     target: target)
-        
+
         let requestInput = CreateGlobalTableOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -269,7 +285,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.createGlobalTable.rawValue,
                     target: target)
-        
+
         let requestInput = CreateGlobalTableOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -296,7 +312,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.createTable.rawValue,
                     target: target)
-        
+
         let requestInput = CreateTableOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -323,7 +339,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.createTable.rawValue,
                     target: target)
-        
+
         let requestInput = CreateTableOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -350,7 +366,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.deleteBackup.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteBackupOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -377,7 +393,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.deleteBackup.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteBackupOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -404,7 +420,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.deleteItem.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteItemOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -431,7 +447,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.deleteItem.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteItemOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -458,7 +474,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.deleteTable.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteTableOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -485,7 +501,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.deleteTable.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteTableOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -512,7 +528,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeBackup.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeBackupOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -539,7 +555,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeBackup.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeBackupOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -566,7 +582,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeContinuousBackups.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -593,7 +609,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeContinuousBackups.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -619,7 +635,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeEndpoints.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeEndpointsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -645,7 +661,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeEndpoints.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeEndpointsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -672,7 +688,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeGlobalTable.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeGlobalTableOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -699,7 +715,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeGlobalTable.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeGlobalTableOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -726,7 +742,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeGlobalTableSettings.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -753,7 +769,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeGlobalTableSettings.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -780,7 +796,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeLimits.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeLimitsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -807,7 +823,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeLimits.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeLimitsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -834,7 +850,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeTable.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeTableOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -861,7 +877,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeTable.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeTableOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -888,7 +904,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeTimeToLive.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeTimeToLiveOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -915,7 +931,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.describeTimeToLive.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeTimeToLiveOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -942,7 +958,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.getItem.rawValue,
                     target: target)
-        
+
         let requestInput = GetItemOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -969,7 +985,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.getItem.rawValue,
                     target: target)
-        
+
         let requestInput = GetItemOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -996,7 +1012,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.listBackups.rawValue,
                     target: target)
-        
+
         let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1023,7 +1039,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.listBackups.rawValue,
                     target: target)
-        
+
         let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1050,7 +1066,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.listGlobalTables.rawValue,
                     target: target)
-        
+
         let requestInput = ListGlobalTablesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1077,7 +1093,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.listGlobalTables.rawValue,
                     target: target)
-        
+
         let requestInput = ListGlobalTablesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1104,7 +1120,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.listTables.rawValue,
                     target: target)
-        
+
         let requestInput = ListTablesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1131,7 +1147,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.listTables.rawValue,
                     target: target)
-        
+
         let requestInput = ListTablesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1158,7 +1174,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.listTagsOfResource.rawValue,
                     target: target)
-        
+
         let requestInput = ListTagsOfResourceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1185,7 +1201,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.listTagsOfResource.rawValue,
                     target: target)
-        
+
         let requestInput = ListTagsOfResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1212,7 +1228,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.putItem.rawValue,
                     target: target)
-        
+
         let requestInput = PutItemOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1239,7 +1255,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.putItem.rawValue,
                     target: target)
-        
+
         let requestInput = PutItemOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1266,7 +1282,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.query.rawValue,
                     target: target)
-        
+
         let requestInput = QueryOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1293,7 +1309,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.query.rawValue,
                     target: target)
-        
+
         let requestInput = QueryOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1320,7 +1336,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.restoreTableFromBackup.rawValue,
                     target: target)
-        
+
         let requestInput = RestoreTableFromBackupOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1347,7 +1363,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.restoreTableFromBackup.rawValue,
                     target: target)
-        
+
         let requestInput = RestoreTableFromBackupOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1374,7 +1390,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.restoreTableToPointInTime.rawValue,
                     target: target)
-        
+
         let requestInput = RestoreTableToPointInTimeOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1401,7 +1417,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.restoreTableToPointInTime.rawValue,
                     target: target)
-        
+
         let requestInput = RestoreTableToPointInTimeOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1428,7 +1444,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.scan.rawValue,
                     target: target)
-        
+
         let requestInput = ScanOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1455,7 +1471,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.scan.rawValue,
                     target: target)
-        
+
         let requestInput = ScanOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1474,14 +1490,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func tagResourceAsync(input: DynamoDBModel.TagResourceInput, completion: @escaping (Error?) -> ()) throws {
+    public func tagResourceAsync(input: DynamoDBModel.TagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: DynamoDBModelOperations.tagResource.rawValue,
                     target: target)
-        
+
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1506,7 +1522,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.tagResource.rawValue,
                     target: target)
-        
+
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1525,14 +1541,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func untagResourceAsync(input: DynamoDBModel.UntagResourceInput, completion: @escaping (Error?) -> ()) throws {
+    public func untagResourceAsync(input: DynamoDBModel.UntagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     operation: DynamoDBModelOperations.untagResource.rawValue,
                     target: target)
-        
+
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithoutOutput(
@@ -1557,7 +1573,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.untagResource.rawValue,
                     target: target)
-        
+
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncWithoutOutput(
@@ -1584,7 +1600,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateContinuousBackups.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1611,7 +1627,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateContinuousBackups.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1638,7 +1654,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateGlobalTable.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateGlobalTableOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1665,7 +1681,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateGlobalTable.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateGlobalTableOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1692,7 +1708,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateGlobalTableSettings.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1719,7 +1735,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateGlobalTableSettings.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1746,7 +1762,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateItem.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateItemOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1773,7 +1789,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateItem.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateItemOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1800,7 +1816,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateTable.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1827,7 +1843,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateTable.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1854,7 +1870,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateTimeToLive.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateTimeToLiveOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1881,7 +1897,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     service: service,
                     operation: DynamoDBModelOperations.updateTimeToLive.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateTimeToLiveOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(

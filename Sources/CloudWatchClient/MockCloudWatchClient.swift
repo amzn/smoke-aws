@@ -146,7 +146,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: resourceNotFound.
      */
-    public func deleteAlarmsAsync(input: CloudWatchModel.DeleteAlarmsInput, completion: @escaping (Error?) -> ()) throws {
+    public func deleteAlarmsAsync(input: CloudWatchModel.DeleteAlarmsInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteAlarmsAsyncOverride = deleteAlarmsAsyncOverride {
             return try deleteAlarmsAsyncOverride(input, completion)
         }
@@ -322,7 +322,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableAlarmActionsAsync(input: CloudWatchModel.DisableAlarmActionsInput, completion: @escaping (Error?) -> ()) throws {
+    public func disableAlarmActionsAsync(input: CloudWatchModel.DisableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let disableAlarmActionsAsyncOverride = disableAlarmActionsAsyncOverride {
             return try disableAlarmActionsAsyncOverride(input, completion)
         }
@@ -351,7 +351,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableAlarmActionsAsync(input: CloudWatchModel.EnableAlarmActionsInput, completion: @escaping (Error?) -> ()) throws {
+    public func enableAlarmActionsAsync(input: CloudWatchModel.EnableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let enableAlarmActionsAsyncOverride = enableAlarmActionsAsyncOverride {
             return try enableAlarmActionsAsyncOverride(input, completion)
         }
@@ -638,7 +638,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: limitExceeded.
      */
-    public func putMetricAlarmAsync(input: CloudWatchModel.PutMetricAlarmInput, completion: @escaping (Error?) -> ()) throws {
+    public func putMetricAlarmAsync(input: CloudWatchModel.PutMetricAlarmInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let putMetricAlarmAsyncOverride = putMetricAlarmAsyncOverride {
             return try putMetricAlarmAsyncOverride(input, completion)
         }
@@ -669,7 +669,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataAsync(input: CloudWatchModel.PutMetricDataInput, completion: @escaping (Error?) -> ()) throws {
+    public func putMetricDataAsync(input: CloudWatchModel.PutMetricDataInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let putMetricDataAsyncOverride = putMetricDataAsyncOverride {
             return try putMetricDataAsyncOverride(input, completion)
         }
@@ -700,7 +700,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateAsync(input: CloudWatchModel.SetAlarmStateInput, completion: @escaping (Error?) -> ()) throws {
+    public func setAlarmStateAsync(input: CloudWatchModel.SetAlarmStateInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let setAlarmStateAsyncOverride = setAlarmStateAsyncOverride {
             return try setAlarmStateAsyncOverride(input, completion)
         }

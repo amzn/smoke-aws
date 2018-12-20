@@ -39,7 +39,23 @@ public struct S3Object: S3ObjectProtocol {
                     awsRegion: .us_east_1,
                     service: "s3",
                     target: nil,
-                    signCredentialsSecurityToken: true)
+                    signAllHeaders: true)
+    }
+    
+    private struct BodyHTTPRequestOutput<OutputType: Decodable>: HTTPResponseOutputProtocol {
+        typealias BodyType = OutputType
+        typealias HeadersType = OutputType
+        
+        let body: OutputType
+        
+        static func compose(bodyDecodableProvider: () throws -> OutputType,
+                            headersDecodableProvider: () throws -> OutputType) throws
+            -> BodyHTTPRequestOutput<OutputType> {
+                let body = try bodyDecodableProvider()
+                
+                return BodyHTTPRequestOutput(body: body)
+        }
+        
     }
 
     /**
@@ -47,11 +63,20 @@ public struct S3Object: S3ObjectProtocol {
      completion handler.
      */
     public func getAsync<OutputType: Codable>(objectPath: String, completion: @escaping (HTTPResult<OutputType>) -> ()) throws {
+        func innerCompletion(result: HTTPResult<BodyHTTPRequestOutput<OutputType>>) {
+            switch result {
+            case .response(let result):
+                completion(.response(result.body))
+            case .error(let error):
+                completion(.error(error))
+            }
+        }
+        
         _ = try httpClient.executeAsyncWithOutput(
             endpointPath: objectPath,
             httpMethod: .GET,
             input: NoHTTPRequestInput(),
-            completion: completion,
+            completion: innerCompletion,
             handlerDelegate: handlerDelegate)
     }
 
@@ -59,10 +84,13 @@ public struct S3Object: S3ObjectProtocol {
      Gets an object from the S3 bucket, returning the decoded response.
      */
     public func getSync<OutputType: Codable>(objectPath: String) throws -> OutputType {
-        return try httpClient.executeSyncWithOutput(
-            endpointPath: objectPath,
-            httpMethod: .GET,
-            input: NoHTTPRequestInput(),
-            handlerDelegate: handlerDelegate)
+        let responseOutput: BodyHTTPRequestOutput<OutputType> =
+            try httpClient.executeSyncWithOutput(
+                endpointPath: objectPath,
+                httpMethod: .GET,
+                input: NoHTTPRequestInput(),
+                handlerDelegate: handlerDelegate)
+        
+        return responseOutput.body
     }
 }

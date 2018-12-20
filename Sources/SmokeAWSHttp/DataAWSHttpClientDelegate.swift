@@ -11,7 +11,7 @@
 // express or implied. See the License for the specific language governing
 // permissions and limitations under the License.
 //
-//  JSONAWSHttpClientDelegate.swift
+//  DataAWSHttpClientDelegate.swift
 //  SmokeAWSHttp
 //
 
@@ -24,12 +24,16 @@ import HTTPHeadersCoding
 import HTTPPathCoding
 import LoggerAPI
 
+enum DataAWSHttpClientDelegateError: Error {
+    case invalidPayloadNotData
+}
+
 /**
- Struct conforming to the AWSHttpClientDelegate protocol that encodes and decode the request
- and response body to and from JSON. The generic ErrorType is used to generate errors based
- on the decoding a JSON error payload from the response body.
+ Struct conforming to the AWSHttpClientDelegate protocol passes the body directly to
+ and from the request and response. The generic ErrorType is used to generate errors based
+ on the decoding a JSON error payload from the response body. 
  */
-public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
+public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
     private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
     
     public init(inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
@@ -83,7 +87,10 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
             
             let body: Data
             if let bodyEncodable = input.bodyEncodable {
-                body = try JSONEncoder.awsCompatibleEncoder.encode(bodyEncodable)
+                guard let bodyData = bodyEncodable as? Data else {
+                    throw DataAWSHttpClientDelegateError.invalidPayloadNotData
+                }
+                body = bodyData
             } else {
                 body = Data()
             }
@@ -125,7 +132,7 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
                                   headers: [(String, String)]) throws -> OutputType
     where OutputType: HTTPResponseOutputProtocol {
         // Convert output to a debug string only if debug logging is enabled
-        Log.debug("Attempting to decode result data into JSON: \(output.debugString)")
+        Log.debug("Attempting to decode result data: \(output.debugString)")
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
             // we are expecting a response body
@@ -133,8 +140,11 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
                 throw HTTPError.badResponse("Unexpected empty response.")
             }
             
-            return try JSONDecoder.awsCompatibleDecoder.decode(OutputType.BodyType.self,
-                                                               from: responseBody)
+            guard let bodyEncodable = responseBody as? OutputType.BodyType else {
+                throw DataAWSHttpClientDelegateError.invalidPayloadNotData
+            }
+            
+            return bodyEncodable
         }
         
         let mappedHeaders: [(String, String?)] = headers.map { ($0.0, $0.1) }

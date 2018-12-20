@@ -64,6 +64,22 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
     }
 
     /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+    }
+
+    /**
      Invokes the CreateActivity operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -80,7 +96,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.createActivity.rawValue,
                     target: target)
-        
+
         let requestInput = CreateActivityOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -107,7 +123,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.createActivity.rawValue,
                     target: target)
-        
+
         let requestInput = CreateActivityOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -134,7 +150,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.createStateMachine.rawValue,
                     target: target)
-        
+
         let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -161,7 +177,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.createStateMachine.rawValue,
                     target: target)
-        
+
         let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -188,7 +204,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.deleteActivity.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteActivityOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -215,7 +231,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.deleteActivity.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteActivityOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -242,7 +258,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.deleteStateMachine.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -269,7 +285,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.deleteStateMachine.rawValue,
                     target: target)
-        
+
         let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -296,7 +312,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.describeActivity.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeActivityOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -323,7 +339,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.describeActivity.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeActivityOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -350,7 +366,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.describeExecution.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -377,7 +393,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.describeExecution.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -404,7 +420,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.describeStateMachine.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -431,7 +447,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.describeStateMachine.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -458,7 +474,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.describeStateMachineForExecution.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeStateMachineForExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -485,7 +501,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.describeStateMachineForExecution.rawValue,
                     target: target)
-        
+
         let requestInput = DescribeStateMachineForExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -512,7 +528,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.getActivityTask.rawValue,
                     target: target)
-        
+
         let requestInput = GetActivityTaskOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -539,7 +555,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.getActivityTask.rawValue,
                     target: target)
-        
+
         let requestInput = GetActivityTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -566,7 +582,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.getExecutionHistory.rawValue,
                     target: target)
-        
+
         let requestInput = GetExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -593,7 +609,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.getExecutionHistory.rawValue,
                     target: target)
-        
+
         let requestInput = GetExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -620,7 +636,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.listActivities.rawValue,
                     target: target)
-        
+
         let requestInput = ListActivitiesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -647,7 +663,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.listActivities.rawValue,
                     target: target)
-        
+
         let requestInput = ListActivitiesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -674,7 +690,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.listExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = ListExecutionsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -701,7 +717,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.listExecutions.rawValue,
                     target: target)
-        
+
         let requestInput = ListExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -728,7 +744,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.listStateMachines.rawValue,
                     target: target)
-        
+
         let requestInput = ListStateMachinesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -755,7 +771,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.listStateMachines.rawValue,
                     target: target)
-        
+
         let requestInput = ListStateMachinesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -782,7 +798,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.sendTaskFailure.rawValue,
                     target: target)
-        
+
         let requestInput = SendTaskFailureOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -809,7 +825,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.sendTaskFailure.rawValue,
                     target: target)
-        
+
         let requestInput = SendTaskFailureOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -836,7 +852,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.sendTaskHeartbeat.rawValue,
                     target: target)
-        
+
         let requestInput = SendTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -863,7 +879,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.sendTaskHeartbeat.rawValue,
                     target: target)
-        
+
         let requestInput = SendTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -890,7 +906,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.sendTaskSuccess.rawValue,
                     target: target)
-        
+
         let requestInput = SendTaskSuccessOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -917,7 +933,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.sendTaskSuccess.rawValue,
                     target: target)
-        
+
         let requestInput = SendTaskSuccessOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -944,7 +960,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.startExecution.rawValue,
                     target: target)
-        
+
         let requestInput = StartExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -971,7 +987,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.startExecution.rawValue,
                     target: target)
-        
+
         let requestInput = StartExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -998,7 +1014,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.stopExecution.rawValue,
                     target: target)
-        
+
         let requestInput = StopExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1025,7 +1041,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.stopExecution.rawValue,
                     target: target)
-        
+
         let requestInput = StopExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(
@@ -1052,7 +1068,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.updateStateMachine.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncWithOutput(
@@ -1079,7 +1095,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     service: service,
                     operation: StepFunctionsModelOperations.updateStateMachine.rawValue,
                     target: target)
-        
+
         let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncWithOutput(

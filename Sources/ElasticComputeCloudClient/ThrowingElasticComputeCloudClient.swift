@@ -1986,7 +1986,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Error?) -> ()) throws {
+    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let assignPrivateIpAddressesAsyncOverride = assignPrivateIpAddressesAsyncOverride {
             return try assignPrivateIpAddressesAsyncOverride(input, completion)
         }
@@ -2049,7 +2049,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func associateDhcpOptionsAsync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, completion: @escaping (Error?) -> ()) throws {
+    public func associateDhcpOptionsAsync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let associateDhcpOptionsAsyncOverride = associateDhcpOptionsAsyncOverride {
             return try associateDhcpOptionsAsyncOverride(input, completion)
         }
@@ -2244,7 +2244,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func attachInternetGatewayAsync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func attachInternetGatewayAsync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let attachInternetGatewayAsyncOverride = attachInternetGatewayAsyncOverride {
             return try attachInternetGatewayAsyncOverride(input, completion)
         }
@@ -2373,7 +2373,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func authorizeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func authorizeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let authorizeSecurityGroupEgressAsyncOverride = authorizeSecurityGroupEgressAsyncOverride {
             return try authorizeSecurityGroupEgressAsyncOverride(input, completion)
         }
@@ -2403,7 +2403,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func authorizeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func authorizeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let authorizeSecurityGroupIngressAsyncOverride = authorizeSecurityGroupIngressAsyncOverride {
             return try authorizeSecurityGroupIngressAsyncOverride(input, completion)
         }
@@ -2532,7 +2532,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func cancelConversionTaskAsync(input: ElasticComputeCloudModel.CancelConversionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func cancelConversionTaskAsync(input: ElasticComputeCloudModel.CancelConversionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let cancelConversionTaskAsyncOverride = cancelConversionTaskAsyncOverride {
             return try cancelConversionTaskAsyncOverride(input, completion)
         }
@@ -2562,7 +2562,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func cancelExportTaskAsync(input: ElasticComputeCloudModel.CancelExportTaskRequest, completion: @escaping (Error?) -> ()) throws {
+    public func cancelExportTaskAsync(input: ElasticComputeCloudModel.CancelExportTaskRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let cancelExportTaskAsyncOverride = cancelExportTaskAsyncOverride {
             return try cancelExportTaskAsyncOverride(input, completion)
         }
@@ -3417,7 +3417,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createNetworkAclEntryAsync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws {
+    public func createNetworkAclEntryAsync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let createNetworkAclEntryAsyncOverride = createNetworkAclEntryAsyncOverride {
             return try createNetworkAclEntryAsyncOverride(input, completion)
         }
@@ -3513,7 +3513,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (Error?) -> ()) throws {
+    public func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let createPlacementGroupAsyncOverride = createPlacementGroupAsyncOverride {
             return try createPlacementGroupAsyncOverride(input, completion)
         }
@@ -3774,7 +3774,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createTagsAsync(input: ElasticComputeCloudModel.CreateTagsRequest, completion: @escaping (Error?) -> ()) throws {
+    public func createTagsAsync(input: ElasticComputeCloudModel.CreateTagsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let createTagsAsyncOverride = createTagsAsyncOverride {
             return try createTagsAsyncOverride(input, completion)
         }
@@ -4035,7 +4035,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createVpnConnectionRouteAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, completion: @escaping (Error?) -> ()) throws {
+    public func createVpnConnectionRouteAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let createVpnConnectionRouteAsyncOverride = createVpnConnectionRouteAsyncOverride {
             return try createVpnConnectionRouteAsyncOverride(input, completion)
         }
@@ -4098,7 +4098,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteCustomerGatewayAsync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteCustomerGatewayAsync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteCustomerGatewayAsyncOverride = deleteCustomerGatewayAsyncOverride {
             return try deleteCustomerGatewayAsyncOverride(input, completion)
         }
@@ -4128,7 +4128,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteDhcpOptionsAsync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteDhcpOptionsAsync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteDhcpOptionsAsyncOverride = deleteDhcpOptionsAsyncOverride {
             return try deleteDhcpOptionsAsyncOverride(input, completion)
         }
@@ -4290,7 +4290,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteInternetGatewayAsyncOverride = deleteInternetGatewayAsyncOverride {
             return try deleteInternetGatewayAsyncOverride(input, completion)
         }
@@ -4320,7 +4320,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteKeyPairAsync(input: ElasticComputeCloudModel.DeleteKeyPairRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteKeyPairAsync(input: ElasticComputeCloudModel.DeleteKeyPairRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteKeyPairAsyncOverride = deleteKeyPairAsyncOverride {
             return try deleteKeyPairAsyncOverride(input, completion)
         }
@@ -4449,7 +4449,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkAclAsync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteNetworkAclAsync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteNetworkAclAsyncOverride = deleteNetworkAclAsyncOverride {
             return try deleteNetworkAclAsyncOverride(input, completion)
         }
@@ -4479,7 +4479,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkAclEntryAsync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteNetworkAclEntryAsync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteNetworkAclEntryAsyncOverride = deleteNetworkAclEntryAsyncOverride {
             return try deleteNetworkAclEntryAsyncOverride(input, completion)
         }
@@ -4509,7 +4509,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkInterfaceAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteNetworkInterfaceAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteNetworkInterfaceAsyncOverride = deleteNetworkInterfaceAsyncOverride {
             return try deleteNetworkInterfaceAsyncOverride(input, completion)
         }
@@ -4572,7 +4572,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deletePlacementGroupAsync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deletePlacementGroupAsync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deletePlacementGroupAsyncOverride = deletePlacementGroupAsyncOverride {
             return try deletePlacementGroupAsyncOverride(input, completion)
         }
@@ -4602,7 +4602,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteRouteAsync(input: ElasticComputeCloudModel.DeleteRouteRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteRouteAsync(input: ElasticComputeCloudModel.DeleteRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteRouteAsyncOverride = deleteRouteAsyncOverride {
             return try deleteRouteAsyncOverride(input, completion)
         }
@@ -4632,7 +4632,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteRouteTableAsync(input: ElasticComputeCloudModel.DeleteRouteTableRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteRouteTableAsync(input: ElasticComputeCloudModel.DeleteRouteTableRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteRouteTableAsyncOverride = deleteRouteTableAsyncOverride {
             return try deleteRouteTableAsyncOverride(input, completion)
         }
@@ -4662,7 +4662,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSecurityGroupAsync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteSecurityGroupAsync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteSecurityGroupAsyncOverride = deleteSecurityGroupAsyncOverride {
             return try deleteSecurityGroupAsyncOverride(input, completion)
         }
@@ -4692,7 +4692,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSnapshotAsync(input: ElasticComputeCloudModel.DeleteSnapshotRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteSnapshotAsync(input: ElasticComputeCloudModel.DeleteSnapshotRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteSnapshotAsyncOverride = deleteSnapshotAsyncOverride {
             return try deleteSnapshotAsyncOverride(input, completion)
         }
@@ -4722,7 +4722,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteSpotDatafeedSubscriptionAsyncOverride = deleteSpotDatafeedSubscriptionAsyncOverride {
             return try deleteSpotDatafeedSubscriptionAsyncOverride(input, completion)
         }
@@ -4752,7 +4752,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSubnetAsync(input: ElasticComputeCloudModel.DeleteSubnetRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteSubnetAsync(input: ElasticComputeCloudModel.DeleteSubnetRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteSubnetAsyncOverride = deleteSubnetAsyncOverride {
             return try deleteSubnetAsyncOverride(input, completion)
         }
@@ -4782,7 +4782,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteTagsAsync(input: ElasticComputeCloudModel.DeleteTagsRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteTagsAsync(input: ElasticComputeCloudModel.DeleteTagsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteTagsAsyncOverride = deleteTagsAsyncOverride {
             return try deleteTagsAsyncOverride(input, completion)
         }
@@ -4812,7 +4812,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVolumeAsync(input: ElasticComputeCloudModel.DeleteVolumeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVolumeAsync(input: ElasticComputeCloudModel.DeleteVolumeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVolumeAsyncOverride = deleteVolumeAsyncOverride {
             return try deleteVolumeAsyncOverride(input, completion)
         }
@@ -4842,7 +4842,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpcAsync(input: ElasticComputeCloudModel.DeleteVpcRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVpcAsync(input: ElasticComputeCloudModel.DeleteVpcRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVpcAsyncOverride = deleteVpcAsyncOverride {
             return try deleteVpcAsyncOverride(input, completion)
         }
@@ -5004,7 +5004,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnConnectionAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVpnConnectionAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVpnConnectionAsyncOverride = deleteVpnConnectionAsyncOverride {
             return try deleteVpnConnectionAsyncOverride(input, completion)
         }
@@ -5034,7 +5034,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnConnectionRouteAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVpnConnectionRouteAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVpnConnectionRouteAsyncOverride = deleteVpnConnectionRouteAsyncOverride {
             return try deleteVpnConnectionRouteAsyncOverride(input, completion)
         }
@@ -5064,7 +5064,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnGatewayAsync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteVpnGatewayAsync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVpnGatewayAsyncOverride = deleteVpnGatewayAsyncOverride {
             return try deleteVpnGatewayAsyncOverride(input, completion)
         }
@@ -5127,7 +5127,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deregisterImageAsync(input: ElasticComputeCloudModel.DeregisterImageRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deregisterImageAsync(input: ElasticComputeCloudModel.DeregisterImageRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deregisterImageAsyncOverride = deregisterImageAsyncOverride {
             return try deregisterImageAsyncOverride(input, completion)
         }
@@ -8028,7 +8028,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachInternetGatewayAsync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func detachInternetGatewayAsync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let detachInternetGatewayAsyncOverride = detachInternetGatewayAsyncOverride {
             return try detachInternetGatewayAsyncOverride(input, completion)
         }
@@ -8058,7 +8058,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachNetworkInterfaceAsync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, completion: @escaping (Error?) -> ()) throws {
+    public func detachNetworkInterfaceAsync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let detachNetworkInterfaceAsyncOverride = detachNetworkInterfaceAsyncOverride {
             return try detachNetworkInterfaceAsyncOverride(input, completion)
         }
@@ -8121,7 +8121,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachVpnGatewayAsync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest, completion: @escaping (Error?) -> ()) throws {
+    public func detachVpnGatewayAsync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let detachVpnGatewayAsyncOverride = detachVpnGatewayAsyncOverride {
             return try detachVpnGatewayAsyncOverride(input, completion)
         }
@@ -8151,7 +8151,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, completion: @escaping (Error?) -> ()) throws {
+    public func disableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let disableVgwRoutePropagationAsyncOverride = disableVgwRoutePropagationAsyncOverride {
             return try disableVgwRoutePropagationAsyncOverride(input, completion)
         }
@@ -8247,7 +8247,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disassociateAddressAsync(input: ElasticComputeCloudModel.DisassociateAddressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func disassociateAddressAsync(input: ElasticComputeCloudModel.DisassociateAddressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let disassociateAddressAsyncOverride = disassociateAddressAsyncOverride {
             return try disassociateAddressAsyncOverride(input, completion)
         }
@@ -8310,7 +8310,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disassociateRouteTableAsync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest, completion: @escaping (Error?) -> ()) throws {
+    public func disassociateRouteTableAsync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let disassociateRouteTableAsyncOverride = disassociateRouteTableAsyncOverride {
             return try disassociateRouteTableAsyncOverride(input, completion)
         }
@@ -8406,7 +8406,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, completion: @escaping (Error?) -> ()) throws {
+    public func enableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let enableVgwRoutePropagationAsyncOverride = enableVgwRoutePropagationAsyncOverride {
             return try enableVgwRoutePropagationAsyncOverride(input, completion)
         }
@@ -8436,7 +8436,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableVolumeIOAsync(input: ElasticComputeCloudModel.EnableVolumeIORequest, completion: @escaping (Error?) -> ()) throws {
+    public func enableVolumeIOAsync(input: ElasticComputeCloudModel.EnableVolumeIORequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let enableVolumeIOAsyncOverride = enableVolumeIOAsyncOverride {
             return try enableVolumeIOAsyncOverride(input, completion)
         }
@@ -9027,7 +9027,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdFormatRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdFormatRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyIdFormatAsyncOverride = modifyIdFormatAsyncOverride {
             return try modifyIdFormatAsyncOverride(input, completion)
         }
@@ -9057,7 +9057,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyIdentityIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyIdentityIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyIdentityIdFormatAsyncOverride = modifyIdentityIdFormatAsyncOverride {
             return try modifyIdentityIdFormatAsyncOverride(input, completion)
         }
@@ -9087,7 +9087,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyImageAttributeAsync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyImageAttributeAsync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyImageAttributeAsyncOverride = modifyImageAttributeAsyncOverride {
             return try modifyImageAttributeAsyncOverride(input, completion)
         }
@@ -9117,7 +9117,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyInstanceAttributeAsync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyInstanceAttributeAsync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyInstanceAttributeAsyncOverride = modifyInstanceAttributeAsyncOverride {
             return try modifyInstanceAttributeAsyncOverride(input, completion)
         }
@@ -9279,7 +9279,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyNetworkInterfaceAttributeAsyncOverride = modifyNetworkInterfaceAttributeAsyncOverride {
             return try modifyNetworkInterfaceAttributeAsyncOverride(input, completion)
         }
@@ -9342,7 +9342,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifySnapshotAttributeAsync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifySnapshotAttributeAsync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifySnapshotAttributeAsyncOverride = modifySnapshotAttributeAsyncOverride {
             return try modifySnapshotAttributeAsyncOverride(input, completion)
         }
@@ -9405,7 +9405,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifySubnetAttributeAsync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifySubnetAttributeAsync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifySubnetAttributeAsyncOverride = modifySubnetAttributeAsyncOverride {
             return try modifySubnetAttributeAsyncOverride(input, completion)
         }
@@ -9468,7 +9468,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyVolumeAttributeAsync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyVolumeAttributeAsync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyVolumeAttributeAsyncOverride = modifyVolumeAttributeAsyncOverride {
             return try modifyVolumeAttributeAsyncOverride(input, completion)
         }
@@ -9498,7 +9498,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyVpcAttributeAsync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func modifyVpcAttributeAsync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyVpcAttributeAsyncOverride = modifyVpcAttributeAsyncOverride {
             return try modifyVpcAttributeAsyncOverride(input, completion)
         }
@@ -9924,7 +9924,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func rebootInstancesAsync(input: ElasticComputeCloudModel.RebootInstancesRequest, completion: @escaping (Error?) -> ()) throws {
+    public func rebootInstancesAsync(input: ElasticComputeCloudModel.RebootInstancesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let rebootInstancesAsyncOverride = rebootInstancesAsyncOverride {
             return try rebootInstancesAsyncOverride(input, completion)
         }
@@ -10053,7 +10053,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func releaseAddressAsync(input: ElasticComputeCloudModel.ReleaseAddressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func releaseAddressAsync(input: ElasticComputeCloudModel.ReleaseAddressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let releaseAddressAsyncOverride = releaseAddressAsyncOverride {
             return try releaseAddressAsyncOverride(input, completion)
         }
@@ -10182,7 +10182,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func replaceNetworkAclEntryAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, completion: @escaping (Error?) -> ()) throws {
+    public func replaceNetworkAclEntryAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let replaceNetworkAclEntryAsyncOverride = replaceNetworkAclEntryAsyncOverride {
             return try replaceNetworkAclEntryAsyncOverride(input, completion)
         }
@@ -10212,7 +10212,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func replaceRouteAsync(input: ElasticComputeCloudModel.ReplaceRouteRequest, completion: @escaping (Error?) -> ()) throws {
+    public func replaceRouteAsync(input: ElasticComputeCloudModel.ReplaceRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let replaceRouteAsyncOverride = replaceRouteAsyncOverride {
             return try replaceRouteAsyncOverride(input, completion)
         }
@@ -10275,7 +10275,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func reportInstanceStatusAsync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest, completion: @escaping (Error?) -> ()) throws {
+    public func reportInstanceStatusAsync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let reportInstanceStatusAsyncOverride = reportInstanceStatusAsyncOverride {
             return try reportInstanceStatusAsyncOverride(input, completion)
         }
@@ -10404,7 +10404,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetImageAttributeAsync(input: ElasticComputeCloudModel.ResetImageAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func resetImageAttributeAsync(input: ElasticComputeCloudModel.ResetImageAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let resetImageAttributeAsyncOverride = resetImageAttributeAsyncOverride {
             return try resetImageAttributeAsyncOverride(input, completion)
         }
@@ -10434,7 +10434,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetInstanceAttributeAsync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func resetInstanceAttributeAsync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let resetInstanceAttributeAsyncOverride = resetInstanceAttributeAsyncOverride {
             return try resetInstanceAttributeAsyncOverride(input, completion)
         }
@@ -10464,7 +10464,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func resetNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let resetNetworkInterfaceAttributeAsyncOverride = resetNetworkInterfaceAttributeAsyncOverride {
             return try resetNetworkInterfaceAttributeAsyncOverride(input, completion)
         }
@@ -10494,7 +10494,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetSnapshotAttributeAsync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, completion: @escaping (Error?) -> ()) throws {
+    public func resetSnapshotAttributeAsync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let resetSnapshotAttributeAsyncOverride = resetSnapshotAttributeAsyncOverride {
             return try resetSnapshotAttributeAsyncOverride(input, completion)
         }
@@ -10557,7 +10557,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func revokeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func revokeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let revokeSecurityGroupEgressAsyncOverride = revokeSecurityGroupEgressAsyncOverride {
             return try revokeSecurityGroupEgressAsyncOverride(input, completion)
         }
@@ -10587,7 +10587,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func revokeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, completion: @escaping (Error?) -> ()) throws {
+    public func revokeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let revokeSecurityGroupIngressAsyncOverride = revokeSecurityGroupIngressAsyncOverride {
             return try revokeSecurityGroupIngressAsyncOverride(input, completion)
         }
@@ -10815,7 +10815,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func unassignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, completion: @escaping (Error?) -> ()) throws {
+    public func unassignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let unassignPrivateIpAddressesAsyncOverride = unassignPrivateIpAddressesAsyncOverride {
             return try unassignPrivateIpAddressesAsyncOverride(input, completion)
         }

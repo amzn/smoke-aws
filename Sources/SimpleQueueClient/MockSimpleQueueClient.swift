@@ -164,7 +164,7 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: overLimit.
      */
-    public func addPermissionAsync(input: SimpleQueueModel.AddPermissionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func addPermissionAsync(input: SimpleQueueModel.AddPermissionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let addPermissionAsyncOverride = addPermissionAsyncOverride {
             return try addPermissionAsyncOverride(input, completion)
         }
@@ -195,7 +195,7 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: messageNotInflight, receiptHandleIsInvalid.
      */
-    public func changeMessageVisibilityAsync(input: SimpleQueueModel.ChangeMessageVisibilityRequest, completion: @escaping (Error?) -> ()) throws {
+    public func changeMessageVisibilityAsync(input: SimpleQueueModel.ChangeMessageVisibilityRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let changeMessageVisibilityAsyncOverride = changeMessageVisibilityAsyncOverride {
             return try changeMessageVisibilityAsyncOverride(input, completion)
         }
@@ -300,7 +300,7 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidIdFormat, receiptHandleIsInvalid.
      */
-    public func deleteMessageAsync(input: SimpleQueueModel.DeleteMessageRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteMessageAsync(input: SimpleQueueModel.DeleteMessageRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteMessageAsyncOverride = deleteMessageAsyncOverride {
             return try deleteMessageAsyncOverride(input, completion)
         }
@@ -367,7 +367,7 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteQueueAsync(input: SimpleQueueModel.DeleteQueueRequest, completion: @escaping (Error?) -> ()) throws {
+    public func deleteQueueAsync(input: SimpleQueueModel.DeleteQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteQueueAsyncOverride = deleteQueueAsyncOverride {
             return try deleteQueueAsyncOverride(input, completion)
         }
@@ -578,7 +578,7 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: purgeQueueInProgress, queueDoesNotExist.
      */
-    public func purgeQueueAsync(input: SimpleQueueModel.PurgeQueueRequest, completion: @escaping (Error?) -> ()) throws {
+    public func purgeQueueAsync(input: SimpleQueueModel.PurgeQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let purgeQueueAsyncOverride = purgeQueueAsyncOverride {
             return try purgeQueueAsyncOverride(input, completion)
         }
@@ -645,7 +645,7 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func removePermissionAsync(input: SimpleQueueModel.RemovePermissionRequest, completion: @escaping (Error?) -> ()) throws {
+    public func removePermissionAsync(input: SimpleQueueModel.RemovePermissionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let removePermissionAsyncOverride = removePermissionAsyncOverride {
             return try removePermissionAsyncOverride(input, completion)
         }
@@ -749,7 +749,7 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidAttributeName.
      */
-    public func setQueueAttributesAsync(input: SimpleQueueModel.SetQueueAttributesRequest, completion: @escaping (Error?) -> ()) throws {
+    public func setQueueAttributesAsync(input: SimpleQueueModel.SetQueueAttributesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let setQueueAttributesAsyncOverride = setQueueAttributesAsyncOverride {
             return try setQueueAttributesAsyncOverride(input, completion)
         }
@@ -779,7 +779,7 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func tagQueueAsync(input: SimpleQueueModel.TagQueueRequest, completion: @escaping (Error?) -> ()) throws {
+    public func tagQueueAsync(input: SimpleQueueModel.TagQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let tagQueueAsyncOverride = tagQueueAsyncOverride {
             return try tagQueueAsyncOverride(input, completion)
         }
@@ -808,7 +808,7 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func untagQueueAsync(input: SimpleQueueModel.UntagQueueRequest, completion: @escaping (Error?) -> ()) throws {
+    public func untagQueueAsync(input: SimpleQueueModel.UntagQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
         if let untagQueueAsyncOverride = untagQueueAsyncOverride {
             return try untagQueueAsyncOverride(input, completion)
         }

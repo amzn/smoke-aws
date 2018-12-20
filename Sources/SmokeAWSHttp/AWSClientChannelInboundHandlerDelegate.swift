@@ -30,7 +30,7 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
     let operation: String?
     let target: String?
     let isV4SignRequest: Bool
-    let signCredentialsSecurityToken: Bool
+    let signAllHeaders: Bool
     
     public init (credentialsProvider: CredentialsProvider,
                  awsRegion: AWSRegion,
@@ -39,7 +39,7 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
                  target: String? = nil,
                  isV4SignRequest: Bool = true,
                  specifyContentHeadersForZeroLengthBody: Bool = true,
-                 signCredentialsSecurityToken: Bool = false) {
+                 signAllHeaders: Bool = false) {
         self.credentialsProvider = credentialsProvider
         self.awsRegion = awsRegion
         self.service = service
@@ -47,7 +47,7 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
         self.target = target
         self.isV4SignRequest = isV4SignRequest
         self.specifyContentHeadersForZeroLengthBody = specifyContentHeadersForZeroLengthBody
-        self.signCredentialsSecurityToken = signCredentialsSecurityToken
+        self.signAllHeaders = signAllHeaders
     }
     
     /// The headers that need to be signed for this request
@@ -66,17 +66,34 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
         }
 
         headersToBeSigned["x-amz-target"] = "\(target).\(operation)"
+        
         return headersToBeSigned
     }
     
     public func addClientSpecificHeaders(handler: HTTPClientChannelInboundHandler) -> [(String, String)] {
         let v4Signer = V4Signer(credentials: credentialsProvider.credentials, region: awsRegion,
                                 service: service,
-                                signCredentialsSecurityToken: signCredentialsSecurityToken)
+                                signAllHeaders: signAllHeaders)
         var headers: [(String, String)]
+        
+        let allHeadersToBeSigned: [String: String]
+        if signAllHeaders {
+            var headers = headersToBeSigned
+            handler.additionalHeaders.forEach { header in
+                headers[header.0] = header.1
+            }
+            
+            allHeadersToBeSigned = headers
+        } else {
+            allHeadersToBeSigned = headersToBeSigned
+        }
+        
         if (isV4SignRequest) {
-            headers = v4Signer.getSignedHeaders(url: handler.endpointUrl, headers: headersToBeSigned, method: handler.httpMethod.rawValue,
-                                                bodyData: handler.bodyData)
+            headers = v4Signer.getSignedHeaders(
+                url: handler.endpointUrl,
+                headers: allHeadersToBeSigned,
+                method: handler.httpMethod.rawValue,
+                bodyData: handler.bodyData)
         } else {
             headers = [("Host", handler.endpointUrl.host!)]
         }

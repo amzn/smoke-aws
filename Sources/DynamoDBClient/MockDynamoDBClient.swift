@@ -1208,7 +1208,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func tagResourceAsync(input: DynamoDBModel.TagResourceInput, completion: @escaping (Error?) -> ()) throws {
+    public func tagResourceAsync(input: DynamoDBModel.TagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
             return try tagResourceAsyncOverride(input, completion)
         }
@@ -1239,7 +1239,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func untagResourceAsync(input: DynamoDBModel.UntagResourceInput, completion: @escaping (Error?) -> ()) throws {
+    public func untagResourceAsync(input: DynamoDBModel.UntagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
             return try untagResourceAsyncOverride(input, completion)
         }

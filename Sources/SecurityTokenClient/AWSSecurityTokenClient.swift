@@ -66,6 +66,22 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
     }
 
     /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+    }
+
+    /**
      Invokes the AssumeRole operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -82,7 +98,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssumeRoleOperationHTTPRequestInput<SecurityTokenModel.AssumeRoleRequest>(encodable: input)
+        let wrappedInput = AssumeRoleOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -113,7 +129,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssumeRoleOperationHTTPRequestInput<SecurityTokenModel.AssumeRoleRequest>(encodable: input)
+        let wrappedInput = AssumeRoleOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -144,7 +160,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssumeRoleWithSAMLOperationHTTPRequestInput<SecurityTokenModel.AssumeRoleWithSAMLRequest>(encodable: input)
+        let wrappedInput = AssumeRoleWithSAMLOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -175,7 +191,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssumeRoleWithSAMLOperationHTTPRequestInput<SecurityTokenModel.AssumeRoleWithSAMLRequest>(encodable: input)
+        let wrappedInput = AssumeRoleWithSAMLOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -206,7 +222,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssumeRoleWithWebIdentityOperationHTTPRequestInput<SecurityTokenModel.AssumeRoleWithWebIdentityRequest>(encodable: input)
+        let wrappedInput = AssumeRoleWithWebIdentityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -237,7 +253,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = AssumeRoleWithWebIdentityOperationHTTPRequestInput<SecurityTokenModel.AssumeRoleWithWebIdentityRequest>(encodable: input)
+        let wrappedInput = AssumeRoleWithWebIdentityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -268,7 +284,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DecodeAuthorizationMessageOperationHTTPRequestInput<SecurityTokenModel.DecodeAuthorizationMessageRequest>(encodable: input)
+        let wrappedInput = DecodeAuthorizationMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -299,7 +315,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = DecodeAuthorizationMessageOperationHTTPRequestInput<SecurityTokenModel.DecodeAuthorizationMessageRequest>(encodable: input)
+        let wrappedInput = DecodeAuthorizationMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -329,7 +345,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetCallerIdentityOperationHTTPRequestInput<SecurityTokenModel.GetCallerIdentityRequest>(encodable: input)
+        let wrappedInput = GetCallerIdentityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -359,7 +375,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetCallerIdentityOperationHTTPRequestInput<SecurityTokenModel.GetCallerIdentityRequest>(encodable: input)
+        let wrappedInput = GetCallerIdentityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -390,7 +406,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetFederationTokenOperationHTTPRequestInput<SecurityTokenModel.GetFederationTokenRequest>(encodable: input)
+        let wrappedInput = GetFederationTokenOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -421,7 +437,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetFederationTokenOperationHTTPRequestInput<SecurityTokenModel.GetFederationTokenRequest>(encodable: input)
+        let wrappedInput = GetFederationTokenOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -452,7 +468,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetSessionTokenOperationHTTPRequestInput<SecurityTokenModel.GetSessionTokenRequest>(encodable: input)
+        let wrappedInput = GetSessionTokenOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
@@ -483,7 +499,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                     service: service,
                     target: target)
         
-        let wrappedInput = GetSessionTokenOperationHTTPRequestInput<SecurityTokenModel.GetSessionTokenRequest>(encodable: input)
+        let wrappedInput = GetSessionTokenOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,

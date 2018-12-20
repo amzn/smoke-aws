@@ -31,6 +31,12 @@ let package = Package(
             name: "ElasticContainerModel",
             targets: ["ElasticContainerModel"]),
         .library(
+            name: "S3Client",
+            targets: ["S3Client"]),
+        .library(
+            name: "S3Model",
+            targets: ["S3Model"]),
+        .library(
             name: "SecurityTokenClient",
             targets: ["SecurityTokenClient"]),
         .library(
@@ -61,9 +67,6 @@ let package = Package(
             name: "StepFunctionsModel",
             targets: ["StepFunctionsModel"]),
         .library(
-            name: "S3Client",
-            targets: ["S3Client"]),
-        .library(
             name: "SmokeAWSCore",
             targets: ["SmokeAWSCore"]),
         .library(
@@ -75,7 +78,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-nio-ssl.git", from: "1.0.0"),
         .package(url: "https://github.com/IBM-Swift/LoggerAPI.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/LiveUI/XMLCoding.git", .upToNextMajor(from: "0.4.0")),
-        .package(url: "https://github.com/amzn/smoke-http.git", .upToNextMajor(from: "0.5.0")),
+        .package(url: "https://github.com/amzn/smoke-http.git", .upToNextMajor(from: "0.6.0")),
     ],
     targets: [
         .target(
@@ -101,6 +104,12 @@ let package = Package(
             dependencies: ["ElasticContainerModel", "SmokeAWSHttp"]),
         .target(
             name: "ElasticContainerModel",
+            dependencies: ["LoggerAPI"]),
+        .target(
+            name: "S3Client",
+            dependencies: ["S3Model", "SmokeAWSHttp"]),
+        .target(
+            name: "S3Model",
             dependencies: ["LoggerAPI"]),
         .target(
             name: "SecurityTokenClient",
@@ -137,10 +146,9 @@ let package = Package(
             dependencies: ["LoggerAPI", "XMLCoding"]),
         .target(
             name: "SmokeAWSHttp",
-            dependencies: ["LoggerAPI", "NIO", "NIOHTTP1", "NIOOpenSSL", "SmokeAWSCore", "SmokeHTTPClient", "QueryCoder"]),
-        .target(
-            name: "S3Client",
-            dependencies: ["SmokeAWSHttp"]),
+            dependencies: ["LoggerAPI", "NIO", "NIOHTTP1", "NIOOpenSSL",
+                           "SmokeAWSCore", "SmokeHTTPClient", "QueryCoding",
+                           "HTTPPathCoding", "HTTPHeadersCoding"]),
         .testTarget(
             name: "S3ClientTests",
             dependencies: ["S3Client"]),

@@ -97,7 +97,7 @@ public enum SimpleQueueModelOperations: String {
  Structure to encode the query input for the AddPermission
  operation.
  */
-public struct AddPermissionRequestQuery: Codable, Equatable {
+public struct AddPermissionOperationInputQuery: Codable, Equatable {
     public var aWSAccountIds: AWSAccountIdList
     public var actions: ActionNameList
     public var label: String
@@ -121,8 +121,8 @@ public struct AddPermissionRequestQuery: Codable, Equatable {
 }
 
 public extension AddPermissionRequest {
-    public func asSimpleQueueModelAddPermissionRequestQuery() -> AddPermissionRequestQuery {
-        return AddPermissionRequestQuery(
+    public func asSimpleQueueModelAddPermissionOperationInputQuery() -> AddPermissionOperationInputQuery {
+        return AddPermissionOperationInputQuery(
             aWSAccountIds: aWSAccountIds,
             actions: actions,
             label: label)
@@ -134,7 +134,7 @@ public extension AddPermissionRequest {
  Structure to encode the query input for the ChangeMessageVisibility
  operation.
  */
-public struct ChangeMessageVisibilityRequestQuery: Codable, Equatable {
+public struct ChangeMessageVisibilityOperationInputQuery: Codable, Equatable {
     public var receiptHandle: String
     public var visibilityTimeout: Integer
 
@@ -154,8 +154,8 @@ public struct ChangeMessageVisibilityRequestQuery: Codable, Equatable {
 }
 
 public extension ChangeMessageVisibilityRequest {
-    public func asSimpleQueueModelChangeMessageVisibilityRequestQuery() -> ChangeMessageVisibilityRequestQuery {
-        return ChangeMessageVisibilityRequestQuery(
+    public func asSimpleQueueModelChangeMessageVisibilityOperationInputQuery() -> ChangeMessageVisibilityOperationInputQuery {
+        return ChangeMessageVisibilityOperationInputQuery(
             receiptHandle: receiptHandle,
             visibilityTimeout: visibilityTimeout)
     }
@@ -166,7 +166,7 @@ public extension ChangeMessageVisibilityRequest {
  Structure to encode the query input for the ChangeMessageVisibilityBatch
  operation.
  */
-public struct ChangeMessageVisibilityBatchRequestQuery: Codable, Equatable {
+public struct ChangeMessageVisibilityBatchOperationInputQuery: Codable, Equatable {
     public var entries: ChangeMessageVisibilityBatchRequestEntryList
 
     public init(entries: ChangeMessageVisibilityBatchRequestEntryList) {
@@ -182,8 +182,8 @@ public struct ChangeMessageVisibilityBatchRequestQuery: Codable, Equatable {
 }
 
 public extension ChangeMessageVisibilityBatchRequest {
-    public func asSimpleQueueModelChangeMessageVisibilityBatchRequestQuery() -> ChangeMessageVisibilityBatchRequestQuery {
-        return ChangeMessageVisibilityBatchRequestQuery(
+    public func asSimpleQueueModelChangeMessageVisibilityBatchOperationInputQuery() -> ChangeMessageVisibilityBatchOperationInputQuery {
+        return ChangeMessageVisibilityBatchOperationInputQuery(
             entries: entries)
     }
 }
@@ -193,7 +193,7 @@ public extension ChangeMessageVisibilityBatchRequest {
  Structure to encode the query input for the DeleteMessage
  operation.
  */
-public struct DeleteMessageRequestQuery: Codable, Equatable {
+public struct DeleteMessageOperationInputQuery: Codable, Equatable {
     public var receiptHandle: String
 
     public init(receiptHandle: String) {
@@ -209,8 +209,8 @@ public struct DeleteMessageRequestQuery: Codable, Equatable {
 }
 
 public extension DeleteMessageRequest {
-    public func asSimpleQueueModelDeleteMessageRequestQuery() -> DeleteMessageRequestQuery {
-        return DeleteMessageRequestQuery(
+    public func asSimpleQueueModelDeleteMessageOperationInputQuery() -> DeleteMessageOperationInputQuery {
+        return DeleteMessageOperationInputQuery(
             receiptHandle: receiptHandle)
     }
 }
@@ -220,7 +220,7 @@ public extension DeleteMessageRequest {
  Structure to encode the query input for the DeleteMessageBatch
  operation.
  */
-public struct DeleteMessageBatchRequestQuery: Codable, Equatable {
+public struct DeleteMessageBatchOperationInputQuery: Codable, Equatable {
     public var entries: DeleteMessageBatchRequestEntryList
 
     public init(entries: DeleteMessageBatchRequestEntryList) {
@@ -236,8 +236,8 @@ public struct DeleteMessageBatchRequestQuery: Codable, Equatable {
 }
 
 public extension DeleteMessageBatchRequest {
-    public func asSimpleQueueModelDeleteMessageBatchRequestQuery() -> DeleteMessageBatchRequestQuery {
-        return DeleteMessageBatchRequestQuery(
+    public func asSimpleQueueModelDeleteMessageBatchOperationInputQuery() -> DeleteMessageBatchOperationInputQuery {
+        return DeleteMessageBatchOperationInputQuery(
             entries: entries)
     }
 }
@@ -247,7 +247,7 @@ public extension DeleteMessageBatchRequest {
  Structure to encode the query input for the GetQueueAttributes
  operation.
  */
-public struct GetQueueAttributesRequestQuery: Codable, Equatable {
+public struct GetQueueAttributesOperationInputQuery: Codable, Equatable {
     public var attributeNames: AttributeNameList?
 
     public init(attributeNames: AttributeNameList? = nil) {
@@ -263,8 +263,8 @@ public struct GetQueueAttributesRequestQuery: Codable, Equatable {
 }
 
 public extension GetQueueAttributesRequest {
-    public func asSimpleQueueModelGetQueueAttributesRequestQuery() -> GetQueueAttributesRequestQuery {
-        return GetQueueAttributesRequestQuery(
+    public func asSimpleQueueModelGetQueueAttributesOperationInputQuery() -> GetQueueAttributesOperationInputQuery {
+        return GetQueueAttributesOperationInputQuery(
             attributeNames: attributeNames)
     }
 }
@@ -274,7 +274,7 @@ public extension GetQueueAttributesRequest {
  Structure to encode the query input for the ReceiveMessage
  operation.
  */
-public struct ReceiveMessageRequestQuery: Codable, Equatable {
+public struct ReceiveMessageOperationInputQuery: Codable, Equatable {
     public var attributeNames: AttributeNameList?
     public var maxNumberOfMessages: Integer?
     public var messageAttributeNames: MessageAttributeNameList?
@@ -310,8 +310,8 @@ public struct ReceiveMessageRequestQuery: Codable, Equatable {
 }
 
 public extension ReceiveMessageRequest {
-    public func asSimpleQueueModelReceiveMessageRequestQuery() -> ReceiveMessageRequestQuery {
-        return ReceiveMessageRequestQuery(
+    public func asSimpleQueueModelReceiveMessageOperationInputQuery() -> ReceiveMessageOperationInputQuery {
+        return ReceiveMessageOperationInputQuery(
             attributeNames: attributeNames,
             maxNumberOfMessages: maxNumberOfMessages,
             messageAttributeNames: messageAttributeNames,
@@ -326,7 +326,7 @@ public extension ReceiveMessageRequest {
  Structure to encode the query input for the RemovePermission
  operation.
  */
-public struct RemovePermissionRequestQuery: Codable, Equatable {
+public struct RemovePermissionOperationInputQuery: Codable, Equatable {
     public var label: String
 
     public init(label: String) {
@@ -342,8 +342,8 @@ public struct RemovePermissionRequestQuery: Codable, Equatable {
 }
 
 public extension RemovePermissionRequest {
-    public func asSimpleQueueModelRemovePermissionRequestQuery() -> RemovePermissionRequestQuery {
-        return RemovePermissionRequestQuery(
+    public func asSimpleQueueModelRemovePermissionOperationInputQuery() -> RemovePermissionOperationInputQuery {
+        return RemovePermissionOperationInputQuery(
             label: label)
     }
 }
@@ -353,7 +353,7 @@ public extension RemovePermissionRequest {
  Structure to encode the query input for the SendMessage
  operation.
  */
-public struct SendMessageRequestQuery: Codable, Equatable {
+public struct SendMessageOperationInputQuery: Codable, Equatable {
     public var delaySeconds: Integer?
     public var messageAttributes: MessageBodyAttributeMap?
     public var messageBody: String
@@ -385,8 +385,8 @@ public struct SendMessageRequestQuery: Codable, Equatable {
 }
 
 public extension SendMessageRequest {
-    public func asSimpleQueueModelSendMessageRequestQuery() -> SendMessageRequestQuery {
-        return SendMessageRequestQuery(
+    public func asSimpleQueueModelSendMessageOperationInputQuery() -> SendMessageOperationInputQuery {
+        return SendMessageOperationInputQuery(
             delaySeconds: delaySeconds,
             messageAttributes: messageAttributes,
             messageBody: messageBody,
@@ -400,7 +400,7 @@ public extension SendMessageRequest {
  Structure to encode the query input for the SendMessageBatch
  operation.
  */
-public struct SendMessageBatchRequestQuery: Codable, Equatable {
+public struct SendMessageBatchOperationInputQuery: Codable, Equatable {
     public var entries: SendMessageBatchRequestEntryList
 
     public init(entries: SendMessageBatchRequestEntryList) {
@@ -416,8 +416,8 @@ public struct SendMessageBatchRequestQuery: Codable, Equatable {
 }
 
 public extension SendMessageBatchRequest {
-    public func asSimpleQueueModelSendMessageBatchRequestQuery() -> SendMessageBatchRequestQuery {
-        return SendMessageBatchRequestQuery(
+    public func asSimpleQueueModelSendMessageBatchOperationInputQuery() -> SendMessageBatchOperationInputQuery {
+        return SendMessageBatchOperationInputQuery(
             entries: entries)
     }
 }
@@ -427,7 +427,7 @@ public extension SendMessageBatchRequest {
  Structure to encode the query input for the SetQueueAttributes
  operation.
  */
-public struct SetQueueAttributesRequestQuery: Codable, Equatable {
+public struct SetQueueAttributesOperationInputQuery: Codable, Equatable {
     public var attributes: QueueAttributeMap
 
     public init(attributes: QueueAttributeMap) {
@@ -443,8 +443,8 @@ public struct SetQueueAttributesRequestQuery: Codable, Equatable {
 }
 
 public extension SetQueueAttributesRequest {
-    public func asSimpleQueueModelSetQueueAttributesRequestQuery() -> SetQueueAttributesRequestQuery {
-        return SetQueueAttributesRequestQuery(
+    public func asSimpleQueueModelSetQueueAttributesOperationInputQuery() -> SetQueueAttributesOperationInputQuery {
+        return SetQueueAttributesOperationInputQuery(
             attributes: attributes)
     }
 }
@@ -454,7 +454,7 @@ public extension SetQueueAttributesRequest {
  Structure to encode the query input for the TagQueue
  operation.
  */
-public struct TagQueueRequestQuery: Codable, Equatable {
+public struct TagQueueOperationInputQuery: Codable, Equatable {
     public var tags: TagMap
 
     public init(tags: TagMap) {
@@ -470,8 +470,8 @@ public struct TagQueueRequestQuery: Codable, Equatable {
 }
 
 public extension TagQueueRequest {
-    public func asSimpleQueueModelTagQueueRequestQuery() -> TagQueueRequestQuery {
-        return TagQueueRequestQuery(
+    public func asSimpleQueueModelTagQueueOperationInputQuery() -> TagQueueOperationInputQuery {
+        return TagQueueOperationInputQuery(
             tags: tags)
     }
 }
@@ -481,7 +481,7 @@ public extension TagQueueRequest {
  Structure to encode the query input for the UntagQueue
  operation.
  */
-public struct UntagQueueRequestQuery: Codable, Equatable {
+public struct UntagQueueOperationInputQuery: Codable, Equatable {
     public var tagKeys: TagKeyList
 
     public init(tagKeys: TagKeyList) {
@@ -497,8 +497,8 @@ public struct UntagQueueRequestQuery: Codable, Equatable {
 }
 
 public extension UntagQueueRequest {
-    public func asSimpleQueueModelUntagQueueRequestQuery() -> UntagQueueRequestQuery {
-        return UntagQueueRequestQuery(
+    public func asSimpleQueueModelUntagQueueOperationInputQuery() -> UntagQueueOperationInputQuery {
+        return UntagQueueOperationInputQuery(
             tagKeys: tagKeys)
     }
 }

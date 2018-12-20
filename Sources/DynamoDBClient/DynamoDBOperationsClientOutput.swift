@@ -1,0 +1,441 @@
+// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License").
+// You may not use this file except in compliance with the License.
+// A copy of the License is located at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// or in the "license" file accompanying this file. This file is distributed
+// on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+// express or implied. See the License for the specific language governing
+// permissions and limitations under the License.
+//
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment
+// -- Generated Code; do not edit --
+//
+// DynamoDBOperationsClientOutput.swift
+// DynamoDBClient
+//
+
+import Foundation
+import SmokeHTTPClient
+import DynamoDBModel
+
+/**
+ Type to handle the output from the BatchGetItem operation in a HTTP client.
+ */
+extension BatchGetItemOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = BatchGetItemOutput
+    public typealias HeadersType = BatchGetItemOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> BatchGetItemOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the BatchWriteItem operation in a HTTP client.
+ */
+extension BatchWriteItemOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = BatchWriteItemOutput
+    public typealias HeadersType = BatchWriteItemOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> BatchWriteItemOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateBackup operation in a HTTP client.
+ */
+extension CreateBackupOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateBackupOutput
+    public typealias HeadersType = CreateBackupOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateBackupOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateGlobalTable operation in a HTTP client.
+ */
+extension CreateGlobalTableOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateGlobalTableOutput
+    public typealias HeadersType = CreateGlobalTableOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateGlobalTableOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateTable operation in a HTTP client.
+ */
+extension CreateTableOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateTableOutput
+    public typealias HeadersType = CreateTableOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateTableOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteBackup operation in a HTTP client.
+ */
+extension DeleteBackupOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteBackupOutput
+    public typealias HeadersType = DeleteBackupOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteBackupOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteItem operation in a HTTP client.
+ */
+extension DeleteItemOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteItemOutput
+    public typealias HeadersType = DeleteItemOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteItemOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteTable operation in a HTTP client.
+ */
+extension DeleteTableOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTableOutput
+    public typealias HeadersType = DeleteTableOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTableOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeBackup operation in a HTTP client.
+ */
+extension DescribeBackupOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeBackupOutput
+    public typealias HeadersType = DescribeBackupOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeBackupOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeContinuousBackups operation in a HTTP client.
+ */
+extension DescribeContinuousBackupsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeContinuousBackupsOutput
+    public typealias HeadersType = DescribeContinuousBackupsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeContinuousBackupsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeEndpoints operation in a HTTP client.
+ */
+extension DescribeEndpointsResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeEndpointsResponse
+    public typealias HeadersType = DescribeEndpointsResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeEndpointsResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeGlobalTable operation in a HTTP client.
+ */
+extension DescribeGlobalTableOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeGlobalTableOutput
+    public typealias HeadersType = DescribeGlobalTableOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeGlobalTableOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeGlobalTableSettings operation in a HTTP client.
+ */
+extension DescribeGlobalTableSettingsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeGlobalTableSettingsOutput
+    public typealias HeadersType = DescribeGlobalTableSettingsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeGlobalTableSettingsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeLimits operation in a HTTP client.
+ */
+extension DescribeLimitsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeLimitsOutput
+    public typealias HeadersType = DescribeLimitsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeLimitsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeTable operation in a HTTP client.
+ */
+extension DescribeTableOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTableOutput
+    public typealias HeadersType = DescribeTableOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTableOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeTimeToLive operation in a HTTP client.
+ */
+extension DescribeTimeToLiveOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTimeToLiveOutput
+    public typealias HeadersType = DescribeTimeToLiveOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTimeToLiveOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetItem operation in a HTTP client.
+ */
+extension GetItemOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetItemOutput
+    public typealias HeadersType = GetItemOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetItemOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListBackups operation in a HTTP client.
+ */
+extension ListBackupsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListBackupsOutput
+    public typealias HeadersType = ListBackupsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListBackupsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListGlobalTables operation in a HTTP client.
+ */
+extension ListGlobalTablesOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListGlobalTablesOutput
+    public typealias HeadersType = ListGlobalTablesOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListGlobalTablesOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListTables operation in a HTTP client.
+ */
+extension ListTablesOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListTablesOutput
+    public typealias HeadersType = ListTablesOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListTablesOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListTagsOfResource operation in a HTTP client.
+ */
+extension ListTagsOfResourceOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListTagsOfResourceOutput
+    public typealias HeadersType = ListTagsOfResourceOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListTagsOfResourceOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutItem operation in a HTTP client.
+ */
+extension PutItemOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutItemOutput
+    public typealias HeadersType = PutItemOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutItemOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the Query operation in a HTTP client.
+ */
+extension QueryOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = QueryOutput
+    public typealias HeadersType = QueryOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> QueryOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the RestoreTableFromBackup operation in a HTTP client.
+ */
+extension RestoreTableFromBackupOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = RestoreTableFromBackupOutput
+    public typealias HeadersType = RestoreTableFromBackupOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RestoreTableFromBackupOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the RestoreTableToPointInTime operation in a HTTP client.
+ */
+extension RestoreTableToPointInTimeOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = RestoreTableToPointInTimeOutput
+    public typealias HeadersType = RestoreTableToPointInTimeOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RestoreTableToPointInTimeOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the Scan operation in a HTTP client.
+ */
+extension ScanOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ScanOutput
+    public typealias HeadersType = ScanOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ScanOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateContinuousBackups operation in a HTTP client.
+ */
+extension UpdateContinuousBackupsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateContinuousBackupsOutput
+    public typealias HeadersType = UpdateContinuousBackupsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateContinuousBackupsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateGlobalTable operation in a HTTP client.
+ */
+extension UpdateGlobalTableOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateGlobalTableOutput
+    public typealias HeadersType = UpdateGlobalTableOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateGlobalTableOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateGlobalTableSettings operation in a HTTP client.
+ */
+extension UpdateGlobalTableSettingsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateGlobalTableSettingsOutput
+    public typealias HeadersType = UpdateGlobalTableSettingsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateGlobalTableSettingsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateItem operation in a HTTP client.
+ */
+extension UpdateItemOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateItemOutput
+    public typealias HeadersType = UpdateItemOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateItemOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateTable operation in a HTTP client.
+ */
+extension UpdateTableOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateTableOutput
+    public typealias HeadersType = UpdateTableOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateTableOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateTimeToLive operation in a HTTP client.
+ */
+extension UpdateTimeToLiveOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateTimeToLiveOutput
+    public typealias HeadersType = UpdateTimeToLiveOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateTimeToLiveOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
