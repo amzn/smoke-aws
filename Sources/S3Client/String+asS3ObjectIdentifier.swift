@@ -11,6 +11,8 @@ import Foundation
  */
 public struct S3ObjectIdentifer: Equatable {
     internal static let s3Prefix = "s3://"
+    internal static let httpsPrefix = "https://"
+    internal static let httpPrefix = "http://"
     
     public let bucketName: String
     public let keyPath: String
@@ -34,24 +36,66 @@ public extension String {
                                          keyPath: "/the/key/path")
      */
     public func asS3ObjectIdentifier() -> S3ObjectIdentifer? {
-        guard self.starts(with: S3ObjectIdentifer.s3Prefix) else {
-            return nil
+        if self.starts(with: S3ObjectIdentifer.s3Prefix) {
+            // get the url without the scheme - of the form {bucket}/{key+}
+            let nonPrefixedUrl = self.dropFirst(S3ObjectIdentifer.s3Prefix.count)
+            
+            return asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: nonPrefixedUrl)
+        } else if self.starts(with: S3ObjectIdentifer.httpsPrefix) {
+            // get the url without the scheme - of the form {host}/{bucket}/{key+}
+            let droppedPrefix = self.dropFirst(S3ObjectIdentifer.httpsPrefix.count)
+            
+            // get the index of the separator between the host and the bucket
+            guard let nextUrlSeparator = getIndexOfNextUrlSeparator(url: droppedPrefix) else {
+                return nil
+            }
+            
+            let bucketStartIndex = droppedPrefix.index(nextUrlSeparator,
+                                                               offsetBy: 1)
+            // get the url without the scheme or the host -
+            // of the form {bucket}/{key+}
+            let nonPrefixedUrl = droppedPrefix[bucketStartIndex...]
+            
+            return asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: nonPrefixedUrl)
+        } else if self.starts(with: S3ObjectIdentifer.httpPrefix) {
+            // get the url without the scheme - of the form {host}/{bucket}/{key+}
+            let droppedPrefix = self.dropFirst(S3ObjectIdentifer.httpPrefix.count)
+            
+            // get the index of the separator between the host and the bucket
+            guard let nextUrlSeparator = getIndexOfNextUrlSeparator(url: droppedPrefix) else {
+                return nil
+            }
+            
+            let bucketStartIndex = droppedPrefix.index(nextUrlSeparator,
+                                                               offsetBy: 1)
+            // get the url without the scheme or the host -
+            // of the form {bucket}/{key+}
+            let nonPrefixedUrl = droppedPrefix[bucketStartIndex...]
+            
+            return asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: nonPrefixedUrl)
         }
         
-        let droppedPrefix = self.dropFirst(S3ObjectIdentifer.s3Prefix.count)
-        
+        return nil
+    }
+    
+    private func getIndexOfNextUrlSeparator(url: Substring) -> String.Index? {
         #if swift(>=4.2)
-        guard let bucketKeySeperatorIndex = droppedPrefix.firstIndex(of: "/") else {
-            return nil
-        }
+        return url.firstIndex(of: "/")
         #else
-        guard let bucketKeySeperatorIndex = droppedPrefix.index(of: "/") else {
+        return url.index(of: "/")
+        #endif
+    }
+    
+    /// Spilts a url of the form {bucket}/{key+} into a S3ObjectIdentifer if possible
+    private func asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: Substring) -> S3ObjectIdentifer? {
+        guard let nextUrlSeparator = getIndexOfNextUrlSeparator(url: nonPrefixedUrl) else {
             return nil
         }
-        #endif
         
-        let bucketName = String(droppedPrefix[..<bucketKeySeperatorIndex])
-        let keyPath = String(droppedPrefix[bucketKeySeperatorIndex...])
+        let bucketKeySeperatorIndex = nonPrefixedUrl.index(nextUrlSeparator,
+                                                               offsetBy: 1)
+        let bucketName = String(nonPrefixedUrl[..<nextUrlSeparator])
+        let keyPath = String(nonPrefixedUrl[bucketKeySeperatorIndex...])
         
         return S3ObjectIdentifer(bucketName: bucketName, keyPath: keyPath)
     }
