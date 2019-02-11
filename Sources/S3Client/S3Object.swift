@@ -72,8 +72,16 @@ public struct S3Object: S3ObjectProtocol {
             }
         }
         
+        // make sure the object path is submitted starting with a "/"
+        let fullEndpointPath: String
+        if let first = objectPath.first, first == "/" {
+            fullEndpointPath = objectPath
+        } else {
+            fullEndpointPath = "/" + objectPath
+        }
+        
         _ = try httpClient.executeAsyncWithOutput(
-            endpointPath: objectPath,
+            endpointPath: fullEndpointPath,
             httpMethod: .GET,
             input: NoHTTPRequestInput(),
             completion: innerCompletion,
@@ -84,9 +92,17 @@ public struct S3Object: S3ObjectProtocol {
      Gets an object from the S3 bucket, returning the decoded response.
      */
     public func getSync<OutputType: Codable>(objectPath: String) throws -> OutputType {
+        // make sure the object path is submitted starting with a "/"
+        let fullEndpointPath: String
+        if let first = objectPath.first, first == "/" {
+            fullEndpointPath = objectPath
+        } else {
+            fullEndpointPath = "/" + objectPath
+        }
+        
         let responseOutput: BodyHTTPRequestOutput<OutputType> =
             try httpClient.executeSyncWithOutput(
-                endpointPath: objectPath,
+                endpointPath: fullEndpointPath,
                 httpMethod: .GET,
                 input: NoHTTPRequestInput(),
                 handlerDelegate: handlerDelegate)
