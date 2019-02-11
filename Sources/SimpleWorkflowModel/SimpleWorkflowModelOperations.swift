@@ -124,4 +124,3 @@ public enum SimpleWorkflowModelOperations: String {
         }
     }
 }
-

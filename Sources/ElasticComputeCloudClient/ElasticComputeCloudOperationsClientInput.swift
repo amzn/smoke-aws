@@ -1667,4 +1667,3 @@ public typealias UpdateSecurityGroupRuleDescriptionsIngressOperationHTTPRequestI
  Type to handle the input to the WithdrawByoipCidr operation in a HTTP client.
  */
 public typealias WithdrawByoipCidrOperationHTTPRequestInput = QueryHTTPRequestInput
-

@@ -269,4 +269,3 @@ extension UpdateStateMachineOutput: HTTPResponseOutputProtocol {
         return try bodyDecodableProvider()
     }
 }
-

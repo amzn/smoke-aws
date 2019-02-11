@@ -121,4 +121,3 @@ public enum SimpleNotificationModelOperations: String {
         }
     }
 }
-

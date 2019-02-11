@@ -870,4 +870,3 @@ extension UploadPartCopyOutput: HTTPResponseOutputProtocol {
             serverSideEncryption: headers.serverSideEncryption)
     }
 }
-

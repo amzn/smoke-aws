@@ -41,6 +41,7 @@ public struct AddPermissionOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the ChangeMessageVisibility operation in a HTTP client.
  */
@@ -59,6 +60,7 @@ public struct ChangeMessageVisibilityOperationHTTPRequestInput: HTTPRequestInput
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the ChangeMessageVisibilityBatch operation in a HTTP client.
  */
@@ -77,6 +79,7 @@ public struct ChangeMessageVisibilityBatchOperationHTTPRequestInput: HTTPRequest
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the CreateQueue operation in a HTTP client.
  */
@@ -100,6 +103,7 @@ public struct DeleteMessageOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the DeleteMessageBatch operation in a HTTP client.
  */
@@ -118,6 +122,7 @@ public struct DeleteMessageBatchOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the DeleteQueue operation in a HTTP client.
  */
@@ -136,6 +141,7 @@ public struct DeleteQueueOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the GetQueueAttributes operation in a HTTP client.
  */
@@ -154,6 +160,7 @@ public struct GetQueueAttributesOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the GetQueueUrl operation in a HTTP client.
  */
@@ -177,6 +184,7 @@ public struct ListDeadLetterSourceQueuesOperationHTTPRequestInput: HTTPRequestIn
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the ListQueueTags operation in a HTTP client.
  */
@@ -195,6 +203,7 @@ public struct ListQueueTagsOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the ListQueues operation in a HTTP client.
  */
@@ -218,6 +227,7 @@ public struct PurgeQueueOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the ReceiveMessage operation in a HTTP client.
  */
@@ -236,6 +246,7 @@ public struct ReceiveMessageOperationHTTPRequestInput: HTTPRequestInputProtocol 
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the RemovePermission operation in a HTTP client.
  */
@@ -254,6 +265,7 @@ public struct RemovePermissionOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the SendMessage operation in a HTTP client.
  */
@@ -272,6 +284,7 @@ public struct SendMessageOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the SendMessageBatch operation in a HTTP client.
  */
@@ -290,6 +303,7 @@ public struct SendMessageBatchOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the SetQueueAttributes operation in a HTTP client.
  */
@@ -308,6 +322,7 @@ public struct SetQueueAttributesOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the TagQueue operation in a HTTP client.
  */
@@ -326,6 +341,7 @@ public struct TagQueueOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = encodable.queueUrl
     }
 }
+
 /**
  Type to handle the input to the UntagQueue operation in a HTTP client.
  */

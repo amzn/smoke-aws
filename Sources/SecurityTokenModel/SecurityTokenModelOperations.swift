@@ -52,4 +52,3 @@ public enum SecurityTokenModelOperations: String {
         }
     }
 }
-

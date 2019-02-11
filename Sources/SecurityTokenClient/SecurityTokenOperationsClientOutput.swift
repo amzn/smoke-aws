@@ -113,4 +113,3 @@ extension GetSessionTokenResponseForGetSessionToken: HTTPResponseOutputProtocol 
         return try bodyDecodableProvider()
     }
 }
-

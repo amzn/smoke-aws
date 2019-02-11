@@ -177,4 +177,3 @@ public typealias StartWorkflowExecutionOperationHTTPRequestInput = BodyHTTPReque
  Type to handle the input to the TerminateWorkflowExecution operation in a HTTP client.
  */
 public typealias TerminateWorkflowExecutionOperationHTTPRequestInput = BodyHTTPRequestInput
-

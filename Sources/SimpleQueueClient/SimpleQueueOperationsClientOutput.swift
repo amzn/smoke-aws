@@ -165,4 +165,3 @@ extension SendMessageBatchResultForSendMessageBatch: HTTPResponseOutputProtocol 
         return try bodyDecodableProvider()
     }
 }
-

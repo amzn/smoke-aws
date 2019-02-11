@@ -117,4 +117,3 @@ public typealias StopExecutionOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the UpdateStateMachine operation in a HTTP client.
  */
 public typealias UpdateStateMachineOperationHTTPRequestInput = BodyHTTPRequestInput
-

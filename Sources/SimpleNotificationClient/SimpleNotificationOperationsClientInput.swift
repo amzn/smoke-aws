@@ -172,4 +172,3 @@ public typealias SubscribeOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the Unsubscribe operation in a HTTP client.
  */
 public typealias UnsubscribeOperationHTTPRequestInput = QueryHTTPRequestInput
-

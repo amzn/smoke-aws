@@ -165,4 +165,3 @@ extension PutDashboardOutputForPutDashboard: HTTPResponseOutputProtocol {
         return try bodyDecodableProvider()
     }
 }
-

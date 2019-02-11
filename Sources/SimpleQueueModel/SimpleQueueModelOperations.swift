@@ -92,7 +92,6 @@ public enum SimpleQueueModelOperations: String {
     }
 }
 
-
 /**
  Structure to encode the query input for the AddPermission
  operation.
@@ -129,7 +128,6 @@ public extension AddPermissionRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the ChangeMessageVisibility
  operation.
@@ -161,7 +159,6 @@ public extension ChangeMessageVisibilityRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the ChangeMessageVisibilityBatch
  operation.
@@ -187,7 +184,6 @@ public extension ChangeMessageVisibilityBatchRequest {
             entries: entries)
     }
 }
-
 
 /**
  Structure to encode the query input for the DeleteMessage
@@ -215,7 +211,6 @@ public extension DeleteMessageRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the DeleteMessageBatch
  operation.
@@ -242,7 +237,6 @@ public extension DeleteMessageBatchRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the GetQueueAttributes
  operation.
@@ -268,7 +262,6 @@ public extension GetQueueAttributesRequest {
             attributeNames: attributeNames)
     }
 }
-
 
 /**
  Structure to encode the query input for the ReceiveMessage
@@ -321,7 +314,6 @@ public extension ReceiveMessageRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the RemovePermission
  operation.
@@ -347,7 +339,6 @@ public extension RemovePermissionRequest {
             label: label)
     }
 }
-
 
 /**
  Structure to encode the query input for the SendMessage
@@ -395,7 +386,6 @@ public extension SendMessageRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the SendMessageBatch
  operation.
@@ -421,7 +411,6 @@ public extension SendMessageBatchRequest {
             entries: entries)
     }
 }
-
 
 /**
  Structure to encode the query input for the SetQueueAttributes
@@ -449,7 +438,6 @@ public extension SetQueueAttributesRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the TagQueue
  operation.
@@ -476,7 +464,6 @@ public extension TagQueueRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the UntagQueue
  operation.
@@ -502,4 +489,3 @@ public extension UntagQueueRequest {
             tagKeys: tagKeys)
     }
 }
-

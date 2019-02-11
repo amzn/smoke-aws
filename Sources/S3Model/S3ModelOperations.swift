@@ -296,7 +296,6 @@ public enum S3ModelOperations: String {
     }
 }
 
-
 /**
  Structure to encode the path input for the AbortMultipartUpload
  operation.
@@ -329,7 +328,6 @@ public extension AbortMultipartUploadRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the AbortMultipartUpload
  operation.
@@ -356,7 +354,6 @@ public extension AbortMultipartUploadRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the AbortMultipartUpload
  operation.
@@ -382,7 +379,6 @@ public extension AbortMultipartUploadRequest {
             requestPayer: requestPayer)
     }
 }
-
 
 /**
  Structure to encode the path input for the CompleteMultipartUpload
@@ -416,7 +412,6 @@ public extension CompleteMultipartUploadRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the CompleteMultipartUpload
  operation.
@@ -443,7 +438,6 @@ public extension CompleteMultipartUploadRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the CompleteMultipartUpload
  operation.
@@ -469,7 +463,6 @@ public extension CompleteMultipartUploadRequest {
             requestPayer: requestPayer)
     }
 }
-
 
 /**
  Structure to encode the body input for the CompleteMultipartUpload
@@ -512,7 +505,6 @@ public extension CompleteMultipartUploadOutput {
             location: location)
     }
 }
-
 
 /**
  Structure to encode the body input for the CompleteMultipartUpload
@@ -560,7 +552,6 @@ public extension CompleteMultipartUploadOutput {
     }
 }
 
-
 /**
  Structure to encode the path input for the CopyObject
  operation.
@@ -592,7 +583,6 @@ public extension CopyObjectRequest {
             key: key)
     }
 }
-
 
 /**
  Structure to encode the body input for the CopyObject
@@ -786,7 +776,6 @@ public extension CopyObjectRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the CopyObject
  operation.
@@ -848,7 +837,6 @@ public extension CopyObjectOutput {
     }
 }
 
-
 /**
  Structure to encode the path input for the CreateBucket
  operation.
@@ -874,7 +862,6 @@ public extension CreateBucketRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the CreateBucket
@@ -932,7 +919,6 @@ public extension CreateBucketRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the CreateMultipartUpload
  operation.
@@ -964,7 +950,6 @@ public extension CreateMultipartUploadRequest {
             key: key)
     }
 }
-
 
 /**
  Structure to encode the body input for the CreateMultipartUpload
@@ -1107,7 +1092,6 @@ public extension CreateMultipartUploadRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the CreateMultipartUpload
  operation.
@@ -1144,7 +1128,6 @@ public extension CreateMultipartUploadOutput {
             uploadId: uploadId)
     }
 }
-
 
 /**
  Structure to encode the body input for the CreateMultipartUpload
@@ -1202,7 +1185,6 @@ public extension CreateMultipartUploadOutput {
     }
 }
 
-
 /**
  Structure to encode the path input for the DeleteBucket
  operation.
@@ -1228,7 +1210,6 @@ public extension DeleteBucketRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the DeleteBucketAnalyticsConfiguration
@@ -1256,7 +1237,6 @@ public extension DeleteBucketAnalyticsConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the DeleteBucketAnalyticsConfiguration
  operation.
@@ -1282,7 +1262,6 @@ public extension DeleteBucketAnalyticsConfigurationRequest {
             id: id)
     }
 }
-
 
 /**
  Structure to encode the path input for the DeleteBucketCors
@@ -1310,7 +1289,6 @@ public extension DeleteBucketCorsRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the DeleteBucketEncryption
  operation.
@@ -1336,7 +1314,6 @@ public extension DeleteBucketEncryptionRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the DeleteBucketInventoryConfiguration
@@ -1364,7 +1341,6 @@ public extension DeleteBucketInventoryConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the DeleteBucketInventoryConfiguration
  operation.
@@ -1390,7 +1366,6 @@ public extension DeleteBucketInventoryConfigurationRequest {
             id: id)
     }
 }
-
 
 /**
  Structure to encode the path input for the DeleteBucketLifecycle
@@ -1418,7 +1393,6 @@ public extension DeleteBucketLifecycleRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the DeleteBucketMetricsConfiguration
  operation.
@@ -1444,7 +1418,6 @@ public extension DeleteBucketMetricsConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the DeleteBucketMetricsConfiguration
@@ -1472,7 +1445,6 @@ public extension DeleteBucketMetricsConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the DeleteBucketPolicy
  operation.
@@ -1498,7 +1470,6 @@ public extension DeleteBucketPolicyRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the DeleteBucketReplication
@@ -1526,7 +1497,6 @@ public extension DeleteBucketReplicationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the DeleteBucketTagging
  operation.
@@ -1553,7 +1523,6 @@ public extension DeleteBucketTaggingRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the DeleteBucketWebsite
  operation.
@@ -1579,7 +1548,6 @@ public extension DeleteBucketWebsiteRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the DeleteObject
@@ -1613,7 +1581,6 @@ public extension DeleteObjectRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the DeleteObject
  operation.
@@ -1639,7 +1606,6 @@ public extension DeleteObjectRequest {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the body input for the DeleteObject
@@ -1677,7 +1643,6 @@ public extension DeleteObjectRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the DeleteObjectTagging
  operation.
@@ -1710,7 +1675,6 @@ public extension DeleteObjectTaggingRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the DeleteObjectTagging
  operation.
@@ -1737,7 +1701,6 @@ public extension DeleteObjectTaggingRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the DeleteObjects
  operation.
@@ -1763,7 +1726,6 @@ public extension DeleteObjectsRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the DeleteObjects
@@ -1801,7 +1763,6 @@ public extension DeleteObjectsRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the DeleteObjects
  operation.
@@ -1833,7 +1794,6 @@ public extension DeleteObjectsOutput {
     }
 }
 
-
 /**
  Structure to encode the body input for the DeleteObjects
  operation.
@@ -1859,7 +1819,6 @@ public extension DeleteObjectsOutput {
             requestCharged: requestCharged)
     }
 }
-
 
 /**
  Structure to encode the path input for the DeletePublicAccessBlock
@@ -1887,7 +1846,6 @@ public extension DeletePublicAccessBlockRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketAccelerateConfiguration
  operation.
@@ -1913,7 +1871,6 @@ public extension GetBucketAccelerateConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetBucketAcl
@@ -1941,7 +1898,6 @@ public extension GetBucketAclRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketAnalyticsConfiguration
  operation.
@@ -1967,7 +1923,6 @@ public extension GetBucketAnalyticsConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the GetBucketAnalyticsConfiguration
@@ -1995,7 +1950,6 @@ public extension GetBucketAnalyticsConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketCors
  operation.
@@ -2021,7 +1975,6 @@ public extension GetBucketCorsRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetBucketEncryption
@@ -2049,7 +2002,6 @@ public extension GetBucketEncryptionRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketInventoryConfiguration
  operation.
@@ -2075,7 +2027,6 @@ public extension GetBucketInventoryConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the GetBucketInventoryConfiguration
@@ -2103,7 +2054,6 @@ public extension GetBucketInventoryConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketLifecycle
  operation.
@@ -2129,7 +2079,6 @@ public extension GetBucketLifecycleRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetBucketLifecycleConfiguration
@@ -2157,7 +2106,6 @@ public extension GetBucketLifecycleConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketLocation
  operation.
@@ -2183,7 +2131,6 @@ public extension GetBucketLocationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetBucketLogging
@@ -2211,7 +2158,6 @@ public extension GetBucketLoggingRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketMetricsConfiguration
  operation.
@@ -2237,7 +2183,6 @@ public extension GetBucketMetricsConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the GetBucketMetricsConfiguration
@@ -2265,7 +2210,6 @@ public extension GetBucketMetricsConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketNotification
  operation.
@@ -2291,7 +2235,6 @@ public extension GetBucketNotificationConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetBucketNotificationConfiguration
@@ -2319,7 +2262,6 @@ public extension GetBucketNotificationConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketPolicy
  operation.
@@ -2345,7 +2287,6 @@ public extension GetBucketPolicyRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetBucketPolicyStatus
@@ -2373,7 +2314,6 @@ public extension GetBucketPolicyStatusRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketReplication
  operation.
@@ -2399,7 +2339,6 @@ public extension GetBucketReplicationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetBucketRequestPayment
@@ -2427,7 +2366,6 @@ public extension GetBucketRequestPaymentRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketTagging
  operation.
@@ -2453,7 +2391,6 @@ public extension GetBucketTaggingRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetBucketVersioning
@@ -2481,7 +2418,6 @@ public extension GetBucketVersioningRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetBucketWebsite
  operation.
@@ -2507,7 +2443,6 @@ public extension GetBucketWebsiteRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetObject
@@ -2540,7 +2475,6 @@ public extension GetObjectRequest {
             key: key)
     }
 }
-
 
 /**
  Structure to encode the query input for the GetObject
@@ -2602,7 +2536,6 @@ public extension GetObjectRequest {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the body input for the GetObject
@@ -2669,7 +2602,6 @@ public extension GetObjectRequest {
             sSECustomerKeyMD5: sSECustomerKeyMD5)
     }
 }
-
 
 /**
  Structure to encode the body input for the GetObject
@@ -2842,7 +2774,6 @@ public extension GetObjectOutput {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetObjectAcl
  operation.
@@ -2875,7 +2806,6 @@ public extension GetObjectAclRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the GetObjectAcl
  operation.
@@ -2902,7 +2832,6 @@ public extension GetObjectAclRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the GetObjectAcl
  operation.
@@ -2928,7 +2857,6 @@ public extension GetObjectAclRequest {
             requestPayer: requestPayer)
     }
 }
-
 
 /**
  Structure to encode the body input for the GetObjectAcl
@@ -2962,7 +2890,6 @@ public extension GetObjectAclOutput {
     }
 }
 
-
 /**
  Structure to encode the body input for the GetObjectAcl
  operation.
@@ -2988,7 +2915,6 @@ public extension GetObjectAclOutput {
             requestCharged: requestCharged)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetObjectLegalHold
@@ -3022,7 +2948,6 @@ public extension GetObjectLegalHoldRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the GetObjectLegalHold
  operation.
@@ -3048,7 +2973,6 @@ public extension GetObjectLegalHoldRequest {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the body input for the GetObjectLegalHold
@@ -3076,7 +3000,6 @@ public extension GetObjectLegalHoldRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetObjectLockConfiguration
  operation.
@@ -3102,7 +3025,6 @@ public extension GetObjectLockConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetObjectRetention
@@ -3136,7 +3058,6 @@ public extension GetObjectRetentionRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the GetObjectRetention
  operation.
@@ -3163,7 +3084,6 @@ public extension GetObjectRetentionRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the GetObjectRetention
  operation.
@@ -3189,7 +3109,6 @@ public extension GetObjectRetentionRequest {
             requestPayer: requestPayer)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetObjectTagging
@@ -3223,7 +3142,6 @@ public extension GetObjectTaggingRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the GetObjectTagging
  operation.
@@ -3249,7 +3167,6 @@ public extension GetObjectTaggingRequest {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the body input for the GetObjectTagging
@@ -3277,7 +3194,6 @@ public extension GetObjectTaggingOutput {
     }
 }
 
-
 /**
  Structure to encode the body input for the GetObjectTagging
  operation.
@@ -3303,7 +3219,6 @@ public extension GetObjectTaggingOutput {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the path input for the GetObjectTorrent
@@ -3337,7 +3252,6 @@ public extension GetObjectTorrentRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the GetObjectTorrent
  operation.
@@ -3363,7 +3277,6 @@ public extension GetObjectTorrentRequest {
             requestPayer: requestPayer)
     }
 }
-
 
 /**
  Structure to encode the body input for the GetObjectTorrent
@@ -3391,7 +3304,6 @@ public extension GetObjectTorrentOutput {
     }
 }
 
-
 /**
  Structure to encode the path input for the GetPublicAccessBlock
  operation.
@@ -3418,7 +3330,6 @@ public extension GetPublicAccessBlockRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the HeadBucket
  operation.
@@ -3444,7 +3355,6 @@ public extension HeadBucketRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the HeadObject
@@ -3478,7 +3388,6 @@ public extension HeadObjectRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the HeadObject
  operation.
@@ -3509,7 +3418,6 @@ public extension HeadObjectRequest {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the body input for the HeadObject
@@ -3577,7 +3485,6 @@ public extension HeadObjectRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the ListBucketAnalyticsConfigurations
  operation.
@@ -3603,7 +3510,6 @@ public extension ListBucketAnalyticsConfigurationsRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the ListBucketAnalyticsConfigurations
@@ -3631,7 +3537,6 @@ public extension ListBucketAnalyticsConfigurationsRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the ListBucketInventoryConfigurations
  operation.
@@ -3657,7 +3562,6 @@ public extension ListBucketInventoryConfigurationsRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the ListBucketInventoryConfigurations
@@ -3685,7 +3589,6 @@ public extension ListBucketInventoryConfigurationsRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the ListBucketMetricsConfigurations
  operation.
@@ -3711,7 +3614,6 @@ public extension ListBucketMetricsConfigurationsRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the ListBucketMetricsConfigurations
@@ -3739,7 +3641,6 @@ public extension ListBucketMetricsConfigurationsRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the ListMultipartUploads
  operation.
@@ -3765,7 +3666,6 @@ public extension ListMultipartUploadsRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the ListMultipartUploads
@@ -3818,7 +3718,6 @@ public extension ListMultipartUploadsRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the ListObjectVersions
  operation.
@@ -3844,7 +3743,6 @@ public extension ListObjectVersionsRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the ListObjectVersions
@@ -3897,7 +3795,6 @@ public extension ListObjectVersionsRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the ListObjects
  operation.
@@ -3923,7 +3820,6 @@ public extension ListObjectsRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the ListObjects
@@ -3971,7 +3867,6 @@ public extension ListObjectsRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the ListObjects
  operation.
@@ -3998,7 +3893,6 @@ public extension ListObjectsRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the ListObjectsV2
  operation.
@@ -4024,7 +3918,6 @@ public extension ListObjectsV2Request {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the ListObjectsV2
@@ -4082,7 +3975,6 @@ public extension ListObjectsV2Request {
     }
 }
 
-
 /**
  Structure to encode the body input for the ListObjectsV2
  operation.
@@ -4108,7 +4000,6 @@ public extension ListObjectsV2Request {
             requestPayer: requestPayer)
     }
 }
-
 
 /**
  Structure to encode the path input for the ListParts
@@ -4141,7 +4032,6 @@ public extension ListPartsRequest {
             key: key)
     }
 }
-
 
 /**
  Structure to encode the query input for the ListParts
@@ -4179,7 +4069,6 @@ public extension ListPartsRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the ListParts
  operation.
@@ -4205,7 +4094,6 @@ public extension ListPartsRequest {
             requestPayer: requestPayer)
     }
 }
-
 
 /**
  Structure to encode the body input for the ListParts
@@ -4286,7 +4174,6 @@ public extension ListPartsOutput {
     }
 }
 
-
 /**
  Structure to encode the body input for the ListParts
  operation.
@@ -4323,7 +4210,6 @@ public extension ListPartsOutput {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketAccelerateConfiguration
  operation.
@@ -4350,7 +4236,6 @@ public extension PutBucketAccelerateConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketAcl
  operation.
@@ -4376,7 +4261,6 @@ public extension PutBucketAclRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutBucketAcl
@@ -4434,7 +4318,6 @@ public extension PutBucketAclRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketAnalyticsConfiguration
  operation.
@@ -4460,7 +4343,6 @@ public extension PutBucketAnalyticsConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the PutBucketAnalyticsConfiguration
@@ -4488,7 +4370,6 @@ public extension PutBucketAnalyticsConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketCors
  operation.
@@ -4514,7 +4395,6 @@ public extension PutBucketCorsRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutBucketCors
@@ -4542,7 +4422,6 @@ public extension PutBucketCorsRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketEncryption
  operation.
@@ -4568,7 +4447,6 @@ public extension PutBucketEncryptionRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutBucketEncryption
@@ -4596,7 +4474,6 @@ public extension PutBucketEncryptionRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketInventoryConfiguration
  operation.
@@ -4622,7 +4499,6 @@ public extension PutBucketInventoryConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the query input for the PutBucketInventoryConfiguration
@@ -4650,7 +4526,6 @@ public extension PutBucketInventoryConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketLifecycle
  operation.
@@ -4676,7 +4551,6 @@ public extension PutBucketLifecycleRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutBucketLifecycle
@@ -4704,7 +4578,6 @@ public extension PutBucketLifecycleRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketLifecycleConfiguration
  operation.
@@ -4730,7 +4603,6 @@ public extension PutBucketLifecycleConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the path input for the PutBucketLogging
@@ -4758,7 +4630,6 @@ public extension PutBucketLoggingRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the PutBucketLogging
  operation.
@@ -4784,7 +4655,6 @@ public extension PutBucketLoggingRequest {
             contentMD5: contentMD5)
     }
 }
-
 
 /**
  Structure to encode the path input for the PutBucketMetricsConfiguration
@@ -4812,7 +4682,6 @@ public extension PutBucketMetricsConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the PutBucketMetricsConfiguration
  operation.
@@ -4838,7 +4707,6 @@ public extension PutBucketMetricsConfigurationRequest {
             id: id)
     }
 }
-
 
 /**
  Structure to encode the path input for the PutBucketNotification
@@ -4866,7 +4734,6 @@ public extension PutBucketNotificationRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the PutBucketNotification
  operation.
@@ -4892,7 +4759,6 @@ public extension PutBucketNotificationRequest {
             contentMD5: contentMD5)
     }
 }
-
 
 /**
  Structure to encode the path input for the PutBucketNotificationConfiguration
@@ -4920,7 +4786,6 @@ public extension PutBucketNotificationConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketPolicy
  operation.
@@ -4946,7 +4811,6 @@ public extension PutBucketPolicyRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutBucketPolicy
@@ -4979,7 +4843,6 @@ public extension PutBucketPolicyRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketReplication
  operation.
@@ -5005,7 +4868,6 @@ public extension PutBucketReplicationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutBucketReplication
@@ -5033,7 +4895,6 @@ public extension PutBucketReplicationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketRequestPayment
  operation.
@@ -5059,7 +4920,6 @@ public extension PutBucketRequestPaymentRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutBucketRequestPayment
@@ -5087,7 +4947,6 @@ public extension PutBucketRequestPaymentRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketTagging
  operation.
@@ -5113,7 +4972,6 @@ public extension PutBucketTaggingRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutBucketTagging
@@ -5141,7 +4999,6 @@ public extension PutBucketTaggingRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketVersioning
  operation.
@@ -5167,7 +5024,6 @@ public extension PutBucketVersioningRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutBucketVersioning
@@ -5200,7 +5056,6 @@ public extension PutBucketVersioningRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutBucketWebsite
  operation.
@@ -5227,7 +5082,6 @@ public extension PutBucketWebsiteRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the PutBucketWebsite
  operation.
@@ -5253,7 +5107,6 @@ public extension PutBucketWebsiteRequest {
             contentMD5: contentMD5)
     }
 }
-
 
 /**
  Structure to encode the path input for the PutObject
@@ -5286,7 +5139,6 @@ public extension PutObjectRequest {
             key: key)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutObject
@@ -5439,7 +5291,6 @@ public extension PutObjectRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutObjectAcl
  operation.
@@ -5472,7 +5323,6 @@ public extension PutObjectAclRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the PutObjectAcl
  operation.
@@ -5498,7 +5348,6 @@ public extension PutObjectAclRequest {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutObjectAcl
@@ -5561,7 +5410,6 @@ public extension PutObjectAclRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutObjectLegalHold
  operation.
@@ -5594,7 +5442,6 @@ public extension PutObjectLegalHoldRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the PutObjectLegalHold
  operation.
@@ -5620,7 +5467,6 @@ public extension PutObjectLegalHoldRequest {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutObjectLegalHold
@@ -5653,7 +5499,6 @@ public extension PutObjectLegalHoldRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutObjectLockConfiguration
  operation.
@@ -5679,7 +5524,6 @@ public extension PutObjectLockConfigurationRequest {
             bucket: bucket)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutObjectLockConfiguration
@@ -5717,7 +5561,6 @@ public extension PutObjectLockConfigurationRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutObjectRetention
  operation.
@@ -5750,7 +5593,6 @@ public extension PutObjectRetentionRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the PutObjectRetention
  operation.
@@ -5776,7 +5618,6 @@ public extension PutObjectRetentionRequest {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutObjectRetention
@@ -5814,7 +5655,6 @@ public extension PutObjectRetentionRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutObjectTagging
  operation.
@@ -5847,7 +5687,6 @@ public extension PutObjectTaggingRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the PutObjectTagging
  operation.
@@ -5873,7 +5712,6 @@ public extension PutObjectTaggingRequest {
             versionId: versionId)
     }
 }
-
 
 /**
  Structure to encode the body input for the PutObjectTagging
@@ -5901,7 +5739,6 @@ public extension PutObjectTaggingRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the PutPublicAccessBlock
  operation.
@@ -5928,7 +5765,6 @@ public extension PutPublicAccessBlockRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the PutPublicAccessBlock
  operation.
@@ -5954,7 +5790,6 @@ public extension PutPublicAccessBlockRequest {
             contentMD5: contentMD5)
     }
 }
-
 
 /**
  Structure to encode the path input for the RestoreObject
@@ -5988,7 +5823,6 @@ public extension RestoreObjectRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the RestoreObject
  operation.
@@ -6015,7 +5849,6 @@ public extension RestoreObjectRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the RestoreObject
  operation.
@@ -6041,7 +5874,6 @@ public extension RestoreObjectRequest {
             requestPayer: requestPayer)
     }
 }
-
 
 /**
  Structure to encode the path input for the SelectObjectContent
@@ -6074,7 +5906,6 @@ public extension SelectObjectContentRequest {
             key: key)
     }
 }
-
 
 /**
  Structure to encode the body input for the SelectObjectContent
@@ -6125,7 +5956,6 @@ public extension SelectObjectContentRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the SelectObjectContent
  operation.
@@ -6162,7 +5992,6 @@ public extension SelectObjectContentRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the UploadPart
  operation.
@@ -6195,7 +6024,6 @@ public extension UploadPartRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the UploadPart
  operation.
@@ -6226,7 +6054,6 @@ public extension UploadPartRequest {
             uploadId: uploadId)
     }
 }
-
 
 /**
  Structure to encode the body input for the UploadPart
@@ -6279,7 +6106,6 @@ public extension UploadPartRequest {
     }
 }
 
-
 /**
  Structure to encode the path input for the UploadPartCopy
  operation.
@@ -6312,7 +6138,6 @@ public extension UploadPartCopyRequest {
     }
 }
 
-
 /**
  Structure to encode the query input for the UploadPartCopy
  operation.
@@ -6343,7 +6168,6 @@ public extension UploadPartCopyRequest {
             uploadId: uploadId)
     }
 }
-
 
 /**
  Structure to encode the body input for the UploadPartCopy
@@ -6432,7 +6256,6 @@ public extension UploadPartCopyRequest {
     }
 }
 
-
 /**
  Structure to encode the body input for the UploadPartCopy
  operation.
@@ -6483,4 +6306,3 @@ public extension UploadPartCopyOutput {
             serverSideEncryption: serverSideEncryption)
     }
 }
-

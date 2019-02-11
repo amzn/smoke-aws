@@ -202,4 +202,3 @@ public typealias UpdateTableOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the UpdateTimeToLive operation in a HTTP client.
  */
 public typealias UpdateTimeToLiveOperationHTTPRequestInput = BodyHTTPRequestInput
-

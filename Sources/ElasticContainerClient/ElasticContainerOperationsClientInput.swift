@@ -207,4 +207,3 @@ public typealias UpdateContainerInstancesStateOperationHTTPRequestInput = BodyHT
  Type to handle the input to the UpdateService operation in a HTTP client.
  */
 public typealias UpdateServiceOperationHTTPRequestInput = BodyHTTPRequestInput
-

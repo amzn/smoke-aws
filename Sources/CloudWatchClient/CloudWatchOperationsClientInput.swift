@@ -107,4 +107,3 @@ public typealias PutMetricDataOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the SetAlarmState operation in a HTTP client.
  */
 public typealias SetAlarmStateOperationHTTPRequestInput = QueryHTTPRequestInput
-

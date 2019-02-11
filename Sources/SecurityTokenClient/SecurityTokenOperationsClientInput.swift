@@ -57,4 +57,3 @@ public typealias GetFederationTokenOperationHTTPRequestInput = QueryHTTPRequestI
  Type to handle the input to the GetSessionToken operation in a HTTP client.
  */
 public typealias GetSessionTokenOperationHTTPRequestInput = QueryHTTPRequestInput
-

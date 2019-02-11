@@ -282,4 +282,3 @@ extension SubscribeResponseForSubscribe: HTTPResponseOutputProtocol {
         return try bodyDecodableProvider()
     }
 }
-

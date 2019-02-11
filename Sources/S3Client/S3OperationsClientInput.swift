@@ -41,6 +41,7 @@ public struct AbortMultipartUploadOperationHTTPRequestInput: HTTPRequestInputPro
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the CompleteMultipartUpload operation in a HTTP client.
  */
@@ -59,6 +60,7 @@ public struct CompleteMultipartUploadOperationHTTPRequestInput: HTTPRequestInput
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the CopyObject operation in a HTTP client.
  */
@@ -77,6 +79,7 @@ public struct CopyObjectOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the CreateBucket operation in a HTTP client.
  */
@@ -95,6 +98,7 @@ public struct CreateBucketOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the CreateMultipartUpload operation in a HTTP client.
  */
@@ -113,6 +117,7 @@ public struct CreateMultipartUploadOperationHTTPRequestInput: HTTPRequestInputPr
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucket operation in a HTTP client.
  */
@@ -131,6 +136,7 @@ public struct DeleteBucketOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketAnalyticsConfiguration operation in a HTTP client.
  */
@@ -149,6 +155,7 @@ public struct DeleteBucketAnalyticsConfigurationOperationHTTPRequestInput: HTTPR
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketCors operation in a HTTP client.
  */
@@ -167,6 +174,7 @@ public struct DeleteBucketCorsOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketEncryption operation in a HTTP client.
  */
@@ -185,6 +193,7 @@ public struct DeleteBucketEncryptionOperationHTTPRequestInput: HTTPRequestInputP
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketInventoryConfiguration operation in a HTTP client.
  */
@@ -203,6 +212,7 @@ public struct DeleteBucketInventoryConfigurationOperationHTTPRequestInput: HTTPR
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketLifecycle operation in a HTTP client.
  */
@@ -221,6 +231,7 @@ public struct DeleteBucketLifecycleOperationHTTPRequestInput: HTTPRequestInputPr
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketMetricsConfiguration operation in a HTTP client.
  */
@@ -239,6 +250,7 @@ public struct DeleteBucketMetricsConfigurationOperationHTTPRequestInput: HTTPReq
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketPolicy operation in a HTTP client.
  */
@@ -257,6 +269,7 @@ public struct DeleteBucketPolicyOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketReplication operation in a HTTP client.
  */
@@ -275,6 +288,7 @@ public struct DeleteBucketReplicationOperationHTTPRequestInput: HTTPRequestInput
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketTagging operation in a HTTP client.
  */
@@ -293,6 +307,7 @@ public struct DeleteBucketTaggingOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteBucketWebsite operation in a HTTP client.
  */
@@ -311,6 +326,7 @@ public struct DeleteBucketWebsiteOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteObject operation in a HTTP client.
  */
@@ -329,6 +345,7 @@ public struct DeleteObjectOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteObjectTagging operation in a HTTP client.
  */
@@ -347,6 +364,7 @@ public struct DeleteObjectTaggingOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeleteObjects operation in a HTTP client.
  */
@@ -365,6 +383,7 @@ public struct DeleteObjectsOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the DeletePublicAccessBlock operation in a HTTP client.
  */
@@ -383,6 +402,7 @@ public struct DeletePublicAccessBlockOperationHTTPRequestInput: HTTPRequestInput
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketAccelerateConfiguration operation in a HTTP client.
  */
@@ -401,6 +421,7 @@ public struct GetBucketAccelerateConfigurationOperationHTTPRequestInput: HTTPReq
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketAcl operation in a HTTP client.
  */
@@ -419,6 +440,7 @@ public struct GetBucketAclOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketAnalyticsConfiguration operation in a HTTP client.
  */
@@ -437,6 +459,7 @@ public struct GetBucketAnalyticsConfigurationOperationHTTPRequestInput: HTTPRequ
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketCors operation in a HTTP client.
  */
@@ -455,6 +478,7 @@ public struct GetBucketCorsOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketEncryption operation in a HTTP client.
  */
@@ -473,6 +497,7 @@ public struct GetBucketEncryptionOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketInventoryConfiguration operation in a HTTP client.
  */
@@ -491,6 +516,7 @@ public struct GetBucketInventoryConfigurationOperationHTTPRequestInput: HTTPRequ
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketLifecycle operation in a HTTP client.
  */
@@ -509,6 +535,7 @@ public struct GetBucketLifecycleOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketLifecycleConfiguration operation in a HTTP client.
  */
@@ -527,6 +554,7 @@ public struct GetBucketLifecycleConfigurationOperationHTTPRequestInput: HTTPRequ
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketLocation operation in a HTTP client.
  */
@@ -545,6 +573,7 @@ public struct GetBucketLocationOperationHTTPRequestInput: HTTPRequestInputProtoc
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketLogging operation in a HTTP client.
  */
@@ -563,6 +592,7 @@ public struct GetBucketLoggingOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketMetricsConfiguration operation in a HTTP client.
  */
@@ -581,6 +611,7 @@ public struct GetBucketMetricsConfigurationOperationHTTPRequestInput: HTTPReques
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketNotification operation in a HTTP client.
  */
@@ -599,6 +630,7 @@ public struct GetBucketNotificationOperationHTTPRequestInput: HTTPRequestInputPr
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketNotificationConfiguration operation in a HTTP client.
  */
@@ -617,6 +649,7 @@ public struct GetBucketNotificationConfigurationOperationHTTPRequestInput: HTTPR
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketPolicy operation in a HTTP client.
  */
@@ -635,6 +668,7 @@ public struct GetBucketPolicyOperationHTTPRequestInput: HTTPRequestInputProtocol
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketPolicyStatus operation in a HTTP client.
  */
@@ -653,6 +687,7 @@ public struct GetBucketPolicyStatusOperationHTTPRequestInput: HTTPRequestInputPr
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketReplication operation in a HTTP client.
  */
@@ -671,6 +706,7 @@ public struct GetBucketReplicationOperationHTTPRequestInput: HTTPRequestInputPro
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketRequestPayment operation in a HTTP client.
  */
@@ -689,6 +725,7 @@ public struct GetBucketRequestPaymentOperationHTTPRequestInput: HTTPRequestInput
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketTagging operation in a HTTP client.
  */
@@ -707,6 +744,7 @@ public struct GetBucketTaggingOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketVersioning operation in a HTTP client.
  */
@@ -725,6 +763,7 @@ public struct GetBucketVersioningOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetBucketWebsite operation in a HTTP client.
  */
@@ -743,6 +782,7 @@ public struct GetBucketWebsiteOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetObject operation in a HTTP client.
  */
@@ -761,6 +801,7 @@ public struct GetObjectOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetObjectAcl operation in a HTTP client.
  */
@@ -779,6 +820,7 @@ public struct GetObjectAclOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetObjectLegalHold operation in a HTTP client.
  */
@@ -797,6 +839,7 @@ public struct GetObjectLegalHoldOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetObjectLockConfiguration operation in a HTTP client.
  */
@@ -815,6 +858,7 @@ public struct GetObjectLockConfigurationOperationHTTPRequestInput: HTTPRequestIn
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetObjectRetention operation in a HTTP client.
  */
@@ -833,6 +877,7 @@ public struct GetObjectRetentionOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetObjectTagging operation in a HTTP client.
  */
@@ -851,6 +896,7 @@ public struct GetObjectTaggingOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetObjectTorrent operation in a HTTP client.
  */
@@ -869,6 +915,7 @@ public struct GetObjectTorrentOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the GetPublicAccessBlock operation in a HTTP client.
  */
@@ -887,6 +934,7 @@ public struct GetPublicAccessBlockOperationHTTPRequestInput: HTTPRequestInputPro
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the HeadBucket operation in a HTTP client.
  */
@@ -905,6 +953,7 @@ public struct HeadBucketOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the HeadObject operation in a HTTP client.
  */
@@ -923,6 +972,7 @@ public struct HeadObjectOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the ListBucketAnalyticsConfigurations operation in a HTTP client.
  */
@@ -941,6 +991,7 @@ public struct ListBucketAnalyticsConfigurationsOperationHTTPRequestInput: HTTPRe
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the ListBucketInventoryConfigurations operation in a HTTP client.
  */
@@ -959,6 +1010,7 @@ public struct ListBucketInventoryConfigurationsOperationHTTPRequestInput: HTTPRe
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the ListBucketMetricsConfigurations operation in a HTTP client.
  */
@@ -977,6 +1029,7 @@ public struct ListBucketMetricsConfigurationsOperationHTTPRequestInput: HTTPRequ
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the ListMultipartUploads operation in a HTTP client.
  */
@@ -995,6 +1048,7 @@ public struct ListMultipartUploadsOperationHTTPRequestInput: HTTPRequestInputPro
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the ListObjectVersions operation in a HTTP client.
  */
@@ -1013,6 +1067,7 @@ public struct ListObjectVersionsOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the ListObjects operation in a HTTP client.
  */
@@ -1031,6 +1086,7 @@ public struct ListObjectsOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the ListObjectsV2 operation in a HTTP client.
  */
@@ -1049,6 +1105,7 @@ public struct ListObjectsV2OperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the ListParts operation in a HTTP client.
  */
@@ -1067,6 +1124,7 @@ public struct ListPartsOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketAccelerateConfiguration operation in a HTTP client.
  */
@@ -1085,6 +1143,7 @@ public struct PutBucketAccelerateConfigurationOperationHTTPRequestInput: HTTPReq
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketAcl operation in a HTTP client.
  */
@@ -1103,6 +1162,7 @@ public struct PutBucketAclOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketAnalyticsConfiguration operation in a HTTP client.
  */
@@ -1121,6 +1181,7 @@ public struct PutBucketAnalyticsConfigurationOperationHTTPRequestInput: HTTPRequ
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketCors operation in a HTTP client.
  */
@@ -1139,6 +1200,7 @@ public struct PutBucketCorsOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketEncryption operation in a HTTP client.
  */
@@ -1157,6 +1219,7 @@ public struct PutBucketEncryptionOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketInventoryConfiguration operation in a HTTP client.
  */
@@ -1175,6 +1238,7 @@ public struct PutBucketInventoryConfigurationOperationHTTPRequestInput: HTTPRequ
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketLifecycle operation in a HTTP client.
  */
@@ -1193,6 +1257,7 @@ public struct PutBucketLifecycleOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketLifecycleConfiguration operation in a HTTP client.
  */
@@ -1211,6 +1276,7 @@ public struct PutBucketLifecycleConfigurationOperationHTTPRequestInput: HTTPRequ
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketLogging operation in a HTTP client.
  */
@@ -1229,6 +1295,7 @@ public struct PutBucketLoggingOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketMetricsConfiguration operation in a HTTP client.
  */
@@ -1247,6 +1314,7 @@ public struct PutBucketMetricsConfigurationOperationHTTPRequestInput: HTTPReques
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketNotification operation in a HTTP client.
  */
@@ -1265,6 +1333,7 @@ public struct PutBucketNotificationOperationHTTPRequestInput: HTTPRequestInputPr
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketNotificationConfiguration operation in a HTTP client.
  */
@@ -1283,6 +1352,7 @@ public struct PutBucketNotificationConfigurationOperationHTTPRequestInput: HTTPR
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketPolicy operation in a HTTP client.
  */
@@ -1301,6 +1371,7 @@ public struct PutBucketPolicyOperationHTTPRequestInput: HTTPRequestInputProtocol
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketReplication operation in a HTTP client.
  */
@@ -1319,6 +1390,7 @@ public struct PutBucketReplicationOperationHTTPRequestInput: HTTPRequestInputPro
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketRequestPayment operation in a HTTP client.
  */
@@ -1337,6 +1409,7 @@ public struct PutBucketRequestPaymentOperationHTTPRequestInput: HTTPRequestInput
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketTagging operation in a HTTP client.
  */
@@ -1355,6 +1428,7 @@ public struct PutBucketTaggingOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketVersioning operation in a HTTP client.
  */
@@ -1373,6 +1447,7 @@ public struct PutBucketVersioningOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutBucketWebsite operation in a HTTP client.
  */
@@ -1391,6 +1466,7 @@ public struct PutBucketWebsiteOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutObject operation in a HTTP client.
  */
@@ -1409,6 +1485,7 @@ public struct PutObjectOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutObjectAcl operation in a HTTP client.
  */
@@ -1427,6 +1504,7 @@ public struct PutObjectAclOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutObjectLegalHold operation in a HTTP client.
  */
@@ -1445,6 +1523,7 @@ public struct PutObjectLegalHoldOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutObjectLockConfiguration operation in a HTTP client.
  */
@@ -1463,6 +1542,7 @@ public struct PutObjectLockConfigurationOperationHTTPRequestInput: HTTPRequestIn
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutObjectRetention operation in a HTTP client.
  */
@@ -1481,6 +1561,7 @@ public struct PutObjectRetentionOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutObjectTagging operation in a HTTP client.
  */
@@ -1499,6 +1580,7 @@ public struct PutObjectTaggingOperationHTTPRequestInput: HTTPRequestInputProtoco
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the PutPublicAccessBlock operation in a HTTP client.
  */
@@ -1517,6 +1599,7 @@ public struct PutPublicAccessBlockOperationHTTPRequestInput: HTTPRequestInputPro
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the RestoreObject operation in a HTTP client.
  */
@@ -1535,6 +1618,7 @@ public struct RestoreObjectOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the SelectObjectContent operation in a HTTP client.
  */
@@ -1553,6 +1637,7 @@ public struct SelectObjectContentOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the UploadPart operation in a HTTP client.
  */
@@ -1571,6 +1656,7 @@ public struct UploadPartOperationHTTPRequestInput: HTTPRequestInputProtocol {
         self.pathPostfix = nil
     }
 }
+
 /**
  Type to handle the input to the UploadPartCopy operation in a HTTP client.
  */
