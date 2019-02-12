@@ -33,6 +33,27 @@ public enum ElasticContainerClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension ElasticContainerError {
+    func isRetryable() -> Bool {
+        switch self {
+        case .attributeLimitExceeded:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? ElasticContainerError {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the ElasticContainer service.
  */
@@ -41,6 +62,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     let awsRegion: AWSRegion
     let service: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -49,7 +72,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                 service: String = "ecs",
                 contentType: String = "application/x-amz-json-1.1",
                 target: String? = "AmazonEC2ContainerServiceV20141113",
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = JSONAWSHttpClientDelegate<ElasticContainerError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
@@ -61,6 +85,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
         self.service = service
         self.target = target
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
     }
 
     /**
@@ -99,12 +125,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = CreateClusterOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -126,11 +154,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = CreateClusterOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -153,12 +183,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = CreateServiceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -180,11 +212,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = CreateServiceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -207,12 +241,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -234,11 +270,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -261,12 +299,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -288,11 +328,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -315,12 +357,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeleteClusterOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -342,11 +386,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeleteClusterOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -369,12 +415,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -396,11 +444,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -423,12 +473,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeregisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -450,11 +502,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeregisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -477,12 +531,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -504,11 +560,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -531,12 +589,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeClustersOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -558,11 +618,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeClustersOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -585,12 +647,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeContainerInstancesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -612,11 +676,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeContainerInstancesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -639,12 +705,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeServicesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -666,11 +734,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeServicesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -693,12 +763,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -720,11 +792,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -747,12 +821,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeTasksOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -774,11 +850,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DescribeTasksOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -801,12 +879,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DiscoverPollEndpointOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -828,11 +908,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = DiscoverPollEndpointOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -855,12 +937,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -882,11 +966,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -909,12 +995,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListAttributesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -936,11 +1024,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListAttributesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -963,12 +1053,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListClustersOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -990,11 +1082,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListClustersOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1017,12 +1111,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListContainerInstancesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1044,11 +1140,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListContainerInstancesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1071,12 +1169,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListServicesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1098,11 +1198,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListServicesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1125,12 +1227,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1152,11 +1256,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1179,12 +1285,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListTaskDefinitionFamiliesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1206,11 +1314,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListTaskDefinitionFamiliesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1233,12 +1343,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1260,11 +1372,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1287,12 +1401,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1314,11 +1430,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1341,12 +1459,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1368,11 +1488,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1395,12 +1517,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = PutAttributesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1422,11 +1546,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = PutAttributesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1449,12 +1575,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = RegisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1476,11 +1604,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = RegisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1503,12 +1633,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = RegisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1530,11 +1662,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = RegisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1557,12 +1691,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = RunTaskOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1584,11 +1720,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = RunTaskOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1611,12 +1749,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = StartTaskOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1638,11 +1778,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = StartTaskOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1665,12 +1807,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = StopTaskOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1692,11 +1836,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = StopTaskOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1719,12 +1865,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = SubmitContainerStateChangeOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1746,11 +1894,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = SubmitContainerStateChangeOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1773,12 +1923,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1800,11 +1952,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1827,12 +1981,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1854,11 +2010,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1881,12 +2039,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1908,11 +2068,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1935,12 +2097,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = UpdateContainerAgentOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1962,11 +2126,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = UpdateContainerAgentOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1989,12 +2155,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = UpdateContainerInstancesStateOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2016,11 +2184,13 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = UpdateContainerInstancesStateOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2043,12 +2213,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2070,10 +2242,12 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
 
         let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }

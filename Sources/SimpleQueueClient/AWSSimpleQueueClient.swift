@@ -33,6 +33,27 @@ public enum SimpleQueueClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension SimpleQueueError {
+    func isRetryable() -> Bool {
+        switch self {
+        case .overLimit:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? SimpleQueueError {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the SimpleQueue service.
  */
@@ -43,6 +64,8 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
     let service: String
     let apiVersion: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -51,7 +74,8 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                 service: String = "sqs",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2012-11-05",
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>()
 
         let clientDelegateForListHttpClient = XMLAWSHttpClientDelegate<SimpleQueueError>(
@@ -72,6 +96,8 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
         self.service = service
         self.target = nil
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
         self.apiVersion = apiVersion
     }
 
@@ -116,12 +142,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -145,11 +173,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -175,12 +205,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.changeMessageVisibility.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -204,11 +236,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.changeMessageVisibility.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -235,12 +269,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.changeMessageVisibilityBatch.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -266,11 +302,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.changeMessageVisibilityBatch.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -297,12 +335,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.createQueue.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -328,11 +368,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.createQueue.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -358,12 +400,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.deleteMessage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -387,11 +431,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.deleteMessage.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -418,12 +464,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.deleteMessageBatch.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -449,11 +497,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.deleteMessageBatch.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -478,12 +528,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.deleteQueue.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -506,11 +558,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.deleteQueue.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -537,12 +591,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.getQueueAttributes.rawValue,
             version: apiVersion)
 
-        _ = try listHttpClient.executeAsyncWithOutput(
+        _ = try listHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -568,11 +624,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.getQueueAttributes.rawValue,
             version: apiVersion)
 
-        return try listHttpClient.executeSyncWithOutput(
+        return try listHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -599,12 +657,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.getQueueUrl.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -630,11 +690,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.getQueueUrl.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -661,12 +723,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.listDeadLetterSourceQueues.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -692,11 +756,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.listDeadLetterSourceQueues.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -722,12 +788,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.listQueueTags.rawValue,
             version: apiVersion)
 
-        _ = try listHttpClient.executeAsyncWithOutput(
+        _ = try listHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -752,11 +820,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.listQueueTags.rawValue,
             version: apiVersion)
 
-        return try listHttpClient.executeSyncWithOutput(
+        return try listHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -782,12 +852,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.listQueues.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -812,11 +884,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.listQueues.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -842,12 +916,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.purgeQueue.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -871,11 +947,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.purgeQueue.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -902,12 +980,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.receiveMessage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -933,11 +1013,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.receiveMessage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -962,12 +1044,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -990,11 +1074,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1021,12 +1107,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.sendMessage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1052,11 +1140,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.sendMessage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1083,12 +1173,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.sendMessageBatch.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1114,11 +1206,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.sendMessageBatch.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1144,12 +1238,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.setQueueAttributes.rawValue,
             version: apiVersion)
 
-        _ = try listHttpClient.executeAsyncWithoutOutput(
+        _ = try listHttpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1173,11 +1269,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.setQueueAttributes.rawValue,
             version: apiVersion)
 
-        try listHttpClient.executeSyncWithoutOutput(
+        try listHttpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1202,12 +1300,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.tagQueue.rawValue,
             version: apiVersion)
 
-        _ = try listHttpClient.executeAsyncWithoutOutput(
+        _ = try listHttpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1230,11 +1330,13 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.tagQueue.rawValue,
             version: apiVersion)
 
-        try listHttpClient.executeSyncWithoutOutput(
+        try listHttpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1259,12 +1361,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.untagQueue.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1287,10 +1391,12 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.untagQueue.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }

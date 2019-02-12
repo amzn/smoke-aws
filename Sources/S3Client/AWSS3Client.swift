@@ -33,6 +33,22 @@ public enum S3ClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension S3Error {
+    func isRetryable() -> Bool {
+        return false
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? S3Error {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the S3 service.
  */
@@ -42,6 +58,8 @@ public struct AWSS3Client: S3ClientProtocol {
     let awsRegion: AWSRegion
     let service: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
@@ -50,7 +68,8 @@ public struct AWSS3Client: S3ClientProtocol {
                 service: String = "s3",
                 contentType: String = "application/x-amz-rest-xml",
                 target: String? = nil,
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = XMLAWSHttpClientDelegate<S3Error>()
 
         let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>()
@@ -69,6 +88,8 @@ public struct AWSS3Client: S3ClientProtocol {
         self.service = service
         self.target = target
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
     }
 
     /**
@@ -110,12 +131,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = AbortMultipartUploadOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -138,11 +161,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = AbortMultipartUploadOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -165,12 +190,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = CompleteMultipartUploadOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -192,11 +219,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = CompleteMultipartUploadOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -220,12 +249,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = CopyObjectOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -248,11 +279,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = CopyObjectOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -276,12 +309,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = CreateBucketOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -304,11 +339,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = CreateBucketOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -331,12 +368,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = CreateMultipartUploadOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?uploads",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -358,11 +397,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = CreateMultipartUploadOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?uploads",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -384,12 +425,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -409,11 +452,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -435,12 +480,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -460,11 +507,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -486,12 +535,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketCorsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -511,11 +562,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketCorsOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -537,12 +590,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -562,11 +617,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -588,12 +645,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -613,11 +672,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -639,12 +700,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -664,11 +727,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -690,12 +755,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -715,11 +782,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -741,12 +810,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketPolicyOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -766,11 +837,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketPolicyOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -792,12 +865,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketReplicationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -817,11 +892,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketReplicationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -843,12 +920,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketTaggingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -868,11 +947,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketTaggingOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -894,12 +975,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -919,11 +1002,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -946,12 +1031,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteObjectOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -973,11 +1060,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteObjectOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1000,12 +1089,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteObjectTaggingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1027,11 +1118,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteObjectTaggingOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1054,12 +1147,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteObjectsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?delete",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1081,11 +1176,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeleteObjectsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?delete",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1107,12 +1204,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeletePublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1132,11 +1231,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = DeletePublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1159,12 +1260,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?accelerate",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1186,11 +1289,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?accelerate",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1213,12 +1318,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketAclOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?acl",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1240,11 +1347,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketAclOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?acl",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1267,12 +1376,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1294,11 +1405,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1321,12 +1434,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketCorsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1348,11 +1463,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketCorsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1375,12 +1492,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1402,11 +1521,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1429,12 +1550,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1456,11 +1579,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1483,12 +1608,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1510,11 +1637,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1537,12 +1666,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1564,11 +1695,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1591,12 +1724,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketLocationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?location",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1618,11 +1753,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketLocationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?location",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1645,12 +1782,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketLoggingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?logging",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1672,11 +1811,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketLoggingOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?logging",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1699,12 +1840,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1726,11 +1869,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1753,12 +1898,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketNotificationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1780,11 +1927,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketNotificationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1807,12 +1956,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1834,11 +1985,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1861,12 +2014,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketPolicyOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1888,11 +2043,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketPolicyOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1915,12 +2072,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketPolicyStatusOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?policyStatus",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1942,11 +2101,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketPolicyStatusOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?policyStatus",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1969,12 +2130,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketReplicationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1996,11 +2159,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketReplicationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2023,12 +2188,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?requestPayment",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2050,11 +2217,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?requestPayment",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2077,12 +2246,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketTaggingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2104,11 +2275,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketTaggingOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2131,12 +2304,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketVersioningOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?versioning",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2158,11 +2333,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketVersioningOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?versioning",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2185,12 +2362,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2212,11 +2391,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2240,12 +2421,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectOperationHTTPRequestInput(encodable: input)
 
-        _ = try dataHttpClient.executeAsyncWithOutput(
+        _ = try dataHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2268,11 +2451,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectOperationHTTPRequestInput(encodable: input)
 
-        return try dataHttpClient.executeSyncWithOutput(
+        return try dataHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2296,12 +2481,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectAclOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?acl",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2324,11 +2511,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectAclOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?acl",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2351,12 +2540,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?legal-hold",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2378,11 +2569,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?legal-hold",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2405,12 +2598,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?object-lock",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2432,11 +2627,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?object-lock",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2459,12 +2656,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectRetentionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?retention",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2486,11 +2685,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectRetentionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?retention",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2513,12 +2714,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectTaggingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2540,11 +2743,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectTaggingOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2567,12 +2772,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectTorrentOperationHTTPRequestInput(encodable: input)
 
-        _ = try dataHttpClient.executeAsyncWithOutput(
+        _ = try dataHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?torrent",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2594,11 +2801,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetObjectTorrentOperationHTTPRequestInput(encodable: input)
 
-        return try dataHttpClient.executeSyncWithOutput(
+        return try dataHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?torrent",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2621,12 +2830,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2648,11 +2859,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = GetPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2675,12 +2888,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = HeadBucketOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .HEAD,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2701,11 +2916,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = HeadBucketOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .HEAD,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2729,12 +2946,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = HeadObjectOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .HEAD,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2757,11 +2976,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = HeadObjectOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .HEAD,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2784,12 +3005,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListBucketAnalyticsConfigurationsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2811,11 +3034,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListBucketAnalyticsConfigurationsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2838,12 +3063,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListBucketInventoryConfigurationsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2865,11 +3092,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListBucketInventoryConfigurationsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2892,12 +3121,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListBucketMetricsConfigurationsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2919,11 +3150,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListBucketMetricsConfigurationsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2943,12 +3176,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = NoHTTPRequestInput()
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2967,11 +3202,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = NoHTTPRequestInput()
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2994,12 +3231,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListMultipartUploadsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?uploads",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3021,11 +3260,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListMultipartUploadsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?uploads",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3048,12 +3289,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListObjectVersionsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?versions",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3075,11 +3318,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListObjectVersionsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?versions",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3103,12 +3348,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListObjectsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3131,11 +3378,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListObjectsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3159,12 +3408,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListObjectsV2OperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?list-type=2",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3187,11 +3438,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListObjectsV2OperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?list-type=2",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3214,12 +3467,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListPartsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3241,11 +3496,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = ListPartsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3267,12 +3524,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?accelerate",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3292,11 +3551,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?accelerate",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3318,12 +3579,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketAclOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?acl",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3343,11 +3606,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketAclOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?acl",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3369,12 +3634,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3394,11 +3661,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3420,12 +3689,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketCorsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3445,11 +3716,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketCorsOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3471,12 +3744,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3496,11 +3771,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3522,12 +3799,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3547,11 +3826,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3573,12 +3854,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3598,11 +3881,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3624,12 +3909,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3649,11 +3936,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3675,12 +3964,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketLoggingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?logging",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3700,11 +3991,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketLoggingOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?logging",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3726,12 +4019,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3751,11 +4046,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3777,12 +4074,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketNotificationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3802,11 +4101,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketNotificationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3828,12 +4129,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3853,11 +4156,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3879,12 +4184,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketPolicyOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3904,11 +4211,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketPolicyOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3930,12 +4239,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketReplicationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3955,11 +4266,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketReplicationOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3981,12 +4294,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?requestPayment",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4006,11 +4321,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?requestPayment",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4032,12 +4349,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketTaggingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4057,11 +4376,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketTaggingOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4083,12 +4404,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketVersioningOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?versioning",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4108,11 +4431,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketVersioningOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?versioning",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4134,12 +4459,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4159,11 +4486,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4186,12 +4515,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectOperationHTTPRequestInput(encodable: input)
 
-        _ = try dataHttpClient.executeAsyncWithOutput(
+        _ = try dataHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4213,11 +4544,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectOperationHTTPRequestInput(encodable: input)
 
-        return try dataHttpClient.executeSyncWithOutput(
+        return try dataHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4241,12 +4574,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectAclOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?acl",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4269,11 +4604,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectAclOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?acl",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4296,12 +4633,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?legal-hold",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4323,11 +4662,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?legal-hold",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4350,12 +4691,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?object-lock",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4377,11 +4720,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?object-lock",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4404,12 +4749,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectRetentionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?retention",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4431,11 +4778,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectRetentionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?retention",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4458,12 +4807,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectTaggingOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4485,11 +4836,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutObjectTaggingOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4511,12 +4864,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4536,11 +4891,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = PutPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4564,12 +4921,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = RestoreObjectOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?restore",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4592,11 +4951,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = RestoreObjectOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?restore",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4619,12 +4980,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = SelectObjectContentOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?select&select-type=2",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4646,11 +5009,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = SelectObjectContentOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?select&select-type=2",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4673,12 +5038,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = UploadPartOperationHTTPRequestInput(encodable: input)
 
-        _ = try dataHttpClient.executeAsyncWithOutput(
+        _ = try dataHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4700,11 +5067,13 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = UploadPartOperationHTTPRequestInput(encodable: input)
 
-        return try dataHttpClient.executeSyncWithOutput(
+        return try dataHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4727,12 +5096,14 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = UploadPartCopyOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4754,10 +5125,12 @@ public struct AWSS3Client: S3ClientProtocol {
 
         let requestInput = UploadPartCopyOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }

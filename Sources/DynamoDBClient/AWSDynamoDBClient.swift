@@ -33,6 +33,27 @@ public enum DynamoDBClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension DynamoDBError {
+    func isRetryable() -> Bool {
+        switch self {
+        case .provisionedThroughputExceeded, .requestLimitExceeded, .itemCollectionSizeLimitExceeded, .limitExceeded:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? DynamoDBError {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the DynamoDB service.
  */
@@ -41,6 +62,8 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
     let awsRegion: AWSRegion
     let service: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -49,7 +72,8 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                 service: String = "dynamodb",
                 contentType: String = "application/x-amz-json-1.0",
                 target: String? = "DynamoDB_20120810",
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = JSONAWSHttpClientDelegate<DynamoDBError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
@@ -61,6 +85,8 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
         self.service = service
         self.target = target
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
     }
 
     /**
@@ -99,12 +125,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = BatchGetItemOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -126,11 +154,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = BatchGetItemOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -153,12 +183,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = BatchWriteItemOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -180,11 +212,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = BatchWriteItemOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -207,12 +241,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = CreateBackupOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -234,11 +270,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = CreateBackupOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -261,12 +299,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = CreateGlobalTableOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -288,11 +328,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = CreateGlobalTableOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -315,12 +357,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = CreateTableOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -342,11 +386,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = CreateTableOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -369,12 +415,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DeleteBackupOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -396,11 +444,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DeleteBackupOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -423,12 +473,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DeleteItemOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -450,11 +502,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DeleteItemOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -477,12 +531,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DeleteTableOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -504,11 +560,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DeleteTableOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -531,12 +589,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeBackupOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -558,11 +618,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeBackupOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -585,12 +647,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -612,11 +676,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -638,12 +704,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeEndpointsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -664,11 +732,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeEndpointsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -691,12 +761,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeGlobalTableOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -718,11 +790,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeGlobalTableOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -745,12 +819,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -772,11 +848,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -799,12 +877,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeLimitsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -826,11 +906,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeLimitsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -853,12 +935,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeTableOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -880,11 +964,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeTableOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -907,12 +993,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeTimeToLiveOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -934,11 +1022,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = DescribeTimeToLiveOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -961,12 +1051,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = GetItemOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -988,11 +1080,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = GetItemOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1015,12 +1109,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1042,11 +1138,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1069,12 +1167,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ListGlobalTablesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1096,11 +1196,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ListGlobalTablesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1123,12 +1225,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ListTablesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1150,11 +1254,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ListTablesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1177,12 +1283,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ListTagsOfResourceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1204,11 +1312,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ListTagsOfResourceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1231,12 +1341,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = PutItemOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1258,11 +1370,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = PutItemOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1285,12 +1399,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = QueryOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1312,11 +1428,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = QueryOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1339,12 +1457,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = RestoreTableFromBackupOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1366,11 +1486,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = RestoreTableFromBackupOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1393,12 +1515,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = RestoreTableToPointInTimeOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1420,11 +1544,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = RestoreTableToPointInTimeOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1447,12 +1573,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ScanOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1474,11 +1602,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = ScanOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1500,12 +1630,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1525,11 +1657,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1552,12 +1686,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = TransactGetItemsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1579,11 +1715,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = TransactGetItemsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1606,12 +1744,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = TransactWriteItemsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1633,11 +1773,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = TransactWriteItemsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1659,12 +1801,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1684,11 +1828,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1711,12 +1857,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1738,11 +1886,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1765,12 +1915,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateGlobalTableOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1792,11 +1944,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateGlobalTableOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1819,12 +1973,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1846,11 +2002,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1873,12 +2031,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateItemOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1900,11 +2060,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateItemOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1927,12 +2089,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1954,11 +2118,13 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1981,12 +2147,14 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateTimeToLiveOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2008,10 +2176,12 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
 
         let requestInput = UpdateTimeToLiveOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }

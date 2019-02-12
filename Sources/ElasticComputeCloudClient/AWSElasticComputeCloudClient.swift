@@ -33,6 +33,22 @@ public enum ElasticComputeCloudClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension ElasticComputeCloudError {
+    func isRetryable() -> Bool {
+        return false
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? ElasticComputeCloudError {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the ElasticComputeCloud service.
  */
@@ -42,6 +58,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let service: String
     let apiVersion: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -50,7 +68,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                 service: String = "ec2",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2016-11-15",
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(
             outputListDecodingStrategy: .collapseListUsingItemTag("item"))
 
@@ -63,6 +82,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.service = service
         self.target = nil
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
         self.apiVersion = apiVersion
     }
 
@@ -105,12 +126,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.acceptReservedInstancesExchangeQuote.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -135,11 +158,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.acceptReservedInstancesExchangeQuote.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -165,12 +190,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.acceptTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -195,11 +222,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.acceptTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -225,12 +254,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.acceptVpcEndpointConnections.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -255,11 +286,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.acceptVpcEndpointConnections.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -285,12 +318,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.acceptVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -315,11 +350,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.acceptVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -345,12 +382,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.advertiseByoipCidr.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -375,11 +414,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.advertiseByoipCidr.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -405,12 +446,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.allocateAddress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -435,11 +478,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.allocateAddress.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -465,12 +510,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.allocateHosts.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -495,11 +542,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.allocateHosts.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -525,12 +574,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.applySecurityGroupsToClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -555,11 +606,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.applySecurityGroupsToClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -585,12 +638,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.assignIpv6Addresses.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -615,11 +670,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.assignIpv6Addresses.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -644,12 +701,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.assignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -672,11 +731,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.assignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -702,12 +763,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateAddress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -732,11 +795,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateAddress.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -762,12 +827,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -792,11 +859,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -821,12 +890,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateDhcpOptions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -849,11 +920,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateDhcpOptions.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -879,12 +952,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateIamInstanceProfile.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -909,11 +984,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateIamInstanceProfile.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -939,12 +1016,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateRouteTable.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -969,11 +1048,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateRouteTable.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -999,12 +1080,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateSubnetCidrBlock.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1029,11 +1112,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateSubnetCidrBlock.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1059,12 +1144,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1089,11 +1176,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1119,12 +1208,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateVpcCidrBlock.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1149,11 +1240,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.associateVpcCidrBlock.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1179,12 +1272,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachClassicLinkVpc.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1209,11 +1304,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachClassicLinkVpc.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1238,12 +1335,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachInternetGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1266,11 +1365,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachInternetGateway.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1296,12 +1397,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachNetworkInterface.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1326,11 +1429,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachNetworkInterface.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1356,12 +1461,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachVolume.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1386,11 +1493,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachVolume.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1416,12 +1525,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachVpnGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1446,11 +1557,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.attachVpnGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1476,12 +1589,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.authorizeClientVpnIngress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1506,11 +1621,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.authorizeClientVpnIngress.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1535,12 +1652,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1563,11 +1682,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1592,12 +1713,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1620,11 +1743,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1650,12 +1775,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.bundleInstance.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1680,11 +1807,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.bundleInstance.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1710,12 +1839,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelBundleTask.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1740,11 +1871,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelBundleTask.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1770,12 +1903,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelCapacityReservation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1800,11 +1935,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelCapacityReservation.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1829,12 +1966,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelConversionTask.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1857,11 +1996,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelConversionTask.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1886,12 +2027,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelExportTask.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1914,11 +2057,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelExportTask.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1944,12 +2089,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelImportTask.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1974,11 +2121,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelImportTask.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2004,12 +2153,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelReservedInstancesListing.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2034,11 +2185,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelReservedInstancesListing.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2064,12 +2217,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelSpotFleetRequests.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2094,11 +2249,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelSpotFleetRequests.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2124,12 +2281,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelSpotInstanceRequests.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2154,11 +2313,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.cancelSpotInstanceRequests.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2184,12 +2345,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.confirmProductInstance.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2214,11 +2377,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.confirmProductInstance.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2244,12 +2409,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.copyFpgaImage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2274,11 +2441,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.copyFpgaImage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2304,12 +2473,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.copyImage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2334,11 +2505,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.copyImage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2364,12 +2537,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.copySnapshot.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2394,11 +2569,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.copySnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2424,12 +2601,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createCapacityReservation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2454,11 +2633,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createCapacityReservation.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2484,12 +2665,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createClientVpnEndpoint.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2514,11 +2697,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createClientVpnEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2544,12 +2729,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createClientVpnRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2574,11 +2761,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createClientVpnRoute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2604,12 +2793,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createCustomerGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2634,11 +2825,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createCustomerGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2664,12 +2857,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createDefaultSubnet.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2694,11 +2889,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createDefaultSubnet.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2724,12 +2921,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createDefaultVpc.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2754,11 +2953,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createDefaultVpc.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2784,12 +2985,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createDhcpOptions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2814,11 +3017,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createDhcpOptions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2844,12 +3049,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createEgressOnlyInternetGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2874,11 +3081,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createEgressOnlyInternetGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2904,12 +3113,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createFleet.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2934,11 +3145,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createFleet.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2964,12 +3177,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createFlowLogs.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -2994,11 +3209,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createFlowLogs.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3024,12 +3241,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createFpgaImage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3054,11 +3273,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createFpgaImage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3084,12 +3305,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createImage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3114,11 +3337,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createImage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3144,12 +3369,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createInstanceExportTask.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3174,11 +3401,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createInstanceExportTask.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3204,12 +3433,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createInternetGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3234,11 +3465,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createInternetGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3264,12 +3497,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createKeyPair.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3294,11 +3529,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createKeyPair.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3324,12 +3561,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createLaunchTemplate.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3354,11 +3593,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createLaunchTemplate.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3384,12 +3625,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createLaunchTemplateVersion.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3414,11 +3657,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createLaunchTemplateVersion.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3444,12 +3689,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNatGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3474,11 +3721,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNatGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3504,12 +3753,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNetworkAcl.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3534,11 +3785,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNetworkAcl.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3563,12 +3816,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNetworkAclEntry.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3591,11 +3846,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNetworkAclEntry.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3621,12 +3878,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNetworkInterface.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3651,11 +3910,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNetworkInterface.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3681,12 +3942,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNetworkInterfacePermission.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3711,11 +3974,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createNetworkInterfacePermission.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3740,12 +4005,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createPlacementGroup.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3768,11 +4035,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createPlacementGroup.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3798,12 +4067,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createReservedInstancesListing.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3828,11 +4099,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createReservedInstancesListing.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3858,12 +4131,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3888,11 +4163,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createRoute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3918,12 +4195,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createRouteTable.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3948,11 +4227,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createRouteTable.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -3978,12 +4259,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createSecurityGroup.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4008,11 +4291,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createSecurityGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4038,12 +4323,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createSnapshot.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4068,11 +4355,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4098,12 +4387,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4128,11 +4419,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4158,12 +4451,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createSubnet.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4188,11 +4483,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createSubnet.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4217,12 +4514,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTags.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4245,11 +4544,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTags.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4275,12 +4576,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTransitGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4305,11 +4608,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTransitGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4335,12 +4640,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTransitGatewayRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4365,11 +4672,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTransitGatewayRoute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4395,12 +4704,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4425,11 +4736,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4455,12 +4768,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4485,11 +4800,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4515,12 +4832,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVolume.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4545,11 +4864,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVolume.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4575,12 +4896,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpc.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4605,11 +4928,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpc.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4635,12 +4960,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpcEndpoint.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4665,11 +4992,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpcEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4695,12 +5024,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpcEndpointConnectionNotification.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4725,11 +5056,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpcEndpointConnectionNotification.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4755,12 +5088,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpcEndpointServiceConfiguration.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4785,11 +5120,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpcEndpointServiceConfiguration.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4815,12 +5152,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4845,11 +5184,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4875,12 +5216,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpnConnection.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4905,11 +5248,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpnConnection.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4934,12 +5279,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpnConnectionRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4962,11 +5309,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpnConnectionRoute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -4992,12 +5341,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpnGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5022,11 +5373,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.createVpnGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5052,12 +5405,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteClientVpnEndpoint.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5082,11 +5437,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteClientVpnEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5112,12 +5469,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteClientVpnRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5142,11 +5501,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteClientVpnRoute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5171,12 +5532,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteCustomerGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5199,11 +5562,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteCustomerGateway.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5228,12 +5593,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteDhcpOptions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5256,11 +5623,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteDhcpOptions.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5286,12 +5655,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteEgressOnlyInternetGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5316,11 +5687,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteEgressOnlyInternetGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5346,12 +5719,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteFleets.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5376,11 +5751,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteFleets.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5406,12 +5783,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteFlowLogs.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5436,11 +5815,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteFlowLogs.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5466,12 +5847,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteFpgaImage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5496,11 +5879,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteFpgaImage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5525,12 +5910,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteInternetGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5553,11 +5940,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteInternetGateway.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5582,12 +5971,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteKeyPair.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5610,11 +6001,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteKeyPair.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5640,12 +6033,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteLaunchTemplate.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5670,11 +6065,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteLaunchTemplate.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5700,12 +6097,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteLaunchTemplateVersions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5730,11 +6129,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteLaunchTemplateVersions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5760,12 +6161,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNatGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5790,11 +6193,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNatGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5819,12 +6224,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNetworkAcl.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5847,11 +6254,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNetworkAcl.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5876,12 +6285,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNetworkAclEntry.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5904,11 +6315,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNetworkAclEntry.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5933,12 +6346,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNetworkInterface.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5961,11 +6376,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNetworkInterface.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -5991,12 +6408,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNetworkInterfacePermission.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6021,11 +6440,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteNetworkInterfacePermission.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6050,12 +6471,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deletePlacementGroup.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6078,11 +6501,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deletePlacementGroup.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6107,12 +6532,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6135,11 +6562,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteRoute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6164,12 +6593,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteRouteTable.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6192,11 +6623,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteRouteTable.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6221,12 +6654,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteSecurityGroup.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6249,11 +6684,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteSecurityGroup.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6278,12 +6715,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteSnapshot.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6306,11 +6745,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteSnapshot.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6335,12 +6776,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6363,11 +6806,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6392,12 +6837,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteSubnet.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6420,11 +6867,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteSubnet.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6449,12 +6898,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTags.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6477,11 +6928,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTags.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6507,12 +6960,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTransitGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6537,11 +6992,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTransitGateway.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6567,12 +7024,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6597,11 +7056,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayRoute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6627,12 +7088,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6657,11 +7120,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6687,12 +7152,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6717,11 +7184,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6746,12 +7215,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVolume.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6774,11 +7245,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVolume.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6803,12 +7276,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpc.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6831,11 +7306,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpc.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6861,12 +7338,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpcEndpointConnectionNotifications.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6891,11 +7370,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpcEndpointConnectionNotifications.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6921,12 +7402,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpcEndpointServiceConfigurations.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6951,11 +7434,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpcEndpointServiceConfigurations.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -6981,12 +7466,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpcEndpoints.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7011,11 +7498,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpcEndpoints.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7041,12 +7530,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7071,11 +7562,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7100,12 +7593,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpnConnection.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7128,11 +7623,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpnConnection.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7157,12 +7654,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpnConnectionRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7185,11 +7684,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpnConnectionRoute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7214,12 +7715,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpnGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7242,11 +7745,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deleteVpnGateway.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7272,12 +7777,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deprovisionByoipCidr.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7302,11 +7809,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deprovisionByoipCidr.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7331,12 +7840,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deregisterImage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7359,11 +7870,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.deregisterImage.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7389,12 +7902,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeAccountAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7419,11 +7934,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeAccountAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7449,12 +7966,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeAddresses.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7479,11 +7998,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeAddresses.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7509,12 +8030,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeAggregateIdFormat.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7539,11 +8062,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeAggregateIdFormat.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7569,12 +8094,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeAvailabilityZones.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7599,11 +8126,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeAvailabilityZones.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7629,12 +8158,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeBundleTasks.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7659,11 +8190,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeBundleTasks.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7689,12 +8222,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeByoipCidrs.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7719,11 +8254,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeByoipCidrs.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7749,12 +8286,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeCapacityReservations.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7779,11 +8318,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeCapacityReservations.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7809,12 +8350,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClassicLinkInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7839,11 +8382,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClassicLinkInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7869,12 +8414,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnAuthorizationRules.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7899,11 +8446,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnAuthorizationRules.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7929,12 +8478,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnConnections.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7959,11 +8510,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnConnections.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -7989,12 +8542,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnEndpoints.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8019,11 +8574,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnEndpoints.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8049,12 +8606,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnRoutes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8079,11 +8638,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnRoutes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8109,12 +8670,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnTargetNetworks.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8139,11 +8702,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeClientVpnTargetNetworks.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8169,12 +8734,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeConversionTasks.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8199,11 +8766,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeConversionTasks.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8229,12 +8798,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeCustomerGateways.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8259,11 +8830,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeCustomerGateways.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8289,12 +8862,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeDhcpOptions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8319,11 +8894,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeDhcpOptions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8349,12 +8926,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeEgressOnlyInternetGateways.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8379,11 +8958,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeEgressOnlyInternetGateways.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8409,12 +8990,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeElasticGpus.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8439,11 +9022,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeElasticGpus.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8469,12 +9054,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeExportTasks.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8499,11 +9086,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeExportTasks.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8529,12 +9118,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFleetHistory.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8559,11 +9150,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFleetHistory.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8589,12 +9182,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFleetInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8619,11 +9214,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFleetInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8649,12 +9246,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFleets.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8679,11 +9278,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFleets.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8709,12 +9310,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFlowLogs.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8739,11 +9342,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFlowLogs.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8769,12 +9374,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFpgaImageAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8799,11 +9406,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFpgaImageAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8829,12 +9438,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFpgaImages.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8859,11 +9470,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeFpgaImages.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8889,12 +9502,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeHostReservationOfferings.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8919,11 +9534,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeHostReservationOfferings.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8949,12 +9566,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeHostReservations.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -8979,11 +9598,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeHostReservations.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9009,12 +9630,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeHosts.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9039,11 +9662,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeHosts.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9069,12 +9694,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeIamInstanceProfileAssociations.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9099,11 +9726,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeIamInstanceProfileAssociations.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9129,12 +9758,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeIdFormat.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9159,11 +9790,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeIdFormat.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9189,12 +9822,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeIdentityIdFormat.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9219,11 +9854,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeIdentityIdFormat.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9249,12 +9886,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeImageAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9279,11 +9918,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeImageAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9309,12 +9950,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeImages.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9339,11 +9982,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeImages.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9369,12 +10014,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeImportImageTasks.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9399,11 +10046,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeImportImageTasks.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9429,12 +10078,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeImportSnapshotTasks.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9459,11 +10110,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeImportSnapshotTasks.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9489,12 +10142,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInstanceAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9519,11 +10174,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInstanceAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9549,12 +10206,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInstanceCreditSpecifications.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9579,11 +10238,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInstanceCreditSpecifications.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9609,12 +10270,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInstanceStatus.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9639,11 +10302,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInstanceStatus.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9669,12 +10334,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9699,11 +10366,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9729,12 +10398,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInternetGateways.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9759,11 +10430,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeInternetGateways.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9789,12 +10462,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeKeyPairs.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9819,11 +10494,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeKeyPairs.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9849,12 +10526,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeLaunchTemplateVersions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9879,11 +10558,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeLaunchTemplateVersions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9909,12 +10590,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeLaunchTemplates.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9939,11 +10622,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeLaunchTemplates.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9969,12 +10654,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeMovingAddresses.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -9999,11 +10686,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeMovingAddresses.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10029,12 +10718,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNatGateways.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10059,11 +10750,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNatGateways.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10089,12 +10782,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNetworkAcls.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10119,11 +10814,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNetworkAcls.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10149,12 +10846,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10179,11 +10878,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10209,12 +10910,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNetworkInterfacePermissions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10239,11 +10942,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNetworkInterfacePermissions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10269,12 +10974,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNetworkInterfaces.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10299,11 +11006,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeNetworkInterfaces.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10329,12 +11038,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describePlacementGroups.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10359,11 +11070,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describePlacementGroups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10389,12 +11102,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describePrefixLists.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10419,11 +11134,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describePrefixLists.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10449,12 +11166,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describePrincipalIdFormat.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10479,11 +11198,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describePrincipalIdFormat.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10509,12 +11230,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describePublicIpv4Pools.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10539,11 +11262,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describePublicIpv4Pools.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10569,12 +11294,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeRegions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10599,11 +11326,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeRegions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10629,12 +11358,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeReservedInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10659,11 +11390,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeReservedInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10689,12 +11422,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeReservedInstancesListings.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10719,11 +11454,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeReservedInstancesListings.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10749,12 +11486,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeReservedInstancesModifications.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10779,11 +11518,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeReservedInstancesModifications.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10809,12 +11550,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeReservedInstancesOfferings.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10839,11 +11582,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeReservedInstancesOfferings.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10869,12 +11614,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeRouteTables.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10899,11 +11646,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeRouteTables.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10929,12 +11678,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeScheduledInstanceAvailability.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10959,11 +11710,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeScheduledInstanceAvailability.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -10989,12 +11742,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeScheduledInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11019,11 +11774,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeScheduledInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11049,12 +11806,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSecurityGroupReferences.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11079,11 +11838,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSecurityGroupReferences.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11109,12 +11870,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSecurityGroups.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11139,11 +11902,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSecurityGroups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11169,12 +11934,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11199,11 +11966,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11229,12 +11998,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSnapshots.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11259,11 +12030,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSnapshots.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11289,12 +12062,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11319,11 +12094,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11349,12 +12126,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotFleetInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11379,11 +12158,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotFleetInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11409,12 +12190,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotFleetRequestHistory.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11439,11 +12222,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotFleetRequestHistory.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11469,12 +12254,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotFleetRequests.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11499,11 +12286,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotFleetRequests.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11529,12 +12318,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotInstanceRequests.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11559,11 +12350,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotInstanceRequests.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11589,12 +12382,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotPriceHistory.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11619,11 +12414,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSpotPriceHistory.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11649,12 +12446,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeStaleSecurityGroups.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11679,11 +12478,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeStaleSecurityGroups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11709,12 +12510,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSubnets.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11739,11 +12542,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeSubnets.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11769,12 +12574,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTags.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11799,11 +12606,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTags.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11829,12 +12638,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTransitGatewayAttachments.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11859,11 +12670,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTransitGatewayAttachments.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11889,12 +12702,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTransitGatewayRouteTables.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11919,11 +12734,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTransitGatewayRouteTables.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11949,12 +12766,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTransitGatewayVpcAttachments.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -11979,11 +12798,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTransitGatewayVpcAttachments.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12009,12 +12830,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTransitGateways.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12039,11 +12862,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeTransitGateways.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12069,12 +12894,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVolumeAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12099,11 +12926,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVolumeAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12129,12 +12958,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVolumeStatus.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12159,11 +12990,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVolumeStatus.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12189,12 +13022,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVolumes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12219,11 +13054,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVolumes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12249,12 +13086,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVolumesModifications.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12279,11 +13118,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVolumesModifications.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12309,12 +13150,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12339,11 +13182,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12369,12 +13214,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcClassicLink.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12399,11 +13246,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcClassicLink.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12429,12 +13278,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12459,11 +13310,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12489,12 +13342,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointConnectionNotifications.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12519,11 +13374,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointConnectionNotifications.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12549,12 +13406,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointConnections.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12579,11 +13438,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointConnections.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12609,12 +13470,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServiceConfigurations.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12639,11 +13502,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServiceConfigurations.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12669,12 +13534,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServicePermissions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12699,11 +13566,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServicePermissions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12729,12 +13598,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServices.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12759,11 +13630,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServices.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12789,12 +13662,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpoints.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12819,11 +13694,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcEndpoints.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12849,12 +13726,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcPeeringConnections.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12879,11 +13758,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcPeeringConnections.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12909,12 +13790,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcs.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12939,11 +13822,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpcs.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12969,12 +13854,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpnConnections.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -12999,11 +13886,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpnConnections.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13029,12 +13918,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpnGateways.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13059,11 +13950,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.describeVpnGateways.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13089,12 +13982,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachClassicLinkVpc.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13119,11 +14014,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachClassicLinkVpc.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13148,12 +14045,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachInternetGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13176,11 +14075,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachInternetGateway.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13205,12 +14106,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachNetworkInterface.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13233,11 +14136,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachNetworkInterface.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13263,12 +14168,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachVolume.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13293,11 +14200,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachVolume.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13322,12 +14231,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachVpnGateway.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13350,11 +14261,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.detachVpnGateway.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13380,12 +14293,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disableTransitGatewayRouteTablePropagation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13410,11 +14325,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disableTransitGatewayRouteTablePropagation.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13439,12 +14356,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disableVgwRoutePropagation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13467,11 +14386,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disableVgwRoutePropagation.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13497,12 +14418,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disableVpcClassicLink.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13527,11 +14450,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disableVpcClassicLink.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13557,12 +14482,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disableVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13587,11 +14514,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disableVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13616,12 +14545,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateAddress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13644,11 +14575,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateAddress.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13674,12 +14607,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13704,11 +14639,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13734,12 +14671,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateIamInstanceProfile.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13764,11 +14703,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateIamInstanceProfile.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13793,12 +14734,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateRouteTable.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13821,11 +14764,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateRouteTable.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13851,12 +14796,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateSubnetCidrBlock.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13881,11 +14828,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateSubnetCidrBlock.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13911,12 +14860,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13941,11 +14892,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -13971,12 +14924,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateVpcCidrBlock.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14001,11 +14956,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.disassociateVpcCidrBlock.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14031,12 +14988,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableTransitGatewayRouteTablePropagation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14061,11 +15020,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableTransitGatewayRouteTablePropagation.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14090,12 +15051,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableVgwRoutePropagation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14118,11 +15081,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableVgwRoutePropagation.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14147,12 +15112,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableVolumeIO.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14175,11 +15142,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableVolumeIO.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14205,12 +15174,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableVpcClassicLink.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14235,11 +15206,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableVpcClassicLink.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14265,12 +15238,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14295,11 +15270,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.enableVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14325,12 +15302,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.exportClientVpnClientCertificateRevocationList.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14355,11 +15334,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.exportClientVpnClientCertificateRevocationList.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14385,12 +15366,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.exportClientVpnClientConfiguration.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14415,11 +15398,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.exportClientVpnClientConfiguration.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14445,12 +15430,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.exportTransitGatewayRoutes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14475,11 +15462,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.exportTransitGatewayRoutes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14505,12 +15494,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getConsoleOutput.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14535,11 +15526,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getConsoleOutput.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14565,12 +15558,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getConsoleScreenshot.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14595,11 +15590,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getConsoleScreenshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14625,12 +15622,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getHostReservationPurchasePreview.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14655,11 +15654,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getHostReservationPurchasePreview.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14685,12 +15686,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getLaunchTemplateData.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14715,11 +15718,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getLaunchTemplateData.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14745,12 +15750,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getPasswordData.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14775,11 +15782,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getPasswordData.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14805,12 +15814,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getReservedInstancesExchangeQuote.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14835,11 +15846,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getReservedInstancesExchangeQuote.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14865,12 +15878,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getTransitGatewayAttachmentPropagations.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14895,11 +15910,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getTransitGatewayAttachmentPropagations.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14925,12 +15942,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTableAssociations.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14955,11 +15974,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTableAssociations.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -14985,12 +16006,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTablePropagations.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15015,11 +16038,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTablePropagations.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15045,12 +16070,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importClientVpnClientCertificateRevocationList.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15075,11 +16102,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importClientVpnClientCertificateRevocationList.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15105,12 +16134,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importImage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15135,11 +16166,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importImage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15165,12 +16198,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importInstance.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15195,11 +16230,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importInstance.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15225,12 +16262,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importKeyPair.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15255,11 +16294,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importKeyPair.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15285,12 +16326,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importSnapshot.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15315,11 +16358,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15345,12 +16390,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importVolume.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15375,11 +16422,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.importVolume.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15405,12 +16454,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyCapacityReservation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15435,11 +16486,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyCapacityReservation.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15465,12 +16518,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyClientVpnEndpoint.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15495,11 +16550,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyClientVpnEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15525,12 +16582,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyFleet.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15555,11 +16614,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyFleet.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15585,12 +16646,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyFpgaImageAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15615,11 +16678,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyFpgaImageAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15645,12 +16710,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyHosts.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15675,11 +16742,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyHosts.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15704,12 +16773,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyIdFormat.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15732,11 +16803,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyIdFormat.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15761,12 +16834,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyIdentityIdFormat.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15789,11 +16864,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyIdentityIdFormat.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15818,12 +16895,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyImageAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15846,11 +16925,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyImageAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15875,12 +16956,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyInstanceAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15903,11 +16986,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyInstanceAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15933,12 +17018,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyInstanceCapacityReservationAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15963,11 +17050,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyInstanceCapacityReservationAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -15993,12 +17082,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyInstanceCreditSpecification.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16023,11 +17114,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyInstanceCreditSpecification.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16053,12 +17146,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyInstancePlacement.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16083,11 +17178,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyInstancePlacement.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16113,12 +17210,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyLaunchTemplate.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16143,11 +17242,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyLaunchTemplate.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16172,12 +17273,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16200,11 +17303,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16230,12 +17335,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyReservedInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16260,11 +17367,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyReservedInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16289,12 +17398,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifySnapshotAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16317,11 +17428,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifySnapshotAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16347,12 +17460,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifySpotFleetRequest.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16377,11 +17492,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifySpotFleetRequest.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16406,12 +17523,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifySubnetAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16434,11 +17553,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifySubnetAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16464,12 +17585,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16494,11 +17617,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16524,12 +17649,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVolume.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16554,11 +17681,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVolume.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16583,12 +17712,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVolumeAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16611,11 +17742,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVolumeAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16640,12 +17773,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16668,11 +17803,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16698,12 +17835,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcEndpoint.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16728,11 +17867,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16758,12 +17899,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointConnectionNotification.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16788,11 +17931,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointConnectionNotification.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16818,12 +17963,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointServiceConfiguration.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16848,11 +17995,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointServiceConfiguration.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16878,12 +18027,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointServicePermissions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16908,11 +18059,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointServicePermissions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16938,12 +18091,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcPeeringConnectionOptions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16968,11 +18123,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcPeeringConnectionOptions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -16998,12 +18155,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcTenancy.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17028,11 +18187,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.modifyVpcTenancy.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17058,12 +18219,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.monitorInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17088,11 +18251,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.monitorInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17118,12 +18283,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.moveAddressToVpc.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17148,11 +18315,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.moveAddressToVpc.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17178,12 +18347,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.provisionByoipCidr.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17208,11 +18379,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.provisionByoipCidr.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17238,12 +18411,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.purchaseHostReservation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17268,11 +18443,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.purchaseHostReservation.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17298,12 +18475,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.purchaseReservedInstancesOffering.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17328,11 +18507,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.purchaseReservedInstancesOffering.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17358,12 +18539,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.purchaseScheduledInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17388,11 +18571,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.purchaseScheduledInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17417,12 +18602,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.rebootInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17445,11 +18632,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.rebootInstances.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17475,12 +18664,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.registerImage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17505,11 +18696,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.registerImage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17535,12 +18728,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.rejectTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17565,11 +18760,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.rejectTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17595,12 +18792,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.rejectVpcEndpointConnections.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17625,11 +18824,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.rejectVpcEndpointConnections.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17655,12 +18856,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.rejectVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17685,11 +18888,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.rejectVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17714,12 +18919,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.releaseAddress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17742,11 +18949,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.releaseAddress.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17772,12 +18981,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.releaseHosts.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17802,11 +19013,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.releaseHosts.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17832,12 +19045,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceIamInstanceProfileAssociation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17862,11 +19077,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceIamInstanceProfileAssociation.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17892,12 +19109,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceNetworkAclAssociation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17922,11 +19141,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceNetworkAclAssociation.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17951,12 +19172,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceNetworkAclEntry.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -17979,11 +19202,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceNetworkAclEntry.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18008,12 +19233,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18036,11 +19263,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceRoute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18066,12 +19295,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceRouteTableAssociation.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18096,11 +19327,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceRouteTableAssociation.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18126,12 +19359,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceTransitGatewayRoute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18156,11 +19391,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.replaceTransitGatewayRoute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18185,12 +19422,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.reportInstanceStatus.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18213,11 +19452,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.reportInstanceStatus.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18243,12 +19484,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.requestSpotFleet.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18273,11 +19516,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.requestSpotFleet.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18303,12 +19548,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.requestSpotInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18333,11 +19580,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.requestSpotInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18363,12 +19612,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetFpgaImageAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18393,11 +19644,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetFpgaImageAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18422,12 +19675,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetImageAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18450,11 +19705,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetImageAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18479,12 +19736,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetInstanceAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18507,11 +19766,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetInstanceAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18536,12 +19797,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18564,11 +19827,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18593,12 +19858,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18621,11 +19888,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.resetSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18651,12 +19920,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.restoreAddressToClassic.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18681,11 +19952,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.restoreAddressToClassic.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18711,12 +19984,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.revokeClientVpnIngress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18741,11 +20016,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.revokeClientVpnIngress.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18770,12 +20047,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18798,11 +20077,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18827,12 +20108,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18855,11 +20138,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18885,12 +20170,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.runInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18915,11 +20202,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.runInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18945,12 +20234,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.runScheduledInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -18975,11 +20266,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.runScheduledInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19005,12 +20298,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.searchTransitGatewayRoutes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19035,11 +20330,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.searchTransitGatewayRoutes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19065,12 +20362,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.startInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19095,11 +20394,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.startInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19125,12 +20426,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.stopInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19155,11 +20458,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.stopInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19185,12 +20490,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.terminateClientVpnConnections.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19215,11 +20522,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.terminateClientVpnConnections.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19245,12 +20554,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.terminateInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19275,11 +20586,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.terminateInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19305,12 +20618,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.unassignIpv6Addresses.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19335,11 +20650,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.unassignIpv6Addresses.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19364,12 +20681,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.unassignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19392,11 +20711,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.unassignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19422,12 +20743,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.unmonitorInstances.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19452,11 +20775,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.unmonitorInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19482,12 +20807,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.updateSecurityGroupRuleDescriptionsEgress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19512,11 +20839,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.updateSecurityGroupRuleDescriptionsEgress.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19542,12 +20871,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.updateSecurityGroupRuleDescriptionsIngress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19572,11 +20903,13 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.updateSecurityGroupRuleDescriptionsIngress.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19602,12 +20935,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.withdrawByoipCidr.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -19632,10 +20967,12 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.withdrawByoipCidr.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }

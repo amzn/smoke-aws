@@ -33,6 +33,27 @@ public enum SimpleNotificationClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension SimpleNotificationError {
+    func isRetryable() -> Bool {
+        switch self {
+        case .kMSThrottling, .filterPolicyLimitExceeded, .subscriptionLimitExceeded, .throttled, .topicLimitExceeded:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? SimpleNotificationError {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the SimpleNotification service.
  */
@@ -42,6 +63,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
     let service: String
     let apiVersion: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -50,7 +73,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                 service: String = "sns",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2010-03-31",
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
@@ -62,6 +86,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
         self.service = service
         self.target = nil
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
         self.apiVersion = apiVersion
     }
 
@@ -104,12 +130,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -133,11 +161,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -164,12 +194,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.checkIfPhoneNumberIsOptedOut.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -195,11 +227,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.checkIfPhoneNumberIsOptedOut.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -226,12 +260,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.confirmSubscription.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -257,11 +293,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.confirmSubscription.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -288,12 +326,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.createPlatformApplication.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -319,11 +359,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.createPlatformApplication.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -350,12 +392,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.createPlatformEndpoint.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -381,11 +425,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.createPlatformEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -412,12 +458,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.createTopic.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -443,11 +491,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.createTopic.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -473,12 +523,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.deleteEndpoint.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -502,11 +554,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.deleteEndpoint.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -532,12 +586,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.deletePlatformApplication.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -561,11 +617,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.deletePlatformApplication.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -591,12 +649,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.deleteTopic.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -620,11 +680,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.deleteTopic.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -651,12 +713,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getEndpointAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -682,11 +746,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getEndpointAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -713,12 +779,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -744,11 +812,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -775,12 +845,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getSMSAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -806,11 +878,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getSMSAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -837,12 +911,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -868,11 +944,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -899,12 +977,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getTopicAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -930,11 +1010,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.getTopicAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -961,12 +1043,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listEndpointsByPlatformApplication.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -992,11 +1076,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listEndpointsByPlatformApplication.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1023,12 +1109,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listPhoneNumbersOptedOut.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1054,11 +1142,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listPhoneNumbersOptedOut.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1085,12 +1175,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listPlatformApplications.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1116,11 +1208,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listPlatformApplications.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1147,12 +1241,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listSubscriptions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1178,11 +1274,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listSubscriptions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1209,12 +1307,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listSubscriptionsByTopic.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1240,11 +1340,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listSubscriptionsByTopic.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1271,12 +1373,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listTopics.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1302,11 +1406,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.listTopics.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1333,12 +1439,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.optInPhoneNumber.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1364,11 +1472,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.optInPhoneNumber.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1395,12 +1505,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.publish.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1426,11 +1538,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.publish.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1456,12 +1570,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1485,11 +1601,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1515,12 +1633,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setEndpointAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1544,11 +1664,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setEndpointAttributes.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1574,12 +1696,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1603,11 +1727,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1634,12 +1760,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setSMSAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1665,11 +1793,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setSMSAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1695,12 +1825,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1724,11 +1856,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1754,12 +1888,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setTopicAttributes.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1783,11 +1919,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.setTopicAttributes.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1814,12 +1952,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.subscribe.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1845,11 +1985,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.subscribe.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1875,12 +2017,14 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.unsubscribe.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1904,10 +2048,12 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             action: SimpleNotificationModelOperations.unsubscribe.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }
