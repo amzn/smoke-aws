@@ -33,6 +33,22 @@ public enum SecurityTokenClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension SecurityTokenError {
+    func isRetryable() -> Bool {
+        return false
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? SecurityTokenError {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the SecurityToken service.
  */
@@ -42,6 +58,8 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
     let service: String
     let apiVersion: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
@@ -50,7 +68,8 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                 service: String = "sts",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2011-06-15",
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
@@ -62,6 +81,8 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
         self.service = service
         self.target = nil
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
         self.apiVersion = apiVersion
     }
 
@@ -105,12 +126,14 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.assumeRole.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -136,11 +159,13 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.assumeRole.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -167,12 +192,14 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.assumeRoleWithSAML.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -198,11 +225,13 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.assumeRoleWithSAML.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -229,12 +258,14 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.assumeRoleWithWebIdentity.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -260,11 +291,13 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.assumeRoleWithWebIdentity.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -291,12 +324,14 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.decodeAuthorizationMessage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -322,11 +357,13 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.decodeAuthorizationMessage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -352,12 +389,14 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.getCallerIdentity.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -382,11 +421,13 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.getCallerIdentity.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -413,12 +454,14 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.getFederationToken.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -444,11 +487,13 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.getFederationToken.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -475,12 +520,14 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.getSessionToken.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -506,10 +553,12 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             action: SecurityTokenModelOperations.getSessionToken.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }

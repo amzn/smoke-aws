@@ -33,6 +33,27 @@ public enum SimpleWorkflowClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension SimpleWorkflowError {
+    func isRetryable() -> Bool {
+        switch self {
+        case .limitExceeded:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? SimpleWorkflowError {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the SimpleWorkflow service.
  */
@@ -41,6 +62,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     let awsRegion: AWSRegion
     let service: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -49,7 +72,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                 service: String = "swf",
                 contentType: String = "application/x-amz-json-1.0",
                 target: String? = "SimpleWorkflowService",
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = JSONAWSHttpClientDelegate<SimpleWorkflowError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
@@ -61,6 +85,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
         self.service = service
         self.target = target
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
     }
 
     /**
@@ -99,12 +125,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = CountClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -126,11 +154,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = CountClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -153,12 +183,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = CountOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -180,11 +212,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = CountOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -207,12 +241,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = CountPendingActivityTasksOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -234,11 +270,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = CountPendingActivityTasksOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -261,12 +299,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = CountPendingDecisionTasksOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -288,11 +328,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = CountPendingDecisionTasksOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -314,12 +356,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -339,11 +383,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -365,12 +411,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DeprecateDomainOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -390,11 +438,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DeprecateDomainOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -416,12 +466,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -441,11 +493,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -468,12 +522,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DescribeActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -495,11 +551,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DescribeActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -522,12 +580,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DescribeDomainOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -549,11 +609,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DescribeDomainOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -576,12 +638,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DescribeWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -603,11 +667,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DescribeWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -630,12 +696,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DescribeWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -657,11 +725,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = DescribeWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -684,12 +754,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = GetWorkflowExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -711,11 +783,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = GetWorkflowExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -738,12 +812,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListActivityTypesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -765,11 +841,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListActivityTypesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -792,12 +870,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -819,11 +899,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -846,12 +928,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListDomainsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -873,11 +957,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListDomainsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -900,12 +986,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -927,11 +1015,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -954,12 +1044,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListWorkflowTypesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -981,11 +1073,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = ListWorkflowTypesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1008,12 +1102,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = PollForActivityTaskOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1035,11 +1131,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = PollForActivityTaskOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1062,12 +1160,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = PollForDecisionTaskOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1089,11 +1189,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = PollForDecisionTaskOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1116,12 +1218,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RecordActivityTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1143,11 +1247,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RecordActivityTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1169,12 +1275,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RegisterActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1194,11 +1302,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RegisterActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1220,12 +1330,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RegisterDomainOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1245,11 +1357,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RegisterDomainOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1271,12 +1385,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RegisterWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1296,11 +1412,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RegisterWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1322,12 +1440,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RequestCancelWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1347,11 +1467,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RequestCancelWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1373,12 +1495,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RespondActivityTaskCanceledOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1398,11 +1522,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RespondActivityTaskCanceledOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1424,12 +1550,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RespondActivityTaskCompletedOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1449,11 +1577,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RespondActivityTaskCompletedOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1475,12 +1605,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RespondActivityTaskFailedOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1500,11 +1632,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RespondActivityTaskFailedOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1526,12 +1660,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RespondDecisionTaskCompletedOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1551,11 +1687,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = RespondDecisionTaskCompletedOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1577,12 +1715,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = SignalWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1602,11 +1742,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = SignalWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1629,12 +1771,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = StartWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1656,11 +1800,13 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = StartWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1682,12 +1828,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = TerminateWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1707,10 +1855,12 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
         let requestInput = TerminateWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }

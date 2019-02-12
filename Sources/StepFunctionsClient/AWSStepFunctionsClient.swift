@@ -33,6 +33,27 @@ public enum StepFunctionsClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension StepFunctionsError {
+    func isRetryable() -> Bool {
+        switch self {
+        case .activityWorkerLimitExceeded, .stateMachineLimitExceeded, .executionLimitExceeded, .activityLimitExceeded:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? StepFunctionsError {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the StepFunctions service.
  */
@@ -41,6 +62,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
     let awsRegion: AWSRegion
     let service: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -49,7 +72,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                 service: String = "states",
                 contentType: String = "application/x-amz-json-1.0",
                 target: String? = "AWSStepFunctions",
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = JSONAWSHttpClientDelegate<StepFunctionsError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
@@ -61,6 +85,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
         self.service = service
         self.target = target
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
     }
 
     /**
@@ -99,12 +125,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = CreateActivityOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -126,11 +154,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = CreateActivityOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -153,12 +183,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -180,11 +212,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -207,12 +241,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DeleteActivityOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -234,11 +270,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DeleteActivityOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -261,12 +299,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -288,11 +328,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -315,12 +357,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DescribeActivityOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -342,11 +386,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DescribeActivityOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -369,12 +415,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DescribeExecutionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -396,11 +444,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DescribeExecutionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -423,12 +473,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -450,11 +502,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -477,12 +531,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DescribeStateMachineForExecutionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -504,11 +560,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = DescribeStateMachineForExecutionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -531,12 +589,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = GetActivityTaskOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -558,11 +618,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = GetActivityTaskOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -585,12 +647,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = GetExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -612,11 +676,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = GetExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -639,12 +705,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = ListActivitiesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -666,11 +734,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = ListActivitiesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -693,12 +763,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = ListExecutionsOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -720,11 +792,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = ListExecutionsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -747,12 +821,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = ListStateMachinesOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -774,11 +850,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = ListStateMachinesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -801,12 +879,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = SendTaskFailureOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -828,11 +908,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = SendTaskFailureOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -855,12 +937,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = SendTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -882,11 +966,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = SendTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -909,12 +995,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = SendTaskSuccessOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -936,11 +1024,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = SendTaskSuccessOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -963,12 +1053,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = StartExecutionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -990,11 +1082,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = StartExecutionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1017,12 +1111,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = StopExecutionOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1044,11 +1140,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = StopExecutionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1071,12 +1169,14 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1098,10 +1198,12 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
 
         let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }

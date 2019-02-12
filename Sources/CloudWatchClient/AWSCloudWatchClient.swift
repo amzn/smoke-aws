@@ -33,6 +33,27 @@ public enum CloudWatchClientError: Swift.Error {
     case unknownError(String?)
 }
 
+private extension CloudWatchError {
+    func isRetryable() -> Bool {
+        switch self {
+        case .limitExceeded:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+private extension Swift.Error {
+    func isRetryable() -> Bool {
+        if let typedError = self as? CloudWatchError {
+            return typedError.isRetryable()
+        } else {
+            return true
+        }
+    }
+}
+
 /**
  AWS Client for the CloudWatch service.
  */
@@ -42,6 +63,8 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     let service: String
     let apiVersion: String
     let target: String?
+    let retryConfiguration: HTTPClientRetryConfiguration
+    let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -50,7 +73,8 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                 service: String = "monitoring",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2010-08-01",
-                connectionTimeoutSeconds: Int = 10) {
+                connectionTimeoutSeconds: Int = 10,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
@@ -62,6 +86,8 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
         self.service = service
         self.target = nil
         self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.retryOnErrorProvider = { error in error.isRetryable() }
         self.apiVersion = apiVersion
     }
 
@@ -104,12 +130,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.deleteAlarms.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -133,11 +161,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.deleteAlarms.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -164,12 +194,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.deleteDashboards.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -195,11 +227,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.deleteDashboards.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -226,12 +260,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.describeAlarmHistory.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -257,11 +293,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.describeAlarmHistory.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -288,12 +326,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.describeAlarms.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -319,11 +359,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.describeAlarms.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -349,12 +391,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.describeAlarmsForMetric.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -379,11 +423,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.describeAlarmsForMetric.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -408,12 +454,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.disableAlarmActions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -436,11 +484,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.disableAlarmActions.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -465,12 +515,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.enableAlarmActions.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -493,11 +545,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.enableAlarmActions.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -524,12 +578,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.getDashboard.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -555,11 +611,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.getDashboard.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -586,12 +644,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.getMetricData.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -617,11 +677,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.getMetricData.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -648,12 +710,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.getMetricStatistics.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -679,11 +743,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.getMetricStatistics.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -709,12 +775,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.getMetricWidgetImage.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -739,11 +807,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.getMetricWidgetImage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -770,12 +840,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.listDashboards.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -801,11 +873,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.listDashboards.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -832,12 +906,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.listMetrics.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -863,11 +939,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.listMetrics.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -894,12 +972,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.putDashboard.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -925,11 +1005,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.putDashboard.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncWithOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -955,12 +1037,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.putMetricAlarm.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -984,11 +1068,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.putMetricAlarm.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1014,12 +1100,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.putMetricData.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1043,11 +1131,13 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.putMetricData.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1073,12 +1163,14 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.setAlarmState.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -1102,10 +1194,12 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             action: CloudWatchModelOperations.setAlarmState.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncWithoutOutput(
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate)
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 }
