@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -38,11 +38,14 @@ public enum StepFunctionsModelOperations: String {
     case listActivities = "ListActivities"
     case listExecutions = "ListExecutions"
     case listStateMachines = "ListStateMachines"
+    case listTagsForResource = "ListTagsForResource"
     case sendTaskFailure = "SendTaskFailure"
     case sendTaskHeartbeat = "SendTaskHeartbeat"
     case sendTaskSuccess = "SendTaskSuccess"
     case startExecution = "StartExecution"
     case stopExecution = "StopExecution"
+    case tagResource = "TagResource"
+    case untagResource = "UntagResource"
     case updateStateMachine = "UpdateStateMachine"
 
     public var operationPath: String {
@@ -73,6 +76,8 @@ public enum StepFunctionsModelOperations: String {
             return "/"
         case .listStateMachines:
             return "/"
+        case .listTagsForResource:
+            return "/"
         case .sendTaskFailure:
             return "/"
         case .sendTaskHeartbeat:
@@ -82,6 +87,10 @@ public enum StepFunctionsModelOperations: String {
         case .startExecution:
             return "/"
         case .stopExecution:
+            return "/"
+        case .tagResource:
+            return "/"
+        case .untagResource:
             return "/"
         case .updateStateMachine:
             return "/"

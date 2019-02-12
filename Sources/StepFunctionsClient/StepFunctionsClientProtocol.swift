@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -53,6 +53,8 @@ public protocol StepFunctionsClientProtocol {
     typealias ListExecutionsAsyncType = (_ input: StepFunctionsModel.ListExecutionsInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.ListExecutionsOutput>) -> ()) throws -> ()
     typealias ListStateMachinesSyncType = (_ input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput
     typealias ListStateMachinesAsyncType = (_ input: StepFunctionsModel.ListStateMachinesInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.ListStateMachinesOutput>) -> ()) throws -> ()
+    typealias ListTagsForResourceSyncType = (_ input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput
+    typealias ListTagsForResourceAsyncType = (_ input: StepFunctionsModel.ListTagsForResourceInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.ListTagsForResourceOutput>) -> ()) throws -> ()
     typealias SendTaskFailureSyncType = (_ input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput
     typealias SendTaskFailureAsyncType = (_ input: StepFunctionsModel.SendTaskFailureInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskFailureOutput>) -> ()) throws -> ()
     typealias SendTaskHeartbeatSyncType = (_ input: StepFunctionsModel.SendTaskHeartbeatInput) throws -> StepFunctionsModel.SendTaskHeartbeatOutput
@@ -63,6 +65,10 @@ public protocol StepFunctionsClientProtocol {
     typealias StartExecutionAsyncType = (_ input: StepFunctionsModel.StartExecutionInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.StartExecutionOutput>) -> ()) throws -> ()
     typealias StopExecutionSyncType = (_ input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput
     typealias StopExecutionAsyncType = (_ input: StepFunctionsModel.StopExecutionInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.StopExecutionOutput>) -> ()) throws -> ()
+    typealias TagResourceSyncType = (_ input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput
+    typealias TagResourceAsyncType = (_ input: StepFunctionsModel.TagResourceInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.TagResourceOutput>) -> ()) throws -> ()
+    typealias UntagResourceSyncType = (_ input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput
+    typealias UntagResourceAsyncType = (_ input: StepFunctionsModel.UntagResourceInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.UntagResourceOutput>) -> ()) throws -> ()
     typealias UpdateStateMachineSyncType = (_ input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput
     typealias UpdateStateMachineAsyncType = (_ input: StepFunctionsModel.UpdateStateMachineInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.UpdateStateMachineOutput>) -> ()) throws -> ()
 
@@ -366,6 +372,29 @@ public protocol StepFunctionsClientProtocol {
     func listStateMachinesSync(input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+         - completion: The ListTagsForResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound.
+     */
+    func listTagsForResourceAsync(input: StepFunctionsModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListTagsForResourceOutput>) -> ()) throws
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    func listTagsForResourceSync(input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput
+
+    /**
      Invokes the SendTaskFailure operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -479,6 +508,52 @@ public protocol StepFunctionsClientProtocol {
      - Throws: executionDoesNotExist, invalidArn.
      */
     func stopExecutionSync(input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput
+
+    /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+         - completion: The TagResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The TagResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound, tooManyTags.
+     */
+    func tagResourceAsync(input: StepFunctionsModel.TagResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.TagResourceOutput>) -> ()) throws
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Returns: The TagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, tooManyTags.
+     */
+    func tagResourceSync(input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+         - completion: The UntagResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The UntagResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound.
+     */
+    func untagResourceAsync(input: StepFunctionsModel.UntagResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.UntagResourceOutput>) -> ()) throws
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Returns: The UntagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    func untagResourceSync(input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput
 
     /**
      Invokes the UpdateStateMachine operation returning immediately and passing the response to a callback.

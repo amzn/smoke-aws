@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -193,6 +193,19 @@ extension ListStateMachinesOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ListTagsForResource operation in a HTTP client.
+ */
+extension ListTagsForResourceOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListTagsForResourceOutput
+    public typealias HeadersType = ListTagsForResourceOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListTagsForResourceOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the SendTaskFailure operation in a HTTP client.
  */
 extension SendTaskFailureOutput: HTTPResponseOutputProtocol {
@@ -253,6 +266,32 @@ extension StopExecutionOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StopExecutionOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the TagResource operation in a HTTP client.
+ */
+extension TagResourceOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = TagResourceOutput
+    public typealias HeadersType = TagResourceOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> TagResourceOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UntagResource operation in a HTTP client.
+ */
+extension UntagResourceOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UntagResourceOutput
+    public typealias HeadersType = UntagResourceOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UntagResourceOutput {
         return try bodyDecodableProvider()
     }
 }

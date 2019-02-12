@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -49,6 +49,7 @@ public enum ElasticContainerModelOperations: String {
     case listTaskDefinitions = "ListTaskDefinitions"
     case listTasks = "ListTasks"
     case putAccountSetting = "PutAccountSetting"
+    case putAccountSettingDefault = "PutAccountSettingDefault"
     case putAttributes = "PutAttributes"
     case registerContainerInstance = "RegisterContainerInstance"
     case registerTaskDefinition = "RegisterTaskDefinition"
@@ -112,6 +113,8 @@ public enum ElasticContainerModelOperations: String {
         case .listTasks:
             return "/"
         case .putAccountSetting:
+            return "/"
+        case .putAccountSettingDefault:
             return "/"
         case .putAttributes:
             return "/"

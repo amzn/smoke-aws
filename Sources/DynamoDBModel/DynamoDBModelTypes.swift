@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -130,6 +130,7 @@ public typealias BackupSummaries = [BackupSummary]
  Enumeration restricting the values of the BackupType field.
  */
 public enum BackupType: String, Codable, CustomStringConvertible {
+    case awsBackup = "AWS_BACKUP"
     case system = "SYSTEM"
     case user = "USER"
 
@@ -137,7 +138,7 @@ public enum BackupType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: BackupType = .system
+    public static let __default: BackupType = .awsBackup
 }
 
 /**
@@ -145,6 +146,7 @@ public enum BackupType: String, Codable, CustomStringConvertible {
  */
 public enum BackupTypeFilter: String, Codable, CustomStringConvertible {
     case all = "ALL"
+    case awsBackup = "AWS_BACKUP"
     case system = "SYSTEM"
     case user = "USER"
 
@@ -213,6 +215,11 @@ public typealias BooleanObject = Bool
  Type definition for the CancellationReasonList field.
  */
 public typealias CancellationReasonList = [CancellationReason]
+
+/**
+ Type definition for the ClientRequestToken field.
+ */
+public typealias ClientRequestToken = String
 
 /**
  Type definition for the Code field.
@@ -1130,6 +1137,21 @@ extension Array where Element == DynamoDBModel.CancellationReason {
 
         if self.count > 10 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to CancellationReasonList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ClientRequestToken field.
+*/
+extension DynamoDBModel.ClientRequestToken {
+    public func validateAsClientRequestToken() throws {
+        if self.count < 1 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to ClientRequestToken violated the minimum length constraint.")
+        }
+
+        if self.count > 36 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to ClientRequestToken violated the maximum length constraint.")
         }
     }
 }

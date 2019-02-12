@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -89,6 +89,11 @@ public typealias ListExecutionsOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias ListStateMachinesOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the ListTagsForResource operation in a HTTP client.
+ */
+public typealias ListTagsForResourceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the SendTaskFailure operation in a HTTP client.
  */
 public typealias SendTaskFailureOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -112,6 +117,16 @@ public typealias StartExecutionOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the StopExecution operation in a HTTP client.
  */
 public typealias StopExecutionOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the TagResource operation in a HTTP client.
+ */
+public typealias TagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UntagResource operation in a HTTP client.
+ */
+public typealias UntagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the UpdateStateMachine operation in a HTTP client.

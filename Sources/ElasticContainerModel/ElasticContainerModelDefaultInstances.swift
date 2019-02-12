@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -194,9 +194,13 @@ public extension Container {
     public static let __default: ElasticContainerModel.Container = {
         let defaultInstance = ElasticContainerModel.Container(
             containerArn: nil,
+            cpu: nil,
             exitCode: nil,
+            gpuIds: nil,
             healthStatus: nil,
             lastStatus: nil,
+            memory: nil,
+            memoryReservation: nil,
             name: nil,
             networkBindings: nil,
             networkInterfaces: nil,
@@ -240,6 +244,7 @@ public extension ContainerDefinition {
             pseudoTerminal: nil,
             readonlyRootFilesystem: nil,
             repositoryCredentials: nil,
+            resourceRequirements: nil,
             secrets: nil,
             systemControls: nil,
             ulimits: nil,
@@ -288,7 +293,8 @@ public extension ContainerOverride {
             environment: nil,
             memory: nil,
             memoryReservation: nil,
-            name: nil)
+            name: nil,
+            resourceRequirements: nil)
 
         return defaultInstance
     }()
@@ -1260,6 +1266,19 @@ public extension PlacementStrategy {
     }()
 }
 
+public extension PlatformDevice {
+    /**
+     Default instance of the PlatformDevice structure.
+     */
+    public static let __default: ElasticContainerModel.PlatformDevice = {
+        let defaultInstance = ElasticContainerModel.PlatformDevice(
+            id: "value",
+            type: .__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension PlatformTaskDefinitionIncompatibilityException {
     /**
      Default instance of the PlatformTaskDefinitionIncompatibilityException structure.
@@ -1291,6 +1310,31 @@ public extension PortMapping {
             containerPort: nil,
             hostPort: nil,
             protocol: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutAccountSettingDefaultRequest {
+    /**
+     Default instance of the PutAccountSettingDefaultRequest structure.
+     */
+    public static let __default: ElasticContainerModel.PutAccountSettingDefaultRequest = {
+        let defaultInstance = ElasticContainerModel.PutAccountSettingDefaultRequest(
+            name: .__default,
+            value: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension PutAccountSettingDefaultResponse {
+    /**
+     Default instance of the PutAccountSettingDefaultResponse structure.
+     */
+    public static let __default: ElasticContainerModel.PutAccountSettingDefaultResponse = {
+        let defaultInstance = ElasticContainerModel.PutAccountSettingDefaultResponse(
+            setting: nil)
 
         return defaultInstance
     }()
@@ -1358,6 +1402,7 @@ public extension RegisterContainerInstanceRequest {
             containerInstanceArn: nil,
             instanceIdentityDocument: nil,
             instanceIdentityDocumentSignature: nil,
+            platformDevices: nil,
             tags: nil,
             totalResources: nil,
             versionInfo: nil)
@@ -1450,6 +1495,19 @@ public extension ResourceNotFoundException {
      */
     public static let __default: ElasticContainerModel.ResourceNotFoundException = {
         let defaultInstance = ElasticContainerModel.ResourceNotFoundException()
+
+        return defaultInstance
+    }()
+}
+
+public extension ResourceRequirement {
+    /**
+     Default instance of the ResourceRequirement structure.
+     */
+    public static let __default: ElasticContainerModel.ResourceRequirement = {
+        let defaultInstance = ElasticContainerModel.ResourceRequirement(
+            type: .__default,
+            value: "value")
 
         return defaultInstance
     }()

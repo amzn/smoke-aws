@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -9631,19 +9631,27 @@ public struct DescribeSpotFleetRequestsResponse: Codable, Equatable {
 public struct DescribeSpotInstanceRequestsRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var filters: FilterList?
+    public var maxResults: Integer?
+    public var nextToken: String?
     public var spotInstanceRequestIds: SpotInstanceRequestIdList?
 
     public init(dryRun: Boolean? = nil,
                 filters: FilterList? = nil,
+                maxResults: Integer? = nil,
+                nextToken: String? = nil,
                 spotInstanceRequestIds: SpotInstanceRequestIdList? = nil) {
         self.dryRun = dryRun
         self.filters = filters
+        self.maxResults = maxResults
+        self.nextToken = nextToken
         self.spotInstanceRequestIds = spotInstanceRequestIds
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case filters = "Filter"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
         case spotInstanceRequestIds = "SpotInstanceRequestId"
     }
 
@@ -9652,13 +9660,17 @@ public struct DescribeSpotInstanceRequestsRequest: Codable, Equatable {
 }
 
 public struct DescribeSpotInstanceRequestsResult: Codable, Equatable {
+    public var nextToken: String?
     public var spotInstanceRequests: SpotInstanceRequestList?
 
-    public init(spotInstanceRequests: SpotInstanceRequestList? = nil) {
+    public init(nextToken: String? = nil,
+                spotInstanceRequests: SpotInstanceRequestList? = nil) {
+        self.nextToken = nextToken
         self.spotInstanceRequests = spotInstanceRequests
     }
 
     enum CodingKeys: String, CodingKey {
+        case nextToken
         case spotInstanceRequests = "spotInstanceRequestSet"
     }
 
@@ -10699,34 +10711,47 @@ public struct DescribeVpcEndpointsResult: Codable, Equatable {
 public struct DescribeVpcPeeringConnectionsRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var filters: FilterList?
+    public var maxResults: DescribeVpcPeeringConnectionsMaxResults?
+    public var nextToken: String?
     public var vpcPeeringConnectionIds: ValueStringList?
 
     public init(dryRun: Boolean? = nil,
                 filters: FilterList? = nil,
+                maxResults: DescribeVpcPeeringConnectionsMaxResults? = nil,
+                nextToken: String? = nil,
                 vpcPeeringConnectionIds: ValueStringList? = nil) {
         self.dryRun = dryRun
         self.filters = filters
+        self.maxResults = maxResults
+        self.nextToken = nextToken
         self.vpcPeeringConnectionIds = vpcPeeringConnectionIds
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case filters = "Filter"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
         case vpcPeeringConnectionIds = "VpcPeeringConnectionId"
     }
 
     public func validate() throws {
+        try maxResults?.validateAsDescribeVpcPeeringConnectionsMaxResults()
     }
 }
 
 public struct DescribeVpcPeeringConnectionsResult: Codable, Equatable {
+    public var nextToken: String?
     public var vpcPeeringConnections: VpcPeeringConnectionList?
 
-    public init(vpcPeeringConnections: VpcPeeringConnectionList? = nil) {
+    public init(nextToken: String? = nil,
+                vpcPeeringConnections: VpcPeeringConnectionList? = nil) {
+        self.nextToken = nextToken
         self.vpcPeeringConnections = vpcPeeringConnections
     }
 
     enum CodingKeys: String, CodingKey {
+        case nextToken
         case vpcPeeringConnections = "vpcPeeringConnectionSet"
     }
 
@@ -18265,19 +18290,23 @@ public struct NewDhcpConfiguration: Codable, Equatable {
 public struct OnDemandOptions: Codable, Equatable {
     public var allocationStrategy: FleetOnDemandAllocationStrategy?
     public var minTargetCapacity: Integer?
+    public var singleAvailabilityZone: Boolean?
     public var singleInstanceType: Boolean?
 
     public init(allocationStrategy: FleetOnDemandAllocationStrategy? = nil,
                 minTargetCapacity: Integer? = nil,
+                singleAvailabilityZone: Boolean? = nil,
                 singleInstanceType: Boolean? = nil) {
         self.allocationStrategy = allocationStrategy
         self.minTargetCapacity = minTargetCapacity
+        self.singleAvailabilityZone = singleAvailabilityZone
         self.singleInstanceType = singleInstanceType
     }
 
     enum CodingKeys: String, CodingKey {
         case allocationStrategy
         case minTargetCapacity
+        case singleAvailabilityZone
         case singleInstanceType
     }
 
@@ -18288,19 +18317,23 @@ public struct OnDemandOptions: Codable, Equatable {
 public struct OnDemandOptionsRequest: Codable, Equatable {
     public var allocationStrategy: FleetOnDemandAllocationStrategy?
     public var minTargetCapacity: Integer?
+    public var singleAvailabilityZone: Boolean?
     public var singleInstanceType: Boolean?
 
     public init(allocationStrategy: FleetOnDemandAllocationStrategy? = nil,
                 minTargetCapacity: Integer? = nil,
+                singleAvailabilityZone: Boolean? = nil,
                 singleInstanceType: Boolean? = nil) {
         self.allocationStrategy = allocationStrategy
         self.minTargetCapacity = minTargetCapacity
+        self.singleAvailabilityZone = singleAvailabilityZone
         self.singleInstanceType = singleInstanceType
     }
 
     enum CodingKeys: String, CodingKey {
         case allocationStrategy = "AllocationStrategy"
         case minTargetCapacity = "MinTargetCapacity"
+        case singleAvailabilityZone = "SingleAvailabilityZone"
         case singleInstanceType = "SingleInstanceType"
     }
 
@@ -22558,17 +22591,20 @@ public struct SpotOptions: Codable, Equatable {
     public var instanceInterruptionBehavior: SpotInstanceInterruptionBehavior?
     public var instancePoolsToUseCount: Integer?
     public var minTargetCapacity: Integer?
+    public var singleAvailabilityZone: Boolean?
     public var singleInstanceType: Boolean?
 
     public init(allocationStrategy: SpotAllocationStrategy? = nil,
                 instanceInterruptionBehavior: SpotInstanceInterruptionBehavior? = nil,
                 instancePoolsToUseCount: Integer? = nil,
                 minTargetCapacity: Integer? = nil,
+                singleAvailabilityZone: Boolean? = nil,
                 singleInstanceType: Boolean? = nil) {
         self.allocationStrategy = allocationStrategy
         self.instanceInterruptionBehavior = instanceInterruptionBehavior
         self.instancePoolsToUseCount = instancePoolsToUseCount
         self.minTargetCapacity = minTargetCapacity
+        self.singleAvailabilityZone = singleAvailabilityZone
         self.singleInstanceType = singleInstanceType
     }
 
@@ -22577,6 +22613,7 @@ public struct SpotOptions: Codable, Equatable {
         case instanceInterruptionBehavior
         case instancePoolsToUseCount
         case minTargetCapacity
+        case singleAvailabilityZone
         case singleInstanceType
     }
 
@@ -22589,17 +22626,20 @@ public struct SpotOptionsRequest: Codable, Equatable {
     public var instanceInterruptionBehavior: SpotInstanceInterruptionBehavior?
     public var instancePoolsToUseCount: Integer?
     public var minTargetCapacity: Integer?
+    public var singleAvailabilityZone: Boolean?
     public var singleInstanceType: Boolean?
 
     public init(allocationStrategy: SpotAllocationStrategy? = nil,
                 instanceInterruptionBehavior: SpotInstanceInterruptionBehavior? = nil,
                 instancePoolsToUseCount: Integer? = nil,
                 minTargetCapacity: Integer? = nil,
+                singleAvailabilityZone: Boolean? = nil,
                 singleInstanceType: Boolean? = nil) {
         self.allocationStrategy = allocationStrategy
         self.instanceInterruptionBehavior = instanceInterruptionBehavior
         self.instancePoolsToUseCount = instancePoolsToUseCount
         self.minTargetCapacity = minTargetCapacity
+        self.singleAvailabilityZone = singleAvailabilityZone
         self.singleInstanceType = singleInstanceType
     }
 
@@ -22608,6 +22648,7 @@ public struct SpotOptionsRequest: Codable, Equatable {
         case instanceInterruptionBehavior = "InstanceInterruptionBehavior"
         case instancePoolsToUseCount = "InstancePoolsToUseCount"
         case minTargetCapacity = "MinTargetCapacity"
+        case singleAvailabilityZone = "SingleAvailabilityZone"
         case singleInstanceType = "SingleInstanceType"
     }
 

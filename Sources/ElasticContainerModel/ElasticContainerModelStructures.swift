@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -245,9 +245,13 @@ public struct ClusterNotFoundException: Codable, Equatable {
 
 public struct Container: Codable, Equatable {
     public var containerArn: String?
+    public var cpu: String?
     public var exitCode: BoxedInteger?
+    public var gpuIds: GpuIds?
     public var healthStatus: HealthStatus?
     public var lastStatus: String?
+    public var memory: String?
+    public var memoryReservation: String?
     public var name: String?
     public var networkBindings: NetworkBindings?
     public var networkInterfaces: NetworkInterfaces?
@@ -255,18 +259,26 @@ public struct Container: Codable, Equatable {
     public var taskArn: String?
 
     public init(containerArn: String? = nil,
+                cpu: String? = nil,
                 exitCode: BoxedInteger? = nil,
+                gpuIds: GpuIds? = nil,
                 healthStatus: HealthStatus? = nil,
                 lastStatus: String? = nil,
+                memory: String? = nil,
+                memoryReservation: String? = nil,
                 name: String? = nil,
                 networkBindings: NetworkBindings? = nil,
                 networkInterfaces: NetworkInterfaces? = nil,
                 reason: String? = nil,
                 taskArn: String? = nil) {
         self.containerArn = containerArn
+        self.cpu = cpu
         self.exitCode = exitCode
+        self.gpuIds = gpuIds
         self.healthStatus = healthStatus
         self.lastStatus = lastStatus
+        self.memory = memory
+        self.memoryReservation = memoryReservation
         self.name = name
         self.networkBindings = networkBindings
         self.networkInterfaces = networkInterfaces
@@ -276,9 +288,13 @@ public struct Container: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case containerArn
+        case cpu
         case exitCode
+        case gpuIds
         case healthStatus
         case lastStatus
+        case memory
+        case memoryReservation
         case name
         case networkBindings
         case networkInterfaces
@@ -318,6 +334,7 @@ public struct ContainerDefinition: Codable, Equatable {
     public var pseudoTerminal: BoxedBoolean?
     public var readonlyRootFilesystem: BoxedBoolean?
     public var repositoryCredentials: RepositoryCredentials?
+    public var resourceRequirements: ResourceRequirements?
     public var secrets: SecretList?
     public var systemControls: SystemControls?
     public var ulimits: UlimitList?
@@ -352,6 +369,7 @@ public struct ContainerDefinition: Codable, Equatable {
                 pseudoTerminal: BoxedBoolean? = nil,
                 readonlyRootFilesystem: BoxedBoolean? = nil,
                 repositoryCredentials: RepositoryCredentials? = nil,
+                resourceRequirements: ResourceRequirements? = nil,
                 secrets: SecretList? = nil,
                 systemControls: SystemControls? = nil,
                 ulimits: UlimitList? = nil,
@@ -385,6 +403,7 @@ public struct ContainerDefinition: Codable, Equatable {
         self.pseudoTerminal = pseudoTerminal
         self.readonlyRootFilesystem = readonlyRootFilesystem
         self.repositoryCredentials = repositoryCredentials
+        self.resourceRequirements = resourceRequirements
         self.secrets = secrets
         self.systemControls = systemControls
         self.ulimits = ulimits
@@ -421,6 +440,7 @@ public struct ContainerDefinition: Codable, Equatable {
         case pseudoTerminal
         case readonlyRootFilesystem
         case repositoryCredentials
+        case resourceRequirements
         case secrets
         case systemControls
         case ulimits
@@ -517,19 +537,22 @@ public struct ContainerOverride: Codable, Equatable {
     public var memory: BoxedInteger?
     public var memoryReservation: BoxedInteger?
     public var name: String?
+    public var resourceRequirements: ResourceRequirements?
 
     public init(command: StringList? = nil,
                 cpu: BoxedInteger? = nil,
                 environment: EnvironmentVariables? = nil,
                 memory: BoxedInteger? = nil,
                 memoryReservation: BoxedInteger? = nil,
-                name: String? = nil) {
+                name: String? = nil,
+                resourceRequirements: ResourceRequirements? = nil) {
         self.command = command
         self.cpu = cpu
         self.environment = environment
         self.memory = memory
         self.memoryReservation = memoryReservation
         self.name = name
+        self.resourceRequirements = resourceRequirements
     }
 
     enum CodingKeys: String, CodingKey {
@@ -539,6 +562,7 @@ public struct ContainerOverride: Codable, Equatable {
         case memory
         case memoryReservation
         case name
+        case resourceRequirements
     }
 
     public func validate() throws {
@@ -2111,6 +2135,25 @@ public struct PlacementStrategy: Codable, Equatable {
     }
 }
 
+public struct PlatformDevice: Codable, Equatable {
+    public var id: String
+    public var type: PlatformDeviceType
+
+    public init(id: String,
+                type: PlatformDeviceType) {
+        self.id = id
+        self.type = type
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case type
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct PlatformTaskDefinitionIncompatibilityException: Codable, Equatable {
 
     public init() {
@@ -2149,6 +2192,41 @@ public struct PortMapping: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct PutAccountSettingDefaultRequest: Codable, Equatable {
+    public var name: SettingName
+    public var value: String
+
+    public init(name: SettingName,
+                value: String) {
+        self.name = name
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case value
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PutAccountSettingDefaultResponse: Codable, Equatable {
+    public var setting: Setting?
+
+    public init(setting: Setting? = nil) {
+        self.setting = setting
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case setting
+    }
+
+    public func validate() throws {
+        try setting?.validate()
     }
 }
 
@@ -2231,6 +2309,7 @@ public struct RegisterContainerInstanceRequest: Codable, Equatable {
     public var containerInstanceArn: String?
     public var instanceIdentityDocument: String?
     public var instanceIdentityDocumentSignature: String?
+    public var platformDevices: PlatformDevices?
     public var tags: Tags?
     public var totalResources: Resources?
     public var versionInfo: VersionInfo?
@@ -2240,6 +2319,7 @@ public struct RegisterContainerInstanceRequest: Codable, Equatable {
                 containerInstanceArn: String? = nil,
                 instanceIdentityDocument: String? = nil,
                 instanceIdentityDocumentSignature: String? = nil,
+                platformDevices: PlatformDevices? = nil,
                 tags: Tags? = nil,
                 totalResources: Resources? = nil,
                 versionInfo: VersionInfo? = nil) {
@@ -2248,6 +2328,7 @@ public struct RegisterContainerInstanceRequest: Codable, Equatable {
         self.containerInstanceArn = containerInstanceArn
         self.instanceIdentityDocument = instanceIdentityDocument
         self.instanceIdentityDocumentSignature = instanceIdentityDocumentSignature
+        self.platformDevices = platformDevices
         self.tags = tags
         self.totalResources = totalResources
         self.versionInfo = versionInfo
@@ -2259,6 +2340,7 @@ public struct RegisterContainerInstanceRequest: Codable, Equatable {
         case containerInstanceArn
         case instanceIdentityDocument
         case instanceIdentityDocumentSignature
+        case platformDevices
         case tags
         case totalResources
         case versionInfo
@@ -2424,6 +2506,25 @@ public struct Resource: Codable, Equatable {
 public struct ResourceNotFoundException: Codable, Equatable {
 
     public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ResourceRequirement: Codable, Equatable {
+    public var type: ResourceType
+    public var value: String
+
+    public init(type: ResourceType,
+                value: String) {
+        self.type = type
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case type
+        case value
     }
 
     public func validate() throws {

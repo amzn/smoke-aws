@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -1342,6 +1342,37 @@ public struct ListStateMachinesOutput: Codable, Equatable {
     }
 }
 
+public struct ListTagsForResourceInput: Codable, Equatable {
+    public var resourceArn: Arn
+
+    public init(resourceArn: Arn) {
+        self.resourceArn = resourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn
+    }
+
+    public func validate() throws {
+        try resourceArn.validateAsArn()
+    }
+}
+
+public struct ListTagsForResourceOutput: Codable, Equatable {
+    public var tags: TagList?
+
+    public init(tags: TagList? = nil) {
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tags
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct MissingRequiredParameter: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -1354,6 +1385,26 @@ public struct MissingRequiredParameter: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ResourceNotFound: Codable, Equatable {
+    public var message: ErrorMessage?
+    public var resourceName: Arn?
+
+    public init(message: ErrorMessage? = nil,
+                resourceName: Arn? = nil) {
+        self.message = message
+        self.resourceName = resourceName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+        case resourceName
+    }
+
+    public func validate() throws {
+        try resourceName?.validateAsArn()
     }
 }
 
@@ -1661,6 +1712,56 @@ public struct StopExecutionOutput: Codable, Equatable {
     }
 }
 
+public struct Tag: Codable, Equatable {
+    public var key: TagKey?
+    public var value: TagValue?
+
+    public init(key: TagKey? = nil,
+                value: TagValue? = nil) {
+        self.key = key
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case key
+        case value
+    }
+
+    public func validate() throws {
+        try key?.validateAsTagKey()
+        try value?.validateAsTagValue()
+    }
+}
+
+public struct TagResourceInput: Codable, Equatable {
+    public var resourceArn: Arn
+    public var tags: TagList
+
+    public init(resourceArn: Arn,
+                tags: TagList) {
+        self.resourceArn = resourceArn
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn
+        case tags
+    }
+
+    public func validate() throws {
+        try resourceArn.validateAsArn()
+    }
+}
+
+public struct TagResourceOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct TaskDoesNotExist: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -1920,6 +2021,55 @@ public struct TaskTimedOutEventDetails: Codable, Equatable {
         try error?.validateAsSensitiveError()
         try resource.validateAsName()
         try resourceType.validateAsName()
+    }
+}
+
+public struct TooManyTags: Codable, Equatable {
+    public var message: ErrorMessage?
+    public var resourceName: Arn?
+
+    public init(message: ErrorMessage? = nil,
+                resourceName: Arn? = nil) {
+        self.message = message
+        self.resourceName = resourceName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+        case resourceName
+    }
+
+    public func validate() throws {
+        try resourceName?.validateAsArn()
+    }
+}
+
+public struct UntagResourceInput: Codable, Equatable {
+    public var resourceArn: Arn
+    public var tagKeys: TagKeyList
+
+    public init(resourceArn: Arn,
+                tagKeys: TagKeyList) {
+        self.resourceArn = resourceArn
+        self.tagKeys = tagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn
+        case tagKeys
+    }
+
+    public func validate() throws {
+        try resourceArn.validateAsArn()
+    }
+}
+
+public struct UntagResourceOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
     }
 }
 

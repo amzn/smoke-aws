@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -195,6 +195,26 @@ public enum StateMachineStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the TagKey field.
+ */
+public typealias TagKey = String
+
+/**
+ Type definition for the TagKeyList field.
+ */
+public typealias TagKeyList = [TagKey]
+
+/**
+ Type definition for the TagList field.
+ */
+public typealias TagList = [Tag]
+
+/**
+ Type definition for the TagValue field.
+ */
+public typealias TagValue = String
+
+/**
  Type definition for the TaskToken field.
  */
 public typealias TaskToken = String
@@ -349,6 +369,36 @@ extension StepFunctionsModel.SensitiveError {
 
         if self.count > 256 {
             throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveError violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagKey field.
+*/
+extension StepFunctionsModel.TagKey {
+    public func validateAsTagKey() throws {
+        if self.count < 1 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagValue field.
+*/
+extension StepFunctionsModel.TagValue {
+    public func validateAsTagValue() throws {
+        if self.count < 0 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
         }
     }
 }

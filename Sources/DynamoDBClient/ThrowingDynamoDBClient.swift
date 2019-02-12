@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -1201,7 +1201,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The TransactGetItemsOutput object or an error will be passed to this 
            callback when the operation is complete. The TransactGetItemsOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, resourceNotFound, transactionCanceled.
+           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
      */
     public func transactGetItemsAsync(input: DynamoDBModel.TransactGetItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactGetItemsOutput>) -> ()) throws {
         if let transactGetItemsAsyncOverride = transactGetItemsAsyncOverride {
@@ -1218,7 +1218,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated TransactGetItemsInput object being passed to this operation.
      - Returns: The TransactGetItemsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, resourceNotFound, transactionCanceled.
+     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
      */
     public func transactGetItemsSync(input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput {
         if let transactGetItemsSyncOverride = transactGetItemsSyncOverride {
@@ -1236,7 +1236,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - completion: The TransactWriteItemsOutput object or an error will be passed to this 
            callback when the operation is complete. The TransactWriteItemsOutput
            object will be validated before being returned to caller.
-           The possible errors are: idempotentParameterMismatch, internalServer, resourceNotFound, transactionCanceled, transactionInProgress.
+           The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
     public func transactWriteItemsAsync(input: DynamoDBModel.TransactWriteItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactWriteItemsOutput>) -> ()) throws {
         if let transactWriteItemsAsyncOverride = transactWriteItemsAsyncOverride {
@@ -1253,7 +1253,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated TransactWriteItemsInput object being passed to this operation.
      - Returns: The TransactWriteItemsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: idempotentParameterMismatch, internalServer, resourceNotFound, transactionCanceled, transactionInProgress.
+     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
     public func transactWriteItemsSync(input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput {
         if let transactWriteItemsSyncOverride = transactWriteItemsSyncOverride {

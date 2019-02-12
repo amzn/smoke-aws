@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -804,6 +804,30 @@ public extension ListStateMachinesOutput {
     }()
 }
 
+public extension ListTagsForResourceInput {
+    /**
+     Default instance of the ListTagsForResourceInput structure.
+     */
+    public static let __default: StepFunctionsModel.ListTagsForResourceInput = {
+        let defaultInstance = StepFunctionsModel.ListTagsForResourceInput(
+            resourceArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ListTagsForResourceOutput {
+    /**
+     Default instance of the ListTagsForResourceOutput structure.
+     */
+    public static let __default: StepFunctionsModel.ListTagsForResourceOutput = {
+        let defaultInstance = StepFunctionsModel.ListTagsForResourceOutput(
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension MissingRequiredParameter {
     /**
      Default instance of the MissingRequiredParameter structure.
@@ -811,6 +835,19 @@ public extension MissingRequiredParameter {
     public static let __default: StepFunctionsModel.MissingRequiredParameter = {
         let defaultInstance = StepFunctionsModel.MissingRequiredParameter(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ResourceNotFound {
+    /**
+     Default instance of the ResourceNotFound structure.
+     */
+    public static let __default: StepFunctionsModel.ResourceNotFound = {
+        let defaultInstance = StepFunctionsModel.ResourceNotFound(
+            message: nil,
+            resourceName: nil)
 
         return defaultInstance
     }()
@@ -1029,6 +1066,43 @@ public extension StopExecutionOutput {
     }()
 }
 
+public extension Tag {
+    /**
+     Default instance of the Tag structure.
+     */
+    public static let __default: StepFunctionsModel.Tag = {
+        let defaultInstance = StepFunctionsModel.Tag(
+            key: nil,
+            value: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceInput {
+    /**
+     Default instance of the TagResourceInput structure.
+     */
+    public static let __default: StepFunctionsModel.TagResourceInput = {
+        let defaultInstance = StepFunctionsModel.TagResourceInput(
+            resourceArn: "0",
+            tags: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceOutput {
+    /**
+     Default instance of the TagResourceOutput structure.
+     */
+    public static let __default: StepFunctionsModel.TagResourceOutput = {
+        let defaultInstance = StepFunctionsModel.TagResourceOutput()
+
+        return defaultInstance
+    }()
+}
+
 public extension TaskDoesNotExist {
     /**
      Default instance of the TaskDoesNotExist structure.
@@ -1165,6 +1239,43 @@ public extension TaskTimedOutEventDetails {
             error: nil,
             resource: "0",
             resourceType: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension TooManyTags {
+    /**
+     Default instance of the TooManyTags structure.
+     */
+    public static let __default: StepFunctionsModel.TooManyTags = {
+        let defaultInstance = StepFunctionsModel.TooManyTags(
+            message: nil,
+            resourceName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceInput {
+    /**
+     Default instance of the UntagResourceInput structure.
+     */
+    public static let __default: StepFunctionsModel.UntagResourceInput = {
+        let defaultInstance = StepFunctionsModel.UntagResourceInput(
+            resourceArn: "0",
+            tagKeys: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceOutput {
+    /**
+     Default instance of the UntagResourceOutput structure.
+     */
+    public static let __default: StepFunctionsModel.UntagResourceOutput = {
+        let defaultInstance = StepFunctionsModel.UntagResourceOutput()
 
         return defaultInstance
     }()

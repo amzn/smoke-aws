@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -35,12 +35,14 @@ private let invalidNameIdentity = "InvalidName"
 private let invalidOutputIdentity = "InvalidOutput"
 private let invalidTokenIdentity = "InvalidToken"
 private let missingRequiredParameterIdentity = "MissingRequiredParameter"
+private let resourceNotFoundIdentity = "ResourceNotFound"
 private let stateMachineAlreadyExistsIdentity = "StateMachineAlreadyExists"
 private let stateMachineDeletingIdentity = "StateMachineDeleting"
 private let stateMachineDoesNotExistIdentity = "StateMachineDoesNotExist"
 private let stateMachineLimitExceededIdentity = "StateMachineLimitExceeded"
 private let taskDoesNotExistIdentity = "TaskDoesNotExist"
 private let taskTimedOutIdentity = "TaskTimedOut"
+private let tooManyTagsIdentity = "TooManyTags"
 
 public enum StepFunctionsCodingError: Swift.Error {
     case unknownError
@@ -62,12 +64,14 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case invalidOutput(InvalidOutput)
     case invalidToken(InvalidToken)
     case missingRequiredParameter(MissingRequiredParameter)
+    case resourceNotFound(ResourceNotFound)
     case stateMachineAlreadyExists(StateMachineAlreadyExists)
     case stateMachineDeleting(StateMachineDeleting)
     case stateMachineDoesNotExist(StateMachineDoesNotExist)
     case stateMachineLimitExceeded(StateMachineLimitExceeded)
     case taskDoesNotExist(TaskDoesNotExist)
     case taskTimedOut(TaskTimedOut)
+    case tooManyTags(TooManyTags)
     
     enum CodingKeys: String, CodingKey {
         case type = "__type"
@@ -123,6 +127,9 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case missingRequiredParameterIdentity:
             let errorPayload = try MissingRequiredParameter(from: decoder)
             self = StepFunctionsError.missingRequiredParameter(errorPayload)
+        case resourceNotFoundIdentity:
+            let errorPayload = try ResourceNotFound(from: decoder)
+            self = StepFunctionsError.resourceNotFound(errorPayload)
         case stateMachineAlreadyExistsIdentity:
             let errorPayload = try StateMachineAlreadyExists(from: decoder)
             self = StepFunctionsError.stateMachineAlreadyExists(errorPayload)
@@ -141,6 +148,9 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case taskTimedOutIdentity:
             let errorPayload = try TaskTimedOut(from: decoder)
             self = StepFunctionsError.taskTimedOut(errorPayload)
+        case tooManyTagsIdentity:
+            let errorPayload = try TooManyTags(from: decoder)
+            self = StepFunctionsError.tooManyTags(errorPayload)
         default:
             throw StepFunctionsCodingError.unrecognizedError(errorReason, errorMessage)
         }

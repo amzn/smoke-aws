@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -75,6 +75,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
     let listTasksSyncOverride: ElasticContainerClientProtocol.ListTasksSyncType?
     let putAccountSettingAsyncOverride: ElasticContainerClientProtocol.PutAccountSettingAsyncType?
     let putAccountSettingSyncOverride: ElasticContainerClientProtocol.PutAccountSettingSyncType?
+    let putAccountSettingDefaultAsyncOverride: ElasticContainerClientProtocol.PutAccountSettingDefaultAsyncType?
+    let putAccountSettingDefaultSyncOverride: ElasticContainerClientProtocol.PutAccountSettingDefaultSyncType?
     let putAttributesAsyncOverride: ElasticContainerClientProtocol.PutAttributesAsyncType?
     let putAttributesSyncOverride: ElasticContainerClientProtocol.PutAttributesSyncType?
     let registerContainerInstanceAsyncOverride: ElasticContainerClientProtocol.RegisterContainerInstanceAsyncType?
@@ -155,6 +157,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
             listTasksSync: ElasticContainerClientProtocol.ListTasksSyncType? = nil,
             putAccountSettingAsync: ElasticContainerClientProtocol.PutAccountSettingAsyncType? = nil,
             putAccountSettingSync: ElasticContainerClientProtocol.PutAccountSettingSyncType? = nil,
+            putAccountSettingDefaultAsync: ElasticContainerClientProtocol.PutAccountSettingDefaultAsyncType? = nil,
+            putAccountSettingDefaultSync: ElasticContainerClientProtocol.PutAccountSettingDefaultSyncType? = nil,
             putAttributesAsync: ElasticContainerClientProtocol.PutAttributesAsyncType? = nil,
             putAttributesSync: ElasticContainerClientProtocol.PutAttributesSyncType? = nil,
             registerContainerInstanceAsync: ElasticContainerClientProtocol.RegisterContainerInstanceAsyncType? = nil,
@@ -229,6 +233,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         self.listTasksSyncOverride = listTasksSync
         self.putAccountSettingAsyncOverride = putAccountSettingAsync
         self.putAccountSettingSyncOverride = putAccountSettingSync
+        self.putAccountSettingDefaultAsyncOverride = putAccountSettingDefaultAsync
+        self.putAccountSettingDefaultSyncOverride = putAccountSettingDefaultSync
         self.putAttributesAsyncOverride = putAttributesAsync
         self.putAttributesSyncOverride = putAttributesSync
         self.registerContainerInstanceAsyncOverride = registerContainerInstanceAsync
@@ -1143,6 +1149,43 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         }
 
         return PutAccountSettingResponse.__default
+    }
+
+    /**
+     Invokes the PutAccountSettingDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutAccountSettingDefaultRequest object being passed to this operation.
+         - completion: The PutAccountSettingDefaultResponse object or an error will be passed to this 
+           callback when the operation is complete. The PutAccountSettingDefaultResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func putAccountSettingDefaultAsync(input: ElasticContainerModel.PutAccountSettingDefaultRequest, completion: @escaping (HTTPResult<ElasticContainerModel.PutAccountSettingDefaultResponse>) -> ()) throws {
+        if let putAccountSettingDefaultAsyncOverride = putAccountSettingDefaultAsyncOverride {
+            return try putAccountSettingDefaultAsyncOverride(input, completion)
+        }
+
+        let result = PutAccountSettingDefaultResponse.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the PutAccountSettingDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutAccountSettingDefaultRequest object being passed to this operation.
+     - Returns: The PutAccountSettingDefaultResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func putAccountSettingDefaultSync(input: ElasticContainerModel.PutAccountSettingDefaultRequest) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
+        if let putAccountSettingDefaultSyncOverride = putAccountSettingDefaultSyncOverride {
+            return try putAccountSettingDefaultSyncOverride(input)
+        }
+
+        return PutAccountSettingDefaultResponse.__default
     }
 
     /**

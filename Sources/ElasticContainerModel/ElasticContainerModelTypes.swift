@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -277,6 +277,11 @@ public typealias EnvironmentVariables = [KeyValuePair]
 public typealias Failures = [Failure]
 
 /**
+ Type definition for the GpuIds field.
+ */
+public typealias GpuIds = [String]
+
+/**
  Enumeration restricting the values of the HealthStatus field.
  */
 public enum HealthStatus: String, Codable, CustomStringConvertible {
@@ -449,6 +454,24 @@ public enum PlacementStrategyType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the PlatformDeviceType field.
+ */
+public enum PlatformDeviceType: String, Codable, CustomStringConvertible {
+    case gpu = "GPU"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: PlatformDeviceType = .gpu
+}
+
+/**
+ Type definition for the PlatformDevices field.
+ */
+public typealias PlatformDevices = [PlatformDevice]
+
+/**
  Type definition for the PortMappingList field.
  */
 public typealias PortMappingList = [PortMapping]
@@ -471,6 +494,24 @@ public enum PropagateTags: String, Codable, CustomStringConvertible {
  Type definition for the RequiresAttributes field.
  */
 public typealias RequiresAttributes = [Attribute]
+
+/**
+ Type definition for the ResourceRequirements field.
+ */
+public typealias ResourceRequirements = [ResourceRequirement]
+
+/**
+ Enumeration restricting the values of the ResourceType field.
+ */
+public enum ResourceType: String, Codable, CustomStringConvertible {
+    case gpu = "GPU"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ResourceType = .gpu
+}
 
 /**
  Type definition for the Resources field.

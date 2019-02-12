@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ public enum SimpleNotificationClientError: Swift.Error {
 private extension SimpleNotificationError {
     func isRetryable() -> Bool {
         switch self {
-        case .kMSThrottling, .filterPolicyLimitExceeded, .subscriptionLimitExceeded, .throttled, .topicLimitExceeded:
+        case .filterPolicyLimitExceeded, .kMSThrottling, .subscriptionLimitExceeded, .throttled, .topicLimitExceeded:
             return true
         default:
             return false

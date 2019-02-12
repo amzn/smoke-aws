@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -5805,6 +5805,8 @@ public extension DescribeSpotInstanceRequestsRequest {
         let defaultInstance = ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest(
             dryRun: nil,
             filters: nil,
+            maxResults: nil,
+            nextToken: nil,
             spotInstanceRequestIds: nil)
 
         return defaultInstance
@@ -5817,6 +5819,7 @@ public extension DescribeSpotInstanceRequestsResult {
      */
     public static let __default: ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult = {
         let defaultInstance = ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult(
+            nextToken: nil,
             spotInstanceRequests: nil)
 
         return defaultInstance
@@ -6432,6 +6435,8 @@ public extension DescribeVpcPeeringConnectionsRequest {
         let defaultInstance = ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest(
             dryRun: nil,
             filters: nil,
+            maxResults: nil,
+            nextToken: nil,
             vpcPeeringConnectionIds: nil)
 
         return defaultInstance
@@ -6444,6 +6449,7 @@ public extension DescribeVpcPeeringConnectionsResult {
      */
     public static let __default: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult = {
         let defaultInstance = ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult(
+            nextToken: nil,
             vpcPeeringConnections: nil)
 
         return defaultInstance
@@ -10604,6 +10610,7 @@ public extension OnDemandOptions {
         let defaultInstance = ElasticComputeCloudModel.OnDemandOptions(
             allocationStrategy: nil,
             minTargetCapacity: nil,
+            singleAvailabilityZone: nil,
             singleInstanceType: nil)
 
         return defaultInstance
@@ -10618,6 +10625,7 @@ public extension OnDemandOptionsRequest {
         let defaultInstance = ElasticComputeCloudModel.OnDemandOptionsRequest(
             allocationStrategy: nil,
             minTargetCapacity: nil,
+            singleAvailabilityZone: nil,
             singleInstanceType: nil)
 
         return defaultInstance
@@ -12752,6 +12760,7 @@ public extension SpotOptions {
             instanceInterruptionBehavior: nil,
             instancePoolsToUseCount: nil,
             minTargetCapacity: nil,
+            singleAvailabilityZone: nil,
             singleInstanceType: nil)
 
         return defaultInstance
@@ -12768,6 +12777,7 @@ public extension SpotOptionsRequest {
             instanceInterruptionBehavior: nil,
             instancePoolsToUseCount: nil,
             minTargetCapacity: nil,
+            singleAvailabilityZone: nil,
             singleInstanceType: nil)
 
         return defaultInstance

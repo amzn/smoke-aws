@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -331,6 +331,19 @@ extension PutAccountSettingResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> PutAccountSettingResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutAccountSettingDefault operation in a HTTP client.
+ */
+extension PutAccountSettingDefaultResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutAccountSettingDefaultResponse
+    public typealias HeadersType = PutAccountSettingDefaultResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutAccountSettingDefaultResponse {
         return try bodyDecodableProvider()
     }
 }

@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -420,6 +420,9 @@ public typealias CapacityReservationIdSet = [String]
  Enumeration restricting the values of the CapacityReservationInstancePlatform field.
  */
 public enum CapacityReservationInstancePlatform: String, Codable, CustomStringConvertible {
+    case linuxWithSqlServerEnterprise = "Linux with SQL Server Enterprise"
+    case linuxWithSqlServerStandard = "Linux with SQL Server Standard"
+    case linuxWithSqlServerWeb = "Linux with SQL Server Web"
     case linuxUnix = "Linux/UNIX"
     case redHatEnterpriseLinux = "Red Hat Enterprise Linux"
     case suseLinux = "SUSE Linux"
@@ -433,7 +436,7 @@ public enum CapacityReservationInstancePlatform: String, Codable, CustomStringCo
         return rawValue
     }
     
-    public static let __default: CapacityReservationInstancePlatform = .linuxUnix
+    public static let __default: CapacityReservationInstancePlatform = .linuxWithSqlServerEnterprise
 }
 
 /**
@@ -838,6 +841,11 @@ public typealias DescribeFleetsErrorSet = [DescribeFleetError]
  Type definition for the DescribeFleetsInstancesSet field.
  */
 public typealias DescribeFleetsInstancesSet = [DescribeFleetsInstances]
+
+/**
+ Type definition for the DescribeVpcPeeringConnectionsMaxResults field.
+ */
+public typealias DescribeVpcPeeringConnectionsMaxResults = Int
 
 /**
  Enumeration restricting the values of the DeviceType field.
@@ -1876,11 +1884,9 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case r4Large = "r4.large"
     case r4Xlarge = "r4.xlarge"
     case r512xlarge = "r5.12xlarge"
-    case r516xlarge = "r5.16xlarge"
     case r524xlarge = "r5.24xlarge"
     case r52xlarge = "r5.2xlarge"
     case r54xlarge = "r5.4xlarge"
-    case r58xlarge = "r5.8xlarge"
     case r5Large = "r5.large"
     case r5Metal = "r5.metal"
     case r5Xlarge = "r5.xlarge"
@@ -1891,11 +1897,9 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case r5aLarge = "r5a.large"
     case r5aXlarge = "r5a.xlarge"
     case r5d12xlarge = "r5d.12xlarge"
-    case r5d16xlarge = "r5d.16xlarge"
     case r5d24xlarge = "r5d.24xlarge"
     case r5d2xlarge = "r5d.2xlarge"
     case r5d4xlarge = "r5d.4xlarge"
-    case r5d8xlarge = "r5d.8xlarge"
     case r5dLarge = "r5d.large"
     case r5dMetal = "r5d.metal"
     case r5dXlarge = "r5d.xlarge"
@@ -4226,6 +4230,21 @@ extension Array where Element == ElasticComputeCloudModel.ClassicLoadBalancer {
 
         if self.count > 5 {
             throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to ClassicLoadBalancers violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeVpcPeeringConnectionsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeVpcPeeringConnectionsMaxResults {
+    public func validateAsDescribeVpcPeeringConnectionsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeVpcPeeringConnectionsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeVpcPeeringConnectionsMaxResults violated the maximum range constraint.")
         }
     }
 }

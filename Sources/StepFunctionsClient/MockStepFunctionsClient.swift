@@ -1,4 +1,4 @@
-// Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -53,6 +53,8 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
     let listExecutionsSyncOverride: StepFunctionsClientProtocol.ListExecutionsSyncType?
     let listStateMachinesAsyncOverride: StepFunctionsClientProtocol.ListStateMachinesAsyncType?
     let listStateMachinesSyncOverride: StepFunctionsClientProtocol.ListStateMachinesSyncType?
+    let listTagsForResourceAsyncOverride: StepFunctionsClientProtocol.ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: StepFunctionsClientProtocol.ListTagsForResourceSyncType?
     let sendTaskFailureAsyncOverride: StepFunctionsClientProtocol.SendTaskFailureAsyncType?
     let sendTaskFailureSyncOverride: StepFunctionsClientProtocol.SendTaskFailureSyncType?
     let sendTaskHeartbeatAsyncOverride: StepFunctionsClientProtocol.SendTaskHeartbeatAsyncType?
@@ -63,6 +65,10 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
     let startExecutionSyncOverride: StepFunctionsClientProtocol.StartExecutionSyncType?
     let stopExecutionAsyncOverride: StepFunctionsClientProtocol.StopExecutionAsyncType?
     let stopExecutionSyncOverride: StepFunctionsClientProtocol.StopExecutionSyncType?
+    let tagResourceAsyncOverride: StepFunctionsClientProtocol.TagResourceAsyncType?
+    let tagResourceSyncOverride: StepFunctionsClientProtocol.TagResourceSyncType?
+    let untagResourceAsyncOverride: StepFunctionsClientProtocol.UntagResourceAsyncType?
+    let untagResourceSyncOverride: StepFunctionsClientProtocol.UntagResourceSyncType?
     let updateStateMachineAsyncOverride: StepFunctionsClientProtocol.UpdateStateMachineAsyncType?
     let updateStateMachineSyncOverride: StepFunctionsClientProtocol.UpdateStateMachineSyncType?
 
@@ -97,6 +103,8 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
             listExecutionsSync: StepFunctionsClientProtocol.ListExecutionsSyncType? = nil,
             listStateMachinesAsync: StepFunctionsClientProtocol.ListStateMachinesAsyncType? = nil,
             listStateMachinesSync: StepFunctionsClientProtocol.ListStateMachinesSyncType? = nil,
+            listTagsForResourceAsync: StepFunctionsClientProtocol.ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: StepFunctionsClientProtocol.ListTagsForResourceSyncType? = nil,
             sendTaskFailureAsync: StepFunctionsClientProtocol.SendTaskFailureAsyncType? = nil,
             sendTaskFailureSync: StepFunctionsClientProtocol.SendTaskFailureSyncType? = nil,
             sendTaskHeartbeatAsync: StepFunctionsClientProtocol.SendTaskHeartbeatAsyncType? = nil,
@@ -107,6 +115,10 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
             startExecutionSync: StepFunctionsClientProtocol.StartExecutionSyncType? = nil,
             stopExecutionAsync: StepFunctionsClientProtocol.StopExecutionAsyncType? = nil,
             stopExecutionSync: StepFunctionsClientProtocol.StopExecutionSyncType? = nil,
+            tagResourceAsync: StepFunctionsClientProtocol.TagResourceAsyncType? = nil,
+            tagResourceSync: StepFunctionsClientProtocol.TagResourceSyncType? = nil,
+            untagResourceAsync: StepFunctionsClientProtocol.UntagResourceAsyncType? = nil,
+            untagResourceSync: StepFunctionsClientProtocol.UntagResourceSyncType? = nil,
             updateStateMachineAsync: StepFunctionsClientProtocol.UpdateStateMachineAsyncType? = nil,
             updateStateMachineSync: StepFunctionsClientProtocol.UpdateStateMachineSyncType? = nil) {
         self.createActivityAsyncOverride = createActivityAsync
@@ -135,6 +147,8 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
         self.listExecutionsSyncOverride = listExecutionsSync
         self.listStateMachinesAsyncOverride = listStateMachinesAsync
         self.listStateMachinesSyncOverride = listStateMachinesSync
+        self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
+        self.listTagsForResourceSyncOverride = listTagsForResourceSync
         self.sendTaskFailureAsyncOverride = sendTaskFailureAsync
         self.sendTaskFailureSyncOverride = sendTaskFailureSync
         self.sendTaskHeartbeatAsyncOverride = sendTaskHeartbeatAsync
@@ -145,6 +159,10 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
         self.startExecutionSyncOverride = startExecutionSync
         self.stopExecutionAsyncOverride = stopExecutionAsync
         self.stopExecutionSyncOverride = stopExecutionSync
+        self.tagResourceAsyncOverride = tagResourceAsync
+        self.tagResourceSyncOverride = tagResourceSync
+        self.untagResourceAsyncOverride = untagResourceAsync
+        self.untagResourceSyncOverride = untagResourceSync
         self.updateStateMachineAsyncOverride = updateStateMachineAsync
         self.updateStateMachineSyncOverride = updateStateMachineSync
     }
@@ -631,6 +649,43 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
     }
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+         - completion: The ListTagsForResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound.
+     */
+    public func listTagsForResourceAsync(input: StepFunctionsModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListTagsForResourceOutput>) -> ()) throws {
+        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
+            return try listTagsForResourceAsyncOverride(input, completion)
+        }
+
+        let result = ListTagsForResourceOutput.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    public func listTagsForResourceSync(input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput {
+        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
+            return try listTagsForResourceSyncOverride(input)
+        }
+
+        return ListTagsForResourceOutput.__default
+    }
+
+    /**
      Invokes the SendTaskFailure operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -813,6 +868,80 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
         }
 
         return StopExecutionOutput.__default
+    }
+
+    /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+         - completion: The TagResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The TagResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound, tooManyTags.
+     */
+    public func tagResourceAsync(input: StepFunctionsModel.TagResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.TagResourceOutput>) -> ()) throws {
+        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
+            return try tagResourceAsyncOverride(input, completion)
+        }
+
+        let result = TagResourceOutput.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Returns: The TagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, tooManyTags.
+     */
+    public func tagResourceSync(input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput {
+        if let tagResourceSyncOverride = tagResourceSyncOverride {
+            return try tagResourceSyncOverride(input)
+        }
+
+        return TagResourceOutput.__default
+    }
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+         - completion: The UntagResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The UntagResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound.
+     */
+    public func untagResourceAsync(input: StepFunctionsModel.UntagResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.UntagResourceOutput>) -> ()) throws {
+        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
+            return try untagResourceAsyncOverride(input, completion)
+        }
+
+        let result = UntagResourceOutput.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Returns: The UntagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    public func untagResourceSync(input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput {
+        if let untagResourceSyncOverride = untagResourceSyncOverride {
+            return try untagResourceSyncOverride(input)
+        }
+
+        return UntagResourceOutput.__default
     }
 
     /**
