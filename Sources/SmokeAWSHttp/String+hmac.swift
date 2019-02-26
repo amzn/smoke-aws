@@ -34,6 +34,7 @@ extension String {
         var digest = [UInt8](repeating: 0, count: Int(EVP_MAX_MD_SIZE))
         var length: UInt32 = 0
         HMAC_Final(&context, &digest, &length)
+        HMAC_CTX_cleanup(&context)
         
         return Array(digest[0..<Int(length)])
     }
