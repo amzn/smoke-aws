@@ -1461,7 +1461,6 @@ public extension ClientVpnEndpoint {
      */
     public static let __default: ElasticComputeCloudModel.ClientVpnEndpoint = {
         let defaultInstance = ElasticComputeCloudModel.ClientVpnEndpoint(
-            associatedTargetNetworks: nil,
             authenticationOptions: nil,
             clientCidrBlock: nil,
             clientVpnEndpointId: nil,
@@ -1470,9 +1469,11 @@ public extension ClientVpnEndpoint {
             deletionTime: nil,
             description: nil,
             dnsName: nil,
+            dnsServers: nil,
             serverCertificateArn: nil,
             splitTunnel: nil,
             status: nil,
+            tags: nil,
             transportProtocol: nil,
             vpnProtocol: nil)
 
@@ -1782,6 +1783,7 @@ public extension CreateClientVpnEndpointRequest {
             dnsServers: nil,
             dryRun: nil,
             serverCertificateArn: "value",
+            tagSpecifications: nil,
             transportProtocol: nil)
 
         return defaultInstance

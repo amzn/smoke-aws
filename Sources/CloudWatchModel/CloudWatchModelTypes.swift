@@ -714,7 +714,8 @@ extension CloudWatchModel.ExtendedStatistic {
     public func validateAsExtendedStatistic() throws {
         guard let matchingRange = self.range(of: "p(\\d{1,2}(\\.\\d{0,2})?|100)", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw CloudWatchCodingError.validationError(reason: "The provided value to ExtendedStatistic violated the regular expression constraint.")
+                throw CloudWatchCodingError.validationError(
+                    reason: "The provided value to ExtendedStatistic violated the regular expression constraint.")
         }
     }
 }
@@ -839,7 +840,8 @@ extension CloudWatchModel.Namespace {
 
         guard let matchingRange = self.range(of: "[^:].*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw CloudWatchCodingError.validationError(reason: "The provided value to Namespace violated the regular expression constraint.")
+                throw CloudWatchCodingError.validationError(
+                    reason: "The provided value to Namespace violated the regular expression constraint.")
         }
     }
 }

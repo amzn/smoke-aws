@@ -171,6 +171,11 @@ public typealias SensitiveCause = String
 public typealias SensitiveData = String
 
 /**
+ Type definition for the SensitiveDataJobInput field.
+ */
+public typealias SensitiveDataJobInput = String
+
+/**
  Type definition for the SensitiveError field.
  */
 public typealias SensitiveError = String
@@ -354,6 +359,18 @@ extension StepFunctionsModel.SensitiveData {
 
         if self.count > 32768 {
             throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveData violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the SensitiveDataJobInput field.
+*/
+extension StepFunctionsModel.SensitiveDataJobInput {
+    public func validateAsSensitiveDataJobInput() throws {
+
+        if self.count > 65536 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveDataJobInput violated the maximum length constraint.")
         }
     }
 }

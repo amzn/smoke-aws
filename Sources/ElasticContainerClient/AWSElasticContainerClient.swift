@@ -34,7 +34,7 @@ public enum ElasticContainerClientError: Swift.Error {
 }
 
 private extension ElasticContainerError {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         switch self {
         case .attributeLimitExceeded:
             return true
@@ -45,9 +45,9 @@ private extension ElasticContainerError {
 }
 
 private extension Swift.Error {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         if let typedError = self as? ElasticContainerError {
-            return typedError.isRetryable()
+            return typedError.isRetriable()
         } else {
             return true
         }
@@ -86,7 +86,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
         self.target = target
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
-        self.retryOnErrorProvider = { error in error.isRetryable() }
+        self.retryOnErrorProvider = { error in error.isRetriable() }
     }
 
     /**

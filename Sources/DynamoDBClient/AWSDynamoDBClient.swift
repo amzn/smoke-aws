@@ -34,7 +34,7 @@ public enum DynamoDBClientError: Swift.Error {
 }
 
 private extension DynamoDBError {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         switch self {
         case .itemCollectionSizeLimitExceeded, .limitExceeded, .provisionedThroughputExceeded, .requestLimitExceeded:
             return true
@@ -45,9 +45,9 @@ private extension DynamoDBError {
 }
 
 private extension Swift.Error {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         if let typedError = self as? DynamoDBError {
-            return typedError.isRetryable()
+            return typedError.isRetriable()
         } else {
             return true
         }
@@ -86,7 +86,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
         self.target = target
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
-        self.retryOnErrorProvider = { error in error.isRetryable() }
+        self.retryOnErrorProvider = { error in error.isRetriable() }
     }
 
     /**

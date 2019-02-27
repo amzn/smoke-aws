@@ -34,7 +34,7 @@ public enum SimpleQueueClientError: Swift.Error {
 }
 
 private extension SimpleQueueError {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         switch self {
         case .overLimit:
             return true
@@ -45,9 +45,9 @@ private extension SimpleQueueError {
 }
 
 private extension Swift.Error {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         if let typedError = self as? SimpleQueueError {
-            return typedError.isRetryable()
+            return typedError.isRetriable()
         } else {
             return true
         }
@@ -88,16 +88,16 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                                      clientDelegate: clientDelegate,
                                      connectionTimeoutSeconds: connectionTimeoutSeconds)
         self.listHttpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegateForListHttpClient,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                          endpointPort: endpointPort,
+                                          contentType: contentType,
+                                          clientDelegate: clientDelegateForListHttpClient,
+                                          connectionTimeoutSeconds: connectionTimeoutSeconds)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
-        self.retryOnErrorProvider = { error in error.isRetryable() }
+        self.retryOnErrorProvider = { error in error.isRetriable() }
         self.apiVersion = apiVersion
     }
 

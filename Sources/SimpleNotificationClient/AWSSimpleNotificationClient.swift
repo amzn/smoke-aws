@@ -34,7 +34,7 @@ public enum SimpleNotificationClientError: Swift.Error {
 }
 
 private extension SimpleNotificationError {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         switch self {
         case .filterPolicyLimitExceeded, .kMSThrottling, .subscriptionLimitExceeded, .throttled, .topicLimitExceeded:
             return true
@@ -45,9 +45,9 @@ private extension SimpleNotificationError {
 }
 
 private extension Swift.Error {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         if let typedError = self as? SimpleNotificationError {
-            return typedError.isRetryable()
+            return typedError.isRetriable()
         } else {
             return true
         }
@@ -87,7 +87,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
         self.target = nil
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
-        self.retryOnErrorProvider = { error in error.isRetryable() }
+        self.retryOnErrorProvider = { error in error.isRetriable() }
         self.apiVersion = apiVersion
     }
 

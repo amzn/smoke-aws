@@ -34,15 +34,15 @@ public enum S3ClientError: Swift.Error {
 }
 
 private extension S3Error {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         return false
     }
 }
 
 private extension Swift.Error {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         if let typedError = self as? S3Error {
-            return typedError.isRetryable()
+            return typedError.isRetriable()
         } else {
             return true
         }
@@ -80,16 +80,16 @@ public struct AWSS3Client: S3ClientProtocol {
                                      clientDelegate: clientDelegate,
                                      connectionTimeoutSeconds: connectionTimeoutSeconds)
         self.dataHttpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegateForDataHttpClient,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                          endpointPort: endpointPort,
+                                          contentType: contentType,
+                                          clientDelegate: clientDelegateForDataHttpClient,
+                                          connectionTimeoutSeconds: connectionTimeoutSeconds)
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = target
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
-        self.retryOnErrorProvider = { error in error.isRetryable() }
+        self.retryOnErrorProvider = { error in error.isRetriable() }
     }
 
     /**

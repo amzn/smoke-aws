@@ -236,7 +236,8 @@ extension SecurityTokenModel.AccessKeyIdType {
 
         guard let matchingRange = self.range(of: "[\\w]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to accessKeyIdType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to accessKeyIdType violated the regular expression constraint.")
         }
     }
 }
@@ -256,7 +257,8 @@ extension SecurityTokenModel.ArnType {
 
         guard let matchingRange = self.range(of: "[\\u0009\\u000A\\u000D\\u0020-\\u007E\\u0085\\u00A0-\\uD7FF\\uE000-\\uFFFD\\u10000-\\u10FFFF]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to arnType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to arnType violated the regular expression constraint.")
         }
     }
 }
@@ -276,7 +278,8 @@ extension SecurityTokenModel.AssumedRoleIdType {
 
         guard let matchingRange = self.range(of: "[\\w+=,.@:-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to assumedRoleIdType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to assumedRoleIdType violated the regular expression constraint.")
         }
     }
 }
@@ -341,7 +344,8 @@ extension SecurityTokenModel.ExternalIdType {
 
         guard let matchingRange = self.range(of: "[\\w+=,.@:\\/-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to externalIdType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to externalIdType violated the regular expression constraint.")
         }
     }
 }
@@ -361,7 +365,8 @@ extension SecurityTokenModel.FederatedIdType {
 
         guard let matchingRange = self.range(of: "[\\w+=,.@\\:-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to federatedIdType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to federatedIdType violated the regular expression constraint.")
         }
     }
 }
@@ -408,7 +413,8 @@ extension SecurityTokenModel.RoleSessionNameType {
 
         guard let matchingRange = self.range(of: "[\\w+=,.@-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to roleSessionNameType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to roleSessionNameType violated the regular expression constraint.")
         }
     }
 }
@@ -428,7 +434,8 @@ extension SecurityTokenModel.SerialNumberType {
 
         guard let matchingRange = self.range(of: "[\\w+=/:,.@-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to serialNumberType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to serialNumberType violated the regular expression constraint.")
         }
     }
 }
@@ -448,7 +455,8 @@ extension SecurityTokenModel.SessionPolicyDocumentType {
 
         guard let matchingRange = self.range(of: "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to sessionPolicyDocumentType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to sessionPolicyDocumentType violated the regular expression constraint.")
         }
     }
 }
@@ -468,7 +476,8 @@ extension SecurityTokenModel.TokenCodeType {
 
         guard let matchingRange = self.range(of: "[\\d]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to tokenCodeType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to tokenCodeType violated the regular expression constraint.")
         }
     }
 }
@@ -503,7 +512,8 @@ extension SecurityTokenModel.UserNameType {
 
         guard let matchingRange = self.range(of: "[\\w+=,.@-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(reason: "The provided value to userNameType violated the regular expression constraint.")
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to userNameType violated the regular expression constraint.")
         }
     }
 }

@@ -1852,6 +1852,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m52xlarge = "m5.2xlarge"
     case m54xlarge = "m5.4xlarge"
     case m5Large = "m5.large"
+    case m5Metal = "m5.metal"
     case m5Xlarge = "m5.xlarge"
     case m5a12xlarge = "m5a.12xlarge"
     case m5a24xlarge = "m5a.24xlarge"
@@ -1864,6 +1865,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m5d2xlarge = "m5d.2xlarge"
     case m5d4xlarge = "m5d.4xlarge"
     case m5dLarge = "m5d.large"
+    case m5dMetal = "m5d.metal"
     case m5dXlarge = "m5d.xlarge"
     case p216xlarge = "p2.16xlarge"
     case p28xlarge = "p2.8xlarge"
@@ -1934,6 +1936,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case z1d3xlarge = "z1d.3xlarge"
     case z1d6xlarge = "z1d.6xlarge"
     case z1dLarge = "z1d.large"
+    case z1dMetal = "z1d.metal"
     case z1dXlarge = "z1d.xlarge"
 
     public var description: String {
@@ -2938,6 +2941,7 @@ public typealias ResourceList = [String]
  Enumeration restricting the values of the ResourceType field.
  */
 public enum ResourceType: String, Codable, CustomStringConvertible {
+    case clientVpnEndpoint = "client-vpn-endpoint"
     case customerGateway = "customer-gateway"
     case dedicatedHost = "dedicated-host"
     case dhcpOptions = "dhcp-options"
@@ -2970,7 +2974,7 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: ResourceType = .customerGateway
+    public static let __default: ResourceType = .clientVpnEndpoint
 }
 
 /**
@@ -4288,7 +4292,8 @@ extension ElasticComputeCloudModel.LaunchTemplateName {
 
         guard let matchingRange = self.range(of: "[a-zA-Z0-9\\(\\)\\.\\-/_]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to LaunchTemplateName violated the regular expression constraint.")
+                throw ElasticComputeCloudCodingError.validationError(
+                    reason: "The provided value to LaunchTemplateName violated the regular expression constraint.")
         }
     }
 }

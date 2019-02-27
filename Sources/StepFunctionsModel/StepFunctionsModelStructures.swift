@@ -217,13 +217,17 @@ public struct ActivityWorkerLimitExceeded: Codable, Equatable {
 
 public struct CreateActivityInput: Codable, Equatable {
     public var name: Name
+    public var tags: TagList?
 
-    public init(name: Name) {
+    public init(name: Name,
+                tags: TagList? = nil) {
         self.name = name
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
         case name
+        case tags
     }
 
     public func validate() throws {
@@ -255,19 +259,23 @@ public struct CreateStateMachineInput: Codable, Equatable {
     public var definition: Definition
     public var name: Name
     public var roleArn: Arn
+    public var tags: TagList?
 
     public init(definition: Definition,
                 name: Name,
-                roleArn: Arn) {
+                roleArn: Arn,
+                tags: TagList? = nil) {
         self.definition = definition
         self.name = name
         self.roleArn = roleArn
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
         case definition
         case name
         case roleArn
+        case tags
     }
 
     public func validate() throws {
@@ -763,10 +771,10 @@ public struct GetActivityTaskInput: Codable, Equatable {
 }
 
 public struct GetActivityTaskOutput: Codable, Equatable {
-    public var input: SensitiveData?
+    public var input: SensitiveDataJobInput?
     public var taskToken: TaskToken?
 
-    public init(input: SensitiveData? = nil,
+    public init(input: SensitiveDataJobInput? = nil,
                 taskToken: TaskToken? = nil) {
         self.input = input
         self.taskToken = taskToken
@@ -778,7 +786,7 @@ public struct GetActivityTaskOutput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try input?.validateAsSensitiveData()
+        try input?.validateAsSensitiveDataJobInput()
         try taskToken?.validateAsTaskToken()
     }
 }

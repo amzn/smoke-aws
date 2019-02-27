@@ -1039,7 +1039,8 @@ extension DynamoDBModel.AutoScalingPolicyName {
 
         guard let matchingRange = self.range(of: "\\p{Print}+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(reason: "The provided value to AutoScalingPolicyName violated the regular expression constraint.")
+                throw DynamoDBCodingError.validationError(
+                    reason: "The provided value to AutoScalingPolicyName violated the regular expression constraint.")
         }
     }
 }
@@ -1059,7 +1060,8 @@ extension DynamoDBModel.AutoScalingRoleArn {
 
         guard let matchingRange = self.range(of: "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(reason: "The provided value to AutoScalingRoleArn violated the regular expression constraint.")
+                throw DynamoDBCodingError.validationError(
+                    reason: "The provided value to AutoScalingRoleArn violated the regular expression constraint.")
         }
     }
 }
@@ -1094,7 +1096,8 @@ extension DynamoDBModel.BackupName {
 
         guard let matchingRange = self.range(of: "[a-zA-Z0-9_.-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(reason: "The provided value to BackupName violated the regular expression constraint.")
+                throw DynamoDBCodingError.validationError(
+                    reason: "The provided value to BackupName violated the regular expression constraint.")
         }
     }
 }
@@ -1186,7 +1189,8 @@ extension DynamoDBModel.IndexName {
 
         guard let matchingRange = self.range(of: "[a-zA-Z0-9_.-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(reason: "The provided value to IndexName violated the regular expression constraint.")
+                throw DynamoDBCodingError.validationError(
+                    reason: "The provided value to IndexName violated the regular expression constraint.")
         }
     }
 }
@@ -1441,7 +1445,8 @@ extension DynamoDBModel.TableId {
     public func validateAsTableId() throws {
         guard let matchingRange = self.range(of: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(reason: "The provided value to TableId violated the regular expression constraint.")
+                throw DynamoDBCodingError.validationError(
+                    reason: "The provided value to TableId violated the regular expression constraint.")
         }
     }
 }
@@ -1461,7 +1466,8 @@ extension DynamoDBModel.TableName {
 
         guard let matchingRange = self.range(of: "[a-zA-Z0-9_.-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(reason: "The provided value to TableName violated the regular expression constraint.")
+                throw DynamoDBCodingError.validationError(
+                    reason: "The provided value to TableName violated the regular expression constraint.")
         }
     }
 }

@@ -34,15 +34,15 @@ public enum ElasticComputeCloudClientError: Swift.Error {
 }
 
 private extension ElasticComputeCloudError {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         return false
     }
 }
 
 private extension Swift.Error {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         if let typedError = self as? ElasticComputeCloudError {
-            return typedError.isRetryable()
+            return typedError.isRetriable()
         } else {
             return true
         }
@@ -83,7 +83,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.target = nil
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
-        self.retryOnErrorProvider = { error in error.isRetryable() }
+        self.retryOnErrorProvider = { error in error.isRetriable() }
         self.apiVersion = apiVersion
     }
 

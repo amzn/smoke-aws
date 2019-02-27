@@ -887,7 +887,8 @@ extension ElasticContainerModel.TagKey {
 
         guard let matchingRange = self.range(of: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw ElasticContainerCodingError.validationError(reason: "The provided value to TagKey violated the regular expression constraint.")
+                throw ElasticContainerCodingError.validationError(
+                    reason: "The provided value to TagKey violated the regular expression constraint.")
         }
     }
 }
@@ -907,7 +908,8 @@ extension ElasticContainerModel.TagValue {
 
         guard let matchingRange = self.range(of: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw ElasticContainerCodingError.validationError(reason: "The provided value to TagValue violated the regular expression constraint.")
+                throw ElasticContainerCodingError.validationError(
+                    reason: "The provided value to TagValue violated the regular expression constraint.")
         }
     }
 }

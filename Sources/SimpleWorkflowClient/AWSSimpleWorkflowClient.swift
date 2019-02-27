@@ -34,7 +34,7 @@ public enum SimpleWorkflowClientError: Swift.Error {
 }
 
 private extension SimpleWorkflowError {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         switch self {
         case .limitExceeded:
             return true
@@ -45,9 +45,9 @@ private extension SimpleWorkflowError {
 }
 
 private extension Swift.Error {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         if let typedError = self as? SimpleWorkflowError {
-            return typedError.isRetryable()
+            return typedError.isRetriable()
         } else {
             return true
         }
@@ -86,7 +86,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
         self.target = target
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
-        self.retryOnErrorProvider = { error in error.isRetryable() }
+        self.retryOnErrorProvider = { error in error.isRetriable() }
     }
 
     /**

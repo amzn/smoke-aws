@@ -175,7 +175,7 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The CreateActivityOutput object or an error will be passed to this 
            callback when the operation is complete. The CreateActivityOutput
            object will be validated before being returned to caller.
-           The possible errors are: activityLimitExceeded, invalidName.
+           The possible errors are: activityLimitExceeded, invalidName, tooManyTags.
      */
     public func createActivityAsync(input: StepFunctionsModel.CreateActivityInput, completion: @escaping (HTTPResult<StepFunctionsModel.CreateActivityOutput>) -> ()) throws {
         if let createActivityAsyncOverride = createActivityAsyncOverride {
@@ -194,7 +194,7 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated CreateActivityInput object being passed to this operation.
      - Returns: The CreateActivityOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: activityLimitExceeded, invalidName.
+     - Throws: activityLimitExceeded, invalidName, tooManyTags.
      */
     public func createActivitySync(input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput {
         if let createActivitySyncOverride = createActivitySyncOverride {
@@ -212,7 +212,7 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The CreateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The CreateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded.
+           The possible errors are: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
      */
     public func createStateMachineAsync(input: StepFunctionsModel.CreateStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.CreateStateMachineOutput>) -> ()) throws {
         if let createStateMachineAsyncOverride = createStateMachineAsyncOverride {
@@ -231,7 +231,7 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated CreateStateMachineInput object being passed to this operation.
      - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded.
+     - Throws: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
      */
     public func createStateMachineSync(input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput {
         if let createStateMachineSyncOverride = createStateMachineSyncOverride {

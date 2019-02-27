@@ -34,7 +34,7 @@ public enum StepFunctionsClientError: Swift.Error {
 }
 
 private extension StepFunctionsError {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         switch self {
         case .activityLimitExceeded, .activityWorkerLimitExceeded, .executionLimitExceeded, .stateMachineLimitExceeded:
             return true
@@ -45,9 +45,9 @@ private extension StepFunctionsError {
 }
 
 private extension Swift.Error {
-    func isRetryable() -> Bool {
+    func isRetriable() -> Bool {
         if let typedError = self as? StepFunctionsError {
-            return typedError.isRetryable()
+            return typedError.isRetriable()
         } else {
             return true
         }
@@ -86,7 +86,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
         self.target = target
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
-        self.retryOnErrorProvider = { error in error.isRetryable() }
+        self.retryOnErrorProvider = { error in error.isRetriable() }
     }
 
     /**
@@ -113,7 +113,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The CreateActivityOutput object or an error will be passed to this 
            callback when the operation is complete. The CreateActivityOutput
            object will be validated before being returned to caller.
-           The possible errors are: activityLimitExceeded, invalidName.
+           The possible errors are: activityLimitExceeded, invalidName, tooManyTags.
      */
     public func createActivityAsync(input: StepFunctionsModel.CreateActivityInput, completion: @escaping (HTTPResult<StepFunctionsModel.CreateActivityOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -142,7 +142,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated CreateActivityInput object being passed to this operation.
      - Returns: The CreateActivityOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: activityLimitExceeded, invalidName.
+     - Throws: activityLimitExceeded, invalidName, tooManyTags.
      */
     public func createActivitySync(input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -171,7 +171,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The CreateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The CreateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded.
+           The possible errors are: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
      */
     public func createStateMachineAsync(input: StepFunctionsModel.CreateStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.CreateStateMachineOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -200,7 +200,7 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated CreateStateMachineInput object being passed to this operation.
      - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded.
+     - Throws: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
      */
     public func createStateMachineSync(input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(

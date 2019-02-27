@@ -2354,7 +2354,6 @@ public struct ClientVpnConnectionStatus: Codable, Equatable {
 }
 
 public struct ClientVpnEndpoint: Codable, Equatable {
-    public var associatedTargetNetworks: AssociatedTargetNetworkSet?
     public var authenticationOptions: ClientVpnAuthenticationList?
     public var clientCidrBlock: String?
     public var clientVpnEndpointId: String?
@@ -2363,14 +2362,15 @@ public struct ClientVpnEndpoint: Codable, Equatable {
     public var deletionTime: String?
     public var description: String?
     public var dnsName: String?
+    public var dnsServers: ValueStringList?
     public var serverCertificateArn: String?
     public var splitTunnel: Boolean?
     public var status: ClientVpnEndpointStatus?
+    public var tags: TagList?
     public var transportProtocol: TransportProtocol?
     public var vpnProtocol: VpnProtocol?
 
-    public init(associatedTargetNetworks: AssociatedTargetNetworkSet? = nil,
-                authenticationOptions: ClientVpnAuthenticationList? = nil,
+    public init(authenticationOptions: ClientVpnAuthenticationList? = nil,
                 clientCidrBlock: String? = nil,
                 clientVpnEndpointId: String? = nil,
                 connectionLogOptions: ConnectionLogResponseOptions? = nil,
@@ -2378,12 +2378,13 @@ public struct ClientVpnEndpoint: Codable, Equatable {
                 deletionTime: String? = nil,
                 description: String? = nil,
                 dnsName: String? = nil,
+                dnsServers: ValueStringList? = nil,
                 serverCertificateArn: String? = nil,
                 splitTunnel: Boolean? = nil,
                 status: ClientVpnEndpointStatus? = nil,
+                tags: TagList? = nil,
                 transportProtocol: TransportProtocol? = nil,
                 vpnProtocol: VpnProtocol? = nil) {
-        self.associatedTargetNetworks = associatedTargetNetworks
         self.authenticationOptions = authenticationOptions
         self.clientCidrBlock = clientCidrBlock
         self.clientVpnEndpointId = clientVpnEndpointId
@@ -2392,15 +2393,16 @@ public struct ClientVpnEndpoint: Codable, Equatable {
         self.deletionTime = deletionTime
         self.description = description
         self.dnsName = dnsName
+        self.dnsServers = dnsServers
         self.serverCertificateArn = serverCertificateArn
         self.splitTunnel = splitTunnel
         self.status = status
+        self.tags = tags
         self.transportProtocol = transportProtocol
         self.vpnProtocol = vpnProtocol
     }
 
     enum CodingKeys: String, CodingKey {
-        case associatedTargetNetworks = "associatedTargetNetwork"
         case authenticationOptions
         case clientCidrBlock
         case clientVpnEndpointId
@@ -2409,9 +2411,11 @@ public struct ClientVpnEndpoint: Codable, Equatable {
         case deletionTime
         case description
         case dnsName
+        case dnsServers = "dnsServer"
         case serverCertificateArn
         case splitTunnel
         case status
+        case tags = "tagSet"
         case transportProtocol
         case vpnProtocol
     }
@@ -2960,6 +2964,7 @@ public struct CreateClientVpnEndpointRequest: Codable, Equatable {
     public var dnsServers: ValueStringList?
     public var dryRun: Boolean?
     public var serverCertificateArn: String
+    public var tagSpecifications: TagSpecificationList?
     public var transportProtocol: TransportProtocol?
 
     public init(authenticationOptions: ClientVpnAuthenticationRequestList,
@@ -2970,6 +2975,7 @@ public struct CreateClientVpnEndpointRequest: Codable, Equatable {
                 dnsServers: ValueStringList? = nil,
                 dryRun: Boolean? = nil,
                 serverCertificateArn: String,
+                tagSpecifications: TagSpecificationList? = nil,
                 transportProtocol: TransportProtocol? = nil) {
         self.authenticationOptions = authenticationOptions
         self.clientCidrBlock = clientCidrBlock
@@ -2979,6 +2985,7 @@ public struct CreateClientVpnEndpointRequest: Codable, Equatable {
         self.dnsServers = dnsServers
         self.dryRun = dryRun
         self.serverCertificateArn = serverCertificateArn
+        self.tagSpecifications = tagSpecifications
         self.transportProtocol = transportProtocol
     }
 
@@ -2991,6 +2998,7 @@ public struct CreateClientVpnEndpointRequest: Codable, Equatable {
         case dnsServers = "DnsServers"
         case dryRun = "DryRun"
         case serverCertificateArn = "ServerCertificateArn"
+        case tagSpecifications = "TagSpecification"
         case transportProtocol = "TransportProtocol"
     }
 

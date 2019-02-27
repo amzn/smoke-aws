@@ -155,7 +155,8 @@ public extension CreateActivityInput {
      */
     public static let __default: StepFunctionsModel.CreateActivityInput = {
         let defaultInstance = StepFunctionsModel.CreateActivityInput(
-            name: "0")
+            name: "0",
+            tags: nil)
 
         return defaultInstance
     }()
@@ -182,7 +183,8 @@ public extension CreateStateMachineInput {
         let defaultInstance = StepFunctionsModel.CreateStateMachineInput(
             definition: "0",
             name: "0",
-            roleArn: "0")
+            roleArn: "0",
+            tags: nil)
 
         return defaultInstance
     }()
