@@ -42,6 +42,22 @@ public struct S3Object: S3ObjectProtocol {
                     signAllHeaders: true)
     }
     
+    /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times.
+     */
+    public func close() {
+        httpClient.close()
+    }
+
+    /**
+     Waits for the client to be closed. If close() is not called,
+     this will block forever.
+     */
+    public func wait() {
+        httpClient.wait()
+    }
+    
     private struct BodyHTTPRequestOutput<OutputType: Decodable>: HTTPResponseOutputProtocol {
         typealias BodyType = OutputType
         typealias HeadersType = OutputType
