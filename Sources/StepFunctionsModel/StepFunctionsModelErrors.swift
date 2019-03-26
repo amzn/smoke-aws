@@ -43,6 +43,7 @@ private let stateMachineLimitExceededIdentity = "StateMachineLimitExceeded"
 private let taskDoesNotExistIdentity = "TaskDoesNotExist"
 private let taskTimedOutIdentity = "TaskTimedOut"
 private let tooManyTagsIdentity = "TooManyTags"
+private let __accessDeniedIdentity = "AccessDenied"
 
 public enum StepFunctionsCodingError: Swift.Error {
     case unknownError
@@ -72,21 +73,22 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case taskDoesNotExist(TaskDoesNotExist)
     case taskTimedOut(TaskTimedOut)
     case tooManyTags(TooManyTags)
-    
+    case accessDenied(message: String?)
+
     enum CodingKeys: String, CodingKey {
         case type = "__type"
         case message = "message"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         var errorReason = try values.decode(String.self, forKey: .type)
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
-    
+        
         if let index = errorReason.index(of: "#") {
             errorReason = String(errorReason[errorReason.index(index, offsetBy: 1)...])
         }
-    
+
         switch errorReason {
         case activityDoesNotExistIdentity:
             let errorPayload = try ActivityDoesNotExist(from: decoder)
@@ -151,6 +153,8 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case tooManyTagsIdentity:
             let errorPayload = try TooManyTags(from: decoder)
             self = StepFunctionsError.tooManyTags(errorPayload)
+        case __accessDeniedIdentity:
+            self = .accessDenied(message: errorMessage)
         default:
             throw StepFunctionsCodingError.unrecognizedError(errorReason, errorMessage)
         }

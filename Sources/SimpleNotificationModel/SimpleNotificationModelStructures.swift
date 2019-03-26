@@ -56,7 +56,7 @@ public struct AuthorizationErrorException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -397,7 +397,7 @@ public struct EndpointDisabledException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -412,7 +412,7 @@ public struct FilterPolicyLimitExceededException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -657,7 +657,7 @@ public struct InternalErrorException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -672,7 +672,7 @@ public struct InvalidParameterException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -687,7 +687,7 @@ public struct InvalidParameterValueException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -702,7 +702,7 @@ public struct InvalidSecurityException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -717,7 +717,7 @@ public struct KMSAccessDeniedException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -732,7 +732,7 @@ public struct KMSDisabledException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -747,7 +747,7 @@ public struct KMSInvalidStateException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -762,7 +762,7 @@ public struct KMSNotFoundException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -792,7 +792,7 @@ public struct KMSThrottlingException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -1138,7 +1138,7 @@ public struct NotFoundException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -1212,7 +1212,7 @@ public struct PlatformApplicationDisabledException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -1533,7 +1533,7 @@ public struct SubscriptionLimitExceededException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -1548,7 +1548,7 @@ public struct ThrottledException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {
@@ -1578,7 +1578,7 @@ public struct TopicLimitExceededException: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case message
+        case message = "Message"
     }
 
     public func validate() throws {

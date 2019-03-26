@@ -71,7 +71,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                 connectionTimeoutSeconds: Int = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default) {
         let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(
-            outputListDecodingStrategy: .collapseListUsingItemTag("item"))
+            outputListDecodingStrategy: .collapseListUsingItemTag("item"), 
+            inputQueryKeyEncodeTransformStrategy: .capitalizeFirstCharacter)
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
                                      endpointPort: endpointPort,

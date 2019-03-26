@@ -42,6 +42,7 @@ private let serviceNotFoundIdentity = "ServiceNotFoundException"
 private let targetNotFoundIdentity = "TargetNotFoundException"
 private let unsupportedFeatureIdentity = "UnsupportedFeatureException"
 private let updateInProgressIdentity = "UpdateInProgressException"
+private let __accessDeniedIdentity = "AccessDenied"
 
 public enum ElasticContainerCodingError: Swift.Error {
     case unknownError
@@ -70,21 +71,22 @@ public enum ElasticContainerError: Swift.Error, Decodable {
     case targetNotFound(TargetNotFoundException)
     case unsupportedFeature(UnsupportedFeatureException)
     case updateInProgress(UpdateInProgressException)
-    
+    case accessDenied(message: String?)
+
     enum CodingKeys: String, CodingKey {
         case type = "__type"
         case message = "message"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         var errorReason = try values.decode(String.self, forKey: .type)
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
-    
+        
         if let index = errorReason.index(of: "#") {
             errorReason = String(errorReason[errorReason.index(index, offsetBy: 1)...])
         }
-    
+
         switch errorReason {
         case accessDeniedIdentity:
             let errorPayload = try AccessDeniedException(from: decoder)
@@ -146,6 +148,8 @@ public enum ElasticContainerError: Swift.Error, Decodable {
         case updateInProgressIdentity:
             let errorPayload = try UpdateInProgressException(from: decoder)
             self = ElasticContainerError.updateInProgress(errorPayload)
+        case __accessDeniedIdentity:
+            self = .accessDenied(message: errorMessage)
         default:
             throw ElasticContainerCodingError.unrecognizedError(errorReason, errorMessage)
         }
