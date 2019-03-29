@@ -31,6 +31,7 @@ private let typeAlreadyExistsIdentity = "TypeAlreadyExistsFault"
 private let typeDeprecatedIdentity = "TypeDeprecatedFault"
 private let unknownResourceIdentity = "UnknownResourceFault"
 private let workflowExecutionAlreadyStartedIdentity = "WorkflowExecutionAlreadyStartedFault"
+private let __accessDeniedIdentity = "AccessDenied"
 
 public enum SimpleWorkflowCodingError: Swift.Error {
     case unknownError
@@ -48,21 +49,22 @@ public enum SimpleWorkflowError: Swift.Error, Decodable {
     case typeDeprecated(TypeDeprecatedFault)
     case unknownResource(UnknownResourceFault)
     case workflowExecutionAlreadyStarted(WorkflowExecutionAlreadyStartedFault)
-    
+    case accessDenied(message: String?)
+
     enum CodingKeys: String, CodingKey {
         case type = "__type"
         case message = "message"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         var errorReason = try values.decode(String.self, forKey: .type)
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
-    
+        
         if let index = errorReason.index(of: "#") {
             errorReason = String(errorReason[errorReason.index(index, offsetBy: 1)...])
         }
-    
+
         switch errorReason {
         case defaultUndefinedIdentity:
             let errorPayload = try DefaultUndefinedFault(from: decoder)
@@ -91,6 +93,8 @@ public enum SimpleWorkflowError: Swift.Error, Decodable {
         case workflowExecutionAlreadyStartedIdentity:
             let errorPayload = try WorkflowExecutionAlreadyStartedFault(from: decoder)
             self = SimpleWorkflowError.workflowExecutionAlreadyStarted(errorPayload)
+        case __accessDeniedIdentity:
+            self = .accessDenied(message: errorMessage)
         default:
             throw SimpleWorkflowCodingError.unrecognizedError(errorReason, errorMessage)
         }

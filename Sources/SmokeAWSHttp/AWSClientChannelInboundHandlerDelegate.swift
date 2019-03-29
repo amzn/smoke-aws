@@ -103,7 +103,9 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
     public func handleErrorResponses(responseHead: HTTPResponseHead, responseBodyData: Data?) -> Error? {
         // Place the permanently moved location into the HTTPError
         if case .movedPermanently = responseHead.status {
-            let error = HTTPError.movedPermanently(location: responseHead.headers["Location"][0])
+            let locationHeader = responseHead.headers["Location"]
+            let location = locationHeader.count > 0 ? locationHeader[0] : "<unknown>"
+            let error = HTTPError.movedPermanently(location: location)
             return error
         }
         

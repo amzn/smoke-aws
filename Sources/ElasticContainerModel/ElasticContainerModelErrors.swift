@@ -70,21 +70,21 @@ public enum ElasticContainerError: Swift.Error, Decodable {
     case targetNotFound(TargetNotFoundException)
     case unsupportedFeature(UnsupportedFeatureException)
     case updateInProgress(UpdateInProgressException)
-    
+
     enum CodingKeys: String, CodingKey {
         case type = "__type"
         case message = "message"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         var errorReason = try values.decode(String.self, forKey: .type)
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
-    
+        
         if let index = errorReason.index(of: "#") {
             errorReason = String(errorReason[errorReason.index(index, offsetBy: 1)...])
         }
-    
+
         switch errorReason {
         case accessDeniedIdentity:
             let errorPayload = try AccessDeniedException(from: decoder)

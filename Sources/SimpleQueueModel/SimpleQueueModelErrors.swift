@@ -22,22 +22,23 @@
 import Foundation
 import LoggerAPI
 
-private let batchEntryIdsNotDistinctIdentity = "BatchEntryIdsNotDistinct"
-private let batchRequestTooLongIdentity = "BatchRequestTooLong"
-private let emptyBatchRequestIdentity = "EmptyBatchRequest"
+private let batchEntryIdsNotDistinctIdentity = "AWS.SimpleQueueService.BatchEntryIdsNotDistinct"
+private let batchRequestTooLongIdentity = "AWS.SimpleQueueService.BatchRequestTooLong"
+private let emptyBatchRequestIdentity = "AWS.SimpleQueueService.EmptyBatchRequest"
 private let invalidAttributeNameIdentity = "InvalidAttributeName"
-private let invalidBatchEntryIdIdentity = "InvalidBatchEntryId"
+private let invalidBatchEntryIdIdentity = "AWS.SimpleQueueService.InvalidBatchEntryId"
 private let invalidIdFormatIdentity = "InvalidIdFormat"
 private let invalidMessageContentsIdentity = "InvalidMessageContents"
-private let messageNotInflightIdentity = "MessageNotInflight"
+private let messageNotInflightIdentity = "AWS.SimpleQueueService.MessageNotInflight"
 private let overLimitIdentity = "OverLimit"
-private let purgeQueueInProgressIdentity = "PurgeQueueInProgress"
-private let queueDeletedRecentlyIdentity = "QueueDeletedRecently"
-private let queueDoesNotExistIdentity = "QueueDoesNotExist"
-private let queueNameExistsIdentity = "QueueNameExists"
+private let purgeQueueInProgressIdentity = "AWS.SimpleQueueService.PurgeQueueInProgress"
+private let queueDeletedRecentlyIdentity = "AWS.SimpleQueueService.QueueDeletedRecently"
+private let queueDoesNotExistIdentity = "AWS.SimpleQueueService.NonExistentQueue"
+private let queueNameExistsIdentity = "QueueAlreadyExists"
 private let receiptHandleIsInvalidIdentity = "ReceiptHandleIsInvalid"
-private let tooManyEntriesInBatchRequestIdentity = "TooManyEntriesInBatchRequest"
-private let unsupportedOperationIdentity = "UnsupportedOperation"
+private let tooManyEntriesInBatchRequestIdentity = "AWS.SimpleQueueService.TooManyEntriesInBatchRequest"
+private let unsupportedOperationIdentity = "AWS.SimpleQueueService.UnsupportedOperation"
+private let __accessDeniedIdentity = "AccessDenied"
 
 public enum SimpleQueueCodingError: Swift.Error {
     case unknownError
@@ -62,21 +63,22 @@ public enum SimpleQueueError: Swift.Error, Decodable {
     case receiptHandleIsInvalid(ReceiptHandleIsInvalid)
     case tooManyEntriesInBatchRequest(TooManyEntriesInBatchRequest)
     case unsupportedOperation(UnsupportedOperation)
-    
+    case accessDenied(message: String?)
+
     enum CodingKeys: String, CodingKey {
         case type = "Code"
         case message = "Message"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         var errorReason = try values.decode(String.self, forKey: .type)
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
-    
+        
         if let index = errorReason.index(of: "#") {
             errorReason = String(errorReason[errorReason.index(index, offsetBy: 1)...])
         }
-    
+
         switch errorReason {
         case batchEntryIdsNotDistinctIdentity:
             let errorPayload = try BatchEntryIdsNotDistinct(from: decoder)
@@ -126,6 +128,8 @@ public enum SimpleQueueError: Swift.Error, Decodable {
         case unsupportedOperationIdentity:
             let errorPayload = try UnsupportedOperation(from: decoder)
             self = SimpleQueueError.unsupportedOperation(errorPayload)
+        case __accessDeniedIdentity:
+            self = .accessDenied(message: errorMessage)
         default:
             throw SimpleQueueCodingError.unrecognizedError(errorReason, errorMessage)
         }

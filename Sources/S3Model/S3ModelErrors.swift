@@ -29,6 +29,7 @@ private let noSuchKeyIdentity = "NoSuchKey"
 private let noSuchUploadIdentity = "NoSuchUpload"
 private let objectAlreadyInActiveTierIdentity = "ObjectAlreadyInActiveTierError"
 private let objectNotInActiveTierIdentity = "ObjectNotInActiveTierError"
+private let __accessDeniedIdentity = "AccessDenied"
 
 public enum S3CodingError: Swift.Error {
     case unknownError
@@ -44,21 +45,22 @@ public enum S3Error: Swift.Error, Decodable {
     case noSuchUpload(NoSuchUpload)
     case objectAlreadyInActiveTier(ObjectAlreadyInActiveTierError)
     case objectNotInActiveTier(ObjectNotInActiveTierError)
-    
+    case accessDenied(message: String?)
+
     enum CodingKeys: String, CodingKey {
         case type = "Code"
         case message = "Message"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         var errorReason = try values.decode(String.self, forKey: .type)
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
-    
+        
         if let index = errorReason.index(of: "#") {
             errorReason = String(errorReason[errorReason.index(index, offsetBy: 1)...])
         }
-    
+
         switch errorReason {
         case bucketAlreadyExistsIdentity:
             let errorPayload = try BucketAlreadyExists(from: decoder)
@@ -81,6 +83,8 @@ public enum S3Error: Swift.Error, Decodable {
         case objectNotInActiveTierIdentity:
             let errorPayload = try ObjectNotInActiveTierError(from: decoder)
             self = S3Error.objectNotInActiveTier(errorPayload)
+        case __accessDeniedIdentity:
+            self = .accessDenied(message: errorMessage)
         default:
             throw S3CodingError.unrecognizedError(errorReason, errorMessage)
         }

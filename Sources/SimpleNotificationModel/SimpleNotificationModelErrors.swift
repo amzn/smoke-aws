@@ -22,24 +22,25 @@
 import Foundation
 import LoggerAPI
 
-private let authorizationErrorIdentity = "AuthorizationErrorException"
-private let endpointDisabledIdentity = "EndpointDisabledException"
-private let filterPolicyLimitExceededIdentity = "FilterPolicyLimitExceededException"
-private let internalErrorIdentity = "InternalErrorException"
-private let invalidParameterIdentity = "InvalidParameterException"
-private let invalidParameterValueIdentity = "InvalidParameterValueException"
-private let invalidSecurityIdentity = "InvalidSecurityException"
-private let kMSAccessDeniedIdentity = "KMSAccessDeniedException"
-private let kMSDisabledIdentity = "KMSDisabledException"
-private let kMSInvalidStateIdentity = "KMSInvalidStateException"
-private let kMSNotFoundIdentity = "KMSNotFoundException"
+private let authorizationErrorIdentity = "AuthorizationError"
+private let endpointDisabledIdentity = "EndpointDisabled"
+private let filterPolicyLimitExceededIdentity = "FilterPolicyLimitExceeded"
+private let internalErrorIdentity = "InternalError"
+private let invalidParameterIdentity = "InvalidParameter"
+private let invalidParameterValueIdentity = "ParameterValueInvalid"
+private let invalidSecurityIdentity = "InvalidSecurity"
+private let kMSAccessDeniedIdentity = "KMSAccessDenied"
+private let kMSDisabledIdentity = "KMSDisabled"
+private let kMSInvalidStateIdentity = "KMSInvalidState"
+private let kMSNotFoundIdentity = "KMSNotFound"
 private let kMSOptInRequiredIdentity = "KMSOptInRequired"
-private let kMSThrottlingIdentity = "KMSThrottlingException"
-private let notFoundIdentity = "NotFoundException"
-private let platformApplicationDisabledIdentity = "PlatformApplicationDisabledException"
-private let subscriptionLimitExceededIdentity = "SubscriptionLimitExceededException"
-private let throttledIdentity = "ThrottledException"
-private let topicLimitExceededIdentity = "TopicLimitExceededException"
+private let kMSThrottlingIdentity = "KMSThrottling"
+private let notFoundIdentity = "NotFound"
+private let platformApplicationDisabledIdentity = "PlatformApplicationDisabled"
+private let subscriptionLimitExceededIdentity = "SubscriptionLimitExceeded"
+private let throttledIdentity = "Throttled"
+private let topicLimitExceededIdentity = "TopicLimitExceeded"
+private let __accessDeniedIdentity = "AccessDenied"
 
 public enum SimpleNotificationCodingError: Swift.Error {
     case unknownError
@@ -66,21 +67,22 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case subscriptionLimitExceeded(SubscriptionLimitExceededException)
     case throttled(ThrottledException)
     case topicLimitExceeded(TopicLimitExceededException)
-    
+    case accessDenied(message: String?)
+
     enum CodingKeys: String, CodingKey {
         case type = "Code"
         case message = "Message"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         var errorReason = try values.decode(String.self, forKey: .type)
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
-    
+        
         if let index = errorReason.index(of: "#") {
             errorReason = String(errorReason[errorReason.index(index, offsetBy: 1)...])
         }
-    
+
         switch errorReason {
         case authorizationErrorIdentity:
             let errorPayload = try AuthorizationErrorException(from: decoder)
@@ -136,6 +138,8 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case topicLimitExceededIdentity:
             let errorPayload = try TopicLimitExceededException(from: decoder)
             self = SimpleNotificationError.topicLimitExceeded(errorPayload)
+        case __accessDeniedIdentity:
+            self = .accessDenied(message: errorMessage)
         default:
             throw SimpleNotificationCodingError.unrecognizedError(errorReason, errorMessage)
         }

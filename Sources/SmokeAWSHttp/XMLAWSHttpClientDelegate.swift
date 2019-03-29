@@ -44,6 +44,30 @@ struct ErrorWrapper<ErrorType: Error & Decodable>: Error & Decodable {
         case errorLowercase = "error"
     }
     
+    internal static func errorFromBodyData<ErrorType: Error & Decodable>(errorType: ErrorType.Type,
+                                                                         bodyData: Data) throws -> Error {
+        let decoder = XMLDecoder.awsCompatibleDecoder
+        
+        // attempt to decode the output body from an XML payload
+        let result: Error
+        
+        // the error is not wrapped
+        do {
+            result = try decoder.decode(ErrorType.self, from: bodyData)
+        } catch is DecodingError {
+            // if the error is wrapped
+            let errorWrapper = try decoder.decode(ErrorWrapper<ErrorType>.self, from: bodyData)
+            
+            if errorWrapper.errors.count == 1 {
+                result = errorWrapper.errors[0]
+            } else {
+                result = errorWrapper
+            }
+        }
+        
+        return result
+    }
+    
     private static func getError(forKey key: CodingKeys,
                                  values: KeyedDecodingContainer<CodingKeys>) throws -> [ErrorType]? {
         // try as a single error
@@ -67,7 +91,9 @@ struct ErrorWrapper<ErrorType: Error & Decodable>: Error & Decodable {
             
             return try getError(forKey: key, values: values)
         } catch {
-            return try getError(forKey: key, values: values)
+            let nestedValues = try values.nestedContainer(keyedBy: CodingKeys.self, forKey: key)
+            
+            return try getError(forKey: .errorUppercase, values: nestedValues)
         }
     }
     
@@ -96,16 +122,22 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
     private let inputBodyRootKey: String?
     private let outputListDecodingStrategy: XMLDecoder.ListDecodingStrategy?
     private let outputMapDecodingStrategy: XMLDecoder.MapDecodingStrategy?
-    private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
+    private let inputQueryMapEncodingStrategy: QueryEncoder.MapEncodingStrategy
+    private let inputQueryKeyEncodingStrategy: QueryEncoder.KeyEncodingStrategy
+    private let inputQueryKeyEncodeTransformStrategy: QueryEncoder.KeyEncodeTransformStrategy
     
     public init(inputBodyRootKey: String? = nil,
                 outputListDecodingStrategy: XMLDecoder.ListDecodingStrategy? = nil,
                 outputMapDecodingStrategy: XMLDecoder.MapDecodingStrategy? = nil,
-                inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
+                inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy = .singleQueryEntry,
+                inputQueryKeyEncodingStrategy: QueryEncoder.KeyEncodingStrategy = .useAsShapeSeparator("."),
+                inputQueryKeyEncodeTransformStrategy: QueryEncoder.KeyEncodeTransformStrategy = .none) {
         self.inputBodyRootKey = inputBodyRootKey
         self.outputListDecodingStrategy = outputListDecodingStrategy
         self.outputMapDecodingStrategy = outputMapDecodingStrategy
-        self.inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy
+        self.inputQueryMapEncodingStrategy = inputQueryMapDecodingStrategy
+        self.inputQueryKeyEncodingStrategy = inputQueryKeyEncodingStrategy
+        self.inputQueryKeyEncodeTransformStrategy = inputQueryKeyEncodeTransformStrategy
     }
     
     public func getResponseError(responseHead: HTTPResponseHead,
@@ -114,23 +146,10 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
         }
         
-        let decoder = XMLDecoder.awsCompatibleDecoder
-        
         // Convert bodyData to a debug string only if debug logging is enabled
         Log.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
         
-        // attempt to decode the output body from an XML payload
-        let result: Error
-        
-        // the error is not wrapped
-        do {
-            result = try decoder.decode(ErrorType.self, from: bodyData)
-        } catch is DecodingError {
-            // if the error is wrapped
-            result = try decoder.decode(ErrorWrapper<ErrorType>.self, from: bodyData)
-        }
-        
-        return result
+        return try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
     }
     
     public func encodeInputAndQueryString<InputType>(
@@ -181,12 +200,11 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             
             let query: String
             if let queryEncodable = input.queryEncodable {
-                let queryEncoder: QueryEncoder
-                if let inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy {
-                    queryEncoder = QueryEncoder(mapEncodingStrategy: inputQueryMapDecodingStrategy)
-                } else {
-                    queryEncoder = QueryEncoder()
-                }
+                let queryEncoder = QueryEncoder(
+                    keyEncodingStrategy: inputQueryKeyEncodingStrategy,
+                    mapEncodingStrategy: inputQueryMapEncodingStrategy,
+                    keyEncodeTransformStrategy: inputQueryKeyEncodeTransformStrategy)
+  
                 let encodedQuery = try queryEncoder.encode(queryEncodable,
                                                            allowedCharacterSet: .uriAWSQueryValueAllowed)
                 

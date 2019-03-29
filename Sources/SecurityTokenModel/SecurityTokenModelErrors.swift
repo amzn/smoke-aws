@@ -23,13 +23,14 @@ import Foundation
 import LoggerAPI
 
 private let expiredTokenIdentity = "ExpiredTokenException"
-private let iDPCommunicationErrorIdentity = "IDPCommunicationErrorException"
-private let iDPRejectedClaimIdentity = "IDPRejectedClaimException"
+private let iDPCommunicationErrorIdentity = "IDPCommunicationError"
+private let iDPRejectedClaimIdentity = "IDPRejectedClaim"
 private let invalidAuthorizationMessageIdentity = "InvalidAuthorizationMessageException"
-private let invalidIdentityTokenIdentity = "InvalidIdentityTokenException"
-private let malformedPolicyDocumentIdentity = "MalformedPolicyDocumentException"
-private let packedPolicyTooLargeIdentity = "PackedPolicyTooLargeException"
+private let invalidIdentityTokenIdentity = "InvalidIdentityToken"
+private let malformedPolicyDocumentIdentity = "MalformedPolicyDocument"
+private let packedPolicyTooLargeIdentity = "PackedPolicyTooLarge"
 private let regionDisabledIdentity = "RegionDisabledException"
+private let __accessDeniedIdentity = "AccessDenied"
 
 public enum SecurityTokenCodingError: Swift.Error {
     case unknownError
@@ -46,21 +47,22 @@ public enum SecurityTokenError: Swift.Error, Decodable {
     case malformedPolicyDocument(MalformedPolicyDocumentException)
     case packedPolicyTooLarge(PackedPolicyTooLargeException)
     case regionDisabled(RegionDisabledException)
-    
+    case accessDenied(message: String?)
+
     enum CodingKeys: String, CodingKey {
         case type = "Code"
         case message = "Message"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         var errorReason = try values.decode(String.self, forKey: .type)
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
-    
+        
         if let index = errorReason.index(of: "#") {
             errorReason = String(errorReason[errorReason.index(index, offsetBy: 1)...])
         }
-    
+
         switch errorReason {
         case expiredTokenIdentity:
             let errorPayload = try ExpiredTokenException(from: decoder)
@@ -86,6 +88,8 @@ public enum SecurityTokenError: Swift.Error, Decodable {
         case regionDisabledIdentity:
             let errorPayload = try RegionDisabledException(from: decoder)
             self = SecurityTokenError.regionDisabled(errorPayload)
+        case __accessDeniedIdentity:
+            self = .accessDenied(message: errorMessage)
         default:
             throw SecurityTokenCodingError.unrecognizedError(errorReason, errorMessage)
         }
