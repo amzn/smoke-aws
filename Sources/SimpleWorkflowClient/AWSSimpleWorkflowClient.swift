@@ -73,14 +73,16 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                 contentType: String = "application/x-amz-json-1.0",
                 target: String? = "SimpleWorkflowService",
                 connectionTimeoutSeconds: Int = 10,
-                retryConfiguration: HTTPClientRetryConfiguration = .default) {
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
         let clientDelegate = JSONAWSHttpClientDelegate<SimpleWorkflowError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
                                      endpointPort: endpointPort,
                                      contentType: contentType,
                                      clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                     eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = target

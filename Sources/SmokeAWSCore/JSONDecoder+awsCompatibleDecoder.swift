@@ -26,11 +26,9 @@ private func createDecoder() -> JSONDecoder {
     return jsonDecoder
 }
 
-private let jsonDecoder = createDecoder()
-
 public extension JSONDecoder {
     /// Return a AWS compatible JSON Decoder
-    public static var awsCompatibleDecoder: JSONDecoder {
-        return jsonDecoder
+    public static func awsCompatibleDecoder() -> JSONDecoder {
+        return createDecoder()
     }
 }

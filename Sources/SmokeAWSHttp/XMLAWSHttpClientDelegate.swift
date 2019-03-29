@@ -46,17 +46,17 @@ struct ErrorWrapper<ErrorType: Error & Decodable>: Error & Decodable {
     
     internal static func errorFromBodyData<ErrorType: Error & Decodable>(errorType: ErrorType.Type,
                                                                          bodyData: Data) throws -> Error {
-        let decoder = XMLDecoder.awsCompatibleDecoder
-        
         // attempt to decode the output body from an XML payload
         let result: Error
         
         // the error is not wrapped
         do {
-            result = try decoder.decode(ErrorType.self, from: bodyData)
+            result = try XMLDecoder.awsCompatibleDecoder().decode(ErrorType.self,
+                                                                  from: bodyData)
         } catch is DecodingError {
             // if the error is wrapped
-            let errorWrapper = try decoder.decode(ErrorWrapper<ErrorType>.self, from: bodyData)
+            let errorWrapper = try XMLDecoder.awsCompatibleDecoder().decode(ErrorWrapper<ErrorType>.self,
+                                                         from: bodyData)
             
             if errorWrapper.errors.count == 1 {
                 result = errorWrapper.errors[0]
@@ -186,7 +186,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             
             let body: Data
             if let bodyEncodable = input.bodyEncodable {
-                let encoder = XMLEncoder.awsCompatibleEncoder
+                let encoder = XMLEncoder.awsCompatibleEncoder()
                 encoder.listEncodingStrategy = .expandListWithItemTag("item")
                 
                 guard let inputBodyRootKey = inputBodyRootKey else {
@@ -227,7 +227,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
     public func decodeOutput<OutputType>(output: Data?,
                                   headers: [(String, String)]) throws -> OutputType
     where OutputType: HTTPResponseOutputProtocol {
-        let decoder = XMLDecoder.awsCompatibleDecoder
+        let decoder = XMLDecoder.awsCompatibleDecoder()
         
         if let outputListDecodingStrategy = outputListDecodingStrategy {
             decoder.listDecodingStrategy = outputListDecodingStrategy

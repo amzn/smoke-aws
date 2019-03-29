@@ -29,11 +29,9 @@ private func createEncoder() -> XMLEncoder {
     return xmlEncoder
 }
 
-private let xmlEncoder = createEncoder()
-
 public extension XMLEncoder {
     /// Return a AWS compatible XML Encoder
-    public static var awsCompatibleEncoder: XMLEncoder {
-        return xmlEncoder
+    public static func awsCompatibleEncoder() -> XMLEncoder {
+        return createEncoder()
     }
 }

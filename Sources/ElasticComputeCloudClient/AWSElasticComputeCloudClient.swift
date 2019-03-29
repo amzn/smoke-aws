@@ -69,7 +69,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2016-11-15",
                 connectionTimeoutSeconds: Int = 10,
-                retryConfiguration: HTTPClientRetryConfiguration = .default) {
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
         let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(
             outputListDecodingStrategy: .collapseListUsingItemTag("item"), 
             inputQueryKeyEncodeTransformStrategy: .capitalizeFirstCharacter)
@@ -78,7 +79,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
                                      endpointPort: endpointPort,
                                      contentType: contentType,
                                      clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                     eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil

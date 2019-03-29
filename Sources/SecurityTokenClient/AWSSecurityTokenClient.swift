@@ -69,14 +69,16 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2011-06-15",
                 connectionTimeoutSeconds: Int = 10,
-                retryConfiguration: HTTPClientRetryConfiguration = .default) {
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
         let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
                                      endpointPort: endpointPort,
                                      contentType: contentType,
                                      clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                     eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = nil

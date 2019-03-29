@@ -125,7 +125,7 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
     public func encodeInputAndQueryString<InputType: Encodable>(input: InputType, httpPath: String) throws
         -> (pathWithQuery: String, body: Data) {
             // there is no query; encode the body as a JSON payload
-            return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder.encode(input))
+            return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder().encode(input))
     }
     
     public func decodeOutput<OutputType>(output: Data?,

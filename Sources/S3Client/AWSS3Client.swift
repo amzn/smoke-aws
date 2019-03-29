@@ -69,7 +69,8 @@ public struct AWSS3Client: S3ClientProtocol {
                 contentType: String = "application/x-amz-rest-xml",
                 target: String? = nil,
                 connectionTimeoutSeconds: Int = 10,
-                retryConfiguration: HTTPClientRetryConfiguration = .default) {
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
         let clientDelegate = XMLAWSHttpClientDelegate<S3Error>()
 
         let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>()
@@ -78,12 +79,14 @@ public struct AWSS3Client: S3ClientProtocol {
                                      endpointPort: endpointPort,
                                      contentType: contentType,
                                      clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                     eventLoopProvider: eventLoopProvider)
         self.dataHttpClient = HTTPClient(endpointHostName: endpointHostName,
                                           endpointPort: endpointPort,
                                           contentType: contentType,
                                           clientDelegate: clientDelegateForDataHttpClient,
-                                          connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                          connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                          eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = target
