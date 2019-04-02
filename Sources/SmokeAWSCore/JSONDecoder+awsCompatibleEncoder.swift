@@ -28,11 +28,9 @@ private func createEncoder() -> JSONEncoder {
     return jsonEncoder
 }
 
-private let jsonEncoder = createEncoder()
-
 public extension JSONEncoder {
     /// Return a AWS compatible JSON Encoder
-    public static var awsCompatibleEncoder: JSONEncoder {
-        return jsonEncoder
+    public static func awsCompatibleEncoder() -> JSONEncoder {
+        return createEncoder()
     }
 }

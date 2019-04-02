@@ -46,7 +46,7 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
         Log.debug("Attempting to decode error data into JSON: \(bodyData.debugString)")
         
         // attempt to get an error of Error type by decoding the body data
-        return try JSONDecoder.awsCompatibleDecoder.decode(ErrorType.self, from: bodyData)
+        return try JSONDecoder.awsCompatibleDecoder().decode(ErrorType.self, from: bodyData)
     }
     
     public func encodeInputAndQueryString<InputType>(
@@ -83,7 +83,7 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
             
             let body: Data
             if let bodyEncodable = input.bodyEncodable {
-                body = try JSONEncoder.awsCompatibleEncoder.encode(bodyEncodable)
+                body = try JSONEncoder.awsCompatibleEncoder().encode(bodyEncodable)
             } else {
                 body = Data()
             }
@@ -118,7 +118,7 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
     public func encodeInputAndQueryString<InputType: Encodable>(input: InputType, httpPath: String) throws
         -> (pathWithQuery: String, body: Data) {
             // there is no query; encode the body as a JSON payload
-            return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder.encode(input))
+            return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder().encode(input))
     }
     
     public func decodeOutput<OutputType>(output: Data?,
@@ -133,7 +133,7 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
                 throw HTTPError.badResponse("Unexpected empty response.")
             }
             
-            return try JSONDecoder.awsCompatibleDecoder.decode(OutputType.BodyType.self,
+            return try JSONDecoder.awsCompatibleDecoder().decode(OutputType.BodyType.self,
                                                                from: responseBody)
         }
         

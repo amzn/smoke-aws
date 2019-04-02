@@ -73,14 +73,16 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                 contentType: String = "application/x-amz-json-1.0",
                 target: String? = "DynamoDB_20120810",
                 connectionTimeoutSeconds: Int = 10,
-                retryConfiguration: HTTPClientRetryConfiguration = .default) {
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
         let clientDelegate = JSONAWSHttpClientDelegate<DynamoDBError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
                                      endpointPort: endpointPort,
                                      contentType: contentType,
                                      clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                     eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = target

@@ -75,7 +75,8 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2012-11-05",
                 connectionTimeoutSeconds: Int = 10,
-                retryConfiguration: HTTPClientRetryConfiguration = .default) {
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>()
 
         let clientDelegateForListHttpClient = XMLAWSHttpClientDelegate<SimpleQueueError>(
@@ -86,12 +87,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
                                      endpointPort: endpointPort,
                                      contentType: contentType,
                                      clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                     eventLoopProvider: eventLoopProvider)
         self.listHttpClient = HTTPClient(endpointHostName: endpointHostName,
                                           endpointPort: endpointPort,
                                           contentType: contentType,
                                           clientDelegate: clientDelegateForListHttpClient,
-                                          connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                          connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                          eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil

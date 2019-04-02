@@ -27,11 +27,9 @@ private func createDecoder() -> XMLDecoder {
     return xmlDecoder
 }
 
-private let xmlDecoder = createDecoder()
-
 public extension XMLDecoder {
     /// Return a AWS compatible XML Decoder
-    public static var awsCompatibleDecoder: XMLDecoder {
-        return xmlDecoder
+    public static func awsCompatibleDecoder() -> XMLDecoder {
+        return createDecoder()
     }
 }

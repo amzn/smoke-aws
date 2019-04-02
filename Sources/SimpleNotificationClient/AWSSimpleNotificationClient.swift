@@ -74,14 +74,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2010-03-31",
                 connectionTimeoutSeconds: Int = 10,
-                retryConfiguration: HTTPClientRetryConfiguration = .default) {
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
                                      endpointPort: endpointPort,
                                      contentType: contentType,
                                      clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds)
+                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                     eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
