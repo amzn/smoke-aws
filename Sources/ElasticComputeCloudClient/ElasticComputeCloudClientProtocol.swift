@@ -563,6 +563,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyInstanceCapacityReservationAttributesAsyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult>) -> ()) throws -> ()
     typealias ModifyInstanceCreditSpecificationSyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult
     typealias ModifyInstanceCreditSpecificationAsyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult>) -> ()) throws -> ()
+    typealias ModifyInstanceEventStartTimeSyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult
+    typealias ModifyInstanceEventStartTimeAsyncType = (_ input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult>) -> ()) throws -> ()
     typealias ModifyInstancePlacementSyncType = (_ input: ElasticComputeCloudModel.ModifyInstancePlacementRequest) throws -> ElasticComputeCloudModel.ModifyInstancePlacementResult
     typealias ModifyInstancePlacementAsyncType = (_ input: ElasticComputeCloudModel.ModifyInstancePlacementRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstancePlacementResult>) -> ()) throws -> ()
     typealias ModifyLaunchTemplateSyncType = (_ input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult
@@ -6181,6 +6183,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func modifyInstanceCreditSpecificationSync(input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult
+
+    /**
+     Invokes the ModifyInstanceEventStartTime operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventStartTimeRequest object being passed to this operation.
+         - completion: The ModifyInstanceEventStartTimeResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyInstanceEventStartTimeResult
+           object will be validated before being returned to caller.
+     */
+    func modifyInstanceEventStartTimeAsync(input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult>) -> ()) throws
+
+    /**
+     Invokes the ModifyInstanceEventStartTime operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventStartTimeRequest object being passed to this operation.
+     - Returns: The ModifyInstanceEventStartTimeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyInstanceEventStartTimeSync(input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult
 
     /**
      Invokes the ModifyInstancePlacement operation returning immediately and passing the response to a callback.

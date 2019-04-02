@@ -27,16 +27,19 @@ import Foundation
 public enum ElasticContainerModelOperations: String {
     case createCluster = "CreateCluster"
     case createService = "CreateService"
+    case createTaskSet = "CreateTaskSet"
     case deleteAccountSetting = "DeleteAccountSetting"
     case deleteAttributes = "DeleteAttributes"
     case deleteCluster = "DeleteCluster"
     case deleteService = "DeleteService"
+    case deleteTaskSet = "DeleteTaskSet"
     case deregisterContainerInstance = "DeregisterContainerInstance"
     case deregisterTaskDefinition = "DeregisterTaskDefinition"
     case describeClusters = "DescribeClusters"
     case describeContainerInstances = "DescribeContainerInstances"
     case describeServices = "DescribeServices"
     case describeTaskDefinition = "DescribeTaskDefinition"
+    case describeTaskSets = "DescribeTaskSets"
     case describeTasks = "DescribeTasks"
     case discoverPollEndpoint = "DiscoverPollEndpoint"
     case listAccountSettings = "ListAccountSettings"
@@ -63,12 +66,16 @@ public enum ElasticContainerModelOperations: String {
     case updateContainerAgent = "UpdateContainerAgent"
     case updateContainerInstancesState = "UpdateContainerInstancesState"
     case updateService = "UpdateService"
+    case updateServicePrimaryTaskSet = "UpdateServicePrimaryTaskSet"
+    case updateTaskSet = "UpdateTaskSet"
 
     public var operationPath: String {
         switch self {
         case .createCluster:
             return "/"
         case .createService:
+            return "/"
+        case .createTaskSet:
             return "/"
         case .deleteAccountSetting:
             return "/"
@@ -77,6 +84,8 @@ public enum ElasticContainerModelOperations: String {
         case .deleteCluster:
             return "/"
         case .deleteService:
+            return "/"
+        case .deleteTaskSet:
             return "/"
         case .deregisterContainerInstance:
             return "/"
@@ -89,6 +98,8 @@ public enum ElasticContainerModelOperations: String {
         case .describeServices:
             return "/"
         case .describeTaskDefinition:
+            return "/"
+        case .describeTaskSets:
             return "/"
         case .describeTasks:
             return "/"
@@ -141,6 +152,10 @@ public enum ElasticContainerModelOperations: String {
         case .updateContainerInstancesState:
             return "/"
         case .updateService:
+            return "/"
+        case .updateServicePrimaryTaskSet:
+            return "/"
+        case .updateTaskSet:
             return "/"
         }
     }

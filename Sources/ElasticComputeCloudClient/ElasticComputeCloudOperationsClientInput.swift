@@ -1364,6 +1364,11 @@ public typealias ModifyInstanceCapacityReservationAttributesOperationHTTPRequest
 public typealias ModifyInstanceCreditSpecificationOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ModifyInstanceEventStartTime operation in a HTTP client.
+ */
+public typealias ModifyInstanceEventStartTimeOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ModifyInstancePlacement operation in a HTTP client.
  */
 public typealias ModifyInstancePlacementOperationHTTPRequestInput = QueryHTTPRequestInput

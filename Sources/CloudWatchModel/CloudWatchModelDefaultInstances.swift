@@ -37,6 +37,17 @@ public extension AlarmHistoryItem {
     }()
 }
 
+public extension ConcurrentModificationException {
+    /**
+     Default instance of the ConcurrentModificationException structure.
+     */
+    public static let __default: CloudWatchModel.ConcurrentModificationException = {
+        let defaultInstance = CloudWatchModel.ConcurrentModificationException()
+
+        return defaultInstance
+    }()
+}
+
 public extension DashboardEntry {
     /**
      Default instance of the DashboardEntry structure.
@@ -393,6 +404,7 @@ public extension GetMetricDataOutput {
      */
     public static let __default: CloudWatchModel.GetMetricDataOutput = {
         let defaultInstance = CloudWatchModel.GetMetricDataOutput(
+            messages: nil,
             metricDataResults: nil,
             nextToken: nil)
 
@@ -644,6 +656,42 @@ public extension ListMetricsOutputForListMetrics {
     }()
 }
 
+public extension ListTagsForResourceInput {
+    /**
+     Default instance of the ListTagsForResourceInput structure.
+     */
+    public static let __default: CloudWatchModel.ListTagsForResourceInput = {
+        let defaultInstance = CloudWatchModel.ListTagsForResourceInput(
+            resourceARN: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ListTagsForResourceOutput {
+    /**
+     Default instance of the ListTagsForResourceOutput structure.
+     */
+    public static let __default: CloudWatchModel.ListTagsForResourceOutput = {
+        let defaultInstance = CloudWatchModel.ListTagsForResourceOutput(
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListTagsForResourceOutputForListTagsForResource {
+    /**
+     Default instance of the ListTagsForResourceOutputForListTagsForResource structure.
+     */
+    public static let __default: CloudWatchModel.ListTagsForResourceOutputForListTagsForResource = {
+        let defaultInstance = CloudWatchModel.ListTagsForResourceOutputForListTagsForResource(
+            listTagsForResourceResult: ListTagsForResourceOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension MessageData {
     /**
      Default instance of the MessageData structure.
@@ -848,6 +896,7 @@ public extension PutMetricAlarmInput {
             oKActions: nil,
             period: nil,
             statistic: nil,
+            tags: nil,
             threshold: 0.0,
             treatMissingData: nil,
             unit: nil)
@@ -881,6 +930,19 @@ public extension ResourceNotFound {
     }()
 }
 
+public extension ResourceNotFoundException {
+    /**
+     Default instance of the ResourceNotFoundException structure.
+     */
+    public static let __default: CloudWatchModel.ResourceNotFoundException = {
+        let defaultInstance = CloudWatchModel.ResourceNotFoundException(
+            resourceId: nil,
+            resourceType: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension SetAlarmStateInput {
     /**
      Default instance of the SetAlarmStateInput structure.
@@ -906,6 +968,91 @@ public extension StatisticSet {
             minimum: 0.0,
             sampleCount: 0.0,
             sum: 0.0)
+
+        return defaultInstance
+    }()
+}
+
+public extension Tag {
+    /**
+     Default instance of the Tag structure.
+     */
+    public static let __default: CloudWatchModel.Tag = {
+        let defaultInstance = CloudWatchModel.Tag(
+            key: "0",
+            value: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceInput {
+    /**
+     Default instance of the TagResourceInput structure.
+     */
+    public static let __default: CloudWatchModel.TagResourceInput = {
+        let defaultInstance = CloudWatchModel.TagResourceInput(
+            resourceARN: "0",
+            tags: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceOutput {
+    /**
+     Default instance of the TagResourceOutput structure.
+     */
+    public static let __default: CloudWatchModel.TagResourceOutput = {
+        let defaultInstance = CloudWatchModel.TagResourceOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceOutputForTagResource {
+    /**
+     Default instance of the TagResourceOutputForTagResource structure.
+     */
+    public static let __default: CloudWatchModel.TagResourceOutputForTagResource = {
+        let defaultInstance = CloudWatchModel.TagResourceOutputForTagResource(
+            tagResourceResult: TagResourceOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceInput {
+    /**
+     Default instance of the UntagResourceInput structure.
+     */
+    public static let __default: CloudWatchModel.UntagResourceInput = {
+        let defaultInstance = CloudWatchModel.UntagResourceInput(
+            resourceARN: "0",
+            tagKeys: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceOutput {
+    /**
+     Default instance of the UntagResourceOutput structure.
+     */
+    public static let __default: CloudWatchModel.UntagResourceOutput = {
+        let defaultInstance = CloudWatchModel.UntagResourceOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceOutputForUntagResource {
+    /**
+     Default instance of the UntagResourceOutputForUntagResource structure.
+     */
+    public static let __default: CloudWatchModel.UntagResourceOutputForUntagResource = {
+        let defaultInstance = CloudWatchModel.UntagResourceOutputForUntagResource(
+            untagResourceResult: UntagResourceOutput.__default)
 
         return defaultInstance
     }()

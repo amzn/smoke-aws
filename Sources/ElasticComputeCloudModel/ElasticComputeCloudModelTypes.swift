@@ -843,9 +843,34 @@ public typealias DescribeFleetsErrorSet = [DescribeFleetError]
 public typealias DescribeFleetsInstancesSet = [DescribeFleetsInstances]
 
 /**
+ Type definition for the DescribeHostReservationsMaxResults field.
+ */
+public typealias DescribeHostReservationsMaxResults = Int
+
+/**
+ Type definition for the DescribeInstanceCreditSpecificationsMaxResults field.
+ */
+public typealias DescribeInstanceCreditSpecificationsMaxResults = Int
+
+/**
+ Type definition for the DescribeInternetGatewaysMaxResults field.
+ */
+public typealias DescribeInternetGatewaysMaxResults = Int
+
+/**
+ Type definition for the DescribeNetworkAclsMaxResults field.
+ */
+public typealias DescribeNetworkAclsMaxResults = Int
+
+/**
  Type definition for the DescribeVpcPeeringConnectionsMaxResults field.
  */
 public typealias DescribeVpcPeeringConnectionsMaxResults = Int
+
+/**
+ Type definition for the DescribeVpcsMaxResults field.
+ */
+public typealias DescribeVpcsMaxResults = Int
 
 /**
  Enumeration restricting the values of the DeviceType field.
@@ -1594,6 +1619,11 @@ public typealias InstanceCreditSpecificationList = [InstanceCreditSpecification]
 public typealias InstanceCreditSpecificationListRequest = [InstanceCreditSpecificationRequest]
 
 /**
+ Type definition for the InstanceEventId field.
+ */
+public typealias InstanceEventId = String
+
+/**
  Enumeration restricting the values of the InstanceHealthStatus field.
  */
 public enum InstanceHealthStatus: String, Codable, CustomStringConvertible {
@@ -1860,6 +1890,14 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m5a4xlarge = "m5a.4xlarge"
     case m5aLarge = "m5a.large"
     case m5aXlarge = "m5a.xlarge"
+    case m5ad12xlarge = "m5ad.12xlarge"
+    case m5ad16xlarge = "m5ad.16xlarge"
+    case m5ad24xlarge = "m5ad.24xlarge"
+    case m5ad2xlarge = "m5ad.2xlarge"
+    case m5ad4xlarge = "m5ad.4xlarge"
+    case m5ad8xlarge = "m5ad.8xlarge"
+    case m5adLarge = "m5ad.large"
+    case m5adXlarge = "m5ad.xlarge"
     case m5d12xlarge = "m5d.12xlarge"
     case m5d24xlarge = "m5d.24xlarge"
     case m5d2xlarge = "m5d.2xlarge"
@@ -1898,6 +1936,14 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case r5a4xlarge = "r5a.4xlarge"
     case r5aLarge = "r5a.large"
     case r5aXlarge = "r5a.xlarge"
+    case r5ad12xlarge = "r5ad.12xlarge"
+    case r5ad16xlarge = "r5ad.16xlarge"
+    case r5ad24xlarge = "r5ad.24xlarge"
+    case r5ad2xlarge = "r5ad.2xlarge"
+    case r5ad4xlarge = "r5ad.4xlarge"
+    case r5ad8xlarge = "r5ad.8xlarge"
+    case r5adLarge = "r5ad.large"
+    case r5adXlarge = "r5ad.xlarge"
     case r5d12xlarge = "r5d.12xlarge"
     case r5d24xlarge = "r5d.24xlarge"
     case r5d2xlarge = "r5d.2xlarge"
@@ -2948,6 +2994,7 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case elasticIp = "elastic-ip"
     case fleet
     case fpgaImage = "fpga-image"
+    case hostReservation = "host-reservation"
     case image
     case instance
     case internetGateway = "internet-gateway"
@@ -4239,6 +4286,66 @@ extension Array where Element == ElasticComputeCloudModel.ClassicLoadBalancer {
 }
 
 /**
+ Validation for the DescribeHostReservationsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeHostReservationsMaxResults {
+    public func validateAsDescribeHostReservationsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeHostReservationsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 500 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeHostReservationsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeInstanceCreditSpecificationsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsMaxResults {
+    public func validateAsDescribeInstanceCreditSpecificationsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeInstanceCreditSpecificationsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeInstanceCreditSpecificationsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeInternetGatewaysMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeInternetGatewaysMaxResults {
+    public func validateAsDescribeInternetGatewaysMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeInternetGatewaysMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeInternetGatewaysMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeNetworkAclsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeNetworkAclsMaxResults {
+    public func validateAsDescribeNetworkAclsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkAclsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkAclsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the DescribeVpcPeeringConnectionsMaxResults field.
 */
 extension ElasticComputeCloudModel.DescribeVpcPeeringConnectionsMaxResults {
@@ -4249,6 +4356,21 @@ extension ElasticComputeCloudModel.DescribeVpcPeeringConnectionsMaxResults {
 
         if self > 1000 {
             throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeVpcPeeringConnectionsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeVpcsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeVpcsMaxResults {
+    public func validateAsDescribeVpcsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeVpcsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeVpcsMaxResults violated the maximum range constraint.")
         }
     }
 }

@@ -89,6 +89,11 @@ public typealias ListDashboardsOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias ListMetricsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ListTagsForResource operation in a HTTP client.
+ */
+public typealias ListTagsForResourceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the PutDashboard operation in a HTTP client.
  */
 public typealias PutDashboardOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -107,3 +112,13 @@ public typealias PutMetricDataOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the SetAlarmState operation in a HTTP client.
  */
 public typealias SetAlarmStateOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the TagResource operation in a HTTP client.
+ */
+public typealias TagResourceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the UntagResource operation in a HTTP client.
+ */
+public typealias UntagResourceOperationHTTPRequestInput = QueryHTTPRequestInput

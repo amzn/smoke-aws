@@ -564,6 +564,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let modifyInstanceCapacityReservationAttributesSyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceCapacityReservationAttributesSyncType?
     let modifyInstanceCreditSpecificationAsyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceCreditSpecificationAsyncType?
     let modifyInstanceCreditSpecificationSyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceCreditSpecificationSyncType?
+    let modifyInstanceEventStartTimeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceEventStartTimeAsyncType?
+    let modifyInstanceEventStartTimeSyncOverride: ElasticComputeCloudClientProtocol.ModifyInstanceEventStartTimeSyncType?
     let modifyInstancePlacementAsyncOverride: ElasticComputeCloudClientProtocol.ModifyInstancePlacementAsyncType?
     let modifyInstancePlacementSyncOverride: ElasticComputeCloudClientProtocol.ModifyInstancePlacementSyncType?
     let modifyLaunchTemplateAsyncOverride: ElasticComputeCloudClientProtocol.ModifyLaunchTemplateAsyncType?
@@ -1228,6 +1230,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             modifyInstanceCapacityReservationAttributesSync: ElasticComputeCloudClientProtocol.ModifyInstanceCapacityReservationAttributesSyncType? = nil,
             modifyInstanceCreditSpecificationAsync: ElasticComputeCloudClientProtocol.ModifyInstanceCreditSpecificationAsyncType? = nil,
             modifyInstanceCreditSpecificationSync: ElasticComputeCloudClientProtocol.ModifyInstanceCreditSpecificationSyncType? = nil,
+            modifyInstanceEventStartTimeAsync: ElasticComputeCloudClientProtocol.ModifyInstanceEventStartTimeAsyncType? = nil,
+            modifyInstanceEventStartTimeSync: ElasticComputeCloudClientProtocol.ModifyInstanceEventStartTimeSyncType? = nil,
             modifyInstancePlacementAsync: ElasticComputeCloudClientProtocol.ModifyInstancePlacementAsyncType? = nil,
             modifyInstancePlacementSync: ElasticComputeCloudClientProtocol.ModifyInstancePlacementSyncType? = nil,
             modifyLaunchTemplateAsync: ElasticComputeCloudClientProtocol.ModifyLaunchTemplateAsyncType? = nil,
@@ -1887,6 +1891,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.modifyInstanceCapacityReservationAttributesSyncOverride = modifyInstanceCapacityReservationAttributesSync
         self.modifyInstanceCreditSpecificationAsyncOverride = modifyInstanceCreditSpecificationAsync
         self.modifyInstanceCreditSpecificationSyncOverride = modifyInstanceCreditSpecificationSync
+        self.modifyInstanceEventStartTimeAsyncOverride = modifyInstanceEventStartTimeAsync
+        self.modifyInstanceEventStartTimeSyncOverride = modifyInstanceEventStartTimeSync
         self.modifyInstancePlacementAsyncOverride = modifyInstancePlacementAsync
         self.modifyInstancePlacementSyncOverride = modifyInstancePlacementSync
         self.modifyLaunchTemplateAsyncOverride = modifyLaunchTemplateAsync
@@ -10718,6 +10724,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func modifyInstanceCreditSpecificationSync(input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult {
         if let modifyInstanceCreditSpecificationSyncOverride = modifyInstanceCreditSpecificationSyncOverride {
             return try modifyInstanceCreditSpecificationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyInstanceEventStartTime operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventStartTimeRequest object being passed to this operation.
+         - completion: The ModifyInstanceEventStartTimeResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyInstanceEventStartTimeResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyInstanceEventStartTimeAsync(input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult>) -> ()) throws {
+        if let modifyInstanceEventStartTimeAsyncOverride = modifyInstanceEventStartTimeAsyncOverride {
+            return try modifyInstanceEventStartTimeAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyInstanceEventStartTime operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventStartTimeRequest object being passed to this operation.
+     - Returns: The ModifyInstanceEventStartTimeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyInstanceEventStartTimeSync(input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult {
+        if let modifyInstanceEventStartTimeSyncOverride = modifyInstanceEventStartTimeSyncOverride {
+            return try modifyInstanceEventStartTimeSyncOverride(input)
         }
 
         throw error

@@ -53,6 +53,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let listDashboardsSyncOverride: CloudWatchClientProtocol.ListDashboardsSyncType?
     let listMetricsAsyncOverride: CloudWatchClientProtocol.ListMetricsAsyncType?
     let listMetricsSyncOverride: CloudWatchClientProtocol.ListMetricsSyncType?
+    let listTagsForResourceAsyncOverride: CloudWatchClientProtocol.ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: CloudWatchClientProtocol.ListTagsForResourceSyncType?
     let putDashboardAsyncOverride: CloudWatchClientProtocol.PutDashboardAsyncType?
     let putDashboardSyncOverride: CloudWatchClientProtocol.PutDashboardSyncType?
     let putMetricAlarmAsyncOverride: CloudWatchClientProtocol.PutMetricAlarmAsyncType?
@@ -61,6 +63,10 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let putMetricDataSyncOverride: CloudWatchClientProtocol.PutMetricDataSyncType?
     let setAlarmStateAsyncOverride: CloudWatchClientProtocol.SetAlarmStateAsyncType?
     let setAlarmStateSyncOverride: CloudWatchClientProtocol.SetAlarmStateSyncType?
+    let tagResourceAsyncOverride: CloudWatchClientProtocol.TagResourceAsyncType?
+    let tagResourceSyncOverride: CloudWatchClientProtocol.TagResourceSyncType?
+    let untagResourceAsyncOverride: CloudWatchClientProtocol.UntagResourceAsyncType?
+    let untagResourceSyncOverride: CloudWatchClientProtocol.UntagResourceSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
@@ -93,6 +99,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             listDashboardsSync: CloudWatchClientProtocol.ListDashboardsSyncType? = nil,
             listMetricsAsync: CloudWatchClientProtocol.ListMetricsAsyncType? = nil,
             listMetricsSync: CloudWatchClientProtocol.ListMetricsSyncType? = nil,
+            listTagsForResourceAsync: CloudWatchClientProtocol.ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: CloudWatchClientProtocol.ListTagsForResourceSyncType? = nil,
             putDashboardAsync: CloudWatchClientProtocol.PutDashboardAsyncType? = nil,
             putDashboardSync: CloudWatchClientProtocol.PutDashboardSyncType? = nil,
             putMetricAlarmAsync: CloudWatchClientProtocol.PutMetricAlarmAsyncType? = nil,
@@ -100,7 +108,11 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             putMetricDataAsync: CloudWatchClientProtocol.PutMetricDataAsyncType? = nil,
             putMetricDataSync: CloudWatchClientProtocol.PutMetricDataSyncType? = nil,
             setAlarmStateAsync: CloudWatchClientProtocol.SetAlarmStateAsyncType? = nil,
-            setAlarmStateSync: CloudWatchClientProtocol.SetAlarmStateSyncType? = nil) {
+            setAlarmStateSync: CloudWatchClientProtocol.SetAlarmStateSyncType? = nil,
+            tagResourceAsync: CloudWatchClientProtocol.TagResourceAsyncType? = nil,
+            tagResourceSync: CloudWatchClientProtocol.TagResourceSyncType? = nil,
+            untagResourceAsync: CloudWatchClientProtocol.UntagResourceAsyncType? = nil,
+            untagResourceSync: CloudWatchClientProtocol.UntagResourceSyncType? = nil) {
         self.deleteAlarmsAsyncOverride = deleteAlarmsAsync
         self.deleteAlarmsSyncOverride = deleteAlarmsSync
         self.deleteDashboardsAsyncOverride = deleteDashboardsAsync
@@ -127,6 +139,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.listDashboardsSyncOverride = listDashboardsSync
         self.listMetricsAsyncOverride = listMetricsAsync
         self.listMetricsSyncOverride = listMetricsSync
+        self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
+        self.listTagsForResourceSyncOverride = listTagsForResourceSync
         self.putDashboardAsyncOverride = putDashboardAsync
         self.putDashboardSyncOverride = putDashboardSync
         self.putMetricAlarmAsyncOverride = putMetricAlarmAsync
@@ -135,6 +149,10 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.putMetricDataSyncOverride = putMetricDataSync
         self.setAlarmStateAsyncOverride = setAlarmStateAsync
         self.setAlarmStateSyncOverride = setAlarmStateSync
+        self.tagResourceAsyncOverride = tagResourceAsync
+        self.tagResourceSyncOverride = tagResourceSync
+        self.untagResourceAsyncOverride = untagResourceAsync
+        self.untagResourceSyncOverride = untagResourceSync
     }
 
     /**
@@ -593,6 +611,43 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+         - completion: The ListTagsForResourceOutputForListTagsForResource object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceOutputForListTagsForResource
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, resourceNotFound.
+     */
+    public func listTagsForResourceAsync(input: CloudWatchModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource>) -> ()) throws {
+        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
+            return try listTagsForResourceAsyncOverride(input, completion)
+        }
+
+        let result = ListTagsForResourceOutputForListTagsForResource.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutputForListTagsForResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, resourceNotFound.
+     */
+    public func listTagsForResourceSync(input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
+        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
+            return try listTagsForResourceSyncOverride(input)
+        }
+
+        return ListTagsForResourceOutputForListTagsForResource.__default
+    }
+
+    /**
      Invokes the PutDashboard operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -720,5 +775,79 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             return try setAlarmStateSyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+         - completion: The TagResourceOutputForTagResource object or an error will be passed to this 
+           callback when the operation is complete. The TagResourceOutputForTagResource
+           object will be validated before being returned to caller.
+           The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
+     */
+    public func tagResourceAsync(input: CloudWatchModel.TagResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.TagResourceOutputForTagResource>) -> ()) throws {
+        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
+            return try tagResourceAsyncOverride(input, completion)
+        }
+
+        let result = TagResourceOutputForTagResource.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Returns: The TagResourceOutputForTagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
+     */
+    public func tagResourceSync(input: CloudWatchModel.TagResourceInput) throws -> CloudWatchModel.TagResourceOutputForTagResource {
+        if let tagResourceSyncOverride = tagResourceSyncOverride {
+            return try tagResourceSyncOverride(input)
+        }
+
+        return TagResourceOutputForTagResource.__default
+    }
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+         - completion: The UntagResourceOutputForUntagResource object or an error will be passed to this 
+           callback when the operation is complete. The UntagResourceOutputForUntagResource
+           object will be validated before being returned to caller.
+           The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
+     */
+    public func untagResourceAsync(input: CloudWatchModel.UntagResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.UntagResourceOutputForUntagResource>) -> ()) throws {
+        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
+            return try untagResourceAsyncOverride(input, completion)
+        }
+
+        let result = UntagResourceOutputForUntagResource.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Returns: The UntagResourceOutputForUntagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
+     */
+    public func untagResourceSync(input: CloudWatchModel.UntagResourceInput) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
+        if let untagResourceSyncOverride = untagResourceSyncOverride {
+            return try untagResourceSyncOverride(input)
+        }
+
+        return UntagResourceOutputForUntagResource.__default
     }
 }

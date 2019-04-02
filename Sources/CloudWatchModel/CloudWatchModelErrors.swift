@@ -22,6 +22,7 @@
 import Foundation
 import LoggerAPI
 
+private let concurrentModificationIdentity = "ConcurrentModificationException"
 private let dashboardInvalidInputIdentity = "InvalidParameterInput"
 private let dashboardNotFoundIdentity = "ResourceNotFound"
 private let internalServiceIdentity = "InternalServiceError"
@@ -32,6 +33,7 @@ private let invalidParameterValueIdentity = "InvalidParameterValue"
 private let limitExceededIdentity = "LimitExceeded"
 private let missingRequiredParameterIdentity = "MissingParameter"
 private let resourceNotFoundIdentity = "ResourceNotFound"
+private let resourceNotFoundExceptionIdentity = "ResourceNotFoundException"
 private let __accessDeniedIdentity = "AccessDenied"
 
 public enum CloudWatchCodingError: Swift.Error {
@@ -41,6 +43,7 @@ public enum CloudWatchCodingError: Swift.Error {
 }
 
 public enum CloudWatchError: Swift.Error, Decodable {
+    case concurrentModification(ConcurrentModificationException)
     case dashboardInvalidInput(DashboardInvalidInputError)
     case dashboardNotFound(DashboardNotFoundError)
     case internalService(InternalServiceFault)
@@ -51,6 +54,7 @@ public enum CloudWatchError: Swift.Error, Decodable {
     case limitExceeded(LimitExceededFault)
     case missingRequiredParameter(MissingRequiredParameterException)
     case resourceNotFound(ResourceNotFound)
+    case resourceNotFoundException(ResourceNotFoundException)
     case accessDenied(message: String?)
 
     enum CodingKeys: String, CodingKey {
@@ -68,6 +72,9 @@ public enum CloudWatchError: Swift.Error, Decodable {
         }
 
         switch errorReason {
+        case concurrentModificationIdentity:
+            let errorPayload = try ConcurrentModificationException(from: decoder)
+            self = CloudWatchError.concurrentModification(errorPayload)
         case dashboardInvalidInputIdentity:
             let errorPayload = try DashboardInvalidInputError(from: decoder)
             self = CloudWatchError.dashboardInvalidInput(errorPayload)
@@ -98,6 +105,9 @@ public enum CloudWatchError: Swift.Error, Decodable {
         case resourceNotFoundIdentity:
             let errorPayload = try ResourceNotFound(from: decoder)
             self = CloudWatchError.resourceNotFound(errorPayload)
+        case resourceNotFoundExceptionIdentity:
+            let errorPayload = try ResourceNotFoundException(from: decoder)
+            self = CloudWatchError.resourceNotFoundException(errorPayload)
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:

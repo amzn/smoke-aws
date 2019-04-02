@@ -146,9 +146,30 @@ public enum Connectivity: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the ContainerCondition field.
+ */
+public enum ContainerCondition: String, Codable, CustomStringConvertible {
+    case complete = "COMPLETE"
+    case healthy = "HEALTHY"
+    case start = "START"
+    case success = "SUCCESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ContainerCondition = .complete
+}
+
+/**
  Type definition for the ContainerDefinitions field.
  */
 public typealias ContainerDefinitions = [ContainerDefinition]
+
+/**
+ Type definition for the ContainerDependencies field.
+ */
+public typealias ContainerDependencies = [ContainerDependency]
 
 /**
  Enumeration restricting the values of the ContainerInstanceField field.
@@ -208,6 +229,7 @@ public typealias Containers = [Container]
 public enum DeploymentControllerType: String, Codable, CustomStringConvertible {
     case codeDeploy = "CODE_DEPLOY"
     case ecs = "ECS"
+    case external = "EXTERNAL"
 
     public var description: String {
         return rawValue
@@ -488,6 +510,24 @@ public enum PropagateTags: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: PropagateTags = .service
+}
+
+/**
+ Type definition for the ProxyConfigurationProperties field.
+ */
+public typealias ProxyConfigurationProperties = [KeyValuePair]
+
+/**
+ Enumeration restricting the values of the ProxyConfigurationType field.
+ */
+public enum ProxyConfigurationType: String, Codable, CustomStringConvertible {
+    case appmesh = "APPMESH"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ProxyConfigurationType = .appmesh
 }
 
 /**

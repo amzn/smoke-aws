@@ -224,6 +224,64 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the CreateTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTaskSetRequest object being passed to this operation.
+         - completion: The CreateTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The CreateTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func createTaskSetAsync(input: ElasticContainerModel.CreateTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.CreateTaskSetResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.createTaskSet.rawValue,
+                    target: target)
+
+        let requestInput = CreateTaskSetOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTaskSetRequest object being passed to this operation.
+     - Returns: The CreateTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func createTaskSetSync(input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.createTaskSet.rawValue,
+                    target: target)
+
+        let requestInput = CreateTaskSetOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DeleteAccountSetting operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -445,6 +503,64 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     target: target)
 
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTaskSetRequest object being passed to this operation.
+         - completion: The DeleteTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func deleteTaskSetAsync(input: ElasticContainerModel.DeleteTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteTaskSetResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteTaskSet.rawValue,
+                    target: target)
+
+        let requestInput = DeleteTaskSetOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskSetRequest object being passed to this operation.
+     - Returns: The DeleteTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func deleteTaskSetSync(input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteTaskSet.rawValue,
+                    target: target)
+
+        let requestInput = DeleteTaskSetOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
@@ -793,6 +909,64 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     target: target)
 
         let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTaskSets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTaskSetsRequest object being passed to this operation.
+         - completion: The DescribeTaskSetsResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTaskSetsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func describeTaskSetsAsync(input: ElasticContainerModel.DescribeTaskSetsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTaskSetsResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeTaskSets.rawValue,
+                    target: target)
+
+        let requestInput = DescribeTaskSetsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTaskSets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTaskSetsRequest object being passed to this operation.
+     - Returns: The DescribeTaskSetsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func describeTaskSetsSync(input: ElasticContainerModel.DescribeTaskSetsRequest) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeTaskSets.rawValue,
+                    target: target)
+
+        let requestInput = DescribeTaskSetsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
@@ -2301,6 +2475,122 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     target: target)
 
         let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateServicePrimaryTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
+         - completion: The UpdateServicePrimaryTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateServicePrimaryTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateServicePrimaryTaskSetAsync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateServicePrimaryTaskSet.rawValue,
+                    target: target)
+
+        let requestInput = UpdateServicePrimaryTaskSetOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateServicePrimaryTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
+     - Returns: The UpdateServicePrimaryTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateServicePrimaryTaskSetSync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateServicePrimaryTaskSet.rawValue,
+                    target: target)
+
+        let requestInput = UpdateServicePrimaryTaskSetOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateTaskSetRequest object being passed to this operation.
+         - completion: The UpdateTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateTaskSetAsync(input: ElasticContainerModel.UpdateTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateTaskSetResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateTaskSet.rawValue,
+                    target: target)
+
+        let requestInput = UpdateTaskSetOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateTaskSetRequest object being passed to this operation.
+     - Returns: The UpdateTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateTaskSetSync(input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateTaskSet.rawValue,
+                    target: target)
+
+        let requestInput = UpdateTaskSetOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",

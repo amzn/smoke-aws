@@ -293,6 +293,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case modifyInstanceAttribute = "ModifyInstanceAttribute"
     case modifyInstanceCapacityReservationAttributes = "ModifyInstanceCapacityReservationAttributes"
     case modifyInstanceCreditSpecification = "ModifyInstanceCreditSpecification"
+    case modifyInstanceEventStartTime = "ModifyInstanceEventStartTime"
     case modifyInstancePlacement = "ModifyInstancePlacement"
     case modifyLaunchTemplate = "ModifyLaunchTemplate"
     case modifyNetworkInterfaceAttribute = "ModifyNetworkInterfaceAttribute"
@@ -892,6 +893,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .modifyInstanceCapacityReservationAttributes:
             return "/"
         case .modifyInstanceCreditSpecification:
+            return "/"
+        case .modifyInstanceEventStartTime:
             return "/"
         case .modifyInstancePlacement:
             return "/"

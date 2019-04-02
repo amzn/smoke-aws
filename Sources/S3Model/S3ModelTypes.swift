@@ -1101,6 +1101,7 @@ public typealias ObjectLockToken = String
  Enumeration restricting the values of the ObjectStorageClass field.
  */
 public enum ObjectStorageClass: String, Codable, CustomStringConvertible {
+    case deepArchive = "DEEP_ARCHIVE"
     case glacier = "GLACIER"
     case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
@@ -1112,7 +1113,7 @@ public enum ObjectStorageClass: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: ObjectStorageClass = .glacier
+    public static let __default: ObjectStorageClass = .deepArchive
 }
 
 /**
@@ -1496,6 +1497,7 @@ public typealias StartAfter = String
  Enumeration restricting the values of the StorageClass field.
  */
 public enum StorageClass: String, Codable, CustomStringConvertible {
+    case deepArchive = "DEEP_ARCHIVE"
     case glacier = "GLACIER"
     case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
@@ -1507,7 +1509,7 @@ public enum StorageClass: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: StorageClass = .glacier
+    public static let __default: StorageClass = .deepArchive
 }
 
 /**
@@ -1611,6 +1613,7 @@ public typealias TransitionList = [Transition]
  Enumeration restricting the values of the TransitionStorageClass field.
  */
 public enum TransitionStorageClass: String, Codable, CustomStringConvertible {
+    case deepArchive = "DEEP_ARCHIVE"
     case glacier = "GLACIER"
     case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
@@ -1620,7 +1623,7 @@ public enum TransitionStorageClass: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: TransitionStorageClass = .glacier
+    public static let __default: TransitionStorageClass = .deepArchive
 }
 
 /**

@@ -50,6 +50,19 @@ extension CreateServiceResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateTaskSet operation in a HTTP client.
+ */
+extension CreateTaskSetResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateTaskSetResponse
+    public typealias HeadersType = CreateTaskSetResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateTaskSetResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteAccountSetting operation in a HTTP client.
  */
 extension DeleteAccountSettingResponse: HTTPResponseOutputProtocol {
@@ -97,6 +110,19 @@ extension DeleteServiceResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteServiceResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteTaskSet operation in a HTTP client.
+ */
+extension DeleteTaskSetResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTaskSetResponse
+    public typealias HeadersType = DeleteTaskSetResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTaskSetResponse {
         return try bodyDecodableProvider()
     }
 }
@@ -175,6 +201,19 @@ extension DescribeTaskDefinitionResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTaskDefinitionResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeTaskSets operation in a HTTP client.
+ */
+extension DescribeTaskSetsResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTaskSetsResponse
+    public typealias HeadersType = DescribeTaskSetsResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTaskSetsResponse {
         return try bodyDecodableProvider()
     }
 }
@@ -513,6 +552,32 @@ extension UpdateServiceResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> UpdateServiceResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateServicePrimaryTaskSet operation in a HTTP client.
+ */
+extension UpdateServicePrimaryTaskSetResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateServicePrimaryTaskSetResponse
+    public typealias HeadersType = UpdateServicePrimaryTaskSetResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateServicePrimaryTaskSetResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateTaskSet operation in a HTTP client.
+ */
+extension UpdateTaskSetResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateTaskSetResponse
+    public typealias HeadersType = UpdateTaskSetResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateTaskSetResponse {
         return try bodyDecodableProvider()
     }
 }

@@ -31,6 +31,8 @@ public protocol ElasticContainerClientProtocol {
     typealias CreateClusterAsyncType = (_ input: ElasticContainerModel.CreateClusterRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.CreateClusterResponse>) -> ()) throws -> ()
     typealias CreateServiceSyncType = (_ input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse
     typealias CreateServiceAsyncType = (_ input: ElasticContainerModel.CreateServiceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.CreateServiceResponse>) -> ()) throws -> ()
+    typealias CreateTaskSetSyncType = (_ input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse
+    typealias CreateTaskSetAsyncType = (_ input: ElasticContainerModel.CreateTaskSetRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.CreateTaskSetResponse>) -> ()) throws -> ()
     typealias DeleteAccountSettingSyncType = (_ input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse
     typealias DeleteAccountSettingAsyncType = (_ input: ElasticContainerModel.DeleteAccountSettingRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DeleteAccountSettingResponse>) -> ()) throws -> ()
     typealias DeleteAttributesSyncType = (_ input: ElasticContainerModel.DeleteAttributesRequest) throws -> ElasticContainerModel.DeleteAttributesResponse
@@ -39,6 +41,8 @@ public protocol ElasticContainerClientProtocol {
     typealias DeleteClusterAsyncType = (_ input: ElasticContainerModel.DeleteClusterRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DeleteClusterResponse>) -> ()) throws -> ()
     typealias DeleteServiceSyncType = (_ input: ElasticContainerModel.DeleteServiceRequest) throws -> ElasticContainerModel.DeleteServiceResponse
     typealias DeleteServiceAsyncType = (_ input: ElasticContainerModel.DeleteServiceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DeleteServiceResponse>) -> ()) throws -> ()
+    typealias DeleteTaskSetSyncType = (_ input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse
+    typealias DeleteTaskSetAsyncType = (_ input: ElasticContainerModel.DeleteTaskSetRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DeleteTaskSetResponse>) -> ()) throws -> ()
     typealias DeregisterContainerInstanceSyncType = (_ input: ElasticContainerModel.DeregisterContainerInstanceRequest) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse
     typealias DeregisterContainerInstanceAsyncType = (_ input: ElasticContainerModel.DeregisterContainerInstanceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DeregisterContainerInstanceResponse>) -> ()) throws -> ()
     typealias DeregisterTaskDefinitionSyncType = (_ input: ElasticContainerModel.DeregisterTaskDefinitionRequest) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse
@@ -51,6 +55,8 @@ public protocol ElasticContainerClientProtocol {
     typealias DescribeServicesAsyncType = (_ input: ElasticContainerModel.DescribeServicesRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DescribeServicesResponse>) -> ()) throws -> ()
     typealias DescribeTaskDefinitionSyncType = (_ input: ElasticContainerModel.DescribeTaskDefinitionRequest) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse
     typealias DescribeTaskDefinitionAsyncType = (_ input: ElasticContainerModel.DescribeTaskDefinitionRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTaskDefinitionResponse>) -> ()) throws -> ()
+    typealias DescribeTaskSetsSyncType = (_ input: ElasticContainerModel.DescribeTaskSetsRequest) throws -> ElasticContainerModel.DescribeTaskSetsResponse
+    typealias DescribeTaskSetsAsyncType = (_ input: ElasticContainerModel.DescribeTaskSetsRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTaskSetsResponse>) -> ()) throws -> ()
     typealias DescribeTasksSyncType = (_ input: ElasticContainerModel.DescribeTasksRequest) throws -> ElasticContainerModel.DescribeTasksResponse
     typealias DescribeTasksAsyncType = (_ input: ElasticContainerModel.DescribeTasksRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTasksResponse>) -> ()) throws -> ()
     typealias DiscoverPollEndpointSyncType = (_ input: ElasticContainerModel.DiscoverPollEndpointRequest) throws -> ElasticContainerModel.DiscoverPollEndpointResponse
@@ -103,6 +109,10 @@ public protocol ElasticContainerClientProtocol {
     typealias UpdateContainerInstancesStateAsyncType = (_ input: ElasticContainerModel.UpdateContainerInstancesStateRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UpdateContainerInstancesStateResponse>) -> ()) throws -> ()
     typealias UpdateServiceSyncType = (_ input: ElasticContainerModel.UpdateServiceRequest) throws -> ElasticContainerModel.UpdateServiceResponse
     typealias UpdateServiceAsyncType = (_ input: ElasticContainerModel.UpdateServiceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UpdateServiceResponse>) -> ()) throws -> ()
+    typealias UpdateServicePrimaryTaskSetSyncType = (_ input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse
+    typealias UpdateServicePrimaryTaskSetAsyncType = (_ input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse>) -> ()) throws -> ()
+    typealias UpdateTaskSetSyncType = (_ input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse
+    typealias UpdateTaskSetAsyncType = (_ input: ElasticContainerModel.UpdateTaskSetRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UpdateTaskSetResponse>) -> ()) throws -> ()
 
     /**
      Invokes the CreateCluster operation returning immediately and passing the response to a callback.
@@ -149,6 +159,29 @@ public protocol ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
     func createServiceSync(input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse
+
+    /**
+     Invokes the CreateTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTaskSetRequest object being passed to this operation.
+         - completion: The CreateTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The CreateTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    func createTaskSetAsync(input: ElasticContainerModel.CreateTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.CreateTaskSetResponse>) -> ()) throws
+
+    /**
+     Invokes the CreateTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTaskSetRequest object being passed to this operation.
+     - Returns: The CreateTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    func createTaskSetSync(input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse
 
     /**
      Invokes the DeleteAccountSetting operation returning immediately and passing the response to a callback.
@@ -241,6 +274,29 @@ public protocol ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
     func deleteServiceSync(input: ElasticContainerModel.DeleteServiceRequest) throws -> ElasticContainerModel.DeleteServiceResponse
+
+    /**
+     Invokes the DeleteTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTaskSetRequest object being passed to this operation.
+         - completion: The DeleteTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    func deleteTaskSetAsync(input: ElasticContainerModel.DeleteTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteTaskSetResponse>) -> ()) throws
+
+    /**
+     Invokes the DeleteTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskSetRequest object being passed to this operation.
+     - Returns: The DeleteTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    func deleteTaskSetSync(input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse
 
     /**
      Invokes the DeregisterContainerInstance operation returning immediately and passing the response to a callback.
@@ -379,6 +435,29 @@ public protocol ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     func describeTaskDefinitionSync(input: ElasticContainerModel.DescribeTaskDefinitionRequest) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse
+
+    /**
+     Invokes the DescribeTaskSets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTaskSetsRequest object being passed to this operation.
+         - completion: The DescribeTaskSetsResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTaskSetsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    func describeTaskSetsAsync(input: ElasticContainerModel.DescribeTaskSetsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTaskSetsResponse>) -> ()) throws
+
+    /**
+     Invokes the DescribeTaskSets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTaskSetsRequest object being passed to this operation.
+     - Returns: The DescribeTaskSetsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    func describeTaskSetsSync(input: ElasticContainerModel.DescribeTaskSetsRequest) throws -> ElasticContainerModel.DescribeTaskSetsResponse
 
     /**
      Invokes the DescribeTasks operation returning immediately and passing the response to a callback.
@@ -977,4 +1056,50 @@ public protocol ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
     func updateServiceSync(input: ElasticContainerModel.UpdateServiceRequest) throws -> ElasticContainerModel.UpdateServiceResponse
+
+    /**
+     Invokes the UpdateServicePrimaryTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
+         - completion: The UpdateServicePrimaryTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateServicePrimaryTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    func updateServicePrimaryTaskSetAsync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse>) -> ()) throws
+
+    /**
+     Invokes the UpdateServicePrimaryTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
+     - Returns: The UpdateServicePrimaryTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    func updateServicePrimaryTaskSetSync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse
+
+    /**
+     Invokes the UpdateTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateTaskSetRequest object being passed to this operation.
+         - completion: The UpdateTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    func updateTaskSetAsync(input: ElasticContainerModel.UpdateTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateTaskSetResponse>) -> ()) throws
+
+    /**
+     Invokes the UpdateTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateTaskSetRequest object being passed to this operation.
+     - Returns: The UpdateTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    func updateTaskSetSync(input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse
 }

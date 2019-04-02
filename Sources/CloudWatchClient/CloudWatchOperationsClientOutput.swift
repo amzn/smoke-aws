@@ -154,6 +154,19 @@ extension ListMetricsOutputForListMetrics: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ListTagsForResource operation in a HTTP client.
+ */
+extension ListTagsForResourceOutputForListTagsForResource: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListTagsForResourceOutputForListTagsForResource
+    public typealias HeadersType = ListTagsForResourceOutputForListTagsForResource
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListTagsForResourceOutputForListTagsForResource {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the PutDashboard operation in a HTTP client.
  */
 extension PutDashboardOutputForPutDashboard: HTTPResponseOutputProtocol {
@@ -162,6 +175,32 @@ extension PutDashboardOutputForPutDashboard: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> PutDashboardOutputForPutDashboard {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the TagResource operation in a HTTP client.
+ */
+extension TagResourceOutputForTagResource: HTTPResponseOutputProtocol {
+    public typealias BodyType = TagResourceOutputForTagResource
+    public typealias HeadersType = TagResourceOutputForTagResource
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> TagResourceOutputForTagResource {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UntagResource operation in a HTTP client.
+ */
+extension UntagResourceOutputForUntagResource: HTTPResponseOutputProtocol {
+    public typealias BodyType = UntagResourceOutputForUntagResource
+    public typealias HeadersType = UntagResourceOutputForUntagResource
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UntagResourceOutputForUntagResource {
         return try bodyDecodableProvider()
     }
 }

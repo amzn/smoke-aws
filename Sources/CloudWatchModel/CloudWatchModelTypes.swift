@@ -62,6 +62,11 @@ public typealias AlarmNamePrefix = String
 public typealias AlarmNames = [AlarmName]
 
 /**
+ Type definition for the AmazonResourceName field.
+ */
+public typealias AmazonResourceName = String
+
+/**
  Type definition for the AwsQueryErrorMessage field.
  */
 public typealias AwsQueryErrorMessage = String
@@ -343,6 +348,11 @@ public typealias OutputFormat = String
 public typealias Period = Int
 
 /**
+ Type definition for the ResourceId field.
+ */
+public typealias ResourceId = String
+
+/**
  Type definition for the ResourceList field.
  */
 public typealias ResourceList = [ResourceName]
@@ -351,6 +361,11 @@ public typealias ResourceList = [ResourceName]
  Type definition for the ResourceName field.
  */
 public typealias ResourceName = String
+
+/**
+ Type definition for the ResourceType field.
+ */
+public typealias ResourceType = String
 
 /**
  Type definition for the ReturnData field.
@@ -488,6 +503,26 @@ public enum StatusCode: String, Codable, CustomStringConvertible {
 public typealias StorageResolution = Int
 
 /**
+ Type definition for the TagKey field.
+ */
+public typealias TagKey = String
+
+/**
+ Type definition for the TagKeyList field.
+ */
+public typealias TagKeyList = [TagKey]
+
+/**
+ Type definition for the TagList field.
+ */
+public typealias TagList = [Tag]
+
+/**
+ Type definition for the TagValue field.
+ */
+public typealias TagValue = String
+
+/**
  Type definition for the Threshold field.
  */
 public typealias Threshold = Double
@@ -595,6 +630,21 @@ extension Array where Element == CloudWatchModel.AlarmName {
 
         if self.count > 100 {
             throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmNames violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the AmazonResourceName field.
+*/
+extension CloudWatchModel.AmazonResourceName {
+    public func validateAsAmazonResourceName() throws {
+        if self.count < 1 {
+            throw CloudWatchCodingError.validationError(reason: "The provided value to AmazonResourceName violated the minimum length constraint.")
+        }
+
+        if self.count > 1024 {
+            throw CloudWatchCodingError.validationError(reason: "The provided value to AmazonResourceName violated the maximum length constraint.")
         }
     }
 }
@@ -847,21 +897,6 @@ extension CloudWatchModel.Namespace {
 }
 
 /**
- Validation for the NextToken field.
-*/
-extension CloudWatchModel.NextToken {
-    public func validateAsNextToken() throws {
-        if self.count < 0 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to NextToken violated the minimum length constraint.")
-        }
-
-        if self.count > 1024 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to NextToken violated the maximum length constraint.")
-        }
-    }
-}
-
-/**
  Validation for the Period field.
 */
 extension CloudWatchModel.Period {
@@ -954,6 +989,36 @@ extension CloudWatchModel.StorageResolution {
             throw CloudWatchCodingError.validationError(reason: "The provided value to StorageResolution violated the minimum range constraint.")
         }
 
+    }
+}
+
+/**
+ Validation for the TagKey field.
+*/
+extension CloudWatchModel.TagKey {
+    public func validateAsTagKey() throws {
+        if self.count < 1 {
+            throw CloudWatchCodingError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw CloudWatchCodingError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagValue field.
+*/
+extension CloudWatchModel.TagValue {
+    public func validateAsTagValue() throws {
+        if self.count < 0 {
+            throw CloudWatchCodingError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw CloudWatchCodingError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
+        }
     }
 }
 

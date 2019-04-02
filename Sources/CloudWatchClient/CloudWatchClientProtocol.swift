@@ -53,6 +53,8 @@ public protocol CloudWatchClientProtocol {
     typealias ListDashboardsAsyncType = (_ input: CloudWatchModel.ListDashboardsInput, _ completion: @escaping (HTTPResult<CloudWatchModel.ListDashboardsOutputForListDashboards>) -> ()) throws -> ()
     typealias ListMetricsSyncType = (_ input: CloudWatchModel.ListMetricsInput) throws -> CloudWatchModel.ListMetricsOutputForListMetrics
     typealias ListMetricsAsyncType = (_ input: CloudWatchModel.ListMetricsInput, _ completion: @escaping (HTTPResult<CloudWatchModel.ListMetricsOutputForListMetrics>) -> ()) throws -> ()
+    typealias ListTagsForResourceSyncType = (_ input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource
+    typealias ListTagsForResourceAsyncType = (_ input: CloudWatchModel.ListTagsForResourceInput, _ completion: @escaping (HTTPResult<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource>) -> ()) throws -> ()
     typealias PutDashboardSyncType = (_ input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
     typealias PutDashboardAsyncType = (_ input: CloudWatchModel.PutDashboardInput, _ completion: @escaping (HTTPResult<CloudWatchModel.PutDashboardOutputForPutDashboard>) -> ()) throws -> ()
     typealias PutMetricAlarmSyncType = (_ input: CloudWatchModel.PutMetricAlarmInput) throws -> ()
@@ -61,6 +63,10 @@ public protocol CloudWatchClientProtocol {
     typealias PutMetricDataAsyncType = (_ input: CloudWatchModel.PutMetricDataInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias SetAlarmStateSyncType = (_ input: CloudWatchModel.SetAlarmStateInput) throws -> ()
     typealias SetAlarmStateAsyncType = (_ input: CloudWatchModel.SetAlarmStateInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias TagResourceSyncType = (_ input: CloudWatchModel.TagResourceInput) throws -> CloudWatchModel.TagResourceOutputForTagResource
+    typealias TagResourceAsyncType = (_ input: CloudWatchModel.TagResourceInput, _ completion: @escaping (HTTPResult<CloudWatchModel.TagResourceOutputForTagResource>) -> ()) throws -> ()
+    typealias UntagResourceSyncType = (_ input: CloudWatchModel.UntagResourceInput) throws -> CloudWatchModel.UntagResourceOutputForUntagResource
+    typealias UntagResourceAsyncType = (_ input: CloudWatchModel.UntagResourceInput, _ completion: @escaping (HTTPResult<CloudWatchModel.UntagResourceOutputForUntagResource>) -> ()) throws -> ()
 
     /**
      Invokes the DeleteAlarms operation returning immediately and passing the response to a callback.
@@ -345,6 +351,29 @@ public protocol CloudWatchClientProtocol {
     func listMetricsSync(input: CloudWatchModel.ListMetricsInput) throws -> CloudWatchModel.ListMetricsOutputForListMetrics
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+         - completion: The ListTagsForResourceOutputForListTagsForResource object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceOutputForListTagsForResource
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, resourceNotFound.
+     */
+    func listTagsForResourceAsync(input: CloudWatchModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource>) -> ()) throws
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutputForListTagsForResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, resourceNotFound.
+     */
+    func listTagsForResourceSync(input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource
+
+    /**
      Invokes the PutDashboard operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -426,4 +455,50 @@ public protocol CloudWatchClientProtocol {
      - Throws: invalidFormat, resourceNotFound.
      */
     func setAlarmStateSync(input: CloudWatchModel.SetAlarmStateInput) throws
+
+    /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+         - completion: The TagResourceOutputForTagResource object or an error will be passed to this 
+           callback when the operation is complete. The TagResourceOutputForTagResource
+           object will be validated before being returned to caller.
+           The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
+     */
+    func tagResourceAsync(input: CloudWatchModel.TagResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.TagResourceOutputForTagResource>) -> ()) throws
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Returns: The TagResourceOutputForTagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
+     */
+    func tagResourceSync(input: CloudWatchModel.TagResourceInput) throws -> CloudWatchModel.TagResourceOutputForTagResource
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+         - completion: The UntagResourceOutputForUntagResource object or an error will be passed to this 
+           callback when the operation is complete. The UntagResourceOutputForUntagResource
+           object will be validated before being returned to caller.
+           The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
+     */
+    func untagResourceAsync(input: CloudWatchModel.UntagResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.UntagResourceOutputForUntagResource>) -> ()) throws
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Returns: The UntagResourceOutputForUntagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
+     */
+    func untagResourceSync(input: CloudWatchModel.UntagResourceInput) throws -> CloudWatchModel.UntagResourceOutputForUntagResource
 }

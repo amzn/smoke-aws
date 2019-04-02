@@ -38,10 +38,13 @@ public enum CloudWatchModelOperations: String {
     case getMetricWidgetImage = "GetMetricWidgetImage"
     case listDashboards = "ListDashboards"
     case listMetrics = "ListMetrics"
+    case listTagsForResource = "ListTagsForResource"
     case putDashboard = "PutDashboard"
     case putMetricAlarm = "PutMetricAlarm"
     case putMetricData = "PutMetricData"
     case setAlarmState = "SetAlarmState"
+    case tagResource = "TagResource"
+    case untagResource = "UntagResource"
 
     public var operationPath: String {
         switch self {
@@ -71,6 +74,8 @@ public enum CloudWatchModelOperations: String {
             return "/"
         case .listMetrics:
             return "/"
+        case .listTagsForResource:
+            return "/"
         case .putDashboard:
             return "/"
         case .putMetricAlarm:
@@ -78,6 +83,10 @@ public enum CloudWatchModelOperations: String {
         case .putMetricData:
             return "/"
         case .setAlarmState:
+            return "/"
+        case .tagResource:
+            return "/"
+        case .untagResource:
             return "/"
         }
     }

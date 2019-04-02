@@ -7564,14 +7564,14 @@ public struct DescribeFpgaImagesResult: Codable, Equatable {
 public struct DescribeHostReservationOfferingsRequest: Codable, Equatable {
     public var filter: FilterList?
     public var maxDuration: Integer?
-    public var maxResults: Integer?
+    public var maxResults: DescribeHostReservationsMaxResults?
     public var minDuration: Integer?
     public var nextToken: String?
     public var offeringId: String?
 
     public init(filter: FilterList? = nil,
                 maxDuration: Integer? = nil,
-                maxResults: Integer? = nil,
+                maxResults: DescribeHostReservationsMaxResults? = nil,
                 minDuration: Integer? = nil,
                 nextToken: String? = nil,
                 offeringId: String? = nil) {
@@ -7593,6 +7593,7 @@ public struct DescribeHostReservationOfferingsRequest: Codable, Equatable {
     }
 
     public func validate() throws {
+        try maxResults?.validateAsDescribeHostReservationsMaxResults()
     }
 }
 
@@ -8016,13 +8017,13 @@ public struct DescribeInstanceCreditSpecificationsRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var filters: FilterList?
     public var instanceIds: InstanceIdStringList?
-    public var maxResults: Integer?
+    public var maxResults: DescribeInstanceCreditSpecificationsMaxResults?
     public var nextToken: String?
 
     public init(dryRun: Boolean? = nil,
                 filters: FilterList? = nil,
                 instanceIds: InstanceIdStringList? = nil,
-                maxResults: Integer? = nil,
+                maxResults: DescribeInstanceCreditSpecificationsMaxResults? = nil,
                 nextToken: String? = nil) {
         self.dryRun = dryRun
         self.filters = filters
@@ -8040,6 +8041,7 @@ public struct DescribeInstanceCreditSpecificationsRequest: Codable, Equatable {
     }
 
     public func validate() throws {
+        try maxResults?.validateAsDescribeInstanceCreditSpecificationsMaxResults()
     }
 }
 
@@ -8170,34 +8172,47 @@ public struct DescribeInternetGatewaysRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var filters: FilterList?
     public var internetGatewayIds: ValueStringList?
+    public var maxResults: DescribeInternetGatewaysMaxResults?
+    public var nextToken: String?
 
     public init(dryRun: Boolean? = nil,
                 filters: FilterList? = nil,
-                internetGatewayIds: ValueStringList? = nil) {
+                internetGatewayIds: ValueStringList? = nil,
+                maxResults: DescribeInternetGatewaysMaxResults? = nil,
+                nextToken: String? = nil) {
         self.dryRun = dryRun
         self.filters = filters
         self.internetGatewayIds = internetGatewayIds
+        self.maxResults = maxResults
+        self.nextToken = nextToken
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case filters = "Filter"
         case internetGatewayIds = "internetGatewayId"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
     }
 
     public func validate() throws {
+        try maxResults?.validateAsDescribeInternetGatewaysMaxResults()
     }
 }
 
 public struct DescribeInternetGatewaysResult: Codable, Equatable {
     public var internetGateways: InternetGatewayList?
+    public var nextToken: String?
 
-    public init(internetGateways: InternetGatewayList? = nil) {
+    public init(internetGateways: InternetGatewayList? = nil,
+                nextToken: String? = nil) {
         self.internetGateways = internetGateways
+        self.nextToken = nextToken
     }
 
     enum CodingKeys: String, CodingKey {
         case internetGateways = "internetGatewaySet"
+        case nextToken
     }
 
     public func validate() throws {
@@ -8462,35 +8477,48 @@ public struct DescribeNatGatewaysResult: Codable, Equatable {
 public struct DescribeNetworkAclsRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var filters: FilterList?
+    public var maxResults: DescribeNetworkAclsMaxResults?
     public var networkAclIds: ValueStringList?
+    public var nextToken: String?
 
     public init(dryRun: Boolean? = nil,
                 filters: FilterList? = nil,
-                networkAclIds: ValueStringList? = nil) {
+                maxResults: DescribeNetworkAclsMaxResults? = nil,
+                networkAclIds: ValueStringList? = nil,
+                nextToken: String? = nil) {
         self.dryRun = dryRun
         self.filters = filters
+        self.maxResults = maxResults
         self.networkAclIds = networkAclIds
+        self.nextToken = nextToken
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case filters = "Filter"
+        case maxResults = "MaxResults"
         case networkAclIds = "NetworkAclId"
+        case nextToken = "NextToken"
     }
 
     public func validate() throws {
+        try maxResults?.validateAsDescribeNetworkAclsMaxResults()
     }
 }
 
 public struct DescribeNetworkAclsResult: Codable, Equatable {
     public var networkAcls: NetworkAclList?
+    public var nextToken: String?
 
-    public init(networkAcls: NetworkAclList? = nil) {
+    public init(networkAcls: NetworkAclList? = nil,
+                nextToken: String? = nil) {
         self.networkAcls = networkAcls
+        self.nextToken = nextToken
     }
 
     enum CodingKeys: String, CodingKey {
         case networkAcls = "networkAclSet"
+        case nextToken
     }
 
     public func validate() throws {
@@ -10770,34 +10798,47 @@ public struct DescribeVpcPeeringConnectionsResult: Codable, Equatable {
 public struct DescribeVpcsRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var filters: FilterList?
+    public var maxResults: DescribeVpcsMaxResults?
+    public var nextToken: String?
     public var vpcIds: VpcIdStringList?
 
     public init(dryRun: Boolean? = nil,
                 filters: FilterList? = nil,
+                maxResults: DescribeVpcsMaxResults? = nil,
+                nextToken: String? = nil,
                 vpcIds: VpcIdStringList? = nil) {
         self.dryRun = dryRun
         self.filters = filters
+        self.maxResults = maxResults
+        self.nextToken = nextToken
         self.vpcIds = vpcIds
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case filters = "Filter"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
         case vpcIds = "VpcId"
     }
 
     public func validate() throws {
+        try maxResults?.validateAsDescribeVpcsMaxResults()
     }
 }
 
 public struct DescribeVpcsResult: Codable, Equatable {
+    public var nextToken: String?
     public var vpcs: VpcList?
 
-    public init(vpcs: VpcList? = nil) {
+    public init(nextToken: String? = nil,
+                vpcs: VpcList? = nil) {
+        self.nextToken = nextToken
         self.vpcs = vpcs
     }
 
     enum CodingKeys: String, CodingKey {
+        case nextToken
         case vpcs = "vpcSet"
     }
 
@@ -12542,6 +12583,7 @@ public struct FlowLog: Codable, Equatable {
 
 public struct FpgaImage: Codable, Equatable {
     public var createTime: DateTime?
+    public var dataRetentionSupport: Boolean?
     public var description: String?
     public var fpgaImageGlobalId: String?
     public var fpgaImageId: String?
@@ -12557,6 +12599,7 @@ public struct FpgaImage: Codable, Equatable {
     public var updateTime: DateTime?
 
     public init(createTime: DateTime? = nil,
+                dataRetentionSupport: Boolean? = nil,
                 description: String? = nil,
                 fpgaImageGlobalId: String? = nil,
                 fpgaImageId: String? = nil,
@@ -12571,6 +12614,7 @@ public struct FpgaImage: Codable, Equatable {
                 tags: TagList? = nil,
                 updateTime: DateTime? = nil) {
         self.createTime = createTime
+        self.dataRetentionSupport = dataRetentionSupport
         self.description = description
         self.fpgaImageGlobalId = fpgaImageGlobalId
         self.fpgaImageId = fpgaImageId
@@ -12588,6 +12632,7 @@ public struct FpgaImage: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case createTime
+        case dataRetentionSupport
         case description
         case fpgaImageGlobalId
         case fpgaImageId
@@ -13351,6 +13396,7 @@ public struct HostReservation: Codable, Equatable {
     public var paymentOption: PaymentOption?
     public var start: DateTime?
     public var state: ReservationState?
+    public var tags: TagList?
     public var upfrontPrice: String?
 
     public init(count: Integer? = nil,
@@ -13365,6 +13411,7 @@ public struct HostReservation: Codable, Equatable {
                 paymentOption: PaymentOption? = nil,
                 start: DateTime? = nil,
                 state: ReservationState? = nil,
+                tags: TagList? = nil,
                 upfrontPrice: String? = nil) {
         self.count = count
         self.currencyCode = currencyCode
@@ -13378,6 +13425,7 @@ public struct HostReservation: Codable, Equatable {
         self.paymentOption = paymentOption
         self.start = start
         self.state = state
+        self.tags = tags
         self.upfrontPrice = upfrontPrice
     }
 
@@ -13394,6 +13442,7 @@ public struct HostReservation: Codable, Equatable {
         case paymentOption
         case start
         case state
+        case tags = "tagSet"
         case upfrontPrice
     }
 
@@ -15138,24 +15187,32 @@ public struct InstanceStatusDetails: Codable, Equatable {
 public struct InstanceStatusEvent: Codable, Equatable {
     public var code: EventCode?
     public var description: String?
+    public var instanceEventId: InstanceEventId?
     public var notAfter: DateTime?
     public var notBefore: DateTime?
+    public var notBeforeDeadline: DateTime?
 
     public init(code: EventCode? = nil,
                 description: String? = nil,
+                instanceEventId: InstanceEventId? = nil,
                 notAfter: DateTime? = nil,
-                notBefore: DateTime? = nil) {
+                notBefore: DateTime? = nil,
+                notBeforeDeadline: DateTime? = nil) {
         self.code = code
         self.description = description
+        self.instanceEventId = instanceEventId
         self.notAfter = notAfter
         self.notBefore = notBefore
+        self.notBeforeDeadline = notBeforeDeadline
     }
 
     enum CodingKeys: String, CodingKey {
         case code
         case description
+        case instanceEventId
         case notAfter
         case notBefore
+        case notBeforeDeadline
     }
 
     public func validate() throws {
@@ -16969,6 +17026,49 @@ public struct ModifyInstanceCreditSpecificationResult: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ModifyInstanceEventStartTimeRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var instanceEventId: String
+    public var instanceId: String
+    public var notBefore: DateTime
+
+    public init(dryRun: Boolean? = nil,
+                instanceEventId: String,
+                instanceId: String,
+                notBefore: DateTime) {
+        self.dryRun = dryRun
+        self.instanceEventId = instanceEventId
+        self.instanceId = instanceId
+        self.notBefore = notBefore
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case instanceEventId = "InstanceEventId"
+        case instanceId = "InstanceId"
+        case notBefore = "NotBefore"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ModifyInstanceEventStartTimeResult: Codable, Equatable {
+    public var event: InstanceStatusEvent?
+
+    public init(event: InstanceStatusEvent? = nil) {
+        self.event = event
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case event
+    }
+
+    public func validate() throws {
+        try event?.validate()
     }
 }
 

@@ -32,6 +32,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let createClusterSyncOverride: ElasticContainerClientProtocol.CreateClusterSyncType?
     let createServiceAsyncOverride: ElasticContainerClientProtocol.CreateServiceAsyncType?
     let createServiceSyncOverride: ElasticContainerClientProtocol.CreateServiceSyncType?
+    let createTaskSetAsyncOverride: ElasticContainerClientProtocol.CreateTaskSetAsyncType?
+    let createTaskSetSyncOverride: ElasticContainerClientProtocol.CreateTaskSetSyncType?
     let deleteAccountSettingAsyncOverride: ElasticContainerClientProtocol.DeleteAccountSettingAsyncType?
     let deleteAccountSettingSyncOverride: ElasticContainerClientProtocol.DeleteAccountSettingSyncType?
     let deleteAttributesAsyncOverride: ElasticContainerClientProtocol.DeleteAttributesAsyncType?
@@ -40,6 +42,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let deleteClusterSyncOverride: ElasticContainerClientProtocol.DeleteClusterSyncType?
     let deleteServiceAsyncOverride: ElasticContainerClientProtocol.DeleteServiceAsyncType?
     let deleteServiceSyncOverride: ElasticContainerClientProtocol.DeleteServiceSyncType?
+    let deleteTaskSetAsyncOverride: ElasticContainerClientProtocol.DeleteTaskSetAsyncType?
+    let deleteTaskSetSyncOverride: ElasticContainerClientProtocol.DeleteTaskSetSyncType?
     let deregisterContainerInstanceAsyncOverride: ElasticContainerClientProtocol.DeregisterContainerInstanceAsyncType?
     let deregisterContainerInstanceSyncOverride: ElasticContainerClientProtocol.DeregisterContainerInstanceSyncType?
     let deregisterTaskDefinitionAsyncOverride: ElasticContainerClientProtocol.DeregisterTaskDefinitionAsyncType?
@@ -52,6 +56,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let describeServicesSyncOverride: ElasticContainerClientProtocol.DescribeServicesSyncType?
     let describeTaskDefinitionAsyncOverride: ElasticContainerClientProtocol.DescribeTaskDefinitionAsyncType?
     let describeTaskDefinitionSyncOverride: ElasticContainerClientProtocol.DescribeTaskDefinitionSyncType?
+    let describeTaskSetsAsyncOverride: ElasticContainerClientProtocol.DescribeTaskSetsAsyncType?
+    let describeTaskSetsSyncOverride: ElasticContainerClientProtocol.DescribeTaskSetsSyncType?
     let describeTasksAsyncOverride: ElasticContainerClientProtocol.DescribeTasksAsyncType?
     let describeTasksSyncOverride: ElasticContainerClientProtocol.DescribeTasksSyncType?
     let discoverPollEndpointAsyncOverride: ElasticContainerClientProtocol.DiscoverPollEndpointAsyncType?
@@ -104,6 +110,10 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let updateContainerInstancesStateSyncOverride: ElasticContainerClientProtocol.UpdateContainerInstancesStateSyncType?
     let updateServiceAsyncOverride: ElasticContainerClientProtocol.UpdateServiceAsyncType?
     let updateServiceSyncOverride: ElasticContainerClientProtocol.UpdateServiceSyncType?
+    let updateServicePrimaryTaskSetAsyncOverride: ElasticContainerClientProtocol.UpdateServicePrimaryTaskSetAsyncType?
+    let updateServicePrimaryTaskSetSyncOverride: ElasticContainerClientProtocol.UpdateServicePrimaryTaskSetSyncType?
+    let updateTaskSetAsyncOverride: ElasticContainerClientProtocol.UpdateTaskSetAsyncType?
+    let updateTaskSetSyncOverride: ElasticContainerClientProtocol.UpdateTaskSetSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
@@ -114,6 +124,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             createClusterSync: ElasticContainerClientProtocol.CreateClusterSyncType? = nil,
             createServiceAsync: ElasticContainerClientProtocol.CreateServiceAsyncType? = nil,
             createServiceSync: ElasticContainerClientProtocol.CreateServiceSyncType? = nil,
+            createTaskSetAsync: ElasticContainerClientProtocol.CreateTaskSetAsyncType? = nil,
+            createTaskSetSync: ElasticContainerClientProtocol.CreateTaskSetSyncType? = nil,
             deleteAccountSettingAsync: ElasticContainerClientProtocol.DeleteAccountSettingAsyncType? = nil,
             deleteAccountSettingSync: ElasticContainerClientProtocol.DeleteAccountSettingSyncType? = nil,
             deleteAttributesAsync: ElasticContainerClientProtocol.DeleteAttributesAsyncType? = nil,
@@ -122,6 +134,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             deleteClusterSync: ElasticContainerClientProtocol.DeleteClusterSyncType? = nil,
             deleteServiceAsync: ElasticContainerClientProtocol.DeleteServiceAsyncType? = nil,
             deleteServiceSync: ElasticContainerClientProtocol.DeleteServiceSyncType? = nil,
+            deleteTaskSetAsync: ElasticContainerClientProtocol.DeleteTaskSetAsyncType? = nil,
+            deleteTaskSetSync: ElasticContainerClientProtocol.DeleteTaskSetSyncType? = nil,
             deregisterContainerInstanceAsync: ElasticContainerClientProtocol.DeregisterContainerInstanceAsyncType? = nil,
             deregisterContainerInstanceSync: ElasticContainerClientProtocol.DeregisterContainerInstanceSyncType? = nil,
             deregisterTaskDefinitionAsync: ElasticContainerClientProtocol.DeregisterTaskDefinitionAsyncType? = nil,
@@ -134,6 +148,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             describeServicesSync: ElasticContainerClientProtocol.DescribeServicesSyncType? = nil,
             describeTaskDefinitionAsync: ElasticContainerClientProtocol.DescribeTaskDefinitionAsyncType? = nil,
             describeTaskDefinitionSync: ElasticContainerClientProtocol.DescribeTaskDefinitionSyncType? = nil,
+            describeTaskSetsAsync: ElasticContainerClientProtocol.DescribeTaskSetsAsyncType? = nil,
+            describeTaskSetsSync: ElasticContainerClientProtocol.DescribeTaskSetsSyncType? = nil,
             describeTasksAsync: ElasticContainerClientProtocol.DescribeTasksAsyncType? = nil,
             describeTasksSync: ElasticContainerClientProtocol.DescribeTasksSyncType? = nil,
             discoverPollEndpointAsync: ElasticContainerClientProtocol.DiscoverPollEndpointAsyncType? = nil,
@@ -185,12 +201,18 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             updateContainerInstancesStateAsync: ElasticContainerClientProtocol.UpdateContainerInstancesStateAsyncType? = nil,
             updateContainerInstancesStateSync: ElasticContainerClientProtocol.UpdateContainerInstancesStateSyncType? = nil,
             updateServiceAsync: ElasticContainerClientProtocol.UpdateServiceAsyncType? = nil,
-            updateServiceSync: ElasticContainerClientProtocol.UpdateServiceSyncType? = nil) {
+            updateServiceSync: ElasticContainerClientProtocol.UpdateServiceSyncType? = nil,
+            updateServicePrimaryTaskSetAsync: ElasticContainerClientProtocol.UpdateServicePrimaryTaskSetAsyncType? = nil,
+            updateServicePrimaryTaskSetSync: ElasticContainerClientProtocol.UpdateServicePrimaryTaskSetSyncType? = nil,
+            updateTaskSetAsync: ElasticContainerClientProtocol.UpdateTaskSetAsyncType? = nil,
+            updateTaskSetSync: ElasticContainerClientProtocol.UpdateTaskSetSyncType? = nil) {
         self.error = error
         self.createClusterAsyncOverride = createClusterAsync
         self.createClusterSyncOverride = createClusterSync
         self.createServiceAsyncOverride = createServiceAsync
         self.createServiceSyncOverride = createServiceSync
+        self.createTaskSetAsyncOverride = createTaskSetAsync
+        self.createTaskSetSyncOverride = createTaskSetSync
         self.deleteAccountSettingAsyncOverride = deleteAccountSettingAsync
         self.deleteAccountSettingSyncOverride = deleteAccountSettingSync
         self.deleteAttributesAsyncOverride = deleteAttributesAsync
@@ -199,6 +221,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.deleteClusterSyncOverride = deleteClusterSync
         self.deleteServiceAsyncOverride = deleteServiceAsync
         self.deleteServiceSyncOverride = deleteServiceSync
+        self.deleteTaskSetAsyncOverride = deleteTaskSetAsync
+        self.deleteTaskSetSyncOverride = deleteTaskSetSync
         self.deregisterContainerInstanceAsyncOverride = deregisterContainerInstanceAsync
         self.deregisterContainerInstanceSyncOverride = deregisterContainerInstanceSync
         self.deregisterTaskDefinitionAsyncOverride = deregisterTaskDefinitionAsync
@@ -211,6 +235,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.describeServicesSyncOverride = describeServicesSync
         self.describeTaskDefinitionAsyncOverride = describeTaskDefinitionAsync
         self.describeTaskDefinitionSyncOverride = describeTaskDefinitionSync
+        self.describeTaskSetsAsyncOverride = describeTaskSetsAsync
+        self.describeTaskSetsSyncOverride = describeTaskSetsSync
         self.describeTasksAsyncOverride = describeTasksAsync
         self.describeTasksSyncOverride = describeTasksSync
         self.discoverPollEndpointAsyncOverride = discoverPollEndpointAsync
@@ -263,6 +289,10 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.updateContainerInstancesStateSyncOverride = updateContainerInstancesStateSync
         self.updateServiceAsyncOverride = updateServiceAsync
         self.updateServiceSyncOverride = updateServiceSync
+        self.updateServicePrimaryTaskSetAsyncOverride = updateServicePrimaryTaskSetAsync
+        self.updateServicePrimaryTaskSetSyncOverride = updateServicePrimaryTaskSetSync
+        self.updateTaskSetAsyncOverride = updateTaskSetAsync
+        self.updateTaskSetSyncOverride = updateTaskSetSync
     }
 
     /**
@@ -330,6 +360,41 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     public func createServiceSync(input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse {
         if let createServiceSyncOverride = createServiceSyncOverride {
             return try createServiceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTaskSetRequest object being passed to this operation.
+         - completion: The CreateTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The CreateTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func createTaskSetAsync(input: ElasticContainerModel.CreateTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.CreateTaskSetResponse>) -> ()) throws {
+        if let createTaskSetAsyncOverride = createTaskSetAsyncOverride {
+            return try createTaskSetAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTaskSetRequest object being passed to this operation.
+     - Returns: The CreateTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func createTaskSetSync(input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse {
+        if let createTaskSetSyncOverride = createTaskSetSyncOverride {
+            return try createTaskSetSyncOverride(input)
         }
 
         throw error
@@ -470,6 +535,41 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     public func deleteServiceSync(input: ElasticContainerModel.DeleteServiceRequest) throws -> ElasticContainerModel.DeleteServiceResponse {
         if let deleteServiceSyncOverride = deleteServiceSyncOverride {
             return try deleteServiceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTaskSetRequest object being passed to this operation.
+         - completion: The DeleteTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func deleteTaskSetAsync(input: ElasticContainerModel.DeleteTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteTaskSetResponse>) -> ()) throws {
+        if let deleteTaskSetAsyncOverride = deleteTaskSetAsyncOverride {
+            return try deleteTaskSetAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskSetRequest object being passed to this operation.
+     - Returns: The DeleteTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func deleteTaskSetSync(input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse {
+        if let deleteTaskSetSyncOverride = deleteTaskSetSyncOverride {
+            return try deleteTaskSetSyncOverride(input)
         }
 
         throw error
@@ -680,6 +780,41 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     public func describeTaskDefinitionSync(input: ElasticContainerModel.DescribeTaskDefinitionRequest) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
         if let describeTaskDefinitionSyncOverride = describeTaskDefinitionSyncOverride {
             return try describeTaskDefinitionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeTaskSets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTaskSetsRequest object being passed to this operation.
+         - completion: The DescribeTaskSetsResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTaskSetsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func describeTaskSetsAsync(input: ElasticContainerModel.DescribeTaskSetsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTaskSetsResponse>) -> ()) throws {
+        if let describeTaskSetsAsyncOverride = describeTaskSetsAsyncOverride {
+            return try describeTaskSetsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeTaskSets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTaskSetsRequest object being passed to this operation.
+     - Returns: The DescribeTaskSetsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func describeTaskSetsSync(input: ElasticContainerModel.DescribeTaskSetsRequest) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
+        if let describeTaskSetsSyncOverride = describeTaskSetsSyncOverride {
+            return try describeTaskSetsSyncOverride(input)
         }
 
         throw error
@@ -1590,6 +1725,76 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     public func updateServiceSync(input: ElasticContainerModel.UpdateServiceRequest) throws -> ElasticContainerModel.UpdateServiceResponse {
         if let updateServiceSyncOverride = updateServiceSyncOverride {
             return try updateServiceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UpdateServicePrimaryTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
+         - completion: The UpdateServicePrimaryTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateServicePrimaryTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateServicePrimaryTaskSetAsync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse>) -> ()) throws {
+        if let updateServicePrimaryTaskSetAsyncOverride = updateServicePrimaryTaskSetAsyncOverride {
+            return try updateServicePrimaryTaskSetAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the UpdateServicePrimaryTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
+     - Returns: The UpdateServicePrimaryTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateServicePrimaryTaskSetSync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
+        if let updateServicePrimaryTaskSetSyncOverride = updateServicePrimaryTaskSetSyncOverride {
+            return try updateServicePrimaryTaskSetSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UpdateTaskSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateTaskSetRequest object being passed to this operation.
+         - completion: The UpdateTaskSetResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateTaskSetResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateTaskSetAsync(input: ElasticContainerModel.UpdateTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateTaskSetResponse>) -> ()) throws {
+        if let updateTaskSetAsyncOverride = updateTaskSetAsyncOverride {
+            return try updateTaskSetAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the UpdateTaskSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateTaskSetRequest object being passed to this operation.
+     - Returns: The UpdateTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateTaskSetSync(input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse {
+        if let updateTaskSetSyncOverride = updateTaskSetSyncOverride {
+            return try updateTaskSetSyncOverride(input)
         }
 
         throw error

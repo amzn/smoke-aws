@@ -2923,6 +2923,19 @@ extension ModifyInstanceCreditSpecificationResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyInstanceEventStartTime operation in a HTTP client.
+ */
+extension ModifyInstanceEventStartTimeResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyInstanceEventStartTimeResult
+    public typealias HeadersType = ModifyInstanceEventStartTimeResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyInstanceEventStartTimeResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyInstancePlacement operation in a HTTP client.
  */
 extension ModifyInstancePlacementResult: HTTPResponseOutputProtocol {

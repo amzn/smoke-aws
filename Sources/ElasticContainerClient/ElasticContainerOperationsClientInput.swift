@@ -34,6 +34,11 @@ public typealias CreateClusterOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias CreateServiceOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateTaskSet operation in a HTTP client.
+ */
+public typealias CreateTaskSetOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteAccountSetting operation in a HTTP client.
  */
 public typealias DeleteAccountSettingOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -52,6 +57,11 @@ public typealias DeleteClusterOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the DeleteService operation in a HTTP client.
  */
 public typealias DeleteServiceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTaskSet operation in a HTTP client.
+ */
+public typealias DeleteTaskSetOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the DeregisterContainerInstance operation in a HTTP client.
@@ -82,6 +92,11 @@ public typealias DescribeServicesOperationHTTPRequestInput = BodyHTTPRequestInpu
  Type to handle the input to the DescribeTaskDefinition operation in a HTTP client.
  */
 public typealias DescribeTaskDefinitionOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeTaskSets operation in a HTTP client.
+ */
+public typealias DescribeTaskSetsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeTasks operation in a HTTP client.
@@ -212,3 +227,13 @@ public typealias UpdateContainerInstancesStateOperationHTTPRequestInput = BodyHT
  Type to handle the input to the UpdateService operation in a HTTP client.
  */
 public typealias UpdateServiceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UpdateServicePrimaryTaskSet operation in a HTTP client.
+ */
+public typealias UpdateServicePrimaryTaskSetOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UpdateTaskSet operation in a HTTP client.
+ */
+public typealias UpdateTaskSetOperationHTTPRequestInput = BodyHTTPRequestInput

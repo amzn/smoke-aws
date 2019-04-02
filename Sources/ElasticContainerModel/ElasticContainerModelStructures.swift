@@ -309,6 +309,7 @@ public struct Container: Codable, Equatable {
 public struct ContainerDefinition: Codable, Equatable {
     public var command: StringList?
     public var cpu: Integer?
+    public var dependsOn: ContainerDependencies?
     public var disableNetworking: BoxedBoolean?
     public var dnsSearchDomains: StringList?
     public var dnsServers: StringList?
@@ -336,6 +337,8 @@ public struct ContainerDefinition: Codable, Equatable {
     public var repositoryCredentials: RepositoryCredentials?
     public var resourceRequirements: ResourceRequirements?
     public var secrets: SecretList?
+    public var startTimeout: BoxedInteger?
+    public var stopTimeout: BoxedInteger?
     public var systemControls: SystemControls?
     public var ulimits: UlimitList?
     public var user: String?
@@ -344,6 +347,7 @@ public struct ContainerDefinition: Codable, Equatable {
 
     public init(command: StringList? = nil,
                 cpu: Integer? = nil,
+                dependsOn: ContainerDependencies? = nil,
                 disableNetworking: BoxedBoolean? = nil,
                 dnsSearchDomains: StringList? = nil,
                 dnsServers: StringList? = nil,
@@ -371,6 +375,8 @@ public struct ContainerDefinition: Codable, Equatable {
                 repositoryCredentials: RepositoryCredentials? = nil,
                 resourceRequirements: ResourceRequirements? = nil,
                 secrets: SecretList? = nil,
+                startTimeout: BoxedInteger? = nil,
+                stopTimeout: BoxedInteger? = nil,
                 systemControls: SystemControls? = nil,
                 ulimits: UlimitList? = nil,
                 user: String? = nil,
@@ -378,6 +384,7 @@ public struct ContainerDefinition: Codable, Equatable {
                 workingDirectory: String? = nil) {
         self.command = command
         self.cpu = cpu
+        self.dependsOn = dependsOn
         self.disableNetworking = disableNetworking
         self.dnsSearchDomains = dnsSearchDomains
         self.dnsServers = dnsServers
@@ -405,6 +412,8 @@ public struct ContainerDefinition: Codable, Equatable {
         self.repositoryCredentials = repositoryCredentials
         self.resourceRequirements = resourceRequirements
         self.secrets = secrets
+        self.startTimeout = startTimeout
+        self.stopTimeout = stopTimeout
         self.systemControls = systemControls
         self.ulimits = ulimits
         self.user = user
@@ -415,6 +424,7 @@ public struct ContainerDefinition: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case command
         case cpu
+        case dependsOn
         case disableNetworking
         case dnsSearchDomains
         case dnsServers
@@ -442,6 +452,8 @@ public struct ContainerDefinition: Codable, Equatable {
         case repositoryCredentials
         case resourceRequirements
         case secrets
+        case startTimeout
+        case stopTimeout
         case systemControls
         case ulimits
         case user
@@ -454,6 +466,25 @@ public struct ContainerDefinition: Codable, Equatable {
         try linuxParameters?.validate()
         try logConfiguration?.validate()
         try repositoryCredentials?.validate()
+    }
+}
+
+public struct ContainerDependency: Codable, Equatable {
+    public var condition: ContainerCondition
+    public var containerName: String
+
+    public init(condition: ContainerCondition,
+                containerName: String) {
+        self.condition = condition
+        self.containerName = containerName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case condition
+        case containerName
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -656,7 +687,7 @@ public struct CreateServiceRequest: Codable, Equatable {
     public var serviceName: String
     public var serviceRegistries: ServiceRegistries?
     public var tags: Tags?
-    public var taskDefinition: String
+    public var taskDefinition: String?
 
     public init(clientToken: String? = nil,
                 cluster: String? = nil,
@@ -677,7 +708,7 @@ public struct CreateServiceRequest: Codable, Equatable {
                 serviceName: String,
                 serviceRegistries: ServiceRegistries? = nil,
                 tags: Tags? = nil,
-                taskDefinition: String) {
+                taskDefinition: String? = nil) {
         self.clientToken = clientToken
         self.cluster = cluster
         self.deploymentConfiguration = deploymentConfiguration
@@ -744,6 +775,79 @@ public struct CreateServiceResponse: Codable, Equatable {
 
     public func validate() throws {
         try service?.validate()
+    }
+}
+
+public struct CreateTaskSetRequest: Codable, Equatable {
+    public var clientToken: String?
+    public var cluster: String
+    public var externalId: String?
+    public var launchType: LaunchType?
+    public var loadBalancers: LoadBalancers?
+    public var networkConfiguration: NetworkConfiguration?
+    public var platformVersion: String?
+    public var scale: Scale?
+    public var service: String
+    public var serviceRegistries: ServiceRegistries?
+    public var taskDefinition: String
+
+    public init(clientToken: String? = nil,
+                cluster: String,
+                externalId: String? = nil,
+                launchType: LaunchType? = nil,
+                loadBalancers: LoadBalancers? = nil,
+                networkConfiguration: NetworkConfiguration? = nil,
+                platformVersion: String? = nil,
+                scale: Scale? = nil,
+                service: String,
+                serviceRegistries: ServiceRegistries? = nil,
+                taskDefinition: String) {
+        self.clientToken = clientToken
+        self.cluster = cluster
+        self.externalId = externalId
+        self.launchType = launchType
+        self.loadBalancers = loadBalancers
+        self.networkConfiguration = networkConfiguration
+        self.platformVersion = platformVersion
+        self.scale = scale
+        self.service = service
+        self.serviceRegistries = serviceRegistries
+        self.taskDefinition = taskDefinition
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken
+        case cluster
+        case externalId
+        case launchType
+        case loadBalancers
+        case networkConfiguration
+        case platformVersion
+        case scale
+        case service
+        case serviceRegistries
+        case taskDefinition
+    }
+
+    public func validate() throws {
+        try networkConfiguration?.validate()
+        try scale?.validate()
+    }
+}
+
+public struct CreateTaskSetResponse: Codable, Equatable {
+    public var taskSet: TaskSet?
+
+    public init(taskSet: TaskSet? = nil) {
+        self.taskSet = taskSet
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case taskSet
+    }
+
+    public func validate() throws {
+        try taskSet?.validate()
     }
 }
 
@@ -883,6 +987,49 @@ public struct DeleteServiceResponse: Codable, Equatable {
 
     public func validate() throws {
         try service?.validate()
+    }
+}
+
+public struct DeleteTaskSetRequest: Codable, Equatable {
+    public var cluster: String
+    public var force: BoxedBoolean?
+    public var service: String
+    public var taskSet: String
+
+    public init(cluster: String,
+                force: BoxedBoolean? = nil,
+                service: String,
+                taskSet: String) {
+        self.cluster = cluster
+        self.force = force
+        self.service = service
+        self.taskSet = taskSet
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+        case force
+        case service
+        case taskSet
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteTaskSetResponse: Codable, Equatable {
+    public var taskSet: TaskSet?
+
+    public init(taskSet: TaskSet? = nil) {
+        self.taskSet = taskSet
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case taskSet
+    }
+
+    public func validate() throws {
+        try taskSet?.validate()
     }
 }
 
@@ -1205,6 +1352,48 @@ public struct DescribeTaskDefinitionResponse: Codable, Equatable {
     public func validate() throws {
         try tags?.validateAsTags()
         try taskDefinition?.validate()
+    }
+}
+
+public struct DescribeTaskSetsRequest: Codable, Equatable {
+    public var cluster: String
+    public var service: String
+    public var taskSets: StringList?
+
+    public init(cluster: String,
+                service: String,
+                taskSets: StringList? = nil) {
+        self.cluster = cluster
+        self.service = service
+        self.taskSets = taskSets
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+        case service
+        case taskSets
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeTaskSetsResponse: Codable, Equatable {
+    public var failures: Failures?
+    public var taskSets: TaskSets?
+
+    public init(failures: Failures? = nil,
+                taskSets: TaskSets? = nil) {
+        self.failures = failures
+        self.taskSets = taskSets
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failures
+        case taskSets
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -2195,6 +2384,29 @@ public struct PortMapping: Codable, Equatable {
     }
 }
 
+public struct ProxyConfiguration: Codable, Equatable {
+    public var containerName: String
+    public var properties: ProxyConfigurationProperties?
+    public var type: ProxyConfigurationType?
+
+    public init(containerName: String,
+                properties: ProxyConfigurationProperties? = nil,
+                type: ProxyConfigurationType? = nil) {
+        self.containerName = containerName
+        self.properties = properties
+        self.type = type
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case containerName
+        case properties
+        case type
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct PutAccountSettingDefaultRequest: Codable, Equatable {
     public var name: SettingName
     public var value: String
@@ -2378,6 +2590,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     public var networkMode: NetworkMode?
     public var pidMode: PidMode?
     public var placementConstraints: TaskDefinitionPlacementConstraints?
+    public var proxyConfiguration: ProxyConfiguration?
     public var requiresCompatibilities: CompatibilityList?
     public var tags: Tags?
     public var taskRoleArn: String?
@@ -2392,6 +2605,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
                 networkMode: NetworkMode? = nil,
                 pidMode: PidMode? = nil,
                 placementConstraints: TaskDefinitionPlacementConstraints? = nil,
+                proxyConfiguration: ProxyConfiguration? = nil,
                 requiresCompatibilities: CompatibilityList? = nil,
                 tags: Tags? = nil,
                 taskRoleArn: String? = nil,
@@ -2405,6 +2619,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
         self.networkMode = networkMode
         self.pidMode = pidMode
         self.placementConstraints = placementConstraints
+        self.proxyConfiguration = proxyConfiguration
         self.requiresCompatibilities = requiresCompatibilities
         self.tags = tags
         self.taskRoleArn = taskRoleArn
@@ -2421,6 +2636,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
         case networkMode
         case pidMode
         case placementConstraints
+        case proxyConfiguration
         case requiresCompatibilities
         case tags
         case taskRoleArn
@@ -2428,6 +2644,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     }
 
     public func validate() throws {
+        try proxyConfiguration?.validate()
         try tags?.validateAsTags()
     }
 }
@@ -3337,6 +3554,7 @@ public struct TaskDefinition: Codable, Equatable {
     public var networkMode: NetworkMode?
     public var pidMode: PidMode?
     public var placementConstraints: TaskDefinitionPlacementConstraints?
+    public var proxyConfiguration: ProxyConfiguration?
     public var requiresAttributes: RequiresAttributes?
     public var requiresCompatibilities: CompatibilityList?
     public var revision: Integer?
@@ -3355,6 +3573,7 @@ public struct TaskDefinition: Codable, Equatable {
                 networkMode: NetworkMode? = nil,
                 pidMode: PidMode? = nil,
                 placementConstraints: TaskDefinitionPlacementConstraints? = nil,
+                proxyConfiguration: ProxyConfiguration? = nil,
                 requiresAttributes: RequiresAttributes? = nil,
                 requiresCompatibilities: CompatibilityList? = nil,
                 revision: Integer? = nil,
@@ -3372,6 +3591,7 @@ public struct TaskDefinition: Codable, Equatable {
         self.networkMode = networkMode
         self.pidMode = pidMode
         self.placementConstraints = placementConstraints
+        self.proxyConfiguration = proxyConfiguration
         self.requiresAttributes = requiresAttributes
         self.requiresCompatibilities = requiresCompatibilities
         self.revision = revision
@@ -3392,6 +3612,7 @@ public struct TaskDefinition: Codable, Equatable {
         case networkMode
         case pidMode
         case placementConstraints
+        case proxyConfiguration
         case requiresAttributes
         case requiresCompatibilities
         case revision
@@ -3402,6 +3623,7 @@ public struct TaskDefinition: Codable, Equatable {
     }
 
     public func validate() throws {
+        try proxyConfiguration?.validate()
     }
 }
 
@@ -3448,6 +3670,7 @@ public struct TaskOverride: Codable, Equatable {
 }
 
 public struct TaskSet: Codable, Equatable {
+    public var clusterArn: String?
     public var computedDesiredCount: Integer?
     public var createdAt: Timestamp?
     public var externalId: String?
@@ -3459,6 +3682,8 @@ public struct TaskSet: Codable, Equatable {
     public var platformVersion: String?
     public var runningCount: Integer?
     public var scale: Scale?
+    public var serviceArn: String?
+    public var serviceRegistries: ServiceRegistries?
     public var stabilityStatus: StabilityStatus?
     public var stabilityStatusAt: Timestamp?
     public var startedBy: String?
@@ -3467,7 +3692,8 @@ public struct TaskSet: Codable, Equatable {
     public var taskSetArn: String?
     public var updatedAt: Timestamp?
 
-    public init(computedDesiredCount: Integer? = nil,
+    public init(clusterArn: String? = nil,
+                computedDesiredCount: Integer? = nil,
                 createdAt: Timestamp? = nil,
                 externalId: String? = nil,
                 id: String? = nil,
@@ -3478,6 +3704,8 @@ public struct TaskSet: Codable, Equatable {
                 platformVersion: String? = nil,
                 runningCount: Integer? = nil,
                 scale: Scale? = nil,
+                serviceArn: String? = nil,
+                serviceRegistries: ServiceRegistries? = nil,
                 stabilityStatus: StabilityStatus? = nil,
                 stabilityStatusAt: Timestamp? = nil,
                 startedBy: String? = nil,
@@ -3485,6 +3713,7 @@ public struct TaskSet: Codable, Equatable {
                 taskDefinition: String? = nil,
                 taskSetArn: String? = nil,
                 updatedAt: Timestamp? = nil) {
+        self.clusterArn = clusterArn
         self.computedDesiredCount = computedDesiredCount
         self.createdAt = createdAt
         self.externalId = externalId
@@ -3496,6 +3725,8 @@ public struct TaskSet: Codable, Equatable {
         self.platformVersion = platformVersion
         self.runningCount = runningCount
         self.scale = scale
+        self.serviceArn = serviceArn
+        self.serviceRegistries = serviceRegistries
         self.stabilityStatus = stabilityStatus
         self.stabilityStatusAt = stabilityStatusAt
         self.startedBy = startedBy
@@ -3506,6 +3737,7 @@ public struct TaskSet: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case clusterArn
         case computedDesiredCount
         case createdAt
         case externalId
@@ -3517,6 +3749,8 @@ public struct TaskSet: Codable, Equatable {
         case platformVersion
         case runningCount
         case scale
+        case serviceArn
+        case serviceRegistries
         case stabilityStatus
         case stabilityStatusAt
         case startedBy
@@ -3529,6 +3763,15 @@ public struct TaskSet: Codable, Equatable {
     public func validate() throws {
         try networkConfiguration?.validate()
         try scale?.validate()
+    }
+}
+
+public struct TaskSetNotFoundException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -3701,6 +3944,45 @@ public struct UpdateInProgressException: Codable, Equatable {
     }
 }
 
+public struct UpdateServicePrimaryTaskSetRequest: Codable, Equatable {
+    public var cluster: String
+    public var primaryTaskSet: String
+    public var service: String
+
+    public init(cluster: String,
+                primaryTaskSet: String,
+                service: String) {
+        self.cluster = cluster
+        self.primaryTaskSet = primaryTaskSet
+        self.service = service
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+        case primaryTaskSet
+        case service
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct UpdateServicePrimaryTaskSetResponse: Codable, Equatable {
+    public var taskSet: TaskSet?
+
+    public init(taskSet: TaskSet? = nil) {
+        self.taskSet = taskSet
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case taskSet
+    }
+
+    public func validate() throws {
+        try taskSet?.validate()
+    }
+}
+
 public struct UpdateServiceRequest: Codable, Equatable {
     public var cluster: String?
     public var deploymentConfiguration: DeploymentConfiguration?
@@ -3763,6 +4045,50 @@ public struct UpdateServiceResponse: Codable, Equatable {
 
     public func validate() throws {
         try service?.validate()
+    }
+}
+
+public struct UpdateTaskSetRequest: Codable, Equatable {
+    public var cluster: String
+    public var scale: Scale
+    public var service: String
+    public var taskSet: String
+
+    public init(cluster: String,
+                scale: Scale,
+                service: String,
+                taskSet: String) {
+        self.cluster = cluster
+        self.scale = scale
+        self.service = service
+        self.taskSet = taskSet
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+        case scale
+        case service
+        case taskSet
+    }
+
+    public func validate() throws {
+        try scale.validate()
+    }
+}
+
+public struct UpdateTaskSetResponse: Codable, Equatable {
+    public var taskSet: TaskSet?
+
+    public init(taskSet: TaskSet? = nil) {
+        self.taskSet = taskSet
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case taskSet
+    }
+
+    public func validate() throws {
+        try taskSet?.validate()
     }
 }
 

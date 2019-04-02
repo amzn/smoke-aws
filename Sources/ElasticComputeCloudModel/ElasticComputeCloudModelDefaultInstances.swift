@@ -4947,7 +4947,9 @@ public extension DescribeInternetGatewaysRequest {
         let defaultInstance = ElasticComputeCloudModel.DescribeInternetGatewaysRequest(
             dryRun: nil,
             filters: nil,
-            internetGatewayIds: nil)
+            internetGatewayIds: nil,
+            maxResults: nil,
+            nextToken: nil)
 
         return defaultInstance
     }()
@@ -4959,7 +4961,8 @@ public extension DescribeInternetGatewaysResult {
      */
     public static let __default: ElasticComputeCloudModel.DescribeInternetGatewaysResult = {
         let defaultInstance = ElasticComputeCloudModel.DescribeInternetGatewaysResult(
-            internetGateways: nil)
+            internetGateways: nil,
+            nextToken: nil)
 
         return defaultInstance
     }()
@@ -5119,7 +5122,9 @@ public extension DescribeNetworkAclsRequest {
         let defaultInstance = ElasticComputeCloudModel.DescribeNetworkAclsRequest(
             dryRun: nil,
             filters: nil,
-            networkAclIds: nil)
+            maxResults: nil,
+            networkAclIds: nil,
+            nextToken: nil)
 
         return defaultInstance
     }()
@@ -5131,7 +5136,8 @@ public extension DescribeNetworkAclsResult {
      */
     public static let __default: ElasticComputeCloudModel.DescribeNetworkAclsResult = {
         let defaultInstance = ElasticComputeCloudModel.DescribeNetworkAclsResult(
-            networkAcls: nil)
+            networkAcls: nil,
+            nextToken: nil)
 
         return defaultInstance
     }()
@@ -6466,6 +6472,8 @@ public extension DescribeVpcsRequest {
         let defaultInstance = ElasticComputeCloudModel.DescribeVpcsRequest(
             dryRun: nil,
             filters: nil,
+            maxResults: nil,
+            nextToken: nil,
             vpcIds: nil)
 
         return defaultInstance
@@ -6478,6 +6486,7 @@ public extension DescribeVpcsResult {
      */
     public static let __default: ElasticComputeCloudModel.DescribeVpcsResult = {
         let defaultInstance = ElasticComputeCloudModel.DescribeVpcsResult(
+            nextToken: nil,
             vpcs: nil)
 
         return defaultInstance
@@ -7554,6 +7563,7 @@ public extension FpgaImage {
     public static let __default: ElasticComputeCloudModel.FpgaImage = {
         let defaultInstance = ElasticComputeCloudModel.FpgaImage(
             createTime: nil,
+            dataRetentionSupport: nil,
             description: nil,
             fpgaImageGlobalId: nil,
             fpgaImageId: nil,
@@ -8009,6 +8019,7 @@ public extension HostReservation {
             paymentOption: nil,
             start: nil,
             state: nil,
+            tags: nil,
             upfrontPrice: nil)
 
         return defaultInstance
@@ -8839,8 +8850,10 @@ public extension InstanceStatusEvent {
         let defaultInstance = ElasticComputeCloudModel.InstanceStatusEvent(
             code: nil,
             description: nil,
+            instanceEventId: nil,
             notAfter: nil,
-            notBefore: nil)
+            notBefore: nil,
+            notBeforeDeadline: nil)
 
         return defaultInstance
     }()
@@ -9862,6 +9875,33 @@ public extension ModifyInstanceCreditSpecificationResult {
         let defaultInstance = ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult(
             successfulInstanceCreditSpecifications: nil,
             unsuccessfulInstanceCreditSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyInstanceEventStartTimeRequest {
+    /**
+     Default instance of the ModifyInstanceEventStartTimeRequest structure.
+     */
+    public static let __default: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest(
+            dryRun: nil,
+            instanceEventId: "value",
+            instanceId: "value",
+            notBefore: "2013-02-18T17:00:00Z")
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyInstanceEventStartTimeResult {
+    /**
+     Default instance of the ModifyInstanceEventStartTimeResult structure.
+     */
+    public static let __default: ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult(
+            event: nil)
 
         return defaultInstance
     }()

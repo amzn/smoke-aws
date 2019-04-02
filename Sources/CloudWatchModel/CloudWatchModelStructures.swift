@@ -55,6 +55,15 @@ public struct AlarmHistoryItem: Codable, Equatable {
     }
 }
 
+public struct ConcurrentModificationException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DashboardEntry: Codable, Equatable {
     public var dashboardArn: DashboardArn?
     public var dashboardName: DashboardName?
@@ -268,7 +277,6 @@ public struct DescribeAlarmHistoryInput: Codable, Equatable {
     public func validate() throws {
         try alarmName?.validateAsAlarmName()
         try maxRecords?.validateAsMaxRecords()
-        try nextToken?.validateAsNextToken()
     }
 }
 
@@ -288,7 +296,6 @@ public struct DescribeAlarmHistoryOutput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try nextToken?.validateAsNextToken()
     }
 }
 
@@ -419,7 +426,6 @@ public struct DescribeAlarmsInput: Codable, Equatable {
         try alarmNamePrefix?.validateAsAlarmNamePrefix()
         try alarmNames?.validateAsAlarmNames()
         try maxRecords?.validateAsMaxRecords()
-        try nextToken?.validateAsNextToken()
     }
 }
 
@@ -439,7 +445,6 @@ public struct DescribeAlarmsOutput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try nextToken?.validateAsNextToken()
     }
 }
 
@@ -619,27 +624,29 @@ public struct GetMetricDataInput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try nextToken?.validateAsNextToken()
     }
 }
 
 public struct GetMetricDataOutput: Codable, Equatable {
+    public var messages: MetricDataResultMessages?
     public var metricDataResults: MetricDataResults?
     public var nextToken: NextToken?
 
-    public init(metricDataResults: MetricDataResults? = nil,
+    public init(messages: MetricDataResultMessages? = nil,
+                metricDataResults: MetricDataResults? = nil,
                 nextToken: NextToken? = nil) {
+        self.messages = messages
         self.metricDataResults = metricDataResults
         self.nextToken = nextToken
     }
 
     enum CodingKeys: String, CodingKey {
+        case messages = "Messages"
         case metricDataResults = "MetricDataResults"
         case nextToken = "NextToken"
     }
 
     public func validate() throws {
-        try nextToken?.validateAsNextToken()
     }
 }
 
@@ -906,7 +913,6 @@ public struct ListDashboardsInput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try nextToken?.validateAsNextToken()
     }
 }
 
@@ -926,7 +932,6 @@ public struct ListDashboardsOutput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try nextToken?.validateAsNextToken()
     }
 }
 
@@ -973,7 +978,6 @@ public struct ListMetricsInput: Codable, Equatable {
         try dimensions?.validateAsDimensionFilters()
         try metricName?.validateAsMetricName()
         try namespace?.validateAsNamespace()
-        try nextToken?.validateAsNextToken()
     }
 }
 
@@ -993,7 +997,6 @@ public struct ListMetricsOutput: Codable, Equatable {
     }
 
     public func validate() throws {
-        try nextToken?.validateAsNextToken()
     }
 }
 
@@ -1010,6 +1013,53 @@ public struct ListMetricsOutputForListMetrics: Codable, Equatable {
 
     public func validate() throws {
         try listMetricsResult.validate()
+    }
+}
+
+public struct ListTagsForResourceInput: Codable, Equatable {
+    public var resourceARN: AmazonResourceName
+
+    public init(resourceARN: AmazonResourceName) {
+        self.resourceARN = resourceARN
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceARN = "ResourceARN"
+    }
+
+    public func validate() throws {
+        try resourceARN.validateAsAmazonResourceName()
+    }
+}
+
+public struct ListTagsForResourceOutput: Codable, Equatable {
+    public var tags: TagList?
+
+    public init(tags: TagList? = nil) {
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tags = "Tags"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListTagsForResourceOutputForListTagsForResource: Codable, Equatable {
+    public var listTagsForResourceResult: ListTagsForResourceOutput
+
+    public init(listTagsForResourceResult: ListTagsForResourceOutput) {
+        self.listTagsForResourceResult = listTagsForResourceResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case listTagsForResourceResult = "ListTagsForResourceResult"
+    }
+
+    public func validate() throws {
+        try listTagsForResourceResult.validate()
     }
 }
 
@@ -1423,6 +1473,7 @@ public struct PutMetricAlarmInput: Codable, Equatable {
     public var oKActions: ResourceList?
     public var period: Period?
     public var statistic: Statistic?
+    public var tags: TagList?
     public var threshold: Threshold
     public var treatMissingData: TreatMissingData?
     public var unit: StandardUnit?
@@ -1444,6 +1495,7 @@ public struct PutMetricAlarmInput: Codable, Equatable {
                 oKActions: ResourceList? = nil,
                 period: Period? = nil,
                 statistic: Statistic? = nil,
+                tags: TagList? = nil,
                 threshold: Threshold,
                 treatMissingData: TreatMissingData? = nil,
                 unit: StandardUnit? = nil) {
@@ -1464,6 +1516,7 @@ public struct PutMetricAlarmInput: Codable, Equatable {
         self.oKActions = oKActions
         self.period = period
         self.statistic = statistic
+        self.tags = tags
         self.threshold = threshold
         self.treatMissingData = treatMissingData
         self.unit = unit
@@ -1487,6 +1540,7 @@ public struct PutMetricAlarmInput: Codable, Equatable {
         case oKActions = "OKActions"
         case period = "Period"
         case statistic = "Statistic"
+        case tags = "Tags"
         case threshold = "Threshold"
         case treatMissingData = "TreatMissingData"
         case unit = "Unit"
@@ -1546,6 +1600,25 @@ public struct ResourceNotFound: Codable, Equatable {
     }
 }
 
+public struct ResourceNotFoundException: Codable, Equatable {
+    public var resourceId: ResourceId?
+    public var resourceType: ResourceType?
+
+    public init(resourceId: ResourceId? = nil,
+                resourceType: ResourceType? = nil) {
+        self.resourceId = resourceId
+        self.resourceType = resourceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceId = "ResourceId"
+        case resourceType = "ResourceType"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct SetAlarmStateInput: Codable, Equatable {
     public var alarmName: AlarmName
     public var stateReason: StateReason
@@ -1600,5 +1673,116 @@ public struct StatisticSet: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct Tag: Codable, Equatable {
+    public var key: TagKey
+    public var value: TagValue
+
+    public init(key: TagKey,
+                value: TagValue) {
+        self.key = key
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case key = "Key"
+        case value = "Value"
+    }
+
+    public func validate() throws {
+        try key.validateAsTagKey()
+        try value.validateAsTagValue()
+    }
+}
+
+public struct TagResourceInput: Codable, Equatable {
+    public var resourceARN: AmazonResourceName
+    public var tags: TagList
+
+    public init(resourceARN: AmazonResourceName,
+                tags: TagList) {
+        self.resourceARN = resourceARN
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceARN = "ResourceARN"
+        case tags = "Tags"
+    }
+
+    public func validate() throws {
+        try resourceARN.validateAsAmazonResourceName()
+    }
+}
+
+public struct TagResourceOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct TagResourceOutputForTagResource: Codable, Equatable {
+    public var tagResourceResult: TagResourceOutput
+
+    public init(tagResourceResult: TagResourceOutput) {
+        self.tagResourceResult = tagResourceResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tagResourceResult = "TagResourceResult"
+    }
+
+    public func validate() throws {
+        try tagResourceResult.validate()
+    }
+}
+
+public struct UntagResourceInput: Codable, Equatable {
+    public var resourceARN: AmazonResourceName
+    public var tagKeys: TagKeyList
+
+    public init(resourceARN: AmazonResourceName,
+                tagKeys: TagKeyList) {
+        self.resourceARN = resourceARN
+        self.tagKeys = tagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceARN = "ResourceARN"
+        case tagKeys = "TagKeys"
+    }
+
+    public func validate() throws {
+        try resourceARN.validateAsAmazonResourceName()
+    }
+}
+
+public struct UntagResourceOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct UntagResourceOutputForUntagResource: Codable, Equatable {
+    public var untagResourceResult: UntagResourceOutput
+
+    public init(untagResourceResult: UntagResourceOutput) {
+        self.untagResourceResult = untagResourceResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case untagResourceResult = "UntagResourceResult"
+    }
+
+    public func validate() throws {
+        try untagResourceResult.validate()
     }
 }
