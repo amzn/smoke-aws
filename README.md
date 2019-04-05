@@ -159,5 +159,8 @@ behavior for particular API methods, allowing you to provide custom mock behavio
 
 ## Package generation
 
-The majority of this package is code generated. Until this code generator is itself open sourced,
-please open an issue if you are interested in an additional AWS service client being added to this package.
+The majority of this package is code generated using [SmokeAWSGenerate](https://github.com/amzn/smoke-aws-generate). 
+
+## License
+
+This library is licensed under the Apache 2.0 License.
