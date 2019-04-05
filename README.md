@@ -41,7 +41,7 @@ to your Package.swift-
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/amzn/smoke-aws.git", .upToNextMajor(from: "0.5.0"))
+    .package(url: "https://github.com/amzn/smoke-aws.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 
@@ -118,7 +118,7 @@ import SmokeAWSCredentials
     let context = SampleServiceOperationsContext(ec2Client: ec2Client)
 ```
 
-Here we use the SmokeAWSCredentials package to obtain rotating credentials from an AWS runtime such as ECS.
+Here we use the [SmokeAWSCredentials](https://github.com/amzn/smoke-aws-credentials) package to obtain rotating credentials from an AWS runtime such as ECS.
 
 ## Step 5: Instantiate a mock client for testing
 
