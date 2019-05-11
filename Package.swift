@@ -85,6 +85,12 @@ let package = Package(
         .library(
             name: "SmokeAWSHttp",
             targets: ["SmokeAWSHttp"]),
+        .library(
+            name: "RDSClient",
+            targets: ["RDSClient"]),
+        .library(
+            name: "RDSModel",
+            targets: ["RDSModel"])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-nio.git", from: "1.8.0"),
@@ -162,6 +168,12 @@ let package = Package(
             dependencies: ["LoggerAPI", "NIO", "NIOHTTP1", "NIOOpenSSL",
                            "SmokeAWSCore", "SmokeHTTPClient", "QueryCoding",
                            "HTTPPathCoding", "HTTPHeadersCoding"]),
+        .target(
+            name: "RDSClient",
+            dependencies: ["RDSModel", "SmokeAWSHttp"]),
+        .target(
+            name: "RDSModel",
+            dependencies: ["LoggerAPI"]),
         .testTarget(
             name: "S3ClientTests",
             dependencies: ["S3Client"]),
@@ -177,5 +189,9 @@ let package = Package(
         .testTarget(
             name: "ElasticComputeCloudClientTests",
             dependencies: ["ElasticComputeCloudClient"]),
+        .testTarget(
+            name: "RDSClientTests",
+            dependencies: ["RDSClient"]),
+        
     ]
 )
