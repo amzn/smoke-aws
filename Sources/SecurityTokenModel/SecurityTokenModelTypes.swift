@@ -152,6 +152,11 @@ public typealias NonNegativeIntegerType = Int
 public typealias PackedPolicyTooLargeMessage = String
 
 /**
+ Type definition for the PolicyDescriptorListType field.
+ */
+public typealias PolicyDescriptorListType = [PolicyDescriptorType]
+
+/**
  Type definition for the RegionDisabledMessage field.
  */
 public typealias RegionDisabledMessage = String

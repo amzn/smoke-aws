@@ -1261,7 +1261,8 @@ public extension LogConfiguration {
     public static let __default: ElasticContainerModel.LogConfiguration = {
         let defaultInstance = ElasticContainerModel.LogConfiguration(
             logDriver: .__default,
-            options: nil)
+            options: nil,
+            secretOptions: nil)
 
         return defaultInstance
     }()

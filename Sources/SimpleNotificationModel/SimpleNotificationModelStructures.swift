@@ -109,6 +109,21 @@ public struct CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOu
     }
 }
 
+public struct ConcurrentAccessException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ConfirmSubscriptionInput: Codable, Equatable {
     public var authenticateOnUnsubscribe: AuthenticateOnUnsubscribe?
     public var token: Token
@@ -278,16 +293,20 @@ public struct CreatePlatformEndpointInput: Codable, Equatable {
 public struct CreateTopicInput: Codable, Equatable {
     public var attributes: TopicAttributesMap?
     public var name: TopicName
+    public var tags: TagList?
 
     public init(attributes: TopicAttributesMap? = nil,
-                name: TopicName) {
+                name: TopicName,
+                tags: TagList? = nil) {
         self.attributes = attributes
         self.name = name
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
         case attributes = "Attributes"
         case name = "Name"
+        case tags = "Tags"
     }
 
     public func validate() throws {
@@ -1057,6 +1076,53 @@ public struct ListSubscriptionsResponseForListSubscriptions: Codable, Equatable 
     }
 }
 
+public struct ListTagsForResourceRequest: Codable, Equatable {
+    public var resourceArn: AmazonResourceName
+
+    public init(resourceArn: AmazonResourceName) {
+        self.resourceArn = resourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn = "ResourceArn"
+    }
+
+    public func validate() throws {
+        try resourceArn.validateAsAmazonResourceName()
+    }
+}
+
+public struct ListTagsForResourceResponse: Codable, Equatable {
+    public var tags: TagList?
+
+    public init(tags: TagList? = nil) {
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tags = "Tags"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListTagsForResourceResponseForListTagsForResource: Codable, Equatable {
+    public var listTagsForResourceResult: ListTagsForResourceResponse
+
+    public init(listTagsForResourceResult: ListTagsForResourceResponse) {
+        self.listTagsForResourceResult = listTagsForResourceResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case listTagsForResourceResult = "ListTagsForResourceResult"
+    }
+
+    public func validate() throws {
+        try listTagsForResourceResult.validate()
+    }
+}
+
 public struct ListTopicsInput: Codable, Equatable {
     public var nextToken: NextToken?
 
@@ -1308,6 +1374,21 @@ public struct RemovePermissionInput: Codable, Equatable {
     }
 }
 
+public struct ResourceNotFoundException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct SetEndpointAttributesInput: Codable, Equatable {
     public var attributes: MapStringToString
     public var endpointArn: String
@@ -1432,6 +1513,21 @@ public struct SetTopicAttributesInput: Codable, Equatable {
     }
 }
 
+public struct StaleTagException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct SubscribeInput: Codable, Equatable {
     public var attributes: SubscriptionAttributesMap?
     public var endpoint: EndpointString?
@@ -1540,6 +1636,102 @@ public struct SubscriptionLimitExceededException: Codable, Equatable {
     }
 }
 
+public struct Tag: Codable, Equatable {
+    public var key: TagKey
+    public var value: TagValue
+
+    public init(key: TagKey,
+                value: TagValue) {
+        self.key = key
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case key = "Key"
+        case value = "Value"
+    }
+
+    public func validate() throws {
+        try key.validateAsTagKey()
+        try value.validateAsTagValue()
+    }
+}
+
+public struct TagLimitExceededException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct TagPolicyException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct TagResourceRequest: Codable, Equatable {
+    public var resourceArn: AmazonResourceName
+    public var tags: TagList
+
+    public init(resourceArn: AmazonResourceName,
+                tags: TagList) {
+        self.resourceArn = resourceArn
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn = "ResourceArn"
+        case tags = "Tags"
+    }
+
+    public func validate() throws {
+        try resourceArn.validateAsAmazonResourceName()
+    }
+}
+
+public struct TagResourceResponse: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct TagResourceResponseForTagResource: Codable, Equatable {
+    public var tagResourceResult: TagResourceResponse
+
+    public init(tagResourceResult: TagResourceResponse) {
+        self.tagResourceResult = tagResourceResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tagResourceResult = "TagResourceResult"
+    }
+
+    public func validate() throws {
+        try tagResourceResult.validate()
+    }
+}
+
 public struct ThrottledException: Codable, Equatable {
     public var message: String?
 
@@ -1597,5 +1789,50 @@ public struct UnsubscribeInput: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct UntagResourceRequest: Codable, Equatable {
+    public var resourceArn: AmazonResourceName
+    public var tagKeys: TagKeyList
+
+    public init(resourceArn: AmazonResourceName,
+                tagKeys: TagKeyList) {
+        self.resourceArn = resourceArn
+        self.tagKeys = tagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn = "ResourceArn"
+        case tagKeys = "TagKeys"
+    }
+
+    public func validate() throws {
+        try resourceArn.validateAsAmazonResourceName()
+    }
+}
+
+public struct UntagResourceResponse: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct UntagResourceResponseForUntagResource: Codable, Equatable {
+    public var untagResourceResult: UntagResourceResponse
+
+    public init(untagResourceResult: UntagResourceResponse) {
+        self.untagResourceResult = untagResourceResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case untagResourceResult = "UntagResourceResult"
+    }
+
+    public func validate() throws {
+        try untagResourceResult.validate()
     }
 }

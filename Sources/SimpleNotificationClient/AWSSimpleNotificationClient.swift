@@ -246,7 +246,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - completion: The ConfirmSubscriptionResponseForConfirmSubscription object or an error will be passed to this 
            callback when the operation is complete. The ConfirmSubscriptionResponseForConfirmSubscription
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
     public func confirmSubscriptionAsync(input: SimpleNotificationModel.ConfirmSubscriptionInput, completion: @escaping (HTTPResult<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -279,7 +279,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated ConfirmSubscriptionInput object being passed to this operation.
      - Returns: The ConfirmSubscriptionResponseForConfirmSubscription object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
     public func confirmSubscriptionSync(input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -444,7 +444,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - completion: The CreateTopicResponseForCreateTopic object or an error will be passed to this 
            callback when the operation is complete. The CreateTopicResponseForCreateTopic
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, topicLimitExceeded.
+           The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
     public func createTopicAsync(input: SimpleNotificationModel.CreateTopicInput, completion: @escaping (HTTPResult<SimpleNotificationModel.CreateTopicResponseForCreateTopic>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -477,7 +477,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated CreateTopicInput object being passed to this operation.
      - Returns: The CreateTopicResponseForCreateTopic object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, topicLimitExceeded.
+     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
     public func createTopicSync(input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -635,7 +635,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated DeleteTopicInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: authorizationError, internalError, invalidParameter, notFound.
+           The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
     public func deleteTopicAsync(input: SimpleNotificationModel.DeleteTopicInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -666,7 +666,7 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
 
      - Parameters:
          - input: The validated DeleteTopicInput object being passed to this operation.
-     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
     public func deleteTopicSync(input: SimpleNotificationModel.DeleteTopicInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1352,6 +1352,72 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
     }
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+         - completion: The ListTagsForResourceResponseForListTagsForResource object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceResponseForListTagsForResource
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
+     */
+    public func listTagsForResourceAsync(input: SimpleNotificationModel.ListTagsForResourceRequest, completion: @escaping (HTTPResult<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listTagsForResource.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+     - Returns: The ListTagsForResourceResponseForListTagsForResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
+     */
+    public func listTagsForResourceSync(input: SimpleNotificationModel.ListTagsForResourceRequest) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listTagsForResource.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ListTopics operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1997,6 +2063,72 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
     }
 
     /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+         - completion: The TagResourceResponseForTagResource object or an error will be passed to this 
+           callback when the operation is complete. The TagResourceResponseForTagResource
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func tagResourceAsync(input: SimpleNotificationModel.TagResourceRequest, completion: @escaping (HTTPResult<SimpleNotificationModel.TagResourceResponseForTagResource>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = TagResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.tagResource.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+     - Returns: The TagResourceResponseForTagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func tagResourceSync(input: SimpleNotificationModel.TagResourceRequest) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = TagResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.tagResource.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the Unsubscribe operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2051,6 +2183,72 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
             version: apiVersion)
 
         try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+         - completion: The UntagResourceResponseForUntagResource object or an error will be passed to this 
+           callback when the operation is complete. The UntagResourceResponseForUntagResource
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func untagResourceAsync(input: SimpleNotificationModel.UntagResourceRequest, completion: @escaping (HTTPResult<SimpleNotificationModel.UntagResourceResponseForUntagResource>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.untagResource.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+     - Returns: The UntagResourceResponseForUntagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func untagResourceSync(input: SimpleNotificationModel.UntagResourceRequest) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.untagResource.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,

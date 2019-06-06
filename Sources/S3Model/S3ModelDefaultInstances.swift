@@ -2967,7 +2967,8 @@ public extension PutBucketReplicationRequest {
         let defaultInstance = S3Model.PutBucketReplicationRequest(
             bucket: "value",
             contentMD5: nil,
-            replicationConfiguration: ReplicationConfiguration.__default)
+            replicationConfiguration: ReplicationConfiguration.__default,
+            token: nil)
 
         return defaultInstance
     }()

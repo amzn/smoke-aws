@@ -5098,19 +5098,23 @@ public struct PutBucketReplicationRequest: Codable, Equatable {
     public var bucket: BucketName
     public var contentMD5: ContentMD5?
     public var replicationConfiguration: ReplicationConfiguration
+    public var token: ObjectLockToken?
 
     public init(bucket: BucketName,
                 contentMD5: ContentMD5? = nil,
-                replicationConfiguration: ReplicationConfiguration) {
+                replicationConfiguration: ReplicationConfiguration,
+                token: ObjectLockToken? = nil) {
         self.bucket = bucket
         self.contentMD5 = contentMD5
         self.replicationConfiguration = replicationConfiguration
+        self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case contentMD5 = "Content-MD5"
         case replicationConfiguration = "ReplicationConfiguration"
+        case token = "x-amz-bucket-object-lock-token"
     }
 
     public func validate() throws {

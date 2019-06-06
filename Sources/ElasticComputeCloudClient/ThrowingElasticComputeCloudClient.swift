@@ -162,6 +162,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let createSecurityGroupSyncOverride: ElasticComputeCloudClientProtocol.CreateSecurityGroupSyncType?
     let createSnapshotAsyncOverride: ElasticComputeCloudClientProtocol.CreateSnapshotAsyncType?
     let createSnapshotSyncOverride: ElasticComputeCloudClientProtocol.CreateSnapshotSyncType?
+    let createSnapshotsAsyncOverride: ElasticComputeCloudClientProtocol.CreateSnapshotsAsyncType?
+    let createSnapshotsSyncOverride: ElasticComputeCloudClientProtocol.CreateSnapshotsSyncType?
     let createSpotDatafeedSubscriptionAsyncOverride: ElasticComputeCloudClientProtocol.CreateSpotDatafeedSubscriptionAsyncType?
     let createSpotDatafeedSubscriptionSyncOverride: ElasticComputeCloudClientProtocol.CreateSpotDatafeedSubscriptionSyncType?
     let createSubnetAsyncOverride: ElasticComputeCloudClientProtocol.CreateSubnetAsyncType?
@@ -474,6 +476,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let detachVolumeSyncOverride: ElasticComputeCloudClientProtocol.DetachVolumeSyncType?
     let detachVpnGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DetachVpnGatewayAsyncType?
     let detachVpnGatewaySyncOverride: ElasticComputeCloudClientProtocol.DetachVpnGatewaySyncType?
+    let disableEbsEncryptionByDefaultAsyncOverride: ElasticComputeCloudClientProtocol.DisableEbsEncryptionByDefaultAsyncType?
+    let disableEbsEncryptionByDefaultSyncOverride: ElasticComputeCloudClientProtocol.DisableEbsEncryptionByDefaultSyncType?
     let disableTransitGatewayRouteTablePropagationAsyncOverride: ElasticComputeCloudClientProtocol.DisableTransitGatewayRouteTablePropagationAsyncType?
     let disableTransitGatewayRouteTablePropagationSyncOverride: ElasticComputeCloudClientProtocol.DisableTransitGatewayRouteTablePropagationSyncType?
     let disableVgwRoutePropagationAsyncOverride: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationAsyncType?
@@ -496,6 +500,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let disassociateTransitGatewayRouteTableSyncOverride: ElasticComputeCloudClientProtocol.DisassociateTransitGatewayRouteTableSyncType?
     let disassociateVpcCidrBlockAsyncOverride: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockAsyncType?
     let disassociateVpcCidrBlockSyncOverride: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockSyncType?
+    let enableEbsEncryptionByDefaultAsyncOverride: ElasticComputeCloudClientProtocol.EnableEbsEncryptionByDefaultAsyncType?
+    let enableEbsEncryptionByDefaultSyncOverride: ElasticComputeCloudClientProtocol.EnableEbsEncryptionByDefaultSyncType?
     let enableTransitGatewayRouteTablePropagationAsyncOverride: ElasticComputeCloudClientProtocol.EnableTransitGatewayRouteTablePropagationAsyncType?
     let enableTransitGatewayRouteTablePropagationSyncOverride: ElasticComputeCloudClientProtocol.EnableTransitGatewayRouteTablePropagationSyncType?
     let enableVgwRoutePropagationAsyncOverride: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationAsyncType?
@@ -516,6 +522,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let getConsoleOutputSyncOverride: ElasticComputeCloudClientProtocol.GetConsoleOutputSyncType?
     let getConsoleScreenshotAsyncOverride: ElasticComputeCloudClientProtocol.GetConsoleScreenshotAsyncType?
     let getConsoleScreenshotSyncOverride: ElasticComputeCloudClientProtocol.GetConsoleScreenshotSyncType?
+    let getEbsDefaultKmsKeyIdAsyncOverride: ElasticComputeCloudClientProtocol.GetEbsDefaultKmsKeyIdAsyncType?
+    let getEbsDefaultKmsKeyIdSyncOverride: ElasticComputeCloudClientProtocol.GetEbsDefaultKmsKeyIdSyncType?
+    let getEbsEncryptionByDefaultAsyncOverride: ElasticComputeCloudClientProtocol.GetEbsEncryptionByDefaultAsyncType?
+    let getEbsEncryptionByDefaultSyncOverride: ElasticComputeCloudClientProtocol.GetEbsEncryptionByDefaultSyncType?
     let getHostReservationPurchasePreviewAsyncOverride: ElasticComputeCloudClientProtocol.GetHostReservationPurchasePreviewAsyncType?
     let getHostReservationPurchasePreviewSyncOverride: ElasticComputeCloudClientProtocol.GetHostReservationPurchasePreviewSyncType?
     let getLaunchTemplateDataAsyncOverride: ElasticComputeCloudClientProtocol.GetLaunchTemplateDataAsyncType?
@@ -546,6 +556,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let modifyCapacityReservationSyncOverride: ElasticComputeCloudClientProtocol.ModifyCapacityReservationSyncType?
     let modifyClientVpnEndpointAsyncOverride: ElasticComputeCloudClientProtocol.ModifyClientVpnEndpointAsyncType?
     let modifyClientVpnEndpointSyncOverride: ElasticComputeCloudClientProtocol.ModifyClientVpnEndpointSyncType?
+    let modifyEbsDefaultKmsKeyIdAsyncOverride: ElasticComputeCloudClientProtocol.ModifyEbsDefaultKmsKeyIdAsyncType?
+    let modifyEbsDefaultKmsKeyIdSyncOverride: ElasticComputeCloudClientProtocol.ModifyEbsDefaultKmsKeyIdSyncType?
     let modifyFleetAsyncOverride: ElasticComputeCloudClientProtocol.ModifyFleetAsyncType?
     let modifyFleetSyncOverride: ElasticComputeCloudClientProtocol.ModifyFleetSyncType?
     let modifyFpgaImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyFpgaImageAttributeAsyncType?
@@ -600,6 +612,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let modifyVpcPeeringConnectionOptionsSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcPeeringConnectionOptionsSyncType?
     let modifyVpcTenancyAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcTenancyAsyncType?
     let modifyVpcTenancySyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcTenancySyncType?
+    let modifyVpnConnectionAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpnConnectionAsyncType?
+    let modifyVpnConnectionSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpnConnectionSyncType?
     let monitorInstancesAsyncOverride: ElasticComputeCloudClientProtocol.MonitorInstancesAsyncType?
     let monitorInstancesSyncOverride: ElasticComputeCloudClientProtocol.MonitorInstancesSyncType?
     let moveAddressToVpcAsyncOverride: ElasticComputeCloudClientProtocol.MoveAddressToVpcAsyncType?
@@ -644,6 +658,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let requestSpotFleetSyncOverride: ElasticComputeCloudClientProtocol.RequestSpotFleetSyncType?
     let requestSpotInstancesAsyncOverride: ElasticComputeCloudClientProtocol.RequestSpotInstancesAsyncType?
     let requestSpotInstancesSyncOverride: ElasticComputeCloudClientProtocol.RequestSpotInstancesSyncType?
+    let resetEbsDefaultKmsKeyIdAsyncOverride: ElasticComputeCloudClientProtocol.ResetEbsDefaultKmsKeyIdAsyncType?
+    let resetEbsDefaultKmsKeyIdSyncOverride: ElasticComputeCloudClientProtocol.ResetEbsDefaultKmsKeyIdSyncType?
     let resetFpgaImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ResetFpgaImageAttributeAsyncType?
     let resetFpgaImageAttributeSyncOverride: ElasticComputeCloudClientProtocol.ResetFpgaImageAttributeSyncType?
     let resetImageAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ResetImageAttributeAsyncType?
@@ -828,6 +844,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             createSecurityGroupSync: ElasticComputeCloudClientProtocol.CreateSecurityGroupSyncType? = nil,
             createSnapshotAsync: ElasticComputeCloudClientProtocol.CreateSnapshotAsyncType? = nil,
             createSnapshotSync: ElasticComputeCloudClientProtocol.CreateSnapshotSyncType? = nil,
+            createSnapshotsAsync: ElasticComputeCloudClientProtocol.CreateSnapshotsAsyncType? = nil,
+            createSnapshotsSync: ElasticComputeCloudClientProtocol.CreateSnapshotsSyncType? = nil,
             createSpotDatafeedSubscriptionAsync: ElasticComputeCloudClientProtocol.CreateSpotDatafeedSubscriptionAsyncType? = nil,
             createSpotDatafeedSubscriptionSync: ElasticComputeCloudClientProtocol.CreateSpotDatafeedSubscriptionSyncType? = nil,
             createSubnetAsync: ElasticComputeCloudClientProtocol.CreateSubnetAsyncType? = nil,
@@ -1140,6 +1158,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             detachVolumeSync: ElasticComputeCloudClientProtocol.DetachVolumeSyncType? = nil,
             detachVpnGatewayAsync: ElasticComputeCloudClientProtocol.DetachVpnGatewayAsyncType? = nil,
             detachVpnGatewaySync: ElasticComputeCloudClientProtocol.DetachVpnGatewaySyncType? = nil,
+            disableEbsEncryptionByDefaultAsync: ElasticComputeCloudClientProtocol.DisableEbsEncryptionByDefaultAsyncType? = nil,
+            disableEbsEncryptionByDefaultSync: ElasticComputeCloudClientProtocol.DisableEbsEncryptionByDefaultSyncType? = nil,
             disableTransitGatewayRouteTablePropagationAsync: ElasticComputeCloudClientProtocol.DisableTransitGatewayRouteTablePropagationAsyncType? = nil,
             disableTransitGatewayRouteTablePropagationSync: ElasticComputeCloudClientProtocol.DisableTransitGatewayRouteTablePropagationSyncType? = nil,
             disableVgwRoutePropagationAsync: ElasticComputeCloudClientProtocol.DisableVgwRoutePropagationAsyncType? = nil,
@@ -1162,6 +1182,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             disassociateTransitGatewayRouteTableSync: ElasticComputeCloudClientProtocol.DisassociateTransitGatewayRouteTableSyncType? = nil,
             disassociateVpcCidrBlockAsync: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockAsyncType? = nil,
             disassociateVpcCidrBlockSync: ElasticComputeCloudClientProtocol.DisassociateVpcCidrBlockSyncType? = nil,
+            enableEbsEncryptionByDefaultAsync: ElasticComputeCloudClientProtocol.EnableEbsEncryptionByDefaultAsyncType? = nil,
+            enableEbsEncryptionByDefaultSync: ElasticComputeCloudClientProtocol.EnableEbsEncryptionByDefaultSyncType? = nil,
             enableTransitGatewayRouteTablePropagationAsync: ElasticComputeCloudClientProtocol.EnableTransitGatewayRouteTablePropagationAsyncType? = nil,
             enableTransitGatewayRouteTablePropagationSync: ElasticComputeCloudClientProtocol.EnableTransitGatewayRouteTablePropagationSyncType? = nil,
             enableVgwRoutePropagationAsync: ElasticComputeCloudClientProtocol.EnableVgwRoutePropagationAsyncType? = nil,
@@ -1182,6 +1204,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             getConsoleOutputSync: ElasticComputeCloudClientProtocol.GetConsoleOutputSyncType? = nil,
             getConsoleScreenshotAsync: ElasticComputeCloudClientProtocol.GetConsoleScreenshotAsyncType? = nil,
             getConsoleScreenshotSync: ElasticComputeCloudClientProtocol.GetConsoleScreenshotSyncType? = nil,
+            getEbsDefaultKmsKeyIdAsync: ElasticComputeCloudClientProtocol.GetEbsDefaultKmsKeyIdAsyncType? = nil,
+            getEbsDefaultKmsKeyIdSync: ElasticComputeCloudClientProtocol.GetEbsDefaultKmsKeyIdSyncType? = nil,
+            getEbsEncryptionByDefaultAsync: ElasticComputeCloudClientProtocol.GetEbsEncryptionByDefaultAsyncType? = nil,
+            getEbsEncryptionByDefaultSync: ElasticComputeCloudClientProtocol.GetEbsEncryptionByDefaultSyncType? = nil,
             getHostReservationPurchasePreviewAsync: ElasticComputeCloudClientProtocol.GetHostReservationPurchasePreviewAsyncType? = nil,
             getHostReservationPurchasePreviewSync: ElasticComputeCloudClientProtocol.GetHostReservationPurchasePreviewSyncType? = nil,
             getLaunchTemplateDataAsync: ElasticComputeCloudClientProtocol.GetLaunchTemplateDataAsyncType? = nil,
@@ -1212,6 +1238,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             modifyCapacityReservationSync: ElasticComputeCloudClientProtocol.ModifyCapacityReservationSyncType? = nil,
             modifyClientVpnEndpointAsync: ElasticComputeCloudClientProtocol.ModifyClientVpnEndpointAsyncType? = nil,
             modifyClientVpnEndpointSync: ElasticComputeCloudClientProtocol.ModifyClientVpnEndpointSyncType? = nil,
+            modifyEbsDefaultKmsKeyIdAsync: ElasticComputeCloudClientProtocol.ModifyEbsDefaultKmsKeyIdAsyncType? = nil,
+            modifyEbsDefaultKmsKeyIdSync: ElasticComputeCloudClientProtocol.ModifyEbsDefaultKmsKeyIdSyncType? = nil,
             modifyFleetAsync: ElasticComputeCloudClientProtocol.ModifyFleetAsyncType? = nil,
             modifyFleetSync: ElasticComputeCloudClientProtocol.ModifyFleetSyncType? = nil,
             modifyFpgaImageAttributeAsync: ElasticComputeCloudClientProtocol.ModifyFpgaImageAttributeAsyncType? = nil,
@@ -1266,6 +1294,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             modifyVpcPeeringConnectionOptionsSync: ElasticComputeCloudClientProtocol.ModifyVpcPeeringConnectionOptionsSyncType? = nil,
             modifyVpcTenancyAsync: ElasticComputeCloudClientProtocol.ModifyVpcTenancyAsyncType? = nil,
             modifyVpcTenancySync: ElasticComputeCloudClientProtocol.ModifyVpcTenancySyncType? = nil,
+            modifyVpnConnectionAsync: ElasticComputeCloudClientProtocol.ModifyVpnConnectionAsyncType? = nil,
+            modifyVpnConnectionSync: ElasticComputeCloudClientProtocol.ModifyVpnConnectionSyncType? = nil,
             monitorInstancesAsync: ElasticComputeCloudClientProtocol.MonitorInstancesAsyncType? = nil,
             monitorInstancesSync: ElasticComputeCloudClientProtocol.MonitorInstancesSyncType? = nil,
             moveAddressToVpcAsync: ElasticComputeCloudClientProtocol.MoveAddressToVpcAsyncType? = nil,
@@ -1310,6 +1340,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             requestSpotFleetSync: ElasticComputeCloudClientProtocol.RequestSpotFleetSyncType? = nil,
             requestSpotInstancesAsync: ElasticComputeCloudClientProtocol.RequestSpotInstancesAsyncType? = nil,
             requestSpotInstancesSync: ElasticComputeCloudClientProtocol.RequestSpotInstancesSyncType? = nil,
+            resetEbsDefaultKmsKeyIdAsync: ElasticComputeCloudClientProtocol.ResetEbsDefaultKmsKeyIdAsyncType? = nil,
+            resetEbsDefaultKmsKeyIdSync: ElasticComputeCloudClientProtocol.ResetEbsDefaultKmsKeyIdSyncType? = nil,
             resetFpgaImageAttributeAsync: ElasticComputeCloudClientProtocol.ResetFpgaImageAttributeAsyncType? = nil,
             resetFpgaImageAttributeSync: ElasticComputeCloudClientProtocol.ResetFpgaImageAttributeSyncType? = nil,
             resetImageAttributeAsync: ElasticComputeCloudClientProtocol.ResetImageAttributeAsyncType? = nil,
@@ -1489,6 +1521,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.createSecurityGroupSyncOverride = createSecurityGroupSync
         self.createSnapshotAsyncOverride = createSnapshotAsync
         self.createSnapshotSyncOverride = createSnapshotSync
+        self.createSnapshotsAsyncOverride = createSnapshotsAsync
+        self.createSnapshotsSyncOverride = createSnapshotsSync
         self.createSpotDatafeedSubscriptionAsyncOverride = createSpotDatafeedSubscriptionAsync
         self.createSpotDatafeedSubscriptionSyncOverride = createSpotDatafeedSubscriptionSync
         self.createSubnetAsyncOverride = createSubnetAsync
@@ -1801,6 +1835,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.detachVolumeSyncOverride = detachVolumeSync
         self.detachVpnGatewayAsyncOverride = detachVpnGatewayAsync
         self.detachVpnGatewaySyncOverride = detachVpnGatewaySync
+        self.disableEbsEncryptionByDefaultAsyncOverride = disableEbsEncryptionByDefaultAsync
+        self.disableEbsEncryptionByDefaultSyncOverride = disableEbsEncryptionByDefaultSync
         self.disableTransitGatewayRouteTablePropagationAsyncOverride = disableTransitGatewayRouteTablePropagationAsync
         self.disableTransitGatewayRouteTablePropagationSyncOverride = disableTransitGatewayRouteTablePropagationSync
         self.disableVgwRoutePropagationAsyncOverride = disableVgwRoutePropagationAsync
@@ -1823,6 +1859,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.disassociateTransitGatewayRouteTableSyncOverride = disassociateTransitGatewayRouteTableSync
         self.disassociateVpcCidrBlockAsyncOverride = disassociateVpcCidrBlockAsync
         self.disassociateVpcCidrBlockSyncOverride = disassociateVpcCidrBlockSync
+        self.enableEbsEncryptionByDefaultAsyncOverride = enableEbsEncryptionByDefaultAsync
+        self.enableEbsEncryptionByDefaultSyncOverride = enableEbsEncryptionByDefaultSync
         self.enableTransitGatewayRouteTablePropagationAsyncOverride = enableTransitGatewayRouteTablePropagationAsync
         self.enableTransitGatewayRouteTablePropagationSyncOverride = enableTransitGatewayRouteTablePropagationSync
         self.enableVgwRoutePropagationAsyncOverride = enableVgwRoutePropagationAsync
@@ -1843,6 +1881,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.getConsoleOutputSyncOverride = getConsoleOutputSync
         self.getConsoleScreenshotAsyncOverride = getConsoleScreenshotAsync
         self.getConsoleScreenshotSyncOverride = getConsoleScreenshotSync
+        self.getEbsDefaultKmsKeyIdAsyncOverride = getEbsDefaultKmsKeyIdAsync
+        self.getEbsDefaultKmsKeyIdSyncOverride = getEbsDefaultKmsKeyIdSync
+        self.getEbsEncryptionByDefaultAsyncOverride = getEbsEncryptionByDefaultAsync
+        self.getEbsEncryptionByDefaultSyncOverride = getEbsEncryptionByDefaultSync
         self.getHostReservationPurchasePreviewAsyncOverride = getHostReservationPurchasePreviewAsync
         self.getHostReservationPurchasePreviewSyncOverride = getHostReservationPurchasePreviewSync
         self.getLaunchTemplateDataAsyncOverride = getLaunchTemplateDataAsync
@@ -1873,6 +1915,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.modifyCapacityReservationSyncOverride = modifyCapacityReservationSync
         self.modifyClientVpnEndpointAsyncOverride = modifyClientVpnEndpointAsync
         self.modifyClientVpnEndpointSyncOverride = modifyClientVpnEndpointSync
+        self.modifyEbsDefaultKmsKeyIdAsyncOverride = modifyEbsDefaultKmsKeyIdAsync
+        self.modifyEbsDefaultKmsKeyIdSyncOverride = modifyEbsDefaultKmsKeyIdSync
         self.modifyFleetAsyncOverride = modifyFleetAsync
         self.modifyFleetSyncOverride = modifyFleetSync
         self.modifyFpgaImageAttributeAsyncOverride = modifyFpgaImageAttributeAsync
@@ -1927,6 +1971,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.modifyVpcPeeringConnectionOptionsSyncOverride = modifyVpcPeeringConnectionOptionsSync
         self.modifyVpcTenancyAsyncOverride = modifyVpcTenancyAsync
         self.modifyVpcTenancySyncOverride = modifyVpcTenancySync
+        self.modifyVpnConnectionAsyncOverride = modifyVpnConnectionAsync
+        self.modifyVpnConnectionSyncOverride = modifyVpnConnectionSync
         self.monitorInstancesAsyncOverride = monitorInstancesAsync
         self.monitorInstancesSyncOverride = monitorInstancesSync
         self.moveAddressToVpcAsyncOverride = moveAddressToVpcAsync
@@ -1971,6 +2017,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.requestSpotFleetSyncOverride = requestSpotFleetSync
         self.requestSpotInstancesAsyncOverride = requestSpotInstancesAsync
         self.requestSpotInstancesSyncOverride = requestSpotInstancesSync
+        self.resetEbsDefaultKmsKeyIdAsyncOverride = resetEbsDefaultKmsKeyIdAsync
+        self.resetEbsDefaultKmsKeyIdSyncOverride = resetEbsDefaultKmsKeyIdSync
         self.resetFpgaImageAttributeAsyncOverride = resetFpgaImageAttributeAsync
         self.resetFpgaImageAttributeSyncOverride = resetFpgaImageAttributeSync
         self.resetImageAttributeAsyncOverride = resetImageAttributeAsync
@@ -4196,6 +4244,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func createSnapshotSync(input: ElasticComputeCloudModel.CreateSnapshotRequest) throws -> ElasticComputeCloudModel.Snapshot {
         if let createSnapshotSyncOverride = createSnapshotSyncOverride {
             return try createSnapshotSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateSnapshots operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSnapshotsRequest object being passed to this operation.
+         - completion: The CreateSnapshotsResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateSnapshotsResult
+           object will be validated before being returned to caller.
+     */
+    public func createSnapshotsAsync(input: ElasticComputeCloudModel.CreateSnapshotsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSnapshotsResult>) -> ()) throws {
+        if let createSnapshotsAsyncOverride = createSnapshotsAsyncOverride {
+            return try createSnapshotsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateSnapshots operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSnapshotsRequest object being passed to this operation.
+     - Returns: The CreateSnapshotsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createSnapshotsSync(input: ElasticComputeCloudModel.CreateSnapshotsRequest) throws -> ElasticComputeCloudModel.CreateSnapshotsResult {
+        if let createSnapshotsSyncOverride = createSnapshotsSyncOverride {
+            return try createSnapshotsSyncOverride(input)
         }
 
         throw error
@@ -9272,6 +9353,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DisableEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableEbsEncryptionByDefaultRequest object being passed to this operation.
+         - completion: The DisableEbsEncryptionByDefaultResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableEbsEncryptionByDefaultResult
+           object will be validated before being returned to caller.
+     */
+    public func disableEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult>) -> ()) throws {
+        if let disableEbsEncryptionByDefaultAsyncOverride = disableEbsEncryptionByDefaultAsyncOverride {
+            return try disableEbsEncryptionByDefaultAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DisableEbsEncryptionByDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableEbsEncryptionByDefaultRequest object being passed to this operation.
+     - Returns: The DisableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult {
+        if let disableEbsEncryptionByDefaultSyncOverride = disableEbsEncryptionByDefaultSyncOverride {
+            return try disableEbsEncryptionByDefaultSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DisableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9626,6 +9740,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the EnableEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableEbsEncryptionByDefaultRequest object being passed to this operation.
+         - completion: The EnableEbsEncryptionByDefaultResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableEbsEncryptionByDefaultResult
+           object will be validated before being returned to caller.
+     */
+    public func enableEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult>) -> ()) throws {
+        if let enableEbsEncryptionByDefaultAsyncOverride = enableEbsEncryptionByDefaultAsyncOverride {
+            return try enableEbsEncryptionByDefaultAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the EnableEbsEncryptionByDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableEbsEncryptionByDefaultRequest object being passed to this operation.
+     - Returns: The EnableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult {
+        if let enableEbsEncryptionByDefaultSyncOverride = enableEbsEncryptionByDefaultSyncOverride {
+            return try enableEbsEncryptionByDefaultSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the EnableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9944,6 +10091,72 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func getConsoleScreenshotSync(input: ElasticComputeCloudModel.GetConsoleScreenshotRequest) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult {
         if let getConsoleScreenshotSyncOverride = getConsoleScreenshotSyncOverride {
             return try getConsoleScreenshotSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+         - completion: The GetEbsDefaultKmsKeyIdResult object or an error will be passed to this 
+           callback when the operation is complete. The GetEbsDefaultKmsKeyIdResult
+           object will be validated before being returned to caller.
+     */
+    public func getEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult>) -> ()) throws {
+        if let getEbsDefaultKmsKeyIdAsyncOverride = getEbsDefaultKmsKeyIdAsyncOverride {
+            return try getEbsDefaultKmsKeyIdAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the GetEbsDefaultKmsKeyId operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+     - Returns: The GetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult {
+        if let getEbsDefaultKmsKeyIdSyncOverride = getEbsDefaultKmsKeyIdSyncOverride {
+            return try getEbsDefaultKmsKeyIdSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetEbsEncryptionByDefaultRequest object being passed to this operation.
+         - completion: The GetEbsEncryptionByDefaultResult object or an error will be passed to this 
+           callback when the operation is complete. The GetEbsEncryptionByDefaultResult
+           object will be validated before being returned to caller.
+     */
+    public func getEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult>) -> ()) throws {
+        if let getEbsEncryptionByDefaultAsyncOverride = getEbsEncryptionByDefaultAsyncOverride {
+            return try getEbsEncryptionByDefaultAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the GetEbsEncryptionByDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetEbsEncryptionByDefaultRequest object being passed to this operation.
+     - Returns: The GetEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult {
+        if let getEbsEncryptionByDefaultSyncOverride = getEbsEncryptionByDefaultSyncOverride {
+            return try getEbsEncryptionByDefaultSyncOverride(input)
         }
 
         throw error
@@ -10439,6 +10652,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func modifyClientVpnEndpointSync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
         if let modifyClientVpnEndpointSyncOverride = modifyClientVpnEndpointSyncOverride {
             return try modifyClientVpnEndpointSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyEbsDefaultKmsKeyIdRequest object being passed to this operation.
+         - completion: The ModifyEbsDefaultKmsKeyIdResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyEbsDefaultKmsKeyIdResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult>) -> ()) throws {
+        if let modifyEbsDefaultKmsKeyIdAsyncOverride = modifyEbsDefaultKmsKeyIdAsyncOverride {
+            return try modifyEbsDefaultKmsKeyIdAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyEbsDefaultKmsKeyId operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyEbsDefaultKmsKeyIdRequest object being passed to this operation.
+     - Returns: The ModifyEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult {
+        if let modifyEbsDefaultKmsKeyIdSyncOverride = modifyEbsDefaultKmsKeyIdSyncOverride {
+            return try modifyEbsDefaultKmsKeyIdSyncOverride(input)
         }
 
         throw error
@@ -11309,6 +11555,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the ModifyVpnConnection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionRequest object being passed to this operation.
+         - completion: The ModifyVpnConnectionResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnConnectionResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnConnectionAsync(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpnConnectionResult>) -> ()) throws {
+        if let modifyVpnConnectionAsyncOverride = modifyVpnConnectionAsyncOverride {
+            return try modifyVpnConnectionAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyVpnConnection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionRequest object being passed to this operation.
+     - Returns: The ModifyVpnConnectionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnConnectionSync(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
+        if let modifyVpnConnectionSyncOverride = modifyVpnConnectionSyncOverride {
+            return try modifyVpnConnectionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the MonitorInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -12014,6 +12293,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func requestSpotInstancesSync(input: ElasticComputeCloudModel.RequestSpotInstancesRequest) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult {
         if let requestSpotInstancesSyncOverride = requestSpotInstancesSyncOverride {
             return try requestSpotInstancesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ResetEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+         - completion: The ResetEbsDefaultKmsKeyIdResult object or an error will be passed to this 
+           callback when the operation is complete. The ResetEbsDefaultKmsKeyIdResult
+           object will be validated before being returned to caller.
+     */
+    public func resetEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult>) -> ()) throws {
+        if let resetEbsDefaultKmsKeyIdAsyncOverride = resetEbsDefaultKmsKeyIdAsyncOverride {
+            return try resetEbsDefaultKmsKeyIdAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ResetEbsDefaultKmsKeyId operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+     - Returns: The ResetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func resetEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult {
+        if let resetEbsDefaultKmsKeyIdSyncOverride = resetEbsDefaultKmsKeyIdSyncOverride {
+            return try resetEbsDefaultKmsKeyIdSyncOverride(input)
         }
 
         throw error

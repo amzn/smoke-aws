@@ -30,6 +30,7 @@ public extension AssumeRoleRequest {
             durationSeconds: nil,
             externalId: nil,
             policy: nil,
+            policyArns: nil,
             roleArn: "01234567890123456789",
             roleSessionName: "01",
             serialNumber: nil,
@@ -73,6 +74,7 @@ public extension AssumeRoleWithSAMLRequest {
         let defaultInstance = SecurityTokenModel.AssumeRoleWithSAMLRequest(
             durationSeconds: nil,
             policy: nil,
+            policyArns: nil,
             principalArn: "01234567890123456789",
             roleArn: "01234567890123456789",
             sAMLAssertion: "0123")
@@ -120,6 +122,7 @@ public extension AssumeRoleWithWebIdentityRequest {
         let defaultInstance = SecurityTokenModel.AssumeRoleWithWebIdentityRequest(
             durationSeconds: nil,
             policy: nil,
+            policyArns: nil,
             providerId: nil,
             roleArn: "01234567890123456789",
             roleSessionName: "01",
@@ -292,7 +295,8 @@ public extension GetFederationTokenRequest {
         let defaultInstance = SecurityTokenModel.GetFederationTokenRequest(
             durationSeconds: nil,
             name: "01",
-            policy: nil)
+            policy: nil,
+            policyArns: nil)
 
         return defaultInstance
     }()
@@ -429,6 +433,18 @@ public extension PackedPolicyTooLargeException {
     public static let __default: SecurityTokenModel.PackedPolicyTooLargeException = {
         let defaultInstance = SecurityTokenModel.PackedPolicyTooLargeException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PolicyDescriptorType {
+    /**
+     Default instance of the PolicyDescriptorType structure.
+     */
+    public static let __default: SecurityTokenModel.PolicyDescriptorType = {
+        let defaultInstance = SecurityTokenModel.PolicyDescriptorType(
+            arn: nil)
 
         return defaultInstance
     }()

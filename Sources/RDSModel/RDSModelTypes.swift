@@ -27,6 +27,36 @@ import Foundation
 public typealias AccountQuotaList = [AccountQuota]
 
 /**
+ Enumeration restricting the values of the ActivityStreamMode field.
+ */
+public enum ActivityStreamMode: String, Codable, CustomStringConvertible {
+    case async
+    case sync
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ActivityStreamMode = .async
+}
+
+/**
+ Enumeration restricting the values of the ActivityStreamStatus field.
+ */
+public enum ActivityStreamStatus: String, Codable, CustomStringConvertible {
+    case started
+    case starting
+    case stopped
+    case stopping
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ActivityStreamStatus = .started
+}
+
+/**
  Enumeration restricting the values of the ApplyMethod field.
  */
 public enum ApplyMethod: String, Codable, CustomStringConvertible {

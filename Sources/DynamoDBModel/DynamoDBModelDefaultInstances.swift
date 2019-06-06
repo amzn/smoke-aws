@@ -505,7 +505,8 @@ public extension CreateTableInput {
             provisionedThroughput: nil,
             sSESpecification: nil,
             streamSpecification: nil,
-            tableName: "012")
+            tableName: "012",
+            tags: nil)
 
         return defaultInstance
     }()

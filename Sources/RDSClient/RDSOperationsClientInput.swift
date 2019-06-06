@@ -549,6 +549,11 @@ public typealias RestoreDBInstanceToPointInTimeOperationHTTPRequestInput = Query
 public typealias RevokeDBSecurityGroupIngressOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the StartActivityStream operation in a HTTP client.
+ */
+public typealias StartActivityStreamOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the StartDBCluster operation in a HTTP client.
  */
 public typealias StartDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -557,6 +562,11 @@ public typealias StartDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the StartDBInstance operation in a HTTP client.
  */
 public typealias StartDBInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the StopActivityStream operation in a HTTP client.
+ */
+public typealias StopActivityStreamOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the StopDBCluster operation in a HTTP client.

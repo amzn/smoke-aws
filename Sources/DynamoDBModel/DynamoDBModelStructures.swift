@@ -858,6 +858,7 @@ public struct CreateTableInput: Codable, Equatable {
     public var sSESpecification: SSESpecification?
     public var streamSpecification: StreamSpecification?
     public var tableName: TableName
+    public var tags: TagList?
 
     public init(attributeDefinitions: AttributeDefinitions,
                 billingMode: BillingMode? = nil,
@@ -867,7 +868,8 @@ public struct CreateTableInput: Codable, Equatable {
                 provisionedThroughput: ProvisionedThroughput? = nil,
                 sSESpecification: SSESpecification? = nil,
                 streamSpecification: StreamSpecification? = nil,
-                tableName: TableName) {
+                tableName: TableName,
+                tags: TagList? = nil) {
         self.attributeDefinitions = attributeDefinitions
         self.billingMode = billingMode
         self.globalSecondaryIndexes = globalSecondaryIndexes
@@ -877,6 +879,7 @@ public struct CreateTableInput: Codable, Equatable {
         self.sSESpecification = sSESpecification
         self.streamSpecification = streamSpecification
         self.tableName = tableName
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
@@ -889,6 +892,7 @@ public struct CreateTableInput: Codable, Equatable {
         case sSESpecification = "SSESpecification"
         case streamSpecification = "StreamSpecification"
         case tableName = "TableName"
+        case tags = "Tags"
     }
 
     public func validate() throws {

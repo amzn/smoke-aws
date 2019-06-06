@@ -25,6 +25,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
     public var durationSeconds: RoleDurationSecondsType?
     public var externalId: ExternalIdType?
     public var policy: SessionPolicyDocumentType?
+    public var policyArns: PolicyDescriptorListType?
     public var roleArn: ArnType
     public var roleSessionName: RoleSessionNameType
     public var serialNumber: SerialNumberType?
@@ -33,6 +34,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
     public init(durationSeconds: RoleDurationSecondsType? = nil,
                 externalId: ExternalIdType? = nil,
                 policy: SessionPolicyDocumentType? = nil,
+                policyArns: PolicyDescriptorListType? = nil,
                 roleArn: ArnType,
                 roleSessionName: RoleSessionNameType,
                 serialNumber: SerialNumberType? = nil,
@@ -40,6 +42,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
         self.durationSeconds = durationSeconds
         self.externalId = externalId
         self.policy = policy
+        self.policyArns = policyArns
         self.roleArn = roleArn
         self.roleSessionName = roleSessionName
         self.serialNumber = serialNumber
@@ -50,6 +53,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
         case durationSeconds = "DurationSeconds"
         case externalId = "ExternalId"
         case policy = "Policy"
+        case policyArns = "PolicyArns"
         case roleArn = "RoleArn"
         case roleSessionName = "RoleSessionName"
         case serialNumber = "SerialNumber"
@@ -112,17 +116,20 @@ public struct AssumeRoleResponseForAssumeRole: Codable, Equatable {
 public struct AssumeRoleWithSAMLRequest: Codable, Equatable {
     public var durationSeconds: RoleDurationSecondsType?
     public var policy: SessionPolicyDocumentType?
+    public var policyArns: PolicyDescriptorListType?
     public var principalArn: ArnType
     public var roleArn: ArnType
     public var sAMLAssertion: SAMLAssertionType
 
     public init(durationSeconds: RoleDurationSecondsType? = nil,
                 policy: SessionPolicyDocumentType? = nil,
+                policyArns: PolicyDescriptorListType? = nil,
                 principalArn: ArnType,
                 roleArn: ArnType,
                 sAMLAssertion: SAMLAssertionType) {
         self.durationSeconds = durationSeconds
         self.policy = policy
+        self.policyArns = policyArns
         self.principalArn = principalArn
         self.roleArn = roleArn
         self.sAMLAssertion = sAMLAssertion
@@ -131,6 +138,7 @@ public struct AssumeRoleWithSAMLRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case durationSeconds = "DurationSeconds"
         case policy = "Policy"
+        case policyArns = "PolicyArns"
         case principalArn = "PrincipalArn"
         case roleArn = "RoleArn"
         case sAMLAssertion = "SAMLAssertion"
@@ -210,6 +218,7 @@ public struct AssumeRoleWithSAMLResponseForAssumeRoleWithSAML: Codable, Equatabl
 public struct AssumeRoleWithWebIdentityRequest: Codable, Equatable {
     public var durationSeconds: RoleDurationSecondsType?
     public var policy: SessionPolicyDocumentType?
+    public var policyArns: PolicyDescriptorListType?
     public var providerId: UrlType?
     public var roleArn: ArnType
     public var roleSessionName: RoleSessionNameType
@@ -217,12 +226,14 @@ public struct AssumeRoleWithWebIdentityRequest: Codable, Equatable {
 
     public init(durationSeconds: RoleDurationSecondsType? = nil,
                 policy: SessionPolicyDocumentType? = nil,
+                policyArns: PolicyDescriptorListType? = nil,
                 providerId: UrlType? = nil,
                 roleArn: ArnType,
                 roleSessionName: RoleSessionNameType,
                 webIdentityToken: ClientTokenType) {
         self.durationSeconds = durationSeconds
         self.policy = policy
+        self.policyArns = policyArns
         self.providerId = providerId
         self.roleArn = roleArn
         self.roleSessionName = roleSessionName
@@ -232,6 +243,7 @@ public struct AssumeRoleWithWebIdentityRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case durationSeconds = "DurationSeconds"
         case policy = "Policy"
+        case policyArns = "PolicyArns"
         case providerId = "ProviderId"
         case roleArn = "RoleArn"
         case roleSessionName = "RoleSessionName"
@@ -488,19 +500,23 @@ public struct GetFederationTokenRequest: Codable, Equatable {
     public var durationSeconds: DurationSecondsType?
     public var name: UserNameType
     public var policy: SessionPolicyDocumentType?
+    public var policyArns: PolicyDescriptorListType?
 
     public init(durationSeconds: DurationSecondsType? = nil,
                 name: UserNameType,
-                policy: SessionPolicyDocumentType? = nil) {
+                policy: SessionPolicyDocumentType? = nil,
+                policyArns: PolicyDescriptorListType? = nil) {
         self.durationSeconds = durationSeconds
         self.name = name
         self.policy = policy
+        self.policyArns = policyArns
     }
 
     enum CodingKeys: String, CodingKey {
         case durationSeconds = "DurationSeconds"
         case name = "Name"
         case policy = "Policy"
+        case policyArns = "PolicyArns"
     }
 
     public func validate() throws {
@@ -697,6 +713,22 @@ public struct PackedPolicyTooLargeException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct PolicyDescriptorType: Codable, Equatable {
+    public var arn: ArnType?
+
+    public init(arn: ArnType? = nil) {
+        self.arn = arn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arn
+    }
+
+    public func validate() throws {
+        try arn?.validateAsArnType()
     }
 }
 

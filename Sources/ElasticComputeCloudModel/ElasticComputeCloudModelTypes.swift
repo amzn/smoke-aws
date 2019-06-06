@@ -100,6 +100,7 @@ public typealias AllocationIdList = [String]
  */
 public enum AllocationState: String, Codable, CustomStringConvertible {
     case available
+    case pending
     case permanentFailure = "permanent-failure"
     case released
     case releasedPermanentFailure = "released-permanent-failure"
@@ -693,6 +694,19 @@ public enum ConversionTaskState: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the CopyTagsFromSource field.
+ */
+public enum CopyTagsFromSource: String, Codable, CustomStringConvertible {
+    case volume
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: CopyTagsFromSource = .volume
+}
+
+/**
  Type definition for the CreateFleetErrorsSet field.
  */
 public typealias CreateFleetErrorsSet = [CreateFleetError]
@@ -828,9 +842,24 @@ public typealias DeleteLaunchTemplateVersionsResponseErrorSet = [DeleteLaunchTem
 public typealias DeleteLaunchTemplateVersionsResponseSuccessSet = [DeleteLaunchTemplateVersionsResponseSuccessItem]
 
 /**
+ Type definition for the DescribeCapacityReservationsMaxResults field.
+ */
+public typealias DescribeCapacityReservationsMaxResults = Int
+
+/**
  Type definition for the DescribeConversionTaskList field.
  */
 public typealias DescribeConversionTaskList = [ConversionTask]
+
+/**
+ Type definition for the DescribeDhcpOptionsMaxResults field.
+ */
+public typealias DescribeDhcpOptionsMaxResults = Int
+
+/**
+ Type definition for the DescribeElasticGpusMaxResults field.
+ */
+public typealias DescribeElasticGpusMaxResults = Int
 
 /**
  Type definition for the DescribeFleetsErrorSet field.
@@ -858,9 +887,49 @@ public typealias DescribeInstanceCreditSpecificationsMaxResults = Int
 public typealias DescribeInternetGatewaysMaxResults = Int
 
 /**
+ Type definition for the DescribeLaunchTemplatesMaxResults field.
+ */
+public typealias DescribeLaunchTemplatesMaxResults = Int
+
+/**
  Type definition for the DescribeNetworkAclsMaxResults field.
  */
 public typealias DescribeNetworkAclsMaxResults = Int
+
+/**
+ Type definition for the DescribeNetworkInterfacePermissionsMaxResults field.
+ */
+public typealias DescribeNetworkInterfacePermissionsMaxResults = Int
+
+/**
+ Type definition for the DescribeNetworkInterfacesMaxResults field.
+ */
+public typealias DescribeNetworkInterfacesMaxResults = Int
+
+/**
+ Type definition for the DescribeRouteTablesMaxResults field.
+ */
+public typealias DescribeRouteTablesMaxResults = Int
+
+/**
+ Type definition for the DescribeSecurityGroupsMaxResults field.
+ */
+public typealias DescribeSecurityGroupsMaxResults = Int
+
+/**
+ Type definition for the DescribeStaleSecurityGroupsMaxResults field.
+ */
+public typealias DescribeStaleSecurityGroupsMaxResults = Int
+
+/**
+ Type definition for the DescribeStaleSecurityGroupsNextToken field.
+ */
+public typealias DescribeStaleSecurityGroupsNextToken = String
+
+/**
+ Type definition for the DescribeSubnetsMaxResults field.
+ */
+public typealias DescribeSubnetsMaxResults = Int
 
 /**
  Type definition for the DescribeVpcPeeringConnectionsMaxResults field.
@@ -1416,6 +1485,20 @@ public typealias HostList = [Host]
 public typealias HostOfferingSet = [HostOffering]
 
 /**
+ Enumeration restricting the values of the HostRecovery field.
+ */
+public enum HostRecovery: String, Codable, CustomStringConvertible {
+    case off
+    case on
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: HostRecovery = .off
+}
+
+/**
  Type definition for the HostReservationIdSet field.
  */
 public typealias HostReservationIdSet = [String]
@@ -1860,6 +1943,13 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case i3Large = "i3.large"
     case i3Metal = "i3.metal"
     case i3Xlarge = "i3.xlarge"
+    case i3en12xlarge = "i3en.12xlarge"
+    case i3en24xlarge = "i3en.24xlarge"
+    case i3en2xlarge = "i3en.2xlarge"
+    case i3en3xlarge = "i3en.3xlarge"
+    case i3en6xlarge = "i3en.6xlarge"
+    case i3enLarge = "i3en.large"
+    case i3enXlarge = "i3en.xlarge"
     case m1Large = "m1.large"
     case m1Medium = "m1.medium"
     case m1Small = "m1.small"
@@ -1966,6 +2056,13 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case t3Nano = "t3.nano"
     case t3Small = "t3.small"
     case t3Xlarge = "t3.xlarge"
+    case t3a2xlarge = "t3a.2xlarge"
+    case t3aLarge = "t3a.large"
+    case t3aMedium = "t3a.medium"
+    case t3aMicro = "t3a.micro"
+    case t3aNano = "t3a.nano"
+    case t3aSmall = "t3a.small"
+    case t3aXlarge = "t3a.xlarge"
     case u12tb1Metal = "u-12tb1.metal"
     case u6tb1Metal = "u-6tb1.metal"
     case u9tb1Metal = "u-9tb1.metal"
@@ -2283,6 +2380,11 @@ public enum MarketType: String, Codable, CustomStringConvertible {
 public typealias MaxResults = Int
 
 /**
+ Type definition for the MillisecondDateTime field.
+ */
+public typealias MillisecondDateTime = String
+
+/**
  Enumeration restricting the values of the MonitoringState field.
  */
 public enum MonitoringState: String, Codable, CustomStringConvertible {
@@ -2376,6 +2478,19 @@ public enum NetworkInterfaceAttribute: String, Codable, CustomStringConvertible 
 }
 
 /**
+ Enumeration restricting the values of the NetworkInterfaceCreationType field.
+ */
+public enum NetworkInterfaceCreationType: String, Codable, CustomStringConvertible {
+    case efa
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: NetworkInterfaceCreationType = .efa
+}
+
+/**
  Type definition for the NetworkInterfaceIdList field.
  */
 public typealias NetworkInterfaceIdList = [String]
@@ -2442,6 +2557,7 @@ public enum NetworkInterfaceStatus: String, Codable, CustomStringConvertible {
  Enumeration restricting the values of the NetworkInterfaceType field.
  */
 public enum NetworkInterfaceType: String, Codable, CustomStringConvertible {
+    case efa
     case interface
     case natgateway = "natGateway"
 
@@ -2449,7 +2565,7 @@ public enum NetworkInterfaceType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: NetworkInterfaceType = .interface
+    public static let __default: NetworkInterfaceType = .efa
 }
 
 /**
@@ -3240,6 +3356,11 @@ public typealias SnapshotIdStringList = [String]
  Type definition for the SnapshotList field.
  */
 public typealias SnapshotList = [Snapshot]
+
+/**
+ Type definition for the SnapshotSet field.
+ */
+public typealias SnapshotSet = [SnapshotInfo]
 
 /**
  Enumeration restricting the values of the SnapshotState field.
@@ -4286,6 +4407,51 @@ extension Array where Element == ElasticComputeCloudModel.ClassicLoadBalancer {
 }
 
 /**
+ Validation for the DescribeCapacityReservationsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeCapacityReservationsMaxResults {
+    public func validateAsDescribeCapacityReservationsMaxResults() throws {
+        if self < 1 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeCapacityReservationsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeCapacityReservationsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeDhcpOptionsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeDhcpOptionsMaxResults {
+    public func validateAsDescribeDhcpOptionsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeDhcpOptionsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeDhcpOptionsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeElasticGpusMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeElasticGpusMaxResults {
+    public func validateAsDescribeElasticGpusMaxResults() throws {
+        if self < 10 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeElasticGpusMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeElasticGpusMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the DescribeHostReservationsMaxResults field.
 */
 extension ElasticComputeCloudModel.DescribeHostReservationsMaxResults {
@@ -4331,6 +4497,21 @@ extension ElasticComputeCloudModel.DescribeInternetGatewaysMaxResults {
 }
 
 /**
+ Validation for the DescribeLaunchTemplatesMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeLaunchTemplatesMaxResults {
+    public func validateAsDescribeLaunchTemplatesMaxResults() throws {
+        if self < 1 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeLaunchTemplatesMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 200 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeLaunchTemplatesMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the DescribeNetworkAclsMaxResults field.
 */
 extension ElasticComputeCloudModel.DescribeNetworkAclsMaxResults {
@@ -4341,6 +4522,111 @@ extension ElasticComputeCloudModel.DescribeNetworkAclsMaxResults {
 
         if self > 1000 {
             throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkAclsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeNetworkInterfacePermissionsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsMaxResults {
+    public func validateAsDescribeNetworkInterfacePermissionsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkInterfacePermissionsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 255 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkInterfacePermissionsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeNetworkInterfacesMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeNetworkInterfacesMaxResults {
+    public func validateAsDescribeNetworkInterfacesMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkInterfacesMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkInterfacesMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeRouteTablesMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeRouteTablesMaxResults {
+    public func validateAsDescribeRouteTablesMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeRouteTablesMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 100 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeRouteTablesMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeSecurityGroupsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeSecurityGroupsMaxResults {
+    public func validateAsDescribeSecurityGroupsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeSecurityGroupsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeSecurityGroupsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeStaleSecurityGroupsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeStaleSecurityGroupsMaxResults {
+    public func validateAsDescribeStaleSecurityGroupsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 255 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeStaleSecurityGroupsNextToken field.
+*/
+extension ElasticComputeCloudModel.DescribeStaleSecurityGroupsNextToken {
+    public func validateAsDescribeStaleSecurityGroupsNextToken() throws {
+        if self.count < 1 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsNextToken violated the minimum length constraint.")
+        }
+
+        if self.count > 1024 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsNextToken violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeSubnetsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeSubnetsMaxResults {
+    public func validateAsDescribeSubnetsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeSubnetsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeSubnetsMaxResults violated the maximum range constraint.")
         }
     }
 }

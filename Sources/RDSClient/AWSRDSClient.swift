@@ -6984,6 +6984,72 @@ public struct AWSRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the StartActivityStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartActivityStreamRequest object being passed to this operation.
+         - completion: The StartActivityStreamResponseForStartActivityStream object or an error will be passed to this 
+           callback when the operation is complete. The StartActivityStreamResponseForStartActivityStream
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
+     */
+    public func startActivityStreamAsync(input: RDSModel.StartActivityStreamRequest, completion: @escaping (HTTPResult<RDSModel.StartActivityStreamResponseForStartActivityStream>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = StartActivityStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.startActivityStream.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartActivityStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartActivityStreamRequest object being passed to this operation.
+     - Returns: The StartActivityStreamResponseForStartActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
+     */
+    public func startActivityStreamSync(input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = StartActivityStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.startActivityStream.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the StartDBCluster operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7104,6 +7170,72 @@ public struct AWSRDSClient: RDSClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.startDBInstance.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StopActivityStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopActivityStreamRequest object being passed to this operation.
+         - completion: The StopActivityStreamResponseForStopActivityStream object or an error will be passed to this 
+           callback when the operation is complete. The StopActivityStreamResponseForStopActivityStream
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
+     */
+    public func stopActivityStreamAsync(input: RDSModel.StopActivityStreamRequest, completion: @escaping (HTTPResult<RDSModel.StopActivityStreamResponseForStopActivityStream>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = StopActivityStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.stopActivityStream.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StopActivityStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopActivityStreamRequest object being passed to this operation.
+     - Returns: The StopActivityStreamResponseForStopActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
+     */
+    public func stopActivityStreamSync(input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = StopActivityStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.stopActivityStream.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(

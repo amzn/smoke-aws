@@ -2163,16 +2163,20 @@ public struct LoadBalancer: Codable, Equatable {
 public struct LogConfiguration: Codable, Equatable {
     public var logDriver: LogDriver
     public var options: LogConfigurationOptionsMap?
+    public var secretOptions: SecretList?
 
     public init(logDriver: LogDriver,
-                options: LogConfigurationOptionsMap? = nil) {
+                options: LogConfigurationOptionsMap? = nil,
+                secretOptions: SecretList? = nil) {
         self.logDriver = logDriver
         self.options = options
+        self.secretOptions = secretOptions
     }
 
     enum CodingKeys: String, CodingKey {
         case logDriver
         case options
+        case secretOptions
     }
 
     public func validate() throws {

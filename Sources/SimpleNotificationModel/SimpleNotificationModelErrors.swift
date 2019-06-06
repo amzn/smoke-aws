@@ -23,6 +23,7 @@ import Foundation
 import LoggerAPI
 
 private let authorizationErrorIdentity = "AuthorizationError"
+private let concurrentAccessIdentity = "ConcurrentAccess"
 private let endpointDisabledIdentity = "EndpointDisabled"
 private let filterPolicyLimitExceededIdentity = "FilterPolicyLimitExceeded"
 private let internalErrorIdentity = "InternalError"
@@ -37,7 +38,11 @@ private let kMSOptInRequiredIdentity = "KMSOptInRequired"
 private let kMSThrottlingIdentity = "KMSThrottling"
 private let notFoundIdentity = "NotFound"
 private let platformApplicationDisabledIdentity = "PlatformApplicationDisabled"
+private let resourceNotFoundIdentity = "ResourceNotFound"
+private let staleTagIdentity = "StaleTag"
 private let subscriptionLimitExceededIdentity = "SubscriptionLimitExceeded"
+private let tagLimitExceededIdentity = "TagLimitExceeded"
+private let tagPolicyIdentity = "TagPolicy"
 private let throttledIdentity = "Throttled"
 private let topicLimitExceededIdentity = "TopicLimitExceeded"
 private let __accessDeniedIdentity = "AccessDenied"
@@ -50,6 +55,7 @@ public enum SimpleNotificationCodingError: Swift.Error {
 
 public enum SimpleNotificationError: Swift.Error, Decodable {
     case authorizationError(AuthorizationErrorException)
+    case concurrentAccess(ConcurrentAccessException)
     case endpointDisabled(EndpointDisabledException)
     case filterPolicyLimitExceeded(FilterPolicyLimitExceededException)
     case internalError(InternalErrorException)
@@ -64,7 +70,11 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case kMSThrottling(KMSThrottlingException)
     case notFound(NotFoundException)
     case platformApplicationDisabled(PlatformApplicationDisabledException)
+    case resourceNotFound(ResourceNotFoundException)
+    case staleTag(StaleTagException)
     case subscriptionLimitExceeded(SubscriptionLimitExceededException)
+    case tagLimitExceeded(TagLimitExceededException)
+    case tagPolicy(TagPolicyException)
     case throttled(ThrottledException)
     case topicLimitExceeded(TopicLimitExceededException)
     case accessDenied(message: String?)
@@ -87,6 +97,9 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case authorizationErrorIdentity:
             let errorPayload = try AuthorizationErrorException(from: decoder)
             self = SimpleNotificationError.authorizationError(errorPayload)
+        case concurrentAccessIdentity:
+            let errorPayload = try ConcurrentAccessException(from: decoder)
+            self = SimpleNotificationError.concurrentAccess(errorPayload)
         case endpointDisabledIdentity:
             let errorPayload = try EndpointDisabledException(from: decoder)
             self = SimpleNotificationError.endpointDisabled(errorPayload)
@@ -129,9 +142,21 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case platformApplicationDisabledIdentity:
             let errorPayload = try PlatformApplicationDisabledException(from: decoder)
             self = SimpleNotificationError.platformApplicationDisabled(errorPayload)
+        case resourceNotFoundIdentity:
+            let errorPayload = try ResourceNotFoundException(from: decoder)
+            self = SimpleNotificationError.resourceNotFound(errorPayload)
+        case staleTagIdentity:
+            let errorPayload = try StaleTagException(from: decoder)
+            self = SimpleNotificationError.staleTag(errorPayload)
         case subscriptionLimitExceededIdentity:
             let errorPayload = try SubscriptionLimitExceededException(from: decoder)
             self = SimpleNotificationError.subscriptionLimitExceeded(errorPayload)
+        case tagLimitExceededIdentity:
+            let errorPayload = try TagLimitExceededException(from: decoder)
+            self = SimpleNotificationError.tagLimitExceeded(errorPayload)
+        case tagPolicyIdentity:
+            let errorPayload = try TagPolicyException(from: decoder)
+            self = SimpleNotificationError.tagPolicy(errorPayload)
         case throttledIdentity:
             let errorPayload = try ThrottledException(from: decoder)
             self = SimpleNotificationError.throttled(errorPayload)

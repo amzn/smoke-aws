@@ -4875,13 +4875,17 @@ public extension PutBucketReplicationRequest {
  */
 public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
     public var contentMD5: ContentMD5?
+    public var token: ObjectLockToken?
 
-    public init(contentMD5: ContentMD5? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                token: ObjectLockToken? = nil) {
         self.contentMD5 = contentMD5
+        self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
         case contentMD5 = "Content-MD5"
+        case token = "x-amz-bucket-object-lock-token"
     }
 
     public func validate() throws {
@@ -4891,7 +4895,8 @@ public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equa
 public extension PutBucketReplicationRequest {
     public func asS3ModelPutBucketReplicationOperationInputAdditionalHeaders() -> PutBucketReplicationOperationInputAdditionalHeaders {
         return PutBucketReplicationOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
+            contentMD5: contentMD5,
+            token: token)
     }
 }
 

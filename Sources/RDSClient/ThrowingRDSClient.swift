@@ -238,10 +238,14 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let restoreDBInstanceToPointInTimeSyncOverride: RDSClientProtocol.RestoreDBInstanceToPointInTimeSyncType?
     let revokeDBSecurityGroupIngressAsyncOverride: RDSClientProtocol.RevokeDBSecurityGroupIngressAsyncType?
     let revokeDBSecurityGroupIngressSyncOverride: RDSClientProtocol.RevokeDBSecurityGroupIngressSyncType?
+    let startActivityStreamAsyncOverride: RDSClientProtocol.StartActivityStreamAsyncType?
+    let startActivityStreamSyncOverride: RDSClientProtocol.StartActivityStreamSyncType?
     let startDBClusterAsyncOverride: RDSClientProtocol.StartDBClusterAsyncType?
     let startDBClusterSyncOverride: RDSClientProtocol.StartDBClusterSyncType?
     let startDBInstanceAsyncOverride: RDSClientProtocol.StartDBInstanceAsyncType?
     let startDBInstanceSyncOverride: RDSClientProtocol.StartDBInstanceSyncType?
+    let stopActivityStreamAsyncOverride: RDSClientProtocol.StopActivityStreamAsyncType?
+    let stopActivityStreamSyncOverride: RDSClientProtocol.StopActivityStreamSyncType?
     let stopDBClusterAsyncOverride: RDSClientProtocol.StopDBClusterAsyncType?
     let stopDBClusterSyncOverride: RDSClientProtocol.StopDBClusterSyncType?
     let stopDBInstanceAsyncOverride: RDSClientProtocol.StopDBInstanceAsyncType?
@@ -462,10 +466,14 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             restoreDBInstanceToPointInTimeSync: RDSClientProtocol.RestoreDBInstanceToPointInTimeSyncType? = nil,
             revokeDBSecurityGroupIngressAsync: RDSClientProtocol.RevokeDBSecurityGroupIngressAsyncType? = nil,
             revokeDBSecurityGroupIngressSync: RDSClientProtocol.RevokeDBSecurityGroupIngressSyncType? = nil,
+            startActivityStreamAsync: RDSClientProtocol.StartActivityStreamAsyncType? = nil,
+            startActivityStreamSync: RDSClientProtocol.StartActivityStreamSyncType? = nil,
             startDBClusterAsync: RDSClientProtocol.StartDBClusterAsyncType? = nil,
             startDBClusterSync: RDSClientProtocol.StartDBClusterSyncType? = nil,
             startDBInstanceAsync: RDSClientProtocol.StartDBInstanceAsyncType? = nil,
             startDBInstanceSync: RDSClientProtocol.StartDBInstanceSyncType? = nil,
+            stopActivityStreamAsync: RDSClientProtocol.StopActivityStreamAsyncType? = nil,
+            stopActivityStreamSync: RDSClientProtocol.StopActivityStreamSyncType? = nil,
             stopDBClusterAsync: RDSClientProtocol.StopDBClusterAsyncType? = nil,
             stopDBClusterSync: RDSClientProtocol.StopDBClusterSyncType? = nil,
             stopDBInstanceAsync: RDSClientProtocol.StopDBInstanceAsyncType? = nil,
@@ -681,10 +689,14 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.restoreDBInstanceToPointInTimeSyncOverride = restoreDBInstanceToPointInTimeSync
         self.revokeDBSecurityGroupIngressAsyncOverride = revokeDBSecurityGroupIngressAsync
         self.revokeDBSecurityGroupIngressSyncOverride = revokeDBSecurityGroupIngressSync
+        self.startActivityStreamAsyncOverride = startActivityStreamAsync
+        self.startActivityStreamSyncOverride = startActivityStreamSync
         self.startDBClusterAsyncOverride = startDBClusterAsync
         self.startDBClusterSyncOverride = startDBClusterSync
         self.startDBInstanceAsyncOverride = startDBInstanceAsync
         self.startDBInstanceSyncOverride = startDBInstanceSync
+        self.stopActivityStreamAsyncOverride = stopActivityStreamAsync
+        self.stopActivityStreamSyncOverride = stopActivityStreamSync
         self.stopDBClusterAsyncOverride = stopDBClusterAsync
         self.stopDBClusterSyncOverride = stopDBClusterSync
         self.stopDBInstanceAsyncOverride = stopDBInstanceAsync
@@ -4316,6 +4328,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the StartActivityStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartActivityStreamRequest object being passed to this operation.
+         - completion: The StartActivityStreamResponseForStartActivityStream object or an error will be passed to this 
+           callback when the operation is complete. The StartActivityStreamResponseForStartActivityStream
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
+     */
+    public func startActivityStreamAsync(input: RDSModel.StartActivityStreamRequest, completion: @escaping (HTTPResult<RDSModel.StartActivityStreamResponseForStartActivityStream>) -> ()) throws {
+        if let startActivityStreamAsyncOverride = startActivityStreamAsyncOverride {
+            return try startActivityStreamAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the StartActivityStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartActivityStreamRequest object being passed to this operation.
+     - Returns: The StartActivityStreamResponseForStartActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
+     */
+    public func startActivityStreamSync(input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
+        if let startActivityStreamSyncOverride = startActivityStreamSyncOverride {
+            return try startActivityStreamSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the StartDBCluster operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4380,6 +4427,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func startDBInstanceSync(input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
         if let startDBInstanceSyncOverride = startDBInstanceSyncOverride {
             return try startDBInstanceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the StopActivityStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopActivityStreamRequest object being passed to this operation.
+         - completion: The StopActivityStreamResponseForStopActivityStream object or an error will be passed to this 
+           callback when the operation is complete. The StopActivityStreamResponseForStopActivityStream
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
+     */
+    public func stopActivityStreamAsync(input: RDSModel.StopActivityStreamRequest, completion: @escaping (HTTPResult<RDSModel.StopActivityStreamResponseForStopActivityStream>) -> ()) throws {
+        if let stopActivityStreamAsyncOverride = stopActivityStreamAsyncOverride {
+            return try stopActivityStreamAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the StopActivityStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopActivityStreamRequest object being passed to this operation.
+     - Returns: The StopActivityStreamResponseForStopActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
+     */
+    public func stopActivityStreamSync(input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
+        if let stopActivityStreamSyncOverride = stopActivityStreamSyncOverride {
+            return try stopActivityStreamSyncOverride(input)
         }
 
         throw error

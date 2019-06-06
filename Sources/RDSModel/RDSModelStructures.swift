@@ -77,16 +77,20 @@ public struct AccountQuota: Codable, Equatable {
 
 public struct AddRoleToDBClusterMessage: Codable, Equatable {
     public var dBClusterIdentifier: String
+    public var featureName: String?
     public var roleArn: String
 
     public init(dBClusterIdentifier: String,
+                featureName: String? = nil,
                 roleArn: String) {
         self.dBClusterIdentifier = dBClusterIdentifier
+        self.featureName = featureName
         self.roleArn = roleArn
     }
 
     enum CodingKeys: String, CodingKey {
         case dBClusterIdentifier = "DBClusterIdentifier"
+        case featureName = "FeatureName"
         case roleArn = "RoleArn"
     }
 
@@ -1951,6 +1955,10 @@ public struct CreateOptionGroupResultForCreateOptionGroup: Codable, Equatable {
 }
 
 public struct DBCluster: Codable, Equatable {
+    public var activityStreamKinesisStreamName: String?
+    public var activityStreamKmsKeyId: String?
+    public var activityStreamMode: ActivityStreamMode?
+    public var activityStreamStatus: ActivityStreamStatus?
     public var allocatedStorage: IntegerOptional?
     public var associatedRoles: DBClusterRoles?
     public var availabilityZones: AvailabilityZones?
@@ -1998,7 +2006,11 @@ public struct DBCluster: Codable, Equatable {
     public var storageEncrypted: Boolean?
     public var vpcSecurityGroups: VpcSecurityGroupMembershipList?
 
-    public init(allocatedStorage: IntegerOptional? = nil,
+    public init(activityStreamKinesisStreamName: String? = nil,
+                activityStreamKmsKeyId: String? = nil,
+                activityStreamMode: ActivityStreamMode? = nil,
+                activityStreamStatus: ActivityStreamStatus? = nil,
+                allocatedStorage: IntegerOptional? = nil,
                 associatedRoles: DBClusterRoles? = nil,
                 availabilityZones: AvailabilityZones? = nil,
                 backtrackConsumedChangeRecords: LongOptional? = nil,
@@ -2044,6 +2056,10 @@ public struct DBCluster: Codable, Equatable {
                 status: String? = nil,
                 storageEncrypted: Boolean? = nil,
                 vpcSecurityGroups: VpcSecurityGroupMembershipList? = nil) {
+        self.activityStreamKinesisStreamName = activityStreamKinesisStreamName
+        self.activityStreamKmsKeyId = activityStreamKmsKeyId
+        self.activityStreamMode = activityStreamMode
+        self.activityStreamStatus = activityStreamStatus
         self.allocatedStorage = allocatedStorage
         self.associatedRoles = associatedRoles
         self.availabilityZones = availabilityZones
@@ -2093,6 +2109,10 @@ public struct DBCluster: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case activityStreamKinesisStreamName = "ActivityStreamKinesisStreamName"
+        case activityStreamKmsKeyId = "ActivityStreamKmsKeyId"
+        case activityStreamMode = "ActivityStreamMode"
+        case activityStreamStatus = "ActivityStreamStatus"
         case allocatedStorage = "AllocatedStorage"
         case associatedRoles = "AssociatedRoles"
         case availabilityZones = "AvailabilityZones"
@@ -2950,6 +2970,7 @@ public struct DBEngineVersion: Codable, Equatable {
     public var engine: String?
     public var engineVersion: String?
     public var exportableLogTypes: LogTypeList?
+    public var status: String?
     public var supportedCharacterSets: SupportedCharacterSetsList?
     public var supportedEngineModes: EngineModeList?
     public var supportedFeatureNames: FeatureNameList?
@@ -2965,6 +2986,7 @@ public struct DBEngineVersion: Codable, Equatable {
                 engine: String? = nil,
                 engineVersion: String? = nil,
                 exportableLogTypes: LogTypeList? = nil,
+                status: String? = nil,
                 supportedCharacterSets: SupportedCharacterSetsList? = nil,
                 supportedEngineModes: EngineModeList? = nil,
                 supportedFeatureNames: FeatureNameList? = nil,
@@ -2979,6 +3001,7 @@ public struct DBEngineVersion: Codable, Equatable {
         self.engine = engine
         self.engineVersion = engineVersion
         self.exportableLogTypes = exportableLogTypes
+        self.status = status
         self.supportedCharacterSets = supportedCharacterSets
         self.supportedEngineModes = supportedEngineModes
         self.supportedFeatureNames = supportedFeatureNames
@@ -2996,6 +3019,7 @@ public struct DBEngineVersion: Codable, Equatable {
         case engine = "Engine"
         case engineVersion = "EngineVersion"
         case exportableLogTypes = "ExportableLogTypes"
+        case status = "Status"
         case supportedCharacterSets = "SupportedCharacterSets"
         case supportedEngineModes = "SupportedEngineModes"
         case supportedFeatureNames = "SupportedFeatureNames"
@@ -4968,6 +4992,7 @@ public struct DescribeDBEngineVersionsMessage: Codable, Equatable {
     public var engine: String?
     public var engineVersion: String?
     public var filters: FilterList?
+    public var includeAll: BooleanOptional?
     public var listSupportedCharacterSets: BooleanOptional?
     public var listSupportedTimezones: BooleanOptional?
     public var marker: String?
@@ -4978,6 +5003,7 @@ public struct DescribeDBEngineVersionsMessage: Codable, Equatable {
                 engine: String? = nil,
                 engineVersion: String? = nil,
                 filters: FilterList? = nil,
+                includeAll: BooleanOptional? = nil,
                 listSupportedCharacterSets: BooleanOptional? = nil,
                 listSupportedTimezones: BooleanOptional? = nil,
                 marker: String? = nil,
@@ -4987,6 +5013,7 @@ public struct DescribeDBEngineVersionsMessage: Codable, Equatable {
         self.engine = engine
         self.engineVersion = engineVersion
         self.filters = filters
+        self.includeAll = includeAll
         self.listSupportedCharacterSets = listSupportedCharacterSets
         self.listSupportedTimezones = listSupportedTimezones
         self.marker = marker
@@ -4999,6 +5026,7 @@ public struct DescribeDBEngineVersionsMessage: Codable, Equatable {
         case engine = "Engine"
         case engineVersion = "EngineVersion"
         case filters = "Filters"
+        case includeAll = "IncludeAll"
         case listSupportedCharacterSets = "ListSupportedCharacterSets"
         case listSupportedTimezones = "ListSupportedTimezones"
         case marker = "Marker"
@@ -8745,16 +8773,20 @@ public struct RemoveFromGlobalClusterResultForRemoveFromGlobalCluster: Codable, 
 
 public struct RemoveRoleFromDBClusterMessage: Codable, Equatable {
     public var dBClusterIdentifier: String
+    public var featureName: String?
     public var roleArn: String
 
     public init(dBClusterIdentifier: String,
+                featureName: String? = nil,
                 roleArn: String) {
         self.dBClusterIdentifier = dBClusterIdentifier
+        self.featureName = featureName
         self.roleArn = roleArn
     }
 
     enum CodingKeys: String, CodingKey {
         case dBClusterIdentifier = "DBClusterIdentifier"
+        case featureName = "FeatureName"
         case roleArn = "RoleArn"
     }
 
@@ -10202,15 +10234,18 @@ public struct ScalingConfiguration: Codable, Equatable {
     public var maxCapacity: IntegerOptional?
     public var minCapacity: IntegerOptional?
     public var secondsUntilAutoPause: IntegerOptional?
+    public var timeoutAction: String?
 
     public init(autoPause: BooleanOptional? = nil,
                 maxCapacity: IntegerOptional? = nil,
                 minCapacity: IntegerOptional? = nil,
-                secondsUntilAutoPause: IntegerOptional? = nil) {
+                secondsUntilAutoPause: IntegerOptional? = nil,
+                timeoutAction: String? = nil) {
         self.autoPause = autoPause
         self.maxCapacity = maxCapacity
         self.minCapacity = minCapacity
         self.secondsUntilAutoPause = secondsUntilAutoPause
+        self.timeoutAction = timeoutAction
     }
 
     enum CodingKeys: String, CodingKey {
@@ -10218,6 +10253,7 @@ public struct ScalingConfiguration: Codable, Equatable {
         case maxCapacity = "MaxCapacity"
         case minCapacity = "MinCapacity"
         case secondsUntilAutoPause = "SecondsUntilAutoPause"
+        case timeoutAction = "TimeoutAction"
     }
 
     public func validate() throws {
@@ -10229,15 +10265,18 @@ public struct ScalingConfigurationInfo: Codable, Equatable {
     public var maxCapacity: IntegerOptional?
     public var minCapacity: IntegerOptional?
     public var secondsUntilAutoPause: IntegerOptional?
+    public var timeoutAction: String?
 
     public init(autoPause: BooleanOptional? = nil,
                 maxCapacity: IntegerOptional? = nil,
                 minCapacity: IntegerOptional? = nil,
-                secondsUntilAutoPause: IntegerOptional? = nil) {
+                secondsUntilAutoPause: IntegerOptional? = nil,
+                timeoutAction: String? = nil) {
         self.autoPause = autoPause
         self.maxCapacity = maxCapacity
         self.minCapacity = minCapacity
         self.secondsUntilAutoPause = secondsUntilAutoPause
+        self.timeoutAction = timeoutAction
     }
 
     enum CodingKeys: String, CodingKey {
@@ -10245,6 +10284,7 @@ public struct ScalingConfigurationInfo: Codable, Equatable {
         case maxCapacity = "MaxCapacity"
         case minCapacity = "MinCapacity"
         case secondsUntilAutoPause = "SecondsUntilAutoPause"
+        case timeoutAction = "TimeoutAction"
     }
 
     public func validate() throws {
@@ -10333,6 +10373,80 @@ public struct SourceRegionMessageForDescribeSourceRegions: Codable, Equatable {
 
     public func validate() throws {
         try describeSourceRegionsResult.validate()
+    }
+}
+
+public struct StartActivityStreamRequest: Codable, Equatable {
+    public var applyImmediately: BooleanOptional?
+    public var kmsKeyId: String
+    public var mode: ActivityStreamMode
+    public var resourceArn: String
+
+    public init(applyImmediately: BooleanOptional? = nil,
+                kmsKeyId: String,
+                mode: ActivityStreamMode,
+                resourceArn: String) {
+        self.applyImmediately = applyImmediately
+        self.kmsKeyId = kmsKeyId
+        self.mode = mode
+        self.resourceArn = resourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case applyImmediately = "ApplyImmediately"
+        case kmsKeyId = "KmsKeyId"
+        case mode = "Mode"
+        case resourceArn = "ResourceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StartActivityStreamResponse: Codable, Equatable {
+    public var applyImmediately: Boolean?
+    public var kinesisStreamName: String?
+    public var kmsKeyId: String?
+    public var mode: ActivityStreamMode?
+    public var status: ActivityStreamStatus?
+
+    public init(applyImmediately: Boolean? = nil,
+                kinesisStreamName: String? = nil,
+                kmsKeyId: String? = nil,
+                mode: ActivityStreamMode? = nil,
+                status: ActivityStreamStatus? = nil) {
+        self.applyImmediately = applyImmediately
+        self.kinesisStreamName = kinesisStreamName
+        self.kmsKeyId = kmsKeyId
+        self.mode = mode
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case applyImmediately = "ApplyImmediately"
+        case kinesisStreamName = "KinesisStreamName"
+        case kmsKeyId = "KmsKeyId"
+        case mode = "Mode"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StartActivityStreamResponseForStartActivityStream: Codable, Equatable {
+    public var startActivityStreamResult: StartActivityStreamResponse
+
+    public init(startActivityStreamResult: StartActivityStreamResponse) {
+        self.startActivityStreamResult = startActivityStreamResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case startActivityStreamResult = "StartActivityStreamResult"
+    }
+
+    public func validate() throws {
+        try startActivityStreamResult.validate()
     }
 }
 
@@ -10427,6 +10541,64 @@ public struct StartDBInstanceResultForStartDBInstance: Codable, Equatable {
 
     public func validate() throws {
         try startDBInstanceResult.validate()
+    }
+}
+
+public struct StopActivityStreamRequest: Codable, Equatable {
+    public var applyImmediately: BooleanOptional?
+    public var resourceArn: String
+
+    public init(applyImmediately: BooleanOptional? = nil,
+                resourceArn: String) {
+        self.applyImmediately = applyImmediately
+        self.resourceArn = resourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case applyImmediately = "ApplyImmediately"
+        case resourceArn = "ResourceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StopActivityStreamResponse: Codable, Equatable {
+    public var kinesisStreamName: String?
+    public var kmsKeyId: String?
+    public var status: ActivityStreamStatus?
+
+    public init(kinesisStreamName: String? = nil,
+                kmsKeyId: String? = nil,
+                status: ActivityStreamStatus? = nil) {
+        self.kinesisStreamName = kinesisStreamName
+        self.kmsKeyId = kmsKeyId
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case kinesisStreamName = "KinesisStreamName"
+        case kmsKeyId = "KmsKeyId"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StopActivityStreamResponseForStopActivityStream: Codable, Equatable {
+    public var stopActivityStreamResult: StopActivityStreamResponse
+
+    public init(stopActivityStreamResult: StopActivityStreamResponse) {
+        self.stopActivityStreamResult = stopActivityStreamResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case stopActivityStreamResult = "StopActivityStreamResult"
+    }
+
+    public func validate() throws {
+        try stopActivityStreamResult.validate()
     }
 }
 

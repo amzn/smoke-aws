@@ -44,6 +44,7 @@ public enum SimpleNotificationModelOperations: String {
     case listPlatformApplications = "ListPlatformApplications"
     case listSubscriptions = "ListSubscriptions"
     case listSubscriptionsByTopic = "ListSubscriptionsByTopic"
+    case listTagsForResource = "ListTagsForResource"
     case listTopics = "ListTopics"
     case optInPhoneNumber = "OptInPhoneNumber"
     case publish = "Publish"
@@ -54,7 +55,9 @@ public enum SimpleNotificationModelOperations: String {
     case setSubscriptionAttributes = "SetSubscriptionAttributes"
     case setTopicAttributes = "SetTopicAttributes"
     case subscribe = "Subscribe"
+    case tagResource = "TagResource"
     case unsubscribe = "Unsubscribe"
+    case untagResource = "UntagResource"
 
     public var operationPath: String {
         switch self {
@@ -96,6 +99,8 @@ public enum SimpleNotificationModelOperations: String {
             return "/"
         case .listSubscriptionsByTopic:
             return "/"
+        case .listTagsForResource:
+            return "/"
         case .listTopics:
             return "/"
         case .optInPhoneNumber:
@@ -116,7 +121,11 @@ public enum SimpleNotificationModelOperations: String {
             return "/"
         case .subscribe:
             return "/"
+        case .tagResource:
+            return "/"
         case .unsubscribe:
+            return "/"
+        case .untagResource:
             return "/"
         }
     }

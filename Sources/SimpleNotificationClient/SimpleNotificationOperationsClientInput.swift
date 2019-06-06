@@ -119,6 +119,11 @@ public typealias ListSubscriptionsOperationHTTPRequestInput = QueryHTTPRequestIn
 public typealias ListSubscriptionsByTopicOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ListTagsForResource operation in a HTTP client.
+ */
+public typealias ListTagsForResourceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ListTopics operation in a HTTP client.
  */
 public typealias ListTopicsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -169,6 +174,16 @@ public typealias SetTopicAttributesOperationHTTPRequestInput = QueryHTTPRequestI
 public typealias SubscribeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the TagResource operation in a HTTP client.
+ */
+public typealias TagResourceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the Unsubscribe operation in a HTTP client.
  */
 public typealias UnsubscribeOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the UntagResource operation in a HTTP client.
+ */
+public typealias UntagResourceOperationHTTPRequestInput = QueryHTTPRequestInput

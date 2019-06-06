@@ -66,6 +66,7 @@ public extension AddRoleToDBClusterMessage {
     public static let __default: RDSModel.AddRoleToDBClusterMessage = {
         let defaultInstance = RDSModel.AddRoleToDBClusterMessage(
             dBClusterIdentifier: "value",
+            featureName: nil,
             roleArn: "value")
 
         return defaultInstance
@@ -1161,6 +1162,10 @@ public extension DBCluster {
      */
     public static let __default: RDSModel.DBCluster = {
         let defaultInstance = RDSModel.DBCluster(
+            activityStreamKinesisStreamName: nil,
+            activityStreamKmsKeyId: nil,
+            activityStreamMode: nil,
+            activityStreamStatus: nil,
             allocatedStorage: nil,
             associatedRoles: nil,
             availabilityZones: nil,
@@ -1782,6 +1787,7 @@ public extension DBEngineVersion {
             engine: nil,
             engineVersion: nil,
             exportableLogTypes: nil,
+            status: nil,
             supportedCharacterSets: nil,
             supportedEngineModes: nil,
             supportedFeatureNames: nil,
@@ -3065,6 +3071,7 @@ public extension DescribeDBEngineVersionsMessage {
             engine: nil,
             engineVersion: nil,
             filters: nil,
+            includeAll: nil,
             listSupportedCharacterSets: nil,
             listSupportedTimezones: nil,
             marker: nil,
@@ -5388,6 +5395,7 @@ public extension RemoveRoleFromDBClusterMessage {
     public static let __default: RDSModel.RemoveRoleFromDBClusterMessage = {
         let defaultInstance = RDSModel.RemoveRoleFromDBClusterMessage(
             dBClusterIdentifier: "value",
+            featureName: nil,
             roleArn: "value")
 
         return defaultInstance
@@ -6124,7 +6132,8 @@ public extension ScalingConfiguration {
             autoPause: nil,
             maxCapacity: nil,
             minCapacity: nil,
-            secondsUntilAutoPause: nil)
+            secondsUntilAutoPause: nil,
+            timeoutAction: nil)
 
         return defaultInstance
     }()
@@ -6139,7 +6148,8 @@ public extension ScalingConfigurationInfo {
             autoPause: nil,
             maxCapacity: nil,
             minCapacity: nil,
-            secondsUntilAutoPause: nil)
+            secondsUntilAutoPause: nil,
+            timeoutAction: nil)
 
         return defaultInstance
     }()
@@ -6217,6 +6227,49 @@ public extension SourceRegionMessageForDescribeSourceRegions {
     }()
 }
 
+public extension StartActivityStreamRequest {
+    /**
+     Default instance of the StartActivityStreamRequest structure.
+     */
+    public static let __default: RDSModel.StartActivityStreamRequest = {
+        let defaultInstance = RDSModel.StartActivityStreamRequest(
+            applyImmediately: nil,
+            kmsKeyId: "value",
+            mode: .__default,
+            resourceArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension StartActivityStreamResponse {
+    /**
+     Default instance of the StartActivityStreamResponse structure.
+     */
+    public static let __default: RDSModel.StartActivityStreamResponse = {
+        let defaultInstance = RDSModel.StartActivityStreamResponse(
+            applyImmediately: nil,
+            kinesisStreamName: nil,
+            kmsKeyId: nil,
+            mode: nil,
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StartActivityStreamResponseForStartActivityStream {
+    /**
+     Default instance of the StartActivityStreamResponseForStartActivityStream structure.
+     */
+    public static let __default: RDSModel.StartActivityStreamResponseForStartActivityStream = {
+        let defaultInstance = RDSModel.StartActivityStreamResponseForStartActivityStream(
+            startActivityStreamResult: StartActivityStreamResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension StartDBClusterMessage {
     /**
      Default instance of the StartDBClusterMessage structure.
@@ -6284,6 +6337,45 @@ public extension StartDBInstanceResultForStartDBInstance {
     public static let __default: RDSModel.StartDBInstanceResultForStartDBInstance = {
         let defaultInstance = RDSModel.StartDBInstanceResultForStartDBInstance(
             startDBInstanceResult: StartDBInstanceResult.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension StopActivityStreamRequest {
+    /**
+     Default instance of the StopActivityStreamRequest structure.
+     */
+    public static let __default: RDSModel.StopActivityStreamRequest = {
+        let defaultInstance = RDSModel.StopActivityStreamRequest(
+            applyImmediately: nil,
+            resourceArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension StopActivityStreamResponse {
+    /**
+     Default instance of the StopActivityStreamResponse structure.
+     */
+    public static let __default: RDSModel.StopActivityStreamResponse = {
+        let defaultInstance = RDSModel.StopActivityStreamResponse(
+            kinesisStreamName: nil,
+            kmsKeyId: nil,
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StopActivityStreamResponseForStopActivityStream {
+    /**
+     Default instance of the StopActivityStreamResponseForStopActivityStream structure.
+     */
+    public static let __default: RDSModel.StopActivityStreamResponseForStopActivityStream = {
+        let defaultInstance = RDSModel.StopActivityStreamResponseForStopActivityStream(
+            stopActivityStreamResult: StopActivityStreamResponse.__default)
 
         return defaultInstance
     }()

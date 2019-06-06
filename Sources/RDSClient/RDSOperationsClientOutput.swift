@@ -1246,6 +1246,19 @@ extension RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress: HTT
 }
 
 /**
+ Type to handle the output from the StartActivityStream operation in a HTTP client.
+ */
+extension StartActivityStreamResponseForStartActivityStream: HTTPResponseOutputProtocol {
+    public typealias BodyType = StartActivityStreamResponseForStartActivityStream
+    public typealias HeadersType = StartActivityStreamResponseForStartActivityStream
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StartActivityStreamResponseForStartActivityStream {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the StartDBCluster operation in a HTTP client.
  */
 extension StartDBClusterResultForStartDBCluster: HTTPResponseOutputProtocol {
@@ -1267,6 +1280,19 @@ extension StartDBInstanceResultForStartDBInstance: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StartDBInstanceResultForStartDBInstance {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the StopActivityStream operation in a HTTP client.
+ */
+extension StopActivityStreamResponseForStopActivityStream: HTTPResponseOutputProtocol {
+    public typealias BodyType = StopActivityStreamResponseForStopActivityStream
+    public typealias HeadersType = StopActivityStreamResponseForStopActivityStream
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StopActivityStreamResponseForStopActivityStream {
         return try bodyDecodableProvider()
     }
 }

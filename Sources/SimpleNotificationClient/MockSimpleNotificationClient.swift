@@ -65,6 +65,8 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     let listSubscriptionsSyncOverride: SimpleNotificationClientProtocol.ListSubscriptionsSyncType?
     let listSubscriptionsByTopicAsyncOverride: SimpleNotificationClientProtocol.ListSubscriptionsByTopicAsyncType?
     let listSubscriptionsByTopicSyncOverride: SimpleNotificationClientProtocol.ListSubscriptionsByTopicSyncType?
+    let listTagsForResourceAsyncOverride: SimpleNotificationClientProtocol.ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: SimpleNotificationClientProtocol.ListTagsForResourceSyncType?
     let listTopicsAsyncOverride: SimpleNotificationClientProtocol.ListTopicsAsyncType?
     let listTopicsSyncOverride: SimpleNotificationClientProtocol.ListTopicsSyncType?
     let optInPhoneNumberAsyncOverride: SimpleNotificationClientProtocol.OptInPhoneNumberAsyncType?
@@ -85,8 +87,12 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     let setTopicAttributesSyncOverride: SimpleNotificationClientProtocol.SetTopicAttributesSyncType?
     let subscribeAsyncOverride: SimpleNotificationClientProtocol.SubscribeAsyncType?
     let subscribeSyncOverride: SimpleNotificationClientProtocol.SubscribeSyncType?
+    let tagResourceAsyncOverride: SimpleNotificationClientProtocol.TagResourceAsyncType?
+    let tagResourceSyncOverride: SimpleNotificationClientProtocol.TagResourceSyncType?
     let unsubscribeAsyncOverride: SimpleNotificationClientProtocol.UnsubscribeAsyncType?
     let unsubscribeSyncOverride: SimpleNotificationClientProtocol.UnsubscribeSyncType?
+    let untagResourceAsyncOverride: SimpleNotificationClientProtocol.UntagResourceAsyncType?
+    let untagResourceSyncOverride: SimpleNotificationClientProtocol.UntagResourceSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
@@ -131,6 +137,8 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
             listSubscriptionsSync: SimpleNotificationClientProtocol.ListSubscriptionsSyncType? = nil,
             listSubscriptionsByTopicAsync: SimpleNotificationClientProtocol.ListSubscriptionsByTopicAsyncType? = nil,
             listSubscriptionsByTopicSync: SimpleNotificationClientProtocol.ListSubscriptionsByTopicSyncType? = nil,
+            listTagsForResourceAsync: SimpleNotificationClientProtocol.ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: SimpleNotificationClientProtocol.ListTagsForResourceSyncType? = nil,
             listTopicsAsync: SimpleNotificationClientProtocol.ListTopicsAsyncType? = nil,
             listTopicsSync: SimpleNotificationClientProtocol.ListTopicsSyncType? = nil,
             optInPhoneNumberAsync: SimpleNotificationClientProtocol.OptInPhoneNumberAsyncType? = nil,
@@ -151,8 +159,12 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
             setTopicAttributesSync: SimpleNotificationClientProtocol.SetTopicAttributesSyncType? = nil,
             subscribeAsync: SimpleNotificationClientProtocol.SubscribeAsyncType? = nil,
             subscribeSync: SimpleNotificationClientProtocol.SubscribeSyncType? = nil,
+            tagResourceAsync: SimpleNotificationClientProtocol.TagResourceAsyncType? = nil,
+            tagResourceSync: SimpleNotificationClientProtocol.TagResourceSyncType? = nil,
             unsubscribeAsync: SimpleNotificationClientProtocol.UnsubscribeAsyncType? = nil,
-            unsubscribeSync: SimpleNotificationClientProtocol.UnsubscribeSyncType? = nil) {
+            unsubscribeSync: SimpleNotificationClientProtocol.UnsubscribeSyncType? = nil,
+            untagResourceAsync: SimpleNotificationClientProtocol.UntagResourceAsyncType? = nil,
+            untagResourceSync: SimpleNotificationClientProtocol.UntagResourceSyncType? = nil) {
         self.addPermissionAsyncOverride = addPermissionAsync
         self.addPermissionSyncOverride = addPermissionSync
         self.checkIfPhoneNumberIsOptedOutAsyncOverride = checkIfPhoneNumberIsOptedOutAsync
@@ -191,6 +203,8 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
         self.listSubscriptionsSyncOverride = listSubscriptionsSync
         self.listSubscriptionsByTopicAsyncOverride = listSubscriptionsByTopicAsync
         self.listSubscriptionsByTopicSyncOverride = listSubscriptionsByTopicSync
+        self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
+        self.listTagsForResourceSyncOverride = listTagsForResourceSync
         self.listTopicsAsyncOverride = listTopicsAsync
         self.listTopicsSyncOverride = listTopicsSync
         self.optInPhoneNumberAsyncOverride = optInPhoneNumberAsync
@@ -211,8 +225,12 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
         self.setTopicAttributesSyncOverride = setTopicAttributesSync
         self.subscribeAsyncOverride = subscribeAsync
         self.subscribeSyncOverride = subscribeSync
+        self.tagResourceAsyncOverride = tagResourceAsync
+        self.tagResourceSyncOverride = tagResourceSync
         self.unsubscribeAsyncOverride = unsubscribeAsync
         self.unsubscribeSyncOverride = unsubscribeSync
+        self.untagResourceAsyncOverride = untagResourceAsync
+        self.untagResourceSyncOverride = untagResourceSync
     }
 
     /**
@@ -291,7 +309,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
          - completion: The ConfirmSubscriptionResponseForConfirmSubscription object or an error will be passed to this 
            callback when the operation is complete. The ConfirmSubscriptionResponseForConfirmSubscription
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
     public func confirmSubscriptionAsync(input: SimpleNotificationModel.ConfirmSubscriptionInput, completion: @escaping (HTTPResult<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription>) -> ()) throws {
         if let confirmSubscriptionAsyncOverride = confirmSubscriptionAsyncOverride {
@@ -310,7 +328,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated ConfirmSubscriptionInput object being passed to this operation.
      - Returns: The ConfirmSubscriptionResponseForConfirmSubscription object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
     public func confirmSubscriptionSync(input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
         if let confirmSubscriptionSyncOverride = confirmSubscriptionSyncOverride {
@@ -402,7 +420,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
          - completion: The CreateTopicResponseForCreateTopic object or an error will be passed to this 
            callback when the operation is complete. The CreateTopicResponseForCreateTopic
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, topicLimitExceeded.
+           The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
     public func createTopicAsync(input: SimpleNotificationModel.CreateTopicInput, completion: @escaping (HTTPResult<SimpleNotificationModel.CreateTopicResponseForCreateTopic>) -> ()) throws {
         if let createTopicAsyncOverride = createTopicAsyncOverride {
@@ -421,7 +439,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated CreateTopicInput object being passed to this operation.
      - Returns: The CreateTopicResponseForCreateTopic object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, topicLimitExceeded.
+     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
     public func createTopicSync(input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
         if let createTopicSyncOverride = createTopicSyncOverride {
@@ -500,7 +518,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated DeleteTopicInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: authorizationError, internalError, invalidParameter, notFound.
+           The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
     public func deleteTopicAsync(input: SimpleNotificationModel.DeleteTopicInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteTopicAsyncOverride = deleteTopicAsyncOverride {
@@ -515,7 +533,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
 
      - Parameters:
          - input: The validated DeleteTopicInput object being passed to this operation.
-     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
     public func deleteTopicSync(input: SimpleNotificationModel.DeleteTopicInput) throws {
         if let deleteTopicSyncOverride = deleteTopicSyncOverride {
@@ -895,6 +913,43 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     }
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+         - completion: The ListTagsForResourceResponseForListTagsForResource object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceResponseForListTagsForResource
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
+     */
+    public func listTagsForResourceAsync(input: SimpleNotificationModel.ListTagsForResourceRequest, completion: @escaping (HTTPResult<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource>) -> ()) throws {
+        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
+            return try listTagsForResourceAsyncOverride(input, completion)
+        }
+
+        let result = ListTagsForResourceResponseForListTagsForResource.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+     - Returns: The ListTagsForResourceResponseForListTagsForResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
+     */
+    public func listTagsForResourceSync(input: SimpleNotificationModel.ListTagsForResourceRequest) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
+        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
+            return try listTagsForResourceSyncOverride(input)
+        }
+
+        return ListTagsForResourceResponseForListTagsForResource.__default
+    }
+
+    /**
      Invokes the ListTopics operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1235,6 +1290,43 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     }
 
     /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+         - completion: The TagResourceResponseForTagResource object or an error will be passed to this 
+           callback when the operation is complete. The TagResourceResponseForTagResource
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func tagResourceAsync(input: SimpleNotificationModel.TagResourceRequest, completion: @escaping (HTTPResult<SimpleNotificationModel.TagResourceResponseForTagResource>) -> ()) throws {
+        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
+            return try tagResourceAsyncOverride(input, completion)
+        }
+
+        let result = TagResourceResponseForTagResource.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+     - Returns: The TagResourceResponseForTagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func tagResourceSync(input: SimpleNotificationModel.TagResourceRequest) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
+        if let tagResourceSyncOverride = tagResourceSyncOverride {
+            return try tagResourceSyncOverride(input)
+        }
+
+        return TagResourceResponseForTagResource.__default
+    }
+
+    /**
      Invokes the Unsubscribe operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1263,5 +1355,42 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
             return try unsubscribeSyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+         - completion: The UntagResourceResponseForUntagResource object or an error will be passed to this 
+           callback when the operation is complete. The UntagResourceResponseForUntagResource
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func untagResourceAsync(input: SimpleNotificationModel.UntagResourceRequest, completion: @escaping (HTTPResult<SimpleNotificationModel.UntagResourceResponseForUntagResource>) -> ()) throws {
+        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
+            return try untagResourceAsyncOverride(input, completion)
+        }
+
+        let result = UntagResourceResponseForUntagResource.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+     - Returns: The UntagResourceResponseForUntagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func untagResourceSync(input: SimpleNotificationModel.UntagResourceRequest) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
+        if let untagResourceSyncOverride = untagResourceSyncOverride {
+            return try untagResourceSyncOverride(input)
+        }
+
+        return UntagResourceResponseForUntagResource.__default
     }
 }

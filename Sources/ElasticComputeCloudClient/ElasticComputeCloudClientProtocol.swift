@@ -161,6 +161,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateSecurityGroupAsyncType = (_ input: ElasticComputeCloudModel.CreateSecurityGroupRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSecurityGroupResult>) -> ()) throws -> ()
     typealias CreateSnapshotSyncType = (_ input: ElasticComputeCloudModel.CreateSnapshotRequest) throws -> ElasticComputeCloudModel.Snapshot
     typealias CreateSnapshotAsyncType = (_ input: ElasticComputeCloudModel.CreateSnapshotRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.Snapshot>) -> ()) throws -> ()
+    typealias CreateSnapshotsSyncType = (_ input: ElasticComputeCloudModel.CreateSnapshotsRequest) throws -> ElasticComputeCloudModel.CreateSnapshotsResult
+    typealias CreateSnapshotsAsyncType = (_ input: ElasticComputeCloudModel.CreateSnapshotsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSnapshotsResult>) -> ()) throws -> ()
     typealias CreateSpotDatafeedSubscriptionSyncType = (_ input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest) throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult
     typealias CreateSpotDatafeedSubscriptionAsyncType = (_ input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult>) -> ()) throws -> ()
     typealias CreateSubnetSyncType = (_ input: ElasticComputeCloudModel.CreateSubnetRequest) throws -> ElasticComputeCloudModel.CreateSubnetResult
@@ -473,6 +475,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DetachVolumeAsyncType = (_ input: ElasticComputeCloudModel.DetachVolumeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.VolumeAttachment>) -> ()) throws -> ()
     typealias DetachVpnGatewaySyncType = (_ input: ElasticComputeCloudModel.DetachVpnGatewayRequest) throws -> ()
     typealias DetachVpnGatewayAsyncType = (_ input: ElasticComputeCloudModel.DetachVpnGatewayRequest, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DisableEbsEncryptionByDefaultSyncType = (_ input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult
+    typealias DisableEbsEncryptionByDefaultAsyncType = (_ input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult>) -> ()) throws -> ()
     typealias DisableTransitGatewayRouteTablePropagationSyncType = (_ input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult
     typealias DisableTransitGatewayRouteTablePropagationAsyncType = (_ input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult>) -> ()) throws -> ()
     typealias DisableVgwRoutePropagationSyncType = (_ input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest) throws -> ()
@@ -495,6 +499,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisassociateTransitGatewayRouteTableAsyncType = (_ input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult>) -> ()) throws -> ()
     typealias DisassociateVpcCidrBlockSyncType = (_ input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult
     typealias DisassociateVpcCidrBlockAsyncType = (_ input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult>) -> ()) throws -> ()
+    typealias EnableEbsEncryptionByDefaultSyncType = (_ input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult
+    typealias EnableEbsEncryptionByDefaultAsyncType = (_ input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult>) -> ()) throws -> ()
     typealias EnableTransitGatewayRouteTablePropagationSyncType = (_ input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult
     typealias EnableTransitGatewayRouteTablePropagationAsyncType = (_ input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult>) -> ()) throws -> ()
     typealias EnableVgwRoutePropagationSyncType = (_ input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest) throws -> ()
@@ -515,6 +521,10 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetConsoleOutputAsyncType = (_ input: ElasticComputeCloudModel.GetConsoleOutputRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetConsoleOutputResult>) -> ()) throws -> ()
     typealias GetConsoleScreenshotSyncType = (_ input: ElasticComputeCloudModel.GetConsoleScreenshotRequest) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult
     typealias GetConsoleScreenshotAsyncType = (_ input: ElasticComputeCloudModel.GetConsoleScreenshotRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetConsoleScreenshotResult>) -> ()) throws -> ()
+    typealias GetEbsDefaultKmsKeyIdSyncType = (_ input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult
+    typealias GetEbsDefaultKmsKeyIdAsyncType = (_ input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult>) -> ()) throws -> ()
+    typealias GetEbsEncryptionByDefaultSyncType = (_ input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult
+    typealias GetEbsEncryptionByDefaultAsyncType = (_ input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult>) -> ()) throws -> ()
     typealias GetHostReservationPurchasePreviewSyncType = (_ input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult
     typealias GetHostReservationPurchasePreviewAsyncType = (_ input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult>) -> ()) throws -> ()
     typealias GetLaunchTemplateDataSyncType = (_ input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult
@@ -545,6 +555,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyCapacityReservationAsyncType = (_ input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyCapacityReservationResult>) -> ()) throws -> ()
     typealias ModifyClientVpnEndpointSyncType = (_ input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult
     typealias ModifyClientVpnEndpointAsyncType = (_ input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyClientVpnEndpointResult>) -> ()) throws -> ()
+    typealias ModifyEbsDefaultKmsKeyIdSyncType = (_ input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult
+    typealias ModifyEbsDefaultKmsKeyIdAsyncType = (_ input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult>) -> ()) throws -> ()
     typealias ModifyFleetSyncType = (_ input: ElasticComputeCloudModel.ModifyFleetRequest) throws -> ElasticComputeCloudModel.ModifyFleetResult
     typealias ModifyFleetAsyncType = (_ input: ElasticComputeCloudModel.ModifyFleetRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyFleetResult>) -> ()) throws -> ()
     typealias ModifyFpgaImageAttributeSyncType = (_ input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult
@@ -599,6 +611,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyVpcPeeringConnectionOptionsAsyncType = (_ input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult>) -> ()) throws -> ()
     typealias ModifyVpcTenancySyncType = (_ input: ElasticComputeCloudModel.ModifyVpcTenancyRequest) throws -> ElasticComputeCloudModel.ModifyVpcTenancyResult
     typealias ModifyVpcTenancyAsyncType = (_ input: ElasticComputeCloudModel.ModifyVpcTenancyRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcTenancyResult>) -> ()) throws -> ()
+    typealias ModifyVpnConnectionSyncType = (_ input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult
+    typealias ModifyVpnConnectionAsyncType = (_ input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpnConnectionResult>) -> ()) throws -> ()
     typealias MonitorInstancesSyncType = (_ input: ElasticComputeCloudModel.MonitorInstancesRequest) throws -> ElasticComputeCloudModel.MonitorInstancesResult
     typealias MonitorInstancesAsyncType = (_ input: ElasticComputeCloudModel.MonitorInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.MonitorInstancesResult>) -> ()) throws -> ()
     typealias MoveAddressToVpcSyncType = (_ input: ElasticComputeCloudModel.MoveAddressToVpcRequest) throws -> ElasticComputeCloudModel.MoveAddressToVpcResult
@@ -643,6 +657,8 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias RequestSpotFleetAsyncType = (_ input: ElasticComputeCloudModel.RequestSpotFleetRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RequestSpotFleetResponse>) -> ()) throws -> ()
     typealias RequestSpotInstancesSyncType = (_ input: ElasticComputeCloudModel.RequestSpotInstancesRequest) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult
     typealias RequestSpotInstancesAsyncType = (_ input: ElasticComputeCloudModel.RequestSpotInstancesRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.RequestSpotInstancesResult>) -> ()) throws -> ()
+    typealias ResetEbsDefaultKmsKeyIdSyncType = (_ input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult
+    typealias ResetEbsDefaultKmsKeyIdAsyncType = (_ input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult>) -> ()) throws -> ()
     typealias ResetFpgaImageAttributeSyncType = (_ input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult
     typealias ResetFpgaImageAttributeAsyncType = (_ input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest, _ completion: @escaping (HTTPResult<ElasticComputeCloudModel.ResetFpgaImageAttributeResult>) -> ()) throws -> ()
     typealias ResetImageAttributeSyncType = (_ input: ElasticComputeCloudModel.ResetImageAttributeRequest) throws -> ()
@@ -2067,6 +2083,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func createSnapshotSync(input: ElasticComputeCloudModel.CreateSnapshotRequest) throws -> ElasticComputeCloudModel.Snapshot
+
+    /**
+     Invokes the CreateSnapshots operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSnapshotsRequest object being passed to this operation.
+         - completion: The CreateSnapshotsResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateSnapshotsResult
+           object will be validated before being returned to caller.
+     */
+    func createSnapshotsAsync(input: ElasticComputeCloudModel.CreateSnapshotsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSnapshotsResult>) -> ()) throws
+
+    /**
+     Invokes the CreateSnapshots operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSnapshotsRequest object being passed to this operation.
+     - Returns: The CreateSnapshotsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createSnapshotsSync(input: ElasticComputeCloudModel.CreateSnapshotsRequest) throws -> ElasticComputeCloudModel.CreateSnapshotsResult
 
     /**
      Invokes the CreateSpotDatafeedSubscription operation returning immediately and passing the response to a callback.
@@ -5267,6 +5304,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func detachVpnGatewaySync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest) throws
 
     /**
+     Invokes the DisableEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableEbsEncryptionByDefaultRequest object being passed to this operation.
+         - completion: The DisableEbsEncryptionByDefaultResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableEbsEncryptionByDefaultResult
+           object will be validated before being returned to caller.
+     */
+    func disableEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult>) -> ()) throws
+
+    /**
+     Invokes the DisableEbsEncryptionByDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableEbsEncryptionByDefaultRequest object being passed to this operation.
+     - Returns: The DisableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult
+
+    /**
      Invokes the DisableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5489,6 +5547,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func disassociateVpcCidrBlockSync(input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult
 
     /**
+     Invokes the EnableEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableEbsEncryptionByDefaultRequest object being passed to this operation.
+         - completion: The EnableEbsEncryptionByDefaultResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableEbsEncryptionByDefaultResult
+           object will be validated before being returned to caller.
+     */
+    func enableEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult>) -> ()) throws
+
+    /**
+     Invokes the EnableEbsEncryptionByDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableEbsEncryptionByDefaultRequest object being passed to this operation.
+     - Returns: The EnableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult
+
+    /**
      Invokes the EnableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5691,6 +5770,48 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func getConsoleScreenshotSync(input: ElasticComputeCloudModel.GetConsoleScreenshotRequest) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult
+
+    /**
+     Invokes the GetEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+         - completion: The GetEbsDefaultKmsKeyIdResult object or an error will be passed to this 
+           callback when the operation is complete. The GetEbsDefaultKmsKeyIdResult
+           object will be validated before being returned to caller.
+     */
+    func getEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult>) -> ()) throws
+
+    /**
+     Invokes the GetEbsDefaultKmsKeyId operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+     - Returns: The GetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult
+
+    /**
+     Invokes the GetEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetEbsEncryptionByDefaultRequest object being passed to this operation.
+         - completion: The GetEbsEncryptionByDefaultResult object or an error will be passed to this 
+           callback when the operation is complete. The GetEbsEncryptionByDefaultResult
+           object will be validated before being returned to caller.
+     */
+    func getEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult>) -> ()) throws
+
+    /**
+     Invokes the GetEbsEncryptionByDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetEbsEncryptionByDefaultRequest object being passed to this operation.
+     - Returns: The GetEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult
 
     /**
      Invokes the GetHostReservationPurchasePreview operation returning immediately and passing the response to a callback.
@@ -6006,6 +6127,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func modifyClientVpnEndpointSync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult
+
+    /**
+     Invokes the ModifyEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyEbsDefaultKmsKeyIdRequest object being passed to this operation.
+         - completion: The ModifyEbsDefaultKmsKeyIdResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyEbsDefaultKmsKeyIdResult
+           object will be validated before being returned to caller.
+     */
+    func modifyEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult>) -> ()) throws
+
+    /**
+     Invokes the ModifyEbsDefaultKmsKeyId operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyEbsDefaultKmsKeyIdRequest object being passed to this operation.
+     - Returns: The ModifyEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult
 
     /**
      Invokes the ModifyFleet operation returning immediately and passing the response to a callback.
@@ -6548,6 +6690,27 @@ public protocol ElasticComputeCloudClientProtocol {
     func modifyVpcTenancySync(input: ElasticComputeCloudModel.ModifyVpcTenancyRequest) throws -> ElasticComputeCloudModel.ModifyVpcTenancyResult
 
     /**
+     Invokes the ModifyVpnConnection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionRequest object being passed to this operation.
+         - completion: The ModifyVpnConnectionResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnConnectionResult
+           object will be validated before being returned to caller.
+     */
+    func modifyVpnConnectionAsync(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpnConnectionResult>) -> ()) throws
+
+    /**
+     Invokes the ModifyVpnConnection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionRequest object being passed to this operation.
+     - Returns: The ModifyVpnConnectionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVpnConnectionSync(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult
+
+    /**
      Invokes the MonitorInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6993,6 +7156,27 @@ public protocol ElasticComputeCloudClientProtocol {
          Will be validated before being returned to caller.
      */
     func requestSpotInstancesSync(input: ElasticComputeCloudModel.RequestSpotInstancesRequest) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult
+
+    /**
+     Invokes the ResetEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+         - completion: The ResetEbsDefaultKmsKeyIdResult object or an error will be passed to this 
+           callback when the operation is complete. The ResetEbsDefaultKmsKeyIdResult
+           object will be validated before being returned to caller.
+     */
+    func resetEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult>) -> ()) throws
+
+    /**
+     Invokes the ResetEbsDefaultKmsKeyId operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+     - Returns: The ResetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func resetEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult
 
     /**
      Invokes the ResetFpgaImageAttribute operation returning immediately and passing the response to a callback.

@@ -237,10 +237,14 @@ public protocol RDSClientProtocol {
     typealias RestoreDBInstanceToPointInTimeAsyncType = (_ input: RDSModel.RestoreDBInstanceToPointInTimeMessage, _ completion: @escaping (HTTPResult<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime>) -> ()) throws -> ()
     typealias RevokeDBSecurityGroupIngressSyncType = (_ input: RDSModel.RevokeDBSecurityGroupIngressMessage) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress
     typealias RevokeDBSecurityGroupIngressAsyncType = (_ input: RDSModel.RevokeDBSecurityGroupIngressMessage, _ completion: @escaping (HTTPResult<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress>) -> ()) throws -> ()
+    typealias StartActivityStreamSyncType = (_ input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream
+    typealias StartActivityStreamAsyncType = (_ input: RDSModel.StartActivityStreamRequest, _ completion: @escaping (HTTPResult<RDSModel.StartActivityStreamResponseForStartActivityStream>) -> ()) throws -> ()
     typealias StartDBClusterSyncType = (_ input: RDSModel.StartDBClusterMessage) throws -> RDSModel.StartDBClusterResultForStartDBCluster
     typealias StartDBClusterAsyncType = (_ input: RDSModel.StartDBClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.StartDBClusterResultForStartDBCluster>) -> ()) throws -> ()
     typealias StartDBInstanceSyncType = (_ input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
     typealias StartDBInstanceAsyncType = (_ input: RDSModel.StartDBInstanceMessage, _ completion: @escaping (HTTPResult<RDSModel.StartDBInstanceResultForStartDBInstance>) -> ()) throws -> ()
+    typealias StopActivityStreamSyncType = (_ input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream
+    typealias StopActivityStreamAsyncType = (_ input: RDSModel.StopActivityStreamRequest, _ completion: @escaping (HTTPResult<RDSModel.StopActivityStreamResponseForStopActivityStream>) -> ()) throws -> ()
     typealias StopDBClusterSyncType = (_ input: RDSModel.StopDBClusterMessage) throws -> RDSModel.StopDBClusterResultForStopDBCluster
     typealias StopDBClusterAsyncType = (_ input: RDSModel.StopDBClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.StopDBClusterResultForStopDBCluster>) -> ()) throws -> ()
     typealias StopDBInstanceSyncType = (_ input: RDSModel.StopDBInstanceMessage) throws -> RDSModel.StopDBInstanceResultForStopDBInstance
@@ -2611,6 +2615,29 @@ public protocol RDSClientProtocol {
     func revokeDBSecurityGroupIngressSync(input: RDSModel.RevokeDBSecurityGroupIngressMessage) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress
 
     /**
+     Invokes the StartActivityStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartActivityStreamRequest object being passed to this operation.
+         - completion: The StartActivityStreamResponseForStartActivityStream object or an error will be passed to this 
+           callback when the operation is complete. The StartActivityStreamResponseForStartActivityStream
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
+     */
+    func startActivityStreamAsync(input: RDSModel.StartActivityStreamRequest, completion: @escaping (HTTPResult<RDSModel.StartActivityStreamResponseForStartActivityStream>) -> ()) throws
+
+    /**
+     Invokes the StartActivityStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartActivityStreamRequest object being passed to this operation.
+     - Returns: The StartActivityStreamResponseForStartActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
+     */
+    func startActivityStreamSync(input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream
+
+    /**
      Invokes the StartDBCluster operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2655,6 +2682,29 @@ public protocol RDSClientProtocol {
      - Throws: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
     func startDBInstanceSync(input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
+
+    /**
+     Invokes the StopActivityStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopActivityStreamRequest object being passed to this operation.
+         - completion: The StopActivityStreamResponseForStopActivityStream object or an error will be passed to this 
+           callback when the operation is complete. The StopActivityStreamResponseForStopActivityStream
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
+     */
+    func stopActivityStreamAsync(input: RDSModel.StopActivityStreamRequest, completion: @escaping (HTTPResult<RDSModel.StopActivityStreamResponseForStopActivityStream>) -> ()) throws
+
+    /**
+     Invokes the StopActivityStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopActivityStreamRequest object being passed to this operation.
+     - Returns: The StopActivityStreamResponseForStopActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
+     */
+    func stopActivityStreamSync(input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream
 
     /**
      Invokes the StopDBCluster operation returning immediately and passing the response to a callback.

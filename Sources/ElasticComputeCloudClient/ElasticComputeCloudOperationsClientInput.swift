@@ -359,6 +359,11 @@ public typealias CreateSecurityGroupOperationHTTPRequestInput = QueryHTTPRequest
 public typealias CreateSnapshotOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateSnapshots operation in a HTTP client.
+ */
+public typealias CreateSnapshotsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateSpotDatafeedSubscription operation in a HTTP client.
  */
 public typealias CreateSpotDatafeedSubscriptionOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1139,6 +1144,11 @@ public typealias DetachVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias DetachVpnGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisableEbsEncryptionByDefault operation in a HTTP client.
+ */
+public typealias DisableEbsEncryptionByDefaultOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisableTransitGatewayRouteTablePropagation operation in a HTTP client.
  */
 public typealias DisableTransitGatewayRouteTablePropagationOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1194,6 +1204,11 @@ public typealias DisassociateTransitGatewayRouteTableOperationHTTPRequestInput =
 public typealias DisassociateVpcCidrBlockOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the EnableEbsEncryptionByDefault operation in a HTTP client.
+ */
+public typealias EnableEbsEncryptionByDefaultOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the EnableTransitGatewayRouteTablePropagation operation in a HTTP client.
  */
 public typealias EnableTransitGatewayRouteTablePropagationOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1242,6 +1257,16 @@ public typealias GetConsoleOutputOperationHTTPRequestInput = QueryHTTPRequestInp
  Type to handle the input to the GetConsoleScreenshot operation in a HTTP client.
  */
 public typealias GetConsoleScreenshotOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetEbsDefaultKmsKeyId operation in a HTTP client.
+ */
+public typealias GetEbsDefaultKmsKeyIdOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetEbsEncryptionByDefault operation in a HTTP client.
+ */
+public typealias GetEbsEncryptionByDefaultOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetHostReservationPurchasePreview operation in a HTTP client.
@@ -1317,6 +1342,11 @@ public typealias ModifyCapacityReservationOperationHTTPRequestInput = QueryHTTPR
  Type to handle the input to the ModifyClientVpnEndpoint operation in a HTTP client.
  */
 public typealias ModifyClientVpnEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyEbsDefaultKmsKeyId operation in a HTTP client.
+ */
+public typealias ModifyEbsDefaultKmsKeyIdOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyFleet operation in a HTTP client.
@@ -1454,6 +1484,11 @@ public typealias ModifyVpcPeeringConnectionOptionsOperationHTTPRequestInput = Qu
 public typealias ModifyVpcTenancyOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ModifyVpnConnection operation in a HTTP client.
+ */
+public typealias ModifyVpnConnectionOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the MonitorInstances operation in a HTTP client.
  */
 public typealias MonitorInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1562,6 +1597,11 @@ public typealias RequestSpotFleetOperationHTTPRequestInput = QueryHTTPRequestInp
  Type to handle the input to the RequestSpotInstances operation in a HTTP client.
  */
 public typealias RequestSpotInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ResetEbsDefaultKmsKeyId operation in a HTTP client.
+ */
+public typealias ResetEbsDefaultKmsKeyIdOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ResetFpgaImageAttribute operation in a HTTP client.

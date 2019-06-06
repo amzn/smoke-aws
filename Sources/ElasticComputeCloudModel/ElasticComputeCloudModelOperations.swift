@@ -92,6 +92,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case createRouteTable = "CreateRouteTable"
     case createSecurityGroup = "CreateSecurityGroup"
     case createSnapshot = "CreateSnapshot"
+    case createSnapshots = "CreateSnapshots"
     case createSpotDatafeedSubscription = "CreateSpotDatafeedSubscription"
     case createSubnet = "CreateSubnet"
     case createTags = "CreateTags"
@@ -248,6 +249,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case detachNetworkInterface = "DetachNetworkInterface"
     case detachVolume = "DetachVolume"
     case detachVpnGateway = "DetachVpnGateway"
+    case disableEbsEncryptionByDefault = "DisableEbsEncryptionByDefault"
     case disableTransitGatewayRouteTablePropagation = "DisableTransitGatewayRouteTablePropagation"
     case disableVgwRoutePropagation = "DisableVgwRoutePropagation"
     case disableVpcClassicLink = "DisableVpcClassicLink"
@@ -259,6 +261,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case disassociateSubnetCidrBlock = "DisassociateSubnetCidrBlock"
     case disassociateTransitGatewayRouteTable = "DisassociateTransitGatewayRouteTable"
     case disassociateVpcCidrBlock = "DisassociateVpcCidrBlock"
+    case enableEbsEncryptionByDefault = "EnableEbsEncryptionByDefault"
     case enableTransitGatewayRouteTablePropagation = "EnableTransitGatewayRouteTablePropagation"
     case enableVgwRoutePropagation = "EnableVgwRoutePropagation"
     case enableVolumeIO = "EnableVolumeIO"
@@ -269,6 +272,8 @@ public enum ElasticComputeCloudModelOperations: String {
     case exportTransitGatewayRoutes = "ExportTransitGatewayRoutes"
     case getConsoleOutput = "GetConsoleOutput"
     case getConsoleScreenshot = "GetConsoleScreenshot"
+    case getEbsDefaultKmsKeyId = "GetEbsDefaultKmsKeyId"
+    case getEbsEncryptionByDefault = "GetEbsEncryptionByDefault"
     case getHostReservationPurchasePreview = "GetHostReservationPurchasePreview"
     case getLaunchTemplateData = "GetLaunchTemplateData"
     case getPasswordData = "GetPasswordData"
@@ -284,6 +289,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case importVolume = "ImportVolume"
     case modifyCapacityReservation = "ModifyCapacityReservation"
     case modifyClientVpnEndpoint = "ModifyClientVpnEndpoint"
+    case modifyEbsDefaultKmsKeyId = "ModifyEbsDefaultKmsKeyId"
     case modifyFleet = "ModifyFleet"
     case modifyFpgaImageAttribute = "ModifyFpgaImageAttribute"
     case modifyHosts = "ModifyHosts"
@@ -311,6 +317,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case modifyVpcEndpointServicePermissions = "ModifyVpcEndpointServicePermissions"
     case modifyVpcPeeringConnectionOptions = "ModifyVpcPeeringConnectionOptions"
     case modifyVpcTenancy = "ModifyVpcTenancy"
+    case modifyVpnConnection = "ModifyVpnConnection"
     case monitorInstances = "MonitorInstances"
     case moveAddressToVpc = "MoveAddressToVpc"
     case provisionByoipCidr = "ProvisionByoipCidr"
@@ -333,6 +340,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case reportInstanceStatus = "ReportInstanceStatus"
     case requestSpotFleet = "RequestSpotFleet"
     case requestSpotInstances = "RequestSpotInstances"
+    case resetEbsDefaultKmsKeyId = "ResetEbsDefaultKmsKeyId"
     case resetFpgaImageAttribute = "ResetFpgaImageAttribute"
     case resetImageAttribute = "ResetImageAttribute"
     case resetInstanceAttribute = "ResetInstanceAttribute"
@@ -491,6 +499,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .createSecurityGroup:
             return "/"
         case .createSnapshot:
+            return "/"
+        case .createSnapshots:
             return "/"
         case .createSpotDatafeedSubscription:
             return "/"
@@ -804,6 +814,8 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .detachVpnGateway:
             return "/"
+        case .disableEbsEncryptionByDefault:
+            return "/"
         case .disableTransitGatewayRouteTablePropagation:
             return "/"
         case .disableVgwRoutePropagation:
@@ -826,6 +838,8 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .disassociateVpcCidrBlock:
             return "/"
+        case .enableEbsEncryptionByDefault:
+            return "/"
         case .enableTransitGatewayRouteTablePropagation:
             return "/"
         case .enableVgwRoutePropagation:
@@ -845,6 +859,10 @@ public enum ElasticComputeCloudModelOperations: String {
         case .getConsoleOutput:
             return "/"
         case .getConsoleScreenshot:
+            return "/"
+        case .getEbsDefaultKmsKeyId:
+            return "/"
+        case .getEbsEncryptionByDefault:
             return "/"
         case .getHostReservationPurchasePreview:
             return "/"
@@ -875,6 +893,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .modifyCapacityReservation:
             return "/"
         case .modifyClientVpnEndpoint:
+            return "/"
+        case .modifyEbsDefaultKmsKeyId:
             return "/"
         case .modifyFleet:
             return "/"
@@ -930,6 +950,8 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .modifyVpcTenancy:
             return "/"
+        case .modifyVpnConnection:
+            return "/"
         case .monitorInstances:
             return "/"
         case .moveAddressToVpc:
@@ -973,6 +995,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .requestSpotFleet:
             return "/"
         case .requestSpotInstances:
+            return "/"
+        case .resetEbsDefaultKmsKeyId:
             return "/"
         case .resetFpgaImageAttribute:
             return "/"

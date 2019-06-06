@@ -44,6 +44,18 @@ let package = Package(
             name: "ElasticContainerModel",
             targets: ["ElasticContainerModel"]),
         .library(
+            name: "RDSClient",
+            targets: ["RDSClient"]),
+        .library(
+            name: "RDSModel",
+            targets: ["RDSModel"]),
+        .library(
+            name: "RDSDataClient",
+            targets: ["RDSDataClient"]),
+        .library(
+            name: "RDSDataModel",
+            targets: ["RDSDataModel"]),
+        .library(
             name: "S3Client",
             targets: ["S3Client"]),
         .library(
@@ -85,12 +97,6 @@ let package = Package(
         .library(
             name: "SmokeAWSHttp",
             targets: ["SmokeAWSHttp"]),
-        .library(
-            name: "RDSClient",
-            targets: ["RDSClient"]),
-        .library(
-            name: "RDSModel",
-            targets: ["RDSModel"])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-nio.git", from: "1.8.0"),
@@ -123,6 +129,18 @@ let package = Package(
             dependencies: ["ElasticContainerModel", "SmokeAWSHttp"]),
         .target(
             name: "ElasticContainerModel",
+            dependencies: ["LoggerAPI"]),
+        .target(
+            name: "RDSClient",
+            dependencies: ["RDSModel", "SmokeAWSHttp"]),
+        .target(
+            name: "RDSModel",
+            dependencies: ["LoggerAPI"]),
+        .target(
+            name: "RDSDataClient",
+            dependencies: ["RDSDataModel", "SmokeAWSHttp"]),
+        .target(
+            name: "RDSDataModel",
             dependencies: ["LoggerAPI"]),
         .target(
             name: "S3Client",
@@ -168,12 +186,6 @@ let package = Package(
             dependencies: ["LoggerAPI", "NIO", "NIOHTTP1", "NIOOpenSSL",
                            "SmokeAWSCore", "SmokeHTTPClient", "QueryCoding",
                            "HTTPPathCoding", "HTTPHeadersCoding"]),
-        .target(
-            name: "RDSClient",
-            dependencies: ["RDSModel", "SmokeAWSHttp"]),
-        .target(
-            name: "RDSModel",
-            dependencies: ["LoggerAPI"]),
         .testTarget(
             name: "S3ClientTests",
             dependencies: ["S3Client"]),
@@ -192,6 +204,5 @@ let package = Package(
         .testTarget(
             name: "RDSClientTests",
             dependencies: ["RDSClient"]),
-        
     ]
 )

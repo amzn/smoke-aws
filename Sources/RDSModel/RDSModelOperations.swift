@@ -130,8 +130,10 @@ public enum RDSModelOperations: String {
     case restoreDBInstanceFromS3 = "RestoreDBInstanceFromS3"
     case restoreDBInstanceToPointInTime = "RestoreDBInstanceToPointInTime"
     case revokeDBSecurityGroupIngress = "RevokeDBSecurityGroupIngress"
+    case startActivityStream = "StartActivityStream"
     case startDBCluster = "StartDBCluster"
     case startDBInstance = "StartDBInstance"
+    case stopActivityStream = "StopActivityStream"
     case stopDBCluster = "StopDBCluster"
     case stopDBInstance = "StopDBInstance"
 
@@ -347,9 +349,13 @@ public enum RDSModelOperations: String {
             return "/"
         case .revokeDBSecurityGroupIngress:
             return "/"
+        case .startActivityStream:
+            return "/"
         case .startDBCluster:
             return "/"
         case .startDBInstance:
+            return "/"
+        case .stopActivityStream:
             return "/"
         case .stopDBCluster:
             return "/"

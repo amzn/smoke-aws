@@ -778,6 +778,19 @@ extension Snapshot: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateSnapshots operation in a HTTP client.
+ */
+extension CreateSnapshotsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateSnapshotsResult
+    public typealias HeadersType = CreateSnapshotsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateSnapshotsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateSpotDatafeedSubscription operation in a HTTP client.
  */
 extension CreateSpotDatafeedSubscriptionResult: HTTPResponseOutputProtocol {
@@ -2455,6 +2468,19 @@ extension DetachClassicLinkVpcResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DisableEbsEncryptionByDefault operation in a HTTP client.
+ */
+extension DisableEbsEncryptionByDefaultResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableEbsEncryptionByDefaultResult
+    public typealias HeadersType = DisableEbsEncryptionByDefaultResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableEbsEncryptionByDefaultResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DisableTransitGatewayRouteTablePropagation operation in a HTTP client.
  */
 extension DisableTransitGatewayRouteTablePropagationResult: HTTPResponseOutputProtocol {
@@ -2559,6 +2585,19 @@ extension DisassociateVpcCidrBlockResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the EnableEbsEncryptionByDefault operation in a HTTP client.
+ */
+extension EnableEbsEncryptionByDefaultResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableEbsEncryptionByDefaultResult
+    public typealias HeadersType = EnableEbsEncryptionByDefaultResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableEbsEncryptionByDefaultResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the EnableTransitGatewayRouteTablePropagation operation in a HTTP client.
  */
 extension EnableTransitGatewayRouteTablePropagationResult: HTTPResponseOutputProtocol {
@@ -2658,6 +2697,32 @@ extension GetConsoleScreenshotResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetConsoleScreenshotResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetEbsDefaultKmsKeyId operation in a HTTP client.
+ */
+extension GetEbsDefaultKmsKeyIdResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetEbsDefaultKmsKeyIdResult
+    public typealias HeadersType = GetEbsDefaultKmsKeyIdResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetEbsDefaultKmsKeyIdResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetEbsEncryptionByDefault operation in a HTTP client.
+ */
+extension GetEbsEncryptionByDefaultResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetEbsEncryptionByDefaultResult
+    public typealias HeadersType = GetEbsEncryptionByDefaultResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetEbsEncryptionByDefaultResult {
         return try bodyDecodableProvider()
     }
 }
@@ -2853,6 +2918,19 @@ extension ModifyClientVpnEndpointResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ModifyClientVpnEndpointResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyEbsDefaultKmsKeyId operation in a HTTP client.
+ */
+extension ModifyEbsDefaultKmsKeyIdResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyEbsDefaultKmsKeyIdResult
+    public typealias HeadersType = ModifyEbsDefaultKmsKeyIdResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyEbsDefaultKmsKeyIdResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3092,6 +3170,19 @@ extension ModifyVpcTenancyResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyVpnConnection operation in a HTTP client.
+ */
+extension ModifyVpnConnectionResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVpnConnectionResult
+    public typealias HeadersType = ModifyVpnConnectionResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVpnConnectionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the MonitorInstances operation in a HTTP client.
  */
 extension MonitorInstancesResult: HTTPResponseOutputProtocol {
@@ -3308,6 +3399,19 @@ extension RequestSpotInstancesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> RequestSpotInstancesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ResetEbsDefaultKmsKeyId operation in a HTTP client.
+ */
+extension ResetEbsDefaultKmsKeyIdResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ResetEbsDefaultKmsKeyIdResult
+    public typealias HeadersType = ResetEbsDefaultKmsKeyIdResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ResetEbsDefaultKmsKeyIdResult {
         return try bodyDecodableProvider()
     }
 }

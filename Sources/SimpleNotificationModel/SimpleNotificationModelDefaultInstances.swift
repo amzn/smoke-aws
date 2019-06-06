@@ -84,6 +84,18 @@ public extension CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOpte
     }()
 }
 
+public extension ConcurrentAccessException {
+    /**
+     Default instance of the ConcurrentAccessException structure.
+     */
+    public static let __default: SimpleNotificationModel.ConcurrentAccessException = {
+        let defaultInstance = SimpleNotificationModel.ConcurrentAccessException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ConfirmSubscriptionInput {
     /**
      Default instance of the ConfirmSubscriptionInput structure.
@@ -206,7 +218,8 @@ public extension CreateTopicInput {
     public static let __default: SimpleNotificationModel.CreateTopicInput = {
         let defaultInstance = SimpleNotificationModel.CreateTopicInput(
             attributes: nil,
-            name: "value")
+            name: "value",
+            tags: nil)
 
         return defaultInstance
     }()
@@ -796,6 +809,42 @@ public extension ListSubscriptionsResponseForListSubscriptions {
     }()
 }
 
+public extension ListTagsForResourceRequest {
+    /**
+     Default instance of the ListTagsForResourceRequest structure.
+     */
+    public static let __default: SimpleNotificationModel.ListTagsForResourceRequest = {
+        let defaultInstance = SimpleNotificationModel.ListTagsForResourceRequest(
+            resourceArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ListTagsForResourceResponse {
+    /**
+     Default instance of the ListTagsForResourceResponse structure.
+     */
+    public static let __default: SimpleNotificationModel.ListTagsForResourceResponse = {
+        let defaultInstance = SimpleNotificationModel.ListTagsForResourceResponse(
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListTagsForResourceResponseForListTagsForResource {
+    /**
+     Default instance of the ListTagsForResourceResponseForListTagsForResource structure.
+     */
+    public static let __default: SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource = {
+        let defaultInstance = SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource(
+            listTagsForResourceResult: ListTagsForResourceResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListTopicsInput {
     /**
      Default instance of the ListTopicsInput structure.
@@ -974,6 +1023,18 @@ public extension RemovePermissionInput {
     }()
 }
 
+public extension ResourceNotFoundException {
+    /**
+     Default instance of the ResourceNotFoundException structure.
+     */
+    public static let __default: SimpleNotificationModel.ResourceNotFoundException = {
+        let defaultInstance = SimpleNotificationModel.ResourceNotFoundException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension SetEndpointAttributesInput {
     /**
      Default instance of the SetEndpointAttributesInput structure.
@@ -1063,6 +1124,18 @@ public extension SetTopicAttributesInput {
     }()
 }
 
+public extension StaleTagException {
+    /**
+     Default instance of the StaleTagException structure.
+     */
+    public static let __default: SimpleNotificationModel.StaleTagException = {
+        let defaultInstance = SimpleNotificationModel.StaleTagException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension SubscribeInput {
     /**
      Default instance of the SubscribeInput structure.
@@ -1131,6 +1204,79 @@ public extension SubscriptionLimitExceededException {
     }()
 }
 
+public extension Tag {
+    /**
+     Default instance of the Tag structure.
+     */
+    public static let __default: SimpleNotificationModel.Tag = {
+        let defaultInstance = SimpleNotificationModel.Tag(
+            key: "0",
+            value: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension TagLimitExceededException {
+    /**
+     Default instance of the TagLimitExceededException structure.
+     */
+    public static let __default: SimpleNotificationModel.TagLimitExceededException = {
+        let defaultInstance = SimpleNotificationModel.TagLimitExceededException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TagPolicyException {
+    /**
+     Default instance of the TagPolicyException structure.
+     */
+    public static let __default: SimpleNotificationModel.TagPolicyException = {
+        let defaultInstance = SimpleNotificationModel.TagPolicyException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceRequest {
+    /**
+     Default instance of the TagResourceRequest structure.
+     */
+    public static let __default: SimpleNotificationModel.TagResourceRequest = {
+        let defaultInstance = SimpleNotificationModel.TagResourceRequest(
+            resourceArn: "0",
+            tags: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceResponse {
+    /**
+     Default instance of the TagResourceResponse structure.
+     */
+    public static let __default: SimpleNotificationModel.TagResourceResponse = {
+        let defaultInstance = SimpleNotificationModel.TagResourceResponse()
+
+        return defaultInstance
+    }()
+}
+
+public extension TagResourceResponseForTagResource {
+    /**
+     Default instance of the TagResourceResponseForTagResource structure.
+     */
+    public static let __default: SimpleNotificationModel.TagResourceResponseForTagResource = {
+        let defaultInstance = SimpleNotificationModel.TagResourceResponseForTagResource(
+            tagResourceResult: TagResourceResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension ThrottledException {
     /**
      Default instance of the ThrottledException structure.
@@ -1174,6 +1320,42 @@ public extension UnsubscribeInput {
     public static let __default: SimpleNotificationModel.UnsubscribeInput = {
         let defaultInstance = SimpleNotificationModel.UnsubscribeInput(
             subscriptionArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceRequest {
+    /**
+     Default instance of the UntagResourceRequest structure.
+     */
+    public static let __default: SimpleNotificationModel.UntagResourceRequest = {
+        let defaultInstance = SimpleNotificationModel.UntagResourceRequest(
+            resourceArn: "0",
+            tagKeys: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceResponse {
+    /**
+     Default instance of the UntagResourceResponse structure.
+     */
+    public static let __default: SimpleNotificationModel.UntagResourceResponse = {
+        let defaultInstance = SimpleNotificationModel.UntagResourceResponse()
+
+        return defaultInstance
+    }()
+}
+
+public extension UntagResourceResponseForUntagResource {
+    /**
+     Default instance of the UntagResourceResponseForUntagResource structure.
+     */
+    public static let __default: SimpleNotificationModel.UntagResourceResponseForUntagResource = {
+        let defaultInstance = SimpleNotificationModel.UntagResourceResponseForUntagResource(
+            untagResourceResult: UntagResourceResponse.__default)
 
         return defaultInstance
     }()

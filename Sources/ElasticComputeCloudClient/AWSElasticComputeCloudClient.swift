@@ -4368,6 +4368,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateSnapshots operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSnapshotsRequest object being passed to this operation.
+         - completion: The CreateSnapshotsResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateSnapshotsResult
+           object will be validated before being returned to caller.
+     */
+    public func createSnapshotsAsync(input: ElasticComputeCloudModel.CreateSnapshotsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSnapshotsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateSnapshotsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createSnapshots.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateSnapshots operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSnapshotsRequest object being passed to this operation.
+     - Returns: The CreateSnapshotsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createSnapshotsSync(input: ElasticComputeCloudModel.CreateSnapshotsRequest) throws -> ElasticComputeCloudModel.CreateSnapshotsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateSnapshotsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createSnapshots.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the CreateSpotDatafeedSubscription operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -14274,6 +14338,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisableEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableEbsEncryptionByDefaultRequest object being passed to this operation.
+         - completion: The DisableEbsEncryptionByDefaultResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableEbsEncryptionByDefaultResult
+           object will be validated before being returned to caller.
+     */
+    public func disableEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DisableEbsEncryptionByDefaultOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableEbsEncryptionByDefault.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisableEbsEncryptionByDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableEbsEncryptionByDefaultRequest object being passed to this operation.
+     - Returns: The DisableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DisableEbsEncryptionByDefaultOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableEbsEncryptionByDefault.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DisableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -14969,6 +15097,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the EnableEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableEbsEncryptionByDefaultRequest object being passed to this operation.
+         - completion: The EnableEbsEncryptionByDefaultResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableEbsEncryptionByDefaultResult
+           object will be validated before being returned to caller.
+     */
+    public func enableEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = EnableEbsEncryptionByDefaultOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableEbsEncryptionByDefault.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the EnableEbsEncryptionByDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableEbsEncryptionByDefaultRequest object being passed to this operation.
+     - Returns: The EnableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = EnableEbsEncryptionByDefaultOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableEbsEncryptionByDefault.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the EnableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -15591,6 +15783,134 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getConsoleScreenshot.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+         - completion: The GetEbsDefaultKmsKeyIdResult object or an error will be passed to this 
+           callback when the operation is complete. The GetEbsDefaultKmsKeyIdResult
+           object will be validated before being returned to caller.
+     */
+    public func getEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetEbsDefaultKmsKeyIdOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getEbsDefaultKmsKeyId.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetEbsDefaultKmsKeyId operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+     - Returns: The GetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetEbsDefaultKmsKeyIdOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getEbsDefaultKmsKeyId.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetEbsEncryptionByDefaultRequest object being passed to this operation.
+         - completion: The GetEbsEncryptionByDefaultResult object or an error will be passed to this 
+           callback when the operation is complete. The GetEbsEncryptionByDefaultResult
+           object will be validated before being returned to caller.
+     */
+    public func getEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetEbsEncryptionByDefaultOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getEbsEncryptionByDefault.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetEbsEncryptionByDefault operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetEbsEncryptionByDefaultRequest object being passed to this operation.
+     - Returns: The GetEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetEbsEncryptionByDefaultOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getEbsEncryptionByDefault.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -16551,6 +16871,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyClientVpnEndpoint.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyEbsDefaultKmsKeyIdRequest object being passed to this operation.
+         - completion: The ModifyEbsDefaultKmsKeyIdResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyEbsDefaultKmsKeyIdResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyEbsDefaultKmsKeyIdOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyEbsDefaultKmsKeyId.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyEbsDefaultKmsKeyId operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyEbsDefaultKmsKeyIdRequest object being passed to this operation.
+     - Returns: The ModifyEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyEbsDefaultKmsKeyIdOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyEbsDefaultKmsKeyId.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -18264,6 +18648,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ModifyVpnConnection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionRequest object being passed to this operation.
+         - completion: The ModifyVpnConnectionResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnConnectionResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnConnectionAsync(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpnConnectionResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyVpnConnectionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnConnection.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnConnection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionRequest object being passed to this operation.
+     - Returns: The ModifyVpnConnectionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnConnectionSync(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyVpnConnectionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnConnection.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the MonitorInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -19645,6 +20093,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.requestSpotInstances.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ResetEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+         - completion: The ResetEbsDefaultKmsKeyIdResult object or an error will be passed to this 
+           callback when the operation is complete. The ResetEbsDefaultKmsKeyIdResult
+           object will be validated before being returned to caller.
+     */
+    public func resetEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ResetEbsDefaultKmsKeyIdOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.resetEbsDefaultKmsKeyId.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ResetEbsDefaultKmsKeyId operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetEbsDefaultKmsKeyIdRequest object being passed to this operation.
+     - Returns: The ResetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func resetEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ResetEbsDefaultKmsKeyIdOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.resetEbsDefaultKmsKeyId.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(

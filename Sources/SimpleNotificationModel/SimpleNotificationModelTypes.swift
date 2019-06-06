@@ -27,6 +27,11 @@ import Foundation
 public typealias ActionsList = [Action]
 
 /**
+ Type definition for the AmazonResourceName field.
+ */
+public typealias AmazonResourceName = String
+
+/**
  Type definition for the Binary field.
  */
 public typealias Binary = Data
@@ -80,6 +85,26 @@ public typealias SubscriptionAttributesMap = [AttributeName: AttributeValue]
  Type definition for the SubscriptionsList field.
  */
 public typealias SubscriptionsList = [Subscription]
+
+/**
+ Type definition for the TagKey field.
+ */
+public typealias TagKey = String
+
+/**
+ Type definition for the TagKeyList field.
+ */
+public typealias TagKeyList = [TagKey]
+
+/**
+ Type definition for the TagList field.
+ */
+public typealias TagList = [Tag]
+
+/**
+ Type definition for the TagValue field.
+ */
+public typealias TagValue = String
 
 /**
  Type definition for the TopicAttributesMap field.
@@ -185,3 +210,48 @@ public typealias TopicARN = String
  Type definition for the TopicName field.
  */
 public typealias TopicName = String
+
+/**
+ Validation for the AmazonResourceName field.
+*/
+extension SimpleNotificationModel.AmazonResourceName {
+    public func validateAsAmazonResourceName() throws {
+        if self.count < 1 {
+            throw SimpleNotificationCodingError.validationError(reason: "The provided value to AmazonResourceName violated the minimum length constraint.")
+        }
+
+        if self.count > 1011 {
+            throw SimpleNotificationCodingError.validationError(reason: "The provided value to AmazonResourceName violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagKey field.
+*/
+extension SimpleNotificationModel.TagKey {
+    public func validateAsTagKey() throws {
+        if self.count < 1 {
+            throw SimpleNotificationCodingError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw SimpleNotificationCodingError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagValue field.
+*/
+extension SimpleNotificationModel.TagValue {
+    public func validateAsTagValue() throws {
+        if self.count < 0 {
+            throw SimpleNotificationCodingError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw SimpleNotificationCodingError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
+        }
+    }
+}
