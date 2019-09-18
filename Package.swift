@@ -201,5 +201,8 @@ let package = Package(
         .testTarget(
             name: "ElasticComputeCloudClientTests",
             dependencies: ["ElasticComputeCloudClient"]),
+        .testTarget(
+            name: "RDSClientTests",
+            dependencies: ["RDSClient"]),
     ]
 )
