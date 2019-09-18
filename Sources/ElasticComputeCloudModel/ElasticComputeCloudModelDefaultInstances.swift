@@ -14239,6 +14239,7 @@ public extension VpcEndpoint {
             dnsEntries: nil,
             groups: nil,
             networkInterfaceIds: nil,
+            ownerId: nil,
             policyDocument: nil,
             privateDnsEnabled: nil,
             requesterManaged: nil,
@@ -14262,6 +14263,8 @@ public extension VpcEndpointConnection {
     public static let __default: ElasticComputeCloudModel.VpcEndpointConnection = {
         let defaultInstance = ElasticComputeCloudModel.VpcEndpointConnection(
             creationTimestamp: nil,
+            dnsEntries: nil,
+            networkLoadBalancerArns: nil,
             serviceId: nil,
             vpcEndpointId: nil,
             vpcEndpointOwner: nil,

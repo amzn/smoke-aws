@@ -466,6 +466,19 @@ extension StopTaskResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the SubmitAttachmentStateChanges operation in a HTTP client.
+ */
+extension SubmitAttachmentStateChangesResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = SubmitAttachmentStateChangesResponse
+    public typealias HeadersType = SubmitAttachmentStateChangesResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> SubmitAttachmentStateChangesResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the SubmitContainerStateChange operation in a HTTP client.
  */
 extension SubmitContainerStateChangeResponse: HTTPResponseOutputProtocol {

@@ -95,6 +95,8 @@ public protocol ElasticContainerClientProtocol {
     typealias StartTaskAsyncType = (_ input: ElasticContainerModel.StartTaskRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.StartTaskResponse>) -> ()) throws -> ()
     typealias StopTaskSyncType = (_ input: ElasticContainerModel.StopTaskRequest) throws -> ElasticContainerModel.StopTaskResponse
     typealias StopTaskAsyncType = (_ input: ElasticContainerModel.StopTaskRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.StopTaskResponse>) -> ()) throws -> ()
+    typealias SubmitAttachmentStateChangesSyncType = (_ input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse
+    typealias SubmitAttachmentStateChangesAsyncType = (_ input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.SubmitAttachmentStateChangesResponse>) -> ()) throws -> ()
     typealias SubmitContainerStateChangeSyncType = (_ input: ElasticContainerModel.SubmitContainerStateChangeRequest) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse
     typealias SubmitContainerStateChangeAsyncType = (_ input: ElasticContainerModel.SubmitContainerStateChangeRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.SubmitContainerStateChangeResponse>) -> ()) throws -> ()
     typealias SubmitTaskStateChangeSyncType = (_ input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse
@@ -895,6 +897,29 @@ public protocol ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     func stopTaskSync(input: ElasticContainerModel.StopTaskRequest) throws -> ElasticContainerModel.StopTaskResponse
+
+    /**
+     Invokes the SubmitAttachmentStateChanges operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SubmitAttachmentStateChangesRequest object being passed to this operation.
+         - completion: The SubmitAttachmentStateChangesResponse object or an error will be passed to this 
+           callback when the operation is complete. The SubmitAttachmentStateChangesResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, invalidParameter, server.
+     */
+    func submitAttachmentStateChangesAsync(input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.SubmitAttachmentStateChangesResponse>) -> ()) throws
+
+    /**
+     Invokes the SubmitAttachmentStateChanges operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SubmitAttachmentStateChangesRequest object being passed to this operation.
+     - Returns: The SubmitAttachmentStateChangesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    func submitAttachmentStateChangesSync(input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse
 
     /**
      Invokes the SubmitContainerStateChange operation returning immediately and passing the response to a callback.

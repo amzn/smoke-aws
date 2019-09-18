@@ -194,6 +194,11 @@ public typealias StartTaskOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias StopTaskOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the SubmitAttachmentStateChanges operation in a HTTP client.
+ */
+public typealias SubmitAttachmentStateChangesOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the SubmitContainerStateChange operation in a HTTP client.
  */
 public typealias SubmitContainerStateChangeOperationHTTPRequestInput = BodyHTTPRequestInput

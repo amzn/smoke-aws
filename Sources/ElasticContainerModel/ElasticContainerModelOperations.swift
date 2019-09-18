@@ -59,6 +59,7 @@ public enum ElasticContainerModelOperations: String {
     case runTask = "RunTask"
     case startTask = "StartTask"
     case stopTask = "StopTask"
+    case submitAttachmentStateChanges = "SubmitAttachmentStateChanges"
     case submitContainerStateChange = "SubmitContainerStateChange"
     case submitTaskStateChange = "SubmitTaskStateChange"
     case tagResource = "TagResource"
@@ -138,6 +139,8 @@ public enum ElasticContainerModelOperations: String {
         case .startTask:
             return "/"
         case .stopTask:
+            return "/"
+        case .submitAttachmentStateChanges:
             return "/"
         case .submitContainerStateChange:
             return "/"

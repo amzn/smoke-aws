@@ -96,6 +96,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let startTaskSyncOverride: ElasticContainerClientProtocol.StartTaskSyncType?
     let stopTaskAsyncOverride: ElasticContainerClientProtocol.StopTaskAsyncType?
     let stopTaskSyncOverride: ElasticContainerClientProtocol.StopTaskSyncType?
+    let submitAttachmentStateChangesAsyncOverride: ElasticContainerClientProtocol.SubmitAttachmentStateChangesAsyncType?
+    let submitAttachmentStateChangesSyncOverride: ElasticContainerClientProtocol.SubmitAttachmentStateChangesSyncType?
     let submitContainerStateChangeAsyncOverride: ElasticContainerClientProtocol.SubmitContainerStateChangeAsyncType?
     let submitContainerStateChangeSyncOverride: ElasticContainerClientProtocol.SubmitContainerStateChangeSyncType?
     let submitTaskStateChangeAsyncOverride: ElasticContainerClientProtocol.SubmitTaskStateChangeAsyncType?
@@ -188,6 +190,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             startTaskSync: ElasticContainerClientProtocol.StartTaskSyncType? = nil,
             stopTaskAsync: ElasticContainerClientProtocol.StopTaskAsyncType? = nil,
             stopTaskSync: ElasticContainerClientProtocol.StopTaskSyncType? = nil,
+            submitAttachmentStateChangesAsync: ElasticContainerClientProtocol.SubmitAttachmentStateChangesAsyncType? = nil,
+            submitAttachmentStateChangesSync: ElasticContainerClientProtocol.SubmitAttachmentStateChangesSyncType? = nil,
             submitContainerStateChangeAsync: ElasticContainerClientProtocol.SubmitContainerStateChangeAsyncType? = nil,
             submitContainerStateChangeSync: ElasticContainerClientProtocol.SubmitContainerStateChangeSyncType? = nil,
             submitTaskStateChangeAsync: ElasticContainerClientProtocol.SubmitTaskStateChangeAsyncType? = nil,
@@ -275,6 +279,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.startTaskSyncOverride = startTaskSync
         self.stopTaskAsyncOverride = stopTaskAsync
         self.stopTaskSyncOverride = stopTaskSync
+        self.submitAttachmentStateChangesAsyncOverride = submitAttachmentStateChangesAsync
+        self.submitAttachmentStateChangesSyncOverride = submitAttachmentStateChangesSync
         self.submitContainerStateChangeAsyncOverride = submitContainerStateChangeAsync
         self.submitContainerStateChangeSyncOverride = submitContainerStateChangeSync
         self.submitTaskStateChangeAsyncOverride = submitTaskStateChangeAsync
@@ -1480,6 +1486,41 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     public func stopTaskSync(input: ElasticContainerModel.StopTaskRequest) throws -> ElasticContainerModel.StopTaskResponse {
         if let stopTaskSyncOverride = stopTaskSyncOverride {
             return try stopTaskSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the SubmitAttachmentStateChanges operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SubmitAttachmentStateChangesRequest object being passed to this operation.
+         - completion: The SubmitAttachmentStateChangesResponse object or an error will be passed to this 
+           callback when the operation is complete. The SubmitAttachmentStateChangesResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, invalidParameter, server.
+     */
+    public func submitAttachmentStateChangesAsync(input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.SubmitAttachmentStateChangesResponse>) -> ()) throws {
+        if let submitAttachmentStateChangesAsyncOverride = submitAttachmentStateChangesAsyncOverride {
+            return try submitAttachmentStateChangesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the SubmitAttachmentStateChanges operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SubmitAttachmentStateChangesRequest object being passed to this operation.
+     - Returns: The SubmitAttachmentStateChangesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    public func submitAttachmentStateChangesSync(input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
+        if let submitAttachmentStateChangesSyncOverride = submitAttachmentStateChangesSyncOverride {
+            return try submitAttachmentStateChangesSyncOverride(input)
         }
 
         throw error

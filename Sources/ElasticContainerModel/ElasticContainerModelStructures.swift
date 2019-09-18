@@ -501,6 +501,7 @@ public struct ContainerInstance: Codable, Equatable {
     public var remainingResources: Resources?
     public var runningTasksCount: Integer?
     public var status: String?
+    public var statusReason: String?
     public var tags: Tags?
     public var version: Long?
     public var versionInfo: VersionInfo?
@@ -517,6 +518,7 @@ public struct ContainerInstance: Codable, Equatable {
                 remainingResources: Resources? = nil,
                 runningTasksCount: Integer? = nil,
                 status: String? = nil,
+                statusReason: String? = nil,
                 tags: Tags? = nil,
                 version: Long? = nil,
                 versionInfo: VersionInfo? = nil) {
@@ -532,6 +534,7 @@ public struct ContainerInstance: Codable, Equatable {
         self.remainingResources = remainingResources
         self.runningTasksCount = runningTasksCount
         self.status = status
+        self.statusReason = statusReason
         self.tags = tags
         self.version = version
         self.versionInfo = versionInfo
@@ -550,6 +553,7 @@ public struct ContainerInstance: Codable, Equatable {
         case remainingResources
         case runningTasksCount
         case status
+        case statusReason
         case tags
         case version
         case versionInfo
@@ -3221,6 +3225,40 @@ public struct StopTaskResponse: Codable, Equatable {
 
     public func validate() throws {
         try task?.validate()
+    }
+}
+
+public struct SubmitAttachmentStateChangesRequest: Codable, Equatable {
+    public var attachments: AttachmentStateChanges
+    public var cluster: String?
+
+    public init(attachments: AttachmentStateChanges,
+                cluster: String? = nil) {
+        self.attachments = attachments
+        self.cluster = cluster
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case attachments
+        case cluster
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct SubmitAttachmentStateChangesResponse: Codable, Equatable {
+    public var acknowledgment: String?
+
+    public init(acknowledgment: String? = nil) {
+        self.acknowledgment = acknowledgment
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case acknowledgment
+    }
+
+    public func validate() throws {
     }
 }
 

@@ -1891,7 +1891,9 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case c48xlarge = "c4.8xlarge"
     case c4Large = "c4.large"
     case c4Xlarge = "c4.xlarge"
+    case c512xlarge = "c5.12xlarge"
     case c518xlarge = "c5.18xlarge"
+    case c524xlarge = "c5.24xlarge"
     case c52xlarge = "c5.2xlarge"
     case c54xlarge = "c5.4xlarge"
     case c59xlarge = "c5.9xlarge"
@@ -3724,6 +3726,7 @@ public typealias TransitGatewayAttachmentPropagationList = [TransitGatewayAttach
  Enumeration restricting the values of the TransitGatewayAttachmentResourceType field.
  */
 public enum TransitGatewayAttachmentResourceType: String, Codable, CustomStringConvertible {
+    case directConnectGateway = "direct-connect-gateway"
     case vpc
     case vpn
 
@@ -3731,7 +3734,7 @@ public enum TransitGatewayAttachmentResourceType: String, Codable, CustomStringC
         return rawValue
     }
     
-    public static let __default: TransitGatewayAttachmentResourceType = .vpc
+    public static let __default: TransitGatewayAttachmentResourceType = .directConnectGateway
 }
 
 /**

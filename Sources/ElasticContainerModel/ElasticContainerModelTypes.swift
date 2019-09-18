@@ -194,7 +194,10 @@ public typealias ContainerInstanceFieldList = [ContainerInstanceField]
  */
 public enum ContainerInstanceStatus: String, Codable, CustomStringConvertible {
     case active = "ACTIVE"
+    case deregistering = "DEREGISTERING"
     case draining = "DRAINING"
+    case registering = "REGISTERING"
+    case registrationFailed = "REGISTRATION_FAILED"
 
     public var description: String {
         return rawValue
@@ -641,6 +644,7 @@ public typealias Services = [Service]
  Enumeration restricting the values of the SettingName field.
  */
 public enum SettingName: String, Codable, CustomStringConvertible {
+    case awsvpctrunking = "awsvpcTrunking"
     case containerinstancelongarnformat = "containerInstanceLongArnFormat"
     case servicelongarnformat = "serviceLongArnFormat"
     case tasklongarnformat = "taskLongArnFormat"
@@ -649,7 +653,7 @@ public enum SettingName: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: SettingName = .containerinstancelongarnformat
+    public static let __default: SettingName = .awsvpctrunking
 }
 
 /**

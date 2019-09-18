@@ -290,6 +290,7 @@ public extension ContainerInstance {
             remainingResources: nil,
             runningTasksCount: nil,
             status: nil,
+            statusReason: nil,
             tags: nil,
             version: nil,
             versionInfo: nil)
@@ -1868,6 +1869,31 @@ public extension StopTaskResponse {
     public static let __default: ElasticContainerModel.StopTaskResponse = {
         let defaultInstance = ElasticContainerModel.StopTaskResponse(
             task: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SubmitAttachmentStateChangesRequest {
+    /**
+     Default instance of the SubmitAttachmentStateChangesRequest structure.
+     */
+    public static let __default: ElasticContainerModel.SubmitAttachmentStateChangesRequest = {
+        let defaultInstance = ElasticContainerModel.SubmitAttachmentStateChangesRequest(
+            attachments: [],
+            cluster: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SubmitAttachmentStateChangesResponse {
+    /**
+     Default instance of the SubmitAttachmentStateChangesResponse structure.
+     */
+    public static let __default: ElasticContainerModel.SubmitAttachmentStateChangesResponse = {
+        let defaultInstance = ElasticContainerModel.SubmitAttachmentStateChangesResponse(
+            acknowledgment: nil)
 
         return defaultInstance
     }()
