@@ -2080,6 +2080,64 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the SubmitAttachmentStateChanges operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SubmitAttachmentStateChangesRequest object being passed to this operation.
+         - completion: The SubmitAttachmentStateChangesResponse object or an error will be passed to this 
+           callback when the operation is complete. The SubmitAttachmentStateChangesResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, invalidParameter, server.
+     */
+    public func submitAttachmentStateChangesAsync(input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.SubmitAttachmentStateChangesResponse>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.submitAttachmentStateChanges.rawValue,
+                    target: target)
+
+        let requestInput = SubmitAttachmentStateChangesOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SubmitAttachmentStateChanges operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SubmitAttachmentStateChangesRequest object being passed to this operation.
+     - Returns: The SubmitAttachmentStateChangesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    public func submitAttachmentStateChangesSync(input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.submitAttachmentStateChanges.rawValue,
+                    target: target)
+
+        let requestInput = SubmitAttachmentStateChangesOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the SubmitContainerStateChange operation returning immediately and passing the response to a callback.
 
      - Parameters:

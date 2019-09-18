@@ -25239,6 +25239,7 @@ public struct VpcEndpoint: Codable, Equatable {
     public var dnsEntries: DnsEntrySet?
     public var groups: GroupIdentifierSet?
     public var networkInterfaceIds: ValueStringList?
+    public var ownerId: String?
     public var policyDocument: String?
     public var privateDnsEnabled: Boolean?
     public var requesterManaged: Boolean?
@@ -25255,6 +25256,7 @@ public struct VpcEndpoint: Codable, Equatable {
                 dnsEntries: DnsEntrySet? = nil,
                 groups: GroupIdentifierSet? = nil,
                 networkInterfaceIds: ValueStringList? = nil,
+                ownerId: String? = nil,
                 policyDocument: String? = nil,
                 privateDnsEnabled: Boolean? = nil,
                 requesterManaged: Boolean? = nil,
@@ -25270,6 +25272,7 @@ public struct VpcEndpoint: Codable, Equatable {
         self.dnsEntries = dnsEntries
         self.groups = groups
         self.networkInterfaceIds = networkInterfaceIds
+        self.ownerId = ownerId
         self.policyDocument = policyDocument
         self.privateDnsEnabled = privateDnsEnabled
         self.requesterManaged = requesterManaged
@@ -25288,6 +25291,7 @@ public struct VpcEndpoint: Codable, Equatable {
         case dnsEntries = "dnsEntrySet"
         case groups = "groupSet"
         case networkInterfaceIds = "networkInterfaceIdSet"
+        case ownerId
         case policyDocument
         case privateDnsEnabled
         case requesterManaged
@@ -25307,17 +25311,23 @@ public struct VpcEndpoint: Codable, Equatable {
 
 public struct VpcEndpointConnection: Codable, Equatable {
     public var creationTimestamp: MillisecondDateTime?
+    public var dnsEntries: DnsEntrySet?
+    public var networkLoadBalancerArns: ValueStringList?
     public var serviceId: String?
     public var vpcEndpointId: String?
     public var vpcEndpointOwner: String?
     public var vpcEndpointState: State?
 
     public init(creationTimestamp: MillisecondDateTime? = nil,
+                dnsEntries: DnsEntrySet? = nil,
+                networkLoadBalancerArns: ValueStringList? = nil,
                 serviceId: String? = nil,
                 vpcEndpointId: String? = nil,
                 vpcEndpointOwner: String? = nil,
                 vpcEndpointState: State? = nil) {
         self.creationTimestamp = creationTimestamp
+        self.dnsEntries = dnsEntries
+        self.networkLoadBalancerArns = networkLoadBalancerArns
         self.serviceId = serviceId
         self.vpcEndpointId = vpcEndpointId
         self.vpcEndpointOwner = vpcEndpointOwner
@@ -25326,6 +25336,8 @@ public struct VpcEndpointConnection: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case creationTimestamp
+        case dnsEntries = "dnsEntrySet"
+        case networkLoadBalancerArns = "networkLoadBalancerArnSet"
         case serviceId
         case vpcEndpointId
         case vpcEndpointOwner
