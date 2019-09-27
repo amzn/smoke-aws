@@ -16,7 +16,7 @@
 //
 
 import Foundation
-import CNIOOpenSSL
+import Cryptor
 
 extension String {
     /**
@@ -26,16 +26,11 @@ extension String {
         - key: the key to use to generate the hmac.
      */
     func hmac(withKey key: [UInt8]) -> [UInt8] {
-        var context = HMAC_CTX()
-        HMAC_Init_ex(&context, key, Int32(key.count), EVP_sha256(), nil)
+        let data: [UInt8] = Array(self.utf8)
+        guard let hmac = HMAC(using: HMAC.Algorithm.sha256, key: key).update(byteArray: data)?.final() else {
+            return []
+        }
         
-        let bytes = Array(self.utf8)
-        HMAC_Update(&context, bytes, bytes.count)
-        var digest = [UInt8](repeating: 0, count: Int(EVP_MAX_MD_SIZE))
-        var length: UInt32 = 0
-        HMAC_Final(&context, &digest, &length)
-        HMAC_CTX_cleanup(&context)
-        
-        return Array(digest[0..<Int(length)])
+        return hmac
     }
 }

@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Cryptor",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueCryptor.git",
+        "state": {
+          "branch": null,
+          "revision": "6e83ae419817e7272f2f80a7a005a26df366dd8e",
+          "version": "1.0.31"
+        }
+      },
+      {
         "package": "LoggerAPI",
         "repositoryURL": "https://github.com/IBM-Swift/LoggerAPI.git",
         "state": {
@@ -60,8 +69,8 @@
         "repositoryURL": "https://github.com/LiveUI/XMLCoding.git",
         "state": {
           "branch": null,
-          "revision": "8c760e960a5e53a5338c2871c4fcdf06b8c5ace4",
-          "version": "0.4.0"
+          "revision": "f0fbfe17e73f329e13a6133ff5437f7b174049fd",
+          "version": "0.4.1"
         }
       }
     ]
