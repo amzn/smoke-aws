@@ -102,7 +102,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-nio.git", from: "1.8.0"),
         .package(url: "https://github.com/apple/swift-nio-ssl.git", from: "1.0.0"),
         .package(url: "https://github.com/IBM-Swift/LoggerAPI.git", .upToNextMajor(from: "1.0.0")),
-        .package(url: "https://github.com/LiveUI/XMLCoding.git", .branch("master")),
+        .package(url: "https://github.com/LiveUI/XMLCoding.git", .upToNextMajor(from: "0.4.1")),
         .package(url: "https://github.com/amzn/smoke-http.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/IBM-Swift/BlueCryptor.git", .upToNextMajor(from: "1.0.0")),
     ],
