@@ -31,7 +31,7 @@ private func createEncoder() -> XMLEncoder {
 
 public extension XMLEncoder {
     /// Return a AWS compatible XML Encoder
-    public static func awsCompatibleEncoder() -> XMLEncoder {
+    static func awsCompatibleEncoder() -> XMLEncoder {
         return createEncoder()
     }
 }

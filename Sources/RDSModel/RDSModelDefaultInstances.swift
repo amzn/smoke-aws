@@ -25,7 +25,7 @@ public extension AccountAttributesMessage {
     /**
      Default instance of the AccountAttributesMessage structure.
      */
-    public static let __default: RDSModel.AccountAttributesMessage = {
+    static let __default: RDSModel.AccountAttributesMessage = {
         let defaultInstance = RDSModel.AccountAttributesMessage(
             accountQuotas: nil)
 
@@ -37,7 +37,7 @@ public extension AccountAttributesMessageForDescribeAccountAttributes {
     /**
      Default instance of the AccountAttributesMessageForDescribeAccountAttributes structure.
      */
-    public static let __default: RDSModel.AccountAttributesMessageForDescribeAccountAttributes = {
+    static let __default: RDSModel.AccountAttributesMessageForDescribeAccountAttributes = {
         let defaultInstance = RDSModel.AccountAttributesMessageForDescribeAccountAttributes(
             describeAccountAttributesResult: AccountAttributesMessage.__default)
 
@@ -49,7 +49,7 @@ public extension AccountQuota {
     /**
      Default instance of the AccountQuota structure.
      */
-    public static let __default: RDSModel.AccountQuota = {
+    static let __default: RDSModel.AccountQuota = {
         let defaultInstance = RDSModel.AccountQuota(
             accountQuotaName: nil,
             max: nil,
@@ -63,7 +63,7 @@ public extension AddRoleToDBClusterMessage {
     /**
      Default instance of the AddRoleToDBClusterMessage structure.
      */
-    public static let __default: RDSModel.AddRoleToDBClusterMessage = {
+    static let __default: RDSModel.AddRoleToDBClusterMessage = {
         let defaultInstance = RDSModel.AddRoleToDBClusterMessage(
             dBClusterIdentifier: "value",
             featureName: nil,
@@ -77,7 +77,7 @@ public extension AddRoleToDBInstanceMessage {
     /**
      Default instance of the AddRoleToDBInstanceMessage structure.
      */
-    public static let __default: RDSModel.AddRoleToDBInstanceMessage = {
+    static let __default: RDSModel.AddRoleToDBInstanceMessage = {
         let defaultInstance = RDSModel.AddRoleToDBInstanceMessage(
             dBInstanceIdentifier: "value",
             featureName: "value",
@@ -91,7 +91,7 @@ public extension AddSourceIdentifierToSubscriptionMessage {
     /**
      Default instance of the AddSourceIdentifierToSubscriptionMessage structure.
      */
-    public static let __default: RDSModel.AddSourceIdentifierToSubscriptionMessage = {
+    static let __default: RDSModel.AddSourceIdentifierToSubscriptionMessage = {
         let defaultInstance = RDSModel.AddSourceIdentifierToSubscriptionMessage(
             sourceIdentifier: "value",
             subscriptionName: "value")
@@ -104,7 +104,7 @@ public extension AddSourceIdentifierToSubscriptionResult {
     /**
      Default instance of the AddSourceIdentifierToSubscriptionResult structure.
      */
-    public static let __default: RDSModel.AddSourceIdentifierToSubscriptionResult = {
+    static let __default: RDSModel.AddSourceIdentifierToSubscriptionResult = {
         let defaultInstance = RDSModel.AddSourceIdentifierToSubscriptionResult(
             eventSubscription: nil)
 
@@ -116,7 +116,7 @@ public extension AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierTo
     /**
      Default instance of the AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription structure.
      */
-    public static let __default: RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription = {
+    static let __default: RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription = {
         let defaultInstance = RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription(
             addSourceIdentifierToSubscriptionResult: AddSourceIdentifierToSubscriptionResult.__default)
 
@@ -128,7 +128,7 @@ public extension AddTagsToResourceMessage {
     /**
      Default instance of the AddTagsToResourceMessage structure.
      */
-    public static let __default: RDSModel.AddTagsToResourceMessage = {
+    static let __default: RDSModel.AddTagsToResourceMessage = {
         let defaultInstance = RDSModel.AddTagsToResourceMessage(
             resourceName: "value",
             tags: [])
@@ -141,7 +141,7 @@ public extension ApplyPendingMaintenanceActionMessage {
     /**
      Default instance of the ApplyPendingMaintenanceActionMessage structure.
      */
-    public static let __default: RDSModel.ApplyPendingMaintenanceActionMessage = {
+    static let __default: RDSModel.ApplyPendingMaintenanceActionMessage = {
         let defaultInstance = RDSModel.ApplyPendingMaintenanceActionMessage(
             applyAction: "value",
             optInType: "value",
@@ -155,7 +155,7 @@ public extension ApplyPendingMaintenanceActionResult {
     /**
      Default instance of the ApplyPendingMaintenanceActionResult structure.
      */
-    public static let __default: RDSModel.ApplyPendingMaintenanceActionResult = {
+    static let __default: RDSModel.ApplyPendingMaintenanceActionResult = {
         let defaultInstance = RDSModel.ApplyPendingMaintenanceActionResult(
             resourcePendingMaintenanceActions: nil)
 
@@ -167,7 +167,7 @@ public extension ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAc
     /**
      Default instance of the ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction structure.
      */
-    public static let __default: RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction = {
+    static let __default: RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction = {
         let defaultInstance = RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction(
             applyPendingMaintenanceActionResult: ApplyPendingMaintenanceActionResult.__default)
 
@@ -179,7 +179,7 @@ public extension AuthorizationAlreadyExistsFault {
     /**
      Default instance of the AuthorizationAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.AuthorizationAlreadyExistsFault = {
+    static let __default: RDSModel.AuthorizationAlreadyExistsFault = {
         let defaultInstance = RDSModel.AuthorizationAlreadyExistsFault()
 
         return defaultInstance
@@ -190,7 +190,7 @@ public extension AuthorizationNotFoundFault {
     /**
      Default instance of the AuthorizationNotFoundFault structure.
      */
-    public static let __default: RDSModel.AuthorizationNotFoundFault = {
+    static let __default: RDSModel.AuthorizationNotFoundFault = {
         let defaultInstance = RDSModel.AuthorizationNotFoundFault()
 
         return defaultInstance
@@ -201,7 +201,7 @@ public extension AuthorizationQuotaExceededFault {
     /**
      Default instance of the AuthorizationQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.AuthorizationQuotaExceededFault = {
+    static let __default: RDSModel.AuthorizationQuotaExceededFault = {
         let defaultInstance = RDSModel.AuthorizationQuotaExceededFault()
 
         return defaultInstance
@@ -212,7 +212,7 @@ public extension AuthorizeDBSecurityGroupIngressMessage {
     /**
      Default instance of the AuthorizeDBSecurityGroupIngressMessage structure.
      */
-    public static let __default: RDSModel.AuthorizeDBSecurityGroupIngressMessage = {
+    static let __default: RDSModel.AuthorizeDBSecurityGroupIngressMessage = {
         let defaultInstance = RDSModel.AuthorizeDBSecurityGroupIngressMessage(
             cIDRIP: nil,
             dBSecurityGroupName: "value",
@@ -228,7 +228,7 @@ public extension AuthorizeDBSecurityGroupIngressResult {
     /**
      Default instance of the AuthorizeDBSecurityGroupIngressResult structure.
      */
-    public static let __default: RDSModel.AuthorizeDBSecurityGroupIngressResult = {
+    static let __default: RDSModel.AuthorizeDBSecurityGroupIngressResult = {
         let defaultInstance = RDSModel.AuthorizeDBSecurityGroupIngressResult(
             dBSecurityGroup: nil)
 
@@ -240,7 +240,7 @@ public extension AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGrou
     /**
      Default instance of the AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress structure.
      */
-    public static let __default: RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress = {
+    static let __default: RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress = {
         let defaultInstance = RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress(
             authorizeDBSecurityGroupIngressResult: AuthorizeDBSecurityGroupIngressResult.__default)
 
@@ -252,7 +252,7 @@ public extension AvailabilityZone {
     /**
      Default instance of the AvailabilityZone structure.
      */
-    public static let __default: RDSModel.AvailabilityZone = {
+    static let __default: RDSModel.AvailabilityZone = {
         let defaultInstance = RDSModel.AvailabilityZone(
             name: nil)
 
@@ -264,7 +264,7 @@ public extension AvailableProcessorFeature {
     /**
      Default instance of the AvailableProcessorFeature structure.
      */
-    public static let __default: RDSModel.AvailableProcessorFeature = {
+    static let __default: RDSModel.AvailableProcessorFeature = {
         let defaultInstance = RDSModel.AvailableProcessorFeature(
             allowedValues: nil,
             defaultValue: nil,
@@ -278,7 +278,7 @@ public extension BacktrackDBClusterMessage {
     /**
      Default instance of the BacktrackDBClusterMessage structure.
      */
-    public static let __default: RDSModel.BacktrackDBClusterMessage = {
+    static let __default: RDSModel.BacktrackDBClusterMessage = {
         let defaultInstance = RDSModel.BacktrackDBClusterMessage(
             backtrackTo: "2013-02-18T17:00:00Z",
             dBClusterIdentifier: "value",
@@ -293,7 +293,7 @@ public extension BackupPolicyNotFoundFault {
     /**
      Default instance of the BackupPolicyNotFoundFault structure.
      */
-    public static let __default: RDSModel.BackupPolicyNotFoundFault = {
+    static let __default: RDSModel.BackupPolicyNotFoundFault = {
         let defaultInstance = RDSModel.BackupPolicyNotFoundFault()
 
         return defaultInstance
@@ -304,7 +304,7 @@ public extension Certificate {
     /**
      Default instance of the Certificate structure.
      */
-    public static let __default: RDSModel.Certificate = {
+    static let __default: RDSModel.Certificate = {
         let defaultInstance = RDSModel.Certificate(
             certificateArn: nil,
             certificateIdentifier: nil,
@@ -321,7 +321,7 @@ public extension CertificateMessage {
     /**
      Default instance of the CertificateMessage structure.
      */
-    public static let __default: RDSModel.CertificateMessage = {
+    static let __default: RDSModel.CertificateMessage = {
         let defaultInstance = RDSModel.CertificateMessage(
             certificates: nil,
             marker: nil)
@@ -334,7 +334,7 @@ public extension CertificateMessageForDescribeCertificates {
     /**
      Default instance of the CertificateMessageForDescribeCertificates structure.
      */
-    public static let __default: RDSModel.CertificateMessageForDescribeCertificates = {
+    static let __default: RDSModel.CertificateMessageForDescribeCertificates = {
         let defaultInstance = RDSModel.CertificateMessageForDescribeCertificates(
             describeCertificatesResult: CertificateMessage.__default)
 
@@ -346,7 +346,7 @@ public extension CertificateNotFoundFault {
     /**
      Default instance of the CertificateNotFoundFault structure.
      */
-    public static let __default: RDSModel.CertificateNotFoundFault = {
+    static let __default: RDSModel.CertificateNotFoundFault = {
         let defaultInstance = RDSModel.CertificateNotFoundFault()
 
         return defaultInstance
@@ -357,7 +357,7 @@ public extension CharacterSet {
     /**
      Default instance of the CharacterSet structure.
      */
-    public static let __default: RDSModel.CharacterSet = {
+    static let __default: RDSModel.CharacterSet = {
         let defaultInstance = RDSModel.CharacterSet(
             characterSetDescription: nil,
             characterSetName: nil)
@@ -370,7 +370,7 @@ public extension CloudwatchLogsExportConfiguration {
     /**
      Default instance of the CloudwatchLogsExportConfiguration structure.
      */
-    public static let __default: RDSModel.CloudwatchLogsExportConfiguration = {
+    static let __default: RDSModel.CloudwatchLogsExportConfiguration = {
         let defaultInstance = RDSModel.CloudwatchLogsExportConfiguration(
             disableLogTypes: nil,
             enableLogTypes: nil)
@@ -383,7 +383,7 @@ public extension CopyDBClusterParameterGroupMessage {
     /**
      Default instance of the CopyDBClusterParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.CopyDBClusterParameterGroupMessage = {
+    static let __default: RDSModel.CopyDBClusterParameterGroupMessage = {
         let defaultInstance = RDSModel.CopyDBClusterParameterGroupMessage(
             sourceDBClusterParameterGroupIdentifier: "value",
             tags: nil,
@@ -398,7 +398,7 @@ public extension CopyDBClusterParameterGroupResult {
     /**
      Default instance of the CopyDBClusterParameterGroupResult structure.
      */
-    public static let __default: RDSModel.CopyDBClusterParameterGroupResult = {
+    static let __default: RDSModel.CopyDBClusterParameterGroupResult = {
         let defaultInstance = RDSModel.CopyDBClusterParameterGroupResult(
             dBClusterParameterGroup: nil)
 
@@ -410,7 +410,7 @@ public extension CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup
     /**
      Default instance of the CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup structure.
      */
-    public static let __default: RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup = {
+    static let __default: RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup = {
         let defaultInstance = RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup(
             copyDBClusterParameterGroupResult: CopyDBClusterParameterGroupResult.__default)
 
@@ -422,7 +422,7 @@ public extension CopyDBClusterSnapshotMessage {
     /**
      Default instance of the CopyDBClusterSnapshotMessage structure.
      */
-    public static let __default: RDSModel.CopyDBClusterSnapshotMessage = {
+    static let __default: RDSModel.CopyDBClusterSnapshotMessage = {
         let defaultInstance = RDSModel.CopyDBClusterSnapshotMessage(
             copyTags: nil,
             kmsKeyId: nil,
@@ -439,7 +439,7 @@ public extension CopyDBClusterSnapshotResult {
     /**
      Default instance of the CopyDBClusterSnapshotResult structure.
      */
-    public static let __default: RDSModel.CopyDBClusterSnapshotResult = {
+    static let __default: RDSModel.CopyDBClusterSnapshotResult = {
         let defaultInstance = RDSModel.CopyDBClusterSnapshotResult(
             dBClusterSnapshot: nil)
 
@@ -451,7 +451,7 @@ public extension CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
     /**
      Default instance of the CopyDBClusterSnapshotResultForCopyDBClusterSnapshot structure.
      */
-    public static let __default: RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot = {
+    static let __default: RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot = {
         let defaultInstance = RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot(
             copyDBClusterSnapshotResult: CopyDBClusterSnapshotResult.__default)
 
@@ -463,7 +463,7 @@ public extension CopyDBParameterGroupMessage {
     /**
      Default instance of the CopyDBParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.CopyDBParameterGroupMessage = {
+    static let __default: RDSModel.CopyDBParameterGroupMessage = {
         let defaultInstance = RDSModel.CopyDBParameterGroupMessage(
             sourceDBParameterGroupIdentifier: "value",
             tags: nil,
@@ -478,7 +478,7 @@ public extension CopyDBParameterGroupResult {
     /**
      Default instance of the CopyDBParameterGroupResult structure.
      */
-    public static let __default: RDSModel.CopyDBParameterGroupResult = {
+    static let __default: RDSModel.CopyDBParameterGroupResult = {
         let defaultInstance = RDSModel.CopyDBParameterGroupResult(
             dBParameterGroup: nil)
 
@@ -490,7 +490,7 @@ public extension CopyDBParameterGroupResultForCopyDBParameterGroup {
     /**
      Default instance of the CopyDBParameterGroupResultForCopyDBParameterGroup structure.
      */
-    public static let __default: RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup = {
+    static let __default: RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup = {
         let defaultInstance = RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup(
             copyDBParameterGroupResult: CopyDBParameterGroupResult.__default)
 
@@ -502,7 +502,7 @@ public extension CopyDBSnapshotMessage {
     /**
      Default instance of the CopyDBSnapshotMessage structure.
      */
-    public static let __default: RDSModel.CopyDBSnapshotMessage = {
+    static let __default: RDSModel.CopyDBSnapshotMessage = {
         let defaultInstance = RDSModel.CopyDBSnapshotMessage(
             copyTags: nil,
             kmsKeyId: nil,
@@ -520,7 +520,7 @@ public extension CopyDBSnapshotResult {
     /**
      Default instance of the CopyDBSnapshotResult structure.
      */
-    public static let __default: RDSModel.CopyDBSnapshotResult = {
+    static let __default: RDSModel.CopyDBSnapshotResult = {
         let defaultInstance = RDSModel.CopyDBSnapshotResult(
             dBSnapshot: nil)
 
@@ -532,7 +532,7 @@ public extension CopyDBSnapshotResultForCopyDBSnapshot {
     /**
      Default instance of the CopyDBSnapshotResultForCopyDBSnapshot structure.
      */
-    public static let __default: RDSModel.CopyDBSnapshotResultForCopyDBSnapshot = {
+    static let __default: RDSModel.CopyDBSnapshotResultForCopyDBSnapshot = {
         let defaultInstance = RDSModel.CopyDBSnapshotResultForCopyDBSnapshot(
             copyDBSnapshotResult: CopyDBSnapshotResult.__default)
 
@@ -544,7 +544,7 @@ public extension CopyOptionGroupMessage {
     /**
      Default instance of the CopyOptionGroupMessage structure.
      */
-    public static let __default: RDSModel.CopyOptionGroupMessage = {
+    static let __default: RDSModel.CopyOptionGroupMessage = {
         let defaultInstance = RDSModel.CopyOptionGroupMessage(
             sourceOptionGroupIdentifier: "value",
             tags: nil,
@@ -559,7 +559,7 @@ public extension CopyOptionGroupResult {
     /**
      Default instance of the CopyOptionGroupResult structure.
      */
-    public static let __default: RDSModel.CopyOptionGroupResult = {
+    static let __default: RDSModel.CopyOptionGroupResult = {
         let defaultInstance = RDSModel.CopyOptionGroupResult(
             optionGroup: nil)
 
@@ -571,7 +571,7 @@ public extension CopyOptionGroupResultForCopyOptionGroup {
     /**
      Default instance of the CopyOptionGroupResultForCopyOptionGroup structure.
      */
-    public static let __default: RDSModel.CopyOptionGroupResultForCopyOptionGroup = {
+    static let __default: RDSModel.CopyOptionGroupResultForCopyOptionGroup = {
         let defaultInstance = RDSModel.CopyOptionGroupResultForCopyOptionGroup(
             copyOptionGroupResult: CopyOptionGroupResult.__default)
 
@@ -583,7 +583,7 @@ public extension CreateDBClusterEndpointMessage {
     /**
      Default instance of the CreateDBClusterEndpointMessage structure.
      */
-    public static let __default: RDSModel.CreateDBClusterEndpointMessage = {
+    static let __default: RDSModel.CreateDBClusterEndpointMessage = {
         let defaultInstance = RDSModel.CreateDBClusterEndpointMessage(
             dBClusterEndpointIdentifier: "value",
             dBClusterIdentifier: "value",
@@ -599,7 +599,7 @@ public extension CreateDBClusterMessage {
     /**
      Default instance of the CreateDBClusterMessage structure.
      */
-    public static let __default: RDSModel.CreateDBClusterMessage = {
+    static let __default: RDSModel.CreateDBClusterMessage = {
         let defaultInstance = RDSModel.CreateDBClusterMessage(
             availabilityZones: nil,
             backtrackWindow: nil,
@@ -639,7 +639,7 @@ public extension CreateDBClusterParameterGroupMessage {
     /**
      Default instance of the CreateDBClusterParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.CreateDBClusterParameterGroupMessage = {
+    static let __default: RDSModel.CreateDBClusterParameterGroupMessage = {
         let defaultInstance = RDSModel.CreateDBClusterParameterGroupMessage(
             dBClusterParameterGroupName: "value",
             dBParameterGroupFamily: "value",
@@ -654,7 +654,7 @@ public extension CreateDBClusterParameterGroupResult {
     /**
      Default instance of the CreateDBClusterParameterGroupResult structure.
      */
-    public static let __default: RDSModel.CreateDBClusterParameterGroupResult = {
+    static let __default: RDSModel.CreateDBClusterParameterGroupResult = {
         let defaultInstance = RDSModel.CreateDBClusterParameterGroupResult(
             dBClusterParameterGroup: nil)
 
@@ -666,7 +666,7 @@ public extension CreateDBClusterParameterGroupResultForCreateDBClusterParameterG
     /**
      Default instance of the CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup structure.
      */
-    public static let __default: RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup = {
+    static let __default: RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup = {
         let defaultInstance = RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup(
             createDBClusterParameterGroupResult: CreateDBClusterParameterGroupResult.__default)
 
@@ -678,7 +678,7 @@ public extension CreateDBClusterResult {
     /**
      Default instance of the CreateDBClusterResult structure.
      */
-    public static let __default: RDSModel.CreateDBClusterResult = {
+    static let __default: RDSModel.CreateDBClusterResult = {
         let defaultInstance = RDSModel.CreateDBClusterResult(
             dBCluster: nil)
 
@@ -690,7 +690,7 @@ public extension CreateDBClusterResultForCreateDBCluster {
     /**
      Default instance of the CreateDBClusterResultForCreateDBCluster structure.
      */
-    public static let __default: RDSModel.CreateDBClusterResultForCreateDBCluster = {
+    static let __default: RDSModel.CreateDBClusterResultForCreateDBCluster = {
         let defaultInstance = RDSModel.CreateDBClusterResultForCreateDBCluster(
             createDBClusterResult: CreateDBClusterResult.__default)
 
@@ -702,7 +702,7 @@ public extension CreateDBClusterSnapshotMessage {
     /**
      Default instance of the CreateDBClusterSnapshotMessage structure.
      */
-    public static let __default: RDSModel.CreateDBClusterSnapshotMessage = {
+    static let __default: RDSModel.CreateDBClusterSnapshotMessage = {
         let defaultInstance = RDSModel.CreateDBClusterSnapshotMessage(
             dBClusterIdentifier: "value",
             dBClusterSnapshotIdentifier: "value",
@@ -716,7 +716,7 @@ public extension CreateDBClusterSnapshotResult {
     /**
      Default instance of the CreateDBClusterSnapshotResult structure.
      */
-    public static let __default: RDSModel.CreateDBClusterSnapshotResult = {
+    static let __default: RDSModel.CreateDBClusterSnapshotResult = {
         let defaultInstance = RDSModel.CreateDBClusterSnapshotResult(
             dBClusterSnapshot: nil)
 
@@ -728,7 +728,7 @@ public extension CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
     /**
      Default instance of the CreateDBClusterSnapshotResultForCreateDBClusterSnapshot structure.
      */
-    public static let __default: RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot = {
+    static let __default: RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot = {
         let defaultInstance = RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot(
             createDBClusterSnapshotResult: CreateDBClusterSnapshotResult.__default)
 
@@ -740,7 +740,7 @@ public extension CreateDBInstanceMessage {
     /**
      Default instance of the CreateDBInstanceMessage structure.
      */
-    public static let __default: RDSModel.CreateDBInstanceMessage = {
+    static let __default: RDSModel.CreateDBInstanceMessage = {
         let defaultInstance = RDSModel.CreateDBInstanceMessage(
             allocatedStorage: nil,
             autoMinorVersionUpgrade: nil,
@@ -796,7 +796,7 @@ public extension CreateDBInstanceReadReplicaMessage {
     /**
      Default instance of the CreateDBInstanceReadReplicaMessage structure.
      */
-    public static let __default: RDSModel.CreateDBInstanceReadReplicaMessage = {
+    static let __default: RDSModel.CreateDBInstanceReadReplicaMessage = {
         let defaultInstance = RDSModel.CreateDBInstanceReadReplicaMessage(
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
@@ -834,7 +834,7 @@ public extension CreateDBInstanceReadReplicaResult {
     /**
      Default instance of the CreateDBInstanceReadReplicaResult structure.
      */
-    public static let __default: RDSModel.CreateDBInstanceReadReplicaResult = {
+    static let __default: RDSModel.CreateDBInstanceReadReplicaResult = {
         let defaultInstance = RDSModel.CreateDBInstanceReadReplicaResult(
             dBInstance: nil)
 
@@ -846,7 +846,7 @@ public extension CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
     /**
      Default instance of the CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica structure.
      */
-    public static let __default: RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica = {
+    static let __default: RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica = {
         let defaultInstance = RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica(
             createDBInstanceReadReplicaResult: CreateDBInstanceReadReplicaResult.__default)
 
@@ -858,7 +858,7 @@ public extension CreateDBInstanceResult {
     /**
      Default instance of the CreateDBInstanceResult structure.
      */
-    public static let __default: RDSModel.CreateDBInstanceResult = {
+    static let __default: RDSModel.CreateDBInstanceResult = {
         let defaultInstance = RDSModel.CreateDBInstanceResult(
             dBInstance: nil)
 
@@ -870,7 +870,7 @@ public extension CreateDBInstanceResultForCreateDBInstance {
     /**
      Default instance of the CreateDBInstanceResultForCreateDBInstance structure.
      */
-    public static let __default: RDSModel.CreateDBInstanceResultForCreateDBInstance = {
+    static let __default: RDSModel.CreateDBInstanceResultForCreateDBInstance = {
         let defaultInstance = RDSModel.CreateDBInstanceResultForCreateDBInstance(
             createDBInstanceResult: CreateDBInstanceResult.__default)
 
@@ -882,7 +882,7 @@ public extension CreateDBParameterGroupMessage {
     /**
      Default instance of the CreateDBParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.CreateDBParameterGroupMessage = {
+    static let __default: RDSModel.CreateDBParameterGroupMessage = {
         let defaultInstance = RDSModel.CreateDBParameterGroupMessage(
             dBParameterGroupFamily: "value",
             dBParameterGroupName: "value",
@@ -897,7 +897,7 @@ public extension CreateDBParameterGroupResult {
     /**
      Default instance of the CreateDBParameterGroupResult structure.
      */
-    public static let __default: RDSModel.CreateDBParameterGroupResult = {
+    static let __default: RDSModel.CreateDBParameterGroupResult = {
         let defaultInstance = RDSModel.CreateDBParameterGroupResult(
             dBParameterGroup: nil)
 
@@ -909,7 +909,7 @@ public extension CreateDBParameterGroupResultForCreateDBParameterGroup {
     /**
      Default instance of the CreateDBParameterGroupResultForCreateDBParameterGroup structure.
      */
-    public static let __default: RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup = {
+    static let __default: RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup = {
         let defaultInstance = RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup(
             createDBParameterGroupResult: CreateDBParameterGroupResult.__default)
 
@@ -921,7 +921,7 @@ public extension CreateDBSecurityGroupMessage {
     /**
      Default instance of the CreateDBSecurityGroupMessage structure.
      */
-    public static let __default: RDSModel.CreateDBSecurityGroupMessage = {
+    static let __default: RDSModel.CreateDBSecurityGroupMessage = {
         let defaultInstance = RDSModel.CreateDBSecurityGroupMessage(
             dBSecurityGroupDescription: "value",
             dBSecurityGroupName: "value",
@@ -935,7 +935,7 @@ public extension CreateDBSecurityGroupResult {
     /**
      Default instance of the CreateDBSecurityGroupResult structure.
      */
-    public static let __default: RDSModel.CreateDBSecurityGroupResult = {
+    static let __default: RDSModel.CreateDBSecurityGroupResult = {
         let defaultInstance = RDSModel.CreateDBSecurityGroupResult(
             dBSecurityGroup: nil)
 
@@ -947,7 +947,7 @@ public extension CreateDBSecurityGroupResultForCreateDBSecurityGroup {
     /**
      Default instance of the CreateDBSecurityGroupResultForCreateDBSecurityGroup structure.
      */
-    public static let __default: RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup = {
+    static let __default: RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup = {
         let defaultInstance = RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup(
             createDBSecurityGroupResult: CreateDBSecurityGroupResult.__default)
 
@@ -959,7 +959,7 @@ public extension CreateDBSnapshotMessage {
     /**
      Default instance of the CreateDBSnapshotMessage structure.
      */
-    public static let __default: RDSModel.CreateDBSnapshotMessage = {
+    static let __default: RDSModel.CreateDBSnapshotMessage = {
         let defaultInstance = RDSModel.CreateDBSnapshotMessage(
             dBInstanceIdentifier: "value",
             dBSnapshotIdentifier: "value",
@@ -973,7 +973,7 @@ public extension CreateDBSnapshotResult {
     /**
      Default instance of the CreateDBSnapshotResult structure.
      */
-    public static let __default: RDSModel.CreateDBSnapshotResult = {
+    static let __default: RDSModel.CreateDBSnapshotResult = {
         let defaultInstance = RDSModel.CreateDBSnapshotResult(
             dBSnapshot: nil)
 
@@ -985,7 +985,7 @@ public extension CreateDBSnapshotResultForCreateDBSnapshot {
     /**
      Default instance of the CreateDBSnapshotResultForCreateDBSnapshot structure.
      */
-    public static let __default: RDSModel.CreateDBSnapshotResultForCreateDBSnapshot = {
+    static let __default: RDSModel.CreateDBSnapshotResultForCreateDBSnapshot = {
         let defaultInstance = RDSModel.CreateDBSnapshotResultForCreateDBSnapshot(
             createDBSnapshotResult: CreateDBSnapshotResult.__default)
 
@@ -997,7 +997,7 @@ public extension CreateDBSubnetGroupMessage {
     /**
      Default instance of the CreateDBSubnetGroupMessage structure.
      */
-    public static let __default: RDSModel.CreateDBSubnetGroupMessage = {
+    static let __default: RDSModel.CreateDBSubnetGroupMessage = {
         let defaultInstance = RDSModel.CreateDBSubnetGroupMessage(
             dBSubnetGroupDescription: "value",
             dBSubnetGroupName: "value",
@@ -1012,7 +1012,7 @@ public extension CreateDBSubnetGroupResult {
     /**
      Default instance of the CreateDBSubnetGroupResult structure.
      */
-    public static let __default: RDSModel.CreateDBSubnetGroupResult = {
+    static let __default: RDSModel.CreateDBSubnetGroupResult = {
         let defaultInstance = RDSModel.CreateDBSubnetGroupResult(
             dBSubnetGroup: nil)
 
@@ -1024,7 +1024,7 @@ public extension CreateDBSubnetGroupResultForCreateDBSubnetGroup {
     /**
      Default instance of the CreateDBSubnetGroupResultForCreateDBSubnetGroup structure.
      */
-    public static let __default: RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup = {
+    static let __default: RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup = {
         let defaultInstance = RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup(
             createDBSubnetGroupResult: CreateDBSubnetGroupResult.__default)
 
@@ -1036,7 +1036,7 @@ public extension CreateEventSubscriptionMessage {
     /**
      Default instance of the CreateEventSubscriptionMessage structure.
      */
-    public static let __default: RDSModel.CreateEventSubscriptionMessage = {
+    static let __default: RDSModel.CreateEventSubscriptionMessage = {
         let defaultInstance = RDSModel.CreateEventSubscriptionMessage(
             enabled: nil,
             eventCategories: nil,
@@ -1054,7 +1054,7 @@ public extension CreateEventSubscriptionResult {
     /**
      Default instance of the CreateEventSubscriptionResult structure.
      */
-    public static let __default: RDSModel.CreateEventSubscriptionResult = {
+    static let __default: RDSModel.CreateEventSubscriptionResult = {
         let defaultInstance = RDSModel.CreateEventSubscriptionResult(
             eventSubscription: nil)
 
@@ -1066,7 +1066,7 @@ public extension CreateEventSubscriptionResultForCreateEventSubscription {
     /**
      Default instance of the CreateEventSubscriptionResultForCreateEventSubscription structure.
      */
-    public static let __default: RDSModel.CreateEventSubscriptionResultForCreateEventSubscription = {
+    static let __default: RDSModel.CreateEventSubscriptionResultForCreateEventSubscription = {
         let defaultInstance = RDSModel.CreateEventSubscriptionResultForCreateEventSubscription(
             createEventSubscriptionResult: CreateEventSubscriptionResult.__default)
 
@@ -1078,7 +1078,7 @@ public extension CreateGlobalClusterMessage {
     /**
      Default instance of the CreateGlobalClusterMessage structure.
      */
-    public static let __default: RDSModel.CreateGlobalClusterMessage = {
+    static let __default: RDSModel.CreateGlobalClusterMessage = {
         let defaultInstance = RDSModel.CreateGlobalClusterMessage(
             databaseName: nil,
             deletionProtection: nil,
@@ -1096,7 +1096,7 @@ public extension CreateGlobalClusterResult {
     /**
      Default instance of the CreateGlobalClusterResult structure.
      */
-    public static let __default: RDSModel.CreateGlobalClusterResult = {
+    static let __default: RDSModel.CreateGlobalClusterResult = {
         let defaultInstance = RDSModel.CreateGlobalClusterResult(
             globalCluster: nil)
 
@@ -1108,7 +1108,7 @@ public extension CreateGlobalClusterResultForCreateGlobalCluster {
     /**
      Default instance of the CreateGlobalClusterResultForCreateGlobalCluster structure.
      */
-    public static let __default: RDSModel.CreateGlobalClusterResultForCreateGlobalCluster = {
+    static let __default: RDSModel.CreateGlobalClusterResultForCreateGlobalCluster = {
         let defaultInstance = RDSModel.CreateGlobalClusterResultForCreateGlobalCluster(
             createGlobalClusterResult: CreateGlobalClusterResult.__default)
 
@@ -1120,7 +1120,7 @@ public extension CreateOptionGroupMessage {
     /**
      Default instance of the CreateOptionGroupMessage structure.
      */
-    public static let __default: RDSModel.CreateOptionGroupMessage = {
+    static let __default: RDSModel.CreateOptionGroupMessage = {
         let defaultInstance = RDSModel.CreateOptionGroupMessage(
             engineName: "value",
             majorEngineVersion: "value",
@@ -1136,7 +1136,7 @@ public extension CreateOptionGroupResult {
     /**
      Default instance of the CreateOptionGroupResult structure.
      */
-    public static let __default: RDSModel.CreateOptionGroupResult = {
+    static let __default: RDSModel.CreateOptionGroupResult = {
         let defaultInstance = RDSModel.CreateOptionGroupResult(
             optionGroup: nil)
 
@@ -1148,7 +1148,7 @@ public extension CreateOptionGroupResultForCreateOptionGroup {
     /**
      Default instance of the CreateOptionGroupResultForCreateOptionGroup structure.
      */
-    public static let __default: RDSModel.CreateOptionGroupResultForCreateOptionGroup = {
+    static let __default: RDSModel.CreateOptionGroupResultForCreateOptionGroup = {
         let defaultInstance = RDSModel.CreateOptionGroupResultForCreateOptionGroup(
             createOptionGroupResult: CreateOptionGroupResult.__default)
 
@@ -1160,7 +1160,7 @@ public extension DBCluster {
     /**
      Default instance of the DBCluster structure.
      */
-    public static let __default: RDSModel.DBCluster = {
+    static let __default: RDSModel.DBCluster = {
         let defaultInstance = RDSModel.DBCluster(
             activityStreamKinesisStreamName: nil,
             activityStreamKmsKeyId: nil,
@@ -1221,7 +1221,7 @@ public extension DBClusterAlreadyExistsFault {
     /**
      Default instance of the DBClusterAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBClusterAlreadyExistsFault = {
+    static let __default: RDSModel.DBClusterAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBClusterAlreadyExistsFault()
 
         return defaultInstance
@@ -1232,7 +1232,7 @@ public extension DBClusterBacktrack {
     /**
      Default instance of the DBClusterBacktrack structure.
      */
-    public static let __default: RDSModel.DBClusterBacktrack = {
+    static let __default: RDSModel.DBClusterBacktrack = {
         let defaultInstance = RDSModel.DBClusterBacktrack(
             backtrackIdentifier: nil,
             backtrackRequestCreationTime: nil,
@@ -1249,7 +1249,7 @@ public extension DBClusterBacktrackForBacktrackDBCluster {
     /**
      Default instance of the DBClusterBacktrackForBacktrackDBCluster structure.
      */
-    public static let __default: RDSModel.DBClusterBacktrackForBacktrackDBCluster = {
+    static let __default: RDSModel.DBClusterBacktrackForBacktrackDBCluster = {
         let defaultInstance = RDSModel.DBClusterBacktrackForBacktrackDBCluster(
             backtrackDBClusterResult: DBClusterBacktrack.__default)
 
@@ -1261,7 +1261,7 @@ public extension DBClusterBacktrackMessage {
     /**
      Default instance of the DBClusterBacktrackMessage structure.
      */
-    public static let __default: RDSModel.DBClusterBacktrackMessage = {
+    static let __default: RDSModel.DBClusterBacktrackMessage = {
         let defaultInstance = RDSModel.DBClusterBacktrackMessage(
             dBClusterBacktracks: nil,
             marker: nil)
@@ -1274,7 +1274,7 @@ public extension DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
     /**
      Default instance of the DBClusterBacktrackMessageForDescribeDBClusterBacktracks structure.
      */
-    public static let __default: RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks = {
+    static let __default: RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks = {
         let defaultInstance = RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks(
             describeDBClusterBacktracksResult: DBClusterBacktrackMessage.__default)
 
@@ -1286,7 +1286,7 @@ public extension DBClusterBacktrackNotFoundFault {
     /**
      Default instance of the DBClusterBacktrackNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBClusterBacktrackNotFoundFault = {
+    static let __default: RDSModel.DBClusterBacktrackNotFoundFault = {
         let defaultInstance = RDSModel.DBClusterBacktrackNotFoundFault()
 
         return defaultInstance
@@ -1297,7 +1297,7 @@ public extension DBClusterCapacityInfo {
     /**
      Default instance of the DBClusterCapacityInfo structure.
      */
-    public static let __default: RDSModel.DBClusterCapacityInfo = {
+    static let __default: RDSModel.DBClusterCapacityInfo = {
         let defaultInstance = RDSModel.DBClusterCapacityInfo(
             currentCapacity: nil,
             dBClusterIdentifier: nil,
@@ -1313,7 +1313,7 @@ public extension DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
     /**
      Default instance of the DBClusterCapacityInfoForModifyCurrentDBClusterCapacity structure.
      */
-    public static let __default: RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity = {
+    static let __default: RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity = {
         let defaultInstance = RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity(
             modifyCurrentDBClusterCapacityResult: DBClusterCapacityInfo.__default)
 
@@ -1325,7 +1325,7 @@ public extension DBClusterEndpoint {
     /**
      Default instance of the DBClusterEndpoint structure.
      */
-    public static let __default: RDSModel.DBClusterEndpoint = {
+    static let __default: RDSModel.DBClusterEndpoint = {
         let defaultInstance = RDSModel.DBClusterEndpoint(
             customEndpointType: nil,
             dBClusterEndpointArn: nil,
@@ -1346,7 +1346,7 @@ public extension DBClusterEndpointAlreadyExistsFault {
     /**
      Default instance of the DBClusterEndpointAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBClusterEndpointAlreadyExistsFault = {
+    static let __default: RDSModel.DBClusterEndpointAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBClusterEndpointAlreadyExistsFault()
 
         return defaultInstance
@@ -1357,7 +1357,7 @@ public extension DBClusterEndpointForCreateDBClusterEndpoint {
     /**
      Default instance of the DBClusterEndpointForCreateDBClusterEndpoint structure.
      */
-    public static let __default: RDSModel.DBClusterEndpointForCreateDBClusterEndpoint = {
+    static let __default: RDSModel.DBClusterEndpointForCreateDBClusterEndpoint = {
         let defaultInstance = RDSModel.DBClusterEndpointForCreateDBClusterEndpoint(
             createDBClusterEndpointResult: DBClusterEndpoint.__default)
 
@@ -1369,7 +1369,7 @@ public extension DBClusterEndpointForDeleteDBClusterEndpoint {
     /**
      Default instance of the DBClusterEndpointForDeleteDBClusterEndpoint structure.
      */
-    public static let __default: RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint = {
+    static let __default: RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint = {
         let defaultInstance = RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint(
             deleteDBClusterEndpointResult: DBClusterEndpoint.__default)
 
@@ -1381,7 +1381,7 @@ public extension DBClusterEndpointForModifyDBClusterEndpoint {
     /**
      Default instance of the DBClusterEndpointForModifyDBClusterEndpoint structure.
      */
-    public static let __default: RDSModel.DBClusterEndpointForModifyDBClusterEndpoint = {
+    static let __default: RDSModel.DBClusterEndpointForModifyDBClusterEndpoint = {
         let defaultInstance = RDSModel.DBClusterEndpointForModifyDBClusterEndpoint(
             modifyDBClusterEndpointResult: DBClusterEndpoint.__default)
 
@@ -1393,7 +1393,7 @@ public extension DBClusterEndpointMessage {
     /**
      Default instance of the DBClusterEndpointMessage structure.
      */
-    public static let __default: RDSModel.DBClusterEndpointMessage = {
+    static let __default: RDSModel.DBClusterEndpointMessage = {
         let defaultInstance = RDSModel.DBClusterEndpointMessage(
             dBClusterEndpoints: nil,
             marker: nil)
@@ -1406,7 +1406,7 @@ public extension DBClusterEndpointMessageForDescribeDBClusterEndpoints {
     /**
      Default instance of the DBClusterEndpointMessageForDescribeDBClusterEndpoints structure.
      */
-    public static let __default: RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints = {
+    static let __default: RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints = {
         let defaultInstance = RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints(
             describeDBClusterEndpointsResult: DBClusterEndpointMessage.__default)
 
@@ -1418,7 +1418,7 @@ public extension DBClusterEndpointNotFoundFault {
     /**
      Default instance of the DBClusterEndpointNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBClusterEndpointNotFoundFault = {
+    static let __default: RDSModel.DBClusterEndpointNotFoundFault = {
         let defaultInstance = RDSModel.DBClusterEndpointNotFoundFault()
 
         return defaultInstance
@@ -1429,7 +1429,7 @@ public extension DBClusterEndpointQuotaExceededFault {
     /**
      Default instance of the DBClusterEndpointQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.DBClusterEndpointQuotaExceededFault = {
+    static let __default: RDSModel.DBClusterEndpointQuotaExceededFault = {
         let defaultInstance = RDSModel.DBClusterEndpointQuotaExceededFault()
 
         return defaultInstance
@@ -1440,7 +1440,7 @@ public extension DBClusterMember {
     /**
      Default instance of the DBClusterMember structure.
      */
-    public static let __default: RDSModel.DBClusterMember = {
+    static let __default: RDSModel.DBClusterMember = {
         let defaultInstance = RDSModel.DBClusterMember(
             dBClusterParameterGroupStatus: nil,
             dBInstanceIdentifier: nil,
@@ -1455,7 +1455,7 @@ public extension DBClusterMessage {
     /**
      Default instance of the DBClusterMessage structure.
      */
-    public static let __default: RDSModel.DBClusterMessage = {
+    static let __default: RDSModel.DBClusterMessage = {
         let defaultInstance = RDSModel.DBClusterMessage(
             dBClusters: nil,
             marker: nil)
@@ -1468,7 +1468,7 @@ public extension DBClusterMessageForDescribeDBClusters {
     /**
      Default instance of the DBClusterMessageForDescribeDBClusters structure.
      */
-    public static let __default: RDSModel.DBClusterMessageForDescribeDBClusters = {
+    static let __default: RDSModel.DBClusterMessageForDescribeDBClusters = {
         let defaultInstance = RDSModel.DBClusterMessageForDescribeDBClusters(
             describeDBClustersResult: DBClusterMessage.__default)
 
@@ -1480,7 +1480,7 @@ public extension DBClusterNotFoundFault {
     /**
      Default instance of the DBClusterNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBClusterNotFoundFault = {
+    static let __default: RDSModel.DBClusterNotFoundFault = {
         let defaultInstance = RDSModel.DBClusterNotFoundFault()
 
         return defaultInstance
@@ -1491,7 +1491,7 @@ public extension DBClusterOptionGroupStatus {
     /**
      Default instance of the DBClusterOptionGroupStatus structure.
      */
-    public static let __default: RDSModel.DBClusterOptionGroupStatus = {
+    static let __default: RDSModel.DBClusterOptionGroupStatus = {
         let defaultInstance = RDSModel.DBClusterOptionGroupStatus(
             dBClusterOptionGroupName: nil,
             status: nil)
@@ -1504,7 +1504,7 @@ public extension DBClusterParameterGroup {
     /**
      Default instance of the DBClusterParameterGroup structure.
      */
-    public static let __default: RDSModel.DBClusterParameterGroup = {
+    static let __default: RDSModel.DBClusterParameterGroup = {
         let defaultInstance = RDSModel.DBClusterParameterGroup(
             dBClusterParameterGroupArn: nil,
             dBClusterParameterGroupName: nil,
@@ -1519,7 +1519,7 @@ public extension DBClusterParameterGroupDetails {
     /**
      Default instance of the DBClusterParameterGroupDetails structure.
      */
-    public static let __default: RDSModel.DBClusterParameterGroupDetails = {
+    static let __default: RDSModel.DBClusterParameterGroupDetails = {
         let defaultInstance = RDSModel.DBClusterParameterGroupDetails(
             marker: nil,
             parameters: nil)
@@ -1532,7 +1532,7 @@ public extension DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
     /**
      Default instance of the DBClusterParameterGroupDetailsForDescribeDBClusterParameters structure.
      */
-    public static let __default: RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters = {
+    static let __default: RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters = {
         let defaultInstance = RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters(
             describeDBClusterParametersResult: DBClusterParameterGroupDetails.__default)
 
@@ -1544,7 +1544,7 @@ public extension DBClusterParameterGroupNameMessage {
     /**
      Default instance of the DBClusterParameterGroupNameMessage structure.
      */
-    public static let __default: RDSModel.DBClusterParameterGroupNameMessage = {
+    static let __default: RDSModel.DBClusterParameterGroupNameMessage = {
         let defaultInstance = RDSModel.DBClusterParameterGroupNameMessage(
             dBClusterParameterGroupName: nil)
 
@@ -1556,7 +1556,7 @@ public extension DBClusterParameterGroupNameMessageForModifyDBClusterParameterGr
     /**
      Default instance of the DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup structure.
      */
-    public static let __default: RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup = {
+    static let __default: RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup = {
         let defaultInstance = RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup(
             modifyDBClusterParameterGroupResult: DBClusterParameterGroupNameMessage.__default)
 
@@ -1568,7 +1568,7 @@ public extension DBClusterParameterGroupNameMessageForResetDBClusterParameterGro
     /**
      Default instance of the DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup structure.
      */
-    public static let __default: RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup = {
+    static let __default: RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup = {
         let defaultInstance = RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup(
             resetDBClusterParameterGroupResult: DBClusterParameterGroupNameMessage.__default)
 
@@ -1580,7 +1580,7 @@ public extension DBClusterParameterGroupNotFoundFault {
     /**
      Default instance of the DBClusterParameterGroupNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBClusterParameterGroupNotFoundFault = {
+    static let __default: RDSModel.DBClusterParameterGroupNotFoundFault = {
         let defaultInstance = RDSModel.DBClusterParameterGroupNotFoundFault()
 
         return defaultInstance
@@ -1591,7 +1591,7 @@ public extension DBClusterParameterGroupsMessage {
     /**
      Default instance of the DBClusterParameterGroupsMessage structure.
      */
-    public static let __default: RDSModel.DBClusterParameterGroupsMessage = {
+    static let __default: RDSModel.DBClusterParameterGroupsMessage = {
         let defaultInstance = RDSModel.DBClusterParameterGroupsMessage(
             dBClusterParameterGroups: nil,
             marker: nil)
@@ -1604,7 +1604,7 @@ public extension DBClusterParameterGroupsMessageForDescribeDBClusterParameterGro
     /**
      Default instance of the DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups structure.
      */
-    public static let __default: RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups = {
+    static let __default: RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups = {
         let defaultInstance = RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups(
             describeDBClusterParameterGroupsResult: DBClusterParameterGroupsMessage.__default)
 
@@ -1616,7 +1616,7 @@ public extension DBClusterQuotaExceededFault {
     /**
      Default instance of the DBClusterQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.DBClusterQuotaExceededFault = {
+    static let __default: RDSModel.DBClusterQuotaExceededFault = {
         let defaultInstance = RDSModel.DBClusterQuotaExceededFault()
 
         return defaultInstance
@@ -1627,7 +1627,7 @@ public extension DBClusterRole {
     /**
      Default instance of the DBClusterRole structure.
      */
-    public static let __default: RDSModel.DBClusterRole = {
+    static let __default: RDSModel.DBClusterRole = {
         let defaultInstance = RDSModel.DBClusterRole(
             featureName: nil,
             roleArn: nil,
@@ -1641,7 +1641,7 @@ public extension DBClusterRoleAlreadyExistsFault {
     /**
      Default instance of the DBClusterRoleAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBClusterRoleAlreadyExistsFault = {
+    static let __default: RDSModel.DBClusterRoleAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBClusterRoleAlreadyExistsFault()
 
         return defaultInstance
@@ -1652,7 +1652,7 @@ public extension DBClusterRoleNotFoundFault {
     /**
      Default instance of the DBClusterRoleNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBClusterRoleNotFoundFault = {
+    static let __default: RDSModel.DBClusterRoleNotFoundFault = {
         let defaultInstance = RDSModel.DBClusterRoleNotFoundFault()
 
         return defaultInstance
@@ -1663,7 +1663,7 @@ public extension DBClusterRoleQuotaExceededFault {
     /**
      Default instance of the DBClusterRoleQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.DBClusterRoleQuotaExceededFault = {
+    static let __default: RDSModel.DBClusterRoleQuotaExceededFault = {
         let defaultInstance = RDSModel.DBClusterRoleQuotaExceededFault()
 
         return defaultInstance
@@ -1674,7 +1674,7 @@ public extension DBClusterSnapshot {
     /**
      Default instance of the DBClusterSnapshot structure.
      */
-    public static let __default: RDSModel.DBClusterSnapshot = {
+    static let __default: RDSModel.DBClusterSnapshot = {
         let defaultInstance = RDSModel.DBClusterSnapshot(
             allocatedStorage: nil,
             availabilityZones: nil,
@@ -1705,7 +1705,7 @@ public extension DBClusterSnapshotAlreadyExistsFault {
     /**
      Default instance of the DBClusterSnapshotAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBClusterSnapshotAlreadyExistsFault = {
+    static let __default: RDSModel.DBClusterSnapshotAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBClusterSnapshotAlreadyExistsFault()
 
         return defaultInstance
@@ -1716,7 +1716,7 @@ public extension DBClusterSnapshotAttribute {
     /**
      Default instance of the DBClusterSnapshotAttribute structure.
      */
-    public static let __default: RDSModel.DBClusterSnapshotAttribute = {
+    static let __default: RDSModel.DBClusterSnapshotAttribute = {
         let defaultInstance = RDSModel.DBClusterSnapshotAttribute(
             attributeName: nil,
             attributeValues: nil)
@@ -1729,7 +1729,7 @@ public extension DBClusterSnapshotAttributesResult {
     /**
      Default instance of the DBClusterSnapshotAttributesResult structure.
      */
-    public static let __default: RDSModel.DBClusterSnapshotAttributesResult = {
+    static let __default: RDSModel.DBClusterSnapshotAttributesResult = {
         let defaultInstance = RDSModel.DBClusterSnapshotAttributesResult(
             dBClusterSnapshotAttributes: nil,
             dBClusterSnapshotIdentifier: nil)
@@ -1742,7 +1742,7 @@ public extension DBClusterSnapshotMessage {
     /**
      Default instance of the DBClusterSnapshotMessage structure.
      */
-    public static let __default: RDSModel.DBClusterSnapshotMessage = {
+    static let __default: RDSModel.DBClusterSnapshotMessage = {
         let defaultInstance = RDSModel.DBClusterSnapshotMessage(
             dBClusterSnapshots: nil,
             marker: nil)
@@ -1755,7 +1755,7 @@ public extension DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
     /**
      Default instance of the DBClusterSnapshotMessageForDescribeDBClusterSnapshots structure.
      */
-    public static let __default: RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots = {
+    static let __default: RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots = {
         let defaultInstance = RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots(
             describeDBClusterSnapshotsResult: DBClusterSnapshotMessage.__default)
 
@@ -1767,7 +1767,7 @@ public extension DBClusterSnapshotNotFoundFault {
     /**
      Default instance of the DBClusterSnapshotNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBClusterSnapshotNotFoundFault = {
+    static let __default: RDSModel.DBClusterSnapshotNotFoundFault = {
         let defaultInstance = RDSModel.DBClusterSnapshotNotFoundFault()
 
         return defaultInstance
@@ -1778,7 +1778,7 @@ public extension DBEngineVersion {
     /**
      Default instance of the DBEngineVersion structure.
      */
-    public static let __default: RDSModel.DBEngineVersion = {
+    static let __default: RDSModel.DBEngineVersion = {
         let defaultInstance = RDSModel.DBEngineVersion(
             dBEngineDescription: nil,
             dBEngineVersionDescription: nil,
@@ -1804,7 +1804,7 @@ public extension DBEngineVersionMessage {
     /**
      Default instance of the DBEngineVersionMessage structure.
      */
-    public static let __default: RDSModel.DBEngineVersionMessage = {
+    static let __default: RDSModel.DBEngineVersionMessage = {
         let defaultInstance = RDSModel.DBEngineVersionMessage(
             dBEngineVersions: nil,
             marker: nil)
@@ -1817,7 +1817,7 @@ public extension DBEngineVersionMessageForDescribeDBEngineVersions {
     /**
      Default instance of the DBEngineVersionMessageForDescribeDBEngineVersions structure.
      */
-    public static let __default: RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions = {
+    static let __default: RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions = {
         let defaultInstance = RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions(
             describeDBEngineVersionsResult: DBEngineVersionMessage.__default)
 
@@ -1829,7 +1829,7 @@ public extension DBInstance {
     /**
      Default instance of the DBInstance structure.
      */
-    public static let __default: RDSModel.DBInstance = {
+    static let __default: RDSModel.DBInstance = {
         let defaultInstance = RDSModel.DBInstance(
             allocatedStorage: nil,
             associatedRoles: nil,
@@ -1897,7 +1897,7 @@ public extension DBInstanceAlreadyExistsFault {
     /**
      Default instance of the DBInstanceAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBInstanceAlreadyExistsFault = {
+    static let __default: RDSModel.DBInstanceAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBInstanceAlreadyExistsFault()
 
         return defaultInstance
@@ -1908,7 +1908,7 @@ public extension DBInstanceAutomatedBackup {
     /**
      Default instance of the DBInstanceAutomatedBackup structure.
      */
-    public static let __default: RDSModel.DBInstanceAutomatedBackup = {
+    static let __default: RDSModel.DBInstanceAutomatedBackup = {
         let defaultInstance = RDSModel.DBInstanceAutomatedBackup(
             allocatedStorage: nil,
             availabilityZone: nil,
@@ -1942,7 +1942,7 @@ public extension DBInstanceAutomatedBackupMessage {
     /**
      Default instance of the DBInstanceAutomatedBackupMessage structure.
      */
-    public static let __default: RDSModel.DBInstanceAutomatedBackupMessage = {
+    static let __default: RDSModel.DBInstanceAutomatedBackupMessage = {
         let defaultInstance = RDSModel.DBInstanceAutomatedBackupMessage(
             dBInstanceAutomatedBackups: nil,
             marker: nil)
@@ -1955,7 +1955,7 @@ public extension DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedB
     /**
      Default instance of the DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups structure.
      */
-    public static let __default: RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups = {
+    static let __default: RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups = {
         let defaultInstance = RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups(
             describeDBInstanceAutomatedBackupsResult: DBInstanceAutomatedBackupMessage.__default)
 
@@ -1967,7 +1967,7 @@ public extension DBInstanceAutomatedBackupNotFoundFault {
     /**
      Default instance of the DBInstanceAutomatedBackupNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBInstanceAutomatedBackupNotFoundFault = {
+    static let __default: RDSModel.DBInstanceAutomatedBackupNotFoundFault = {
         let defaultInstance = RDSModel.DBInstanceAutomatedBackupNotFoundFault()
 
         return defaultInstance
@@ -1978,7 +1978,7 @@ public extension DBInstanceAutomatedBackupQuotaExceededFault {
     /**
      Default instance of the DBInstanceAutomatedBackupQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.DBInstanceAutomatedBackupQuotaExceededFault = {
+    static let __default: RDSModel.DBInstanceAutomatedBackupQuotaExceededFault = {
         let defaultInstance = RDSModel.DBInstanceAutomatedBackupQuotaExceededFault()
 
         return defaultInstance
@@ -1989,7 +1989,7 @@ public extension DBInstanceMessage {
     /**
      Default instance of the DBInstanceMessage structure.
      */
-    public static let __default: RDSModel.DBInstanceMessage = {
+    static let __default: RDSModel.DBInstanceMessage = {
         let defaultInstance = RDSModel.DBInstanceMessage(
             dBInstances: nil,
             marker: nil)
@@ -2002,7 +2002,7 @@ public extension DBInstanceMessageForDescribeDBInstances {
     /**
      Default instance of the DBInstanceMessageForDescribeDBInstances structure.
      */
-    public static let __default: RDSModel.DBInstanceMessageForDescribeDBInstances = {
+    static let __default: RDSModel.DBInstanceMessageForDescribeDBInstances = {
         let defaultInstance = RDSModel.DBInstanceMessageForDescribeDBInstances(
             describeDBInstancesResult: DBInstanceMessage.__default)
 
@@ -2014,7 +2014,7 @@ public extension DBInstanceNotFoundFault {
     /**
      Default instance of the DBInstanceNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBInstanceNotFoundFault = {
+    static let __default: RDSModel.DBInstanceNotFoundFault = {
         let defaultInstance = RDSModel.DBInstanceNotFoundFault()
 
         return defaultInstance
@@ -2025,7 +2025,7 @@ public extension DBInstanceRole {
     /**
      Default instance of the DBInstanceRole structure.
      */
-    public static let __default: RDSModel.DBInstanceRole = {
+    static let __default: RDSModel.DBInstanceRole = {
         let defaultInstance = RDSModel.DBInstanceRole(
             featureName: nil,
             roleArn: nil,
@@ -2039,7 +2039,7 @@ public extension DBInstanceRoleAlreadyExistsFault {
     /**
      Default instance of the DBInstanceRoleAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBInstanceRoleAlreadyExistsFault = {
+    static let __default: RDSModel.DBInstanceRoleAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBInstanceRoleAlreadyExistsFault()
 
         return defaultInstance
@@ -2050,7 +2050,7 @@ public extension DBInstanceRoleNotFoundFault {
     /**
      Default instance of the DBInstanceRoleNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBInstanceRoleNotFoundFault = {
+    static let __default: RDSModel.DBInstanceRoleNotFoundFault = {
         let defaultInstance = RDSModel.DBInstanceRoleNotFoundFault()
 
         return defaultInstance
@@ -2061,7 +2061,7 @@ public extension DBInstanceRoleQuotaExceededFault {
     /**
      Default instance of the DBInstanceRoleQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.DBInstanceRoleQuotaExceededFault = {
+    static let __default: RDSModel.DBInstanceRoleQuotaExceededFault = {
         let defaultInstance = RDSModel.DBInstanceRoleQuotaExceededFault()
 
         return defaultInstance
@@ -2072,7 +2072,7 @@ public extension DBInstanceStatusInfo {
     /**
      Default instance of the DBInstanceStatusInfo structure.
      */
-    public static let __default: RDSModel.DBInstanceStatusInfo = {
+    static let __default: RDSModel.DBInstanceStatusInfo = {
         let defaultInstance = RDSModel.DBInstanceStatusInfo(
             message: nil,
             normal: nil,
@@ -2087,7 +2087,7 @@ public extension DBLogFileNotFoundFault {
     /**
      Default instance of the DBLogFileNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBLogFileNotFoundFault = {
+    static let __default: RDSModel.DBLogFileNotFoundFault = {
         let defaultInstance = RDSModel.DBLogFileNotFoundFault()
 
         return defaultInstance
@@ -2098,7 +2098,7 @@ public extension DBParameterGroup {
     /**
      Default instance of the DBParameterGroup structure.
      */
-    public static let __default: RDSModel.DBParameterGroup = {
+    static let __default: RDSModel.DBParameterGroup = {
         let defaultInstance = RDSModel.DBParameterGroup(
             dBParameterGroupArn: nil,
             dBParameterGroupFamily: nil,
@@ -2113,7 +2113,7 @@ public extension DBParameterGroupAlreadyExistsFault {
     /**
      Default instance of the DBParameterGroupAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBParameterGroupAlreadyExistsFault = {
+    static let __default: RDSModel.DBParameterGroupAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBParameterGroupAlreadyExistsFault()
 
         return defaultInstance
@@ -2124,7 +2124,7 @@ public extension DBParameterGroupDetails {
     /**
      Default instance of the DBParameterGroupDetails structure.
      */
-    public static let __default: RDSModel.DBParameterGroupDetails = {
+    static let __default: RDSModel.DBParameterGroupDetails = {
         let defaultInstance = RDSModel.DBParameterGroupDetails(
             marker: nil,
             parameters: nil)
@@ -2137,7 +2137,7 @@ public extension DBParameterGroupDetailsForDescribeDBParameters {
     /**
      Default instance of the DBParameterGroupDetailsForDescribeDBParameters structure.
      */
-    public static let __default: RDSModel.DBParameterGroupDetailsForDescribeDBParameters = {
+    static let __default: RDSModel.DBParameterGroupDetailsForDescribeDBParameters = {
         let defaultInstance = RDSModel.DBParameterGroupDetailsForDescribeDBParameters(
             describeDBParametersResult: DBParameterGroupDetails.__default)
 
@@ -2149,7 +2149,7 @@ public extension DBParameterGroupNameMessage {
     /**
      Default instance of the DBParameterGroupNameMessage structure.
      */
-    public static let __default: RDSModel.DBParameterGroupNameMessage = {
+    static let __default: RDSModel.DBParameterGroupNameMessage = {
         let defaultInstance = RDSModel.DBParameterGroupNameMessage(
             dBParameterGroupName: nil)
 
@@ -2161,7 +2161,7 @@ public extension DBParameterGroupNameMessageForModifyDBParameterGroup {
     /**
      Default instance of the DBParameterGroupNameMessageForModifyDBParameterGroup structure.
      */
-    public static let __default: RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup = {
+    static let __default: RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup = {
         let defaultInstance = RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup(
             modifyDBParameterGroupResult: DBParameterGroupNameMessage.__default)
 
@@ -2173,7 +2173,7 @@ public extension DBParameterGroupNameMessageForResetDBParameterGroup {
     /**
      Default instance of the DBParameterGroupNameMessageForResetDBParameterGroup structure.
      */
-    public static let __default: RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup = {
+    static let __default: RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup = {
         let defaultInstance = RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup(
             resetDBParameterGroupResult: DBParameterGroupNameMessage.__default)
 
@@ -2185,7 +2185,7 @@ public extension DBParameterGroupNotFoundFault {
     /**
      Default instance of the DBParameterGroupNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBParameterGroupNotFoundFault = {
+    static let __default: RDSModel.DBParameterGroupNotFoundFault = {
         let defaultInstance = RDSModel.DBParameterGroupNotFoundFault()
 
         return defaultInstance
@@ -2196,7 +2196,7 @@ public extension DBParameterGroupQuotaExceededFault {
     /**
      Default instance of the DBParameterGroupQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.DBParameterGroupQuotaExceededFault = {
+    static let __default: RDSModel.DBParameterGroupQuotaExceededFault = {
         let defaultInstance = RDSModel.DBParameterGroupQuotaExceededFault()
 
         return defaultInstance
@@ -2207,7 +2207,7 @@ public extension DBParameterGroupStatus {
     /**
      Default instance of the DBParameterGroupStatus structure.
      */
-    public static let __default: RDSModel.DBParameterGroupStatus = {
+    static let __default: RDSModel.DBParameterGroupStatus = {
         let defaultInstance = RDSModel.DBParameterGroupStatus(
             dBParameterGroupName: nil,
             parameterApplyStatus: nil)
@@ -2220,7 +2220,7 @@ public extension DBParameterGroupsMessage {
     /**
      Default instance of the DBParameterGroupsMessage structure.
      */
-    public static let __default: RDSModel.DBParameterGroupsMessage = {
+    static let __default: RDSModel.DBParameterGroupsMessage = {
         let defaultInstance = RDSModel.DBParameterGroupsMessage(
             dBParameterGroups: nil,
             marker: nil)
@@ -2233,7 +2233,7 @@ public extension DBParameterGroupsMessageForDescribeDBParameterGroups {
     /**
      Default instance of the DBParameterGroupsMessageForDescribeDBParameterGroups structure.
      */
-    public static let __default: RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups = {
+    static let __default: RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups = {
         let defaultInstance = RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups(
             describeDBParameterGroupsResult: DBParameterGroupsMessage.__default)
 
@@ -2245,7 +2245,7 @@ public extension DBSecurityGroup {
     /**
      Default instance of the DBSecurityGroup structure.
      */
-    public static let __default: RDSModel.DBSecurityGroup = {
+    static let __default: RDSModel.DBSecurityGroup = {
         let defaultInstance = RDSModel.DBSecurityGroup(
             dBSecurityGroupArn: nil,
             dBSecurityGroupDescription: nil,
@@ -2263,7 +2263,7 @@ public extension DBSecurityGroupAlreadyExistsFault {
     /**
      Default instance of the DBSecurityGroupAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBSecurityGroupAlreadyExistsFault = {
+    static let __default: RDSModel.DBSecurityGroupAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBSecurityGroupAlreadyExistsFault()
 
         return defaultInstance
@@ -2274,7 +2274,7 @@ public extension DBSecurityGroupMembership {
     /**
      Default instance of the DBSecurityGroupMembership structure.
      */
-    public static let __default: RDSModel.DBSecurityGroupMembership = {
+    static let __default: RDSModel.DBSecurityGroupMembership = {
         let defaultInstance = RDSModel.DBSecurityGroupMembership(
             dBSecurityGroupName: nil,
             status: nil)
@@ -2287,7 +2287,7 @@ public extension DBSecurityGroupMessage {
     /**
      Default instance of the DBSecurityGroupMessage structure.
      */
-    public static let __default: RDSModel.DBSecurityGroupMessage = {
+    static let __default: RDSModel.DBSecurityGroupMessage = {
         let defaultInstance = RDSModel.DBSecurityGroupMessage(
             dBSecurityGroups: nil,
             marker: nil)
@@ -2300,7 +2300,7 @@ public extension DBSecurityGroupMessageForDescribeDBSecurityGroups {
     /**
      Default instance of the DBSecurityGroupMessageForDescribeDBSecurityGroups structure.
      */
-    public static let __default: RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups = {
+    static let __default: RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups = {
         let defaultInstance = RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups(
             describeDBSecurityGroupsResult: DBSecurityGroupMessage.__default)
 
@@ -2312,7 +2312,7 @@ public extension DBSecurityGroupNotFoundFault {
     /**
      Default instance of the DBSecurityGroupNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBSecurityGroupNotFoundFault = {
+    static let __default: RDSModel.DBSecurityGroupNotFoundFault = {
         let defaultInstance = RDSModel.DBSecurityGroupNotFoundFault()
 
         return defaultInstance
@@ -2323,7 +2323,7 @@ public extension DBSecurityGroupNotSupportedFault {
     /**
      Default instance of the DBSecurityGroupNotSupportedFault structure.
      */
-    public static let __default: RDSModel.DBSecurityGroupNotSupportedFault = {
+    static let __default: RDSModel.DBSecurityGroupNotSupportedFault = {
         let defaultInstance = RDSModel.DBSecurityGroupNotSupportedFault()
 
         return defaultInstance
@@ -2334,7 +2334,7 @@ public extension DBSecurityGroupQuotaExceededFault {
     /**
      Default instance of the DBSecurityGroupQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.DBSecurityGroupQuotaExceededFault = {
+    static let __default: RDSModel.DBSecurityGroupQuotaExceededFault = {
         let defaultInstance = RDSModel.DBSecurityGroupQuotaExceededFault()
 
         return defaultInstance
@@ -2345,7 +2345,7 @@ public extension DBSnapshot {
     /**
      Default instance of the DBSnapshot structure.
      */
-    public static let __default: RDSModel.DBSnapshot = {
+    static let __default: RDSModel.DBSnapshot = {
         let defaultInstance = RDSModel.DBSnapshot(
             allocatedStorage: nil,
             availabilityZone: nil,
@@ -2384,7 +2384,7 @@ public extension DBSnapshotAlreadyExistsFault {
     /**
      Default instance of the DBSnapshotAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBSnapshotAlreadyExistsFault = {
+    static let __default: RDSModel.DBSnapshotAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBSnapshotAlreadyExistsFault()
 
         return defaultInstance
@@ -2395,7 +2395,7 @@ public extension DBSnapshotAttribute {
     /**
      Default instance of the DBSnapshotAttribute structure.
      */
-    public static let __default: RDSModel.DBSnapshotAttribute = {
+    static let __default: RDSModel.DBSnapshotAttribute = {
         let defaultInstance = RDSModel.DBSnapshotAttribute(
             attributeName: nil,
             attributeValues: nil)
@@ -2408,7 +2408,7 @@ public extension DBSnapshotAttributesResult {
     /**
      Default instance of the DBSnapshotAttributesResult structure.
      */
-    public static let __default: RDSModel.DBSnapshotAttributesResult = {
+    static let __default: RDSModel.DBSnapshotAttributesResult = {
         let defaultInstance = RDSModel.DBSnapshotAttributesResult(
             dBSnapshotAttributes: nil,
             dBSnapshotIdentifier: nil)
@@ -2421,7 +2421,7 @@ public extension DBSnapshotMessage {
     /**
      Default instance of the DBSnapshotMessage structure.
      */
-    public static let __default: RDSModel.DBSnapshotMessage = {
+    static let __default: RDSModel.DBSnapshotMessage = {
         let defaultInstance = RDSModel.DBSnapshotMessage(
             dBSnapshots: nil,
             marker: nil)
@@ -2434,7 +2434,7 @@ public extension DBSnapshotMessageForDescribeDBSnapshots {
     /**
      Default instance of the DBSnapshotMessageForDescribeDBSnapshots structure.
      */
-    public static let __default: RDSModel.DBSnapshotMessageForDescribeDBSnapshots = {
+    static let __default: RDSModel.DBSnapshotMessageForDescribeDBSnapshots = {
         let defaultInstance = RDSModel.DBSnapshotMessageForDescribeDBSnapshots(
             describeDBSnapshotsResult: DBSnapshotMessage.__default)
 
@@ -2446,7 +2446,7 @@ public extension DBSnapshotNotFoundFault {
     /**
      Default instance of the DBSnapshotNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBSnapshotNotFoundFault = {
+    static let __default: RDSModel.DBSnapshotNotFoundFault = {
         let defaultInstance = RDSModel.DBSnapshotNotFoundFault()
 
         return defaultInstance
@@ -2457,7 +2457,7 @@ public extension DBSubnetGroup {
     /**
      Default instance of the DBSubnetGroup structure.
      */
-    public static let __default: RDSModel.DBSubnetGroup = {
+    static let __default: RDSModel.DBSubnetGroup = {
         let defaultInstance = RDSModel.DBSubnetGroup(
             dBSubnetGroupArn: nil,
             dBSubnetGroupDescription: nil,
@@ -2474,7 +2474,7 @@ public extension DBSubnetGroupAlreadyExistsFault {
     /**
      Default instance of the DBSubnetGroupAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.DBSubnetGroupAlreadyExistsFault = {
+    static let __default: RDSModel.DBSubnetGroupAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBSubnetGroupAlreadyExistsFault()
 
         return defaultInstance
@@ -2485,7 +2485,7 @@ public extension DBSubnetGroupDoesNotCoverEnoughAZs {
     /**
      Default instance of the DBSubnetGroupDoesNotCoverEnoughAZs structure.
      */
-    public static let __default: RDSModel.DBSubnetGroupDoesNotCoverEnoughAZs = {
+    static let __default: RDSModel.DBSubnetGroupDoesNotCoverEnoughAZs = {
         let defaultInstance = RDSModel.DBSubnetGroupDoesNotCoverEnoughAZs()
 
         return defaultInstance
@@ -2496,7 +2496,7 @@ public extension DBSubnetGroupMessage {
     /**
      Default instance of the DBSubnetGroupMessage structure.
      */
-    public static let __default: RDSModel.DBSubnetGroupMessage = {
+    static let __default: RDSModel.DBSubnetGroupMessage = {
         let defaultInstance = RDSModel.DBSubnetGroupMessage(
             dBSubnetGroups: nil,
             marker: nil)
@@ -2509,7 +2509,7 @@ public extension DBSubnetGroupMessageForDescribeDBSubnetGroups {
     /**
      Default instance of the DBSubnetGroupMessageForDescribeDBSubnetGroups structure.
      */
-    public static let __default: RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups = {
+    static let __default: RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups = {
         let defaultInstance = RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups(
             describeDBSubnetGroupsResult: DBSubnetGroupMessage.__default)
 
@@ -2521,7 +2521,7 @@ public extension DBSubnetGroupNotAllowedFault {
     /**
      Default instance of the DBSubnetGroupNotAllowedFault structure.
      */
-    public static let __default: RDSModel.DBSubnetGroupNotAllowedFault = {
+    static let __default: RDSModel.DBSubnetGroupNotAllowedFault = {
         let defaultInstance = RDSModel.DBSubnetGroupNotAllowedFault()
 
         return defaultInstance
@@ -2532,7 +2532,7 @@ public extension DBSubnetGroupNotFoundFault {
     /**
      Default instance of the DBSubnetGroupNotFoundFault structure.
      */
-    public static let __default: RDSModel.DBSubnetGroupNotFoundFault = {
+    static let __default: RDSModel.DBSubnetGroupNotFoundFault = {
         let defaultInstance = RDSModel.DBSubnetGroupNotFoundFault()
 
         return defaultInstance
@@ -2543,7 +2543,7 @@ public extension DBSubnetGroupQuotaExceededFault {
     /**
      Default instance of the DBSubnetGroupQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.DBSubnetGroupQuotaExceededFault = {
+    static let __default: RDSModel.DBSubnetGroupQuotaExceededFault = {
         let defaultInstance = RDSModel.DBSubnetGroupQuotaExceededFault()
 
         return defaultInstance
@@ -2554,7 +2554,7 @@ public extension DBSubnetQuotaExceededFault {
     /**
      Default instance of the DBSubnetQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.DBSubnetQuotaExceededFault = {
+    static let __default: RDSModel.DBSubnetQuotaExceededFault = {
         let defaultInstance = RDSModel.DBSubnetQuotaExceededFault()
 
         return defaultInstance
@@ -2565,7 +2565,7 @@ public extension DBUpgradeDependencyFailureFault {
     /**
      Default instance of the DBUpgradeDependencyFailureFault structure.
      */
-    public static let __default: RDSModel.DBUpgradeDependencyFailureFault = {
+    static let __default: RDSModel.DBUpgradeDependencyFailureFault = {
         let defaultInstance = RDSModel.DBUpgradeDependencyFailureFault()
 
         return defaultInstance
@@ -2576,7 +2576,7 @@ public extension DeleteDBClusterEndpointMessage {
     /**
      Default instance of the DeleteDBClusterEndpointMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBClusterEndpointMessage = {
+    static let __default: RDSModel.DeleteDBClusterEndpointMessage = {
         let defaultInstance = RDSModel.DeleteDBClusterEndpointMessage(
             dBClusterEndpointIdentifier: "value")
 
@@ -2588,7 +2588,7 @@ public extension DeleteDBClusterMessage {
     /**
      Default instance of the DeleteDBClusterMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBClusterMessage = {
+    static let __default: RDSModel.DeleteDBClusterMessage = {
         let defaultInstance = RDSModel.DeleteDBClusterMessage(
             dBClusterIdentifier: "value",
             finalDBSnapshotIdentifier: nil,
@@ -2602,7 +2602,7 @@ public extension DeleteDBClusterParameterGroupMessage {
     /**
      Default instance of the DeleteDBClusterParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBClusterParameterGroupMessage = {
+    static let __default: RDSModel.DeleteDBClusterParameterGroupMessage = {
         let defaultInstance = RDSModel.DeleteDBClusterParameterGroupMessage(
             dBClusterParameterGroupName: "value")
 
@@ -2614,7 +2614,7 @@ public extension DeleteDBClusterResult {
     /**
      Default instance of the DeleteDBClusterResult structure.
      */
-    public static let __default: RDSModel.DeleteDBClusterResult = {
+    static let __default: RDSModel.DeleteDBClusterResult = {
         let defaultInstance = RDSModel.DeleteDBClusterResult(
             dBCluster: nil)
 
@@ -2626,7 +2626,7 @@ public extension DeleteDBClusterResultForDeleteDBCluster {
     /**
      Default instance of the DeleteDBClusterResultForDeleteDBCluster structure.
      */
-    public static let __default: RDSModel.DeleteDBClusterResultForDeleteDBCluster = {
+    static let __default: RDSModel.DeleteDBClusterResultForDeleteDBCluster = {
         let defaultInstance = RDSModel.DeleteDBClusterResultForDeleteDBCluster(
             deleteDBClusterResult: DeleteDBClusterResult.__default)
 
@@ -2638,7 +2638,7 @@ public extension DeleteDBClusterSnapshotMessage {
     /**
      Default instance of the DeleteDBClusterSnapshotMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBClusterSnapshotMessage = {
+    static let __default: RDSModel.DeleteDBClusterSnapshotMessage = {
         let defaultInstance = RDSModel.DeleteDBClusterSnapshotMessage(
             dBClusterSnapshotIdentifier: "value")
 
@@ -2650,7 +2650,7 @@ public extension DeleteDBClusterSnapshotResult {
     /**
      Default instance of the DeleteDBClusterSnapshotResult structure.
      */
-    public static let __default: RDSModel.DeleteDBClusterSnapshotResult = {
+    static let __default: RDSModel.DeleteDBClusterSnapshotResult = {
         let defaultInstance = RDSModel.DeleteDBClusterSnapshotResult(
             dBClusterSnapshot: nil)
 
@@ -2662,7 +2662,7 @@ public extension DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
     /**
      Default instance of the DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot structure.
      */
-    public static let __default: RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot = {
+    static let __default: RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot = {
         let defaultInstance = RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot(
             deleteDBClusterSnapshotResult: DeleteDBClusterSnapshotResult.__default)
 
@@ -2674,7 +2674,7 @@ public extension DeleteDBInstanceAutomatedBackupMessage {
     /**
      Default instance of the DeleteDBInstanceAutomatedBackupMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBInstanceAutomatedBackupMessage = {
+    static let __default: RDSModel.DeleteDBInstanceAutomatedBackupMessage = {
         let defaultInstance = RDSModel.DeleteDBInstanceAutomatedBackupMessage(
             dbiResourceId: "value")
 
@@ -2686,7 +2686,7 @@ public extension DeleteDBInstanceAutomatedBackupResult {
     /**
      Default instance of the DeleteDBInstanceAutomatedBackupResult structure.
      */
-    public static let __default: RDSModel.DeleteDBInstanceAutomatedBackupResult = {
+    static let __default: RDSModel.DeleteDBInstanceAutomatedBackupResult = {
         let defaultInstance = RDSModel.DeleteDBInstanceAutomatedBackupResult(
             dBInstanceAutomatedBackup: nil)
 
@@ -2698,7 +2698,7 @@ public extension DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomat
     /**
      Default instance of the DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup structure.
      */
-    public static let __default: RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup = {
+    static let __default: RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup = {
         let defaultInstance = RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup(
             deleteDBInstanceAutomatedBackupResult: DeleteDBInstanceAutomatedBackupResult.__default)
 
@@ -2710,7 +2710,7 @@ public extension DeleteDBInstanceMessage {
     /**
      Default instance of the DeleteDBInstanceMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBInstanceMessage = {
+    static let __default: RDSModel.DeleteDBInstanceMessage = {
         let defaultInstance = RDSModel.DeleteDBInstanceMessage(
             dBInstanceIdentifier: "value",
             deleteAutomatedBackups: nil,
@@ -2725,7 +2725,7 @@ public extension DeleteDBInstanceResult {
     /**
      Default instance of the DeleteDBInstanceResult structure.
      */
-    public static let __default: RDSModel.DeleteDBInstanceResult = {
+    static let __default: RDSModel.DeleteDBInstanceResult = {
         let defaultInstance = RDSModel.DeleteDBInstanceResult(
             dBInstance: nil)
 
@@ -2737,7 +2737,7 @@ public extension DeleteDBInstanceResultForDeleteDBInstance {
     /**
      Default instance of the DeleteDBInstanceResultForDeleteDBInstance structure.
      */
-    public static let __default: RDSModel.DeleteDBInstanceResultForDeleteDBInstance = {
+    static let __default: RDSModel.DeleteDBInstanceResultForDeleteDBInstance = {
         let defaultInstance = RDSModel.DeleteDBInstanceResultForDeleteDBInstance(
             deleteDBInstanceResult: DeleteDBInstanceResult.__default)
 
@@ -2749,7 +2749,7 @@ public extension DeleteDBParameterGroupMessage {
     /**
      Default instance of the DeleteDBParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBParameterGroupMessage = {
+    static let __default: RDSModel.DeleteDBParameterGroupMessage = {
         let defaultInstance = RDSModel.DeleteDBParameterGroupMessage(
             dBParameterGroupName: "value")
 
@@ -2761,7 +2761,7 @@ public extension DeleteDBSecurityGroupMessage {
     /**
      Default instance of the DeleteDBSecurityGroupMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBSecurityGroupMessage = {
+    static let __default: RDSModel.DeleteDBSecurityGroupMessage = {
         let defaultInstance = RDSModel.DeleteDBSecurityGroupMessage(
             dBSecurityGroupName: "value")
 
@@ -2773,7 +2773,7 @@ public extension DeleteDBSnapshotMessage {
     /**
      Default instance of the DeleteDBSnapshotMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBSnapshotMessage = {
+    static let __default: RDSModel.DeleteDBSnapshotMessage = {
         let defaultInstance = RDSModel.DeleteDBSnapshotMessage(
             dBSnapshotIdentifier: "value")
 
@@ -2785,7 +2785,7 @@ public extension DeleteDBSnapshotResult {
     /**
      Default instance of the DeleteDBSnapshotResult structure.
      */
-    public static let __default: RDSModel.DeleteDBSnapshotResult = {
+    static let __default: RDSModel.DeleteDBSnapshotResult = {
         let defaultInstance = RDSModel.DeleteDBSnapshotResult(
             dBSnapshot: nil)
 
@@ -2797,7 +2797,7 @@ public extension DeleteDBSnapshotResultForDeleteDBSnapshot {
     /**
      Default instance of the DeleteDBSnapshotResultForDeleteDBSnapshot structure.
      */
-    public static let __default: RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot = {
+    static let __default: RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot = {
         let defaultInstance = RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot(
             deleteDBSnapshotResult: DeleteDBSnapshotResult.__default)
 
@@ -2809,7 +2809,7 @@ public extension DeleteDBSubnetGroupMessage {
     /**
      Default instance of the DeleteDBSubnetGroupMessage structure.
      */
-    public static let __default: RDSModel.DeleteDBSubnetGroupMessage = {
+    static let __default: RDSModel.DeleteDBSubnetGroupMessage = {
         let defaultInstance = RDSModel.DeleteDBSubnetGroupMessage(
             dBSubnetGroupName: "value")
 
@@ -2821,7 +2821,7 @@ public extension DeleteEventSubscriptionMessage {
     /**
      Default instance of the DeleteEventSubscriptionMessage structure.
      */
-    public static let __default: RDSModel.DeleteEventSubscriptionMessage = {
+    static let __default: RDSModel.DeleteEventSubscriptionMessage = {
         let defaultInstance = RDSModel.DeleteEventSubscriptionMessage(
             subscriptionName: "value")
 
@@ -2833,7 +2833,7 @@ public extension DeleteEventSubscriptionResult {
     /**
      Default instance of the DeleteEventSubscriptionResult structure.
      */
-    public static let __default: RDSModel.DeleteEventSubscriptionResult = {
+    static let __default: RDSModel.DeleteEventSubscriptionResult = {
         let defaultInstance = RDSModel.DeleteEventSubscriptionResult(
             eventSubscription: nil)
 
@@ -2845,7 +2845,7 @@ public extension DeleteEventSubscriptionResultForDeleteEventSubscription {
     /**
      Default instance of the DeleteEventSubscriptionResultForDeleteEventSubscription structure.
      */
-    public static let __default: RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription = {
+    static let __default: RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription = {
         let defaultInstance = RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription(
             deleteEventSubscriptionResult: DeleteEventSubscriptionResult.__default)
 
@@ -2857,7 +2857,7 @@ public extension DeleteGlobalClusterMessage {
     /**
      Default instance of the DeleteGlobalClusterMessage structure.
      */
-    public static let __default: RDSModel.DeleteGlobalClusterMessage = {
+    static let __default: RDSModel.DeleteGlobalClusterMessage = {
         let defaultInstance = RDSModel.DeleteGlobalClusterMessage(
             globalClusterIdentifier: "value")
 
@@ -2869,7 +2869,7 @@ public extension DeleteGlobalClusterResult {
     /**
      Default instance of the DeleteGlobalClusterResult structure.
      */
-    public static let __default: RDSModel.DeleteGlobalClusterResult = {
+    static let __default: RDSModel.DeleteGlobalClusterResult = {
         let defaultInstance = RDSModel.DeleteGlobalClusterResult(
             globalCluster: nil)
 
@@ -2881,7 +2881,7 @@ public extension DeleteGlobalClusterResultForDeleteGlobalCluster {
     /**
      Default instance of the DeleteGlobalClusterResultForDeleteGlobalCluster structure.
      */
-    public static let __default: RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster = {
+    static let __default: RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster = {
         let defaultInstance = RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster(
             deleteGlobalClusterResult: DeleteGlobalClusterResult.__default)
 
@@ -2893,7 +2893,7 @@ public extension DeleteOptionGroupMessage {
     /**
      Default instance of the DeleteOptionGroupMessage structure.
      */
-    public static let __default: RDSModel.DeleteOptionGroupMessage = {
+    static let __default: RDSModel.DeleteOptionGroupMessage = {
         let defaultInstance = RDSModel.DeleteOptionGroupMessage(
             optionGroupName: "value")
 
@@ -2905,7 +2905,7 @@ public extension DescribeAccountAttributesMessage {
     /**
      Default instance of the DescribeAccountAttributesMessage structure.
      */
-    public static let __default: RDSModel.DescribeAccountAttributesMessage = {
+    static let __default: RDSModel.DescribeAccountAttributesMessage = {
         let defaultInstance = RDSModel.DescribeAccountAttributesMessage()
 
         return defaultInstance
@@ -2916,7 +2916,7 @@ public extension DescribeCertificatesMessage {
     /**
      Default instance of the DescribeCertificatesMessage structure.
      */
-    public static let __default: RDSModel.DescribeCertificatesMessage = {
+    static let __default: RDSModel.DescribeCertificatesMessage = {
         let defaultInstance = RDSModel.DescribeCertificatesMessage(
             certificateIdentifier: nil,
             filters: nil,
@@ -2931,7 +2931,7 @@ public extension DescribeDBClusterBacktracksMessage {
     /**
      Default instance of the DescribeDBClusterBacktracksMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBClusterBacktracksMessage = {
+    static let __default: RDSModel.DescribeDBClusterBacktracksMessage = {
         let defaultInstance = RDSModel.DescribeDBClusterBacktracksMessage(
             backtrackIdentifier: nil,
             dBClusterIdentifier: "value",
@@ -2947,7 +2947,7 @@ public extension DescribeDBClusterEndpointsMessage {
     /**
      Default instance of the DescribeDBClusterEndpointsMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBClusterEndpointsMessage = {
+    static let __default: RDSModel.DescribeDBClusterEndpointsMessage = {
         let defaultInstance = RDSModel.DescribeDBClusterEndpointsMessage(
             dBClusterEndpointIdentifier: nil,
             dBClusterIdentifier: nil,
@@ -2963,7 +2963,7 @@ public extension DescribeDBClusterParameterGroupsMessage {
     /**
      Default instance of the DescribeDBClusterParameterGroupsMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBClusterParameterGroupsMessage = {
+    static let __default: RDSModel.DescribeDBClusterParameterGroupsMessage = {
         let defaultInstance = RDSModel.DescribeDBClusterParameterGroupsMessage(
             dBClusterParameterGroupName: nil,
             filters: nil,
@@ -2978,7 +2978,7 @@ public extension DescribeDBClusterParametersMessage {
     /**
      Default instance of the DescribeDBClusterParametersMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBClusterParametersMessage = {
+    static let __default: RDSModel.DescribeDBClusterParametersMessage = {
         let defaultInstance = RDSModel.DescribeDBClusterParametersMessage(
             dBClusterParameterGroupName: "value",
             filters: nil,
@@ -2994,7 +2994,7 @@ public extension DescribeDBClusterSnapshotAttributesMessage {
     /**
      Default instance of the DescribeDBClusterSnapshotAttributesMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBClusterSnapshotAttributesMessage = {
+    static let __default: RDSModel.DescribeDBClusterSnapshotAttributesMessage = {
         let defaultInstance = RDSModel.DescribeDBClusterSnapshotAttributesMessage(
             dBClusterSnapshotIdentifier: "value")
 
@@ -3006,7 +3006,7 @@ public extension DescribeDBClusterSnapshotAttributesResult {
     /**
      Default instance of the DescribeDBClusterSnapshotAttributesResult structure.
      */
-    public static let __default: RDSModel.DescribeDBClusterSnapshotAttributesResult = {
+    static let __default: RDSModel.DescribeDBClusterSnapshotAttributesResult = {
         let defaultInstance = RDSModel.DescribeDBClusterSnapshotAttributesResult(
             dBClusterSnapshotAttributesResult: nil)
 
@@ -3018,7 +3018,7 @@ public extension DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSn
     /**
      Default instance of the DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes structure.
      */
-    public static let __default: RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes = {
+    static let __default: RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes = {
         let defaultInstance = RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes(
             describeDBClusterSnapshotAttributesResult: DescribeDBClusterSnapshotAttributesResult.__default)
 
@@ -3030,7 +3030,7 @@ public extension DescribeDBClusterSnapshotsMessage {
     /**
      Default instance of the DescribeDBClusterSnapshotsMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBClusterSnapshotsMessage = {
+    static let __default: RDSModel.DescribeDBClusterSnapshotsMessage = {
         let defaultInstance = RDSModel.DescribeDBClusterSnapshotsMessage(
             dBClusterIdentifier: nil,
             dBClusterSnapshotIdentifier: nil,
@@ -3049,7 +3049,7 @@ public extension DescribeDBClustersMessage {
     /**
      Default instance of the DescribeDBClustersMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBClustersMessage = {
+    static let __default: RDSModel.DescribeDBClustersMessage = {
         let defaultInstance = RDSModel.DescribeDBClustersMessage(
             dBClusterIdentifier: nil,
             filters: nil,
@@ -3064,7 +3064,7 @@ public extension DescribeDBEngineVersionsMessage {
     /**
      Default instance of the DescribeDBEngineVersionsMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBEngineVersionsMessage = {
+    static let __default: RDSModel.DescribeDBEngineVersionsMessage = {
         let defaultInstance = RDSModel.DescribeDBEngineVersionsMessage(
             dBParameterGroupFamily: nil,
             defaultOnly: nil,
@@ -3085,7 +3085,7 @@ public extension DescribeDBInstanceAutomatedBackupsMessage {
     /**
      Default instance of the DescribeDBInstanceAutomatedBackupsMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBInstanceAutomatedBackupsMessage = {
+    static let __default: RDSModel.DescribeDBInstanceAutomatedBackupsMessage = {
         let defaultInstance = RDSModel.DescribeDBInstanceAutomatedBackupsMessage(
             dBInstanceIdentifier: nil,
             dbiResourceId: nil,
@@ -3101,7 +3101,7 @@ public extension DescribeDBInstancesMessage {
     /**
      Default instance of the DescribeDBInstancesMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBInstancesMessage = {
+    static let __default: RDSModel.DescribeDBInstancesMessage = {
         let defaultInstance = RDSModel.DescribeDBInstancesMessage(
             dBInstanceIdentifier: nil,
             filters: nil,
@@ -3116,7 +3116,7 @@ public extension DescribeDBLogFilesDetails {
     /**
      Default instance of the DescribeDBLogFilesDetails structure.
      */
-    public static let __default: RDSModel.DescribeDBLogFilesDetails = {
+    static let __default: RDSModel.DescribeDBLogFilesDetails = {
         let defaultInstance = RDSModel.DescribeDBLogFilesDetails(
             lastWritten: nil,
             logFileName: nil,
@@ -3130,7 +3130,7 @@ public extension DescribeDBLogFilesMessage {
     /**
      Default instance of the DescribeDBLogFilesMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBLogFilesMessage = {
+    static let __default: RDSModel.DescribeDBLogFilesMessage = {
         let defaultInstance = RDSModel.DescribeDBLogFilesMessage(
             dBInstanceIdentifier: "value",
             fileLastWritten: nil,
@@ -3148,7 +3148,7 @@ public extension DescribeDBLogFilesResponse {
     /**
      Default instance of the DescribeDBLogFilesResponse structure.
      */
-    public static let __default: RDSModel.DescribeDBLogFilesResponse = {
+    static let __default: RDSModel.DescribeDBLogFilesResponse = {
         let defaultInstance = RDSModel.DescribeDBLogFilesResponse(
             describeDBLogFiles: nil,
             marker: nil)
@@ -3161,7 +3161,7 @@ public extension DescribeDBLogFilesResponseForDescribeDBLogFiles {
     /**
      Default instance of the DescribeDBLogFilesResponseForDescribeDBLogFiles structure.
      */
-    public static let __default: RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles = {
+    static let __default: RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles = {
         let defaultInstance = RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles(
             describeDBLogFilesResult: DescribeDBLogFilesResponse.__default)
 
@@ -3173,7 +3173,7 @@ public extension DescribeDBParameterGroupsMessage {
     /**
      Default instance of the DescribeDBParameterGroupsMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBParameterGroupsMessage = {
+    static let __default: RDSModel.DescribeDBParameterGroupsMessage = {
         let defaultInstance = RDSModel.DescribeDBParameterGroupsMessage(
             dBParameterGroupName: nil,
             filters: nil,
@@ -3188,7 +3188,7 @@ public extension DescribeDBParametersMessage {
     /**
      Default instance of the DescribeDBParametersMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBParametersMessage = {
+    static let __default: RDSModel.DescribeDBParametersMessage = {
         let defaultInstance = RDSModel.DescribeDBParametersMessage(
             dBParameterGroupName: "value",
             filters: nil,
@@ -3204,7 +3204,7 @@ public extension DescribeDBSecurityGroupsMessage {
     /**
      Default instance of the DescribeDBSecurityGroupsMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBSecurityGroupsMessage = {
+    static let __default: RDSModel.DescribeDBSecurityGroupsMessage = {
         let defaultInstance = RDSModel.DescribeDBSecurityGroupsMessage(
             dBSecurityGroupName: nil,
             filters: nil,
@@ -3219,7 +3219,7 @@ public extension DescribeDBSnapshotAttributesMessage {
     /**
      Default instance of the DescribeDBSnapshotAttributesMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBSnapshotAttributesMessage = {
+    static let __default: RDSModel.DescribeDBSnapshotAttributesMessage = {
         let defaultInstance = RDSModel.DescribeDBSnapshotAttributesMessage(
             dBSnapshotIdentifier: "value")
 
@@ -3231,7 +3231,7 @@ public extension DescribeDBSnapshotAttributesResult {
     /**
      Default instance of the DescribeDBSnapshotAttributesResult structure.
      */
-    public static let __default: RDSModel.DescribeDBSnapshotAttributesResult = {
+    static let __default: RDSModel.DescribeDBSnapshotAttributesResult = {
         let defaultInstance = RDSModel.DescribeDBSnapshotAttributesResult(
             dBSnapshotAttributesResult: nil)
 
@@ -3243,7 +3243,7 @@ public extension DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttribut
     /**
      Default instance of the DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes structure.
      */
-    public static let __default: RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes = {
+    static let __default: RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes = {
         let defaultInstance = RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes(
             describeDBSnapshotAttributesResult: DescribeDBSnapshotAttributesResult.__default)
 
@@ -3255,7 +3255,7 @@ public extension DescribeDBSnapshotsMessage {
     /**
      Default instance of the DescribeDBSnapshotsMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBSnapshotsMessage = {
+    static let __default: RDSModel.DescribeDBSnapshotsMessage = {
         let defaultInstance = RDSModel.DescribeDBSnapshotsMessage(
             dBInstanceIdentifier: nil,
             dBSnapshotIdentifier: nil,
@@ -3275,7 +3275,7 @@ public extension DescribeDBSubnetGroupsMessage {
     /**
      Default instance of the DescribeDBSubnetGroupsMessage structure.
      */
-    public static let __default: RDSModel.DescribeDBSubnetGroupsMessage = {
+    static let __default: RDSModel.DescribeDBSubnetGroupsMessage = {
         let defaultInstance = RDSModel.DescribeDBSubnetGroupsMessage(
             dBSubnetGroupName: nil,
             filters: nil,
@@ -3290,7 +3290,7 @@ public extension DescribeEngineDefaultClusterParametersMessage {
     /**
      Default instance of the DescribeEngineDefaultClusterParametersMessage structure.
      */
-    public static let __default: RDSModel.DescribeEngineDefaultClusterParametersMessage = {
+    static let __default: RDSModel.DescribeEngineDefaultClusterParametersMessage = {
         let defaultInstance = RDSModel.DescribeEngineDefaultClusterParametersMessage(
             dBParameterGroupFamily: "value",
             filters: nil,
@@ -3305,7 +3305,7 @@ public extension DescribeEngineDefaultClusterParametersResult {
     /**
      Default instance of the DescribeEngineDefaultClusterParametersResult structure.
      */
-    public static let __default: RDSModel.DescribeEngineDefaultClusterParametersResult = {
+    static let __default: RDSModel.DescribeEngineDefaultClusterParametersResult = {
         let defaultInstance = RDSModel.DescribeEngineDefaultClusterParametersResult(
             engineDefaults: nil)
 
@@ -3317,7 +3317,7 @@ public extension DescribeEngineDefaultClusterParametersResultForDescribeEngineDe
     /**
      Default instance of the DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters structure.
      */
-    public static let __default: RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters = {
+    static let __default: RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters = {
         let defaultInstance = RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters(
             describeEngineDefaultClusterParametersResult: DescribeEngineDefaultClusterParametersResult.__default)
 
@@ -3329,7 +3329,7 @@ public extension DescribeEngineDefaultParametersMessage {
     /**
      Default instance of the DescribeEngineDefaultParametersMessage structure.
      */
-    public static let __default: RDSModel.DescribeEngineDefaultParametersMessage = {
+    static let __default: RDSModel.DescribeEngineDefaultParametersMessage = {
         let defaultInstance = RDSModel.DescribeEngineDefaultParametersMessage(
             dBParameterGroupFamily: "value",
             filters: nil,
@@ -3344,7 +3344,7 @@ public extension DescribeEngineDefaultParametersResult {
     /**
      Default instance of the DescribeEngineDefaultParametersResult structure.
      */
-    public static let __default: RDSModel.DescribeEngineDefaultParametersResult = {
+    static let __default: RDSModel.DescribeEngineDefaultParametersResult = {
         let defaultInstance = RDSModel.DescribeEngineDefaultParametersResult(
             engineDefaults: nil)
 
@@ -3356,7 +3356,7 @@ public extension DescribeEngineDefaultParametersResultForDescribeEngineDefaultPa
     /**
      Default instance of the DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters structure.
      */
-    public static let __default: RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters = {
+    static let __default: RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters = {
         let defaultInstance = RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters(
             describeEngineDefaultParametersResult: DescribeEngineDefaultParametersResult.__default)
 
@@ -3368,7 +3368,7 @@ public extension DescribeEventCategoriesMessage {
     /**
      Default instance of the DescribeEventCategoriesMessage structure.
      */
-    public static let __default: RDSModel.DescribeEventCategoriesMessage = {
+    static let __default: RDSModel.DescribeEventCategoriesMessage = {
         let defaultInstance = RDSModel.DescribeEventCategoriesMessage(
             filters: nil,
             sourceType: nil)
@@ -3381,7 +3381,7 @@ public extension DescribeEventSubscriptionsMessage {
     /**
      Default instance of the DescribeEventSubscriptionsMessage structure.
      */
-    public static let __default: RDSModel.DescribeEventSubscriptionsMessage = {
+    static let __default: RDSModel.DescribeEventSubscriptionsMessage = {
         let defaultInstance = RDSModel.DescribeEventSubscriptionsMessage(
             filters: nil,
             marker: nil,
@@ -3396,7 +3396,7 @@ public extension DescribeEventsMessage {
     /**
      Default instance of the DescribeEventsMessage structure.
      */
-    public static let __default: RDSModel.DescribeEventsMessage = {
+    static let __default: RDSModel.DescribeEventsMessage = {
         let defaultInstance = RDSModel.DescribeEventsMessage(
             duration: nil,
             endTime: nil,
@@ -3416,7 +3416,7 @@ public extension DescribeGlobalClustersMessage {
     /**
      Default instance of the DescribeGlobalClustersMessage structure.
      */
-    public static let __default: RDSModel.DescribeGlobalClustersMessage = {
+    static let __default: RDSModel.DescribeGlobalClustersMessage = {
         let defaultInstance = RDSModel.DescribeGlobalClustersMessage(
             filters: nil,
             globalClusterIdentifier: nil,
@@ -3431,7 +3431,7 @@ public extension DescribeOptionGroupOptionsMessage {
     /**
      Default instance of the DescribeOptionGroupOptionsMessage structure.
      */
-    public static let __default: RDSModel.DescribeOptionGroupOptionsMessage = {
+    static let __default: RDSModel.DescribeOptionGroupOptionsMessage = {
         let defaultInstance = RDSModel.DescribeOptionGroupOptionsMessage(
             engineName: "value",
             filters: nil,
@@ -3447,7 +3447,7 @@ public extension DescribeOptionGroupsMessage {
     /**
      Default instance of the DescribeOptionGroupsMessage structure.
      */
-    public static let __default: RDSModel.DescribeOptionGroupsMessage = {
+    static let __default: RDSModel.DescribeOptionGroupsMessage = {
         let defaultInstance = RDSModel.DescribeOptionGroupsMessage(
             engineName: nil,
             filters: nil,
@@ -3464,7 +3464,7 @@ public extension DescribeOrderableDBInstanceOptionsMessage {
     /**
      Default instance of the DescribeOrderableDBInstanceOptionsMessage structure.
      */
-    public static let __default: RDSModel.DescribeOrderableDBInstanceOptionsMessage = {
+    static let __default: RDSModel.DescribeOrderableDBInstanceOptionsMessage = {
         let defaultInstance = RDSModel.DescribeOrderableDBInstanceOptionsMessage(
             dBInstanceClass: nil,
             engine: "value",
@@ -3483,7 +3483,7 @@ public extension DescribePendingMaintenanceActionsMessage {
     /**
      Default instance of the DescribePendingMaintenanceActionsMessage structure.
      */
-    public static let __default: RDSModel.DescribePendingMaintenanceActionsMessage = {
+    static let __default: RDSModel.DescribePendingMaintenanceActionsMessage = {
         let defaultInstance = RDSModel.DescribePendingMaintenanceActionsMessage(
             filters: nil,
             marker: nil,
@@ -3498,7 +3498,7 @@ public extension DescribeReservedDBInstancesMessage {
     /**
      Default instance of the DescribeReservedDBInstancesMessage structure.
      */
-    public static let __default: RDSModel.DescribeReservedDBInstancesMessage = {
+    static let __default: RDSModel.DescribeReservedDBInstancesMessage = {
         let defaultInstance = RDSModel.DescribeReservedDBInstancesMessage(
             dBInstanceClass: nil,
             duration: nil,
@@ -3519,7 +3519,7 @@ public extension DescribeReservedDBInstancesOfferingsMessage {
     /**
      Default instance of the DescribeReservedDBInstancesOfferingsMessage structure.
      */
-    public static let __default: RDSModel.DescribeReservedDBInstancesOfferingsMessage = {
+    static let __default: RDSModel.DescribeReservedDBInstancesOfferingsMessage = {
         let defaultInstance = RDSModel.DescribeReservedDBInstancesOfferingsMessage(
             dBInstanceClass: nil,
             duration: nil,
@@ -3539,7 +3539,7 @@ public extension DescribeSourceRegionsMessage {
     /**
      Default instance of the DescribeSourceRegionsMessage structure.
      */
-    public static let __default: RDSModel.DescribeSourceRegionsMessage = {
+    static let __default: RDSModel.DescribeSourceRegionsMessage = {
         let defaultInstance = RDSModel.DescribeSourceRegionsMessage(
             filters: nil,
             marker: nil,
@@ -3554,7 +3554,7 @@ public extension DescribeValidDBInstanceModificationsMessage {
     /**
      Default instance of the DescribeValidDBInstanceModificationsMessage structure.
      */
-    public static let __default: RDSModel.DescribeValidDBInstanceModificationsMessage = {
+    static let __default: RDSModel.DescribeValidDBInstanceModificationsMessage = {
         let defaultInstance = RDSModel.DescribeValidDBInstanceModificationsMessage(
             dBInstanceIdentifier: "value")
 
@@ -3566,7 +3566,7 @@ public extension DescribeValidDBInstanceModificationsResult {
     /**
      Default instance of the DescribeValidDBInstanceModificationsResult structure.
      */
-    public static let __default: RDSModel.DescribeValidDBInstanceModificationsResult = {
+    static let __default: RDSModel.DescribeValidDBInstanceModificationsResult = {
         let defaultInstance = RDSModel.DescribeValidDBInstanceModificationsResult(
             validDBInstanceModificationsMessage: nil)
 
@@ -3578,7 +3578,7 @@ public extension DescribeValidDBInstanceModificationsResultForDescribeValidDBIns
     /**
      Default instance of the DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications structure.
      */
-    public static let __default: RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications = {
+    static let __default: RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications = {
         let defaultInstance = RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications(
             describeValidDBInstanceModificationsResult: DescribeValidDBInstanceModificationsResult.__default)
 
@@ -3590,7 +3590,7 @@ public extension DomainMembership {
     /**
      Default instance of the DomainMembership structure.
      */
-    public static let __default: RDSModel.DomainMembership = {
+    static let __default: RDSModel.DomainMembership = {
         let defaultInstance = RDSModel.DomainMembership(
             domain: nil,
             fQDN: nil,
@@ -3605,7 +3605,7 @@ public extension DomainNotFoundFault {
     /**
      Default instance of the DomainNotFoundFault structure.
      */
-    public static let __default: RDSModel.DomainNotFoundFault = {
+    static let __default: RDSModel.DomainNotFoundFault = {
         let defaultInstance = RDSModel.DomainNotFoundFault()
 
         return defaultInstance
@@ -3616,7 +3616,7 @@ public extension DoubleRange {
     /**
      Default instance of the DoubleRange structure.
      */
-    public static let __default: RDSModel.DoubleRange = {
+    static let __default: RDSModel.DoubleRange = {
         let defaultInstance = RDSModel.DoubleRange(
             from: nil,
             to: nil)
@@ -3629,7 +3629,7 @@ public extension DownloadDBLogFilePortionDetails {
     /**
      Default instance of the DownloadDBLogFilePortionDetails structure.
      */
-    public static let __default: RDSModel.DownloadDBLogFilePortionDetails = {
+    static let __default: RDSModel.DownloadDBLogFilePortionDetails = {
         let defaultInstance = RDSModel.DownloadDBLogFilePortionDetails(
             additionalDataPending: nil,
             logFileData: nil,
@@ -3643,7 +3643,7 @@ public extension DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
     /**
      Default instance of the DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion structure.
      */
-    public static let __default: RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion = {
+    static let __default: RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion = {
         let defaultInstance = RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion(
             downloadDBLogFilePortionResult: DownloadDBLogFilePortionDetails.__default)
 
@@ -3655,7 +3655,7 @@ public extension DownloadDBLogFilePortionMessage {
     /**
      Default instance of the DownloadDBLogFilePortionMessage structure.
      */
-    public static let __default: RDSModel.DownloadDBLogFilePortionMessage = {
+    static let __default: RDSModel.DownloadDBLogFilePortionMessage = {
         let defaultInstance = RDSModel.DownloadDBLogFilePortionMessage(
             dBInstanceIdentifier: "value",
             logFileName: "value",
@@ -3670,7 +3670,7 @@ public extension EC2SecurityGroup {
     /**
      Default instance of the EC2SecurityGroup structure.
      */
-    public static let __default: RDSModel.EC2SecurityGroup = {
+    static let __default: RDSModel.EC2SecurityGroup = {
         let defaultInstance = RDSModel.EC2SecurityGroup(
             eC2SecurityGroupId: nil,
             eC2SecurityGroupName: nil,
@@ -3685,7 +3685,7 @@ public extension Endpoint {
     /**
      Default instance of the Endpoint structure.
      */
-    public static let __default: RDSModel.Endpoint = {
+    static let __default: RDSModel.Endpoint = {
         let defaultInstance = RDSModel.Endpoint(
             address: nil,
             hostedZoneId: nil,
@@ -3699,7 +3699,7 @@ public extension EngineDefaults {
     /**
      Default instance of the EngineDefaults structure.
      */
-    public static let __default: RDSModel.EngineDefaults = {
+    static let __default: RDSModel.EngineDefaults = {
         let defaultInstance = RDSModel.EngineDefaults(
             dBParameterGroupFamily: nil,
             marker: nil,
@@ -3713,7 +3713,7 @@ public extension Event {
     /**
      Default instance of the Event structure.
      */
-    public static let __default: RDSModel.Event = {
+    static let __default: RDSModel.Event = {
         let defaultInstance = RDSModel.Event(
             date: nil,
             eventCategories: nil,
@@ -3730,7 +3730,7 @@ public extension EventCategoriesMap {
     /**
      Default instance of the EventCategoriesMap structure.
      */
-    public static let __default: RDSModel.EventCategoriesMap = {
+    static let __default: RDSModel.EventCategoriesMap = {
         let defaultInstance = RDSModel.EventCategoriesMap(
             eventCategories: nil,
             sourceType: nil)
@@ -3743,7 +3743,7 @@ public extension EventCategoriesMessage {
     /**
      Default instance of the EventCategoriesMessage structure.
      */
-    public static let __default: RDSModel.EventCategoriesMessage = {
+    static let __default: RDSModel.EventCategoriesMessage = {
         let defaultInstance = RDSModel.EventCategoriesMessage(
             eventCategoriesMapList: nil)
 
@@ -3755,7 +3755,7 @@ public extension EventCategoriesMessageForDescribeEventCategories {
     /**
      Default instance of the EventCategoriesMessageForDescribeEventCategories structure.
      */
-    public static let __default: RDSModel.EventCategoriesMessageForDescribeEventCategories = {
+    static let __default: RDSModel.EventCategoriesMessageForDescribeEventCategories = {
         let defaultInstance = RDSModel.EventCategoriesMessageForDescribeEventCategories(
             describeEventCategoriesResult: EventCategoriesMessage.__default)
 
@@ -3767,7 +3767,7 @@ public extension EventSubscription {
     /**
      Default instance of the EventSubscription structure.
      */
-    public static let __default: RDSModel.EventSubscription = {
+    static let __default: RDSModel.EventSubscription = {
         let defaultInstance = RDSModel.EventSubscription(
             custSubscriptionId: nil,
             customerAwsId: nil,
@@ -3788,7 +3788,7 @@ public extension EventSubscriptionQuotaExceededFault {
     /**
      Default instance of the EventSubscriptionQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.EventSubscriptionQuotaExceededFault = {
+    static let __default: RDSModel.EventSubscriptionQuotaExceededFault = {
         let defaultInstance = RDSModel.EventSubscriptionQuotaExceededFault()
 
         return defaultInstance
@@ -3799,7 +3799,7 @@ public extension EventSubscriptionsMessage {
     /**
      Default instance of the EventSubscriptionsMessage structure.
      */
-    public static let __default: RDSModel.EventSubscriptionsMessage = {
+    static let __default: RDSModel.EventSubscriptionsMessage = {
         let defaultInstance = RDSModel.EventSubscriptionsMessage(
             eventSubscriptionsList: nil,
             marker: nil)
@@ -3812,7 +3812,7 @@ public extension EventSubscriptionsMessageForDescribeEventSubscriptions {
     /**
      Default instance of the EventSubscriptionsMessageForDescribeEventSubscriptions structure.
      */
-    public static let __default: RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions = {
+    static let __default: RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions = {
         let defaultInstance = RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions(
             describeEventSubscriptionsResult: EventSubscriptionsMessage.__default)
 
@@ -3824,7 +3824,7 @@ public extension EventsMessage {
     /**
      Default instance of the EventsMessage structure.
      */
-    public static let __default: RDSModel.EventsMessage = {
+    static let __default: RDSModel.EventsMessage = {
         let defaultInstance = RDSModel.EventsMessage(
             events: nil,
             marker: nil)
@@ -3837,7 +3837,7 @@ public extension EventsMessageForDescribeEvents {
     /**
      Default instance of the EventsMessageForDescribeEvents structure.
      */
-    public static let __default: RDSModel.EventsMessageForDescribeEvents = {
+    static let __default: RDSModel.EventsMessageForDescribeEvents = {
         let defaultInstance = RDSModel.EventsMessageForDescribeEvents(
             describeEventsResult: EventsMessage.__default)
 
@@ -3849,7 +3849,7 @@ public extension FailoverDBClusterMessage {
     /**
      Default instance of the FailoverDBClusterMessage structure.
      */
-    public static let __default: RDSModel.FailoverDBClusterMessage = {
+    static let __default: RDSModel.FailoverDBClusterMessage = {
         let defaultInstance = RDSModel.FailoverDBClusterMessage(
             dBClusterIdentifier: "value",
             targetDBInstanceIdentifier: nil)
@@ -3862,7 +3862,7 @@ public extension FailoverDBClusterResult {
     /**
      Default instance of the FailoverDBClusterResult structure.
      */
-    public static let __default: RDSModel.FailoverDBClusterResult = {
+    static let __default: RDSModel.FailoverDBClusterResult = {
         let defaultInstance = RDSModel.FailoverDBClusterResult(
             dBCluster: nil)
 
@@ -3874,7 +3874,7 @@ public extension FailoverDBClusterResultForFailoverDBCluster {
     /**
      Default instance of the FailoverDBClusterResultForFailoverDBCluster structure.
      */
-    public static let __default: RDSModel.FailoverDBClusterResultForFailoverDBCluster = {
+    static let __default: RDSModel.FailoverDBClusterResultForFailoverDBCluster = {
         let defaultInstance = RDSModel.FailoverDBClusterResultForFailoverDBCluster(
             failoverDBClusterResult: FailoverDBClusterResult.__default)
 
@@ -3886,7 +3886,7 @@ public extension Filter {
     /**
      Default instance of the Filter structure.
      */
-    public static let __default: RDSModel.Filter = {
+    static let __default: RDSModel.Filter = {
         let defaultInstance = RDSModel.Filter(
             name: "value",
             values: [])
@@ -3899,7 +3899,7 @@ public extension GlobalCluster {
     /**
      Default instance of the GlobalCluster structure.
      */
-    public static let __default: RDSModel.GlobalCluster = {
+    static let __default: RDSModel.GlobalCluster = {
         let defaultInstance = RDSModel.GlobalCluster(
             databaseName: nil,
             deletionProtection: nil,
@@ -3920,7 +3920,7 @@ public extension GlobalClusterAlreadyExistsFault {
     /**
      Default instance of the GlobalClusterAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.GlobalClusterAlreadyExistsFault = {
+    static let __default: RDSModel.GlobalClusterAlreadyExistsFault = {
         let defaultInstance = RDSModel.GlobalClusterAlreadyExistsFault()
 
         return defaultInstance
@@ -3931,7 +3931,7 @@ public extension GlobalClusterMember {
     /**
      Default instance of the GlobalClusterMember structure.
      */
-    public static let __default: RDSModel.GlobalClusterMember = {
+    static let __default: RDSModel.GlobalClusterMember = {
         let defaultInstance = RDSModel.GlobalClusterMember(
             dBClusterArn: nil,
             isWriter: nil,
@@ -3945,7 +3945,7 @@ public extension GlobalClusterNotFoundFault {
     /**
      Default instance of the GlobalClusterNotFoundFault structure.
      */
-    public static let __default: RDSModel.GlobalClusterNotFoundFault = {
+    static let __default: RDSModel.GlobalClusterNotFoundFault = {
         let defaultInstance = RDSModel.GlobalClusterNotFoundFault()
 
         return defaultInstance
@@ -3956,7 +3956,7 @@ public extension GlobalClusterQuotaExceededFault {
     /**
      Default instance of the GlobalClusterQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.GlobalClusterQuotaExceededFault = {
+    static let __default: RDSModel.GlobalClusterQuotaExceededFault = {
         let defaultInstance = RDSModel.GlobalClusterQuotaExceededFault()
 
         return defaultInstance
@@ -3967,7 +3967,7 @@ public extension GlobalClustersMessage {
     /**
      Default instance of the GlobalClustersMessage structure.
      */
-    public static let __default: RDSModel.GlobalClustersMessage = {
+    static let __default: RDSModel.GlobalClustersMessage = {
         let defaultInstance = RDSModel.GlobalClustersMessage(
             globalClusters: nil,
             marker: nil)
@@ -3980,7 +3980,7 @@ public extension GlobalClustersMessageForDescribeGlobalClusters {
     /**
      Default instance of the GlobalClustersMessageForDescribeGlobalClusters structure.
      */
-    public static let __default: RDSModel.GlobalClustersMessageForDescribeGlobalClusters = {
+    static let __default: RDSModel.GlobalClustersMessageForDescribeGlobalClusters = {
         let defaultInstance = RDSModel.GlobalClustersMessageForDescribeGlobalClusters(
             describeGlobalClustersResult: GlobalClustersMessage.__default)
 
@@ -3992,7 +3992,7 @@ public extension IPRange {
     /**
      Default instance of the IPRange structure.
      */
-    public static let __default: RDSModel.IPRange = {
+    static let __default: RDSModel.IPRange = {
         let defaultInstance = RDSModel.IPRange(
             cIDRIP: nil,
             status: nil)
@@ -4005,7 +4005,7 @@ public extension InstanceQuotaExceededFault {
     /**
      Default instance of the InstanceQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.InstanceQuotaExceededFault = {
+    static let __default: RDSModel.InstanceQuotaExceededFault = {
         let defaultInstance = RDSModel.InstanceQuotaExceededFault()
 
         return defaultInstance
@@ -4016,7 +4016,7 @@ public extension InsufficientDBClusterCapacityFault {
     /**
      Default instance of the InsufficientDBClusterCapacityFault structure.
      */
-    public static let __default: RDSModel.InsufficientDBClusterCapacityFault = {
+    static let __default: RDSModel.InsufficientDBClusterCapacityFault = {
         let defaultInstance = RDSModel.InsufficientDBClusterCapacityFault()
 
         return defaultInstance
@@ -4027,7 +4027,7 @@ public extension InsufficientDBInstanceCapacityFault {
     /**
      Default instance of the InsufficientDBInstanceCapacityFault structure.
      */
-    public static let __default: RDSModel.InsufficientDBInstanceCapacityFault = {
+    static let __default: RDSModel.InsufficientDBInstanceCapacityFault = {
         let defaultInstance = RDSModel.InsufficientDBInstanceCapacityFault()
 
         return defaultInstance
@@ -4038,7 +4038,7 @@ public extension InsufficientStorageClusterCapacityFault {
     /**
      Default instance of the InsufficientStorageClusterCapacityFault structure.
      */
-    public static let __default: RDSModel.InsufficientStorageClusterCapacityFault = {
+    static let __default: RDSModel.InsufficientStorageClusterCapacityFault = {
         let defaultInstance = RDSModel.InsufficientStorageClusterCapacityFault()
 
         return defaultInstance
@@ -4049,7 +4049,7 @@ public extension InvalidDBClusterCapacityFault {
     /**
      Default instance of the InvalidDBClusterCapacityFault structure.
      */
-    public static let __default: RDSModel.InvalidDBClusterCapacityFault = {
+    static let __default: RDSModel.InvalidDBClusterCapacityFault = {
         let defaultInstance = RDSModel.InvalidDBClusterCapacityFault()
 
         return defaultInstance
@@ -4060,7 +4060,7 @@ public extension InvalidDBClusterEndpointStateFault {
     /**
      Default instance of the InvalidDBClusterEndpointStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBClusterEndpointStateFault = {
+    static let __default: RDSModel.InvalidDBClusterEndpointStateFault = {
         let defaultInstance = RDSModel.InvalidDBClusterEndpointStateFault()
 
         return defaultInstance
@@ -4071,7 +4071,7 @@ public extension InvalidDBClusterSnapshotStateFault {
     /**
      Default instance of the InvalidDBClusterSnapshotStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBClusterSnapshotStateFault = {
+    static let __default: RDSModel.InvalidDBClusterSnapshotStateFault = {
         let defaultInstance = RDSModel.InvalidDBClusterSnapshotStateFault()
 
         return defaultInstance
@@ -4082,7 +4082,7 @@ public extension InvalidDBClusterStateFault {
     /**
      Default instance of the InvalidDBClusterStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBClusterStateFault = {
+    static let __default: RDSModel.InvalidDBClusterStateFault = {
         let defaultInstance = RDSModel.InvalidDBClusterStateFault()
 
         return defaultInstance
@@ -4093,7 +4093,7 @@ public extension InvalidDBInstanceAutomatedBackupStateFault {
     /**
      Default instance of the InvalidDBInstanceAutomatedBackupStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBInstanceAutomatedBackupStateFault = {
+    static let __default: RDSModel.InvalidDBInstanceAutomatedBackupStateFault = {
         let defaultInstance = RDSModel.InvalidDBInstanceAutomatedBackupStateFault()
 
         return defaultInstance
@@ -4104,7 +4104,7 @@ public extension InvalidDBInstanceStateFault {
     /**
      Default instance of the InvalidDBInstanceStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBInstanceStateFault = {
+    static let __default: RDSModel.InvalidDBInstanceStateFault = {
         let defaultInstance = RDSModel.InvalidDBInstanceStateFault()
 
         return defaultInstance
@@ -4115,7 +4115,7 @@ public extension InvalidDBParameterGroupStateFault {
     /**
      Default instance of the InvalidDBParameterGroupStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBParameterGroupStateFault = {
+    static let __default: RDSModel.InvalidDBParameterGroupStateFault = {
         let defaultInstance = RDSModel.InvalidDBParameterGroupStateFault()
 
         return defaultInstance
@@ -4126,7 +4126,7 @@ public extension InvalidDBSecurityGroupStateFault {
     /**
      Default instance of the InvalidDBSecurityGroupStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBSecurityGroupStateFault = {
+    static let __default: RDSModel.InvalidDBSecurityGroupStateFault = {
         let defaultInstance = RDSModel.InvalidDBSecurityGroupStateFault()
 
         return defaultInstance
@@ -4137,7 +4137,7 @@ public extension InvalidDBSnapshotStateFault {
     /**
      Default instance of the InvalidDBSnapshotStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBSnapshotStateFault = {
+    static let __default: RDSModel.InvalidDBSnapshotStateFault = {
         let defaultInstance = RDSModel.InvalidDBSnapshotStateFault()
 
         return defaultInstance
@@ -4148,7 +4148,7 @@ public extension InvalidDBSubnetGroupFault {
     /**
      Default instance of the InvalidDBSubnetGroupFault structure.
      */
-    public static let __default: RDSModel.InvalidDBSubnetGroupFault = {
+    static let __default: RDSModel.InvalidDBSubnetGroupFault = {
         let defaultInstance = RDSModel.InvalidDBSubnetGroupFault()
 
         return defaultInstance
@@ -4159,7 +4159,7 @@ public extension InvalidDBSubnetGroupStateFault {
     /**
      Default instance of the InvalidDBSubnetGroupStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBSubnetGroupStateFault = {
+    static let __default: RDSModel.InvalidDBSubnetGroupStateFault = {
         let defaultInstance = RDSModel.InvalidDBSubnetGroupStateFault()
 
         return defaultInstance
@@ -4170,7 +4170,7 @@ public extension InvalidDBSubnetStateFault {
     /**
      Default instance of the InvalidDBSubnetStateFault structure.
      */
-    public static let __default: RDSModel.InvalidDBSubnetStateFault = {
+    static let __default: RDSModel.InvalidDBSubnetStateFault = {
         let defaultInstance = RDSModel.InvalidDBSubnetStateFault()
 
         return defaultInstance
@@ -4181,7 +4181,7 @@ public extension InvalidEventSubscriptionStateFault {
     /**
      Default instance of the InvalidEventSubscriptionStateFault structure.
      */
-    public static let __default: RDSModel.InvalidEventSubscriptionStateFault = {
+    static let __default: RDSModel.InvalidEventSubscriptionStateFault = {
         let defaultInstance = RDSModel.InvalidEventSubscriptionStateFault()
 
         return defaultInstance
@@ -4192,7 +4192,7 @@ public extension InvalidGlobalClusterStateFault {
     /**
      Default instance of the InvalidGlobalClusterStateFault structure.
      */
-    public static let __default: RDSModel.InvalidGlobalClusterStateFault = {
+    static let __default: RDSModel.InvalidGlobalClusterStateFault = {
         let defaultInstance = RDSModel.InvalidGlobalClusterStateFault()
 
         return defaultInstance
@@ -4203,7 +4203,7 @@ public extension InvalidOptionGroupStateFault {
     /**
      Default instance of the InvalidOptionGroupStateFault structure.
      */
-    public static let __default: RDSModel.InvalidOptionGroupStateFault = {
+    static let __default: RDSModel.InvalidOptionGroupStateFault = {
         let defaultInstance = RDSModel.InvalidOptionGroupStateFault()
 
         return defaultInstance
@@ -4214,7 +4214,7 @@ public extension InvalidRestoreFault {
     /**
      Default instance of the InvalidRestoreFault structure.
      */
-    public static let __default: RDSModel.InvalidRestoreFault = {
+    static let __default: RDSModel.InvalidRestoreFault = {
         let defaultInstance = RDSModel.InvalidRestoreFault()
 
         return defaultInstance
@@ -4225,7 +4225,7 @@ public extension InvalidS3BucketFault {
     /**
      Default instance of the InvalidS3BucketFault structure.
      */
-    public static let __default: RDSModel.InvalidS3BucketFault = {
+    static let __default: RDSModel.InvalidS3BucketFault = {
         let defaultInstance = RDSModel.InvalidS3BucketFault()
 
         return defaultInstance
@@ -4236,7 +4236,7 @@ public extension InvalidSubnet {
     /**
      Default instance of the InvalidSubnet structure.
      */
-    public static let __default: RDSModel.InvalidSubnet = {
+    static let __default: RDSModel.InvalidSubnet = {
         let defaultInstance = RDSModel.InvalidSubnet()
 
         return defaultInstance
@@ -4247,7 +4247,7 @@ public extension InvalidVPCNetworkStateFault {
     /**
      Default instance of the InvalidVPCNetworkStateFault structure.
      */
-    public static let __default: RDSModel.InvalidVPCNetworkStateFault = {
+    static let __default: RDSModel.InvalidVPCNetworkStateFault = {
         let defaultInstance = RDSModel.InvalidVPCNetworkStateFault()
 
         return defaultInstance
@@ -4258,7 +4258,7 @@ public extension KMSKeyNotAccessibleFault {
     /**
      Default instance of the KMSKeyNotAccessibleFault structure.
      */
-    public static let __default: RDSModel.KMSKeyNotAccessibleFault = {
+    static let __default: RDSModel.KMSKeyNotAccessibleFault = {
         let defaultInstance = RDSModel.KMSKeyNotAccessibleFault()
 
         return defaultInstance
@@ -4269,7 +4269,7 @@ public extension ListTagsForResourceMessage {
     /**
      Default instance of the ListTagsForResourceMessage structure.
      */
-    public static let __default: RDSModel.ListTagsForResourceMessage = {
+    static let __default: RDSModel.ListTagsForResourceMessage = {
         let defaultInstance = RDSModel.ListTagsForResourceMessage(
             filters: nil,
             resourceName: "value")
@@ -4282,7 +4282,7 @@ public extension MinimumEngineVersionPerAllowedValue {
     /**
      Default instance of the MinimumEngineVersionPerAllowedValue structure.
      */
-    public static let __default: RDSModel.MinimumEngineVersionPerAllowedValue = {
+    static let __default: RDSModel.MinimumEngineVersionPerAllowedValue = {
         let defaultInstance = RDSModel.MinimumEngineVersionPerAllowedValue(
             allowedValue: nil,
             minimumEngineVersion: nil)
@@ -4295,7 +4295,7 @@ public extension ModifyCurrentDBClusterCapacityMessage {
     /**
      Default instance of the ModifyCurrentDBClusterCapacityMessage structure.
      */
-    public static let __default: RDSModel.ModifyCurrentDBClusterCapacityMessage = {
+    static let __default: RDSModel.ModifyCurrentDBClusterCapacityMessage = {
         let defaultInstance = RDSModel.ModifyCurrentDBClusterCapacityMessage(
             capacity: nil,
             dBClusterIdentifier: "value",
@@ -4310,7 +4310,7 @@ public extension ModifyDBClusterEndpointMessage {
     /**
      Default instance of the ModifyDBClusterEndpointMessage structure.
      */
-    public static let __default: RDSModel.ModifyDBClusterEndpointMessage = {
+    static let __default: RDSModel.ModifyDBClusterEndpointMessage = {
         let defaultInstance = RDSModel.ModifyDBClusterEndpointMessage(
             dBClusterEndpointIdentifier: "value",
             endpointType: nil,
@@ -4325,7 +4325,7 @@ public extension ModifyDBClusterMessage {
     /**
      Default instance of the ModifyDBClusterMessage structure.
      */
-    public static let __default: RDSModel.ModifyDBClusterMessage = {
+    static let __default: RDSModel.ModifyDBClusterMessage = {
         let defaultInstance = RDSModel.ModifyDBClusterMessage(
             applyImmediately: nil,
             backtrackWindow: nil,
@@ -4355,7 +4355,7 @@ public extension ModifyDBClusterParameterGroupMessage {
     /**
      Default instance of the ModifyDBClusterParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.ModifyDBClusterParameterGroupMessage = {
+    static let __default: RDSModel.ModifyDBClusterParameterGroupMessage = {
         let defaultInstance = RDSModel.ModifyDBClusterParameterGroupMessage(
             dBClusterParameterGroupName: "value",
             parameters: [])
@@ -4368,7 +4368,7 @@ public extension ModifyDBClusterResult {
     /**
      Default instance of the ModifyDBClusterResult structure.
      */
-    public static let __default: RDSModel.ModifyDBClusterResult = {
+    static let __default: RDSModel.ModifyDBClusterResult = {
         let defaultInstance = RDSModel.ModifyDBClusterResult(
             dBCluster: nil)
 
@@ -4380,7 +4380,7 @@ public extension ModifyDBClusterResultForModifyDBCluster {
     /**
      Default instance of the ModifyDBClusterResultForModifyDBCluster structure.
      */
-    public static let __default: RDSModel.ModifyDBClusterResultForModifyDBCluster = {
+    static let __default: RDSModel.ModifyDBClusterResultForModifyDBCluster = {
         let defaultInstance = RDSModel.ModifyDBClusterResultForModifyDBCluster(
             modifyDBClusterResult: ModifyDBClusterResult.__default)
 
@@ -4392,7 +4392,7 @@ public extension ModifyDBClusterSnapshotAttributeMessage {
     /**
      Default instance of the ModifyDBClusterSnapshotAttributeMessage structure.
      */
-    public static let __default: RDSModel.ModifyDBClusterSnapshotAttributeMessage = {
+    static let __default: RDSModel.ModifyDBClusterSnapshotAttributeMessage = {
         let defaultInstance = RDSModel.ModifyDBClusterSnapshotAttributeMessage(
             attributeName: "value",
             dBClusterSnapshotIdentifier: "value",
@@ -4407,7 +4407,7 @@ public extension ModifyDBClusterSnapshotAttributeResult {
     /**
      Default instance of the ModifyDBClusterSnapshotAttributeResult structure.
      */
-    public static let __default: RDSModel.ModifyDBClusterSnapshotAttributeResult = {
+    static let __default: RDSModel.ModifyDBClusterSnapshotAttributeResult = {
         let defaultInstance = RDSModel.ModifyDBClusterSnapshotAttributeResult(
             dBClusterSnapshotAttributesResult: nil)
 
@@ -4419,7 +4419,7 @@ public extension ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapsho
     /**
      Default instance of the ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute structure.
      */
-    public static let __default: RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute = {
+    static let __default: RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute = {
         let defaultInstance = RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute(
             modifyDBClusterSnapshotAttributeResult: ModifyDBClusterSnapshotAttributeResult.__default)
 
@@ -4431,7 +4431,7 @@ public extension ModifyDBInstanceMessage {
     /**
      Default instance of the ModifyDBInstanceMessage structure.
      */
-    public static let __default: RDSModel.ModifyDBInstanceMessage = {
+    static let __default: RDSModel.ModifyDBInstanceMessage = {
         let defaultInstance = RDSModel.ModifyDBInstanceMessage(
             allocatedStorage: nil,
             allowMajorVersionUpgrade: nil,
@@ -4482,7 +4482,7 @@ public extension ModifyDBInstanceResult {
     /**
      Default instance of the ModifyDBInstanceResult structure.
      */
-    public static let __default: RDSModel.ModifyDBInstanceResult = {
+    static let __default: RDSModel.ModifyDBInstanceResult = {
         let defaultInstance = RDSModel.ModifyDBInstanceResult(
             dBInstance: nil)
 
@@ -4494,7 +4494,7 @@ public extension ModifyDBInstanceResultForModifyDBInstance {
     /**
      Default instance of the ModifyDBInstanceResultForModifyDBInstance structure.
      */
-    public static let __default: RDSModel.ModifyDBInstanceResultForModifyDBInstance = {
+    static let __default: RDSModel.ModifyDBInstanceResultForModifyDBInstance = {
         let defaultInstance = RDSModel.ModifyDBInstanceResultForModifyDBInstance(
             modifyDBInstanceResult: ModifyDBInstanceResult.__default)
 
@@ -4506,7 +4506,7 @@ public extension ModifyDBParameterGroupMessage {
     /**
      Default instance of the ModifyDBParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.ModifyDBParameterGroupMessage = {
+    static let __default: RDSModel.ModifyDBParameterGroupMessage = {
         let defaultInstance = RDSModel.ModifyDBParameterGroupMessage(
             dBParameterGroupName: "value",
             parameters: [])
@@ -4519,7 +4519,7 @@ public extension ModifyDBSnapshotAttributeMessage {
     /**
      Default instance of the ModifyDBSnapshotAttributeMessage structure.
      */
-    public static let __default: RDSModel.ModifyDBSnapshotAttributeMessage = {
+    static let __default: RDSModel.ModifyDBSnapshotAttributeMessage = {
         let defaultInstance = RDSModel.ModifyDBSnapshotAttributeMessage(
             attributeName: "value",
             dBSnapshotIdentifier: "value",
@@ -4534,7 +4534,7 @@ public extension ModifyDBSnapshotAttributeResult {
     /**
      Default instance of the ModifyDBSnapshotAttributeResult structure.
      */
-    public static let __default: RDSModel.ModifyDBSnapshotAttributeResult = {
+    static let __default: RDSModel.ModifyDBSnapshotAttributeResult = {
         let defaultInstance = RDSModel.ModifyDBSnapshotAttributeResult(
             dBSnapshotAttributesResult: nil)
 
@@ -4546,7 +4546,7 @@ public extension ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
     /**
      Default instance of the ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute structure.
      */
-    public static let __default: RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute = {
+    static let __default: RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute = {
         let defaultInstance = RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute(
             modifyDBSnapshotAttributeResult: ModifyDBSnapshotAttributeResult.__default)
 
@@ -4558,7 +4558,7 @@ public extension ModifyDBSnapshotMessage {
     /**
      Default instance of the ModifyDBSnapshotMessage structure.
      */
-    public static let __default: RDSModel.ModifyDBSnapshotMessage = {
+    static let __default: RDSModel.ModifyDBSnapshotMessage = {
         let defaultInstance = RDSModel.ModifyDBSnapshotMessage(
             dBSnapshotIdentifier: "value",
             engineVersion: nil,
@@ -4572,7 +4572,7 @@ public extension ModifyDBSnapshotResult {
     /**
      Default instance of the ModifyDBSnapshotResult structure.
      */
-    public static let __default: RDSModel.ModifyDBSnapshotResult = {
+    static let __default: RDSModel.ModifyDBSnapshotResult = {
         let defaultInstance = RDSModel.ModifyDBSnapshotResult(
             dBSnapshot: nil)
 
@@ -4584,7 +4584,7 @@ public extension ModifyDBSnapshotResultForModifyDBSnapshot {
     /**
      Default instance of the ModifyDBSnapshotResultForModifyDBSnapshot structure.
      */
-    public static let __default: RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot = {
+    static let __default: RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot = {
         let defaultInstance = RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot(
             modifyDBSnapshotResult: ModifyDBSnapshotResult.__default)
 
@@ -4596,7 +4596,7 @@ public extension ModifyDBSubnetGroupMessage {
     /**
      Default instance of the ModifyDBSubnetGroupMessage structure.
      */
-    public static let __default: RDSModel.ModifyDBSubnetGroupMessage = {
+    static let __default: RDSModel.ModifyDBSubnetGroupMessage = {
         let defaultInstance = RDSModel.ModifyDBSubnetGroupMessage(
             dBSubnetGroupDescription: nil,
             dBSubnetGroupName: "value",
@@ -4610,7 +4610,7 @@ public extension ModifyDBSubnetGroupResult {
     /**
      Default instance of the ModifyDBSubnetGroupResult structure.
      */
-    public static let __default: RDSModel.ModifyDBSubnetGroupResult = {
+    static let __default: RDSModel.ModifyDBSubnetGroupResult = {
         let defaultInstance = RDSModel.ModifyDBSubnetGroupResult(
             dBSubnetGroup: nil)
 
@@ -4622,7 +4622,7 @@ public extension ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
     /**
      Default instance of the ModifyDBSubnetGroupResultForModifyDBSubnetGroup structure.
      */
-    public static let __default: RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup = {
+    static let __default: RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup = {
         let defaultInstance = RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup(
             modifyDBSubnetGroupResult: ModifyDBSubnetGroupResult.__default)
 
@@ -4634,7 +4634,7 @@ public extension ModifyEventSubscriptionMessage {
     /**
      Default instance of the ModifyEventSubscriptionMessage structure.
      */
-    public static let __default: RDSModel.ModifyEventSubscriptionMessage = {
+    static let __default: RDSModel.ModifyEventSubscriptionMessage = {
         let defaultInstance = RDSModel.ModifyEventSubscriptionMessage(
             enabled: nil,
             eventCategories: nil,
@@ -4650,7 +4650,7 @@ public extension ModifyEventSubscriptionResult {
     /**
      Default instance of the ModifyEventSubscriptionResult structure.
      */
-    public static let __default: RDSModel.ModifyEventSubscriptionResult = {
+    static let __default: RDSModel.ModifyEventSubscriptionResult = {
         let defaultInstance = RDSModel.ModifyEventSubscriptionResult(
             eventSubscription: nil)
 
@@ -4662,7 +4662,7 @@ public extension ModifyEventSubscriptionResultForModifyEventSubscription {
     /**
      Default instance of the ModifyEventSubscriptionResultForModifyEventSubscription structure.
      */
-    public static let __default: RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription = {
+    static let __default: RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription = {
         let defaultInstance = RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription(
             modifyEventSubscriptionResult: ModifyEventSubscriptionResult.__default)
 
@@ -4674,7 +4674,7 @@ public extension ModifyGlobalClusterMessage {
     /**
      Default instance of the ModifyGlobalClusterMessage structure.
      */
-    public static let __default: RDSModel.ModifyGlobalClusterMessage = {
+    static let __default: RDSModel.ModifyGlobalClusterMessage = {
         let defaultInstance = RDSModel.ModifyGlobalClusterMessage(
             deletionProtection: nil,
             globalClusterIdentifier: nil,
@@ -4688,7 +4688,7 @@ public extension ModifyGlobalClusterResult {
     /**
      Default instance of the ModifyGlobalClusterResult structure.
      */
-    public static let __default: RDSModel.ModifyGlobalClusterResult = {
+    static let __default: RDSModel.ModifyGlobalClusterResult = {
         let defaultInstance = RDSModel.ModifyGlobalClusterResult(
             globalCluster: nil)
 
@@ -4700,7 +4700,7 @@ public extension ModifyGlobalClusterResultForModifyGlobalCluster {
     /**
      Default instance of the ModifyGlobalClusterResultForModifyGlobalCluster structure.
      */
-    public static let __default: RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster = {
+    static let __default: RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster = {
         let defaultInstance = RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster(
             modifyGlobalClusterResult: ModifyGlobalClusterResult.__default)
 
@@ -4712,7 +4712,7 @@ public extension ModifyOptionGroupMessage {
     /**
      Default instance of the ModifyOptionGroupMessage structure.
      */
-    public static let __default: RDSModel.ModifyOptionGroupMessage = {
+    static let __default: RDSModel.ModifyOptionGroupMessage = {
         let defaultInstance = RDSModel.ModifyOptionGroupMessage(
             applyImmediately: nil,
             optionGroupName: "value",
@@ -4727,7 +4727,7 @@ public extension ModifyOptionGroupResult {
     /**
      Default instance of the ModifyOptionGroupResult structure.
      */
-    public static let __default: RDSModel.ModifyOptionGroupResult = {
+    static let __default: RDSModel.ModifyOptionGroupResult = {
         let defaultInstance = RDSModel.ModifyOptionGroupResult(
             optionGroup: nil)
 
@@ -4739,7 +4739,7 @@ public extension ModifyOptionGroupResultForModifyOptionGroup {
     /**
      Default instance of the ModifyOptionGroupResultForModifyOptionGroup structure.
      */
-    public static let __default: RDSModel.ModifyOptionGroupResultForModifyOptionGroup = {
+    static let __default: RDSModel.ModifyOptionGroupResultForModifyOptionGroup = {
         let defaultInstance = RDSModel.ModifyOptionGroupResultForModifyOptionGroup(
             modifyOptionGroupResult: ModifyOptionGroupResult.__default)
 
@@ -4751,7 +4751,7 @@ public extension Option {
     /**
      Default instance of the Option structure.
      */
-    public static let __default: RDSModel.Option = {
+    static let __default: RDSModel.Option = {
         let defaultInstance = RDSModel.Option(
             dBSecurityGroupMemberships: nil,
             optionDescription: nil,
@@ -4771,7 +4771,7 @@ public extension OptionConfiguration {
     /**
      Default instance of the OptionConfiguration structure.
      */
-    public static let __default: RDSModel.OptionConfiguration = {
+    static let __default: RDSModel.OptionConfiguration = {
         let defaultInstance = RDSModel.OptionConfiguration(
             dBSecurityGroupMemberships: nil,
             optionName: "value",
@@ -4788,7 +4788,7 @@ public extension OptionGroup {
     /**
      Default instance of the OptionGroup structure.
      */
-    public static let __default: RDSModel.OptionGroup = {
+    static let __default: RDSModel.OptionGroup = {
         let defaultInstance = RDSModel.OptionGroup(
             allowsVpcAndNonVpcInstanceMemberships: nil,
             engineName: nil,
@@ -4807,7 +4807,7 @@ public extension OptionGroupAlreadyExistsFault {
     /**
      Default instance of the OptionGroupAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.OptionGroupAlreadyExistsFault = {
+    static let __default: RDSModel.OptionGroupAlreadyExistsFault = {
         let defaultInstance = RDSModel.OptionGroupAlreadyExistsFault()
 
         return defaultInstance
@@ -4818,7 +4818,7 @@ public extension OptionGroupMembership {
     /**
      Default instance of the OptionGroupMembership structure.
      */
-    public static let __default: RDSModel.OptionGroupMembership = {
+    static let __default: RDSModel.OptionGroupMembership = {
         let defaultInstance = RDSModel.OptionGroupMembership(
             optionGroupName: nil,
             status: nil)
@@ -4831,7 +4831,7 @@ public extension OptionGroupNotFoundFault {
     /**
      Default instance of the OptionGroupNotFoundFault structure.
      */
-    public static let __default: RDSModel.OptionGroupNotFoundFault = {
+    static let __default: RDSModel.OptionGroupNotFoundFault = {
         let defaultInstance = RDSModel.OptionGroupNotFoundFault()
 
         return defaultInstance
@@ -4842,7 +4842,7 @@ public extension OptionGroupOption {
     /**
      Default instance of the OptionGroupOption structure.
      */
-    public static let __default: RDSModel.OptionGroupOption = {
+    static let __default: RDSModel.OptionGroupOption = {
         let defaultInstance = RDSModel.OptionGroupOption(
             defaultPort: nil,
             description: nil,
@@ -4869,7 +4869,7 @@ public extension OptionGroupOptionSetting {
     /**
      Default instance of the OptionGroupOptionSetting structure.
      */
-    public static let __default: RDSModel.OptionGroupOptionSetting = {
+    static let __default: RDSModel.OptionGroupOptionSetting = {
         let defaultInstance = RDSModel.OptionGroupOptionSetting(
             allowedValues: nil,
             applyType: nil,
@@ -4888,7 +4888,7 @@ public extension OptionGroupOptionsMessage {
     /**
      Default instance of the OptionGroupOptionsMessage structure.
      */
-    public static let __default: RDSModel.OptionGroupOptionsMessage = {
+    static let __default: RDSModel.OptionGroupOptionsMessage = {
         let defaultInstance = RDSModel.OptionGroupOptionsMessage(
             marker: nil,
             optionGroupOptions: nil)
@@ -4901,7 +4901,7 @@ public extension OptionGroupOptionsMessageForDescribeOptionGroupOptions {
     /**
      Default instance of the OptionGroupOptionsMessageForDescribeOptionGroupOptions structure.
      */
-    public static let __default: RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions = {
+    static let __default: RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions = {
         let defaultInstance = RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions(
             describeOptionGroupOptionsResult: OptionGroupOptionsMessage.__default)
 
@@ -4913,7 +4913,7 @@ public extension OptionGroupQuotaExceededFault {
     /**
      Default instance of the OptionGroupQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.OptionGroupQuotaExceededFault = {
+    static let __default: RDSModel.OptionGroupQuotaExceededFault = {
         let defaultInstance = RDSModel.OptionGroupQuotaExceededFault()
 
         return defaultInstance
@@ -4924,7 +4924,7 @@ public extension OptionGroups {
     /**
      Default instance of the OptionGroups structure.
      */
-    public static let __default: RDSModel.OptionGroups = {
+    static let __default: RDSModel.OptionGroups = {
         let defaultInstance = RDSModel.OptionGroups(
             marker: nil,
             optionGroupsList: nil)
@@ -4937,7 +4937,7 @@ public extension OptionGroupsForDescribeOptionGroups {
     /**
      Default instance of the OptionGroupsForDescribeOptionGroups structure.
      */
-    public static let __default: RDSModel.OptionGroupsForDescribeOptionGroups = {
+    static let __default: RDSModel.OptionGroupsForDescribeOptionGroups = {
         let defaultInstance = RDSModel.OptionGroupsForDescribeOptionGroups(
             describeOptionGroupsResult: OptionGroups.__default)
 
@@ -4949,7 +4949,7 @@ public extension OptionSetting {
     /**
      Default instance of the OptionSetting structure.
      */
-    public static let __default: RDSModel.OptionSetting = {
+    static let __default: RDSModel.OptionSetting = {
         let defaultInstance = RDSModel.OptionSetting(
             allowedValues: nil,
             applyType: nil,
@@ -4969,7 +4969,7 @@ public extension OptionVersion {
     /**
      Default instance of the OptionVersion structure.
      */
-    public static let __default: RDSModel.OptionVersion = {
+    static let __default: RDSModel.OptionVersion = {
         let defaultInstance = RDSModel.OptionVersion(
             isDefault: nil,
             version: nil)
@@ -4982,7 +4982,7 @@ public extension OrderableDBInstanceOption {
     /**
      Default instance of the OrderableDBInstanceOption structure.
      */
-    public static let __default: RDSModel.OrderableDBInstanceOption = {
+    static let __default: RDSModel.OrderableDBInstanceOption = {
         let defaultInstance = RDSModel.OrderableDBInstanceOption(
             availabilityZones: nil,
             availableProcessorFeatures: nil,
@@ -5015,7 +5015,7 @@ public extension OrderableDBInstanceOptionsMessage {
     /**
      Default instance of the OrderableDBInstanceOptionsMessage structure.
      */
-    public static let __default: RDSModel.OrderableDBInstanceOptionsMessage = {
+    static let __default: RDSModel.OrderableDBInstanceOptionsMessage = {
         let defaultInstance = RDSModel.OrderableDBInstanceOptionsMessage(
             marker: nil,
             orderableDBInstanceOptions: nil)
@@ -5028,7 +5028,7 @@ public extension OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstance
     /**
      Default instance of the OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions structure.
      */
-    public static let __default: RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions = {
+    static let __default: RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions = {
         let defaultInstance = RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions(
             describeOrderableDBInstanceOptionsResult: OrderableDBInstanceOptionsMessage.__default)
 
@@ -5040,7 +5040,7 @@ public extension Parameter {
     /**
      Default instance of the Parameter structure.
      */
-    public static let __default: RDSModel.Parameter = {
+    static let __default: RDSModel.Parameter = {
         let defaultInstance = RDSModel.Parameter(
             allowedValues: nil,
             applyMethod: nil,
@@ -5062,7 +5062,7 @@ public extension PendingCloudwatchLogsExports {
     /**
      Default instance of the PendingCloudwatchLogsExports structure.
      */
-    public static let __default: RDSModel.PendingCloudwatchLogsExports = {
+    static let __default: RDSModel.PendingCloudwatchLogsExports = {
         let defaultInstance = RDSModel.PendingCloudwatchLogsExports(
             logTypesToDisable: nil,
             logTypesToEnable: nil)
@@ -5075,7 +5075,7 @@ public extension PendingMaintenanceAction {
     /**
      Default instance of the PendingMaintenanceAction structure.
      */
-    public static let __default: RDSModel.PendingMaintenanceAction = {
+    static let __default: RDSModel.PendingMaintenanceAction = {
         let defaultInstance = RDSModel.PendingMaintenanceAction(
             action: nil,
             autoAppliedAfterDate: nil,
@@ -5092,7 +5092,7 @@ public extension PendingMaintenanceActionsMessage {
     /**
      Default instance of the PendingMaintenanceActionsMessage structure.
      */
-    public static let __default: RDSModel.PendingMaintenanceActionsMessage = {
+    static let __default: RDSModel.PendingMaintenanceActionsMessage = {
         let defaultInstance = RDSModel.PendingMaintenanceActionsMessage(
             marker: nil,
             pendingMaintenanceActions: nil)
@@ -5105,7 +5105,7 @@ public extension PendingMaintenanceActionsMessageForDescribePendingMaintenanceAc
     /**
      Default instance of the PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions structure.
      */
-    public static let __default: RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions = {
+    static let __default: RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions = {
         let defaultInstance = RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions(
             describePendingMaintenanceActionsResult: PendingMaintenanceActionsMessage.__default)
 
@@ -5117,7 +5117,7 @@ public extension PendingModifiedValues {
     /**
      Default instance of the PendingModifiedValues structure.
      */
-    public static let __default: RDSModel.PendingModifiedValues = {
+    static let __default: RDSModel.PendingModifiedValues = {
         let defaultInstance = RDSModel.PendingModifiedValues(
             allocatedStorage: nil,
             backupRetentionPeriod: nil,
@@ -5143,7 +5143,7 @@ public extension PointInTimeRestoreNotEnabledFault {
     /**
      Default instance of the PointInTimeRestoreNotEnabledFault structure.
      */
-    public static let __default: RDSModel.PointInTimeRestoreNotEnabledFault = {
+    static let __default: RDSModel.PointInTimeRestoreNotEnabledFault = {
         let defaultInstance = RDSModel.PointInTimeRestoreNotEnabledFault()
 
         return defaultInstance
@@ -5154,7 +5154,7 @@ public extension ProcessorFeature {
     /**
      Default instance of the ProcessorFeature structure.
      */
-    public static let __default: RDSModel.ProcessorFeature = {
+    static let __default: RDSModel.ProcessorFeature = {
         let defaultInstance = RDSModel.ProcessorFeature(
             name: nil,
             value: nil)
@@ -5167,7 +5167,7 @@ public extension PromoteReadReplicaDBClusterMessage {
     /**
      Default instance of the PromoteReadReplicaDBClusterMessage structure.
      */
-    public static let __default: RDSModel.PromoteReadReplicaDBClusterMessage = {
+    static let __default: RDSModel.PromoteReadReplicaDBClusterMessage = {
         let defaultInstance = RDSModel.PromoteReadReplicaDBClusterMessage(
             dBClusterIdentifier: "value")
 
@@ -5179,7 +5179,7 @@ public extension PromoteReadReplicaDBClusterResult {
     /**
      Default instance of the PromoteReadReplicaDBClusterResult structure.
      */
-    public static let __default: RDSModel.PromoteReadReplicaDBClusterResult = {
+    static let __default: RDSModel.PromoteReadReplicaDBClusterResult = {
         let defaultInstance = RDSModel.PromoteReadReplicaDBClusterResult(
             dBCluster: nil)
 
@@ -5191,7 +5191,7 @@ public extension PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster
     /**
      Default instance of the PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster structure.
      */
-    public static let __default: RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster = {
+    static let __default: RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster = {
         let defaultInstance = RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster(
             promoteReadReplicaDBClusterResult: PromoteReadReplicaDBClusterResult.__default)
 
@@ -5203,7 +5203,7 @@ public extension PromoteReadReplicaMessage {
     /**
      Default instance of the PromoteReadReplicaMessage structure.
      */
-    public static let __default: RDSModel.PromoteReadReplicaMessage = {
+    static let __default: RDSModel.PromoteReadReplicaMessage = {
         let defaultInstance = RDSModel.PromoteReadReplicaMessage(
             backupRetentionPeriod: nil,
             dBInstanceIdentifier: "value",
@@ -5217,7 +5217,7 @@ public extension PromoteReadReplicaResult {
     /**
      Default instance of the PromoteReadReplicaResult structure.
      */
-    public static let __default: RDSModel.PromoteReadReplicaResult = {
+    static let __default: RDSModel.PromoteReadReplicaResult = {
         let defaultInstance = RDSModel.PromoteReadReplicaResult(
             dBInstance: nil)
 
@@ -5229,7 +5229,7 @@ public extension PromoteReadReplicaResultForPromoteReadReplica {
     /**
      Default instance of the PromoteReadReplicaResultForPromoteReadReplica structure.
      */
-    public static let __default: RDSModel.PromoteReadReplicaResultForPromoteReadReplica = {
+    static let __default: RDSModel.PromoteReadReplicaResultForPromoteReadReplica = {
         let defaultInstance = RDSModel.PromoteReadReplicaResultForPromoteReadReplica(
             promoteReadReplicaResult: PromoteReadReplicaResult.__default)
 
@@ -5241,7 +5241,7 @@ public extension ProvisionedIopsNotAvailableInAZFault {
     /**
      Default instance of the ProvisionedIopsNotAvailableInAZFault structure.
      */
-    public static let __default: RDSModel.ProvisionedIopsNotAvailableInAZFault = {
+    static let __default: RDSModel.ProvisionedIopsNotAvailableInAZFault = {
         let defaultInstance = RDSModel.ProvisionedIopsNotAvailableInAZFault()
 
         return defaultInstance
@@ -5252,7 +5252,7 @@ public extension PurchaseReservedDBInstancesOfferingMessage {
     /**
      Default instance of the PurchaseReservedDBInstancesOfferingMessage structure.
      */
-    public static let __default: RDSModel.PurchaseReservedDBInstancesOfferingMessage = {
+    static let __default: RDSModel.PurchaseReservedDBInstancesOfferingMessage = {
         let defaultInstance = RDSModel.PurchaseReservedDBInstancesOfferingMessage(
             dBInstanceCount: nil,
             reservedDBInstanceId: nil,
@@ -5267,7 +5267,7 @@ public extension PurchaseReservedDBInstancesOfferingResult {
     /**
      Default instance of the PurchaseReservedDBInstancesOfferingResult structure.
      */
-    public static let __default: RDSModel.PurchaseReservedDBInstancesOfferingResult = {
+    static let __default: RDSModel.PurchaseReservedDBInstancesOfferingResult = {
         let defaultInstance = RDSModel.PurchaseReservedDBInstancesOfferingResult(
             reservedDBInstance: nil)
 
@@ -5279,7 +5279,7 @@ public extension PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBI
     /**
      Default instance of the PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering structure.
      */
-    public static let __default: RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering = {
+    static let __default: RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering = {
         let defaultInstance = RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering(
             purchaseReservedDBInstancesOfferingResult: PurchaseReservedDBInstancesOfferingResult.__default)
 
@@ -5291,7 +5291,7 @@ public extension Range {
     /**
      Default instance of the Range structure.
      */
-    public static let __default: RDSModel.Range = {
+    static let __default: RDSModel.Range = {
         let defaultInstance = RDSModel.Range(
             from: nil,
             step: nil,
@@ -5305,7 +5305,7 @@ public extension RebootDBInstanceMessage {
     /**
      Default instance of the RebootDBInstanceMessage structure.
      */
-    public static let __default: RDSModel.RebootDBInstanceMessage = {
+    static let __default: RDSModel.RebootDBInstanceMessage = {
         let defaultInstance = RDSModel.RebootDBInstanceMessage(
             dBInstanceIdentifier: "value",
             forceFailover: nil)
@@ -5318,7 +5318,7 @@ public extension RebootDBInstanceResult {
     /**
      Default instance of the RebootDBInstanceResult structure.
      */
-    public static let __default: RDSModel.RebootDBInstanceResult = {
+    static let __default: RDSModel.RebootDBInstanceResult = {
         let defaultInstance = RDSModel.RebootDBInstanceResult(
             dBInstance: nil)
 
@@ -5330,7 +5330,7 @@ public extension RebootDBInstanceResultForRebootDBInstance {
     /**
      Default instance of the RebootDBInstanceResultForRebootDBInstance structure.
      */
-    public static let __default: RDSModel.RebootDBInstanceResultForRebootDBInstance = {
+    static let __default: RDSModel.RebootDBInstanceResultForRebootDBInstance = {
         let defaultInstance = RDSModel.RebootDBInstanceResultForRebootDBInstance(
             rebootDBInstanceResult: RebootDBInstanceResult.__default)
 
@@ -5342,7 +5342,7 @@ public extension RecurringCharge {
     /**
      Default instance of the RecurringCharge structure.
      */
-    public static let __default: RDSModel.RecurringCharge = {
+    static let __default: RDSModel.RecurringCharge = {
         let defaultInstance = RDSModel.RecurringCharge(
             recurringChargeAmount: nil,
             recurringChargeFrequency: nil)
@@ -5355,7 +5355,7 @@ public extension RemoveFromGlobalClusterMessage {
     /**
      Default instance of the RemoveFromGlobalClusterMessage structure.
      */
-    public static let __default: RDSModel.RemoveFromGlobalClusterMessage = {
+    static let __default: RDSModel.RemoveFromGlobalClusterMessage = {
         let defaultInstance = RDSModel.RemoveFromGlobalClusterMessage(
             dbClusterIdentifier: nil,
             globalClusterIdentifier: nil)
@@ -5368,7 +5368,7 @@ public extension RemoveFromGlobalClusterResult {
     /**
      Default instance of the RemoveFromGlobalClusterResult structure.
      */
-    public static let __default: RDSModel.RemoveFromGlobalClusterResult = {
+    static let __default: RDSModel.RemoveFromGlobalClusterResult = {
         let defaultInstance = RDSModel.RemoveFromGlobalClusterResult(
             globalCluster: nil)
 
@@ -5380,7 +5380,7 @@ public extension RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
     /**
      Default instance of the RemoveFromGlobalClusterResultForRemoveFromGlobalCluster structure.
      */
-    public static let __default: RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster = {
+    static let __default: RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster = {
         let defaultInstance = RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster(
             removeFromGlobalClusterResult: RemoveFromGlobalClusterResult.__default)
 
@@ -5392,7 +5392,7 @@ public extension RemoveRoleFromDBClusterMessage {
     /**
      Default instance of the RemoveRoleFromDBClusterMessage structure.
      */
-    public static let __default: RDSModel.RemoveRoleFromDBClusterMessage = {
+    static let __default: RDSModel.RemoveRoleFromDBClusterMessage = {
         let defaultInstance = RDSModel.RemoveRoleFromDBClusterMessage(
             dBClusterIdentifier: "value",
             featureName: nil,
@@ -5406,7 +5406,7 @@ public extension RemoveRoleFromDBInstanceMessage {
     /**
      Default instance of the RemoveRoleFromDBInstanceMessage structure.
      */
-    public static let __default: RDSModel.RemoveRoleFromDBInstanceMessage = {
+    static let __default: RDSModel.RemoveRoleFromDBInstanceMessage = {
         let defaultInstance = RDSModel.RemoveRoleFromDBInstanceMessage(
             dBInstanceIdentifier: "value",
             featureName: "value",
@@ -5420,7 +5420,7 @@ public extension RemoveSourceIdentifierFromSubscriptionMessage {
     /**
      Default instance of the RemoveSourceIdentifierFromSubscriptionMessage structure.
      */
-    public static let __default: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage = {
+    static let __default: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage = {
         let defaultInstance = RDSModel.RemoveSourceIdentifierFromSubscriptionMessage(
             sourceIdentifier: "value",
             subscriptionName: "value")
@@ -5433,7 +5433,7 @@ public extension RemoveSourceIdentifierFromSubscriptionResult {
     /**
      Default instance of the RemoveSourceIdentifierFromSubscriptionResult structure.
      */
-    public static let __default: RDSModel.RemoveSourceIdentifierFromSubscriptionResult = {
+    static let __default: RDSModel.RemoveSourceIdentifierFromSubscriptionResult = {
         let defaultInstance = RDSModel.RemoveSourceIdentifierFromSubscriptionResult(
             eventSubscription: nil)
 
@@ -5445,7 +5445,7 @@ public extension RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIden
     /**
      Default instance of the RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription structure.
      */
-    public static let __default: RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription = {
+    static let __default: RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription = {
         let defaultInstance = RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription(
             removeSourceIdentifierFromSubscriptionResult: RemoveSourceIdentifierFromSubscriptionResult.__default)
 
@@ -5457,7 +5457,7 @@ public extension RemoveTagsFromResourceMessage {
     /**
      Default instance of the RemoveTagsFromResourceMessage structure.
      */
-    public static let __default: RDSModel.RemoveTagsFromResourceMessage = {
+    static let __default: RDSModel.RemoveTagsFromResourceMessage = {
         let defaultInstance = RDSModel.RemoveTagsFromResourceMessage(
             resourceName: "value",
             tagKeys: [])
@@ -5470,7 +5470,7 @@ public extension ReservedDBInstance {
     /**
      Default instance of the ReservedDBInstance structure.
      */
-    public static let __default: RDSModel.ReservedDBInstance = {
+    static let __default: RDSModel.ReservedDBInstance = {
         let defaultInstance = RDSModel.ReservedDBInstance(
             currencyCode: nil,
             dBInstanceClass: nil,
@@ -5496,7 +5496,7 @@ public extension ReservedDBInstanceAlreadyExistsFault {
     /**
      Default instance of the ReservedDBInstanceAlreadyExistsFault structure.
      */
-    public static let __default: RDSModel.ReservedDBInstanceAlreadyExistsFault = {
+    static let __default: RDSModel.ReservedDBInstanceAlreadyExistsFault = {
         let defaultInstance = RDSModel.ReservedDBInstanceAlreadyExistsFault()
 
         return defaultInstance
@@ -5507,7 +5507,7 @@ public extension ReservedDBInstanceMessage {
     /**
      Default instance of the ReservedDBInstanceMessage structure.
      */
-    public static let __default: RDSModel.ReservedDBInstanceMessage = {
+    static let __default: RDSModel.ReservedDBInstanceMessage = {
         let defaultInstance = RDSModel.ReservedDBInstanceMessage(
             marker: nil,
             reservedDBInstances: nil)
@@ -5520,7 +5520,7 @@ public extension ReservedDBInstanceMessageForDescribeReservedDBInstances {
     /**
      Default instance of the ReservedDBInstanceMessageForDescribeReservedDBInstances structure.
      */
-    public static let __default: RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances = {
+    static let __default: RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances = {
         let defaultInstance = RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances(
             describeReservedDBInstancesResult: ReservedDBInstanceMessage.__default)
 
@@ -5532,7 +5532,7 @@ public extension ReservedDBInstanceNotFoundFault {
     /**
      Default instance of the ReservedDBInstanceNotFoundFault structure.
      */
-    public static let __default: RDSModel.ReservedDBInstanceNotFoundFault = {
+    static let __default: RDSModel.ReservedDBInstanceNotFoundFault = {
         let defaultInstance = RDSModel.ReservedDBInstanceNotFoundFault()
 
         return defaultInstance
@@ -5543,7 +5543,7 @@ public extension ReservedDBInstanceQuotaExceededFault {
     /**
      Default instance of the ReservedDBInstanceQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.ReservedDBInstanceQuotaExceededFault = {
+    static let __default: RDSModel.ReservedDBInstanceQuotaExceededFault = {
         let defaultInstance = RDSModel.ReservedDBInstanceQuotaExceededFault()
 
         return defaultInstance
@@ -5554,7 +5554,7 @@ public extension ReservedDBInstancesOffering {
     /**
      Default instance of the ReservedDBInstancesOffering structure.
      */
-    public static let __default: RDSModel.ReservedDBInstancesOffering = {
+    static let __default: RDSModel.ReservedDBInstancesOffering = {
         let defaultInstance = RDSModel.ReservedDBInstancesOffering(
             currencyCode: nil,
             dBInstanceClass: nil,
@@ -5575,7 +5575,7 @@ public extension ReservedDBInstancesOfferingMessage {
     /**
      Default instance of the ReservedDBInstancesOfferingMessage structure.
      */
-    public static let __default: RDSModel.ReservedDBInstancesOfferingMessage = {
+    static let __default: RDSModel.ReservedDBInstancesOfferingMessage = {
         let defaultInstance = RDSModel.ReservedDBInstancesOfferingMessage(
             marker: nil,
             reservedDBInstancesOfferings: nil)
@@ -5588,7 +5588,7 @@ public extension ReservedDBInstancesOfferingMessageForDescribeReservedDBInstance
     /**
      Default instance of the ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings structure.
      */
-    public static let __default: RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings = {
+    static let __default: RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings = {
         let defaultInstance = RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings(
             describeReservedDBInstancesOfferingsResult: ReservedDBInstancesOfferingMessage.__default)
 
@@ -5600,7 +5600,7 @@ public extension ReservedDBInstancesOfferingNotFoundFault {
     /**
      Default instance of the ReservedDBInstancesOfferingNotFoundFault structure.
      */
-    public static let __default: RDSModel.ReservedDBInstancesOfferingNotFoundFault = {
+    static let __default: RDSModel.ReservedDBInstancesOfferingNotFoundFault = {
         let defaultInstance = RDSModel.ReservedDBInstancesOfferingNotFoundFault()
 
         return defaultInstance
@@ -5611,7 +5611,7 @@ public extension ResetDBClusterParameterGroupMessage {
     /**
      Default instance of the ResetDBClusterParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.ResetDBClusterParameterGroupMessage = {
+    static let __default: RDSModel.ResetDBClusterParameterGroupMessage = {
         let defaultInstance = RDSModel.ResetDBClusterParameterGroupMessage(
             dBClusterParameterGroupName: "value",
             parameters: nil,
@@ -5625,7 +5625,7 @@ public extension ResetDBParameterGroupMessage {
     /**
      Default instance of the ResetDBParameterGroupMessage structure.
      */
-    public static let __default: RDSModel.ResetDBParameterGroupMessage = {
+    static let __default: RDSModel.ResetDBParameterGroupMessage = {
         let defaultInstance = RDSModel.ResetDBParameterGroupMessage(
             dBParameterGroupName: "value",
             parameters: nil,
@@ -5639,7 +5639,7 @@ public extension ResourceNotFoundFault {
     /**
      Default instance of the ResourceNotFoundFault structure.
      */
-    public static let __default: RDSModel.ResourceNotFoundFault = {
+    static let __default: RDSModel.ResourceNotFoundFault = {
         let defaultInstance = RDSModel.ResourceNotFoundFault()
 
         return defaultInstance
@@ -5650,7 +5650,7 @@ public extension ResourcePendingMaintenanceActions {
     /**
      Default instance of the ResourcePendingMaintenanceActions structure.
      */
-    public static let __default: RDSModel.ResourcePendingMaintenanceActions = {
+    static let __default: RDSModel.ResourcePendingMaintenanceActions = {
         let defaultInstance = RDSModel.ResourcePendingMaintenanceActions(
             pendingMaintenanceActionDetails: nil,
             resourceIdentifier: nil)
@@ -5663,7 +5663,7 @@ public extension RestoreDBClusterFromS3Message {
     /**
      Default instance of the RestoreDBClusterFromS3Message structure.
      */
-    public static let __default: RDSModel.RestoreDBClusterFromS3Message = {
+    static let __default: RDSModel.RestoreDBClusterFromS3Message = {
         let defaultInstance = RDSModel.RestoreDBClusterFromS3Message(
             availabilityZones: nil,
             backtrackWindow: nil,
@@ -5703,7 +5703,7 @@ public extension RestoreDBClusterFromS3Result {
     /**
      Default instance of the RestoreDBClusterFromS3Result structure.
      */
-    public static let __default: RDSModel.RestoreDBClusterFromS3Result = {
+    static let __default: RDSModel.RestoreDBClusterFromS3Result = {
         let defaultInstance = RDSModel.RestoreDBClusterFromS3Result(
             dBCluster: nil)
 
@@ -5715,7 +5715,7 @@ public extension RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
     /**
      Default instance of the RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 structure.
      */
-    public static let __default: RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 = {
+    static let __default: RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 = {
         let defaultInstance = RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3(
             restoreDBClusterFromS3Result: RestoreDBClusterFromS3Result.__default)
 
@@ -5727,7 +5727,7 @@ public extension RestoreDBClusterFromSnapshotMessage {
     /**
      Default instance of the RestoreDBClusterFromSnapshotMessage structure.
      */
-    public static let __default: RDSModel.RestoreDBClusterFromSnapshotMessage = {
+    static let __default: RDSModel.RestoreDBClusterFromSnapshotMessage = {
         let defaultInstance = RDSModel.RestoreDBClusterFromSnapshotMessage(
             availabilityZones: nil,
             backtrackWindow: nil,
@@ -5758,7 +5758,7 @@ public extension RestoreDBClusterFromSnapshotResult {
     /**
      Default instance of the RestoreDBClusterFromSnapshotResult structure.
      */
-    public static let __default: RDSModel.RestoreDBClusterFromSnapshotResult = {
+    static let __default: RDSModel.RestoreDBClusterFromSnapshotResult = {
         let defaultInstance = RDSModel.RestoreDBClusterFromSnapshotResult(
             dBCluster: nil)
 
@@ -5770,7 +5770,7 @@ public extension RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapsh
     /**
      Default instance of the RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot structure.
      */
-    public static let __default: RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot = {
+    static let __default: RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot = {
         let defaultInstance = RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot(
             restoreDBClusterFromSnapshotResult: RestoreDBClusterFromSnapshotResult.__default)
 
@@ -5782,7 +5782,7 @@ public extension RestoreDBClusterToPointInTimeMessage {
     /**
      Default instance of the RestoreDBClusterToPointInTimeMessage structure.
      */
-    public static let __default: RDSModel.RestoreDBClusterToPointInTimeMessage = {
+    static let __default: RDSModel.RestoreDBClusterToPointInTimeMessage = {
         let defaultInstance = RDSModel.RestoreDBClusterToPointInTimeMessage(
             backtrackWindow: nil,
             copyTagsToSnapshot: nil,
@@ -5810,7 +5810,7 @@ public extension RestoreDBClusterToPointInTimeResult {
     /**
      Default instance of the RestoreDBClusterToPointInTimeResult structure.
      */
-    public static let __default: RDSModel.RestoreDBClusterToPointInTimeResult = {
+    static let __default: RDSModel.RestoreDBClusterToPointInTimeResult = {
         let defaultInstance = RDSModel.RestoreDBClusterToPointInTimeResult(
             dBCluster: nil)
 
@@ -5822,7 +5822,7 @@ public extension RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointIn
     /**
      Default instance of the RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime structure.
      */
-    public static let __default: RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime = {
+    static let __default: RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime = {
         let defaultInstance = RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime(
             restoreDBClusterToPointInTimeResult: RestoreDBClusterToPointInTimeResult.__default)
 
@@ -5834,7 +5834,7 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
     /**
      Default instance of the RestoreDBInstanceFromDBSnapshotMessage structure.
      */
-    public static let __default: RDSModel.RestoreDBInstanceFromDBSnapshotMessage = {
+    static let __default: RDSModel.RestoreDBInstanceFromDBSnapshotMessage = {
         let defaultInstance = RDSModel.RestoreDBInstanceFromDBSnapshotMessage(
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
@@ -5873,7 +5873,7 @@ public extension RestoreDBInstanceFromDBSnapshotResult {
     /**
      Default instance of the RestoreDBInstanceFromDBSnapshotResult structure.
      */
-    public static let __default: RDSModel.RestoreDBInstanceFromDBSnapshotResult = {
+    static let __default: RDSModel.RestoreDBInstanceFromDBSnapshotResult = {
         let defaultInstance = RDSModel.RestoreDBInstanceFromDBSnapshotResult(
             dBInstance: nil)
 
@@ -5885,7 +5885,7 @@ public extension RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDB
     /**
      Default instance of the RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot structure.
      */
-    public static let __default: RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot = {
+    static let __default: RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot = {
         let defaultInstance = RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot(
             restoreDBInstanceFromDBSnapshotResult: RestoreDBInstanceFromDBSnapshotResult.__default)
 
@@ -5897,7 +5897,7 @@ public extension RestoreDBInstanceFromS3Message {
     /**
      Default instance of the RestoreDBInstanceFromS3Message structure.
      */
-    public static let __default: RDSModel.RestoreDBInstanceFromS3Message = {
+    static let __default: RDSModel.RestoreDBInstanceFromS3Message = {
         let defaultInstance = RDSModel.RestoreDBInstanceFromS3Message(
             allocatedStorage: nil,
             autoMinorVersionUpgrade: nil,
@@ -5951,7 +5951,7 @@ public extension RestoreDBInstanceFromS3Result {
     /**
      Default instance of the RestoreDBInstanceFromS3Result structure.
      */
-    public static let __default: RDSModel.RestoreDBInstanceFromS3Result = {
+    static let __default: RDSModel.RestoreDBInstanceFromS3Result = {
         let defaultInstance = RDSModel.RestoreDBInstanceFromS3Result(
             dBInstance: nil)
 
@@ -5963,7 +5963,7 @@ public extension RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
     /**
      Default instance of the RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 structure.
      */
-    public static let __default: RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 = {
+    static let __default: RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 = {
         let defaultInstance = RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3(
             restoreDBInstanceFromS3Result: RestoreDBInstanceFromS3Result.__default)
 
@@ -5975,7 +5975,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
     /**
      Default instance of the RestoreDBInstanceToPointInTimeMessage structure.
      */
-    public static let __default: RDSModel.RestoreDBInstanceToPointInTimeMessage = {
+    static let __default: RDSModel.RestoreDBInstanceToPointInTimeMessage = {
         let defaultInstance = RDSModel.RestoreDBInstanceToPointInTimeMessage(
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
@@ -6017,7 +6017,7 @@ public extension RestoreDBInstanceToPointInTimeResult {
     /**
      Default instance of the RestoreDBInstanceToPointInTimeResult structure.
      */
-    public static let __default: RDSModel.RestoreDBInstanceToPointInTimeResult = {
+    static let __default: RDSModel.RestoreDBInstanceToPointInTimeResult = {
         let defaultInstance = RDSModel.RestoreDBInstanceToPointInTimeResult(
             dBInstance: nil)
 
@@ -6029,7 +6029,7 @@ public extension RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPoint
     /**
      Default instance of the RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime structure.
      */
-    public static let __default: RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime = {
+    static let __default: RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime = {
         let defaultInstance = RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime(
             restoreDBInstanceToPointInTimeResult: RestoreDBInstanceToPointInTimeResult.__default)
 
@@ -6041,7 +6041,7 @@ public extension RestoreWindow {
     /**
      Default instance of the RestoreWindow structure.
      */
-    public static let __default: RDSModel.RestoreWindow = {
+    static let __default: RDSModel.RestoreWindow = {
         let defaultInstance = RDSModel.RestoreWindow(
             earliestTime: nil,
             latestTime: nil)
@@ -6054,7 +6054,7 @@ public extension RevokeDBSecurityGroupIngressMessage {
     /**
      Default instance of the RevokeDBSecurityGroupIngressMessage structure.
      */
-    public static let __default: RDSModel.RevokeDBSecurityGroupIngressMessage = {
+    static let __default: RDSModel.RevokeDBSecurityGroupIngressMessage = {
         let defaultInstance = RDSModel.RevokeDBSecurityGroupIngressMessage(
             cIDRIP: nil,
             dBSecurityGroupName: "value",
@@ -6070,7 +6070,7 @@ public extension RevokeDBSecurityGroupIngressResult {
     /**
      Default instance of the RevokeDBSecurityGroupIngressResult structure.
      */
-    public static let __default: RDSModel.RevokeDBSecurityGroupIngressResult = {
+    static let __default: RDSModel.RevokeDBSecurityGroupIngressResult = {
         let defaultInstance = RDSModel.RevokeDBSecurityGroupIngressResult(
             dBSecurityGroup: nil)
 
@@ -6082,7 +6082,7 @@ public extension RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngre
     /**
      Default instance of the RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress structure.
      */
-    public static let __default: RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress = {
+    static let __default: RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress = {
         let defaultInstance = RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress(
             revokeDBSecurityGroupIngressResult: RevokeDBSecurityGroupIngressResult.__default)
 
@@ -6094,7 +6094,7 @@ public extension SNSInvalidTopicFault {
     /**
      Default instance of the SNSInvalidTopicFault structure.
      */
-    public static let __default: RDSModel.SNSInvalidTopicFault = {
+    static let __default: RDSModel.SNSInvalidTopicFault = {
         let defaultInstance = RDSModel.SNSInvalidTopicFault()
 
         return defaultInstance
@@ -6105,7 +6105,7 @@ public extension SNSNoAuthorizationFault {
     /**
      Default instance of the SNSNoAuthorizationFault structure.
      */
-    public static let __default: RDSModel.SNSNoAuthorizationFault = {
+    static let __default: RDSModel.SNSNoAuthorizationFault = {
         let defaultInstance = RDSModel.SNSNoAuthorizationFault()
 
         return defaultInstance
@@ -6116,7 +6116,7 @@ public extension SNSTopicArnNotFoundFault {
     /**
      Default instance of the SNSTopicArnNotFoundFault structure.
      */
-    public static let __default: RDSModel.SNSTopicArnNotFoundFault = {
+    static let __default: RDSModel.SNSTopicArnNotFoundFault = {
         let defaultInstance = RDSModel.SNSTopicArnNotFoundFault()
 
         return defaultInstance
@@ -6127,7 +6127,7 @@ public extension ScalingConfiguration {
     /**
      Default instance of the ScalingConfiguration structure.
      */
-    public static let __default: RDSModel.ScalingConfiguration = {
+    static let __default: RDSModel.ScalingConfiguration = {
         let defaultInstance = RDSModel.ScalingConfiguration(
             autoPause: nil,
             maxCapacity: nil,
@@ -6143,7 +6143,7 @@ public extension ScalingConfigurationInfo {
     /**
      Default instance of the ScalingConfigurationInfo structure.
      */
-    public static let __default: RDSModel.ScalingConfigurationInfo = {
+    static let __default: RDSModel.ScalingConfigurationInfo = {
         let defaultInstance = RDSModel.ScalingConfigurationInfo(
             autoPause: nil,
             maxCapacity: nil,
@@ -6159,7 +6159,7 @@ public extension SharedSnapshotQuotaExceededFault {
     /**
      Default instance of the SharedSnapshotQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.SharedSnapshotQuotaExceededFault = {
+    static let __default: RDSModel.SharedSnapshotQuotaExceededFault = {
         let defaultInstance = RDSModel.SharedSnapshotQuotaExceededFault()
 
         return defaultInstance
@@ -6170,7 +6170,7 @@ public extension SnapshotQuotaExceededFault {
     /**
      Default instance of the SnapshotQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.SnapshotQuotaExceededFault = {
+    static let __default: RDSModel.SnapshotQuotaExceededFault = {
         let defaultInstance = RDSModel.SnapshotQuotaExceededFault()
 
         return defaultInstance
@@ -6181,7 +6181,7 @@ public extension SourceNotFoundFault {
     /**
      Default instance of the SourceNotFoundFault structure.
      */
-    public static let __default: RDSModel.SourceNotFoundFault = {
+    static let __default: RDSModel.SourceNotFoundFault = {
         let defaultInstance = RDSModel.SourceNotFoundFault()
 
         return defaultInstance
@@ -6192,7 +6192,7 @@ public extension SourceRegion {
     /**
      Default instance of the SourceRegion structure.
      */
-    public static let __default: RDSModel.SourceRegion = {
+    static let __default: RDSModel.SourceRegion = {
         let defaultInstance = RDSModel.SourceRegion(
             endpoint: nil,
             regionName: nil,
@@ -6206,7 +6206,7 @@ public extension SourceRegionMessage {
     /**
      Default instance of the SourceRegionMessage structure.
      */
-    public static let __default: RDSModel.SourceRegionMessage = {
+    static let __default: RDSModel.SourceRegionMessage = {
         let defaultInstance = RDSModel.SourceRegionMessage(
             marker: nil,
             sourceRegions: nil)
@@ -6219,7 +6219,7 @@ public extension SourceRegionMessageForDescribeSourceRegions {
     /**
      Default instance of the SourceRegionMessageForDescribeSourceRegions structure.
      */
-    public static let __default: RDSModel.SourceRegionMessageForDescribeSourceRegions = {
+    static let __default: RDSModel.SourceRegionMessageForDescribeSourceRegions = {
         let defaultInstance = RDSModel.SourceRegionMessageForDescribeSourceRegions(
             describeSourceRegionsResult: SourceRegionMessage.__default)
 
@@ -6231,7 +6231,7 @@ public extension StartActivityStreamRequest {
     /**
      Default instance of the StartActivityStreamRequest structure.
      */
-    public static let __default: RDSModel.StartActivityStreamRequest = {
+    static let __default: RDSModel.StartActivityStreamRequest = {
         let defaultInstance = RDSModel.StartActivityStreamRequest(
             applyImmediately: nil,
             kmsKeyId: "value",
@@ -6246,7 +6246,7 @@ public extension StartActivityStreamResponse {
     /**
      Default instance of the StartActivityStreamResponse structure.
      */
-    public static let __default: RDSModel.StartActivityStreamResponse = {
+    static let __default: RDSModel.StartActivityStreamResponse = {
         let defaultInstance = RDSModel.StartActivityStreamResponse(
             applyImmediately: nil,
             kinesisStreamName: nil,
@@ -6262,7 +6262,7 @@ public extension StartActivityStreamResponseForStartActivityStream {
     /**
      Default instance of the StartActivityStreamResponseForStartActivityStream structure.
      */
-    public static let __default: RDSModel.StartActivityStreamResponseForStartActivityStream = {
+    static let __default: RDSModel.StartActivityStreamResponseForStartActivityStream = {
         let defaultInstance = RDSModel.StartActivityStreamResponseForStartActivityStream(
             startActivityStreamResult: StartActivityStreamResponse.__default)
 
@@ -6274,7 +6274,7 @@ public extension StartDBClusterMessage {
     /**
      Default instance of the StartDBClusterMessage structure.
      */
-    public static let __default: RDSModel.StartDBClusterMessage = {
+    static let __default: RDSModel.StartDBClusterMessage = {
         let defaultInstance = RDSModel.StartDBClusterMessage(
             dBClusterIdentifier: "value")
 
@@ -6286,7 +6286,7 @@ public extension StartDBClusterResult {
     /**
      Default instance of the StartDBClusterResult structure.
      */
-    public static let __default: RDSModel.StartDBClusterResult = {
+    static let __default: RDSModel.StartDBClusterResult = {
         let defaultInstance = RDSModel.StartDBClusterResult(
             dBCluster: nil)
 
@@ -6298,7 +6298,7 @@ public extension StartDBClusterResultForStartDBCluster {
     /**
      Default instance of the StartDBClusterResultForStartDBCluster structure.
      */
-    public static let __default: RDSModel.StartDBClusterResultForStartDBCluster = {
+    static let __default: RDSModel.StartDBClusterResultForStartDBCluster = {
         let defaultInstance = RDSModel.StartDBClusterResultForStartDBCluster(
             startDBClusterResult: StartDBClusterResult.__default)
 
@@ -6310,7 +6310,7 @@ public extension StartDBInstanceMessage {
     /**
      Default instance of the StartDBInstanceMessage structure.
      */
-    public static let __default: RDSModel.StartDBInstanceMessage = {
+    static let __default: RDSModel.StartDBInstanceMessage = {
         let defaultInstance = RDSModel.StartDBInstanceMessage(
             dBInstanceIdentifier: "value")
 
@@ -6322,7 +6322,7 @@ public extension StartDBInstanceResult {
     /**
      Default instance of the StartDBInstanceResult structure.
      */
-    public static let __default: RDSModel.StartDBInstanceResult = {
+    static let __default: RDSModel.StartDBInstanceResult = {
         let defaultInstance = RDSModel.StartDBInstanceResult(
             dBInstance: nil)
 
@@ -6334,7 +6334,7 @@ public extension StartDBInstanceResultForStartDBInstance {
     /**
      Default instance of the StartDBInstanceResultForStartDBInstance structure.
      */
-    public static let __default: RDSModel.StartDBInstanceResultForStartDBInstance = {
+    static let __default: RDSModel.StartDBInstanceResultForStartDBInstance = {
         let defaultInstance = RDSModel.StartDBInstanceResultForStartDBInstance(
             startDBInstanceResult: StartDBInstanceResult.__default)
 
@@ -6346,7 +6346,7 @@ public extension StopActivityStreamRequest {
     /**
      Default instance of the StopActivityStreamRequest structure.
      */
-    public static let __default: RDSModel.StopActivityStreamRequest = {
+    static let __default: RDSModel.StopActivityStreamRequest = {
         let defaultInstance = RDSModel.StopActivityStreamRequest(
             applyImmediately: nil,
             resourceArn: "value")
@@ -6359,7 +6359,7 @@ public extension StopActivityStreamResponse {
     /**
      Default instance of the StopActivityStreamResponse structure.
      */
-    public static let __default: RDSModel.StopActivityStreamResponse = {
+    static let __default: RDSModel.StopActivityStreamResponse = {
         let defaultInstance = RDSModel.StopActivityStreamResponse(
             kinesisStreamName: nil,
             kmsKeyId: nil,
@@ -6373,7 +6373,7 @@ public extension StopActivityStreamResponseForStopActivityStream {
     /**
      Default instance of the StopActivityStreamResponseForStopActivityStream structure.
      */
-    public static let __default: RDSModel.StopActivityStreamResponseForStopActivityStream = {
+    static let __default: RDSModel.StopActivityStreamResponseForStopActivityStream = {
         let defaultInstance = RDSModel.StopActivityStreamResponseForStopActivityStream(
             stopActivityStreamResult: StopActivityStreamResponse.__default)
 
@@ -6385,7 +6385,7 @@ public extension StopDBClusterMessage {
     /**
      Default instance of the StopDBClusterMessage structure.
      */
-    public static let __default: RDSModel.StopDBClusterMessage = {
+    static let __default: RDSModel.StopDBClusterMessage = {
         let defaultInstance = RDSModel.StopDBClusterMessage(
             dBClusterIdentifier: "value")
 
@@ -6397,7 +6397,7 @@ public extension StopDBClusterResult {
     /**
      Default instance of the StopDBClusterResult structure.
      */
-    public static let __default: RDSModel.StopDBClusterResult = {
+    static let __default: RDSModel.StopDBClusterResult = {
         let defaultInstance = RDSModel.StopDBClusterResult(
             dBCluster: nil)
 
@@ -6409,7 +6409,7 @@ public extension StopDBClusterResultForStopDBCluster {
     /**
      Default instance of the StopDBClusterResultForStopDBCluster structure.
      */
-    public static let __default: RDSModel.StopDBClusterResultForStopDBCluster = {
+    static let __default: RDSModel.StopDBClusterResultForStopDBCluster = {
         let defaultInstance = RDSModel.StopDBClusterResultForStopDBCluster(
             stopDBClusterResult: StopDBClusterResult.__default)
 
@@ -6421,7 +6421,7 @@ public extension StopDBInstanceMessage {
     /**
      Default instance of the StopDBInstanceMessage structure.
      */
-    public static let __default: RDSModel.StopDBInstanceMessage = {
+    static let __default: RDSModel.StopDBInstanceMessage = {
         let defaultInstance = RDSModel.StopDBInstanceMessage(
             dBInstanceIdentifier: "value",
             dBSnapshotIdentifier: nil)
@@ -6434,7 +6434,7 @@ public extension StopDBInstanceResult {
     /**
      Default instance of the StopDBInstanceResult structure.
      */
-    public static let __default: RDSModel.StopDBInstanceResult = {
+    static let __default: RDSModel.StopDBInstanceResult = {
         let defaultInstance = RDSModel.StopDBInstanceResult(
             dBInstance: nil)
 
@@ -6446,7 +6446,7 @@ public extension StopDBInstanceResultForStopDBInstance {
     /**
      Default instance of the StopDBInstanceResultForStopDBInstance structure.
      */
-    public static let __default: RDSModel.StopDBInstanceResultForStopDBInstance = {
+    static let __default: RDSModel.StopDBInstanceResultForStopDBInstance = {
         let defaultInstance = RDSModel.StopDBInstanceResultForStopDBInstance(
             stopDBInstanceResult: StopDBInstanceResult.__default)
 
@@ -6458,7 +6458,7 @@ public extension StorageQuotaExceededFault {
     /**
      Default instance of the StorageQuotaExceededFault structure.
      */
-    public static let __default: RDSModel.StorageQuotaExceededFault = {
+    static let __default: RDSModel.StorageQuotaExceededFault = {
         let defaultInstance = RDSModel.StorageQuotaExceededFault()
 
         return defaultInstance
@@ -6469,7 +6469,7 @@ public extension StorageTypeNotSupportedFault {
     /**
      Default instance of the StorageTypeNotSupportedFault structure.
      */
-    public static let __default: RDSModel.StorageTypeNotSupportedFault = {
+    static let __default: RDSModel.StorageTypeNotSupportedFault = {
         let defaultInstance = RDSModel.StorageTypeNotSupportedFault()
 
         return defaultInstance
@@ -6480,7 +6480,7 @@ public extension Subnet {
     /**
      Default instance of the Subnet structure.
      */
-    public static let __default: RDSModel.Subnet = {
+    static let __default: RDSModel.Subnet = {
         let defaultInstance = RDSModel.Subnet(
             subnetAvailabilityZone: nil,
             subnetIdentifier: nil,
@@ -6494,7 +6494,7 @@ public extension SubnetAlreadyInUse {
     /**
      Default instance of the SubnetAlreadyInUse structure.
      */
-    public static let __default: RDSModel.SubnetAlreadyInUse = {
+    static let __default: RDSModel.SubnetAlreadyInUse = {
         let defaultInstance = RDSModel.SubnetAlreadyInUse()
 
         return defaultInstance
@@ -6505,7 +6505,7 @@ public extension SubscriptionAlreadyExistFault {
     /**
      Default instance of the SubscriptionAlreadyExistFault structure.
      */
-    public static let __default: RDSModel.SubscriptionAlreadyExistFault = {
+    static let __default: RDSModel.SubscriptionAlreadyExistFault = {
         let defaultInstance = RDSModel.SubscriptionAlreadyExistFault()
 
         return defaultInstance
@@ -6516,7 +6516,7 @@ public extension SubscriptionCategoryNotFoundFault {
     /**
      Default instance of the SubscriptionCategoryNotFoundFault structure.
      */
-    public static let __default: RDSModel.SubscriptionCategoryNotFoundFault = {
+    static let __default: RDSModel.SubscriptionCategoryNotFoundFault = {
         let defaultInstance = RDSModel.SubscriptionCategoryNotFoundFault()
 
         return defaultInstance
@@ -6527,7 +6527,7 @@ public extension SubscriptionNotFoundFault {
     /**
      Default instance of the SubscriptionNotFoundFault structure.
      */
-    public static let __default: RDSModel.SubscriptionNotFoundFault = {
+    static let __default: RDSModel.SubscriptionNotFoundFault = {
         let defaultInstance = RDSModel.SubscriptionNotFoundFault()
 
         return defaultInstance
@@ -6538,7 +6538,7 @@ public extension Tag {
     /**
      Default instance of the Tag structure.
      */
-    public static let __default: RDSModel.Tag = {
+    static let __default: RDSModel.Tag = {
         let defaultInstance = RDSModel.Tag(
             key: nil,
             value: nil)
@@ -6551,7 +6551,7 @@ public extension TagListMessage {
     /**
      Default instance of the TagListMessage structure.
      */
-    public static let __default: RDSModel.TagListMessage = {
+    static let __default: RDSModel.TagListMessage = {
         let defaultInstance = RDSModel.TagListMessage(
             tagList: nil)
 
@@ -6563,7 +6563,7 @@ public extension TagListMessageForListTagsForResource {
     /**
      Default instance of the TagListMessageForListTagsForResource structure.
      */
-    public static let __default: RDSModel.TagListMessageForListTagsForResource = {
+    static let __default: RDSModel.TagListMessageForListTagsForResource = {
         let defaultInstance = RDSModel.TagListMessageForListTagsForResource(
             listTagsForResourceResult: TagListMessage.__default)
 
@@ -6575,7 +6575,7 @@ public extension Timezone {
     /**
      Default instance of the Timezone structure.
      */
-    public static let __default: RDSModel.Timezone = {
+    static let __default: RDSModel.Timezone = {
         let defaultInstance = RDSModel.Timezone(
             timezoneName: nil)
 
@@ -6587,7 +6587,7 @@ public extension UpgradeTarget {
     /**
      Default instance of the UpgradeTarget structure.
      */
-    public static let __default: RDSModel.UpgradeTarget = {
+    static let __default: RDSModel.UpgradeTarget = {
         let defaultInstance = RDSModel.UpgradeTarget(
             autoUpgrade: nil,
             description: nil,
@@ -6603,7 +6603,7 @@ public extension ValidDBInstanceModificationsMessage {
     /**
      Default instance of the ValidDBInstanceModificationsMessage structure.
      */
-    public static let __default: RDSModel.ValidDBInstanceModificationsMessage = {
+    static let __default: RDSModel.ValidDBInstanceModificationsMessage = {
         let defaultInstance = RDSModel.ValidDBInstanceModificationsMessage(
             storage: nil,
             validProcessorFeatures: nil)
@@ -6616,7 +6616,7 @@ public extension ValidStorageOptions {
     /**
      Default instance of the ValidStorageOptions structure.
      */
-    public static let __default: RDSModel.ValidStorageOptions = {
+    static let __default: RDSModel.ValidStorageOptions = {
         let defaultInstance = RDSModel.ValidStorageOptions(
             iopsToStorageRatio: nil,
             provisionedIops: nil,
@@ -6631,7 +6631,7 @@ public extension VpcSecurityGroupMembership {
     /**
      Default instance of the VpcSecurityGroupMembership structure.
      */
-    public static let __default: RDSModel.VpcSecurityGroupMembership = {
+    static let __default: RDSModel.VpcSecurityGroupMembership = {
         let defaultInstance = RDSModel.VpcSecurityGroupMembership(
             status: nil,
             vpcSecurityGroupId: nil)

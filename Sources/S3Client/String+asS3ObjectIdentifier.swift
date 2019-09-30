@@ -35,7 +35,7 @@ public extension String {
      This would return S3ObjectIdentifer(bucketName: "bucketName",
                                          keyPath: "/the/key/path")
      */
-    public func asS3ObjectIdentifier() -> S3ObjectIdentifer? {
+    func asS3ObjectIdentifier() -> S3ObjectIdentifer? {
         if self.starts(with: S3ObjectIdentifer.s3Prefix) {
             // get the url without the scheme - of the form {bucket}/{key+}
             let nonPrefixedUrl = self.dropFirst(S3ObjectIdentifer.s3Prefix.count)
