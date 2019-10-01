@@ -1441,6 +1441,11 @@ public typealias SSECustomerKey = String
 public typealias SSECustomerKeyMD5 = String
 
 /**
+ Type definition for the SSEKMSEncryptionContext field.
+ */
+public typealias SSEKMSEncryptionContext = String
+
+/**
  Type definition for the SSEKMSKeyId field.
  */
 public typealias SSEKMSKeyId = String

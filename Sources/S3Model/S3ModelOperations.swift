@@ -321,7 +321,7 @@ public struct AbortMultipartUploadOperationInputPath: Codable, Equatable {
 }
 
 public extension AbortMultipartUploadRequest {
-    public func asS3ModelAbortMultipartUploadOperationInputPath() -> AbortMultipartUploadOperationInputPath {
+    func asS3ModelAbortMultipartUploadOperationInputPath() -> AbortMultipartUploadOperationInputPath {
         return AbortMultipartUploadOperationInputPath(
             bucket: bucket,
             key: key)
@@ -348,7 +348,7 @@ public struct AbortMultipartUploadOperationInputQuery: Codable, Equatable {
 }
 
 public extension AbortMultipartUploadRequest {
-    public func asS3ModelAbortMultipartUploadOperationInputQuery() -> AbortMultipartUploadOperationInputQuery {
+    func asS3ModelAbortMultipartUploadOperationInputQuery() -> AbortMultipartUploadOperationInputQuery {
         return AbortMultipartUploadOperationInputQuery(
             uploadId: uploadId)
     }
@@ -374,7 +374,7 @@ public struct AbortMultipartUploadOperationInputAdditionalHeaders: Codable, Equa
 }
 
 public extension AbortMultipartUploadRequest {
-    public func asS3ModelAbortMultipartUploadOperationInputAdditionalHeaders() -> AbortMultipartUploadOperationInputAdditionalHeaders {
+    func asS3ModelAbortMultipartUploadOperationInputAdditionalHeaders() -> AbortMultipartUploadOperationInputAdditionalHeaders {
         return AbortMultipartUploadOperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -405,7 +405,7 @@ public struct CompleteMultipartUploadOperationInputPath: Codable, Equatable {
 }
 
 public extension CompleteMultipartUploadRequest {
-    public func asS3ModelCompleteMultipartUploadOperationInputPath() -> CompleteMultipartUploadOperationInputPath {
+    func asS3ModelCompleteMultipartUploadOperationInputPath() -> CompleteMultipartUploadOperationInputPath {
         return CompleteMultipartUploadOperationInputPath(
             bucket: bucket,
             key: key)
@@ -432,7 +432,7 @@ public struct CompleteMultipartUploadOperationInputQuery: Codable, Equatable {
 }
 
 public extension CompleteMultipartUploadRequest {
-    public func asS3ModelCompleteMultipartUploadOperationInputQuery() -> CompleteMultipartUploadOperationInputQuery {
+    func asS3ModelCompleteMultipartUploadOperationInputQuery() -> CompleteMultipartUploadOperationInputQuery {
         return CompleteMultipartUploadOperationInputQuery(
             uploadId: uploadId)
     }
@@ -458,7 +458,7 @@ public struct CompleteMultipartUploadOperationInputAdditionalHeaders: Codable, E
 }
 
 public extension CompleteMultipartUploadRequest {
-    public func asS3ModelCompleteMultipartUploadOperationInputAdditionalHeaders() -> CompleteMultipartUploadOperationInputAdditionalHeaders {
+    func asS3ModelCompleteMultipartUploadOperationInputAdditionalHeaders() -> CompleteMultipartUploadOperationInputAdditionalHeaders {
         return CompleteMultipartUploadOperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -497,7 +497,7 @@ public struct CompleteMultipartUploadOperationOutputBody: Codable, Equatable {
 }
 
 public extension CompleteMultipartUploadOutput {
-    public func asS3ModelCompleteMultipartUploadOperationOutputBody() -> CompleteMultipartUploadOperationOutputBody {
+    func asS3ModelCompleteMultipartUploadOperationOutputBody() -> CompleteMultipartUploadOperationOutputBody {
         return CompleteMultipartUploadOperationOutputBody(
             bucket: bucket,
             eTag: eTag,
@@ -542,7 +542,7 @@ public struct CompleteMultipartUploadOperationOutputHeaders: Codable, Equatable 
 }
 
 public extension CompleteMultipartUploadOutput {
-    public func asS3ModelCompleteMultipartUploadOperationOutputHeaders() -> CompleteMultipartUploadOperationOutputHeaders {
+    func asS3ModelCompleteMultipartUploadOperationOutputHeaders() -> CompleteMultipartUploadOperationOutputHeaders {
         return CompleteMultipartUploadOperationOutputHeaders(
             expiration: expiration,
             requestCharged: requestCharged,
@@ -577,7 +577,7 @@ public struct CopyObjectOperationInputPath: Codable, Equatable {
 }
 
 public extension CopyObjectRequest {
-    public func asS3ModelCopyObjectOperationInputPath() -> CopyObjectOperationInputPath {
+    func asS3ModelCopyObjectOperationInputPath() -> CopyObjectOperationInputPath {
         return CopyObjectOperationInputPath(
             bucket: bucket,
             key: key)
@@ -617,6 +617,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
     public var storageClass: StorageClass?
@@ -652,6 +653,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 storageClass: StorageClass? = nil,
@@ -686,6 +688,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
         self.storageClass = storageClass
@@ -723,6 +726,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
         case storageClass = "x-amz-storage-class"
@@ -737,7 +741,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension CopyObjectRequest {
-    public func asS3ModelCopyObjectOperationInputAdditionalHeaders() -> CopyObjectOperationInputAdditionalHeaders {
+    func asS3ModelCopyObjectOperationInputAdditionalHeaders() -> CopyObjectOperationInputAdditionalHeaders {
         return CopyObjectOperationInputAdditionalHeaders(
             aCL: aCL,
             cacheControl: cacheControl,
@@ -767,6 +771,7 @@ public extension CopyObjectRequest {
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption,
             storageClass: storageClass,
@@ -786,6 +791,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
     public var requestCharged: RequestCharged?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
     public var versionId: ObjectVersionId?
@@ -795,6 +801,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
                 requestCharged: RequestCharged? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 versionId: ObjectVersionId? = nil) {
@@ -803,6 +810,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
         self.requestCharged = requestCharged
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
         self.versionId = versionId
@@ -814,6 +822,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
         case requestCharged = "x-amz-request-charged"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
         case versionId = "x-amz-version-id"
@@ -824,13 +833,14 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
 }
 
 public extension CopyObjectOutput {
-    public func asS3ModelCopyObjectOperationOutputHeaders() -> CopyObjectOperationOutputHeaders {
+    func asS3ModelCopyObjectOperationOutputHeaders() -> CopyObjectOperationOutputHeaders {
         return CopyObjectOperationOutputHeaders(
             copySourceVersionId: copySourceVersionId,
             expiration: expiration,
             requestCharged: requestCharged,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption,
             versionId: versionId)
@@ -857,7 +867,7 @@ public struct CreateBucketOperationInputPath: Codable, Equatable {
 }
 
 public extension CreateBucketRequest {
-    public func asS3ModelCreateBucketOperationInputPath() -> CreateBucketOperationInputPath {
+    func asS3ModelCreateBucketOperationInputPath() -> CreateBucketOperationInputPath {
         return CreateBucketOperationInputPath(
             bucket: bucket)
     }
@@ -907,7 +917,7 @@ public struct CreateBucketOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension CreateBucketRequest {
-    public func asS3ModelCreateBucketOperationInputAdditionalHeaders() -> CreateBucketOperationInputAdditionalHeaders {
+    func asS3ModelCreateBucketOperationInputAdditionalHeaders() -> CreateBucketOperationInputAdditionalHeaders {
         return CreateBucketOperationInputAdditionalHeaders(
             aCL: aCL,
             grantFullControl: grantFullControl,
@@ -944,7 +954,7 @@ public struct CreateMultipartUploadOperationInputPath: Codable, Equatable {
 }
 
 public extension CreateMultipartUploadRequest {
-    public func asS3ModelCreateMultipartUploadOperationInputPath() -> CreateMultipartUploadOperationInputPath {
+    func asS3ModelCreateMultipartUploadOperationInputPath() -> CreateMultipartUploadOperationInputPath {
         return CreateMultipartUploadOperationInputPath(
             bucket: bucket,
             key: key)
@@ -975,6 +985,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
     public var storageClass: StorageClass?
@@ -1000,6 +1011,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 storageClass: StorageClass? = nil,
@@ -1024,6 +1036,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
         self.storageClass = storageClass
@@ -1051,6 +1064,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
         case storageClass = "x-amz-storage-class"
@@ -1063,7 +1077,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
 }
 
 public extension CreateMultipartUploadRequest {
-    public func asS3ModelCreateMultipartUploadOperationInputAdditionalHeaders() -> CreateMultipartUploadOperationInputAdditionalHeaders {
+    func asS3ModelCreateMultipartUploadOperationInputAdditionalHeaders() -> CreateMultipartUploadOperationInputAdditionalHeaders {
         return CreateMultipartUploadOperationInputAdditionalHeaders(
             aCL: aCL,
             cacheControl: cacheControl,
@@ -1084,6 +1098,7 @@ public extension CreateMultipartUploadRequest {
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption,
             storageClass: storageClass,
@@ -1121,7 +1136,7 @@ public struct CreateMultipartUploadOperationOutputBody: Codable, Equatable {
 }
 
 public extension CreateMultipartUploadOutput {
-    public func asS3ModelCreateMultipartUploadOperationOutputBody() -> CreateMultipartUploadOperationOutputBody {
+    func asS3ModelCreateMultipartUploadOperationOutputBody() -> CreateMultipartUploadOperationOutputBody {
         return CreateMultipartUploadOperationOutputBody(
             bucket: bucket,
             key: key,
@@ -1139,6 +1154,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
     public var requestCharged: RequestCharged?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
 
@@ -1147,6 +1163,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
                 requestCharged: RequestCharged? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil) {
         self.abortDate = abortDate
@@ -1154,6 +1171,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
         self.requestCharged = requestCharged
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
     }
@@ -1164,6 +1182,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
         case requestCharged = "x-amz-request-charged"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
     }
@@ -1173,13 +1192,14 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
 }
 
 public extension CreateMultipartUploadOutput {
-    public func asS3ModelCreateMultipartUploadOperationOutputHeaders() -> CreateMultipartUploadOperationOutputHeaders {
+    func asS3ModelCreateMultipartUploadOperationOutputHeaders() -> CreateMultipartUploadOperationOutputHeaders {
         return CreateMultipartUploadOperationOutputHeaders(
             abortDate: abortDate,
             abortRuleId: abortRuleId,
             requestCharged: requestCharged,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption)
     }
@@ -1205,7 +1225,7 @@ public struct DeleteBucketOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteBucketRequest {
-    public func asS3ModelDeleteBucketOperationInputPath() -> DeleteBucketOperationInputPath {
+    func asS3ModelDeleteBucketOperationInputPath() -> DeleteBucketOperationInputPath {
         return DeleteBucketOperationInputPath(
             bucket: bucket)
     }
@@ -1231,7 +1251,7 @@ public struct DeleteBucketAnalyticsConfigurationOperationInputPath: Codable, Equ
 }
 
 public extension DeleteBucketAnalyticsConfigurationRequest {
-    public func asS3ModelDeleteBucketAnalyticsConfigurationOperationInputPath() -> DeleteBucketAnalyticsConfigurationOperationInputPath {
+    func asS3ModelDeleteBucketAnalyticsConfigurationOperationInputPath() -> DeleteBucketAnalyticsConfigurationOperationInputPath {
         return DeleteBucketAnalyticsConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -1257,7 +1277,7 @@ public struct DeleteBucketAnalyticsConfigurationOperationInputQuery: Codable, Eq
 }
 
 public extension DeleteBucketAnalyticsConfigurationRequest {
-    public func asS3ModelDeleteBucketAnalyticsConfigurationOperationInputQuery() -> DeleteBucketAnalyticsConfigurationOperationInputQuery {
+    func asS3ModelDeleteBucketAnalyticsConfigurationOperationInputQuery() -> DeleteBucketAnalyticsConfigurationOperationInputQuery {
         return DeleteBucketAnalyticsConfigurationOperationInputQuery(
             id: id)
     }
@@ -1283,7 +1303,7 @@ public struct DeleteBucketCorsOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteBucketCorsRequest {
-    public func asS3ModelDeleteBucketCorsOperationInputPath() -> DeleteBucketCorsOperationInputPath {
+    func asS3ModelDeleteBucketCorsOperationInputPath() -> DeleteBucketCorsOperationInputPath {
         return DeleteBucketCorsOperationInputPath(
             bucket: bucket)
     }
@@ -1309,7 +1329,7 @@ public struct DeleteBucketEncryptionOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteBucketEncryptionRequest {
-    public func asS3ModelDeleteBucketEncryptionOperationInputPath() -> DeleteBucketEncryptionOperationInputPath {
+    func asS3ModelDeleteBucketEncryptionOperationInputPath() -> DeleteBucketEncryptionOperationInputPath {
         return DeleteBucketEncryptionOperationInputPath(
             bucket: bucket)
     }
@@ -1335,7 +1355,7 @@ public struct DeleteBucketInventoryConfigurationOperationInputPath: Codable, Equ
 }
 
 public extension DeleteBucketInventoryConfigurationRequest {
-    public func asS3ModelDeleteBucketInventoryConfigurationOperationInputPath() -> DeleteBucketInventoryConfigurationOperationInputPath {
+    func asS3ModelDeleteBucketInventoryConfigurationOperationInputPath() -> DeleteBucketInventoryConfigurationOperationInputPath {
         return DeleteBucketInventoryConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -1361,7 +1381,7 @@ public struct DeleteBucketInventoryConfigurationOperationInputQuery: Codable, Eq
 }
 
 public extension DeleteBucketInventoryConfigurationRequest {
-    public func asS3ModelDeleteBucketInventoryConfigurationOperationInputQuery() -> DeleteBucketInventoryConfigurationOperationInputQuery {
+    func asS3ModelDeleteBucketInventoryConfigurationOperationInputQuery() -> DeleteBucketInventoryConfigurationOperationInputQuery {
         return DeleteBucketInventoryConfigurationOperationInputQuery(
             id: id)
     }
@@ -1387,7 +1407,7 @@ public struct DeleteBucketLifecycleOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteBucketLifecycleRequest {
-    public func asS3ModelDeleteBucketLifecycleOperationInputPath() -> DeleteBucketLifecycleOperationInputPath {
+    func asS3ModelDeleteBucketLifecycleOperationInputPath() -> DeleteBucketLifecycleOperationInputPath {
         return DeleteBucketLifecycleOperationInputPath(
             bucket: bucket)
     }
@@ -1413,7 +1433,7 @@ public struct DeleteBucketMetricsConfigurationOperationInputPath: Codable, Equat
 }
 
 public extension DeleteBucketMetricsConfigurationRequest {
-    public func asS3ModelDeleteBucketMetricsConfigurationOperationInputPath() -> DeleteBucketMetricsConfigurationOperationInputPath {
+    func asS3ModelDeleteBucketMetricsConfigurationOperationInputPath() -> DeleteBucketMetricsConfigurationOperationInputPath {
         return DeleteBucketMetricsConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -1439,7 +1459,7 @@ public struct DeleteBucketMetricsConfigurationOperationInputQuery: Codable, Equa
 }
 
 public extension DeleteBucketMetricsConfigurationRequest {
-    public func asS3ModelDeleteBucketMetricsConfigurationOperationInputQuery() -> DeleteBucketMetricsConfigurationOperationInputQuery {
+    func asS3ModelDeleteBucketMetricsConfigurationOperationInputQuery() -> DeleteBucketMetricsConfigurationOperationInputQuery {
         return DeleteBucketMetricsConfigurationOperationInputQuery(
             id: id)
     }
@@ -1465,7 +1485,7 @@ public struct DeleteBucketPolicyOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteBucketPolicyRequest {
-    public func asS3ModelDeleteBucketPolicyOperationInputPath() -> DeleteBucketPolicyOperationInputPath {
+    func asS3ModelDeleteBucketPolicyOperationInputPath() -> DeleteBucketPolicyOperationInputPath {
         return DeleteBucketPolicyOperationInputPath(
             bucket: bucket)
     }
@@ -1491,7 +1511,7 @@ public struct DeleteBucketReplicationOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteBucketReplicationRequest {
-    public func asS3ModelDeleteBucketReplicationOperationInputPath() -> DeleteBucketReplicationOperationInputPath {
+    func asS3ModelDeleteBucketReplicationOperationInputPath() -> DeleteBucketReplicationOperationInputPath {
         return DeleteBucketReplicationOperationInputPath(
             bucket: bucket)
     }
@@ -1517,7 +1537,7 @@ public struct DeleteBucketTaggingOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteBucketTaggingRequest {
-    public func asS3ModelDeleteBucketTaggingOperationInputPath() -> DeleteBucketTaggingOperationInputPath {
+    func asS3ModelDeleteBucketTaggingOperationInputPath() -> DeleteBucketTaggingOperationInputPath {
         return DeleteBucketTaggingOperationInputPath(
             bucket: bucket)
     }
@@ -1543,7 +1563,7 @@ public struct DeleteBucketWebsiteOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteBucketWebsiteRequest {
-    public func asS3ModelDeleteBucketWebsiteOperationInputPath() -> DeleteBucketWebsiteOperationInputPath {
+    func asS3ModelDeleteBucketWebsiteOperationInputPath() -> DeleteBucketWebsiteOperationInputPath {
         return DeleteBucketWebsiteOperationInputPath(
             bucket: bucket)
     }
@@ -1574,7 +1594,7 @@ public struct DeleteObjectOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteObjectRequest {
-    public func asS3ModelDeleteObjectOperationInputPath() -> DeleteObjectOperationInputPath {
+    func asS3ModelDeleteObjectOperationInputPath() -> DeleteObjectOperationInputPath {
         return DeleteObjectOperationInputPath(
             bucket: bucket,
             key: key)
@@ -1601,7 +1621,7 @@ public struct DeleteObjectOperationInputQuery: Codable, Equatable {
 }
 
 public extension DeleteObjectRequest {
-    public func asS3ModelDeleteObjectOperationInputQuery() -> DeleteObjectOperationInputQuery {
+    func asS3ModelDeleteObjectOperationInputQuery() -> DeleteObjectOperationInputQuery {
         return DeleteObjectOperationInputQuery(
             versionId: versionId)
     }
@@ -1635,7 +1655,7 @@ public struct DeleteObjectOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension DeleteObjectRequest {
-    public func asS3ModelDeleteObjectOperationInputAdditionalHeaders() -> DeleteObjectOperationInputAdditionalHeaders {
+    func asS3ModelDeleteObjectOperationInputAdditionalHeaders() -> DeleteObjectOperationInputAdditionalHeaders {
         return DeleteObjectOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
             mFA: mFA,
@@ -1668,7 +1688,7 @@ public struct DeleteObjectTaggingOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteObjectTaggingRequest {
-    public func asS3ModelDeleteObjectTaggingOperationInputPath() -> DeleteObjectTaggingOperationInputPath {
+    func asS3ModelDeleteObjectTaggingOperationInputPath() -> DeleteObjectTaggingOperationInputPath {
         return DeleteObjectTaggingOperationInputPath(
             bucket: bucket,
             key: key)
@@ -1695,7 +1715,7 @@ public struct DeleteObjectTaggingOperationInputQuery: Codable, Equatable {
 }
 
 public extension DeleteObjectTaggingRequest {
-    public func asS3ModelDeleteObjectTaggingOperationInputQuery() -> DeleteObjectTaggingOperationInputQuery {
+    func asS3ModelDeleteObjectTaggingOperationInputQuery() -> DeleteObjectTaggingOperationInputQuery {
         return DeleteObjectTaggingOperationInputQuery(
             versionId: versionId)
     }
@@ -1721,7 +1741,7 @@ public struct DeleteObjectsOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteObjectsRequest {
-    public func asS3ModelDeleteObjectsOperationInputPath() -> DeleteObjectsOperationInputPath {
+    func asS3ModelDeleteObjectsOperationInputPath() -> DeleteObjectsOperationInputPath {
         return DeleteObjectsOperationInputPath(
             bucket: bucket)
     }
@@ -1755,7 +1775,7 @@ public struct DeleteObjectsOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension DeleteObjectsRequest {
-    public func asS3ModelDeleteObjectsOperationInputAdditionalHeaders() -> DeleteObjectsOperationInputAdditionalHeaders {
+    func asS3ModelDeleteObjectsOperationInputAdditionalHeaders() -> DeleteObjectsOperationInputAdditionalHeaders {
         return DeleteObjectsOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
             mFA: mFA,
@@ -1787,7 +1807,7 @@ public struct DeleteObjectsOperationOutputBody: Codable, Equatable {
 }
 
 public extension DeleteObjectsOutput {
-    public func asS3ModelDeleteObjectsOperationOutputBody() -> DeleteObjectsOperationOutputBody {
+    func asS3ModelDeleteObjectsOperationOutputBody() -> DeleteObjectsOperationOutputBody {
         return DeleteObjectsOperationOutputBody(
             deleted: deleted,
             errors: errors)
@@ -1814,7 +1834,7 @@ public struct DeleteObjectsOperationOutputHeaders: Codable, Equatable {
 }
 
 public extension DeleteObjectsOutput {
-    public func asS3ModelDeleteObjectsOperationOutputHeaders() -> DeleteObjectsOperationOutputHeaders {
+    func asS3ModelDeleteObjectsOperationOutputHeaders() -> DeleteObjectsOperationOutputHeaders {
         return DeleteObjectsOperationOutputHeaders(
             requestCharged: requestCharged)
     }
@@ -1840,7 +1860,7 @@ public struct DeletePublicAccessBlockOperationInputPath: Codable, Equatable {
 }
 
 public extension DeletePublicAccessBlockRequest {
-    public func asS3ModelDeletePublicAccessBlockOperationInputPath() -> DeletePublicAccessBlockOperationInputPath {
+    func asS3ModelDeletePublicAccessBlockOperationInputPath() -> DeletePublicAccessBlockOperationInputPath {
         return DeletePublicAccessBlockOperationInputPath(
             bucket: bucket)
     }
@@ -1866,7 +1886,7 @@ public struct GetBucketAccelerateConfigurationOperationInputPath: Codable, Equat
 }
 
 public extension GetBucketAccelerateConfigurationRequest {
-    public func asS3ModelGetBucketAccelerateConfigurationOperationInputPath() -> GetBucketAccelerateConfigurationOperationInputPath {
+    func asS3ModelGetBucketAccelerateConfigurationOperationInputPath() -> GetBucketAccelerateConfigurationOperationInputPath {
         return GetBucketAccelerateConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -1892,7 +1912,7 @@ public struct GetBucketAclOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketAclRequest {
-    public func asS3ModelGetBucketAclOperationInputPath() -> GetBucketAclOperationInputPath {
+    func asS3ModelGetBucketAclOperationInputPath() -> GetBucketAclOperationInputPath {
         return GetBucketAclOperationInputPath(
             bucket: bucket)
     }
@@ -1918,7 +1938,7 @@ public struct GetBucketAnalyticsConfigurationOperationInputPath: Codable, Equata
 }
 
 public extension GetBucketAnalyticsConfigurationRequest {
-    public func asS3ModelGetBucketAnalyticsConfigurationOperationInputPath() -> GetBucketAnalyticsConfigurationOperationInputPath {
+    func asS3ModelGetBucketAnalyticsConfigurationOperationInputPath() -> GetBucketAnalyticsConfigurationOperationInputPath {
         return GetBucketAnalyticsConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -1944,7 +1964,7 @@ public struct GetBucketAnalyticsConfigurationOperationInputQuery: Codable, Equat
 }
 
 public extension GetBucketAnalyticsConfigurationRequest {
-    public func asS3ModelGetBucketAnalyticsConfigurationOperationInputQuery() -> GetBucketAnalyticsConfigurationOperationInputQuery {
+    func asS3ModelGetBucketAnalyticsConfigurationOperationInputQuery() -> GetBucketAnalyticsConfigurationOperationInputQuery {
         return GetBucketAnalyticsConfigurationOperationInputQuery(
             id: id)
     }
@@ -1970,7 +1990,7 @@ public struct GetBucketCorsOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketCorsRequest {
-    public func asS3ModelGetBucketCorsOperationInputPath() -> GetBucketCorsOperationInputPath {
+    func asS3ModelGetBucketCorsOperationInputPath() -> GetBucketCorsOperationInputPath {
         return GetBucketCorsOperationInputPath(
             bucket: bucket)
     }
@@ -1996,7 +2016,7 @@ public struct GetBucketEncryptionOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketEncryptionRequest {
-    public func asS3ModelGetBucketEncryptionOperationInputPath() -> GetBucketEncryptionOperationInputPath {
+    func asS3ModelGetBucketEncryptionOperationInputPath() -> GetBucketEncryptionOperationInputPath {
         return GetBucketEncryptionOperationInputPath(
             bucket: bucket)
     }
@@ -2022,7 +2042,7 @@ public struct GetBucketInventoryConfigurationOperationInputPath: Codable, Equata
 }
 
 public extension GetBucketInventoryConfigurationRequest {
-    public func asS3ModelGetBucketInventoryConfigurationOperationInputPath() -> GetBucketInventoryConfigurationOperationInputPath {
+    func asS3ModelGetBucketInventoryConfigurationOperationInputPath() -> GetBucketInventoryConfigurationOperationInputPath {
         return GetBucketInventoryConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -2048,7 +2068,7 @@ public struct GetBucketInventoryConfigurationOperationInputQuery: Codable, Equat
 }
 
 public extension GetBucketInventoryConfigurationRequest {
-    public func asS3ModelGetBucketInventoryConfigurationOperationInputQuery() -> GetBucketInventoryConfigurationOperationInputQuery {
+    func asS3ModelGetBucketInventoryConfigurationOperationInputQuery() -> GetBucketInventoryConfigurationOperationInputQuery {
         return GetBucketInventoryConfigurationOperationInputQuery(
             id: id)
     }
@@ -2074,7 +2094,7 @@ public struct GetBucketLifecycleOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketLifecycleRequest {
-    public func asS3ModelGetBucketLifecycleOperationInputPath() -> GetBucketLifecycleOperationInputPath {
+    func asS3ModelGetBucketLifecycleOperationInputPath() -> GetBucketLifecycleOperationInputPath {
         return GetBucketLifecycleOperationInputPath(
             bucket: bucket)
     }
@@ -2100,7 +2120,7 @@ public struct GetBucketLifecycleConfigurationOperationInputPath: Codable, Equata
 }
 
 public extension GetBucketLifecycleConfigurationRequest {
-    public func asS3ModelGetBucketLifecycleConfigurationOperationInputPath() -> GetBucketLifecycleConfigurationOperationInputPath {
+    func asS3ModelGetBucketLifecycleConfigurationOperationInputPath() -> GetBucketLifecycleConfigurationOperationInputPath {
         return GetBucketLifecycleConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -2126,7 +2146,7 @@ public struct GetBucketLocationOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketLocationRequest {
-    public func asS3ModelGetBucketLocationOperationInputPath() -> GetBucketLocationOperationInputPath {
+    func asS3ModelGetBucketLocationOperationInputPath() -> GetBucketLocationOperationInputPath {
         return GetBucketLocationOperationInputPath(
             bucket: bucket)
     }
@@ -2152,7 +2172,7 @@ public struct GetBucketLoggingOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketLoggingRequest {
-    public func asS3ModelGetBucketLoggingOperationInputPath() -> GetBucketLoggingOperationInputPath {
+    func asS3ModelGetBucketLoggingOperationInputPath() -> GetBucketLoggingOperationInputPath {
         return GetBucketLoggingOperationInputPath(
             bucket: bucket)
     }
@@ -2178,7 +2198,7 @@ public struct GetBucketMetricsConfigurationOperationInputPath: Codable, Equatabl
 }
 
 public extension GetBucketMetricsConfigurationRequest {
-    public func asS3ModelGetBucketMetricsConfigurationOperationInputPath() -> GetBucketMetricsConfigurationOperationInputPath {
+    func asS3ModelGetBucketMetricsConfigurationOperationInputPath() -> GetBucketMetricsConfigurationOperationInputPath {
         return GetBucketMetricsConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -2204,7 +2224,7 @@ public struct GetBucketMetricsConfigurationOperationInputQuery: Codable, Equatab
 }
 
 public extension GetBucketMetricsConfigurationRequest {
-    public func asS3ModelGetBucketMetricsConfigurationOperationInputQuery() -> GetBucketMetricsConfigurationOperationInputQuery {
+    func asS3ModelGetBucketMetricsConfigurationOperationInputQuery() -> GetBucketMetricsConfigurationOperationInputQuery {
         return GetBucketMetricsConfigurationOperationInputQuery(
             id: id)
     }
@@ -2230,7 +2250,7 @@ public struct GetBucketNotificationOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketNotificationConfigurationRequest {
-    public func asS3ModelGetBucketNotificationOperationInputPath() -> GetBucketNotificationOperationInputPath {
+    func asS3ModelGetBucketNotificationOperationInputPath() -> GetBucketNotificationOperationInputPath {
         return GetBucketNotificationOperationInputPath(
             bucket: bucket)
     }
@@ -2256,7 +2276,7 @@ public struct GetBucketNotificationConfigurationOperationInputPath: Codable, Equ
 }
 
 public extension GetBucketNotificationConfigurationRequest {
-    public func asS3ModelGetBucketNotificationConfigurationOperationInputPath() -> GetBucketNotificationConfigurationOperationInputPath {
+    func asS3ModelGetBucketNotificationConfigurationOperationInputPath() -> GetBucketNotificationConfigurationOperationInputPath {
         return GetBucketNotificationConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -2282,7 +2302,7 @@ public struct GetBucketPolicyOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketPolicyRequest {
-    public func asS3ModelGetBucketPolicyOperationInputPath() -> GetBucketPolicyOperationInputPath {
+    func asS3ModelGetBucketPolicyOperationInputPath() -> GetBucketPolicyOperationInputPath {
         return GetBucketPolicyOperationInputPath(
             bucket: bucket)
     }
@@ -2308,7 +2328,7 @@ public struct GetBucketPolicyStatusOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketPolicyStatusRequest {
-    public func asS3ModelGetBucketPolicyStatusOperationInputPath() -> GetBucketPolicyStatusOperationInputPath {
+    func asS3ModelGetBucketPolicyStatusOperationInputPath() -> GetBucketPolicyStatusOperationInputPath {
         return GetBucketPolicyStatusOperationInputPath(
             bucket: bucket)
     }
@@ -2334,7 +2354,7 @@ public struct GetBucketReplicationOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketReplicationRequest {
-    public func asS3ModelGetBucketReplicationOperationInputPath() -> GetBucketReplicationOperationInputPath {
+    func asS3ModelGetBucketReplicationOperationInputPath() -> GetBucketReplicationOperationInputPath {
         return GetBucketReplicationOperationInputPath(
             bucket: bucket)
     }
@@ -2360,7 +2380,7 @@ public struct GetBucketRequestPaymentOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketRequestPaymentRequest {
-    public func asS3ModelGetBucketRequestPaymentOperationInputPath() -> GetBucketRequestPaymentOperationInputPath {
+    func asS3ModelGetBucketRequestPaymentOperationInputPath() -> GetBucketRequestPaymentOperationInputPath {
         return GetBucketRequestPaymentOperationInputPath(
             bucket: bucket)
     }
@@ -2386,7 +2406,7 @@ public struct GetBucketTaggingOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketTaggingRequest {
-    public func asS3ModelGetBucketTaggingOperationInputPath() -> GetBucketTaggingOperationInputPath {
+    func asS3ModelGetBucketTaggingOperationInputPath() -> GetBucketTaggingOperationInputPath {
         return GetBucketTaggingOperationInputPath(
             bucket: bucket)
     }
@@ -2412,7 +2432,7 @@ public struct GetBucketVersioningOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketVersioningRequest {
-    public func asS3ModelGetBucketVersioningOperationInputPath() -> GetBucketVersioningOperationInputPath {
+    func asS3ModelGetBucketVersioningOperationInputPath() -> GetBucketVersioningOperationInputPath {
         return GetBucketVersioningOperationInputPath(
             bucket: bucket)
     }
@@ -2438,7 +2458,7 @@ public struct GetBucketWebsiteOperationInputPath: Codable, Equatable {
 }
 
 public extension GetBucketWebsiteRequest {
-    public func asS3ModelGetBucketWebsiteOperationInputPath() -> GetBucketWebsiteOperationInputPath {
+    func asS3ModelGetBucketWebsiteOperationInputPath() -> GetBucketWebsiteOperationInputPath {
         return GetBucketWebsiteOperationInputPath(
             bucket: bucket)
     }
@@ -2469,7 +2489,7 @@ public struct GetObjectOperationInputPath: Codable, Equatable {
 }
 
 public extension GetObjectRequest {
-    public func asS3ModelGetObjectOperationInputPath() -> GetObjectOperationInputPath {
+    func asS3ModelGetObjectOperationInputPath() -> GetObjectOperationInputPath {
         return GetObjectOperationInputPath(
             bucket: bucket,
             key: key)
@@ -2524,7 +2544,7 @@ public struct GetObjectOperationInputQuery: Codable, Equatable {
 }
 
 public extension GetObjectRequest {
-    public func asS3ModelGetObjectOperationInputQuery() -> GetObjectOperationInputQuery {
+    func asS3ModelGetObjectOperationInputQuery() -> GetObjectOperationInputQuery {
         return GetObjectOperationInputQuery(
             partNumber: partNumber,
             responseCacheControl: responseCacheControl,
@@ -2589,7 +2609,7 @@ public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension GetObjectRequest {
-    public func asS3ModelGetObjectOperationInputAdditionalHeaders() -> GetObjectOperationInputAdditionalHeaders {
+    func asS3ModelGetObjectOperationInputAdditionalHeaders() -> GetObjectOperationInputAdditionalHeaders {
         return GetObjectOperationInputAdditionalHeaders(
             ifMatch: ifMatch,
             ifModifiedSince: ifModifiedSince,
@@ -2739,7 +2759,7 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
 }
 
 public extension GetObjectOutput {
-    public func asS3ModelGetObjectOperationOutputHeaders() -> GetObjectOperationOutputHeaders {
+    func asS3ModelGetObjectOperationOutputHeaders() -> GetObjectOperationOutputHeaders {
         return GetObjectOperationOutputHeaders(
             acceptRanges: acceptRanges,
             cacheControl: cacheControl,
@@ -2799,7 +2819,7 @@ public struct GetObjectAclOperationInputPath: Codable, Equatable {
 }
 
 public extension GetObjectAclRequest {
-    public func asS3ModelGetObjectAclOperationInputPath() -> GetObjectAclOperationInputPath {
+    func asS3ModelGetObjectAclOperationInputPath() -> GetObjectAclOperationInputPath {
         return GetObjectAclOperationInputPath(
             bucket: bucket,
             key: key)
@@ -2826,7 +2846,7 @@ public struct GetObjectAclOperationInputQuery: Codable, Equatable {
 }
 
 public extension GetObjectAclRequest {
-    public func asS3ModelGetObjectAclOperationInputQuery() -> GetObjectAclOperationInputQuery {
+    func asS3ModelGetObjectAclOperationInputQuery() -> GetObjectAclOperationInputQuery {
         return GetObjectAclOperationInputQuery(
             versionId: versionId)
     }
@@ -2852,7 +2872,7 @@ public struct GetObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension GetObjectAclRequest {
-    public func asS3ModelGetObjectAclOperationInputAdditionalHeaders() -> GetObjectAclOperationInputAdditionalHeaders {
+    func asS3ModelGetObjectAclOperationInputAdditionalHeaders() -> GetObjectAclOperationInputAdditionalHeaders {
         return GetObjectAclOperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -2883,7 +2903,7 @@ public struct GetObjectAclOperationOutputBody: Codable, Equatable {
 }
 
 public extension GetObjectAclOutput {
-    public func asS3ModelGetObjectAclOperationOutputBody() -> GetObjectAclOperationOutputBody {
+    func asS3ModelGetObjectAclOperationOutputBody() -> GetObjectAclOperationOutputBody {
         return GetObjectAclOperationOutputBody(
             grants: grants,
             owner: owner)
@@ -2910,7 +2930,7 @@ public struct GetObjectAclOperationOutputHeaders: Codable, Equatable {
 }
 
 public extension GetObjectAclOutput {
-    public func asS3ModelGetObjectAclOperationOutputHeaders() -> GetObjectAclOperationOutputHeaders {
+    func asS3ModelGetObjectAclOperationOutputHeaders() -> GetObjectAclOperationOutputHeaders {
         return GetObjectAclOperationOutputHeaders(
             requestCharged: requestCharged)
     }
@@ -2941,7 +2961,7 @@ public struct GetObjectLegalHoldOperationInputPath: Codable, Equatable {
 }
 
 public extension GetObjectLegalHoldRequest {
-    public func asS3ModelGetObjectLegalHoldOperationInputPath() -> GetObjectLegalHoldOperationInputPath {
+    func asS3ModelGetObjectLegalHoldOperationInputPath() -> GetObjectLegalHoldOperationInputPath {
         return GetObjectLegalHoldOperationInputPath(
             bucket: bucket,
             key: key)
@@ -2968,7 +2988,7 @@ public struct GetObjectLegalHoldOperationInputQuery: Codable, Equatable {
 }
 
 public extension GetObjectLegalHoldRequest {
-    public func asS3ModelGetObjectLegalHoldOperationInputQuery() -> GetObjectLegalHoldOperationInputQuery {
+    func asS3ModelGetObjectLegalHoldOperationInputQuery() -> GetObjectLegalHoldOperationInputQuery {
         return GetObjectLegalHoldOperationInputQuery(
             versionId: versionId)
     }
@@ -2994,7 +3014,7 @@ public struct GetObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equata
 }
 
 public extension GetObjectLegalHoldRequest {
-    public func asS3ModelGetObjectLegalHoldOperationInputAdditionalHeaders() -> GetObjectLegalHoldOperationInputAdditionalHeaders {
+    func asS3ModelGetObjectLegalHoldOperationInputAdditionalHeaders() -> GetObjectLegalHoldOperationInputAdditionalHeaders {
         return GetObjectLegalHoldOperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -3020,7 +3040,7 @@ public struct GetObjectLockConfigurationOperationInputPath: Codable, Equatable {
 }
 
 public extension GetObjectLockConfigurationRequest {
-    public func asS3ModelGetObjectLockConfigurationOperationInputPath() -> GetObjectLockConfigurationOperationInputPath {
+    func asS3ModelGetObjectLockConfigurationOperationInputPath() -> GetObjectLockConfigurationOperationInputPath {
         return GetObjectLockConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -3051,7 +3071,7 @@ public struct GetObjectRetentionOperationInputPath: Codable, Equatable {
 }
 
 public extension GetObjectRetentionRequest {
-    public func asS3ModelGetObjectRetentionOperationInputPath() -> GetObjectRetentionOperationInputPath {
+    func asS3ModelGetObjectRetentionOperationInputPath() -> GetObjectRetentionOperationInputPath {
         return GetObjectRetentionOperationInputPath(
             bucket: bucket,
             key: key)
@@ -3078,7 +3098,7 @@ public struct GetObjectRetentionOperationInputQuery: Codable, Equatable {
 }
 
 public extension GetObjectRetentionRequest {
-    public func asS3ModelGetObjectRetentionOperationInputQuery() -> GetObjectRetentionOperationInputQuery {
+    func asS3ModelGetObjectRetentionOperationInputQuery() -> GetObjectRetentionOperationInputQuery {
         return GetObjectRetentionOperationInputQuery(
             versionId: versionId)
     }
@@ -3104,7 +3124,7 @@ public struct GetObjectRetentionOperationInputAdditionalHeaders: Codable, Equata
 }
 
 public extension GetObjectRetentionRequest {
-    public func asS3ModelGetObjectRetentionOperationInputAdditionalHeaders() -> GetObjectRetentionOperationInputAdditionalHeaders {
+    func asS3ModelGetObjectRetentionOperationInputAdditionalHeaders() -> GetObjectRetentionOperationInputAdditionalHeaders {
         return GetObjectRetentionOperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -3135,7 +3155,7 @@ public struct GetObjectTaggingOperationInputPath: Codable, Equatable {
 }
 
 public extension GetObjectTaggingRequest {
-    public func asS3ModelGetObjectTaggingOperationInputPath() -> GetObjectTaggingOperationInputPath {
+    func asS3ModelGetObjectTaggingOperationInputPath() -> GetObjectTaggingOperationInputPath {
         return GetObjectTaggingOperationInputPath(
             bucket: bucket,
             key: key)
@@ -3162,7 +3182,7 @@ public struct GetObjectTaggingOperationInputQuery: Codable, Equatable {
 }
 
 public extension GetObjectTaggingRequest {
-    public func asS3ModelGetObjectTaggingOperationInputQuery() -> GetObjectTaggingOperationInputQuery {
+    func asS3ModelGetObjectTaggingOperationInputQuery() -> GetObjectTaggingOperationInputQuery {
         return GetObjectTaggingOperationInputQuery(
             versionId: versionId)
     }
@@ -3188,7 +3208,7 @@ public struct GetObjectTaggingOperationOutputBody: Codable, Equatable {
 }
 
 public extension GetObjectTaggingOutput {
-    public func asS3ModelGetObjectTaggingOperationOutputBody() -> GetObjectTaggingOperationOutputBody {
+    func asS3ModelGetObjectTaggingOperationOutputBody() -> GetObjectTaggingOperationOutputBody {
         return GetObjectTaggingOperationOutputBody(
             tagSet: tagSet)
     }
@@ -3214,7 +3234,7 @@ public struct GetObjectTaggingOperationOutputHeaders: Codable, Equatable {
 }
 
 public extension GetObjectTaggingOutput {
-    public func asS3ModelGetObjectTaggingOperationOutputHeaders() -> GetObjectTaggingOperationOutputHeaders {
+    func asS3ModelGetObjectTaggingOperationOutputHeaders() -> GetObjectTaggingOperationOutputHeaders {
         return GetObjectTaggingOperationOutputHeaders(
             versionId: versionId)
     }
@@ -3245,7 +3265,7 @@ public struct GetObjectTorrentOperationInputPath: Codable, Equatable {
 }
 
 public extension GetObjectTorrentRequest {
-    public func asS3ModelGetObjectTorrentOperationInputPath() -> GetObjectTorrentOperationInputPath {
+    func asS3ModelGetObjectTorrentOperationInputPath() -> GetObjectTorrentOperationInputPath {
         return GetObjectTorrentOperationInputPath(
             bucket: bucket,
             key: key)
@@ -3272,7 +3292,7 @@ public struct GetObjectTorrentOperationInputAdditionalHeaders: Codable, Equatabl
 }
 
 public extension GetObjectTorrentRequest {
-    public func asS3ModelGetObjectTorrentOperationInputAdditionalHeaders() -> GetObjectTorrentOperationInputAdditionalHeaders {
+    func asS3ModelGetObjectTorrentOperationInputAdditionalHeaders() -> GetObjectTorrentOperationInputAdditionalHeaders {
         return GetObjectTorrentOperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -3298,7 +3318,7 @@ public struct GetObjectTorrentOperationOutputHeaders: Codable, Equatable {
 }
 
 public extension GetObjectTorrentOutput {
-    public func asS3ModelGetObjectTorrentOperationOutputHeaders() -> GetObjectTorrentOperationOutputHeaders {
+    func asS3ModelGetObjectTorrentOperationOutputHeaders() -> GetObjectTorrentOperationOutputHeaders {
         return GetObjectTorrentOperationOutputHeaders(
             requestCharged: requestCharged)
     }
@@ -3324,7 +3344,7 @@ public struct GetPublicAccessBlockOperationInputPath: Codable, Equatable {
 }
 
 public extension GetPublicAccessBlockRequest {
-    public func asS3ModelGetPublicAccessBlockOperationInputPath() -> GetPublicAccessBlockOperationInputPath {
+    func asS3ModelGetPublicAccessBlockOperationInputPath() -> GetPublicAccessBlockOperationInputPath {
         return GetPublicAccessBlockOperationInputPath(
             bucket: bucket)
     }
@@ -3350,7 +3370,7 @@ public struct HeadBucketOperationInputPath: Codable, Equatable {
 }
 
 public extension HeadBucketRequest {
-    public func asS3ModelHeadBucketOperationInputPath() -> HeadBucketOperationInputPath {
+    func asS3ModelHeadBucketOperationInputPath() -> HeadBucketOperationInputPath {
         return HeadBucketOperationInputPath(
             bucket: bucket)
     }
@@ -3381,7 +3401,7 @@ public struct HeadObjectOperationInputPath: Codable, Equatable {
 }
 
 public extension HeadObjectRequest {
-    public func asS3ModelHeadObjectOperationInputPath() -> HeadObjectOperationInputPath {
+    func asS3ModelHeadObjectOperationInputPath() -> HeadObjectOperationInputPath {
         return HeadObjectOperationInputPath(
             bucket: bucket,
             key: key)
@@ -3412,7 +3432,7 @@ public struct HeadObjectOperationInputQuery: Codable, Equatable {
 }
 
 public extension HeadObjectRequest {
-    public func asS3ModelHeadObjectOperationInputQuery() -> HeadObjectOperationInputQuery {
+    func asS3ModelHeadObjectOperationInputQuery() -> HeadObjectOperationInputQuery {
         return HeadObjectOperationInputQuery(
             partNumber: partNumber,
             versionId: versionId)
@@ -3471,7 +3491,7 @@ public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension HeadObjectRequest {
-    public func asS3ModelHeadObjectOperationInputAdditionalHeaders() -> HeadObjectOperationInputAdditionalHeaders {
+    func asS3ModelHeadObjectOperationInputAdditionalHeaders() -> HeadObjectOperationInputAdditionalHeaders {
         return HeadObjectOperationInputAdditionalHeaders(
             ifMatch: ifMatch,
             ifModifiedSince: ifModifiedSince,
@@ -3505,7 +3525,7 @@ public struct ListBucketAnalyticsConfigurationsOperationInputPath: Codable, Equa
 }
 
 public extension ListBucketAnalyticsConfigurationsRequest {
-    public func asS3ModelListBucketAnalyticsConfigurationsOperationInputPath() -> ListBucketAnalyticsConfigurationsOperationInputPath {
+    func asS3ModelListBucketAnalyticsConfigurationsOperationInputPath() -> ListBucketAnalyticsConfigurationsOperationInputPath {
         return ListBucketAnalyticsConfigurationsOperationInputPath(
             bucket: bucket)
     }
@@ -3531,7 +3551,7 @@ public struct ListBucketAnalyticsConfigurationsOperationInputQuery: Codable, Equ
 }
 
 public extension ListBucketAnalyticsConfigurationsRequest {
-    public func asS3ModelListBucketAnalyticsConfigurationsOperationInputQuery() -> ListBucketAnalyticsConfigurationsOperationInputQuery {
+    func asS3ModelListBucketAnalyticsConfigurationsOperationInputQuery() -> ListBucketAnalyticsConfigurationsOperationInputQuery {
         return ListBucketAnalyticsConfigurationsOperationInputQuery(
             continuationToken: continuationToken)
     }
@@ -3557,7 +3577,7 @@ public struct ListBucketInventoryConfigurationsOperationInputPath: Codable, Equa
 }
 
 public extension ListBucketInventoryConfigurationsRequest {
-    public func asS3ModelListBucketInventoryConfigurationsOperationInputPath() -> ListBucketInventoryConfigurationsOperationInputPath {
+    func asS3ModelListBucketInventoryConfigurationsOperationInputPath() -> ListBucketInventoryConfigurationsOperationInputPath {
         return ListBucketInventoryConfigurationsOperationInputPath(
             bucket: bucket)
     }
@@ -3583,7 +3603,7 @@ public struct ListBucketInventoryConfigurationsOperationInputQuery: Codable, Equ
 }
 
 public extension ListBucketInventoryConfigurationsRequest {
-    public func asS3ModelListBucketInventoryConfigurationsOperationInputQuery() -> ListBucketInventoryConfigurationsOperationInputQuery {
+    func asS3ModelListBucketInventoryConfigurationsOperationInputQuery() -> ListBucketInventoryConfigurationsOperationInputQuery {
         return ListBucketInventoryConfigurationsOperationInputQuery(
             continuationToken: continuationToken)
     }
@@ -3609,7 +3629,7 @@ public struct ListBucketMetricsConfigurationsOperationInputPath: Codable, Equata
 }
 
 public extension ListBucketMetricsConfigurationsRequest {
-    public func asS3ModelListBucketMetricsConfigurationsOperationInputPath() -> ListBucketMetricsConfigurationsOperationInputPath {
+    func asS3ModelListBucketMetricsConfigurationsOperationInputPath() -> ListBucketMetricsConfigurationsOperationInputPath {
         return ListBucketMetricsConfigurationsOperationInputPath(
             bucket: bucket)
     }
@@ -3635,7 +3655,7 @@ public struct ListBucketMetricsConfigurationsOperationInputQuery: Codable, Equat
 }
 
 public extension ListBucketMetricsConfigurationsRequest {
-    public func asS3ModelListBucketMetricsConfigurationsOperationInputQuery() -> ListBucketMetricsConfigurationsOperationInputQuery {
+    func asS3ModelListBucketMetricsConfigurationsOperationInputQuery() -> ListBucketMetricsConfigurationsOperationInputQuery {
         return ListBucketMetricsConfigurationsOperationInputQuery(
             continuationToken: continuationToken)
     }
@@ -3661,7 +3681,7 @@ public struct ListMultipartUploadsOperationInputPath: Codable, Equatable {
 }
 
 public extension ListMultipartUploadsRequest {
-    public func asS3ModelListMultipartUploadsOperationInputPath() -> ListMultipartUploadsOperationInputPath {
+    func asS3ModelListMultipartUploadsOperationInputPath() -> ListMultipartUploadsOperationInputPath {
         return ListMultipartUploadsOperationInputPath(
             bucket: bucket)
     }
@@ -3707,7 +3727,7 @@ public struct ListMultipartUploadsOperationInputQuery: Codable, Equatable {
 }
 
 public extension ListMultipartUploadsRequest {
-    public func asS3ModelListMultipartUploadsOperationInputQuery() -> ListMultipartUploadsOperationInputQuery {
+    func asS3ModelListMultipartUploadsOperationInputQuery() -> ListMultipartUploadsOperationInputQuery {
         return ListMultipartUploadsOperationInputQuery(
             delimiter: delimiter,
             encodingType: encodingType,
@@ -3738,7 +3758,7 @@ public struct ListObjectVersionsOperationInputPath: Codable, Equatable {
 }
 
 public extension ListObjectVersionsRequest {
-    public func asS3ModelListObjectVersionsOperationInputPath() -> ListObjectVersionsOperationInputPath {
+    func asS3ModelListObjectVersionsOperationInputPath() -> ListObjectVersionsOperationInputPath {
         return ListObjectVersionsOperationInputPath(
             bucket: bucket)
     }
@@ -3784,7 +3804,7 @@ public struct ListObjectVersionsOperationInputQuery: Codable, Equatable {
 }
 
 public extension ListObjectVersionsRequest {
-    public func asS3ModelListObjectVersionsOperationInputQuery() -> ListObjectVersionsOperationInputQuery {
+    func asS3ModelListObjectVersionsOperationInputQuery() -> ListObjectVersionsOperationInputQuery {
         return ListObjectVersionsOperationInputQuery(
             delimiter: delimiter,
             encodingType: encodingType,
@@ -3815,7 +3835,7 @@ public struct ListObjectsOperationInputPath: Codable, Equatable {
 }
 
 public extension ListObjectsRequest {
-    public func asS3ModelListObjectsOperationInputPath() -> ListObjectsOperationInputPath {
+    func asS3ModelListObjectsOperationInputPath() -> ListObjectsOperationInputPath {
         return ListObjectsOperationInputPath(
             bucket: bucket)
     }
@@ -3857,7 +3877,7 @@ public struct ListObjectsOperationInputQuery: Codable, Equatable {
 }
 
 public extension ListObjectsRequest {
-    public func asS3ModelListObjectsOperationInputQuery() -> ListObjectsOperationInputQuery {
+    func asS3ModelListObjectsOperationInputQuery() -> ListObjectsOperationInputQuery {
         return ListObjectsOperationInputQuery(
             delimiter: delimiter,
             encodingType: encodingType,
@@ -3887,7 +3907,7 @@ public struct ListObjectsOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension ListObjectsRequest {
-    public func asS3ModelListObjectsOperationInputAdditionalHeaders() -> ListObjectsOperationInputAdditionalHeaders {
+    func asS3ModelListObjectsOperationInputAdditionalHeaders() -> ListObjectsOperationInputAdditionalHeaders {
         return ListObjectsOperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -3913,7 +3933,7 @@ public struct ListObjectsV2OperationInputPath: Codable, Equatable {
 }
 
 public extension ListObjectsV2Request {
-    public func asS3ModelListObjectsV2OperationInputPath() -> ListObjectsV2OperationInputPath {
+    func asS3ModelListObjectsV2OperationInputPath() -> ListObjectsV2OperationInputPath {
         return ListObjectsV2OperationInputPath(
             bucket: bucket)
     }
@@ -3963,7 +3983,7 @@ public struct ListObjectsV2OperationInputQuery: Codable, Equatable {
 }
 
 public extension ListObjectsV2Request {
-    public func asS3ModelListObjectsV2OperationInputQuery() -> ListObjectsV2OperationInputQuery {
+    func asS3ModelListObjectsV2OperationInputQuery() -> ListObjectsV2OperationInputQuery {
         return ListObjectsV2OperationInputQuery(
             continuationToken: continuationToken,
             delimiter: delimiter,
@@ -3995,7 +4015,7 @@ public struct ListObjectsV2OperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension ListObjectsV2Request {
-    public func asS3ModelListObjectsV2OperationInputAdditionalHeaders() -> ListObjectsV2OperationInputAdditionalHeaders {
+    func asS3ModelListObjectsV2OperationInputAdditionalHeaders() -> ListObjectsV2OperationInputAdditionalHeaders {
         return ListObjectsV2OperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -4026,7 +4046,7 @@ public struct ListPartsOperationInputPath: Codable, Equatable {
 }
 
 public extension ListPartsRequest {
-    public func asS3ModelListPartsOperationInputPath() -> ListPartsOperationInputPath {
+    func asS3ModelListPartsOperationInputPath() -> ListPartsOperationInputPath {
         return ListPartsOperationInputPath(
             bucket: bucket,
             key: key)
@@ -4061,7 +4081,7 @@ public struct ListPartsOperationInputQuery: Codable, Equatable {
 }
 
 public extension ListPartsRequest {
-    public func asS3ModelListPartsOperationInputQuery() -> ListPartsOperationInputQuery {
+    func asS3ModelListPartsOperationInputQuery() -> ListPartsOperationInputQuery {
         return ListPartsOperationInputQuery(
             maxParts: maxParts,
             partNumberMarker: partNumberMarker,
@@ -4089,7 +4109,7 @@ public struct ListPartsOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension ListPartsRequest {
-    public func asS3ModelListPartsOperationInputAdditionalHeaders() -> ListPartsOperationInputAdditionalHeaders {
+    func asS3ModelListPartsOperationInputAdditionalHeaders() -> ListPartsOperationInputAdditionalHeaders {
         return ListPartsOperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -4158,7 +4178,7 @@ public struct ListPartsOperationOutputBody: Codable, Equatable {
 }
 
 public extension ListPartsOutput {
-    public func asS3ModelListPartsOperationOutputBody() -> ListPartsOperationOutputBody {
+    func asS3ModelListPartsOperationOutputBody() -> ListPartsOperationOutputBody {
         return ListPartsOperationOutputBody(
             bucket: bucket,
             initiator: initiator,
@@ -4202,7 +4222,7 @@ public struct ListPartsOperationOutputHeaders: Codable, Equatable {
 }
 
 public extension ListPartsOutput {
-    public func asS3ModelListPartsOperationOutputHeaders() -> ListPartsOperationOutputHeaders {
+    func asS3ModelListPartsOperationOutputHeaders() -> ListPartsOperationOutputHeaders {
         return ListPartsOperationOutputHeaders(
             abortDate: abortDate,
             abortRuleId: abortRuleId,
@@ -4230,7 +4250,7 @@ public struct PutBucketAccelerateConfigurationOperationInputPath: Codable, Equat
 }
 
 public extension PutBucketAccelerateConfigurationRequest {
-    public func asS3ModelPutBucketAccelerateConfigurationOperationInputPath() -> PutBucketAccelerateConfigurationOperationInputPath {
+    func asS3ModelPutBucketAccelerateConfigurationOperationInputPath() -> PutBucketAccelerateConfigurationOperationInputPath {
         return PutBucketAccelerateConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -4256,7 +4276,7 @@ public struct PutBucketAclOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketAclRequest {
-    public func asS3ModelPutBucketAclOperationInputPath() -> PutBucketAclOperationInputPath {
+    func asS3ModelPutBucketAclOperationInputPath() -> PutBucketAclOperationInputPath {
         return PutBucketAclOperationInputPath(
             bucket: bucket)
     }
@@ -4306,7 +4326,7 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension PutBucketAclRequest {
-    public func asS3ModelPutBucketAclOperationInputAdditionalHeaders() -> PutBucketAclOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketAclOperationInputAdditionalHeaders() -> PutBucketAclOperationInputAdditionalHeaders {
         return PutBucketAclOperationInputAdditionalHeaders(
             aCL: aCL,
             contentMD5: contentMD5,
@@ -4338,7 +4358,7 @@ public struct PutBucketAnalyticsConfigurationOperationInputPath: Codable, Equata
 }
 
 public extension PutBucketAnalyticsConfigurationRequest {
-    public func asS3ModelPutBucketAnalyticsConfigurationOperationInputPath() -> PutBucketAnalyticsConfigurationOperationInputPath {
+    func asS3ModelPutBucketAnalyticsConfigurationOperationInputPath() -> PutBucketAnalyticsConfigurationOperationInputPath {
         return PutBucketAnalyticsConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -4364,7 +4384,7 @@ public struct PutBucketAnalyticsConfigurationOperationInputQuery: Codable, Equat
 }
 
 public extension PutBucketAnalyticsConfigurationRequest {
-    public func asS3ModelPutBucketAnalyticsConfigurationOperationInputQuery() -> PutBucketAnalyticsConfigurationOperationInputQuery {
+    func asS3ModelPutBucketAnalyticsConfigurationOperationInputQuery() -> PutBucketAnalyticsConfigurationOperationInputQuery {
         return PutBucketAnalyticsConfigurationOperationInputQuery(
             id: id)
     }
@@ -4390,7 +4410,7 @@ public struct PutBucketCorsOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketCorsRequest {
-    public func asS3ModelPutBucketCorsOperationInputPath() -> PutBucketCorsOperationInputPath {
+    func asS3ModelPutBucketCorsOperationInputPath() -> PutBucketCorsOperationInputPath {
         return PutBucketCorsOperationInputPath(
             bucket: bucket)
     }
@@ -4416,7 +4436,7 @@ public struct PutBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension PutBucketCorsRequest {
-    public func asS3ModelPutBucketCorsOperationInputAdditionalHeaders() -> PutBucketCorsOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketCorsOperationInputAdditionalHeaders() -> PutBucketCorsOperationInputAdditionalHeaders {
         return PutBucketCorsOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -4442,7 +4462,7 @@ public struct PutBucketEncryptionOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketEncryptionRequest {
-    public func asS3ModelPutBucketEncryptionOperationInputPath() -> PutBucketEncryptionOperationInputPath {
+    func asS3ModelPutBucketEncryptionOperationInputPath() -> PutBucketEncryptionOperationInputPath {
         return PutBucketEncryptionOperationInputPath(
             bucket: bucket)
     }
@@ -4468,7 +4488,7 @@ public struct PutBucketEncryptionOperationInputAdditionalHeaders: Codable, Equat
 }
 
 public extension PutBucketEncryptionRequest {
-    public func asS3ModelPutBucketEncryptionOperationInputAdditionalHeaders() -> PutBucketEncryptionOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketEncryptionOperationInputAdditionalHeaders() -> PutBucketEncryptionOperationInputAdditionalHeaders {
         return PutBucketEncryptionOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -4494,7 +4514,7 @@ public struct PutBucketInventoryConfigurationOperationInputPath: Codable, Equata
 }
 
 public extension PutBucketInventoryConfigurationRequest {
-    public func asS3ModelPutBucketInventoryConfigurationOperationInputPath() -> PutBucketInventoryConfigurationOperationInputPath {
+    func asS3ModelPutBucketInventoryConfigurationOperationInputPath() -> PutBucketInventoryConfigurationOperationInputPath {
         return PutBucketInventoryConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -4520,7 +4540,7 @@ public struct PutBucketInventoryConfigurationOperationInputQuery: Codable, Equat
 }
 
 public extension PutBucketInventoryConfigurationRequest {
-    public func asS3ModelPutBucketInventoryConfigurationOperationInputQuery() -> PutBucketInventoryConfigurationOperationInputQuery {
+    func asS3ModelPutBucketInventoryConfigurationOperationInputQuery() -> PutBucketInventoryConfigurationOperationInputQuery {
         return PutBucketInventoryConfigurationOperationInputQuery(
             id: id)
     }
@@ -4546,7 +4566,7 @@ public struct PutBucketLifecycleOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketLifecycleRequest {
-    public func asS3ModelPutBucketLifecycleOperationInputPath() -> PutBucketLifecycleOperationInputPath {
+    func asS3ModelPutBucketLifecycleOperationInputPath() -> PutBucketLifecycleOperationInputPath {
         return PutBucketLifecycleOperationInputPath(
             bucket: bucket)
     }
@@ -4572,7 +4592,7 @@ public struct PutBucketLifecycleOperationInputAdditionalHeaders: Codable, Equata
 }
 
 public extension PutBucketLifecycleRequest {
-    public func asS3ModelPutBucketLifecycleOperationInputAdditionalHeaders() -> PutBucketLifecycleOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketLifecycleOperationInputAdditionalHeaders() -> PutBucketLifecycleOperationInputAdditionalHeaders {
         return PutBucketLifecycleOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -4598,7 +4618,7 @@ public struct PutBucketLifecycleConfigurationOperationInputPath: Codable, Equata
 }
 
 public extension PutBucketLifecycleConfigurationRequest {
-    public func asS3ModelPutBucketLifecycleConfigurationOperationInputPath() -> PutBucketLifecycleConfigurationOperationInputPath {
+    func asS3ModelPutBucketLifecycleConfigurationOperationInputPath() -> PutBucketLifecycleConfigurationOperationInputPath {
         return PutBucketLifecycleConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -4624,7 +4644,7 @@ public struct PutBucketLoggingOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketLoggingRequest {
-    public func asS3ModelPutBucketLoggingOperationInputPath() -> PutBucketLoggingOperationInputPath {
+    func asS3ModelPutBucketLoggingOperationInputPath() -> PutBucketLoggingOperationInputPath {
         return PutBucketLoggingOperationInputPath(
             bucket: bucket)
     }
@@ -4650,7 +4670,7 @@ public struct PutBucketLoggingOperationInputAdditionalHeaders: Codable, Equatabl
 }
 
 public extension PutBucketLoggingRequest {
-    public func asS3ModelPutBucketLoggingOperationInputAdditionalHeaders() -> PutBucketLoggingOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketLoggingOperationInputAdditionalHeaders() -> PutBucketLoggingOperationInputAdditionalHeaders {
         return PutBucketLoggingOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -4676,7 +4696,7 @@ public struct PutBucketMetricsConfigurationOperationInputPath: Codable, Equatabl
 }
 
 public extension PutBucketMetricsConfigurationRequest {
-    public func asS3ModelPutBucketMetricsConfigurationOperationInputPath() -> PutBucketMetricsConfigurationOperationInputPath {
+    func asS3ModelPutBucketMetricsConfigurationOperationInputPath() -> PutBucketMetricsConfigurationOperationInputPath {
         return PutBucketMetricsConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -4702,7 +4722,7 @@ public struct PutBucketMetricsConfigurationOperationInputQuery: Codable, Equatab
 }
 
 public extension PutBucketMetricsConfigurationRequest {
-    public func asS3ModelPutBucketMetricsConfigurationOperationInputQuery() -> PutBucketMetricsConfigurationOperationInputQuery {
+    func asS3ModelPutBucketMetricsConfigurationOperationInputQuery() -> PutBucketMetricsConfigurationOperationInputQuery {
         return PutBucketMetricsConfigurationOperationInputQuery(
             id: id)
     }
@@ -4728,7 +4748,7 @@ public struct PutBucketNotificationOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketNotificationRequest {
-    public func asS3ModelPutBucketNotificationOperationInputPath() -> PutBucketNotificationOperationInputPath {
+    func asS3ModelPutBucketNotificationOperationInputPath() -> PutBucketNotificationOperationInputPath {
         return PutBucketNotificationOperationInputPath(
             bucket: bucket)
     }
@@ -4754,7 +4774,7 @@ public struct PutBucketNotificationOperationInputAdditionalHeaders: Codable, Equ
 }
 
 public extension PutBucketNotificationRequest {
-    public func asS3ModelPutBucketNotificationOperationInputAdditionalHeaders() -> PutBucketNotificationOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketNotificationOperationInputAdditionalHeaders() -> PutBucketNotificationOperationInputAdditionalHeaders {
         return PutBucketNotificationOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -4780,7 +4800,7 @@ public struct PutBucketNotificationConfigurationOperationInputPath: Codable, Equ
 }
 
 public extension PutBucketNotificationConfigurationRequest {
-    public func asS3ModelPutBucketNotificationConfigurationOperationInputPath() -> PutBucketNotificationConfigurationOperationInputPath {
+    func asS3ModelPutBucketNotificationConfigurationOperationInputPath() -> PutBucketNotificationConfigurationOperationInputPath {
         return PutBucketNotificationConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -4806,7 +4826,7 @@ public struct PutBucketPolicyOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketPolicyRequest {
-    public func asS3ModelPutBucketPolicyOperationInputPath() -> PutBucketPolicyOperationInputPath {
+    func asS3ModelPutBucketPolicyOperationInputPath() -> PutBucketPolicyOperationInputPath {
         return PutBucketPolicyOperationInputPath(
             bucket: bucket)
     }
@@ -4836,7 +4856,7 @@ public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable
 }
 
 public extension PutBucketPolicyRequest {
-    public func asS3ModelPutBucketPolicyOperationInputAdditionalHeaders() -> PutBucketPolicyOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketPolicyOperationInputAdditionalHeaders() -> PutBucketPolicyOperationInputAdditionalHeaders {
         return PutBucketPolicyOperationInputAdditionalHeaders(
             confirmRemoveSelfBucketAccess: confirmRemoveSelfBucketAccess,
             contentMD5: contentMD5)
@@ -4863,7 +4883,7 @@ public struct PutBucketReplicationOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketReplicationRequest {
-    public func asS3ModelPutBucketReplicationOperationInputPath() -> PutBucketReplicationOperationInputPath {
+    func asS3ModelPutBucketReplicationOperationInputPath() -> PutBucketReplicationOperationInputPath {
         return PutBucketReplicationOperationInputPath(
             bucket: bucket)
     }
@@ -4893,7 +4913,7 @@ public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equa
 }
 
 public extension PutBucketReplicationRequest {
-    public func asS3ModelPutBucketReplicationOperationInputAdditionalHeaders() -> PutBucketReplicationOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketReplicationOperationInputAdditionalHeaders() -> PutBucketReplicationOperationInputAdditionalHeaders {
         return PutBucketReplicationOperationInputAdditionalHeaders(
             contentMD5: contentMD5,
             token: token)
@@ -4920,7 +4940,7 @@ public struct PutBucketRequestPaymentOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketRequestPaymentRequest {
-    public func asS3ModelPutBucketRequestPaymentOperationInputPath() -> PutBucketRequestPaymentOperationInputPath {
+    func asS3ModelPutBucketRequestPaymentOperationInputPath() -> PutBucketRequestPaymentOperationInputPath {
         return PutBucketRequestPaymentOperationInputPath(
             bucket: bucket)
     }
@@ -4946,7 +4966,7 @@ public struct PutBucketRequestPaymentOperationInputAdditionalHeaders: Codable, E
 }
 
 public extension PutBucketRequestPaymentRequest {
-    public func asS3ModelPutBucketRequestPaymentOperationInputAdditionalHeaders() -> PutBucketRequestPaymentOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketRequestPaymentOperationInputAdditionalHeaders() -> PutBucketRequestPaymentOperationInputAdditionalHeaders {
         return PutBucketRequestPaymentOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -4972,7 +4992,7 @@ public struct PutBucketTaggingOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketTaggingRequest {
-    public func asS3ModelPutBucketTaggingOperationInputPath() -> PutBucketTaggingOperationInputPath {
+    func asS3ModelPutBucketTaggingOperationInputPath() -> PutBucketTaggingOperationInputPath {
         return PutBucketTaggingOperationInputPath(
             bucket: bucket)
     }
@@ -4998,7 +5018,7 @@ public struct PutBucketTaggingOperationInputAdditionalHeaders: Codable, Equatabl
 }
 
 public extension PutBucketTaggingRequest {
-    public func asS3ModelPutBucketTaggingOperationInputAdditionalHeaders() -> PutBucketTaggingOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketTaggingOperationInputAdditionalHeaders() -> PutBucketTaggingOperationInputAdditionalHeaders {
         return PutBucketTaggingOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -5024,7 +5044,7 @@ public struct PutBucketVersioningOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketVersioningRequest {
-    public func asS3ModelPutBucketVersioningOperationInputPath() -> PutBucketVersioningOperationInputPath {
+    func asS3ModelPutBucketVersioningOperationInputPath() -> PutBucketVersioningOperationInputPath {
         return PutBucketVersioningOperationInputPath(
             bucket: bucket)
     }
@@ -5054,7 +5074,7 @@ public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equat
 }
 
 public extension PutBucketVersioningRequest {
-    public func asS3ModelPutBucketVersioningOperationInputAdditionalHeaders() -> PutBucketVersioningOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketVersioningOperationInputAdditionalHeaders() -> PutBucketVersioningOperationInputAdditionalHeaders {
         return PutBucketVersioningOperationInputAdditionalHeaders(
             contentMD5: contentMD5,
             mFA: mFA)
@@ -5081,7 +5101,7 @@ public struct PutBucketWebsiteOperationInputPath: Codable, Equatable {
 }
 
 public extension PutBucketWebsiteRequest {
-    public func asS3ModelPutBucketWebsiteOperationInputPath() -> PutBucketWebsiteOperationInputPath {
+    func asS3ModelPutBucketWebsiteOperationInputPath() -> PutBucketWebsiteOperationInputPath {
         return PutBucketWebsiteOperationInputPath(
             bucket: bucket)
     }
@@ -5107,7 +5127,7 @@ public struct PutBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatabl
 }
 
 public extension PutBucketWebsiteRequest {
-    public func asS3ModelPutBucketWebsiteOperationInputAdditionalHeaders() -> PutBucketWebsiteOperationInputAdditionalHeaders {
+    func asS3ModelPutBucketWebsiteOperationInputAdditionalHeaders() -> PutBucketWebsiteOperationInputAdditionalHeaders {
         return PutBucketWebsiteOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -5138,7 +5158,7 @@ public struct PutObjectOperationInputPath: Codable, Equatable {
 }
 
 public extension PutObjectRequest {
-    public func asS3ModelPutObjectOperationInputPath() -> PutObjectOperationInputPath {
+    func asS3ModelPutObjectOperationInputPath() -> PutObjectOperationInputPath {
         return PutObjectOperationInputPath(
             bucket: bucket,
             key: key)
@@ -5171,6 +5191,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
     public var storageClass: StorageClass?
@@ -5198,6 +5219,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 storageClass: StorageClass? = nil,
@@ -5224,6 +5246,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
         self.storageClass = storageClass
@@ -5253,6 +5276,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
         case storageClass = "x-amz-storage-class"
@@ -5265,7 +5289,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension PutObjectRequest {
-    public func asS3ModelPutObjectOperationInputAdditionalHeaders() -> PutObjectOperationInputAdditionalHeaders {
+    func asS3ModelPutObjectOperationInputAdditionalHeaders() -> PutObjectOperationInputAdditionalHeaders {
         return PutObjectOperationInputAdditionalHeaders(
             aCL: aCL,
             cacheControl: cacheControl,
@@ -5288,6 +5312,7 @@ public extension PutObjectRequest {
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption,
             storageClass: storageClass,
@@ -5321,7 +5346,7 @@ public struct PutObjectAclOperationInputPath: Codable, Equatable {
 }
 
 public extension PutObjectAclRequest {
-    public func asS3ModelPutObjectAclOperationInputPath() -> PutObjectAclOperationInputPath {
+    func asS3ModelPutObjectAclOperationInputPath() -> PutObjectAclOperationInputPath {
         return PutObjectAclOperationInputPath(
             bucket: bucket,
             key: key)
@@ -5348,7 +5373,7 @@ public struct PutObjectAclOperationInputQuery: Codable, Equatable {
 }
 
 public extension PutObjectAclRequest {
-    public func asS3ModelPutObjectAclOperationInputQuery() -> PutObjectAclOperationInputQuery {
+    func asS3ModelPutObjectAclOperationInputQuery() -> PutObjectAclOperationInputQuery {
         return PutObjectAclOperationInputQuery(
             versionId: versionId)
     }
@@ -5402,7 +5427,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension PutObjectAclRequest {
-    public func asS3ModelPutObjectAclOperationInputAdditionalHeaders() -> PutObjectAclOperationInputAdditionalHeaders {
+    func asS3ModelPutObjectAclOperationInputAdditionalHeaders() -> PutObjectAclOperationInputAdditionalHeaders {
         return PutObjectAclOperationInputAdditionalHeaders(
             aCL: aCL,
             contentMD5: contentMD5,
@@ -5440,7 +5465,7 @@ public struct PutObjectLegalHoldOperationInputPath: Codable, Equatable {
 }
 
 public extension PutObjectLegalHoldRequest {
-    public func asS3ModelPutObjectLegalHoldOperationInputPath() -> PutObjectLegalHoldOperationInputPath {
+    func asS3ModelPutObjectLegalHoldOperationInputPath() -> PutObjectLegalHoldOperationInputPath {
         return PutObjectLegalHoldOperationInputPath(
             bucket: bucket,
             key: key)
@@ -5467,7 +5492,7 @@ public struct PutObjectLegalHoldOperationInputQuery: Codable, Equatable {
 }
 
 public extension PutObjectLegalHoldRequest {
-    public func asS3ModelPutObjectLegalHoldOperationInputQuery() -> PutObjectLegalHoldOperationInputQuery {
+    func asS3ModelPutObjectLegalHoldOperationInputQuery() -> PutObjectLegalHoldOperationInputQuery {
         return PutObjectLegalHoldOperationInputQuery(
             versionId: versionId)
     }
@@ -5497,7 +5522,7 @@ public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equata
 }
 
 public extension PutObjectLegalHoldRequest {
-    public func asS3ModelPutObjectLegalHoldOperationInputAdditionalHeaders() -> PutObjectLegalHoldOperationInputAdditionalHeaders {
+    func asS3ModelPutObjectLegalHoldOperationInputAdditionalHeaders() -> PutObjectLegalHoldOperationInputAdditionalHeaders {
         return PutObjectLegalHoldOperationInputAdditionalHeaders(
             contentMD5: contentMD5,
             requestPayer: requestPayer)
@@ -5524,7 +5549,7 @@ public struct PutObjectLockConfigurationOperationInputPath: Codable, Equatable {
 }
 
 public extension PutObjectLockConfigurationRequest {
-    public func asS3ModelPutObjectLockConfigurationOperationInputPath() -> PutObjectLockConfigurationOperationInputPath {
+    func asS3ModelPutObjectLockConfigurationOperationInputPath() -> PutObjectLockConfigurationOperationInputPath {
         return PutObjectLockConfigurationOperationInputPath(
             bucket: bucket)
     }
@@ -5558,7 +5583,7 @@ public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable
 }
 
 public extension PutObjectLockConfigurationRequest {
-    public func asS3ModelPutObjectLockConfigurationOperationInputAdditionalHeaders() -> PutObjectLockConfigurationOperationInputAdditionalHeaders {
+    func asS3ModelPutObjectLockConfigurationOperationInputAdditionalHeaders() -> PutObjectLockConfigurationOperationInputAdditionalHeaders {
         return PutObjectLockConfigurationOperationInputAdditionalHeaders(
             contentMD5: contentMD5,
             requestPayer: requestPayer,
@@ -5591,7 +5616,7 @@ public struct PutObjectRetentionOperationInputPath: Codable, Equatable {
 }
 
 public extension PutObjectRetentionRequest {
-    public func asS3ModelPutObjectRetentionOperationInputPath() -> PutObjectRetentionOperationInputPath {
+    func asS3ModelPutObjectRetentionOperationInputPath() -> PutObjectRetentionOperationInputPath {
         return PutObjectRetentionOperationInputPath(
             bucket: bucket,
             key: key)
@@ -5618,7 +5643,7 @@ public struct PutObjectRetentionOperationInputQuery: Codable, Equatable {
 }
 
 public extension PutObjectRetentionRequest {
-    public func asS3ModelPutObjectRetentionOperationInputQuery() -> PutObjectRetentionOperationInputQuery {
+    func asS3ModelPutObjectRetentionOperationInputQuery() -> PutObjectRetentionOperationInputQuery {
         return PutObjectRetentionOperationInputQuery(
             versionId: versionId)
     }
@@ -5652,7 +5677,7 @@ public struct PutObjectRetentionOperationInputAdditionalHeaders: Codable, Equata
 }
 
 public extension PutObjectRetentionRequest {
-    public func asS3ModelPutObjectRetentionOperationInputAdditionalHeaders() -> PutObjectRetentionOperationInputAdditionalHeaders {
+    func asS3ModelPutObjectRetentionOperationInputAdditionalHeaders() -> PutObjectRetentionOperationInputAdditionalHeaders {
         return PutObjectRetentionOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
             contentMD5: contentMD5,
@@ -5685,7 +5710,7 @@ public struct PutObjectTaggingOperationInputPath: Codable, Equatable {
 }
 
 public extension PutObjectTaggingRequest {
-    public func asS3ModelPutObjectTaggingOperationInputPath() -> PutObjectTaggingOperationInputPath {
+    func asS3ModelPutObjectTaggingOperationInputPath() -> PutObjectTaggingOperationInputPath {
         return PutObjectTaggingOperationInputPath(
             bucket: bucket,
             key: key)
@@ -5712,7 +5737,7 @@ public struct PutObjectTaggingOperationInputQuery: Codable, Equatable {
 }
 
 public extension PutObjectTaggingRequest {
-    public func asS3ModelPutObjectTaggingOperationInputQuery() -> PutObjectTaggingOperationInputQuery {
+    func asS3ModelPutObjectTaggingOperationInputQuery() -> PutObjectTaggingOperationInputQuery {
         return PutObjectTaggingOperationInputQuery(
             versionId: versionId)
     }
@@ -5738,7 +5763,7 @@ public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatabl
 }
 
 public extension PutObjectTaggingRequest {
-    public func asS3ModelPutObjectTaggingOperationInputAdditionalHeaders() -> PutObjectTaggingOperationInputAdditionalHeaders {
+    func asS3ModelPutObjectTaggingOperationInputAdditionalHeaders() -> PutObjectTaggingOperationInputAdditionalHeaders {
         return PutObjectTaggingOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -5764,7 +5789,7 @@ public struct PutPublicAccessBlockOperationInputPath: Codable, Equatable {
 }
 
 public extension PutPublicAccessBlockRequest {
-    public func asS3ModelPutPublicAccessBlockOperationInputPath() -> PutPublicAccessBlockOperationInputPath {
+    func asS3ModelPutPublicAccessBlockOperationInputPath() -> PutPublicAccessBlockOperationInputPath {
         return PutPublicAccessBlockOperationInputPath(
             bucket: bucket)
     }
@@ -5790,7 +5815,7 @@ public struct PutPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equa
 }
 
 public extension PutPublicAccessBlockRequest {
-    public func asS3ModelPutPublicAccessBlockOperationInputAdditionalHeaders() -> PutPublicAccessBlockOperationInputAdditionalHeaders {
+    func asS3ModelPutPublicAccessBlockOperationInputAdditionalHeaders() -> PutPublicAccessBlockOperationInputAdditionalHeaders {
         return PutPublicAccessBlockOperationInputAdditionalHeaders(
             contentMD5: contentMD5)
     }
@@ -5821,7 +5846,7 @@ public struct RestoreObjectOperationInputPath: Codable, Equatable {
 }
 
 public extension RestoreObjectRequest {
-    public func asS3ModelRestoreObjectOperationInputPath() -> RestoreObjectOperationInputPath {
+    func asS3ModelRestoreObjectOperationInputPath() -> RestoreObjectOperationInputPath {
         return RestoreObjectOperationInputPath(
             bucket: bucket,
             key: key)
@@ -5848,7 +5873,7 @@ public struct RestoreObjectOperationInputQuery: Codable, Equatable {
 }
 
 public extension RestoreObjectRequest {
-    public func asS3ModelRestoreObjectOperationInputQuery() -> RestoreObjectOperationInputQuery {
+    func asS3ModelRestoreObjectOperationInputQuery() -> RestoreObjectOperationInputQuery {
         return RestoreObjectOperationInputQuery(
             versionId: versionId)
     }
@@ -5874,7 +5899,7 @@ public struct RestoreObjectOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension RestoreObjectRequest {
-    public func asS3ModelRestoreObjectOperationInputAdditionalHeaders() -> RestoreObjectOperationInputAdditionalHeaders {
+    func asS3ModelRestoreObjectOperationInputAdditionalHeaders() -> RestoreObjectOperationInputAdditionalHeaders {
         return RestoreObjectOperationInputAdditionalHeaders(
             requestPayer: requestPayer)
     }
@@ -5905,7 +5930,7 @@ public struct SelectObjectContentOperationInputPath: Codable, Equatable {
 }
 
 public extension SelectObjectContentRequest {
-    public func asS3ModelSelectObjectContentOperationInputPath() -> SelectObjectContentOperationInputPath {
+    func asS3ModelSelectObjectContentOperationInputPath() -> SelectObjectContentOperationInputPath {
         return SelectObjectContentOperationInputPath(
             bucket: bucket,
             key: key)
@@ -5951,7 +5976,7 @@ public struct SelectObjectContentOperationInputBody: Codable, Equatable {
 }
 
 public extension SelectObjectContentRequest {
-    public func asS3ModelSelectObjectContentOperationInputBody() -> SelectObjectContentOperationInputBody {
+    func asS3ModelSelectObjectContentOperationInputBody() -> SelectObjectContentOperationInputBody {
         return SelectObjectContentOperationInputBody(
             expression: expression,
             expressionType: expressionType,
@@ -5989,7 +6014,7 @@ public struct SelectObjectContentOperationInputAdditionalHeaders: Codable, Equat
 }
 
 public extension SelectObjectContentRequest {
-    public func asS3ModelSelectObjectContentOperationInputAdditionalHeaders() -> SelectObjectContentOperationInputAdditionalHeaders {
+    func asS3ModelSelectObjectContentOperationInputAdditionalHeaders() -> SelectObjectContentOperationInputAdditionalHeaders {
         return SelectObjectContentOperationInputAdditionalHeaders(
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
@@ -6022,7 +6047,7 @@ public struct UploadPartOperationInputPath: Codable, Equatable {
 }
 
 public extension UploadPartRequest {
-    public func asS3ModelUploadPartOperationInputPath() -> UploadPartOperationInputPath {
+    func asS3ModelUploadPartOperationInputPath() -> UploadPartOperationInputPath {
         return UploadPartOperationInputPath(
             bucket: bucket,
             key: key)
@@ -6053,7 +6078,7 @@ public struct UploadPartOperationInputQuery: Codable, Equatable {
 }
 
 public extension UploadPartRequest {
-    public func asS3ModelUploadPartOperationInputQuery() -> UploadPartOperationInputQuery {
+    func asS3ModelUploadPartOperationInputQuery() -> UploadPartOperationInputQuery {
         return UploadPartOperationInputQuery(
             partNumber: partNumber,
             uploadId: uploadId)
@@ -6100,7 +6125,7 @@ public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable {
 }
 
 public extension UploadPartRequest {
-    public func asS3ModelUploadPartOperationInputAdditionalHeaders() -> UploadPartOperationInputAdditionalHeaders {
+    func asS3ModelUploadPartOperationInputAdditionalHeaders() -> UploadPartOperationInputAdditionalHeaders {
         return UploadPartOperationInputAdditionalHeaders(
             contentLength: contentLength,
             contentMD5: contentMD5,
@@ -6136,7 +6161,7 @@ public struct UploadPartCopyOperationInputPath: Codable, Equatable {
 }
 
 public extension UploadPartCopyRequest {
-    public func asS3ModelUploadPartCopyOperationInputPath() -> UploadPartCopyOperationInputPath {
+    func asS3ModelUploadPartCopyOperationInputPath() -> UploadPartCopyOperationInputPath {
         return UploadPartCopyOperationInputPath(
             bucket: bucket,
             key: key)
@@ -6167,7 +6192,7 @@ public struct UploadPartCopyOperationInputQuery: Codable, Equatable {
 }
 
 public extension UploadPartCopyRequest {
-    public func asS3ModelUploadPartCopyOperationInputQuery() -> UploadPartCopyOperationInputQuery {
+    func asS3ModelUploadPartCopyOperationInputQuery() -> UploadPartCopyOperationInputQuery {
         return UploadPartCopyOperationInputQuery(
             partNumber: partNumber,
             uploadId: uploadId)
@@ -6243,7 +6268,7 @@ public struct UploadPartCopyOperationInputAdditionalHeaders: Codable, Equatable 
 }
 
 public extension UploadPartCopyRequest {
-    public func asS3ModelUploadPartCopyOperationInputAdditionalHeaders() -> UploadPartCopyOperationInputAdditionalHeaders {
+    func asS3ModelUploadPartCopyOperationInputAdditionalHeaders() -> UploadPartCopyOperationInputAdditionalHeaders {
         return UploadPartCopyOperationInputAdditionalHeaders(
             copySource: copySource,
             copySourceIfMatch: copySourceIfMatch,
@@ -6301,7 +6326,7 @@ public struct UploadPartCopyOperationOutputHeaders: Codable, Equatable {
 }
 
 public extension UploadPartCopyOutput {
-    public func asS3ModelUploadPartCopyOperationOutputHeaders() -> UploadPartCopyOperationOutputHeaders {
+    func asS3ModelUploadPartCopyOperationOutputHeaders() -> UploadPartCopyOperationOutputHeaders {
         return UploadPartCopyOperationOutputHeaders(
             copySourceVersionId: copySourceVersionId,
             requestCharged: requestCharged,

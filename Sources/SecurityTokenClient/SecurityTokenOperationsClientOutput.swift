@@ -76,6 +76,19 @@ extension DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage: HTTPR
 }
 
 /**
+ Type to handle the output from the GetAccessKeyInfo operation in a HTTP client.
+ */
+extension GetAccessKeyInfoResponseForGetAccessKeyInfo: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetAccessKeyInfoResponseForGetAccessKeyInfo
+    public typealias HeadersType = GetAccessKeyInfoResponseForGetAccessKeyInfo
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetAccessKeyInfoResponseForGetAccessKeyInfo {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetCallerIdentity operation in a HTTP client.
  */
 extension GetCallerIdentityResponseForGetCallerIdentity: HTTPResponseOutputProtocol {

@@ -103,6 +103,16 @@ public enum HistoryEventType: String, Codable, CustomStringConvertible {
     case lambdaFunctionStarted = "LambdaFunctionStarted"
     case lambdaFunctionSucceeded = "LambdaFunctionSucceeded"
     case lambdaFunctionTimedOut = "LambdaFunctionTimedOut"
+    case mapIterationAborted = "MapIterationAborted"
+    case mapIterationFailed = "MapIterationFailed"
+    case mapIterationStarted = "MapIterationStarted"
+    case mapIterationSucceeded = "MapIterationSucceeded"
+    case mapStateAborted = "MapStateAborted"
+    case mapStateEntered = "MapStateEntered"
+    case mapStateExited = "MapStateExited"
+    case mapStateFailed = "MapStateFailed"
+    case mapStateStarted = "MapStateStarted"
+    case mapStateSucceeded = "MapStateSucceeded"
     case parallelStateAborted = "ParallelStateAborted"
     case parallelStateEntered = "ParallelStateEntered"
     case parallelStateExited = "ParallelStateExited"
@@ -139,6 +149,11 @@ public enum HistoryEventType: String, Codable, CustomStringConvertible {
  Type definition for the Identity field.
  */
 public typealias Identity = String
+
+/**
+ Type definition for the ListExecutionsPageToken field.
+ */
+public typealias ListExecutionsPageToken = String
 
 /**
  Type definition for the Name field.
@@ -235,6 +250,11 @@ public typealias TimeoutInSeconds = Int
 public typealias Timestamp = Double
 
 /**
+ Type definition for the UnsignedInteger field.
+ */
+public typealias UnsignedInteger = Int
+
+/**
  Validation for the Arn field.
 */
 extension StepFunctionsModel.Arn {
@@ -287,6 +307,21 @@ extension StepFunctionsModel.Identity {
 
         if self.count > 256 {
             throw StepFunctionsCodingError.validationError(reason: "The provided value to Identity violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ListExecutionsPageToken field.
+*/
+extension StepFunctionsModel.ListExecutionsPageToken {
+    public func validateAsListExecutionsPageToken() throws {
+        if self.count < 1 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to ListExecutionsPageToken violated the minimum length constraint.")
+        }
+
+        if self.count > 3096 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to ListExecutionsPageToken violated the maximum length constraint.")
         }
     }
 }
@@ -432,5 +467,17 @@ extension StepFunctionsModel.TaskToken {
         if self.count > 1024 {
             throw StepFunctionsCodingError.validationError(reason: "The provided value to TaskToken violated the maximum length constraint.")
         }
+    }
+}
+
+/**
+ Validation for the UnsignedInteger field.
+*/
+extension StepFunctionsModel.UnsignedInteger {
+    public func validateAsUnsignedInteger() throws {
+        if self < 0 {
+            throw StepFunctionsCodingError.validationError(reason: "The provided value to UnsignedInteger violated the minimum range constraint.")
+        }
+
     }
 }

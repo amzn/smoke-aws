@@ -35,6 +35,8 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
     let assumeRoleWithWebIdentitySyncOverride: SecurityTokenClientProtocol.AssumeRoleWithWebIdentitySyncType?
     let decodeAuthorizationMessageAsyncOverride: SecurityTokenClientProtocol.DecodeAuthorizationMessageAsyncType?
     let decodeAuthorizationMessageSyncOverride: SecurityTokenClientProtocol.DecodeAuthorizationMessageSyncType?
+    let getAccessKeyInfoAsyncOverride: SecurityTokenClientProtocol.GetAccessKeyInfoAsyncType?
+    let getAccessKeyInfoSyncOverride: SecurityTokenClientProtocol.GetAccessKeyInfoSyncType?
     let getCallerIdentityAsyncOverride: SecurityTokenClientProtocol.GetCallerIdentityAsyncType?
     let getCallerIdentitySyncOverride: SecurityTokenClientProtocol.GetCallerIdentitySyncType?
     let getFederationTokenAsyncOverride: SecurityTokenClientProtocol.GetFederationTokenAsyncType?
@@ -55,6 +57,8 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
             assumeRoleWithWebIdentitySync: SecurityTokenClientProtocol.AssumeRoleWithWebIdentitySyncType? = nil,
             decodeAuthorizationMessageAsync: SecurityTokenClientProtocol.DecodeAuthorizationMessageAsyncType? = nil,
             decodeAuthorizationMessageSync: SecurityTokenClientProtocol.DecodeAuthorizationMessageSyncType? = nil,
+            getAccessKeyInfoAsync: SecurityTokenClientProtocol.GetAccessKeyInfoAsyncType? = nil,
+            getAccessKeyInfoSync: SecurityTokenClientProtocol.GetAccessKeyInfoSyncType? = nil,
             getCallerIdentityAsync: SecurityTokenClientProtocol.GetCallerIdentityAsyncType? = nil,
             getCallerIdentitySync: SecurityTokenClientProtocol.GetCallerIdentitySyncType? = nil,
             getFederationTokenAsync: SecurityTokenClientProtocol.GetFederationTokenAsyncType? = nil,
@@ -69,6 +73,8 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
         self.assumeRoleWithWebIdentitySyncOverride = assumeRoleWithWebIdentitySync
         self.decodeAuthorizationMessageAsyncOverride = decodeAuthorizationMessageAsync
         self.decodeAuthorizationMessageSyncOverride = decodeAuthorizationMessageSync
+        self.getAccessKeyInfoAsyncOverride = getAccessKeyInfoAsync
+        self.getAccessKeyInfoSyncOverride = getAccessKeyInfoSync
         self.getCallerIdentityAsyncOverride = getCallerIdentityAsync
         self.getCallerIdentitySyncOverride = getCallerIdentitySync
         self.getFederationTokenAsyncOverride = getFederationTokenAsync
@@ -223,6 +229,41 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
         }
 
         return DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage.__default
+    }
+
+    /**
+     Invokes the GetAccessKeyInfo operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+         - completion: The GetAccessKeyInfoResponseForGetAccessKeyInfo object or an error will be passed to this 
+           callback when the operation is complete. The GetAccessKeyInfoResponseForGetAccessKeyInfo
+           object will be validated before being returned to caller.
+     */
+    public func getAccessKeyInfoAsync(input: SecurityTokenModel.GetAccessKeyInfoRequest, completion: @escaping (HTTPResult<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo>) -> ()) throws {
+        if let getAccessKeyInfoAsyncOverride = getAccessKeyInfoAsyncOverride {
+            return try getAccessKeyInfoAsyncOverride(input, completion)
+        }
+
+        let result = GetAccessKeyInfoResponseForGetAccessKeyInfo.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the GetAccessKeyInfo operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+     - Returns: The GetAccessKeyInfoResponseForGetAccessKeyInfo object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getAccessKeyInfoSync(input: SecurityTokenModel.GetAccessKeyInfoRequest) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo {
+        if let getAccessKeyInfoSyncOverride = getAccessKeyInfoSyncOverride {
+            return try getAccessKeyInfoSyncOverride(input)
+        }
+
+        return GetAccessKeyInfoResponseForGetAccessKeyInfo.__default
     }
 
     /**

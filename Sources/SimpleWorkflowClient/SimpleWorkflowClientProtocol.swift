@@ -59,6 +59,8 @@ public protocol SimpleWorkflowClientProtocol {
     typealias ListDomainsAsyncType = (_ input: SimpleWorkflowModel.ListDomainsInput, _ completion: @escaping (HTTPResult<SimpleWorkflowModel.DomainInfos>) -> ()) throws -> ()
     typealias ListOpenWorkflowExecutionsSyncType = (_ input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
     typealias ListOpenWorkflowExecutionsAsyncType = (_ input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, _ completion: @escaping (HTTPResult<SimpleWorkflowModel.WorkflowExecutionInfos>) -> ()) throws -> ()
+    typealias ListTagsForResourceSyncType = (_ input: SimpleWorkflowModel.ListTagsForResourceInput) throws -> SimpleWorkflowModel.ListTagsForResourceOutput
+    typealias ListTagsForResourceAsyncType = (_ input: SimpleWorkflowModel.ListTagsForResourceInput, _ completion: @escaping (HTTPResult<SimpleWorkflowModel.ListTagsForResourceOutput>) -> ()) throws -> ()
     typealias ListWorkflowTypesSyncType = (_ input: SimpleWorkflowModel.ListWorkflowTypesInput) throws -> SimpleWorkflowModel.WorkflowTypeInfos
     typealias ListWorkflowTypesAsyncType = (_ input: SimpleWorkflowModel.ListWorkflowTypesInput, _ completion: @escaping (HTTPResult<SimpleWorkflowModel.WorkflowTypeInfos>) -> ()) throws -> ()
     typealias PollForActivityTaskSyncType = (_ input: SimpleWorkflowModel.PollForActivityTaskInput) throws -> SimpleWorkflowModel.ActivityTask
@@ -87,8 +89,18 @@ public protocol SimpleWorkflowClientProtocol {
     typealias SignalWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.SignalWorkflowExecutionInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias StartWorkflowExecutionSyncType = (_ input: SimpleWorkflowModel.StartWorkflowExecutionInput) throws -> SimpleWorkflowModel.Run
     typealias StartWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.StartWorkflowExecutionInput, _ completion: @escaping (HTTPResult<SimpleWorkflowModel.Run>) -> ()) throws -> ()
+    typealias TagResourceSyncType = (_ input: SimpleWorkflowModel.TagResourceInput) throws -> ()
+    typealias TagResourceAsyncType = (_ input: SimpleWorkflowModel.TagResourceInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias TerminateWorkflowExecutionSyncType = (_ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws -> ()
     typealias TerminateWorkflowExecutionAsyncType = (_ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias UndeprecateActivityTypeSyncType = (_ input: SimpleWorkflowModel.UndeprecateActivityTypeInput) throws -> ()
+    typealias UndeprecateActivityTypeAsyncType = (_ input: SimpleWorkflowModel.UndeprecateActivityTypeInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias UndeprecateDomainSyncType = (_ input: SimpleWorkflowModel.UndeprecateDomainInput) throws -> ()
+    typealias UndeprecateDomainAsyncType = (_ input: SimpleWorkflowModel.UndeprecateDomainInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias UndeprecateWorkflowTypeSyncType = (_ input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) throws -> ()
+    typealias UndeprecateWorkflowTypeAsyncType = (_ input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias UntagResourceSyncType = (_ input: SimpleWorkflowModel.UntagResourceInput) throws -> ()
+    typealias UntagResourceAsyncType = (_ input: SimpleWorkflowModel.UntagResourceInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
 
     /**
      Invokes the CountClosedWorkflowExecutions operation returning immediately and passing the response to a callback.
@@ -450,6 +462,29 @@ public protocol SimpleWorkflowClientProtocol {
     func listOpenWorkflowExecutionsSync(input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+         - completion: The ListTagsForResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    func listTagsForResourceAsync(input: SimpleWorkflowModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.ListTagsForResourceOutput>) -> ()) throws
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    func listTagsForResourceSync(input: SimpleWorkflowModel.ListTagsForResourceInput) throws -> SimpleWorkflowModel.ListTagsForResourceOutput
+
+    /**
      Invokes the ListWorkflowTypes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -568,7 +603,7 @@ public protocol SimpleWorkflowClientProtocol {
          - input: The validated RegisterDomainInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted.
+           The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Swift.Error?) -> ()) throws
 
@@ -577,7 +612,7 @@ public protocol SimpleWorkflowClientProtocol {
 
      - Parameters:
          - input: The validated RegisterDomainInput object being passed to this operation.
-     - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted.
+     - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     func registerDomainSync(input: SimpleWorkflowModel.RegisterDomainInput) throws
 
@@ -745,6 +780,26 @@ public protocol SimpleWorkflowClientProtocol {
     func startWorkflowExecutionSync(input: SimpleWorkflowModel.StartWorkflowExecutionInput) throws -> SimpleWorkflowModel.Run
 
     /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
+     */
+    func tagResourceAsync(input: SimpleWorkflowModel.TagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Throws: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
+     */
+    func tagResourceSync(input: SimpleWorkflowModel.TagResourceInput) throws
+
+    /**
      Invokes the TerminateWorkflowExecution operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -763,4 +818,84 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func terminateWorkflowExecutionSync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws
+
+    /**
+     Invokes the UndeprecateActivityType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateActivityTypeInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    func undeprecateActivityTypeAsync(input: SimpleWorkflowModel.UndeprecateActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the UndeprecateActivityType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateActivityTypeInput object being passed to this operation.
+     - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    func undeprecateActivityTypeSync(input: SimpleWorkflowModel.UndeprecateActivityTypeInput) throws
+
+    /**
+     Invokes the UndeprecateDomain operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateDomainInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: domainAlreadyExists, operationNotPermitted, unknownResource.
+     */
+    func undeprecateDomainAsync(input: SimpleWorkflowModel.UndeprecateDomainInput, completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the UndeprecateDomain operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateDomainInput object being passed to this operation.
+     - Throws: domainAlreadyExists, operationNotPermitted, unknownResource.
+     */
+    func undeprecateDomainSync(input: SimpleWorkflowModel.UndeprecateDomainInput) throws
+
+    /**
+     Invokes the UndeprecateWorkflowType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateWorkflowTypeInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    func undeprecateWorkflowTypeAsync(input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the UndeprecateWorkflowType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateWorkflowTypeInput object being passed to this operation.
+     - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    func undeprecateWorkflowTypeSync(input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) throws
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    func untagResourceAsync(input: SimpleWorkflowModel.UntagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Throws: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    func untagResourceSync(input: SimpleWorkflowModel.UntagResourceInput) throws
 }

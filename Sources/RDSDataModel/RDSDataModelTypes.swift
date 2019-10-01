@@ -27,6 +27,11 @@ import Foundation
 public typealias Arn = String
 
 /**
+ Type definition for the ArrayOfArray field.
+ */
+public typealias ArrayOfArray = [ArrayValue]
+
+/**
  Type definition for the ArrayValueList field.
  */
 public typealias ArrayValueList = [Value]
@@ -40,6 +45,11 @@ public typealias Blob = Data
  Type definition for the Boolean field.
  */
 public typealias Boolean = Bool
+
+/**
+ Type definition for the BooleanArray field.
+ */
+public typealias BooleanArray = [BoxedBoolean]
 
 /**
  Type definition for the BoxedBoolean field.
@@ -72,6 +82,25 @@ public typealias BoxedLong = Int
 public typealias DbName = String
 
 /**
+ Enumeration restricting the values of the DecimalReturnType field.
+ */
+public enum DecimalReturnType: String, Codable, CustomStringConvertible {
+    case doubleOrLong = "DOUBLE_OR_LONG"
+    case string = "STRING"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DecimalReturnType = .doubleOrLong
+}
+
+/**
+ Type definition for the DoubleArray field.
+ */
+public typealias DoubleArray = [BoxedDouble]
+
+/**
  Type definition for the ErrorMessage field.
  */
 public typealias ErrorMessage = String
@@ -95,6 +124,11 @@ public typealias Integer = Int
  Type definition for the Long field.
  */
 public typealias Long = Int
+
+/**
+ Type definition for the LongArray field.
+ */
+public typealias LongArray = [BoxedLong]
 
 /**
  Type definition for the Metadata field.
@@ -147,6 +181,11 @@ public typealias SqlStatement = String
 public typealias SqlStatementResults = [SqlStatementResult]
 
 /**
+ Type definition for the StringArray field.
+ */
+public typealias StringArray = [String]
+
+/**
  Type definition for the TransactionStatus field.
  */
 public typealias TransactionStatus = String
@@ -161,6 +200,9 @@ public typealias UpdateResults = [UpdateResult]
 */
 extension RDSDataModel.Arn {
     public func validateAsArn() throws {
+        if self.count < 11 {
+            throw RDSDataCodingError.validationError(reason: "The provided value to Arn violated the minimum length constraint.")
+        }
 
         if self.count > 100 {
             throw RDSDataCodingError.validationError(reason: "The provided value to Arn violated the maximum length constraint.")
@@ -173,6 +215,9 @@ extension RDSDataModel.Arn {
 */
 extension RDSDataModel.DbName {
     public func validateAsDbName() throws {
+        if self.count < 0 {
+            throw RDSDataCodingError.validationError(reason: "The provided value to DbName violated the minimum length constraint.")
+        }
 
         if self.count > 64 {
             throw RDSDataCodingError.validationError(reason: "The provided value to DbName violated the maximum length constraint.")
@@ -185,6 +230,9 @@ extension RDSDataModel.DbName {
 */
 extension RDSDataModel.Id {
     public func validateAsId() throws {
+        if self.count < 0 {
+            throw RDSDataCodingError.validationError(reason: "The provided value to Id violated the minimum length constraint.")
+        }
 
         if self.count > 192 {
             throw RDSDataCodingError.validationError(reason: "The provided value to Id violated the maximum length constraint.")
@@ -197,6 +245,9 @@ extension RDSDataModel.Id {
 */
 extension RDSDataModel.SqlStatement {
     public func validateAsSqlStatement() throws {
+        if self.count < 0 {
+            throw RDSDataCodingError.validationError(reason: "The provided value to SqlStatement violated the minimum length constraint.")
+        }
 
         if self.count > 65536 {
             throw RDSDataCodingError.validationError(reason: "The provided value to SqlStatement violated the maximum length constraint.")
@@ -209,6 +260,9 @@ extension RDSDataModel.SqlStatement {
 */
 extension RDSDataModel.TransactionStatus {
     public func validateAsTransactionStatus() throws {
+        if self.count < 0 {
+            throw RDSDataCodingError.validationError(reason: "The provided value to TransactionStatus violated the minimum length constraint.")
+        }
 
         if self.count > 128 {
             throw RDSDataCodingError.validationError(reason: "The provided value to TransactionStatus violated the maximum length constraint.")

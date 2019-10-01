@@ -25,7 +25,7 @@ public extension AddPermissionInput {
     /**
      Default instance of the AddPermissionInput structure.
      */
-    public static let __default: SimpleNotificationModel.AddPermissionInput = {
+    static let __default: SimpleNotificationModel.AddPermissionInput = {
         let defaultInstance = SimpleNotificationModel.AddPermissionInput(
             aWSAccountId: [],
             actionName: [],
@@ -40,7 +40,7 @@ public extension AuthorizationErrorException {
     /**
      Default instance of the AuthorizationErrorException structure.
      */
-    public static let __default: SimpleNotificationModel.AuthorizationErrorException = {
+    static let __default: SimpleNotificationModel.AuthorizationErrorException = {
         let defaultInstance = SimpleNotificationModel.AuthorizationErrorException(
             message: nil)
 
@@ -52,7 +52,7 @@ public extension CheckIfPhoneNumberIsOptedOutInput {
     /**
      Default instance of the CheckIfPhoneNumberIsOptedOutInput structure.
      */
-    public static let __default: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput = {
+    static let __default: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput = {
         let defaultInstance = SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput(
             phoneNumber: "value")
 
@@ -64,7 +64,7 @@ public extension CheckIfPhoneNumberIsOptedOutResponse {
     /**
      Default instance of the CheckIfPhoneNumberIsOptedOutResponse structure.
      */
-    public static let __default: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponse = {
+    static let __default: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponse = {
         let defaultInstance = SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponse(
             isOptedOut: nil)
 
@@ -76,7 +76,7 @@ public extension CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOpte
     /**
      Default instance of the CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut structure.
      */
-    public static let __default: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut = {
+    static let __default: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut = {
         let defaultInstance = SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut(
             checkIfPhoneNumberIsOptedOutResult: CheckIfPhoneNumberIsOptedOutResponse.__default)
 
@@ -88,7 +88,7 @@ public extension ConcurrentAccessException {
     /**
      Default instance of the ConcurrentAccessException structure.
      */
-    public static let __default: SimpleNotificationModel.ConcurrentAccessException = {
+    static let __default: SimpleNotificationModel.ConcurrentAccessException = {
         let defaultInstance = SimpleNotificationModel.ConcurrentAccessException(
             message: nil)
 
@@ -100,7 +100,7 @@ public extension ConfirmSubscriptionInput {
     /**
      Default instance of the ConfirmSubscriptionInput structure.
      */
-    public static let __default: SimpleNotificationModel.ConfirmSubscriptionInput = {
+    static let __default: SimpleNotificationModel.ConfirmSubscriptionInput = {
         let defaultInstance = SimpleNotificationModel.ConfirmSubscriptionInput(
             authenticateOnUnsubscribe: nil,
             token: "value",
@@ -114,7 +114,7 @@ public extension ConfirmSubscriptionResponse {
     /**
      Default instance of the ConfirmSubscriptionResponse structure.
      */
-    public static let __default: SimpleNotificationModel.ConfirmSubscriptionResponse = {
+    static let __default: SimpleNotificationModel.ConfirmSubscriptionResponse = {
         let defaultInstance = SimpleNotificationModel.ConfirmSubscriptionResponse(
             subscriptionArn: nil)
 
@@ -126,7 +126,7 @@ public extension ConfirmSubscriptionResponseForConfirmSubscription {
     /**
      Default instance of the ConfirmSubscriptionResponseForConfirmSubscription structure.
      */
-    public static let __default: SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription = {
+    static let __default: SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription = {
         let defaultInstance = SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription(
             confirmSubscriptionResult: ConfirmSubscriptionResponse.__default)
 
@@ -138,7 +138,7 @@ public extension CreateEndpointResponse {
     /**
      Default instance of the CreateEndpointResponse structure.
      */
-    public static let __default: SimpleNotificationModel.CreateEndpointResponse = {
+    static let __default: SimpleNotificationModel.CreateEndpointResponse = {
         let defaultInstance = SimpleNotificationModel.CreateEndpointResponse(
             endpointArn: nil)
 
@@ -150,7 +150,7 @@ public extension CreateEndpointResponseForCreatePlatformEndpoint {
     /**
      Default instance of the CreateEndpointResponseForCreatePlatformEndpoint structure.
      */
-    public static let __default: SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint = {
+    static let __default: SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint = {
         let defaultInstance = SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint(
             createPlatformEndpointResult: CreateEndpointResponse.__default)
 
@@ -162,7 +162,7 @@ public extension CreatePlatformApplicationInput {
     /**
      Default instance of the CreatePlatformApplicationInput structure.
      */
-    public static let __default: SimpleNotificationModel.CreatePlatformApplicationInput = {
+    static let __default: SimpleNotificationModel.CreatePlatformApplicationInput = {
         let defaultInstance = SimpleNotificationModel.CreatePlatformApplicationInput(
             attributes: [:],
             name: "value",
@@ -176,7 +176,7 @@ public extension CreatePlatformApplicationResponse {
     /**
      Default instance of the CreatePlatformApplicationResponse structure.
      */
-    public static let __default: SimpleNotificationModel.CreatePlatformApplicationResponse = {
+    static let __default: SimpleNotificationModel.CreatePlatformApplicationResponse = {
         let defaultInstance = SimpleNotificationModel.CreatePlatformApplicationResponse(
             platformApplicationArn: nil)
 
@@ -188,7 +188,7 @@ public extension CreatePlatformApplicationResponseForCreatePlatformApplication {
     /**
      Default instance of the CreatePlatformApplicationResponseForCreatePlatformApplication structure.
      */
-    public static let __default: SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication = {
+    static let __default: SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication = {
         let defaultInstance = SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication(
             createPlatformApplicationResult: CreatePlatformApplicationResponse.__default)
 
@@ -200,7 +200,7 @@ public extension CreatePlatformEndpointInput {
     /**
      Default instance of the CreatePlatformEndpointInput structure.
      */
-    public static let __default: SimpleNotificationModel.CreatePlatformEndpointInput = {
+    static let __default: SimpleNotificationModel.CreatePlatformEndpointInput = {
         let defaultInstance = SimpleNotificationModel.CreatePlatformEndpointInput(
             attributes: nil,
             customUserData: nil,
@@ -215,7 +215,7 @@ public extension CreateTopicInput {
     /**
      Default instance of the CreateTopicInput structure.
      */
-    public static let __default: SimpleNotificationModel.CreateTopicInput = {
+    static let __default: SimpleNotificationModel.CreateTopicInput = {
         let defaultInstance = SimpleNotificationModel.CreateTopicInput(
             attributes: nil,
             name: "value",
@@ -229,7 +229,7 @@ public extension CreateTopicResponse {
     /**
      Default instance of the CreateTopicResponse structure.
      */
-    public static let __default: SimpleNotificationModel.CreateTopicResponse = {
+    static let __default: SimpleNotificationModel.CreateTopicResponse = {
         let defaultInstance = SimpleNotificationModel.CreateTopicResponse(
             topicArn: nil)
 
@@ -241,7 +241,7 @@ public extension CreateTopicResponseForCreateTopic {
     /**
      Default instance of the CreateTopicResponseForCreateTopic structure.
      */
-    public static let __default: SimpleNotificationModel.CreateTopicResponseForCreateTopic = {
+    static let __default: SimpleNotificationModel.CreateTopicResponseForCreateTopic = {
         let defaultInstance = SimpleNotificationModel.CreateTopicResponseForCreateTopic(
             createTopicResult: CreateTopicResponse.__default)
 
@@ -253,7 +253,7 @@ public extension DeleteEndpointInput {
     /**
      Default instance of the DeleteEndpointInput structure.
      */
-    public static let __default: SimpleNotificationModel.DeleteEndpointInput = {
+    static let __default: SimpleNotificationModel.DeleteEndpointInput = {
         let defaultInstance = SimpleNotificationModel.DeleteEndpointInput(
             endpointArn: "value")
 
@@ -265,7 +265,7 @@ public extension DeletePlatformApplicationInput {
     /**
      Default instance of the DeletePlatformApplicationInput structure.
      */
-    public static let __default: SimpleNotificationModel.DeletePlatformApplicationInput = {
+    static let __default: SimpleNotificationModel.DeletePlatformApplicationInput = {
         let defaultInstance = SimpleNotificationModel.DeletePlatformApplicationInput(
             platformApplicationArn: "value")
 
@@ -277,7 +277,7 @@ public extension DeleteTopicInput {
     /**
      Default instance of the DeleteTopicInput structure.
      */
-    public static let __default: SimpleNotificationModel.DeleteTopicInput = {
+    static let __default: SimpleNotificationModel.DeleteTopicInput = {
         let defaultInstance = SimpleNotificationModel.DeleteTopicInput(
             topicArn: "value")
 
@@ -289,7 +289,7 @@ public extension Endpoint {
     /**
      Default instance of the Endpoint structure.
      */
-    public static let __default: SimpleNotificationModel.Endpoint = {
+    static let __default: SimpleNotificationModel.Endpoint = {
         let defaultInstance = SimpleNotificationModel.Endpoint(
             attributes: nil,
             endpointArn: nil)
@@ -302,7 +302,7 @@ public extension EndpointDisabledException {
     /**
      Default instance of the EndpointDisabledException structure.
      */
-    public static let __default: SimpleNotificationModel.EndpointDisabledException = {
+    static let __default: SimpleNotificationModel.EndpointDisabledException = {
         let defaultInstance = SimpleNotificationModel.EndpointDisabledException(
             message: nil)
 
@@ -314,7 +314,7 @@ public extension FilterPolicyLimitExceededException {
     /**
      Default instance of the FilterPolicyLimitExceededException structure.
      */
-    public static let __default: SimpleNotificationModel.FilterPolicyLimitExceededException = {
+    static let __default: SimpleNotificationModel.FilterPolicyLimitExceededException = {
         let defaultInstance = SimpleNotificationModel.FilterPolicyLimitExceededException(
             message: nil)
 
@@ -326,7 +326,7 @@ public extension GetEndpointAttributesInput {
     /**
      Default instance of the GetEndpointAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.GetEndpointAttributesInput = {
+    static let __default: SimpleNotificationModel.GetEndpointAttributesInput = {
         let defaultInstance = SimpleNotificationModel.GetEndpointAttributesInput(
             endpointArn: "value")
 
@@ -338,7 +338,7 @@ public extension GetEndpointAttributesResponse {
     /**
      Default instance of the GetEndpointAttributesResponse structure.
      */
-    public static let __default: SimpleNotificationModel.GetEndpointAttributesResponse = {
+    static let __default: SimpleNotificationModel.GetEndpointAttributesResponse = {
         let defaultInstance = SimpleNotificationModel.GetEndpointAttributesResponse(
             attributes: nil)
 
@@ -350,7 +350,7 @@ public extension GetEndpointAttributesResponseForGetEndpointAttributes {
     /**
      Default instance of the GetEndpointAttributesResponseForGetEndpointAttributes structure.
      */
-    public static let __default: SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes = {
+    static let __default: SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes = {
         let defaultInstance = SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes(
             getEndpointAttributesResult: GetEndpointAttributesResponse.__default)
 
@@ -362,7 +362,7 @@ public extension GetPlatformApplicationAttributesInput {
     /**
      Default instance of the GetPlatformApplicationAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.GetPlatformApplicationAttributesInput = {
+    static let __default: SimpleNotificationModel.GetPlatformApplicationAttributesInput = {
         let defaultInstance = SimpleNotificationModel.GetPlatformApplicationAttributesInput(
             platformApplicationArn: "value")
 
@@ -374,7 +374,7 @@ public extension GetPlatformApplicationAttributesResponse {
     /**
      Default instance of the GetPlatformApplicationAttributesResponse structure.
      */
-    public static let __default: SimpleNotificationModel.GetPlatformApplicationAttributesResponse = {
+    static let __default: SimpleNotificationModel.GetPlatformApplicationAttributesResponse = {
         let defaultInstance = SimpleNotificationModel.GetPlatformApplicationAttributesResponse(
             attributes: nil)
 
@@ -386,7 +386,7 @@ public extension GetPlatformApplicationAttributesResponseForGetPlatformApplicati
     /**
      Default instance of the GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes structure.
      */
-    public static let __default: SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes = {
+    static let __default: SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes = {
         let defaultInstance = SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes(
             getPlatformApplicationAttributesResult: GetPlatformApplicationAttributesResponse.__default)
 
@@ -398,7 +398,7 @@ public extension GetSMSAttributesInput {
     /**
      Default instance of the GetSMSAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.GetSMSAttributesInput = {
+    static let __default: SimpleNotificationModel.GetSMSAttributesInput = {
         let defaultInstance = SimpleNotificationModel.GetSMSAttributesInput(
             attributes: nil)
 
@@ -410,7 +410,7 @@ public extension GetSMSAttributesResponse {
     /**
      Default instance of the GetSMSAttributesResponse structure.
      */
-    public static let __default: SimpleNotificationModel.GetSMSAttributesResponse = {
+    static let __default: SimpleNotificationModel.GetSMSAttributesResponse = {
         let defaultInstance = SimpleNotificationModel.GetSMSAttributesResponse(
             attributes: nil)
 
@@ -422,7 +422,7 @@ public extension GetSMSAttributesResponseForGetSMSAttributes {
     /**
      Default instance of the GetSMSAttributesResponseForGetSMSAttributes structure.
      */
-    public static let __default: SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes = {
+    static let __default: SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes = {
         let defaultInstance = SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes(
             getSMSAttributesResult: GetSMSAttributesResponse.__default)
 
@@ -434,7 +434,7 @@ public extension GetSubscriptionAttributesInput {
     /**
      Default instance of the GetSubscriptionAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.GetSubscriptionAttributesInput = {
+    static let __default: SimpleNotificationModel.GetSubscriptionAttributesInput = {
         let defaultInstance = SimpleNotificationModel.GetSubscriptionAttributesInput(
             subscriptionArn: "value")
 
@@ -446,7 +446,7 @@ public extension GetSubscriptionAttributesResponse {
     /**
      Default instance of the GetSubscriptionAttributesResponse structure.
      */
-    public static let __default: SimpleNotificationModel.GetSubscriptionAttributesResponse = {
+    static let __default: SimpleNotificationModel.GetSubscriptionAttributesResponse = {
         let defaultInstance = SimpleNotificationModel.GetSubscriptionAttributesResponse(
             attributes: nil)
 
@@ -458,7 +458,7 @@ public extension GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
     /**
      Default instance of the GetSubscriptionAttributesResponseForGetSubscriptionAttributes structure.
      */
-    public static let __default: SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes = {
+    static let __default: SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes = {
         let defaultInstance = SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes(
             getSubscriptionAttributesResult: GetSubscriptionAttributesResponse.__default)
 
@@ -470,7 +470,7 @@ public extension GetTopicAttributesInput {
     /**
      Default instance of the GetTopicAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.GetTopicAttributesInput = {
+    static let __default: SimpleNotificationModel.GetTopicAttributesInput = {
         let defaultInstance = SimpleNotificationModel.GetTopicAttributesInput(
             topicArn: "value")
 
@@ -482,7 +482,7 @@ public extension GetTopicAttributesResponse {
     /**
      Default instance of the GetTopicAttributesResponse structure.
      */
-    public static let __default: SimpleNotificationModel.GetTopicAttributesResponse = {
+    static let __default: SimpleNotificationModel.GetTopicAttributesResponse = {
         let defaultInstance = SimpleNotificationModel.GetTopicAttributesResponse(
             attributes: nil)
 
@@ -494,7 +494,7 @@ public extension GetTopicAttributesResponseForGetTopicAttributes {
     /**
      Default instance of the GetTopicAttributesResponseForGetTopicAttributes structure.
      */
-    public static let __default: SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes = {
+    static let __default: SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes = {
         let defaultInstance = SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes(
             getTopicAttributesResult: GetTopicAttributesResponse.__default)
 
@@ -506,7 +506,7 @@ public extension InternalErrorException {
     /**
      Default instance of the InternalErrorException structure.
      */
-    public static let __default: SimpleNotificationModel.InternalErrorException = {
+    static let __default: SimpleNotificationModel.InternalErrorException = {
         let defaultInstance = SimpleNotificationModel.InternalErrorException(
             message: nil)
 
@@ -518,7 +518,7 @@ public extension InvalidParameterException {
     /**
      Default instance of the InvalidParameterException structure.
      */
-    public static let __default: SimpleNotificationModel.InvalidParameterException = {
+    static let __default: SimpleNotificationModel.InvalidParameterException = {
         let defaultInstance = SimpleNotificationModel.InvalidParameterException(
             message: nil)
 
@@ -530,7 +530,7 @@ public extension InvalidParameterValueException {
     /**
      Default instance of the InvalidParameterValueException structure.
      */
-    public static let __default: SimpleNotificationModel.InvalidParameterValueException = {
+    static let __default: SimpleNotificationModel.InvalidParameterValueException = {
         let defaultInstance = SimpleNotificationModel.InvalidParameterValueException(
             message: nil)
 
@@ -542,7 +542,7 @@ public extension InvalidSecurityException {
     /**
      Default instance of the InvalidSecurityException structure.
      */
-    public static let __default: SimpleNotificationModel.InvalidSecurityException = {
+    static let __default: SimpleNotificationModel.InvalidSecurityException = {
         let defaultInstance = SimpleNotificationModel.InvalidSecurityException(
             message: nil)
 
@@ -554,7 +554,7 @@ public extension KMSAccessDeniedException {
     /**
      Default instance of the KMSAccessDeniedException structure.
      */
-    public static let __default: SimpleNotificationModel.KMSAccessDeniedException = {
+    static let __default: SimpleNotificationModel.KMSAccessDeniedException = {
         let defaultInstance = SimpleNotificationModel.KMSAccessDeniedException(
             message: nil)
 
@@ -566,7 +566,7 @@ public extension KMSDisabledException {
     /**
      Default instance of the KMSDisabledException structure.
      */
-    public static let __default: SimpleNotificationModel.KMSDisabledException = {
+    static let __default: SimpleNotificationModel.KMSDisabledException = {
         let defaultInstance = SimpleNotificationModel.KMSDisabledException(
             message: nil)
 
@@ -578,7 +578,7 @@ public extension KMSInvalidStateException {
     /**
      Default instance of the KMSInvalidStateException structure.
      */
-    public static let __default: SimpleNotificationModel.KMSInvalidStateException = {
+    static let __default: SimpleNotificationModel.KMSInvalidStateException = {
         let defaultInstance = SimpleNotificationModel.KMSInvalidStateException(
             message: nil)
 
@@ -590,7 +590,7 @@ public extension KMSNotFoundException {
     /**
      Default instance of the KMSNotFoundException structure.
      */
-    public static let __default: SimpleNotificationModel.KMSNotFoundException = {
+    static let __default: SimpleNotificationModel.KMSNotFoundException = {
         let defaultInstance = SimpleNotificationModel.KMSNotFoundException(
             message: nil)
 
@@ -602,7 +602,7 @@ public extension KMSOptInRequired {
     /**
      Default instance of the KMSOptInRequired structure.
      */
-    public static let __default: SimpleNotificationModel.KMSOptInRequired = {
+    static let __default: SimpleNotificationModel.KMSOptInRequired = {
         let defaultInstance = SimpleNotificationModel.KMSOptInRequired(
             message: nil)
 
@@ -614,7 +614,7 @@ public extension KMSThrottlingException {
     /**
      Default instance of the KMSThrottlingException structure.
      */
-    public static let __default: SimpleNotificationModel.KMSThrottlingException = {
+    static let __default: SimpleNotificationModel.KMSThrottlingException = {
         let defaultInstance = SimpleNotificationModel.KMSThrottlingException(
             message: nil)
 
@@ -626,7 +626,7 @@ public extension ListEndpointsByPlatformApplicationInput {
     /**
      Default instance of the ListEndpointsByPlatformApplicationInput structure.
      */
-    public static let __default: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput = {
+    static let __default: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput = {
         let defaultInstance = SimpleNotificationModel.ListEndpointsByPlatformApplicationInput(
             nextToken: nil,
             platformApplicationArn: "value")
@@ -639,7 +639,7 @@ public extension ListEndpointsByPlatformApplicationResponse {
     /**
      Default instance of the ListEndpointsByPlatformApplicationResponse structure.
      */
-    public static let __default: SimpleNotificationModel.ListEndpointsByPlatformApplicationResponse = {
+    static let __default: SimpleNotificationModel.ListEndpointsByPlatformApplicationResponse = {
         let defaultInstance = SimpleNotificationModel.ListEndpointsByPlatformApplicationResponse(
             endpoints: nil,
             nextToken: nil)
@@ -652,7 +652,7 @@ public extension ListEndpointsByPlatformApplicationResponseForListEndpointsByPla
     /**
      Default instance of the ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication structure.
      */
-    public static let __default: SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication = {
+    static let __default: SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication = {
         let defaultInstance = SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication(
             listEndpointsByPlatformApplicationResult: ListEndpointsByPlatformApplicationResponse.__default)
 
@@ -664,7 +664,7 @@ public extension ListPhoneNumbersOptedOutInput {
     /**
      Default instance of the ListPhoneNumbersOptedOutInput structure.
      */
-    public static let __default: SimpleNotificationModel.ListPhoneNumbersOptedOutInput = {
+    static let __default: SimpleNotificationModel.ListPhoneNumbersOptedOutInput = {
         let defaultInstance = SimpleNotificationModel.ListPhoneNumbersOptedOutInput(
             nextToken: nil)
 
@@ -676,7 +676,7 @@ public extension ListPhoneNumbersOptedOutResponse {
     /**
      Default instance of the ListPhoneNumbersOptedOutResponse structure.
      */
-    public static let __default: SimpleNotificationModel.ListPhoneNumbersOptedOutResponse = {
+    static let __default: SimpleNotificationModel.ListPhoneNumbersOptedOutResponse = {
         let defaultInstance = SimpleNotificationModel.ListPhoneNumbersOptedOutResponse(
             nextToken: nil,
             phoneNumbers: nil)
@@ -689,7 +689,7 @@ public extension ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
     /**
      Default instance of the ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut structure.
      */
-    public static let __default: SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut = {
+    static let __default: SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut = {
         let defaultInstance = SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut(
             listPhoneNumbersOptedOutResult: ListPhoneNumbersOptedOutResponse.__default)
 
@@ -701,7 +701,7 @@ public extension ListPlatformApplicationsInput {
     /**
      Default instance of the ListPlatformApplicationsInput structure.
      */
-    public static let __default: SimpleNotificationModel.ListPlatformApplicationsInput = {
+    static let __default: SimpleNotificationModel.ListPlatformApplicationsInput = {
         let defaultInstance = SimpleNotificationModel.ListPlatformApplicationsInput(
             nextToken: nil)
 
@@ -713,7 +713,7 @@ public extension ListPlatformApplicationsResponse {
     /**
      Default instance of the ListPlatformApplicationsResponse structure.
      */
-    public static let __default: SimpleNotificationModel.ListPlatformApplicationsResponse = {
+    static let __default: SimpleNotificationModel.ListPlatformApplicationsResponse = {
         let defaultInstance = SimpleNotificationModel.ListPlatformApplicationsResponse(
             nextToken: nil,
             platformApplications: nil)
@@ -726,7 +726,7 @@ public extension ListPlatformApplicationsResponseForListPlatformApplications {
     /**
      Default instance of the ListPlatformApplicationsResponseForListPlatformApplications structure.
      */
-    public static let __default: SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications = {
+    static let __default: SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications = {
         let defaultInstance = SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications(
             listPlatformApplicationsResult: ListPlatformApplicationsResponse.__default)
 
@@ -738,7 +738,7 @@ public extension ListSubscriptionsByTopicInput {
     /**
      Default instance of the ListSubscriptionsByTopicInput structure.
      */
-    public static let __default: SimpleNotificationModel.ListSubscriptionsByTopicInput = {
+    static let __default: SimpleNotificationModel.ListSubscriptionsByTopicInput = {
         let defaultInstance = SimpleNotificationModel.ListSubscriptionsByTopicInput(
             nextToken: nil,
             topicArn: "value")
@@ -751,7 +751,7 @@ public extension ListSubscriptionsByTopicResponse {
     /**
      Default instance of the ListSubscriptionsByTopicResponse structure.
      */
-    public static let __default: SimpleNotificationModel.ListSubscriptionsByTopicResponse = {
+    static let __default: SimpleNotificationModel.ListSubscriptionsByTopicResponse = {
         let defaultInstance = SimpleNotificationModel.ListSubscriptionsByTopicResponse(
             nextToken: nil,
             subscriptions: nil)
@@ -764,7 +764,7 @@ public extension ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
     /**
      Default instance of the ListSubscriptionsByTopicResponseForListSubscriptionsByTopic structure.
      */
-    public static let __default: SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic = {
+    static let __default: SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic = {
         let defaultInstance = SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic(
             listSubscriptionsByTopicResult: ListSubscriptionsByTopicResponse.__default)
 
@@ -776,7 +776,7 @@ public extension ListSubscriptionsInput {
     /**
      Default instance of the ListSubscriptionsInput structure.
      */
-    public static let __default: SimpleNotificationModel.ListSubscriptionsInput = {
+    static let __default: SimpleNotificationModel.ListSubscriptionsInput = {
         let defaultInstance = SimpleNotificationModel.ListSubscriptionsInput(
             nextToken: nil)
 
@@ -788,7 +788,7 @@ public extension ListSubscriptionsResponse {
     /**
      Default instance of the ListSubscriptionsResponse structure.
      */
-    public static let __default: SimpleNotificationModel.ListSubscriptionsResponse = {
+    static let __default: SimpleNotificationModel.ListSubscriptionsResponse = {
         let defaultInstance = SimpleNotificationModel.ListSubscriptionsResponse(
             nextToken: nil,
             subscriptions: nil)
@@ -801,7 +801,7 @@ public extension ListSubscriptionsResponseForListSubscriptions {
     /**
      Default instance of the ListSubscriptionsResponseForListSubscriptions structure.
      */
-    public static let __default: SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions = {
+    static let __default: SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions = {
         let defaultInstance = SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions(
             listSubscriptionsResult: ListSubscriptionsResponse.__default)
 
@@ -813,7 +813,7 @@ public extension ListTagsForResourceRequest {
     /**
      Default instance of the ListTagsForResourceRequest structure.
      */
-    public static let __default: SimpleNotificationModel.ListTagsForResourceRequest = {
+    static let __default: SimpleNotificationModel.ListTagsForResourceRequest = {
         let defaultInstance = SimpleNotificationModel.ListTagsForResourceRequest(
             resourceArn: "0")
 
@@ -825,7 +825,7 @@ public extension ListTagsForResourceResponse {
     /**
      Default instance of the ListTagsForResourceResponse structure.
      */
-    public static let __default: SimpleNotificationModel.ListTagsForResourceResponse = {
+    static let __default: SimpleNotificationModel.ListTagsForResourceResponse = {
         let defaultInstance = SimpleNotificationModel.ListTagsForResourceResponse(
             tags: nil)
 
@@ -837,7 +837,7 @@ public extension ListTagsForResourceResponseForListTagsForResource {
     /**
      Default instance of the ListTagsForResourceResponseForListTagsForResource structure.
      */
-    public static let __default: SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource = {
+    static let __default: SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource = {
         let defaultInstance = SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource(
             listTagsForResourceResult: ListTagsForResourceResponse.__default)
 
@@ -849,7 +849,7 @@ public extension ListTopicsInput {
     /**
      Default instance of the ListTopicsInput structure.
      */
-    public static let __default: SimpleNotificationModel.ListTopicsInput = {
+    static let __default: SimpleNotificationModel.ListTopicsInput = {
         let defaultInstance = SimpleNotificationModel.ListTopicsInput(
             nextToken: nil)
 
@@ -861,7 +861,7 @@ public extension ListTopicsResponse {
     /**
      Default instance of the ListTopicsResponse structure.
      */
-    public static let __default: SimpleNotificationModel.ListTopicsResponse = {
+    static let __default: SimpleNotificationModel.ListTopicsResponse = {
         let defaultInstance = SimpleNotificationModel.ListTopicsResponse(
             nextToken: nil,
             topics: nil)
@@ -874,7 +874,7 @@ public extension ListTopicsResponseForListTopics {
     /**
      Default instance of the ListTopicsResponseForListTopics structure.
      */
-    public static let __default: SimpleNotificationModel.ListTopicsResponseForListTopics = {
+    static let __default: SimpleNotificationModel.ListTopicsResponseForListTopics = {
         let defaultInstance = SimpleNotificationModel.ListTopicsResponseForListTopics(
             listTopicsResult: ListTopicsResponse.__default)
 
@@ -886,7 +886,7 @@ public extension MessageAttributeValue {
     /**
      Default instance of the MessageAttributeValue structure.
      */
-    public static let __default: SimpleNotificationModel.MessageAttributeValue = {
+    static let __default: SimpleNotificationModel.MessageAttributeValue = {
         let defaultInstance = SimpleNotificationModel.MessageAttributeValue(
             binaryValue: nil,
             dataType: "value",
@@ -900,7 +900,7 @@ public extension NotFoundException {
     /**
      Default instance of the NotFoundException structure.
      */
-    public static let __default: SimpleNotificationModel.NotFoundException = {
+    static let __default: SimpleNotificationModel.NotFoundException = {
         let defaultInstance = SimpleNotificationModel.NotFoundException(
             message: nil)
 
@@ -912,7 +912,7 @@ public extension OptInPhoneNumberInput {
     /**
      Default instance of the OptInPhoneNumberInput structure.
      */
-    public static let __default: SimpleNotificationModel.OptInPhoneNumberInput = {
+    static let __default: SimpleNotificationModel.OptInPhoneNumberInput = {
         let defaultInstance = SimpleNotificationModel.OptInPhoneNumberInput(
             phoneNumber: "value")
 
@@ -924,7 +924,7 @@ public extension OptInPhoneNumberResponse {
     /**
      Default instance of the OptInPhoneNumberResponse structure.
      */
-    public static let __default: SimpleNotificationModel.OptInPhoneNumberResponse = {
+    static let __default: SimpleNotificationModel.OptInPhoneNumberResponse = {
         let defaultInstance = SimpleNotificationModel.OptInPhoneNumberResponse()
 
         return defaultInstance
@@ -935,7 +935,7 @@ public extension OptInPhoneNumberResponseForOptInPhoneNumber {
     /**
      Default instance of the OptInPhoneNumberResponseForOptInPhoneNumber structure.
      */
-    public static let __default: SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber = {
+    static let __default: SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber = {
         let defaultInstance = SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber(
             optInPhoneNumberResult: OptInPhoneNumberResponse.__default)
 
@@ -947,7 +947,7 @@ public extension PlatformApplication {
     /**
      Default instance of the PlatformApplication structure.
      */
-    public static let __default: SimpleNotificationModel.PlatformApplication = {
+    static let __default: SimpleNotificationModel.PlatformApplication = {
         let defaultInstance = SimpleNotificationModel.PlatformApplication(
             attributes: nil,
             platformApplicationArn: nil)
@@ -960,7 +960,7 @@ public extension PlatformApplicationDisabledException {
     /**
      Default instance of the PlatformApplicationDisabledException structure.
      */
-    public static let __default: SimpleNotificationModel.PlatformApplicationDisabledException = {
+    static let __default: SimpleNotificationModel.PlatformApplicationDisabledException = {
         let defaultInstance = SimpleNotificationModel.PlatformApplicationDisabledException(
             message: nil)
 
@@ -972,7 +972,7 @@ public extension PublishInput {
     /**
      Default instance of the PublishInput structure.
      */
-    public static let __default: SimpleNotificationModel.PublishInput = {
+    static let __default: SimpleNotificationModel.PublishInput = {
         let defaultInstance = SimpleNotificationModel.PublishInput(
             message: "value",
             messageAttributes: nil,
@@ -990,7 +990,7 @@ public extension PublishResponse {
     /**
      Default instance of the PublishResponse structure.
      */
-    public static let __default: SimpleNotificationModel.PublishResponse = {
+    static let __default: SimpleNotificationModel.PublishResponse = {
         let defaultInstance = SimpleNotificationModel.PublishResponse(
             messageId: nil)
 
@@ -1002,7 +1002,7 @@ public extension PublishResponseForPublish {
     /**
      Default instance of the PublishResponseForPublish structure.
      */
-    public static let __default: SimpleNotificationModel.PublishResponseForPublish = {
+    static let __default: SimpleNotificationModel.PublishResponseForPublish = {
         let defaultInstance = SimpleNotificationModel.PublishResponseForPublish(
             publishResult: PublishResponse.__default)
 
@@ -1014,7 +1014,7 @@ public extension RemovePermissionInput {
     /**
      Default instance of the RemovePermissionInput structure.
      */
-    public static let __default: SimpleNotificationModel.RemovePermissionInput = {
+    static let __default: SimpleNotificationModel.RemovePermissionInput = {
         let defaultInstance = SimpleNotificationModel.RemovePermissionInput(
             label: "value",
             topicArn: "value")
@@ -1027,7 +1027,7 @@ public extension ResourceNotFoundException {
     /**
      Default instance of the ResourceNotFoundException structure.
      */
-    public static let __default: SimpleNotificationModel.ResourceNotFoundException = {
+    static let __default: SimpleNotificationModel.ResourceNotFoundException = {
         let defaultInstance = SimpleNotificationModel.ResourceNotFoundException(
             message: nil)
 
@@ -1039,7 +1039,7 @@ public extension SetEndpointAttributesInput {
     /**
      Default instance of the SetEndpointAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.SetEndpointAttributesInput = {
+    static let __default: SimpleNotificationModel.SetEndpointAttributesInput = {
         let defaultInstance = SimpleNotificationModel.SetEndpointAttributesInput(
             attributes: [:],
             endpointArn: "value")
@@ -1052,7 +1052,7 @@ public extension SetPlatformApplicationAttributesInput {
     /**
      Default instance of the SetPlatformApplicationAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.SetPlatformApplicationAttributesInput = {
+    static let __default: SimpleNotificationModel.SetPlatformApplicationAttributesInput = {
         let defaultInstance = SimpleNotificationModel.SetPlatformApplicationAttributesInput(
             attributes: [:],
             platformApplicationArn: "value")
@@ -1065,7 +1065,7 @@ public extension SetSMSAttributesInput {
     /**
      Default instance of the SetSMSAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.SetSMSAttributesInput = {
+    static let __default: SimpleNotificationModel.SetSMSAttributesInput = {
         let defaultInstance = SimpleNotificationModel.SetSMSAttributesInput(
             attributes: [:])
 
@@ -1077,7 +1077,7 @@ public extension SetSMSAttributesResponse {
     /**
      Default instance of the SetSMSAttributesResponse structure.
      */
-    public static let __default: SimpleNotificationModel.SetSMSAttributesResponse = {
+    static let __default: SimpleNotificationModel.SetSMSAttributesResponse = {
         let defaultInstance = SimpleNotificationModel.SetSMSAttributesResponse()
 
         return defaultInstance
@@ -1088,7 +1088,7 @@ public extension SetSMSAttributesResponseForSetSMSAttributes {
     /**
      Default instance of the SetSMSAttributesResponseForSetSMSAttributes structure.
      */
-    public static let __default: SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes = {
+    static let __default: SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes = {
         let defaultInstance = SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes(
             setSMSAttributesResult: SetSMSAttributesResponse.__default)
 
@@ -1100,7 +1100,7 @@ public extension SetSubscriptionAttributesInput {
     /**
      Default instance of the SetSubscriptionAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.SetSubscriptionAttributesInput = {
+    static let __default: SimpleNotificationModel.SetSubscriptionAttributesInput = {
         let defaultInstance = SimpleNotificationModel.SetSubscriptionAttributesInput(
             attributeName: "value",
             attributeValue: nil,
@@ -1114,7 +1114,7 @@ public extension SetTopicAttributesInput {
     /**
      Default instance of the SetTopicAttributesInput structure.
      */
-    public static let __default: SimpleNotificationModel.SetTopicAttributesInput = {
+    static let __default: SimpleNotificationModel.SetTopicAttributesInput = {
         let defaultInstance = SimpleNotificationModel.SetTopicAttributesInput(
             attributeName: "value",
             attributeValue: nil,
@@ -1128,7 +1128,7 @@ public extension StaleTagException {
     /**
      Default instance of the StaleTagException structure.
      */
-    public static let __default: SimpleNotificationModel.StaleTagException = {
+    static let __default: SimpleNotificationModel.StaleTagException = {
         let defaultInstance = SimpleNotificationModel.StaleTagException(
             message: nil)
 
@@ -1140,7 +1140,7 @@ public extension SubscribeInput {
     /**
      Default instance of the SubscribeInput structure.
      */
-    public static let __default: SimpleNotificationModel.SubscribeInput = {
+    static let __default: SimpleNotificationModel.SubscribeInput = {
         let defaultInstance = SimpleNotificationModel.SubscribeInput(
             attributes: nil,
             endpoint: nil,
@@ -1156,7 +1156,7 @@ public extension SubscribeResponse {
     /**
      Default instance of the SubscribeResponse structure.
      */
-    public static let __default: SimpleNotificationModel.SubscribeResponse = {
+    static let __default: SimpleNotificationModel.SubscribeResponse = {
         let defaultInstance = SimpleNotificationModel.SubscribeResponse(
             subscriptionArn: nil)
 
@@ -1168,7 +1168,7 @@ public extension SubscribeResponseForSubscribe {
     /**
      Default instance of the SubscribeResponseForSubscribe structure.
      */
-    public static let __default: SimpleNotificationModel.SubscribeResponseForSubscribe = {
+    static let __default: SimpleNotificationModel.SubscribeResponseForSubscribe = {
         let defaultInstance = SimpleNotificationModel.SubscribeResponseForSubscribe(
             subscribeResult: SubscribeResponse.__default)
 
@@ -1180,7 +1180,7 @@ public extension Subscription {
     /**
      Default instance of the Subscription structure.
      */
-    public static let __default: SimpleNotificationModel.Subscription = {
+    static let __default: SimpleNotificationModel.Subscription = {
         let defaultInstance = SimpleNotificationModel.Subscription(
             endpoint: nil,
             owner: nil,
@@ -1196,7 +1196,7 @@ public extension SubscriptionLimitExceededException {
     /**
      Default instance of the SubscriptionLimitExceededException structure.
      */
-    public static let __default: SimpleNotificationModel.SubscriptionLimitExceededException = {
+    static let __default: SimpleNotificationModel.SubscriptionLimitExceededException = {
         let defaultInstance = SimpleNotificationModel.SubscriptionLimitExceededException(
             message: nil)
 
@@ -1208,7 +1208,7 @@ public extension Tag {
     /**
      Default instance of the Tag structure.
      */
-    public static let __default: SimpleNotificationModel.Tag = {
+    static let __default: SimpleNotificationModel.Tag = {
         let defaultInstance = SimpleNotificationModel.Tag(
             key: "0",
             value: "")
@@ -1221,7 +1221,7 @@ public extension TagLimitExceededException {
     /**
      Default instance of the TagLimitExceededException structure.
      */
-    public static let __default: SimpleNotificationModel.TagLimitExceededException = {
+    static let __default: SimpleNotificationModel.TagLimitExceededException = {
         let defaultInstance = SimpleNotificationModel.TagLimitExceededException(
             message: nil)
 
@@ -1233,7 +1233,7 @@ public extension TagPolicyException {
     /**
      Default instance of the TagPolicyException structure.
      */
-    public static let __default: SimpleNotificationModel.TagPolicyException = {
+    static let __default: SimpleNotificationModel.TagPolicyException = {
         let defaultInstance = SimpleNotificationModel.TagPolicyException(
             message: nil)
 
@@ -1245,7 +1245,7 @@ public extension TagResourceRequest {
     /**
      Default instance of the TagResourceRequest structure.
      */
-    public static let __default: SimpleNotificationModel.TagResourceRequest = {
+    static let __default: SimpleNotificationModel.TagResourceRequest = {
         let defaultInstance = SimpleNotificationModel.TagResourceRequest(
             resourceArn: "0",
             tags: [])
@@ -1258,7 +1258,7 @@ public extension TagResourceResponse {
     /**
      Default instance of the TagResourceResponse structure.
      */
-    public static let __default: SimpleNotificationModel.TagResourceResponse = {
+    static let __default: SimpleNotificationModel.TagResourceResponse = {
         let defaultInstance = SimpleNotificationModel.TagResourceResponse()
 
         return defaultInstance
@@ -1269,7 +1269,7 @@ public extension TagResourceResponseForTagResource {
     /**
      Default instance of the TagResourceResponseForTagResource structure.
      */
-    public static let __default: SimpleNotificationModel.TagResourceResponseForTagResource = {
+    static let __default: SimpleNotificationModel.TagResourceResponseForTagResource = {
         let defaultInstance = SimpleNotificationModel.TagResourceResponseForTagResource(
             tagResourceResult: TagResourceResponse.__default)
 
@@ -1281,7 +1281,7 @@ public extension ThrottledException {
     /**
      Default instance of the ThrottledException structure.
      */
-    public static let __default: SimpleNotificationModel.ThrottledException = {
+    static let __default: SimpleNotificationModel.ThrottledException = {
         let defaultInstance = SimpleNotificationModel.ThrottledException(
             message: nil)
 
@@ -1293,7 +1293,7 @@ public extension Topic {
     /**
      Default instance of the Topic structure.
      */
-    public static let __default: SimpleNotificationModel.Topic = {
+    static let __default: SimpleNotificationModel.Topic = {
         let defaultInstance = SimpleNotificationModel.Topic(
             topicArn: nil)
 
@@ -1305,7 +1305,7 @@ public extension TopicLimitExceededException {
     /**
      Default instance of the TopicLimitExceededException structure.
      */
-    public static let __default: SimpleNotificationModel.TopicLimitExceededException = {
+    static let __default: SimpleNotificationModel.TopicLimitExceededException = {
         let defaultInstance = SimpleNotificationModel.TopicLimitExceededException(
             message: nil)
 
@@ -1317,7 +1317,7 @@ public extension UnsubscribeInput {
     /**
      Default instance of the UnsubscribeInput structure.
      */
-    public static let __default: SimpleNotificationModel.UnsubscribeInput = {
+    static let __default: SimpleNotificationModel.UnsubscribeInput = {
         let defaultInstance = SimpleNotificationModel.UnsubscribeInput(
             subscriptionArn: "value")
 
@@ -1329,7 +1329,7 @@ public extension UntagResourceRequest {
     /**
      Default instance of the UntagResourceRequest structure.
      */
-    public static let __default: SimpleNotificationModel.UntagResourceRequest = {
+    static let __default: SimpleNotificationModel.UntagResourceRequest = {
         let defaultInstance = SimpleNotificationModel.UntagResourceRequest(
             resourceArn: "0",
             tagKeys: [])
@@ -1342,7 +1342,7 @@ public extension UntagResourceResponse {
     /**
      Default instance of the UntagResourceResponse structure.
      */
-    public static let __default: SimpleNotificationModel.UntagResourceResponse = {
+    static let __default: SimpleNotificationModel.UntagResourceResponse = {
         let defaultInstance = SimpleNotificationModel.UntagResourceResponse()
 
         return defaultInstance
@@ -1353,7 +1353,7 @@ public extension UntagResourceResponseForUntagResource {
     /**
      Default instance of the UntagResourceResponseForUntagResource structure.
      */
-    public static let __default: SimpleNotificationModel.UntagResourceResponseForUntagResource = {
+    static let __default: SimpleNotificationModel.UntagResourceResponseForUntagResource = {
         let defaultInstance = SimpleNotificationModel.UntagResourceResponseForUntagResource(
             untagResourceResult: UntagResourceResponse.__default)
 

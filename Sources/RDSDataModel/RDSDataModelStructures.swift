@@ -21,6 +21,37 @@
 
 import Foundation
 
+public struct ArrayValue: Codable, Equatable {
+    public var arrayValues: ArrayOfArray?
+    public var booleanValues: BooleanArray?
+    public var doubleValues: DoubleArray?
+    public var longValues: LongArray?
+    public var stringValues: StringArray?
+
+    public init(arrayValues: ArrayOfArray? = nil,
+                booleanValues: BooleanArray? = nil,
+                doubleValues: DoubleArray? = nil,
+                longValues: LongArray? = nil,
+                stringValues: StringArray? = nil) {
+        self.arrayValues = arrayValues
+        self.booleanValues = booleanValues
+        self.doubleValues = doubleValues
+        self.longValues = longValues
+        self.stringValues = stringValues
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arrayValues
+        case booleanValues
+        case doubleValues
+        case longValues
+        case stringValues
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct BadRequestException: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -309,6 +340,7 @@ public struct ExecuteStatementRequest: Codable, Equatable {
     public var includeResultMetadata: Boolean?
     public var parameters: SqlParametersList?
     public var resourceArn: Arn
+    public var resultSetOptions: ResultSetOptions?
     public var schema: DbName?
     public var secretArn: Arn
     public var sql: SqlStatement
@@ -319,6 +351,7 @@ public struct ExecuteStatementRequest: Codable, Equatable {
                 includeResultMetadata: Boolean? = nil,
                 parameters: SqlParametersList? = nil,
                 resourceArn: Arn,
+                resultSetOptions: ResultSetOptions? = nil,
                 schema: DbName? = nil,
                 secretArn: Arn,
                 sql: SqlStatement,
@@ -328,6 +361,7 @@ public struct ExecuteStatementRequest: Codable, Equatable {
         self.includeResultMetadata = includeResultMetadata
         self.parameters = parameters
         self.resourceArn = resourceArn
+        self.resultSetOptions = resultSetOptions
         self.schema = schema
         self.secretArn = secretArn
         self.sql = sql
@@ -340,6 +374,7 @@ public struct ExecuteStatementRequest: Codable, Equatable {
         case includeResultMetadata
         case parameters
         case resourceArn
+        case resultSetOptions
         case schema
         case secretArn
         case sql
@@ -349,6 +384,7 @@ public struct ExecuteStatementRequest: Codable, Equatable {
     public func validate() throws {
         try database?.validateAsDbName()
         try resourceArn.validateAsArn()
+        try resultSetOptions?.validate()
         try schema?.validateAsDbName()
         try secretArn.validateAsArn()
         try sql.validateAsSqlStatement()
@@ -384,6 +420,7 @@ public struct ExecuteStatementResponse: Codable, Equatable {
 }
 
 public struct Field: Codable, Equatable {
+    public var arrayValue: ArrayValue?
     public var blobValue: Blob?
     public var booleanValue: BoxedBoolean?
     public var doubleValue: BoxedDouble?
@@ -391,12 +428,14 @@ public struct Field: Codable, Equatable {
     public var longValue: BoxedLong?
     public var stringValue: String?
 
-    public init(blobValue: Blob? = nil,
+    public init(arrayValue: ArrayValue? = nil,
+                blobValue: Blob? = nil,
                 booleanValue: BoxedBoolean? = nil,
                 doubleValue: BoxedDouble? = nil,
                 isNull: BoxedBoolean? = nil,
                 longValue: BoxedLong? = nil,
                 stringValue: String? = nil) {
+        self.arrayValue = arrayValue
         self.blobValue = blobValue
         self.booleanValue = booleanValue
         self.doubleValue = doubleValue
@@ -406,6 +445,7 @@ public struct Field: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case arrayValue
         case blobValue
         case booleanValue
         case doubleValue
@@ -415,6 +455,7 @@ public struct Field: Codable, Equatable {
     }
 
     public func validate() throws {
+        try arrayValue?.validate()
     }
 }
 
@@ -505,6 +546,21 @@ public struct ResultSetMetadata: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case columnCount
         case columnMetadata
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ResultSetOptions: Codable, Equatable {
+    public var decimalReturnType: DecimalReturnType?
+
+    public init(decimalReturnType: DecimalReturnType? = nil) {
+        self.decimalReturnType = decimalReturnType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case decimalReturnType
     }
 
     public func validate() throws {

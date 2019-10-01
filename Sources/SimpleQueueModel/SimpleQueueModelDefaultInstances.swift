@@ -25,7 +25,7 @@ public extension AddPermissionRequest {
     /**
      Default instance of the AddPermissionRequest structure.
      */
-    public static let __default: SimpleQueueModel.AddPermissionRequest = {
+    static let __default: SimpleQueueModel.AddPermissionRequest = {
         let defaultInstance = SimpleQueueModel.AddPermissionRequest(
             aWSAccountIds: [],
             actions: [],
@@ -40,7 +40,7 @@ public extension BatchEntryIdsNotDistinct {
     /**
      Default instance of the BatchEntryIdsNotDistinct structure.
      */
-    public static let __default: SimpleQueueModel.BatchEntryIdsNotDistinct = {
+    static let __default: SimpleQueueModel.BatchEntryIdsNotDistinct = {
         let defaultInstance = SimpleQueueModel.BatchEntryIdsNotDistinct()
 
         return defaultInstance
@@ -51,7 +51,7 @@ public extension BatchRequestTooLong {
     /**
      Default instance of the BatchRequestTooLong structure.
      */
-    public static let __default: SimpleQueueModel.BatchRequestTooLong = {
+    static let __default: SimpleQueueModel.BatchRequestTooLong = {
         let defaultInstance = SimpleQueueModel.BatchRequestTooLong()
 
         return defaultInstance
@@ -62,7 +62,7 @@ public extension BatchResultErrorEntry {
     /**
      Default instance of the BatchResultErrorEntry structure.
      */
-    public static let __default: SimpleQueueModel.BatchResultErrorEntry = {
+    static let __default: SimpleQueueModel.BatchResultErrorEntry = {
         let defaultInstance = SimpleQueueModel.BatchResultErrorEntry(
             code: "value",
             id: "value",
@@ -77,7 +77,7 @@ public extension ChangeMessageVisibilityBatchRequest {
     /**
      Default instance of the ChangeMessageVisibilityBatchRequest structure.
      */
-    public static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchRequest = {
+    static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchRequest = {
         let defaultInstance = SimpleQueueModel.ChangeMessageVisibilityBatchRequest(
             entries: [],
             queueUrl: "value")
@@ -90,7 +90,7 @@ public extension ChangeMessageVisibilityBatchRequestEntry {
     /**
      Default instance of the ChangeMessageVisibilityBatchRequestEntry structure.
      */
-    public static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchRequestEntry = {
+    static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchRequestEntry = {
         let defaultInstance = SimpleQueueModel.ChangeMessageVisibilityBatchRequestEntry(
             id: "value",
             receiptHandle: "value",
@@ -104,7 +104,7 @@ public extension ChangeMessageVisibilityBatchResult {
     /**
      Default instance of the ChangeMessageVisibilityBatchResult structure.
      */
-    public static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchResult = {
+    static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchResult = {
         let defaultInstance = SimpleQueueModel.ChangeMessageVisibilityBatchResult(
             failed: nil,
             successful: nil)
@@ -117,7 +117,7 @@ public extension ChangeMessageVisibilityBatchResultEntry {
     /**
      Default instance of the ChangeMessageVisibilityBatchResultEntry structure.
      */
-    public static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchResultEntry = {
+    static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchResultEntry = {
         let defaultInstance = SimpleQueueModel.ChangeMessageVisibilityBatchResultEntry(
             id: "value")
 
@@ -129,7 +129,7 @@ public extension ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBat
     /**
      Default instance of the ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch structure.
      */
-    public static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch = {
+    static let __default: SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch = {
         let defaultInstance = SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch(
             changeMessageVisibilityBatchResult: ChangeMessageVisibilityBatchResult.__default)
 
@@ -141,7 +141,7 @@ public extension ChangeMessageVisibilityRequest {
     /**
      Default instance of the ChangeMessageVisibilityRequest structure.
      */
-    public static let __default: SimpleQueueModel.ChangeMessageVisibilityRequest = {
+    static let __default: SimpleQueueModel.ChangeMessageVisibilityRequest = {
         let defaultInstance = SimpleQueueModel.ChangeMessageVisibilityRequest(
             queueUrl: "value",
             receiptHandle: "value",
@@ -155,10 +155,11 @@ public extension CreateQueueRequest {
     /**
      Default instance of the CreateQueueRequest structure.
      */
-    public static let __default: SimpleQueueModel.CreateQueueRequest = {
+    static let __default: SimpleQueueModel.CreateQueueRequest = {
         let defaultInstance = SimpleQueueModel.CreateQueueRequest(
             attributes: nil,
-            queueName: "value")
+            queueName: "value",
+            tags: nil)
 
         return defaultInstance
     }()
@@ -168,7 +169,7 @@ public extension CreateQueueResult {
     /**
      Default instance of the CreateQueueResult structure.
      */
-    public static let __default: SimpleQueueModel.CreateQueueResult = {
+    static let __default: SimpleQueueModel.CreateQueueResult = {
         let defaultInstance = SimpleQueueModel.CreateQueueResult(
             queueUrl: nil)
 
@@ -180,7 +181,7 @@ public extension CreateQueueResultForCreateQueue {
     /**
      Default instance of the CreateQueueResultForCreateQueue structure.
      */
-    public static let __default: SimpleQueueModel.CreateQueueResultForCreateQueue = {
+    static let __default: SimpleQueueModel.CreateQueueResultForCreateQueue = {
         let defaultInstance = SimpleQueueModel.CreateQueueResultForCreateQueue(
             createQueueResult: CreateQueueResult.__default)
 
@@ -192,7 +193,7 @@ public extension DeleteMessageBatchRequest {
     /**
      Default instance of the DeleteMessageBatchRequest structure.
      */
-    public static let __default: SimpleQueueModel.DeleteMessageBatchRequest = {
+    static let __default: SimpleQueueModel.DeleteMessageBatchRequest = {
         let defaultInstance = SimpleQueueModel.DeleteMessageBatchRequest(
             entries: [],
             queueUrl: "value")
@@ -205,7 +206,7 @@ public extension DeleteMessageBatchRequestEntry {
     /**
      Default instance of the DeleteMessageBatchRequestEntry structure.
      */
-    public static let __default: SimpleQueueModel.DeleteMessageBatchRequestEntry = {
+    static let __default: SimpleQueueModel.DeleteMessageBatchRequestEntry = {
         let defaultInstance = SimpleQueueModel.DeleteMessageBatchRequestEntry(
             id: "value",
             receiptHandle: "value")
@@ -218,7 +219,7 @@ public extension DeleteMessageBatchResult {
     /**
      Default instance of the DeleteMessageBatchResult structure.
      */
-    public static let __default: SimpleQueueModel.DeleteMessageBatchResult = {
+    static let __default: SimpleQueueModel.DeleteMessageBatchResult = {
         let defaultInstance = SimpleQueueModel.DeleteMessageBatchResult(
             failed: nil,
             successful: nil)
@@ -231,7 +232,7 @@ public extension DeleteMessageBatchResultEntry {
     /**
      Default instance of the DeleteMessageBatchResultEntry structure.
      */
-    public static let __default: SimpleQueueModel.DeleteMessageBatchResultEntry = {
+    static let __default: SimpleQueueModel.DeleteMessageBatchResultEntry = {
         let defaultInstance = SimpleQueueModel.DeleteMessageBatchResultEntry(
             id: "value")
 
@@ -243,7 +244,7 @@ public extension DeleteMessageBatchResultForDeleteMessageBatch {
     /**
      Default instance of the DeleteMessageBatchResultForDeleteMessageBatch structure.
      */
-    public static let __default: SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch = {
+    static let __default: SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch = {
         let defaultInstance = SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch(
             deleteMessageBatchResult: DeleteMessageBatchResult.__default)
 
@@ -255,7 +256,7 @@ public extension DeleteMessageRequest {
     /**
      Default instance of the DeleteMessageRequest structure.
      */
-    public static let __default: SimpleQueueModel.DeleteMessageRequest = {
+    static let __default: SimpleQueueModel.DeleteMessageRequest = {
         let defaultInstance = SimpleQueueModel.DeleteMessageRequest(
             queueUrl: "value",
             receiptHandle: "value")
@@ -268,7 +269,7 @@ public extension DeleteQueueRequest {
     /**
      Default instance of the DeleteQueueRequest structure.
      */
-    public static let __default: SimpleQueueModel.DeleteQueueRequest = {
+    static let __default: SimpleQueueModel.DeleteQueueRequest = {
         let defaultInstance = SimpleQueueModel.DeleteQueueRequest(
             queueUrl: "value")
 
@@ -280,7 +281,7 @@ public extension EmptyBatchRequest {
     /**
      Default instance of the EmptyBatchRequest structure.
      */
-    public static let __default: SimpleQueueModel.EmptyBatchRequest = {
+    static let __default: SimpleQueueModel.EmptyBatchRequest = {
         let defaultInstance = SimpleQueueModel.EmptyBatchRequest()
 
         return defaultInstance
@@ -291,7 +292,7 @@ public extension GetQueueAttributesRequest {
     /**
      Default instance of the GetQueueAttributesRequest structure.
      */
-    public static let __default: SimpleQueueModel.GetQueueAttributesRequest = {
+    static let __default: SimpleQueueModel.GetQueueAttributesRequest = {
         let defaultInstance = SimpleQueueModel.GetQueueAttributesRequest(
             attributeNames: nil,
             queueUrl: "value")
@@ -304,7 +305,7 @@ public extension GetQueueAttributesResult {
     /**
      Default instance of the GetQueueAttributesResult structure.
      */
-    public static let __default: SimpleQueueModel.GetQueueAttributesResult = {
+    static let __default: SimpleQueueModel.GetQueueAttributesResult = {
         let defaultInstance = SimpleQueueModel.GetQueueAttributesResult(
             attributes: nil)
 
@@ -316,7 +317,7 @@ public extension GetQueueAttributesResultForGetQueueAttributes {
     /**
      Default instance of the GetQueueAttributesResultForGetQueueAttributes structure.
      */
-    public static let __default: SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes = {
+    static let __default: SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes = {
         let defaultInstance = SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes(
             getQueueAttributesResult: GetQueueAttributesResult.__default)
 
@@ -328,7 +329,7 @@ public extension GetQueueUrlRequest {
     /**
      Default instance of the GetQueueUrlRequest structure.
      */
-    public static let __default: SimpleQueueModel.GetQueueUrlRequest = {
+    static let __default: SimpleQueueModel.GetQueueUrlRequest = {
         let defaultInstance = SimpleQueueModel.GetQueueUrlRequest(
             queueName: "value",
             queueOwnerAWSAccountId: nil)
@@ -341,7 +342,7 @@ public extension GetQueueUrlResult {
     /**
      Default instance of the GetQueueUrlResult structure.
      */
-    public static let __default: SimpleQueueModel.GetQueueUrlResult = {
+    static let __default: SimpleQueueModel.GetQueueUrlResult = {
         let defaultInstance = SimpleQueueModel.GetQueueUrlResult(
             queueUrl: nil)
 
@@ -353,7 +354,7 @@ public extension GetQueueUrlResultForGetQueueUrl {
     /**
      Default instance of the GetQueueUrlResultForGetQueueUrl structure.
      */
-    public static let __default: SimpleQueueModel.GetQueueUrlResultForGetQueueUrl = {
+    static let __default: SimpleQueueModel.GetQueueUrlResultForGetQueueUrl = {
         let defaultInstance = SimpleQueueModel.GetQueueUrlResultForGetQueueUrl(
             getQueueUrlResult: GetQueueUrlResult.__default)
 
@@ -365,7 +366,7 @@ public extension InvalidAttributeName {
     /**
      Default instance of the InvalidAttributeName structure.
      */
-    public static let __default: SimpleQueueModel.InvalidAttributeName = {
+    static let __default: SimpleQueueModel.InvalidAttributeName = {
         let defaultInstance = SimpleQueueModel.InvalidAttributeName()
 
         return defaultInstance
@@ -376,7 +377,7 @@ public extension InvalidBatchEntryId {
     /**
      Default instance of the InvalidBatchEntryId structure.
      */
-    public static let __default: SimpleQueueModel.InvalidBatchEntryId = {
+    static let __default: SimpleQueueModel.InvalidBatchEntryId = {
         let defaultInstance = SimpleQueueModel.InvalidBatchEntryId()
 
         return defaultInstance
@@ -387,7 +388,7 @@ public extension InvalidIdFormat {
     /**
      Default instance of the InvalidIdFormat structure.
      */
-    public static let __default: SimpleQueueModel.InvalidIdFormat = {
+    static let __default: SimpleQueueModel.InvalidIdFormat = {
         let defaultInstance = SimpleQueueModel.InvalidIdFormat()
 
         return defaultInstance
@@ -398,7 +399,7 @@ public extension InvalidMessageContents {
     /**
      Default instance of the InvalidMessageContents structure.
      */
-    public static let __default: SimpleQueueModel.InvalidMessageContents = {
+    static let __default: SimpleQueueModel.InvalidMessageContents = {
         let defaultInstance = SimpleQueueModel.InvalidMessageContents()
 
         return defaultInstance
@@ -409,7 +410,7 @@ public extension ListDeadLetterSourceQueuesRequest {
     /**
      Default instance of the ListDeadLetterSourceQueuesRequest structure.
      */
-    public static let __default: SimpleQueueModel.ListDeadLetterSourceQueuesRequest = {
+    static let __default: SimpleQueueModel.ListDeadLetterSourceQueuesRequest = {
         let defaultInstance = SimpleQueueModel.ListDeadLetterSourceQueuesRequest(
             queueUrl: "value")
 
@@ -421,7 +422,7 @@ public extension ListDeadLetterSourceQueuesResult {
     /**
      Default instance of the ListDeadLetterSourceQueuesResult structure.
      */
-    public static let __default: SimpleQueueModel.ListDeadLetterSourceQueuesResult = {
+    static let __default: SimpleQueueModel.ListDeadLetterSourceQueuesResult = {
         let defaultInstance = SimpleQueueModel.ListDeadLetterSourceQueuesResult(
             queueUrls: nil)
 
@@ -433,7 +434,7 @@ public extension ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
     /**
      Default instance of the ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues structure.
      */
-    public static let __default: SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues = {
+    static let __default: SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues = {
         let defaultInstance = SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues(
             listDeadLetterSourceQueuesResult: ListDeadLetterSourceQueuesResult.__default)
 
@@ -445,7 +446,7 @@ public extension ListQueueTagsRequest {
     /**
      Default instance of the ListQueueTagsRequest structure.
      */
-    public static let __default: SimpleQueueModel.ListQueueTagsRequest = {
+    static let __default: SimpleQueueModel.ListQueueTagsRequest = {
         let defaultInstance = SimpleQueueModel.ListQueueTagsRequest(
             queueUrl: "value")
 
@@ -457,7 +458,7 @@ public extension ListQueueTagsResult {
     /**
      Default instance of the ListQueueTagsResult structure.
      */
-    public static let __default: SimpleQueueModel.ListQueueTagsResult = {
+    static let __default: SimpleQueueModel.ListQueueTagsResult = {
         let defaultInstance = SimpleQueueModel.ListQueueTagsResult(
             tags: nil)
 
@@ -469,7 +470,7 @@ public extension ListQueueTagsResultForListQueueTags {
     /**
      Default instance of the ListQueueTagsResultForListQueueTags structure.
      */
-    public static let __default: SimpleQueueModel.ListQueueTagsResultForListQueueTags = {
+    static let __default: SimpleQueueModel.ListQueueTagsResultForListQueueTags = {
         let defaultInstance = SimpleQueueModel.ListQueueTagsResultForListQueueTags(
             listQueueTagsResult: ListQueueTagsResult.__default)
 
@@ -481,7 +482,7 @@ public extension ListQueuesRequest {
     /**
      Default instance of the ListQueuesRequest structure.
      */
-    public static let __default: SimpleQueueModel.ListQueuesRequest = {
+    static let __default: SimpleQueueModel.ListQueuesRequest = {
         let defaultInstance = SimpleQueueModel.ListQueuesRequest(
             queueNamePrefix: nil)
 
@@ -493,7 +494,7 @@ public extension ListQueuesResult {
     /**
      Default instance of the ListQueuesResult structure.
      */
-    public static let __default: SimpleQueueModel.ListQueuesResult = {
+    static let __default: SimpleQueueModel.ListQueuesResult = {
         let defaultInstance = SimpleQueueModel.ListQueuesResult(
             queueUrls: nil)
 
@@ -505,7 +506,7 @@ public extension ListQueuesResultForListQueues {
     /**
      Default instance of the ListQueuesResultForListQueues structure.
      */
-    public static let __default: SimpleQueueModel.ListQueuesResultForListQueues = {
+    static let __default: SimpleQueueModel.ListQueuesResultForListQueues = {
         let defaultInstance = SimpleQueueModel.ListQueuesResultForListQueues(
             listQueuesResult: ListQueuesResult.__default)
 
@@ -517,7 +518,7 @@ public extension Message {
     /**
      Default instance of the Message structure.
      */
-    public static let __default: SimpleQueueModel.Message = {
+    static let __default: SimpleQueueModel.Message = {
         let defaultInstance = SimpleQueueModel.Message(
             attributes: nil,
             body: nil,
@@ -535,7 +536,7 @@ public extension MessageAttributeValue {
     /**
      Default instance of the MessageAttributeValue structure.
      */
-    public static let __default: SimpleQueueModel.MessageAttributeValue = {
+    static let __default: SimpleQueueModel.MessageAttributeValue = {
         let defaultInstance = SimpleQueueModel.MessageAttributeValue(
             binaryListValues: nil,
             binaryValue: nil,
@@ -551,8 +552,24 @@ public extension MessageNotInflight {
     /**
      Default instance of the MessageNotInflight structure.
      */
-    public static let __default: SimpleQueueModel.MessageNotInflight = {
+    static let __default: SimpleQueueModel.MessageNotInflight = {
         let defaultInstance = SimpleQueueModel.MessageNotInflight()
+
+        return defaultInstance
+    }()
+}
+
+public extension MessageSystemAttributeValue {
+    /**
+     Default instance of the MessageSystemAttributeValue structure.
+     */
+    static let __default: SimpleQueueModel.MessageSystemAttributeValue = {
+        let defaultInstance = SimpleQueueModel.MessageSystemAttributeValue(
+            binaryListValues: nil,
+            binaryValue: nil,
+            dataType: "value",
+            stringListValues: nil,
+            stringValue: nil)
 
         return defaultInstance
     }()
@@ -562,7 +579,7 @@ public extension OverLimit {
     /**
      Default instance of the OverLimit structure.
      */
-    public static let __default: SimpleQueueModel.OverLimit = {
+    static let __default: SimpleQueueModel.OverLimit = {
         let defaultInstance = SimpleQueueModel.OverLimit()
 
         return defaultInstance
@@ -573,7 +590,7 @@ public extension PurgeQueueInProgress {
     /**
      Default instance of the PurgeQueueInProgress structure.
      */
-    public static let __default: SimpleQueueModel.PurgeQueueInProgress = {
+    static let __default: SimpleQueueModel.PurgeQueueInProgress = {
         let defaultInstance = SimpleQueueModel.PurgeQueueInProgress()
 
         return defaultInstance
@@ -584,7 +601,7 @@ public extension PurgeQueueRequest {
     /**
      Default instance of the PurgeQueueRequest structure.
      */
-    public static let __default: SimpleQueueModel.PurgeQueueRequest = {
+    static let __default: SimpleQueueModel.PurgeQueueRequest = {
         let defaultInstance = SimpleQueueModel.PurgeQueueRequest(
             queueUrl: "value")
 
@@ -596,7 +613,7 @@ public extension QueueDeletedRecently {
     /**
      Default instance of the QueueDeletedRecently structure.
      */
-    public static let __default: SimpleQueueModel.QueueDeletedRecently = {
+    static let __default: SimpleQueueModel.QueueDeletedRecently = {
         let defaultInstance = SimpleQueueModel.QueueDeletedRecently()
 
         return defaultInstance
@@ -607,7 +624,7 @@ public extension QueueDoesNotExist {
     /**
      Default instance of the QueueDoesNotExist structure.
      */
-    public static let __default: SimpleQueueModel.QueueDoesNotExist = {
+    static let __default: SimpleQueueModel.QueueDoesNotExist = {
         let defaultInstance = SimpleQueueModel.QueueDoesNotExist()
 
         return defaultInstance
@@ -618,7 +635,7 @@ public extension QueueNameExists {
     /**
      Default instance of the QueueNameExists structure.
      */
-    public static let __default: SimpleQueueModel.QueueNameExists = {
+    static let __default: SimpleQueueModel.QueueNameExists = {
         let defaultInstance = SimpleQueueModel.QueueNameExists()
 
         return defaultInstance
@@ -629,7 +646,7 @@ public extension ReceiptHandleIsInvalid {
     /**
      Default instance of the ReceiptHandleIsInvalid structure.
      */
-    public static let __default: SimpleQueueModel.ReceiptHandleIsInvalid = {
+    static let __default: SimpleQueueModel.ReceiptHandleIsInvalid = {
         let defaultInstance = SimpleQueueModel.ReceiptHandleIsInvalid()
 
         return defaultInstance
@@ -640,7 +657,7 @@ public extension ReceiveMessageRequest {
     /**
      Default instance of the ReceiveMessageRequest structure.
      */
-    public static let __default: SimpleQueueModel.ReceiveMessageRequest = {
+    static let __default: SimpleQueueModel.ReceiveMessageRequest = {
         let defaultInstance = SimpleQueueModel.ReceiveMessageRequest(
             attributeNames: nil,
             maxNumberOfMessages: nil,
@@ -658,7 +675,7 @@ public extension ReceiveMessageResult {
     /**
      Default instance of the ReceiveMessageResult structure.
      */
-    public static let __default: SimpleQueueModel.ReceiveMessageResult = {
+    static let __default: SimpleQueueModel.ReceiveMessageResult = {
         let defaultInstance = SimpleQueueModel.ReceiveMessageResult(
             messages: nil)
 
@@ -670,7 +687,7 @@ public extension ReceiveMessageResultForReceiveMessage {
     /**
      Default instance of the ReceiveMessageResultForReceiveMessage structure.
      */
-    public static let __default: SimpleQueueModel.ReceiveMessageResultForReceiveMessage = {
+    static let __default: SimpleQueueModel.ReceiveMessageResultForReceiveMessage = {
         let defaultInstance = SimpleQueueModel.ReceiveMessageResultForReceiveMessage(
             receiveMessageResult: ReceiveMessageResult.__default)
 
@@ -682,7 +699,7 @@ public extension RemovePermissionRequest {
     /**
      Default instance of the RemovePermissionRequest structure.
      */
-    public static let __default: SimpleQueueModel.RemovePermissionRequest = {
+    static let __default: SimpleQueueModel.RemovePermissionRequest = {
         let defaultInstance = SimpleQueueModel.RemovePermissionRequest(
             label: "value",
             queueUrl: "value")
@@ -695,7 +712,7 @@ public extension SendMessageBatchRequest {
     /**
      Default instance of the SendMessageBatchRequest structure.
      */
-    public static let __default: SimpleQueueModel.SendMessageBatchRequest = {
+    static let __default: SimpleQueueModel.SendMessageBatchRequest = {
         let defaultInstance = SimpleQueueModel.SendMessageBatchRequest(
             entries: [],
             queueUrl: "value")
@@ -708,14 +725,15 @@ public extension SendMessageBatchRequestEntry {
     /**
      Default instance of the SendMessageBatchRequestEntry structure.
      */
-    public static let __default: SimpleQueueModel.SendMessageBatchRequestEntry = {
+    static let __default: SimpleQueueModel.SendMessageBatchRequestEntry = {
         let defaultInstance = SimpleQueueModel.SendMessageBatchRequestEntry(
             delaySeconds: nil,
             id: "value",
             messageAttributes: nil,
             messageBody: "value",
             messageDeduplicationId: nil,
-            messageGroupId: nil)
+            messageGroupId: nil,
+            messageSystemAttributes: nil)
 
         return defaultInstance
     }()
@@ -725,7 +743,7 @@ public extension SendMessageBatchResult {
     /**
      Default instance of the SendMessageBatchResult structure.
      */
-    public static let __default: SimpleQueueModel.SendMessageBatchResult = {
+    static let __default: SimpleQueueModel.SendMessageBatchResult = {
         let defaultInstance = SimpleQueueModel.SendMessageBatchResult(
             failed: nil,
             successful: nil)
@@ -738,11 +756,12 @@ public extension SendMessageBatchResultEntry {
     /**
      Default instance of the SendMessageBatchResultEntry structure.
      */
-    public static let __default: SimpleQueueModel.SendMessageBatchResultEntry = {
+    static let __default: SimpleQueueModel.SendMessageBatchResultEntry = {
         let defaultInstance = SimpleQueueModel.SendMessageBatchResultEntry(
             id: "value",
             mD5OfMessageAttributes: nil,
             mD5OfMessageBody: "value",
+            mD5OfMessageSystemAttributes: nil,
             messageId: "value",
             sequenceNumber: nil)
 
@@ -754,7 +773,7 @@ public extension SendMessageBatchResultForSendMessageBatch {
     /**
      Default instance of the SendMessageBatchResultForSendMessageBatch structure.
      */
-    public static let __default: SimpleQueueModel.SendMessageBatchResultForSendMessageBatch = {
+    static let __default: SimpleQueueModel.SendMessageBatchResultForSendMessageBatch = {
         let defaultInstance = SimpleQueueModel.SendMessageBatchResultForSendMessageBatch(
             sendMessageBatchResult: SendMessageBatchResult.__default)
 
@@ -766,13 +785,14 @@ public extension SendMessageRequest {
     /**
      Default instance of the SendMessageRequest structure.
      */
-    public static let __default: SimpleQueueModel.SendMessageRequest = {
+    static let __default: SimpleQueueModel.SendMessageRequest = {
         let defaultInstance = SimpleQueueModel.SendMessageRequest(
             delaySeconds: nil,
             messageAttributes: nil,
             messageBody: "value",
             messageDeduplicationId: nil,
             messageGroupId: nil,
+            messageSystemAttributes: nil,
             queueUrl: "value")
 
         return defaultInstance
@@ -783,10 +803,11 @@ public extension SendMessageResult {
     /**
      Default instance of the SendMessageResult structure.
      */
-    public static let __default: SimpleQueueModel.SendMessageResult = {
+    static let __default: SimpleQueueModel.SendMessageResult = {
         let defaultInstance = SimpleQueueModel.SendMessageResult(
             mD5OfMessageAttributes: nil,
             mD5OfMessageBody: nil,
+            mD5OfMessageSystemAttributes: nil,
             messageId: nil,
             sequenceNumber: nil)
 
@@ -798,7 +819,7 @@ public extension SendMessageResultForSendMessage {
     /**
      Default instance of the SendMessageResultForSendMessage structure.
      */
-    public static let __default: SimpleQueueModel.SendMessageResultForSendMessage = {
+    static let __default: SimpleQueueModel.SendMessageResultForSendMessage = {
         let defaultInstance = SimpleQueueModel.SendMessageResultForSendMessage(
             sendMessageResult: SendMessageResult.__default)
 
@@ -810,7 +831,7 @@ public extension SetQueueAttributesRequest {
     /**
      Default instance of the SetQueueAttributesRequest structure.
      */
-    public static let __default: SimpleQueueModel.SetQueueAttributesRequest = {
+    static let __default: SimpleQueueModel.SetQueueAttributesRequest = {
         let defaultInstance = SimpleQueueModel.SetQueueAttributesRequest(
             attributes: [:],
             queueUrl: "value")
@@ -823,7 +844,7 @@ public extension TagQueueRequest {
     /**
      Default instance of the TagQueueRequest structure.
      */
-    public static let __default: SimpleQueueModel.TagQueueRequest = {
+    static let __default: SimpleQueueModel.TagQueueRequest = {
         let defaultInstance = SimpleQueueModel.TagQueueRequest(
             queueUrl: "value",
             tags: [:])
@@ -836,7 +857,7 @@ public extension TooManyEntriesInBatchRequest {
     /**
      Default instance of the TooManyEntriesInBatchRequest structure.
      */
-    public static let __default: SimpleQueueModel.TooManyEntriesInBatchRequest = {
+    static let __default: SimpleQueueModel.TooManyEntriesInBatchRequest = {
         let defaultInstance = SimpleQueueModel.TooManyEntriesInBatchRequest()
 
         return defaultInstance
@@ -847,7 +868,7 @@ public extension UnsupportedOperation {
     /**
      Default instance of the UnsupportedOperation structure.
      */
-    public static let __default: SimpleQueueModel.UnsupportedOperation = {
+    static let __default: SimpleQueueModel.UnsupportedOperation = {
         let defaultInstance = SimpleQueueModel.UnsupportedOperation()
 
         return defaultInstance
@@ -858,7 +879,7 @@ public extension UntagQueueRequest {
     /**
      Default instance of the UntagQueueRequest structure.
      */
-    public static let __default: SimpleQueueModel.UntagQueueRequest = {
+    static let __default: SimpleQueueModel.UntagQueueRequest = {
         let defaultInstance = SimpleQueueModel.UntagQueueRequest(
             queueUrl: "value",
             tagKeys: [])

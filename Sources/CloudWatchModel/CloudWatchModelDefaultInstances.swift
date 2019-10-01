@@ -25,7 +25,7 @@ public extension AlarmHistoryItem {
     /**
      Default instance of the AlarmHistoryItem structure.
      */
-    public static let __default: CloudWatchModel.AlarmHistoryItem = {
+    static let __default: CloudWatchModel.AlarmHistoryItem = {
         let defaultInstance = CloudWatchModel.AlarmHistoryItem(
             alarmName: nil,
             historyData: nil,
@@ -37,11 +37,40 @@ public extension AlarmHistoryItem {
     }()
 }
 
+public extension AnomalyDetector {
+    /**
+     Default instance of the AnomalyDetector structure.
+     */
+    static let __default: CloudWatchModel.AnomalyDetector = {
+        let defaultInstance = CloudWatchModel.AnomalyDetector(
+            configuration: nil,
+            dimensions: nil,
+            metricName: nil,
+            namespace: nil,
+            stat: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AnomalyDetectorConfiguration {
+    /**
+     Default instance of the AnomalyDetectorConfiguration structure.
+     */
+    static let __default: CloudWatchModel.AnomalyDetectorConfiguration = {
+        let defaultInstance = CloudWatchModel.AnomalyDetectorConfiguration(
+            excludedTimeRanges: nil,
+            metricTimezone: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ConcurrentModificationException {
     /**
      Default instance of the ConcurrentModificationException structure.
      */
-    public static let __default: CloudWatchModel.ConcurrentModificationException = {
+    static let __default: CloudWatchModel.ConcurrentModificationException = {
         let defaultInstance = CloudWatchModel.ConcurrentModificationException()
 
         return defaultInstance
@@ -52,7 +81,7 @@ public extension DashboardEntry {
     /**
      Default instance of the DashboardEntry structure.
      */
-    public static let __default: CloudWatchModel.DashboardEntry = {
+    static let __default: CloudWatchModel.DashboardEntry = {
         let defaultInstance = CloudWatchModel.DashboardEntry(
             dashboardArn: nil,
             dashboardName: nil,
@@ -67,7 +96,7 @@ public extension DashboardInvalidInputError {
     /**
      Default instance of the DashboardInvalidInputError structure.
      */
-    public static let __default: CloudWatchModel.DashboardInvalidInputError = {
+    static let __default: CloudWatchModel.DashboardInvalidInputError = {
         let defaultInstance = CloudWatchModel.DashboardInvalidInputError(
             dashboardValidationMessages: nil,
             message: nil)
@@ -80,7 +109,7 @@ public extension DashboardNotFoundError {
     /**
      Default instance of the DashboardNotFoundError structure.
      */
-    public static let __default: CloudWatchModel.DashboardNotFoundError = {
+    static let __default: CloudWatchModel.DashboardNotFoundError = {
         let defaultInstance = CloudWatchModel.DashboardNotFoundError(
             message: nil)
 
@@ -92,7 +121,7 @@ public extension DashboardValidationMessage {
     /**
      Default instance of the DashboardValidationMessage structure.
      */
-    public static let __default: CloudWatchModel.DashboardValidationMessage = {
+    static let __default: CloudWatchModel.DashboardValidationMessage = {
         let defaultInstance = CloudWatchModel.DashboardValidationMessage(
             dataPath: nil,
             message: nil)
@@ -105,7 +134,7 @@ public extension Datapoint {
     /**
      Default instance of the Datapoint structure.
      */
-    public static let __default: CloudWatchModel.Datapoint = {
+    static let __default: CloudWatchModel.Datapoint = {
         let defaultInstance = CloudWatchModel.Datapoint(
             average: nil,
             extendedStatistics: nil,
@@ -124,9 +153,47 @@ public extension DeleteAlarmsInput {
     /**
      Default instance of the DeleteAlarmsInput structure.
      */
-    public static let __default: CloudWatchModel.DeleteAlarmsInput = {
+    static let __default: CloudWatchModel.DeleteAlarmsInput = {
         let defaultInstance = CloudWatchModel.DeleteAlarmsInput(
             alarmNames: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteAnomalyDetectorInput {
+    /**
+     Default instance of the DeleteAnomalyDetectorInput structure.
+     */
+    static let __default: CloudWatchModel.DeleteAnomalyDetectorInput = {
+        let defaultInstance = CloudWatchModel.DeleteAnomalyDetectorInput(
+            dimensions: nil,
+            metricName: "0",
+            namespace: "0",
+            stat: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteAnomalyDetectorOutput {
+    /**
+     Default instance of the DeleteAnomalyDetectorOutput structure.
+     */
+    static let __default: CloudWatchModel.DeleteAnomalyDetectorOutput = {
+        let defaultInstance = CloudWatchModel.DeleteAnomalyDetectorOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
+    /**
+     Default instance of the DeleteAnomalyDetectorOutputForDeleteAnomalyDetector structure.
+     */
+    static let __default: CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector = {
+        let defaultInstance = CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector(
+            deleteAnomalyDetectorResult: DeleteAnomalyDetectorOutput.__default)
 
         return defaultInstance
     }()
@@ -136,7 +203,7 @@ public extension DeleteDashboardsInput {
     /**
      Default instance of the DeleteDashboardsInput structure.
      */
-    public static let __default: CloudWatchModel.DeleteDashboardsInput = {
+    static let __default: CloudWatchModel.DeleteDashboardsInput = {
         let defaultInstance = CloudWatchModel.DeleteDashboardsInput(
             dashboardNames: [])
 
@@ -148,7 +215,7 @@ public extension DeleteDashboardsOutput {
     /**
      Default instance of the DeleteDashboardsOutput structure.
      */
-    public static let __default: CloudWatchModel.DeleteDashboardsOutput = {
+    static let __default: CloudWatchModel.DeleteDashboardsOutput = {
         let defaultInstance = CloudWatchModel.DeleteDashboardsOutput()
 
         return defaultInstance
@@ -159,7 +226,7 @@ public extension DeleteDashboardsOutputForDeleteDashboards {
     /**
      Default instance of the DeleteDashboardsOutputForDeleteDashboards structure.
      */
-    public static let __default: CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards = {
+    static let __default: CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards = {
         let defaultInstance = CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards(
             deleteDashboardsResult: DeleteDashboardsOutput.__default)
 
@@ -171,7 +238,7 @@ public extension DescribeAlarmHistoryInput {
     /**
      Default instance of the DescribeAlarmHistoryInput structure.
      */
-    public static let __default: CloudWatchModel.DescribeAlarmHistoryInput = {
+    static let __default: CloudWatchModel.DescribeAlarmHistoryInput = {
         let defaultInstance = CloudWatchModel.DescribeAlarmHistoryInput(
             alarmName: nil,
             endDate: nil,
@@ -188,7 +255,7 @@ public extension DescribeAlarmHistoryOutput {
     /**
      Default instance of the DescribeAlarmHistoryOutput structure.
      */
-    public static let __default: CloudWatchModel.DescribeAlarmHistoryOutput = {
+    static let __default: CloudWatchModel.DescribeAlarmHistoryOutput = {
         let defaultInstance = CloudWatchModel.DescribeAlarmHistoryOutput(
             alarmHistoryItems: nil,
             nextToken: nil)
@@ -201,7 +268,7 @@ public extension DescribeAlarmHistoryOutputForDescribeAlarmHistory {
     /**
      Default instance of the DescribeAlarmHistoryOutputForDescribeAlarmHistory structure.
      */
-    public static let __default: CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory = {
+    static let __default: CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory = {
         let defaultInstance = CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory(
             describeAlarmHistoryResult: DescribeAlarmHistoryOutput.__default)
 
@@ -213,7 +280,7 @@ public extension DescribeAlarmsForMetricInput {
     /**
      Default instance of the DescribeAlarmsForMetricInput structure.
      */
-    public static let __default: CloudWatchModel.DescribeAlarmsForMetricInput = {
+    static let __default: CloudWatchModel.DescribeAlarmsForMetricInput = {
         let defaultInstance = CloudWatchModel.DescribeAlarmsForMetricInput(
             dimensions: nil,
             extendedStatistic: nil,
@@ -231,7 +298,7 @@ public extension DescribeAlarmsForMetricOutput {
     /**
      Default instance of the DescribeAlarmsForMetricOutput structure.
      */
-    public static let __default: CloudWatchModel.DescribeAlarmsForMetricOutput = {
+    static let __default: CloudWatchModel.DescribeAlarmsForMetricOutput = {
         let defaultInstance = CloudWatchModel.DescribeAlarmsForMetricOutput(
             metricAlarms: nil)
 
@@ -243,7 +310,7 @@ public extension DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
     /**
      Default instance of the DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric structure.
      */
-    public static let __default: CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric = {
+    static let __default: CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric = {
         let defaultInstance = CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric(
             describeAlarmsForMetricResult: DescribeAlarmsForMetricOutput.__default)
 
@@ -255,7 +322,7 @@ public extension DescribeAlarmsInput {
     /**
      Default instance of the DescribeAlarmsInput structure.
      */
-    public static let __default: CloudWatchModel.DescribeAlarmsInput = {
+    static let __default: CloudWatchModel.DescribeAlarmsInput = {
         let defaultInstance = CloudWatchModel.DescribeAlarmsInput(
             actionPrefix: nil,
             alarmNamePrefix: nil,
@@ -272,7 +339,7 @@ public extension DescribeAlarmsOutput {
     /**
      Default instance of the DescribeAlarmsOutput structure.
      */
-    public static let __default: CloudWatchModel.DescribeAlarmsOutput = {
+    static let __default: CloudWatchModel.DescribeAlarmsOutput = {
         let defaultInstance = CloudWatchModel.DescribeAlarmsOutput(
             metricAlarms: nil,
             nextToken: nil)
@@ -285,9 +352,50 @@ public extension DescribeAlarmsOutputForDescribeAlarms {
     /**
      Default instance of the DescribeAlarmsOutputForDescribeAlarms structure.
      */
-    public static let __default: CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms = {
+    static let __default: CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms = {
         let defaultInstance = CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms(
             describeAlarmsResult: DescribeAlarmsOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeAnomalyDetectorsInput {
+    /**
+     Default instance of the DescribeAnomalyDetectorsInput structure.
+     */
+    static let __default: CloudWatchModel.DescribeAnomalyDetectorsInput = {
+        let defaultInstance = CloudWatchModel.DescribeAnomalyDetectorsInput(
+            dimensions: nil,
+            maxResults: nil,
+            metricName: nil,
+            namespace: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeAnomalyDetectorsOutput {
+    /**
+     Default instance of the DescribeAnomalyDetectorsOutput structure.
+     */
+    static let __default: CloudWatchModel.DescribeAnomalyDetectorsOutput = {
+        let defaultInstance = CloudWatchModel.DescribeAnomalyDetectorsOutput(
+            anomalyDetectors: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
+    /**
+     Default instance of the DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors structure.
+     */
+    static let __default: CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors = {
+        let defaultInstance = CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors(
+            describeAnomalyDetectorsResult: DescribeAnomalyDetectorsOutput.__default)
 
         return defaultInstance
     }()
@@ -297,7 +405,7 @@ public extension Dimension {
     /**
      Default instance of the Dimension structure.
      */
-    public static let __default: CloudWatchModel.Dimension = {
+    static let __default: CloudWatchModel.Dimension = {
         let defaultInstance = CloudWatchModel.Dimension(
             name: "0",
             value: "0")
@@ -310,7 +418,7 @@ public extension DimensionFilter {
     /**
      Default instance of the DimensionFilter structure.
      */
-    public static let __default: CloudWatchModel.DimensionFilter = {
+    static let __default: CloudWatchModel.DimensionFilter = {
         let defaultInstance = CloudWatchModel.DimensionFilter(
             name: "0",
             value: nil)
@@ -323,7 +431,7 @@ public extension DisableAlarmActionsInput {
     /**
      Default instance of the DisableAlarmActionsInput structure.
      */
-    public static let __default: CloudWatchModel.DisableAlarmActionsInput = {
+    static let __default: CloudWatchModel.DisableAlarmActionsInput = {
         let defaultInstance = CloudWatchModel.DisableAlarmActionsInput(
             alarmNames: [])
 
@@ -335,7 +443,7 @@ public extension EnableAlarmActionsInput {
     /**
      Default instance of the EnableAlarmActionsInput structure.
      */
-    public static let __default: CloudWatchModel.EnableAlarmActionsInput = {
+    static let __default: CloudWatchModel.EnableAlarmActionsInput = {
         let defaultInstance = CloudWatchModel.EnableAlarmActionsInput(
             alarmNames: [])
 
@@ -347,7 +455,7 @@ public extension GetDashboardInput {
     /**
      Default instance of the GetDashboardInput structure.
      */
-    public static let __default: CloudWatchModel.GetDashboardInput = {
+    static let __default: CloudWatchModel.GetDashboardInput = {
         let defaultInstance = CloudWatchModel.GetDashboardInput(
             dashboardName: "value")
 
@@ -359,7 +467,7 @@ public extension GetDashboardOutput {
     /**
      Default instance of the GetDashboardOutput structure.
      */
-    public static let __default: CloudWatchModel.GetDashboardOutput = {
+    static let __default: CloudWatchModel.GetDashboardOutput = {
         let defaultInstance = CloudWatchModel.GetDashboardOutput(
             dashboardArn: nil,
             dashboardBody: nil,
@@ -373,7 +481,7 @@ public extension GetDashboardOutputForGetDashboard {
     /**
      Default instance of the GetDashboardOutputForGetDashboard structure.
      */
-    public static let __default: CloudWatchModel.GetDashboardOutputForGetDashboard = {
+    static let __default: CloudWatchModel.GetDashboardOutputForGetDashboard = {
         let defaultInstance = CloudWatchModel.GetDashboardOutputForGetDashboard(
             getDashboardResult: GetDashboardOutput.__default)
 
@@ -385,7 +493,7 @@ public extension GetMetricDataInput {
     /**
      Default instance of the GetMetricDataInput structure.
      */
-    public static let __default: CloudWatchModel.GetMetricDataInput = {
+    static let __default: CloudWatchModel.GetMetricDataInput = {
         let defaultInstance = CloudWatchModel.GetMetricDataInput(
             endTime: "2013-02-18T17:00:00Z",
             maxDatapoints: nil,
@@ -402,7 +510,7 @@ public extension GetMetricDataOutput {
     /**
      Default instance of the GetMetricDataOutput structure.
      */
-    public static let __default: CloudWatchModel.GetMetricDataOutput = {
+    static let __default: CloudWatchModel.GetMetricDataOutput = {
         let defaultInstance = CloudWatchModel.GetMetricDataOutput(
             messages: nil,
             metricDataResults: nil,
@@ -416,7 +524,7 @@ public extension GetMetricDataOutputForGetMetricData {
     /**
      Default instance of the GetMetricDataOutputForGetMetricData structure.
      */
-    public static let __default: CloudWatchModel.GetMetricDataOutputForGetMetricData = {
+    static let __default: CloudWatchModel.GetMetricDataOutputForGetMetricData = {
         let defaultInstance = CloudWatchModel.GetMetricDataOutputForGetMetricData(
             getMetricDataResult: GetMetricDataOutput.__default)
 
@@ -428,7 +536,7 @@ public extension GetMetricStatisticsInput {
     /**
      Default instance of the GetMetricStatisticsInput structure.
      */
-    public static let __default: CloudWatchModel.GetMetricStatisticsInput = {
+    static let __default: CloudWatchModel.GetMetricStatisticsInput = {
         let defaultInstance = CloudWatchModel.GetMetricStatisticsInput(
             dimensions: nil,
             endTime: "2013-02-18T17:00:00Z",
@@ -448,7 +556,7 @@ public extension GetMetricStatisticsOutput {
     /**
      Default instance of the GetMetricStatisticsOutput structure.
      */
-    public static let __default: CloudWatchModel.GetMetricStatisticsOutput = {
+    static let __default: CloudWatchModel.GetMetricStatisticsOutput = {
         let defaultInstance = CloudWatchModel.GetMetricStatisticsOutput(
             datapoints: nil,
             label: nil)
@@ -461,7 +569,7 @@ public extension GetMetricStatisticsOutputForGetMetricStatistics {
     /**
      Default instance of the GetMetricStatisticsOutputForGetMetricStatistics structure.
      */
-    public static let __default: CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics = {
+    static let __default: CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics = {
         let defaultInstance = CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics(
             getMetricStatisticsResult: GetMetricStatisticsOutput.__default)
 
@@ -473,7 +581,7 @@ public extension GetMetricWidgetImageInput {
     /**
      Default instance of the GetMetricWidgetImageInput structure.
      */
-    public static let __default: CloudWatchModel.GetMetricWidgetImageInput = {
+    static let __default: CloudWatchModel.GetMetricWidgetImageInput = {
         let defaultInstance = CloudWatchModel.GetMetricWidgetImageInput(
             metricWidget: "value",
             outputFormat: nil)
@@ -486,7 +594,7 @@ public extension GetMetricWidgetImageOutput {
     /**
      Default instance of the GetMetricWidgetImageOutput structure.
      */
-    public static let __default: CloudWatchModel.GetMetricWidgetImageOutput = {
+    static let __default: CloudWatchModel.GetMetricWidgetImageOutput = {
         let defaultInstance = CloudWatchModel.GetMetricWidgetImageOutput(
             metricWidgetImage: nil)
 
@@ -498,7 +606,7 @@ public extension GetMetricWidgetImageOutputForGetMetricWidgetImage {
     /**
      Default instance of the GetMetricWidgetImageOutputForGetMetricWidgetImage structure.
      */
-    public static let __default: CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage = {
+    static let __default: CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage = {
         let defaultInstance = CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage(
             getMetricWidgetImageResult: GetMetricWidgetImageOutput.__default)
 
@@ -510,7 +618,7 @@ public extension InternalServiceFault {
     /**
      Default instance of the InternalServiceFault structure.
      */
-    public static let __default: CloudWatchModel.InternalServiceFault = {
+    static let __default: CloudWatchModel.InternalServiceFault = {
         let defaultInstance = CloudWatchModel.InternalServiceFault(
             message: nil)
 
@@ -522,7 +630,7 @@ public extension InvalidFormatFault {
     /**
      Default instance of the InvalidFormatFault structure.
      */
-    public static let __default: CloudWatchModel.InvalidFormatFault = {
+    static let __default: CloudWatchModel.InvalidFormatFault = {
         let defaultInstance = CloudWatchModel.InvalidFormatFault(
             message: nil)
 
@@ -534,7 +642,7 @@ public extension InvalidNextToken {
     /**
      Default instance of the InvalidNextToken structure.
      */
-    public static let __default: CloudWatchModel.InvalidNextToken = {
+    static let __default: CloudWatchModel.InvalidNextToken = {
         let defaultInstance = CloudWatchModel.InvalidNextToken(
             message: nil)
 
@@ -546,7 +654,7 @@ public extension InvalidParameterCombinationException {
     /**
      Default instance of the InvalidParameterCombinationException structure.
      */
-    public static let __default: CloudWatchModel.InvalidParameterCombinationException = {
+    static let __default: CloudWatchModel.InvalidParameterCombinationException = {
         let defaultInstance = CloudWatchModel.InvalidParameterCombinationException(
             message: nil)
 
@@ -558,9 +666,20 @@ public extension InvalidParameterValueException {
     /**
      Default instance of the InvalidParameterValueException structure.
      */
-    public static let __default: CloudWatchModel.InvalidParameterValueException = {
+    static let __default: CloudWatchModel.InvalidParameterValueException = {
         let defaultInstance = CloudWatchModel.InvalidParameterValueException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension LimitExceededException {
+    /**
+     Default instance of the LimitExceededException structure.
+     */
+    static let __default: CloudWatchModel.LimitExceededException = {
+        let defaultInstance = CloudWatchModel.LimitExceededException()
 
         return defaultInstance
     }()
@@ -570,7 +689,7 @@ public extension LimitExceededFault {
     /**
      Default instance of the LimitExceededFault structure.
      */
-    public static let __default: CloudWatchModel.LimitExceededFault = {
+    static let __default: CloudWatchModel.LimitExceededFault = {
         let defaultInstance = CloudWatchModel.LimitExceededFault(
             message: nil)
 
@@ -582,7 +701,7 @@ public extension ListDashboardsInput {
     /**
      Default instance of the ListDashboardsInput structure.
      */
-    public static let __default: CloudWatchModel.ListDashboardsInput = {
+    static let __default: CloudWatchModel.ListDashboardsInput = {
         let defaultInstance = CloudWatchModel.ListDashboardsInput(
             dashboardNamePrefix: nil,
             nextToken: nil)
@@ -595,7 +714,7 @@ public extension ListDashboardsOutput {
     /**
      Default instance of the ListDashboardsOutput structure.
      */
-    public static let __default: CloudWatchModel.ListDashboardsOutput = {
+    static let __default: CloudWatchModel.ListDashboardsOutput = {
         let defaultInstance = CloudWatchModel.ListDashboardsOutput(
             dashboardEntries: nil,
             nextToken: nil)
@@ -608,7 +727,7 @@ public extension ListDashboardsOutputForListDashboards {
     /**
      Default instance of the ListDashboardsOutputForListDashboards structure.
      */
-    public static let __default: CloudWatchModel.ListDashboardsOutputForListDashboards = {
+    static let __default: CloudWatchModel.ListDashboardsOutputForListDashboards = {
         let defaultInstance = CloudWatchModel.ListDashboardsOutputForListDashboards(
             listDashboardsResult: ListDashboardsOutput.__default)
 
@@ -620,7 +739,7 @@ public extension ListMetricsInput {
     /**
      Default instance of the ListMetricsInput structure.
      */
-    public static let __default: CloudWatchModel.ListMetricsInput = {
+    static let __default: CloudWatchModel.ListMetricsInput = {
         let defaultInstance = CloudWatchModel.ListMetricsInput(
             dimensions: nil,
             metricName: nil,
@@ -635,7 +754,7 @@ public extension ListMetricsOutput {
     /**
      Default instance of the ListMetricsOutput structure.
      */
-    public static let __default: CloudWatchModel.ListMetricsOutput = {
+    static let __default: CloudWatchModel.ListMetricsOutput = {
         let defaultInstance = CloudWatchModel.ListMetricsOutput(
             metrics: nil,
             nextToken: nil)
@@ -648,7 +767,7 @@ public extension ListMetricsOutputForListMetrics {
     /**
      Default instance of the ListMetricsOutputForListMetrics structure.
      */
-    public static let __default: CloudWatchModel.ListMetricsOutputForListMetrics = {
+    static let __default: CloudWatchModel.ListMetricsOutputForListMetrics = {
         let defaultInstance = CloudWatchModel.ListMetricsOutputForListMetrics(
             listMetricsResult: ListMetricsOutput.__default)
 
@@ -660,7 +779,7 @@ public extension ListTagsForResourceInput {
     /**
      Default instance of the ListTagsForResourceInput structure.
      */
-    public static let __default: CloudWatchModel.ListTagsForResourceInput = {
+    static let __default: CloudWatchModel.ListTagsForResourceInput = {
         let defaultInstance = CloudWatchModel.ListTagsForResourceInput(
             resourceARN: "0")
 
@@ -672,7 +791,7 @@ public extension ListTagsForResourceOutput {
     /**
      Default instance of the ListTagsForResourceOutput structure.
      */
-    public static let __default: CloudWatchModel.ListTagsForResourceOutput = {
+    static let __default: CloudWatchModel.ListTagsForResourceOutput = {
         let defaultInstance = CloudWatchModel.ListTagsForResourceOutput(
             tags: nil)
 
@@ -684,7 +803,7 @@ public extension ListTagsForResourceOutputForListTagsForResource {
     /**
      Default instance of the ListTagsForResourceOutputForListTagsForResource structure.
      */
-    public static let __default: CloudWatchModel.ListTagsForResourceOutputForListTagsForResource = {
+    static let __default: CloudWatchModel.ListTagsForResourceOutputForListTagsForResource = {
         let defaultInstance = CloudWatchModel.ListTagsForResourceOutputForListTagsForResource(
             listTagsForResourceResult: ListTagsForResourceOutput.__default)
 
@@ -696,7 +815,7 @@ public extension MessageData {
     /**
      Default instance of the MessageData structure.
      */
-    public static let __default: CloudWatchModel.MessageData = {
+    static let __default: CloudWatchModel.MessageData = {
         let defaultInstance = CloudWatchModel.MessageData(
             code: nil,
             value: nil)
@@ -709,7 +828,7 @@ public extension Metric {
     /**
      Default instance of the Metric structure.
      */
-    public static let __default: CloudWatchModel.Metric = {
+    static let __default: CloudWatchModel.Metric = {
         let defaultInstance = CloudWatchModel.Metric(
             dimensions: nil,
             metricName: nil,
@@ -723,7 +842,7 @@ public extension MetricAlarm {
     /**
      Default instance of the MetricAlarm structure.
      */
-    public static let __default: CloudWatchModel.MetricAlarm = {
+    static let __default: CloudWatchModel.MetricAlarm = {
         let defaultInstance = CloudWatchModel.MetricAlarm(
             actionsEnabled: nil,
             alarmActions: nil,
@@ -749,6 +868,7 @@ public extension MetricAlarm {
             stateValue: nil,
             statistic: nil,
             threshold: nil,
+            thresholdMetricId: nil,
             treatMissingData: nil,
             unit: nil)
 
@@ -760,7 +880,7 @@ public extension MetricDataQuery {
     /**
      Default instance of the MetricDataQuery structure.
      */
-    public static let __default: CloudWatchModel.MetricDataQuery = {
+    static let __default: CloudWatchModel.MetricDataQuery = {
         let defaultInstance = CloudWatchModel.MetricDataQuery(
             expression: nil,
             id: "0",
@@ -776,7 +896,7 @@ public extension MetricDataResult {
     /**
      Default instance of the MetricDataResult structure.
      */
-    public static let __default: CloudWatchModel.MetricDataResult = {
+    static let __default: CloudWatchModel.MetricDataResult = {
         let defaultInstance = CloudWatchModel.MetricDataResult(
             id: nil,
             label: nil,
@@ -793,7 +913,7 @@ public extension MetricDatum {
     /**
      Default instance of the MetricDatum structure.
      */
-    public static let __default: CloudWatchModel.MetricDatum = {
+    static let __default: CloudWatchModel.MetricDatum = {
         let defaultInstance = CloudWatchModel.MetricDatum(
             counts: nil,
             dimensions: nil,
@@ -813,7 +933,7 @@ public extension MetricStat {
     /**
      Default instance of the MetricStat structure.
      */
-    public static let __default: CloudWatchModel.MetricStat = {
+    static let __default: CloudWatchModel.MetricStat = {
         let defaultInstance = CloudWatchModel.MetricStat(
             metric: Metric.__default,
             period: 0,
@@ -828,9 +948,48 @@ public extension MissingRequiredParameterException {
     /**
      Default instance of the MissingRequiredParameterException structure.
      */
-    public static let __default: CloudWatchModel.MissingRequiredParameterException = {
+    static let __default: CloudWatchModel.MissingRequiredParameterException = {
         let defaultInstance = CloudWatchModel.MissingRequiredParameterException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutAnomalyDetectorInput {
+    /**
+     Default instance of the PutAnomalyDetectorInput structure.
+     */
+    static let __default: CloudWatchModel.PutAnomalyDetectorInput = {
+        let defaultInstance = CloudWatchModel.PutAnomalyDetectorInput(
+            configuration: nil,
+            dimensions: nil,
+            metricName: "0",
+            namespace: "0",
+            stat: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension PutAnomalyDetectorOutput {
+    /**
+     Default instance of the PutAnomalyDetectorOutput structure.
+     */
+    static let __default: CloudWatchModel.PutAnomalyDetectorOutput = {
+        let defaultInstance = CloudWatchModel.PutAnomalyDetectorOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension PutAnomalyDetectorOutputForPutAnomalyDetector {
+    /**
+     Default instance of the PutAnomalyDetectorOutputForPutAnomalyDetector structure.
+     */
+    static let __default: CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector = {
+        let defaultInstance = CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector(
+            putAnomalyDetectorResult: PutAnomalyDetectorOutput.__default)
 
         return defaultInstance
     }()
@@ -840,7 +999,7 @@ public extension PutDashboardInput {
     /**
      Default instance of the PutDashboardInput structure.
      */
-    public static let __default: CloudWatchModel.PutDashboardInput = {
+    static let __default: CloudWatchModel.PutDashboardInput = {
         let defaultInstance = CloudWatchModel.PutDashboardInput(
             dashboardBody: "value",
             dashboardName: "value")
@@ -853,7 +1012,7 @@ public extension PutDashboardOutput {
     /**
      Default instance of the PutDashboardOutput structure.
      */
-    public static let __default: CloudWatchModel.PutDashboardOutput = {
+    static let __default: CloudWatchModel.PutDashboardOutput = {
         let defaultInstance = CloudWatchModel.PutDashboardOutput(
             dashboardValidationMessages: nil)
 
@@ -865,7 +1024,7 @@ public extension PutDashboardOutputForPutDashboard {
     /**
      Default instance of the PutDashboardOutputForPutDashboard structure.
      */
-    public static let __default: CloudWatchModel.PutDashboardOutputForPutDashboard = {
+    static let __default: CloudWatchModel.PutDashboardOutputForPutDashboard = {
         let defaultInstance = CloudWatchModel.PutDashboardOutputForPutDashboard(
             putDashboardResult: PutDashboardOutput.__default)
 
@@ -877,7 +1036,7 @@ public extension PutMetricAlarmInput {
     /**
      Default instance of the PutMetricAlarmInput structure.
      */
-    public static let __default: CloudWatchModel.PutMetricAlarmInput = {
+    static let __default: CloudWatchModel.PutMetricAlarmInput = {
         let defaultInstance = CloudWatchModel.PutMetricAlarmInput(
             actionsEnabled: nil,
             alarmActions: nil,
@@ -897,7 +1056,8 @@ public extension PutMetricAlarmInput {
             period: nil,
             statistic: nil,
             tags: nil,
-            threshold: 0.0,
+            threshold: nil,
+            thresholdMetricId: nil,
             treatMissingData: nil,
             unit: nil)
 
@@ -909,10 +1069,23 @@ public extension PutMetricDataInput {
     /**
      Default instance of the PutMetricDataInput structure.
      */
-    public static let __default: CloudWatchModel.PutMetricDataInput = {
+    static let __default: CloudWatchModel.PutMetricDataInput = {
         let defaultInstance = CloudWatchModel.PutMetricDataInput(
             metricData: [],
             namespace: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension Range {
+    /**
+     Default instance of the Range structure.
+     */
+    static let __default: CloudWatchModel.Range = {
+        let defaultInstance = CloudWatchModel.Range(
+            endTime: "2013-02-18T17:00:00Z",
+            startTime: "2013-02-18T17:00:00Z")
 
         return defaultInstance
     }()
@@ -922,7 +1095,7 @@ public extension ResourceNotFound {
     /**
      Default instance of the ResourceNotFound structure.
      */
-    public static let __default: CloudWatchModel.ResourceNotFound = {
+    static let __default: CloudWatchModel.ResourceNotFound = {
         let defaultInstance = CloudWatchModel.ResourceNotFound(
             message: nil)
 
@@ -934,7 +1107,7 @@ public extension ResourceNotFoundException {
     /**
      Default instance of the ResourceNotFoundException structure.
      */
-    public static let __default: CloudWatchModel.ResourceNotFoundException = {
+    static let __default: CloudWatchModel.ResourceNotFoundException = {
         let defaultInstance = CloudWatchModel.ResourceNotFoundException(
             resourceId: nil,
             resourceType: nil)
@@ -947,7 +1120,7 @@ public extension SetAlarmStateInput {
     /**
      Default instance of the SetAlarmStateInput structure.
      */
-    public static let __default: CloudWatchModel.SetAlarmStateInput = {
+    static let __default: CloudWatchModel.SetAlarmStateInput = {
         let defaultInstance = CloudWatchModel.SetAlarmStateInput(
             alarmName: "0",
             stateReason: "",
@@ -962,7 +1135,7 @@ public extension StatisticSet {
     /**
      Default instance of the StatisticSet structure.
      */
-    public static let __default: CloudWatchModel.StatisticSet = {
+    static let __default: CloudWatchModel.StatisticSet = {
         let defaultInstance = CloudWatchModel.StatisticSet(
             maximum: 0.0,
             minimum: 0.0,
@@ -977,7 +1150,7 @@ public extension Tag {
     /**
      Default instance of the Tag structure.
      */
-    public static let __default: CloudWatchModel.Tag = {
+    static let __default: CloudWatchModel.Tag = {
         let defaultInstance = CloudWatchModel.Tag(
             key: "0",
             value: "")
@@ -990,7 +1163,7 @@ public extension TagResourceInput {
     /**
      Default instance of the TagResourceInput structure.
      */
-    public static let __default: CloudWatchModel.TagResourceInput = {
+    static let __default: CloudWatchModel.TagResourceInput = {
         let defaultInstance = CloudWatchModel.TagResourceInput(
             resourceARN: "0",
             tags: [])
@@ -1003,7 +1176,7 @@ public extension TagResourceOutput {
     /**
      Default instance of the TagResourceOutput structure.
      */
-    public static let __default: CloudWatchModel.TagResourceOutput = {
+    static let __default: CloudWatchModel.TagResourceOutput = {
         let defaultInstance = CloudWatchModel.TagResourceOutput()
 
         return defaultInstance
@@ -1014,7 +1187,7 @@ public extension TagResourceOutputForTagResource {
     /**
      Default instance of the TagResourceOutputForTagResource structure.
      */
-    public static let __default: CloudWatchModel.TagResourceOutputForTagResource = {
+    static let __default: CloudWatchModel.TagResourceOutputForTagResource = {
         let defaultInstance = CloudWatchModel.TagResourceOutputForTagResource(
             tagResourceResult: TagResourceOutput.__default)
 
@@ -1026,7 +1199,7 @@ public extension UntagResourceInput {
     /**
      Default instance of the UntagResourceInput structure.
      */
-    public static let __default: CloudWatchModel.UntagResourceInput = {
+    static let __default: CloudWatchModel.UntagResourceInput = {
         let defaultInstance = CloudWatchModel.UntagResourceInput(
             resourceARN: "0",
             tagKeys: [])
@@ -1039,7 +1212,7 @@ public extension UntagResourceOutput {
     /**
      Default instance of the UntagResourceOutput structure.
      */
-    public static let __default: CloudWatchModel.UntagResourceOutput = {
+    static let __default: CloudWatchModel.UntagResourceOutput = {
         let defaultInstance = CloudWatchModel.UntagResourceOutput()
 
         return defaultInstance
@@ -1050,7 +1223,7 @@ public extension UntagResourceOutputForUntagResource {
     /**
      Default instance of the UntagResourceOutputForUntagResource structure.
      */
-    public static let __default: CloudWatchModel.UntagResourceOutputForUntagResource = {
+    static let __default: CloudWatchModel.UntagResourceOutputForUntagResource = {
         let defaultInstance = CloudWatchModel.UntagResourceOutputForUntagResource(
             untagResourceResult: UntagResourceOutput.__default)
 

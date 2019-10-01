@@ -106,6 +106,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let tagResourceSyncOverride: ElasticContainerClientProtocol.TagResourceSyncType?
     let untagResourceAsyncOverride: ElasticContainerClientProtocol.UntagResourceAsyncType?
     let untagResourceSyncOverride: ElasticContainerClientProtocol.UntagResourceSyncType?
+    let updateClusterSettingsAsyncOverride: ElasticContainerClientProtocol.UpdateClusterSettingsAsyncType?
+    let updateClusterSettingsSyncOverride: ElasticContainerClientProtocol.UpdateClusterSettingsSyncType?
     let updateContainerAgentAsyncOverride: ElasticContainerClientProtocol.UpdateContainerAgentAsyncType?
     let updateContainerAgentSyncOverride: ElasticContainerClientProtocol.UpdateContainerAgentSyncType?
     let updateContainerInstancesStateAsyncOverride: ElasticContainerClientProtocol.UpdateContainerInstancesStateAsyncType?
@@ -200,6 +202,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             tagResourceSync: ElasticContainerClientProtocol.TagResourceSyncType? = nil,
             untagResourceAsync: ElasticContainerClientProtocol.UntagResourceAsyncType? = nil,
             untagResourceSync: ElasticContainerClientProtocol.UntagResourceSyncType? = nil,
+            updateClusterSettingsAsync: ElasticContainerClientProtocol.UpdateClusterSettingsAsyncType? = nil,
+            updateClusterSettingsSync: ElasticContainerClientProtocol.UpdateClusterSettingsSyncType? = nil,
             updateContainerAgentAsync: ElasticContainerClientProtocol.UpdateContainerAgentAsyncType? = nil,
             updateContainerAgentSync: ElasticContainerClientProtocol.UpdateContainerAgentSyncType? = nil,
             updateContainerInstancesStateAsync: ElasticContainerClientProtocol.UpdateContainerInstancesStateAsyncType? = nil,
@@ -289,6 +293,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.tagResourceSyncOverride = tagResourceSync
         self.untagResourceAsyncOverride = untagResourceAsync
         self.untagResourceSyncOverride = untagResourceSync
+        self.updateClusterSettingsAsyncOverride = updateClusterSettingsAsync
+        self.updateClusterSettingsSyncOverride = updateClusterSettingsSync
         self.updateContainerAgentAsyncOverride = updateContainerAgentAsync
         self.updateContainerAgentSyncOverride = updateContainerAgentSync
         self.updateContainerInstancesStateAsyncOverride = updateContainerInstancesStateAsync
@@ -1569,7 +1575,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The SubmitTaskStateChangeResponse object or an error will be passed to this 
            callback when the operation is complete. The SubmitTaskStateChangeResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, client, server.
+           The possible errors are: accessDenied, client, invalidParameter, server.
      */
     public func submitTaskStateChangeAsync(input: ElasticContainerModel.SubmitTaskStateChangeRequest, completion: @escaping (HTTPResult<ElasticContainerModel.SubmitTaskStateChangeResponse>) -> ()) throws {
         if let submitTaskStateChangeAsyncOverride = submitTaskStateChangeAsyncOverride {
@@ -1586,7 +1592,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated SubmitTaskStateChangeRequest object being passed to this operation.
      - Returns: The SubmitTaskStateChangeResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, server.
+     - Throws: accessDenied, client, invalidParameter, server.
      */
     public func submitTaskStateChangeSync(input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
         if let submitTaskStateChangeSyncOverride = submitTaskStateChangeSyncOverride {
@@ -1661,6 +1667,41 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     public func untagResourceSync(input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse {
         if let untagResourceSyncOverride = untagResourceSyncOverride {
             return try untagResourceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UpdateClusterSettings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+         - completion: The UpdateClusterSettingsResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateClusterSettingsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateClusterSettingsAsync(input: ElasticContainerModel.UpdateClusterSettingsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateClusterSettingsResponse>) -> ()) throws {
+        if let updateClusterSettingsAsyncOverride = updateClusterSettingsAsyncOverride {
+            return try updateClusterSettingsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the UpdateClusterSettings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+     - Returns: The UpdateClusterSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateClusterSettingsSync(input: ElasticContainerModel.UpdateClusterSettingsRequest) throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
+        if let updateClusterSettingsSyncOverride = updateClusterSettingsSyncOverride {
+            return try updateClusterSettingsSyncOverride(input)
         }
 
         throw error
