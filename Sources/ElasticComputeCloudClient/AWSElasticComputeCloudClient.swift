@@ -687,10 +687,11 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated AssignPrivateIpAddressesRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The AssignPrivateIpAddressesResult object or an error will be passed to this 
+           callback when the operation is complete. The AssignPrivateIpAddressesResult
+           object will be validated before being returned to caller.
      */
-    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssignPrivateIpAddressesResult>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -704,7 +705,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.assignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -719,8 +720,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated AssignPrivateIpAddressesRequest object being passed to this operation.
+     - Returns: The AssignPrivateIpAddressesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
-    public func assignPrivateIpAddressesSync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws {
+    public func assignPrivateIpAddressesSync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws -> ElasticComputeCloudModel.AssignPrivateIpAddressesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -734,7 +737,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.assignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -4621,6 +4624,262 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateTrafficMirrorFilter operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorFilterResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorFilterResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterAsync(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTrafficMirrorFilterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorFilter.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorFilter operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorFilterResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterSync(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTrafficMirrorFilterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorFilter.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorFilterRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRuleRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorFilterRuleResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorFilterRuleResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterRuleAsync(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorFilterRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRuleRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterRuleSync(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorSession operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorSessionRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorSessionResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorSessionResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorSessionAsync(input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorSession operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorSessionRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorSessionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorSessionSync(input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorSessionResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorTarget operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorTargetRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorTargetResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorTargetResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorTargetAsync(input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTrafficMirrorTargetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorTarget.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorTarget operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorTargetRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorTargetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorTargetSync(input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorTargetResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = CreateTrafficMirrorTargetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorTarget.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the CreateTransitGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7005,6 +7264,262 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteTrafficMirrorFilter operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorFilterResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorFilterResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterAsync(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTrafficMirrorFilterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilter.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilter operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorFilterResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterSync(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTrafficMirrorFilterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilter.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilterRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRuleRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorFilterRuleResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorFilterRuleResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterRuleAsync(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilterRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRuleRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterRuleSync(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorSession operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorSessionRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorSessionResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorSessionResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorSessionAsync(input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorSession operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorSessionRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorSessionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorSessionSync(input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorTarget operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorTargetRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorTargetResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorTargetResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorTargetAsync(input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTrafficMirrorTargetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorTarget.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorTarget operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorTargetRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorTargetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorTargetSync(input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteTrafficMirrorTargetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorTarget.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DeleteTransitGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9087,6 +9602,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeElasticGpus.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeExportImageTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportImageTasksRequest object being passed to this operation.
+         - completion: The DescribeExportImageTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeExportImageTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeExportImageTasksAsync(input: ElasticComputeCloudModel.DescribeExportImageTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeExportImageTasksResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeExportImageTasksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeExportImageTasks.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeExportImageTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportImageTasksRequest object being passed to this operation.
+     - Returns: The DescribeExportImageTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeExportImageTasksSync(input: ElasticComputeCloudModel.DescribeExportImageTasksRequest) throws -> ElasticComputeCloudModel.DescribeExportImageTasksResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeExportImageTasksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeExportImageTasks.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -12683,6 +13262,198 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeTrafficMirrorFilters operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorFiltersRequest object being passed to this operation.
+         - completion: The DescribeTrafficMirrorFiltersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrafficMirrorFiltersResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorFiltersAsync(input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTrafficMirrorFiltersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorFilters.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorFilters operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorFiltersRequest object being passed to this operation.
+     - Returns: The DescribeTrafficMirrorFiltersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorFiltersSync(input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTrafficMirrorFiltersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorFilters.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorSessions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorSessionsRequest object being passed to this operation.
+         - completion: The DescribeTrafficMirrorSessionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrafficMirrorSessionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorSessionsAsync(input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTrafficMirrorSessionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorSessions.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorSessions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorSessionsRequest object being passed to this operation.
+     - Returns: The DescribeTrafficMirrorSessionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorSessionsSync(input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTrafficMirrorSessionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorSessions.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorTargetsRequest object being passed to this operation.
+         - completion: The DescribeTrafficMirrorTargetsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrafficMirrorTargetsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorTargetsAsync(input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTrafficMirrorTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorTargets.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorTargetsRequest object being passed to this operation.
+     - Returns: The DescribeTrafficMirrorTargetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorTargetsSync(input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeTrafficMirrorTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorTargets.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeTransitGatewayAttachments operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -15603,6 +16374,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ExportImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportImageRequest object being passed to this operation.
+         - completion: The ExportImageResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportImageResult
+           object will be validated before being returned to caller.
+     */
+    public func exportImageAsync(input: ElasticComputeCloudModel.ExportImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportImageResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ExportImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportImage.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ExportImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportImageRequest object being passed to this operation.
+     - Returns: The ExportImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func exportImageSync(input: ElasticComputeCloudModel.ExportImageRequest) throws -> ElasticComputeCloudModel.ExportImageResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ExportImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportImage.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ExportTransitGatewayRoutes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -15655,6 +16490,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.exportTransitGatewayRoutes.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetCapacityReservationUsage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetCapacityReservationUsageRequest object being passed to this operation.
+         - completion: The GetCapacityReservationUsageResult object or an error will be passed to this 
+           callback when the operation is complete. The GetCapacityReservationUsageResult
+           object will be validated before being returned to caller.
+     */
+    public func getCapacityReservationUsageAsync(input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetCapacityReservationUsageResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetCapacityReservationUsageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getCapacityReservationUsage.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetCapacityReservationUsage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetCapacityReservationUsageRequest object being passed to this operation.
+     - Returns: The GetCapacityReservationUsageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getCapacityReservationUsageSync(input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest) throws -> ElasticComputeCloudModel.GetCapacityReservationUsageResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = GetCapacityReservationUsageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getCapacityReservationUsage.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -18014,6 +18913,198 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ModifyTrafficMirrorFilterNetworkServices operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterNetworkServicesRequest object being passed to this operation.
+         - completion: The ModifyTrafficMirrorFilterNetworkServicesResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTrafficMirrorFilterNetworkServicesResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterNetworkServicesAsync(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyTrafficMirrorFilterNetworkServicesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterNetworkServices.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorFilterNetworkServices operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterNetworkServicesRequest object being passed to this operation.
+     - Returns: The ModifyTrafficMirrorFilterNetworkServicesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterNetworkServicesSync(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyTrafficMirrorFilterNetworkServicesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterNetworkServices.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorFilterRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterRuleRequest object being passed to this operation.
+         - completion: The ModifyTrafficMirrorFilterRuleResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTrafficMirrorFilterRuleResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterRuleAsync(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorFilterRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterRuleRequest object being passed to this operation.
+     - Returns: The ModifyTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterRuleSync(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorSession operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorSessionRequest object being passed to this operation.
+         - completion: The ModifyTrafficMirrorSessionResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTrafficMirrorSessionResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorSessionAsync(input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorSession operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorSessionRequest object being passed to this operation.
+     - Returns: The ModifyTrafficMirrorSessionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorSessionSync(input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ModifyTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -18700,6 +19791,134 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyVpnConnection.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelCertificate operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelCertificateRequest object being passed to this operation.
+         - completion: The ModifyVpnTunnelCertificateResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnTunnelCertificateResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelCertificateAsync(input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyVpnTunnelCertificateOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnTunnelCertificate.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelCertificate operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelCertificateRequest object being passed to this operation.
+     - Returns: The ModifyVpnTunnelCertificateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelCertificateSync(input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest) throws -> ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyVpnTunnelCertificateOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnTunnelCertificate.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelOptionsRequest object being passed to this operation.
+         - completion: The ModifyVpnTunnelOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnTunnelOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelOptionsAsync(input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyVpnTunnelOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnTunnelOptions.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelOptionsRequest object being passed to this operation.
+     - Returns: The ModifyVpnTunnelOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelOptionsSync(input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyVpnTunnelOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnTunnelOptions.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -20910,6 +22129,67 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SendDiagnosticInterrupt operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SendDiagnosticInterruptRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func sendDiagnosticInterruptAsync(input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = SendDiagnosticInterruptOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.sendDiagnosticInterrupt.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SendDiagnosticInterrupt operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SendDiagnosticInterruptRequest object being passed to this operation.
+     */
+    public func sendDiagnosticInterruptSync(input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = SendDiagnosticInterruptOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.sendDiagnosticInterrupt.rawValue,
+            version: apiVersion)
+
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,

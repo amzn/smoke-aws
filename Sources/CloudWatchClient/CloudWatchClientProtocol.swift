@@ -29,6 +29,8 @@ import SmokeHTTPClient
 public protocol CloudWatchClientProtocol {
     typealias DeleteAlarmsSyncType = (_ input: CloudWatchModel.DeleteAlarmsInput) throws -> ()
     typealias DeleteAlarmsAsyncType = (_ input: CloudWatchModel.DeleteAlarmsInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DeleteAnomalyDetectorSyncType = (_ input: CloudWatchModel.DeleteAnomalyDetectorInput) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
+    typealias DeleteAnomalyDetectorAsyncType = (_ input: CloudWatchModel.DeleteAnomalyDetectorInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector>) -> ()) throws -> ()
     typealias DeleteDashboardsSyncType = (_ input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards
     typealias DeleteDashboardsAsyncType = (_ input: CloudWatchModel.DeleteDashboardsInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards>) -> ()) throws -> ()
     typealias DescribeAlarmHistorySyncType = (_ input: CloudWatchModel.DescribeAlarmHistoryInput) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory
@@ -37,6 +39,8 @@ public protocol CloudWatchClientProtocol {
     typealias DescribeAlarmsAsyncType = (_ input: CloudWatchModel.DescribeAlarmsInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms>) -> ()) throws -> ()
     typealias DescribeAlarmsForMetricSyncType = (_ input: CloudWatchModel.DescribeAlarmsForMetricInput) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
     typealias DescribeAlarmsForMetricAsyncType = (_ input: CloudWatchModel.DescribeAlarmsForMetricInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric>) -> ()) throws -> ()
+    typealias DescribeAnomalyDetectorsSyncType = (_ input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
+    typealias DescribeAnomalyDetectorsAsyncType = (_ input: CloudWatchModel.DescribeAnomalyDetectorsInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors>) -> ()) throws -> ()
     typealias DisableAlarmActionsSyncType = (_ input: CloudWatchModel.DisableAlarmActionsInput) throws -> ()
     typealias DisableAlarmActionsAsyncType = (_ input: CloudWatchModel.DisableAlarmActionsInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias EnableAlarmActionsSyncType = (_ input: CloudWatchModel.EnableAlarmActionsInput) throws -> ()
@@ -55,6 +59,8 @@ public protocol CloudWatchClientProtocol {
     typealias ListMetricsAsyncType = (_ input: CloudWatchModel.ListMetricsInput, _ completion: @escaping (HTTPResult<CloudWatchModel.ListMetricsOutputForListMetrics>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (_ input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource
     typealias ListTagsForResourceAsyncType = (_ input: CloudWatchModel.ListTagsForResourceInput, _ completion: @escaping (HTTPResult<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource>) -> ()) throws -> ()
+    typealias PutAnomalyDetectorSyncType = (_ input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector
+    typealias PutAnomalyDetectorAsyncType = (_ input: CloudWatchModel.PutAnomalyDetectorInput, _ completion: @escaping (HTTPResult<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector>) -> ()) throws -> ()
     typealias PutDashboardSyncType = (_ input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
     typealias PutDashboardAsyncType = (_ input: CloudWatchModel.PutDashboardInput, _ completion: @escaping (HTTPResult<CloudWatchModel.PutDashboardOutputForPutDashboard>) -> ()) throws -> ()
     typealias PutMetricAlarmSyncType = (_ input: CloudWatchModel.PutMetricAlarmInput) throws -> ()
@@ -87,6 +93,29 @@ public protocol CloudWatchClientProtocol {
      - Throws: resourceNotFound.
      */
     func deleteAlarmsSync(input: CloudWatchModel.DeleteAlarmsInput) throws
+
+    /**
+     Invokes the DeleteAnomalyDetector operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteAnomalyDetectorInput object being passed to this operation.
+         - completion: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object or an error will be passed to this 
+           callback when the operation is complete. The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    func deleteAnomalyDetectorAsync(input: CloudWatchModel.DeleteAnomalyDetectorInput, completion: @escaping (HTTPResult<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector>) -> ()) throws
+
+    /**
+     Invokes the DeleteAnomalyDetector operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteAnomalyDetectorInput object being passed to this operation.
+     - Returns: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    func deleteAnomalyDetectorSync(input: CloudWatchModel.DeleteAnomalyDetectorInput) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
 
     /**
      Invokes the DeleteDashboards operation returning immediately and passing the response to a callback.
@@ -177,6 +206,29 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeAlarmsForMetricSync(input: CloudWatchModel.DescribeAlarmsForMetricInput) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
+
+    /**
+     Invokes the DescribeAnomalyDetectors operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAnomalyDetectorsInput object being passed to this operation.
+         - completion: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidNextToken, invalidParameterValue.
+     */
+    func describeAnomalyDetectorsAsync(input: CloudWatchModel.DescribeAnomalyDetectorsInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors>) -> ()) throws
+
+    /**
+     Invokes the DescribeAnomalyDetectors operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAnomalyDetectorsInput object being passed to this operation.
+     - Returns: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidNextToken, invalidParameterValue.
+     */
+    func describeAnomalyDetectorsSync(input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
 
     /**
      Invokes the DisableAlarmActions operation returning immediately and passing the response to a callback.
@@ -372,6 +424,29 @@ public protocol CloudWatchClientProtocol {
      - Throws: internalService, invalidParameterValue, resourceNotFound.
      */
     func listTagsForResourceSync(input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource
+
+    /**
+     Invokes the PutAnomalyDetector operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutAnomalyDetectorInput object being passed to this operation.
+         - completion: The PutAnomalyDetectorOutputForPutAnomalyDetector object or an error will be passed to this 
+           callback when the operation is complete. The PutAnomalyDetectorOutputForPutAnomalyDetector
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    func putAnomalyDetectorAsync(input: CloudWatchModel.PutAnomalyDetectorInput, completion: @escaping (HTTPResult<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector>) -> ()) throws
+
+    /**
+     Invokes the PutAnomalyDetector operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutAnomalyDetectorInput object being passed to this operation.
+     - Returns: The PutAnomalyDetectorOutputForPutAnomalyDetector object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    func putAnomalyDetectorSync(input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector
 
     /**
      Invokes the PutDashboard operation returning immediately and passing the response to a callback.

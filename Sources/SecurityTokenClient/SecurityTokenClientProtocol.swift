@@ -35,6 +35,8 @@ public protocol SecurityTokenClientProtocol {
     typealias AssumeRoleWithWebIdentityAsyncType = (_ input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, _ completion: @escaping (HTTPResult<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity>) -> ()) throws -> ()
     typealias DecodeAuthorizationMessageSyncType = (_ input: SecurityTokenModel.DecodeAuthorizationMessageRequest) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage
     typealias DecodeAuthorizationMessageAsyncType = (_ input: SecurityTokenModel.DecodeAuthorizationMessageRequest, _ completion: @escaping (HTTPResult<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage>) -> ()) throws -> ()
+    typealias GetAccessKeyInfoSyncType = (_ input: SecurityTokenModel.GetAccessKeyInfoRequest) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo
+    typealias GetAccessKeyInfoAsyncType = (_ input: SecurityTokenModel.GetAccessKeyInfoRequest, _ completion: @escaping (HTTPResult<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo>) -> ()) throws -> ()
     typealias GetCallerIdentitySyncType = (_ input: SecurityTokenModel.GetCallerIdentityRequest) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity
     typealias GetCallerIdentityAsyncType = (_ input: SecurityTokenModel.GetCallerIdentityRequest, _ completion: @escaping (HTTPResult<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity>) -> ()) throws -> ()
     typealias GetFederationTokenSyncType = (_ input: SecurityTokenModel.GetFederationTokenRequest) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken
@@ -133,6 +135,27 @@ public protocol SecurityTokenClientProtocol {
      - Throws: invalidAuthorizationMessage.
      */
     func decodeAuthorizationMessageSync(input: SecurityTokenModel.DecodeAuthorizationMessageRequest) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage
+
+    /**
+     Invokes the GetAccessKeyInfo operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+         - completion: The GetAccessKeyInfoResponseForGetAccessKeyInfo object or an error will be passed to this 
+           callback when the operation is complete. The GetAccessKeyInfoResponseForGetAccessKeyInfo
+           object will be validated before being returned to caller.
+     */
+    func getAccessKeyInfoAsync(input: SecurityTokenModel.GetAccessKeyInfoRequest, completion: @escaping (HTTPResult<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo>) -> ()) throws
+
+    /**
+     Invokes the GetAccessKeyInfo operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+     - Returns: The GetAccessKeyInfoResponseForGetAccessKeyInfo object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getAccessKeyInfoSync(input: SecurityTokenModel.GetAccessKeyInfoRequest) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo
 
     /**
      Invokes the GetCallerIdentity operation returning immediately and passing the response to a callback.

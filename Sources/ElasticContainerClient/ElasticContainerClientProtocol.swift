@@ -105,6 +105,8 @@ public protocol ElasticContainerClientProtocol {
     typealias TagResourceAsyncType = (_ input: ElasticContainerModel.TagResourceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.TagResourceResponse>) -> ()) throws -> ()
     typealias UntagResourceSyncType = (_ input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse
     typealias UntagResourceAsyncType = (_ input: ElasticContainerModel.UntagResourceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UntagResourceResponse>) -> ()) throws -> ()
+    typealias UpdateClusterSettingsSyncType = (_ input: ElasticContainerModel.UpdateClusterSettingsRequest) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
+    typealias UpdateClusterSettingsAsyncType = (_ input: ElasticContainerModel.UpdateClusterSettingsRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UpdateClusterSettingsResponse>) -> ()) throws -> ()
     typealias UpdateContainerAgentSyncType = (_ input: ElasticContainerModel.UpdateContainerAgentRequest) throws -> ElasticContainerModel.UpdateContainerAgentResponse
     typealias UpdateContainerAgentAsyncType = (_ input: ElasticContainerModel.UpdateContainerAgentRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UpdateContainerAgentResponse>) -> ()) throws -> ()
     typealias UpdateContainerInstancesStateSyncType = (_ input: ElasticContainerModel.UpdateContainerInstancesStateRequest) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse
@@ -952,7 +954,7 @@ public protocol ElasticContainerClientProtocol {
          - completion: The SubmitTaskStateChangeResponse object or an error will be passed to this 
            callback when the operation is complete. The SubmitTaskStateChangeResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, client, server.
+           The possible errors are: accessDenied, client, invalidParameter, server.
      */
     func submitTaskStateChangeAsync(input: ElasticContainerModel.SubmitTaskStateChangeRequest, completion: @escaping (HTTPResult<ElasticContainerModel.SubmitTaskStateChangeResponse>) -> ()) throws
 
@@ -963,7 +965,7 @@ public protocol ElasticContainerClientProtocol {
          - input: The validated SubmitTaskStateChangeRequest object being passed to this operation.
      - Returns: The SubmitTaskStateChangeResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, server.
+     - Throws: accessDenied, client, invalidParameter, server.
      */
     func submitTaskStateChangeSync(input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse
 
@@ -1012,6 +1014,29 @@ public protocol ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
     func untagResourceSync(input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse
+
+    /**
+     Invokes the UpdateClusterSettings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+         - completion: The UpdateClusterSettingsResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateClusterSettingsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    func updateClusterSettingsAsync(input: ElasticContainerModel.UpdateClusterSettingsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateClusterSettingsResponse>) -> ()) throws
+
+    /**
+     Invokes the UpdateClusterSettings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+     - Returns: The UpdateClusterSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    func updateClusterSettingsSync(input: ElasticContainerModel.UpdateClusterSettingsRequest) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
 
     /**
      Invokes the UpdateContainerAgent operation returning immediately and passing the response to a callback.

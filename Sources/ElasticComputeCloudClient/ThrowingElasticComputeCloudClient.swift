@@ -170,6 +170,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let createSubnetSyncOverride: ElasticComputeCloudClientProtocol.CreateSubnetSyncType?
     let createTagsAsyncOverride: ElasticComputeCloudClientProtocol.CreateTagsAsyncType?
     let createTagsSyncOverride: ElasticComputeCloudClientProtocol.CreateTagsSyncType?
+    let createTrafficMirrorFilterAsyncOverride: ElasticComputeCloudClientProtocol.CreateTrafficMirrorFilterAsyncType?
+    let createTrafficMirrorFilterSyncOverride: ElasticComputeCloudClientProtocol.CreateTrafficMirrorFilterSyncType?
+    let createTrafficMirrorFilterRuleAsyncOverride: ElasticComputeCloudClientProtocol.CreateTrafficMirrorFilterRuleAsyncType?
+    let createTrafficMirrorFilterRuleSyncOverride: ElasticComputeCloudClientProtocol.CreateTrafficMirrorFilterRuleSyncType?
+    let createTrafficMirrorSessionAsyncOverride: ElasticComputeCloudClientProtocol.CreateTrafficMirrorSessionAsyncType?
+    let createTrafficMirrorSessionSyncOverride: ElasticComputeCloudClientProtocol.CreateTrafficMirrorSessionSyncType?
+    let createTrafficMirrorTargetAsyncOverride: ElasticComputeCloudClientProtocol.CreateTrafficMirrorTargetAsyncType?
+    let createTrafficMirrorTargetSyncOverride: ElasticComputeCloudClientProtocol.CreateTrafficMirrorTargetSyncType?
     let createTransitGatewayAsyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewayAsyncType?
     let createTransitGatewaySyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewaySyncType?
     let createTransitGatewayRouteAsyncOverride: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteAsyncType?
@@ -246,6 +254,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let deleteSubnetSyncOverride: ElasticComputeCloudClientProtocol.DeleteSubnetSyncType?
     let deleteTagsAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTagsAsyncType?
     let deleteTagsSyncOverride: ElasticComputeCloudClientProtocol.DeleteTagsSyncType?
+    let deleteTrafficMirrorFilterAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorFilterAsyncType?
+    let deleteTrafficMirrorFilterSyncOverride: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorFilterSyncType?
+    let deleteTrafficMirrorFilterRuleAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorFilterRuleAsyncType?
+    let deleteTrafficMirrorFilterRuleSyncOverride: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorFilterRuleSyncType?
+    let deleteTrafficMirrorSessionAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorSessionAsyncType?
+    let deleteTrafficMirrorSessionSyncOverride: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorSessionSyncType?
+    let deleteTrafficMirrorTargetAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorTargetAsyncType?
+    let deleteTrafficMirrorTargetSyncOverride: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorTargetSyncType?
     let deleteTransitGatewayAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewayAsyncType?
     let deleteTransitGatewaySyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewaySyncType?
     let deleteTransitGatewayRouteAsyncOverride: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteAsyncType?
@@ -312,6 +328,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describeEgressOnlyInternetGatewaysSyncOverride: ElasticComputeCloudClientProtocol.DescribeEgressOnlyInternetGatewaysSyncType?
     let describeElasticGpusAsyncOverride: ElasticComputeCloudClientProtocol.DescribeElasticGpusAsyncType?
     let describeElasticGpusSyncOverride: ElasticComputeCloudClientProtocol.DescribeElasticGpusSyncType?
+    let describeExportImageTasksAsyncOverride: ElasticComputeCloudClientProtocol.DescribeExportImageTasksAsyncType?
+    let describeExportImageTasksSyncOverride: ElasticComputeCloudClientProtocol.DescribeExportImageTasksSyncType?
     let describeExportTasksAsyncOverride: ElasticComputeCloudClientProtocol.DescribeExportTasksAsyncType?
     let describeExportTasksSyncOverride: ElasticComputeCloudClientProtocol.DescribeExportTasksSyncType?
     let describeFleetHistoryAsyncOverride: ElasticComputeCloudClientProtocol.DescribeFleetHistoryAsyncType?
@@ -424,6 +442,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describeSubnetsSyncOverride: ElasticComputeCloudClientProtocol.DescribeSubnetsSyncType?
     let describeTagsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTagsAsyncType?
     let describeTagsSyncOverride: ElasticComputeCloudClientProtocol.DescribeTagsSyncType?
+    let describeTrafficMirrorFiltersAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorFiltersAsyncType?
+    let describeTrafficMirrorFiltersSyncOverride: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorFiltersSyncType?
+    let describeTrafficMirrorSessionsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorSessionsAsyncType?
+    let describeTrafficMirrorSessionsSyncOverride: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorSessionsSyncType?
+    let describeTrafficMirrorTargetsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorTargetsAsyncType?
+    let describeTrafficMirrorTargetsSyncOverride: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorTargetsSyncType?
     let describeTransitGatewayAttachmentsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewayAttachmentsAsyncType?
     let describeTransitGatewayAttachmentsSyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewayAttachmentsSyncType?
     let describeTransitGatewayRouteTablesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeTransitGatewayRouteTablesAsyncType?
@@ -516,8 +540,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let exportClientVpnClientCertificateRevocationListSyncOverride: ElasticComputeCloudClientProtocol.ExportClientVpnClientCertificateRevocationListSyncType?
     let exportClientVpnClientConfigurationAsyncOverride: ElasticComputeCloudClientProtocol.ExportClientVpnClientConfigurationAsyncType?
     let exportClientVpnClientConfigurationSyncOverride: ElasticComputeCloudClientProtocol.ExportClientVpnClientConfigurationSyncType?
+    let exportImageAsyncOverride: ElasticComputeCloudClientProtocol.ExportImageAsyncType?
+    let exportImageSyncOverride: ElasticComputeCloudClientProtocol.ExportImageSyncType?
     let exportTransitGatewayRoutesAsyncOverride: ElasticComputeCloudClientProtocol.ExportTransitGatewayRoutesAsyncType?
     let exportTransitGatewayRoutesSyncOverride: ElasticComputeCloudClientProtocol.ExportTransitGatewayRoutesSyncType?
+    let getCapacityReservationUsageAsyncOverride: ElasticComputeCloudClientProtocol.GetCapacityReservationUsageAsyncType?
+    let getCapacityReservationUsageSyncOverride: ElasticComputeCloudClientProtocol.GetCapacityReservationUsageSyncType?
     let getConsoleOutputAsyncOverride: ElasticComputeCloudClientProtocol.GetConsoleOutputAsyncType?
     let getConsoleOutputSyncOverride: ElasticComputeCloudClientProtocol.GetConsoleOutputSyncType?
     let getConsoleScreenshotAsyncOverride: ElasticComputeCloudClientProtocol.GetConsoleScreenshotAsyncType?
@@ -592,6 +620,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let modifySpotFleetRequestSyncOverride: ElasticComputeCloudClientProtocol.ModifySpotFleetRequestSyncType?
     let modifySubnetAttributeAsyncOverride: ElasticComputeCloudClientProtocol.ModifySubnetAttributeAsyncType?
     let modifySubnetAttributeSyncOverride: ElasticComputeCloudClientProtocol.ModifySubnetAttributeSyncType?
+    let modifyTrafficMirrorFilterNetworkServicesAsyncOverride: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorFilterNetworkServicesAsyncType?
+    let modifyTrafficMirrorFilterNetworkServicesSyncOverride: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorFilterNetworkServicesSyncType?
+    let modifyTrafficMirrorFilterRuleAsyncOverride: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorFilterRuleAsyncType?
+    let modifyTrafficMirrorFilterRuleSyncOverride: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorFilterRuleSyncType?
+    let modifyTrafficMirrorSessionAsyncOverride: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorSessionAsyncType?
+    let modifyTrafficMirrorSessionSyncOverride: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorSessionSyncType?
     let modifyTransitGatewayVpcAttachmentAsyncOverride: ElasticComputeCloudClientProtocol.ModifyTransitGatewayVpcAttachmentAsyncType?
     let modifyTransitGatewayVpcAttachmentSyncOverride: ElasticComputeCloudClientProtocol.ModifyTransitGatewayVpcAttachmentSyncType?
     let modifyVolumeAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVolumeAsyncType?
@@ -614,6 +648,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let modifyVpcTenancySyncOverride: ElasticComputeCloudClientProtocol.ModifyVpcTenancySyncType?
     let modifyVpnConnectionAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpnConnectionAsyncType?
     let modifyVpnConnectionSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpnConnectionSyncType?
+    let modifyVpnTunnelCertificateAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpnTunnelCertificateAsyncType?
+    let modifyVpnTunnelCertificateSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpnTunnelCertificateSyncType?
+    let modifyVpnTunnelOptionsAsyncOverride: ElasticComputeCloudClientProtocol.ModifyVpnTunnelOptionsAsyncType?
+    let modifyVpnTunnelOptionsSyncOverride: ElasticComputeCloudClientProtocol.ModifyVpnTunnelOptionsSyncType?
     let monitorInstancesAsyncOverride: ElasticComputeCloudClientProtocol.MonitorInstancesAsyncType?
     let monitorInstancesSyncOverride: ElasticComputeCloudClientProtocol.MonitorInstancesSyncType?
     let moveAddressToVpcAsyncOverride: ElasticComputeCloudClientProtocol.MoveAddressToVpcAsyncType?
@@ -684,6 +722,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let runScheduledInstancesSyncOverride: ElasticComputeCloudClientProtocol.RunScheduledInstancesSyncType?
     let searchTransitGatewayRoutesAsyncOverride: ElasticComputeCloudClientProtocol.SearchTransitGatewayRoutesAsyncType?
     let searchTransitGatewayRoutesSyncOverride: ElasticComputeCloudClientProtocol.SearchTransitGatewayRoutesSyncType?
+    let sendDiagnosticInterruptAsyncOverride: ElasticComputeCloudClientProtocol.SendDiagnosticInterruptAsyncType?
+    let sendDiagnosticInterruptSyncOverride: ElasticComputeCloudClientProtocol.SendDiagnosticInterruptSyncType?
     let startInstancesAsyncOverride: ElasticComputeCloudClientProtocol.StartInstancesAsyncType?
     let startInstancesSyncOverride: ElasticComputeCloudClientProtocol.StartInstancesSyncType?
     let stopInstancesAsyncOverride: ElasticComputeCloudClientProtocol.StopInstancesAsyncType?
@@ -852,6 +892,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             createSubnetSync: ElasticComputeCloudClientProtocol.CreateSubnetSyncType? = nil,
             createTagsAsync: ElasticComputeCloudClientProtocol.CreateTagsAsyncType? = nil,
             createTagsSync: ElasticComputeCloudClientProtocol.CreateTagsSyncType? = nil,
+            createTrafficMirrorFilterAsync: ElasticComputeCloudClientProtocol.CreateTrafficMirrorFilterAsyncType? = nil,
+            createTrafficMirrorFilterSync: ElasticComputeCloudClientProtocol.CreateTrafficMirrorFilterSyncType? = nil,
+            createTrafficMirrorFilterRuleAsync: ElasticComputeCloudClientProtocol.CreateTrafficMirrorFilterRuleAsyncType? = nil,
+            createTrafficMirrorFilterRuleSync: ElasticComputeCloudClientProtocol.CreateTrafficMirrorFilterRuleSyncType? = nil,
+            createTrafficMirrorSessionAsync: ElasticComputeCloudClientProtocol.CreateTrafficMirrorSessionAsyncType? = nil,
+            createTrafficMirrorSessionSync: ElasticComputeCloudClientProtocol.CreateTrafficMirrorSessionSyncType? = nil,
+            createTrafficMirrorTargetAsync: ElasticComputeCloudClientProtocol.CreateTrafficMirrorTargetAsyncType? = nil,
+            createTrafficMirrorTargetSync: ElasticComputeCloudClientProtocol.CreateTrafficMirrorTargetSyncType? = nil,
             createTransitGatewayAsync: ElasticComputeCloudClientProtocol.CreateTransitGatewayAsyncType? = nil,
             createTransitGatewaySync: ElasticComputeCloudClientProtocol.CreateTransitGatewaySyncType? = nil,
             createTransitGatewayRouteAsync: ElasticComputeCloudClientProtocol.CreateTransitGatewayRouteAsyncType? = nil,
@@ -928,6 +976,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             deleteSubnetSync: ElasticComputeCloudClientProtocol.DeleteSubnetSyncType? = nil,
             deleteTagsAsync: ElasticComputeCloudClientProtocol.DeleteTagsAsyncType? = nil,
             deleteTagsSync: ElasticComputeCloudClientProtocol.DeleteTagsSyncType? = nil,
+            deleteTrafficMirrorFilterAsync: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorFilterAsyncType? = nil,
+            deleteTrafficMirrorFilterSync: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorFilterSyncType? = nil,
+            deleteTrafficMirrorFilterRuleAsync: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorFilterRuleAsyncType? = nil,
+            deleteTrafficMirrorFilterRuleSync: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorFilterRuleSyncType? = nil,
+            deleteTrafficMirrorSessionAsync: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorSessionAsyncType? = nil,
+            deleteTrafficMirrorSessionSync: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorSessionSyncType? = nil,
+            deleteTrafficMirrorTargetAsync: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorTargetAsyncType? = nil,
+            deleteTrafficMirrorTargetSync: ElasticComputeCloudClientProtocol.DeleteTrafficMirrorTargetSyncType? = nil,
             deleteTransitGatewayAsync: ElasticComputeCloudClientProtocol.DeleteTransitGatewayAsyncType? = nil,
             deleteTransitGatewaySync: ElasticComputeCloudClientProtocol.DeleteTransitGatewaySyncType? = nil,
             deleteTransitGatewayRouteAsync: ElasticComputeCloudClientProtocol.DeleteTransitGatewayRouteAsyncType? = nil,
@@ -994,6 +1050,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describeEgressOnlyInternetGatewaysSync: ElasticComputeCloudClientProtocol.DescribeEgressOnlyInternetGatewaysSyncType? = nil,
             describeElasticGpusAsync: ElasticComputeCloudClientProtocol.DescribeElasticGpusAsyncType? = nil,
             describeElasticGpusSync: ElasticComputeCloudClientProtocol.DescribeElasticGpusSyncType? = nil,
+            describeExportImageTasksAsync: ElasticComputeCloudClientProtocol.DescribeExportImageTasksAsyncType? = nil,
+            describeExportImageTasksSync: ElasticComputeCloudClientProtocol.DescribeExportImageTasksSyncType? = nil,
             describeExportTasksAsync: ElasticComputeCloudClientProtocol.DescribeExportTasksAsyncType? = nil,
             describeExportTasksSync: ElasticComputeCloudClientProtocol.DescribeExportTasksSyncType? = nil,
             describeFleetHistoryAsync: ElasticComputeCloudClientProtocol.DescribeFleetHistoryAsyncType? = nil,
@@ -1106,6 +1164,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describeSubnetsSync: ElasticComputeCloudClientProtocol.DescribeSubnetsSyncType? = nil,
             describeTagsAsync: ElasticComputeCloudClientProtocol.DescribeTagsAsyncType? = nil,
             describeTagsSync: ElasticComputeCloudClientProtocol.DescribeTagsSyncType? = nil,
+            describeTrafficMirrorFiltersAsync: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorFiltersAsyncType? = nil,
+            describeTrafficMirrorFiltersSync: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorFiltersSyncType? = nil,
+            describeTrafficMirrorSessionsAsync: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorSessionsAsyncType? = nil,
+            describeTrafficMirrorSessionsSync: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorSessionsSyncType? = nil,
+            describeTrafficMirrorTargetsAsync: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorTargetsAsyncType? = nil,
+            describeTrafficMirrorTargetsSync: ElasticComputeCloudClientProtocol.DescribeTrafficMirrorTargetsSyncType? = nil,
             describeTransitGatewayAttachmentsAsync: ElasticComputeCloudClientProtocol.DescribeTransitGatewayAttachmentsAsyncType? = nil,
             describeTransitGatewayAttachmentsSync: ElasticComputeCloudClientProtocol.DescribeTransitGatewayAttachmentsSyncType? = nil,
             describeTransitGatewayRouteTablesAsync: ElasticComputeCloudClientProtocol.DescribeTransitGatewayRouteTablesAsyncType? = nil,
@@ -1198,8 +1262,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             exportClientVpnClientCertificateRevocationListSync: ElasticComputeCloudClientProtocol.ExportClientVpnClientCertificateRevocationListSyncType? = nil,
             exportClientVpnClientConfigurationAsync: ElasticComputeCloudClientProtocol.ExportClientVpnClientConfigurationAsyncType? = nil,
             exportClientVpnClientConfigurationSync: ElasticComputeCloudClientProtocol.ExportClientVpnClientConfigurationSyncType? = nil,
+            exportImageAsync: ElasticComputeCloudClientProtocol.ExportImageAsyncType? = nil,
+            exportImageSync: ElasticComputeCloudClientProtocol.ExportImageSyncType? = nil,
             exportTransitGatewayRoutesAsync: ElasticComputeCloudClientProtocol.ExportTransitGatewayRoutesAsyncType? = nil,
             exportTransitGatewayRoutesSync: ElasticComputeCloudClientProtocol.ExportTransitGatewayRoutesSyncType? = nil,
+            getCapacityReservationUsageAsync: ElasticComputeCloudClientProtocol.GetCapacityReservationUsageAsyncType? = nil,
+            getCapacityReservationUsageSync: ElasticComputeCloudClientProtocol.GetCapacityReservationUsageSyncType? = nil,
             getConsoleOutputAsync: ElasticComputeCloudClientProtocol.GetConsoleOutputAsyncType? = nil,
             getConsoleOutputSync: ElasticComputeCloudClientProtocol.GetConsoleOutputSyncType? = nil,
             getConsoleScreenshotAsync: ElasticComputeCloudClientProtocol.GetConsoleScreenshotAsyncType? = nil,
@@ -1274,6 +1342,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             modifySpotFleetRequestSync: ElasticComputeCloudClientProtocol.ModifySpotFleetRequestSyncType? = nil,
             modifySubnetAttributeAsync: ElasticComputeCloudClientProtocol.ModifySubnetAttributeAsyncType? = nil,
             modifySubnetAttributeSync: ElasticComputeCloudClientProtocol.ModifySubnetAttributeSyncType? = nil,
+            modifyTrafficMirrorFilterNetworkServicesAsync: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorFilterNetworkServicesAsyncType? = nil,
+            modifyTrafficMirrorFilterNetworkServicesSync: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorFilterNetworkServicesSyncType? = nil,
+            modifyTrafficMirrorFilterRuleAsync: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorFilterRuleAsyncType? = nil,
+            modifyTrafficMirrorFilterRuleSync: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorFilterRuleSyncType? = nil,
+            modifyTrafficMirrorSessionAsync: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorSessionAsyncType? = nil,
+            modifyTrafficMirrorSessionSync: ElasticComputeCloudClientProtocol.ModifyTrafficMirrorSessionSyncType? = nil,
             modifyTransitGatewayVpcAttachmentAsync: ElasticComputeCloudClientProtocol.ModifyTransitGatewayVpcAttachmentAsyncType? = nil,
             modifyTransitGatewayVpcAttachmentSync: ElasticComputeCloudClientProtocol.ModifyTransitGatewayVpcAttachmentSyncType? = nil,
             modifyVolumeAsync: ElasticComputeCloudClientProtocol.ModifyVolumeAsyncType? = nil,
@@ -1296,6 +1370,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             modifyVpcTenancySync: ElasticComputeCloudClientProtocol.ModifyVpcTenancySyncType? = nil,
             modifyVpnConnectionAsync: ElasticComputeCloudClientProtocol.ModifyVpnConnectionAsyncType? = nil,
             modifyVpnConnectionSync: ElasticComputeCloudClientProtocol.ModifyVpnConnectionSyncType? = nil,
+            modifyVpnTunnelCertificateAsync: ElasticComputeCloudClientProtocol.ModifyVpnTunnelCertificateAsyncType? = nil,
+            modifyVpnTunnelCertificateSync: ElasticComputeCloudClientProtocol.ModifyVpnTunnelCertificateSyncType? = nil,
+            modifyVpnTunnelOptionsAsync: ElasticComputeCloudClientProtocol.ModifyVpnTunnelOptionsAsyncType? = nil,
+            modifyVpnTunnelOptionsSync: ElasticComputeCloudClientProtocol.ModifyVpnTunnelOptionsSyncType? = nil,
             monitorInstancesAsync: ElasticComputeCloudClientProtocol.MonitorInstancesAsyncType? = nil,
             monitorInstancesSync: ElasticComputeCloudClientProtocol.MonitorInstancesSyncType? = nil,
             moveAddressToVpcAsync: ElasticComputeCloudClientProtocol.MoveAddressToVpcAsyncType? = nil,
@@ -1366,6 +1444,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             runScheduledInstancesSync: ElasticComputeCloudClientProtocol.RunScheduledInstancesSyncType? = nil,
             searchTransitGatewayRoutesAsync: ElasticComputeCloudClientProtocol.SearchTransitGatewayRoutesAsyncType? = nil,
             searchTransitGatewayRoutesSync: ElasticComputeCloudClientProtocol.SearchTransitGatewayRoutesSyncType? = nil,
+            sendDiagnosticInterruptAsync: ElasticComputeCloudClientProtocol.SendDiagnosticInterruptAsyncType? = nil,
+            sendDiagnosticInterruptSync: ElasticComputeCloudClientProtocol.SendDiagnosticInterruptSyncType? = nil,
             startInstancesAsync: ElasticComputeCloudClientProtocol.StartInstancesAsyncType? = nil,
             startInstancesSync: ElasticComputeCloudClientProtocol.StartInstancesSyncType? = nil,
             stopInstancesAsync: ElasticComputeCloudClientProtocol.StopInstancesAsyncType? = nil,
@@ -1529,6 +1609,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.createSubnetSyncOverride = createSubnetSync
         self.createTagsAsyncOverride = createTagsAsync
         self.createTagsSyncOverride = createTagsSync
+        self.createTrafficMirrorFilterAsyncOverride = createTrafficMirrorFilterAsync
+        self.createTrafficMirrorFilterSyncOverride = createTrafficMirrorFilterSync
+        self.createTrafficMirrorFilterRuleAsyncOverride = createTrafficMirrorFilterRuleAsync
+        self.createTrafficMirrorFilterRuleSyncOverride = createTrafficMirrorFilterRuleSync
+        self.createTrafficMirrorSessionAsyncOverride = createTrafficMirrorSessionAsync
+        self.createTrafficMirrorSessionSyncOverride = createTrafficMirrorSessionSync
+        self.createTrafficMirrorTargetAsyncOverride = createTrafficMirrorTargetAsync
+        self.createTrafficMirrorTargetSyncOverride = createTrafficMirrorTargetSync
         self.createTransitGatewayAsyncOverride = createTransitGatewayAsync
         self.createTransitGatewaySyncOverride = createTransitGatewaySync
         self.createTransitGatewayRouteAsyncOverride = createTransitGatewayRouteAsync
@@ -1605,6 +1693,14 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.deleteSubnetSyncOverride = deleteSubnetSync
         self.deleteTagsAsyncOverride = deleteTagsAsync
         self.deleteTagsSyncOverride = deleteTagsSync
+        self.deleteTrafficMirrorFilterAsyncOverride = deleteTrafficMirrorFilterAsync
+        self.deleteTrafficMirrorFilterSyncOverride = deleteTrafficMirrorFilterSync
+        self.deleteTrafficMirrorFilterRuleAsyncOverride = deleteTrafficMirrorFilterRuleAsync
+        self.deleteTrafficMirrorFilterRuleSyncOverride = deleteTrafficMirrorFilterRuleSync
+        self.deleteTrafficMirrorSessionAsyncOverride = deleteTrafficMirrorSessionAsync
+        self.deleteTrafficMirrorSessionSyncOverride = deleteTrafficMirrorSessionSync
+        self.deleteTrafficMirrorTargetAsyncOverride = deleteTrafficMirrorTargetAsync
+        self.deleteTrafficMirrorTargetSyncOverride = deleteTrafficMirrorTargetSync
         self.deleteTransitGatewayAsyncOverride = deleteTransitGatewayAsync
         self.deleteTransitGatewaySyncOverride = deleteTransitGatewaySync
         self.deleteTransitGatewayRouteAsyncOverride = deleteTransitGatewayRouteAsync
@@ -1671,6 +1767,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describeEgressOnlyInternetGatewaysSyncOverride = describeEgressOnlyInternetGatewaysSync
         self.describeElasticGpusAsyncOverride = describeElasticGpusAsync
         self.describeElasticGpusSyncOverride = describeElasticGpusSync
+        self.describeExportImageTasksAsyncOverride = describeExportImageTasksAsync
+        self.describeExportImageTasksSyncOverride = describeExportImageTasksSync
         self.describeExportTasksAsyncOverride = describeExportTasksAsync
         self.describeExportTasksSyncOverride = describeExportTasksSync
         self.describeFleetHistoryAsyncOverride = describeFleetHistoryAsync
@@ -1783,6 +1881,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describeSubnetsSyncOverride = describeSubnetsSync
         self.describeTagsAsyncOverride = describeTagsAsync
         self.describeTagsSyncOverride = describeTagsSync
+        self.describeTrafficMirrorFiltersAsyncOverride = describeTrafficMirrorFiltersAsync
+        self.describeTrafficMirrorFiltersSyncOverride = describeTrafficMirrorFiltersSync
+        self.describeTrafficMirrorSessionsAsyncOverride = describeTrafficMirrorSessionsAsync
+        self.describeTrafficMirrorSessionsSyncOverride = describeTrafficMirrorSessionsSync
+        self.describeTrafficMirrorTargetsAsyncOverride = describeTrafficMirrorTargetsAsync
+        self.describeTrafficMirrorTargetsSyncOverride = describeTrafficMirrorTargetsSync
         self.describeTransitGatewayAttachmentsAsyncOverride = describeTransitGatewayAttachmentsAsync
         self.describeTransitGatewayAttachmentsSyncOverride = describeTransitGatewayAttachmentsSync
         self.describeTransitGatewayRouteTablesAsyncOverride = describeTransitGatewayRouteTablesAsync
@@ -1875,8 +1979,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.exportClientVpnClientCertificateRevocationListSyncOverride = exportClientVpnClientCertificateRevocationListSync
         self.exportClientVpnClientConfigurationAsyncOverride = exportClientVpnClientConfigurationAsync
         self.exportClientVpnClientConfigurationSyncOverride = exportClientVpnClientConfigurationSync
+        self.exportImageAsyncOverride = exportImageAsync
+        self.exportImageSyncOverride = exportImageSync
         self.exportTransitGatewayRoutesAsyncOverride = exportTransitGatewayRoutesAsync
         self.exportTransitGatewayRoutesSyncOverride = exportTransitGatewayRoutesSync
+        self.getCapacityReservationUsageAsyncOverride = getCapacityReservationUsageAsync
+        self.getCapacityReservationUsageSyncOverride = getCapacityReservationUsageSync
         self.getConsoleOutputAsyncOverride = getConsoleOutputAsync
         self.getConsoleOutputSyncOverride = getConsoleOutputSync
         self.getConsoleScreenshotAsyncOverride = getConsoleScreenshotAsync
@@ -1951,6 +2059,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.modifySpotFleetRequestSyncOverride = modifySpotFleetRequestSync
         self.modifySubnetAttributeAsyncOverride = modifySubnetAttributeAsync
         self.modifySubnetAttributeSyncOverride = modifySubnetAttributeSync
+        self.modifyTrafficMirrorFilterNetworkServicesAsyncOverride = modifyTrafficMirrorFilterNetworkServicesAsync
+        self.modifyTrafficMirrorFilterNetworkServicesSyncOverride = modifyTrafficMirrorFilterNetworkServicesSync
+        self.modifyTrafficMirrorFilterRuleAsyncOverride = modifyTrafficMirrorFilterRuleAsync
+        self.modifyTrafficMirrorFilterRuleSyncOverride = modifyTrafficMirrorFilterRuleSync
+        self.modifyTrafficMirrorSessionAsyncOverride = modifyTrafficMirrorSessionAsync
+        self.modifyTrafficMirrorSessionSyncOverride = modifyTrafficMirrorSessionSync
         self.modifyTransitGatewayVpcAttachmentAsyncOverride = modifyTransitGatewayVpcAttachmentAsync
         self.modifyTransitGatewayVpcAttachmentSyncOverride = modifyTransitGatewayVpcAttachmentSync
         self.modifyVolumeAsyncOverride = modifyVolumeAsync
@@ -1973,6 +2087,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.modifyVpcTenancySyncOverride = modifyVpcTenancySync
         self.modifyVpnConnectionAsyncOverride = modifyVpnConnectionAsync
         self.modifyVpnConnectionSyncOverride = modifyVpnConnectionSync
+        self.modifyVpnTunnelCertificateAsyncOverride = modifyVpnTunnelCertificateAsync
+        self.modifyVpnTunnelCertificateSyncOverride = modifyVpnTunnelCertificateSync
+        self.modifyVpnTunnelOptionsAsyncOverride = modifyVpnTunnelOptionsAsync
+        self.modifyVpnTunnelOptionsSyncOverride = modifyVpnTunnelOptionsSync
         self.monitorInstancesAsyncOverride = monitorInstancesAsync
         self.monitorInstancesSyncOverride = monitorInstancesSync
         self.moveAddressToVpcAsyncOverride = moveAddressToVpcAsync
@@ -2043,6 +2161,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.runScheduledInstancesSyncOverride = runScheduledInstancesSync
         self.searchTransitGatewayRoutesAsyncOverride = searchTransitGatewayRoutesAsync
         self.searchTransitGatewayRoutesSyncOverride = searchTransitGatewayRoutesSync
+        self.sendDiagnosticInterruptAsyncOverride = sendDiagnosticInterruptAsync
+        self.sendDiagnosticInterruptSyncOverride = sendDiagnosticInterruptSync
         self.startInstancesAsyncOverride = startInstancesAsync
         self.startInstancesSyncOverride = startInstancesSync
         self.stopInstancesAsyncOverride = stopInstancesAsync
@@ -2367,15 +2487,16 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
 
      - Parameters:
          - input: The validated AssignPrivateIpAddressesRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The AssignPrivateIpAddressesResult object or an error will be passed to this 
+           callback when the operation is complete. The AssignPrivateIpAddressesResult
+           object will be validated before being returned to caller.
      */
-    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssignPrivateIpAddressesResult>) -> ()) throws {
         if let assignPrivateIpAddressesAsyncOverride = assignPrivateIpAddressesAsyncOverride {
             return try assignPrivateIpAddressesAsyncOverride(input, completion)
         }
 
-        completion(error)
+        completion(.error(error))
     }
 
     /**
@@ -2383,8 +2504,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
 
      - Parameters:
          - input: The validated AssignPrivateIpAddressesRequest object being passed to this operation.
+     - Returns: The AssignPrivateIpAddressesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
-    public func assignPrivateIpAddressesSync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws {
+    public func assignPrivateIpAddressesSync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws -> ElasticComputeCloudModel.AssignPrivateIpAddressesResult {
         if let assignPrivateIpAddressesSyncOverride = assignPrivateIpAddressesSyncOverride {
             return try assignPrivateIpAddressesSyncOverride(input)
         }
@@ -4379,6 +4502,138 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the CreateTrafficMirrorFilter operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorFilterResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorFilterResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterAsync(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult>) -> ()) throws {
+        if let createTrafficMirrorFilterAsyncOverride = createTrafficMirrorFilterAsyncOverride {
+            return try createTrafficMirrorFilterAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorFilter operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorFilterResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterSync(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterResult {
+        if let createTrafficMirrorFilterSyncOverride = createTrafficMirrorFilterSyncOverride {
+            return try createTrafficMirrorFilterSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorFilterRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRuleRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorFilterRuleResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorFilterRuleResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterRuleAsync(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult>) -> ()) throws {
+        if let createTrafficMirrorFilterRuleAsyncOverride = createTrafficMirrorFilterRuleAsyncOverride {
+            return try createTrafficMirrorFilterRuleAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorFilterRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRuleRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterRuleSync(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult {
+        if let createTrafficMirrorFilterRuleSyncOverride = createTrafficMirrorFilterRuleSyncOverride {
+            return try createTrafficMirrorFilterRuleSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorSession operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorSessionRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorSessionResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorSessionResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorSessionAsync(input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult>) -> ()) throws {
+        if let createTrafficMirrorSessionAsyncOverride = createTrafficMirrorSessionAsyncOverride {
+            return try createTrafficMirrorSessionAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorSession operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorSessionRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorSessionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorSessionSync(input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorSessionResult {
+        if let createTrafficMirrorSessionSyncOverride = createTrafficMirrorSessionSyncOverride {
+            return try createTrafficMirrorSessionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorTarget operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorTargetRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorTargetResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorTargetResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorTargetAsync(input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult>) -> ()) throws {
+        if let createTrafficMirrorTargetAsyncOverride = createTrafficMirrorTargetAsyncOverride {
+            return try createTrafficMirrorTargetAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorTarget operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorTargetRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorTargetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorTargetSync(input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorTargetResult {
+        if let createTrafficMirrorTargetSyncOverride = createTrafficMirrorTargetSyncOverride {
+            return try createTrafficMirrorTargetSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the CreateTransitGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5585,6 +5840,138 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DeleteTrafficMirrorFilter operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorFilterResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorFilterResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterAsync(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult>) -> ()) throws {
+        if let deleteTrafficMirrorFilterAsyncOverride = deleteTrafficMirrorFilterAsyncOverride {
+            return try deleteTrafficMirrorFilterAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilter operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorFilterResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterSync(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult {
+        if let deleteTrafficMirrorFilterSyncOverride = deleteTrafficMirrorFilterSyncOverride {
+            return try deleteTrafficMirrorFilterSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilterRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRuleRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorFilterRuleResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorFilterRuleResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterRuleAsync(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult>) -> ()) throws {
+        if let deleteTrafficMirrorFilterRuleAsyncOverride = deleteTrafficMirrorFilterRuleAsyncOverride {
+            return try deleteTrafficMirrorFilterRuleAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilterRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRuleRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterRuleSync(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult {
+        if let deleteTrafficMirrorFilterRuleSyncOverride = deleteTrafficMirrorFilterRuleSyncOverride {
+            return try deleteTrafficMirrorFilterRuleSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorSession operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorSessionRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorSessionResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorSessionResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorSessionAsync(input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult>) -> ()) throws {
+        if let deleteTrafficMirrorSessionAsyncOverride = deleteTrafficMirrorSessionAsyncOverride {
+            return try deleteTrafficMirrorSessionAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorSession operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorSessionRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorSessionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorSessionSync(input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult {
+        if let deleteTrafficMirrorSessionSyncOverride = deleteTrafficMirrorSessionSyncOverride {
+            return try deleteTrafficMirrorSessionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorTarget operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorTargetRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorTargetResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorTargetResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorTargetAsync(input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult>) -> ()) throws {
+        if let deleteTrafficMirrorTargetAsyncOverride = deleteTrafficMirrorTargetAsyncOverride {
+            return try deleteTrafficMirrorTargetAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorTarget operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorTargetRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorTargetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorTargetSync(input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult {
+        if let deleteTrafficMirrorTargetSyncOverride = deleteTrafficMirrorTargetSyncOverride {
+            return try deleteTrafficMirrorTargetSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DeleteTransitGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6650,6 +7037,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func describeElasticGpusSync(input: ElasticComputeCloudModel.DescribeElasticGpusRequest) throws -> ElasticComputeCloudModel.DescribeElasticGpusResult {
         if let describeElasticGpusSyncOverride = describeElasticGpusSyncOverride {
             return try describeElasticGpusSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeExportImageTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportImageTasksRequest object being passed to this operation.
+         - completion: The DescribeExportImageTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeExportImageTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeExportImageTasksAsync(input: ElasticComputeCloudModel.DescribeExportImageTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeExportImageTasksResult>) -> ()) throws {
+        if let describeExportImageTasksAsyncOverride = describeExportImageTasksAsyncOverride {
+            return try describeExportImageTasksAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeExportImageTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportImageTasksRequest object being passed to this operation.
+     - Returns: The DescribeExportImageTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeExportImageTasksSync(input: ElasticComputeCloudModel.DescribeExportImageTasksRequest) throws -> ElasticComputeCloudModel.DescribeExportImageTasksResult {
+        if let describeExportImageTasksSyncOverride = describeExportImageTasksSyncOverride {
+            return try describeExportImageTasksSyncOverride(input)
         }
 
         throw error
@@ -8504,6 +8924,105 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DescribeTrafficMirrorFilters operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorFiltersRequest object being passed to this operation.
+         - completion: The DescribeTrafficMirrorFiltersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrafficMirrorFiltersResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorFiltersAsync(input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult>) -> ()) throws {
+        if let describeTrafficMirrorFiltersAsyncOverride = describeTrafficMirrorFiltersAsyncOverride {
+            return try describeTrafficMirrorFiltersAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorFilters operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorFiltersRequest object being passed to this operation.
+     - Returns: The DescribeTrafficMirrorFiltersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorFiltersSync(input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult {
+        if let describeTrafficMirrorFiltersSyncOverride = describeTrafficMirrorFiltersSyncOverride {
+            return try describeTrafficMirrorFiltersSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorSessions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorSessionsRequest object being passed to this operation.
+         - completion: The DescribeTrafficMirrorSessionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrafficMirrorSessionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorSessionsAsync(input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult>) -> ()) throws {
+        if let describeTrafficMirrorSessionsAsyncOverride = describeTrafficMirrorSessionsAsyncOverride {
+            return try describeTrafficMirrorSessionsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorSessions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorSessionsRequest object being passed to this operation.
+     - Returns: The DescribeTrafficMirrorSessionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorSessionsSync(input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult {
+        if let describeTrafficMirrorSessionsSyncOverride = describeTrafficMirrorSessionsSyncOverride {
+            return try describeTrafficMirrorSessionsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorTargetsRequest object being passed to this operation.
+         - completion: The DescribeTrafficMirrorTargetsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrafficMirrorTargetsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorTargetsAsync(input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult>) -> ()) throws {
+        if let describeTrafficMirrorTargetsAsyncOverride = describeTrafficMirrorTargetsAsyncOverride {
+            return try describeTrafficMirrorTargetsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorTargetsRequest object being passed to this operation.
+     - Returns: The DescribeTrafficMirrorTargetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorTargetsSync(input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult {
+        if let describeTrafficMirrorTargetsSyncOverride = describeTrafficMirrorTargetsSyncOverride {
+            return try describeTrafficMirrorTargetsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DescribeTransitGatewayAttachments operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9998,6 +10517,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the ExportImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportImageRequest object being passed to this operation.
+         - completion: The ExportImageResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportImageResult
+           object will be validated before being returned to caller.
+     */
+    public func exportImageAsync(input: ElasticComputeCloudModel.ExportImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportImageResult>) -> ()) throws {
+        if let exportImageAsyncOverride = exportImageAsyncOverride {
+            return try exportImageAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ExportImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportImageRequest object being passed to this operation.
+     - Returns: The ExportImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func exportImageSync(input: ElasticComputeCloudModel.ExportImageRequest) throws -> ElasticComputeCloudModel.ExportImageResult {
+        if let exportImageSyncOverride = exportImageSyncOverride {
+            return try exportImageSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ExportTransitGatewayRoutes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10025,6 +10577,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func exportTransitGatewayRoutesSync(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
         if let exportTransitGatewayRoutesSyncOverride = exportTransitGatewayRoutesSyncOverride {
             return try exportTransitGatewayRoutesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetCapacityReservationUsage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetCapacityReservationUsageRequest object being passed to this operation.
+         - completion: The GetCapacityReservationUsageResult object or an error will be passed to this 
+           callback when the operation is complete. The GetCapacityReservationUsageResult
+           object will be validated before being returned to caller.
+     */
+    public func getCapacityReservationUsageAsync(input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetCapacityReservationUsageResult>) -> ()) throws {
+        if let getCapacityReservationUsageAsyncOverride = getCapacityReservationUsageAsyncOverride {
+            return try getCapacityReservationUsageAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the GetCapacityReservationUsage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetCapacityReservationUsageRequest object being passed to this operation.
+     - Returns: The GetCapacityReservationUsageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getCapacityReservationUsageSync(input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest) throws -> ElasticComputeCloudModel.GetCapacityReservationUsageResult {
+        if let getCapacityReservationUsageSyncOverride = getCapacityReservationUsageSyncOverride {
+            return try getCapacityReservationUsageSyncOverride(input)
         }
 
         throw error
@@ -11231,6 +11816,105 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the ModifyTrafficMirrorFilterNetworkServices operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterNetworkServicesRequest object being passed to this operation.
+         - completion: The ModifyTrafficMirrorFilterNetworkServicesResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTrafficMirrorFilterNetworkServicesResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterNetworkServicesAsync(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult>) -> ()) throws {
+        if let modifyTrafficMirrorFilterNetworkServicesAsyncOverride = modifyTrafficMirrorFilterNetworkServicesAsyncOverride {
+            return try modifyTrafficMirrorFilterNetworkServicesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorFilterNetworkServices operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterNetworkServicesRequest object being passed to this operation.
+     - Returns: The ModifyTrafficMirrorFilterNetworkServicesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterNetworkServicesSync(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult {
+        if let modifyTrafficMirrorFilterNetworkServicesSyncOverride = modifyTrafficMirrorFilterNetworkServicesSyncOverride {
+            return try modifyTrafficMirrorFilterNetworkServicesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorFilterRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterRuleRequest object being passed to this operation.
+         - completion: The ModifyTrafficMirrorFilterRuleResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTrafficMirrorFilterRuleResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterRuleAsync(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult>) -> ()) throws {
+        if let modifyTrafficMirrorFilterRuleAsyncOverride = modifyTrafficMirrorFilterRuleAsyncOverride {
+            return try modifyTrafficMirrorFilterRuleAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorFilterRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterRuleRequest object being passed to this operation.
+     - Returns: The ModifyTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterRuleSync(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult {
+        if let modifyTrafficMirrorFilterRuleSyncOverride = modifyTrafficMirrorFilterRuleSyncOverride {
+            return try modifyTrafficMirrorFilterRuleSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorSession operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorSessionRequest object being passed to this operation.
+         - completion: The ModifyTrafficMirrorSessionResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTrafficMirrorSessionResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorSessionAsync(input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult>) -> ()) throws {
+        if let modifyTrafficMirrorSessionAsyncOverride = modifyTrafficMirrorSessionAsyncOverride {
+            return try modifyTrafficMirrorSessionAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorSession operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorSessionRequest object being passed to this operation.
+     - Returns: The ModifyTrafficMirrorSessionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorSessionSync(input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult {
+        if let modifyTrafficMirrorSessionSyncOverride = modifyTrafficMirrorSessionSyncOverride {
+            return try modifyTrafficMirrorSessionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ModifyTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11582,6 +12266,72 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func modifyVpnConnectionSync(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
         if let modifyVpnConnectionSyncOverride = modifyVpnConnectionSyncOverride {
             return try modifyVpnConnectionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelCertificate operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelCertificateRequest object being passed to this operation.
+         - completion: The ModifyVpnTunnelCertificateResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnTunnelCertificateResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelCertificateAsync(input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult>) -> ()) throws {
+        if let modifyVpnTunnelCertificateAsyncOverride = modifyVpnTunnelCertificateAsyncOverride {
+            return try modifyVpnTunnelCertificateAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelCertificate operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelCertificateRequest object being passed to this operation.
+     - Returns: The ModifyVpnTunnelCertificateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelCertificateSync(input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest) throws -> ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult {
+        if let modifyVpnTunnelCertificateSyncOverride = modifyVpnTunnelCertificateSyncOverride {
+            return try modifyVpnTunnelCertificateSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelOptionsRequest object being passed to this operation.
+         - completion: The ModifyVpnTunnelOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnTunnelOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelOptionsAsync(input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult>) -> ()) throws {
+        if let modifyVpnTunnelOptionsAsyncOverride = modifyVpnTunnelOptionsAsyncOverride {
+            return try modifyVpnTunnelOptionsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelOptionsRequest object being passed to this operation.
+     - Returns: The ModifyVpnTunnelOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelOptionsSync(input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult {
+        if let modifyVpnTunnelOptionsSyncOverride = modifyVpnTunnelOptionsSyncOverride {
+            return try modifyVpnTunnelOptionsSyncOverride(input)
         }
 
         throw error
@@ -12704,6 +13454,36 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func searchTransitGatewayRoutesSync(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
         if let searchTransitGatewayRoutesSyncOverride = searchTransitGatewayRoutesSyncOverride {
             return try searchTransitGatewayRoutesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the SendDiagnosticInterrupt operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SendDiagnosticInterruptRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func sendDiagnosticInterruptAsync(input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+        if let sendDiagnosticInterruptAsyncOverride = sendDiagnosticInterruptAsyncOverride {
+            return try sendDiagnosticInterruptAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the SendDiagnosticInterrupt operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SendDiagnosticInterruptRequest object being passed to this operation.
+     */
+    public func sendDiagnosticInterruptSync(input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest) throws {
+        if let sendDiagnosticInterruptSyncOverride = sendDiagnosticInterruptSyncOverride {
+            return try sendDiagnosticInterruptSyncOverride(input)
         }
 
         throw error

@@ -154,6 +154,19 @@ extension DomainInfos: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ListTagsForResource operation in a HTTP client.
+ */
+extension ListTagsForResourceOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListTagsForResourceOutput
+    public typealias HeadersType = ListTagsForResourceOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListTagsForResourceOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListWorkflowTypes operation in a HTTP client.
  */
 extension WorkflowTypeInfos: HTTPResponseOutputProtocol {

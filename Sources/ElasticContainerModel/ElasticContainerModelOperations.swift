@@ -64,6 +64,7 @@ public enum ElasticContainerModelOperations: String {
     case submitTaskStateChange = "SubmitTaskStateChange"
     case tagResource = "TagResource"
     case untagResource = "UntagResource"
+    case updateClusterSettings = "UpdateClusterSettings"
     case updateContainerAgent = "UpdateContainerAgent"
     case updateContainerInstancesState = "UpdateContainerInstancesState"
     case updateService = "UpdateService"
@@ -149,6 +150,8 @@ public enum ElasticContainerModelOperations: String {
         case .tagResource:
             return "/"
         case .untagResource:
+            return "/"
+        case .updateClusterSettings:
             return "/"
         case .updateContainerAgent:
             return "/"

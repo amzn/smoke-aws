@@ -166,6 +166,7 @@ public struct Cluster: Codable, Equatable {
     public var pendingTasksCount: Integer?
     public var registeredContainerInstancesCount: Integer?
     public var runningTasksCount: Integer?
+    public var settings: ClusterSettings?
     public var statistics: Statistics?
     public var status: String?
     public var tags: Tags?
@@ -176,6 +177,7 @@ public struct Cluster: Codable, Equatable {
                 pendingTasksCount: Integer? = nil,
                 registeredContainerInstancesCount: Integer? = nil,
                 runningTasksCount: Integer? = nil,
+                settings: ClusterSettings? = nil,
                 statistics: Statistics? = nil,
                 status: String? = nil,
                 tags: Tags? = nil) {
@@ -185,6 +187,7 @@ public struct Cluster: Codable, Equatable {
         self.pendingTasksCount = pendingTasksCount
         self.registeredContainerInstancesCount = registeredContainerInstancesCount
         self.runningTasksCount = runningTasksCount
+        self.settings = settings
         self.statistics = statistics
         self.status = status
         self.tags = tags
@@ -197,6 +200,7 @@ public struct Cluster: Codable, Equatable {
         case pendingTasksCount
         case registeredContainerInstancesCount
         case runningTasksCount
+        case settings
         case statistics
         case status
         case tags
@@ -243,12 +247,33 @@ public struct ClusterNotFoundException: Codable, Equatable {
     }
 }
 
+public struct ClusterSetting: Codable, Equatable {
+    public var name: ClusterSettingName?
+    public var value: String?
+
+    public init(name: ClusterSettingName? = nil,
+                value: String? = nil) {
+        self.name = name
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case value
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Container: Codable, Equatable {
     public var containerArn: String?
     public var cpu: String?
     public var exitCode: BoxedInteger?
     public var gpuIds: GpuIds?
     public var healthStatus: HealthStatus?
+    public var image: String?
+    public var imageDigest: String?
     public var lastStatus: String?
     public var memory: String?
     public var memoryReservation: String?
@@ -256,6 +281,7 @@ public struct Container: Codable, Equatable {
     public var networkBindings: NetworkBindings?
     public var networkInterfaces: NetworkInterfaces?
     public var reason: String?
+    public var runtimeId: String?
     public var taskArn: String?
 
     public init(containerArn: String? = nil,
@@ -263,6 +289,8 @@ public struct Container: Codable, Equatable {
                 exitCode: BoxedInteger? = nil,
                 gpuIds: GpuIds? = nil,
                 healthStatus: HealthStatus? = nil,
+                image: String? = nil,
+                imageDigest: String? = nil,
                 lastStatus: String? = nil,
                 memory: String? = nil,
                 memoryReservation: String? = nil,
@@ -270,12 +298,15 @@ public struct Container: Codable, Equatable {
                 networkBindings: NetworkBindings? = nil,
                 networkInterfaces: NetworkInterfaces? = nil,
                 reason: String? = nil,
+                runtimeId: String? = nil,
                 taskArn: String? = nil) {
         self.containerArn = containerArn
         self.cpu = cpu
         self.exitCode = exitCode
         self.gpuIds = gpuIds
         self.healthStatus = healthStatus
+        self.image = image
+        self.imageDigest = imageDigest
         self.lastStatus = lastStatus
         self.memory = memory
         self.memoryReservation = memoryReservation
@@ -283,6 +314,7 @@ public struct Container: Codable, Equatable {
         self.networkBindings = networkBindings
         self.networkInterfaces = networkInterfaces
         self.reason = reason
+        self.runtimeId = runtimeId
         self.taskArn = taskArn
     }
 
@@ -292,6 +324,8 @@ public struct Container: Codable, Equatable {
         case exitCode
         case gpuIds
         case healthStatus
+        case image
+        case imageDigest
         case lastStatus
         case memory
         case memoryReservation
@@ -299,6 +333,7 @@ public struct Container: Codable, Equatable {
         case networkBindings
         case networkInterfaces
         case reason
+        case runtimeId
         case taskArn
     }
 
@@ -319,6 +354,7 @@ public struct ContainerDefinition: Codable, Equatable {
     public var environment: EnvironmentVariables?
     public var essential: BoxedBoolean?
     public var extraHosts: HostEntryList?
+    public var firelensConfiguration: FirelensConfiguration?
     public var healthCheck: HealthCheck?
     public var hostname: String?
     public var image: String?
@@ -357,6 +393,7 @@ public struct ContainerDefinition: Codable, Equatable {
                 environment: EnvironmentVariables? = nil,
                 essential: BoxedBoolean? = nil,
                 extraHosts: HostEntryList? = nil,
+                firelensConfiguration: FirelensConfiguration? = nil,
                 healthCheck: HealthCheck? = nil,
                 hostname: String? = nil,
                 image: String? = nil,
@@ -394,6 +431,7 @@ public struct ContainerDefinition: Codable, Equatable {
         self.environment = environment
         self.essential = essential
         self.extraHosts = extraHosts
+        self.firelensConfiguration = firelensConfiguration
         self.healthCheck = healthCheck
         self.hostname = hostname
         self.image = image
@@ -434,6 +472,7 @@ public struct ContainerDefinition: Codable, Equatable {
         case environment
         case essential
         case extraHosts
+        case firelensConfiguration
         case healthCheck
         case hostname
         case image
@@ -462,6 +501,7 @@ public struct ContainerDefinition: Codable, Equatable {
     }
 
     public func validate() throws {
+        try firelensConfiguration?.validate()
         try healthCheck?.validate()
         try linuxParameters?.validate()
         try logConfiguration?.validate()
@@ -607,27 +647,35 @@ public struct ContainerOverride: Codable, Equatable {
 public struct ContainerStateChange: Codable, Equatable {
     public var containerName: String?
     public var exitCode: BoxedInteger?
+    public var imageDigest: String?
     public var networkBindings: NetworkBindings?
     public var reason: String?
+    public var runtimeId: String?
     public var status: String?
 
     public init(containerName: String? = nil,
                 exitCode: BoxedInteger? = nil,
+                imageDigest: String? = nil,
                 networkBindings: NetworkBindings? = nil,
                 reason: String? = nil,
+                runtimeId: String? = nil,
                 status: String? = nil) {
         self.containerName = containerName
         self.exitCode = exitCode
+        self.imageDigest = imageDigest
         self.networkBindings = networkBindings
         self.reason = reason
+        self.runtimeId = runtimeId
         self.status = status
     }
 
     enum CodingKeys: String, CodingKey {
         case containerName
         case exitCode
+        case imageDigest
         case networkBindings
         case reason
+        case runtimeId
         case status
     }
 
@@ -637,16 +685,20 @@ public struct ContainerStateChange: Codable, Equatable {
 
 public struct CreateClusterRequest: Codable, Equatable {
     public var clusterName: String?
+    public var settings: ClusterSettings?
     public var tags: Tags?
 
     public init(clusterName: String? = nil,
+                settings: ClusterSettings? = nil,
                 tags: Tags? = nil) {
         self.clusterName = clusterName
+        self.settings = settings
         self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
         case clusterName
+        case settings
         case tags
     }
 
@@ -1554,6 +1606,25 @@ public struct Failure: Codable, Equatable {
     }
 }
 
+public struct FirelensConfiguration: Codable, Equatable {
+    public var options: FirelensConfigurationOptionsMap?
+    public var type: FirelensConfigurationType
+
+    public init(options: FirelensConfigurationOptionsMap? = nil,
+                type: FirelensConfigurationType) {
+        self.options = options
+        self.type = type
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case options
+        case type
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct HealthCheck: Codable, Equatable {
     public var command: StringList
     public var interval: BoxedInteger?
@@ -1619,6 +1690,44 @@ public struct HostVolumeProperties: Codable, Equatable {
     }
 }
 
+public struct InferenceAccelerator: Codable, Equatable {
+    public var deviceName: String
+    public var deviceType: String
+
+    public init(deviceName: String,
+                deviceType: String) {
+        self.deviceName = deviceName
+        self.deviceType = deviceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deviceName
+        case deviceType
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InferenceAcceleratorOverride: Codable, Equatable {
+    public var deviceName: String?
+    public var deviceType: String?
+
+    public init(deviceName: String? = nil,
+                deviceType: String? = nil) {
+        self.deviceName = deviceName
+        self.deviceType = deviceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deviceName
+        case deviceType
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InvalidParameterException: Codable, Equatable {
 
     public init() {
@@ -1670,18 +1779,24 @@ public struct LinuxParameters: Codable, Equatable {
     public var capabilities: KernelCapabilities?
     public var devices: DevicesList?
     public var initProcessEnabled: BoxedBoolean?
+    public var maxSwap: BoxedInteger?
     public var sharedMemorySize: BoxedInteger?
+    public var swappiness: BoxedInteger?
     public var tmpfs: TmpfsList?
 
     public init(capabilities: KernelCapabilities? = nil,
                 devices: DevicesList? = nil,
                 initProcessEnabled: BoxedBoolean? = nil,
+                maxSwap: BoxedInteger? = nil,
                 sharedMemorySize: BoxedInteger? = nil,
+                swappiness: BoxedInteger? = nil,
                 tmpfs: TmpfsList? = nil) {
         self.capabilities = capabilities
         self.devices = devices
         self.initProcessEnabled = initProcessEnabled
+        self.maxSwap = maxSwap
         self.sharedMemorySize = sharedMemorySize
+        self.swappiness = swappiness
         self.tmpfs = tmpfs
     }
 
@@ -1689,7 +1804,9 @@ public struct LinuxParameters: Codable, Equatable {
         case capabilities
         case devices
         case initProcessEnabled
+        case maxSwap
         case sharedMemorySize
+        case swappiness
         case tmpfs
     }
 
@@ -2593,6 +2710,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     public var cpu: String?
     public var executionRoleArn: String?
     public var family: String
+    public var inferenceAccelerators: InferenceAccelerators?
     public var ipcMode: IpcMode?
     public var memory: String?
     public var networkMode: NetworkMode?
@@ -2608,6 +2726,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
                 cpu: String? = nil,
                 executionRoleArn: String? = nil,
                 family: String,
+                inferenceAccelerators: InferenceAccelerators? = nil,
                 ipcMode: IpcMode? = nil,
                 memory: String? = nil,
                 networkMode: NetworkMode? = nil,
@@ -2622,6 +2741,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
         self.cpu = cpu
         self.executionRoleArn = executionRoleArn
         self.family = family
+        self.inferenceAccelerators = inferenceAccelerators
         self.ipcMode = ipcMode
         self.memory = memory
         self.networkMode = networkMode
@@ -2639,6 +2759,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
         case cpu
         case executionRoleArn
         case family
+        case inferenceAccelerators
         case ipcMode
         case memory
         case networkMode
@@ -3268,6 +3389,7 @@ public struct SubmitContainerStateChangeRequest: Codable, Equatable {
     public var exitCode: BoxedInteger?
     public var networkBindings: NetworkBindings?
     public var reason: String?
+    public var runtimeId: String?
     public var status: String?
     public var task: String?
 
@@ -3276,6 +3398,7 @@ public struct SubmitContainerStateChangeRequest: Codable, Equatable {
                 exitCode: BoxedInteger? = nil,
                 networkBindings: NetworkBindings? = nil,
                 reason: String? = nil,
+                runtimeId: String? = nil,
                 status: String? = nil,
                 task: String? = nil) {
         self.cluster = cluster
@@ -3283,6 +3406,7 @@ public struct SubmitContainerStateChangeRequest: Codable, Equatable {
         self.exitCode = exitCode
         self.networkBindings = networkBindings
         self.reason = reason
+        self.runtimeId = runtimeId
         self.status = status
         self.task = task
     }
@@ -3293,6 +3417,7 @@ public struct SubmitContainerStateChangeRequest: Codable, Equatable {
         case exitCode
         case networkBindings
         case reason
+        case runtimeId
         case status
         case task
     }
@@ -3469,6 +3594,7 @@ public struct Task: Codable, Equatable {
     public var executionStoppedAt: Timestamp?
     public var group: String?
     public var healthStatus: HealthStatus?
+    public var inferenceAccelerators: InferenceAccelerators?
     public var lastStatus: String?
     public var launchType: LaunchType?
     public var memory: String?
@@ -3499,6 +3625,7 @@ public struct Task: Codable, Equatable {
                 executionStoppedAt: Timestamp? = nil,
                 group: String? = nil,
                 healthStatus: HealthStatus? = nil,
+                inferenceAccelerators: InferenceAccelerators? = nil,
                 lastStatus: String? = nil,
                 launchType: LaunchType? = nil,
                 memory: String? = nil,
@@ -3528,6 +3655,7 @@ public struct Task: Codable, Equatable {
         self.executionStoppedAt = executionStoppedAt
         self.group = group
         self.healthStatus = healthStatus
+        self.inferenceAccelerators = inferenceAccelerators
         self.lastStatus = lastStatus
         self.launchType = launchType
         self.memory = memory
@@ -3560,6 +3688,7 @@ public struct Task: Codable, Equatable {
         case executionStoppedAt
         case group
         case healthStatus
+        case inferenceAccelerators
         case lastStatus
         case launchType
         case memory
@@ -3691,19 +3820,23 @@ public struct TaskDefinitionPlacementConstraint: Codable, Equatable {
 public struct TaskOverride: Codable, Equatable {
     public var containerOverrides: ContainerOverrides?
     public var executionRoleArn: String?
+    public var inferenceAcceleratorOverrides: InferenceAcceleratorOverrides?
     public var taskRoleArn: String?
 
     public init(containerOverrides: ContainerOverrides? = nil,
                 executionRoleArn: String? = nil,
+                inferenceAcceleratorOverrides: InferenceAcceleratorOverrides? = nil,
                 taskRoleArn: String? = nil) {
         self.containerOverrides = containerOverrides
         self.executionRoleArn = executionRoleArn
+        self.inferenceAcceleratorOverrides = inferenceAcceleratorOverrides
         self.taskRoleArn = taskRoleArn
     }
 
     enum CodingKeys: String, CodingKey {
         case containerOverrides
         case executionRoleArn
+        case inferenceAcceleratorOverrides
         case taskRoleArn
     }
 
@@ -3897,6 +4030,41 @@ public struct UntagResourceResponse: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct UpdateClusterSettingsRequest: Codable, Equatable {
+    public var cluster: String
+    public var settings: ClusterSettings
+
+    public init(cluster: String,
+                settings: ClusterSettings) {
+        self.cluster = cluster
+        self.settings = settings
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+        case settings
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct UpdateClusterSettingsResponse: Codable, Equatable {
+    public var cluster: Cluster?
+
+    public init(cluster: Cluster? = nil) {
+        self.cluster = cluster
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+    }
+
+    public func validate() throws {
+        try cluster?.validate()
     }
 }
 

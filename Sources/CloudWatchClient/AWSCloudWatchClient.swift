@@ -36,7 +36,7 @@ public enum CloudWatchClientError: Swift.Error {
 private extension CloudWatchError {
     func isRetriable() -> Bool {
         switch self {
-        case .limitExceeded:
+        case .limitExceededException, .limitExceededFault:
             return true
         default:
             return false
@@ -164,6 +164,72 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             version: apiVersion)
 
         try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteAnomalyDetector operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteAnomalyDetectorInput object being passed to this operation.
+         - completion: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object or an error will be passed to this 
+           callback when the operation is complete. The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func deleteAnomalyDetectorAsync(input: CloudWatchModel.DeleteAnomalyDetectorInput, completion: @escaping (HTTPResult<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteAnomalyDetectorOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.deleteAnomalyDetector.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteAnomalyDetector operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteAnomalyDetectorInput object being passed to this operation.
+     - Returns: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func deleteAnomalyDetectorSync(input: CloudWatchModel.DeleteAnomalyDetectorInput) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DeleteAnomalyDetectorOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.deleteAnomalyDetector.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -423,6 +489,72 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudWatchModelOperations.describeAlarmsForMetric.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeAnomalyDetectors operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAnomalyDetectorsInput object being passed to this operation.
+         - completion: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidNextToken, invalidParameterValue.
+     */
+    public func describeAnomalyDetectorsAsync(input: CloudWatchModel.DescribeAnomalyDetectorsInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeAnomalyDetectorsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.describeAnomalyDetectors.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeAnomalyDetectors operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAnomalyDetectorsInput object being passed to this operation.
+     - Returns: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidNextToken, invalidParameterValue.
+     */
+    public func describeAnomalyDetectorsSync(input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = DescribeAnomalyDetectorsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.describeAnomalyDetectors.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1005,6 +1137,72 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudWatchModelOperations.listTagsForResource.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutAnomalyDetector operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutAnomalyDetectorInput object being passed to this operation.
+         - completion: The PutAnomalyDetectorOutputForPutAnomalyDetector object or an error will be passed to this 
+           callback when the operation is complete. The PutAnomalyDetectorOutputForPutAnomalyDetector
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putAnomalyDetectorAsync(input: CloudWatchModel.PutAnomalyDetectorInput, completion: @escaping (HTTPResult<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = PutAnomalyDetectorOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putAnomalyDetector.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutAnomalyDetector operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutAnomalyDetectorInput object being passed to this operation.
+     - Returns: The PutAnomalyDetectorOutputForPutAnomalyDetector object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putAnomalyDetectorSync(input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = PutAnomalyDetectorOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putAnomalyDetector.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(

@@ -67,6 +67,21 @@ public typealias AlarmNames = [AlarmName]
 public typealias AmazonResourceName = String
 
 /**
+ Type definition for the AnomalyDetectorExcludedTimeRanges field.
+ */
+public typealias AnomalyDetectorExcludedTimeRanges = [Range]
+
+/**
+ Type definition for the AnomalyDetectorMetricTimezone field.
+ */
+public typealias AnomalyDetectorMetricTimezone = String
+
+/**
+ Type definition for the AnomalyDetectors field.
+ */
+public typealias AnomalyDetectors = [AnomalyDetector]
+
+/**
  Type definition for the AwsQueryErrorMessage field.
  */
 public typealias AwsQueryErrorMessage = String
@@ -77,6 +92,9 @@ public typealias AwsQueryErrorMessage = String
 public enum ComparisonOperator: String, Codable, CustomStringConvertible {
     case greaterthanorequaltothreshold = "GreaterThanOrEqualToThreshold"
     case greaterthanthreshold = "GreaterThanThreshold"
+    case greaterthanupperthreshold = "GreaterThanUpperThreshold"
+    case lessthanlowerorgreaterthanupperthreshold = "LessThanLowerOrGreaterThanUpperThreshold"
+    case lessthanlowerthreshold = "LessThanLowerThreshold"
     case lessthanorequaltothreshold = "LessThanOrEqualToThreshold"
     case lessthanthreshold = "LessThanThreshold"
 
@@ -251,6 +269,11 @@ public typealias LastModified = String
  Type definition for the MaxRecords field.
  */
 public typealias MaxRecords = Int
+
+/**
+ Type definition for the MaxReturnedResultsCount field.
+ */
+public typealias MaxReturnedResultsCount = Int
 
 /**
  Type definition for the Message field.
@@ -827,6 +850,18 @@ extension CloudWatchModel.MaxRecords {
         if self > 100 {
             throw CloudWatchCodingError.validationError(reason: "The provided value to MaxRecords violated the maximum range constraint.")
         }
+    }
+}
+
+/**
+ Validation for the MaxReturnedResultsCount field.
+*/
+extension CloudWatchModel.MaxReturnedResultsCount {
+    public func validateAsMaxReturnedResultsCount() throws {
+        if self < 1 {
+            throw CloudWatchCodingError.validationError(reason: "The provided value to MaxReturnedResultsCount violated the minimum range constraint.")
+        }
+
     }
 }
 

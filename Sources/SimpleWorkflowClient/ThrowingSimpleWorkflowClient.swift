@@ -60,6 +60,8 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     let listDomainsSyncOverride: SimpleWorkflowClientProtocol.ListDomainsSyncType?
     let listOpenWorkflowExecutionsAsyncOverride: SimpleWorkflowClientProtocol.ListOpenWorkflowExecutionsAsyncType?
     let listOpenWorkflowExecutionsSyncOverride: SimpleWorkflowClientProtocol.ListOpenWorkflowExecutionsSyncType?
+    let listTagsForResourceAsyncOverride: SimpleWorkflowClientProtocol.ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: SimpleWorkflowClientProtocol.ListTagsForResourceSyncType?
     let listWorkflowTypesAsyncOverride: SimpleWorkflowClientProtocol.ListWorkflowTypesAsyncType?
     let listWorkflowTypesSyncOverride: SimpleWorkflowClientProtocol.ListWorkflowTypesSyncType?
     let pollForActivityTaskAsyncOverride: SimpleWorkflowClientProtocol.PollForActivityTaskAsyncType?
@@ -88,8 +90,18 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     let signalWorkflowExecutionSyncOverride: SimpleWorkflowClientProtocol.SignalWorkflowExecutionSyncType?
     let startWorkflowExecutionAsyncOverride: SimpleWorkflowClientProtocol.StartWorkflowExecutionAsyncType?
     let startWorkflowExecutionSyncOverride: SimpleWorkflowClientProtocol.StartWorkflowExecutionSyncType?
+    let tagResourceAsyncOverride: SimpleWorkflowClientProtocol.TagResourceAsyncType?
+    let tagResourceSyncOverride: SimpleWorkflowClientProtocol.TagResourceSyncType?
     let terminateWorkflowExecutionAsyncOverride: SimpleWorkflowClientProtocol.TerminateWorkflowExecutionAsyncType?
     let terminateWorkflowExecutionSyncOverride: SimpleWorkflowClientProtocol.TerminateWorkflowExecutionSyncType?
+    let undeprecateActivityTypeAsyncOverride: SimpleWorkflowClientProtocol.UndeprecateActivityTypeAsyncType?
+    let undeprecateActivityTypeSyncOverride: SimpleWorkflowClientProtocol.UndeprecateActivityTypeSyncType?
+    let undeprecateDomainAsyncOverride: SimpleWorkflowClientProtocol.UndeprecateDomainAsyncType?
+    let undeprecateDomainSyncOverride: SimpleWorkflowClientProtocol.UndeprecateDomainSyncType?
+    let undeprecateWorkflowTypeAsyncOverride: SimpleWorkflowClientProtocol.UndeprecateWorkflowTypeAsyncType?
+    let undeprecateWorkflowTypeSyncOverride: SimpleWorkflowClientProtocol.UndeprecateWorkflowTypeSyncType?
+    let untagResourceAsyncOverride: SimpleWorkflowClientProtocol.UntagResourceAsyncType?
+    let untagResourceSyncOverride: SimpleWorkflowClientProtocol.UntagResourceSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
@@ -128,6 +140,8 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
             listDomainsSync: SimpleWorkflowClientProtocol.ListDomainsSyncType? = nil,
             listOpenWorkflowExecutionsAsync: SimpleWorkflowClientProtocol.ListOpenWorkflowExecutionsAsyncType? = nil,
             listOpenWorkflowExecutionsSync: SimpleWorkflowClientProtocol.ListOpenWorkflowExecutionsSyncType? = nil,
+            listTagsForResourceAsync: SimpleWorkflowClientProtocol.ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: SimpleWorkflowClientProtocol.ListTagsForResourceSyncType? = nil,
             listWorkflowTypesAsync: SimpleWorkflowClientProtocol.ListWorkflowTypesAsyncType? = nil,
             listWorkflowTypesSync: SimpleWorkflowClientProtocol.ListWorkflowTypesSyncType? = nil,
             pollForActivityTaskAsync: SimpleWorkflowClientProtocol.PollForActivityTaskAsyncType? = nil,
@@ -156,8 +170,18 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
             signalWorkflowExecutionSync: SimpleWorkflowClientProtocol.SignalWorkflowExecutionSyncType? = nil,
             startWorkflowExecutionAsync: SimpleWorkflowClientProtocol.StartWorkflowExecutionAsyncType? = nil,
             startWorkflowExecutionSync: SimpleWorkflowClientProtocol.StartWorkflowExecutionSyncType? = nil,
+            tagResourceAsync: SimpleWorkflowClientProtocol.TagResourceAsyncType? = nil,
+            tagResourceSync: SimpleWorkflowClientProtocol.TagResourceSyncType? = nil,
             terminateWorkflowExecutionAsync: SimpleWorkflowClientProtocol.TerminateWorkflowExecutionAsyncType? = nil,
-            terminateWorkflowExecutionSync: SimpleWorkflowClientProtocol.TerminateWorkflowExecutionSyncType? = nil) {
+            terminateWorkflowExecutionSync: SimpleWorkflowClientProtocol.TerminateWorkflowExecutionSyncType? = nil,
+            undeprecateActivityTypeAsync: SimpleWorkflowClientProtocol.UndeprecateActivityTypeAsyncType? = nil,
+            undeprecateActivityTypeSync: SimpleWorkflowClientProtocol.UndeprecateActivityTypeSyncType? = nil,
+            undeprecateDomainAsync: SimpleWorkflowClientProtocol.UndeprecateDomainAsyncType? = nil,
+            undeprecateDomainSync: SimpleWorkflowClientProtocol.UndeprecateDomainSyncType? = nil,
+            undeprecateWorkflowTypeAsync: SimpleWorkflowClientProtocol.UndeprecateWorkflowTypeAsyncType? = nil,
+            undeprecateWorkflowTypeSync: SimpleWorkflowClientProtocol.UndeprecateWorkflowTypeSyncType? = nil,
+            untagResourceAsync: SimpleWorkflowClientProtocol.UntagResourceAsyncType? = nil,
+            untagResourceSync: SimpleWorkflowClientProtocol.UntagResourceSyncType? = nil) {
         self.error = error
         self.countClosedWorkflowExecutionsAsyncOverride = countClosedWorkflowExecutionsAsync
         self.countClosedWorkflowExecutionsSyncOverride = countClosedWorkflowExecutionsSync
@@ -191,6 +215,8 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
         self.listDomainsSyncOverride = listDomainsSync
         self.listOpenWorkflowExecutionsAsyncOverride = listOpenWorkflowExecutionsAsync
         self.listOpenWorkflowExecutionsSyncOverride = listOpenWorkflowExecutionsSync
+        self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
+        self.listTagsForResourceSyncOverride = listTagsForResourceSync
         self.listWorkflowTypesAsyncOverride = listWorkflowTypesAsync
         self.listWorkflowTypesSyncOverride = listWorkflowTypesSync
         self.pollForActivityTaskAsyncOverride = pollForActivityTaskAsync
@@ -219,8 +245,18 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
         self.signalWorkflowExecutionSyncOverride = signalWorkflowExecutionSync
         self.startWorkflowExecutionAsyncOverride = startWorkflowExecutionAsync
         self.startWorkflowExecutionSyncOverride = startWorkflowExecutionSync
+        self.tagResourceAsyncOverride = tagResourceAsync
+        self.tagResourceSyncOverride = tagResourceSync
         self.terminateWorkflowExecutionAsyncOverride = terminateWorkflowExecutionAsync
         self.terminateWorkflowExecutionSyncOverride = terminateWorkflowExecutionSync
+        self.undeprecateActivityTypeAsyncOverride = undeprecateActivityTypeAsync
+        self.undeprecateActivityTypeSyncOverride = undeprecateActivityTypeSync
+        self.undeprecateDomainAsyncOverride = undeprecateDomainAsync
+        self.undeprecateDomainSyncOverride = undeprecateDomainSync
+        self.undeprecateWorkflowTypeAsyncOverride = undeprecateWorkflowTypeAsync
+        self.undeprecateWorkflowTypeSyncOverride = undeprecateWorkflowTypeSync
+        self.untagResourceAsyncOverride = untagResourceAsync
+        self.untagResourceSyncOverride = untagResourceSync
     }
 
     /**
@@ -775,6 +811,41 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     }
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+         - completion: The ListTagsForResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    public func listTagsForResourceAsync(input: SimpleWorkflowModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.ListTagsForResourceOutput>) -> ()) throws {
+        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
+            return try listTagsForResourceAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    public func listTagsForResourceSync(input: SimpleWorkflowModel.ListTagsForResourceInput) throws -> SimpleWorkflowModel.ListTagsForResourceOutput {
+        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
+            return try listTagsForResourceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ListWorkflowTypes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -953,7 +1024,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RegisterDomainInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted.
+           The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     public func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
         if let registerDomainAsyncOverride = registerDomainAsyncOverride {
@@ -968,7 +1039,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
      - Parameters:
          - input: The validated RegisterDomainInput object being passed to this operation.
-     - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted.
+     - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     public func registerDomainSync(input: SimpleWorkflowModel.RegisterDomainInput) throws {
         if let registerDomainSyncOverride = registerDomainSyncOverride {
@@ -1238,6 +1309,38 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     }
 
     /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
+     */
+    public func tagResourceAsync(input: SimpleWorkflowModel.TagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
+            return try tagResourceAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Throws: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
+     */
+    public func tagResourceSync(input: SimpleWorkflowModel.TagResourceInput) throws {
+        if let tagResourceSyncOverride = tagResourceSyncOverride {
+            return try tagResourceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the TerminateWorkflowExecution operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1264,6 +1367,134 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     public func terminateWorkflowExecutionSync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws {
         if let terminateWorkflowExecutionSyncOverride = terminateWorkflowExecutionSyncOverride {
             return try terminateWorkflowExecutionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UndeprecateActivityType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateActivityTypeInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    public func undeprecateActivityTypeAsync(input: SimpleWorkflowModel.UndeprecateActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        if let undeprecateActivityTypeAsyncOverride = undeprecateActivityTypeAsyncOverride {
+            return try undeprecateActivityTypeAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the UndeprecateActivityType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateActivityTypeInput object being passed to this operation.
+     - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    public func undeprecateActivityTypeSync(input: SimpleWorkflowModel.UndeprecateActivityTypeInput) throws {
+        if let undeprecateActivityTypeSyncOverride = undeprecateActivityTypeSyncOverride {
+            return try undeprecateActivityTypeSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UndeprecateDomain operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateDomainInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: domainAlreadyExists, operationNotPermitted, unknownResource.
+     */
+    public func undeprecateDomainAsync(input: SimpleWorkflowModel.UndeprecateDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        if let undeprecateDomainAsyncOverride = undeprecateDomainAsyncOverride {
+            return try undeprecateDomainAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the UndeprecateDomain operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateDomainInput object being passed to this operation.
+     - Throws: domainAlreadyExists, operationNotPermitted, unknownResource.
+     */
+    public func undeprecateDomainSync(input: SimpleWorkflowModel.UndeprecateDomainInput) throws {
+        if let undeprecateDomainSyncOverride = undeprecateDomainSyncOverride {
+            return try undeprecateDomainSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UndeprecateWorkflowType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateWorkflowTypeInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    public func undeprecateWorkflowTypeAsync(input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        if let undeprecateWorkflowTypeAsyncOverride = undeprecateWorkflowTypeAsyncOverride {
+            return try undeprecateWorkflowTypeAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the UndeprecateWorkflowType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateWorkflowTypeInput object being passed to this operation.
+     - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    public func undeprecateWorkflowTypeSync(input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) throws {
+        if let undeprecateWorkflowTypeSyncOverride = undeprecateWorkflowTypeSyncOverride {
+            return try undeprecateWorkflowTypeSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    public func untagResourceAsync(input: SimpleWorkflowModel.UntagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
+            return try untagResourceAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Throws: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    public func untagResourceSync(input: SimpleWorkflowModel.UntagResourceInput) throws {
+        if let untagResourceSyncOverride = untagResourceSyncOverride {
+            return try untagResourceSyncOverride(input)
         }
 
         throw error

@@ -24,6 +24,19 @@ import SmokeHTTPClient
 import CloudWatchModel
 
 /**
+ Type to handle the output from the DeleteAnomalyDetector operation in a HTTP client.
+ */
+extension DeleteAnomalyDetectorOutputForDeleteAnomalyDetector: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
+    public typealias HeadersType = DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteDashboards operation in a HTTP client.
  */
 extension DeleteDashboardsOutputForDeleteDashboards: HTTPResponseOutputProtocol {
@@ -71,6 +84,19 @@ extension DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric: HTTPResponseO
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeAnomalyDetectors operation in a HTTP client.
+ */
+extension DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
+    public typealias HeadersType = DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
         return try bodyDecodableProvider()
     }
 }
@@ -162,6 +188,19 @@ extension ListTagsForResourceOutputForListTagsForResource: HTTPResponseOutputPro
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListTagsForResourceOutputForListTagsForResource {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutAnomalyDetector operation in a HTTP client.
+ */
+extension PutAnomalyDetectorOutputForPutAnomalyDetector: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutAnomalyDetectorOutputForPutAnomalyDetector
+    public typealias HeadersType = PutAnomalyDetectorOutputForPutAnomalyDetector
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutAnomalyDetectorOutputForPutAnomalyDetector {
         return try bodyDecodableProvider()
     }
 }

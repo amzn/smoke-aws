@@ -29,6 +29,8 @@ import SmokeHTTPClient
 public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let deleteAlarmsAsyncOverride: CloudWatchClientProtocol.DeleteAlarmsAsyncType?
     let deleteAlarmsSyncOverride: CloudWatchClientProtocol.DeleteAlarmsSyncType?
+    let deleteAnomalyDetectorAsyncOverride: CloudWatchClientProtocol.DeleteAnomalyDetectorAsyncType?
+    let deleteAnomalyDetectorSyncOverride: CloudWatchClientProtocol.DeleteAnomalyDetectorSyncType?
     let deleteDashboardsAsyncOverride: CloudWatchClientProtocol.DeleteDashboardsAsyncType?
     let deleteDashboardsSyncOverride: CloudWatchClientProtocol.DeleteDashboardsSyncType?
     let describeAlarmHistoryAsyncOverride: CloudWatchClientProtocol.DescribeAlarmHistoryAsyncType?
@@ -37,6 +39,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let describeAlarmsSyncOverride: CloudWatchClientProtocol.DescribeAlarmsSyncType?
     let describeAlarmsForMetricAsyncOverride: CloudWatchClientProtocol.DescribeAlarmsForMetricAsyncType?
     let describeAlarmsForMetricSyncOverride: CloudWatchClientProtocol.DescribeAlarmsForMetricSyncType?
+    let describeAnomalyDetectorsAsyncOverride: CloudWatchClientProtocol.DescribeAnomalyDetectorsAsyncType?
+    let describeAnomalyDetectorsSyncOverride: CloudWatchClientProtocol.DescribeAnomalyDetectorsSyncType?
     let disableAlarmActionsAsyncOverride: CloudWatchClientProtocol.DisableAlarmActionsAsyncType?
     let disableAlarmActionsSyncOverride: CloudWatchClientProtocol.DisableAlarmActionsSyncType?
     let enableAlarmActionsAsyncOverride: CloudWatchClientProtocol.EnableAlarmActionsAsyncType?
@@ -55,6 +59,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let listMetricsSyncOverride: CloudWatchClientProtocol.ListMetricsSyncType?
     let listTagsForResourceAsyncOverride: CloudWatchClientProtocol.ListTagsForResourceAsyncType?
     let listTagsForResourceSyncOverride: CloudWatchClientProtocol.ListTagsForResourceSyncType?
+    let putAnomalyDetectorAsyncOverride: CloudWatchClientProtocol.PutAnomalyDetectorAsyncType?
+    let putAnomalyDetectorSyncOverride: CloudWatchClientProtocol.PutAnomalyDetectorSyncType?
     let putDashboardAsyncOverride: CloudWatchClientProtocol.PutDashboardAsyncType?
     let putDashboardSyncOverride: CloudWatchClientProtocol.PutDashboardSyncType?
     let putMetricAlarmAsyncOverride: CloudWatchClientProtocol.PutMetricAlarmAsyncType?
@@ -75,6 +81,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     public init(
             deleteAlarmsAsync: CloudWatchClientProtocol.DeleteAlarmsAsyncType? = nil,
             deleteAlarmsSync: CloudWatchClientProtocol.DeleteAlarmsSyncType? = nil,
+            deleteAnomalyDetectorAsync: CloudWatchClientProtocol.DeleteAnomalyDetectorAsyncType? = nil,
+            deleteAnomalyDetectorSync: CloudWatchClientProtocol.DeleteAnomalyDetectorSyncType? = nil,
             deleteDashboardsAsync: CloudWatchClientProtocol.DeleteDashboardsAsyncType? = nil,
             deleteDashboardsSync: CloudWatchClientProtocol.DeleteDashboardsSyncType? = nil,
             describeAlarmHistoryAsync: CloudWatchClientProtocol.DescribeAlarmHistoryAsyncType? = nil,
@@ -83,6 +91,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             describeAlarmsSync: CloudWatchClientProtocol.DescribeAlarmsSyncType? = nil,
             describeAlarmsForMetricAsync: CloudWatchClientProtocol.DescribeAlarmsForMetricAsyncType? = nil,
             describeAlarmsForMetricSync: CloudWatchClientProtocol.DescribeAlarmsForMetricSyncType? = nil,
+            describeAnomalyDetectorsAsync: CloudWatchClientProtocol.DescribeAnomalyDetectorsAsyncType? = nil,
+            describeAnomalyDetectorsSync: CloudWatchClientProtocol.DescribeAnomalyDetectorsSyncType? = nil,
             disableAlarmActionsAsync: CloudWatchClientProtocol.DisableAlarmActionsAsyncType? = nil,
             disableAlarmActionsSync: CloudWatchClientProtocol.DisableAlarmActionsSyncType? = nil,
             enableAlarmActionsAsync: CloudWatchClientProtocol.EnableAlarmActionsAsyncType? = nil,
@@ -101,6 +111,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             listMetricsSync: CloudWatchClientProtocol.ListMetricsSyncType? = nil,
             listTagsForResourceAsync: CloudWatchClientProtocol.ListTagsForResourceAsyncType? = nil,
             listTagsForResourceSync: CloudWatchClientProtocol.ListTagsForResourceSyncType? = nil,
+            putAnomalyDetectorAsync: CloudWatchClientProtocol.PutAnomalyDetectorAsyncType? = nil,
+            putAnomalyDetectorSync: CloudWatchClientProtocol.PutAnomalyDetectorSyncType? = nil,
             putDashboardAsync: CloudWatchClientProtocol.PutDashboardAsyncType? = nil,
             putDashboardSync: CloudWatchClientProtocol.PutDashboardSyncType? = nil,
             putMetricAlarmAsync: CloudWatchClientProtocol.PutMetricAlarmAsyncType? = nil,
@@ -115,6 +127,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             untagResourceSync: CloudWatchClientProtocol.UntagResourceSyncType? = nil) {
         self.deleteAlarmsAsyncOverride = deleteAlarmsAsync
         self.deleteAlarmsSyncOverride = deleteAlarmsSync
+        self.deleteAnomalyDetectorAsyncOverride = deleteAnomalyDetectorAsync
+        self.deleteAnomalyDetectorSyncOverride = deleteAnomalyDetectorSync
         self.deleteDashboardsAsyncOverride = deleteDashboardsAsync
         self.deleteDashboardsSyncOverride = deleteDashboardsSync
         self.describeAlarmHistoryAsyncOverride = describeAlarmHistoryAsync
@@ -123,6 +137,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.describeAlarmsSyncOverride = describeAlarmsSync
         self.describeAlarmsForMetricAsyncOverride = describeAlarmsForMetricAsync
         self.describeAlarmsForMetricSyncOverride = describeAlarmsForMetricSync
+        self.describeAnomalyDetectorsAsyncOverride = describeAnomalyDetectorsAsync
+        self.describeAnomalyDetectorsSyncOverride = describeAnomalyDetectorsSync
         self.disableAlarmActionsAsyncOverride = disableAlarmActionsAsync
         self.disableAlarmActionsSyncOverride = disableAlarmActionsSync
         self.enableAlarmActionsAsyncOverride = enableAlarmActionsAsync
@@ -141,6 +157,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.listMetricsSyncOverride = listMetricsSync
         self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
         self.listTagsForResourceSyncOverride = listTagsForResourceSync
+        self.putAnomalyDetectorAsyncOverride = putAnomalyDetectorAsync
+        self.putAnomalyDetectorSyncOverride = putAnomalyDetectorSync
         self.putDashboardAsyncOverride = putDashboardAsync
         self.putDashboardSyncOverride = putDashboardSync
         self.putMetricAlarmAsyncOverride = putMetricAlarmAsync
@@ -184,6 +202,43 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             return try deleteAlarmsSyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the DeleteAnomalyDetector operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteAnomalyDetectorInput object being passed to this operation.
+         - completion: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object or an error will be passed to this 
+           callback when the operation is complete. The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func deleteAnomalyDetectorAsync(input: CloudWatchModel.DeleteAnomalyDetectorInput, completion: @escaping (HTTPResult<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector>) -> ()) throws {
+        if let deleteAnomalyDetectorAsyncOverride = deleteAnomalyDetectorAsyncOverride {
+            return try deleteAnomalyDetectorAsyncOverride(input, completion)
+        }
+
+        let result = DeleteAnomalyDetectorOutputForDeleteAnomalyDetector.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DeleteAnomalyDetector operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteAnomalyDetectorInput object being passed to this operation.
+     - Returns: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func deleteAnomalyDetectorSync(input: CloudWatchModel.DeleteAnomalyDetectorInput) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
+        if let deleteAnomalyDetectorSyncOverride = deleteAnomalyDetectorSyncOverride {
+            return try deleteAnomalyDetectorSyncOverride(input)
+        }
+
+        return DeleteAnomalyDetectorOutputForDeleteAnomalyDetector.__default
     }
 
     /**
@@ -330,6 +385,43 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         }
 
         return DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric.__default
+    }
+
+    /**
+     Invokes the DescribeAnomalyDetectors operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAnomalyDetectorsInput object being passed to this operation.
+         - completion: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidNextToken, invalidParameterValue.
+     */
+    public func describeAnomalyDetectorsAsync(input: CloudWatchModel.DescribeAnomalyDetectorsInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors>) -> ()) throws {
+        if let describeAnomalyDetectorsAsyncOverride = describeAnomalyDetectorsAsyncOverride {
+            return try describeAnomalyDetectorsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the DescribeAnomalyDetectors operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAnomalyDetectorsInput object being passed to this operation.
+     - Returns: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidNextToken, invalidParameterValue.
+     */
+    public func describeAnomalyDetectorsSync(input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
+        if let describeAnomalyDetectorsSyncOverride = describeAnomalyDetectorsSyncOverride {
+            return try describeAnomalyDetectorsSyncOverride(input)
+        }
+
+        return DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors.__default
     }
 
     /**
@@ -645,6 +737,43 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         }
 
         return ListTagsForResourceOutputForListTagsForResource.__default
+    }
+
+    /**
+     Invokes the PutAnomalyDetector operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutAnomalyDetectorInput object being passed to this operation.
+         - completion: The PutAnomalyDetectorOutputForPutAnomalyDetector object or an error will be passed to this 
+           callback when the operation is complete. The PutAnomalyDetectorOutputForPutAnomalyDetector
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putAnomalyDetectorAsync(input: CloudWatchModel.PutAnomalyDetectorInput, completion: @escaping (HTTPResult<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector>) -> ()) throws {
+        if let putAnomalyDetectorAsyncOverride = putAnomalyDetectorAsyncOverride {
+            return try putAnomalyDetectorAsyncOverride(input, completion)
+        }
+
+        let result = PutAnomalyDetectorOutputForPutAnomalyDetector.__default
+        
+        completion(.response(result))
+    }
+
+    /**
+     Invokes the PutAnomalyDetector operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutAnomalyDetectorInput object being passed to this operation.
+     - Returns: The PutAnomalyDetectorOutputForPutAnomalyDetector object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putAnomalyDetectorSync(input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
+        if let putAnomalyDetectorSyncOverride = putAnomalyDetectorSyncOverride {
+            return try putAnomalyDetectorSyncOverride(input)
+        }
+
+        return PutAnomalyDetectorOutputForPutAnomalyDetector.__default
     }
 
     /**

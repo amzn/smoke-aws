@@ -26,10 +26,12 @@ import Foundation
  */
 public enum CloudWatchModelOperations: String {
     case deleteAlarms = "DeleteAlarms"
+    case deleteAnomalyDetector = "DeleteAnomalyDetector"
     case deleteDashboards = "DeleteDashboards"
     case describeAlarmHistory = "DescribeAlarmHistory"
     case describeAlarms = "DescribeAlarms"
     case describeAlarmsForMetric = "DescribeAlarmsForMetric"
+    case describeAnomalyDetectors = "DescribeAnomalyDetectors"
     case disableAlarmActions = "DisableAlarmActions"
     case enableAlarmActions = "EnableAlarmActions"
     case getDashboard = "GetDashboard"
@@ -39,6 +41,7 @@ public enum CloudWatchModelOperations: String {
     case listDashboards = "ListDashboards"
     case listMetrics = "ListMetrics"
     case listTagsForResource = "ListTagsForResource"
+    case putAnomalyDetector = "PutAnomalyDetector"
     case putDashboard = "PutDashboard"
     case putMetricAlarm = "PutMetricAlarm"
     case putMetricData = "PutMetricData"
@@ -50,6 +53,8 @@ public enum CloudWatchModelOperations: String {
         switch self {
         case .deleteAlarms:
             return "/"
+        case .deleteAnomalyDetector:
+            return "/"
         case .deleteDashboards:
             return "/"
         case .describeAlarmHistory:
@@ -57,6 +62,8 @@ public enum CloudWatchModelOperations: String {
         case .describeAlarms:
             return "/"
         case .describeAlarmsForMetric:
+            return "/"
+        case .describeAnomalyDetectors:
             return "/"
         case .disableAlarmActions:
             return "/"
@@ -75,6 +82,8 @@ public enum CloudWatchModelOperations: String {
         case .listMetrics:
             return "/"
         case .listTagsForResource:
+            return "/"
+        case .putAnomalyDetector:
             return "/"
         case .putDashboard:
             return "/"

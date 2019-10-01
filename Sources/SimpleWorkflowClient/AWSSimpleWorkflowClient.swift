@@ -1027,6 +1027,64 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     }
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+         - completion: The ListTagsForResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    public func listTagsForResourceAsync(input: SimpleWorkflowModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.ListTagsForResourceOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.listTagsForResource.rawValue,
+                    target: target)
+
+        let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    public func listTagsForResourceSync(input: SimpleWorkflowModel.ListTagsForResourceInput) throws -> SimpleWorkflowModel.ListTagsForResourceOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.listTagsForResource.rawValue,
+                    target: target)
+
+        let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ListWorkflowTypes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1320,7 +1378,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RegisterDomainInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted.
+           The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     public func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1347,7 +1405,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
 
      - Parameters:
          - input: The validated RegisterDomainInput object being passed to this operation.
-     - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted.
+     - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     public func registerDomainSync(input: SimpleWorkflowModel.RegisterDomainInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1812,6 +1870,61 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     }
 
     /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
+     */
+    public func tagResourceAsync(input: SimpleWorkflowModel.TagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.tagResource.rawValue,
+                    target: target)
+
+        let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Throws: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
+     */
+    public func tagResourceSync(input: SimpleWorkflowModel.TagResourceInput) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.tagResource.rawValue,
+                    target: target)
+
+        let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
+
+        try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the TerminateWorkflowExecution operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1856,6 +1969,226 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     target: target)
 
         let requestInput = TerminateWorkflowExecutionOperationHTTPRequestInput(encodable: input)
+
+        try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UndeprecateActivityType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateActivityTypeInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    public func undeprecateActivityTypeAsync(input: SimpleWorkflowModel.UndeprecateActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.undeprecateActivityType.rawValue,
+                    target: target)
+
+        let requestInput = UndeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UndeprecateActivityType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateActivityTypeInput object being passed to this operation.
+     - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    public func undeprecateActivityTypeSync(input: SimpleWorkflowModel.UndeprecateActivityTypeInput) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.undeprecateActivityType.rawValue,
+                    target: target)
+
+        let requestInput = UndeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
+
+        try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UndeprecateDomain operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateDomainInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: domainAlreadyExists, operationNotPermitted, unknownResource.
+     */
+    public func undeprecateDomainAsync(input: SimpleWorkflowModel.UndeprecateDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.undeprecateDomain.rawValue,
+                    target: target)
+
+        let requestInput = UndeprecateDomainOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UndeprecateDomain operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateDomainInput object being passed to this operation.
+     - Throws: domainAlreadyExists, operationNotPermitted, unknownResource.
+     */
+    public func undeprecateDomainSync(input: SimpleWorkflowModel.UndeprecateDomainInput) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.undeprecateDomain.rawValue,
+                    target: target)
+
+        let requestInput = UndeprecateDomainOperationHTTPRequestInput(encodable: input)
+
+        try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UndeprecateWorkflowType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateWorkflowTypeInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    public func undeprecateWorkflowTypeAsync(input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.undeprecateWorkflowType.rawValue,
+                    target: target)
+
+        let requestInput = UndeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UndeprecateWorkflowType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateWorkflowTypeInput object being passed to this operation.
+     - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    public func undeprecateWorkflowTypeSync(input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.undeprecateWorkflowType.rawValue,
+                    target: target)
+
+        let requestInput = UndeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
+
+        try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    public func untagResourceAsync(input: SimpleWorkflowModel.UntagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.untagResource.rawValue,
+                    target: target)
+
+        let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Throws: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    public func untagResourceSync(input: SimpleWorkflowModel.UntagResourceInput) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: SimpleWorkflowModelOperations.untagResource.rawValue,
+                    target: target)
+
+        let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
