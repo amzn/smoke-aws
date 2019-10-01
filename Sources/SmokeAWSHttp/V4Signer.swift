@@ -59,7 +59,7 @@ struct V4Signer {
         ]
         
         url.query?.components(separatedBy: "&").forEach {
-            var q = $0.components(separatedBy: "=")
+            let q = $0.components(separatedBy: "=")
             if q.count == 2 {
                 queries.append(URLQueryItem(name: q[0], value: q[1]))
             } else {

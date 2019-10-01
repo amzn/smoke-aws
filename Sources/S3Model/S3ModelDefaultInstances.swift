@@ -25,7 +25,7 @@ public extension AbortIncompleteMultipartUpload {
     /**
      Default instance of the AbortIncompleteMultipartUpload structure.
      */
-    public static let __default: S3Model.AbortIncompleteMultipartUpload = {
+    static let __default: S3Model.AbortIncompleteMultipartUpload = {
         let defaultInstance = S3Model.AbortIncompleteMultipartUpload(
             daysAfterInitiation: nil)
 
@@ -37,7 +37,7 @@ public extension AbortMultipartUploadOutput {
     /**
      Default instance of the AbortMultipartUploadOutput structure.
      */
-    public static let __default: S3Model.AbortMultipartUploadOutput = {
+    static let __default: S3Model.AbortMultipartUploadOutput = {
         let defaultInstance = S3Model.AbortMultipartUploadOutput(
             requestCharged: nil)
 
@@ -49,7 +49,7 @@ public extension AbortMultipartUploadRequest {
     /**
      Default instance of the AbortMultipartUploadRequest structure.
      */
-    public static let __default: S3Model.AbortMultipartUploadRequest = {
+    static let __default: S3Model.AbortMultipartUploadRequest = {
         let defaultInstance = S3Model.AbortMultipartUploadRequest(
             bucket: "value",
             key: "0",
@@ -64,7 +64,7 @@ public extension AccelerateConfiguration {
     /**
      Default instance of the AccelerateConfiguration structure.
      */
-    public static let __default: S3Model.AccelerateConfiguration = {
+    static let __default: S3Model.AccelerateConfiguration = {
         let defaultInstance = S3Model.AccelerateConfiguration(
             status: nil)
 
@@ -76,7 +76,7 @@ public extension AccessControlPolicy {
     /**
      Default instance of the AccessControlPolicy structure.
      */
-    public static let __default: S3Model.AccessControlPolicy = {
+    static let __default: S3Model.AccessControlPolicy = {
         let defaultInstance = S3Model.AccessControlPolicy(
             grants: nil,
             owner: nil)
@@ -89,7 +89,7 @@ public extension AccessControlTranslation {
     /**
      Default instance of the AccessControlTranslation structure.
      */
-    public static let __default: S3Model.AccessControlTranslation = {
+    static let __default: S3Model.AccessControlTranslation = {
         let defaultInstance = S3Model.AccessControlTranslation(
             owner: .__default)
 
@@ -101,7 +101,7 @@ public extension AnalyticsAndOperator {
     /**
      Default instance of the AnalyticsAndOperator structure.
      */
-    public static let __default: S3Model.AnalyticsAndOperator = {
+    static let __default: S3Model.AnalyticsAndOperator = {
         let defaultInstance = S3Model.AnalyticsAndOperator(
             prefix: nil,
             tags: nil)
@@ -114,7 +114,7 @@ public extension AnalyticsConfiguration {
     /**
      Default instance of the AnalyticsConfiguration structure.
      */
-    public static let __default: S3Model.AnalyticsConfiguration = {
+    static let __default: S3Model.AnalyticsConfiguration = {
         let defaultInstance = S3Model.AnalyticsConfiguration(
             filter: nil,
             id: "value",
@@ -128,7 +128,7 @@ public extension AnalyticsExportDestination {
     /**
      Default instance of the AnalyticsExportDestination structure.
      */
-    public static let __default: S3Model.AnalyticsExportDestination = {
+    static let __default: S3Model.AnalyticsExportDestination = {
         let defaultInstance = S3Model.AnalyticsExportDestination(
             s3BucketDestination: AnalyticsS3BucketDestination.__default)
 
@@ -140,7 +140,7 @@ public extension AnalyticsFilter {
     /**
      Default instance of the AnalyticsFilter structure.
      */
-    public static let __default: S3Model.AnalyticsFilter = {
+    static let __default: S3Model.AnalyticsFilter = {
         let defaultInstance = S3Model.AnalyticsFilter(
             and: nil,
             prefix: nil,
@@ -154,7 +154,7 @@ public extension AnalyticsS3BucketDestination {
     /**
      Default instance of the AnalyticsS3BucketDestination structure.
      */
-    public static let __default: S3Model.AnalyticsS3BucketDestination = {
+    static let __default: S3Model.AnalyticsS3BucketDestination = {
         let defaultInstance = S3Model.AnalyticsS3BucketDestination(
             bucket: "value",
             bucketAccountId: nil,
@@ -169,7 +169,7 @@ public extension Bucket {
     /**
      Default instance of the Bucket structure.
      */
-    public static let __default: S3Model.Bucket = {
+    static let __default: S3Model.Bucket = {
         let defaultInstance = S3Model.Bucket(
             creationDate: nil,
             name: nil)
@@ -182,7 +182,7 @@ public extension BucketAlreadyExists {
     /**
      Default instance of the BucketAlreadyExists structure.
      */
-    public static let __default: S3Model.BucketAlreadyExists = {
+    static let __default: S3Model.BucketAlreadyExists = {
         let defaultInstance = S3Model.BucketAlreadyExists()
 
         return defaultInstance
@@ -193,7 +193,7 @@ public extension BucketAlreadyOwnedByYou {
     /**
      Default instance of the BucketAlreadyOwnedByYou structure.
      */
-    public static let __default: S3Model.BucketAlreadyOwnedByYou = {
+    static let __default: S3Model.BucketAlreadyOwnedByYou = {
         let defaultInstance = S3Model.BucketAlreadyOwnedByYou()
 
         return defaultInstance
@@ -204,7 +204,7 @@ public extension BucketLifecycleConfiguration {
     /**
      Default instance of the BucketLifecycleConfiguration structure.
      */
-    public static let __default: S3Model.BucketLifecycleConfiguration = {
+    static let __default: S3Model.BucketLifecycleConfiguration = {
         let defaultInstance = S3Model.BucketLifecycleConfiguration(
             rules: [])
 
@@ -216,7 +216,7 @@ public extension BucketLoggingStatus {
     /**
      Default instance of the BucketLoggingStatus structure.
      */
-    public static let __default: S3Model.BucketLoggingStatus = {
+    static let __default: S3Model.BucketLoggingStatus = {
         let defaultInstance = S3Model.BucketLoggingStatus(
             loggingEnabled: nil)
 
@@ -228,7 +228,7 @@ public extension CORSConfiguration {
     /**
      Default instance of the CORSConfiguration structure.
      */
-    public static let __default: S3Model.CORSConfiguration = {
+    static let __default: S3Model.CORSConfiguration = {
         let defaultInstance = S3Model.CORSConfiguration(
             cORSRules: [])
 
@@ -240,7 +240,7 @@ public extension CORSRule {
     /**
      Default instance of the CORSRule structure.
      */
-    public static let __default: S3Model.CORSRule = {
+    static let __default: S3Model.CORSRule = {
         let defaultInstance = S3Model.CORSRule(
             allowedHeaders: nil,
             allowedMethods: [],
@@ -256,7 +256,7 @@ public extension CSVInput {
     /**
      Default instance of the CSVInput structure.
      */
-    public static let __default: S3Model.CSVInput = {
+    static let __default: S3Model.CSVInput = {
         let defaultInstance = S3Model.CSVInput(
             allowQuotedRecordDelimiter: nil,
             comments: nil,
@@ -274,7 +274,7 @@ public extension CSVOutput {
     /**
      Default instance of the CSVOutput structure.
      */
-    public static let __default: S3Model.CSVOutput = {
+    static let __default: S3Model.CSVOutput = {
         let defaultInstance = S3Model.CSVOutput(
             fieldDelimiter: nil,
             quoteCharacter: nil,
@@ -290,7 +290,7 @@ public extension CloudFunctionConfiguration {
     /**
      Default instance of the CloudFunctionConfiguration structure.
      */
-    public static let __default: S3Model.CloudFunctionConfiguration = {
+    static let __default: S3Model.CloudFunctionConfiguration = {
         let defaultInstance = S3Model.CloudFunctionConfiguration(
             cloudFunction: nil,
             events: nil,
@@ -305,7 +305,7 @@ public extension CommonPrefix {
     /**
      Default instance of the CommonPrefix structure.
      */
-    public static let __default: S3Model.CommonPrefix = {
+    static let __default: S3Model.CommonPrefix = {
         let defaultInstance = S3Model.CommonPrefix(
             prefix: nil)
 
@@ -317,7 +317,7 @@ public extension CompleteMultipartUploadOutput {
     /**
      Default instance of the CompleteMultipartUploadOutput structure.
      */
-    public static let __default: S3Model.CompleteMultipartUploadOutput = {
+    static let __default: S3Model.CompleteMultipartUploadOutput = {
         let defaultInstance = S3Model.CompleteMultipartUploadOutput(
             bucket: nil,
             eTag: nil,
@@ -337,7 +337,7 @@ public extension CompleteMultipartUploadRequest {
     /**
      Default instance of the CompleteMultipartUploadRequest structure.
      */
-    public static let __default: S3Model.CompleteMultipartUploadRequest = {
+    static let __default: S3Model.CompleteMultipartUploadRequest = {
         let defaultInstance = S3Model.CompleteMultipartUploadRequest(
             bucket: "value",
             key: "0",
@@ -353,7 +353,7 @@ public extension CompletedMultipartUpload {
     /**
      Default instance of the CompletedMultipartUpload structure.
      */
-    public static let __default: S3Model.CompletedMultipartUpload = {
+    static let __default: S3Model.CompletedMultipartUpload = {
         let defaultInstance = S3Model.CompletedMultipartUpload(
             parts: nil)
 
@@ -365,7 +365,7 @@ public extension CompletedPart {
     /**
      Default instance of the CompletedPart structure.
      */
-    public static let __default: S3Model.CompletedPart = {
+    static let __default: S3Model.CompletedPart = {
         let defaultInstance = S3Model.CompletedPart(
             eTag: nil,
             partNumber: nil)
@@ -378,7 +378,7 @@ public extension Condition {
     /**
      Default instance of the Condition structure.
      */
-    public static let __default: S3Model.Condition = {
+    static let __default: S3Model.Condition = {
         let defaultInstance = S3Model.Condition(
             httpErrorCodeReturnedEquals: nil,
             keyPrefixEquals: nil)
@@ -391,7 +391,7 @@ public extension ContinuationEvent {
     /**
      Default instance of the ContinuationEvent structure.
      */
-    public static let __default: S3Model.ContinuationEvent = {
+    static let __default: S3Model.ContinuationEvent = {
         let defaultInstance = S3Model.ContinuationEvent()
 
         return defaultInstance
@@ -402,7 +402,7 @@ public extension CopyObjectOutput {
     /**
      Default instance of the CopyObjectOutput structure.
      */
-    public static let __default: S3Model.CopyObjectOutput = {
+    static let __default: S3Model.CopyObjectOutput = {
         let defaultInstance = S3Model.CopyObjectOutput(
             copyObjectResult: nil,
             copySourceVersionId: nil,
@@ -422,7 +422,7 @@ public extension CopyObjectRequest {
     /**
      Default instance of the CopyObjectRequest structure.
      */
-    public static let __default: S3Model.CopyObjectRequest = {
+    static let __default: S3Model.CopyObjectRequest = {
         let defaultInstance = S3Model.CopyObjectRequest(
             aCL: nil,
             bucket: "value",
@@ -469,7 +469,7 @@ public extension CopyObjectResult {
     /**
      Default instance of the CopyObjectResult structure.
      */
-    public static let __default: S3Model.CopyObjectResult = {
+    static let __default: S3Model.CopyObjectResult = {
         let defaultInstance = S3Model.CopyObjectResult(
             eTag: nil,
             lastModified: nil)
@@ -482,7 +482,7 @@ public extension CopyPartResult {
     /**
      Default instance of the CopyPartResult structure.
      */
-    public static let __default: S3Model.CopyPartResult = {
+    static let __default: S3Model.CopyPartResult = {
         let defaultInstance = S3Model.CopyPartResult(
             eTag: nil,
             lastModified: nil)
@@ -495,7 +495,7 @@ public extension CreateBucketConfiguration {
     /**
      Default instance of the CreateBucketConfiguration structure.
      */
-    public static let __default: S3Model.CreateBucketConfiguration = {
+    static let __default: S3Model.CreateBucketConfiguration = {
         let defaultInstance = S3Model.CreateBucketConfiguration(
             locationConstraint: nil)
 
@@ -507,7 +507,7 @@ public extension CreateBucketOutput {
     /**
      Default instance of the CreateBucketOutput structure.
      */
-    public static let __default: S3Model.CreateBucketOutput = {
+    static let __default: S3Model.CreateBucketOutput = {
         let defaultInstance = S3Model.CreateBucketOutput(
             location: nil)
 
@@ -519,7 +519,7 @@ public extension CreateBucketRequest {
     /**
      Default instance of the CreateBucketRequest structure.
      */
-    public static let __default: S3Model.CreateBucketRequest = {
+    static let __default: S3Model.CreateBucketRequest = {
         let defaultInstance = S3Model.CreateBucketRequest(
             aCL: nil,
             bucket: "value",
@@ -539,7 +539,7 @@ public extension CreateMultipartUploadOutput {
     /**
      Default instance of the CreateMultipartUploadOutput structure.
      */
-    public static let __default: S3Model.CreateMultipartUploadOutput = {
+    static let __default: S3Model.CreateMultipartUploadOutput = {
         let defaultInstance = S3Model.CreateMultipartUploadOutput(
             abortDate: nil,
             abortRuleId: nil,
@@ -560,7 +560,7 @@ public extension CreateMultipartUploadRequest {
     /**
      Default instance of the CreateMultipartUploadRequest structure.
      */
-    public static let __default: S3Model.CreateMultipartUploadRequest = {
+    static let __default: S3Model.CreateMultipartUploadRequest = {
         let defaultInstance = S3Model.CreateMultipartUploadRequest(
             aCL: nil,
             bucket: "value",
@@ -597,7 +597,7 @@ public extension DefaultRetention {
     /**
      Default instance of the DefaultRetention structure.
      */
-    public static let __default: S3Model.DefaultRetention = {
+    static let __default: S3Model.DefaultRetention = {
         let defaultInstance = S3Model.DefaultRetention(
             days: nil,
             mode: nil,
@@ -611,7 +611,7 @@ public extension Delete {
     /**
      Default instance of the Delete structure.
      */
-    public static let __default: S3Model.Delete = {
+    static let __default: S3Model.Delete = {
         let defaultInstance = S3Model.Delete(
             objects: [],
             quiet: nil)
@@ -624,7 +624,7 @@ public extension DeleteBucketAnalyticsConfigurationRequest {
     /**
      Default instance of the DeleteBucketAnalyticsConfigurationRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketAnalyticsConfigurationRequest = {
+    static let __default: S3Model.DeleteBucketAnalyticsConfigurationRequest = {
         let defaultInstance = S3Model.DeleteBucketAnalyticsConfigurationRequest(
             bucket: "value",
             id: "value")
@@ -637,7 +637,7 @@ public extension DeleteBucketCorsRequest {
     /**
      Default instance of the DeleteBucketCorsRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketCorsRequest = {
+    static let __default: S3Model.DeleteBucketCorsRequest = {
         let defaultInstance = S3Model.DeleteBucketCorsRequest(
             bucket: "value")
 
@@ -649,7 +649,7 @@ public extension DeleteBucketEncryptionRequest {
     /**
      Default instance of the DeleteBucketEncryptionRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketEncryptionRequest = {
+    static let __default: S3Model.DeleteBucketEncryptionRequest = {
         let defaultInstance = S3Model.DeleteBucketEncryptionRequest(
             bucket: "value")
 
@@ -661,7 +661,7 @@ public extension DeleteBucketInventoryConfigurationRequest {
     /**
      Default instance of the DeleteBucketInventoryConfigurationRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketInventoryConfigurationRequest = {
+    static let __default: S3Model.DeleteBucketInventoryConfigurationRequest = {
         let defaultInstance = S3Model.DeleteBucketInventoryConfigurationRequest(
             bucket: "value",
             id: "value")
@@ -674,7 +674,7 @@ public extension DeleteBucketLifecycleRequest {
     /**
      Default instance of the DeleteBucketLifecycleRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketLifecycleRequest = {
+    static let __default: S3Model.DeleteBucketLifecycleRequest = {
         let defaultInstance = S3Model.DeleteBucketLifecycleRequest(
             bucket: "value")
 
@@ -686,7 +686,7 @@ public extension DeleteBucketMetricsConfigurationRequest {
     /**
      Default instance of the DeleteBucketMetricsConfigurationRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketMetricsConfigurationRequest = {
+    static let __default: S3Model.DeleteBucketMetricsConfigurationRequest = {
         let defaultInstance = S3Model.DeleteBucketMetricsConfigurationRequest(
             bucket: "value",
             id: "value")
@@ -699,7 +699,7 @@ public extension DeleteBucketPolicyRequest {
     /**
      Default instance of the DeleteBucketPolicyRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketPolicyRequest = {
+    static let __default: S3Model.DeleteBucketPolicyRequest = {
         let defaultInstance = S3Model.DeleteBucketPolicyRequest(
             bucket: "value")
 
@@ -711,7 +711,7 @@ public extension DeleteBucketReplicationRequest {
     /**
      Default instance of the DeleteBucketReplicationRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketReplicationRequest = {
+    static let __default: S3Model.DeleteBucketReplicationRequest = {
         let defaultInstance = S3Model.DeleteBucketReplicationRequest(
             bucket: "value")
 
@@ -723,7 +723,7 @@ public extension DeleteBucketRequest {
     /**
      Default instance of the DeleteBucketRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketRequest = {
+    static let __default: S3Model.DeleteBucketRequest = {
         let defaultInstance = S3Model.DeleteBucketRequest(
             bucket: "value")
 
@@ -735,7 +735,7 @@ public extension DeleteBucketTaggingRequest {
     /**
      Default instance of the DeleteBucketTaggingRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketTaggingRequest = {
+    static let __default: S3Model.DeleteBucketTaggingRequest = {
         let defaultInstance = S3Model.DeleteBucketTaggingRequest(
             bucket: "value")
 
@@ -747,7 +747,7 @@ public extension DeleteBucketWebsiteRequest {
     /**
      Default instance of the DeleteBucketWebsiteRequest structure.
      */
-    public static let __default: S3Model.DeleteBucketWebsiteRequest = {
+    static let __default: S3Model.DeleteBucketWebsiteRequest = {
         let defaultInstance = S3Model.DeleteBucketWebsiteRequest(
             bucket: "value")
 
@@ -759,7 +759,7 @@ public extension DeleteMarkerEntry {
     /**
      Default instance of the DeleteMarkerEntry structure.
      */
-    public static let __default: S3Model.DeleteMarkerEntry = {
+    static let __default: S3Model.DeleteMarkerEntry = {
         let defaultInstance = S3Model.DeleteMarkerEntry(
             isLatest: nil,
             key: nil,
@@ -775,7 +775,7 @@ public extension DeleteMarkerReplication {
     /**
      Default instance of the DeleteMarkerReplication structure.
      */
-    public static let __default: S3Model.DeleteMarkerReplication = {
+    static let __default: S3Model.DeleteMarkerReplication = {
         let defaultInstance = S3Model.DeleteMarkerReplication(
             status: nil)
 
@@ -787,7 +787,7 @@ public extension DeleteObjectOutput {
     /**
      Default instance of the DeleteObjectOutput structure.
      */
-    public static let __default: S3Model.DeleteObjectOutput = {
+    static let __default: S3Model.DeleteObjectOutput = {
         let defaultInstance = S3Model.DeleteObjectOutput(
             deleteMarker: nil,
             requestCharged: nil,
@@ -801,7 +801,7 @@ public extension DeleteObjectRequest {
     /**
      Default instance of the DeleteObjectRequest structure.
      */
-    public static let __default: S3Model.DeleteObjectRequest = {
+    static let __default: S3Model.DeleteObjectRequest = {
         let defaultInstance = S3Model.DeleteObjectRequest(
             bucket: "value",
             bypassGovernanceRetention: nil,
@@ -818,7 +818,7 @@ public extension DeleteObjectTaggingOutput {
     /**
      Default instance of the DeleteObjectTaggingOutput structure.
      */
-    public static let __default: S3Model.DeleteObjectTaggingOutput = {
+    static let __default: S3Model.DeleteObjectTaggingOutput = {
         let defaultInstance = S3Model.DeleteObjectTaggingOutput(
             versionId: nil)
 
@@ -830,7 +830,7 @@ public extension DeleteObjectTaggingRequest {
     /**
      Default instance of the DeleteObjectTaggingRequest structure.
      */
-    public static let __default: S3Model.DeleteObjectTaggingRequest = {
+    static let __default: S3Model.DeleteObjectTaggingRequest = {
         let defaultInstance = S3Model.DeleteObjectTaggingRequest(
             bucket: "value",
             key: "0",
@@ -844,7 +844,7 @@ public extension DeleteObjectsOutput {
     /**
      Default instance of the DeleteObjectsOutput structure.
      */
-    public static let __default: S3Model.DeleteObjectsOutput = {
+    static let __default: S3Model.DeleteObjectsOutput = {
         let defaultInstance = S3Model.DeleteObjectsOutput(
             deleted: nil,
             errors: nil,
@@ -858,7 +858,7 @@ public extension DeleteObjectsRequest {
     /**
      Default instance of the DeleteObjectsRequest structure.
      */
-    public static let __default: S3Model.DeleteObjectsRequest = {
+    static let __default: S3Model.DeleteObjectsRequest = {
         let defaultInstance = S3Model.DeleteObjectsRequest(
             bucket: "value",
             bypassGovernanceRetention: nil,
@@ -874,7 +874,7 @@ public extension DeletePublicAccessBlockRequest {
     /**
      Default instance of the DeletePublicAccessBlockRequest structure.
      */
-    public static let __default: S3Model.DeletePublicAccessBlockRequest = {
+    static let __default: S3Model.DeletePublicAccessBlockRequest = {
         let defaultInstance = S3Model.DeletePublicAccessBlockRequest(
             bucket: "value")
 
@@ -886,7 +886,7 @@ public extension DeletedObject {
     /**
      Default instance of the DeletedObject structure.
      */
-    public static let __default: S3Model.DeletedObject = {
+    static let __default: S3Model.DeletedObject = {
         let defaultInstance = S3Model.DeletedObject(
             deleteMarker: nil,
             deleteMarkerVersionId: nil,
@@ -901,7 +901,7 @@ public extension Destination {
     /**
      Default instance of the Destination structure.
      */
-    public static let __default: S3Model.Destination = {
+    static let __default: S3Model.Destination = {
         let defaultInstance = S3Model.Destination(
             accessControlTranslation: nil,
             account: nil,
@@ -917,7 +917,7 @@ public extension Encryption {
     /**
      Default instance of the Encryption structure.
      */
-    public static let __default: S3Model.Encryption = {
+    static let __default: S3Model.Encryption = {
         let defaultInstance = S3Model.Encryption(
             encryptionType: .__default,
             kMSContext: nil,
@@ -931,7 +931,7 @@ public extension EncryptionConfiguration {
     /**
      Default instance of the EncryptionConfiguration structure.
      */
-    public static let __default: S3Model.EncryptionConfiguration = {
+    static let __default: S3Model.EncryptionConfiguration = {
         let defaultInstance = S3Model.EncryptionConfiguration(
             replicaKmsKeyID: nil)
 
@@ -943,7 +943,7 @@ public extension EndEvent {
     /**
      Default instance of the EndEvent structure.
      */
-    public static let __default: S3Model.EndEvent = {
+    static let __default: S3Model.EndEvent = {
         let defaultInstance = S3Model.EndEvent()
 
         return defaultInstance
@@ -954,7 +954,7 @@ public extension Error {
     /**
      Default instance of the Error structure.
      */
-    public static let __default: S3Model.Error = {
+    static let __default: S3Model.Error = {
         let defaultInstance = S3Model.Error(
             code: nil,
             key: nil,
@@ -969,7 +969,7 @@ public extension ErrorDocument {
     /**
      Default instance of the ErrorDocument structure.
      */
-    public static let __default: S3Model.ErrorDocument = {
+    static let __default: S3Model.ErrorDocument = {
         let defaultInstance = S3Model.ErrorDocument(
             key: "0")
 
@@ -981,7 +981,7 @@ public extension FilterRule {
     /**
      Default instance of the FilterRule structure.
      */
-    public static let __default: S3Model.FilterRule = {
+    static let __default: S3Model.FilterRule = {
         let defaultInstance = S3Model.FilterRule(
             name: nil,
             value: nil)
@@ -994,7 +994,7 @@ public extension GetBucketAccelerateConfigurationOutput {
     /**
      Default instance of the GetBucketAccelerateConfigurationOutput structure.
      */
-    public static let __default: S3Model.GetBucketAccelerateConfigurationOutput = {
+    static let __default: S3Model.GetBucketAccelerateConfigurationOutput = {
         let defaultInstance = S3Model.GetBucketAccelerateConfigurationOutput(
             status: nil)
 
@@ -1006,7 +1006,7 @@ public extension GetBucketAccelerateConfigurationRequest {
     /**
      Default instance of the GetBucketAccelerateConfigurationRequest structure.
      */
-    public static let __default: S3Model.GetBucketAccelerateConfigurationRequest = {
+    static let __default: S3Model.GetBucketAccelerateConfigurationRequest = {
         let defaultInstance = S3Model.GetBucketAccelerateConfigurationRequest(
             bucket: "value")
 
@@ -1018,7 +1018,7 @@ public extension GetBucketAclOutput {
     /**
      Default instance of the GetBucketAclOutput structure.
      */
-    public static let __default: S3Model.GetBucketAclOutput = {
+    static let __default: S3Model.GetBucketAclOutput = {
         let defaultInstance = S3Model.GetBucketAclOutput(
             grants: nil,
             owner: nil)
@@ -1031,7 +1031,7 @@ public extension GetBucketAclRequest {
     /**
      Default instance of the GetBucketAclRequest structure.
      */
-    public static let __default: S3Model.GetBucketAclRequest = {
+    static let __default: S3Model.GetBucketAclRequest = {
         let defaultInstance = S3Model.GetBucketAclRequest(
             bucket: "value")
 
@@ -1043,7 +1043,7 @@ public extension GetBucketAnalyticsConfigurationOutput {
     /**
      Default instance of the GetBucketAnalyticsConfigurationOutput structure.
      */
-    public static let __default: S3Model.GetBucketAnalyticsConfigurationOutput = {
+    static let __default: S3Model.GetBucketAnalyticsConfigurationOutput = {
         let defaultInstance = S3Model.GetBucketAnalyticsConfigurationOutput(
             analyticsConfiguration: nil)
 
@@ -1055,7 +1055,7 @@ public extension GetBucketAnalyticsConfigurationRequest {
     /**
      Default instance of the GetBucketAnalyticsConfigurationRequest structure.
      */
-    public static let __default: S3Model.GetBucketAnalyticsConfigurationRequest = {
+    static let __default: S3Model.GetBucketAnalyticsConfigurationRequest = {
         let defaultInstance = S3Model.GetBucketAnalyticsConfigurationRequest(
             bucket: "value",
             id: "value")
@@ -1068,7 +1068,7 @@ public extension GetBucketCorsOutput {
     /**
      Default instance of the GetBucketCorsOutput structure.
      */
-    public static let __default: S3Model.GetBucketCorsOutput = {
+    static let __default: S3Model.GetBucketCorsOutput = {
         let defaultInstance = S3Model.GetBucketCorsOutput(
             cORSRules: nil)
 
@@ -1080,7 +1080,7 @@ public extension GetBucketCorsRequest {
     /**
      Default instance of the GetBucketCorsRequest structure.
      */
-    public static let __default: S3Model.GetBucketCorsRequest = {
+    static let __default: S3Model.GetBucketCorsRequest = {
         let defaultInstance = S3Model.GetBucketCorsRequest(
             bucket: "value")
 
@@ -1092,7 +1092,7 @@ public extension GetBucketEncryptionOutput {
     /**
      Default instance of the GetBucketEncryptionOutput structure.
      */
-    public static let __default: S3Model.GetBucketEncryptionOutput = {
+    static let __default: S3Model.GetBucketEncryptionOutput = {
         let defaultInstance = S3Model.GetBucketEncryptionOutput(
             serverSideEncryptionConfiguration: nil)
 
@@ -1104,7 +1104,7 @@ public extension GetBucketEncryptionRequest {
     /**
      Default instance of the GetBucketEncryptionRequest structure.
      */
-    public static let __default: S3Model.GetBucketEncryptionRequest = {
+    static let __default: S3Model.GetBucketEncryptionRequest = {
         let defaultInstance = S3Model.GetBucketEncryptionRequest(
             bucket: "value")
 
@@ -1116,7 +1116,7 @@ public extension GetBucketInventoryConfigurationOutput {
     /**
      Default instance of the GetBucketInventoryConfigurationOutput structure.
      */
-    public static let __default: S3Model.GetBucketInventoryConfigurationOutput = {
+    static let __default: S3Model.GetBucketInventoryConfigurationOutput = {
         let defaultInstance = S3Model.GetBucketInventoryConfigurationOutput(
             inventoryConfiguration: nil)
 
@@ -1128,7 +1128,7 @@ public extension GetBucketInventoryConfigurationRequest {
     /**
      Default instance of the GetBucketInventoryConfigurationRequest structure.
      */
-    public static let __default: S3Model.GetBucketInventoryConfigurationRequest = {
+    static let __default: S3Model.GetBucketInventoryConfigurationRequest = {
         let defaultInstance = S3Model.GetBucketInventoryConfigurationRequest(
             bucket: "value",
             id: "value")
@@ -1141,7 +1141,7 @@ public extension GetBucketLifecycleConfigurationOutput {
     /**
      Default instance of the GetBucketLifecycleConfigurationOutput structure.
      */
-    public static let __default: S3Model.GetBucketLifecycleConfigurationOutput = {
+    static let __default: S3Model.GetBucketLifecycleConfigurationOutput = {
         let defaultInstance = S3Model.GetBucketLifecycleConfigurationOutput(
             rules: nil)
 
@@ -1153,7 +1153,7 @@ public extension GetBucketLifecycleConfigurationRequest {
     /**
      Default instance of the GetBucketLifecycleConfigurationRequest structure.
      */
-    public static let __default: S3Model.GetBucketLifecycleConfigurationRequest = {
+    static let __default: S3Model.GetBucketLifecycleConfigurationRequest = {
         let defaultInstance = S3Model.GetBucketLifecycleConfigurationRequest(
             bucket: "value")
 
@@ -1165,7 +1165,7 @@ public extension GetBucketLifecycleOutput {
     /**
      Default instance of the GetBucketLifecycleOutput structure.
      */
-    public static let __default: S3Model.GetBucketLifecycleOutput = {
+    static let __default: S3Model.GetBucketLifecycleOutput = {
         let defaultInstance = S3Model.GetBucketLifecycleOutput(
             rules: nil)
 
@@ -1177,7 +1177,7 @@ public extension GetBucketLifecycleRequest {
     /**
      Default instance of the GetBucketLifecycleRequest structure.
      */
-    public static let __default: S3Model.GetBucketLifecycleRequest = {
+    static let __default: S3Model.GetBucketLifecycleRequest = {
         let defaultInstance = S3Model.GetBucketLifecycleRequest(
             bucket: "value")
 
@@ -1189,7 +1189,7 @@ public extension GetBucketLocationOutput {
     /**
      Default instance of the GetBucketLocationOutput structure.
      */
-    public static let __default: S3Model.GetBucketLocationOutput = {
+    static let __default: S3Model.GetBucketLocationOutput = {
         let defaultInstance = S3Model.GetBucketLocationOutput(
             locationConstraint: nil)
 
@@ -1201,7 +1201,7 @@ public extension GetBucketLocationRequest {
     /**
      Default instance of the GetBucketLocationRequest structure.
      */
-    public static let __default: S3Model.GetBucketLocationRequest = {
+    static let __default: S3Model.GetBucketLocationRequest = {
         let defaultInstance = S3Model.GetBucketLocationRequest(
             bucket: "value")
 
@@ -1213,7 +1213,7 @@ public extension GetBucketLoggingOutput {
     /**
      Default instance of the GetBucketLoggingOutput structure.
      */
-    public static let __default: S3Model.GetBucketLoggingOutput = {
+    static let __default: S3Model.GetBucketLoggingOutput = {
         let defaultInstance = S3Model.GetBucketLoggingOutput(
             loggingEnabled: nil)
 
@@ -1225,7 +1225,7 @@ public extension GetBucketLoggingRequest {
     /**
      Default instance of the GetBucketLoggingRequest structure.
      */
-    public static let __default: S3Model.GetBucketLoggingRequest = {
+    static let __default: S3Model.GetBucketLoggingRequest = {
         let defaultInstance = S3Model.GetBucketLoggingRequest(
             bucket: "value")
 
@@ -1237,7 +1237,7 @@ public extension GetBucketMetricsConfigurationOutput {
     /**
      Default instance of the GetBucketMetricsConfigurationOutput structure.
      */
-    public static let __default: S3Model.GetBucketMetricsConfigurationOutput = {
+    static let __default: S3Model.GetBucketMetricsConfigurationOutput = {
         let defaultInstance = S3Model.GetBucketMetricsConfigurationOutput(
             metricsConfiguration: nil)
 
@@ -1249,7 +1249,7 @@ public extension GetBucketMetricsConfigurationRequest {
     /**
      Default instance of the GetBucketMetricsConfigurationRequest structure.
      */
-    public static let __default: S3Model.GetBucketMetricsConfigurationRequest = {
+    static let __default: S3Model.GetBucketMetricsConfigurationRequest = {
         let defaultInstance = S3Model.GetBucketMetricsConfigurationRequest(
             bucket: "value",
             id: "value")
@@ -1262,7 +1262,7 @@ public extension GetBucketNotificationConfigurationRequest {
     /**
      Default instance of the GetBucketNotificationConfigurationRequest structure.
      */
-    public static let __default: S3Model.GetBucketNotificationConfigurationRequest = {
+    static let __default: S3Model.GetBucketNotificationConfigurationRequest = {
         let defaultInstance = S3Model.GetBucketNotificationConfigurationRequest(
             bucket: "value")
 
@@ -1274,7 +1274,7 @@ public extension GetBucketPolicyOutput {
     /**
      Default instance of the GetBucketPolicyOutput structure.
      */
-    public static let __default: S3Model.GetBucketPolicyOutput = {
+    static let __default: S3Model.GetBucketPolicyOutput = {
         let defaultInstance = S3Model.GetBucketPolicyOutput(
             policy: nil)
 
@@ -1286,7 +1286,7 @@ public extension GetBucketPolicyRequest {
     /**
      Default instance of the GetBucketPolicyRequest structure.
      */
-    public static let __default: S3Model.GetBucketPolicyRequest = {
+    static let __default: S3Model.GetBucketPolicyRequest = {
         let defaultInstance = S3Model.GetBucketPolicyRequest(
             bucket: "value")
 
@@ -1298,7 +1298,7 @@ public extension GetBucketPolicyStatusOutput {
     /**
      Default instance of the GetBucketPolicyStatusOutput structure.
      */
-    public static let __default: S3Model.GetBucketPolicyStatusOutput = {
+    static let __default: S3Model.GetBucketPolicyStatusOutput = {
         let defaultInstance = S3Model.GetBucketPolicyStatusOutput(
             policyStatus: nil)
 
@@ -1310,7 +1310,7 @@ public extension GetBucketPolicyStatusRequest {
     /**
      Default instance of the GetBucketPolicyStatusRequest structure.
      */
-    public static let __default: S3Model.GetBucketPolicyStatusRequest = {
+    static let __default: S3Model.GetBucketPolicyStatusRequest = {
         let defaultInstance = S3Model.GetBucketPolicyStatusRequest(
             bucket: "value")
 
@@ -1322,7 +1322,7 @@ public extension GetBucketReplicationOutput {
     /**
      Default instance of the GetBucketReplicationOutput structure.
      */
-    public static let __default: S3Model.GetBucketReplicationOutput = {
+    static let __default: S3Model.GetBucketReplicationOutput = {
         let defaultInstance = S3Model.GetBucketReplicationOutput(
             replicationConfiguration: nil)
 
@@ -1334,7 +1334,7 @@ public extension GetBucketReplicationRequest {
     /**
      Default instance of the GetBucketReplicationRequest structure.
      */
-    public static let __default: S3Model.GetBucketReplicationRequest = {
+    static let __default: S3Model.GetBucketReplicationRequest = {
         let defaultInstance = S3Model.GetBucketReplicationRequest(
             bucket: "value")
 
@@ -1346,7 +1346,7 @@ public extension GetBucketRequestPaymentOutput {
     /**
      Default instance of the GetBucketRequestPaymentOutput structure.
      */
-    public static let __default: S3Model.GetBucketRequestPaymentOutput = {
+    static let __default: S3Model.GetBucketRequestPaymentOutput = {
         let defaultInstance = S3Model.GetBucketRequestPaymentOutput(
             payer: nil)
 
@@ -1358,7 +1358,7 @@ public extension GetBucketRequestPaymentRequest {
     /**
      Default instance of the GetBucketRequestPaymentRequest structure.
      */
-    public static let __default: S3Model.GetBucketRequestPaymentRequest = {
+    static let __default: S3Model.GetBucketRequestPaymentRequest = {
         let defaultInstance = S3Model.GetBucketRequestPaymentRequest(
             bucket: "value")
 
@@ -1370,7 +1370,7 @@ public extension GetBucketTaggingOutput {
     /**
      Default instance of the GetBucketTaggingOutput structure.
      */
-    public static let __default: S3Model.GetBucketTaggingOutput = {
+    static let __default: S3Model.GetBucketTaggingOutput = {
         let defaultInstance = S3Model.GetBucketTaggingOutput(
             tagSet: [])
 
@@ -1382,7 +1382,7 @@ public extension GetBucketTaggingRequest {
     /**
      Default instance of the GetBucketTaggingRequest structure.
      */
-    public static let __default: S3Model.GetBucketTaggingRequest = {
+    static let __default: S3Model.GetBucketTaggingRequest = {
         let defaultInstance = S3Model.GetBucketTaggingRequest(
             bucket: "value")
 
@@ -1394,7 +1394,7 @@ public extension GetBucketVersioningOutput {
     /**
      Default instance of the GetBucketVersioningOutput structure.
      */
-    public static let __default: S3Model.GetBucketVersioningOutput = {
+    static let __default: S3Model.GetBucketVersioningOutput = {
         let defaultInstance = S3Model.GetBucketVersioningOutput(
             mFADelete: nil,
             status: nil)
@@ -1407,7 +1407,7 @@ public extension GetBucketVersioningRequest {
     /**
      Default instance of the GetBucketVersioningRequest structure.
      */
-    public static let __default: S3Model.GetBucketVersioningRequest = {
+    static let __default: S3Model.GetBucketVersioningRequest = {
         let defaultInstance = S3Model.GetBucketVersioningRequest(
             bucket: "value")
 
@@ -1419,7 +1419,7 @@ public extension GetBucketWebsiteOutput {
     /**
      Default instance of the GetBucketWebsiteOutput structure.
      */
-    public static let __default: S3Model.GetBucketWebsiteOutput = {
+    static let __default: S3Model.GetBucketWebsiteOutput = {
         let defaultInstance = S3Model.GetBucketWebsiteOutput(
             errorDocument: nil,
             indexDocument: nil,
@@ -1434,7 +1434,7 @@ public extension GetBucketWebsiteRequest {
     /**
      Default instance of the GetBucketWebsiteRequest structure.
      */
-    public static let __default: S3Model.GetBucketWebsiteRequest = {
+    static let __default: S3Model.GetBucketWebsiteRequest = {
         let defaultInstance = S3Model.GetBucketWebsiteRequest(
             bucket: "value")
 
@@ -1446,7 +1446,7 @@ public extension GetObjectAclOutput {
     /**
      Default instance of the GetObjectAclOutput structure.
      */
-    public static let __default: S3Model.GetObjectAclOutput = {
+    static let __default: S3Model.GetObjectAclOutput = {
         let defaultInstance = S3Model.GetObjectAclOutput(
             grants: nil,
             owner: nil,
@@ -1460,7 +1460,7 @@ public extension GetObjectAclRequest {
     /**
      Default instance of the GetObjectAclRequest structure.
      */
-    public static let __default: S3Model.GetObjectAclRequest = {
+    static let __default: S3Model.GetObjectAclRequest = {
         let defaultInstance = S3Model.GetObjectAclRequest(
             bucket: "value",
             key: "0",
@@ -1475,7 +1475,7 @@ public extension GetObjectLegalHoldOutput {
     /**
      Default instance of the GetObjectLegalHoldOutput structure.
      */
-    public static let __default: S3Model.GetObjectLegalHoldOutput = {
+    static let __default: S3Model.GetObjectLegalHoldOutput = {
         let defaultInstance = S3Model.GetObjectLegalHoldOutput(
             legalHold: nil)
 
@@ -1487,7 +1487,7 @@ public extension GetObjectLegalHoldRequest {
     /**
      Default instance of the GetObjectLegalHoldRequest structure.
      */
-    public static let __default: S3Model.GetObjectLegalHoldRequest = {
+    static let __default: S3Model.GetObjectLegalHoldRequest = {
         let defaultInstance = S3Model.GetObjectLegalHoldRequest(
             bucket: "value",
             key: "0",
@@ -1502,7 +1502,7 @@ public extension GetObjectLockConfigurationOutput {
     /**
      Default instance of the GetObjectLockConfigurationOutput structure.
      */
-    public static let __default: S3Model.GetObjectLockConfigurationOutput = {
+    static let __default: S3Model.GetObjectLockConfigurationOutput = {
         let defaultInstance = S3Model.GetObjectLockConfigurationOutput(
             objectLockConfiguration: nil)
 
@@ -1514,7 +1514,7 @@ public extension GetObjectLockConfigurationRequest {
     /**
      Default instance of the GetObjectLockConfigurationRequest structure.
      */
-    public static let __default: S3Model.GetObjectLockConfigurationRequest = {
+    static let __default: S3Model.GetObjectLockConfigurationRequest = {
         let defaultInstance = S3Model.GetObjectLockConfigurationRequest(
             bucket: "value")
 
@@ -1526,7 +1526,7 @@ public extension GetObjectOutput {
     /**
      Default instance of the GetObjectOutput structure.
      */
-    public static let __default: S3Model.GetObjectOutput = {
+    static let __default: S3Model.GetObjectOutput = {
         let defaultInstance = S3Model.GetObjectOutput(
             acceptRanges: nil,
             body: nil,
@@ -1568,7 +1568,7 @@ public extension GetObjectRequest {
     /**
      Default instance of the GetObjectRequest structure.
      */
-    public static let __default: S3Model.GetObjectRequest = {
+    static let __default: S3Model.GetObjectRequest = {
         let defaultInstance = S3Model.GetObjectRequest(
             bucket: "value",
             ifMatch: nil,
@@ -1598,7 +1598,7 @@ public extension GetObjectRetentionOutput {
     /**
      Default instance of the GetObjectRetentionOutput structure.
      */
-    public static let __default: S3Model.GetObjectRetentionOutput = {
+    static let __default: S3Model.GetObjectRetentionOutput = {
         let defaultInstance = S3Model.GetObjectRetentionOutput(
             retention: nil)
 
@@ -1610,7 +1610,7 @@ public extension GetObjectRetentionRequest {
     /**
      Default instance of the GetObjectRetentionRequest structure.
      */
-    public static let __default: S3Model.GetObjectRetentionRequest = {
+    static let __default: S3Model.GetObjectRetentionRequest = {
         let defaultInstance = S3Model.GetObjectRetentionRequest(
             bucket: "value",
             key: "0",
@@ -1625,7 +1625,7 @@ public extension GetObjectTaggingOutput {
     /**
      Default instance of the GetObjectTaggingOutput structure.
      */
-    public static let __default: S3Model.GetObjectTaggingOutput = {
+    static let __default: S3Model.GetObjectTaggingOutput = {
         let defaultInstance = S3Model.GetObjectTaggingOutput(
             tagSet: [],
             versionId: nil)
@@ -1638,7 +1638,7 @@ public extension GetObjectTaggingRequest {
     /**
      Default instance of the GetObjectTaggingRequest structure.
      */
-    public static let __default: S3Model.GetObjectTaggingRequest = {
+    static let __default: S3Model.GetObjectTaggingRequest = {
         let defaultInstance = S3Model.GetObjectTaggingRequest(
             bucket: "value",
             key: "0",
@@ -1652,7 +1652,7 @@ public extension GetObjectTorrentOutput {
     /**
      Default instance of the GetObjectTorrentOutput structure.
      */
-    public static let __default: S3Model.GetObjectTorrentOutput = {
+    static let __default: S3Model.GetObjectTorrentOutput = {
         let defaultInstance = S3Model.GetObjectTorrentOutput(
             body: nil,
             requestCharged: nil)
@@ -1665,7 +1665,7 @@ public extension GetObjectTorrentRequest {
     /**
      Default instance of the GetObjectTorrentRequest structure.
      */
-    public static let __default: S3Model.GetObjectTorrentRequest = {
+    static let __default: S3Model.GetObjectTorrentRequest = {
         let defaultInstance = S3Model.GetObjectTorrentRequest(
             bucket: "value",
             key: "0",
@@ -1679,7 +1679,7 @@ public extension GetPublicAccessBlockOutput {
     /**
      Default instance of the GetPublicAccessBlockOutput structure.
      */
-    public static let __default: S3Model.GetPublicAccessBlockOutput = {
+    static let __default: S3Model.GetPublicAccessBlockOutput = {
         let defaultInstance = S3Model.GetPublicAccessBlockOutput(
             publicAccessBlockConfiguration: nil)
 
@@ -1691,7 +1691,7 @@ public extension GetPublicAccessBlockRequest {
     /**
      Default instance of the GetPublicAccessBlockRequest structure.
      */
-    public static let __default: S3Model.GetPublicAccessBlockRequest = {
+    static let __default: S3Model.GetPublicAccessBlockRequest = {
         let defaultInstance = S3Model.GetPublicAccessBlockRequest(
             bucket: "value")
 
@@ -1703,7 +1703,7 @@ public extension GlacierJobParameters {
     /**
      Default instance of the GlacierJobParameters structure.
      */
-    public static let __default: S3Model.GlacierJobParameters = {
+    static let __default: S3Model.GlacierJobParameters = {
         let defaultInstance = S3Model.GlacierJobParameters(
             tier: .__default)
 
@@ -1715,7 +1715,7 @@ public extension Grant {
     /**
      Default instance of the Grant structure.
      */
-    public static let __default: S3Model.Grant = {
+    static let __default: S3Model.Grant = {
         let defaultInstance = S3Model.Grant(
             grantee: nil,
             permission: nil)
@@ -1728,7 +1728,7 @@ public extension Grantee {
     /**
      Default instance of the Grantee structure.
      */
-    public static let __default: S3Model.Grantee = {
+    static let __default: S3Model.Grantee = {
         let defaultInstance = S3Model.Grantee(
             displayName: nil,
             emailAddress: nil,
@@ -1744,7 +1744,7 @@ public extension HeadBucketRequest {
     /**
      Default instance of the HeadBucketRequest structure.
      */
-    public static let __default: S3Model.HeadBucketRequest = {
+    static let __default: S3Model.HeadBucketRequest = {
         let defaultInstance = S3Model.HeadBucketRequest(
             bucket: "value")
 
@@ -1756,7 +1756,7 @@ public extension HeadObjectOutput {
     /**
      Default instance of the HeadObjectOutput structure.
      */
-    public static let __default: S3Model.HeadObjectOutput = {
+    static let __default: S3Model.HeadObjectOutput = {
         let defaultInstance = S3Model.HeadObjectOutput(
             acceptRanges: nil,
             cacheControl: nil,
@@ -1795,7 +1795,7 @@ public extension HeadObjectRequest {
     /**
      Default instance of the HeadObjectRequest structure.
      */
-    public static let __default: S3Model.HeadObjectRequest = {
+    static let __default: S3Model.HeadObjectRequest = {
         let defaultInstance = S3Model.HeadObjectRequest(
             bucket: "value",
             ifMatch: nil,
@@ -1819,7 +1819,7 @@ public extension IndexDocument {
     /**
      Default instance of the IndexDocument structure.
      */
-    public static let __default: S3Model.IndexDocument = {
+    static let __default: S3Model.IndexDocument = {
         let defaultInstance = S3Model.IndexDocument(
             suffix: "value")
 
@@ -1831,7 +1831,7 @@ public extension Initiator {
     /**
      Default instance of the Initiator structure.
      */
-    public static let __default: S3Model.Initiator = {
+    static let __default: S3Model.Initiator = {
         let defaultInstance = S3Model.Initiator(
             displayName: nil,
             iD: nil)
@@ -1844,7 +1844,7 @@ public extension InputSerialization {
     /**
      Default instance of the InputSerialization structure.
      */
-    public static let __default: S3Model.InputSerialization = {
+    static let __default: S3Model.InputSerialization = {
         let defaultInstance = S3Model.InputSerialization(
             cSV: nil,
             compressionType: nil,
@@ -1859,7 +1859,7 @@ public extension InventoryConfiguration {
     /**
      Default instance of the InventoryConfiguration structure.
      */
-    public static let __default: S3Model.InventoryConfiguration = {
+    static let __default: S3Model.InventoryConfiguration = {
         let defaultInstance = S3Model.InventoryConfiguration(
             destination: InventoryDestination.__default,
             filter: nil,
@@ -1877,7 +1877,7 @@ public extension InventoryDestination {
     /**
      Default instance of the InventoryDestination structure.
      */
-    public static let __default: S3Model.InventoryDestination = {
+    static let __default: S3Model.InventoryDestination = {
         let defaultInstance = S3Model.InventoryDestination(
             s3BucketDestination: InventoryS3BucketDestination.__default)
 
@@ -1889,7 +1889,7 @@ public extension InventoryEncryption {
     /**
      Default instance of the InventoryEncryption structure.
      */
-    public static let __default: S3Model.InventoryEncryption = {
+    static let __default: S3Model.InventoryEncryption = {
         let defaultInstance = S3Model.InventoryEncryption(
             sSEKMS: nil,
             sSES3: nil)
@@ -1902,7 +1902,7 @@ public extension InventoryFilter {
     /**
      Default instance of the InventoryFilter structure.
      */
-    public static let __default: S3Model.InventoryFilter = {
+    static let __default: S3Model.InventoryFilter = {
         let defaultInstance = S3Model.InventoryFilter(
             prefix: "value")
 
@@ -1914,7 +1914,7 @@ public extension InventoryS3BucketDestination {
     /**
      Default instance of the InventoryS3BucketDestination structure.
      */
-    public static let __default: S3Model.InventoryS3BucketDestination = {
+    static let __default: S3Model.InventoryS3BucketDestination = {
         let defaultInstance = S3Model.InventoryS3BucketDestination(
             accountId: nil,
             bucket: "value",
@@ -1930,7 +1930,7 @@ public extension InventorySchedule {
     /**
      Default instance of the InventorySchedule structure.
      */
-    public static let __default: S3Model.InventorySchedule = {
+    static let __default: S3Model.InventorySchedule = {
         let defaultInstance = S3Model.InventorySchedule(
             frequency: .__default)
 
@@ -1942,7 +1942,7 @@ public extension JSONInput {
     /**
      Default instance of the JSONInput structure.
      */
-    public static let __default: S3Model.JSONInput = {
+    static let __default: S3Model.JSONInput = {
         let defaultInstance = S3Model.JSONInput(
             type: nil)
 
@@ -1954,7 +1954,7 @@ public extension JSONOutput {
     /**
      Default instance of the JSONOutput structure.
      */
-    public static let __default: S3Model.JSONOutput = {
+    static let __default: S3Model.JSONOutput = {
         let defaultInstance = S3Model.JSONOutput(
             recordDelimiter: nil)
 
@@ -1966,7 +1966,7 @@ public extension LambdaFunctionConfiguration {
     /**
      Default instance of the LambdaFunctionConfiguration structure.
      */
-    public static let __default: S3Model.LambdaFunctionConfiguration = {
+    static let __default: S3Model.LambdaFunctionConfiguration = {
         let defaultInstance = S3Model.LambdaFunctionConfiguration(
             events: [],
             filter: nil,
@@ -1981,7 +1981,7 @@ public extension LifecycleConfiguration {
     /**
      Default instance of the LifecycleConfiguration structure.
      */
-    public static let __default: S3Model.LifecycleConfiguration = {
+    static let __default: S3Model.LifecycleConfiguration = {
         let defaultInstance = S3Model.LifecycleConfiguration(
             rules: [])
 
@@ -1993,7 +1993,7 @@ public extension LifecycleExpiration {
     /**
      Default instance of the LifecycleExpiration structure.
      */
-    public static let __default: S3Model.LifecycleExpiration = {
+    static let __default: S3Model.LifecycleExpiration = {
         let defaultInstance = S3Model.LifecycleExpiration(
             date: nil,
             days: nil,
@@ -2007,7 +2007,7 @@ public extension LifecycleRule {
     /**
      Default instance of the LifecycleRule structure.
      */
-    public static let __default: S3Model.LifecycleRule = {
+    static let __default: S3Model.LifecycleRule = {
         let defaultInstance = S3Model.LifecycleRule(
             abortIncompleteMultipartUpload: nil,
             expiration: nil,
@@ -2026,7 +2026,7 @@ public extension LifecycleRuleAndOperator {
     /**
      Default instance of the LifecycleRuleAndOperator structure.
      */
-    public static let __default: S3Model.LifecycleRuleAndOperator = {
+    static let __default: S3Model.LifecycleRuleAndOperator = {
         let defaultInstance = S3Model.LifecycleRuleAndOperator(
             prefix: nil,
             tags: nil)
@@ -2039,7 +2039,7 @@ public extension LifecycleRuleFilter {
     /**
      Default instance of the LifecycleRuleFilter structure.
      */
-    public static let __default: S3Model.LifecycleRuleFilter = {
+    static let __default: S3Model.LifecycleRuleFilter = {
         let defaultInstance = S3Model.LifecycleRuleFilter(
             and: nil,
             prefix: nil,
@@ -2053,7 +2053,7 @@ public extension ListBucketAnalyticsConfigurationsOutput {
     /**
      Default instance of the ListBucketAnalyticsConfigurationsOutput structure.
      */
-    public static let __default: S3Model.ListBucketAnalyticsConfigurationsOutput = {
+    static let __default: S3Model.ListBucketAnalyticsConfigurationsOutput = {
         let defaultInstance = S3Model.ListBucketAnalyticsConfigurationsOutput(
             analyticsConfigurationList: nil,
             continuationToken: nil,
@@ -2068,7 +2068,7 @@ public extension ListBucketAnalyticsConfigurationsRequest {
     /**
      Default instance of the ListBucketAnalyticsConfigurationsRequest structure.
      */
-    public static let __default: S3Model.ListBucketAnalyticsConfigurationsRequest = {
+    static let __default: S3Model.ListBucketAnalyticsConfigurationsRequest = {
         let defaultInstance = S3Model.ListBucketAnalyticsConfigurationsRequest(
             bucket: "value",
             continuationToken: nil)
@@ -2081,7 +2081,7 @@ public extension ListBucketInventoryConfigurationsOutput {
     /**
      Default instance of the ListBucketInventoryConfigurationsOutput structure.
      */
-    public static let __default: S3Model.ListBucketInventoryConfigurationsOutput = {
+    static let __default: S3Model.ListBucketInventoryConfigurationsOutput = {
         let defaultInstance = S3Model.ListBucketInventoryConfigurationsOutput(
             continuationToken: nil,
             inventoryConfigurationList: nil,
@@ -2096,7 +2096,7 @@ public extension ListBucketInventoryConfigurationsRequest {
     /**
      Default instance of the ListBucketInventoryConfigurationsRequest structure.
      */
-    public static let __default: S3Model.ListBucketInventoryConfigurationsRequest = {
+    static let __default: S3Model.ListBucketInventoryConfigurationsRequest = {
         let defaultInstance = S3Model.ListBucketInventoryConfigurationsRequest(
             bucket: "value",
             continuationToken: nil)
@@ -2109,7 +2109,7 @@ public extension ListBucketMetricsConfigurationsOutput {
     /**
      Default instance of the ListBucketMetricsConfigurationsOutput structure.
      */
-    public static let __default: S3Model.ListBucketMetricsConfigurationsOutput = {
+    static let __default: S3Model.ListBucketMetricsConfigurationsOutput = {
         let defaultInstance = S3Model.ListBucketMetricsConfigurationsOutput(
             continuationToken: nil,
             isTruncated: nil,
@@ -2124,7 +2124,7 @@ public extension ListBucketMetricsConfigurationsRequest {
     /**
      Default instance of the ListBucketMetricsConfigurationsRequest structure.
      */
-    public static let __default: S3Model.ListBucketMetricsConfigurationsRequest = {
+    static let __default: S3Model.ListBucketMetricsConfigurationsRequest = {
         let defaultInstance = S3Model.ListBucketMetricsConfigurationsRequest(
             bucket: "value",
             continuationToken: nil)
@@ -2137,7 +2137,7 @@ public extension ListBucketsOutput {
     /**
      Default instance of the ListBucketsOutput structure.
      */
-    public static let __default: S3Model.ListBucketsOutput = {
+    static let __default: S3Model.ListBucketsOutput = {
         let defaultInstance = S3Model.ListBucketsOutput(
             buckets: nil,
             owner: nil)
@@ -2150,7 +2150,7 @@ public extension ListMultipartUploadsOutput {
     /**
      Default instance of the ListMultipartUploadsOutput structure.
      */
-    public static let __default: S3Model.ListMultipartUploadsOutput = {
+    static let __default: S3Model.ListMultipartUploadsOutput = {
         let defaultInstance = S3Model.ListMultipartUploadsOutput(
             bucket: nil,
             commonPrefixes: nil,
@@ -2173,7 +2173,7 @@ public extension ListMultipartUploadsRequest {
     /**
      Default instance of the ListMultipartUploadsRequest structure.
      */
-    public static let __default: S3Model.ListMultipartUploadsRequest = {
+    static let __default: S3Model.ListMultipartUploadsRequest = {
         let defaultInstance = S3Model.ListMultipartUploadsRequest(
             bucket: "value",
             delimiter: nil,
@@ -2191,7 +2191,7 @@ public extension ListObjectVersionsOutput {
     /**
      Default instance of the ListObjectVersionsOutput structure.
      */
-    public static let __default: S3Model.ListObjectVersionsOutput = {
+    static let __default: S3Model.ListObjectVersionsOutput = {
         let defaultInstance = S3Model.ListObjectVersionsOutput(
             commonPrefixes: nil,
             deleteMarkers: nil,
@@ -2215,7 +2215,7 @@ public extension ListObjectVersionsRequest {
     /**
      Default instance of the ListObjectVersionsRequest structure.
      */
-    public static let __default: S3Model.ListObjectVersionsRequest = {
+    static let __default: S3Model.ListObjectVersionsRequest = {
         let defaultInstance = S3Model.ListObjectVersionsRequest(
             bucket: "value",
             delimiter: nil,
@@ -2233,7 +2233,7 @@ public extension ListObjectsOutput {
     /**
      Default instance of the ListObjectsOutput structure.
      */
-    public static let __default: S3Model.ListObjectsOutput = {
+    static let __default: S3Model.ListObjectsOutput = {
         let defaultInstance = S3Model.ListObjectsOutput(
             commonPrefixes: nil,
             contents: nil,
@@ -2254,7 +2254,7 @@ public extension ListObjectsRequest {
     /**
      Default instance of the ListObjectsRequest structure.
      */
-    public static let __default: S3Model.ListObjectsRequest = {
+    static let __default: S3Model.ListObjectsRequest = {
         let defaultInstance = S3Model.ListObjectsRequest(
             bucket: "value",
             delimiter: nil,
@@ -2272,7 +2272,7 @@ public extension ListObjectsV2Output {
     /**
      Default instance of the ListObjectsV2Output structure.
      */
-    public static let __default: S3Model.ListObjectsV2Output = {
+    static let __default: S3Model.ListObjectsV2Output = {
         let defaultInstance = S3Model.ListObjectsV2Output(
             commonPrefixes: nil,
             contents: nil,
@@ -2295,7 +2295,7 @@ public extension ListObjectsV2Request {
     /**
      Default instance of the ListObjectsV2Request structure.
      */
-    public static let __default: S3Model.ListObjectsV2Request = {
+    static let __default: S3Model.ListObjectsV2Request = {
         let defaultInstance = S3Model.ListObjectsV2Request(
             bucket: "value",
             continuationToken: nil,
@@ -2315,7 +2315,7 @@ public extension ListPartsOutput {
     /**
      Default instance of the ListPartsOutput structure.
      */
-    public static let __default: S3Model.ListPartsOutput = {
+    static let __default: S3Model.ListPartsOutput = {
         let defaultInstance = S3Model.ListPartsOutput(
             abortDate: nil,
             abortRuleId: nil,
@@ -2340,7 +2340,7 @@ public extension ListPartsRequest {
     /**
      Default instance of the ListPartsRequest structure.
      */
-    public static let __default: S3Model.ListPartsRequest = {
+    static let __default: S3Model.ListPartsRequest = {
         let defaultInstance = S3Model.ListPartsRequest(
             bucket: "value",
             key: "0",
@@ -2357,7 +2357,7 @@ public extension LoggingEnabled {
     /**
      Default instance of the LoggingEnabled structure.
      */
-    public static let __default: S3Model.LoggingEnabled = {
+    static let __default: S3Model.LoggingEnabled = {
         let defaultInstance = S3Model.LoggingEnabled(
             targetBucket: "value",
             targetGrants: nil,
@@ -2371,7 +2371,7 @@ public extension MetadataEntry {
     /**
      Default instance of the MetadataEntry structure.
      */
-    public static let __default: S3Model.MetadataEntry = {
+    static let __default: S3Model.MetadataEntry = {
         let defaultInstance = S3Model.MetadataEntry(
             name: nil,
             value: nil)
@@ -2384,7 +2384,7 @@ public extension MetricsAndOperator {
     /**
      Default instance of the MetricsAndOperator structure.
      */
-    public static let __default: S3Model.MetricsAndOperator = {
+    static let __default: S3Model.MetricsAndOperator = {
         let defaultInstance = S3Model.MetricsAndOperator(
             prefix: nil,
             tags: nil)
@@ -2397,7 +2397,7 @@ public extension MetricsConfiguration {
     /**
      Default instance of the MetricsConfiguration structure.
      */
-    public static let __default: S3Model.MetricsConfiguration = {
+    static let __default: S3Model.MetricsConfiguration = {
         let defaultInstance = S3Model.MetricsConfiguration(
             filter: nil,
             id: "value")
@@ -2410,7 +2410,7 @@ public extension MetricsFilter {
     /**
      Default instance of the MetricsFilter structure.
      */
-    public static let __default: S3Model.MetricsFilter = {
+    static let __default: S3Model.MetricsFilter = {
         let defaultInstance = S3Model.MetricsFilter(
             and: nil,
             prefix: nil,
@@ -2424,7 +2424,7 @@ public extension MultipartUpload {
     /**
      Default instance of the MultipartUpload structure.
      */
-    public static let __default: S3Model.MultipartUpload = {
+    static let __default: S3Model.MultipartUpload = {
         let defaultInstance = S3Model.MultipartUpload(
             initiated: nil,
             initiator: nil,
@@ -2441,7 +2441,7 @@ public extension NoSuchBucket {
     /**
      Default instance of the NoSuchBucket structure.
      */
-    public static let __default: S3Model.NoSuchBucket = {
+    static let __default: S3Model.NoSuchBucket = {
         let defaultInstance = S3Model.NoSuchBucket()
 
         return defaultInstance
@@ -2452,7 +2452,7 @@ public extension NoSuchKey {
     /**
      Default instance of the NoSuchKey structure.
      */
-    public static let __default: S3Model.NoSuchKey = {
+    static let __default: S3Model.NoSuchKey = {
         let defaultInstance = S3Model.NoSuchKey()
 
         return defaultInstance
@@ -2463,7 +2463,7 @@ public extension NoSuchUpload {
     /**
      Default instance of the NoSuchUpload structure.
      */
-    public static let __default: S3Model.NoSuchUpload = {
+    static let __default: S3Model.NoSuchUpload = {
         let defaultInstance = S3Model.NoSuchUpload()
 
         return defaultInstance
@@ -2474,7 +2474,7 @@ public extension NoncurrentVersionExpiration {
     /**
      Default instance of the NoncurrentVersionExpiration structure.
      */
-    public static let __default: S3Model.NoncurrentVersionExpiration = {
+    static let __default: S3Model.NoncurrentVersionExpiration = {
         let defaultInstance = S3Model.NoncurrentVersionExpiration(
             noncurrentDays: nil)
 
@@ -2486,7 +2486,7 @@ public extension NoncurrentVersionTransition {
     /**
      Default instance of the NoncurrentVersionTransition structure.
      */
-    public static let __default: S3Model.NoncurrentVersionTransition = {
+    static let __default: S3Model.NoncurrentVersionTransition = {
         let defaultInstance = S3Model.NoncurrentVersionTransition(
             noncurrentDays: nil,
             storageClass: nil)
@@ -2499,7 +2499,7 @@ public extension NotificationConfiguration {
     /**
      Default instance of the NotificationConfiguration structure.
      */
-    public static let __default: S3Model.NotificationConfiguration = {
+    static let __default: S3Model.NotificationConfiguration = {
         let defaultInstance = S3Model.NotificationConfiguration(
             lambdaFunctionConfigurations: nil,
             queueConfigurations: nil,
@@ -2513,7 +2513,7 @@ public extension NotificationConfigurationDeprecated {
     /**
      Default instance of the NotificationConfigurationDeprecated structure.
      */
-    public static let __default: S3Model.NotificationConfigurationDeprecated = {
+    static let __default: S3Model.NotificationConfigurationDeprecated = {
         let defaultInstance = S3Model.NotificationConfigurationDeprecated(
             cloudFunctionConfiguration: nil,
             queueConfiguration: nil,
@@ -2527,7 +2527,7 @@ public extension NotificationConfigurationFilter {
     /**
      Default instance of the NotificationConfigurationFilter structure.
      */
-    public static let __default: S3Model.NotificationConfigurationFilter = {
+    static let __default: S3Model.NotificationConfigurationFilter = {
         let defaultInstance = S3Model.NotificationConfigurationFilter(
             key: nil)
 
@@ -2539,7 +2539,7 @@ public extension Object {
     /**
      Default instance of the Object structure.
      */
-    public static let __default: S3Model.Object = {
+    static let __default: S3Model.Object = {
         let defaultInstance = S3Model.Object(
             eTag: nil,
             key: nil,
@@ -2556,7 +2556,7 @@ public extension ObjectAlreadyInActiveTierError {
     /**
      Default instance of the ObjectAlreadyInActiveTierError structure.
      */
-    public static let __default: S3Model.ObjectAlreadyInActiveTierError = {
+    static let __default: S3Model.ObjectAlreadyInActiveTierError = {
         let defaultInstance = S3Model.ObjectAlreadyInActiveTierError()
 
         return defaultInstance
@@ -2567,7 +2567,7 @@ public extension ObjectIdentifier {
     /**
      Default instance of the ObjectIdentifier structure.
      */
-    public static let __default: S3Model.ObjectIdentifier = {
+    static let __default: S3Model.ObjectIdentifier = {
         let defaultInstance = S3Model.ObjectIdentifier(
             key: "0",
             versionId: nil)
@@ -2580,7 +2580,7 @@ public extension ObjectLockConfiguration {
     /**
      Default instance of the ObjectLockConfiguration structure.
      */
-    public static let __default: S3Model.ObjectLockConfiguration = {
+    static let __default: S3Model.ObjectLockConfiguration = {
         let defaultInstance = S3Model.ObjectLockConfiguration(
             objectLockEnabled: nil,
             rule: nil)
@@ -2593,7 +2593,7 @@ public extension ObjectLockLegalHold {
     /**
      Default instance of the ObjectLockLegalHold structure.
      */
-    public static let __default: S3Model.ObjectLockLegalHold = {
+    static let __default: S3Model.ObjectLockLegalHold = {
         let defaultInstance = S3Model.ObjectLockLegalHold(
             status: nil)
 
@@ -2605,7 +2605,7 @@ public extension ObjectLockRetention {
     /**
      Default instance of the ObjectLockRetention structure.
      */
-    public static let __default: S3Model.ObjectLockRetention = {
+    static let __default: S3Model.ObjectLockRetention = {
         let defaultInstance = S3Model.ObjectLockRetention(
             mode: nil,
             retainUntilDate: nil)
@@ -2618,7 +2618,7 @@ public extension ObjectLockRule {
     /**
      Default instance of the ObjectLockRule structure.
      */
-    public static let __default: S3Model.ObjectLockRule = {
+    static let __default: S3Model.ObjectLockRule = {
         let defaultInstance = S3Model.ObjectLockRule(
             defaultRetention: nil)
 
@@ -2630,7 +2630,7 @@ public extension ObjectNotInActiveTierError {
     /**
      Default instance of the ObjectNotInActiveTierError structure.
      */
-    public static let __default: S3Model.ObjectNotInActiveTierError = {
+    static let __default: S3Model.ObjectNotInActiveTierError = {
         let defaultInstance = S3Model.ObjectNotInActiveTierError()
 
         return defaultInstance
@@ -2641,7 +2641,7 @@ public extension ObjectVersion {
     /**
      Default instance of the ObjectVersion structure.
      */
-    public static let __default: S3Model.ObjectVersion = {
+    static let __default: S3Model.ObjectVersion = {
         let defaultInstance = S3Model.ObjectVersion(
             eTag: nil,
             isLatest: nil,
@@ -2660,7 +2660,7 @@ public extension OutputLocation {
     /**
      Default instance of the OutputLocation structure.
      */
-    public static let __default: S3Model.OutputLocation = {
+    static let __default: S3Model.OutputLocation = {
         let defaultInstance = S3Model.OutputLocation(
             s3: nil)
 
@@ -2672,7 +2672,7 @@ public extension OutputSerialization {
     /**
      Default instance of the OutputSerialization structure.
      */
-    public static let __default: S3Model.OutputSerialization = {
+    static let __default: S3Model.OutputSerialization = {
         let defaultInstance = S3Model.OutputSerialization(
             cSV: nil,
             jSON: nil)
@@ -2685,7 +2685,7 @@ public extension Owner {
     /**
      Default instance of the Owner structure.
      */
-    public static let __default: S3Model.Owner = {
+    static let __default: S3Model.Owner = {
         let defaultInstance = S3Model.Owner(
             displayName: nil,
             iD: nil)
@@ -2698,7 +2698,7 @@ public extension ParquetInput {
     /**
      Default instance of the ParquetInput structure.
      */
-    public static let __default: S3Model.ParquetInput = {
+    static let __default: S3Model.ParquetInput = {
         let defaultInstance = S3Model.ParquetInput()
 
         return defaultInstance
@@ -2709,7 +2709,7 @@ public extension Part {
     /**
      Default instance of the Part structure.
      */
-    public static let __default: S3Model.Part = {
+    static let __default: S3Model.Part = {
         let defaultInstance = S3Model.Part(
             eTag: nil,
             lastModified: nil,
@@ -2724,7 +2724,7 @@ public extension PolicyStatus {
     /**
      Default instance of the PolicyStatus structure.
      */
-    public static let __default: S3Model.PolicyStatus = {
+    static let __default: S3Model.PolicyStatus = {
         let defaultInstance = S3Model.PolicyStatus(
             isPublic: nil)
 
@@ -2736,7 +2736,7 @@ public extension Progress {
     /**
      Default instance of the Progress structure.
      */
-    public static let __default: S3Model.Progress = {
+    static let __default: S3Model.Progress = {
         let defaultInstance = S3Model.Progress(
             bytesProcessed: nil,
             bytesReturned: nil,
@@ -2750,7 +2750,7 @@ public extension ProgressEvent {
     /**
      Default instance of the ProgressEvent structure.
      */
-    public static let __default: S3Model.ProgressEvent = {
+    static let __default: S3Model.ProgressEvent = {
         let defaultInstance = S3Model.ProgressEvent(
             details: nil)
 
@@ -2762,7 +2762,7 @@ public extension PublicAccessBlockConfiguration {
     /**
      Default instance of the PublicAccessBlockConfiguration structure.
      */
-    public static let __default: S3Model.PublicAccessBlockConfiguration = {
+    static let __default: S3Model.PublicAccessBlockConfiguration = {
         let defaultInstance = S3Model.PublicAccessBlockConfiguration(
             blockPublicAcls: nil,
             blockPublicPolicy: nil,
@@ -2777,7 +2777,7 @@ public extension PutBucketAccelerateConfigurationRequest {
     /**
      Default instance of the PutBucketAccelerateConfigurationRequest structure.
      */
-    public static let __default: S3Model.PutBucketAccelerateConfigurationRequest = {
+    static let __default: S3Model.PutBucketAccelerateConfigurationRequest = {
         let defaultInstance = S3Model.PutBucketAccelerateConfigurationRequest(
             accelerateConfiguration: AccelerateConfiguration.__default,
             bucket: "value")
@@ -2790,7 +2790,7 @@ public extension PutBucketAclRequest {
     /**
      Default instance of the PutBucketAclRequest structure.
      */
-    public static let __default: S3Model.PutBucketAclRequest = {
+    static let __default: S3Model.PutBucketAclRequest = {
         let defaultInstance = S3Model.PutBucketAclRequest(
             aCL: nil,
             accessControlPolicy: nil,
@@ -2810,7 +2810,7 @@ public extension PutBucketAnalyticsConfigurationRequest {
     /**
      Default instance of the PutBucketAnalyticsConfigurationRequest structure.
      */
-    public static let __default: S3Model.PutBucketAnalyticsConfigurationRequest = {
+    static let __default: S3Model.PutBucketAnalyticsConfigurationRequest = {
         let defaultInstance = S3Model.PutBucketAnalyticsConfigurationRequest(
             analyticsConfiguration: AnalyticsConfiguration.__default,
             bucket: "value",
@@ -2824,7 +2824,7 @@ public extension PutBucketCorsRequest {
     /**
      Default instance of the PutBucketCorsRequest structure.
      */
-    public static let __default: S3Model.PutBucketCorsRequest = {
+    static let __default: S3Model.PutBucketCorsRequest = {
         let defaultInstance = S3Model.PutBucketCorsRequest(
             bucket: "value",
             cORSConfiguration: CORSConfiguration.__default,
@@ -2838,7 +2838,7 @@ public extension PutBucketEncryptionRequest {
     /**
      Default instance of the PutBucketEncryptionRequest structure.
      */
-    public static let __default: S3Model.PutBucketEncryptionRequest = {
+    static let __default: S3Model.PutBucketEncryptionRequest = {
         let defaultInstance = S3Model.PutBucketEncryptionRequest(
             bucket: "value",
             contentMD5: nil,
@@ -2852,7 +2852,7 @@ public extension PutBucketInventoryConfigurationRequest {
     /**
      Default instance of the PutBucketInventoryConfigurationRequest structure.
      */
-    public static let __default: S3Model.PutBucketInventoryConfigurationRequest = {
+    static let __default: S3Model.PutBucketInventoryConfigurationRequest = {
         let defaultInstance = S3Model.PutBucketInventoryConfigurationRequest(
             bucket: "value",
             id: "value",
@@ -2866,7 +2866,7 @@ public extension PutBucketLifecycleConfigurationRequest {
     /**
      Default instance of the PutBucketLifecycleConfigurationRequest structure.
      */
-    public static let __default: S3Model.PutBucketLifecycleConfigurationRequest = {
+    static let __default: S3Model.PutBucketLifecycleConfigurationRequest = {
         let defaultInstance = S3Model.PutBucketLifecycleConfigurationRequest(
             bucket: "value",
             lifecycleConfiguration: nil)
@@ -2879,7 +2879,7 @@ public extension PutBucketLifecycleRequest {
     /**
      Default instance of the PutBucketLifecycleRequest structure.
      */
-    public static let __default: S3Model.PutBucketLifecycleRequest = {
+    static let __default: S3Model.PutBucketLifecycleRequest = {
         let defaultInstance = S3Model.PutBucketLifecycleRequest(
             bucket: "value",
             contentMD5: nil,
@@ -2893,7 +2893,7 @@ public extension PutBucketLoggingRequest {
     /**
      Default instance of the PutBucketLoggingRequest structure.
      */
-    public static let __default: S3Model.PutBucketLoggingRequest = {
+    static let __default: S3Model.PutBucketLoggingRequest = {
         let defaultInstance = S3Model.PutBucketLoggingRequest(
             bucket: "value",
             bucketLoggingStatus: BucketLoggingStatus.__default,
@@ -2907,7 +2907,7 @@ public extension PutBucketMetricsConfigurationRequest {
     /**
      Default instance of the PutBucketMetricsConfigurationRequest structure.
      */
-    public static let __default: S3Model.PutBucketMetricsConfigurationRequest = {
+    static let __default: S3Model.PutBucketMetricsConfigurationRequest = {
         let defaultInstance = S3Model.PutBucketMetricsConfigurationRequest(
             bucket: "value",
             id: "value",
@@ -2921,7 +2921,7 @@ public extension PutBucketNotificationConfigurationRequest {
     /**
      Default instance of the PutBucketNotificationConfigurationRequest structure.
      */
-    public static let __default: S3Model.PutBucketNotificationConfigurationRequest = {
+    static let __default: S3Model.PutBucketNotificationConfigurationRequest = {
         let defaultInstance = S3Model.PutBucketNotificationConfigurationRequest(
             bucket: "value",
             notificationConfiguration: NotificationConfiguration.__default)
@@ -2934,7 +2934,7 @@ public extension PutBucketNotificationRequest {
     /**
      Default instance of the PutBucketNotificationRequest structure.
      */
-    public static let __default: S3Model.PutBucketNotificationRequest = {
+    static let __default: S3Model.PutBucketNotificationRequest = {
         let defaultInstance = S3Model.PutBucketNotificationRequest(
             bucket: "value",
             contentMD5: nil,
@@ -2948,7 +2948,7 @@ public extension PutBucketPolicyRequest {
     /**
      Default instance of the PutBucketPolicyRequest structure.
      */
-    public static let __default: S3Model.PutBucketPolicyRequest = {
+    static let __default: S3Model.PutBucketPolicyRequest = {
         let defaultInstance = S3Model.PutBucketPolicyRequest(
             bucket: "value",
             confirmRemoveSelfBucketAccess: nil,
@@ -2963,7 +2963,7 @@ public extension PutBucketReplicationRequest {
     /**
      Default instance of the PutBucketReplicationRequest structure.
      */
-    public static let __default: S3Model.PutBucketReplicationRequest = {
+    static let __default: S3Model.PutBucketReplicationRequest = {
         let defaultInstance = S3Model.PutBucketReplicationRequest(
             bucket: "value",
             contentMD5: nil,
@@ -2978,7 +2978,7 @@ public extension PutBucketRequestPaymentRequest {
     /**
      Default instance of the PutBucketRequestPaymentRequest structure.
      */
-    public static let __default: S3Model.PutBucketRequestPaymentRequest = {
+    static let __default: S3Model.PutBucketRequestPaymentRequest = {
         let defaultInstance = S3Model.PutBucketRequestPaymentRequest(
             bucket: "value",
             contentMD5: nil,
@@ -2992,7 +2992,7 @@ public extension PutBucketTaggingRequest {
     /**
      Default instance of the PutBucketTaggingRequest structure.
      */
-    public static let __default: S3Model.PutBucketTaggingRequest = {
+    static let __default: S3Model.PutBucketTaggingRequest = {
         let defaultInstance = S3Model.PutBucketTaggingRequest(
             bucket: "value",
             contentMD5: nil,
@@ -3006,7 +3006,7 @@ public extension PutBucketVersioningRequest {
     /**
      Default instance of the PutBucketVersioningRequest structure.
      */
-    public static let __default: S3Model.PutBucketVersioningRequest = {
+    static let __default: S3Model.PutBucketVersioningRequest = {
         let defaultInstance = S3Model.PutBucketVersioningRequest(
             bucket: "value",
             contentMD5: nil,
@@ -3021,7 +3021,7 @@ public extension PutBucketWebsiteRequest {
     /**
      Default instance of the PutBucketWebsiteRequest structure.
      */
-    public static let __default: S3Model.PutBucketWebsiteRequest = {
+    static let __default: S3Model.PutBucketWebsiteRequest = {
         let defaultInstance = S3Model.PutBucketWebsiteRequest(
             bucket: "value",
             contentMD5: nil,
@@ -3035,7 +3035,7 @@ public extension PutObjectAclOutput {
     /**
      Default instance of the PutObjectAclOutput structure.
      */
-    public static let __default: S3Model.PutObjectAclOutput = {
+    static let __default: S3Model.PutObjectAclOutput = {
         let defaultInstance = S3Model.PutObjectAclOutput(
             requestCharged: nil)
 
@@ -3047,7 +3047,7 @@ public extension PutObjectAclRequest {
     /**
      Default instance of the PutObjectAclRequest structure.
      */
-    public static let __default: S3Model.PutObjectAclRequest = {
+    static let __default: S3Model.PutObjectAclRequest = {
         let defaultInstance = S3Model.PutObjectAclRequest(
             aCL: nil,
             accessControlPolicy: nil,
@@ -3070,7 +3070,7 @@ public extension PutObjectLegalHoldOutput {
     /**
      Default instance of the PutObjectLegalHoldOutput structure.
      */
-    public static let __default: S3Model.PutObjectLegalHoldOutput = {
+    static let __default: S3Model.PutObjectLegalHoldOutput = {
         let defaultInstance = S3Model.PutObjectLegalHoldOutput(
             requestCharged: nil)
 
@@ -3082,7 +3082,7 @@ public extension PutObjectLegalHoldRequest {
     /**
      Default instance of the PutObjectLegalHoldRequest structure.
      */
-    public static let __default: S3Model.PutObjectLegalHoldRequest = {
+    static let __default: S3Model.PutObjectLegalHoldRequest = {
         let defaultInstance = S3Model.PutObjectLegalHoldRequest(
             bucket: "value",
             contentMD5: nil,
@@ -3099,7 +3099,7 @@ public extension PutObjectLockConfigurationOutput {
     /**
      Default instance of the PutObjectLockConfigurationOutput structure.
      */
-    public static let __default: S3Model.PutObjectLockConfigurationOutput = {
+    static let __default: S3Model.PutObjectLockConfigurationOutput = {
         let defaultInstance = S3Model.PutObjectLockConfigurationOutput(
             requestCharged: nil)
 
@@ -3111,7 +3111,7 @@ public extension PutObjectLockConfigurationRequest {
     /**
      Default instance of the PutObjectLockConfigurationRequest structure.
      */
-    public static let __default: S3Model.PutObjectLockConfigurationRequest = {
+    static let __default: S3Model.PutObjectLockConfigurationRequest = {
         let defaultInstance = S3Model.PutObjectLockConfigurationRequest(
             bucket: "value",
             contentMD5: nil,
@@ -3127,7 +3127,7 @@ public extension PutObjectOutput {
     /**
      Default instance of the PutObjectOutput structure.
      */
-    public static let __default: S3Model.PutObjectOutput = {
+    static let __default: S3Model.PutObjectOutput = {
         let defaultInstance = S3Model.PutObjectOutput(
             eTag: nil,
             expiration: nil,
@@ -3146,7 +3146,7 @@ public extension PutObjectRequest {
     /**
      Default instance of the PutObjectRequest structure.
      */
-    public static let __default: S3Model.PutObjectRequest = {
+    static let __default: S3Model.PutObjectRequest = {
         let defaultInstance = S3Model.PutObjectRequest(
             aCL: nil,
             body: nil,
@@ -3186,7 +3186,7 @@ public extension PutObjectRetentionOutput {
     /**
      Default instance of the PutObjectRetentionOutput structure.
      */
-    public static let __default: S3Model.PutObjectRetentionOutput = {
+    static let __default: S3Model.PutObjectRetentionOutput = {
         let defaultInstance = S3Model.PutObjectRetentionOutput(
             requestCharged: nil)
 
@@ -3198,7 +3198,7 @@ public extension PutObjectRetentionRequest {
     /**
      Default instance of the PutObjectRetentionRequest structure.
      */
-    public static let __default: S3Model.PutObjectRetentionRequest = {
+    static let __default: S3Model.PutObjectRetentionRequest = {
         let defaultInstance = S3Model.PutObjectRetentionRequest(
             bucket: "value",
             bypassGovernanceRetention: nil,
@@ -3216,7 +3216,7 @@ public extension PutObjectTaggingOutput {
     /**
      Default instance of the PutObjectTaggingOutput structure.
      */
-    public static let __default: S3Model.PutObjectTaggingOutput = {
+    static let __default: S3Model.PutObjectTaggingOutput = {
         let defaultInstance = S3Model.PutObjectTaggingOutput(
             versionId: nil)
 
@@ -3228,7 +3228,7 @@ public extension PutObjectTaggingRequest {
     /**
      Default instance of the PutObjectTaggingRequest structure.
      */
-    public static let __default: S3Model.PutObjectTaggingRequest = {
+    static let __default: S3Model.PutObjectTaggingRequest = {
         let defaultInstance = S3Model.PutObjectTaggingRequest(
             bucket: "value",
             contentMD5: nil,
@@ -3244,7 +3244,7 @@ public extension PutPublicAccessBlockRequest {
     /**
      Default instance of the PutPublicAccessBlockRequest structure.
      */
-    public static let __default: S3Model.PutPublicAccessBlockRequest = {
+    static let __default: S3Model.PutPublicAccessBlockRequest = {
         let defaultInstance = S3Model.PutPublicAccessBlockRequest(
             bucket: "value",
             contentMD5: nil,
@@ -3258,7 +3258,7 @@ public extension QueueConfiguration {
     /**
      Default instance of the QueueConfiguration structure.
      */
-    public static let __default: S3Model.QueueConfiguration = {
+    static let __default: S3Model.QueueConfiguration = {
         let defaultInstance = S3Model.QueueConfiguration(
             events: [],
             filter: nil,
@@ -3273,7 +3273,7 @@ public extension QueueConfigurationDeprecated {
     /**
      Default instance of the QueueConfigurationDeprecated structure.
      */
-    public static let __default: S3Model.QueueConfigurationDeprecated = {
+    static let __default: S3Model.QueueConfigurationDeprecated = {
         let defaultInstance = S3Model.QueueConfigurationDeprecated(
             events: nil,
             id: nil,
@@ -3287,7 +3287,7 @@ public extension RecordsEvent {
     /**
      Default instance of the RecordsEvent structure.
      */
-    public static let __default: S3Model.RecordsEvent = {
+    static let __default: S3Model.RecordsEvent = {
         let defaultInstance = S3Model.RecordsEvent(
             payload: nil)
 
@@ -3299,7 +3299,7 @@ public extension Redirect {
     /**
      Default instance of the Redirect structure.
      */
-    public static let __default: S3Model.Redirect = {
+    static let __default: S3Model.Redirect = {
         let defaultInstance = S3Model.Redirect(
             hostName: nil,
             httpRedirectCode: nil,
@@ -3315,7 +3315,7 @@ public extension RedirectAllRequestsTo {
     /**
      Default instance of the RedirectAllRequestsTo structure.
      */
-    public static let __default: S3Model.RedirectAllRequestsTo = {
+    static let __default: S3Model.RedirectAllRequestsTo = {
         let defaultInstance = S3Model.RedirectAllRequestsTo(
             hostName: "value",
             protocol: nil)
@@ -3328,7 +3328,7 @@ public extension ReplicationConfiguration {
     /**
      Default instance of the ReplicationConfiguration structure.
      */
-    public static let __default: S3Model.ReplicationConfiguration = {
+    static let __default: S3Model.ReplicationConfiguration = {
         let defaultInstance = S3Model.ReplicationConfiguration(
             role: "value",
             rules: [])
@@ -3341,7 +3341,7 @@ public extension ReplicationRule {
     /**
      Default instance of the ReplicationRule structure.
      */
-    public static let __default: S3Model.ReplicationRule = {
+    static let __default: S3Model.ReplicationRule = {
         let defaultInstance = S3Model.ReplicationRule(
             deleteMarkerReplication: nil,
             destination: Destination.__default,
@@ -3359,7 +3359,7 @@ public extension ReplicationRuleAndOperator {
     /**
      Default instance of the ReplicationRuleAndOperator structure.
      */
-    public static let __default: S3Model.ReplicationRuleAndOperator = {
+    static let __default: S3Model.ReplicationRuleAndOperator = {
         let defaultInstance = S3Model.ReplicationRuleAndOperator(
             prefix: nil,
             tags: nil)
@@ -3372,7 +3372,7 @@ public extension ReplicationRuleFilter {
     /**
      Default instance of the ReplicationRuleFilter structure.
      */
-    public static let __default: S3Model.ReplicationRuleFilter = {
+    static let __default: S3Model.ReplicationRuleFilter = {
         let defaultInstance = S3Model.ReplicationRuleFilter(
             and: nil,
             prefix: nil,
@@ -3386,7 +3386,7 @@ public extension RequestPaymentConfiguration {
     /**
      Default instance of the RequestPaymentConfiguration structure.
      */
-    public static let __default: S3Model.RequestPaymentConfiguration = {
+    static let __default: S3Model.RequestPaymentConfiguration = {
         let defaultInstance = S3Model.RequestPaymentConfiguration(
             payer: .__default)
 
@@ -3398,7 +3398,7 @@ public extension RequestProgress {
     /**
      Default instance of the RequestProgress structure.
      */
-    public static let __default: S3Model.RequestProgress = {
+    static let __default: S3Model.RequestProgress = {
         let defaultInstance = S3Model.RequestProgress(
             enabled: nil)
 
@@ -3410,7 +3410,7 @@ public extension RestoreObjectOutput {
     /**
      Default instance of the RestoreObjectOutput structure.
      */
-    public static let __default: S3Model.RestoreObjectOutput = {
+    static let __default: S3Model.RestoreObjectOutput = {
         let defaultInstance = S3Model.RestoreObjectOutput(
             requestCharged: nil,
             restoreOutputPath: nil)
@@ -3423,7 +3423,7 @@ public extension RestoreObjectRequest {
     /**
      Default instance of the RestoreObjectRequest structure.
      */
-    public static let __default: S3Model.RestoreObjectRequest = {
+    static let __default: S3Model.RestoreObjectRequest = {
         let defaultInstance = S3Model.RestoreObjectRequest(
             bucket: "value",
             key: "0",
@@ -3439,7 +3439,7 @@ public extension RestoreRequest {
     /**
      Default instance of the RestoreRequest structure.
      */
-    public static let __default: S3Model.RestoreRequest = {
+    static let __default: S3Model.RestoreRequest = {
         let defaultInstance = S3Model.RestoreRequest(
             days: nil,
             description: nil,
@@ -3457,7 +3457,7 @@ public extension RoutingRule {
     /**
      Default instance of the RoutingRule structure.
      */
-    public static let __default: S3Model.RoutingRule = {
+    static let __default: S3Model.RoutingRule = {
         let defaultInstance = S3Model.RoutingRule(
             condition: nil,
             redirect: Redirect.__default)
@@ -3470,7 +3470,7 @@ public extension Rule {
     /**
      Default instance of the Rule structure.
      */
-    public static let __default: S3Model.Rule = {
+    static let __default: S3Model.Rule = {
         let defaultInstance = S3Model.Rule(
             abortIncompleteMultipartUpload: nil,
             expiration: nil,
@@ -3489,7 +3489,7 @@ public extension S3KeyFilter {
     /**
      Default instance of the S3KeyFilter structure.
      */
-    public static let __default: S3Model.S3KeyFilter = {
+    static let __default: S3Model.S3KeyFilter = {
         let defaultInstance = S3Model.S3KeyFilter(
             filterRules: nil)
 
@@ -3501,7 +3501,7 @@ public extension S3Location {
     /**
      Default instance of the S3Location structure.
      */
-    public static let __default: S3Model.S3Location = {
+    static let __default: S3Model.S3Location = {
         let defaultInstance = S3Model.S3Location(
             accessControlList: nil,
             bucketName: "value",
@@ -3520,7 +3520,7 @@ public extension SSEKMS {
     /**
      Default instance of the SSEKMS structure.
      */
-    public static let __default: S3Model.SSEKMS = {
+    static let __default: S3Model.SSEKMS = {
         let defaultInstance = S3Model.SSEKMS(
             keyId: "value")
 
@@ -3532,7 +3532,7 @@ public extension SSES3 {
     /**
      Default instance of the SSES3 structure.
      */
-    public static let __default: S3Model.SSES3 = {
+    static let __default: S3Model.SSES3 = {
         let defaultInstance = S3Model.SSES3()
 
         return defaultInstance
@@ -3543,7 +3543,7 @@ public extension SelectObjectContentEventStream {
     /**
      Default instance of the SelectObjectContentEventStream structure.
      */
-    public static let __default: S3Model.SelectObjectContentEventStream = {
+    static let __default: S3Model.SelectObjectContentEventStream = {
         let defaultInstance = S3Model.SelectObjectContentEventStream(
             cont: nil,
             end: nil,
@@ -3559,7 +3559,7 @@ public extension SelectObjectContentOutput {
     /**
      Default instance of the SelectObjectContentOutput structure.
      */
-    public static let __default: S3Model.SelectObjectContentOutput = {
+    static let __default: S3Model.SelectObjectContentOutput = {
         let defaultInstance = S3Model.SelectObjectContentOutput(
             payload: nil)
 
@@ -3571,7 +3571,7 @@ public extension SelectObjectContentRequest {
     /**
      Default instance of the SelectObjectContentRequest structure.
      */
-    public static let __default: S3Model.SelectObjectContentRequest = {
+    static let __default: S3Model.SelectObjectContentRequest = {
         let defaultInstance = S3Model.SelectObjectContentRequest(
             bucket: "value",
             expression: "value",
@@ -3592,7 +3592,7 @@ public extension SelectParameters {
     /**
      Default instance of the SelectParameters structure.
      */
-    public static let __default: S3Model.SelectParameters = {
+    static let __default: S3Model.SelectParameters = {
         let defaultInstance = S3Model.SelectParameters(
             expression: "value",
             expressionType: .__default,
@@ -3607,7 +3607,7 @@ public extension ServerSideEncryptionByDefault {
     /**
      Default instance of the ServerSideEncryptionByDefault structure.
      */
-    public static let __default: S3Model.ServerSideEncryptionByDefault = {
+    static let __default: S3Model.ServerSideEncryptionByDefault = {
         let defaultInstance = S3Model.ServerSideEncryptionByDefault(
             kMSMasterKeyID: nil,
             sSEAlgorithm: .__default)
@@ -3620,7 +3620,7 @@ public extension ServerSideEncryptionConfiguration {
     /**
      Default instance of the ServerSideEncryptionConfiguration structure.
      */
-    public static let __default: S3Model.ServerSideEncryptionConfiguration = {
+    static let __default: S3Model.ServerSideEncryptionConfiguration = {
         let defaultInstance = S3Model.ServerSideEncryptionConfiguration(
             rules: [])
 
@@ -3632,7 +3632,7 @@ public extension ServerSideEncryptionRule {
     /**
      Default instance of the ServerSideEncryptionRule structure.
      */
-    public static let __default: S3Model.ServerSideEncryptionRule = {
+    static let __default: S3Model.ServerSideEncryptionRule = {
         let defaultInstance = S3Model.ServerSideEncryptionRule(
             applyServerSideEncryptionByDefault: nil)
 
@@ -3644,7 +3644,7 @@ public extension SourceSelectionCriteria {
     /**
      Default instance of the SourceSelectionCriteria structure.
      */
-    public static let __default: S3Model.SourceSelectionCriteria = {
+    static let __default: S3Model.SourceSelectionCriteria = {
         let defaultInstance = S3Model.SourceSelectionCriteria(
             sseKmsEncryptedObjects: nil)
 
@@ -3656,7 +3656,7 @@ public extension SseKmsEncryptedObjects {
     /**
      Default instance of the SseKmsEncryptedObjects structure.
      */
-    public static let __default: S3Model.SseKmsEncryptedObjects = {
+    static let __default: S3Model.SseKmsEncryptedObjects = {
         let defaultInstance = S3Model.SseKmsEncryptedObjects(
             status: .__default)
 
@@ -3668,7 +3668,7 @@ public extension Stats {
     /**
      Default instance of the Stats structure.
      */
-    public static let __default: S3Model.Stats = {
+    static let __default: S3Model.Stats = {
         let defaultInstance = S3Model.Stats(
             bytesProcessed: nil,
             bytesReturned: nil,
@@ -3682,7 +3682,7 @@ public extension StatsEvent {
     /**
      Default instance of the StatsEvent structure.
      */
-    public static let __default: S3Model.StatsEvent = {
+    static let __default: S3Model.StatsEvent = {
         let defaultInstance = S3Model.StatsEvent(
             details: nil)
 
@@ -3694,7 +3694,7 @@ public extension StorageClassAnalysis {
     /**
      Default instance of the StorageClassAnalysis structure.
      */
-    public static let __default: S3Model.StorageClassAnalysis = {
+    static let __default: S3Model.StorageClassAnalysis = {
         let defaultInstance = S3Model.StorageClassAnalysis(
             dataExport: nil)
 
@@ -3706,7 +3706,7 @@ public extension StorageClassAnalysisDataExport {
     /**
      Default instance of the StorageClassAnalysisDataExport structure.
      */
-    public static let __default: S3Model.StorageClassAnalysisDataExport = {
+    static let __default: S3Model.StorageClassAnalysisDataExport = {
         let defaultInstance = S3Model.StorageClassAnalysisDataExport(
             destination: AnalyticsExportDestination.__default,
             outputSchemaVersion: .__default)
@@ -3719,7 +3719,7 @@ public extension Tag {
     /**
      Default instance of the Tag structure.
      */
-    public static let __default: S3Model.Tag = {
+    static let __default: S3Model.Tag = {
         let defaultInstance = S3Model.Tag(
             key: "0",
             value: "value")
@@ -3732,7 +3732,7 @@ public extension Tagging {
     /**
      Default instance of the Tagging structure.
      */
-    public static let __default: S3Model.Tagging = {
+    static let __default: S3Model.Tagging = {
         let defaultInstance = S3Model.Tagging(
             tagSet: [])
 
@@ -3744,7 +3744,7 @@ public extension TargetGrant {
     /**
      Default instance of the TargetGrant structure.
      */
-    public static let __default: S3Model.TargetGrant = {
+    static let __default: S3Model.TargetGrant = {
         let defaultInstance = S3Model.TargetGrant(
             grantee: nil,
             permission: nil)
@@ -3757,7 +3757,7 @@ public extension TopicConfiguration {
     /**
      Default instance of the TopicConfiguration structure.
      */
-    public static let __default: S3Model.TopicConfiguration = {
+    static let __default: S3Model.TopicConfiguration = {
         let defaultInstance = S3Model.TopicConfiguration(
             events: [],
             filter: nil,
@@ -3772,7 +3772,7 @@ public extension TopicConfigurationDeprecated {
     /**
      Default instance of the TopicConfigurationDeprecated structure.
      */
-    public static let __default: S3Model.TopicConfigurationDeprecated = {
+    static let __default: S3Model.TopicConfigurationDeprecated = {
         let defaultInstance = S3Model.TopicConfigurationDeprecated(
             events: nil,
             id: nil,
@@ -3786,7 +3786,7 @@ public extension Transition {
     /**
      Default instance of the Transition structure.
      */
-    public static let __default: S3Model.Transition = {
+    static let __default: S3Model.Transition = {
         let defaultInstance = S3Model.Transition(
             date: nil,
             days: nil,
@@ -3800,7 +3800,7 @@ public extension UploadPartCopyOutput {
     /**
      Default instance of the UploadPartCopyOutput structure.
      */
-    public static let __default: S3Model.UploadPartCopyOutput = {
+    static let __default: S3Model.UploadPartCopyOutput = {
         let defaultInstance = S3Model.UploadPartCopyOutput(
             copyPartResult: nil,
             copySourceVersionId: nil,
@@ -3818,7 +3818,7 @@ public extension UploadPartCopyRequest {
     /**
      Default instance of the UploadPartCopyRequest structure.
      */
-    public static let __default: S3Model.UploadPartCopyRequest = {
+    static let __default: S3Model.UploadPartCopyRequest = {
         let defaultInstance = S3Model.UploadPartCopyRequest(
             bucket: "value",
             copySource: "",
@@ -3846,7 +3846,7 @@ public extension UploadPartOutput {
     /**
      Default instance of the UploadPartOutput structure.
      */
-    public static let __default: S3Model.UploadPartOutput = {
+    static let __default: S3Model.UploadPartOutput = {
         let defaultInstance = S3Model.UploadPartOutput(
             eTag: nil,
             requestCharged: nil,
@@ -3863,7 +3863,7 @@ public extension UploadPartRequest {
     /**
      Default instance of the UploadPartRequest structure.
      */
-    public static let __default: S3Model.UploadPartRequest = {
+    static let __default: S3Model.UploadPartRequest = {
         let defaultInstance = S3Model.UploadPartRequest(
             body: nil,
             bucket: "value",
@@ -3885,7 +3885,7 @@ public extension VersioningConfiguration {
     /**
      Default instance of the VersioningConfiguration structure.
      */
-    public static let __default: S3Model.VersioningConfiguration = {
+    static let __default: S3Model.VersioningConfiguration = {
         let defaultInstance = S3Model.VersioningConfiguration(
             mFADelete: nil,
             status: nil)
@@ -3898,7 +3898,7 @@ public extension WebsiteConfiguration {
     /**
      Default instance of the WebsiteConfiguration structure.
      */
-    public static let __default: S3Model.WebsiteConfiguration = {
+    static let __default: S3Model.WebsiteConfiguration = {
         let defaultInstance = S3Model.WebsiteConfiguration(
             errorDocument: nil,
             indexDocument: nil,

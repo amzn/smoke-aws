@@ -25,7 +25,7 @@ public extension BadRequestException {
     /**
      Default instance of the BadRequestException structure.
      */
-    public static let __default: RDSDataModel.BadRequestException = {
+    static let __default: RDSDataModel.BadRequestException = {
         let defaultInstance = RDSDataModel.BadRequestException(
             message: nil)
 
@@ -37,7 +37,7 @@ public extension BatchExecuteStatementRequest {
     /**
      Default instance of the BatchExecuteStatementRequest structure.
      */
-    public static let __default: RDSDataModel.BatchExecuteStatementRequest = {
+    static let __default: RDSDataModel.BatchExecuteStatementRequest = {
         let defaultInstance = RDSDataModel.BatchExecuteStatementRequest(
             database: nil,
             parameterSets: nil,
@@ -55,7 +55,7 @@ public extension BatchExecuteStatementResponse {
     /**
      Default instance of the BatchExecuteStatementResponse structure.
      */
-    public static let __default: RDSDataModel.BatchExecuteStatementResponse = {
+    static let __default: RDSDataModel.BatchExecuteStatementResponse = {
         let defaultInstance = RDSDataModel.BatchExecuteStatementResponse(
             updateResults: nil)
 
@@ -67,7 +67,7 @@ public extension BeginTransactionRequest {
     /**
      Default instance of the BeginTransactionRequest structure.
      */
-    public static let __default: RDSDataModel.BeginTransactionRequest = {
+    static let __default: RDSDataModel.BeginTransactionRequest = {
         let defaultInstance = RDSDataModel.BeginTransactionRequest(
             database: nil,
             resourceArn: "",
@@ -82,7 +82,7 @@ public extension BeginTransactionResponse {
     /**
      Default instance of the BeginTransactionResponse structure.
      */
-    public static let __default: RDSDataModel.BeginTransactionResponse = {
+    static let __default: RDSDataModel.BeginTransactionResponse = {
         let defaultInstance = RDSDataModel.BeginTransactionResponse(
             transactionId: nil)
 
@@ -94,7 +94,7 @@ public extension ColumnMetadata {
     /**
      Default instance of the ColumnMetadata structure.
      */
-    public static let __default: RDSDataModel.ColumnMetadata = {
+    static let __default: RDSDataModel.ColumnMetadata = {
         let defaultInstance = RDSDataModel.ColumnMetadata(
             arrayBaseColumnType: nil,
             isAutoIncrement: nil,
@@ -119,7 +119,7 @@ public extension CommitTransactionRequest {
     /**
      Default instance of the CommitTransactionRequest structure.
      */
-    public static let __default: RDSDataModel.CommitTransactionRequest = {
+    static let __default: RDSDataModel.CommitTransactionRequest = {
         let defaultInstance = RDSDataModel.CommitTransactionRequest(
             resourceArn: "",
             secretArn: "",
@@ -133,7 +133,7 @@ public extension CommitTransactionResponse {
     /**
      Default instance of the CommitTransactionResponse structure.
      */
-    public static let __default: RDSDataModel.CommitTransactionResponse = {
+    static let __default: RDSDataModel.CommitTransactionResponse = {
         let defaultInstance = RDSDataModel.CommitTransactionResponse(
             transactionStatus: nil)
 
@@ -145,7 +145,7 @@ public extension ExecuteSqlRequest {
     /**
      Default instance of the ExecuteSqlRequest structure.
      */
-    public static let __default: RDSDataModel.ExecuteSqlRequest = {
+    static let __default: RDSDataModel.ExecuteSqlRequest = {
         let defaultInstance = RDSDataModel.ExecuteSqlRequest(
             awsSecretStoreArn: "",
             database: nil,
@@ -161,7 +161,7 @@ public extension ExecuteSqlResponse {
     /**
      Default instance of the ExecuteSqlResponse structure.
      */
-    public static let __default: RDSDataModel.ExecuteSqlResponse = {
+    static let __default: RDSDataModel.ExecuteSqlResponse = {
         let defaultInstance = RDSDataModel.ExecuteSqlResponse(
             sqlStatementResults: nil)
 
@@ -173,7 +173,7 @@ public extension ExecuteStatementRequest {
     /**
      Default instance of the ExecuteStatementRequest structure.
      */
-    public static let __default: RDSDataModel.ExecuteStatementRequest = {
+    static let __default: RDSDataModel.ExecuteStatementRequest = {
         let defaultInstance = RDSDataModel.ExecuteStatementRequest(
             continueAfterTimeout: nil,
             database: nil,
@@ -193,7 +193,7 @@ public extension ExecuteStatementResponse {
     /**
      Default instance of the ExecuteStatementResponse structure.
      */
-    public static let __default: RDSDataModel.ExecuteStatementResponse = {
+    static let __default: RDSDataModel.ExecuteStatementResponse = {
         let defaultInstance = RDSDataModel.ExecuteStatementResponse(
             columnMetadata: nil,
             generatedFields: nil,
@@ -208,7 +208,7 @@ public extension Field {
     /**
      Default instance of the Field structure.
      */
-    public static let __default: RDSDataModel.Field = {
+    static let __default: RDSDataModel.Field = {
         let defaultInstance = RDSDataModel.Field(
             blobValue: nil,
             booleanValue: nil,
@@ -225,7 +225,7 @@ public extension ForbiddenException {
     /**
      Default instance of the ForbiddenException structure.
      */
-    public static let __default: RDSDataModel.ForbiddenException = {
+    static let __default: RDSDataModel.ForbiddenException = {
         let defaultInstance = RDSDataModel.ForbiddenException(
             message: nil)
 
@@ -237,7 +237,7 @@ public extension InternalServerErrorException {
     /**
      Default instance of the InternalServerErrorException structure.
      */
-    public static let __default: RDSDataModel.InternalServerErrorException = {
+    static let __default: RDSDataModel.InternalServerErrorException = {
         let defaultInstance = RDSDataModel.InternalServerErrorException()
 
         return defaultInstance
@@ -248,7 +248,7 @@ public extension NotFoundException {
     /**
      Default instance of the NotFoundException structure.
      */
-    public static let __default: RDSDataModel.NotFoundException = {
+    static let __default: RDSDataModel.NotFoundException = {
         let defaultInstance = RDSDataModel.NotFoundException(
             message: nil)
 
@@ -260,7 +260,7 @@ public extension Record {
     /**
      Default instance of the Record structure.
      */
-    public static let __default: RDSDataModel.Record = {
+    static let __default: RDSDataModel.Record = {
         let defaultInstance = RDSDataModel.Record(
             values: nil)
 
@@ -272,7 +272,7 @@ public extension ResultFrame {
     /**
      Default instance of the ResultFrame structure.
      */
-    public static let __default: RDSDataModel.ResultFrame = {
+    static let __default: RDSDataModel.ResultFrame = {
         let defaultInstance = RDSDataModel.ResultFrame(
             records: nil,
             resultSetMetadata: nil)
@@ -285,7 +285,7 @@ public extension ResultSetMetadata {
     /**
      Default instance of the ResultSetMetadata structure.
      */
-    public static let __default: RDSDataModel.ResultSetMetadata = {
+    static let __default: RDSDataModel.ResultSetMetadata = {
         let defaultInstance = RDSDataModel.ResultSetMetadata(
             columnCount: nil,
             columnMetadata: nil)
@@ -298,7 +298,7 @@ public extension RollbackTransactionRequest {
     /**
      Default instance of the RollbackTransactionRequest structure.
      */
-    public static let __default: RDSDataModel.RollbackTransactionRequest = {
+    static let __default: RDSDataModel.RollbackTransactionRequest = {
         let defaultInstance = RDSDataModel.RollbackTransactionRequest(
             resourceArn: "",
             secretArn: "",
@@ -312,7 +312,7 @@ public extension RollbackTransactionResponse {
     /**
      Default instance of the RollbackTransactionResponse structure.
      */
-    public static let __default: RDSDataModel.RollbackTransactionResponse = {
+    static let __default: RDSDataModel.RollbackTransactionResponse = {
         let defaultInstance = RDSDataModel.RollbackTransactionResponse(
             transactionStatus: nil)
 
@@ -324,7 +324,7 @@ public extension ServiceUnavailableError {
     /**
      Default instance of the ServiceUnavailableError structure.
      */
-    public static let __default: RDSDataModel.ServiceUnavailableError = {
+    static let __default: RDSDataModel.ServiceUnavailableError = {
         let defaultInstance = RDSDataModel.ServiceUnavailableError()
 
         return defaultInstance
@@ -335,7 +335,7 @@ public extension SqlParameter {
     /**
      Default instance of the SqlParameter structure.
      */
-    public static let __default: RDSDataModel.SqlParameter = {
+    static let __default: RDSDataModel.SqlParameter = {
         let defaultInstance = RDSDataModel.SqlParameter(
             name: nil,
             value: nil)
@@ -348,7 +348,7 @@ public extension SqlStatementResult {
     /**
      Default instance of the SqlStatementResult structure.
      */
-    public static let __default: RDSDataModel.SqlStatementResult = {
+    static let __default: RDSDataModel.SqlStatementResult = {
         let defaultInstance = RDSDataModel.SqlStatementResult(
             numberOfRecordsUpdated: nil,
             resultFrame: nil)
@@ -361,7 +361,7 @@ public extension StatementTimeoutException {
     /**
      Default instance of the StatementTimeoutException structure.
      */
-    public static let __default: RDSDataModel.StatementTimeoutException = {
+    static let __default: RDSDataModel.StatementTimeoutException = {
         let defaultInstance = RDSDataModel.StatementTimeoutException(
             dbConnectionId: nil,
             message: nil)
@@ -374,7 +374,7 @@ public extension StructValue {
     /**
      Default instance of the StructValue structure.
      */
-    public static let __default: RDSDataModel.StructValue = {
+    static let __default: RDSDataModel.StructValue = {
         let defaultInstance = RDSDataModel.StructValue(
             attributes: nil)
 
@@ -386,7 +386,7 @@ public extension UpdateResult {
     /**
      Default instance of the UpdateResult structure.
      */
-    public static let __default: RDSDataModel.UpdateResult = {
+    static let __default: RDSDataModel.UpdateResult = {
         let defaultInstance = RDSDataModel.UpdateResult(
             generatedFields: nil)
 
@@ -398,7 +398,7 @@ public extension Value {
     /**
      Default instance of the Value structure.
      */
-    public static let __default: RDSDataModel.Value = {
+    static let __default: RDSDataModel.Value = {
         let defaultInstance = RDSDataModel.Value(
             arrayValues: nil,
             bigIntValue: nil,
