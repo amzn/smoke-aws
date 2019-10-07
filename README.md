@@ -32,7 +32,7 @@ services either synchronously or asynchronously.
 
 Each AWS service has two libraries and corresponding targets in this package-
 * a model library that provides the structure and types that express in Swift the service's API model
-* a client library that provides a number of clients to contact the service or to mock the service for testing-
+* a client library that provides several clients to contact the service or to mock the service for testing-
   * a protocol that defines synchronous and asynchronous variants for all service API methods.
   * an AWS client that can be used to contact the actual AWS service.
   * a mock client that by default returns a default instance of the return type for each API method.
@@ -47,7 +47,7 @@ to your Package.swift-
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/amzn/smoke-aws.git", .upToNextMajor(from: "1.0.0"))
+    .package(URL: "https://github.com/amzn/smoke-aws.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 
