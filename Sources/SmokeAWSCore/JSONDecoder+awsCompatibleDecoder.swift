@@ -28,7 +28,7 @@ private func createDecoder() -> JSONDecoder {
 
 public extension JSONDecoder {
     /// Return a AWS compatible JSON Decoder
-    public static func awsCompatibleDecoder() -> JSONDecoder {
+    static func awsCompatibleDecoder() -> JSONDecoder {
         return createDecoder()
     }
 }

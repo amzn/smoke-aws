@@ -85,7 +85,7 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         var errorReason = try values.decode(String.self, forKey: .type)
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
         
-        if let index = errorReason.index(of: "#") {
+        if let index = errorReason.firstIndex(of: "#") {
             errorReason = String(errorReason[errorReason.index(index, offsetBy: 1)...])
         }
 

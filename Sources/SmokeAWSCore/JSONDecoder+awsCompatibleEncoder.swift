@@ -30,7 +30,7 @@ private func createEncoder() -> JSONEncoder {
 
 public extension JSONEncoder {
     /// Return a AWS compatible JSON Encoder
-    public static func awsCompatibleEncoder() -> JSONEncoder {
+    static func awsCompatibleEncoder() -> JSONEncoder {
         return createEncoder()
     }
 }

@@ -29,7 +29,7 @@ private func createDecoder() -> XMLDecoder {
 
 public extension XMLDecoder {
     /// Return a AWS compatible XML Decoder
-    public static func awsCompatibleDecoder() -> XMLDecoder {
+    static func awsCompatibleDecoder() -> XMLDecoder {
         return createDecoder()
     }
 }

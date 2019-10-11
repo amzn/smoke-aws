@@ -59,7 +59,7 @@ struct V4Signer {
         ]
         
         url.query?.components(separatedBy: "&").forEach {
-            var q = $0.components(separatedBy: "=")
+            let q = $0.components(separatedBy: "=")
             if q.count == 2 {
                 queries.append(URLQueryItem(name: q[0], value: q[1]))
             } else {
@@ -149,7 +149,7 @@ struct V4Signer {
 
     private func signedHeaders(_ headers: [String:String]) -> String {
         var list = Array(headers.keys).map { $0.lowercased() }.sorted()
-        if let index = list.index(of: "authorization") {
+        if let index = list.firstIndex(of: "authorization") {
             list.remove(at: index)
         }
         return list.joined(separator: ";")
@@ -234,7 +234,7 @@ struct V4Signer {
             let queryComponents = rawQuery.split(separator: "&")
             
             let mappedComponents: [String] = queryComponents.map { component in
-                if component.index(of: "=") == nil {
+                if component.firstIndex(of: "=") == nil {
                     // query keys without values require '=' at the end
                     return "\(component)="
                 } else {
