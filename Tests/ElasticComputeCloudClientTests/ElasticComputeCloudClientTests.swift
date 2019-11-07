@@ -32,9 +32,10 @@ class ElasticComputeCloudClientTests: XCTestCase {
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>()
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
-                                                        responseComponents: components)
+                                                        responseComponents: components,
+                                                        invocationReporting: SmokeHTTPClient.StandardHTTPClientInvocationReporting())
         
-        guard case ElasticComputeCloudError.unauthorizedOperation(let returnedPayload) = error else {
+        guard case ElasticComputeCloudError.unauthorizedOperation(let returnedPayload) = error.cause else {
             return XCTFail()
         }
         
@@ -63,9 +64,10 @@ class ElasticComputeCloudClientTests: XCTestCase {
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = DataAWSHttpClientDelegate<ElasticComputeCloudError>()
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
-                                                        responseComponents: components)
+                                                        responseComponents: components,
+                                                        invocationReporting: SmokeHTTPClient.StandardHTTPClientInvocationReporting())
         
-        guard case ElasticComputeCloudError.missingParameter(let returnedPayload) = error else {
+        guard case ElasticComputeCloudError.missingParameter(let returnedPayload) = error.cause else {
             return XCTFail()
         }
         

@@ -29,8 +29,10 @@ class RDSClientTests: XCTestCase {
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = XMLAWSHttpClientDelegate<RDSError>()
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
-                                                        responseComponents: components)
-        guard case let RDSError.accessDenied(message: returnedMessage) = error else {
+                                                        responseComponents: components,
+                                                        invocationReporting: SmokeHTTPClient.StandardHTTPClientInvocationReporting()
+        )
+        guard case let RDSError.accessDenied(message: returnedMessage) = error.cause else {
             return XCTFail()
         }
         
@@ -57,9 +59,10 @@ class RDSClientTests: XCTestCase {
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = DataAWSHttpClientDelegate<RDSError>()
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
-                                                        responseComponents: components)
+                                                        responseComponents: components,
+                                                        invocationReporting: SmokeHTTPClient.StandardHTTPClientInvocationReporting())
 
-        guard case RDSError.authorizationAlreadyExists = error else {
+        guard case RDSError.authorizationAlreadyExists = error.cause else {
             return XCTFail()
         }
     }

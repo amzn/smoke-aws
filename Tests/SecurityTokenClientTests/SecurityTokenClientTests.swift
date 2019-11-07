@@ -30,9 +30,10 @@ class SecurityTokenClientTests: XCTestCase {
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>()
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
-                                                        responseComponents: components)
+                                                        responseComponents: components,
+                                                        invocationReporting: SmokeHTTPClient.StandardHTTPClientInvocationReporting())
         
-        guard case let SecurityTokenError.accessDenied(returnedMessage) = error else {
+        guard case let SecurityTokenError.accessDenied(returnedMessage) = error.cause else {
             return XCTFail()
         }
         

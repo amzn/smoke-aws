@@ -23,7 +23,7 @@ import QueryCoding
 import HTTPHeadersCoding
 import HTTPPathCoding
 import XMLCoding
-import LoggerAPI
+import Logging
 
 enum DataAWSHttpClientDelegateError: Error {
     case invalidPayloadNotData
@@ -32,7 +32,7 @@ enum DataAWSHttpClientDelegateError: Error {
 /**
  Struct conforming to the AWSHttpClientDelegate protocol passes the body directly to
  and from the request and response. The generic ErrorType is used to generate errors based
- on the decoding a JSON error payload from the response body. 
+ on the decoding a JSON error payload from the response body.
  */
 public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
     private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
@@ -42,20 +42,24 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
     }
     
     public func getResponseError(responseHead: HTTPResponseHead,
-                                 responseComponents: HTTPResponseComponents) throws -> Error {
+                                 responseComponents: HTTPResponseComponents,
+                                 invocationReporting: HTTPClientInvocationReporting) throws -> HTTPClientError {
         guard let bodyData = responseComponents.body else {
             throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
         }
         
         // Convert bodyData to a debug string only if debug logging is enabled
-        Log.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
+        invocationReporting.logger.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
         
-        return try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
+        let cause = try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
+        
+        return HTTPClientError(responseCode: Int(responseHead.status.code), cause: cause)
     }
     
     public func encodeInputAndQueryString<InputType>(
         input: InputType,
-        httpPath: String) throws -> HTTPRequestComponents
+        httpPath: String,
+        invocationReporting: HTTPClientInvocationReporting) throws -> HTTPRequestComponents
         where InputType: HTTPRequestInputProtocol {
             
             let pathPostfix = input.pathPostfix ?? ""
@@ -122,17 +126,19 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
                                          body: body)
     }
     
-    public func encodeInputAndQueryString<InputType: Encodable>(input: InputType, httpPath: String) throws
+    public func encodeInputAndQueryString<InputType: Encodable>(input: InputType, httpPath: String,
+                                                                invocationReporting: HTTPClientInvocationReporting) throws
         -> (pathWithQuery: String, body: Data) {
             // there is no query; encode the body as a JSON payload
             return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder().encode(input))
     }
     
     public func decodeOutput<OutputType>(output: Data?,
-                                  headers: [(String, String)]) throws -> OutputType
+                                  headers: [(String, String)],
+                                  invocationReporting: HTTPClientInvocationReporting) throws -> OutputType
     where OutputType: HTTPResponseOutputProtocol {
         // Convert output to a debug string only if debug logging is enabled
-        Log.debug("Attempting to decode result data: \(output.debugString)")
+        invocationReporting.logger.debug("Attempting to decode result data: \(output.debugString)")
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
             // we are expecting a response body

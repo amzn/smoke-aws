@@ -22,7 +22,7 @@ import SmokeAWSCore
 import QueryCoding
 import HTTPHeadersCoding
 import HTTPPathCoding
-import LoggerAPI
+import Logging
 
 /**
  Struct conforming to the AWSHttpClientDelegate protocol that encodes and decode the request
@@ -37,21 +37,25 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
     }
     
     public func getResponseError(responseHead: HTTPResponseHead,
-                                 responseComponents: HTTPResponseComponents) throws -> Error {
+                                 responseComponents: HTTPResponseComponents,
+                                 invocationReporting: HTTPClientInvocationReporting) throws -> HTTPClientError {
         guard let bodyData = responseComponents.body else {
             throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
         }
         
         // Convert bodyData to a debug string only if debug logging is enabled
-        Log.debug("Attempting to decode error data into JSON: \(bodyData.debugString)")
+        invocationReporting.logger.debug("Attempting to decode error data into JSON: \(bodyData.debugString)")
         
         // attempt to get an error of Error type by decoding the body data
-        return try JSONDecoder.awsCompatibleDecoder().decode(ErrorType.self, from: bodyData)
+        let cause = try JSONDecoder.awsCompatibleDecoder().decode(ErrorType.self, from: bodyData)
+        
+        return HTTPClientError(responseCode: Int(responseHead.status.code), cause: cause)
     }
     
     public func encodeInputAndQueryString<InputType>(
         input: InputType,
-        httpPath: String) throws -> HTTPRequestComponents
+        httpPath: String,
+        invocationReporting: HTTPClientInvocationReporting) throws -> HTTPRequestComponents
         where InputType: HTTPRequestInputProtocol {
             
             let pathPostfix = input.pathPostfix ?? ""
@@ -115,17 +119,19 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
                                          body: body)
     }
     
-    public func encodeInputAndQueryString<InputType: Encodable>(input: InputType, httpPath: String) throws
+    public func encodeInputAndQueryString<InputType: Encodable>(input: InputType, httpPath: String,
+                                                                invocationReporting: HTTPClientInvocationReporting) throws
         -> (pathWithQuery: String, body: Data) {
             // there is no query; encode the body as a JSON payload
             return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder().encode(input))
     }
     
     public func decodeOutput<OutputType>(output: Data?,
-                                  headers: [(String, String)]) throws -> OutputType
+                                  headers: [(String, String)],
+                                  invocationReporting: HTTPClientInvocationReporting) throws -> OutputType
     where OutputType: HTTPResponseOutputProtocol {
         // Convert output to a debug string only if debug logging is enabled
-        Log.debug("Attempting to decode result data into JSON: \(output.debugString)")
+        invocationReporting.logger.debug("Attempting to decode result data into JSON: \(output.debugString)")
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
             // we are expecting a response body

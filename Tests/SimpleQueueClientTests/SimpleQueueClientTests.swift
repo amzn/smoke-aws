@@ -32,9 +32,10 @@ class SimpleQueueClientTests: XCTestCase {
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>()
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
-                                                        responseComponents: components)
+                                                        responseComponents: components,
+                                                        invocationReporting: StandardHTTPClientInvocationReporting())
         
-        guard case let SimpleQueueError.accessDenied(returnedMessage) = error else {
+        guard case let SimpleQueueError.accessDenied(returnedMessage) = error.cause else {
             return XCTFail()
         }
         
@@ -63,9 +64,10 @@ class SimpleQueueClientTests: XCTestCase {
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = DataAWSHttpClientDelegate<SimpleQueueError>()
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
-                                                        responseComponents: components)
+                                                        responseComponents: components,
+                                                        invocationReporting: StandardHTTPClientInvocationReporting())
         
-        guard case SimpleQueueError.queueDoesNotExist = error else {
+        guard case SimpleQueueError.queueDoesNotExist = error.cause else {
             return XCTFail()
         }
     }

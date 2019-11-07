@@ -16,7 +16,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private var standardError = FileHandle.standardError
 private let sourcesSubString = "Sources/"
@@ -25,33 +25,63 @@ private let sourcesSubString = "Sources/"
  Implementation of the Logger protocol that emits logs as
  required to Standard error to be picked up by Cloudwatch logs.
  */
-public struct CloudwatchStandardErrorLogger: Logger {
-    let minimumLoggerType: LoggerMessageType
+public struct CloudwatchStandardErrorLogger: LogHandler {
+    public var metadata: Logger.Metadata
+    public var logLevel: Logger.Level
+    
+    private init(logLevel: Logger.Level) {
+        self.logLevel = logLevel
+        self.metadata = [:]
+    }
+    
+    public subscript(metadataKey metadataKey: String) -> Logger.Metadata.Value? {
+        get {
+            return metadata[metadataKey]
+        }
+        set {
+            metadata[metadataKey] = newValue
+        }
+    }
     
     /**
      Set the logger implementation of the LoggerAPI to this type.
      */
-    public static func enableLogging(minimumLoggerType: LoggerMessageType = .info) {
-        Log.logger = CloudwatchStandardErrorLogger(minimumLoggerType: minimumLoggerType)
+    public static func enableLogging(logLevel: Logger.Level = .info) {
+        LoggingSystem.bootstrap { label in
+            return CloudwatchStandardErrorLogger(logLevel: logLevel)
+        }
     }
     
-    public func log(_ type: LoggerMessageType, msg: String,
-                    functionName: String, lineNum: Int,
-                    fileName: String) {
+    public func log(level: Logger.Level, message: Logger.Message,
+                    metadata: Logger.Metadata?, file: String, function: String, line: UInt) {
         let shortFileName: String
-        if let range = fileName.range(of: "Sources/") {
-            let startIndex = fileName.index(range.lowerBound, offsetBy: sourcesSubString.count)
-            shortFileName = String(fileName[startIndex...])
+        if let range = file.range(of: "Sources/") {
+            let startIndex = file.index(range.lowerBound, offsetBy: sourcesSubString.count)
+            shortFileName = String(file[startIndex...])
         } else {
-            shortFileName = fileName
+            shortFileName = file
         }
         
-        print("\(shortFileName):\(lineNum):\(functionName) \(msg)",
+        let metadataToUse: Logger.Metadata
+        if let metadata = metadata {
+            metadataToUse = self.metadata.merging(metadata) { (global, local) in local }
+        } else {
+            metadataToUse = self.metadata
+        }
+        
+        let levelString = "\(level)".uppercased()
+        
+        let metadataAsTags = metadataToUse.map { (key, value) -> String in "\(key):\(value.description)" }
+        
+        let tagString: String
+        if !metadataAsTags.isEmpty {
+            tagString = "[\(metadataAsTags.joined(separator: "|"))] "
+        } else {
+            tagString = ""
+        }
+        
+        print("\(shortFileName):\(line):\(function) [\(levelString)] \(tagString)\(message)",
             to: &standardError)
-    }
-    
-    public func isLogging(_ level: LoggerMessageType) -> Bool {
-        return level.rawValue >= minimumLoggerType.rawValue
     }
 }
 
