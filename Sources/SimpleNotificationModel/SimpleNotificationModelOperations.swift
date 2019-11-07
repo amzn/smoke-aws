@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the SimpleNotificationModel.
  */
-public enum SimpleNotificationModelOperations: String {
+public enum SimpleNotificationModelOperations: String, Hashable, CustomStringConvertible {
     case addPermission = "AddPermission"
     case checkIfPhoneNumberIsOptedOut = "CheckIfPhoneNumberIsOptedOut"
     case confirmSubscription = "ConfirmSubscription"
@@ -58,6 +58,10 @@ public enum SimpleNotificationModelOperations: String {
     case tagResource = "TagResource"
     case unsubscribe = "Unsubscribe"
     case untagResource = "UntagResource"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

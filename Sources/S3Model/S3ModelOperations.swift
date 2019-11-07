@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the S3Model.
  */
-public enum S3ModelOperations: String {
+public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case abortMultipartUpload = "AbortMultipartUpload"
     case completeMultipartUpload = "CompleteMultipartUpload"
     case copyObject = "CopyObject"
@@ -113,6 +113,10 @@ public enum S3ModelOperations: String {
     case selectObjectContent = "SelectObjectContent"
     case uploadPart = "UploadPart"
     case uploadPartCopy = "UploadPartCopy"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

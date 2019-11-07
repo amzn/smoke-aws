@@ -553,11 +553,11 @@ public typealias Values = [DatapointValue]
 extension CloudWatchModel.ActionPrefix {
     public func validateAsActionPrefix() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to ActionPrefix violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to ActionPrefix violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to ActionPrefix violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to ActionPrefix violated the maximum length constraint.")
         }
     }
 }
@@ -568,11 +568,11 @@ extension CloudWatchModel.ActionPrefix {
 extension CloudWatchModel.AlarmArn {
     public func validateAsAlarmArn() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmArn violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmArn violated the minimum length constraint.")
         }
 
         if self.count > 1600 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmArn violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmArn violated the maximum length constraint.")
         }
     }
 }
@@ -583,11 +583,11 @@ extension CloudWatchModel.AlarmArn {
 extension CloudWatchModel.AlarmDescription {
     public func validateAsAlarmDescription() throws {
         if self.count < 0 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmDescription violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmDescription violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmDescription violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmDescription violated the maximum length constraint.")
         }
     }
 }
@@ -598,11 +598,11 @@ extension CloudWatchModel.AlarmDescription {
 extension CloudWatchModel.AlarmName {
     public func validateAsAlarmName() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmName violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmName violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmName violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmName violated the maximum length constraint.")
         }
     }
 }
@@ -613,11 +613,11 @@ extension CloudWatchModel.AlarmName {
 extension CloudWatchModel.AlarmNamePrefix {
     public func validateAsAlarmNamePrefix() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmNamePrefix violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmNamePrefix violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmNamePrefix violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmNamePrefix violated the maximum length constraint.")
         }
     }
 }
@@ -629,7 +629,7 @@ extension Array where Element == CloudWatchModel.AlarmName {
     public func validateAsAlarmNames() throws {
 
         if self.count > 100 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AlarmNames violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmNames violated the maximum length constraint.")
         }
     }
 }
@@ -640,11 +640,11 @@ extension Array where Element == CloudWatchModel.AlarmName {
 extension CloudWatchModel.AmazonResourceName {
     public func validateAsAmazonResourceName() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AmazonResourceName violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AmazonResourceName violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to AmazonResourceName violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to AmazonResourceName violated the maximum length constraint.")
         }
     }
 }
@@ -655,7 +655,7 @@ extension CloudWatchModel.AmazonResourceName {
 extension CloudWatchModel.DatapointsToAlarm {
     public func validateAsDatapointsToAlarm() throws {
         if self < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to DatapointsToAlarm violated the minimum range constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to DatapointsToAlarm violated the minimum range constraint.")
         }
 
     }
@@ -668,7 +668,7 @@ extension Array where Element == CloudWatchModel.DimensionFilter {
     public func validateAsDimensionFilters() throws {
 
         if self.count > 10 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to DimensionFilters violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to DimensionFilters violated the maximum length constraint.")
         }
     }
 }
@@ -679,11 +679,11 @@ extension Array where Element == CloudWatchModel.DimensionFilter {
 extension CloudWatchModel.DimensionName {
     public func validateAsDimensionName() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to DimensionName violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to DimensionName violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to DimensionName violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to DimensionName violated the maximum length constraint.")
         }
     }
 }
@@ -694,11 +694,11 @@ extension CloudWatchModel.DimensionName {
 extension CloudWatchModel.DimensionValue {
     public func validateAsDimensionValue() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to DimensionValue violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to DimensionValue violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to DimensionValue violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to DimensionValue violated the maximum length constraint.")
         }
     }
 }
@@ -710,7 +710,7 @@ extension Array where Element == CloudWatchModel.Dimension {
     public func validateAsDimensions() throws {
 
         if self.count > 10 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to Dimensions violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to Dimensions violated the maximum length constraint.")
         }
     }
 }
@@ -721,11 +721,11 @@ extension Array where Element == CloudWatchModel.Dimension {
 extension CloudWatchModel.ErrorMessage {
     public func validateAsErrorMessage() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to ErrorMessage violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to ErrorMessage violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to ErrorMessage violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to ErrorMessage violated the maximum length constraint.")
         }
     }
 }
@@ -736,11 +736,11 @@ extension CloudWatchModel.ErrorMessage {
 extension CloudWatchModel.EvaluateLowSampleCountPercentile {
     public func validateAsEvaluateLowSampleCountPercentile() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to EvaluateLowSampleCountPercentile violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to EvaluateLowSampleCountPercentile violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to EvaluateLowSampleCountPercentile violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to EvaluateLowSampleCountPercentile violated the maximum length constraint.")
         }
     }
 }
@@ -751,7 +751,7 @@ extension CloudWatchModel.EvaluateLowSampleCountPercentile {
 extension CloudWatchModel.EvaluationPeriods {
     public func validateAsEvaluationPeriods() throws {
         if self < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to EvaluationPeriods violated the minimum range constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to EvaluationPeriods violated the minimum range constraint.")
         }
 
     }
@@ -764,7 +764,7 @@ extension CloudWatchModel.ExtendedStatistic {
     public func validateAsExtendedStatistic() throws {
         guard let matchingRange = self.range(of: "p(\\d{1,2}(\\.\\d{0,2})?|100)", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw CloudWatchCodingError.validationError(
+                throw CloudWatchError.validationError(
                     reason: "The provided value to ExtendedStatistic violated the regular expression constraint.")
         }
     }
@@ -776,11 +776,11 @@ extension CloudWatchModel.ExtendedStatistic {
 extension Array where Element == CloudWatchModel.ExtendedStatistic {
     public func validateAsExtendedStatistics() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to ExtendedStatistics violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to ExtendedStatistics violated the minimum length constraint.")
         }
 
         if self.count > 10 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to ExtendedStatistics violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to ExtendedStatistics violated the maximum length constraint.")
         }
     }
 }
@@ -791,11 +791,11 @@ extension Array where Element == CloudWatchModel.ExtendedStatistic {
 extension CloudWatchModel.HistoryData {
     public func validateAsHistoryData() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to HistoryData violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to HistoryData violated the minimum length constraint.")
         }
 
         if self.count > 4095 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to HistoryData violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to HistoryData violated the maximum length constraint.")
         }
     }
 }
@@ -806,11 +806,11 @@ extension CloudWatchModel.HistoryData {
 extension CloudWatchModel.HistorySummary {
     public func validateAsHistorySummary() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to HistorySummary violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to HistorySummary violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to HistorySummary violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to HistorySummary violated the maximum length constraint.")
         }
     }
 }
@@ -821,11 +821,11 @@ extension CloudWatchModel.HistorySummary {
 extension CloudWatchModel.MaxRecords {
     public func validateAsMaxRecords() throws {
         if self < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to MaxRecords violated the minimum range constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to MaxRecords violated the minimum range constraint.")
         }
 
         if self > 100 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to MaxRecords violated the maximum range constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to MaxRecords violated the maximum range constraint.")
         }
     }
 }
@@ -836,11 +836,11 @@ extension CloudWatchModel.MaxRecords {
 extension CloudWatchModel.MetricExpression {
     public func validateAsMetricExpression() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to MetricExpression violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to MetricExpression violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to MetricExpression violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to MetricExpression violated the maximum length constraint.")
         }
     }
 }
@@ -851,11 +851,11 @@ extension CloudWatchModel.MetricExpression {
 extension CloudWatchModel.MetricId {
     public func validateAsMetricId() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to MetricId violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to MetricId violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to MetricId violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to MetricId violated the maximum length constraint.")
         }
     }
 }
@@ -866,11 +866,11 @@ extension CloudWatchModel.MetricId {
 extension CloudWatchModel.MetricName {
     public func validateAsMetricName() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to MetricName violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to MetricName violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to MetricName violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to MetricName violated the maximum length constraint.")
         }
     }
 }
@@ -881,16 +881,16 @@ extension CloudWatchModel.MetricName {
 extension CloudWatchModel.Namespace {
     public func validateAsNamespace() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to Namespace violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to Namespace violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to Namespace violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to Namespace violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[^:].*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw CloudWatchCodingError.validationError(
+                throw CloudWatchError.validationError(
                     reason: "The provided value to Namespace violated the regular expression constraint.")
         }
     }
@@ -902,7 +902,7 @@ extension CloudWatchModel.Namespace {
 extension CloudWatchModel.Period {
     public func validateAsPeriod() throws {
         if self < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to Period violated the minimum range constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to Period violated the minimum range constraint.")
         }
 
     }
@@ -915,7 +915,7 @@ extension Array where Element == CloudWatchModel.ResourceName {
     public func validateAsResourceList() throws {
 
         if self.count > 5 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to ResourceList violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to ResourceList violated the maximum length constraint.")
         }
     }
 }
@@ -926,11 +926,11 @@ extension Array where Element == CloudWatchModel.ResourceName {
 extension CloudWatchModel.ResourceName {
     public func validateAsResourceName() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to ResourceName violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to ResourceName violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to ResourceName violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to ResourceName violated the maximum length constraint.")
         }
     }
 }
@@ -941,11 +941,11 @@ extension CloudWatchModel.ResourceName {
 extension CloudWatchModel.StateReason {
     public func validateAsStateReason() throws {
         if self.count < 0 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to StateReason violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to StateReason violated the minimum length constraint.")
         }
 
         if self.count > 1023 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to StateReason violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to StateReason violated the maximum length constraint.")
         }
     }
 }
@@ -956,11 +956,11 @@ extension CloudWatchModel.StateReason {
 extension CloudWatchModel.StateReasonData {
     public func validateAsStateReasonData() throws {
         if self.count < 0 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to StateReasonData violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to StateReasonData violated the minimum length constraint.")
         }
 
         if self.count > 4000 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to StateReasonData violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to StateReasonData violated the maximum length constraint.")
         }
     }
 }
@@ -971,11 +971,11 @@ extension CloudWatchModel.StateReasonData {
 extension Array where Element == CloudWatchModel.Statistic {
     public func validateAsStatistics() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to Statistics violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to Statistics violated the minimum length constraint.")
         }
 
         if self.count > 5 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to Statistics violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to Statistics violated the maximum length constraint.")
         }
     }
 }
@@ -986,7 +986,7 @@ extension Array where Element == CloudWatchModel.Statistic {
 extension CloudWatchModel.StorageResolution {
     public func validateAsStorageResolution() throws {
         if self < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to StorageResolution violated the minimum range constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to StorageResolution violated the minimum range constraint.")
         }
 
     }
@@ -998,11 +998,11 @@ extension CloudWatchModel.StorageResolution {
 extension CloudWatchModel.TagKey {
     public func validateAsTagKey() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
         }
     }
 }
@@ -1013,11 +1013,11 @@ extension CloudWatchModel.TagKey {
 extension CloudWatchModel.TagValue {
     public func validateAsTagValue() throws {
         if self.count < 0 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
         }
     }
 }
@@ -1028,11 +1028,11 @@ extension CloudWatchModel.TagValue {
 extension CloudWatchModel.TreatMissingData {
     public func validateAsTreatMissingData() throws {
         if self.count < 1 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to TreatMissingData violated the minimum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to TreatMissingData violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw CloudWatchCodingError.validationError(reason: "The provided value to TreatMissingData violated the maximum length constraint.")
+            throw CloudWatchError.validationError(reason: "The provided value to TreatMissingData violated the maximum length constraint.")
         }
     }
 }

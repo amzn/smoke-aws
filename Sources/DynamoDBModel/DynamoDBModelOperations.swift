@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the DynamoDBModel.
  */
-public enum DynamoDBModelOperations: String {
+public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
     case batchGetItem = "BatchGetItem"
     case batchWriteItem = "BatchWriteItem"
     case createBackup = "CreateBackup"
@@ -61,6 +61,10 @@ public enum DynamoDBModelOperations: String {
     case updateItem = "UpdateItem"
     case updateTable = "UpdateTable"
     case updateTimeToLive = "UpdateTimeToLive"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

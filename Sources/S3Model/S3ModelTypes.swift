@@ -1683,7 +1683,7 @@ extension S3Model.CopySource {
     public func validateAsCopySource() throws {
         guard let matchingRange = self.range(of: "\\/.+\\/.+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw S3CodingError.validationError(
+                throw S3Error.validationError(
                     reason: "The provided value to CopySource violated the regular expression constraint.")
         }
     }
@@ -1695,7 +1695,7 @@ extension S3Model.CopySource {
 extension S3Model.ObjectKey {
     public func validateAsObjectKey() throws {
         if self.count < 1 {
-            throw S3CodingError.validationError(reason: "The provided value to ObjectKey violated the minimum length constraint.")
+            throw S3Error.validationError(reason: "The provided value to ObjectKey violated the minimum length constraint.")
         }
 
     }

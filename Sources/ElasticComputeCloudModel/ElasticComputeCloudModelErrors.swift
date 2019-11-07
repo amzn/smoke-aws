@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let activeVpcPeeringConnectionPerVpcLimitExceededIdentity = "ActiveVpcPeeringConnectionPerVpcLimitExceeded"
 private let addressLimitExceededIdentity = "AddressLimitExceeded"
@@ -384,12 +384,6 @@ public struct ElasticComputeCloudErrorPayload: Codable {
     }
 }
 
-public enum ElasticComputeCloudCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum ElasticComputeCloudError: Swift.Error, Decodable {
     case activeVpcPeeringConnectionPerVpcLimitExceeded(ElasticComputeCloudErrorPayload)
     case addressLimitExceeded(ElasticComputeCloudErrorPayload)
@@ -742,6 +736,8 @@ public enum ElasticComputeCloudError: Swift.Error, Decodable {
     case vpnGatewayLimitExceeded(ElasticComputeCloudErrorPayload)
     case zonesMismatched(ElasticComputeCloudErrorPayload)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "Code"
@@ -1811,7 +1807,7 @@ public enum ElasticComputeCloudError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw ElasticComputeCloudCodingError.unrecognizedError(errorReason, errorMessage)
+            self = ElasticComputeCloudError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

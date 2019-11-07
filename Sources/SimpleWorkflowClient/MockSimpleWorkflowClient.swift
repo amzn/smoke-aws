@@ -21,6 +21,7 @@
 
 import Foundation
 import SimpleWorkflowModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
@@ -231,14 +232,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func countClosedWorkflowExecutionsAsync(input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.WorkflowExecutionCount>) -> ()) throws {
+    public func countClosedWorkflowExecutionsAsync(
+            input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws {
         if let countClosedWorkflowExecutionsAsyncOverride = countClosedWorkflowExecutionsAsyncOverride {
-            return try countClosedWorkflowExecutionsAsyncOverride(input, completion)
+            return try countClosedWorkflowExecutionsAsyncOverride(input, reporting, completion)
         }
 
         let result = WorkflowExecutionCount.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -250,9 +254,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func countClosedWorkflowExecutionsSync(input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
+    public func countClosedWorkflowExecutionsSync(
+            input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
         if let countClosedWorkflowExecutionsSyncOverride = countClosedWorkflowExecutionsSyncOverride {
-            return try countClosedWorkflowExecutionsSyncOverride(input)
+            return try countClosedWorkflowExecutionsSyncOverride(input, reporting)
         }
 
         return WorkflowExecutionCount.__default
@@ -268,14 +274,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func countOpenWorkflowExecutionsAsync(input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.WorkflowExecutionCount>) -> ()) throws {
+    public func countOpenWorkflowExecutionsAsync(
+            input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws {
         if let countOpenWorkflowExecutionsAsyncOverride = countOpenWorkflowExecutionsAsyncOverride {
-            return try countOpenWorkflowExecutionsAsyncOverride(input, completion)
+            return try countOpenWorkflowExecutionsAsyncOverride(input, reporting, completion)
         }
 
         let result = WorkflowExecutionCount.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -287,9 +296,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func countOpenWorkflowExecutionsSync(input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
+    public func countOpenWorkflowExecutionsSync(
+            input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
         if let countOpenWorkflowExecutionsSyncOverride = countOpenWorkflowExecutionsSyncOverride {
-            return try countOpenWorkflowExecutionsSyncOverride(input)
+            return try countOpenWorkflowExecutionsSyncOverride(input, reporting)
         }
 
         return WorkflowExecutionCount.__default
@@ -305,14 +316,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func countPendingActivityTasksAsync(input: SimpleWorkflowModel.CountPendingActivityTasksInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.PendingTaskCount>) -> ()) throws {
+    public func countPendingActivityTasksAsync(
+            input: SimpleWorkflowModel.CountPendingActivityTasksInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws {
         if let countPendingActivityTasksAsyncOverride = countPendingActivityTasksAsyncOverride {
-            return try countPendingActivityTasksAsyncOverride(input, completion)
+            return try countPendingActivityTasksAsyncOverride(input, reporting, completion)
         }
 
         let result = PendingTaskCount.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -324,9 +338,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func countPendingActivityTasksSync(input: SimpleWorkflowModel.CountPendingActivityTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount {
+    public func countPendingActivityTasksSync(
+            input: SimpleWorkflowModel.CountPendingActivityTasksInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount {
         if let countPendingActivityTasksSyncOverride = countPendingActivityTasksSyncOverride {
-            return try countPendingActivityTasksSyncOverride(input)
+            return try countPendingActivityTasksSyncOverride(input, reporting)
         }
 
         return PendingTaskCount.__default
@@ -342,14 +358,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func countPendingDecisionTasksAsync(input: SimpleWorkflowModel.CountPendingDecisionTasksInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.PendingTaskCount>) -> ()) throws {
+    public func countPendingDecisionTasksAsync(
+            input: SimpleWorkflowModel.CountPendingDecisionTasksInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws {
         if let countPendingDecisionTasksAsyncOverride = countPendingDecisionTasksAsyncOverride {
-            return try countPendingDecisionTasksAsyncOverride(input, completion)
+            return try countPendingDecisionTasksAsyncOverride(input, reporting, completion)
         }
 
         let result = PendingTaskCount.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -361,9 +380,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func countPendingDecisionTasksSync(input: SimpleWorkflowModel.CountPendingDecisionTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount {
+    public func countPendingDecisionTasksSync(
+            input: SimpleWorkflowModel.CountPendingDecisionTasksInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount {
         if let countPendingDecisionTasksSyncOverride = countPendingDecisionTasksSyncOverride {
-            return try countPendingDecisionTasksSyncOverride(input)
+            return try countPendingDecisionTasksSyncOverride(input, reporting)
         }
 
         return PendingTaskCount.__default
@@ -378,9 +399,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateActivityTypeAsync(input: SimpleWorkflowModel.DeprecateActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deprecateActivityTypeAsync(
+            input: SimpleWorkflowModel.DeprecateActivityTypeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deprecateActivityTypeAsyncOverride = deprecateActivityTypeAsyncOverride {
-            return try deprecateActivityTypeAsyncOverride(input, completion)
+            return try deprecateActivityTypeAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -393,9 +417,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated DeprecateActivityTypeInput object being passed to this operation.
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateActivityTypeSync(input: SimpleWorkflowModel.DeprecateActivityTypeInput) throws {
+    public func deprecateActivityTypeSync(
+            input: SimpleWorkflowModel.DeprecateActivityTypeInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deprecateActivityTypeSyncOverride = deprecateActivityTypeSyncOverride {
-            return try deprecateActivityTypeSyncOverride(input)
+            return try deprecateActivityTypeSyncOverride(input, reporting)
         }
 
     }
@@ -409,9 +435,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainDeprecated, operationNotPermitted, unknownResource.
      */
-    public func deprecateDomainAsync(input: SimpleWorkflowModel.DeprecateDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deprecateDomainAsync(
+            input: SimpleWorkflowModel.DeprecateDomainInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deprecateDomainAsyncOverride = deprecateDomainAsyncOverride {
-            return try deprecateDomainAsyncOverride(input, completion)
+            return try deprecateDomainAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -424,9 +453,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated DeprecateDomainInput object being passed to this operation.
      - Throws: domainDeprecated, operationNotPermitted, unknownResource.
      */
-    public func deprecateDomainSync(input: SimpleWorkflowModel.DeprecateDomainInput) throws {
+    public func deprecateDomainSync(
+            input: SimpleWorkflowModel.DeprecateDomainInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deprecateDomainSyncOverride = deprecateDomainSyncOverride {
-            return try deprecateDomainSyncOverride(input)
+            return try deprecateDomainSyncOverride(input, reporting)
         }
 
     }
@@ -440,9 +471,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateWorkflowTypeAsync(input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deprecateWorkflowTypeAsync(
+            input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deprecateWorkflowTypeAsyncOverride = deprecateWorkflowTypeAsyncOverride {
-            return try deprecateWorkflowTypeAsyncOverride(input, completion)
+            return try deprecateWorkflowTypeAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -455,9 +489,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated DeprecateWorkflowTypeInput object being passed to this operation.
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateWorkflowTypeSync(input: SimpleWorkflowModel.DeprecateWorkflowTypeInput) throws {
+    public func deprecateWorkflowTypeSync(
+            input: SimpleWorkflowModel.DeprecateWorkflowTypeInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deprecateWorkflowTypeSyncOverride = deprecateWorkflowTypeSyncOverride {
-            return try deprecateWorkflowTypeSyncOverride(input)
+            return try deprecateWorkflowTypeSyncOverride(input, reporting)
         }
 
     }
@@ -472,14 +508,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func describeActivityTypeAsync(input: SimpleWorkflowModel.DescribeActivityTypeInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.ActivityTypeDetail>) -> ()) throws {
+    public func describeActivityTypeAsync(
+            input: SimpleWorkflowModel.DescribeActivityTypeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) -> ()) throws {
         if let describeActivityTypeAsyncOverride = describeActivityTypeAsyncOverride {
-            return try describeActivityTypeAsyncOverride(input, completion)
+            return try describeActivityTypeAsyncOverride(input, reporting, completion)
         }
 
         let result = ActivityTypeDetail.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -491,9 +530,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func describeActivityTypeSync(input: SimpleWorkflowModel.DescribeActivityTypeInput) throws -> SimpleWorkflowModel.ActivityTypeDetail {
+    public func describeActivityTypeSync(
+            input: SimpleWorkflowModel.DescribeActivityTypeInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeDetail {
         if let describeActivityTypeSyncOverride = describeActivityTypeSyncOverride {
-            return try describeActivityTypeSyncOverride(input)
+            return try describeActivityTypeSyncOverride(input, reporting)
         }
 
         return ActivityTypeDetail.__default
@@ -509,14 +550,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func describeDomainAsync(input: SimpleWorkflowModel.DescribeDomainInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.DomainDetail>) -> ()) throws {
+    public func describeDomainAsync(
+            input: SimpleWorkflowModel.DescribeDomainInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) -> ()) throws {
         if let describeDomainAsyncOverride = describeDomainAsyncOverride {
-            return try describeDomainAsyncOverride(input, completion)
+            return try describeDomainAsyncOverride(input, reporting, completion)
         }
 
         let result = DomainDetail.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -528,9 +572,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func describeDomainSync(input: SimpleWorkflowModel.DescribeDomainInput) throws -> SimpleWorkflowModel.DomainDetail {
+    public func describeDomainSync(
+            input: SimpleWorkflowModel.DescribeDomainInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainDetail {
         if let describeDomainSyncOverride = describeDomainSyncOverride {
-            return try describeDomainSyncOverride(input)
+            return try describeDomainSyncOverride(input, reporting)
         }
 
         return DomainDetail.__default
@@ -546,14 +592,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func describeWorkflowExecutionAsync(input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.WorkflowExecutionDetail>) -> ()) throws {
+    public func describeWorkflowExecutionAsync(
+            input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) -> ()) throws {
         if let describeWorkflowExecutionAsyncOverride = describeWorkflowExecutionAsyncOverride {
-            return try describeWorkflowExecutionAsyncOverride(input, completion)
+            return try describeWorkflowExecutionAsyncOverride(input, reporting, completion)
         }
 
         let result = WorkflowExecutionDetail.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -565,9 +614,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func describeWorkflowExecutionSync(input: SimpleWorkflowModel.DescribeWorkflowExecutionInput) throws -> SimpleWorkflowModel.WorkflowExecutionDetail {
+    public func describeWorkflowExecutionSync(
+            input: SimpleWorkflowModel.DescribeWorkflowExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionDetail {
         if let describeWorkflowExecutionSyncOverride = describeWorkflowExecutionSyncOverride {
-            return try describeWorkflowExecutionSyncOverride(input)
+            return try describeWorkflowExecutionSyncOverride(input, reporting)
         }
 
         return WorkflowExecutionDetail.__default
@@ -583,14 +634,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func describeWorkflowTypeAsync(input: SimpleWorkflowModel.DescribeWorkflowTypeInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.WorkflowTypeDetail>) -> ()) throws {
+    public func describeWorkflowTypeAsync(
+            input: SimpleWorkflowModel.DescribeWorkflowTypeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) -> ()) throws {
         if let describeWorkflowTypeAsyncOverride = describeWorkflowTypeAsyncOverride {
-            return try describeWorkflowTypeAsyncOverride(input, completion)
+            return try describeWorkflowTypeAsyncOverride(input, reporting, completion)
         }
 
         let result = WorkflowTypeDetail.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -602,9 +656,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func describeWorkflowTypeSync(input: SimpleWorkflowModel.DescribeWorkflowTypeInput) throws -> SimpleWorkflowModel.WorkflowTypeDetail {
+    public func describeWorkflowTypeSync(
+            input: SimpleWorkflowModel.DescribeWorkflowTypeInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeDetail {
         if let describeWorkflowTypeSyncOverride = describeWorkflowTypeSyncOverride {
-            return try describeWorkflowTypeSyncOverride(input)
+            return try describeWorkflowTypeSyncOverride(input, reporting)
         }
 
         return WorkflowTypeDetail.__default
@@ -620,14 +676,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func getWorkflowExecutionHistoryAsync(input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.History>) -> ()) throws {
+    public func getWorkflowExecutionHistoryAsync(
+            input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.History, HTTPClientError>) -> ()) throws {
         if let getWorkflowExecutionHistoryAsyncOverride = getWorkflowExecutionHistoryAsyncOverride {
-            return try getWorkflowExecutionHistoryAsyncOverride(input, completion)
+            return try getWorkflowExecutionHistoryAsyncOverride(input, reporting, completion)
         }
 
         let result = History.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -639,9 +698,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func getWorkflowExecutionHistorySync(input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput) throws -> SimpleWorkflowModel.History {
+    public func getWorkflowExecutionHistorySync(
+            input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.History {
         if let getWorkflowExecutionHistorySyncOverride = getWorkflowExecutionHistorySyncOverride {
-            return try getWorkflowExecutionHistorySyncOverride(input)
+            return try getWorkflowExecutionHistorySyncOverride(input, reporting)
         }
 
         return History.__default
@@ -657,14 +718,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func listActivityTypesAsync(input: SimpleWorkflowModel.ListActivityTypesInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.ActivityTypeInfos>) -> ()) throws {
+    public func listActivityTypesAsync(
+            input: SimpleWorkflowModel.ListActivityTypesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) -> ()) throws {
         if let listActivityTypesAsyncOverride = listActivityTypesAsyncOverride {
-            return try listActivityTypesAsyncOverride(input, completion)
+            return try listActivityTypesAsyncOverride(input, reporting, completion)
         }
 
         let result = ActivityTypeInfos.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -676,9 +740,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func listActivityTypesSync(input: SimpleWorkflowModel.ListActivityTypesInput) throws -> SimpleWorkflowModel.ActivityTypeInfos {
+    public func listActivityTypesSync(
+            input: SimpleWorkflowModel.ListActivityTypesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeInfos {
         if let listActivityTypesSyncOverride = listActivityTypesSyncOverride {
-            return try listActivityTypesSyncOverride(input)
+            return try listActivityTypesSyncOverride(input, reporting)
         }
 
         return ActivityTypeInfos.__default
@@ -694,14 +760,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func listClosedWorkflowExecutionsAsync(input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.WorkflowExecutionInfos>) -> ()) throws {
+    public func listClosedWorkflowExecutionsAsync(
+            input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws {
         if let listClosedWorkflowExecutionsAsyncOverride = listClosedWorkflowExecutionsAsyncOverride {
-            return try listClosedWorkflowExecutionsAsyncOverride(input, completion)
+            return try listClosedWorkflowExecutionsAsyncOverride(input, reporting, completion)
         }
 
         let result = WorkflowExecutionInfos.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -713,9 +782,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func listClosedWorkflowExecutionsSync(input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
+    public func listClosedWorkflowExecutionsSync(
+            input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
         if let listClosedWorkflowExecutionsSyncOverride = listClosedWorkflowExecutionsSyncOverride {
-            return try listClosedWorkflowExecutionsSyncOverride(input)
+            return try listClosedWorkflowExecutionsSyncOverride(input, reporting)
         }
 
         return WorkflowExecutionInfos.__default
@@ -731,14 +802,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted.
      */
-    public func listDomainsAsync(input: SimpleWorkflowModel.ListDomainsInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.DomainInfos>) -> ()) throws {
+    public func listDomainsAsync(
+            input: SimpleWorkflowModel.ListDomainsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) -> ()) throws {
         if let listDomainsAsyncOverride = listDomainsAsyncOverride {
-            return try listDomainsAsyncOverride(input, completion)
+            return try listDomainsAsyncOverride(input, reporting, completion)
         }
 
         let result = DomainInfos.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -750,9 +824,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted.
      */
-    public func listDomainsSync(input: SimpleWorkflowModel.ListDomainsInput) throws -> SimpleWorkflowModel.DomainInfos {
+    public func listDomainsSync(
+            input: SimpleWorkflowModel.ListDomainsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainInfos {
         if let listDomainsSyncOverride = listDomainsSyncOverride {
-            return try listDomainsSyncOverride(input)
+            return try listDomainsSyncOverride(input, reporting)
         }
 
         return DomainInfos.__default
@@ -768,14 +844,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func listOpenWorkflowExecutionsAsync(input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.WorkflowExecutionInfos>) -> ()) throws {
+    public func listOpenWorkflowExecutionsAsync(
+            input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws {
         if let listOpenWorkflowExecutionsAsyncOverride = listOpenWorkflowExecutionsAsyncOverride {
-            return try listOpenWorkflowExecutionsAsyncOverride(input, completion)
+            return try listOpenWorkflowExecutionsAsyncOverride(input, reporting, completion)
         }
 
         let result = WorkflowExecutionInfos.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -787,9 +866,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func listOpenWorkflowExecutionsSync(input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
+    public func listOpenWorkflowExecutionsSync(
+            input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
         if let listOpenWorkflowExecutionsSyncOverride = listOpenWorkflowExecutionsSyncOverride {
-            return try listOpenWorkflowExecutionsSyncOverride(input)
+            return try listOpenWorkflowExecutionsSyncOverride(input, reporting)
         }
 
         return WorkflowExecutionInfos.__default
@@ -805,14 +886,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func listWorkflowTypesAsync(input: SimpleWorkflowModel.ListWorkflowTypesInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.WorkflowTypeInfos>) -> ()) throws {
+    public func listWorkflowTypesAsync(
+            input: SimpleWorkflowModel.ListWorkflowTypesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) -> ()) throws {
         if let listWorkflowTypesAsyncOverride = listWorkflowTypesAsyncOverride {
-            return try listWorkflowTypesAsyncOverride(input, completion)
+            return try listWorkflowTypesAsyncOverride(input, reporting, completion)
         }
 
         let result = WorkflowTypeInfos.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -824,9 +908,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func listWorkflowTypesSync(input: SimpleWorkflowModel.ListWorkflowTypesInput) throws -> SimpleWorkflowModel.WorkflowTypeInfos {
+    public func listWorkflowTypesSync(
+            input: SimpleWorkflowModel.ListWorkflowTypesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeInfos {
         if let listWorkflowTypesSyncOverride = listWorkflowTypesSyncOverride {
-            return try listWorkflowTypesSyncOverride(input)
+            return try listWorkflowTypesSyncOverride(input, reporting)
         }
 
         return WorkflowTypeInfos.__default
@@ -842,14 +928,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func pollForActivityTaskAsync(input: SimpleWorkflowModel.PollForActivityTaskInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.ActivityTask>) -> ()) throws {
+    public func pollForActivityTaskAsync(
+            input: SimpleWorkflowModel.PollForActivityTaskInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) -> ()) throws {
         if let pollForActivityTaskAsyncOverride = pollForActivityTaskAsyncOverride {
-            return try pollForActivityTaskAsyncOverride(input, completion)
+            return try pollForActivityTaskAsyncOverride(input, reporting, completion)
         }
 
         let result = ActivityTask.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -861,9 +950,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func pollForActivityTaskSync(input: SimpleWorkflowModel.PollForActivityTaskInput) throws -> SimpleWorkflowModel.ActivityTask {
+    public func pollForActivityTaskSync(
+            input: SimpleWorkflowModel.PollForActivityTaskInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTask {
         if let pollForActivityTaskSyncOverride = pollForActivityTaskSyncOverride {
-            return try pollForActivityTaskSyncOverride(input)
+            return try pollForActivityTaskSyncOverride(input, reporting)
         }
 
         return ActivityTask.__default
@@ -879,14 +970,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func pollForDecisionTaskAsync(input: SimpleWorkflowModel.PollForDecisionTaskInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.DecisionTask>) -> ()) throws {
+    public func pollForDecisionTaskAsync(
+            input: SimpleWorkflowModel.PollForDecisionTaskInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) -> ()) throws {
         if let pollForDecisionTaskAsyncOverride = pollForDecisionTaskAsyncOverride {
-            return try pollForDecisionTaskAsyncOverride(input, completion)
+            return try pollForDecisionTaskAsyncOverride(input, reporting, completion)
         }
 
         let result = DecisionTask.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -898,9 +992,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func pollForDecisionTaskSync(input: SimpleWorkflowModel.PollForDecisionTaskInput) throws -> SimpleWorkflowModel.DecisionTask {
+    public func pollForDecisionTaskSync(
+            input: SimpleWorkflowModel.PollForDecisionTaskInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DecisionTask {
         if let pollForDecisionTaskSyncOverride = pollForDecisionTaskSyncOverride {
-            return try pollForDecisionTaskSyncOverride(input)
+            return try pollForDecisionTaskSyncOverride(input, reporting)
         }
 
         return DecisionTask.__default
@@ -916,14 +1012,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func recordActivityTaskHeartbeatAsync(input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.ActivityTaskStatus>) -> ()) throws {
+    public func recordActivityTaskHeartbeatAsync(
+            input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) -> ()) throws {
         if let recordActivityTaskHeartbeatAsyncOverride = recordActivityTaskHeartbeatAsyncOverride {
-            return try recordActivityTaskHeartbeatAsyncOverride(input, completion)
+            return try recordActivityTaskHeartbeatAsyncOverride(input, reporting, completion)
         }
 
         let result = ActivityTaskStatus.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -935,9 +1034,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func recordActivityTaskHeartbeatSync(input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput) throws -> SimpleWorkflowModel.ActivityTaskStatus {
+    public func recordActivityTaskHeartbeatSync(
+            input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTaskStatus {
         if let recordActivityTaskHeartbeatSyncOverride = recordActivityTaskHeartbeatSyncOverride {
-            return try recordActivityTaskHeartbeatSyncOverride(input)
+            return try recordActivityTaskHeartbeatSyncOverride(input, reporting)
         }
 
         return ActivityTaskStatus.__default
@@ -952,9 +1053,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerActivityTypeAsync(input: SimpleWorkflowModel.RegisterActivityTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func registerActivityTypeAsync(
+            input: SimpleWorkflowModel.RegisterActivityTypeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let registerActivityTypeAsyncOverride = registerActivityTypeAsyncOverride {
-            return try registerActivityTypeAsyncOverride(input, completion)
+            return try registerActivityTypeAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -967,9 +1071,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RegisterActivityTypeInput object being passed to this operation.
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerActivityTypeSync(input: SimpleWorkflowModel.RegisterActivityTypeInput) throws {
+    public func registerActivityTypeSync(
+            input: SimpleWorkflowModel.RegisterActivityTypeInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let registerActivityTypeSyncOverride = registerActivityTypeSyncOverride {
-            return try registerActivityTypeSyncOverride(input)
+            return try registerActivityTypeSyncOverride(input, reporting)
         }
 
     }
@@ -983,9 +1089,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted.
      */
-    public func registerDomainAsync(input: SimpleWorkflowModel.RegisterDomainInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func registerDomainAsync(
+            input: SimpleWorkflowModel.RegisterDomainInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let registerDomainAsyncOverride = registerDomainAsyncOverride {
-            return try registerDomainAsyncOverride(input, completion)
+            return try registerDomainAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -998,9 +1107,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RegisterDomainInput object being passed to this operation.
      - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted.
      */
-    public func registerDomainSync(input: SimpleWorkflowModel.RegisterDomainInput) throws {
+    public func registerDomainSync(
+            input: SimpleWorkflowModel.RegisterDomainInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let registerDomainSyncOverride = registerDomainSyncOverride {
-            return try registerDomainSyncOverride(input)
+            return try registerDomainSyncOverride(input, reporting)
         }
 
     }
@@ -1014,9 +1125,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerWorkflowTypeAsync(input: SimpleWorkflowModel.RegisterWorkflowTypeInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func registerWorkflowTypeAsync(
+            input: SimpleWorkflowModel.RegisterWorkflowTypeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let registerWorkflowTypeAsyncOverride = registerWorkflowTypeAsyncOverride {
-            return try registerWorkflowTypeAsyncOverride(input, completion)
+            return try registerWorkflowTypeAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -1029,9 +1143,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RegisterWorkflowTypeInput object being passed to this operation.
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerWorkflowTypeSync(input: SimpleWorkflowModel.RegisterWorkflowTypeInput) throws {
+    public func registerWorkflowTypeSync(
+            input: SimpleWorkflowModel.RegisterWorkflowTypeInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let registerWorkflowTypeSyncOverride = registerWorkflowTypeSyncOverride {
-            return try registerWorkflowTypeSyncOverride(input)
+            return try registerWorkflowTypeSyncOverride(input, reporting)
         }
 
     }
@@ -1045,9 +1161,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func requestCancelWorkflowExecutionAsync(input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func requestCancelWorkflowExecutionAsync(
+            input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let requestCancelWorkflowExecutionAsyncOverride = requestCancelWorkflowExecutionAsyncOverride {
-            return try requestCancelWorkflowExecutionAsyncOverride(input, completion)
+            return try requestCancelWorkflowExecutionAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -1060,9 +1179,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RequestCancelWorkflowExecutionInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func requestCancelWorkflowExecutionSync(input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput) throws {
+    public func requestCancelWorkflowExecutionSync(
+            input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let requestCancelWorkflowExecutionSyncOverride = requestCancelWorkflowExecutionSyncOverride {
-            return try requestCancelWorkflowExecutionSyncOverride(input)
+            return try requestCancelWorkflowExecutionSyncOverride(input, reporting)
         }
 
     }
@@ -1076,9 +1197,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCanceledAsync(input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func respondActivityTaskCanceledAsync(
+            input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let respondActivityTaskCanceledAsyncOverride = respondActivityTaskCanceledAsyncOverride {
-            return try respondActivityTaskCanceledAsyncOverride(input, completion)
+            return try respondActivityTaskCanceledAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -1091,9 +1215,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RespondActivityTaskCanceledInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCanceledSync(input: SimpleWorkflowModel.RespondActivityTaskCanceledInput) throws {
+    public func respondActivityTaskCanceledSync(
+            input: SimpleWorkflowModel.RespondActivityTaskCanceledInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let respondActivityTaskCanceledSyncOverride = respondActivityTaskCanceledSyncOverride {
-            return try respondActivityTaskCanceledSyncOverride(input)
+            return try respondActivityTaskCanceledSyncOverride(input, reporting)
         }
 
     }
@@ -1107,9 +1233,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCompletedAsync(input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func respondActivityTaskCompletedAsync(
+            input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let respondActivityTaskCompletedAsyncOverride = respondActivityTaskCompletedAsyncOverride {
-            return try respondActivityTaskCompletedAsyncOverride(input, completion)
+            return try respondActivityTaskCompletedAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -1122,9 +1251,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RespondActivityTaskCompletedInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCompletedSync(input: SimpleWorkflowModel.RespondActivityTaskCompletedInput) throws {
+    public func respondActivityTaskCompletedSync(
+            input: SimpleWorkflowModel.RespondActivityTaskCompletedInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let respondActivityTaskCompletedSyncOverride = respondActivityTaskCompletedSyncOverride {
-            return try respondActivityTaskCompletedSyncOverride(input)
+            return try respondActivityTaskCompletedSyncOverride(input, reporting)
         }
 
     }
@@ -1138,9 +1269,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskFailedAsync(input: SimpleWorkflowModel.RespondActivityTaskFailedInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func respondActivityTaskFailedAsync(
+            input: SimpleWorkflowModel.RespondActivityTaskFailedInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let respondActivityTaskFailedAsyncOverride = respondActivityTaskFailedAsyncOverride {
-            return try respondActivityTaskFailedAsyncOverride(input, completion)
+            return try respondActivityTaskFailedAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -1153,9 +1287,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RespondActivityTaskFailedInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskFailedSync(input: SimpleWorkflowModel.RespondActivityTaskFailedInput) throws {
+    public func respondActivityTaskFailedSync(
+            input: SimpleWorkflowModel.RespondActivityTaskFailedInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let respondActivityTaskFailedSyncOverride = respondActivityTaskFailedSyncOverride {
-            return try respondActivityTaskFailedSyncOverride(input)
+            return try respondActivityTaskFailedSyncOverride(input, reporting)
         }
 
     }
@@ -1169,9 +1305,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondDecisionTaskCompletedAsync(input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func respondDecisionTaskCompletedAsync(
+            input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let respondDecisionTaskCompletedAsyncOverride = respondDecisionTaskCompletedAsyncOverride {
-            return try respondDecisionTaskCompletedAsyncOverride(input, completion)
+            return try respondDecisionTaskCompletedAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -1184,9 +1323,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RespondDecisionTaskCompletedInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func respondDecisionTaskCompletedSync(input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput) throws {
+    public func respondDecisionTaskCompletedSync(
+            input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let respondDecisionTaskCompletedSyncOverride = respondDecisionTaskCompletedSyncOverride {
-            return try respondDecisionTaskCompletedSyncOverride(input)
+            return try respondDecisionTaskCompletedSyncOverride(input, reporting)
         }
 
     }
@@ -1200,9 +1341,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func signalWorkflowExecutionAsync(input: SimpleWorkflowModel.SignalWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func signalWorkflowExecutionAsync(
+            input: SimpleWorkflowModel.SignalWorkflowExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let signalWorkflowExecutionAsyncOverride = signalWorkflowExecutionAsyncOverride {
-            return try signalWorkflowExecutionAsyncOverride(input, completion)
+            return try signalWorkflowExecutionAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -1215,9 +1359,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated SignalWorkflowExecutionInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func signalWorkflowExecutionSync(input: SimpleWorkflowModel.SignalWorkflowExecutionInput) throws {
+    public func signalWorkflowExecutionSync(
+            input: SimpleWorkflowModel.SignalWorkflowExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let signalWorkflowExecutionSyncOverride = signalWorkflowExecutionSyncOverride {
-            return try signalWorkflowExecutionSyncOverride(input)
+            return try signalWorkflowExecutionSyncOverride(input, reporting)
         }
 
     }
@@ -1232,14 +1378,17 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: defaultUndefined, limitExceeded, operationNotPermitted, typeDeprecated, unknownResource, workflowExecutionAlreadyStarted.
      */
-    public func startWorkflowExecutionAsync(input: SimpleWorkflowModel.StartWorkflowExecutionInput, completion: @escaping (HTTPResult<SimpleWorkflowModel.Run>) -> ()) throws {
+    public func startWorkflowExecutionAsync(
+            input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.Run, HTTPClientError>) -> ()) throws {
         if let startWorkflowExecutionAsyncOverride = startWorkflowExecutionAsyncOverride {
-            return try startWorkflowExecutionAsyncOverride(input, completion)
+            return try startWorkflowExecutionAsyncOverride(input, reporting, completion)
         }
 
         let result = Run.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1251,9 +1400,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: defaultUndefined, limitExceeded, operationNotPermitted, typeDeprecated, unknownResource, workflowExecutionAlreadyStarted.
      */
-    public func startWorkflowExecutionSync(input: SimpleWorkflowModel.StartWorkflowExecutionInput) throws -> SimpleWorkflowModel.Run {
+    public func startWorkflowExecutionSync(
+            input: SimpleWorkflowModel.StartWorkflowExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.Run {
         if let startWorkflowExecutionSyncOverride = startWorkflowExecutionSyncOverride {
-            return try startWorkflowExecutionSyncOverride(input)
+            return try startWorkflowExecutionSyncOverride(input, reporting)
         }
 
         return Run.__default
@@ -1268,9 +1419,12 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func terminateWorkflowExecutionAsync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func terminateWorkflowExecutionAsync(
+            input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let terminateWorkflowExecutionAsyncOverride = terminateWorkflowExecutionAsyncOverride {
-            return try terminateWorkflowExecutionAsyncOverride(input, completion)
+            return try terminateWorkflowExecutionAsyncOverride(input, reporting, completion)
         }
 
         completion(nil)
@@ -1283,9 +1437,11 @@ public struct MockSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated TerminateWorkflowExecutionInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func terminateWorkflowExecutionSync(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws {
+    public func terminateWorkflowExecutionSync(
+            input: SimpleWorkflowModel.TerminateWorkflowExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let terminateWorkflowExecutionSyncOverride = terminateWorkflowExecutionSyncOverride {
-            return try terminateWorkflowExecutionSyncOverride(input)
+            return try terminateWorkflowExecutionSyncOverride(input, reporting)
         }
 
     }

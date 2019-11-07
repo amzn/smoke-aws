@@ -217,11 +217,11 @@ public typealias WebIdentitySubjectType = String
 extension SecurityTokenModel.SAMLAssertionType {
     public func validateAsSAMLAssertionType() throws {
         if self.count < 4 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to SAMLAssertionType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to SAMLAssertionType violated the minimum length constraint.")
         }
 
         if self.count > 100000 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to SAMLAssertionType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to SAMLAssertionType violated the maximum length constraint.")
         }
     }
 }
@@ -232,16 +232,16 @@ extension SecurityTokenModel.SAMLAssertionType {
 extension SecurityTokenModel.AccessKeyIdType {
     public func validateAsAccessKeyIdType() throws {
         if self.count < 16 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to accessKeyIdType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to accessKeyIdType violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to accessKeyIdType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to accessKeyIdType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\w]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to accessKeyIdType violated the regular expression constraint.")
         }
     }
@@ -253,16 +253,16 @@ extension SecurityTokenModel.AccessKeyIdType {
 extension SecurityTokenModel.ArnType {
     public func validateAsArnType() throws {
         if self.count < 20 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to arnType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to arnType violated the minimum length constraint.")
         }
 
         if self.count > 2048 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to arnType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to arnType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\u0009\\u000A\\u000D\\u0020-\\u007E\\u0085\\u00A0-\\uD7FF\\uE000-\\uFFFD\\u10000-\\u10FFFF]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to arnType violated the regular expression constraint.")
         }
     }
@@ -274,16 +274,16 @@ extension SecurityTokenModel.ArnType {
 extension SecurityTokenModel.AssumedRoleIdType {
     public func validateAsAssumedRoleIdType() throws {
         if self.count < 2 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to assumedRoleIdType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to assumedRoleIdType violated the minimum length constraint.")
         }
 
         if self.count > 193 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to assumedRoleIdType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to assumedRoleIdType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\w+=,.@:-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to assumedRoleIdType violated the regular expression constraint.")
         }
     }
@@ -295,11 +295,11 @@ extension SecurityTokenModel.AssumedRoleIdType {
 extension SecurityTokenModel.ClientTokenType {
     public func validateAsClientTokenType() throws {
         if self.count < 4 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to clientTokenType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to clientTokenType violated the minimum length constraint.")
         }
 
         if self.count > 2048 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to clientTokenType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to clientTokenType violated the maximum length constraint.")
         }
     }
 }
@@ -310,11 +310,11 @@ extension SecurityTokenModel.ClientTokenType {
 extension SecurityTokenModel.DurationSecondsType {
     public func validateAsDurationSecondsType() throws {
         if self < 900 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to durationSecondsType violated the minimum range constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to durationSecondsType violated the minimum range constraint.")
         }
 
         if self > 129600 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to durationSecondsType violated the maximum range constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to durationSecondsType violated the maximum range constraint.")
         }
     }
 }
@@ -325,11 +325,11 @@ extension SecurityTokenModel.DurationSecondsType {
 extension SecurityTokenModel.EncodedMessageType {
     public func validateAsEncodedMessageType() throws {
         if self.count < 1 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to encodedMessageType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to encodedMessageType violated the minimum length constraint.")
         }
 
         if self.count > 10240 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to encodedMessageType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to encodedMessageType violated the maximum length constraint.")
         }
     }
 }
@@ -340,16 +340,16 @@ extension SecurityTokenModel.EncodedMessageType {
 extension SecurityTokenModel.ExternalIdType {
     public func validateAsExternalIdType() throws {
         if self.count < 2 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to externalIdType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to externalIdType violated the minimum length constraint.")
         }
 
         if self.count > 1224 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to externalIdType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to externalIdType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\w+=,.@:\\/-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to externalIdType violated the regular expression constraint.")
         }
     }
@@ -361,16 +361,16 @@ extension SecurityTokenModel.ExternalIdType {
 extension SecurityTokenModel.FederatedIdType {
     public func validateAsFederatedIdType() throws {
         if self.count < 2 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to federatedIdType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to federatedIdType violated the minimum length constraint.")
         }
 
         if self.count > 193 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to federatedIdType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to federatedIdType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\w+=,.@\\:-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to federatedIdType violated the regular expression constraint.")
         }
     }
@@ -382,7 +382,7 @@ extension SecurityTokenModel.FederatedIdType {
 extension SecurityTokenModel.NonNegativeIntegerType {
     public func validateAsNonNegativeIntegerType() throws {
         if self < 0 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to nonNegativeIntegerType violated the minimum range constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to nonNegativeIntegerType violated the minimum range constraint.")
         }
 
     }
@@ -394,11 +394,11 @@ extension SecurityTokenModel.NonNegativeIntegerType {
 extension SecurityTokenModel.RoleDurationSecondsType {
     public func validateAsRoleDurationSecondsType() throws {
         if self < 900 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to roleDurationSecondsType violated the minimum range constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to roleDurationSecondsType violated the minimum range constraint.")
         }
 
         if self > 43200 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to roleDurationSecondsType violated the maximum range constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to roleDurationSecondsType violated the maximum range constraint.")
         }
     }
 }
@@ -409,16 +409,16 @@ extension SecurityTokenModel.RoleDurationSecondsType {
 extension SecurityTokenModel.RoleSessionNameType {
     public func validateAsRoleSessionNameType() throws {
         if self.count < 2 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to roleSessionNameType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to roleSessionNameType violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to roleSessionNameType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to roleSessionNameType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\w+=,.@-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to roleSessionNameType violated the regular expression constraint.")
         }
     }
@@ -430,16 +430,16 @@ extension SecurityTokenModel.RoleSessionNameType {
 extension SecurityTokenModel.SerialNumberType {
     public func validateAsSerialNumberType() throws {
         if self.count < 9 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to serialNumberType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to serialNumberType violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to serialNumberType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to serialNumberType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\w+=/:,.@-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to serialNumberType violated the regular expression constraint.")
         }
     }
@@ -451,16 +451,16 @@ extension SecurityTokenModel.SerialNumberType {
 extension SecurityTokenModel.SessionPolicyDocumentType {
     public func validateAsSessionPolicyDocumentType() throws {
         if self.count < 1 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to sessionPolicyDocumentType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to sessionPolicyDocumentType violated the minimum length constraint.")
         }
 
         if self.count > 2048 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to sessionPolicyDocumentType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to sessionPolicyDocumentType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to sessionPolicyDocumentType violated the regular expression constraint.")
         }
     }
@@ -472,16 +472,16 @@ extension SecurityTokenModel.SessionPolicyDocumentType {
 extension SecurityTokenModel.TokenCodeType {
     public func validateAsTokenCodeType() throws {
         if self.count < 6 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to tokenCodeType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to tokenCodeType violated the minimum length constraint.")
         }
 
         if self.count > 6 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to tokenCodeType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to tokenCodeType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\d]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to tokenCodeType violated the regular expression constraint.")
         }
     }
@@ -493,11 +493,11 @@ extension SecurityTokenModel.TokenCodeType {
 extension SecurityTokenModel.UrlType {
     public func validateAsUrlType() throws {
         if self.count < 4 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to urlType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to urlType violated the minimum length constraint.")
         }
 
         if self.count > 2048 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to urlType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to urlType violated the maximum length constraint.")
         }
     }
 }
@@ -508,16 +508,16 @@ extension SecurityTokenModel.UrlType {
 extension SecurityTokenModel.UserNameType {
     public func validateAsUserNameType() throws {
         if self.count < 2 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to userNameType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to userNameType violated the minimum length constraint.")
         }
 
         if self.count > 32 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to userNameType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to userNameType violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\w+=,.@-]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SecurityTokenCodingError.validationError(
+                throw SecurityTokenError.validationError(
                     reason: "The provided value to userNameType violated the regular expression constraint.")
         }
     }
@@ -529,11 +529,11 @@ extension SecurityTokenModel.UserNameType {
 extension SecurityTokenModel.WebIdentitySubjectType {
     public func validateAsWebIdentitySubjectType() throws {
         if self.count < 6 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to webIdentitySubjectType violated the minimum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to webIdentitySubjectType violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw SecurityTokenCodingError.validationError(reason: "The provided value to webIdentitySubjectType violated the maximum length constraint.")
+            throw SecurityTokenError.validationError(reason: "The provided value to webIdentitySubjectType violated the maximum length constraint.")
         }
     }
 }

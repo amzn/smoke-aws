@@ -21,6 +21,7 @@
 
 import Foundation
 import RDSDataModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
@@ -81,14 +82,17 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func batchExecuteStatementAsync(input: RDSDataModel.BatchExecuteStatementRequest, completion: @escaping (HTTPResult<RDSDataModel.BatchExecuteStatementResponse>) -> ()) throws {
+    public func batchExecuteStatementAsync(
+            input: RDSDataModel.BatchExecuteStatementRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws {
         if let batchExecuteStatementAsyncOverride = batchExecuteStatementAsyncOverride {
-            return try batchExecuteStatementAsyncOverride(input, completion)
+            return try batchExecuteStatementAsyncOverride(input, reporting, completion)
         }
 
         let result = BatchExecuteStatementResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -100,9 +104,11 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func batchExecuteStatementSync(input: RDSDataModel.BatchExecuteStatementRequest) throws -> RDSDataModel.BatchExecuteStatementResponse {
+    public func batchExecuteStatementSync(
+            input: RDSDataModel.BatchExecuteStatementRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BatchExecuteStatementResponse {
         if let batchExecuteStatementSyncOverride = batchExecuteStatementSyncOverride {
-            return try batchExecuteStatementSyncOverride(input)
+            return try batchExecuteStatementSyncOverride(input, reporting)
         }
 
         return BatchExecuteStatementResponse.__default
@@ -118,14 +124,17 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func beginTransactionAsync(input: RDSDataModel.BeginTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.BeginTransactionResponse>) -> ()) throws {
+    public func beginTransactionAsync(
+            input: RDSDataModel.BeginTransactionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws {
         if let beginTransactionAsyncOverride = beginTransactionAsyncOverride {
-            return try beginTransactionAsyncOverride(input, completion)
+            return try beginTransactionAsyncOverride(input, reporting, completion)
         }
 
         let result = BeginTransactionResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -137,9 +146,11 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func beginTransactionSync(input: RDSDataModel.BeginTransactionRequest) throws -> RDSDataModel.BeginTransactionResponse {
+    public func beginTransactionSync(
+            input: RDSDataModel.BeginTransactionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BeginTransactionResponse {
         if let beginTransactionSyncOverride = beginTransactionSyncOverride {
-            return try beginTransactionSyncOverride(input)
+            return try beginTransactionSyncOverride(input, reporting)
         }
 
         return BeginTransactionResponse.__default
@@ -155,14 +166,17 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
      */
-    public func commitTransactionAsync(input: RDSDataModel.CommitTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.CommitTransactionResponse>) -> ()) throws {
+    public func commitTransactionAsync(
+            input: RDSDataModel.CommitTransactionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws {
         if let commitTransactionAsyncOverride = commitTransactionAsyncOverride {
-            return try commitTransactionAsyncOverride(input, completion)
+            return try commitTransactionAsyncOverride(input, reporting, completion)
         }
 
         let result = CommitTransactionResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -174,9 +188,11 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
      */
-    public func commitTransactionSync(input: RDSDataModel.CommitTransactionRequest) throws -> RDSDataModel.CommitTransactionResponse {
+    public func commitTransactionSync(
+            input: RDSDataModel.CommitTransactionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.CommitTransactionResponse {
         if let commitTransactionSyncOverride = commitTransactionSyncOverride {
-            return try commitTransactionSyncOverride(input)
+            return try commitTransactionSyncOverride(input, reporting)
         }
 
         return CommitTransactionResponse.__default
@@ -192,14 +208,17 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable.
      */
-    public func executeSqlAsync(input: RDSDataModel.ExecuteSqlRequest, completion: @escaping (HTTPResult<RDSDataModel.ExecuteSqlResponse>) -> ()) throws {
+    public func executeSqlAsync(
+            input: RDSDataModel.ExecuteSqlRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws {
         if let executeSqlAsyncOverride = executeSqlAsyncOverride {
-            return try executeSqlAsyncOverride(input, completion)
+            return try executeSqlAsyncOverride(input, reporting, completion)
         }
 
         let result = ExecuteSqlResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -211,9 +230,11 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable.
      */
-    public func executeSqlSync(input: RDSDataModel.ExecuteSqlRequest) throws -> RDSDataModel.ExecuteSqlResponse {
+    public func executeSqlSync(
+            input: RDSDataModel.ExecuteSqlRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteSqlResponse {
         if let executeSqlSyncOverride = executeSqlSyncOverride {
-            return try executeSqlSyncOverride(input)
+            return try executeSqlSyncOverride(input, reporting)
         }
 
         return ExecuteSqlResponse.__default
@@ -229,14 +250,17 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func executeStatementAsync(input: RDSDataModel.ExecuteStatementRequest, completion: @escaping (HTTPResult<RDSDataModel.ExecuteStatementResponse>) -> ()) throws {
+    public func executeStatementAsync(
+            input: RDSDataModel.ExecuteStatementRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws {
         if let executeStatementAsyncOverride = executeStatementAsyncOverride {
-            return try executeStatementAsyncOverride(input, completion)
+            return try executeStatementAsyncOverride(input, reporting, completion)
         }
 
         let result = ExecuteStatementResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -248,9 +272,11 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func executeStatementSync(input: RDSDataModel.ExecuteStatementRequest) throws -> RDSDataModel.ExecuteStatementResponse {
+    public func executeStatementSync(
+            input: RDSDataModel.ExecuteStatementRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteStatementResponse {
         if let executeStatementSyncOverride = executeStatementSyncOverride {
-            return try executeStatementSyncOverride(input)
+            return try executeStatementSyncOverride(input, reporting)
         }
 
         return ExecuteStatementResponse.__default
@@ -266,14 +292,17 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
      */
-    public func rollbackTransactionAsync(input: RDSDataModel.RollbackTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.RollbackTransactionResponse>) -> ()) throws {
+    public func rollbackTransactionAsync(
+            input: RDSDataModel.RollbackTransactionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws {
         if let rollbackTransactionAsyncOverride = rollbackTransactionAsyncOverride {
-            return try rollbackTransactionAsyncOverride(input, completion)
+            return try rollbackTransactionAsyncOverride(input, reporting, completion)
         }
 
         let result = RollbackTransactionResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -285,9 +314,11 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
      */
-    public func rollbackTransactionSync(input: RDSDataModel.RollbackTransactionRequest) throws -> RDSDataModel.RollbackTransactionResponse {
+    public func rollbackTransactionSync(
+            input: RDSDataModel.RollbackTransactionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.RollbackTransactionResponse {
         if let rollbackTransactionSyncOverride = rollbackTransactionSyncOverride {
-            return try rollbackTransactionSyncOverride(input)
+            return try rollbackTransactionSyncOverride(input, reporting)
         }
 
         return RollbackTransactionResponse.__default

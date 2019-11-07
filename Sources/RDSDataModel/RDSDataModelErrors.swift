@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let badRequestIdentity = "BadRequestException"
 private let forbiddenIdentity = "ForbiddenException"
@@ -30,12 +30,6 @@ private let serviceUnavailableIdentity = "ServiceUnavailableError"
 private let statementTimeoutIdentity = "StatementTimeoutException"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum RDSDataCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum RDSDataError: Swift.Error, Decodable {
     case badRequest(BadRequestException)
     case forbidden(ForbiddenException)
@@ -44,6 +38,8 @@ public enum RDSDataError: Swift.Error, Decodable {
     case serviceUnavailable(ServiceUnavailableError)
     case statementTimeout(StatementTimeoutException)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "__type"
@@ -81,7 +77,7 @@ public enum RDSDataError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw RDSDataCodingError.unrecognizedError(errorReason, errorMessage)
+            self = RDSDataError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

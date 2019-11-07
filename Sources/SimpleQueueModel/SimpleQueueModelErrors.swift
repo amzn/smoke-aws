@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let batchEntryIdsNotDistinctIdentity = "AWS.SimpleQueueService.BatchEntryIdsNotDistinct"
 private let batchRequestTooLongIdentity = "AWS.SimpleQueueService.BatchRequestTooLong"
@@ -40,12 +40,6 @@ private let tooManyEntriesInBatchRequestIdentity = "AWS.SimpleQueueService.TooMa
 private let unsupportedOperationIdentity = "AWS.SimpleQueueService.UnsupportedOperation"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum SimpleQueueCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum SimpleQueueError: Swift.Error, Decodable {
     case batchEntryIdsNotDistinct(BatchEntryIdsNotDistinct)
     case batchRequestTooLong(BatchRequestTooLong)
@@ -64,6 +58,8 @@ public enum SimpleQueueError: Swift.Error, Decodable {
     case tooManyEntriesInBatchRequest(TooManyEntriesInBatchRequest)
     case unsupportedOperation(UnsupportedOperation)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "Code"
@@ -131,7 +127,7 @@ public enum SimpleQueueError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw SimpleQueueCodingError.unrecognizedError(errorReason, errorMessage)
+            self = SimpleQueueError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

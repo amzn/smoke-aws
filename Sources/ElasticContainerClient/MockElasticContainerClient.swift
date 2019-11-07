@@ -21,6 +21,7 @@
 
 import Foundation
 import ElasticContainerModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
@@ -309,14 +310,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func createClusterAsync(input: ElasticContainerModel.CreateClusterRequest, completion: @escaping (HTTPResult<ElasticContainerModel.CreateClusterResponse>) -> ()) throws {
+    public func createClusterAsync(
+            input: ElasticContainerModel.CreateClusterRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) -> ()) throws {
         if let createClusterAsyncOverride = createClusterAsyncOverride {
-            return try createClusterAsyncOverride(input, completion)
+            return try createClusterAsyncOverride(input, reporting, completion)
         }
 
         let result = CreateClusterResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -328,9 +332,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func createClusterSync(input: ElasticContainerModel.CreateClusterRequest) throws -> ElasticContainerModel.CreateClusterResponse {
+    public func createClusterSync(
+            input: ElasticContainerModel.CreateClusterRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateClusterResponse {
         if let createClusterSyncOverride = createClusterSyncOverride {
-            return try createClusterSyncOverride(input)
+            return try createClusterSyncOverride(input, reporting)
         }
 
         return CreateClusterResponse.__default
@@ -346,14 +352,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func createServiceAsync(input: ElasticContainerModel.CreateServiceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.CreateServiceResponse>) -> ()) throws {
+    public func createServiceAsync(
+            input: ElasticContainerModel.CreateServiceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) -> ()) throws {
         if let createServiceAsyncOverride = createServiceAsyncOverride {
-            return try createServiceAsyncOverride(input, completion)
+            return try createServiceAsyncOverride(input, reporting, completion)
         }
 
         let result = CreateServiceResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -365,9 +374,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func createServiceSync(input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse {
+    public func createServiceSync(
+            input: ElasticContainerModel.CreateServiceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateServiceResponse {
         if let createServiceSyncOverride = createServiceSyncOverride {
-            return try createServiceSyncOverride(input)
+            return try createServiceSyncOverride(input, reporting)
         }
 
         return CreateServiceResponse.__default
@@ -383,14 +394,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func createTaskSetAsync(input: ElasticContainerModel.CreateTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.CreateTaskSetResponse>) -> ()) throws {
+    public func createTaskSetAsync(
+            input: ElasticContainerModel.CreateTaskSetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) -> ()) throws {
         if let createTaskSetAsyncOverride = createTaskSetAsyncOverride {
-            return try createTaskSetAsyncOverride(input, completion)
+            return try createTaskSetAsyncOverride(input, reporting, completion)
         }
 
         let result = CreateTaskSetResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -402,9 +416,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func createTaskSetSync(input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse {
+    public func createTaskSetSync(
+            input: ElasticContainerModel.CreateTaskSetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateTaskSetResponse {
         if let createTaskSetSyncOverride = createTaskSetSyncOverride {
-            return try createTaskSetSyncOverride(input)
+            return try createTaskSetSyncOverride(input, reporting)
         }
 
         return CreateTaskSetResponse.__default
@@ -420,14 +436,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func deleteAccountSettingAsync(input: ElasticContainerModel.DeleteAccountSettingRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteAccountSettingResponse>) -> ()) throws {
+    public func deleteAccountSettingAsync(
+            input: ElasticContainerModel.DeleteAccountSettingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) -> ()) throws {
         if let deleteAccountSettingAsyncOverride = deleteAccountSettingAsyncOverride {
-            return try deleteAccountSettingAsyncOverride(input, completion)
+            return try deleteAccountSettingAsyncOverride(input, reporting, completion)
         }
 
         let result = DeleteAccountSettingResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -439,9 +458,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func deleteAccountSettingSync(input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
+    public func deleteAccountSettingSync(
+            input: ElasticContainerModel.DeleteAccountSettingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
         if let deleteAccountSettingSyncOverride = deleteAccountSettingSyncOverride {
-            return try deleteAccountSettingSyncOverride(input)
+            return try deleteAccountSettingSyncOverride(input, reporting)
         }
 
         return DeleteAccountSettingResponse.__default
@@ -457,14 +478,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func deleteAttributesAsync(input: ElasticContainerModel.DeleteAttributesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteAttributesResponse>) -> ()) throws {
+    public func deleteAttributesAsync(
+            input: ElasticContainerModel.DeleteAttributesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) -> ()) throws {
         if let deleteAttributesAsyncOverride = deleteAttributesAsyncOverride {
-            return try deleteAttributesAsyncOverride(input, completion)
+            return try deleteAttributesAsyncOverride(input, reporting, completion)
         }
 
         let result = DeleteAttributesResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -476,9 +500,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func deleteAttributesSync(input: ElasticContainerModel.DeleteAttributesRequest) throws -> ElasticContainerModel.DeleteAttributesResponse {
+    public func deleteAttributesSync(
+            input: ElasticContainerModel.DeleteAttributesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteAttributesResponse {
         if let deleteAttributesSyncOverride = deleteAttributesSyncOverride {
-            return try deleteAttributesSyncOverride(input)
+            return try deleteAttributesSyncOverride(input, reporting)
         }
 
         return DeleteAttributesResponse.__default
@@ -494,14 +520,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server.
      */
-    public func deleteClusterAsync(input: ElasticContainerModel.DeleteClusterRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteClusterResponse>) -> ()) throws {
+    public func deleteClusterAsync(
+            input: ElasticContainerModel.DeleteClusterRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) -> ()) throws {
         if let deleteClusterAsyncOverride = deleteClusterAsyncOverride {
-            return try deleteClusterAsyncOverride(input, completion)
+            return try deleteClusterAsyncOverride(input, reporting, completion)
         }
 
         let result = DeleteClusterResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -513,9 +542,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server.
      */
-    public func deleteClusterSync(input: ElasticContainerModel.DeleteClusterRequest) throws -> ElasticContainerModel.DeleteClusterResponse {
+    public func deleteClusterSync(
+            input: ElasticContainerModel.DeleteClusterRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteClusterResponse {
         if let deleteClusterSyncOverride = deleteClusterSyncOverride {
-            return try deleteClusterSyncOverride(input)
+            return try deleteClusterSyncOverride(input, reporting)
         }
 
         return DeleteClusterResponse.__default
@@ -531,14 +562,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func deleteServiceAsync(input: ElasticContainerModel.DeleteServiceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteServiceResponse>) -> ()) throws {
+    public func deleteServiceAsync(
+            input: ElasticContainerModel.DeleteServiceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) -> ()) throws {
         if let deleteServiceAsyncOverride = deleteServiceAsyncOverride {
-            return try deleteServiceAsyncOverride(input, completion)
+            return try deleteServiceAsyncOverride(input, reporting, completion)
         }
 
         let result = DeleteServiceResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -550,9 +584,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func deleteServiceSync(input: ElasticContainerModel.DeleteServiceRequest) throws -> ElasticContainerModel.DeleteServiceResponse {
+    public func deleteServiceSync(
+            input: ElasticContainerModel.DeleteServiceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteServiceResponse {
         if let deleteServiceSyncOverride = deleteServiceSyncOverride {
-            return try deleteServiceSyncOverride(input)
+            return try deleteServiceSyncOverride(input, reporting)
         }
 
         return DeleteServiceResponse.__default
@@ -568,14 +604,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func deleteTaskSetAsync(input: ElasticContainerModel.DeleteTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteTaskSetResponse>) -> ()) throws {
+    public func deleteTaskSetAsync(
+            input: ElasticContainerModel.DeleteTaskSetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) -> ()) throws {
         if let deleteTaskSetAsyncOverride = deleteTaskSetAsyncOverride {
-            return try deleteTaskSetAsyncOverride(input, completion)
+            return try deleteTaskSetAsyncOverride(input, reporting, completion)
         }
 
         let result = DeleteTaskSetResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -587,9 +626,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func deleteTaskSetSync(input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse {
+    public func deleteTaskSetSync(
+            input: ElasticContainerModel.DeleteTaskSetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteTaskSetResponse {
         if let deleteTaskSetSyncOverride = deleteTaskSetSyncOverride {
-            return try deleteTaskSetSyncOverride(input)
+            return try deleteTaskSetSyncOverride(input, reporting)
         }
 
         return DeleteTaskSetResponse.__default
@@ -605,14 +646,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func deregisterContainerInstanceAsync(input: ElasticContainerModel.DeregisterContainerInstanceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeregisterContainerInstanceResponse>) -> ()) throws {
+    public func deregisterContainerInstanceAsync(
+            input: ElasticContainerModel.DeregisterContainerInstanceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
         if let deregisterContainerInstanceAsyncOverride = deregisterContainerInstanceAsyncOverride {
-            return try deregisterContainerInstanceAsyncOverride(input, completion)
+            return try deregisterContainerInstanceAsyncOverride(input, reporting, completion)
         }
 
         let result = DeregisterContainerInstanceResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -624,9 +668,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func deregisterContainerInstanceSync(input: ElasticContainerModel.DeregisterContainerInstanceRequest) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
+    public func deregisterContainerInstanceSync(
+            input: ElasticContainerModel.DeregisterContainerInstanceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
         if let deregisterContainerInstanceSyncOverride = deregisterContainerInstanceSyncOverride {
-            return try deregisterContainerInstanceSyncOverride(input)
+            return try deregisterContainerInstanceSyncOverride(input, reporting)
         }
 
         return DeregisterContainerInstanceResponse.__default
@@ -642,14 +688,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func deregisterTaskDefinitionAsync(input: ElasticContainerModel.DeregisterTaskDefinitionRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeregisterTaskDefinitionResponse>) -> ()) throws {
+    public func deregisterTaskDefinitionAsync(
+            input: ElasticContainerModel.DeregisterTaskDefinitionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
         if let deregisterTaskDefinitionAsyncOverride = deregisterTaskDefinitionAsyncOverride {
-            return try deregisterTaskDefinitionAsyncOverride(input, completion)
+            return try deregisterTaskDefinitionAsyncOverride(input, reporting, completion)
         }
 
         let result = DeregisterTaskDefinitionResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -661,9 +710,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func deregisterTaskDefinitionSync(input: ElasticContainerModel.DeregisterTaskDefinitionRequest) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
+    public func deregisterTaskDefinitionSync(
+            input: ElasticContainerModel.DeregisterTaskDefinitionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
         if let deregisterTaskDefinitionSyncOverride = deregisterTaskDefinitionSyncOverride {
-            return try deregisterTaskDefinitionSyncOverride(input)
+            return try deregisterTaskDefinitionSyncOverride(input, reporting)
         }
 
         return DeregisterTaskDefinitionResponse.__default
@@ -679,14 +730,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func describeClustersAsync(input: ElasticContainerModel.DescribeClustersRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeClustersResponse>) -> ()) throws {
+    public func describeClustersAsync(
+            input: ElasticContainerModel.DescribeClustersRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) -> ()) throws {
         if let describeClustersAsyncOverride = describeClustersAsyncOverride {
-            return try describeClustersAsyncOverride(input, completion)
+            return try describeClustersAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeClustersResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -698,9 +752,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func describeClustersSync(input: ElasticContainerModel.DescribeClustersRequest) throws -> ElasticContainerModel.DescribeClustersResponse {
+    public func describeClustersSync(
+            input: ElasticContainerModel.DescribeClustersRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeClustersResponse {
         if let describeClustersSyncOverride = describeClustersSyncOverride {
-            return try describeClustersSyncOverride(input)
+            return try describeClustersSyncOverride(input, reporting)
         }
 
         return DescribeClustersResponse.__default
@@ -716,14 +772,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeContainerInstancesAsync(input: ElasticContainerModel.DescribeContainerInstancesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeContainerInstancesResponse>) -> ()) throws {
+    public func describeContainerInstancesAsync(
+            input: ElasticContainerModel.DescribeContainerInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) -> ()) throws {
         if let describeContainerInstancesAsyncOverride = describeContainerInstancesAsyncOverride {
-            return try describeContainerInstancesAsyncOverride(input, completion)
+            return try describeContainerInstancesAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeContainerInstancesResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -735,9 +794,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeContainerInstancesSync(input: ElasticContainerModel.DescribeContainerInstancesRequest) throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
+    public func describeContainerInstancesSync(
+            input: ElasticContainerModel.DescribeContainerInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
         if let describeContainerInstancesSyncOverride = describeContainerInstancesSyncOverride {
-            return try describeContainerInstancesSyncOverride(input)
+            return try describeContainerInstancesSyncOverride(input, reporting)
         }
 
         return DescribeContainerInstancesResponse.__default
@@ -753,14 +814,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeServicesAsync(input: ElasticContainerModel.DescribeServicesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeServicesResponse>) -> ()) throws {
+    public func describeServicesAsync(
+            input: ElasticContainerModel.DescribeServicesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) -> ()) throws {
         if let describeServicesAsyncOverride = describeServicesAsyncOverride {
-            return try describeServicesAsyncOverride(input, completion)
+            return try describeServicesAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeServicesResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -772,9 +836,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeServicesSync(input: ElasticContainerModel.DescribeServicesRequest) throws -> ElasticContainerModel.DescribeServicesResponse {
+    public func describeServicesSync(
+            input: ElasticContainerModel.DescribeServicesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeServicesResponse {
         if let describeServicesSyncOverride = describeServicesSyncOverride {
-            return try describeServicesSyncOverride(input)
+            return try describeServicesSyncOverride(input, reporting)
         }
 
         return DescribeServicesResponse.__default
@@ -790,14 +856,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func describeTaskDefinitionAsync(input: ElasticContainerModel.DescribeTaskDefinitionRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTaskDefinitionResponse>) -> ()) throws {
+    public func describeTaskDefinitionAsync(
+            input: ElasticContainerModel.DescribeTaskDefinitionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
         if let describeTaskDefinitionAsyncOverride = describeTaskDefinitionAsyncOverride {
-            return try describeTaskDefinitionAsyncOverride(input, completion)
+            return try describeTaskDefinitionAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeTaskDefinitionResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -809,9 +878,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func describeTaskDefinitionSync(input: ElasticContainerModel.DescribeTaskDefinitionRequest) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
+    public func describeTaskDefinitionSync(
+            input: ElasticContainerModel.DescribeTaskDefinitionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
         if let describeTaskDefinitionSyncOverride = describeTaskDefinitionSyncOverride {
-            return try describeTaskDefinitionSyncOverride(input)
+            return try describeTaskDefinitionSyncOverride(input, reporting)
         }
 
         return DescribeTaskDefinitionResponse.__default
@@ -827,14 +898,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func describeTaskSetsAsync(input: ElasticContainerModel.DescribeTaskSetsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTaskSetsResponse>) -> ()) throws {
+    public func describeTaskSetsAsync(
+            input: ElasticContainerModel.DescribeTaskSetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) -> ()) throws {
         if let describeTaskSetsAsyncOverride = describeTaskSetsAsyncOverride {
-            return try describeTaskSetsAsyncOverride(input, completion)
+            return try describeTaskSetsAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeTaskSetsResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -846,9 +920,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func describeTaskSetsSync(input: ElasticContainerModel.DescribeTaskSetsRequest) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
+    public func describeTaskSetsSync(
+            input: ElasticContainerModel.DescribeTaskSetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
         if let describeTaskSetsSyncOverride = describeTaskSetsSyncOverride {
-            return try describeTaskSetsSyncOverride(input)
+            return try describeTaskSetsSyncOverride(input, reporting)
         }
 
         return DescribeTaskSetsResponse.__default
@@ -864,14 +940,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeTasksAsync(input: ElasticContainerModel.DescribeTasksRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeTasksResponse>) -> ()) throws {
+    public func describeTasksAsync(
+            input: ElasticContainerModel.DescribeTasksRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) -> ()) throws {
         if let describeTasksAsyncOverride = describeTasksAsyncOverride {
-            return try describeTasksAsyncOverride(input, completion)
+            return try describeTasksAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeTasksResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -883,9 +962,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeTasksSync(input: ElasticContainerModel.DescribeTasksRequest) throws -> ElasticContainerModel.DescribeTasksResponse {
+    public func describeTasksSync(
+            input: ElasticContainerModel.DescribeTasksRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTasksResponse {
         if let describeTasksSyncOverride = describeTasksSyncOverride {
-            return try describeTasksSyncOverride(input)
+            return try describeTasksSyncOverride(input, reporting)
         }
 
         return DescribeTasksResponse.__default
@@ -901,14 +982,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, server.
      */
-    public func discoverPollEndpointAsync(input: ElasticContainerModel.DiscoverPollEndpointRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DiscoverPollEndpointResponse>) -> ()) throws {
+    public func discoverPollEndpointAsync(
+            input: ElasticContainerModel.DiscoverPollEndpointRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) -> ()) throws {
         if let discoverPollEndpointAsyncOverride = discoverPollEndpointAsyncOverride {
-            return try discoverPollEndpointAsyncOverride(input, completion)
+            return try discoverPollEndpointAsyncOverride(input, reporting, completion)
         }
 
         let result = DiscoverPollEndpointResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -920,9 +1004,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, server.
      */
-    public func discoverPollEndpointSync(input: ElasticContainerModel.DiscoverPollEndpointRequest) throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
+    public func discoverPollEndpointSync(
+            input: ElasticContainerModel.DiscoverPollEndpointRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
         if let discoverPollEndpointSyncOverride = discoverPollEndpointSyncOverride {
-            return try discoverPollEndpointSyncOverride(input)
+            return try discoverPollEndpointSyncOverride(input, reporting)
         }
 
         return DiscoverPollEndpointResponse.__default
@@ -938,14 +1024,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listAccountSettingsAsync(input: ElasticContainerModel.ListAccountSettingsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListAccountSettingsResponse>) -> ()) throws {
+    public func listAccountSettingsAsync(
+            input: ElasticContainerModel.ListAccountSettingsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) -> ()) throws {
         if let listAccountSettingsAsyncOverride = listAccountSettingsAsyncOverride {
-            return try listAccountSettingsAsyncOverride(input, completion)
+            return try listAccountSettingsAsyncOverride(input, reporting, completion)
         }
 
         let result = ListAccountSettingsResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -957,9 +1046,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listAccountSettingsSync(input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse {
+    public func listAccountSettingsSync(
+            input: ElasticContainerModel.ListAccountSettingsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListAccountSettingsResponse {
         if let listAccountSettingsSyncOverride = listAccountSettingsSyncOverride {
-            return try listAccountSettingsSyncOverride(input)
+            return try listAccountSettingsSyncOverride(input, reporting)
         }
 
         return ListAccountSettingsResponse.__default
@@ -975,14 +1066,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: clusterNotFound, invalidParameter.
      */
-    public func listAttributesAsync(input: ElasticContainerModel.ListAttributesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListAttributesResponse>) -> ()) throws {
+    public func listAttributesAsync(
+            input: ElasticContainerModel.ListAttributesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) -> ()) throws {
         if let listAttributesAsyncOverride = listAttributesAsyncOverride {
-            return try listAttributesAsyncOverride(input, completion)
+            return try listAttributesAsyncOverride(input, reporting, completion)
         }
 
         let result = ListAttributesResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -994,9 +1088,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: clusterNotFound, invalidParameter.
      */
-    public func listAttributesSync(input: ElasticContainerModel.ListAttributesRequest) throws -> ElasticContainerModel.ListAttributesResponse {
+    public func listAttributesSync(
+            input: ElasticContainerModel.ListAttributesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListAttributesResponse {
         if let listAttributesSyncOverride = listAttributesSyncOverride {
-            return try listAttributesSyncOverride(input)
+            return try listAttributesSyncOverride(input, reporting)
         }
 
         return ListAttributesResponse.__default
@@ -1012,14 +1108,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listClustersAsync(input: ElasticContainerModel.ListClustersRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListClustersResponse>) -> ()) throws {
+    public func listClustersAsync(
+            input: ElasticContainerModel.ListClustersRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) -> ()) throws {
         if let listClustersAsyncOverride = listClustersAsyncOverride {
-            return try listClustersAsyncOverride(input, completion)
+            return try listClustersAsyncOverride(input, reporting, completion)
         }
 
         let result = ListClustersResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1031,9 +1130,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listClustersSync(input: ElasticContainerModel.ListClustersRequest) throws -> ElasticContainerModel.ListClustersResponse {
+    public func listClustersSync(
+            input: ElasticContainerModel.ListClustersRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListClustersResponse {
         if let listClustersSyncOverride = listClustersSyncOverride {
-            return try listClustersSyncOverride(input)
+            return try listClustersSyncOverride(input, reporting)
         }
 
         return ListClustersResponse.__default
@@ -1049,14 +1150,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func listContainerInstancesAsync(input: ElasticContainerModel.ListContainerInstancesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListContainerInstancesResponse>) -> ()) throws {
+    public func listContainerInstancesAsync(
+            input: ElasticContainerModel.ListContainerInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) -> ()) throws {
         if let listContainerInstancesAsyncOverride = listContainerInstancesAsyncOverride {
-            return try listContainerInstancesAsyncOverride(input, completion)
+            return try listContainerInstancesAsyncOverride(input, reporting, completion)
         }
 
         let result = ListContainerInstancesResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1068,9 +1172,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func listContainerInstancesSync(input: ElasticContainerModel.ListContainerInstancesRequest) throws -> ElasticContainerModel.ListContainerInstancesResponse {
+    public func listContainerInstancesSync(
+            input: ElasticContainerModel.ListContainerInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListContainerInstancesResponse {
         if let listContainerInstancesSyncOverride = listContainerInstancesSyncOverride {
-            return try listContainerInstancesSyncOverride(input)
+            return try listContainerInstancesSyncOverride(input, reporting)
         }
 
         return ListContainerInstancesResponse.__default
@@ -1086,14 +1192,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func listServicesAsync(input: ElasticContainerModel.ListServicesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListServicesResponse>) -> ()) throws {
+    public func listServicesAsync(
+            input: ElasticContainerModel.ListServicesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) -> ()) throws {
         if let listServicesAsyncOverride = listServicesAsyncOverride {
-            return try listServicesAsyncOverride(input, completion)
+            return try listServicesAsyncOverride(input, reporting, completion)
         }
 
         let result = ListServicesResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1105,9 +1214,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func listServicesSync(input: ElasticContainerModel.ListServicesRequest) throws -> ElasticContainerModel.ListServicesResponse {
+    public func listServicesSync(
+            input: ElasticContainerModel.ListServicesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListServicesResponse {
         if let listServicesSyncOverride = listServicesSyncOverride {
-            return try listServicesSyncOverride(input)
+            return try listServicesSyncOverride(input, reporting)
         }
 
         return ListServicesResponse.__default
@@ -1123,14 +1234,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func listTagsForResourceAsync(input: ElasticContainerModel.ListTagsForResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListTagsForResourceResponse>) -> ()) throws {
+    public func listTagsForResourceAsync(
+            input: ElasticContainerModel.ListTagsForResourceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, completion)
+            return try listTagsForResourceAsyncOverride(input, reporting, completion)
         }
 
         let result = ListTagsForResourceResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1142,9 +1256,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func listTagsForResourceSync(input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse {
+    public func listTagsForResourceSync(
+            input: ElasticContainerModel.ListTagsForResourceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTagsForResourceResponse {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input)
+            return try listTagsForResourceSyncOverride(input, reporting)
         }
 
         return ListTagsForResourceResponse.__default
@@ -1160,14 +1276,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listTaskDefinitionFamiliesAsync(input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListTaskDefinitionFamiliesResponse>) -> ()) throws {
+    public func listTaskDefinitionFamiliesAsync(
+            input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) -> ()) throws {
         if let listTaskDefinitionFamiliesAsyncOverride = listTaskDefinitionFamiliesAsyncOverride {
-            return try listTaskDefinitionFamiliesAsyncOverride(input, completion)
+            return try listTaskDefinitionFamiliesAsyncOverride(input, reporting, completion)
         }
 
         let result = ListTaskDefinitionFamiliesResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1179,9 +1298,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listTaskDefinitionFamiliesSync(input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
+    public func listTaskDefinitionFamiliesSync(
+            input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
         if let listTaskDefinitionFamiliesSyncOverride = listTaskDefinitionFamiliesSyncOverride {
-            return try listTaskDefinitionFamiliesSyncOverride(input)
+            return try listTaskDefinitionFamiliesSyncOverride(input, reporting)
         }
 
         return ListTaskDefinitionFamiliesResponse.__default
@@ -1197,14 +1318,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listTaskDefinitionsAsync(input: ElasticContainerModel.ListTaskDefinitionsRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListTaskDefinitionsResponse>) -> ()) throws {
+    public func listTaskDefinitionsAsync(
+            input: ElasticContainerModel.ListTaskDefinitionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) -> ()) throws {
         if let listTaskDefinitionsAsyncOverride = listTaskDefinitionsAsyncOverride {
-            return try listTaskDefinitionsAsyncOverride(input, completion)
+            return try listTaskDefinitionsAsyncOverride(input, reporting, completion)
         }
 
         let result = ListTaskDefinitionsResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1216,9 +1340,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listTaskDefinitionsSync(input: ElasticContainerModel.ListTaskDefinitionsRequest) throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
+    public func listTaskDefinitionsSync(
+            input: ElasticContainerModel.ListTaskDefinitionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
         if let listTaskDefinitionsSyncOverride = listTaskDefinitionsSyncOverride {
-            return try listTaskDefinitionsSyncOverride(input)
+            return try listTaskDefinitionsSyncOverride(input, reporting)
         }
 
         return ListTaskDefinitionsResponse.__default
@@ -1234,14 +1360,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func listTasksAsync(input: ElasticContainerModel.ListTasksRequest, completion: @escaping (HTTPResult<ElasticContainerModel.ListTasksResponse>) -> ()) throws {
+    public func listTasksAsync(
+            input: ElasticContainerModel.ListTasksRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) -> ()) throws {
         if let listTasksAsyncOverride = listTasksAsyncOverride {
-            return try listTasksAsyncOverride(input, completion)
+            return try listTasksAsyncOverride(input, reporting, completion)
         }
 
         let result = ListTasksResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1253,9 +1382,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func listTasksSync(input: ElasticContainerModel.ListTasksRequest) throws -> ElasticContainerModel.ListTasksResponse {
+    public func listTasksSync(
+            input: ElasticContainerModel.ListTasksRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTasksResponse {
         if let listTasksSyncOverride = listTasksSyncOverride {
-            return try listTasksSyncOverride(input)
+            return try listTasksSyncOverride(input, reporting)
         }
 
         return ListTasksResponse.__default
@@ -1271,14 +1402,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func putAccountSettingAsync(input: ElasticContainerModel.PutAccountSettingRequest, completion: @escaping (HTTPResult<ElasticContainerModel.PutAccountSettingResponse>) -> ()) throws {
+    public func putAccountSettingAsync(
+            input: ElasticContainerModel.PutAccountSettingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) -> ()) throws {
         if let putAccountSettingAsyncOverride = putAccountSettingAsyncOverride {
-            return try putAccountSettingAsyncOverride(input, completion)
+            return try putAccountSettingAsyncOverride(input, reporting, completion)
         }
 
         let result = PutAccountSettingResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1290,9 +1424,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func putAccountSettingSync(input: ElasticContainerModel.PutAccountSettingRequest) throws -> ElasticContainerModel.PutAccountSettingResponse {
+    public func putAccountSettingSync(
+            input: ElasticContainerModel.PutAccountSettingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAccountSettingResponse {
         if let putAccountSettingSyncOverride = putAccountSettingSyncOverride {
-            return try putAccountSettingSyncOverride(input)
+            return try putAccountSettingSyncOverride(input, reporting)
         }
 
         return PutAccountSettingResponse.__default
@@ -1308,14 +1444,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func putAccountSettingDefaultAsync(input: ElasticContainerModel.PutAccountSettingDefaultRequest, completion: @escaping (HTTPResult<ElasticContainerModel.PutAccountSettingDefaultResponse>) -> ()) throws {
+    public func putAccountSettingDefaultAsync(
+            input: ElasticContainerModel.PutAccountSettingDefaultRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) -> ()) throws {
         if let putAccountSettingDefaultAsyncOverride = putAccountSettingDefaultAsyncOverride {
-            return try putAccountSettingDefaultAsyncOverride(input, completion)
+            return try putAccountSettingDefaultAsyncOverride(input, reporting, completion)
         }
 
         let result = PutAccountSettingDefaultResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1327,9 +1466,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func putAccountSettingDefaultSync(input: ElasticContainerModel.PutAccountSettingDefaultRequest) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
+    public func putAccountSettingDefaultSync(
+            input: ElasticContainerModel.PutAccountSettingDefaultRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
         if let putAccountSettingDefaultSyncOverride = putAccountSettingDefaultSyncOverride {
-            return try putAccountSettingDefaultSyncOverride(input)
+            return try putAccountSettingDefaultSyncOverride(input, reporting)
         }
 
         return PutAccountSettingDefaultResponse.__default
@@ -1345,14 +1486,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func putAttributesAsync(input: ElasticContainerModel.PutAttributesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.PutAttributesResponse>) -> ()) throws {
+    public func putAttributesAsync(
+            input: ElasticContainerModel.PutAttributesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) -> ()) throws {
         if let putAttributesAsyncOverride = putAttributesAsyncOverride {
-            return try putAttributesAsyncOverride(input, completion)
+            return try putAttributesAsyncOverride(input, reporting, completion)
         }
 
         let result = PutAttributesResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1364,9 +1508,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func putAttributesSync(input: ElasticContainerModel.PutAttributesRequest) throws -> ElasticContainerModel.PutAttributesResponse {
+    public func putAttributesSync(
+            input: ElasticContainerModel.PutAttributesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAttributesResponse {
         if let putAttributesSyncOverride = putAttributesSyncOverride {
-            return try putAttributesSyncOverride(input)
+            return try putAttributesSyncOverride(input, reporting)
         }
 
         return PutAttributesResponse.__default
@@ -1382,14 +1528,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func registerContainerInstanceAsync(input: ElasticContainerModel.RegisterContainerInstanceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.RegisterContainerInstanceResponse>) -> ()) throws {
+    public func registerContainerInstanceAsync(
+            input: ElasticContainerModel.RegisterContainerInstanceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
         if let registerContainerInstanceAsyncOverride = registerContainerInstanceAsyncOverride {
-            return try registerContainerInstanceAsyncOverride(input, completion)
+            return try registerContainerInstanceAsyncOverride(input, reporting, completion)
         }
 
         let result = RegisterContainerInstanceResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1401,9 +1550,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func registerContainerInstanceSync(input: ElasticContainerModel.RegisterContainerInstanceRequest) throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
+    public func registerContainerInstanceSync(
+            input: ElasticContainerModel.RegisterContainerInstanceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
         if let registerContainerInstanceSyncOverride = registerContainerInstanceSyncOverride {
-            return try registerContainerInstanceSyncOverride(input)
+            return try registerContainerInstanceSyncOverride(input, reporting)
         }
 
         return RegisterContainerInstanceResponse.__default
@@ -1419,14 +1570,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func registerTaskDefinitionAsync(input: ElasticContainerModel.RegisterTaskDefinitionRequest, completion: @escaping (HTTPResult<ElasticContainerModel.RegisterTaskDefinitionResponse>) -> ()) throws {
+    public func registerTaskDefinitionAsync(
+            input: ElasticContainerModel.RegisterTaskDefinitionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
         if let registerTaskDefinitionAsyncOverride = registerTaskDefinitionAsyncOverride {
-            return try registerTaskDefinitionAsyncOverride(input, completion)
+            return try registerTaskDefinitionAsyncOverride(input, reporting, completion)
         }
 
         let result = RegisterTaskDefinitionResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1438,9 +1592,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func registerTaskDefinitionSync(input: ElasticContainerModel.RegisterTaskDefinitionRequest) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
+    public func registerTaskDefinitionSync(
+            input: ElasticContainerModel.RegisterTaskDefinitionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
         if let registerTaskDefinitionSyncOverride = registerTaskDefinitionSyncOverride {
-            return try registerTaskDefinitionSyncOverride(input)
+            return try registerTaskDefinitionSyncOverride(input, reporting)
         }
 
         return RegisterTaskDefinitionResponse.__default
@@ -1456,14 +1612,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func runTaskAsync(input: ElasticContainerModel.RunTaskRequest, completion: @escaping (HTTPResult<ElasticContainerModel.RunTaskResponse>) -> ()) throws {
+    public func runTaskAsync(
+            input: ElasticContainerModel.RunTaskRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) -> ()) throws {
         if let runTaskAsyncOverride = runTaskAsyncOverride {
-            return try runTaskAsyncOverride(input, completion)
+            return try runTaskAsyncOverride(input, reporting, completion)
         }
 
         let result = RunTaskResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1475,9 +1634,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func runTaskSync(input: ElasticContainerModel.RunTaskRequest) throws -> ElasticContainerModel.RunTaskResponse {
+    public func runTaskSync(
+            input: ElasticContainerModel.RunTaskRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RunTaskResponse {
         if let runTaskSyncOverride = runTaskSyncOverride {
-            return try runTaskSyncOverride(input)
+            return try runTaskSyncOverride(input, reporting)
         }
 
         return RunTaskResponse.__default
@@ -1493,14 +1654,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func startTaskAsync(input: ElasticContainerModel.StartTaskRequest, completion: @escaping (HTTPResult<ElasticContainerModel.StartTaskResponse>) -> ()) throws {
+    public func startTaskAsync(
+            input: ElasticContainerModel.StartTaskRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) -> ()) throws {
         if let startTaskAsyncOverride = startTaskAsyncOverride {
-            return try startTaskAsyncOverride(input, completion)
+            return try startTaskAsyncOverride(input, reporting, completion)
         }
 
         let result = StartTaskResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1512,9 +1676,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func startTaskSync(input: ElasticContainerModel.StartTaskRequest) throws -> ElasticContainerModel.StartTaskResponse {
+    public func startTaskSync(
+            input: ElasticContainerModel.StartTaskRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.StartTaskResponse {
         if let startTaskSyncOverride = startTaskSyncOverride {
-            return try startTaskSyncOverride(input)
+            return try startTaskSyncOverride(input, reporting)
         }
 
         return StartTaskResponse.__default
@@ -1530,14 +1696,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func stopTaskAsync(input: ElasticContainerModel.StopTaskRequest, completion: @escaping (HTTPResult<ElasticContainerModel.StopTaskResponse>) -> ()) throws {
+    public func stopTaskAsync(
+            input: ElasticContainerModel.StopTaskRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) -> ()) throws {
         if let stopTaskAsyncOverride = stopTaskAsyncOverride {
-            return try stopTaskAsyncOverride(input, completion)
+            return try stopTaskAsyncOverride(input, reporting, completion)
         }
 
         let result = StopTaskResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1549,9 +1718,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func stopTaskSync(input: ElasticContainerModel.StopTaskRequest) throws -> ElasticContainerModel.StopTaskResponse {
+    public func stopTaskSync(
+            input: ElasticContainerModel.StopTaskRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.StopTaskResponse {
         if let stopTaskSyncOverride = stopTaskSyncOverride {
-            return try stopTaskSyncOverride(input)
+            return try stopTaskSyncOverride(input, reporting)
         }
 
         return StopTaskResponse.__default
@@ -1567,14 +1738,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, invalidParameter, server.
      */
-    public func submitAttachmentStateChangesAsync(input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, completion: @escaping (HTTPResult<ElasticContainerModel.SubmitAttachmentStateChangesResponse>) -> ()) throws {
+    public func submitAttachmentStateChangesAsync(
+            input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) -> ()) throws {
         if let submitAttachmentStateChangesAsyncOverride = submitAttachmentStateChangesAsyncOverride {
-            return try submitAttachmentStateChangesAsyncOverride(input, completion)
+            return try submitAttachmentStateChangesAsyncOverride(input, reporting, completion)
         }
 
         let result = SubmitAttachmentStateChangesResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1586,9 +1760,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, invalidParameter, server.
      */
-    public func submitAttachmentStateChangesSync(input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
+    public func submitAttachmentStateChangesSync(
+            input: ElasticContainerModel.SubmitAttachmentStateChangesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
         if let submitAttachmentStateChangesSyncOverride = submitAttachmentStateChangesSyncOverride {
-            return try submitAttachmentStateChangesSyncOverride(input)
+            return try submitAttachmentStateChangesSyncOverride(input, reporting)
         }
 
         return SubmitAttachmentStateChangesResponse.__default
@@ -1604,14 +1780,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, server.
      */
-    public func submitContainerStateChangeAsync(input: ElasticContainerModel.SubmitContainerStateChangeRequest, completion: @escaping (HTTPResult<ElasticContainerModel.SubmitContainerStateChangeResponse>) -> ()) throws {
+    public func submitContainerStateChangeAsync(
+            input: ElasticContainerModel.SubmitContainerStateChangeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) -> ()) throws {
         if let submitContainerStateChangeAsyncOverride = submitContainerStateChangeAsyncOverride {
-            return try submitContainerStateChangeAsyncOverride(input, completion)
+            return try submitContainerStateChangeAsyncOverride(input, reporting, completion)
         }
 
         let result = SubmitContainerStateChangeResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1623,9 +1802,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, server.
      */
-    public func submitContainerStateChangeSync(input: ElasticContainerModel.SubmitContainerStateChangeRequest) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
+    public func submitContainerStateChangeSync(
+            input: ElasticContainerModel.SubmitContainerStateChangeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
         if let submitContainerStateChangeSyncOverride = submitContainerStateChangeSyncOverride {
-            return try submitContainerStateChangeSyncOverride(input)
+            return try submitContainerStateChangeSyncOverride(input, reporting)
         }
 
         return SubmitContainerStateChangeResponse.__default
@@ -1641,14 +1822,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, server.
      */
-    public func submitTaskStateChangeAsync(input: ElasticContainerModel.SubmitTaskStateChangeRequest, completion: @escaping (HTTPResult<ElasticContainerModel.SubmitTaskStateChangeResponse>) -> ()) throws {
+    public func submitTaskStateChangeAsync(
+            input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) -> ()) throws {
         if let submitTaskStateChangeAsyncOverride = submitTaskStateChangeAsyncOverride {
-            return try submitTaskStateChangeAsyncOverride(input, completion)
+            return try submitTaskStateChangeAsyncOverride(input, reporting, completion)
         }
 
         let result = SubmitTaskStateChangeResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1660,9 +1844,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, server.
      */
-    public func submitTaskStateChangeSync(input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
+    public func submitTaskStateChangeSync(
+            input: ElasticContainerModel.SubmitTaskStateChangeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
         if let submitTaskStateChangeSyncOverride = submitTaskStateChangeSyncOverride {
-            return try submitTaskStateChangeSyncOverride(input)
+            return try submitTaskStateChangeSyncOverride(input, reporting)
         }
 
         return SubmitTaskStateChangeResponse.__default
@@ -1678,14 +1864,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func tagResourceAsync(input: ElasticContainerModel.TagResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.TagResourceResponse>) -> ()) throws {
+    public func tagResourceAsync(
+            input: ElasticContainerModel.TagResourceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, completion)
+            return try tagResourceAsyncOverride(input, reporting, completion)
         }
 
         let result = TagResourceResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1697,9 +1886,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func tagResourceSync(input: ElasticContainerModel.TagResourceRequest) throws -> ElasticContainerModel.TagResourceResponse {
+    public func tagResourceSync(
+            input: ElasticContainerModel.TagResourceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.TagResourceResponse {
         if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input)
+            return try tagResourceSyncOverride(input, reporting)
         }
 
         return TagResourceResponse.__default
@@ -1715,14 +1906,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func untagResourceAsync(input: ElasticContainerModel.UntagResourceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UntagResourceResponse>) -> ()) throws {
+    public func untagResourceAsync(
+            input: ElasticContainerModel.UntagResourceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, completion)
+            return try untagResourceAsyncOverride(input, reporting, completion)
         }
 
         let result = UntagResourceResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1734,9 +1928,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func untagResourceSync(input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse {
+    public func untagResourceSync(
+            input: ElasticContainerModel.UntagResourceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UntagResourceResponse {
         if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input)
+            return try untagResourceSyncOverride(input, reporting)
         }
 
         return UntagResourceResponse.__default
@@ -1752,14 +1948,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
      */
-    public func updateContainerAgentAsync(input: ElasticContainerModel.UpdateContainerAgentRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateContainerAgentResponse>) -> ()) throws {
+    public func updateContainerAgentAsync(
+            input: ElasticContainerModel.UpdateContainerAgentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) -> ()) throws {
         if let updateContainerAgentAsyncOverride = updateContainerAgentAsyncOverride {
-            return try updateContainerAgentAsyncOverride(input, completion)
+            return try updateContainerAgentAsyncOverride(input, reporting, completion)
         }
 
         let result = UpdateContainerAgentResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1771,9 +1970,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
      */
-    public func updateContainerAgentSync(input: ElasticContainerModel.UpdateContainerAgentRequest) throws -> ElasticContainerModel.UpdateContainerAgentResponse {
+    public func updateContainerAgentSync(
+            input: ElasticContainerModel.UpdateContainerAgentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateContainerAgentResponse {
         if let updateContainerAgentSyncOverride = updateContainerAgentSyncOverride {
-            return try updateContainerAgentSyncOverride(input)
+            return try updateContainerAgentSyncOverride(input, reporting)
         }
 
         return UpdateContainerAgentResponse.__default
@@ -1789,14 +1990,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateContainerInstancesStateAsync(input: ElasticContainerModel.UpdateContainerInstancesStateRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateContainerInstancesStateResponse>) -> ()) throws {
+    public func updateContainerInstancesStateAsync(
+            input: ElasticContainerModel.UpdateContainerInstancesStateRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) -> ()) throws {
         if let updateContainerInstancesStateAsyncOverride = updateContainerInstancesStateAsyncOverride {
-            return try updateContainerInstancesStateAsyncOverride(input, completion)
+            return try updateContainerInstancesStateAsyncOverride(input, reporting, completion)
         }
 
         let result = UpdateContainerInstancesStateResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1808,9 +2012,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateContainerInstancesStateSync(input: ElasticContainerModel.UpdateContainerInstancesStateRequest) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
+    public func updateContainerInstancesStateSync(
+            input: ElasticContainerModel.UpdateContainerInstancesStateRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
         if let updateContainerInstancesStateSyncOverride = updateContainerInstancesStateSyncOverride {
-            return try updateContainerInstancesStateSyncOverride(input)
+            return try updateContainerInstancesStateSyncOverride(input, reporting)
         }
 
         return UpdateContainerInstancesStateResponse.__default
@@ -1826,14 +2032,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
-    public func updateServiceAsync(input: ElasticContainerModel.UpdateServiceRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateServiceResponse>) -> ()) throws {
+    public func updateServiceAsync(
+            input: ElasticContainerModel.UpdateServiceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) -> ()) throws {
         if let updateServiceAsyncOverride = updateServiceAsyncOverride {
-            return try updateServiceAsyncOverride(input, completion)
+            return try updateServiceAsyncOverride(input, reporting, completion)
         }
 
         let result = UpdateServiceResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1845,9 +2054,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
-    public func updateServiceSync(input: ElasticContainerModel.UpdateServiceRequest) throws -> ElasticContainerModel.UpdateServiceResponse {
+    public func updateServiceSync(
+            input: ElasticContainerModel.UpdateServiceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateServiceResponse {
         if let updateServiceSyncOverride = updateServiceSyncOverride {
-            return try updateServiceSyncOverride(input)
+            return try updateServiceSyncOverride(input, reporting)
         }
 
         return UpdateServiceResponse.__default
@@ -1863,14 +2074,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateServicePrimaryTaskSetAsync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse>) -> ()) throws {
+    public func updateServicePrimaryTaskSetAsync(
+            input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) -> ()) throws {
         if let updateServicePrimaryTaskSetAsyncOverride = updateServicePrimaryTaskSetAsyncOverride {
-            return try updateServicePrimaryTaskSetAsyncOverride(input, completion)
+            return try updateServicePrimaryTaskSetAsyncOverride(input, reporting, completion)
         }
 
         let result = UpdateServicePrimaryTaskSetResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1882,9 +2096,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateServicePrimaryTaskSetSync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
+    public func updateServicePrimaryTaskSetSync(
+            input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
         if let updateServicePrimaryTaskSetSyncOverride = updateServicePrimaryTaskSetSyncOverride {
-            return try updateServicePrimaryTaskSetSyncOverride(input)
+            return try updateServicePrimaryTaskSetSyncOverride(input, reporting)
         }
 
         return UpdateServicePrimaryTaskSetResponse.__default
@@ -1900,14 +2116,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateTaskSetAsync(input: ElasticContainerModel.UpdateTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateTaskSetResponse>) -> ()) throws {
+    public func updateTaskSetAsync(
+            input: ElasticContainerModel.UpdateTaskSetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) -> ()) throws {
         if let updateTaskSetAsyncOverride = updateTaskSetAsyncOverride {
-            return try updateTaskSetAsyncOverride(input, completion)
+            return try updateTaskSetAsyncOverride(input, reporting, completion)
         }
 
         let result = UpdateTaskSetResponse.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -1919,9 +2138,11 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateTaskSetSync(input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse {
+    public func updateTaskSetSync(
+            input: ElasticContainerModel.UpdateTaskSetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateTaskSetResponse {
         if let updateTaskSetSyncOverride = updateTaskSetSyncOverride {
-            return try updateTaskSetSyncOverride(input)
+            return try updateTaskSetSyncOverride(input, reporting)
         }
 
         return UpdateTaskSetResponse.__default

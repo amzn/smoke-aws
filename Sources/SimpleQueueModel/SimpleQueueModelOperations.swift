@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the SimpleQueueModel.
  */
-public enum SimpleQueueModelOperations: String {
+public enum SimpleQueueModelOperations: String, Hashable, CustomStringConvertible {
     case addPermission = "AddPermission"
     case changeMessageVisibility = "ChangeMessageVisibility"
     case changeMessageVisibilityBatch = "ChangeMessageVisibilityBatch"
@@ -45,6 +45,10 @@ public enum SimpleQueueModelOperations: String {
     case setQueueAttributes = "SetQueueAttributes"
     case tagQueue = "TagQueue"
     case untagQueue = "UntagQueue"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

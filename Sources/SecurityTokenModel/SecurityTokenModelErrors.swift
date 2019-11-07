@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let expiredTokenIdentity = "ExpiredTokenException"
 private let iDPCommunicationErrorIdentity = "IDPCommunicationError"
@@ -32,12 +32,6 @@ private let packedPolicyTooLargeIdentity = "PackedPolicyTooLarge"
 private let regionDisabledIdentity = "RegionDisabledException"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum SecurityTokenCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum SecurityTokenError: Swift.Error, Decodable {
     case expiredToken(ExpiredTokenException)
     case iDPCommunicationError(IDPCommunicationErrorException)
@@ -48,6 +42,8 @@ public enum SecurityTokenError: Swift.Error, Decodable {
     case packedPolicyTooLarge(PackedPolicyTooLargeException)
     case regionDisabled(RegionDisabledException)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "Code"
@@ -91,7 +87,7 @@ public enum SecurityTokenError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw SecurityTokenCodingError.unrecognizedError(errorReason, errorMessage)
+            self = SecurityTokenError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

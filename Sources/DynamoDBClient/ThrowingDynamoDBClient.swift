@@ -21,13 +21,14 @@
 
 import Foundation
 import DynamoDBModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
  Mock Client for the DynamoDB service that by default always throws from its methods.
  */
 public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
-    let error: Swift.Error
+    let error: HTTPClientError
     let batchGetItemAsyncOverride: DynamoDBClientProtocol.BatchGetItemAsyncType?
     let batchGetItemSyncOverride: DynamoDBClientProtocol.BatchGetItemSyncType?
     let batchWriteItemAsyncOverride: DynamoDBClientProtocol.BatchWriteItemAsyncType?
@@ -105,7 +106,7 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: Swift.Error,
+    public init(error: HTTPClientError,
             batchGetItemAsync: DynamoDBClientProtocol.BatchGetItemAsyncType? = nil,
             batchGetItemSync: DynamoDBClientProtocol.BatchGetItemSyncType? = nil,
             batchWriteItemAsync: DynamoDBClientProtocol.BatchWriteItemAsyncType? = nil,
@@ -263,12 +264,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchGetItemAsync(input: DynamoDBModel.BatchGetItemInput, completion: @escaping (HTTPResult<DynamoDBModel.BatchGetItemOutput>) -> ()) throws {
+    public func batchGetItemAsync(
+            input: DynamoDBModel.BatchGetItemInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws {
         if let batchGetItemAsyncOverride = batchGetItemAsyncOverride {
-            return try batchGetItemAsyncOverride(input, completion)
+            return try batchGetItemAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -280,9 +284,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchGetItemSync(input: DynamoDBModel.BatchGetItemInput) throws -> DynamoDBModel.BatchGetItemOutput {
+    public func batchGetItemSync(
+            input: DynamoDBModel.BatchGetItemInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.BatchGetItemOutput {
         if let batchGetItemSyncOverride = batchGetItemSyncOverride {
-            return try batchGetItemSyncOverride(input)
+            return try batchGetItemSyncOverride(input, reporting)
         }
 
         throw error
@@ -298,12 +304,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchWriteItemAsync(input: DynamoDBModel.BatchWriteItemInput, completion: @escaping (HTTPResult<DynamoDBModel.BatchWriteItemOutput>) -> ()) throws {
+    public func batchWriteItemAsync(
+            input: DynamoDBModel.BatchWriteItemInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws {
         if let batchWriteItemAsyncOverride = batchWriteItemAsyncOverride {
-            return try batchWriteItemAsyncOverride(input, completion)
+            return try batchWriteItemAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -315,9 +324,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchWriteItemSync(input: DynamoDBModel.BatchWriteItemInput) throws -> DynamoDBModel.BatchWriteItemOutput {
+    public func batchWriteItemSync(
+            input: DynamoDBModel.BatchWriteItemInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.BatchWriteItemOutput {
         if let batchWriteItemSyncOverride = batchWriteItemSyncOverride {
-            return try batchWriteItemSyncOverride(input)
+            return try batchWriteItemSyncOverride(input, reporting)
         }
 
         throw error
@@ -333,12 +344,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
      */
-    public func createBackupAsync(input: DynamoDBModel.CreateBackupInput, completion: @escaping (HTTPResult<DynamoDBModel.CreateBackupOutput>) -> ()) throws {
+    public func createBackupAsync(
+            input: DynamoDBModel.CreateBackupInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws {
         if let createBackupAsyncOverride = createBackupAsyncOverride {
-            return try createBackupAsyncOverride(input, completion)
+            return try createBackupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -350,9 +364,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
      */
-    public func createBackupSync(input: DynamoDBModel.CreateBackupInput) throws -> DynamoDBModel.CreateBackupOutput {
+    public func createBackupSync(
+            input: DynamoDBModel.CreateBackupInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateBackupOutput {
         if let createBackupSyncOverride = createBackupSyncOverride {
-            return try createBackupSyncOverride(input)
+            return try createBackupSyncOverride(input, reporting)
         }
 
         throw error
@@ -368,12 +384,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
      */
-    public func createGlobalTableAsync(input: DynamoDBModel.CreateGlobalTableInput, completion: @escaping (HTTPResult<DynamoDBModel.CreateGlobalTableOutput>) -> ()) throws {
+    public func createGlobalTableAsync(
+            input: DynamoDBModel.CreateGlobalTableInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws {
         if let createGlobalTableAsyncOverride = createGlobalTableAsyncOverride {
-            return try createGlobalTableAsyncOverride(input, completion)
+            return try createGlobalTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -385,9 +404,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
      */
-    public func createGlobalTableSync(input: DynamoDBModel.CreateGlobalTableInput) throws -> DynamoDBModel.CreateGlobalTableOutput {
+    public func createGlobalTableSync(
+            input: DynamoDBModel.CreateGlobalTableInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateGlobalTableOutput {
         if let createGlobalTableSyncOverride = createGlobalTableSyncOverride {
-            return try createGlobalTableSyncOverride(input)
+            return try createGlobalTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -403,12 +424,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse.
      */
-    public func createTableAsync(input: DynamoDBModel.CreateTableInput, completion: @escaping (HTTPResult<DynamoDBModel.CreateTableOutput>) -> ()) throws {
+    public func createTableAsync(
+            input: DynamoDBModel.CreateTableInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws {
         if let createTableAsyncOverride = createTableAsyncOverride {
-            return try createTableAsyncOverride(input, completion)
+            return try createTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -420,9 +444,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse.
      */
-    public func createTableSync(input: DynamoDBModel.CreateTableInput) throws -> DynamoDBModel.CreateTableOutput {
+    public func createTableSync(
+            input: DynamoDBModel.CreateTableInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateTableOutput {
         if let createTableSyncOverride = createTableSyncOverride {
-            return try createTableSyncOverride(input)
+            return try createTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -438,12 +464,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, backupNotFound, internalServer, limitExceeded.
      */
-    public func deleteBackupAsync(input: DynamoDBModel.DeleteBackupInput, completion: @escaping (HTTPResult<DynamoDBModel.DeleteBackupOutput>) -> ()) throws {
+    public func deleteBackupAsync(
+            input: DynamoDBModel.DeleteBackupInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws {
         if let deleteBackupAsyncOverride = deleteBackupAsyncOverride {
-            return try deleteBackupAsyncOverride(input, completion)
+            return try deleteBackupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -455,9 +484,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded.
      */
-    public func deleteBackupSync(input: DynamoDBModel.DeleteBackupInput) throws -> DynamoDBModel.DeleteBackupOutput {
+    public func deleteBackupSync(
+            input: DynamoDBModel.DeleteBackupInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteBackupOutput {
         if let deleteBackupSyncOverride = deleteBackupSyncOverride {
-            return try deleteBackupSyncOverride(input)
+            return try deleteBackupSyncOverride(input, reporting)
         }
 
         throw error
@@ -473,12 +504,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func deleteItemAsync(input: DynamoDBModel.DeleteItemInput, completion: @escaping (HTTPResult<DynamoDBModel.DeleteItemOutput>) -> ()) throws {
+    public func deleteItemAsync(
+            input: DynamoDBModel.DeleteItemInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws {
         if let deleteItemAsyncOverride = deleteItemAsyncOverride {
-            return try deleteItemAsyncOverride(input, completion)
+            return try deleteItemAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -490,9 +524,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func deleteItemSync(input: DynamoDBModel.DeleteItemInput) throws -> DynamoDBModel.DeleteItemOutput {
+    public func deleteItemSync(
+            input: DynamoDBModel.DeleteItemInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteItemOutput {
         if let deleteItemSyncOverride = deleteItemSyncOverride {
-            return try deleteItemSyncOverride(input)
+            return try deleteItemSyncOverride(input, reporting)
         }
 
         throw error
@@ -508,12 +544,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func deleteTableAsync(input: DynamoDBModel.DeleteTableInput, completion: @escaping (HTTPResult<DynamoDBModel.DeleteTableOutput>) -> ()) throws {
+    public func deleteTableAsync(
+            input: DynamoDBModel.DeleteTableInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws {
         if let deleteTableAsyncOverride = deleteTableAsyncOverride {
-            return try deleteTableAsyncOverride(input, completion)
+            return try deleteTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -525,9 +564,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func deleteTableSync(input: DynamoDBModel.DeleteTableInput) throws -> DynamoDBModel.DeleteTableOutput {
+    public func deleteTableSync(
+            input: DynamoDBModel.DeleteTableInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteTableOutput {
         if let deleteTableSyncOverride = deleteTableSyncOverride {
-            return try deleteTableSyncOverride(input)
+            return try deleteTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -543,12 +584,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupNotFound, internalServer.
      */
-    public func describeBackupAsync(input: DynamoDBModel.DescribeBackupInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeBackupOutput>) -> ()) throws {
+    public func describeBackupAsync(
+            input: DynamoDBModel.DescribeBackupInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws {
         if let describeBackupAsyncOverride = describeBackupAsyncOverride {
-            return try describeBackupAsyncOverride(input, completion)
+            return try describeBackupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -560,9 +604,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupNotFound, internalServer.
      */
-    public func describeBackupSync(input: DynamoDBModel.DescribeBackupInput) throws -> DynamoDBModel.DescribeBackupOutput {
+    public func describeBackupSync(
+            input: DynamoDBModel.DescribeBackupInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeBackupOutput {
         if let describeBackupSyncOverride = describeBackupSyncOverride {
-            return try describeBackupSyncOverride(input)
+            return try describeBackupSyncOverride(input, reporting)
         }
 
         throw error
@@ -578,12 +624,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, tableNotFound.
      */
-    public func describeContinuousBackupsAsync(input: DynamoDBModel.DescribeContinuousBackupsInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeContinuousBackupsOutput>) -> ()) throws {
+    public func describeContinuousBackupsAsync(
+            input: DynamoDBModel.DescribeContinuousBackupsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
         if let describeContinuousBackupsAsyncOverride = describeContinuousBackupsAsyncOverride {
-            return try describeContinuousBackupsAsyncOverride(input, completion)
+            return try describeContinuousBackupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -595,9 +644,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, tableNotFound.
      */
-    public func describeContinuousBackupsSync(input: DynamoDBModel.DescribeContinuousBackupsInput) throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
+    public func describeContinuousBackupsSync(
+            input: DynamoDBModel.DescribeContinuousBackupsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
         if let describeContinuousBackupsSyncOverride = describeContinuousBackupsSyncOverride {
-            return try describeContinuousBackupsSyncOverride(input)
+            return try describeContinuousBackupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -612,12 +663,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            callback when the operation is complete. The DescribeEndpointsResponse
            object will be validated before being returned to caller.
      */
-    public func describeEndpointsAsync(input: DynamoDBModel.DescribeEndpointsRequest, completion: @escaping (HTTPResult<DynamoDBModel.DescribeEndpointsResponse>) -> ()) throws {
+    public func describeEndpointsAsync(
+            input: DynamoDBModel.DescribeEndpointsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws {
         if let describeEndpointsAsyncOverride = describeEndpointsAsyncOverride {
-            return try describeEndpointsAsyncOverride(input, completion)
+            return try describeEndpointsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -628,9 +682,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Returns: The DescribeEndpointsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEndpointsSync(input: DynamoDBModel.DescribeEndpointsRequest) throws -> DynamoDBModel.DescribeEndpointsResponse {
+    public func describeEndpointsSync(
+            input: DynamoDBModel.DescribeEndpointsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeEndpointsResponse {
         if let describeEndpointsSyncOverride = describeEndpointsSyncOverride {
-            return try describeEndpointsSyncOverride(input)
+            return try describeEndpointsSyncOverride(input, reporting)
         }
 
         throw error
@@ -646,12 +702,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableAsync(input: DynamoDBModel.DescribeGlobalTableInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeGlobalTableOutput>) -> ()) throws {
+    public func describeGlobalTableAsync(
+            input: DynamoDBModel.DescribeGlobalTableInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws {
         if let describeGlobalTableAsyncOverride = describeGlobalTableAsyncOverride {
-            return try describeGlobalTableAsyncOverride(input, completion)
+            return try describeGlobalTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -663,9 +722,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableSync(input: DynamoDBModel.DescribeGlobalTableInput) throws -> DynamoDBModel.DescribeGlobalTableOutput {
+    public func describeGlobalTableSync(
+            input: DynamoDBModel.DescribeGlobalTableInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeGlobalTableOutput {
         if let describeGlobalTableSyncOverride = describeGlobalTableSyncOverride {
-            return try describeGlobalTableSyncOverride(input)
+            return try describeGlobalTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -681,12 +742,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableSettingsAsync(input: DynamoDBModel.DescribeGlobalTableSettingsInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeGlobalTableSettingsOutput>) -> ()) throws {
+    public func describeGlobalTableSettingsAsync(
+            input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
         if let describeGlobalTableSettingsAsyncOverride = describeGlobalTableSettingsAsyncOverride {
-            return try describeGlobalTableSettingsAsyncOverride(input, completion)
+            return try describeGlobalTableSettingsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -698,9 +762,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableSettingsSync(input: DynamoDBModel.DescribeGlobalTableSettingsInput) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
+    public func describeGlobalTableSettingsSync(
+            input: DynamoDBModel.DescribeGlobalTableSettingsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
         if let describeGlobalTableSettingsSyncOverride = describeGlobalTableSettingsSyncOverride {
-            return try describeGlobalTableSettingsSyncOverride(input)
+            return try describeGlobalTableSettingsSyncOverride(input, reporting)
         }
 
         throw error
@@ -716,12 +782,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func describeLimitsAsync(input: DynamoDBModel.DescribeLimitsInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeLimitsOutput>) -> ()) throws {
+    public func describeLimitsAsync(
+            input: DynamoDBModel.DescribeLimitsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws {
         if let describeLimitsAsyncOverride = describeLimitsAsyncOverride {
-            return try describeLimitsAsyncOverride(input, completion)
+            return try describeLimitsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -733,9 +802,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func describeLimitsSync(input: DynamoDBModel.DescribeLimitsInput) throws -> DynamoDBModel.DescribeLimitsOutput {
+    public func describeLimitsSync(
+            input: DynamoDBModel.DescribeLimitsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeLimitsOutput {
         if let describeLimitsSyncOverride = describeLimitsSyncOverride {
-            return try describeLimitsSyncOverride(input)
+            return try describeLimitsSyncOverride(input, reporting)
         }
 
         throw error
@@ -751,12 +822,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeTableAsync(input: DynamoDBModel.DescribeTableInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeTableOutput>) -> ()) throws {
+    public func describeTableAsync(
+            input: DynamoDBModel.DescribeTableInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws {
         if let describeTableAsyncOverride = describeTableAsyncOverride {
-            return try describeTableAsyncOverride(input, completion)
+            return try describeTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -768,9 +842,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeTableSync(input: DynamoDBModel.DescribeTableInput) throws -> DynamoDBModel.DescribeTableOutput {
+    public func describeTableSync(
+            input: DynamoDBModel.DescribeTableInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableOutput {
         if let describeTableSyncOverride = describeTableSyncOverride {
-            return try describeTableSyncOverride(input)
+            return try describeTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -786,12 +862,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeTimeToLiveAsync(input: DynamoDBModel.DescribeTimeToLiveInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeTimeToLiveOutput>) -> ()) throws {
+    public func describeTimeToLiveAsync(
+            input: DynamoDBModel.DescribeTimeToLiveInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws {
         if let describeTimeToLiveAsyncOverride = describeTimeToLiveAsyncOverride {
-            return try describeTimeToLiveAsyncOverride(input, completion)
+            return try describeTimeToLiveAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -803,9 +882,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeTimeToLiveSync(input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
+    public func describeTimeToLiveSync(
+            input: DynamoDBModel.DescribeTimeToLiveInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
         if let describeTimeToLiveSyncOverride = describeTimeToLiveSyncOverride {
-            return try describeTimeToLiveSyncOverride(input)
+            return try describeTimeToLiveSyncOverride(input, reporting)
         }
 
         throw error
@@ -821,12 +902,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func getItemAsync(input: DynamoDBModel.GetItemInput, completion: @escaping (HTTPResult<DynamoDBModel.GetItemOutput>) -> ()) throws {
+    public func getItemAsync(
+            input: DynamoDBModel.GetItemInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws {
         if let getItemAsyncOverride = getItemAsyncOverride {
-            return try getItemAsyncOverride(input, completion)
+            return try getItemAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -838,9 +922,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func getItemSync(input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput {
+    public func getItemSync(
+            input: DynamoDBModel.GetItemInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.GetItemOutput {
         if let getItemSyncOverride = getItemSyncOverride {
-            return try getItemSyncOverride(input)
+            return try getItemSyncOverride(input, reporting)
         }
 
         throw error
@@ -856,12 +942,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func listBackupsAsync(input: DynamoDBModel.ListBackupsInput, completion: @escaping (HTTPResult<DynamoDBModel.ListBackupsOutput>) -> ()) throws {
+    public func listBackupsAsync(
+            input: DynamoDBModel.ListBackupsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws {
         if let listBackupsAsyncOverride = listBackupsAsyncOverride {
-            return try listBackupsAsyncOverride(input, completion)
+            return try listBackupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -873,9 +962,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func listBackupsSync(input: DynamoDBModel.ListBackupsInput) throws -> DynamoDBModel.ListBackupsOutput {
+    public func listBackupsSync(
+            input: DynamoDBModel.ListBackupsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListBackupsOutput {
         if let listBackupsSyncOverride = listBackupsSyncOverride {
-            return try listBackupsSyncOverride(input)
+            return try listBackupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -891,12 +982,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func listGlobalTablesAsync(input: DynamoDBModel.ListGlobalTablesInput, completion: @escaping (HTTPResult<DynamoDBModel.ListGlobalTablesOutput>) -> ()) throws {
+    public func listGlobalTablesAsync(
+            input: DynamoDBModel.ListGlobalTablesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws {
         if let listGlobalTablesAsyncOverride = listGlobalTablesAsyncOverride {
-            return try listGlobalTablesAsyncOverride(input, completion)
+            return try listGlobalTablesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -908,9 +1002,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func listGlobalTablesSync(input: DynamoDBModel.ListGlobalTablesInput) throws -> DynamoDBModel.ListGlobalTablesOutput {
+    public func listGlobalTablesSync(
+            input: DynamoDBModel.ListGlobalTablesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListGlobalTablesOutput {
         if let listGlobalTablesSyncOverride = listGlobalTablesSyncOverride {
-            return try listGlobalTablesSyncOverride(input)
+            return try listGlobalTablesSyncOverride(input, reporting)
         }
 
         throw error
@@ -926,12 +1022,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func listTablesAsync(input: DynamoDBModel.ListTablesInput, completion: @escaping (HTTPResult<DynamoDBModel.ListTablesOutput>) -> ()) throws {
+    public func listTablesAsync(
+            input: DynamoDBModel.ListTablesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws {
         if let listTablesAsyncOverride = listTablesAsyncOverride {
-            return try listTablesAsyncOverride(input, completion)
+            return try listTablesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -943,9 +1042,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func listTablesSync(input: DynamoDBModel.ListTablesInput) throws -> DynamoDBModel.ListTablesOutput {
+    public func listTablesSync(
+            input: DynamoDBModel.ListTablesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListTablesOutput {
         if let listTablesSyncOverride = listTablesSyncOverride {
-            return try listTablesSyncOverride(input)
+            return try listTablesSyncOverride(input, reporting)
         }
 
         throw error
@@ -961,12 +1062,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func listTagsOfResourceAsync(input: DynamoDBModel.ListTagsOfResourceInput, completion: @escaping (HTTPResult<DynamoDBModel.ListTagsOfResourceOutput>) -> ()) throws {
+    public func listTagsOfResourceAsync(
+            input: DynamoDBModel.ListTagsOfResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws {
         if let listTagsOfResourceAsyncOverride = listTagsOfResourceAsyncOverride {
-            return try listTagsOfResourceAsyncOverride(input, completion)
+            return try listTagsOfResourceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -978,9 +1082,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func listTagsOfResourceSync(input: DynamoDBModel.ListTagsOfResourceInput) throws -> DynamoDBModel.ListTagsOfResourceOutput {
+    public func listTagsOfResourceSync(
+            input: DynamoDBModel.ListTagsOfResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListTagsOfResourceOutput {
         if let listTagsOfResourceSyncOverride = listTagsOfResourceSyncOverride {
-            return try listTagsOfResourceSyncOverride(input)
+            return try listTagsOfResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -996,12 +1102,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func putItemAsync(input: DynamoDBModel.PutItemInput, completion: @escaping (HTTPResult<DynamoDBModel.PutItemOutput>) -> ()) throws {
+    public func putItemAsync(
+            input: DynamoDBModel.PutItemInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws {
         if let putItemAsyncOverride = putItemAsyncOverride {
-            return try putItemAsyncOverride(input, completion)
+            return try putItemAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1013,9 +1122,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func putItemSync(input: DynamoDBModel.PutItemInput) throws -> DynamoDBModel.PutItemOutput {
+    public func putItemSync(
+            input: DynamoDBModel.PutItemInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.PutItemOutput {
         if let putItemSyncOverride = putItemSyncOverride {
-            return try putItemSyncOverride(input)
+            return try putItemSyncOverride(input, reporting)
         }
 
         throw error
@@ -1031,12 +1142,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func queryAsync(input: DynamoDBModel.QueryInput, completion: @escaping (HTTPResult<DynamoDBModel.QueryOutput>) -> ()) throws {
+    public func queryAsync(
+            input: DynamoDBModel.QueryInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws {
         if let queryAsyncOverride = queryAsyncOverride {
-            return try queryAsyncOverride(input, completion)
+            return try queryAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1048,9 +1162,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func querySync(input: DynamoDBModel.QueryInput) throws -> DynamoDBModel.QueryOutput {
+    public func querySync(
+            input: DynamoDBModel.QueryInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.QueryOutput {
         if let querySyncOverride = querySyncOverride {
-            return try querySyncOverride(input)
+            return try querySyncOverride(input, reporting)
         }
 
         throw error
@@ -1066,12 +1182,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
      */
-    public func restoreTableFromBackupAsync(input: DynamoDBModel.RestoreTableFromBackupInput, completion: @escaping (HTTPResult<DynamoDBModel.RestoreTableFromBackupOutput>) -> ()) throws {
+    public func restoreTableFromBackupAsync(
+            input: DynamoDBModel.RestoreTableFromBackupInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws {
         if let restoreTableFromBackupAsyncOverride = restoreTableFromBackupAsyncOverride {
-            return try restoreTableFromBackupAsyncOverride(input, completion)
+            return try restoreTableFromBackupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1083,9 +1202,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
      */
-    public func restoreTableFromBackupSync(input: DynamoDBModel.RestoreTableFromBackupInput) throws -> DynamoDBModel.RestoreTableFromBackupOutput {
+    public func restoreTableFromBackupSync(
+            input: DynamoDBModel.RestoreTableFromBackupInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.RestoreTableFromBackupOutput {
         if let restoreTableFromBackupSyncOverride = restoreTableFromBackupSyncOverride {
-            return try restoreTableFromBackupSyncOverride(input)
+            return try restoreTableFromBackupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1101,12 +1222,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
      */
-    public func restoreTableToPointInTimeAsync(input: DynamoDBModel.RestoreTableToPointInTimeInput, completion: @escaping (HTTPResult<DynamoDBModel.RestoreTableToPointInTimeOutput>) -> ()) throws {
+    public func restoreTableToPointInTimeAsync(
+            input: DynamoDBModel.RestoreTableToPointInTimeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws {
         if let restoreTableToPointInTimeAsyncOverride = restoreTableToPointInTimeAsyncOverride {
-            return try restoreTableToPointInTimeAsyncOverride(input, completion)
+            return try restoreTableToPointInTimeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1118,9 +1242,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
      */
-    public func restoreTableToPointInTimeSync(input: DynamoDBModel.RestoreTableToPointInTimeInput) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
+    public func restoreTableToPointInTimeSync(
+            input: DynamoDBModel.RestoreTableToPointInTimeInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
         if let restoreTableToPointInTimeSyncOverride = restoreTableToPointInTimeSyncOverride {
-            return try restoreTableToPointInTimeSyncOverride(input)
+            return try restoreTableToPointInTimeSyncOverride(input, reporting)
         }
 
         throw error
@@ -1136,12 +1262,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func scanAsync(input: DynamoDBModel.ScanInput, completion: @escaping (HTTPResult<DynamoDBModel.ScanOutput>) -> ()) throws {
+    public func scanAsync(
+            input: DynamoDBModel.ScanInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws {
         if let scanAsyncOverride = scanAsyncOverride {
-            return try scanAsyncOverride(input, completion)
+            return try scanAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1153,9 +1282,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func scanSync(input: DynamoDBModel.ScanInput) throws -> DynamoDBModel.ScanOutput {
+    public func scanSync(
+            input: DynamoDBModel.ScanInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ScanOutput {
         if let scanSyncOverride = scanSyncOverride {
-            return try scanSyncOverride(input)
+            return try scanSyncOverride(input, reporting)
         }
 
         throw error
@@ -1170,9 +1301,12 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func tagResourceAsync(input: DynamoDBModel.TagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func tagResourceAsync(
+            input: DynamoDBModel.TagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, completion)
+            return try tagResourceAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1185,9 +1319,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated TagResourceInput object being passed to this operation.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func tagResourceSync(input: DynamoDBModel.TagResourceInput) throws {
+    public func tagResourceSync(
+            input: DynamoDBModel.TagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input)
+            return try tagResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -1203,12 +1339,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
      */
-    public func transactGetItemsAsync(input: DynamoDBModel.TransactGetItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactGetItemsOutput>) -> ()) throws {
+    public func transactGetItemsAsync(
+            input: DynamoDBModel.TransactGetItemsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws {
         if let transactGetItemsAsyncOverride = transactGetItemsAsyncOverride {
-            return try transactGetItemsAsyncOverride(input, completion)
+            return try transactGetItemsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1220,9 +1359,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
      */
-    public func transactGetItemsSync(input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput {
+    public func transactGetItemsSync(
+            input: DynamoDBModel.TransactGetItemsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.TransactGetItemsOutput {
         if let transactGetItemsSyncOverride = transactGetItemsSyncOverride {
-            return try transactGetItemsSyncOverride(input)
+            return try transactGetItemsSyncOverride(input, reporting)
         }
 
         throw error
@@ -1238,12 +1379,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
-    public func transactWriteItemsAsync(input: DynamoDBModel.TransactWriteItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactWriteItemsOutput>) -> ()) throws {
+    public func transactWriteItemsAsync(
+            input: DynamoDBModel.TransactWriteItemsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws {
         if let transactWriteItemsAsyncOverride = transactWriteItemsAsyncOverride {
-            return try transactWriteItemsAsyncOverride(input, completion)
+            return try transactWriteItemsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1255,9 +1399,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
-    public func transactWriteItemsSync(input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput {
+    public func transactWriteItemsSync(
+            input: DynamoDBModel.TransactWriteItemsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.TransactWriteItemsOutput {
         if let transactWriteItemsSyncOverride = transactWriteItemsSyncOverride {
-            return try transactWriteItemsSyncOverride(input)
+            return try transactWriteItemsSyncOverride(input, reporting)
         }
 
         throw error
@@ -1272,9 +1418,12 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func untagResourceAsync(input: DynamoDBModel.UntagResourceInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func untagResourceAsync(
+            input: DynamoDBModel.UntagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, completion)
+            return try untagResourceAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1287,9 +1436,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated UntagResourceInput object being passed to this operation.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func untagResourceSync(input: DynamoDBModel.UntagResourceInput) throws {
+    public func untagResourceSync(
+            input: DynamoDBModel.UntagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input)
+            return try untagResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -1305,12 +1456,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
-    public func updateContinuousBackupsAsync(input: DynamoDBModel.UpdateContinuousBackupsInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateContinuousBackupsOutput>) -> ()) throws {
+    public func updateContinuousBackupsAsync(
+            input: DynamoDBModel.UpdateContinuousBackupsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
         if let updateContinuousBackupsAsyncOverride = updateContinuousBackupsAsyncOverride {
-            return try updateContinuousBackupsAsyncOverride(input, completion)
+            return try updateContinuousBackupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1322,9 +1476,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
-    public func updateContinuousBackupsSync(input: DynamoDBModel.UpdateContinuousBackupsInput) throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
+    public func updateContinuousBackupsSync(
+            input: DynamoDBModel.UpdateContinuousBackupsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
         if let updateContinuousBackupsSyncOverride = updateContinuousBackupsSyncOverride {
-            return try updateContinuousBackupsSyncOverride(input)
+            return try updateContinuousBackupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -1340,12 +1496,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
      */
-    public func updateGlobalTableAsync(input: DynamoDBModel.UpdateGlobalTableInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateGlobalTableOutput>) -> ()) throws {
+    public func updateGlobalTableAsync(
+            input: DynamoDBModel.UpdateGlobalTableInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws {
         if let updateGlobalTableAsyncOverride = updateGlobalTableAsyncOverride {
-            return try updateGlobalTableAsyncOverride(input, completion)
+            return try updateGlobalTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1357,9 +1516,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
      */
-    public func updateGlobalTableSync(input: DynamoDBModel.UpdateGlobalTableInput) throws -> DynamoDBModel.UpdateGlobalTableOutput {
+    public func updateGlobalTableSync(
+            input: DynamoDBModel.UpdateGlobalTableInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateGlobalTableOutput {
         if let updateGlobalTableSyncOverride = updateGlobalTableSyncOverride {
-            return try updateGlobalTableSyncOverride(input)
+            return try updateGlobalTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -1375,12 +1536,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
      */
-    public func updateGlobalTableSettingsAsync(input: DynamoDBModel.UpdateGlobalTableSettingsInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateGlobalTableSettingsOutput>) -> ()) throws {
+    public func updateGlobalTableSettingsAsync(
+            input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
         if let updateGlobalTableSettingsAsyncOverride = updateGlobalTableSettingsAsyncOverride {
-            return try updateGlobalTableSettingsAsyncOverride(input, completion)
+            return try updateGlobalTableSettingsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1392,9 +1556,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
      */
-    public func updateGlobalTableSettingsSync(input: DynamoDBModel.UpdateGlobalTableSettingsInput) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
+    public func updateGlobalTableSettingsSync(
+            input: DynamoDBModel.UpdateGlobalTableSettingsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
         if let updateGlobalTableSettingsSyncOverride = updateGlobalTableSettingsSyncOverride {
-            return try updateGlobalTableSettingsSyncOverride(input)
+            return try updateGlobalTableSettingsSyncOverride(input, reporting)
         }
 
         throw error
@@ -1410,12 +1576,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func updateItemAsync(input: DynamoDBModel.UpdateItemInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateItemOutput>) -> ()) throws {
+    public func updateItemAsync(
+            input: DynamoDBModel.UpdateItemInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws {
         if let updateItemAsyncOverride = updateItemAsyncOverride {
-            return try updateItemAsyncOverride(input, completion)
+            return try updateItemAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1427,9 +1596,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func updateItemSync(input: DynamoDBModel.UpdateItemInput) throws -> DynamoDBModel.UpdateItemOutput {
+    public func updateItemSync(
+            input: DynamoDBModel.UpdateItemInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateItemOutput {
         if let updateItemSyncOverride = updateItemSyncOverride {
-            return try updateItemSyncOverride(input)
+            return try updateItemSyncOverride(input, reporting)
         }
 
         throw error
@@ -1445,12 +1616,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableAsync(input: DynamoDBModel.UpdateTableInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateTableOutput>) -> ()) throws {
+    public func updateTableAsync(
+            input: DynamoDBModel.UpdateTableInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws {
         if let updateTableAsyncOverride = updateTableAsyncOverride {
-            return try updateTableAsyncOverride(input, completion)
+            return try updateTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1462,9 +1636,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableSync(input: DynamoDBModel.UpdateTableInput) throws -> DynamoDBModel.UpdateTableOutput {
+    public func updateTableSync(
+            input: DynamoDBModel.UpdateTableInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableOutput {
         if let updateTableSyncOverride = updateTableSyncOverride {
-            return try updateTableSyncOverride(input)
+            return try updateTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -1480,12 +1656,15 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTimeToLiveAsync(input: DynamoDBModel.UpdateTimeToLiveInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateTimeToLiveOutput>) -> ()) throws {
+    public func updateTimeToLiveAsync(
+            input: DynamoDBModel.UpdateTimeToLiveInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws {
         if let updateTimeToLiveAsyncOverride = updateTimeToLiveAsyncOverride {
-            return try updateTimeToLiveAsyncOverride(input, completion)
+            return try updateTimeToLiveAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1497,9 +1676,11 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTimeToLiveSync(input: DynamoDBModel.UpdateTimeToLiveInput) throws -> DynamoDBModel.UpdateTimeToLiveOutput {
+    public func updateTimeToLiveSync(
+            input: DynamoDBModel.UpdateTimeToLiveInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTimeToLiveOutput {
         if let updateTimeToLiveSyncOverride = updateTimeToLiveSyncOverride {
-            return try updateTimeToLiveSyncOverride(input)
+            return try updateTimeToLiveSyncOverride(input, reporting)
         }
 
         throw error

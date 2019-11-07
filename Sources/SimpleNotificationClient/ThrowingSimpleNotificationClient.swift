@@ -21,13 +21,14 @@
 
 import Foundation
 import SimpleNotificationModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
  Mock Client for the SimpleNotification service that by default always throws from its methods.
  */
 public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol {
-    let error: Swift.Error
+    let error: HTTPClientError
     let addPermissionAsyncOverride: SimpleNotificationClientProtocol.AddPermissionAsyncType?
     let addPermissionSyncOverride: SimpleNotificationClientProtocol.AddPermissionSyncType?
     let checkIfPhoneNumberIsOptedOutAsyncOverride: SimpleNotificationClientProtocol.CheckIfPhoneNumberIsOptedOutAsyncType?
@@ -99,7 +100,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: Swift.Error,
+    public init(error: HTTPClientError,
             addPermissionAsync: SimpleNotificationClientProtocol.AddPermissionAsyncType? = nil,
             addPermissionSync: SimpleNotificationClientProtocol.AddPermissionSyncType? = nil,
             checkIfPhoneNumberIsOptedOutAsync: SimpleNotificationClientProtocol.CheckIfPhoneNumberIsOptedOutAsyncType? = nil,
@@ -244,9 +245,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func addPermissionAsync(input: SimpleNotificationModel.AddPermissionInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func addPermissionAsync(
+            input: SimpleNotificationModel.AddPermissionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let addPermissionAsyncOverride = addPermissionAsyncOverride {
-            return try addPermissionAsyncOverride(input, completion)
+            return try addPermissionAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -259,9 +263,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated AddPermissionInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func addPermissionSync(input: SimpleNotificationModel.AddPermissionInput) throws {
+    public func addPermissionSync(
+            input: SimpleNotificationModel.AddPermissionInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let addPermissionSyncOverride = addPermissionSyncOverride {
-            return try addPermissionSyncOverride(input)
+            return try addPermissionSyncOverride(input, reporting)
         }
 
         throw error
@@ -277,12 +283,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func checkIfPhoneNumberIsOptedOutAsync(input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, completion: @escaping (HTTPResult<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut>) -> ()) throws {
+    public func checkIfPhoneNumberIsOptedOutAsync(
+            input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws {
         if let checkIfPhoneNumberIsOptedOutAsyncOverride = checkIfPhoneNumberIsOptedOutAsyncOverride {
-            return try checkIfPhoneNumberIsOptedOutAsyncOverride(input, completion)
+            return try checkIfPhoneNumberIsOptedOutAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -294,9 +303,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func checkIfPhoneNumberIsOptedOutSync(input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
+    public func checkIfPhoneNumberIsOptedOutSync(
+            input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
         if let checkIfPhoneNumberIsOptedOutSyncOverride = checkIfPhoneNumberIsOptedOutSyncOverride {
-            return try checkIfPhoneNumberIsOptedOutSyncOverride(input)
+            return try checkIfPhoneNumberIsOptedOutSyncOverride(input, reporting)
         }
 
         throw error
@@ -312,12 +323,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
-    public func confirmSubscriptionAsync(input: SimpleNotificationModel.ConfirmSubscriptionInput, completion: @escaping (HTTPResult<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription>) -> ()) throws {
+    public func confirmSubscriptionAsync(
+            input: SimpleNotificationModel.ConfirmSubscriptionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws {
         if let confirmSubscriptionAsyncOverride = confirmSubscriptionAsyncOverride {
-            return try confirmSubscriptionAsyncOverride(input, completion)
+            return try confirmSubscriptionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -329,9 +343,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
-    public func confirmSubscriptionSync(input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
+    public func confirmSubscriptionSync(
+            input: SimpleNotificationModel.ConfirmSubscriptionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
         if let confirmSubscriptionSyncOverride = confirmSubscriptionSyncOverride {
-            return try confirmSubscriptionSyncOverride(input)
+            return try confirmSubscriptionSyncOverride(input, reporting)
         }
 
         throw error
@@ -347,12 +363,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func createPlatformApplicationAsync(input: SimpleNotificationModel.CreatePlatformApplicationInput, completion: @escaping (HTTPResult<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication>) -> ()) throws {
+    public func createPlatformApplicationAsync(
+            input: SimpleNotificationModel.CreatePlatformApplicationInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws {
         if let createPlatformApplicationAsyncOverride = createPlatformApplicationAsyncOverride {
-            return try createPlatformApplicationAsyncOverride(input, completion)
+            return try createPlatformApplicationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -364,9 +383,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func createPlatformApplicationSync(input: SimpleNotificationModel.CreatePlatformApplicationInput) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
+    public func createPlatformApplicationSync(
+            input: SimpleNotificationModel.CreatePlatformApplicationInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
         if let createPlatformApplicationSyncOverride = createPlatformApplicationSyncOverride {
-            return try createPlatformApplicationSyncOverride(input)
+            return try createPlatformApplicationSyncOverride(input, reporting)
         }
 
         throw error
@@ -382,12 +403,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func createPlatformEndpointAsync(input: SimpleNotificationModel.CreatePlatformEndpointInput, completion: @escaping (HTTPResult<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint>) -> ()) throws {
+    public func createPlatformEndpointAsync(
+            input: SimpleNotificationModel.CreatePlatformEndpointInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws {
         if let createPlatformEndpointAsyncOverride = createPlatformEndpointAsyncOverride {
-            return try createPlatformEndpointAsyncOverride(input, completion)
+            return try createPlatformEndpointAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -399,9 +423,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func createPlatformEndpointSync(input: SimpleNotificationModel.CreatePlatformEndpointInput) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
+    public func createPlatformEndpointSync(
+            input: SimpleNotificationModel.CreatePlatformEndpointInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
         if let createPlatformEndpointSyncOverride = createPlatformEndpointSyncOverride {
-            return try createPlatformEndpointSyncOverride(input)
+            return try createPlatformEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -417,12 +443,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
-    public func createTopicAsync(input: SimpleNotificationModel.CreateTopicInput, completion: @escaping (HTTPResult<SimpleNotificationModel.CreateTopicResponseForCreateTopic>) -> ()) throws {
+    public func createTopicAsync(
+            input: SimpleNotificationModel.CreateTopicInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws {
         if let createTopicAsyncOverride = createTopicAsyncOverride {
-            return try createTopicAsyncOverride(input, completion)
+            return try createTopicAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -434,9 +463,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
-    public func createTopicSync(input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
+    public func createTopicSync(
+            input: SimpleNotificationModel.CreateTopicInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
         if let createTopicSyncOverride = createTopicSyncOverride {
-            return try createTopicSyncOverride(input)
+            return try createTopicSyncOverride(input, reporting)
         }
 
         throw error
@@ -451,9 +482,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deleteEndpointAsync(input: SimpleNotificationModel.DeleteEndpointInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteEndpointAsync(
+            input: SimpleNotificationModel.DeleteEndpointInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteEndpointAsyncOverride = deleteEndpointAsyncOverride {
-            return try deleteEndpointAsyncOverride(input, completion)
+            return try deleteEndpointAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -466,9 +500,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated DeleteEndpointInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func deleteEndpointSync(input: SimpleNotificationModel.DeleteEndpointInput) throws {
+    public func deleteEndpointSync(
+            input: SimpleNotificationModel.DeleteEndpointInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteEndpointSyncOverride = deleteEndpointSyncOverride {
-            return try deleteEndpointSyncOverride(input)
+            return try deleteEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -483,9 +519,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deletePlatformApplicationAsync(input: SimpleNotificationModel.DeletePlatformApplicationInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deletePlatformApplicationAsync(
+            input: SimpleNotificationModel.DeletePlatformApplicationInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deletePlatformApplicationAsyncOverride = deletePlatformApplicationAsyncOverride {
-            return try deletePlatformApplicationAsyncOverride(input, completion)
+            return try deletePlatformApplicationAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -498,9 +537,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated DeletePlatformApplicationInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func deletePlatformApplicationSync(input: SimpleNotificationModel.DeletePlatformApplicationInput) throws {
+    public func deletePlatformApplicationSync(
+            input: SimpleNotificationModel.DeletePlatformApplicationInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deletePlatformApplicationSyncOverride = deletePlatformApplicationSyncOverride {
-            return try deletePlatformApplicationSyncOverride(input)
+            return try deletePlatformApplicationSyncOverride(input, reporting)
         }
 
         throw error
@@ -515,9 +556,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
-    public func deleteTopicAsync(input: SimpleNotificationModel.DeleteTopicInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteTopicAsync(
+            input: SimpleNotificationModel.DeleteTopicInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteTopicAsyncOverride = deleteTopicAsyncOverride {
-            return try deleteTopicAsyncOverride(input, completion)
+            return try deleteTopicAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -530,9 +574,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated DeleteTopicInput object being passed to this operation.
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
-    public func deleteTopicSync(input: SimpleNotificationModel.DeleteTopicInput) throws {
+    public func deleteTopicSync(
+            input: SimpleNotificationModel.DeleteTopicInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteTopicSyncOverride = deleteTopicSyncOverride {
-            return try deleteTopicSyncOverride(input)
+            return try deleteTopicSyncOverride(input, reporting)
         }
 
         throw error
@@ -548,12 +594,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getEndpointAttributesAsync(input: SimpleNotificationModel.GetEndpointAttributesInput, completion: @escaping (HTTPResult<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes>) -> ()) throws {
+    public func getEndpointAttributesAsync(
+            input: SimpleNotificationModel.GetEndpointAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws {
         if let getEndpointAttributesAsyncOverride = getEndpointAttributesAsyncOverride {
-            return try getEndpointAttributesAsyncOverride(input, completion)
+            return try getEndpointAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -565,9 +614,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getEndpointAttributesSync(input: SimpleNotificationModel.GetEndpointAttributesInput) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
+    public func getEndpointAttributesSync(
+            input: SimpleNotificationModel.GetEndpointAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
         if let getEndpointAttributesSyncOverride = getEndpointAttributesSyncOverride {
-            return try getEndpointAttributesSyncOverride(input)
+            return try getEndpointAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -583,12 +634,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getPlatformApplicationAttributesAsync(input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, completion: @escaping (HTTPResult<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes>) -> ()) throws {
+    public func getPlatformApplicationAttributesAsync(
+            input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws {
         if let getPlatformApplicationAttributesAsyncOverride = getPlatformApplicationAttributesAsyncOverride {
-            return try getPlatformApplicationAttributesAsyncOverride(input, completion)
+            return try getPlatformApplicationAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -600,9 +654,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getPlatformApplicationAttributesSync(input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
+    public func getPlatformApplicationAttributesSync(
+            input: SimpleNotificationModel.GetPlatformApplicationAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
         if let getPlatformApplicationAttributesSyncOverride = getPlatformApplicationAttributesSyncOverride {
-            return try getPlatformApplicationAttributesSyncOverride(input)
+            return try getPlatformApplicationAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -618,12 +674,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func getSMSAttributesAsync(input: SimpleNotificationModel.GetSMSAttributesInput, completion: @escaping (HTTPResult<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes>) -> ()) throws {
+    public func getSMSAttributesAsync(
+            input: SimpleNotificationModel.GetSMSAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws {
         if let getSMSAttributesAsyncOverride = getSMSAttributesAsyncOverride {
-            return try getSMSAttributesAsyncOverride(input, completion)
+            return try getSMSAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -635,9 +694,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func getSMSAttributesSync(input: SimpleNotificationModel.GetSMSAttributesInput) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
+    public func getSMSAttributesSync(
+            input: SimpleNotificationModel.GetSMSAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
         if let getSMSAttributesSyncOverride = getSMSAttributesSyncOverride {
-            return try getSMSAttributesSyncOverride(input)
+            return try getSMSAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -653,12 +714,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getSubscriptionAttributesAsync(input: SimpleNotificationModel.GetSubscriptionAttributesInput, completion: @escaping (HTTPResult<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes>) -> ()) throws {
+    public func getSubscriptionAttributesAsync(
+            input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws {
         if let getSubscriptionAttributesAsyncOverride = getSubscriptionAttributesAsyncOverride {
-            return try getSubscriptionAttributesAsyncOverride(input, completion)
+            return try getSubscriptionAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -670,9 +734,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getSubscriptionAttributesSync(input: SimpleNotificationModel.GetSubscriptionAttributesInput) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
+    public func getSubscriptionAttributesSync(
+            input: SimpleNotificationModel.GetSubscriptionAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
         if let getSubscriptionAttributesSyncOverride = getSubscriptionAttributesSyncOverride {
-            return try getSubscriptionAttributesSyncOverride(input)
+            return try getSubscriptionAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -688,12 +754,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func getTopicAttributesAsync(input: SimpleNotificationModel.GetTopicAttributesInput, completion: @escaping (HTTPResult<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes>) -> ()) throws {
+    public func getTopicAttributesAsync(
+            input: SimpleNotificationModel.GetTopicAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws {
         if let getTopicAttributesAsyncOverride = getTopicAttributesAsyncOverride {
-            return try getTopicAttributesAsyncOverride(input, completion)
+            return try getTopicAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -705,9 +774,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func getTopicAttributesSync(input: SimpleNotificationModel.GetTopicAttributesInput) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
+    public func getTopicAttributesSync(
+            input: SimpleNotificationModel.GetTopicAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
         if let getTopicAttributesSyncOverride = getTopicAttributesSyncOverride {
-            return try getTopicAttributesSyncOverride(input)
+            return try getTopicAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -723,12 +794,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listEndpointsByPlatformApplicationAsync(input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, completion: @escaping (HTTPResult<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication>) -> ()) throws {
+    public func listEndpointsByPlatformApplicationAsync(
+            input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws {
         if let listEndpointsByPlatformApplicationAsyncOverride = listEndpointsByPlatformApplicationAsyncOverride {
-            return try listEndpointsByPlatformApplicationAsyncOverride(input, completion)
+            return try listEndpointsByPlatformApplicationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -740,9 +814,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listEndpointsByPlatformApplicationSync(input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
+    public func listEndpointsByPlatformApplicationSync(
+            input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
         if let listEndpointsByPlatformApplicationSyncOverride = listEndpointsByPlatformApplicationSyncOverride {
-            return try listEndpointsByPlatformApplicationSyncOverride(input)
+            return try listEndpointsByPlatformApplicationSyncOverride(input, reporting)
         }
 
         throw error
@@ -758,12 +834,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func listPhoneNumbersOptedOutAsync(input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, completion: @escaping (HTTPResult<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut>) -> ()) throws {
+    public func listPhoneNumbersOptedOutAsync(
+            input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws {
         if let listPhoneNumbersOptedOutAsyncOverride = listPhoneNumbersOptedOutAsyncOverride {
-            return try listPhoneNumbersOptedOutAsyncOverride(input, completion)
+            return try listPhoneNumbersOptedOutAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -775,9 +854,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func listPhoneNumbersOptedOutSync(input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
+    public func listPhoneNumbersOptedOutSync(
+            input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
         if let listPhoneNumbersOptedOutSyncOverride = listPhoneNumbersOptedOutSyncOverride {
-            return try listPhoneNumbersOptedOutSyncOverride(input)
+            return try listPhoneNumbersOptedOutSyncOverride(input, reporting)
         }
 
         throw error
@@ -793,12 +874,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func listPlatformApplicationsAsync(input: SimpleNotificationModel.ListPlatformApplicationsInput, completion: @escaping (HTTPResult<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications>) -> ()) throws {
+    public func listPlatformApplicationsAsync(
+            input: SimpleNotificationModel.ListPlatformApplicationsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws {
         if let listPlatformApplicationsAsyncOverride = listPlatformApplicationsAsyncOverride {
-            return try listPlatformApplicationsAsyncOverride(input, completion)
+            return try listPlatformApplicationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -810,9 +894,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func listPlatformApplicationsSync(input: SimpleNotificationModel.ListPlatformApplicationsInput) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
+    public func listPlatformApplicationsSync(
+            input: SimpleNotificationModel.ListPlatformApplicationsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
         if let listPlatformApplicationsSyncOverride = listPlatformApplicationsSyncOverride {
-            return try listPlatformApplicationsSyncOverride(input)
+            return try listPlatformApplicationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -828,12 +914,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func listSubscriptionsAsync(input: SimpleNotificationModel.ListSubscriptionsInput, completion: @escaping (HTTPResult<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions>) -> ()) throws {
+    public func listSubscriptionsAsync(
+            input: SimpleNotificationModel.ListSubscriptionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws {
         if let listSubscriptionsAsyncOverride = listSubscriptionsAsyncOverride {
-            return try listSubscriptionsAsyncOverride(input, completion)
+            return try listSubscriptionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -845,9 +934,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func listSubscriptionsSync(input: SimpleNotificationModel.ListSubscriptionsInput) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
+    public func listSubscriptionsSync(
+            input: SimpleNotificationModel.ListSubscriptionsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
         if let listSubscriptionsSyncOverride = listSubscriptionsSyncOverride {
-            return try listSubscriptionsSyncOverride(input)
+            return try listSubscriptionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -863,12 +954,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listSubscriptionsByTopicAsync(input: SimpleNotificationModel.ListSubscriptionsByTopicInput, completion: @escaping (HTTPResult<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic>) -> ()) throws {
+    public func listSubscriptionsByTopicAsync(
+            input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws {
         if let listSubscriptionsByTopicAsyncOverride = listSubscriptionsByTopicAsyncOverride {
-            return try listSubscriptionsByTopicAsyncOverride(input, completion)
+            return try listSubscriptionsByTopicAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -880,9 +974,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listSubscriptionsByTopicSync(input: SimpleNotificationModel.ListSubscriptionsByTopicInput) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
+    public func listSubscriptionsByTopicSync(
+            input: SimpleNotificationModel.ListSubscriptionsByTopicInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
         if let listSubscriptionsByTopicSyncOverride = listSubscriptionsByTopicSyncOverride {
-            return try listSubscriptionsByTopicSyncOverride(input)
+            return try listSubscriptionsByTopicSyncOverride(input, reporting)
         }
 
         throw error
@@ -898,12 +994,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
      */
-    public func listTagsForResourceAsync(input: SimpleNotificationModel.ListTagsForResourceRequest, completion: @escaping (HTTPResult<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource>) -> ()) throws {
+    public func listTagsForResourceAsync(
+            input: SimpleNotificationModel.ListTagsForResourceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, completion)
+            return try listTagsForResourceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -915,9 +1014,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
      */
-    public func listTagsForResourceSync(input: SimpleNotificationModel.ListTagsForResourceRequest) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
+    public func listTagsForResourceSync(
+            input: SimpleNotificationModel.ListTagsForResourceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input)
+            return try listTagsForResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -933,12 +1034,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func listTopicsAsync(input: SimpleNotificationModel.ListTopicsInput, completion: @escaping (HTTPResult<SimpleNotificationModel.ListTopicsResponseForListTopics>) -> ()) throws {
+    public func listTopicsAsync(
+            input: SimpleNotificationModel.ListTopicsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws {
         if let listTopicsAsyncOverride = listTopicsAsyncOverride {
-            return try listTopicsAsyncOverride(input, completion)
+            return try listTopicsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -950,9 +1054,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func listTopicsSync(input: SimpleNotificationModel.ListTopicsInput) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
+    public func listTopicsSync(
+            input: SimpleNotificationModel.ListTopicsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
         if let listTopicsSyncOverride = listTopicsSyncOverride {
-            return try listTopicsSyncOverride(input)
+            return try listTopicsSyncOverride(input, reporting)
         }
 
         throw error
@@ -968,12 +1074,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func optInPhoneNumberAsync(input: SimpleNotificationModel.OptInPhoneNumberInput, completion: @escaping (HTTPResult<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber>) -> ()) throws {
+    public func optInPhoneNumberAsync(
+            input: SimpleNotificationModel.OptInPhoneNumberInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws {
         if let optInPhoneNumberAsyncOverride = optInPhoneNumberAsyncOverride {
-            return try optInPhoneNumberAsyncOverride(input, completion)
+            return try optInPhoneNumberAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -985,9 +1094,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func optInPhoneNumberSync(input: SimpleNotificationModel.OptInPhoneNumberInput) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
+    public func optInPhoneNumberSync(
+            input: SimpleNotificationModel.OptInPhoneNumberInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
         if let optInPhoneNumberSyncOverride = optInPhoneNumberSyncOverride {
-            return try optInPhoneNumberSyncOverride(input)
+            return try optInPhoneNumberSyncOverride(input, reporting)
         }
 
         throw error
@@ -1003,12 +1114,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
-    public func publishAsync(input: SimpleNotificationModel.PublishInput, completion: @escaping (HTTPResult<SimpleNotificationModel.PublishResponseForPublish>) -> ()) throws {
+    public func publishAsync(
+            input: SimpleNotificationModel.PublishInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws {
         if let publishAsyncOverride = publishAsyncOverride {
-            return try publishAsyncOverride(input, completion)
+            return try publishAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1020,9 +1134,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
-    public func publishSync(input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish {
+    public func publishSync(
+            input: SimpleNotificationModel.PublishInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.PublishResponseForPublish {
         if let publishSyncOverride = publishSyncOverride {
-            return try publishSyncOverride(input)
+            return try publishSyncOverride(input, reporting)
         }
 
         throw error
@@ -1037,9 +1153,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func removePermissionAsync(input: SimpleNotificationModel.RemovePermissionInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func removePermissionAsync(
+            input: SimpleNotificationModel.RemovePermissionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let removePermissionAsyncOverride = removePermissionAsyncOverride {
-            return try removePermissionAsyncOverride(input, completion)
+            return try removePermissionAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1052,9 +1171,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated RemovePermissionInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func removePermissionSync(input: SimpleNotificationModel.RemovePermissionInput) throws {
+    public func removePermissionSync(
+            input: SimpleNotificationModel.RemovePermissionInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let removePermissionSyncOverride = removePermissionSyncOverride {
-            return try removePermissionSyncOverride(input)
+            return try removePermissionSyncOverride(input, reporting)
         }
 
         throw error
@@ -1069,9 +1190,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setEndpointAttributesAsync(input: SimpleNotificationModel.SetEndpointAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func setEndpointAttributesAsync(
+            input: SimpleNotificationModel.SetEndpointAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let setEndpointAttributesAsyncOverride = setEndpointAttributesAsyncOverride {
-            return try setEndpointAttributesAsyncOverride(input, completion)
+            return try setEndpointAttributesAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1084,9 +1208,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated SetEndpointAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setEndpointAttributesSync(input: SimpleNotificationModel.SetEndpointAttributesInput) throws {
+    public func setEndpointAttributesSync(
+            input: SimpleNotificationModel.SetEndpointAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let setEndpointAttributesSyncOverride = setEndpointAttributesSyncOverride {
-            return try setEndpointAttributesSyncOverride(input)
+            return try setEndpointAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -1101,9 +1227,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setPlatformApplicationAttributesAsync(input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func setPlatformApplicationAttributesAsync(
+            input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let setPlatformApplicationAttributesAsyncOverride = setPlatformApplicationAttributesAsyncOverride {
-            return try setPlatformApplicationAttributesAsyncOverride(input, completion)
+            return try setPlatformApplicationAttributesAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1116,9 +1245,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated SetPlatformApplicationAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setPlatformApplicationAttributesSync(input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) throws {
+    public func setPlatformApplicationAttributesSync(
+            input: SimpleNotificationModel.SetPlatformApplicationAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let setPlatformApplicationAttributesSyncOverride = setPlatformApplicationAttributesSyncOverride {
-            return try setPlatformApplicationAttributesSyncOverride(input)
+            return try setPlatformApplicationAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -1134,12 +1265,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func setSMSAttributesAsync(input: SimpleNotificationModel.SetSMSAttributesInput, completion: @escaping (HTTPResult<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes>) -> ()) throws {
+    public func setSMSAttributesAsync(
+            input: SimpleNotificationModel.SetSMSAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws {
         if let setSMSAttributesAsyncOverride = setSMSAttributesAsyncOverride {
-            return try setSMSAttributesAsyncOverride(input, completion)
+            return try setSMSAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1151,9 +1285,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func setSMSAttributesSync(input: SimpleNotificationModel.SetSMSAttributesInput) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
+    public func setSMSAttributesSync(
+            input: SimpleNotificationModel.SetSMSAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
         if let setSMSAttributesSyncOverride = setSMSAttributesSyncOverride {
-            return try setSMSAttributesSyncOverride(input)
+            return try setSMSAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -1168,9 +1304,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    public func setSubscriptionAttributesAsync(input: SimpleNotificationModel.SetSubscriptionAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func setSubscriptionAttributesAsync(
+            input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let setSubscriptionAttributesAsyncOverride = setSubscriptionAttributesAsyncOverride {
-            return try setSubscriptionAttributesAsyncOverride(input, completion)
+            return try setSubscriptionAttributesAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1183,9 +1322,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated SetSubscriptionAttributesInput object being passed to this operation.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    public func setSubscriptionAttributesSync(input: SimpleNotificationModel.SetSubscriptionAttributesInput) throws {
+    public func setSubscriptionAttributesSync(
+            input: SimpleNotificationModel.SetSubscriptionAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let setSubscriptionAttributesSyncOverride = setSubscriptionAttributesSyncOverride {
-            return try setSubscriptionAttributesSyncOverride(input)
+            return try setSubscriptionAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -1200,9 +1341,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func setTopicAttributesAsync(input: SimpleNotificationModel.SetTopicAttributesInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func setTopicAttributesAsync(
+            input: SimpleNotificationModel.SetTopicAttributesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let setTopicAttributesAsyncOverride = setTopicAttributesAsyncOverride {
-            return try setTopicAttributesAsyncOverride(input, completion)
+            return try setTopicAttributesAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1215,9 +1359,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated SetTopicAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func setTopicAttributesSync(input: SimpleNotificationModel.SetTopicAttributesInput) throws {
+    public func setTopicAttributesSync(
+            input: SimpleNotificationModel.SetTopicAttributesInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let setTopicAttributesSyncOverride = setTopicAttributesSyncOverride {
-            return try setTopicAttributesSyncOverride(input)
+            return try setTopicAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -1233,12 +1379,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
-    public func subscribeAsync(input: SimpleNotificationModel.SubscribeInput, completion: @escaping (HTTPResult<SimpleNotificationModel.SubscribeResponseForSubscribe>) -> ()) throws {
+    public func subscribeAsync(
+            input: SimpleNotificationModel.SubscribeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws {
         if let subscribeAsyncOverride = subscribeAsyncOverride {
-            return try subscribeAsyncOverride(input, completion)
+            return try subscribeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1250,9 +1399,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
-    public func subscribeSync(input: SimpleNotificationModel.SubscribeInput) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
+    public func subscribeSync(
+            input: SimpleNotificationModel.SubscribeInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
         if let subscribeSyncOverride = subscribeSyncOverride {
-            return try subscribeSyncOverride(input)
+            return try subscribeSyncOverride(input, reporting)
         }
 
         throw error
@@ -1268,12 +1419,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func tagResourceAsync(input: SimpleNotificationModel.TagResourceRequest, completion: @escaping (HTTPResult<SimpleNotificationModel.TagResourceResponseForTagResource>) -> ()) throws {
+    public func tagResourceAsync(
+            input: SimpleNotificationModel.TagResourceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, completion)
+            return try tagResourceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1285,9 +1439,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func tagResourceSync(input: SimpleNotificationModel.TagResourceRequest) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
+    public func tagResourceSync(
+            input: SimpleNotificationModel.TagResourceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
         if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input)
+            return try tagResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -1302,9 +1458,12 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func unsubscribeAsync(input: SimpleNotificationModel.UnsubscribeInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func unsubscribeAsync(
+            input: SimpleNotificationModel.UnsubscribeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let unsubscribeAsyncOverride = unsubscribeAsyncOverride {
-            return try unsubscribeAsyncOverride(input, completion)
+            return try unsubscribeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1317,9 +1476,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated UnsubscribeInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func unsubscribeSync(input: SimpleNotificationModel.UnsubscribeInput) throws {
+    public func unsubscribeSync(
+            input: SimpleNotificationModel.UnsubscribeInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let unsubscribeSyncOverride = unsubscribeSyncOverride {
-            return try unsubscribeSyncOverride(input)
+            return try unsubscribeSyncOverride(input, reporting)
         }
 
         throw error
@@ -1335,12 +1496,15 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func untagResourceAsync(input: SimpleNotificationModel.UntagResourceRequest, completion: @escaping (HTTPResult<SimpleNotificationModel.UntagResourceResponseForUntagResource>) -> ()) throws {
+    public func untagResourceAsync(
+            input: SimpleNotificationModel.UntagResourceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, completion)
+            return try untagResourceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1352,9 +1516,11 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func untagResourceSync(input: SimpleNotificationModel.UntagResourceRequest) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
+    public func untagResourceSync(
+            input: SimpleNotificationModel.UntagResourceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
         if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input)
+            return try untagResourceSyncOverride(input, reporting)
         }
 
         throw error

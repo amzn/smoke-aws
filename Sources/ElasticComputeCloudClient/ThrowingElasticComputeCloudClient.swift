@@ -21,13 +21,14 @@
 
 import Foundation
 import ElasticComputeCloudModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
  Mock Client for the ElasticComputeCloud service that by default always throws from its methods.
  */
 public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
-    let error: Swift.Error
+    let error: HTTPClientError
     let acceptReservedInstancesExchangeQuoteAsyncOverride: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteAsyncType?
     let acceptReservedInstancesExchangeQuoteSyncOverride: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteSyncType?
     let acceptTransitGatewayVpcAttachmentAsyncOverride: ElasticComputeCloudClientProtocol.AcceptTransitGatewayVpcAttachmentAsyncType?
@@ -709,7 +710,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: Swift.Error,
+    public init(error: HTTPClientError,
             acceptReservedInstancesExchangeQuoteAsync: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteAsyncType? = nil,
             acceptReservedInstancesExchangeQuoteSync: ElasticComputeCloudClientProtocol.AcceptReservedInstancesExchangeQuoteSyncType? = nil,
             acceptTransitGatewayVpcAttachmentAsync: ElasticComputeCloudClientProtocol.AcceptTransitGatewayVpcAttachmentAsyncType? = nil,
@@ -2074,12 +2075,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AcceptReservedInstancesExchangeQuoteResult
            object will be validated before being returned to caller.
      */
-    public func acceptReservedInstancesExchangeQuoteAsync(input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult>) -> ()) throws {
+    public func acceptReservedInstancesExchangeQuoteAsync(
+            input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, HTTPClientError>) -> ()) throws {
         if let acceptReservedInstancesExchangeQuoteAsyncOverride = acceptReservedInstancesExchangeQuoteAsyncOverride {
-            return try acceptReservedInstancesExchangeQuoteAsyncOverride(input, completion)
+            return try acceptReservedInstancesExchangeQuoteAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2090,9 +2094,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AcceptReservedInstancesExchangeQuoteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func acceptReservedInstancesExchangeQuoteSync(input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
+    public func acceptReservedInstancesExchangeQuoteSync(
+            input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
         if let acceptReservedInstancesExchangeQuoteSyncOverride = acceptReservedInstancesExchangeQuoteSyncOverride {
-            return try acceptReservedInstancesExchangeQuoteSyncOverride(input)
+            return try acceptReservedInstancesExchangeQuoteSyncOverride(input, reporting)
         }
 
         throw error
@@ -2107,12 +2113,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AcceptTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func acceptTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult>) -> ()) throws {
+    public func acceptTransitGatewayVpcAttachmentAsync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         if let acceptTransitGatewayVpcAttachmentAsyncOverride = acceptTransitGatewayVpcAttachmentAsyncOverride {
-            return try acceptTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+            return try acceptTransitGatewayVpcAttachmentAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2123,9 +2132,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AcceptTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func acceptTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult {
+    public func acceptTransitGatewayVpcAttachmentSync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult {
         if let acceptTransitGatewayVpcAttachmentSyncOverride = acceptTransitGatewayVpcAttachmentSyncOverride {
-            return try acceptTransitGatewayVpcAttachmentSyncOverride(input)
+            return try acceptTransitGatewayVpcAttachmentSyncOverride(input, reporting)
         }
 
         throw error
@@ -2140,12 +2151,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AcceptVpcEndpointConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func acceptVpcEndpointConnectionsAsync(input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult>) -> ()) throws {
+    public func acceptVpcEndpointConnectionsAsync(
+            input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
         if let acceptVpcEndpointConnectionsAsyncOverride = acceptVpcEndpointConnectionsAsyncOverride {
-            return try acceptVpcEndpointConnectionsAsyncOverride(input, completion)
+            return try acceptVpcEndpointConnectionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2156,9 +2170,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AcceptVpcEndpointConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func acceptVpcEndpointConnectionsSync(input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult {
+    public func acceptVpcEndpointConnectionsSync(
+            input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult {
         if let acceptVpcEndpointConnectionsSyncOverride = acceptVpcEndpointConnectionsSyncOverride {
-            return try acceptVpcEndpointConnectionsSyncOverride(input)
+            return try acceptVpcEndpointConnectionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2173,12 +2189,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AcceptVpcPeeringConnectionResult
            object will be validated before being returned to caller.
      */
-    public func acceptVpcPeeringConnectionAsync(input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult>) -> ()) throws {
+    public func acceptVpcPeeringConnectionAsync(
+            input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
         if let acceptVpcPeeringConnectionAsyncOverride = acceptVpcPeeringConnectionAsyncOverride {
-            return try acceptVpcPeeringConnectionAsyncOverride(input, completion)
+            return try acceptVpcPeeringConnectionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2189,9 +2208,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AcceptVpcPeeringConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func acceptVpcPeeringConnectionSync(input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult {
+    public func acceptVpcPeeringConnectionSync(
+            input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult {
         if let acceptVpcPeeringConnectionSyncOverride = acceptVpcPeeringConnectionSyncOverride {
-            return try acceptVpcPeeringConnectionSyncOverride(input)
+            return try acceptVpcPeeringConnectionSyncOverride(input, reporting)
         }
 
         throw error
@@ -2206,12 +2227,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AdvertiseByoipCidrResult
            object will be validated before being returned to caller.
      */
-    public func advertiseByoipCidrAsync(input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AdvertiseByoipCidrResult>) -> ()) throws {
+    public func advertiseByoipCidrAsync(
+            input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, HTTPClientError>) -> ()) throws {
         if let advertiseByoipCidrAsyncOverride = advertiseByoipCidrAsyncOverride {
-            return try advertiseByoipCidrAsyncOverride(input, completion)
+            return try advertiseByoipCidrAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2222,9 +2246,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AdvertiseByoipCidrResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func advertiseByoipCidrSync(input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest) throws -> ElasticComputeCloudModel.AdvertiseByoipCidrResult {
+    public func advertiseByoipCidrSync(
+            input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AdvertiseByoipCidrResult {
         if let advertiseByoipCidrSyncOverride = advertiseByoipCidrSyncOverride {
-            return try advertiseByoipCidrSyncOverride(input)
+            return try advertiseByoipCidrSyncOverride(input, reporting)
         }
 
         throw error
@@ -2239,12 +2265,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AllocateAddressResult
            object will be validated before being returned to caller.
      */
-    public func allocateAddressAsync(input: ElasticComputeCloudModel.AllocateAddressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AllocateAddressResult>) -> ()) throws {
+    public func allocateAddressAsync(
+            input: ElasticComputeCloudModel.AllocateAddressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AllocateAddressResult, HTTPClientError>) -> ()) throws {
         if let allocateAddressAsyncOverride = allocateAddressAsyncOverride {
-            return try allocateAddressAsyncOverride(input, completion)
+            return try allocateAddressAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2255,9 +2284,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AllocateAddressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func allocateAddressSync(input: ElasticComputeCloudModel.AllocateAddressRequest) throws -> ElasticComputeCloudModel.AllocateAddressResult {
+    public func allocateAddressSync(
+            input: ElasticComputeCloudModel.AllocateAddressRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AllocateAddressResult {
         if let allocateAddressSyncOverride = allocateAddressSyncOverride {
-            return try allocateAddressSyncOverride(input)
+            return try allocateAddressSyncOverride(input, reporting)
         }
 
         throw error
@@ -2272,12 +2303,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AllocateHostsResult
            object will be validated before being returned to caller.
      */
-    public func allocateHostsAsync(input: ElasticComputeCloudModel.AllocateHostsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AllocateHostsResult>) -> ()) throws {
+    public func allocateHostsAsync(
+            input: ElasticComputeCloudModel.AllocateHostsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AllocateHostsResult, HTTPClientError>) -> ()) throws {
         if let allocateHostsAsyncOverride = allocateHostsAsyncOverride {
-            return try allocateHostsAsyncOverride(input, completion)
+            return try allocateHostsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2288,9 +2322,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AllocateHostsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func allocateHostsSync(input: ElasticComputeCloudModel.AllocateHostsRequest) throws -> ElasticComputeCloudModel.AllocateHostsResult {
+    public func allocateHostsSync(
+            input: ElasticComputeCloudModel.AllocateHostsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AllocateHostsResult {
         if let allocateHostsSyncOverride = allocateHostsSyncOverride {
-            return try allocateHostsSyncOverride(input)
+            return try allocateHostsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2305,12 +2341,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ApplySecurityGroupsToClientVpnTargetNetworkResult
            object will be validated before being returned to caller.
      */
-    public func applySecurityGroupsToClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult>) -> ()) throws {
+    public func applySecurityGroupsToClientVpnTargetNetworkAsync(
+            input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
         if let applySecurityGroupsToClientVpnTargetNetworkAsyncOverride = applySecurityGroupsToClientVpnTargetNetworkAsyncOverride {
-            return try applySecurityGroupsToClientVpnTargetNetworkAsyncOverride(input, completion)
+            return try applySecurityGroupsToClientVpnTargetNetworkAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2321,9 +2360,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ApplySecurityGroupsToClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func applySecurityGroupsToClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult {
+    public func applySecurityGroupsToClientVpnTargetNetworkSync(
+            input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult {
         if let applySecurityGroupsToClientVpnTargetNetworkSyncOverride = applySecurityGroupsToClientVpnTargetNetworkSyncOverride {
-            return try applySecurityGroupsToClientVpnTargetNetworkSyncOverride(input)
+            return try applySecurityGroupsToClientVpnTargetNetworkSyncOverride(input, reporting)
         }
 
         throw error
@@ -2338,12 +2379,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AssignIpv6AddressesResult
            object will be validated before being returned to caller.
      */
-    public func assignIpv6AddressesAsync(input: ElasticComputeCloudModel.AssignIpv6AddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssignIpv6AddressesResult>) -> ()) throws {
+    public func assignIpv6AddressesAsync(
+            input: ElasticComputeCloudModel.AssignIpv6AddressesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, HTTPClientError>) -> ()) throws {
         if let assignIpv6AddressesAsyncOverride = assignIpv6AddressesAsyncOverride {
-            return try assignIpv6AddressesAsyncOverride(input, completion)
+            return try assignIpv6AddressesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2354,9 +2398,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AssignIpv6AddressesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func assignIpv6AddressesSync(input: ElasticComputeCloudModel.AssignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.AssignIpv6AddressesResult {
+    public func assignIpv6AddressesSync(
+            input: ElasticComputeCloudModel.AssignIpv6AddressesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssignIpv6AddressesResult {
         if let assignIpv6AddressesSyncOverride = assignIpv6AddressesSyncOverride {
-            return try assignIpv6AddressesSyncOverride(input)
+            return try assignIpv6AddressesSyncOverride(input, reporting)
         }
 
         throw error
@@ -2370,9 +2416,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func assignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func assignPrivateIpAddressesAsync(
+            input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let assignPrivateIpAddressesAsyncOverride = assignPrivateIpAddressesAsyncOverride {
-            return try assignPrivateIpAddressesAsyncOverride(input, completion)
+            return try assignPrivateIpAddressesAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -2384,9 +2433,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated AssignPrivateIpAddressesRequest object being passed to this operation.
      */
-    public func assignPrivateIpAddressesSync(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws {
+    public func assignPrivateIpAddressesSync(
+            input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let assignPrivateIpAddressesSyncOverride = assignPrivateIpAddressesSyncOverride {
-            return try assignPrivateIpAddressesSyncOverride(input)
+            return try assignPrivateIpAddressesSyncOverride(input, reporting)
         }
 
         throw error
@@ -2401,12 +2452,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AssociateAddressResult
            object will be validated before being returned to caller.
      */
-    public func associateAddressAsync(input: ElasticComputeCloudModel.AssociateAddressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateAddressResult>) -> ()) throws {
+    public func associateAddressAsync(
+            input: ElasticComputeCloudModel.AssociateAddressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateAddressResult, HTTPClientError>) -> ()) throws {
         if let associateAddressAsyncOverride = associateAddressAsyncOverride {
-            return try associateAddressAsyncOverride(input, completion)
+            return try associateAddressAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2417,9 +2471,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AssociateAddressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateAddressSync(input: ElasticComputeCloudModel.AssociateAddressRequest) throws -> ElasticComputeCloudModel.AssociateAddressResult {
+    public func associateAddressSync(
+            input: ElasticComputeCloudModel.AssociateAddressRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateAddressResult {
         if let associateAddressSyncOverride = associateAddressSyncOverride {
-            return try associateAddressSyncOverride(input)
+            return try associateAddressSyncOverride(input, reporting)
         }
 
         throw error
@@ -2434,12 +2490,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AssociateClientVpnTargetNetworkResult
            object will be validated before being returned to caller.
      */
-    public func associateClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult>) -> ()) throws {
+    public func associateClientVpnTargetNetworkAsync(
+            input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
         if let associateClientVpnTargetNetworkAsyncOverride = associateClientVpnTargetNetworkAsyncOverride {
-            return try associateClientVpnTargetNetworkAsyncOverride(input, completion)
+            return try associateClientVpnTargetNetworkAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2450,9 +2509,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AssociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult {
+    public func associateClientVpnTargetNetworkSync(
+            input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult {
         if let associateClientVpnTargetNetworkSyncOverride = associateClientVpnTargetNetworkSyncOverride {
-            return try associateClientVpnTargetNetworkSyncOverride(input)
+            return try associateClientVpnTargetNetworkSyncOverride(input, reporting)
         }
 
         throw error
@@ -2466,9 +2527,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func associateDhcpOptionsAsync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func associateDhcpOptionsAsync(
+            input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let associateDhcpOptionsAsyncOverride = associateDhcpOptionsAsyncOverride {
-            return try associateDhcpOptionsAsyncOverride(input, completion)
+            return try associateDhcpOptionsAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -2480,9 +2544,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated AssociateDhcpOptionsRequest object being passed to this operation.
      */
-    public func associateDhcpOptionsSync(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest) throws {
+    public func associateDhcpOptionsSync(
+            input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let associateDhcpOptionsSyncOverride = associateDhcpOptionsSyncOverride {
-            return try associateDhcpOptionsSyncOverride(input)
+            return try associateDhcpOptionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2497,12 +2563,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AssociateIamInstanceProfileResult
            object will be validated before being returned to caller.
      */
-    public func associateIamInstanceProfileAsync(input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateIamInstanceProfileResult>) -> ()) throws {
+    public func associateIamInstanceProfileAsync(
+            input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, HTTPClientError>) -> ()) throws {
         if let associateIamInstanceProfileAsyncOverride = associateIamInstanceProfileAsyncOverride {
-            return try associateIamInstanceProfileAsyncOverride(input, completion)
+            return try associateIamInstanceProfileAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2513,9 +2582,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AssociateIamInstanceProfileResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateIamInstanceProfileSync(input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult {
+    public func associateIamInstanceProfileSync(
+            input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult {
         if let associateIamInstanceProfileSyncOverride = associateIamInstanceProfileSyncOverride {
-            return try associateIamInstanceProfileSyncOverride(input)
+            return try associateIamInstanceProfileSyncOverride(input, reporting)
         }
 
         throw error
@@ -2530,12 +2601,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AssociateRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func associateRouteTableAsync(input: ElasticComputeCloudModel.AssociateRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateRouteTableResult>) -> ()) throws {
+    public func associateRouteTableAsync(
+            input: ElasticComputeCloudModel.AssociateRouteTableRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateRouteTableResult, HTTPClientError>) -> ()) throws {
         if let associateRouteTableAsyncOverride = associateRouteTableAsyncOverride {
-            return try associateRouteTableAsyncOverride(input, completion)
+            return try associateRouteTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2546,9 +2620,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AssociateRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateRouteTableSync(input: ElasticComputeCloudModel.AssociateRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateRouteTableResult {
+    public func associateRouteTableSync(
+            input: ElasticComputeCloudModel.AssociateRouteTableRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateRouteTableResult {
         if let associateRouteTableSyncOverride = associateRouteTableSyncOverride {
-            return try associateRouteTableSyncOverride(input)
+            return try associateRouteTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -2563,12 +2639,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AssociateSubnetCidrBlockResult
            object will be validated before being returned to caller.
      */
-    public func associateSubnetCidrBlockAsync(input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult>) -> ()) throws {
+    public func associateSubnetCidrBlockAsync(
+            input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, HTTPClientError>) -> ()) throws {
         if let associateSubnetCidrBlockAsyncOverride = associateSubnetCidrBlockAsyncOverride {
-            return try associateSubnetCidrBlockAsyncOverride(input, completion)
+            return try associateSubnetCidrBlockAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2579,9 +2658,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AssociateSubnetCidrBlockResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateSubnetCidrBlockSync(input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult {
+    public func associateSubnetCidrBlockSync(
+            input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult {
         if let associateSubnetCidrBlockSyncOverride = associateSubnetCidrBlockSyncOverride {
-            return try associateSubnetCidrBlockSyncOverride(input)
+            return try associateSubnetCidrBlockSyncOverride(input, reporting)
         }
 
         throw error
@@ -2596,12 +2677,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AssociateTransitGatewayRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func associateTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult>) -> ()) throws {
+    public func associateTransitGatewayRouteTableAsync(
+            input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
         if let associateTransitGatewayRouteTableAsyncOverride = associateTransitGatewayRouteTableAsyncOverride {
-            return try associateTransitGatewayRouteTableAsyncOverride(input, completion)
+            return try associateTransitGatewayRouteTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2612,9 +2696,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AssociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult {
+    public func associateTransitGatewayRouteTableSync(
+            input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult {
         if let associateTransitGatewayRouteTableSyncOverride = associateTransitGatewayRouteTableSyncOverride {
-            return try associateTransitGatewayRouteTableSyncOverride(input)
+            return try associateTransitGatewayRouteTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -2629,12 +2715,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AssociateVpcCidrBlockResult
            object will be validated before being returned to caller.
      */
-    public func associateVpcCidrBlockAsync(input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AssociateVpcCidrBlockResult>) -> ()) throws {
+    public func associateVpcCidrBlockAsync(
+            input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, HTTPClientError>) -> ()) throws {
         if let associateVpcCidrBlockAsyncOverride = associateVpcCidrBlockAsyncOverride {
-            return try associateVpcCidrBlockAsyncOverride(input, completion)
+            return try associateVpcCidrBlockAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2645,9 +2734,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AssociateVpcCidrBlockResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateVpcCidrBlockSync(input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult {
+    public func associateVpcCidrBlockSync(
+            input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult {
         if let associateVpcCidrBlockSyncOverride = associateVpcCidrBlockSyncOverride {
-            return try associateVpcCidrBlockSyncOverride(input)
+            return try associateVpcCidrBlockSyncOverride(input, reporting)
         }
 
         throw error
@@ -2662,12 +2753,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AttachClassicLinkVpcResult
            object will be validated before being returned to caller.
      */
-    public func attachClassicLinkVpcAsync(input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachClassicLinkVpcResult>) -> ()) throws {
+    public func attachClassicLinkVpcAsync(
+            input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, HTTPClientError>) -> ()) throws {
         if let attachClassicLinkVpcAsyncOverride = attachClassicLinkVpcAsyncOverride {
-            return try attachClassicLinkVpcAsyncOverride(input, completion)
+            return try attachClassicLinkVpcAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2678,9 +2772,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AttachClassicLinkVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func attachClassicLinkVpcSync(input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest) throws -> ElasticComputeCloudModel.AttachClassicLinkVpcResult {
+    public func attachClassicLinkVpcSync(
+            input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AttachClassicLinkVpcResult {
         if let attachClassicLinkVpcSyncOverride = attachClassicLinkVpcSyncOverride {
-            return try attachClassicLinkVpcSyncOverride(input)
+            return try attachClassicLinkVpcSyncOverride(input, reporting)
         }
 
         throw error
@@ -2694,9 +2790,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func attachInternetGatewayAsync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func attachInternetGatewayAsync(
+            input: ElasticComputeCloudModel.AttachInternetGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let attachInternetGatewayAsyncOverride = attachInternetGatewayAsyncOverride {
-            return try attachInternetGatewayAsyncOverride(input, completion)
+            return try attachInternetGatewayAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -2708,9 +2807,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated AttachInternetGatewayRequest object being passed to this operation.
      */
-    public func attachInternetGatewaySync(input: ElasticComputeCloudModel.AttachInternetGatewayRequest) throws {
+    public func attachInternetGatewaySync(
+            input: ElasticComputeCloudModel.AttachInternetGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let attachInternetGatewaySyncOverride = attachInternetGatewaySyncOverride {
-            return try attachInternetGatewaySyncOverride(input)
+            return try attachInternetGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -2725,12 +2826,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AttachNetworkInterfaceResult
            object will be validated before being returned to caller.
      */
-    public func attachNetworkInterfaceAsync(input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachNetworkInterfaceResult>) -> ()) throws {
+    public func attachNetworkInterfaceAsync(
+            input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, HTTPClientError>) -> ()) throws {
         if let attachNetworkInterfaceAsyncOverride = attachNetworkInterfaceAsyncOverride {
-            return try attachNetworkInterfaceAsyncOverride(input, completion)
+            return try attachNetworkInterfaceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2741,9 +2845,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AttachNetworkInterfaceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func attachNetworkInterfaceSync(input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.AttachNetworkInterfaceResult {
+    public func attachNetworkInterfaceSync(
+            input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AttachNetworkInterfaceResult {
         if let attachNetworkInterfaceSyncOverride = attachNetworkInterfaceSyncOverride {
-            return try attachNetworkInterfaceSyncOverride(input)
+            return try attachNetworkInterfaceSyncOverride(input, reporting)
         }
 
         throw error
@@ -2758,12 +2864,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The VolumeAttachment
            object will be validated before being returned to caller.
      */
-    public func attachVolumeAsync(input: ElasticComputeCloudModel.AttachVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.VolumeAttachment>) -> ()) throws {
+    public func attachVolumeAsync(
+            input: ElasticComputeCloudModel.AttachVolumeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) -> ()) throws {
         if let attachVolumeAsyncOverride = attachVolumeAsyncOverride {
-            return try attachVolumeAsyncOverride(input, completion)
+            return try attachVolumeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2774,9 +2883,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The VolumeAttachment object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func attachVolumeSync(input: ElasticComputeCloudModel.AttachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment {
+    public func attachVolumeSync(
+            input: ElasticComputeCloudModel.AttachVolumeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.VolumeAttachment {
         if let attachVolumeSyncOverride = attachVolumeSyncOverride {
-            return try attachVolumeSyncOverride(input)
+            return try attachVolumeSyncOverride(input, reporting)
         }
 
         throw error
@@ -2791,12 +2902,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AttachVpnGatewayResult
            object will be validated before being returned to caller.
      */
-    public func attachVpnGatewayAsync(input: ElasticComputeCloudModel.AttachVpnGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AttachVpnGatewayResult>) -> ()) throws {
+    public func attachVpnGatewayAsync(
+            input: ElasticComputeCloudModel.AttachVpnGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachVpnGatewayResult, HTTPClientError>) -> ()) throws {
         if let attachVpnGatewayAsyncOverride = attachVpnGatewayAsyncOverride {
-            return try attachVpnGatewayAsyncOverride(input, completion)
+            return try attachVpnGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2807,9 +2921,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AttachVpnGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func attachVpnGatewaySync(input: ElasticComputeCloudModel.AttachVpnGatewayRequest) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult {
+    public func attachVpnGatewaySync(
+            input: ElasticComputeCloudModel.AttachVpnGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult {
         if let attachVpnGatewaySyncOverride = attachVpnGatewaySyncOverride {
-            return try attachVpnGatewaySyncOverride(input)
+            return try attachVpnGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -2824,12 +2940,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The AuthorizeClientVpnIngressResult
            object will be validated before being returned to caller.
      */
-    public func authorizeClientVpnIngressAsync(input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult>) -> ()) throws {
+    public func authorizeClientVpnIngressAsync(
+            input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, HTTPClientError>) -> ()) throws {
         if let authorizeClientVpnIngressAsyncOverride = authorizeClientVpnIngressAsyncOverride {
-            return try authorizeClientVpnIngressAsyncOverride(input, completion)
+            return try authorizeClientVpnIngressAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2840,9 +2959,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The AuthorizeClientVpnIngressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func authorizeClientVpnIngressSync(input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult {
+    public func authorizeClientVpnIngressSync(
+            input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult {
         if let authorizeClientVpnIngressSyncOverride = authorizeClientVpnIngressSyncOverride {
-            return try authorizeClientVpnIngressSyncOverride(input)
+            return try authorizeClientVpnIngressSyncOverride(input, reporting)
         }
 
         throw error
@@ -2856,9 +2977,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func authorizeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func authorizeSecurityGroupEgressAsync(
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let authorizeSecurityGroupEgressAsyncOverride = authorizeSecurityGroupEgressAsyncOverride {
-            return try authorizeSecurityGroupEgressAsyncOverride(input, completion)
+            return try authorizeSecurityGroupEgressAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -2870,9 +2994,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
      */
-    public func authorizeSecurityGroupEgressSync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws {
+    public func authorizeSecurityGroupEgressSync(
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let authorizeSecurityGroupEgressSyncOverride = authorizeSecurityGroupEgressSyncOverride {
-            return try authorizeSecurityGroupEgressSyncOverride(input)
+            return try authorizeSecurityGroupEgressSyncOverride(input, reporting)
         }
 
         throw error
@@ -2886,9 +3012,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func authorizeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func authorizeSecurityGroupIngressAsync(
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let authorizeSecurityGroupIngressAsyncOverride = authorizeSecurityGroupIngressAsyncOverride {
-            return try authorizeSecurityGroupIngressAsyncOverride(input, completion)
+            return try authorizeSecurityGroupIngressAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -2900,9 +3029,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
      */
-    public func authorizeSecurityGroupIngressSync(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws {
+    public func authorizeSecurityGroupIngressSync(
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let authorizeSecurityGroupIngressSyncOverride = authorizeSecurityGroupIngressSyncOverride {
-            return try authorizeSecurityGroupIngressSyncOverride(input)
+            return try authorizeSecurityGroupIngressSyncOverride(input, reporting)
         }
 
         throw error
@@ -2917,12 +3048,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The BundleInstanceResult
            object will be validated before being returned to caller.
      */
-    public func bundleInstanceAsync(input: ElasticComputeCloudModel.BundleInstanceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.BundleInstanceResult>) -> ()) throws {
+    public func bundleInstanceAsync(
+            input: ElasticComputeCloudModel.BundleInstanceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.BundleInstanceResult, HTTPClientError>) -> ()) throws {
         if let bundleInstanceAsyncOverride = bundleInstanceAsyncOverride {
-            return try bundleInstanceAsyncOverride(input, completion)
+            return try bundleInstanceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2933,9 +3067,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The BundleInstanceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func bundleInstanceSync(input: ElasticComputeCloudModel.BundleInstanceRequest) throws -> ElasticComputeCloudModel.BundleInstanceResult {
+    public func bundleInstanceSync(
+            input: ElasticComputeCloudModel.BundleInstanceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.BundleInstanceResult {
         if let bundleInstanceSyncOverride = bundleInstanceSyncOverride {
-            return try bundleInstanceSyncOverride(input)
+            return try bundleInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -2950,12 +3086,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CancelBundleTaskResult
            object will be validated before being returned to caller.
      */
-    public func cancelBundleTaskAsync(input: ElasticComputeCloudModel.CancelBundleTaskRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelBundleTaskResult>) -> ()) throws {
+    public func cancelBundleTaskAsync(
+            input: ElasticComputeCloudModel.CancelBundleTaskRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelBundleTaskResult, HTTPClientError>) -> ()) throws {
         if let cancelBundleTaskAsyncOverride = cancelBundleTaskAsyncOverride {
-            return try cancelBundleTaskAsyncOverride(input, completion)
+            return try cancelBundleTaskAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2966,9 +3105,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CancelBundleTaskResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelBundleTaskSync(input: ElasticComputeCloudModel.CancelBundleTaskRequest) throws -> ElasticComputeCloudModel.CancelBundleTaskResult {
+    public func cancelBundleTaskSync(
+            input: ElasticComputeCloudModel.CancelBundleTaskRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelBundleTaskResult {
         if let cancelBundleTaskSyncOverride = cancelBundleTaskSyncOverride {
-            return try cancelBundleTaskSyncOverride(input)
+            return try cancelBundleTaskSyncOverride(input, reporting)
         }
 
         throw error
@@ -2983,12 +3124,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CancelCapacityReservationResult
            object will be validated before being returned to caller.
      */
-    public func cancelCapacityReservationAsync(input: ElasticComputeCloudModel.CancelCapacityReservationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelCapacityReservationResult>) -> ()) throws {
+    public func cancelCapacityReservationAsync(
+            input: ElasticComputeCloudModel.CancelCapacityReservationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationResult, HTTPClientError>) -> ()) throws {
         if let cancelCapacityReservationAsyncOverride = cancelCapacityReservationAsyncOverride {
-            return try cancelCapacityReservationAsyncOverride(input, completion)
+            return try cancelCapacityReservationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2999,9 +3143,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CancelCapacityReservationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelCapacityReservationSync(input: ElasticComputeCloudModel.CancelCapacityReservationRequest) throws -> ElasticComputeCloudModel.CancelCapacityReservationResult {
+    public func cancelCapacityReservationSync(
+            input: ElasticComputeCloudModel.CancelCapacityReservationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelCapacityReservationResult {
         if let cancelCapacityReservationSyncOverride = cancelCapacityReservationSyncOverride {
-            return try cancelCapacityReservationSyncOverride(input)
+            return try cancelCapacityReservationSyncOverride(input, reporting)
         }
 
         throw error
@@ -3015,9 +3161,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func cancelConversionTaskAsync(input: ElasticComputeCloudModel.CancelConversionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func cancelConversionTaskAsync(
+            input: ElasticComputeCloudModel.CancelConversionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let cancelConversionTaskAsyncOverride = cancelConversionTaskAsyncOverride {
-            return try cancelConversionTaskAsyncOverride(input, completion)
+            return try cancelConversionTaskAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -3029,9 +3178,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated CancelConversionRequest object being passed to this operation.
      */
-    public func cancelConversionTaskSync(input: ElasticComputeCloudModel.CancelConversionRequest) throws {
+    public func cancelConversionTaskSync(
+            input: ElasticComputeCloudModel.CancelConversionRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let cancelConversionTaskSyncOverride = cancelConversionTaskSyncOverride {
-            return try cancelConversionTaskSyncOverride(input)
+            return try cancelConversionTaskSyncOverride(input, reporting)
         }
 
         throw error
@@ -3045,9 +3196,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func cancelExportTaskAsync(input: ElasticComputeCloudModel.CancelExportTaskRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func cancelExportTaskAsync(
+            input: ElasticComputeCloudModel.CancelExportTaskRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let cancelExportTaskAsyncOverride = cancelExportTaskAsyncOverride {
-            return try cancelExportTaskAsyncOverride(input, completion)
+            return try cancelExportTaskAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -3059,9 +3213,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated CancelExportTaskRequest object being passed to this operation.
      */
-    public func cancelExportTaskSync(input: ElasticComputeCloudModel.CancelExportTaskRequest) throws {
+    public func cancelExportTaskSync(
+            input: ElasticComputeCloudModel.CancelExportTaskRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let cancelExportTaskSyncOverride = cancelExportTaskSyncOverride {
-            return try cancelExportTaskSyncOverride(input)
+            return try cancelExportTaskSyncOverride(input, reporting)
         }
 
         throw error
@@ -3076,12 +3232,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CancelImportTaskResult
            object will be validated before being returned to caller.
      */
-    public func cancelImportTaskAsync(input: ElasticComputeCloudModel.CancelImportTaskRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelImportTaskResult>) -> ()) throws {
+    public func cancelImportTaskAsync(
+            input: ElasticComputeCloudModel.CancelImportTaskRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelImportTaskResult, HTTPClientError>) -> ()) throws {
         if let cancelImportTaskAsyncOverride = cancelImportTaskAsyncOverride {
-            return try cancelImportTaskAsyncOverride(input, completion)
+            return try cancelImportTaskAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3092,9 +3251,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CancelImportTaskResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelImportTaskSync(input: ElasticComputeCloudModel.CancelImportTaskRequest) throws -> ElasticComputeCloudModel.CancelImportTaskResult {
+    public func cancelImportTaskSync(
+            input: ElasticComputeCloudModel.CancelImportTaskRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelImportTaskResult {
         if let cancelImportTaskSyncOverride = cancelImportTaskSyncOverride {
-            return try cancelImportTaskSyncOverride(input)
+            return try cancelImportTaskSyncOverride(input, reporting)
         }
 
         throw error
@@ -3109,12 +3270,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CancelReservedInstancesListingResult
            object will be validated before being returned to caller.
      */
-    public func cancelReservedInstancesListingAsync(input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelReservedInstancesListingResult>) -> ()) throws {
+    public func cancelReservedInstancesListingAsync(
+            input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, HTTPClientError>) -> ()) throws {
         if let cancelReservedInstancesListingAsyncOverride = cancelReservedInstancesListingAsyncOverride {
-            return try cancelReservedInstancesListingAsyncOverride(input, completion)
+            return try cancelReservedInstancesListingAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3125,9 +3289,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CancelReservedInstancesListingResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelReservedInstancesListingSync(input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CancelReservedInstancesListingResult {
+    public func cancelReservedInstancesListingSync(
+            input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelReservedInstancesListingResult {
         if let cancelReservedInstancesListingSyncOverride = cancelReservedInstancesListingSyncOverride {
-            return try cancelReservedInstancesListingSyncOverride(input)
+            return try cancelReservedInstancesListingSyncOverride(input, reporting)
         }
 
         throw error
@@ -3142,12 +3308,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CancelSpotFleetRequestsResponse
            object will be validated before being returned to caller.
      */
-    public func cancelSpotFleetRequestsAsync(input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse>) -> ()) throws {
+    public func cancelSpotFleetRequestsAsync(
+            input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, HTTPClientError>) -> ()) throws {
         if let cancelSpotFleetRequestsAsyncOverride = cancelSpotFleetRequestsAsyncOverride {
-            return try cancelSpotFleetRequestsAsyncOverride(input, completion)
+            return try cancelSpotFleetRequestsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3158,9 +3327,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CancelSpotFleetRequestsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelSpotFleetRequestsSync(input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest) throws -> ElasticComputeCloudModel.CancelSpotFleetRequestsResponse {
+    public func cancelSpotFleetRequestsSync(
+            input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelSpotFleetRequestsResponse {
         if let cancelSpotFleetRequestsSyncOverride = cancelSpotFleetRequestsSyncOverride {
-            return try cancelSpotFleetRequestsSyncOverride(input)
+            return try cancelSpotFleetRequestsSyncOverride(input, reporting)
         }
 
         throw error
@@ -3175,12 +3346,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CancelSpotInstanceRequestsResult
            object will be validated before being returned to caller.
      */
-    public func cancelSpotInstanceRequestsAsync(input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult>) -> ()) throws {
+    public func cancelSpotInstanceRequestsAsync(
+            input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, HTTPClientError>) -> ()) throws {
         if let cancelSpotInstanceRequestsAsyncOverride = cancelSpotInstanceRequestsAsyncOverride {
-            return try cancelSpotInstanceRequestsAsyncOverride(input, completion)
+            return try cancelSpotInstanceRequestsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3191,9 +3365,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CancelSpotInstanceRequestsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelSpotInstanceRequestsSync(input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest) throws -> ElasticComputeCloudModel.CancelSpotInstanceRequestsResult {
+    public func cancelSpotInstanceRequestsSync(
+            input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelSpotInstanceRequestsResult {
         if let cancelSpotInstanceRequestsSyncOverride = cancelSpotInstanceRequestsSyncOverride {
-            return try cancelSpotInstanceRequestsSyncOverride(input)
+            return try cancelSpotInstanceRequestsSyncOverride(input, reporting)
         }
 
         throw error
@@ -3208,12 +3384,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ConfirmProductInstanceResult
            object will be validated before being returned to caller.
      */
-    public func confirmProductInstanceAsync(input: ElasticComputeCloudModel.ConfirmProductInstanceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ConfirmProductInstanceResult>) -> ()) throws {
+    public func confirmProductInstanceAsync(
+            input: ElasticComputeCloudModel.ConfirmProductInstanceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, HTTPClientError>) -> ()) throws {
         if let confirmProductInstanceAsyncOverride = confirmProductInstanceAsyncOverride {
-            return try confirmProductInstanceAsyncOverride(input, completion)
+            return try confirmProductInstanceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3224,9 +3403,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ConfirmProductInstanceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func confirmProductInstanceSync(input: ElasticComputeCloudModel.ConfirmProductInstanceRequest) throws -> ElasticComputeCloudModel.ConfirmProductInstanceResult {
+    public func confirmProductInstanceSync(
+            input: ElasticComputeCloudModel.ConfirmProductInstanceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ConfirmProductInstanceResult {
         if let confirmProductInstanceSyncOverride = confirmProductInstanceSyncOverride {
-            return try confirmProductInstanceSyncOverride(input)
+            return try confirmProductInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -3241,12 +3422,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CopyFpgaImageResult
            object will be validated before being returned to caller.
      */
-    public func copyFpgaImageAsync(input: ElasticComputeCloudModel.CopyFpgaImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CopyFpgaImageResult>) -> ()) throws {
+    public func copyFpgaImageAsync(
+            input: ElasticComputeCloudModel.CopyFpgaImageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CopyFpgaImageResult, HTTPClientError>) -> ()) throws {
         if let copyFpgaImageAsyncOverride = copyFpgaImageAsyncOverride {
-            return try copyFpgaImageAsyncOverride(input, completion)
+            return try copyFpgaImageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3257,9 +3441,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CopyFpgaImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func copyFpgaImageSync(input: ElasticComputeCloudModel.CopyFpgaImageRequest) throws -> ElasticComputeCloudModel.CopyFpgaImageResult {
+    public func copyFpgaImageSync(
+            input: ElasticComputeCloudModel.CopyFpgaImageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CopyFpgaImageResult {
         if let copyFpgaImageSyncOverride = copyFpgaImageSyncOverride {
-            return try copyFpgaImageSyncOverride(input)
+            return try copyFpgaImageSyncOverride(input, reporting)
         }
 
         throw error
@@ -3274,12 +3460,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CopyImageResult
            object will be validated before being returned to caller.
      */
-    public func copyImageAsync(input: ElasticComputeCloudModel.CopyImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CopyImageResult>) -> ()) throws {
+    public func copyImageAsync(
+            input: ElasticComputeCloudModel.CopyImageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CopyImageResult, HTTPClientError>) -> ()) throws {
         if let copyImageAsyncOverride = copyImageAsyncOverride {
-            return try copyImageAsyncOverride(input, completion)
+            return try copyImageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3290,9 +3479,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CopyImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func copyImageSync(input: ElasticComputeCloudModel.CopyImageRequest) throws -> ElasticComputeCloudModel.CopyImageResult {
+    public func copyImageSync(
+            input: ElasticComputeCloudModel.CopyImageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CopyImageResult {
         if let copyImageSyncOverride = copyImageSyncOverride {
-            return try copyImageSyncOverride(input)
+            return try copyImageSyncOverride(input, reporting)
         }
 
         throw error
@@ -3307,12 +3498,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CopySnapshotResult
            object will be validated before being returned to caller.
      */
-    public func copySnapshotAsync(input: ElasticComputeCloudModel.CopySnapshotRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CopySnapshotResult>) -> ()) throws {
+    public func copySnapshotAsync(
+            input: ElasticComputeCloudModel.CopySnapshotRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CopySnapshotResult, HTTPClientError>) -> ()) throws {
         if let copySnapshotAsyncOverride = copySnapshotAsyncOverride {
-            return try copySnapshotAsyncOverride(input, completion)
+            return try copySnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3323,9 +3517,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CopySnapshotResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func copySnapshotSync(input: ElasticComputeCloudModel.CopySnapshotRequest) throws -> ElasticComputeCloudModel.CopySnapshotResult {
+    public func copySnapshotSync(
+            input: ElasticComputeCloudModel.CopySnapshotRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CopySnapshotResult {
         if let copySnapshotSyncOverride = copySnapshotSyncOverride {
-            return try copySnapshotSyncOverride(input)
+            return try copySnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -3340,12 +3536,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateCapacityReservationResult
            object will be validated before being returned to caller.
      */
-    public func createCapacityReservationAsync(input: ElasticComputeCloudModel.CreateCapacityReservationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateCapacityReservationResult>) -> ()) throws {
+    public func createCapacityReservationAsync(
+            input: ElasticComputeCloudModel.CreateCapacityReservationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationResult, HTTPClientError>) -> ()) throws {
         if let createCapacityReservationAsyncOverride = createCapacityReservationAsyncOverride {
-            return try createCapacityReservationAsyncOverride(input, completion)
+            return try createCapacityReservationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3356,9 +3555,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateCapacityReservationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createCapacityReservationSync(input: ElasticComputeCloudModel.CreateCapacityReservationRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult {
+    public func createCapacityReservationSync(
+            input: ElasticComputeCloudModel.CreateCapacityReservationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult {
         if let createCapacityReservationSyncOverride = createCapacityReservationSyncOverride {
-            return try createCapacityReservationSyncOverride(input)
+            return try createCapacityReservationSyncOverride(input, reporting)
         }
 
         throw error
@@ -3373,12 +3574,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateClientVpnEndpointResult
            object will be validated before being returned to caller.
      */
-    public func createClientVpnEndpointAsync(input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnEndpointResult>) -> ()) throws {
+    public func createClientVpnEndpointAsync(
+            input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
         if let createClientVpnEndpointAsyncOverride = createClientVpnEndpointAsyncOverride {
-            return try createClientVpnEndpointAsyncOverride(input, completion)
+            return try createClientVpnEndpointAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3389,9 +3593,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateClientVpnEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createClientVpnEndpointSync(input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult {
+    public func createClientVpnEndpointSync(
+            input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult {
         if let createClientVpnEndpointSyncOverride = createClientVpnEndpointSyncOverride {
-            return try createClientVpnEndpointSyncOverride(input)
+            return try createClientVpnEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -3406,12 +3612,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateClientVpnRouteResult
            object will be validated before being returned to caller.
      */
-    public func createClientVpnRouteAsync(input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateClientVpnRouteResult>) -> ()) throws {
+    public func createClientVpnRouteAsync(
+            input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, HTTPClientError>) -> ()) throws {
         if let createClientVpnRouteAsyncOverride = createClientVpnRouteAsyncOverride {
-            return try createClientVpnRouteAsyncOverride(input, completion)
+            return try createClientVpnRouteAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3422,9 +3631,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateClientVpnRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createClientVpnRouteSync(input: ElasticComputeCloudModel.CreateClientVpnRouteRequest) throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult {
+    public func createClientVpnRouteSync(
+            input: ElasticComputeCloudModel.CreateClientVpnRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult {
         if let createClientVpnRouteSyncOverride = createClientVpnRouteSyncOverride {
-            return try createClientVpnRouteSyncOverride(input)
+            return try createClientVpnRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -3439,12 +3650,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateCustomerGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createCustomerGatewayAsync(input: ElasticComputeCloudModel.CreateCustomerGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateCustomerGatewayResult>) -> ()) throws {
+    public func createCustomerGatewayAsync(
+            input: ElasticComputeCloudModel.CreateCustomerGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, HTTPClientError>) -> ()) throws {
         if let createCustomerGatewayAsyncOverride = createCustomerGatewayAsyncOverride {
-            return try createCustomerGatewayAsyncOverride(input, completion)
+            return try createCustomerGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3455,9 +3669,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateCustomerGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createCustomerGatewaySync(input: ElasticComputeCloudModel.CreateCustomerGatewayRequest) throws -> ElasticComputeCloudModel.CreateCustomerGatewayResult {
+    public func createCustomerGatewaySync(
+            input: ElasticComputeCloudModel.CreateCustomerGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateCustomerGatewayResult {
         if let createCustomerGatewaySyncOverride = createCustomerGatewaySyncOverride {
-            return try createCustomerGatewaySyncOverride(input)
+            return try createCustomerGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -3472,12 +3688,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateDefaultSubnetResult
            object will be validated before being returned to caller.
      */
-    public func createDefaultSubnetAsync(input: ElasticComputeCloudModel.CreateDefaultSubnetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateDefaultSubnetResult>) -> ()) throws {
+    public func createDefaultSubnetAsync(
+            input: ElasticComputeCloudModel.CreateDefaultSubnetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, HTTPClientError>) -> ()) throws {
         if let createDefaultSubnetAsyncOverride = createDefaultSubnetAsyncOverride {
-            return try createDefaultSubnetAsyncOverride(input, completion)
+            return try createDefaultSubnetAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3488,9 +3707,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateDefaultSubnetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createDefaultSubnetSync(input: ElasticComputeCloudModel.CreateDefaultSubnetRequest) throws -> ElasticComputeCloudModel.CreateDefaultSubnetResult {
+    public func createDefaultSubnetSync(
+            input: ElasticComputeCloudModel.CreateDefaultSubnetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateDefaultSubnetResult {
         if let createDefaultSubnetSyncOverride = createDefaultSubnetSyncOverride {
-            return try createDefaultSubnetSyncOverride(input)
+            return try createDefaultSubnetSyncOverride(input, reporting)
         }
 
         throw error
@@ -3505,12 +3726,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateDefaultVpcResult
            object will be validated before being returned to caller.
      */
-    public func createDefaultVpcAsync(input: ElasticComputeCloudModel.CreateDefaultVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateDefaultVpcResult>) -> ()) throws {
+    public func createDefaultVpcAsync(
+            input: ElasticComputeCloudModel.CreateDefaultVpcRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultVpcResult, HTTPClientError>) -> ()) throws {
         if let createDefaultVpcAsyncOverride = createDefaultVpcAsyncOverride {
-            return try createDefaultVpcAsyncOverride(input, completion)
+            return try createDefaultVpcAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3521,9 +3745,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateDefaultVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createDefaultVpcSync(input: ElasticComputeCloudModel.CreateDefaultVpcRequest) throws -> ElasticComputeCloudModel.CreateDefaultVpcResult {
+    public func createDefaultVpcSync(
+            input: ElasticComputeCloudModel.CreateDefaultVpcRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateDefaultVpcResult {
         if let createDefaultVpcSyncOverride = createDefaultVpcSyncOverride {
-            return try createDefaultVpcSyncOverride(input)
+            return try createDefaultVpcSyncOverride(input, reporting)
         }
 
         throw error
@@ -3538,12 +3764,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateDhcpOptionsResult
            object will be validated before being returned to caller.
      */
-    public func createDhcpOptionsAsync(input: ElasticComputeCloudModel.CreateDhcpOptionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateDhcpOptionsResult>) -> ()) throws {
+    public func createDhcpOptionsAsync(
+            input: ElasticComputeCloudModel.CreateDhcpOptionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, HTTPClientError>) -> ()) throws {
         if let createDhcpOptionsAsyncOverride = createDhcpOptionsAsyncOverride {
-            return try createDhcpOptionsAsyncOverride(input, completion)
+            return try createDhcpOptionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3554,9 +3783,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateDhcpOptionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createDhcpOptionsSync(input: ElasticComputeCloudModel.CreateDhcpOptionsRequest) throws -> ElasticComputeCloudModel.CreateDhcpOptionsResult {
+    public func createDhcpOptionsSync(
+            input: ElasticComputeCloudModel.CreateDhcpOptionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateDhcpOptionsResult {
         if let createDhcpOptionsSyncOverride = createDhcpOptionsSyncOverride {
-            return try createDhcpOptionsSyncOverride(input)
+            return try createDhcpOptionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -3571,12 +3802,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateEgressOnlyInternetGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createEgressOnlyInternetGatewayAsync(input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult>) -> ()) throws {
+    public func createEgressOnlyInternetGatewayAsync(
+            input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, HTTPClientError>) -> ()) throws {
         if let createEgressOnlyInternetGatewayAsyncOverride = createEgressOnlyInternetGatewayAsyncOverride {
-            return try createEgressOnlyInternetGatewayAsyncOverride(input, completion)
+            return try createEgressOnlyInternetGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3587,9 +3821,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateEgressOnlyInternetGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createEgressOnlyInternetGatewaySync(input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest) throws -> ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult {
+    public func createEgressOnlyInternetGatewaySync(
+            input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult {
         if let createEgressOnlyInternetGatewaySyncOverride = createEgressOnlyInternetGatewaySyncOverride {
-            return try createEgressOnlyInternetGatewaySyncOverride(input)
+            return try createEgressOnlyInternetGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -3604,12 +3840,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateFleetResult
            object will be validated before being returned to caller.
      */
-    public func createFleetAsync(input: ElasticComputeCloudModel.CreateFleetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateFleetResult>) -> ()) throws {
+    public func createFleetAsync(
+            input: ElasticComputeCloudModel.CreateFleetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateFleetResult, HTTPClientError>) -> ()) throws {
         if let createFleetAsyncOverride = createFleetAsyncOverride {
-            return try createFleetAsyncOverride(input, completion)
+            return try createFleetAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3620,9 +3859,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateFleetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createFleetSync(input: ElasticComputeCloudModel.CreateFleetRequest) throws -> ElasticComputeCloudModel.CreateFleetResult {
+    public func createFleetSync(
+            input: ElasticComputeCloudModel.CreateFleetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateFleetResult {
         if let createFleetSyncOverride = createFleetSyncOverride {
-            return try createFleetSyncOverride(input)
+            return try createFleetSyncOverride(input, reporting)
         }
 
         throw error
@@ -3637,12 +3878,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateFlowLogsResult
            object will be validated before being returned to caller.
      */
-    public func createFlowLogsAsync(input: ElasticComputeCloudModel.CreateFlowLogsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateFlowLogsResult>) -> ()) throws {
+    public func createFlowLogsAsync(
+            input: ElasticComputeCloudModel.CreateFlowLogsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateFlowLogsResult, HTTPClientError>) -> ()) throws {
         if let createFlowLogsAsyncOverride = createFlowLogsAsyncOverride {
-            return try createFlowLogsAsyncOverride(input, completion)
+            return try createFlowLogsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3653,9 +3897,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateFlowLogsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createFlowLogsSync(input: ElasticComputeCloudModel.CreateFlowLogsRequest) throws -> ElasticComputeCloudModel.CreateFlowLogsResult {
+    public func createFlowLogsSync(
+            input: ElasticComputeCloudModel.CreateFlowLogsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateFlowLogsResult {
         if let createFlowLogsSyncOverride = createFlowLogsSyncOverride {
-            return try createFlowLogsSyncOverride(input)
+            return try createFlowLogsSyncOverride(input, reporting)
         }
 
         throw error
@@ -3670,12 +3916,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateFpgaImageResult
            object will be validated before being returned to caller.
      */
-    public func createFpgaImageAsync(input: ElasticComputeCloudModel.CreateFpgaImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateFpgaImageResult>) -> ()) throws {
+    public func createFpgaImageAsync(
+            input: ElasticComputeCloudModel.CreateFpgaImageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateFpgaImageResult, HTTPClientError>) -> ()) throws {
         if let createFpgaImageAsyncOverride = createFpgaImageAsyncOverride {
-            return try createFpgaImageAsyncOverride(input, completion)
+            return try createFpgaImageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3686,9 +3935,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateFpgaImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createFpgaImageSync(input: ElasticComputeCloudModel.CreateFpgaImageRequest) throws -> ElasticComputeCloudModel.CreateFpgaImageResult {
+    public func createFpgaImageSync(
+            input: ElasticComputeCloudModel.CreateFpgaImageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateFpgaImageResult {
         if let createFpgaImageSyncOverride = createFpgaImageSyncOverride {
-            return try createFpgaImageSyncOverride(input)
+            return try createFpgaImageSyncOverride(input, reporting)
         }
 
         throw error
@@ -3703,12 +3954,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateImageResult
            object will be validated before being returned to caller.
      */
-    public func createImageAsync(input: ElasticComputeCloudModel.CreateImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateImageResult>) -> ()) throws {
+    public func createImageAsync(
+            input: ElasticComputeCloudModel.CreateImageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateImageResult, HTTPClientError>) -> ()) throws {
         if let createImageAsyncOverride = createImageAsyncOverride {
-            return try createImageAsyncOverride(input, completion)
+            return try createImageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3719,9 +3973,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createImageSync(input: ElasticComputeCloudModel.CreateImageRequest) throws -> ElasticComputeCloudModel.CreateImageResult {
+    public func createImageSync(
+            input: ElasticComputeCloudModel.CreateImageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateImageResult {
         if let createImageSyncOverride = createImageSyncOverride {
-            return try createImageSyncOverride(input)
+            return try createImageSyncOverride(input, reporting)
         }
 
         throw error
@@ -3736,12 +3992,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateInstanceExportTaskResult
            object will be validated before being returned to caller.
      */
-    public func createInstanceExportTaskAsync(input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateInstanceExportTaskResult>) -> ()) throws {
+    public func createInstanceExportTaskAsync(
+            input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, HTTPClientError>) -> ()) throws {
         if let createInstanceExportTaskAsyncOverride = createInstanceExportTaskAsyncOverride {
-            return try createInstanceExportTaskAsyncOverride(input, completion)
+            return try createInstanceExportTaskAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3752,9 +4011,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateInstanceExportTaskResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createInstanceExportTaskSync(input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest) throws -> ElasticComputeCloudModel.CreateInstanceExportTaskResult {
+    public func createInstanceExportTaskSync(
+            input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateInstanceExportTaskResult {
         if let createInstanceExportTaskSyncOverride = createInstanceExportTaskSyncOverride {
-            return try createInstanceExportTaskSyncOverride(input)
+            return try createInstanceExportTaskSyncOverride(input, reporting)
         }
 
         throw error
@@ -3769,12 +4030,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateInternetGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createInternetGatewayAsync(input: ElasticComputeCloudModel.CreateInternetGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateInternetGatewayResult>) -> ()) throws {
+    public func createInternetGatewayAsync(
+            input: ElasticComputeCloudModel.CreateInternetGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInternetGatewayResult, HTTPClientError>) -> ()) throws {
         if let createInternetGatewayAsyncOverride = createInternetGatewayAsyncOverride {
-            return try createInternetGatewayAsyncOverride(input, completion)
+            return try createInternetGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3785,9 +4049,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateInternetGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createInternetGatewaySync(input: ElasticComputeCloudModel.CreateInternetGatewayRequest) throws -> ElasticComputeCloudModel.CreateInternetGatewayResult {
+    public func createInternetGatewaySync(
+            input: ElasticComputeCloudModel.CreateInternetGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateInternetGatewayResult {
         if let createInternetGatewaySyncOverride = createInternetGatewaySyncOverride {
-            return try createInternetGatewaySyncOverride(input)
+            return try createInternetGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -3802,12 +4068,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The KeyPair
            object will be validated before being returned to caller.
      */
-    public func createKeyPairAsync(input: ElasticComputeCloudModel.CreateKeyPairRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.KeyPair>) -> ()) throws {
+    public func createKeyPairAsync(
+            input: ElasticComputeCloudModel.CreateKeyPairRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.KeyPair, HTTPClientError>) -> ()) throws {
         if let createKeyPairAsyncOverride = createKeyPairAsyncOverride {
-            return try createKeyPairAsyncOverride(input, completion)
+            return try createKeyPairAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3818,9 +4087,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The KeyPair object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createKeyPairSync(input: ElasticComputeCloudModel.CreateKeyPairRequest) throws -> ElasticComputeCloudModel.KeyPair {
+    public func createKeyPairSync(
+            input: ElasticComputeCloudModel.CreateKeyPairRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.KeyPair {
         if let createKeyPairSyncOverride = createKeyPairSyncOverride {
-            return try createKeyPairSyncOverride(input)
+            return try createKeyPairSyncOverride(input, reporting)
         }
 
         throw error
@@ -3835,12 +4106,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateLaunchTemplateResult
            object will be validated before being returned to caller.
      */
-    public func createLaunchTemplateAsync(input: ElasticComputeCloudModel.CreateLaunchTemplateRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateLaunchTemplateResult>) -> ()) throws {
+    public func createLaunchTemplateAsync(
+            input: ElasticComputeCloudModel.CreateLaunchTemplateRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, HTTPClientError>) -> ()) throws {
         if let createLaunchTemplateAsyncOverride = createLaunchTemplateAsyncOverride {
-            return try createLaunchTemplateAsyncOverride(input, completion)
+            return try createLaunchTemplateAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3851,9 +4125,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateLaunchTemplateResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createLaunchTemplateSync(input: ElasticComputeCloudModel.CreateLaunchTemplateRequest) throws -> ElasticComputeCloudModel.CreateLaunchTemplateResult {
+    public func createLaunchTemplateSync(
+            input: ElasticComputeCloudModel.CreateLaunchTemplateRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateLaunchTemplateResult {
         if let createLaunchTemplateSyncOverride = createLaunchTemplateSyncOverride {
-            return try createLaunchTemplateSyncOverride(input)
+            return try createLaunchTemplateSyncOverride(input, reporting)
         }
 
         throw error
@@ -3868,12 +4144,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateLaunchTemplateVersionResult
            object will be validated before being returned to caller.
      */
-    public func createLaunchTemplateVersionAsync(input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult>) -> ()) throws {
+    public func createLaunchTemplateVersionAsync(
+            input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, HTTPClientError>) -> ()) throws {
         if let createLaunchTemplateVersionAsyncOverride = createLaunchTemplateVersionAsyncOverride {
-            return try createLaunchTemplateVersionAsyncOverride(input, completion)
+            return try createLaunchTemplateVersionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3884,9 +4163,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateLaunchTemplateVersionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createLaunchTemplateVersionSync(input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest) throws -> ElasticComputeCloudModel.CreateLaunchTemplateVersionResult {
+    public func createLaunchTemplateVersionSync(
+            input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateLaunchTemplateVersionResult {
         if let createLaunchTemplateVersionSyncOverride = createLaunchTemplateVersionSyncOverride {
-            return try createLaunchTemplateVersionSyncOverride(input)
+            return try createLaunchTemplateVersionSyncOverride(input, reporting)
         }
 
         throw error
@@ -3901,12 +4182,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateNatGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createNatGatewayAsync(input: ElasticComputeCloudModel.CreateNatGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNatGatewayResult>) -> ()) throws {
+    public func createNatGatewayAsync(
+            input: ElasticComputeCloudModel.CreateNatGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNatGatewayResult, HTTPClientError>) -> ()) throws {
         if let createNatGatewayAsyncOverride = createNatGatewayAsyncOverride {
-            return try createNatGatewayAsyncOverride(input, completion)
+            return try createNatGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3917,9 +4201,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateNatGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createNatGatewaySync(input: ElasticComputeCloudModel.CreateNatGatewayRequest) throws -> ElasticComputeCloudModel.CreateNatGatewayResult {
+    public func createNatGatewaySync(
+            input: ElasticComputeCloudModel.CreateNatGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateNatGatewayResult {
         if let createNatGatewaySyncOverride = createNatGatewaySyncOverride {
-            return try createNatGatewaySyncOverride(input)
+            return try createNatGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -3934,12 +4220,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateNetworkAclResult
            object will be validated before being returned to caller.
      */
-    public func createNetworkAclAsync(input: ElasticComputeCloudModel.CreateNetworkAclRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNetworkAclResult>) -> ()) throws {
+    public func createNetworkAclAsync(
+            input: ElasticComputeCloudModel.CreateNetworkAclRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkAclResult, HTTPClientError>) -> ()) throws {
         if let createNetworkAclAsyncOverride = createNetworkAclAsyncOverride {
-            return try createNetworkAclAsyncOverride(input, completion)
+            return try createNetworkAclAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3950,9 +4239,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateNetworkAclResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createNetworkAclSync(input: ElasticComputeCloudModel.CreateNetworkAclRequest) throws -> ElasticComputeCloudModel.CreateNetworkAclResult {
+    public func createNetworkAclSync(
+            input: ElasticComputeCloudModel.CreateNetworkAclRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateNetworkAclResult {
         if let createNetworkAclSyncOverride = createNetworkAclSyncOverride {
-            return try createNetworkAclSyncOverride(input)
+            return try createNetworkAclSyncOverride(input, reporting)
         }
 
         throw error
@@ -3966,9 +4257,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createNetworkAclEntryAsync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func createNetworkAclEntryAsync(
+            input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let createNetworkAclEntryAsyncOverride = createNetworkAclEntryAsyncOverride {
-            return try createNetworkAclEntryAsyncOverride(input, completion)
+            return try createNetworkAclEntryAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -3980,9 +4274,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated CreateNetworkAclEntryRequest object being passed to this operation.
      */
-    public func createNetworkAclEntrySync(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest) throws {
+    public func createNetworkAclEntrySync(
+            input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let createNetworkAclEntrySyncOverride = createNetworkAclEntrySyncOverride {
-            return try createNetworkAclEntrySyncOverride(input)
+            return try createNetworkAclEntrySyncOverride(input, reporting)
         }
 
         throw error
@@ -3997,12 +4293,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateNetworkInterfaceResult
            object will be validated before being returned to caller.
      */
-    public func createNetworkInterfaceAsync(input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNetworkInterfaceResult>) -> ()) throws {
+    public func createNetworkInterfaceAsync(
+            input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, HTTPClientError>) -> ()) throws {
         if let createNetworkInterfaceAsyncOverride = createNetworkInterfaceAsyncOverride {
-            return try createNetworkInterfaceAsyncOverride(input, completion)
+            return try createNetworkInterfaceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4013,9 +4312,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateNetworkInterfaceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createNetworkInterfaceSync(input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.CreateNetworkInterfaceResult {
+    public func createNetworkInterfaceSync(
+            input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateNetworkInterfaceResult {
         if let createNetworkInterfaceSyncOverride = createNetworkInterfaceSyncOverride {
-            return try createNetworkInterfaceSyncOverride(input)
+            return try createNetworkInterfaceSyncOverride(input, reporting)
         }
 
         throw error
@@ -4030,12 +4331,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateNetworkInterfacePermissionResult
            object will be validated before being returned to caller.
      */
-    public func createNetworkInterfacePermissionAsync(input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult>) -> ()) throws {
+    public func createNetworkInterfacePermissionAsync(
+            input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, HTTPClientError>) -> ()) throws {
         if let createNetworkInterfacePermissionAsyncOverride = createNetworkInterfacePermissionAsyncOverride {
-            return try createNetworkInterfacePermissionAsyncOverride(input, completion)
+            return try createNetworkInterfacePermissionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4046,9 +4350,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateNetworkInterfacePermissionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createNetworkInterfacePermissionSync(input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest) throws -> ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult {
+    public func createNetworkInterfacePermissionSync(
+            input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult {
         if let createNetworkInterfacePermissionSyncOverride = createNetworkInterfacePermissionSyncOverride {
-            return try createNetworkInterfacePermissionSyncOverride(input)
+            return try createNetworkInterfacePermissionSyncOverride(input, reporting)
         }
 
         throw error
@@ -4062,9 +4368,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func createPlacementGroupAsync(
+            input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let createPlacementGroupAsyncOverride = createPlacementGroupAsyncOverride {
-            return try createPlacementGroupAsyncOverride(input, completion)
+            return try createPlacementGroupAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -4076,9 +4385,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated CreatePlacementGroupRequest object being passed to this operation.
      */
-    public func createPlacementGroupSync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws {
+    public func createPlacementGroupSync(
+            input: ElasticComputeCloudModel.CreatePlacementGroupRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let createPlacementGroupSyncOverride = createPlacementGroupSyncOverride {
-            return try createPlacementGroupSyncOverride(input)
+            return try createPlacementGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -4093,12 +4404,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateReservedInstancesListingResult
            object will be validated before being returned to caller.
      */
-    public func createReservedInstancesListingAsync(input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateReservedInstancesListingResult>) -> ()) throws {
+    public func createReservedInstancesListingAsync(
+            input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, HTTPClientError>) -> ()) throws {
         if let createReservedInstancesListingAsyncOverride = createReservedInstancesListingAsyncOverride {
-            return try createReservedInstancesListingAsyncOverride(input, completion)
+            return try createReservedInstancesListingAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4109,9 +4423,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateReservedInstancesListingResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createReservedInstancesListingSync(input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult {
+    public func createReservedInstancesListingSync(
+            input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult {
         if let createReservedInstancesListingSyncOverride = createReservedInstancesListingSyncOverride {
-            return try createReservedInstancesListingSyncOverride(input)
+            return try createReservedInstancesListingSyncOverride(input, reporting)
         }
 
         throw error
@@ -4126,12 +4442,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateRouteResult
            object will be validated before being returned to caller.
      */
-    public func createRouteAsync(input: ElasticComputeCloudModel.CreateRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateRouteResult>) -> ()) throws {
+    public func createRouteAsync(
+            input: ElasticComputeCloudModel.CreateRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteResult, HTTPClientError>) -> ()) throws {
         if let createRouteAsyncOverride = createRouteAsyncOverride {
-            return try createRouteAsyncOverride(input, completion)
+            return try createRouteAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4142,9 +4461,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createRouteSync(input: ElasticComputeCloudModel.CreateRouteRequest) throws -> ElasticComputeCloudModel.CreateRouteResult {
+    public func createRouteSync(
+            input: ElasticComputeCloudModel.CreateRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateRouteResult {
         if let createRouteSyncOverride = createRouteSyncOverride {
-            return try createRouteSyncOverride(input)
+            return try createRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -4159,12 +4480,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func createRouteTableAsync(input: ElasticComputeCloudModel.CreateRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateRouteTableResult>) -> ()) throws {
+    public func createRouteTableAsync(
+            input: ElasticComputeCloudModel.CreateRouteTableRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteTableResult, HTTPClientError>) -> ()) throws {
         if let createRouteTableAsyncOverride = createRouteTableAsyncOverride {
-            return try createRouteTableAsyncOverride(input, completion)
+            return try createRouteTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4175,9 +4499,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createRouteTableSync(input: ElasticComputeCloudModel.CreateRouteTableRequest) throws -> ElasticComputeCloudModel.CreateRouteTableResult {
+    public func createRouteTableSync(
+            input: ElasticComputeCloudModel.CreateRouteTableRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateRouteTableResult {
         if let createRouteTableSyncOverride = createRouteTableSyncOverride {
-            return try createRouteTableSyncOverride(input)
+            return try createRouteTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -4192,12 +4518,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateSecurityGroupResult
            object will be validated before being returned to caller.
      */
-    public func createSecurityGroupAsync(input: ElasticComputeCloudModel.CreateSecurityGroupRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSecurityGroupResult>) -> ()) throws {
+    public func createSecurityGroupAsync(
+            input: ElasticComputeCloudModel.CreateSecurityGroupRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSecurityGroupResult, HTTPClientError>) -> ()) throws {
         if let createSecurityGroupAsyncOverride = createSecurityGroupAsyncOverride {
-            return try createSecurityGroupAsyncOverride(input, completion)
+            return try createSecurityGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4208,9 +4537,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateSecurityGroupResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSecurityGroupSync(input: ElasticComputeCloudModel.CreateSecurityGroupRequest) throws -> ElasticComputeCloudModel.CreateSecurityGroupResult {
+    public func createSecurityGroupSync(
+            input: ElasticComputeCloudModel.CreateSecurityGroupRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateSecurityGroupResult {
         if let createSecurityGroupSyncOverride = createSecurityGroupSyncOverride {
-            return try createSecurityGroupSyncOverride(input)
+            return try createSecurityGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -4225,12 +4556,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The Snapshot
            object will be validated before being returned to caller.
      */
-    public func createSnapshotAsync(input: ElasticComputeCloudModel.CreateSnapshotRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.Snapshot>) -> ()) throws {
+    public func createSnapshotAsync(
+            input: ElasticComputeCloudModel.CreateSnapshotRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.Snapshot, HTTPClientError>) -> ()) throws {
         if let createSnapshotAsyncOverride = createSnapshotAsyncOverride {
-            return try createSnapshotAsyncOverride(input, completion)
+            return try createSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4241,9 +4575,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The Snapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSnapshotSync(input: ElasticComputeCloudModel.CreateSnapshotRequest) throws -> ElasticComputeCloudModel.Snapshot {
+    public func createSnapshotSync(
+            input: ElasticComputeCloudModel.CreateSnapshotRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.Snapshot {
         if let createSnapshotSyncOverride = createSnapshotSyncOverride {
-            return try createSnapshotSyncOverride(input)
+            return try createSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -4258,12 +4594,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateSnapshotsResult
            object will be validated before being returned to caller.
      */
-    public func createSnapshotsAsync(input: ElasticComputeCloudModel.CreateSnapshotsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSnapshotsResult>) -> ()) throws {
+    public func createSnapshotsAsync(
+            input: ElasticComputeCloudModel.CreateSnapshotsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSnapshotsResult, HTTPClientError>) -> ()) throws {
         if let createSnapshotsAsyncOverride = createSnapshotsAsyncOverride {
-            return try createSnapshotsAsyncOverride(input, completion)
+            return try createSnapshotsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4274,9 +4613,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateSnapshotsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSnapshotsSync(input: ElasticComputeCloudModel.CreateSnapshotsRequest) throws -> ElasticComputeCloudModel.CreateSnapshotsResult {
+    public func createSnapshotsSync(
+            input: ElasticComputeCloudModel.CreateSnapshotsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateSnapshotsResult {
         if let createSnapshotsSyncOverride = createSnapshotsSyncOverride {
-            return try createSnapshotsSyncOverride(input)
+            return try createSnapshotsSyncOverride(input, reporting)
         }
 
         throw error
@@ -4291,12 +4632,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateSpotDatafeedSubscriptionResult
            object will be validated before being returned to caller.
      */
-    public func createSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult>) -> ()) throws {
+    public func createSpotDatafeedSubscriptionAsync(
+            input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, HTTPClientError>) -> ()) throws {
         if let createSpotDatafeedSubscriptionAsyncOverride = createSpotDatafeedSubscriptionAsyncOverride {
-            return try createSpotDatafeedSubscriptionAsyncOverride(input, completion)
+            return try createSpotDatafeedSubscriptionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4307,9 +4651,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateSpotDatafeedSubscriptionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSpotDatafeedSubscriptionSync(input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest) throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult {
+    public func createSpotDatafeedSubscriptionSync(
+            input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult {
         if let createSpotDatafeedSubscriptionSyncOverride = createSpotDatafeedSubscriptionSyncOverride {
-            return try createSpotDatafeedSubscriptionSyncOverride(input)
+            return try createSpotDatafeedSubscriptionSyncOverride(input, reporting)
         }
 
         throw error
@@ -4324,12 +4670,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateSubnetResult
            object will be validated before being returned to caller.
      */
-    public func createSubnetAsync(input: ElasticComputeCloudModel.CreateSubnetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateSubnetResult>) -> ()) throws {
+    public func createSubnetAsync(
+            input: ElasticComputeCloudModel.CreateSubnetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetResult, HTTPClientError>) -> ()) throws {
         if let createSubnetAsyncOverride = createSubnetAsyncOverride {
-            return try createSubnetAsyncOverride(input, completion)
+            return try createSubnetAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4340,9 +4689,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateSubnetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSubnetSync(input: ElasticComputeCloudModel.CreateSubnetRequest) throws -> ElasticComputeCloudModel.CreateSubnetResult {
+    public func createSubnetSync(
+            input: ElasticComputeCloudModel.CreateSubnetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateSubnetResult {
         if let createSubnetSyncOverride = createSubnetSyncOverride {
-            return try createSubnetSyncOverride(input)
+            return try createSubnetSyncOverride(input, reporting)
         }
 
         throw error
@@ -4356,9 +4707,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createTagsAsync(input: ElasticComputeCloudModel.CreateTagsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func createTagsAsync(
+            input: ElasticComputeCloudModel.CreateTagsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let createTagsAsyncOverride = createTagsAsyncOverride {
-            return try createTagsAsyncOverride(input, completion)
+            return try createTagsAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -4370,9 +4724,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated CreateTagsRequest object being passed to this operation.
      */
-    public func createTagsSync(input: ElasticComputeCloudModel.CreateTagsRequest) throws {
+    public func createTagsSync(
+            input: ElasticComputeCloudModel.CreateTagsRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let createTagsSyncOverride = createTagsSyncOverride {
-            return try createTagsSyncOverride(input)
+            return try createTagsSyncOverride(input, reporting)
         }
 
         throw error
@@ -4387,12 +4743,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateTransitGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayResult>) -> ()) throws {
+    public func createTransitGatewayAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayResult, HTTPClientError>) -> ()) throws {
         if let createTransitGatewayAsyncOverride = createTransitGatewayAsyncOverride {
-            return try createTransitGatewayAsyncOverride(input, completion)
+            return try createTransitGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4403,9 +4762,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateTransitGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewaySync(input: ElasticComputeCloudModel.CreateTransitGatewayRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult {
+    public func createTransitGatewaySync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult {
         if let createTransitGatewaySyncOverride = createTransitGatewaySyncOverride {
-            return try createTransitGatewaySyncOverride(input)
+            return try createTransitGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -4420,12 +4781,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateTransitGatewayRouteResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayRouteAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteResult>) -> ()) throws {
+    public func createTransitGatewayRouteAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
         if let createTransitGatewayRouteAsyncOverride = createTransitGatewayRouteAsyncOverride {
-            return try createTransitGatewayRouteAsyncOverride(input, completion)
+            return try createTransitGatewayRouteAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4436,9 +4800,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateTransitGatewayRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewayRouteSync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult {
+    public func createTransitGatewayRouteSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult {
         if let createTransitGatewayRouteSyncOverride = createTransitGatewayRouteSyncOverride {
-            return try createTransitGatewayRouteSyncOverride(input)
+            return try createTransitGatewayRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -4453,12 +4819,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateTransitGatewayRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult>) -> ()) throws {
+    public func createTransitGatewayRouteTableAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
         if let createTransitGatewayRouteTableAsyncOverride = createTransitGatewayRouteTableAsyncOverride {
-            return try createTransitGatewayRouteTableAsyncOverride(input, completion)
+            return try createTransitGatewayRouteTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4469,9 +4838,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult {
+    public func createTransitGatewayRouteTableSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult {
         if let createTransitGatewayRouteTableSyncOverride = createTransitGatewayRouteTableSyncOverride {
-            return try createTransitGatewayRouteTableSyncOverride(input)
+            return try createTransitGatewayRouteTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -4486,12 +4857,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult>) -> ()) throws {
+    public func createTransitGatewayVpcAttachmentAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         if let createTransitGatewayVpcAttachmentAsyncOverride = createTransitGatewayVpcAttachmentAsyncOverride {
-            return try createTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+            return try createTransitGatewayVpcAttachmentAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4502,9 +4876,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult {
+    public func createTransitGatewayVpcAttachmentSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult {
         if let createTransitGatewayVpcAttachmentSyncOverride = createTransitGatewayVpcAttachmentSyncOverride {
-            return try createTransitGatewayVpcAttachmentSyncOverride(input)
+            return try createTransitGatewayVpcAttachmentSyncOverride(input, reporting)
         }
 
         throw error
@@ -4519,12 +4895,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The Volume
            object will be validated before being returned to caller.
      */
-    public func createVolumeAsync(input: ElasticComputeCloudModel.CreateVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.Volume>) -> ()) throws {
+    public func createVolumeAsync(
+            input: ElasticComputeCloudModel.CreateVolumeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.Volume, HTTPClientError>) -> ()) throws {
         if let createVolumeAsyncOverride = createVolumeAsyncOverride {
-            return try createVolumeAsyncOverride(input, completion)
+            return try createVolumeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4535,9 +4914,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The Volume object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVolumeSync(input: ElasticComputeCloudModel.CreateVolumeRequest) throws -> ElasticComputeCloudModel.Volume {
+    public func createVolumeSync(
+            input: ElasticComputeCloudModel.CreateVolumeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.Volume {
         if let createVolumeSyncOverride = createVolumeSyncOverride {
-            return try createVolumeSyncOverride(input)
+            return try createVolumeSyncOverride(input, reporting)
         }
 
         throw error
@@ -4552,12 +4933,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateVpcResult
            object will be validated before being returned to caller.
      */
-    public func createVpcAsync(input: ElasticComputeCloudModel.CreateVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcResult>) -> ()) throws {
+    public func createVpcAsync(
+            input: ElasticComputeCloudModel.CreateVpcRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcResult, HTTPClientError>) -> ()) throws {
         if let createVpcAsyncOverride = createVpcAsyncOverride {
-            return try createVpcAsyncOverride(input, completion)
+            return try createVpcAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4568,9 +4952,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcSync(input: ElasticComputeCloudModel.CreateVpcRequest) throws -> ElasticComputeCloudModel.CreateVpcResult {
+    public func createVpcSync(
+            input: ElasticComputeCloudModel.CreateVpcRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcResult {
         if let createVpcSyncOverride = createVpcSyncOverride {
-            return try createVpcSyncOverride(input)
+            return try createVpcSyncOverride(input, reporting)
         }
 
         throw error
@@ -4585,12 +4971,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateVpcEndpointResult
            object will be validated before being returned to caller.
      */
-    public func createVpcEndpointAsync(input: ElasticComputeCloudModel.CreateVpcEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcEndpointResult>) -> ()) throws {
+    public func createVpcEndpointAsync(
+            input: ElasticComputeCloudModel.CreateVpcEndpointRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointResult, HTTPClientError>) -> ()) throws {
         if let createVpcEndpointAsyncOverride = createVpcEndpointAsyncOverride {
-            return try createVpcEndpointAsyncOverride(input, completion)
+            return try createVpcEndpointAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4601,9 +4990,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateVpcEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcEndpointSync(input: ElasticComputeCloudModel.CreateVpcEndpointRequest) throws -> ElasticComputeCloudModel.CreateVpcEndpointResult {
+    public func createVpcEndpointSync(
+            input: ElasticComputeCloudModel.CreateVpcEndpointRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcEndpointResult {
         if let createVpcEndpointSyncOverride = createVpcEndpointSyncOverride {
-            return try createVpcEndpointSyncOverride(input)
+            return try createVpcEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -4618,12 +5009,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateVpcEndpointConnectionNotificationResult
            object will be validated before being returned to caller.
      */
-    public func createVpcEndpointConnectionNotificationAsync(input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult>) -> ()) throws {
+    public func createVpcEndpointConnectionNotificationAsync(
+            input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, HTTPClientError>) -> ()) throws {
         if let createVpcEndpointConnectionNotificationAsyncOverride = createVpcEndpointConnectionNotificationAsyncOverride {
-            return try createVpcEndpointConnectionNotificationAsyncOverride(input, completion)
+            return try createVpcEndpointConnectionNotificationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4634,9 +5028,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateVpcEndpointConnectionNotificationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcEndpointConnectionNotificationSync(input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest) throws -> ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult {
+    public func createVpcEndpointConnectionNotificationSync(
+            input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult {
         if let createVpcEndpointConnectionNotificationSyncOverride = createVpcEndpointConnectionNotificationSyncOverride {
-            return try createVpcEndpointConnectionNotificationSyncOverride(input)
+            return try createVpcEndpointConnectionNotificationSyncOverride(input, reporting)
         }
 
         throw error
@@ -4651,12 +5047,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateVpcEndpointServiceConfigurationResult
            object will be validated before being returned to caller.
      */
-    public func createVpcEndpointServiceConfigurationAsync(input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult>) -> ()) throws {
+    public func createVpcEndpointServiceConfigurationAsync(
+            input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, HTTPClientError>) -> ()) throws {
         if let createVpcEndpointServiceConfigurationAsyncOverride = createVpcEndpointServiceConfigurationAsyncOverride {
-            return try createVpcEndpointServiceConfigurationAsyncOverride(input, completion)
+            return try createVpcEndpointServiceConfigurationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4667,9 +5066,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateVpcEndpointServiceConfigurationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcEndpointServiceConfigurationSync(input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest) throws -> ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult {
+    public func createVpcEndpointServiceConfigurationSync(
+            input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult {
         if let createVpcEndpointServiceConfigurationSyncOverride = createVpcEndpointServiceConfigurationSyncOverride {
-            return try createVpcEndpointServiceConfigurationSyncOverride(input)
+            return try createVpcEndpointServiceConfigurationSyncOverride(input, reporting)
         }
 
         throw error
@@ -4684,12 +5085,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateVpcPeeringConnectionResult
            object will be validated before being returned to caller.
      */
-    public func createVpcPeeringConnectionAsync(input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult>) -> ()) throws {
+    public func createVpcPeeringConnectionAsync(
+            input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
         if let createVpcPeeringConnectionAsyncOverride = createVpcPeeringConnectionAsyncOverride {
-            return try createVpcPeeringConnectionAsyncOverride(input, completion)
+            return try createVpcPeeringConnectionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4700,9 +5104,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateVpcPeeringConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcPeeringConnectionSync(input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.CreateVpcPeeringConnectionResult {
+    public func createVpcPeeringConnectionSync(
+            input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcPeeringConnectionResult {
         if let createVpcPeeringConnectionSyncOverride = createVpcPeeringConnectionSyncOverride {
-            return try createVpcPeeringConnectionSyncOverride(input)
+            return try createVpcPeeringConnectionSyncOverride(input, reporting)
         }
 
         throw error
@@ -4717,12 +5123,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateVpnConnectionResult
            object will be validated before being returned to caller.
      */
-    public func createVpnConnectionAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpnConnectionResult>) -> ()) throws {
+    public func createVpnConnectionAsync(
+            input: ElasticComputeCloudModel.CreateVpnConnectionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnConnectionResult, HTTPClientError>) -> ()) throws {
         if let createVpnConnectionAsyncOverride = createVpnConnectionAsyncOverride {
-            return try createVpnConnectionAsyncOverride(input, completion)
+            return try createVpnConnectionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4733,9 +5142,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateVpnConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpnConnectionSync(input: ElasticComputeCloudModel.CreateVpnConnectionRequest) throws -> ElasticComputeCloudModel.CreateVpnConnectionResult {
+    public func createVpnConnectionSync(
+            input: ElasticComputeCloudModel.CreateVpnConnectionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpnConnectionResult {
         if let createVpnConnectionSyncOverride = createVpnConnectionSyncOverride {
-            return try createVpnConnectionSyncOverride(input)
+            return try createVpnConnectionSyncOverride(input, reporting)
         }
 
         throw error
@@ -4749,9 +5160,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createVpnConnectionRouteAsync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func createVpnConnectionRouteAsync(
+            input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let createVpnConnectionRouteAsyncOverride = createVpnConnectionRouteAsyncOverride {
-            return try createVpnConnectionRouteAsyncOverride(input, completion)
+            return try createVpnConnectionRouteAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -4763,9 +5177,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated CreateVpnConnectionRouteRequest object being passed to this operation.
      */
-    public func createVpnConnectionRouteSync(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest) throws {
+    public func createVpnConnectionRouteSync(
+            input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let createVpnConnectionRouteSyncOverride = createVpnConnectionRouteSyncOverride {
-            return try createVpnConnectionRouteSyncOverride(input)
+            return try createVpnConnectionRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -4780,12 +5196,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The CreateVpnGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createVpnGatewayAsync(input: ElasticComputeCloudModel.CreateVpnGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreateVpnGatewayResult>) -> ()) throws {
+    public func createVpnGatewayAsync(
+            input: ElasticComputeCloudModel.CreateVpnGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnGatewayResult, HTTPClientError>) -> ()) throws {
         if let createVpnGatewayAsyncOverride = createVpnGatewayAsyncOverride {
-            return try createVpnGatewayAsyncOverride(input, completion)
+            return try createVpnGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4796,9 +5215,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The CreateVpnGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpnGatewaySync(input: ElasticComputeCloudModel.CreateVpnGatewayRequest) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult {
+    public func createVpnGatewaySync(
+            input: ElasticComputeCloudModel.CreateVpnGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult {
         if let createVpnGatewaySyncOverride = createVpnGatewaySyncOverride {
-            return try createVpnGatewaySyncOverride(input)
+            return try createVpnGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -4813,12 +5234,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteClientVpnEndpointResult
            object will be validated before being returned to caller.
      */
-    public func deleteClientVpnEndpointAsync(input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnEndpointResult>) -> ()) throws {
+    public func deleteClientVpnEndpointAsync(
+            input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
         if let deleteClientVpnEndpointAsyncOverride = deleteClientVpnEndpointAsyncOverride {
-            return try deleteClientVpnEndpointAsyncOverride(input, completion)
+            return try deleteClientVpnEndpointAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4829,9 +5253,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteClientVpnEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteClientVpnEndpointSync(input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult {
+    public func deleteClientVpnEndpointSync(
+            input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult {
         if let deleteClientVpnEndpointSyncOverride = deleteClientVpnEndpointSyncOverride {
-            return try deleteClientVpnEndpointSyncOverride(input)
+            return try deleteClientVpnEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -4846,12 +5272,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteClientVpnRouteResult
            object will be validated before being returned to caller.
      */
-    public func deleteClientVpnRouteAsync(input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteClientVpnRouteResult>) -> ()) throws {
+    public func deleteClientVpnRouteAsync(
+            input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, HTTPClientError>) -> ()) throws {
         if let deleteClientVpnRouteAsyncOverride = deleteClientVpnRouteAsyncOverride {
-            return try deleteClientVpnRouteAsyncOverride(input, completion)
+            return try deleteClientVpnRouteAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4862,9 +5291,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteClientVpnRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteClientVpnRouteSync(input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult {
+    public func deleteClientVpnRouteSync(
+            input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult {
         if let deleteClientVpnRouteSyncOverride = deleteClientVpnRouteSyncOverride {
-            return try deleteClientVpnRouteSyncOverride(input)
+            return try deleteClientVpnRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -4878,9 +5309,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteCustomerGatewayAsync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteCustomerGatewayAsync(
+            input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteCustomerGatewayAsyncOverride = deleteCustomerGatewayAsyncOverride {
-            return try deleteCustomerGatewayAsyncOverride(input, completion)
+            return try deleteCustomerGatewayAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -4892,9 +5326,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteCustomerGatewayRequest object being passed to this operation.
      */
-    public func deleteCustomerGatewaySync(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest) throws {
+    public func deleteCustomerGatewaySync(
+            input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteCustomerGatewaySyncOverride = deleteCustomerGatewaySyncOverride {
-            return try deleteCustomerGatewaySyncOverride(input)
+            return try deleteCustomerGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -4908,9 +5344,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteDhcpOptionsAsync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteDhcpOptionsAsync(
+            input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteDhcpOptionsAsyncOverride = deleteDhcpOptionsAsyncOverride {
-            return try deleteDhcpOptionsAsyncOverride(input, completion)
+            return try deleteDhcpOptionsAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -4922,9 +5361,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteDhcpOptionsRequest object being passed to this operation.
      */
-    public func deleteDhcpOptionsSync(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest) throws {
+    public func deleteDhcpOptionsSync(
+            input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteDhcpOptionsSyncOverride = deleteDhcpOptionsSyncOverride {
-            return try deleteDhcpOptionsSyncOverride(input)
+            return try deleteDhcpOptionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -4939,12 +5380,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteEgressOnlyInternetGatewayResult
            object will be validated before being returned to caller.
      */
-    public func deleteEgressOnlyInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult>) -> ()) throws {
+    public func deleteEgressOnlyInternetGatewayAsync(
+            input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, HTTPClientError>) -> ()) throws {
         if let deleteEgressOnlyInternetGatewayAsyncOverride = deleteEgressOnlyInternetGatewayAsyncOverride {
-            return try deleteEgressOnlyInternetGatewayAsyncOverride(input, completion)
+            return try deleteEgressOnlyInternetGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4955,9 +5399,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteEgressOnlyInternetGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteEgressOnlyInternetGatewaySync(input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest) throws -> ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult {
+    public func deleteEgressOnlyInternetGatewaySync(
+            input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult {
         if let deleteEgressOnlyInternetGatewaySyncOverride = deleteEgressOnlyInternetGatewaySyncOverride {
-            return try deleteEgressOnlyInternetGatewaySyncOverride(input)
+            return try deleteEgressOnlyInternetGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -4972,12 +5418,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteFleetsResult
            object will be validated before being returned to caller.
      */
-    public func deleteFleetsAsync(input: ElasticComputeCloudModel.DeleteFleetsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteFleetsResult>) -> ()) throws {
+    public func deleteFleetsAsync(
+            input: ElasticComputeCloudModel.DeleteFleetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFleetsResult, HTTPClientError>) -> ()) throws {
         if let deleteFleetsAsyncOverride = deleteFleetsAsyncOverride {
-            return try deleteFleetsAsyncOverride(input, completion)
+            return try deleteFleetsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4988,9 +5437,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteFleetsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteFleetsSync(input: ElasticComputeCloudModel.DeleteFleetsRequest) throws -> ElasticComputeCloudModel.DeleteFleetsResult {
+    public func deleteFleetsSync(
+            input: ElasticComputeCloudModel.DeleteFleetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteFleetsResult {
         if let deleteFleetsSyncOverride = deleteFleetsSyncOverride {
-            return try deleteFleetsSyncOverride(input)
+            return try deleteFleetsSyncOverride(input, reporting)
         }
 
         throw error
@@ -5005,12 +5456,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteFlowLogsResult
            object will be validated before being returned to caller.
      */
-    public func deleteFlowLogsAsync(input: ElasticComputeCloudModel.DeleteFlowLogsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteFlowLogsResult>) -> ()) throws {
+    public func deleteFlowLogsAsync(
+            input: ElasticComputeCloudModel.DeleteFlowLogsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFlowLogsResult, HTTPClientError>) -> ()) throws {
         if let deleteFlowLogsAsyncOverride = deleteFlowLogsAsyncOverride {
-            return try deleteFlowLogsAsyncOverride(input, completion)
+            return try deleteFlowLogsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5021,9 +5475,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteFlowLogsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteFlowLogsSync(input: ElasticComputeCloudModel.DeleteFlowLogsRequest) throws -> ElasticComputeCloudModel.DeleteFlowLogsResult {
+    public func deleteFlowLogsSync(
+            input: ElasticComputeCloudModel.DeleteFlowLogsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteFlowLogsResult {
         if let deleteFlowLogsSyncOverride = deleteFlowLogsSyncOverride {
-            return try deleteFlowLogsSyncOverride(input)
+            return try deleteFlowLogsSyncOverride(input, reporting)
         }
 
         throw error
@@ -5038,12 +5494,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteFpgaImageResult
            object will be validated before being returned to caller.
      */
-    public func deleteFpgaImageAsync(input: ElasticComputeCloudModel.DeleteFpgaImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteFpgaImageResult>) -> ()) throws {
+    public func deleteFpgaImageAsync(
+            input: ElasticComputeCloudModel.DeleteFpgaImageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFpgaImageResult, HTTPClientError>) -> ()) throws {
         if let deleteFpgaImageAsyncOverride = deleteFpgaImageAsyncOverride {
-            return try deleteFpgaImageAsyncOverride(input, completion)
+            return try deleteFpgaImageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5054,9 +5513,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteFpgaImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteFpgaImageSync(input: ElasticComputeCloudModel.DeleteFpgaImageRequest) throws -> ElasticComputeCloudModel.DeleteFpgaImageResult {
+    public func deleteFpgaImageSync(
+            input: ElasticComputeCloudModel.DeleteFpgaImageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteFpgaImageResult {
         if let deleteFpgaImageSyncOverride = deleteFpgaImageSyncOverride {
-            return try deleteFpgaImageSyncOverride(input)
+            return try deleteFpgaImageSyncOverride(input, reporting)
         }
 
         throw error
@@ -5070,9 +5531,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteInternetGatewayAsync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteInternetGatewayAsync(
+            input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteInternetGatewayAsyncOverride = deleteInternetGatewayAsyncOverride {
-            return try deleteInternetGatewayAsyncOverride(input, completion)
+            return try deleteInternetGatewayAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5084,9 +5548,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteInternetGatewayRequest object being passed to this operation.
      */
-    public func deleteInternetGatewaySync(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest) throws {
+    public func deleteInternetGatewaySync(
+            input: ElasticComputeCloudModel.DeleteInternetGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteInternetGatewaySyncOverride = deleteInternetGatewaySyncOverride {
-            return try deleteInternetGatewaySyncOverride(input)
+            return try deleteInternetGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -5100,9 +5566,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteKeyPairAsync(input: ElasticComputeCloudModel.DeleteKeyPairRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteKeyPairAsync(
+            input: ElasticComputeCloudModel.DeleteKeyPairRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteKeyPairAsyncOverride = deleteKeyPairAsyncOverride {
-            return try deleteKeyPairAsyncOverride(input, completion)
+            return try deleteKeyPairAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5114,9 +5583,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
      */
-    public func deleteKeyPairSync(input: ElasticComputeCloudModel.DeleteKeyPairRequest) throws {
+    public func deleteKeyPairSync(
+            input: ElasticComputeCloudModel.DeleteKeyPairRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteKeyPairSyncOverride = deleteKeyPairSyncOverride {
-            return try deleteKeyPairSyncOverride(input)
+            return try deleteKeyPairSyncOverride(input, reporting)
         }
 
         throw error
@@ -5131,12 +5602,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteLaunchTemplateResult
            object will be validated before being returned to caller.
      */
-    public func deleteLaunchTemplateAsync(input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteLaunchTemplateResult>) -> ()) throws {
+    public func deleteLaunchTemplateAsync(
+            input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, HTTPClientError>) -> ()) throws {
         if let deleteLaunchTemplateAsyncOverride = deleteLaunchTemplateAsyncOverride {
-            return try deleteLaunchTemplateAsyncOverride(input, completion)
+            return try deleteLaunchTemplateAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5147,9 +5621,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteLaunchTemplateResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteLaunchTemplateSync(input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateResult {
+    public func deleteLaunchTemplateSync(
+            input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateResult {
         if let deleteLaunchTemplateSyncOverride = deleteLaunchTemplateSyncOverride {
-            return try deleteLaunchTemplateSyncOverride(input)
+            return try deleteLaunchTemplateSyncOverride(input, reporting)
         }
 
         throw error
@@ -5164,12 +5640,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteLaunchTemplateVersionsResult
            object will be validated before being returned to caller.
      */
-    public func deleteLaunchTemplateVersionsAsync(input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult>) -> ()) throws {
+    public func deleteLaunchTemplateVersionsAsync(
+            input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, HTTPClientError>) -> ()) throws {
         if let deleteLaunchTemplateVersionsAsyncOverride = deleteLaunchTemplateVersionsAsyncOverride {
-            return try deleteLaunchTemplateVersionsAsyncOverride(input, completion)
+            return try deleteLaunchTemplateVersionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5180,9 +5659,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteLaunchTemplateVersionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteLaunchTemplateVersionsSync(input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult {
+    public func deleteLaunchTemplateVersionsSync(
+            input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult {
         if let deleteLaunchTemplateVersionsSyncOverride = deleteLaunchTemplateVersionsSyncOverride {
-            return try deleteLaunchTemplateVersionsSyncOverride(input)
+            return try deleteLaunchTemplateVersionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -5197,12 +5678,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteNatGatewayResult
            object will be validated before being returned to caller.
      */
-    public func deleteNatGatewayAsync(input: ElasticComputeCloudModel.DeleteNatGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteNatGatewayResult>) -> ()) throws {
+    public func deleteNatGatewayAsync(
+            input: ElasticComputeCloudModel.DeleteNatGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNatGatewayResult, HTTPClientError>) -> ()) throws {
         if let deleteNatGatewayAsyncOverride = deleteNatGatewayAsyncOverride {
-            return try deleteNatGatewayAsyncOverride(input, completion)
+            return try deleteNatGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5213,9 +5697,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteNatGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteNatGatewaySync(input: ElasticComputeCloudModel.DeleteNatGatewayRequest) throws -> ElasticComputeCloudModel.DeleteNatGatewayResult {
+    public func deleteNatGatewaySync(
+            input: ElasticComputeCloudModel.DeleteNatGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteNatGatewayResult {
         if let deleteNatGatewaySyncOverride = deleteNatGatewaySyncOverride {
-            return try deleteNatGatewaySyncOverride(input)
+            return try deleteNatGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -5229,9 +5715,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkAclAsync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteNetworkAclAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkAclRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteNetworkAclAsyncOverride = deleteNetworkAclAsyncOverride {
-            return try deleteNetworkAclAsyncOverride(input, completion)
+            return try deleteNetworkAclAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5243,9 +5732,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteNetworkAclRequest object being passed to this operation.
      */
-    public func deleteNetworkAclSync(input: ElasticComputeCloudModel.DeleteNetworkAclRequest) throws {
+    public func deleteNetworkAclSync(
+            input: ElasticComputeCloudModel.DeleteNetworkAclRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteNetworkAclSyncOverride = deleteNetworkAclSyncOverride {
-            return try deleteNetworkAclSyncOverride(input)
+            return try deleteNetworkAclSyncOverride(input, reporting)
         }
 
         throw error
@@ -5259,9 +5750,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkAclEntryAsync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteNetworkAclEntryAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteNetworkAclEntryAsyncOverride = deleteNetworkAclEntryAsyncOverride {
-            return try deleteNetworkAclEntryAsyncOverride(input, completion)
+            return try deleteNetworkAclEntryAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5273,9 +5767,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteNetworkAclEntryRequest object being passed to this operation.
      */
-    public func deleteNetworkAclEntrySync(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest) throws {
+    public func deleteNetworkAclEntrySync(
+            input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteNetworkAclEntrySyncOverride = deleteNetworkAclEntrySyncOverride {
-            return try deleteNetworkAclEntrySyncOverride(input)
+            return try deleteNetworkAclEntrySyncOverride(input, reporting)
         }
 
         throw error
@@ -5289,9 +5785,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkInterfaceAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteNetworkInterfaceAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteNetworkInterfaceAsyncOverride = deleteNetworkInterfaceAsyncOverride {
-            return try deleteNetworkInterfaceAsyncOverride(input, completion)
+            return try deleteNetworkInterfaceAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5303,9 +5802,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteNetworkInterfaceRequest object being passed to this operation.
      */
-    public func deleteNetworkInterfaceSync(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest) throws {
+    public func deleteNetworkInterfaceSync(
+            input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteNetworkInterfaceSyncOverride = deleteNetworkInterfaceSyncOverride {
-            return try deleteNetworkInterfaceSyncOverride(input)
+            return try deleteNetworkInterfaceSyncOverride(input, reporting)
         }
 
         throw error
@@ -5320,12 +5821,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteNetworkInterfacePermissionResult
            object will be validated before being returned to caller.
      */
-    public func deleteNetworkInterfacePermissionAsync(input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult>) -> ()) throws {
+    public func deleteNetworkInterfacePermissionAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, HTTPClientError>) -> ()) throws {
         if let deleteNetworkInterfacePermissionAsyncOverride = deleteNetworkInterfacePermissionAsyncOverride {
-            return try deleteNetworkInterfacePermissionAsyncOverride(input, completion)
+            return try deleteNetworkInterfacePermissionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5336,9 +5840,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteNetworkInterfacePermissionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteNetworkInterfacePermissionSync(input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult {
+    public func deleteNetworkInterfacePermissionSync(
+            input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult {
         if let deleteNetworkInterfacePermissionSyncOverride = deleteNetworkInterfacePermissionSyncOverride {
-            return try deleteNetworkInterfacePermissionSyncOverride(input)
+            return try deleteNetworkInterfacePermissionSyncOverride(input, reporting)
         }
 
         throw error
@@ -5352,9 +5858,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deletePlacementGroupAsync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deletePlacementGroupAsync(
+            input: ElasticComputeCloudModel.DeletePlacementGroupRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deletePlacementGroupAsyncOverride = deletePlacementGroupAsyncOverride {
-            return try deletePlacementGroupAsyncOverride(input, completion)
+            return try deletePlacementGroupAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5366,9 +5875,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeletePlacementGroupRequest object being passed to this operation.
      */
-    public func deletePlacementGroupSync(input: ElasticComputeCloudModel.DeletePlacementGroupRequest) throws {
+    public func deletePlacementGroupSync(
+            input: ElasticComputeCloudModel.DeletePlacementGroupRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deletePlacementGroupSyncOverride = deletePlacementGroupSyncOverride {
-            return try deletePlacementGroupSyncOverride(input)
+            return try deletePlacementGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -5382,9 +5893,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteRouteAsync(input: ElasticComputeCloudModel.DeleteRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteRouteAsync(
+            input: ElasticComputeCloudModel.DeleteRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteRouteAsyncOverride = deleteRouteAsyncOverride {
-            return try deleteRouteAsyncOverride(input, completion)
+            return try deleteRouteAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5396,9 +5910,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteRouteRequest object being passed to this operation.
      */
-    public func deleteRouteSync(input: ElasticComputeCloudModel.DeleteRouteRequest) throws {
+    public func deleteRouteSync(
+            input: ElasticComputeCloudModel.DeleteRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteRouteSyncOverride = deleteRouteSyncOverride {
-            return try deleteRouteSyncOverride(input)
+            return try deleteRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -5412,9 +5928,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteRouteTableAsync(input: ElasticComputeCloudModel.DeleteRouteTableRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteRouteTableAsync(
+            input: ElasticComputeCloudModel.DeleteRouteTableRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteRouteTableAsyncOverride = deleteRouteTableAsyncOverride {
-            return try deleteRouteTableAsyncOverride(input, completion)
+            return try deleteRouteTableAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5426,9 +5945,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteRouteTableRequest object being passed to this operation.
      */
-    public func deleteRouteTableSync(input: ElasticComputeCloudModel.DeleteRouteTableRequest) throws {
+    public func deleteRouteTableSync(
+            input: ElasticComputeCloudModel.DeleteRouteTableRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteRouteTableSyncOverride = deleteRouteTableSyncOverride {
-            return try deleteRouteTableSyncOverride(input)
+            return try deleteRouteTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -5442,9 +5963,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSecurityGroupAsync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteSecurityGroupAsync(
+            input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteSecurityGroupAsyncOverride = deleteSecurityGroupAsyncOverride {
-            return try deleteSecurityGroupAsyncOverride(input, completion)
+            return try deleteSecurityGroupAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5456,9 +5980,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteSecurityGroupRequest object being passed to this operation.
      */
-    public func deleteSecurityGroupSync(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest) throws {
+    public func deleteSecurityGroupSync(
+            input: ElasticComputeCloudModel.DeleteSecurityGroupRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteSecurityGroupSyncOverride = deleteSecurityGroupSyncOverride {
-            return try deleteSecurityGroupSyncOverride(input)
+            return try deleteSecurityGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -5472,9 +5998,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSnapshotAsync(input: ElasticComputeCloudModel.DeleteSnapshotRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteSnapshotAsync(
+            input: ElasticComputeCloudModel.DeleteSnapshotRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteSnapshotAsyncOverride = deleteSnapshotAsyncOverride {
-            return try deleteSnapshotAsyncOverride(input, completion)
+            return try deleteSnapshotAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5486,9 +6015,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteSnapshotRequest object being passed to this operation.
      */
-    public func deleteSnapshotSync(input: ElasticComputeCloudModel.DeleteSnapshotRequest) throws {
+    public func deleteSnapshotSync(
+            input: ElasticComputeCloudModel.DeleteSnapshotRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteSnapshotSyncOverride = deleteSnapshotSyncOverride {
-            return try deleteSnapshotSyncOverride(input)
+            return try deleteSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -5502,9 +6033,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteSpotDatafeedSubscriptionAsync(
+            input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteSpotDatafeedSubscriptionAsyncOverride = deleteSpotDatafeedSubscriptionAsyncOverride {
-            return try deleteSpotDatafeedSubscriptionAsyncOverride(input, completion)
+            return try deleteSpotDatafeedSubscriptionAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5516,9 +6050,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteSpotDatafeedSubscriptionRequest object being passed to this operation.
      */
-    public func deleteSpotDatafeedSubscriptionSync(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest) throws {
+    public func deleteSpotDatafeedSubscriptionSync(
+            input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteSpotDatafeedSubscriptionSyncOverride = deleteSpotDatafeedSubscriptionSyncOverride {
-            return try deleteSpotDatafeedSubscriptionSyncOverride(input)
+            return try deleteSpotDatafeedSubscriptionSyncOverride(input, reporting)
         }
 
         throw error
@@ -5532,9 +6068,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSubnetAsync(input: ElasticComputeCloudModel.DeleteSubnetRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteSubnetAsync(
+            input: ElasticComputeCloudModel.DeleteSubnetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteSubnetAsyncOverride = deleteSubnetAsyncOverride {
-            return try deleteSubnetAsyncOverride(input, completion)
+            return try deleteSubnetAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5546,9 +6085,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteSubnetRequest object being passed to this operation.
      */
-    public func deleteSubnetSync(input: ElasticComputeCloudModel.DeleteSubnetRequest) throws {
+    public func deleteSubnetSync(
+            input: ElasticComputeCloudModel.DeleteSubnetRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteSubnetSyncOverride = deleteSubnetSyncOverride {
-            return try deleteSubnetSyncOverride(input)
+            return try deleteSubnetSyncOverride(input, reporting)
         }
 
         throw error
@@ -5562,9 +6103,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteTagsAsync(input: ElasticComputeCloudModel.DeleteTagsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteTagsAsync(
+            input: ElasticComputeCloudModel.DeleteTagsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteTagsAsyncOverride = deleteTagsAsyncOverride {
-            return try deleteTagsAsyncOverride(input, completion)
+            return try deleteTagsAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5576,9 +6120,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteTagsRequest object being passed to this operation.
      */
-    public func deleteTagsSync(input: ElasticComputeCloudModel.DeleteTagsRequest) throws {
+    public func deleteTagsSync(
+            input: ElasticComputeCloudModel.DeleteTagsRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteTagsSyncOverride = deleteTagsSyncOverride {
-            return try deleteTagsSyncOverride(input)
+            return try deleteTagsSyncOverride(input, reporting)
         }
 
         throw error
@@ -5593,12 +6139,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteTransitGatewayResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayResult>) -> ()) throws {
+    public func deleteTransitGatewayAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, HTTPClientError>) -> ()) throws {
         if let deleteTransitGatewayAsyncOverride = deleteTransitGatewayAsyncOverride {
-            return try deleteTransitGatewayAsyncOverride(input, completion)
+            return try deleteTransitGatewayAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5609,9 +6158,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteTransitGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewaySync(input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
+    public func deleteTransitGatewaySync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
         if let deleteTransitGatewaySyncOverride = deleteTransitGatewaySyncOverride {
-            return try deleteTransitGatewaySyncOverride(input)
+            return try deleteTransitGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -5626,12 +6177,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteTransitGatewayRouteResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayRouteAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult>) -> ()) throws {
+    public func deleteTransitGatewayRouteAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
         if let deleteTransitGatewayRouteAsyncOverride = deleteTransitGatewayRouteAsyncOverride {
-            return try deleteTransitGatewayRouteAsyncOverride(input, completion)
+            return try deleteTransitGatewayRouteAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5642,9 +6196,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteTransitGatewayRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayRouteSync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult {
+    public func deleteTransitGatewayRouteSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult {
         if let deleteTransitGatewayRouteSyncOverride = deleteTransitGatewayRouteSyncOverride {
-            return try deleteTransitGatewayRouteSyncOverride(input)
+            return try deleteTransitGatewayRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -5659,12 +6215,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteTransitGatewayRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult>) -> ()) throws {
+    public func deleteTransitGatewayRouteTableAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
         if let deleteTransitGatewayRouteTableAsyncOverride = deleteTransitGatewayRouteTableAsyncOverride {
-            return try deleteTransitGatewayRouteTableAsyncOverride(input, completion)
+            return try deleteTransitGatewayRouteTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5675,9 +6234,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult {
+    public func deleteTransitGatewayRouteTableSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult {
         if let deleteTransitGatewayRouteTableSyncOverride = deleteTransitGatewayRouteTableSyncOverride {
-            return try deleteTransitGatewayRouteTableSyncOverride(input)
+            return try deleteTransitGatewayRouteTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -5692,12 +6253,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult>) -> ()) throws {
+    public func deleteTransitGatewayVpcAttachmentAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         if let deleteTransitGatewayVpcAttachmentAsyncOverride = deleteTransitGatewayVpcAttachmentAsyncOverride {
-            return try deleteTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+            return try deleteTransitGatewayVpcAttachmentAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5708,9 +6272,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult {
+    public func deleteTransitGatewayVpcAttachmentSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult {
         if let deleteTransitGatewayVpcAttachmentSyncOverride = deleteTransitGatewayVpcAttachmentSyncOverride {
-            return try deleteTransitGatewayVpcAttachmentSyncOverride(input)
+            return try deleteTransitGatewayVpcAttachmentSyncOverride(input, reporting)
         }
 
         throw error
@@ -5724,9 +6290,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVolumeAsync(input: ElasticComputeCloudModel.DeleteVolumeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteVolumeAsync(
+            input: ElasticComputeCloudModel.DeleteVolumeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVolumeAsyncOverride = deleteVolumeAsyncOverride {
-            return try deleteVolumeAsyncOverride(input, completion)
+            return try deleteVolumeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5738,9 +6307,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteVolumeRequest object being passed to this operation.
      */
-    public func deleteVolumeSync(input: ElasticComputeCloudModel.DeleteVolumeRequest) throws {
+    public func deleteVolumeSync(
+            input: ElasticComputeCloudModel.DeleteVolumeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteVolumeSyncOverride = deleteVolumeSyncOverride {
-            return try deleteVolumeSyncOverride(input)
+            return try deleteVolumeSyncOverride(input, reporting)
         }
 
         throw error
@@ -5754,9 +6325,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpcAsync(input: ElasticComputeCloudModel.DeleteVpcRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteVpcAsync(
+            input: ElasticComputeCloudModel.DeleteVpcRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVpcAsyncOverride = deleteVpcAsyncOverride {
-            return try deleteVpcAsyncOverride(input, completion)
+            return try deleteVpcAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5768,9 +6342,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteVpcRequest object being passed to this operation.
      */
-    public func deleteVpcSync(input: ElasticComputeCloudModel.DeleteVpcRequest) throws {
+    public func deleteVpcSync(
+            input: ElasticComputeCloudModel.DeleteVpcRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteVpcSyncOverride = deleteVpcSyncOverride {
-            return try deleteVpcSyncOverride(input)
+            return try deleteVpcSyncOverride(input, reporting)
         }
 
         throw error
@@ -5785,12 +6361,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteVpcEndpointConnectionNotificationsResult
            object will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointConnectionNotificationsAsync(input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult>) -> ()) throws {
+    public func deleteVpcEndpointConnectionNotificationsAsync(
+            input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, HTTPClientError>) -> ()) throws {
         if let deleteVpcEndpointConnectionNotificationsAsyncOverride = deleteVpcEndpointConnectionNotificationsAsyncOverride {
-            return try deleteVpcEndpointConnectionNotificationsAsyncOverride(input, completion)
+            return try deleteVpcEndpointConnectionNotificationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5801,9 +6380,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteVpcEndpointConnectionNotificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointConnectionNotificationsSync(input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult {
+    public func deleteVpcEndpointConnectionNotificationsSync(
+            input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult {
         if let deleteVpcEndpointConnectionNotificationsSyncOverride = deleteVpcEndpointConnectionNotificationsSyncOverride {
-            return try deleteVpcEndpointConnectionNotificationsSyncOverride(input)
+            return try deleteVpcEndpointConnectionNotificationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -5818,12 +6399,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteVpcEndpointServiceConfigurationsResult
            object will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointServiceConfigurationsAsync(input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult>) -> ()) throws {
+    public func deleteVpcEndpointServiceConfigurationsAsync(
+            input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, HTTPClientError>) -> ()) throws {
         if let deleteVpcEndpointServiceConfigurationsAsyncOverride = deleteVpcEndpointServiceConfigurationsAsyncOverride {
-            return try deleteVpcEndpointServiceConfigurationsAsyncOverride(input, completion)
+            return try deleteVpcEndpointServiceConfigurationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5834,9 +6418,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteVpcEndpointServiceConfigurationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointServiceConfigurationsSync(input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult {
+    public func deleteVpcEndpointServiceConfigurationsSync(
+            input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult {
         if let deleteVpcEndpointServiceConfigurationsSyncOverride = deleteVpcEndpointServiceConfigurationsSyncOverride {
-            return try deleteVpcEndpointServiceConfigurationsSyncOverride(input)
+            return try deleteVpcEndpointServiceConfigurationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -5851,12 +6437,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteVpcEndpointsResult
            object will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointsAsync(input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcEndpointsResult>) -> ()) throws {
+    public func deleteVpcEndpointsAsync(
+            input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, HTTPClientError>) -> ()) throws {
         if let deleteVpcEndpointsAsyncOverride = deleteVpcEndpointsAsyncOverride {
-            return try deleteVpcEndpointsAsyncOverride(input, completion)
+            return try deleteVpcEndpointsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5867,9 +6456,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteVpcEndpointsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointsSync(input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointsResult {
+    public func deleteVpcEndpointsSync(
+            input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteVpcEndpointsResult {
         if let deleteVpcEndpointsSyncOverride = deleteVpcEndpointsSyncOverride {
-            return try deleteVpcEndpointsSyncOverride(input)
+            return try deleteVpcEndpointsSyncOverride(input, reporting)
         }
 
         throw error
@@ -5884,12 +6475,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeleteVpcPeeringConnectionResult
            object will be validated before being returned to caller.
      */
-    public func deleteVpcPeeringConnectionAsync(input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult>) -> ()) throws {
+    public func deleteVpcPeeringConnectionAsync(
+            input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
         if let deleteVpcPeeringConnectionAsyncOverride = deleteVpcPeeringConnectionAsyncOverride {
-            return try deleteVpcPeeringConnectionAsyncOverride(input, completion)
+            return try deleteVpcPeeringConnectionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -5900,9 +6494,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeleteVpcPeeringConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteVpcPeeringConnectionSync(input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult {
+    public func deleteVpcPeeringConnectionSync(
+            input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult {
         if let deleteVpcPeeringConnectionSyncOverride = deleteVpcPeeringConnectionSyncOverride {
-            return try deleteVpcPeeringConnectionSyncOverride(input)
+            return try deleteVpcPeeringConnectionSyncOverride(input, reporting)
         }
 
         throw error
@@ -5916,9 +6512,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnConnectionAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteVpnConnectionAsync(
+            input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVpnConnectionAsyncOverride = deleteVpnConnectionAsyncOverride {
-            return try deleteVpnConnectionAsyncOverride(input, completion)
+            return try deleteVpnConnectionAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5930,9 +6529,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteVpnConnectionRequest object being passed to this operation.
      */
-    public func deleteVpnConnectionSync(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest) throws {
+    public func deleteVpnConnectionSync(
+            input: ElasticComputeCloudModel.DeleteVpnConnectionRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteVpnConnectionSyncOverride = deleteVpnConnectionSyncOverride {
-            return try deleteVpnConnectionSyncOverride(input)
+            return try deleteVpnConnectionSyncOverride(input, reporting)
         }
 
         throw error
@@ -5946,9 +6547,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnConnectionRouteAsync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteVpnConnectionRouteAsync(
+            input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVpnConnectionRouteAsyncOverride = deleteVpnConnectionRouteAsyncOverride {
-            return try deleteVpnConnectionRouteAsyncOverride(input, completion)
+            return try deleteVpnConnectionRouteAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5960,9 +6564,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteVpnConnectionRouteRequest object being passed to this operation.
      */
-    public func deleteVpnConnectionRouteSync(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest) throws {
+    public func deleteVpnConnectionRouteSync(
+            input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteVpnConnectionRouteSyncOverride = deleteVpnConnectionRouteSyncOverride {
-            return try deleteVpnConnectionRouteSyncOverride(input)
+            return try deleteVpnConnectionRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -5976,9 +6582,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnGatewayAsync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteVpnGatewayAsync(
+            input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteVpnGatewayAsyncOverride = deleteVpnGatewayAsyncOverride {
-            return try deleteVpnGatewayAsyncOverride(input, completion)
+            return try deleteVpnGatewayAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -5990,9 +6599,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeleteVpnGatewayRequest object being passed to this operation.
      */
-    public func deleteVpnGatewaySync(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest) throws {
+    public func deleteVpnGatewaySync(
+            input: ElasticComputeCloudModel.DeleteVpnGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteVpnGatewaySyncOverride = deleteVpnGatewaySyncOverride {
-            return try deleteVpnGatewaySyncOverride(input)
+            return try deleteVpnGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -6007,12 +6618,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DeprovisionByoipCidrResult
            object will be validated before being returned to caller.
      */
-    public func deprovisionByoipCidrAsync(input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeprovisionByoipCidrResult>) -> ()) throws {
+    public func deprovisionByoipCidrAsync(
+            input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, HTTPClientError>) -> ()) throws {
         if let deprovisionByoipCidrAsyncOverride = deprovisionByoipCidrAsyncOverride {
-            return try deprovisionByoipCidrAsyncOverride(input, completion)
+            return try deprovisionByoipCidrAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6023,9 +6637,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DeprovisionByoipCidrResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deprovisionByoipCidrSync(input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest) throws -> ElasticComputeCloudModel.DeprovisionByoipCidrResult {
+    public func deprovisionByoipCidrSync(
+            input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeprovisionByoipCidrResult {
         if let deprovisionByoipCidrSyncOverride = deprovisionByoipCidrSyncOverride {
-            return try deprovisionByoipCidrSyncOverride(input)
+            return try deprovisionByoipCidrSyncOverride(input, reporting)
         }
 
         throw error
@@ -6039,9 +6655,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deregisterImageAsync(input: ElasticComputeCloudModel.DeregisterImageRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deregisterImageAsync(
+            input: ElasticComputeCloudModel.DeregisterImageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deregisterImageAsyncOverride = deregisterImageAsyncOverride {
-            return try deregisterImageAsyncOverride(input, completion)
+            return try deregisterImageAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -6053,9 +6672,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DeregisterImageRequest object being passed to this operation.
      */
-    public func deregisterImageSync(input: ElasticComputeCloudModel.DeregisterImageRequest) throws {
+    public func deregisterImageSync(
+            input: ElasticComputeCloudModel.DeregisterImageRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deregisterImageSyncOverride = deregisterImageSyncOverride {
-            return try deregisterImageSyncOverride(input)
+            return try deregisterImageSyncOverride(input, reporting)
         }
 
         throw error
@@ -6070,12 +6691,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeAccountAttributesResult
            object will be validated before being returned to caller.
      */
-    public func describeAccountAttributesAsync(input: ElasticComputeCloudModel.DescribeAccountAttributesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeAccountAttributesResult>) -> ()) throws {
+    public func describeAccountAttributesAsync(
+            input: ElasticComputeCloudModel.DescribeAccountAttributesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, HTTPClientError>) -> ()) throws {
         if let describeAccountAttributesAsyncOverride = describeAccountAttributesAsyncOverride {
-            return try describeAccountAttributesAsyncOverride(input, completion)
+            return try describeAccountAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6086,9 +6710,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeAccountAttributesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAccountAttributesSync(input: ElasticComputeCloudModel.DescribeAccountAttributesRequest) throws -> ElasticComputeCloudModel.DescribeAccountAttributesResult {
+    public func describeAccountAttributesSync(
+            input: ElasticComputeCloudModel.DescribeAccountAttributesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeAccountAttributesResult {
         if let describeAccountAttributesSyncOverride = describeAccountAttributesSyncOverride {
-            return try describeAccountAttributesSyncOverride(input)
+            return try describeAccountAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -6103,12 +6729,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeAddressesResult
            object will be validated before being returned to caller.
      */
-    public func describeAddressesAsync(input: ElasticComputeCloudModel.DescribeAddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeAddressesResult>) -> ()) throws {
+    public func describeAddressesAsync(
+            input: ElasticComputeCloudModel.DescribeAddressesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesResult, HTTPClientError>) -> ()) throws {
         if let describeAddressesAsyncOverride = describeAddressesAsyncOverride {
-            return try describeAddressesAsyncOverride(input, completion)
+            return try describeAddressesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6119,9 +6748,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeAddressesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAddressesSync(input: ElasticComputeCloudModel.DescribeAddressesRequest) throws -> ElasticComputeCloudModel.DescribeAddressesResult {
+    public func describeAddressesSync(
+            input: ElasticComputeCloudModel.DescribeAddressesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeAddressesResult {
         if let describeAddressesSyncOverride = describeAddressesSyncOverride {
-            return try describeAddressesSyncOverride(input)
+            return try describeAddressesSyncOverride(input, reporting)
         }
 
         throw error
@@ -6136,12 +6767,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeAggregateIdFormatResult
            object will be validated before being returned to caller.
      */
-    public func describeAggregateIdFormatAsync(input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeAggregateIdFormatResult>) -> ()) throws {
+    public func describeAggregateIdFormatAsync(
+            input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, HTTPClientError>) -> ()) throws {
         if let describeAggregateIdFormatAsyncOverride = describeAggregateIdFormatAsyncOverride {
-            return try describeAggregateIdFormatAsyncOverride(input, completion)
+            return try describeAggregateIdFormatAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6152,9 +6786,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeAggregateIdFormatResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAggregateIdFormatSync(input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeAggregateIdFormatResult {
+    public func describeAggregateIdFormatSync(
+            input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeAggregateIdFormatResult {
         if let describeAggregateIdFormatSyncOverride = describeAggregateIdFormatSyncOverride {
-            return try describeAggregateIdFormatSyncOverride(input)
+            return try describeAggregateIdFormatSyncOverride(input, reporting)
         }
 
         throw error
@@ -6169,12 +6805,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeAvailabilityZonesResult
            object will be validated before being returned to caller.
      */
-    public func describeAvailabilityZonesAsync(input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeAvailabilityZonesResult>) -> ()) throws {
+    public func describeAvailabilityZonesAsync(
+            input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, HTTPClientError>) -> ()) throws {
         if let describeAvailabilityZonesAsyncOverride = describeAvailabilityZonesAsyncOverride {
-            return try describeAvailabilityZonesAsyncOverride(input, completion)
+            return try describeAvailabilityZonesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6185,9 +6824,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeAvailabilityZonesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAvailabilityZonesSync(input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest) throws -> ElasticComputeCloudModel.DescribeAvailabilityZonesResult {
+    public func describeAvailabilityZonesSync(
+            input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeAvailabilityZonesResult {
         if let describeAvailabilityZonesSyncOverride = describeAvailabilityZonesSyncOverride {
-            return try describeAvailabilityZonesSyncOverride(input)
+            return try describeAvailabilityZonesSyncOverride(input, reporting)
         }
 
         throw error
@@ -6202,12 +6843,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeBundleTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeBundleTasksAsync(input: ElasticComputeCloudModel.DescribeBundleTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeBundleTasksResult>) -> ()) throws {
+    public func describeBundleTasksAsync(
+            input: ElasticComputeCloudModel.DescribeBundleTasksRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeBundleTasksResult, HTTPClientError>) -> ()) throws {
         if let describeBundleTasksAsyncOverride = describeBundleTasksAsyncOverride {
-            return try describeBundleTasksAsyncOverride(input, completion)
+            return try describeBundleTasksAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6218,9 +6862,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeBundleTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeBundleTasksSync(input: ElasticComputeCloudModel.DescribeBundleTasksRequest) throws -> ElasticComputeCloudModel.DescribeBundleTasksResult {
+    public func describeBundleTasksSync(
+            input: ElasticComputeCloudModel.DescribeBundleTasksRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeBundleTasksResult {
         if let describeBundleTasksSyncOverride = describeBundleTasksSyncOverride {
-            return try describeBundleTasksSyncOverride(input)
+            return try describeBundleTasksSyncOverride(input, reporting)
         }
 
         throw error
@@ -6235,12 +6881,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeByoipCidrsResult
            object will be validated before being returned to caller.
      */
-    public func describeByoipCidrsAsync(input: ElasticComputeCloudModel.DescribeByoipCidrsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeByoipCidrsResult>) -> ()) throws {
+    public func describeByoipCidrsAsync(
+            input: ElasticComputeCloudModel.DescribeByoipCidrsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, HTTPClientError>) -> ()) throws {
         if let describeByoipCidrsAsyncOverride = describeByoipCidrsAsyncOverride {
-            return try describeByoipCidrsAsyncOverride(input, completion)
+            return try describeByoipCidrsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6251,9 +6900,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeByoipCidrsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeByoipCidrsSync(input: ElasticComputeCloudModel.DescribeByoipCidrsRequest) throws -> ElasticComputeCloudModel.DescribeByoipCidrsResult {
+    public func describeByoipCidrsSync(
+            input: ElasticComputeCloudModel.DescribeByoipCidrsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeByoipCidrsResult {
         if let describeByoipCidrsSyncOverride = describeByoipCidrsSyncOverride {
-            return try describeByoipCidrsSyncOverride(input)
+            return try describeByoipCidrsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6268,12 +6919,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeCapacityReservationsResult
            object will be validated before being returned to caller.
      */
-    public func describeCapacityReservationsAsync(input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeCapacityReservationsResult>) -> ()) throws {
+    public func describeCapacityReservationsAsync(
+            input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, HTTPClientError>) -> ()) throws {
         if let describeCapacityReservationsAsyncOverride = describeCapacityReservationsAsyncOverride {
-            return try describeCapacityReservationsAsyncOverride(input, completion)
+            return try describeCapacityReservationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6284,9 +6938,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeCapacityReservationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeCapacityReservationsSync(input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest) throws -> ElasticComputeCloudModel.DescribeCapacityReservationsResult {
+    public func describeCapacityReservationsSync(
+            input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeCapacityReservationsResult {
         if let describeCapacityReservationsSyncOverride = describeCapacityReservationsSyncOverride {
-            return try describeCapacityReservationsSyncOverride(input)
+            return try describeCapacityReservationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6301,12 +6957,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeClassicLinkInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeClassicLinkInstancesAsync(input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult>) -> ()) throws {
+    public func describeClassicLinkInstancesAsync(
+            input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, HTTPClientError>) -> ()) throws {
         if let describeClassicLinkInstancesAsyncOverride = describeClassicLinkInstancesAsyncOverride {
-            return try describeClassicLinkInstancesAsyncOverride(input, completion)
+            return try describeClassicLinkInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6317,9 +6976,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeClassicLinkInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClassicLinkInstancesSync(input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult {
+    public func describeClassicLinkInstancesSync(
+            input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult {
         if let describeClassicLinkInstancesSyncOverride = describeClassicLinkInstancesSyncOverride {
-            return try describeClassicLinkInstancesSyncOverride(input)
+            return try describeClassicLinkInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -6334,12 +6995,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeClientVpnAuthorizationRulesResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnAuthorizationRulesAsync(input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult>) -> ()) throws {
+    public func describeClientVpnAuthorizationRulesAsync(
+            input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, HTTPClientError>) -> ()) throws {
         if let describeClientVpnAuthorizationRulesAsyncOverride = describeClientVpnAuthorizationRulesAsyncOverride {
-            return try describeClientVpnAuthorizationRulesAsyncOverride(input, completion)
+            return try describeClientVpnAuthorizationRulesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6350,9 +7014,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeClientVpnAuthorizationRulesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnAuthorizationRulesSync(input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult {
+    public func describeClientVpnAuthorizationRulesSync(
+            input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult {
         if let describeClientVpnAuthorizationRulesSyncOverride = describeClientVpnAuthorizationRulesSyncOverride {
-            return try describeClientVpnAuthorizationRulesSyncOverride(input)
+            return try describeClientVpnAuthorizationRulesSyncOverride(input, reporting)
         }
 
         throw error
@@ -6367,12 +7033,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeClientVpnConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnConnectionsAsync(input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult>) -> ()) throws {
+    public func describeClientVpnConnectionsAsync(
+            input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, HTTPClientError>) -> ()) throws {
         if let describeClientVpnConnectionsAsyncOverride = describeClientVpnConnectionsAsyncOverride {
-            return try describeClientVpnConnectionsAsyncOverride(input, completion)
+            return try describeClientVpnConnectionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6383,9 +7052,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeClientVpnConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnConnectionsSync(input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult {
+    public func describeClientVpnConnectionsSync(
+            input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult {
         if let describeClientVpnConnectionsSyncOverride = describeClientVpnConnectionsSyncOverride {
-            return try describeClientVpnConnectionsSyncOverride(input)
+            return try describeClientVpnConnectionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6400,12 +7071,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeClientVpnEndpointsResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnEndpointsAsync(input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult>) -> ()) throws {
+    public func describeClientVpnEndpointsAsync(
+            input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, HTTPClientError>) -> ()) throws {
         if let describeClientVpnEndpointsAsyncOverride = describeClientVpnEndpointsAsyncOverride {
-            return try describeClientVpnEndpointsAsyncOverride(input, completion)
+            return try describeClientVpnEndpointsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6416,9 +7090,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeClientVpnEndpointsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnEndpointsSync(input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult {
+    public func describeClientVpnEndpointsSync(
+            input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult {
         if let describeClientVpnEndpointsSyncOverride = describeClientVpnEndpointsSyncOverride {
-            return try describeClientVpnEndpointsSyncOverride(input)
+            return try describeClientVpnEndpointsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6433,12 +7109,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeClientVpnRoutesResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnRoutesAsync(input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnRoutesResult>) -> ()) throws {
+    public func describeClientVpnRoutesAsync(
+            input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, HTTPClientError>) -> ()) throws {
         if let describeClientVpnRoutesAsyncOverride = describeClientVpnRoutesAsyncOverride {
-            return try describeClientVpnRoutesAsyncOverride(input, completion)
+            return try describeClientVpnRoutesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6449,9 +7128,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeClientVpnRoutesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnRoutesSync(input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult {
+    public func describeClientVpnRoutesSync(
+            input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult {
         if let describeClientVpnRoutesSyncOverride = describeClientVpnRoutesSyncOverride {
-            return try describeClientVpnRoutesSyncOverride(input)
+            return try describeClientVpnRoutesSyncOverride(input, reporting)
         }
 
         throw error
@@ -6466,12 +7147,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeClientVpnTargetNetworksResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnTargetNetworksAsync(input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult>) -> ()) throws {
+    public func describeClientVpnTargetNetworksAsync(
+            input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, HTTPClientError>) -> ()) throws {
         if let describeClientVpnTargetNetworksAsyncOverride = describeClientVpnTargetNetworksAsyncOverride {
-            return try describeClientVpnTargetNetworksAsyncOverride(input, completion)
+            return try describeClientVpnTargetNetworksAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6482,9 +7166,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeClientVpnTargetNetworksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnTargetNetworksSync(input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult {
+    public func describeClientVpnTargetNetworksSync(
+            input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult {
         if let describeClientVpnTargetNetworksSyncOverride = describeClientVpnTargetNetworksSyncOverride {
-            return try describeClientVpnTargetNetworksSyncOverride(input)
+            return try describeClientVpnTargetNetworksSyncOverride(input, reporting)
         }
 
         throw error
@@ -6499,12 +7185,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeConversionTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeConversionTasksAsync(input: ElasticComputeCloudModel.DescribeConversionTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeConversionTasksResult>) -> ()) throws {
+    public func describeConversionTasksAsync(
+            input: ElasticComputeCloudModel.DescribeConversionTasksRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeConversionTasksResult, HTTPClientError>) -> ()) throws {
         if let describeConversionTasksAsyncOverride = describeConversionTasksAsyncOverride {
-            return try describeConversionTasksAsyncOverride(input, completion)
+            return try describeConversionTasksAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6515,9 +7204,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeConversionTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeConversionTasksSync(input: ElasticComputeCloudModel.DescribeConversionTasksRequest) throws -> ElasticComputeCloudModel.DescribeConversionTasksResult {
+    public func describeConversionTasksSync(
+            input: ElasticComputeCloudModel.DescribeConversionTasksRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeConversionTasksResult {
         if let describeConversionTasksSyncOverride = describeConversionTasksSyncOverride {
-            return try describeConversionTasksSyncOverride(input)
+            return try describeConversionTasksSyncOverride(input, reporting)
         }
 
         throw error
@@ -6532,12 +7223,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeCustomerGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeCustomerGatewaysAsync(input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeCustomerGatewaysResult>) -> ()) throws {
+    public func describeCustomerGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, HTTPClientError>) -> ()) throws {
         if let describeCustomerGatewaysAsyncOverride = describeCustomerGatewaysAsyncOverride {
-            return try describeCustomerGatewaysAsyncOverride(input, completion)
+            return try describeCustomerGatewaysAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6548,9 +7242,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeCustomerGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeCustomerGatewaysSync(input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeCustomerGatewaysResult {
+    public func describeCustomerGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeCustomerGatewaysResult {
         if let describeCustomerGatewaysSyncOverride = describeCustomerGatewaysSyncOverride {
-            return try describeCustomerGatewaysSyncOverride(input)
+            return try describeCustomerGatewaysSyncOverride(input, reporting)
         }
 
         throw error
@@ -6565,12 +7261,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeDhcpOptionsResult
            object will be validated before being returned to caller.
      */
-    public func describeDhcpOptionsAsync(input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeDhcpOptionsResult>) -> ()) throws {
+    public func describeDhcpOptionsAsync(
+            input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, HTTPClientError>) -> ()) throws {
         if let describeDhcpOptionsAsyncOverride = describeDhcpOptionsAsyncOverride {
-            return try describeDhcpOptionsAsyncOverride(input, completion)
+            return try describeDhcpOptionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6581,9 +7280,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeDhcpOptionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeDhcpOptionsSync(input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest) throws -> ElasticComputeCloudModel.DescribeDhcpOptionsResult {
+    public func describeDhcpOptionsSync(
+            input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeDhcpOptionsResult {
         if let describeDhcpOptionsSyncOverride = describeDhcpOptionsSyncOverride {
-            return try describeDhcpOptionsSyncOverride(input)
+            return try describeDhcpOptionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6598,12 +7299,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeEgressOnlyInternetGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeEgressOnlyInternetGatewaysAsync(input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult>) -> ()) throws {
+    public func describeEgressOnlyInternetGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, HTTPClientError>) -> ()) throws {
         if let describeEgressOnlyInternetGatewaysAsyncOverride = describeEgressOnlyInternetGatewaysAsyncOverride {
-            return try describeEgressOnlyInternetGatewaysAsyncOverride(input, completion)
+            return try describeEgressOnlyInternetGatewaysAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6614,9 +7318,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeEgressOnlyInternetGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEgressOnlyInternetGatewaysSync(input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult {
+    public func describeEgressOnlyInternetGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult {
         if let describeEgressOnlyInternetGatewaysSyncOverride = describeEgressOnlyInternetGatewaysSyncOverride {
-            return try describeEgressOnlyInternetGatewaysSyncOverride(input)
+            return try describeEgressOnlyInternetGatewaysSyncOverride(input, reporting)
         }
 
         throw error
@@ -6631,12 +7337,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeElasticGpusResult
            object will be validated before being returned to caller.
      */
-    public func describeElasticGpusAsync(input: ElasticComputeCloudModel.DescribeElasticGpusRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeElasticGpusResult>) -> ()) throws {
+    public func describeElasticGpusAsync(
+            input: ElasticComputeCloudModel.DescribeElasticGpusRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeElasticGpusResult, HTTPClientError>) -> ()) throws {
         if let describeElasticGpusAsyncOverride = describeElasticGpusAsyncOverride {
-            return try describeElasticGpusAsyncOverride(input, completion)
+            return try describeElasticGpusAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6647,9 +7356,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeElasticGpusResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeElasticGpusSync(input: ElasticComputeCloudModel.DescribeElasticGpusRequest) throws -> ElasticComputeCloudModel.DescribeElasticGpusResult {
+    public func describeElasticGpusSync(
+            input: ElasticComputeCloudModel.DescribeElasticGpusRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeElasticGpusResult {
         if let describeElasticGpusSyncOverride = describeElasticGpusSyncOverride {
-            return try describeElasticGpusSyncOverride(input)
+            return try describeElasticGpusSyncOverride(input, reporting)
         }
 
         throw error
@@ -6664,12 +7375,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeExportTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeExportTasksAsync(input: ElasticComputeCloudModel.DescribeExportTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeExportTasksResult>) -> ()) throws {
+    public func describeExportTasksAsync(
+            input: ElasticComputeCloudModel.DescribeExportTasksRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportTasksResult, HTTPClientError>) -> ()) throws {
         if let describeExportTasksAsyncOverride = describeExportTasksAsyncOverride {
-            return try describeExportTasksAsyncOverride(input, completion)
+            return try describeExportTasksAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6680,9 +7394,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeExportTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeExportTasksSync(input: ElasticComputeCloudModel.DescribeExportTasksRequest) throws -> ElasticComputeCloudModel.DescribeExportTasksResult {
+    public func describeExportTasksSync(
+            input: ElasticComputeCloudModel.DescribeExportTasksRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeExportTasksResult {
         if let describeExportTasksSyncOverride = describeExportTasksSyncOverride {
-            return try describeExportTasksSyncOverride(input)
+            return try describeExportTasksSyncOverride(input, reporting)
         }
 
         throw error
@@ -6697,12 +7413,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeFleetHistoryResult
            object will be validated before being returned to caller.
      */
-    public func describeFleetHistoryAsync(input: ElasticComputeCloudModel.DescribeFleetHistoryRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFleetHistoryResult>) -> ()) throws {
+    public func describeFleetHistoryAsync(
+            input: ElasticComputeCloudModel.DescribeFleetHistoryRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, HTTPClientError>) -> ()) throws {
         if let describeFleetHistoryAsyncOverride = describeFleetHistoryAsyncOverride {
-            return try describeFleetHistoryAsyncOverride(input, completion)
+            return try describeFleetHistoryAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6713,9 +7432,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeFleetHistoryResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFleetHistorySync(input: ElasticComputeCloudModel.DescribeFleetHistoryRequest) throws -> ElasticComputeCloudModel.DescribeFleetHistoryResult {
+    public func describeFleetHistorySync(
+            input: ElasticComputeCloudModel.DescribeFleetHistoryRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFleetHistoryResult {
         if let describeFleetHistorySyncOverride = describeFleetHistorySyncOverride {
-            return try describeFleetHistorySyncOverride(input)
+            return try describeFleetHistorySyncOverride(input, reporting)
         }
 
         throw error
@@ -6730,12 +7451,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeFleetInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeFleetInstancesAsync(input: ElasticComputeCloudModel.DescribeFleetInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFleetInstancesResult>) -> ()) throws {
+    public func describeFleetInstancesAsync(
+            input: ElasticComputeCloudModel.DescribeFleetInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, HTTPClientError>) -> ()) throws {
         if let describeFleetInstancesAsyncOverride = describeFleetInstancesAsyncOverride {
-            return try describeFleetInstancesAsyncOverride(input, completion)
+            return try describeFleetInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6746,9 +7470,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeFleetInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFleetInstancesSync(input: ElasticComputeCloudModel.DescribeFleetInstancesRequest) throws -> ElasticComputeCloudModel.DescribeFleetInstancesResult {
+    public func describeFleetInstancesSync(
+            input: ElasticComputeCloudModel.DescribeFleetInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFleetInstancesResult {
         if let describeFleetInstancesSyncOverride = describeFleetInstancesSyncOverride {
-            return try describeFleetInstancesSyncOverride(input)
+            return try describeFleetInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -6763,12 +7489,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeFleetsResult
            object will be validated before being returned to caller.
      */
-    public func describeFleetsAsync(input: ElasticComputeCloudModel.DescribeFleetsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFleetsResult>) -> ()) throws {
+    public func describeFleetsAsync(
+            input: ElasticComputeCloudModel.DescribeFleetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetsResult, HTTPClientError>) -> ()) throws {
         if let describeFleetsAsyncOverride = describeFleetsAsyncOverride {
-            return try describeFleetsAsyncOverride(input, completion)
+            return try describeFleetsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6779,9 +7508,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeFleetsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFleetsSync(input: ElasticComputeCloudModel.DescribeFleetsRequest) throws -> ElasticComputeCloudModel.DescribeFleetsResult {
+    public func describeFleetsSync(
+            input: ElasticComputeCloudModel.DescribeFleetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFleetsResult {
         if let describeFleetsSyncOverride = describeFleetsSyncOverride {
-            return try describeFleetsSyncOverride(input)
+            return try describeFleetsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6796,12 +7527,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeFlowLogsResult
            object will be validated before being returned to caller.
      */
-    public func describeFlowLogsAsync(input: ElasticComputeCloudModel.DescribeFlowLogsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFlowLogsResult>) -> ()) throws {
+    public func describeFlowLogsAsync(
+            input: ElasticComputeCloudModel.DescribeFlowLogsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFlowLogsResult, HTTPClientError>) -> ()) throws {
         if let describeFlowLogsAsyncOverride = describeFlowLogsAsyncOverride {
-            return try describeFlowLogsAsyncOverride(input, completion)
+            return try describeFlowLogsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6812,9 +7546,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeFlowLogsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFlowLogsSync(input: ElasticComputeCloudModel.DescribeFlowLogsRequest) throws -> ElasticComputeCloudModel.DescribeFlowLogsResult {
+    public func describeFlowLogsSync(
+            input: ElasticComputeCloudModel.DescribeFlowLogsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFlowLogsResult {
         if let describeFlowLogsSyncOverride = describeFlowLogsSyncOverride {
-            return try describeFlowLogsSyncOverride(input)
+            return try describeFlowLogsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6829,12 +7565,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeFpgaImageAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeFpgaImageAttributeAsync(input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult>) -> ()) throws {
+    public func describeFpgaImageAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
         if let describeFpgaImageAttributeAsyncOverride = describeFpgaImageAttributeAsyncOverride {
-            return try describeFpgaImageAttributeAsyncOverride(input, completion)
+            return try describeFpgaImageAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6845,9 +7584,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeFpgaImageAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFpgaImageAttributeSync(input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.DescribeFpgaImageAttributeResult {
+    public func describeFpgaImageAttributeSync(
+            input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFpgaImageAttributeResult {
         if let describeFpgaImageAttributeSyncOverride = describeFpgaImageAttributeSyncOverride {
-            return try describeFpgaImageAttributeSyncOverride(input)
+            return try describeFpgaImageAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -6862,12 +7603,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeFpgaImagesResult
            object will be validated before being returned to caller.
      */
-    public func describeFpgaImagesAsync(input: ElasticComputeCloudModel.DescribeFpgaImagesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeFpgaImagesResult>) -> ()) throws {
+    public func describeFpgaImagesAsync(
+            input: ElasticComputeCloudModel.DescribeFpgaImagesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, HTTPClientError>) -> ()) throws {
         if let describeFpgaImagesAsyncOverride = describeFpgaImagesAsyncOverride {
-            return try describeFpgaImagesAsyncOverride(input, completion)
+            return try describeFpgaImagesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6878,9 +7622,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeFpgaImagesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFpgaImagesSync(input: ElasticComputeCloudModel.DescribeFpgaImagesRequest) throws -> ElasticComputeCloudModel.DescribeFpgaImagesResult {
+    public func describeFpgaImagesSync(
+            input: ElasticComputeCloudModel.DescribeFpgaImagesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFpgaImagesResult {
         if let describeFpgaImagesSyncOverride = describeFpgaImagesSyncOverride {
-            return try describeFpgaImagesSyncOverride(input)
+            return try describeFpgaImagesSyncOverride(input, reporting)
         }
 
         throw error
@@ -6895,12 +7641,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeHostReservationOfferingsResult
            object will be validated before being returned to caller.
      */
-    public func describeHostReservationOfferingsAsync(input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult>) -> ()) throws {
+    public func describeHostReservationOfferingsAsync(
+            input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, HTTPClientError>) -> ()) throws {
         if let describeHostReservationOfferingsAsyncOverride = describeHostReservationOfferingsAsyncOverride {
-            return try describeHostReservationOfferingsAsyncOverride(input, completion)
+            return try describeHostReservationOfferingsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6911,9 +7660,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeHostReservationOfferingsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeHostReservationOfferingsSync(input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest) throws -> ElasticComputeCloudModel.DescribeHostReservationOfferingsResult {
+    public func describeHostReservationOfferingsSync(
+            input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeHostReservationOfferingsResult {
         if let describeHostReservationOfferingsSyncOverride = describeHostReservationOfferingsSyncOverride {
-            return try describeHostReservationOfferingsSyncOverride(input)
+            return try describeHostReservationOfferingsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6928,12 +7679,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeHostReservationsResult
            object will be validated before being returned to caller.
      */
-    public func describeHostReservationsAsync(input: ElasticComputeCloudModel.DescribeHostReservationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeHostReservationsResult>) -> ()) throws {
+    public func describeHostReservationsAsync(
+            input: ElasticComputeCloudModel.DescribeHostReservationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationsResult, HTTPClientError>) -> ()) throws {
         if let describeHostReservationsAsyncOverride = describeHostReservationsAsyncOverride {
-            return try describeHostReservationsAsyncOverride(input, completion)
+            return try describeHostReservationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6944,9 +7698,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeHostReservationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeHostReservationsSync(input: ElasticComputeCloudModel.DescribeHostReservationsRequest) throws -> ElasticComputeCloudModel.DescribeHostReservationsResult {
+    public func describeHostReservationsSync(
+            input: ElasticComputeCloudModel.DescribeHostReservationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeHostReservationsResult {
         if let describeHostReservationsSyncOverride = describeHostReservationsSyncOverride {
-            return try describeHostReservationsSyncOverride(input)
+            return try describeHostReservationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6961,12 +7717,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeHostsResult
            object will be validated before being returned to caller.
      */
-    public func describeHostsAsync(input: ElasticComputeCloudModel.DescribeHostsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeHostsResult>) -> ()) throws {
+    public func describeHostsAsync(
+            input: ElasticComputeCloudModel.DescribeHostsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostsResult, HTTPClientError>) -> ()) throws {
         if let describeHostsAsyncOverride = describeHostsAsyncOverride {
-            return try describeHostsAsyncOverride(input, completion)
+            return try describeHostsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -6977,9 +7736,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeHostsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeHostsSync(input: ElasticComputeCloudModel.DescribeHostsRequest) throws -> ElasticComputeCloudModel.DescribeHostsResult {
+    public func describeHostsSync(
+            input: ElasticComputeCloudModel.DescribeHostsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeHostsResult {
         if let describeHostsSyncOverride = describeHostsSyncOverride {
-            return try describeHostsSyncOverride(input)
+            return try describeHostsSyncOverride(input, reporting)
         }
 
         throw error
@@ -6994,12 +7755,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeIamInstanceProfileAssociationsResult
            object will be validated before being returned to caller.
      */
-    public func describeIamInstanceProfileAssociationsAsync(input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult>) -> ()) throws {
+    public func describeIamInstanceProfileAssociationsAsync(
+            input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, HTTPClientError>) -> ()) throws {
         if let describeIamInstanceProfileAssociationsAsyncOverride = describeIamInstanceProfileAssociationsAsyncOverride {
-            return try describeIamInstanceProfileAssociationsAsyncOverride(input, completion)
+            return try describeIamInstanceProfileAssociationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7010,9 +7774,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeIamInstanceProfileAssociationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeIamInstanceProfileAssociationsSync(input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult {
+    public func describeIamInstanceProfileAssociationsSync(
+            input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult {
         if let describeIamInstanceProfileAssociationsSyncOverride = describeIamInstanceProfileAssociationsSyncOverride {
-            return try describeIamInstanceProfileAssociationsSyncOverride(input)
+            return try describeIamInstanceProfileAssociationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7027,12 +7793,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeIdFormatResult
            object will be validated before being returned to caller.
      */
-    public func describeIdFormatAsync(input: ElasticComputeCloudModel.DescribeIdFormatRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeIdFormatResult>) -> ()) throws {
+    public func describeIdFormatAsync(
+            input: ElasticComputeCloudModel.DescribeIdFormatRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdFormatResult, HTTPClientError>) -> ()) throws {
         if let describeIdFormatAsyncOverride = describeIdFormatAsyncOverride {
-            return try describeIdFormatAsyncOverride(input, completion)
+            return try describeIdFormatAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7043,9 +7812,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeIdFormatResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeIdFormatSync(input: ElasticComputeCloudModel.DescribeIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeIdFormatResult {
+    public func describeIdFormatSync(
+            input: ElasticComputeCloudModel.DescribeIdFormatRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeIdFormatResult {
         if let describeIdFormatSyncOverride = describeIdFormatSyncOverride {
-            return try describeIdFormatSyncOverride(input)
+            return try describeIdFormatSyncOverride(input, reporting)
         }
 
         throw error
@@ -7060,12 +7831,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeIdentityIdFormatResult
            object will be validated before being returned to caller.
      */
-    public func describeIdentityIdFormatAsync(input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeIdentityIdFormatResult>) -> ()) throws {
+    public func describeIdentityIdFormatAsync(
+            input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, HTTPClientError>) -> ()) throws {
         if let describeIdentityIdFormatAsyncOverride = describeIdentityIdFormatAsyncOverride {
-            return try describeIdentityIdFormatAsyncOverride(input, completion)
+            return try describeIdentityIdFormatAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7076,9 +7850,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeIdentityIdFormatResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeIdentityIdFormatSync(input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeIdentityIdFormatResult {
+    public func describeIdentityIdFormatSync(
+            input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeIdentityIdFormatResult {
         if let describeIdentityIdFormatSyncOverride = describeIdentityIdFormatSyncOverride {
-            return try describeIdentityIdFormatSyncOverride(input)
+            return try describeIdentityIdFormatSyncOverride(input, reporting)
         }
 
         throw error
@@ -7093,12 +7869,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ImageAttribute
            object will be validated before being returned to caller.
      */
-    public func describeImageAttributeAsync(input: ElasticComputeCloudModel.DescribeImageAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImageAttribute>) -> ()) throws {
+    public func describeImageAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeImageAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ImageAttribute, HTTPClientError>) -> ()) throws {
         if let describeImageAttributeAsyncOverride = describeImageAttributeAsyncOverride {
-            return try describeImageAttributeAsyncOverride(input, completion)
+            return try describeImageAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7109,9 +7888,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ImageAttribute object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeImageAttributeSync(input: ElasticComputeCloudModel.DescribeImageAttributeRequest) throws -> ElasticComputeCloudModel.ImageAttribute {
+    public func describeImageAttributeSync(
+            input: ElasticComputeCloudModel.DescribeImageAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImageAttribute {
         if let describeImageAttributeSyncOverride = describeImageAttributeSyncOverride {
-            return try describeImageAttributeSyncOverride(input)
+            return try describeImageAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -7126,12 +7907,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeImagesResult
            object will be validated before being returned to caller.
      */
-    public func describeImagesAsync(input: ElasticComputeCloudModel.DescribeImagesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeImagesResult>) -> ()) throws {
+    public func describeImagesAsync(
+            input: ElasticComputeCloudModel.DescribeImagesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImagesResult, HTTPClientError>) -> ()) throws {
         if let describeImagesAsyncOverride = describeImagesAsyncOverride {
-            return try describeImagesAsyncOverride(input, completion)
+            return try describeImagesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7142,9 +7926,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeImagesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeImagesSync(input: ElasticComputeCloudModel.DescribeImagesRequest) throws -> ElasticComputeCloudModel.DescribeImagesResult {
+    public func describeImagesSync(
+            input: ElasticComputeCloudModel.DescribeImagesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeImagesResult {
         if let describeImagesSyncOverride = describeImagesSyncOverride {
-            return try describeImagesSyncOverride(input)
+            return try describeImagesSyncOverride(input, reporting)
         }
 
         throw error
@@ -7159,12 +7945,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeImportImageTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeImportImageTasksAsync(input: ElasticComputeCloudModel.DescribeImportImageTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeImportImageTasksResult>) -> ()) throws {
+    public func describeImportImageTasksAsync(
+            input: ElasticComputeCloudModel.DescribeImportImageTasksRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, HTTPClientError>) -> ()) throws {
         if let describeImportImageTasksAsyncOverride = describeImportImageTasksAsyncOverride {
-            return try describeImportImageTasksAsyncOverride(input, completion)
+            return try describeImportImageTasksAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7175,9 +7964,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeImportImageTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeImportImageTasksSync(input: ElasticComputeCloudModel.DescribeImportImageTasksRequest) throws -> ElasticComputeCloudModel.DescribeImportImageTasksResult {
+    public func describeImportImageTasksSync(
+            input: ElasticComputeCloudModel.DescribeImportImageTasksRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeImportImageTasksResult {
         if let describeImportImageTasksSyncOverride = describeImportImageTasksSyncOverride {
-            return try describeImportImageTasksSyncOverride(input)
+            return try describeImportImageTasksSyncOverride(input, reporting)
         }
 
         throw error
@@ -7192,12 +7983,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeImportSnapshotTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeImportSnapshotTasksAsync(input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult>) -> ()) throws {
+    public func describeImportSnapshotTasksAsync(
+            input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, HTTPClientError>) -> ()) throws {
         if let describeImportSnapshotTasksAsyncOverride = describeImportSnapshotTasksAsyncOverride {
-            return try describeImportSnapshotTasksAsyncOverride(input, completion)
+            return try describeImportSnapshotTasksAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7208,9 +8002,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeImportSnapshotTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeImportSnapshotTasksSync(input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest) throws -> ElasticComputeCloudModel.DescribeImportSnapshotTasksResult {
+    public func describeImportSnapshotTasksSync(
+            input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeImportSnapshotTasksResult {
         if let describeImportSnapshotTasksSyncOverride = describeImportSnapshotTasksSyncOverride {
-            return try describeImportSnapshotTasksSyncOverride(input)
+            return try describeImportSnapshotTasksSyncOverride(input, reporting)
         }
 
         throw error
@@ -7225,12 +8021,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The InstanceAttribute
            object will be validated before being returned to caller.
      */
-    public func describeInstanceAttributeAsync(input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.InstanceAttribute>) -> ()) throws {
+    public func describeInstanceAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.InstanceAttribute, HTTPClientError>) -> ()) throws {
         if let describeInstanceAttributeAsyncOverride = describeInstanceAttributeAsyncOverride {
-            return try describeInstanceAttributeAsyncOverride(input, completion)
+            return try describeInstanceAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7241,9 +8040,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The InstanceAttribute object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstanceAttributeSync(input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest) throws -> ElasticComputeCloudModel.InstanceAttribute {
+    public func describeInstanceAttributeSync(
+            input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.InstanceAttribute {
         if let describeInstanceAttributeSyncOverride = describeInstanceAttributeSyncOverride {
-            return try describeInstanceAttributeSyncOverride(input)
+            return try describeInstanceAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -7258,12 +8059,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeInstanceCreditSpecificationsResult
            object will be validated before being returned to caller.
      */
-    public func describeInstanceCreditSpecificationsAsync(input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult>) -> ()) throws {
+    public func describeInstanceCreditSpecificationsAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, HTTPClientError>) -> ()) throws {
         if let describeInstanceCreditSpecificationsAsyncOverride = describeInstanceCreditSpecificationsAsyncOverride {
-            return try describeInstanceCreditSpecificationsAsyncOverride(input, completion)
+            return try describeInstanceCreditSpecificationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7274,9 +8078,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeInstanceCreditSpecificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstanceCreditSpecificationsSync(input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult {
+    public func describeInstanceCreditSpecificationsSync(
+            input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult {
         if let describeInstanceCreditSpecificationsSyncOverride = describeInstanceCreditSpecificationsSyncOverride {
-            return try describeInstanceCreditSpecificationsSyncOverride(input)
+            return try describeInstanceCreditSpecificationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7291,12 +8097,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeInstanceStatusResult
            object will be validated before being returned to caller.
      */
-    public func describeInstanceStatusAsync(input: ElasticComputeCloudModel.DescribeInstanceStatusRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeInstanceStatusResult>) -> ()) throws {
+    public func describeInstanceStatusAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceStatusRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, HTTPClientError>) -> ()) throws {
         if let describeInstanceStatusAsyncOverride = describeInstanceStatusAsyncOverride {
-            return try describeInstanceStatusAsyncOverride(input, completion)
+            return try describeInstanceStatusAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7307,9 +8116,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeInstanceStatusResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstanceStatusSync(input: ElasticComputeCloudModel.DescribeInstanceStatusRequest) throws -> ElasticComputeCloudModel.DescribeInstanceStatusResult {
+    public func describeInstanceStatusSync(
+            input: ElasticComputeCloudModel.DescribeInstanceStatusRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstanceStatusResult {
         if let describeInstanceStatusSyncOverride = describeInstanceStatusSyncOverride {
-            return try describeInstanceStatusSyncOverride(input)
+            return try describeInstanceStatusSyncOverride(input, reporting)
         }
 
         throw error
@@ -7324,12 +8135,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeInstancesAsync(input: ElasticComputeCloudModel.DescribeInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeInstancesResult>) -> ()) throws {
+    public func describeInstancesAsync(
+            input: ElasticComputeCloudModel.DescribeInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstancesResult, HTTPClientError>) -> ()) throws {
         if let describeInstancesAsyncOverride = describeInstancesAsyncOverride {
-            return try describeInstancesAsyncOverride(input, completion)
+            return try describeInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7340,9 +8154,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstancesSync(input: ElasticComputeCloudModel.DescribeInstancesRequest) throws -> ElasticComputeCloudModel.DescribeInstancesResult {
+    public func describeInstancesSync(
+            input: ElasticComputeCloudModel.DescribeInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstancesResult {
         if let describeInstancesSyncOverride = describeInstancesSyncOverride {
-            return try describeInstancesSyncOverride(input)
+            return try describeInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -7357,12 +8173,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeInternetGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeInternetGatewaysAsync(input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeInternetGatewaysResult>) -> ()) throws {
+    public func describeInternetGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, HTTPClientError>) -> ()) throws {
         if let describeInternetGatewaysAsyncOverride = describeInternetGatewaysAsyncOverride {
-            return try describeInternetGatewaysAsyncOverride(input, completion)
+            return try describeInternetGatewaysAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7373,9 +8192,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeInternetGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInternetGatewaysSync(input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeInternetGatewaysResult {
+    public func describeInternetGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInternetGatewaysResult {
         if let describeInternetGatewaysSyncOverride = describeInternetGatewaysSyncOverride {
-            return try describeInternetGatewaysSyncOverride(input)
+            return try describeInternetGatewaysSyncOverride(input, reporting)
         }
 
         throw error
@@ -7390,12 +8211,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeKeyPairsResult
            object will be validated before being returned to caller.
      */
-    public func describeKeyPairsAsync(input: ElasticComputeCloudModel.DescribeKeyPairsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeKeyPairsResult>) -> ()) throws {
+    public func describeKeyPairsAsync(
+            input: ElasticComputeCloudModel.DescribeKeyPairsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeKeyPairsResult, HTTPClientError>) -> ()) throws {
         if let describeKeyPairsAsyncOverride = describeKeyPairsAsyncOverride {
-            return try describeKeyPairsAsyncOverride(input, completion)
+            return try describeKeyPairsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7406,9 +8230,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeKeyPairsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeKeyPairsSync(input: ElasticComputeCloudModel.DescribeKeyPairsRequest) throws -> ElasticComputeCloudModel.DescribeKeyPairsResult {
+    public func describeKeyPairsSync(
+            input: ElasticComputeCloudModel.DescribeKeyPairsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeKeyPairsResult {
         if let describeKeyPairsSyncOverride = describeKeyPairsSyncOverride {
-            return try describeKeyPairsSyncOverride(input)
+            return try describeKeyPairsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7423,12 +8249,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeLaunchTemplateVersionsResult
            object will be validated before being returned to caller.
      */
-    public func describeLaunchTemplateVersionsAsync(input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult>) -> ()) throws {
+    public func describeLaunchTemplateVersionsAsync(
+            input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, HTTPClientError>) -> ()) throws {
         if let describeLaunchTemplateVersionsAsyncOverride = describeLaunchTemplateVersionsAsyncOverride {
-            return try describeLaunchTemplateVersionsAsyncOverride(input, completion)
+            return try describeLaunchTemplateVersionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7439,9 +8268,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeLaunchTemplateVersionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLaunchTemplateVersionsSync(input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest) throws -> ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult {
+    public func describeLaunchTemplateVersionsSync(
+            input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult {
         if let describeLaunchTemplateVersionsSyncOverride = describeLaunchTemplateVersionsSyncOverride {
-            return try describeLaunchTemplateVersionsSyncOverride(input)
+            return try describeLaunchTemplateVersionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7456,12 +8287,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeLaunchTemplatesResult
            object will be validated before being returned to caller.
      */
-    public func describeLaunchTemplatesAsync(input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeLaunchTemplatesResult>) -> ()) throws {
+    public func describeLaunchTemplatesAsync(
+            input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, HTTPClientError>) -> ()) throws {
         if let describeLaunchTemplatesAsyncOverride = describeLaunchTemplatesAsyncOverride {
-            return try describeLaunchTemplatesAsyncOverride(input, completion)
+            return try describeLaunchTemplatesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7472,9 +8306,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeLaunchTemplatesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLaunchTemplatesSync(input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest) throws -> ElasticComputeCloudModel.DescribeLaunchTemplatesResult {
+    public func describeLaunchTemplatesSync(
+            input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLaunchTemplatesResult {
         if let describeLaunchTemplatesSyncOverride = describeLaunchTemplatesSyncOverride {
-            return try describeLaunchTemplatesSyncOverride(input)
+            return try describeLaunchTemplatesSyncOverride(input, reporting)
         }
 
         throw error
@@ -7489,12 +8325,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeMovingAddressesResult
            object will be validated before being returned to caller.
      */
-    public func describeMovingAddressesAsync(input: ElasticComputeCloudModel.DescribeMovingAddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeMovingAddressesResult>) -> ()) throws {
+    public func describeMovingAddressesAsync(
+            input: ElasticComputeCloudModel.DescribeMovingAddressesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, HTTPClientError>) -> ()) throws {
         if let describeMovingAddressesAsyncOverride = describeMovingAddressesAsyncOverride {
-            return try describeMovingAddressesAsyncOverride(input, completion)
+            return try describeMovingAddressesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7505,9 +8344,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeMovingAddressesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeMovingAddressesSync(input: ElasticComputeCloudModel.DescribeMovingAddressesRequest) throws -> ElasticComputeCloudModel.DescribeMovingAddressesResult {
+    public func describeMovingAddressesSync(
+            input: ElasticComputeCloudModel.DescribeMovingAddressesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeMovingAddressesResult {
         if let describeMovingAddressesSyncOverride = describeMovingAddressesSyncOverride {
-            return try describeMovingAddressesSyncOverride(input)
+            return try describeMovingAddressesSyncOverride(input, reporting)
         }
 
         throw error
@@ -7522,12 +8363,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeNatGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeNatGatewaysAsync(input: ElasticComputeCloudModel.DescribeNatGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNatGatewaysResult>) -> ()) throws {
+    public func describeNatGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeNatGatewaysRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, HTTPClientError>) -> ()) throws {
         if let describeNatGatewaysAsyncOverride = describeNatGatewaysAsyncOverride {
-            return try describeNatGatewaysAsyncOverride(input, completion)
+            return try describeNatGatewaysAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7538,9 +8382,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeNatGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNatGatewaysSync(input: ElasticComputeCloudModel.DescribeNatGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeNatGatewaysResult {
+    public func describeNatGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeNatGatewaysRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNatGatewaysResult {
         if let describeNatGatewaysSyncOverride = describeNatGatewaysSyncOverride {
-            return try describeNatGatewaysSyncOverride(input)
+            return try describeNatGatewaysSyncOverride(input, reporting)
         }
 
         throw error
@@ -7555,12 +8401,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeNetworkAclsResult
            object will be validated before being returned to caller.
      */
-    public func describeNetworkAclsAsync(input: ElasticComputeCloudModel.DescribeNetworkAclsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNetworkAclsResult>) -> ()) throws {
+    public func describeNetworkAclsAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkAclsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, HTTPClientError>) -> ()) throws {
         if let describeNetworkAclsAsyncOverride = describeNetworkAclsAsyncOverride {
-            return try describeNetworkAclsAsyncOverride(input, completion)
+            return try describeNetworkAclsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7571,9 +8420,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeNetworkAclsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNetworkAclsSync(input: ElasticComputeCloudModel.DescribeNetworkAclsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkAclsResult {
+    public func describeNetworkAclsSync(
+            input: ElasticComputeCloudModel.DescribeNetworkAclsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNetworkAclsResult {
         if let describeNetworkAclsSyncOverride = describeNetworkAclsSyncOverride {
-            return try describeNetworkAclsSyncOverride(input)
+            return try describeNetworkAclsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7588,12 +8439,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeNetworkInterfaceAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult>) -> ()) throws {
+    public func describeNetworkInterfaceAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, HTTPClientError>) -> ()) throws {
         if let describeNetworkInterfaceAttributeAsyncOverride = describeNetworkInterfaceAttributeAsyncOverride {
-            return try describeNetworkInterfaceAttributeAsyncOverride(input, completion)
+            return try describeNetworkInterfaceAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7604,9 +8458,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeNetworkInterfaceAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNetworkInterfaceAttributeSync(input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult {
+    public func describeNetworkInterfaceAttributeSync(
+            input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult {
         if let describeNetworkInterfaceAttributeSyncOverride = describeNetworkInterfaceAttributeSyncOverride {
-            return try describeNetworkInterfaceAttributeSyncOverride(input)
+            return try describeNetworkInterfaceAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -7621,12 +8477,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeNetworkInterfacePermissionsResult
            object will be validated before being returned to caller.
      */
-    public func describeNetworkInterfacePermissionsAsync(input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult>) -> ()) throws {
+    public func describeNetworkInterfacePermissionsAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, HTTPClientError>) -> ()) throws {
         if let describeNetworkInterfacePermissionsAsyncOverride = describeNetworkInterfacePermissionsAsyncOverride {
-            return try describeNetworkInterfacePermissionsAsyncOverride(input, completion)
+            return try describeNetworkInterfacePermissionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7637,9 +8496,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeNetworkInterfacePermissionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNetworkInterfacePermissionsSync(input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult {
+    public func describeNetworkInterfacePermissionsSync(
+            input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult {
         if let describeNetworkInterfacePermissionsSyncOverride = describeNetworkInterfacePermissionsSyncOverride {
-            return try describeNetworkInterfacePermissionsSyncOverride(input)
+            return try describeNetworkInterfacePermissionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7654,12 +8515,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeNetworkInterfacesResult
            object will be validated before being returned to caller.
      */
-    public func describeNetworkInterfacesAsync(input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeNetworkInterfacesResult>) -> ()) throws {
+    public func describeNetworkInterfacesAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, HTTPClientError>) -> ()) throws {
         if let describeNetworkInterfacesAsyncOverride = describeNetworkInterfacesAsyncOverride {
-            return try describeNetworkInterfacesAsyncOverride(input, completion)
+            return try describeNetworkInterfacesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7670,9 +8534,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeNetworkInterfacesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNetworkInterfacesSync(input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacesResult {
+    public func describeNetworkInterfacesSync(
+            input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacesResult {
         if let describeNetworkInterfacesSyncOverride = describeNetworkInterfacesSyncOverride {
-            return try describeNetworkInterfacesSyncOverride(input)
+            return try describeNetworkInterfacesSyncOverride(input, reporting)
         }
 
         throw error
@@ -7687,12 +8553,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribePlacementGroupsResult
            object will be validated before being returned to caller.
      */
-    public func describePlacementGroupsAsync(input: ElasticComputeCloudModel.DescribePlacementGroupsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribePlacementGroupsResult>) -> ()) throws {
+    public func describePlacementGroupsAsync(
+            input: ElasticComputeCloudModel.DescribePlacementGroupsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, HTTPClientError>) -> ()) throws {
         if let describePlacementGroupsAsyncOverride = describePlacementGroupsAsyncOverride {
-            return try describePlacementGroupsAsyncOverride(input, completion)
+            return try describePlacementGroupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7703,9 +8572,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribePlacementGroupsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describePlacementGroupsSync(input: ElasticComputeCloudModel.DescribePlacementGroupsRequest) throws -> ElasticComputeCloudModel.DescribePlacementGroupsResult {
+    public func describePlacementGroupsSync(
+            input: ElasticComputeCloudModel.DescribePlacementGroupsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribePlacementGroupsResult {
         if let describePlacementGroupsSyncOverride = describePlacementGroupsSyncOverride {
-            return try describePlacementGroupsSyncOverride(input)
+            return try describePlacementGroupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7720,12 +8591,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribePrefixListsResult
            object will be validated before being returned to caller.
      */
-    public func describePrefixListsAsync(input: ElasticComputeCloudModel.DescribePrefixListsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribePrefixListsResult>) -> ()) throws {
+    public func describePrefixListsAsync(
+            input: ElasticComputeCloudModel.DescribePrefixListsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrefixListsResult, HTTPClientError>) -> ()) throws {
         if let describePrefixListsAsyncOverride = describePrefixListsAsyncOverride {
-            return try describePrefixListsAsyncOverride(input, completion)
+            return try describePrefixListsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7736,9 +8610,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribePrefixListsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describePrefixListsSync(input: ElasticComputeCloudModel.DescribePrefixListsRequest) throws -> ElasticComputeCloudModel.DescribePrefixListsResult {
+    public func describePrefixListsSync(
+            input: ElasticComputeCloudModel.DescribePrefixListsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribePrefixListsResult {
         if let describePrefixListsSyncOverride = describePrefixListsSyncOverride {
-            return try describePrefixListsSyncOverride(input)
+            return try describePrefixListsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7753,12 +8629,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribePrincipalIdFormatResult
            object will be validated before being returned to caller.
      */
-    public func describePrincipalIdFormatAsync(input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribePrincipalIdFormatResult>) -> ()) throws {
+    public func describePrincipalIdFormatAsync(
+            input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, HTTPClientError>) -> ()) throws {
         if let describePrincipalIdFormatAsyncOverride = describePrincipalIdFormatAsyncOverride {
-            return try describePrincipalIdFormatAsyncOverride(input, completion)
+            return try describePrincipalIdFormatAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7769,9 +8648,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribePrincipalIdFormatResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describePrincipalIdFormatSync(input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest) throws -> ElasticComputeCloudModel.DescribePrincipalIdFormatResult {
+    public func describePrincipalIdFormatSync(
+            input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribePrincipalIdFormatResult {
         if let describePrincipalIdFormatSyncOverride = describePrincipalIdFormatSyncOverride {
-            return try describePrincipalIdFormatSyncOverride(input)
+            return try describePrincipalIdFormatSyncOverride(input, reporting)
         }
 
         throw error
@@ -7786,12 +8667,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribePublicIpv4PoolsResult
            object will be validated before being returned to caller.
      */
-    public func describePublicIpv4PoolsAsync(input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult>) -> ()) throws {
+    public func describePublicIpv4PoolsAsync(
+            input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, HTTPClientError>) -> ()) throws {
         if let describePublicIpv4PoolsAsyncOverride = describePublicIpv4PoolsAsyncOverride {
-            return try describePublicIpv4PoolsAsyncOverride(input, completion)
+            return try describePublicIpv4PoolsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7802,9 +8686,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribePublicIpv4PoolsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describePublicIpv4PoolsSync(input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest) throws -> ElasticComputeCloudModel.DescribePublicIpv4PoolsResult {
+    public func describePublicIpv4PoolsSync(
+            input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribePublicIpv4PoolsResult {
         if let describePublicIpv4PoolsSyncOverride = describePublicIpv4PoolsSyncOverride {
-            return try describePublicIpv4PoolsSyncOverride(input)
+            return try describePublicIpv4PoolsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7819,12 +8705,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeRegionsResult
            object will be validated before being returned to caller.
      */
-    public func describeRegionsAsync(input: ElasticComputeCloudModel.DescribeRegionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeRegionsResult>) -> ()) throws {
+    public func describeRegionsAsync(
+            input: ElasticComputeCloudModel.DescribeRegionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRegionsResult, HTTPClientError>) -> ()) throws {
         if let describeRegionsAsyncOverride = describeRegionsAsyncOverride {
-            return try describeRegionsAsyncOverride(input, completion)
+            return try describeRegionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7835,9 +8724,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeRegionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeRegionsSync(input: ElasticComputeCloudModel.DescribeRegionsRequest) throws -> ElasticComputeCloudModel.DescribeRegionsResult {
+    public func describeRegionsSync(
+            input: ElasticComputeCloudModel.DescribeRegionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeRegionsResult {
         if let describeRegionsSyncOverride = describeRegionsSyncOverride {
-            return try describeRegionsSyncOverride(input)
+            return try describeRegionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7852,12 +8743,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeReservedInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeReservedInstancesAsync(input: ElasticComputeCloudModel.DescribeReservedInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeReservedInstancesResult>) -> ()) throws {
+    public func describeReservedInstancesAsync(
+            input: ElasticComputeCloudModel.DescribeReservedInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, HTTPClientError>) -> ()) throws {
         if let describeReservedInstancesAsyncOverride = describeReservedInstancesAsyncOverride {
-            return try describeReservedInstancesAsyncOverride(input, completion)
+            return try describeReservedInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7868,9 +8762,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeReservedInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeReservedInstancesSync(input: ElasticComputeCloudModel.DescribeReservedInstancesRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesResult {
+    public func describeReservedInstancesSync(
+            input: ElasticComputeCloudModel.DescribeReservedInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeReservedInstancesResult {
         if let describeReservedInstancesSyncOverride = describeReservedInstancesSyncOverride {
-            return try describeReservedInstancesSyncOverride(input)
+            return try describeReservedInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -7885,12 +8781,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeReservedInstancesListingsResult
            object will be validated before being returned to caller.
      */
-    public func describeReservedInstancesListingsAsync(input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult>) -> ()) throws {
+    public func describeReservedInstancesListingsAsync(
+            input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, HTTPClientError>) -> ()) throws {
         if let describeReservedInstancesListingsAsyncOverride = describeReservedInstancesListingsAsyncOverride {
-            return try describeReservedInstancesListingsAsyncOverride(input, completion)
+            return try describeReservedInstancesListingsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7901,9 +8800,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeReservedInstancesListingsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeReservedInstancesListingsSync(input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesListingsResult {
+    public func describeReservedInstancesListingsSync(
+            input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeReservedInstancesListingsResult {
         if let describeReservedInstancesListingsSyncOverride = describeReservedInstancesListingsSyncOverride {
-            return try describeReservedInstancesListingsSyncOverride(input)
+            return try describeReservedInstancesListingsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7918,12 +8819,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeReservedInstancesModificationsResult
            object will be validated before being returned to caller.
      */
-    public func describeReservedInstancesModificationsAsync(input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult>) -> ()) throws {
+    public func describeReservedInstancesModificationsAsync(
+            input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, HTTPClientError>) -> ()) throws {
         if let describeReservedInstancesModificationsAsyncOverride = describeReservedInstancesModificationsAsyncOverride {
-            return try describeReservedInstancesModificationsAsyncOverride(input, completion)
+            return try describeReservedInstancesModificationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7934,9 +8838,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeReservedInstancesModificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeReservedInstancesModificationsSync(input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult {
+    public func describeReservedInstancesModificationsSync(
+            input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult {
         if let describeReservedInstancesModificationsSyncOverride = describeReservedInstancesModificationsSyncOverride {
-            return try describeReservedInstancesModificationsSyncOverride(input)
+            return try describeReservedInstancesModificationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7951,12 +8857,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeReservedInstancesOfferingsResult
            object will be validated before being returned to caller.
      */
-    public func describeReservedInstancesOfferingsAsync(input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult>) -> ()) throws {
+    public func describeReservedInstancesOfferingsAsync(
+            input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, HTTPClientError>) -> ()) throws {
         if let describeReservedInstancesOfferingsAsyncOverride = describeReservedInstancesOfferingsAsyncOverride {
-            return try describeReservedInstancesOfferingsAsyncOverride(input, completion)
+            return try describeReservedInstancesOfferingsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -7967,9 +8876,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeReservedInstancesOfferingsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeReservedInstancesOfferingsSync(input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult {
+    public func describeReservedInstancesOfferingsSync(
+            input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult {
         if let describeReservedInstancesOfferingsSyncOverride = describeReservedInstancesOfferingsSyncOverride {
-            return try describeReservedInstancesOfferingsSyncOverride(input)
+            return try describeReservedInstancesOfferingsSyncOverride(input, reporting)
         }
 
         throw error
@@ -7984,12 +8895,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeRouteTablesResult
            object will be validated before being returned to caller.
      */
-    public func describeRouteTablesAsync(input: ElasticComputeCloudModel.DescribeRouteTablesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeRouteTablesResult>) -> ()) throws {
+    public func describeRouteTablesAsync(
+            input: ElasticComputeCloudModel.DescribeRouteTablesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRouteTablesResult, HTTPClientError>) -> ()) throws {
         if let describeRouteTablesAsyncOverride = describeRouteTablesAsyncOverride {
-            return try describeRouteTablesAsyncOverride(input, completion)
+            return try describeRouteTablesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8000,9 +8914,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeRouteTablesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeRouteTablesSync(input: ElasticComputeCloudModel.DescribeRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeRouteTablesResult {
+    public func describeRouteTablesSync(
+            input: ElasticComputeCloudModel.DescribeRouteTablesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeRouteTablesResult {
         if let describeRouteTablesSyncOverride = describeRouteTablesSyncOverride {
-            return try describeRouteTablesSyncOverride(input)
+            return try describeRouteTablesSyncOverride(input, reporting)
         }
 
         throw error
@@ -8017,12 +8933,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeScheduledInstanceAvailabilityResult
            object will be validated before being returned to caller.
      */
-    public func describeScheduledInstanceAvailabilityAsync(input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult>) -> ()) throws {
+    public func describeScheduledInstanceAvailabilityAsync(
+            input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, HTTPClientError>) -> ()) throws {
         if let describeScheduledInstanceAvailabilityAsyncOverride = describeScheduledInstanceAvailabilityAsyncOverride {
-            return try describeScheduledInstanceAvailabilityAsyncOverride(input, completion)
+            return try describeScheduledInstanceAvailabilityAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8033,9 +8952,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeScheduledInstanceAvailabilityResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeScheduledInstanceAvailabilitySync(input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest) throws -> ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult {
+    public func describeScheduledInstanceAvailabilitySync(
+            input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult {
         if let describeScheduledInstanceAvailabilitySyncOverride = describeScheduledInstanceAvailabilitySyncOverride {
-            return try describeScheduledInstanceAvailabilitySyncOverride(input)
+            return try describeScheduledInstanceAvailabilitySyncOverride(input, reporting)
         }
 
         throw error
@@ -8050,12 +8971,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeScheduledInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeScheduledInstancesAsync(input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeScheduledInstancesResult>) -> ()) throws {
+    public func describeScheduledInstancesAsync(
+            input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, HTTPClientError>) -> ()) throws {
         if let describeScheduledInstancesAsyncOverride = describeScheduledInstancesAsyncOverride {
-            return try describeScheduledInstancesAsyncOverride(input, completion)
+            return try describeScheduledInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8066,9 +8990,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeScheduledInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeScheduledInstancesSync(input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest) throws -> ElasticComputeCloudModel.DescribeScheduledInstancesResult {
+    public func describeScheduledInstancesSync(
+            input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeScheduledInstancesResult {
         if let describeScheduledInstancesSyncOverride = describeScheduledInstancesSyncOverride {
-            return try describeScheduledInstancesSyncOverride(input)
+            return try describeScheduledInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -8083,12 +9009,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSecurityGroupReferencesResult
            object will be validated before being returned to caller.
      */
-    public func describeSecurityGroupReferencesAsync(input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult>) -> ()) throws {
+    public func describeSecurityGroupReferencesAsync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, HTTPClientError>) -> ()) throws {
         if let describeSecurityGroupReferencesAsyncOverride = describeSecurityGroupReferencesAsyncOverride {
-            return try describeSecurityGroupReferencesAsyncOverride(input, completion)
+            return try describeSecurityGroupReferencesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8099,9 +9028,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSecurityGroupReferencesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSecurityGroupReferencesSync(input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult {
+    public func describeSecurityGroupReferencesSync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult {
         if let describeSecurityGroupReferencesSyncOverride = describeSecurityGroupReferencesSyncOverride {
-            return try describeSecurityGroupReferencesSyncOverride(input)
+            return try describeSecurityGroupReferencesSyncOverride(input, reporting)
         }
 
         throw error
@@ -8116,12 +9047,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSecurityGroupsResult
            object will be validated before being returned to caller.
      */
-    public func describeSecurityGroupsAsync(input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSecurityGroupsResult>) -> ()) throws {
+    public func describeSecurityGroupsAsync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, HTTPClientError>) -> ()) throws {
         if let describeSecurityGroupsAsyncOverride = describeSecurityGroupsAsyncOverride {
-            return try describeSecurityGroupsAsyncOverride(input, completion)
+            return try describeSecurityGroupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8132,9 +9066,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSecurityGroupsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSecurityGroupsSync(input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupsResult {
+    public func describeSecurityGroupsSync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSecurityGroupsResult {
         if let describeSecurityGroupsSyncOverride = describeSecurityGroupsSyncOverride {
-            return try describeSecurityGroupsSyncOverride(input)
+            return try describeSecurityGroupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8149,12 +9085,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSnapshotAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeSnapshotAttributeAsync(input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSnapshotAttributeResult>) -> ()) throws {
+    public func describeSnapshotAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, HTTPClientError>) -> ()) throws {
         if let describeSnapshotAttributeAsyncOverride = describeSnapshotAttributeAsyncOverride {
-            return try describeSnapshotAttributeAsyncOverride(input, completion)
+            return try describeSnapshotAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8165,9 +9104,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSnapshotAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSnapshotAttributeSync(input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotAttributeResult {
+    public func describeSnapshotAttributeSync(
+            input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSnapshotAttributeResult {
         if let describeSnapshotAttributeSyncOverride = describeSnapshotAttributeSyncOverride {
-            return try describeSnapshotAttributeSyncOverride(input)
+            return try describeSnapshotAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -8182,12 +9123,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSnapshotsResult
            object will be validated before being returned to caller.
      */
-    public func describeSnapshotsAsync(input: ElasticComputeCloudModel.DescribeSnapshotsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSnapshotsResult>) -> ()) throws {
+    public func describeSnapshotsAsync(
+            input: ElasticComputeCloudModel.DescribeSnapshotsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotsResult, HTTPClientError>) -> ()) throws {
         if let describeSnapshotsAsyncOverride = describeSnapshotsAsyncOverride {
-            return try describeSnapshotsAsyncOverride(input, completion)
+            return try describeSnapshotsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8198,9 +9142,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSnapshotsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSnapshotsSync(input: ElasticComputeCloudModel.DescribeSnapshotsRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotsResult {
+    public func describeSnapshotsSync(
+            input: ElasticComputeCloudModel.DescribeSnapshotsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSnapshotsResult {
         if let describeSnapshotsSyncOverride = describeSnapshotsSyncOverride {
-            return try describeSnapshotsSyncOverride(input)
+            return try describeSnapshotsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8215,12 +9161,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSpotDatafeedSubscriptionResult
            object will be validated before being returned to caller.
      */
-    public func describeSpotDatafeedSubscriptionAsync(input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult>) -> ()) throws {
+    public func describeSpotDatafeedSubscriptionAsync(
+            input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, HTTPClientError>) -> ()) throws {
         if let describeSpotDatafeedSubscriptionAsyncOverride = describeSpotDatafeedSubscriptionAsyncOverride {
-            return try describeSpotDatafeedSubscriptionAsyncOverride(input, completion)
+            return try describeSpotDatafeedSubscriptionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8231,9 +9180,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSpotDatafeedSubscriptionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotDatafeedSubscriptionSync(input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest) throws -> ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult {
+    public func describeSpotDatafeedSubscriptionSync(
+            input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult {
         if let describeSpotDatafeedSubscriptionSyncOverride = describeSpotDatafeedSubscriptionSyncOverride {
-            return try describeSpotDatafeedSubscriptionSyncOverride(input)
+            return try describeSpotDatafeedSubscriptionSyncOverride(input, reporting)
         }
 
         throw error
@@ -8248,12 +9199,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSpotFleetInstancesResponse
            object will be validated before being returned to caller.
      */
-    public func describeSpotFleetInstancesAsync(input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse>) -> ()) throws {
+    public func describeSpotFleetInstancesAsync(
+            input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, HTTPClientError>) -> ()) throws {
         if let describeSpotFleetInstancesAsyncOverride = describeSpotFleetInstancesAsyncOverride {
-            return try describeSpotFleetInstancesAsyncOverride(input, completion)
+            return try describeSpotFleetInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8264,9 +9218,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSpotFleetInstancesResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotFleetInstancesSync(input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest) throws -> ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse {
+    public func describeSpotFleetInstancesSync(
+            input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse {
         if let describeSpotFleetInstancesSyncOverride = describeSpotFleetInstancesSyncOverride {
-            return try describeSpotFleetInstancesSyncOverride(input)
+            return try describeSpotFleetInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -8281,12 +9237,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSpotFleetRequestHistoryResponse
            object will be validated before being returned to caller.
      */
-    public func describeSpotFleetRequestHistoryAsync(input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse>) -> ()) throws {
+    public func describeSpotFleetRequestHistoryAsync(
+            input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, HTTPClientError>) -> ()) throws {
         if let describeSpotFleetRequestHistoryAsyncOverride = describeSpotFleetRequestHistoryAsyncOverride {
-            return try describeSpotFleetRequestHistoryAsyncOverride(input, completion)
+            return try describeSpotFleetRequestHistoryAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8297,9 +9256,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSpotFleetRequestHistoryResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotFleetRequestHistorySync(input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse {
+    public func describeSpotFleetRequestHistorySync(
+            input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse {
         if let describeSpotFleetRequestHistorySyncOverride = describeSpotFleetRequestHistorySyncOverride {
-            return try describeSpotFleetRequestHistorySyncOverride(input)
+            return try describeSpotFleetRequestHistorySyncOverride(input, reporting)
         }
 
         throw error
@@ -8314,12 +9275,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSpotFleetRequestsResponse
            object will be validated before being returned to caller.
      */
-    public func describeSpotFleetRequestsAsync(input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse>) -> ()) throws {
+    public func describeSpotFleetRequestsAsync(
+            input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, HTTPClientError>) -> ()) throws {
         if let describeSpotFleetRequestsAsyncOverride = describeSpotFleetRequestsAsyncOverride {
-            return try describeSpotFleetRequestsAsyncOverride(input, completion)
+            return try describeSpotFleetRequestsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8330,9 +9294,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSpotFleetRequestsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotFleetRequestsSync(input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse {
+    public func describeSpotFleetRequestsSync(
+            input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse {
         if let describeSpotFleetRequestsSyncOverride = describeSpotFleetRequestsSyncOverride {
-            return try describeSpotFleetRequestsSyncOverride(input)
+            return try describeSpotFleetRequestsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8347,12 +9313,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSpotInstanceRequestsResult
            object will be validated before being returned to caller.
      */
-    public func describeSpotInstanceRequestsAsync(input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult>) -> ()) throws {
+    public func describeSpotInstanceRequestsAsync(
+            input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, HTTPClientError>) -> ()) throws {
         if let describeSpotInstanceRequestsAsyncOverride = describeSpotInstanceRequestsAsyncOverride {
-            return try describeSpotInstanceRequestsAsyncOverride(input, completion)
+            return try describeSpotInstanceRequestsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8363,9 +9332,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSpotInstanceRequestsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotInstanceRequestsSync(input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest) throws -> ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult {
+    public func describeSpotInstanceRequestsSync(
+            input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult {
         if let describeSpotInstanceRequestsSyncOverride = describeSpotInstanceRequestsSyncOverride {
-            return try describeSpotInstanceRequestsSyncOverride(input)
+            return try describeSpotInstanceRequestsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8380,12 +9351,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSpotPriceHistoryResult
            object will be validated before being returned to caller.
      */
-    public func describeSpotPriceHistoryAsync(input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult>) -> ()) throws {
+    public func describeSpotPriceHistoryAsync(
+            input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, HTTPClientError>) -> ()) throws {
         if let describeSpotPriceHistoryAsyncOverride = describeSpotPriceHistoryAsyncOverride {
-            return try describeSpotPriceHistoryAsyncOverride(input, completion)
+            return try describeSpotPriceHistoryAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8396,9 +9370,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSpotPriceHistoryResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotPriceHistorySync(input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest) throws -> ElasticComputeCloudModel.DescribeSpotPriceHistoryResult {
+    public func describeSpotPriceHistorySync(
+            input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotPriceHistoryResult {
         if let describeSpotPriceHistorySyncOverride = describeSpotPriceHistorySyncOverride {
-            return try describeSpotPriceHistorySyncOverride(input)
+            return try describeSpotPriceHistorySyncOverride(input, reporting)
         }
 
         throw error
@@ -8413,12 +9389,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeStaleSecurityGroupsResult
            object will be validated before being returned to caller.
      */
-    public func describeStaleSecurityGroupsAsync(input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult>) -> ()) throws {
+    public func describeStaleSecurityGroupsAsync(
+            input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, HTTPClientError>) -> ()) throws {
         if let describeStaleSecurityGroupsAsyncOverride = describeStaleSecurityGroupsAsyncOverride {
-            return try describeStaleSecurityGroupsAsyncOverride(input, completion)
+            return try describeStaleSecurityGroupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8429,9 +9408,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeStaleSecurityGroupsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeStaleSecurityGroupsSync(input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest) throws -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult {
+    public func describeStaleSecurityGroupsSync(
+            input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult {
         if let describeStaleSecurityGroupsSyncOverride = describeStaleSecurityGroupsSyncOverride {
-            return try describeStaleSecurityGroupsSyncOverride(input)
+            return try describeStaleSecurityGroupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8446,12 +9427,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeSubnetsResult
            object will be validated before being returned to caller.
      */
-    public func describeSubnetsAsync(input: ElasticComputeCloudModel.DescribeSubnetsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeSubnetsResult>) -> ()) throws {
+    public func describeSubnetsAsync(
+            input: ElasticComputeCloudModel.DescribeSubnetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSubnetsResult, HTTPClientError>) -> ()) throws {
         if let describeSubnetsAsyncOverride = describeSubnetsAsyncOverride {
-            return try describeSubnetsAsyncOverride(input, completion)
+            return try describeSubnetsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8462,9 +9446,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeSubnetsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSubnetsSync(input: ElasticComputeCloudModel.DescribeSubnetsRequest) throws -> ElasticComputeCloudModel.DescribeSubnetsResult {
+    public func describeSubnetsSync(
+            input: ElasticComputeCloudModel.DescribeSubnetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSubnetsResult {
         if let describeSubnetsSyncOverride = describeSubnetsSyncOverride {
-            return try describeSubnetsSyncOverride(input)
+            return try describeSubnetsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8479,12 +9465,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeTagsResult
            object will be validated before being returned to caller.
      */
-    public func describeTagsAsync(input: ElasticComputeCloudModel.DescribeTagsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTagsResult>) -> ()) throws {
+    public func describeTagsAsync(
+            input: ElasticComputeCloudModel.DescribeTagsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTagsResult, HTTPClientError>) -> ()) throws {
         if let describeTagsAsyncOverride = describeTagsAsyncOverride {
-            return try describeTagsAsyncOverride(input, completion)
+            return try describeTagsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8495,9 +9484,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeTagsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTagsSync(input: ElasticComputeCloudModel.DescribeTagsRequest) throws -> ElasticComputeCloudModel.DescribeTagsResult {
+    public func describeTagsSync(
+            input: ElasticComputeCloudModel.DescribeTagsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTagsResult {
         if let describeTagsSyncOverride = describeTagsSyncOverride {
-            return try describeTagsSyncOverride(input)
+            return try describeTagsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8512,12 +9503,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeTransitGatewayAttachmentsResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewayAttachmentsAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult>) -> ()) throws {
+    public func describeTransitGatewayAttachmentsAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, HTTPClientError>) -> ()) throws {
         if let describeTransitGatewayAttachmentsAsyncOverride = describeTransitGatewayAttachmentsAsyncOverride {
-            return try describeTransitGatewayAttachmentsAsyncOverride(input, completion)
+            return try describeTransitGatewayAttachmentsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8528,9 +9522,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeTransitGatewayAttachmentsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewayAttachmentsSync(input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
+    public func describeTransitGatewayAttachmentsSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
         if let describeTransitGatewayAttachmentsSyncOverride = describeTransitGatewayAttachmentsSyncOverride {
-            return try describeTransitGatewayAttachmentsSyncOverride(input)
+            return try describeTransitGatewayAttachmentsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8545,12 +9541,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeTransitGatewayRouteTablesResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewayRouteTablesAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult>) -> ()) throws {
+    public func describeTransitGatewayRouteTablesAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, HTTPClientError>) -> ()) throws {
         if let describeTransitGatewayRouteTablesAsyncOverride = describeTransitGatewayRouteTablesAsyncOverride {
-            return try describeTransitGatewayRouteTablesAsyncOverride(input, completion)
+            return try describeTransitGatewayRouteTablesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8561,9 +9560,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeTransitGatewayRouteTablesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewayRouteTablesSync(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult {
+    public func describeTransitGatewayRouteTablesSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult {
         if let describeTransitGatewayRouteTablesSyncOverride = describeTransitGatewayRouteTablesSyncOverride {
-            return try describeTransitGatewayRouteTablesSyncOverride(input)
+            return try describeTransitGatewayRouteTablesSyncOverride(input, reporting)
         }
 
         throw error
@@ -8578,12 +9579,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeTransitGatewayVpcAttachmentsResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewayVpcAttachmentsAsync(input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult>) -> ()) throws {
+    public func describeTransitGatewayVpcAttachmentsAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, HTTPClientError>) -> ()) throws {
         if let describeTransitGatewayVpcAttachmentsAsyncOverride = describeTransitGatewayVpcAttachmentsAsyncOverride {
-            return try describeTransitGatewayVpcAttachmentsAsyncOverride(input, completion)
+            return try describeTransitGatewayVpcAttachmentsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8594,9 +9598,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeTransitGatewayVpcAttachmentsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewayVpcAttachmentsSync(input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult {
+    public func describeTransitGatewayVpcAttachmentsSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult {
         if let describeTransitGatewayVpcAttachmentsSyncOverride = describeTransitGatewayVpcAttachmentsSyncOverride {
-            return try describeTransitGatewayVpcAttachmentsSyncOverride(input)
+            return try describeTransitGatewayVpcAttachmentsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8611,12 +9617,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeTransitGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewaysAsync(input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeTransitGatewaysResult>) -> ()) throws {
+    public func describeTransitGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, HTTPClientError>) -> ()) throws {
         if let describeTransitGatewaysAsyncOverride = describeTransitGatewaysAsyncOverride {
-            return try describeTransitGatewaysAsyncOverride(input, completion)
+            return try describeTransitGatewaysAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8627,9 +9636,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeTransitGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewaysSync(input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult {
+    public func describeTransitGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult {
         if let describeTransitGatewaysSyncOverride = describeTransitGatewaysSyncOverride {
-            return try describeTransitGatewaysSyncOverride(input)
+            return try describeTransitGatewaysSyncOverride(input, reporting)
         }
 
         throw error
@@ -8644,12 +9655,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVolumeAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeVolumeAttributeAsync(input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVolumeAttributeResult>) -> ()) throws {
+    public func describeVolumeAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, HTTPClientError>) -> ()) throws {
         if let describeVolumeAttributeAsyncOverride = describeVolumeAttributeAsyncOverride {
-            return try describeVolumeAttributeAsyncOverride(input, completion)
+            return try describeVolumeAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8660,9 +9674,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVolumeAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVolumeAttributeSync(input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest) throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult {
+    public func describeVolumeAttributeSync(
+            input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult {
         if let describeVolumeAttributeSyncOverride = describeVolumeAttributeSyncOverride {
-            return try describeVolumeAttributeSyncOverride(input)
+            return try describeVolumeAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -8677,12 +9693,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVolumeStatusResult
            object will be validated before being returned to caller.
      */
-    public func describeVolumeStatusAsync(input: ElasticComputeCloudModel.DescribeVolumeStatusRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVolumeStatusResult>) -> ()) throws {
+    public func describeVolumeStatusAsync(
+            input: ElasticComputeCloudModel.DescribeVolumeStatusRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, HTTPClientError>) -> ()) throws {
         if let describeVolumeStatusAsyncOverride = describeVolumeStatusAsyncOverride {
-            return try describeVolumeStatusAsyncOverride(input, completion)
+            return try describeVolumeStatusAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8693,9 +9712,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVolumeStatusResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVolumeStatusSync(input: ElasticComputeCloudModel.DescribeVolumeStatusRequest) throws -> ElasticComputeCloudModel.DescribeVolumeStatusResult {
+    public func describeVolumeStatusSync(
+            input: ElasticComputeCloudModel.DescribeVolumeStatusRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVolumeStatusResult {
         if let describeVolumeStatusSyncOverride = describeVolumeStatusSyncOverride {
-            return try describeVolumeStatusSyncOverride(input)
+            return try describeVolumeStatusSyncOverride(input, reporting)
         }
 
         throw error
@@ -8710,12 +9731,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVolumesResult
            object will be validated before being returned to caller.
      */
-    public func describeVolumesAsync(input: ElasticComputeCloudModel.DescribeVolumesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVolumesResult>) -> ()) throws {
+    public func describeVolumesAsync(
+            input: ElasticComputeCloudModel.DescribeVolumesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesResult, HTTPClientError>) -> ()) throws {
         if let describeVolumesAsyncOverride = describeVolumesAsyncOverride {
-            return try describeVolumesAsyncOverride(input, completion)
+            return try describeVolumesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8726,9 +9750,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVolumesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVolumesSync(input: ElasticComputeCloudModel.DescribeVolumesRequest) throws -> ElasticComputeCloudModel.DescribeVolumesResult {
+    public func describeVolumesSync(
+            input: ElasticComputeCloudModel.DescribeVolumesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVolumesResult {
         if let describeVolumesSyncOverride = describeVolumesSyncOverride {
-            return try describeVolumesSyncOverride(input)
+            return try describeVolumesSyncOverride(input, reporting)
         }
 
         throw error
@@ -8743,12 +9769,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVolumesModificationsResult
            object will be validated before being returned to caller.
      */
-    public func describeVolumesModificationsAsync(input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVolumesModificationsResult>) -> ()) throws {
+    public func describeVolumesModificationsAsync(
+            input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, HTTPClientError>) -> ()) throws {
         if let describeVolumesModificationsAsyncOverride = describeVolumesModificationsAsyncOverride {
-            return try describeVolumesModificationsAsyncOverride(input, completion)
+            return try describeVolumesModificationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8759,9 +9788,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVolumesModificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVolumesModificationsSync(input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest) throws -> ElasticComputeCloudModel.DescribeVolumesModificationsResult {
+    public func describeVolumesModificationsSync(
+            input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVolumesModificationsResult {
         if let describeVolumesModificationsSyncOverride = describeVolumesModificationsSyncOverride {
-            return try describeVolumesModificationsSyncOverride(input)
+            return try describeVolumesModificationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8776,12 +9807,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcAttributeAsync(input: ElasticComputeCloudModel.DescribeVpcAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcAttributeResult>) -> ()) throws {
+    public func describeVpcAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeVpcAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, HTTPClientError>) -> ()) throws {
         if let describeVpcAttributeAsyncOverride = describeVpcAttributeAsyncOverride {
-            return try describeVpcAttributeAsyncOverride(input, completion)
+            return try describeVpcAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8792,9 +9826,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcAttributeSync(input: ElasticComputeCloudModel.DescribeVpcAttributeRequest) throws -> ElasticComputeCloudModel.DescribeVpcAttributeResult {
+    public func describeVpcAttributeSync(
+            input: ElasticComputeCloudModel.DescribeVpcAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcAttributeResult {
         if let describeVpcAttributeSyncOverride = describeVpcAttributeSyncOverride {
-            return try describeVpcAttributeSyncOverride(input)
+            return try describeVpcAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -8809,12 +9845,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcClassicLinkResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcClassicLinkAsync(input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcClassicLinkResult>) -> ()) throws {
+    public func describeVpcClassicLinkAsync(
+            input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
         if let describeVpcClassicLinkAsyncOverride = describeVpcClassicLinkAsyncOverride {
-            return try describeVpcClassicLinkAsyncOverride(input, completion)
+            return try describeVpcClassicLinkAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8825,9 +9864,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcClassicLinkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcClassicLinkSync(input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkResult {
+    public func describeVpcClassicLinkSync(
+            input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkResult {
         if let describeVpcClassicLinkSyncOverride = describeVpcClassicLinkSyncOverride {
-            return try describeVpcClassicLinkSyncOverride(input)
+            return try describeVpcClassicLinkSyncOverride(input, reporting)
         }
 
         throw error
@@ -8842,12 +9883,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcClassicLinkDnsSupportResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcClassicLinkDnsSupportAsync(input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult>) -> ()) throws {
+    public func describeVpcClassicLinkDnsSupportAsync(
+            input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
         if let describeVpcClassicLinkDnsSupportAsyncOverride = describeVpcClassicLinkDnsSupportAsyncOverride {
-            return try describeVpcClassicLinkDnsSupportAsyncOverride(input, completion)
+            return try describeVpcClassicLinkDnsSupportAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8858,9 +9902,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcClassicLinkDnsSupportResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcClassicLinkDnsSupportSync(input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult {
+    public func describeVpcClassicLinkDnsSupportSync(
+            input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult {
         if let describeVpcClassicLinkDnsSupportSyncOverride = describeVpcClassicLinkDnsSupportSyncOverride {
-            return try describeVpcClassicLinkDnsSupportSyncOverride(input)
+            return try describeVpcClassicLinkDnsSupportSyncOverride(input, reporting)
         }
 
         throw error
@@ -8875,12 +9921,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcEndpointConnectionNotificationsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointConnectionNotificationsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult>) -> ()) throws {
+    public func describeVpcEndpointConnectionNotificationsAsync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, HTTPClientError>) -> ()) throws {
         if let describeVpcEndpointConnectionNotificationsAsyncOverride = describeVpcEndpointConnectionNotificationsAsyncOverride {
-            return try describeVpcEndpointConnectionNotificationsAsyncOverride(input, completion)
+            return try describeVpcEndpointConnectionNotificationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8891,9 +9940,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcEndpointConnectionNotificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointConnectionNotificationsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult {
+    public func describeVpcEndpointConnectionNotificationsSync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult {
         if let describeVpcEndpointConnectionNotificationsSyncOverride = describeVpcEndpointConnectionNotificationsSyncOverride {
-            return try describeVpcEndpointConnectionNotificationsSyncOverride(input)
+            return try describeVpcEndpointConnectionNotificationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8908,12 +9959,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcEndpointConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointConnectionsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult>) -> ()) throws {
+    public func describeVpcEndpointConnectionsAsync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
         if let describeVpcEndpointConnectionsAsyncOverride = describeVpcEndpointConnectionsAsyncOverride {
-            return try describeVpcEndpointConnectionsAsyncOverride(input, completion)
+            return try describeVpcEndpointConnectionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8924,9 +9978,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcEndpointConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointConnectionsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult {
+    public func describeVpcEndpointConnectionsSync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult {
         if let describeVpcEndpointConnectionsSyncOverride = describeVpcEndpointConnectionsSyncOverride {
-            return try describeVpcEndpointConnectionsSyncOverride(input)
+            return try describeVpcEndpointConnectionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8941,12 +9997,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcEndpointServiceConfigurationsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServiceConfigurationsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult>) -> ()) throws {
+    public func describeVpcEndpointServiceConfigurationsAsync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, HTTPClientError>) -> ()) throws {
         if let describeVpcEndpointServiceConfigurationsAsyncOverride = describeVpcEndpointServiceConfigurationsAsyncOverride {
-            return try describeVpcEndpointServiceConfigurationsAsyncOverride(input, completion)
+            return try describeVpcEndpointServiceConfigurationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8957,9 +10016,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcEndpointServiceConfigurationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServiceConfigurationsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult {
+    public func describeVpcEndpointServiceConfigurationsSync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult {
         if let describeVpcEndpointServiceConfigurationsSyncOverride = describeVpcEndpointServiceConfigurationsSyncOverride {
-            return try describeVpcEndpointServiceConfigurationsSyncOverride(input)
+            return try describeVpcEndpointServiceConfigurationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -8974,12 +10035,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcEndpointServicePermissionsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServicePermissionsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult>) -> ()) throws {
+    public func describeVpcEndpointServicePermissionsAsync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, HTTPClientError>) -> ()) throws {
         if let describeVpcEndpointServicePermissionsAsyncOverride = describeVpcEndpointServicePermissionsAsyncOverride {
-            return try describeVpcEndpointServicePermissionsAsyncOverride(input, completion)
+            return try describeVpcEndpointServicePermissionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -8990,9 +10054,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcEndpointServicePermissionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServicePermissionsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult {
+    public func describeVpcEndpointServicePermissionsSync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult {
         if let describeVpcEndpointServicePermissionsSyncOverride = describeVpcEndpointServicePermissionsSyncOverride {
-            return try describeVpcEndpointServicePermissionsSyncOverride(input)
+            return try describeVpcEndpointServicePermissionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -9007,12 +10073,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcEndpointServicesResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServicesAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult>) -> ()) throws {
+    public func describeVpcEndpointServicesAsync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, HTTPClientError>) -> ()) throws {
         if let describeVpcEndpointServicesAsyncOverride = describeVpcEndpointServicesAsyncOverride {
-            return try describeVpcEndpointServicesAsyncOverride(input, completion)
+            return try describeVpcEndpointServicesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9023,9 +10092,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcEndpointServicesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServicesSync(input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicesResult {
+    public func describeVpcEndpointServicesSync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicesResult {
         if let describeVpcEndpointServicesSyncOverride = describeVpcEndpointServicesSyncOverride {
-            return try describeVpcEndpointServicesSyncOverride(input)
+            return try describeVpcEndpointServicesSyncOverride(input, reporting)
         }
 
         throw error
@@ -9040,12 +10111,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcEndpointsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointsAsync(input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcEndpointsResult>) -> ()) throws {
+    public func describeVpcEndpointsAsync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, HTTPClientError>) -> ()) throws {
         if let describeVpcEndpointsAsyncOverride = describeVpcEndpointsAsyncOverride {
-            return try describeVpcEndpointsAsyncOverride(input, completion)
+            return try describeVpcEndpointsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9056,9 +10130,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcEndpointsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointsSync(input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointsResult {
+    public func describeVpcEndpointsSync(
+            input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointsResult {
         if let describeVpcEndpointsSyncOverride = describeVpcEndpointsSyncOverride {
-            return try describeVpcEndpointsSyncOverride(input)
+            return try describeVpcEndpointsSyncOverride(input, reporting)
         }
 
         throw error
@@ -9073,12 +10149,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcPeeringConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcPeeringConnectionsAsync(input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult>) -> ()) throws {
+    public func describeVpcPeeringConnectionsAsync(
+            input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, HTTPClientError>) -> ()) throws {
         if let describeVpcPeeringConnectionsAsyncOverride = describeVpcPeeringConnectionsAsyncOverride {
-            return try describeVpcPeeringConnectionsAsyncOverride(input, completion)
+            return try describeVpcPeeringConnectionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9089,9 +10168,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcPeeringConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcPeeringConnectionsSync(input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult {
+    public func describeVpcPeeringConnectionsSync(
+            input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult {
         if let describeVpcPeeringConnectionsSyncOverride = describeVpcPeeringConnectionsSyncOverride {
-            return try describeVpcPeeringConnectionsSyncOverride(input)
+            return try describeVpcPeeringConnectionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -9106,12 +10187,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpcsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcsAsync(input: ElasticComputeCloudModel.DescribeVpcsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpcsResult>) -> ()) throws {
+    public func describeVpcsAsync(
+            input: ElasticComputeCloudModel.DescribeVpcsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcsResult, HTTPClientError>) -> ()) throws {
         if let describeVpcsAsyncOverride = describeVpcsAsyncOverride {
-            return try describeVpcsAsyncOverride(input, completion)
+            return try describeVpcsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9122,9 +10206,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpcsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcsSync(input: ElasticComputeCloudModel.DescribeVpcsRequest) throws -> ElasticComputeCloudModel.DescribeVpcsResult {
+    public func describeVpcsSync(
+            input: ElasticComputeCloudModel.DescribeVpcsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcsResult {
         if let describeVpcsSyncOverride = describeVpcsSyncOverride {
-            return try describeVpcsSyncOverride(input)
+            return try describeVpcsSyncOverride(input, reporting)
         }
 
         throw error
@@ -9139,12 +10225,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpnConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpnConnectionsAsync(input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpnConnectionsResult>) -> ()) throws {
+    public func describeVpnConnectionsAsync(
+            input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, HTTPClientError>) -> ()) throws {
         if let describeVpnConnectionsAsyncOverride = describeVpnConnectionsAsyncOverride {
-            return try describeVpnConnectionsAsyncOverride(input, completion)
+            return try describeVpnConnectionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9155,9 +10244,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpnConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpnConnectionsSync(input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeVpnConnectionsResult {
+    public func describeVpnConnectionsSync(
+            input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpnConnectionsResult {
         if let describeVpnConnectionsSyncOverride = describeVpnConnectionsSyncOverride {
-            return try describeVpnConnectionsSyncOverride(input)
+            return try describeVpnConnectionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -9172,12 +10263,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DescribeVpnGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeVpnGatewaysAsync(input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeVpnGatewaysResult>) -> ()) throws {
+    public func describeVpnGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, HTTPClientError>) -> ()) throws {
         if let describeVpnGatewaysAsyncOverride = describeVpnGatewaysAsyncOverride {
-            return try describeVpnGatewaysAsyncOverride(input, completion)
+            return try describeVpnGatewaysAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9188,9 +10282,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DescribeVpnGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpnGatewaysSync(input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeVpnGatewaysResult {
+    public func describeVpnGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpnGatewaysResult {
         if let describeVpnGatewaysSyncOverride = describeVpnGatewaysSyncOverride {
-            return try describeVpnGatewaysSyncOverride(input)
+            return try describeVpnGatewaysSyncOverride(input, reporting)
         }
 
         throw error
@@ -9205,12 +10301,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DetachClassicLinkVpcResult
            object will be validated before being returned to caller.
      */
-    public func detachClassicLinkVpcAsync(input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DetachClassicLinkVpcResult>) -> ()) throws {
+    public func detachClassicLinkVpcAsync(
+            input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, HTTPClientError>) -> ()) throws {
         if let detachClassicLinkVpcAsyncOverride = detachClassicLinkVpcAsyncOverride {
-            return try detachClassicLinkVpcAsyncOverride(input, completion)
+            return try detachClassicLinkVpcAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9221,9 +10320,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DetachClassicLinkVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func detachClassicLinkVpcSync(input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest) throws -> ElasticComputeCloudModel.DetachClassicLinkVpcResult {
+    public func detachClassicLinkVpcSync(
+            input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DetachClassicLinkVpcResult {
         if let detachClassicLinkVpcSyncOverride = detachClassicLinkVpcSyncOverride {
-            return try detachClassicLinkVpcSyncOverride(input)
+            return try detachClassicLinkVpcSyncOverride(input, reporting)
         }
 
         throw error
@@ -9237,9 +10338,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachInternetGatewayAsync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func detachInternetGatewayAsync(
+            input: ElasticComputeCloudModel.DetachInternetGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let detachInternetGatewayAsyncOverride = detachInternetGatewayAsyncOverride {
-            return try detachInternetGatewayAsyncOverride(input, completion)
+            return try detachInternetGatewayAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -9251,9 +10355,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DetachInternetGatewayRequest object being passed to this operation.
      */
-    public func detachInternetGatewaySync(input: ElasticComputeCloudModel.DetachInternetGatewayRequest) throws {
+    public func detachInternetGatewaySync(
+            input: ElasticComputeCloudModel.DetachInternetGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let detachInternetGatewaySyncOverride = detachInternetGatewaySyncOverride {
-            return try detachInternetGatewaySyncOverride(input)
+            return try detachInternetGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -9267,9 +10373,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachNetworkInterfaceAsync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func detachNetworkInterfaceAsync(
+            input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let detachNetworkInterfaceAsyncOverride = detachNetworkInterfaceAsyncOverride {
-            return try detachNetworkInterfaceAsyncOverride(input, completion)
+            return try detachNetworkInterfaceAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -9281,9 +10390,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DetachNetworkInterfaceRequest object being passed to this operation.
      */
-    public func detachNetworkInterfaceSync(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest) throws {
+    public func detachNetworkInterfaceSync(
+            input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let detachNetworkInterfaceSyncOverride = detachNetworkInterfaceSyncOverride {
-            return try detachNetworkInterfaceSyncOverride(input)
+            return try detachNetworkInterfaceSyncOverride(input, reporting)
         }
 
         throw error
@@ -9298,12 +10409,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The VolumeAttachment
            object will be validated before being returned to caller.
      */
-    public func detachVolumeAsync(input: ElasticComputeCloudModel.DetachVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.VolumeAttachment>) -> ()) throws {
+    public func detachVolumeAsync(
+            input: ElasticComputeCloudModel.DetachVolumeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) -> ()) throws {
         if let detachVolumeAsyncOverride = detachVolumeAsyncOverride {
-            return try detachVolumeAsyncOverride(input, completion)
+            return try detachVolumeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9314,9 +10428,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The VolumeAttachment object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func detachVolumeSync(input: ElasticComputeCloudModel.DetachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment {
+    public func detachVolumeSync(
+            input: ElasticComputeCloudModel.DetachVolumeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.VolumeAttachment {
         if let detachVolumeSyncOverride = detachVolumeSyncOverride {
-            return try detachVolumeSyncOverride(input)
+            return try detachVolumeSyncOverride(input, reporting)
         }
 
         throw error
@@ -9330,9 +10446,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachVpnGatewayAsync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func detachVpnGatewayAsync(
+            input: ElasticComputeCloudModel.DetachVpnGatewayRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let detachVpnGatewayAsyncOverride = detachVpnGatewayAsyncOverride {
-            return try detachVpnGatewayAsyncOverride(input, completion)
+            return try detachVpnGatewayAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -9344,9 +10463,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DetachVpnGatewayRequest object being passed to this operation.
      */
-    public func detachVpnGatewaySync(input: ElasticComputeCloudModel.DetachVpnGatewayRequest) throws {
+    public func detachVpnGatewaySync(
+            input: ElasticComputeCloudModel.DetachVpnGatewayRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let detachVpnGatewaySyncOverride = detachVpnGatewaySyncOverride {
-            return try detachVpnGatewaySyncOverride(input)
+            return try detachVpnGatewaySyncOverride(input, reporting)
         }
 
         throw error
@@ -9361,12 +10482,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DisableEbsEncryptionByDefaultResult
            object will be validated before being returned to caller.
      */
-    public func disableEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult>) -> ()) throws {
+    public func disableEbsEncryptionByDefaultAsync(
+            input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
         if let disableEbsEncryptionByDefaultAsyncOverride = disableEbsEncryptionByDefaultAsyncOverride {
-            return try disableEbsEncryptionByDefaultAsyncOverride(input, completion)
+            return try disableEbsEncryptionByDefaultAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9377,9 +10501,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DisableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disableEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult {
+    public func disableEbsEncryptionByDefaultSync(
+            input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult {
         if let disableEbsEncryptionByDefaultSyncOverride = disableEbsEncryptionByDefaultSyncOverride {
-            return try disableEbsEncryptionByDefaultSyncOverride(input)
+            return try disableEbsEncryptionByDefaultSyncOverride(input, reporting)
         }
 
         throw error
@@ -9394,12 +10520,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DisableTransitGatewayRouteTablePropagationResult
            object will be validated before being returned to caller.
      */
-    public func disableTransitGatewayRouteTablePropagationAsync(input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult>) -> ()) throws {
+    public func disableTransitGatewayRouteTablePropagationAsync(
+            input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, HTTPClientError>) -> ()) throws {
         if let disableTransitGatewayRouteTablePropagationAsyncOverride = disableTransitGatewayRouteTablePropagationAsyncOverride {
-            return try disableTransitGatewayRouteTablePropagationAsyncOverride(input, completion)
+            return try disableTransitGatewayRouteTablePropagationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9410,9 +10539,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DisableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disableTransitGatewayRouteTablePropagationSync(input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult {
+    public func disableTransitGatewayRouteTablePropagationSync(
+            input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult {
         if let disableTransitGatewayRouteTablePropagationSyncOverride = disableTransitGatewayRouteTablePropagationSyncOverride {
-            return try disableTransitGatewayRouteTablePropagationSyncOverride(input)
+            return try disableTransitGatewayRouteTablePropagationSyncOverride(input, reporting)
         }
 
         throw error
@@ -9426,9 +10557,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func disableVgwRoutePropagationAsync(
+            input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let disableVgwRoutePropagationAsyncOverride = disableVgwRoutePropagationAsyncOverride {
-            return try disableVgwRoutePropagationAsyncOverride(input, completion)
+            return try disableVgwRoutePropagationAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -9440,9 +10574,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DisableVgwRoutePropagationRequest object being passed to this operation.
      */
-    public func disableVgwRoutePropagationSync(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest) throws {
+    public func disableVgwRoutePropagationSync(
+            input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let disableVgwRoutePropagationSyncOverride = disableVgwRoutePropagationSyncOverride {
-            return try disableVgwRoutePropagationSyncOverride(input)
+            return try disableVgwRoutePropagationSyncOverride(input, reporting)
         }
 
         throw error
@@ -9457,12 +10593,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DisableVpcClassicLinkResult
            object will be validated before being returned to caller.
      */
-    public func disableVpcClassicLinkAsync(input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableVpcClassicLinkResult>) -> ()) throws {
+    public func disableVpcClassicLinkAsync(
+            input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
         if let disableVpcClassicLinkAsyncOverride = disableVpcClassicLinkAsyncOverride {
-            return try disableVpcClassicLinkAsyncOverride(input, completion)
+            return try disableVpcClassicLinkAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9473,9 +10612,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DisableVpcClassicLinkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disableVpcClassicLinkSync(input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkResult {
+    public func disableVpcClassicLinkSync(
+            input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkResult {
         if let disableVpcClassicLinkSyncOverride = disableVpcClassicLinkSyncOverride {
-            return try disableVpcClassicLinkSyncOverride(input)
+            return try disableVpcClassicLinkSyncOverride(input, reporting)
         }
 
         throw error
@@ -9490,12 +10631,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DisableVpcClassicLinkDnsSupportResult
            object will be validated before being returned to caller.
      */
-    public func disableVpcClassicLinkDnsSupportAsync(input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult>) -> ()) throws {
+    public func disableVpcClassicLinkDnsSupportAsync(
+            input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
         if let disableVpcClassicLinkDnsSupportAsyncOverride = disableVpcClassicLinkDnsSupportAsyncOverride {
-            return try disableVpcClassicLinkDnsSupportAsyncOverride(input, completion)
+            return try disableVpcClassicLinkDnsSupportAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9506,9 +10650,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DisableVpcClassicLinkDnsSupportResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disableVpcClassicLinkDnsSupportSync(input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult {
+    public func disableVpcClassicLinkDnsSupportSync(
+            input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult {
         if let disableVpcClassicLinkDnsSupportSyncOverride = disableVpcClassicLinkDnsSupportSyncOverride {
-            return try disableVpcClassicLinkDnsSupportSyncOverride(input)
+            return try disableVpcClassicLinkDnsSupportSyncOverride(input, reporting)
         }
 
         throw error
@@ -9522,9 +10668,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disassociateAddressAsync(input: ElasticComputeCloudModel.DisassociateAddressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func disassociateAddressAsync(
+            input: ElasticComputeCloudModel.DisassociateAddressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let disassociateAddressAsyncOverride = disassociateAddressAsyncOverride {
-            return try disassociateAddressAsyncOverride(input, completion)
+            return try disassociateAddressAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -9536,9 +10685,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DisassociateAddressRequest object being passed to this operation.
      */
-    public func disassociateAddressSync(input: ElasticComputeCloudModel.DisassociateAddressRequest) throws {
+    public func disassociateAddressSync(
+            input: ElasticComputeCloudModel.DisassociateAddressRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let disassociateAddressSyncOverride = disassociateAddressSyncOverride {
-            return try disassociateAddressSyncOverride(input)
+            return try disassociateAddressSyncOverride(input, reporting)
         }
 
         throw error
@@ -9553,12 +10704,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DisassociateClientVpnTargetNetworkResult
            object will be validated before being returned to caller.
      */
-    public func disassociateClientVpnTargetNetworkAsync(input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult>) -> ()) throws {
+    public func disassociateClientVpnTargetNetworkAsync(
+            input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
         if let disassociateClientVpnTargetNetworkAsyncOverride = disassociateClientVpnTargetNetworkAsyncOverride {
-            return try disassociateClientVpnTargetNetworkAsyncOverride(input, completion)
+            return try disassociateClientVpnTargetNetworkAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9569,9 +10723,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DisassociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateClientVpnTargetNetworkSync(input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult {
+    public func disassociateClientVpnTargetNetworkSync(
+            input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult {
         if let disassociateClientVpnTargetNetworkSyncOverride = disassociateClientVpnTargetNetworkSyncOverride {
-            return try disassociateClientVpnTargetNetworkSyncOverride(input)
+            return try disassociateClientVpnTargetNetworkSyncOverride(input, reporting)
         }
 
         throw error
@@ -9586,12 +10742,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DisassociateIamInstanceProfileResult
            object will be validated before being returned to caller.
      */
-    public func disassociateIamInstanceProfileAsync(input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult>) -> ()) throws {
+    public func disassociateIamInstanceProfileAsync(
+            input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, HTTPClientError>) -> ()) throws {
         if let disassociateIamInstanceProfileAsyncOverride = disassociateIamInstanceProfileAsyncOverride {
-            return try disassociateIamInstanceProfileAsyncOverride(input, completion)
+            return try disassociateIamInstanceProfileAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9602,9 +10761,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DisassociateIamInstanceProfileResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateIamInstanceProfileSync(input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult {
+    public func disassociateIamInstanceProfileSync(
+            input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult {
         if let disassociateIamInstanceProfileSyncOverride = disassociateIamInstanceProfileSyncOverride {
-            return try disassociateIamInstanceProfileSyncOverride(input)
+            return try disassociateIamInstanceProfileSyncOverride(input, reporting)
         }
 
         throw error
@@ -9618,9 +10779,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disassociateRouteTableAsync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func disassociateRouteTableAsync(
+            input: ElasticComputeCloudModel.DisassociateRouteTableRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let disassociateRouteTableAsyncOverride = disassociateRouteTableAsyncOverride {
-            return try disassociateRouteTableAsyncOverride(input, completion)
+            return try disassociateRouteTableAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -9632,9 +10796,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated DisassociateRouteTableRequest object being passed to this operation.
      */
-    public func disassociateRouteTableSync(input: ElasticComputeCloudModel.DisassociateRouteTableRequest) throws {
+    public func disassociateRouteTableSync(
+            input: ElasticComputeCloudModel.DisassociateRouteTableRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let disassociateRouteTableSyncOverride = disassociateRouteTableSyncOverride {
-            return try disassociateRouteTableSyncOverride(input)
+            return try disassociateRouteTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -9649,12 +10815,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DisassociateSubnetCidrBlockResult
            object will be validated before being returned to caller.
      */
-    public func disassociateSubnetCidrBlockAsync(input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult>) -> ()) throws {
+    public func disassociateSubnetCidrBlockAsync(
+            input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, HTTPClientError>) -> ()) throws {
         if let disassociateSubnetCidrBlockAsyncOverride = disassociateSubnetCidrBlockAsyncOverride {
-            return try disassociateSubnetCidrBlockAsyncOverride(input, completion)
+            return try disassociateSubnetCidrBlockAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9665,9 +10834,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DisassociateSubnetCidrBlockResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateSubnetCidrBlockSync(input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult {
+    public func disassociateSubnetCidrBlockSync(
+            input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult {
         if let disassociateSubnetCidrBlockSyncOverride = disassociateSubnetCidrBlockSyncOverride {
-            return try disassociateSubnetCidrBlockSyncOverride(input)
+            return try disassociateSubnetCidrBlockSyncOverride(input, reporting)
         }
 
         throw error
@@ -9682,12 +10853,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DisassociateTransitGatewayRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func disassociateTransitGatewayRouteTableAsync(input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult>) -> ()) throws {
+    public func disassociateTransitGatewayRouteTableAsync(
+            input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
         if let disassociateTransitGatewayRouteTableAsyncOverride = disassociateTransitGatewayRouteTableAsyncOverride {
-            return try disassociateTransitGatewayRouteTableAsyncOverride(input, completion)
+            return try disassociateTransitGatewayRouteTableAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9698,9 +10872,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DisassociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateTransitGatewayRouteTableSync(input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult {
+    public func disassociateTransitGatewayRouteTableSync(
+            input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult {
         if let disassociateTransitGatewayRouteTableSyncOverride = disassociateTransitGatewayRouteTableSyncOverride {
-            return try disassociateTransitGatewayRouteTableSyncOverride(input)
+            return try disassociateTransitGatewayRouteTableSyncOverride(input, reporting)
         }
 
         throw error
@@ -9715,12 +10891,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The DisassociateVpcCidrBlockResult
            object will be validated before being returned to caller.
      */
-    public func disassociateVpcCidrBlockAsync(input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult>) -> ()) throws {
+    public func disassociateVpcCidrBlockAsync(
+            input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, HTTPClientError>) -> ()) throws {
         if let disassociateVpcCidrBlockAsyncOverride = disassociateVpcCidrBlockAsyncOverride {
-            return try disassociateVpcCidrBlockAsyncOverride(input, completion)
+            return try disassociateVpcCidrBlockAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9731,9 +10910,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The DisassociateVpcCidrBlockResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateVpcCidrBlockSync(input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult {
+    public func disassociateVpcCidrBlockSync(
+            input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult {
         if let disassociateVpcCidrBlockSyncOverride = disassociateVpcCidrBlockSyncOverride {
-            return try disassociateVpcCidrBlockSyncOverride(input)
+            return try disassociateVpcCidrBlockSyncOverride(input, reporting)
         }
 
         throw error
@@ -9748,12 +10929,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The EnableEbsEncryptionByDefaultResult
            object will be validated before being returned to caller.
      */
-    public func enableEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult>) -> ()) throws {
+    public func enableEbsEncryptionByDefaultAsync(
+            input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
         if let enableEbsEncryptionByDefaultAsyncOverride = enableEbsEncryptionByDefaultAsyncOverride {
-            return try enableEbsEncryptionByDefaultAsyncOverride(input, completion)
+            return try enableEbsEncryptionByDefaultAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9764,9 +10948,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The EnableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func enableEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult {
+    public func enableEbsEncryptionByDefaultSync(
+            input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult {
         if let enableEbsEncryptionByDefaultSyncOverride = enableEbsEncryptionByDefaultSyncOverride {
-            return try enableEbsEncryptionByDefaultSyncOverride(input)
+            return try enableEbsEncryptionByDefaultSyncOverride(input, reporting)
         }
 
         throw error
@@ -9781,12 +10967,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The EnableTransitGatewayRouteTablePropagationResult
            object will be validated before being returned to caller.
      */
-    public func enableTransitGatewayRouteTablePropagationAsync(input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult>) -> ()) throws {
+    public func enableTransitGatewayRouteTablePropagationAsync(
+            input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, HTTPClientError>) -> ()) throws {
         if let enableTransitGatewayRouteTablePropagationAsyncOverride = enableTransitGatewayRouteTablePropagationAsyncOverride {
-            return try enableTransitGatewayRouteTablePropagationAsyncOverride(input, completion)
+            return try enableTransitGatewayRouteTablePropagationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9797,9 +10986,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The EnableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func enableTransitGatewayRouteTablePropagationSync(input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult {
+    public func enableTransitGatewayRouteTablePropagationSync(
+            input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult {
         if let enableTransitGatewayRouteTablePropagationSyncOverride = enableTransitGatewayRouteTablePropagationSyncOverride {
-            return try enableTransitGatewayRouteTablePropagationSyncOverride(input)
+            return try enableTransitGatewayRouteTablePropagationSyncOverride(input, reporting)
         }
 
         throw error
@@ -9813,9 +11004,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableVgwRoutePropagationAsync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func enableVgwRoutePropagationAsync(
+            input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let enableVgwRoutePropagationAsyncOverride = enableVgwRoutePropagationAsyncOverride {
-            return try enableVgwRoutePropagationAsyncOverride(input, completion)
+            return try enableVgwRoutePropagationAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -9827,9 +11021,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated EnableVgwRoutePropagationRequest object being passed to this operation.
      */
-    public func enableVgwRoutePropagationSync(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest) throws {
+    public func enableVgwRoutePropagationSync(
+            input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let enableVgwRoutePropagationSyncOverride = enableVgwRoutePropagationSyncOverride {
-            return try enableVgwRoutePropagationSyncOverride(input)
+            return try enableVgwRoutePropagationSyncOverride(input, reporting)
         }
 
         throw error
@@ -9843,9 +11039,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableVolumeIOAsync(input: ElasticComputeCloudModel.EnableVolumeIORequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func enableVolumeIOAsync(
+            input: ElasticComputeCloudModel.EnableVolumeIORequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let enableVolumeIOAsyncOverride = enableVolumeIOAsyncOverride {
-            return try enableVolumeIOAsyncOverride(input, completion)
+            return try enableVolumeIOAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -9857,9 +11056,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated EnableVolumeIORequest object being passed to this operation.
      */
-    public func enableVolumeIOSync(input: ElasticComputeCloudModel.EnableVolumeIORequest) throws {
+    public func enableVolumeIOSync(
+            input: ElasticComputeCloudModel.EnableVolumeIORequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let enableVolumeIOSyncOverride = enableVolumeIOSyncOverride {
-            return try enableVolumeIOSyncOverride(input)
+            return try enableVolumeIOSyncOverride(input, reporting)
         }
 
         throw error
@@ -9874,12 +11075,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The EnableVpcClassicLinkResult
            object will be validated before being returned to caller.
      */
-    public func enableVpcClassicLinkAsync(input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableVpcClassicLinkResult>) -> ()) throws {
+    public func enableVpcClassicLinkAsync(
+            input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
         if let enableVpcClassicLinkAsyncOverride = enableVpcClassicLinkAsyncOverride {
-            return try enableVpcClassicLinkAsyncOverride(input, completion)
+            return try enableVpcClassicLinkAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9890,9 +11094,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The EnableVpcClassicLinkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func enableVpcClassicLinkSync(input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkResult {
+    public func enableVpcClassicLinkSync(
+            input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkResult {
         if let enableVpcClassicLinkSyncOverride = enableVpcClassicLinkSyncOverride {
-            return try enableVpcClassicLinkSyncOverride(input)
+            return try enableVpcClassicLinkSyncOverride(input, reporting)
         }
 
         throw error
@@ -9907,12 +11113,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The EnableVpcClassicLinkDnsSupportResult
            object will be validated before being returned to caller.
      */
-    public func enableVpcClassicLinkDnsSupportAsync(input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult>) -> ()) throws {
+    public func enableVpcClassicLinkDnsSupportAsync(
+            input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
         if let enableVpcClassicLinkDnsSupportAsyncOverride = enableVpcClassicLinkDnsSupportAsyncOverride {
-            return try enableVpcClassicLinkDnsSupportAsyncOverride(input, completion)
+            return try enableVpcClassicLinkDnsSupportAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9923,9 +11132,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The EnableVpcClassicLinkDnsSupportResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func enableVpcClassicLinkDnsSupportSync(input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult {
+    public func enableVpcClassicLinkDnsSupportSync(
+            input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult {
         if let enableVpcClassicLinkDnsSupportSyncOverride = enableVpcClassicLinkDnsSupportSyncOverride {
-            return try enableVpcClassicLinkDnsSupportSyncOverride(input)
+            return try enableVpcClassicLinkDnsSupportSyncOverride(input, reporting)
         }
 
         throw error
@@ -9940,12 +11151,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ExportClientVpnClientCertificateRevocationListResult
            object will be validated before being returned to caller.
      */
-    public func exportClientVpnClientCertificateRevocationListAsync(input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult>) -> ()) throws {
+    public func exportClientVpnClientCertificateRevocationListAsync(
+            input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, HTTPClientError>) -> ()) throws {
         if let exportClientVpnClientCertificateRevocationListAsyncOverride = exportClientVpnClientCertificateRevocationListAsyncOverride {
-            return try exportClientVpnClientCertificateRevocationListAsyncOverride(input, completion)
+            return try exportClientVpnClientCertificateRevocationListAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9956,9 +11170,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ExportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func exportClientVpnClientCertificateRevocationListSync(input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult {
+    public func exportClientVpnClientCertificateRevocationListSync(
+            input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult {
         if let exportClientVpnClientCertificateRevocationListSyncOverride = exportClientVpnClientCertificateRevocationListSyncOverride {
-            return try exportClientVpnClientCertificateRevocationListSyncOverride(input)
+            return try exportClientVpnClientCertificateRevocationListSyncOverride(input, reporting)
         }
 
         throw error
@@ -9973,12 +11189,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ExportClientVpnClientConfigurationResult
            object will be validated before being returned to caller.
      */
-    public func exportClientVpnClientConfigurationAsync(input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult>) -> ()) throws {
+    public func exportClientVpnClientConfigurationAsync(
+            input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, HTTPClientError>) -> ()) throws {
         if let exportClientVpnClientConfigurationAsyncOverride = exportClientVpnClientConfigurationAsyncOverride {
-            return try exportClientVpnClientConfigurationAsyncOverride(input, completion)
+            return try exportClientVpnClientConfigurationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -9989,9 +11208,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ExportClientVpnClientConfigurationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func exportClientVpnClientConfigurationSync(input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult {
+    public func exportClientVpnClientConfigurationSync(
+            input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult {
         if let exportClientVpnClientConfigurationSyncOverride = exportClientVpnClientConfigurationSyncOverride {
-            return try exportClientVpnClientConfigurationSyncOverride(input)
+            return try exportClientVpnClientConfigurationSyncOverride(input, reporting)
         }
 
         throw error
@@ -10006,12 +11227,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ExportTransitGatewayRoutesResult
            object will be validated before being returned to caller.
      */
-    public func exportTransitGatewayRoutesAsync(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult>) -> ()) throws {
+    public func exportTransitGatewayRoutesAsync(
+            input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, HTTPClientError>) -> ()) throws {
         if let exportTransitGatewayRoutesAsyncOverride = exportTransitGatewayRoutesAsyncOverride {
-            return try exportTransitGatewayRoutesAsyncOverride(input, completion)
+            return try exportTransitGatewayRoutesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10022,9 +11246,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ExportTransitGatewayRoutesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func exportTransitGatewayRoutesSync(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
+    public func exportTransitGatewayRoutesSync(
+            input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
         if let exportTransitGatewayRoutesSyncOverride = exportTransitGatewayRoutesSyncOverride {
-            return try exportTransitGatewayRoutesSyncOverride(input)
+            return try exportTransitGatewayRoutesSyncOverride(input, reporting)
         }
 
         throw error
@@ -10039,12 +11265,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetConsoleOutputResult
            object will be validated before being returned to caller.
      */
-    public func getConsoleOutputAsync(input: ElasticComputeCloudModel.GetConsoleOutputRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetConsoleOutputResult>) -> ()) throws {
+    public func getConsoleOutputAsync(
+            input: ElasticComputeCloudModel.GetConsoleOutputRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleOutputResult, HTTPClientError>) -> ()) throws {
         if let getConsoleOutputAsyncOverride = getConsoleOutputAsyncOverride {
-            return try getConsoleOutputAsyncOverride(input, completion)
+            return try getConsoleOutputAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10055,9 +11284,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetConsoleOutputResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getConsoleOutputSync(input: ElasticComputeCloudModel.GetConsoleOutputRequest) throws -> ElasticComputeCloudModel.GetConsoleOutputResult {
+    public func getConsoleOutputSync(
+            input: ElasticComputeCloudModel.GetConsoleOutputRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetConsoleOutputResult {
         if let getConsoleOutputSyncOverride = getConsoleOutputSyncOverride {
-            return try getConsoleOutputSyncOverride(input)
+            return try getConsoleOutputSyncOverride(input, reporting)
         }
 
         throw error
@@ -10072,12 +11303,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetConsoleScreenshotResult
            object will be validated before being returned to caller.
      */
-    public func getConsoleScreenshotAsync(input: ElasticComputeCloudModel.GetConsoleScreenshotRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetConsoleScreenshotResult>) -> ()) throws {
+    public func getConsoleScreenshotAsync(
+            input: ElasticComputeCloudModel.GetConsoleScreenshotRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, HTTPClientError>) -> ()) throws {
         if let getConsoleScreenshotAsyncOverride = getConsoleScreenshotAsyncOverride {
-            return try getConsoleScreenshotAsyncOverride(input, completion)
+            return try getConsoleScreenshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10088,9 +11322,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetConsoleScreenshotResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getConsoleScreenshotSync(input: ElasticComputeCloudModel.GetConsoleScreenshotRequest) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult {
+    public func getConsoleScreenshotSync(
+            input: ElasticComputeCloudModel.GetConsoleScreenshotRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult {
         if let getConsoleScreenshotSyncOverride = getConsoleScreenshotSyncOverride {
-            return try getConsoleScreenshotSyncOverride(input)
+            return try getConsoleScreenshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -10105,12 +11341,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetEbsDefaultKmsKeyIdResult
            object will be validated before being returned to caller.
      */
-    public func getEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult>) -> ()) throws {
+    public func getEbsDefaultKmsKeyIdAsync(
+            input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
         if let getEbsDefaultKmsKeyIdAsyncOverride = getEbsDefaultKmsKeyIdAsyncOverride {
-            return try getEbsDefaultKmsKeyIdAsyncOverride(input, completion)
+            return try getEbsDefaultKmsKeyIdAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10121,9 +11360,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult {
+    public func getEbsDefaultKmsKeyIdSync(
+            input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult {
         if let getEbsDefaultKmsKeyIdSyncOverride = getEbsDefaultKmsKeyIdSyncOverride {
-            return try getEbsDefaultKmsKeyIdSyncOverride(input)
+            return try getEbsDefaultKmsKeyIdSyncOverride(input, reporting)
         }
 
         throw error
@@ -10138,12 +11379,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetEbsEncryptionByDefaultResult
            object will be validated before being returned to caller.
      */
-    public func getEbsEncryptionByDefaultAsync(input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult>) -> ()) throws {
+    public func getEbsEncryptionByDefaultAsync(
+            input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
         if let getEbsEncryptionByDefaultAsyncOverride = getEbsEncryptionByDefaultAsyncOverride {
-            return try getEbsEncryptionByDefaultAsyncOverride(input, completion)
+            return try getEbsEncryptionByDefaultAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10154,9 +11398,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getEbsEncryptionByDefaultSync(input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult {
+    public func getEbsEncryptionByDefaultSync(
+            input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult {
         if let getEbsEncryptionByDefaultSyncOverride = getEbsEncryptionByDefaultSyncOverride {
-            return try getEbsEncryptionByDefaultSyncOverride(input)
+            return try getEbsEncryptionByDefaultSyncOverride(input, reporting)
         }
 
         throw error
@@ -10171,12 +11417,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetHostReservationPurchasePreviewResult
            object will be validated before being returned to caller.
      */
-    public func getHostReservationPurchasePreviewAsync(input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult>) -> ()) throws {
+    public func getHostReservationPurchasePreviewAsync(
+            input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, HTTPClientError>) -> ()) throws {
         if let getHostReservationPurchasePreviewAsyncOverride = getHostReservationPurchasePreviewAsyncOverride {
-            return try getHostReservationPurchasePreviewAsyncOverride(input, completion)
+            return try getHostReservationPurchasePreviewAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10187,9 +11436,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetHostReservationPurchasePreviewResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getHostReservationPurchasePreviewSync(input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult {
+    public func getHostReservationPurchasePreviewSync(
+            input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult {
         if let getHostReservationPurchasePreviewSyncOverride = getHostReservationPurchasePreviewSyncOverride {
-            return try getHostReservationPurchasePreviewSyncOverride(input)
+            return try getHostReservationPurchasePreviewSyncOverride(input, reporting)
         }
 
         throw error
@@ -10204,12 +11455,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetLaunchTemplateDataResult
            object will be validated before being returned to caller.
      */
-    public func getLaunchTemplateDataAsync(input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetLaunchTemplateDataResult>) -> ()) throws {
+    public func getLaunchTemplateDataAsync(
+            input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, HTTPClientError>) -> ()) throws {
         if let getLaunchTemplateDataAsyncOverride = getLaunchTemplateDataAsyncOverride {
-            return try getLaunchTemplateDataAsyncOverride(input, completion)
+            return try getLaunchTemplateDataAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10220,9 +11474,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetLaunchTemplateDataResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getLaunchTemplateDataSync(input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult {
+    public func getLaunchTemplateDataSync(
+            input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult {
         if let getLaunchTemplateDataSyncOverride = getLaunchTemplateDataSyncOverride {
-            return try getLaunchTemplateDataSyncOverride(input)
+            return try getLaunchTemplateDataSyncOverride(input, reporting)
         }
 
         throw error
@@ -10237,12 +11493,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetPasswordDataResult
            object will be validated before being returned to caller.
      */
-    public func getPasswordDataAsync(input: ElasticComputeCloudModel.GetPasswordDataRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetPasswordDataResult>) -> ()) throws {
+    public func getPasswordDataAsync(
+            input: ElasticComputeCloudModel.GetPasswordDataRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetPasswordDataResult, HTTPClientError>) -> ()) throws {
         if let getPasswordDataAsyncOverride = getPasswordDataAsyncOverride {
-            return try getPasswordDataAsyncOverride(input, completion)
+            return try getPasswordDataAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10253,9 +11512,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetPasswordDataResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getPasswordDataSync(input: ElasticComputeCloudModel.GetPasswordDataRequest) throws -> ElasticComputeCloudModel.GetPasswordDataResult {
+    public func getPasswordDataSync(
+            input: ElasticComputeCloudModel.GetPasswordDataRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetPasswordDataResult {
         if let getPasswordDataSyncOverride = getPasswordDataSyncOverride {
-            return try getPasswordDataSyncOverride(input)
+            return try getPasswordDataSyncOverride(input, reporting)
         }
 
         throw error
@@ -10270,12 +11531,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetReservedInstancesExchangeQuoteResult
            object will be validated before being returned to caller.
      */
-    public func getReservedInstancesExchangeQuoteAsync(input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult>) -> ()) throws {
+    public func getReservedInstancesExchangeQuoteAsync(
+            input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, HTTPClientError>) -> ()) throws {
         if let getReservedInstancesExchangeQuoteAsyncOverride = getReservedInstancesExchangeQuoteAsyncOverride {
-            return try getReservedInstancesExchangeQuoteAsyncOverride(input, completion)
+            return try getReservedInstancesExchangeQuoteAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10286,9 +11550,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetReservedInstancesExchangeQuoteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getReservedInstancesExchangeQuoteSync(input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult {
+    public func getReservedInstancesExchangeQuoteSync(
+            input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult {
         if let getReservedInstancesExchangeQuoteSyncOverride = getReservedInstancesExchangeQuoteSyncOverride {
-            return try getReservedInstancesExchangeQuoteSyncOverride(input)
+            return try getReservedInstancesExchangeQuoteSyncOverride(input, reporting)
         }
 
         throw error
@@ -10303,12 +11569,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetTransitGatewayAttachmentPropagationsResult
            object will be validated before being returned to caller.
      */
-    public func getTransitGatewayAttachmentPropagationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult>) -> ()) throws {
+    public func getTransitGatewayAttachmentPropagationsAsync(
+            input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, HTTPClientError>) -> ()) throws {
         if let getTransitGatewayAttachmentPropagationsAsyncOverride = getTransitGatewayAttachmentPropagationsAsyncOverride {
-            return try getTransitGatewayAttachmentPropagationsAsyncOverride(input, completion)
+            return try getTransitGatewayAttachmentPropagationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10319,9 +11588,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetTransitGatewayAttachmentPropagationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getTransitGatewayAttachmentPropagationsSync(input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult {
+    public func getTransitGatewayAttachmentPropagationsSync(
+            input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult {
         if let getTransitGatewayAttachmentPropagationsSyncOverride = getTransitGatewayAttachmentPropagationsSyncOverride {
-            return try getTransitGatewayAttachmentPropagationsSyncOverride(input)
+            return try getTransitGatewayAttachmentPropagationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -10336,12 +11607,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetTransitGatewayRouteTableAssociationsResult
            object will be validated before being returned to caller.
      */
-    public func getTransitGatewayRouteTableAssociationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult>) -> ()) throws {
+    public func getTransitGatewayRouteTableAssociationsAsync(
+            input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, HTTPClientError>) -> ()) throws {
         if let getTransitGatewayRouteTableAssociationsAsyncOverride = getTransitGatewayRouteTableAssociationsAsyncOverride {
-            return try getTransitGatewayRouteTableAssociationsAsyncOverride(input, completion)
+            return try getTransitGatewayRouteTableAssociationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10352,9 +11626,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetTransitGatewayRouteTableAssociationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getTransitGatewayRouteTableAssociationsSync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult {
+    public func getTransitGatewayRouteTableAssociationsSync(
+            input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult {
         if let getTransitGatewayRouteTableAssociationsSyncOverride = getTransitGatewayRouteTableAssociationsSyncOverride {
-            return try getTransitGatewayRouteTableAssociationsSyncOverride(input)
+            return try getTransitGatewayRouteTableAssociationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -10369,12 +11645,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The GetTransitGatewayRouteTablePropagationsResult
            object will be validated before being returned to caller.
      */
-    public func getTransitGatewayRouteTablePropagationsAsync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult>) -> ()) throws {
+    public func getTransitGatewayRouteTablePropagationsAsync(
+            input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, HTTPClientError>) -> ()) throws {
         if let getTransitGatewayRouteTablePropagationsAsyncOverride = getTransitGatewayRouteTablePropagationsAsyncOverride {
-            return try getTransitGatewayRouteTablePropagationsAsyncOverride(input, completion)
+            return try getTransitGatewayRouteTablePropagationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10385,9 +11664,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The GetTransitGatewayRouteTablePropagationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getTransitGatewayRouteTablePropagationsSync(input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult {
+    public func getTransitGatewayRouteTablePropagationsSync(
+            input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult {
         if let getTransitGatewayRouteTablePropagationsSyncOverride = getTransitGatewayRouteTablePropagationsSyncOverride {
-            return try getTransitGatewayRouteTablePropagationsSyncOverride(input)
+            return try getTransitGatewayRouteTablePropagationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -10402,12 +11683,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ImportClientVpnClientCertificateRevocationListResult
            object will be validated before being returned to caller.
      */
-    public func importClientVpnClientCertificateRevocationListAsync(input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult>) -> ()) throws {
+    public func importClientVpnClientCertificateRevocationListAsync(
+            input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, HTTPClientError>) -> ()) throws {
         if let importClientVpnClientCertificateRevocationListAsyncOverride = importClientVpnClientCertificateRevocationListAsyncOverride {
-            return try importClientVpnClientCertificateRevocationListAsyncOverride(input, completion)
+            return try importClientVpnClientCertificateRevocationListAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10418,9 +11702,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ImportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importClientVpnClientCertificateRevocationListSync(input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult {
+    public func importClientVpnClientCertificateRevocationListSync(
+            input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult {
         if let importClientVpnClientCertificateRevocationListSyncOverride = importClientVpnClientCertificateRevocationListSyncOverride {
-            return try importClientVpnClientCertificateRevocationListSyncOverride(input)
+            return try importClientVpnClientCertificateRevocationListSyncOverride(input, reporting)
         }
 
         throw error
@@ -10435,12 +11721,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ImportImageResult
            object will be validated before being returned to caller.
      */
-    public func importImageAsync(input: ElasticComputeCloudModel.ImportImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportImageResult>) -> ()) throws {
+    public func importImageAsync(
+            input: ElasticComputeCloudModel.ImportImageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportImageResult, HTTPClientError>) -> ()) throws {
         if let importImageAsyncOverride = importImageAsyncOverride {
-            return try importImageAsyncOverride(input, completion)
+            return try importImageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10451,9 +11740,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ImportImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importImageSync(input: ElasticComputeCloudModel.ImportImageRequest) throws -> ElasticComputeCloudModel.ImportImageResult {
+    public func importImageSync(
+            input: ElasticComputeCloudModel.ImportImageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportImageResult {
         if let importImageSyncOverride = importImageSyncOverride {
-            return try importImageSyncOverride(input)
+            return try importImageSyncOverride(input, reporting)
         }
 
         throw error
@@ -10468,12 +11759,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ImportInstanceResult
            object will be validated before being returned to caller.
      */
-    public func importInstanceAsync(input: ElasticComputeCloudModel.ImportInstanceRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportInstanceResult>) -> ()) throws {
+    public func importInstanceAsync(
+            input: ElasticComputeCloudModel.ImportInstanceRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportInstanceResult, HTTPClientError>) -> ()) throws {
         if let importInstanceAsyncOverride = importInstanceAsyncOverride {
-            return try importInstanceAsyncOverride(input, completion)
+            return try importInstanceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10484,9 +11778,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ImportInstanceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importInstanceSync(input: ElasticComputeCloudModel.ImportInstanceRequest) throws -> ElasticComputeCloudModel.ImportInstanceResult {
+    public func importInstanceSync(
+            input: ElasticComputeCloudModel.ImportInstanceRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportInstanceResult {
         if let importInstanceSyncOverride = importInstanceSyncOverride {
-            return try importInstanceSyncOverride(input)
+            return try importInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -10501,12 +11797,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ImportKeyPairResult
            object will be validated before being returned to caller.
      */
-    public func importKeyPairAsync(input: ElasticComputeCloudModel.ImportKeyPairRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportKeyPairResult>) -> ()) throws {
+    public func importKeyPairAsync(
+            input: ElasticComputeCloudModel.ImportKeyPairRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportKeyPairResult, HTTPClientError>) -> ()) throws {
         if let importKeyPairAsyncOverride = importKeyPairAsyncOverride {
-            return try importKeyPairAsyncOverride(input, completion)
+            return try importKeyPairAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10517,9 +11816,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ImportKeyPairResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importKeyPairSync(input: ElasticComputeCloudModel.ImportKeyPairRequest) throws -> ElasticComputeCloudModel.ImportKeyPairResult {
+    public func importKeyPairSync(
+            input: ElasticComputeCloudModel.ImportKeyPairRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportKeyPairResult {
         if let importKeyPairSyncOverride = importKeyPairSyncOverride {
-            return try importKeyPairSyncOverride(input)
+            return try importKeyPairSyncOverride(input, reporting)
         }
 
         throw error
@@ -10534,12 +11835,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ImportSnapshotResult
            object will be validated before being returned to caller.
      */
-    public func importSnapshotAsync(input: ElasticComputeCloudModel.ImportSnapshotRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportSnapshotResult>) -> ()) throws {
+    public func importSnapshotAsync(
+            input: ElasticComputeCloudModel.ImportSnapshotRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportSnapshotResult, HTTPClientError>) -> ()) throws {
         if let importSnapshotAsyncOverride = importSnapshotAsyncOverride {
-            return try importSnapshotAsyncOverride(input, completion)
+            return try importSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10550,9 +11854,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ImportSnapshotResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importSnapshotSync(input: ElasticComputeCloudModel.ImportSnapshotRequest) throws -> ElasticComputeCloudModel.ImportSnapshotResult {
+    public func importSnapshotSync(
+            input: ElasticComputeCloudModel.ImportSnapshotRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportSnapshotResult {
         if let importSnapshotSyncOverride = importSnapshotSyncOverride {
-            return try importSnapshotSyncOverride(input)
+            return try importSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -10567,12 +11873,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ImportVolumeResult
            object will be validated before being returned to caller.
      */
-    public func importVolumeAsync(input: ElasticComputeCloudModel.ImportVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ImportVolumeResult>) -> ()) throws {
+    public func importVolumeAsync(
+            input: ElasticComputeCloudModel.ImportVolumeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, HTTPClientError>) -> ()) throws {
         if let importVolumeAsyncOverride = importVolumeAsyncOverride {
-            return try importVolumeAsyncOverride(input, completion)
+            return try importVolumeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10583,9 +11892,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ImportVolumeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importVolumeSync(input: ElasticComputeCloudModel.ImportVolumeRequest) throws -> ElasticComputeCloudModel.ImportVolumeResult {
+    public func importVolumeSync(
+            input: ElasticComputeCloudModel.ImportVolumeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportVolumeResult {
         if let importVolumeSyncOverride = importVolumeSyncOverride {
-            return try importVolumeSyncOverride(input)
+            return try importVolumeSyncOverride(input, reporting)
         }
 
         throw error
@@ -10600,12 +11911,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyCapacityReservationResult
            object will be validated before being returned to caller.
      */
-    public func modifyCapacityReservationAsync(input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyCapacityReservationResult>) -> ()) throws {
+    public func modifyCapacityReservationAsync(
+            input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, HTTPClientError>) -> ()) throws {
         if let modifyCapacityReservationAsyncOverride = modifyCapacityReservationAsyncOverride {
-            return try modifyCapacityReservationAsyncOverride(input, completion)
+            return try modifyCapacityReservationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10616,9 +11930,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyCapacityReservationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyCapacityReservationSync(input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
+    public func modifyCapacityReservationSync(
+            input: ElasticComputeCloudModel.ModifyCapacityReservationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
         if let modifyCapacityReservationSyncOverride = modifyCapacityReservationSyncOverride {
-            return try modifyCapacityReservationSyncOverride(input)
+            return try modifyCapacityReservationSyncOverride(input, reporting)
         }
 
         throw error
@@ -10633,12 +11949,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyClientVpnEndpointResult
            object will be validated before being returned to caller.
      */
-    public func modifyClientVpnEndpointAsync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyClientVpnEndpointResult>) -> ()) throws {
+    public func modifyClientVpnEndpointAsync(
+            input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
         if let modifyClientVpnEndpointAsyncOverride = modifyClientVpnEndpointAsyncOverride {
-            return try modifyClientVpnEndpointAsyncOverride(input, completion)
+            return try modifyClientVpnEndpointAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10649,9 +11968,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyClientVpnEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyClientVpnEndpointSync(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
+    public func modifyClientVpnEndpointSync(
+            input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
         if let modifyClientVpnEndpointSyncOverride = modifyClientVpnEndpointSyncOverride {
-            return try modifyClientVpnEndpointSyncOverride(input)
+            return try modifyClientVpnEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -10666,12 +11987,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyEbsDefaultKmsKeyIdResult
            object will be validated before being returned to caller.
      */
-    public func modifyEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult>) -> ()) throws {
+    public func modifyEbsDefaultKmsKeyIdAsync(
+            input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
         if let modifyEbsDefaultKmsKeyIdAsyncOverride = modifyEbsDefaultKmsKeyIdAsyncOverride {
-            return try modifyEbsDefaultKmsKeyIdAsyncOverride(input, completion)
+            return try modifyEbsDefaultKmsKeyIdAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10682,9 +12006,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult {
+    public func modifyEbsDefaultKmsKeyIdSync(
+            input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult {
         if let modifyEbsDefaultKmsKeyIdSyncOverride = modifyEbsDefaultKmsKeyIdSyncOverride {
-            return try modifyEbsDefaultKmsKeyIdSyncOverride(input)
+            return try modifyEbsDefaultKmsKeyIdSyncOverride(input, reporting)
         }
 
         throw error
@@ -10699,12 +12025,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyFleetResult
            object will be validated before being returned to caller.
      */
-    public func modifyFleetAsync(input: ElasticComputeCloudModel.ModifyFleetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyFleetResult>) -> ()) throws {
+    public func modifyFleetAsync(
+            input: ElasticComputeCloudModel.ModifyFleetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFleetResult, HTTPClientError>) -> ()) throws {
         if let modifyFleetAsyncOverride = modifyFleetAsyncOverride {
-            return try modifyFleetAsyncOverride(input, completion)
+            return try modifyFleetAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10715,9 +12044,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyFleetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyFleetSync(input: ElasticComputeCloudModel.ModifyFleetRequest) throws -> ElasticComputeCloudModel.ModifyFleetResult {
+    public func modifyFleetSync(
+            input: ElasticComputeCloudModel.ModifyFleetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyFleetResult {
         if let modifyFleetSyncOverride = modifyFleetSyncOverride {
-            return try modifyFleetSyncOverride(input)
+            return try modifyFleetSyncOverride(input, reporting)
         }
 
         throw error
@@ -10732,12 +12063,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyFpgaImageAttributeResult
            object will be validated before being returned to caller.
      */
-    public func modifyFpgaImageAttributeAsync(input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult>) -> ()) throws {
+    public func modifyFpgaImageAttributeAsync(
+            input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
         if let modifyFpgaImageAttributeAsyncOverride = modifyFpgaImageAttributeAsyncOverride {
-            return try modifyFpgaImageAttributeAsyncOverride(input, completion)
+            return try modifyFpgaImageAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10748,9 +12082,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyFpgaImageAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyFpgaImageAttributeSync(input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult {
+    public func modifyFpgaImageAttributeSync(
+            input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult {
         if let modifyFpgaImageAttributeSyncOverride = modifyFpgaImageAttributeSyncOverride {
-            return try modifyFpgaImageAttributeSyncOverride(input)
+            return try modifyFpgaImageAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -10765,12 +12101,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyHostsResult
            object will be validated before being returned to caller.
      */
-    public func modifyHostsAsync(input: ElasticComputeCloudModel.ModifyHostsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyHostsResult>) -> ()) throws {
+    public func modifyHostsAsync(
+            input: ElasticComputeCloudModel.ModifyHostsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyHostsResult, HTTPClientError>) -> ()) throws {
         if let modifyHostsAsyncOverride = modifyHostsAsyncOverride {
-            return try modifyHostsAsyncOverride(input, completion)
+            return try modifyHostsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10781,9 +12120,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyHostsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyHostsSync(input: ElasticComputeCloudModel.ModifyHostsRequest) throws -> ElasticComputeCloudModel.ModifyHostsResult {
+    public func modifyHostsSync(
+            input: ElasticComputeCloudModel.ModifyHostsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyHostsResult {
         if let modifyHostsSyncOverride = modifyHostsSyncOverride {
-            return try modifyHostsSyncOverride(input)
+            return try modifyHostsSyncOverride(input, reporting)
         }
 
         throw error
@@ -10797,9 +12138,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdFormatRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func modifyIdFormatAsync(
+            input: ElasticComputeCloudModel.ModifyIdFormatRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyIdFormatAsyncOverride = modifyIdFormatAsyncOverride {
-            return try modifyIdFormatAsyncOverride(input, completion)
+            return try modifyIdFormatAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -10811,9 +12155,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ModifyIdFormatRequest object being passed to this operation.
      */
-    public func modifyIdFormatSync(input: ElasticComputeCloudModel.ModifyIdFormatRequest) throws {
+    public func modifyIdFormatSync(
+            input: ElasticComputeCloudModel.ModifyIdFormatRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let modifyIdFormatSyncOverride = modifyIdFormatSyncOverride {
-            return try modifyIdFormatSyncOverride(input)
+            return try modifyIdFormatSyncOverride(input, reporting)
         }
 
         throw error
@@ -10827,9 +12173,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyIdentityIdFormatAsync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func modifyIdentityIdFormatAsync(
+            input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyIdentityIdFormatAsyncOverride = modifyIdentityIdFormatAsyncOverride {
-            return try modifyIdentityIdFormatAsyncOverride(input, completion)
+            return try modifyIdentityIdFormatAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -10841,9 +12190,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ModifyIdentityIdFormatRequest object being passed to this operation.
      */
-    public func modifyIdentityIdFormatSync(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest) throws {
+    public func modifyIdentityIdFormatSync(
+            input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let modifyIdentityIdFormatSyncOverride = modifyIdentityIdFormatSyncOverride {
-            return try modifyIdentityIdFormatSyncOverride(input)
+            return try modifyIdentityIdFormatSyncOverride(input, reporting)
         }
 
         throw error
@@ -10857,9 +12208,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyImageAttributeAsync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func modifyImageAttributeAsync(
+            input: ElasticComputeCloudModel.ModifyImageAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyImageAttributeAsyncOverride = modifyImageAttributeAsyncOverride {
-            return try modifyImageAttributeAsyncOverride(input, completion)
+            return try modifyImageAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -10871,9 +12225,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ModifyImageAttributeRequest object being passed to this operation.
      */
-    public func modifyImageAttributeSync(input: ElasticComputeCloudModel.ModifyImageAttributeRequest) throws {
+    public func modifyImageAttributeSync(
+            input: ElasticComputeCloudModel.ModifyImageAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let modifyImageAttributeSyncOverride = modifyImageAttributeSyncOverride {
-            return try modifyImageAttributeSyncOverride(input)
+            return try modifyImageAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -10887,9 +12243,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyInstanceAttributeAsync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func modifyInstanceAttributeAsync(
+            input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyInstanceAttributeAsyncOverride = modifyInstanceAttributeAsyncOverride {
-            return try modifyInstanceAttributeAsyncOverride(input, completion)
+            return try modifyInstanceAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -10901,9 +12260,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ModifyInstanceAttributeRequest object being passed to this operation.
      */
-    public func modifyInstanceAttributeSync(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest) throws {
+    public func modifyInstanceAttributeSync(
+            input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let modifyInstanceAttributeSyncOverride = modifyInstanceAttributeSyncOverride {
-            return try modifyInstanceAttributeSyncOverride(input)
+            return try modifyInstanceAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -10918,12 +12279,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyInstanceCapacityReservationAttributesResult
            object will be validated before being returned to caller.
      */
-    public func modifyInstanceCapacityReservationAttributesAsync(input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult>) -> ()) throws {
+    public func modifyInstanceCapacityReservationAttributesAsync(
+            input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, HTTPClientError>) -> ()) throws {
         if let modifyInstanceCapacityReservationAttributesAsyncOverride = modifyInstanceCapacityReservationAttributesAsyncOverride {
-            return try modifyInstanceCapacityReservationAttributesAsyncOverride(input, completion)
+            return try modifyInstanceCapacityReservationAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10934,9 +12298,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyInstanceCapacityReservationAttributesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyInstanceCapacityReservationAttributesSync(input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult {
+    public func modifyInstanceCapacityReservationAttributesSync(
+            input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult {
         if let modifyInstanceCapacityReservationAttributesSyncOverride = modifyInstanceCapacityReservationAttributesSyncOverride {
-            return try modifyInstanceCapacityReservationAttributesSyncOverride(input)
+            return try modifyInstanceCapacityReservationAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -10951,12 +12317,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyInstanceCreditSpecificationResult
            object will be validated before being returned to caller.
      */
-    public func modifyInstanceCreditSpecificationAsync(input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult>) -> ()) throws {
+    public func modifyInstanceCreditSpecificationAsync(
+            input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, HTTPClientError>) -> ()) throws {
         if let modifyInstanceCreditSpecificationAsyncOverride = modifyInstanceCreditSpecificationAsyncOverride {
-            return try modifyInstanceCreditSpecificationAsyncOverride(input, completion)
+            return try modifyInstanceCreditSpecificationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -10967,9 +12336,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyInstanceCreditSpecificationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyInstanceCreditSpecificationSync(input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult {
+    public func modifyInstanceCreditSpecificationSync(
+            input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult {
         if let modifyInstanceCreditSpecificationSyncOverride = modifyInstanceCreditSpecificationSyncOverride {
-            return try modifyInstanceCreditSpecificationSyncOverride(input)
+            return try modifyInstanceCreditSpecificationSyncOverride(input, reporting)
         }
 
         throw error
@@ -10984,12 +12355,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyInstanceEventStartTimeResult
            object will be validated before being returned to caller.
      */
-    public func modifyInstanceEventStartTimeAsync(input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult>) -> ()) throws {
+    public func modifyInstanceEventStartTimeAsync(
+            input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, HTTPClientError>) -> ()) throws {
         if let modifyInstanceEventStartTimeAsyncOverride = modifyInstanceEventStartTimeAsyncOverride {
-            return try modifyInstanceEventStartTimeAsyncOverride(input, completion)
+            return try modifyInstanceEventStartTimeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11000,9 +12374,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyInstanceEventStartTimeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyInstanceEventStartTimeSync(input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult {
+    public func modifyInstanceEventStartTimeSync(
+            input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult {
         if let modifyInstanceEventStartTimeSyncOverride = modifyInstanceEventStartTimeSyncOverride {
-            return try modifyInstanceEventStartTimeSyncOverride(input)
+            return try modifyInstanceEventStartTimeSyncOverride(input, reporting)
         }
 
         throw error
@@ -11017,12 +12393,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyInstancePlacementResult
            object will be validated before being returned to caller.
      */
-    public func modifyInstancePlacementAsync(input: ElasticComputeCloudModel.ModifyInstancePlacementRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyInstancePlacementResult>) -> ()) throws {
+    public func modifyInstancePlacementAsync(
+            input: ElasticComputeCloudModel.ModifyInstancePlacementRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, HTTPClientError>) -> ()) throws {
         if let modifyInstancePlacementAsyncOverride = modifyInstancePlacementAsyncOverride {
-            return try modifyInstancePlacementAsyncOverride(input, completion)
+            return try modifyInstancePlacementAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11033,9 +12412,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyInstancePlacementResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyInstancePlacementSync(input: ElasticComputeCloudModel.ModifyInstancePlacementRequest) throws -> ElasticComputeCloudModel.ModifyInstancePlacementResult {
+    public func modifyInstancePlacementSync(
+            input: ElasticComputeCloudModel.ModifyInstancePlacementRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstancePlacementResult {
         if let modifyInstancePlacementSyncOverride = modifyInstancePlacementSyncOverride {
-            return try modifyInstancePlacementSyncOverride(input)
+            return try modifyInstancePlacementSyncOverride(input, reporting)
         }
 
         throw error
@@ -11050,12 +12431,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyLaunchTemplateResult
            object will be validated before being returned to caller.
      */
-    public func modifyLaunchTemplateAsync(input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyLaunchTemplateResult>) -> ()) throws {
+    public func modifyLaunchTemplateAsync(
+            input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, HTTPClientError>) -> ()) throws {
         if let modifyLaunchTemplateAsyncOverride = modifyLaunchTemplateAsyncOverride {
-            return try modifyLaunchTemplateAsyncOverride(input, completion)
+            return try modifyLaunchTemplateAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11066,9 +12450,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyLaunchTemplateResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyLaunchTemplateSync(input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult {
+    public func modifyLaunchTemplateSync(
+            input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult {
         if let modifyLaunchTemplateSyncOverride = modifyLaunchTemplateSyncOverride {
-            return try modifyLaunchTemplateSyncOverride(input)
+            return try modifyLaunchTemplateSyncOverride(input, reporting)
         }
 
         throw error
@@ -11082,9 +12468,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func modifyNetworkInterfaceAttributeAsync(
+            input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyNetworkInterfaceAttributeAsyncOverride = modifyNetworkInterfaceAttributeAsyncOverride {
-            return try modifyNetworkInterfaceAttributeAsyncOverride(input, completion)
+            return try modifyNetworkInterfaceAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -11096,9 +12485,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ModifyNetworkInterfaceAttributeRequest object being passed to this operation.
      */
-    public func modifyNetworkInterfaceAttributeSync(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest) throws {
+    public func modifyNetworkInterfaceAttributeSync(
+            input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let modifyNetworkInterfaceAttributeSyncOverride = modifyNetworkInterfaceAttributeSyncOverride {
-            return try modifyNetworkInterfaceAttributeSyncOverride(input)
+            return try modifyNetworkInterfaceAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -11113,12 +12504,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyReservedInstancesResult
            object will be validated before being returned to caller.
      */
-    public func modifyReservedInstancesAsync(input: ElasticComputeCloudModel.ModifyReservedInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyReservedInstancesResult>) -> ()) throws {
+    public func modifyReservedInstancesAsync(
+            input: ElasticComputeCloudModel.ModifyReservedInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, HTTPClientError>) -> ()) throws {
         if let modifyReservedInstancesAsyncOverride = modifyReservedInstancesAsyncOverride {
-            return try modifyReservedInstancesAsyncOverride(input, completion)
+            return try modifyReservedInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11129,9 +12523,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyReservedInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyReservedInstancesSync(input: ElasticComputeCloudModel.ModifyReservedInstancesRequest) throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult {
+    public func modifyReservedInstancesSync(
+            input: ElasticComputeCloudModel.ModifyReservedInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult {
         if let modifyReservedInstancesSyncOverride = modifyReservedInstancesSyncOverride {
-            return try modifyReservedInstancesSyncOverride(input)
+            return try modifyReservedInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -11145,9 +12541,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifySnapshotAttributeAsync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func modifySnapshotAttributeAsync(
+            input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifySnapshotAttributeAsyncOverride = modifySnapshotAttributeAsyncOverride {
-            return try modifySnapshotAttributeAsyncOverride(input, completion)
+            return try modifySnapshotAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -11159,9 +12558,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ModifySnapshotAttributeRequest object being passed to this operation.
      */
-    public func modifySnapshotAttributeSync(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest) throws {
+    public func modifySnapshotAttributeSync(
+            input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let modifySnapshotAttributeSyncOverride = modifySnapshotAttributeSyncOverride {
-            return try modifySnapshotAttributeSyncOverride(input)
+            return try modifySnapshotAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -11176,12 +12577,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifySpotFleetRequestResponse
            object will be validated before being returned to caller.
      */
-    public func modifySpotFleetRequestAsync(input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifySpotFleetRequestResponse>) -> ()) throws {
+    public func modifySpotFleetRequestAsync(
+            input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, HTTPClientError>) -> ()) throws {
         if let modifySpotFleetRequestAsyncOverride = modifySpotFleetRequestAsyncOverride {
-            return try modifySpotFleetRequestAsyncOverride(input, completion)
+            return try modifySpotFleetRequestAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11192,9 +12596,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifySpotFleetRequestResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifySpotFleetRequestSync(input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest) throws -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse {
+    public func modifySpotFleetRequestSync(
+            input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse {
         if let modifySpotFleetRequestSyncOverride = modifySpotFleetRequestSyncOverride {
-            return try modifySpotFleetRequestSyncOverride(input)
+            return try modifySpotFleetRequestSyncOverride(input, reporting)
         }
 
         throw error
@@ -11208,9 +12614,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifySubnetAttributeAsync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func modifySubnetAttributeAsync(
+            input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifySubnetAttributeAsyncOverride = modifySubnetAttributeAsyncOverride {
-            return try modifySubnetAttributeAsyncOverride(input, completion)
+            return try modifySubnetAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -11222,9 +12631,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ModifySubnetAttributeRequest object being passed to this operation.
      */
-    public func modifySubnetAttributeSync(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest) throws {
+    public func modifySubnetAttributeSync(
+            input: ElasticComputeCloudModel.ModifySubnetAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let modifySubnetAttributeSyncOverride = modifySubnetAttributeSyncOverride {
-            return try modifySubnetAttributeSyncOverride(input)
+            return try modifySubnetAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -11239,12 +12650,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func modifyTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult>) -> ()) throws {
+    public func modifyTransitGatewayVpcAttachmentAsync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         if let modifyTransitGatewayVpcAttachmentAsyncOverride = modifyTransitGatewayVpcAttachmentAsyncOverride {
-            return try modifyTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+            return try modifyTransitGatewayVpcAttachmentAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11255,9 +12669,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult {
+    public func modifyTransitGatewayVpcAttachmentSync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult {
         if let modifyTransitGatewayVpcAttachmentSyncOverride = modifyTransitGatewayVpcAttachmentSyncOverride {
-            return try modifyTransitGatewayVpcAttachmentSyncOverride(input)
+            return try modifyTransitGatewayVpcAttachmentSyncOverride(input, reporting)
         }
 
         throw error
@@ -11272,12 +12688,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyVolumeResult
            object will be validated before being returned to caller.
      */
-    public func modifyVolumeAsync(input: ElasticComputeCloudModel.ModifyVolumeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVolumeResult>) -> ()) throws {
+    public func modifyVolumeAsync(
+            input: ElasticComputeCloudModel.ModifyVolumeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVolumeResult, HTTPClientError>) -> ()) throws {
         if let modifyVolumeAsyncOverride = modifyVolumeAsyncOverride {
-            return try modifyVolumeAsyncOverride(input, completion)
+            return try modifyVolumeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11288,9 +12707,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyVolumeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVolumeSync(input: ElasticComputeCloudModel.ModifyVolumeRequest) throws -> ElasticComputeCloudModel.ModifyVolumeResult {
+    public func modifyVolumeSync(
+            input: ElasticComputeCloudModel.ModifyVolumeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVolumeResult {
         if let modifyVolumeSyncOverride = modifyVolumeSyncOverride {
-            return try modifyVolumeSyncOverride(input)
+            return try modifyVolumeSyncOverride(input, reporting)
         }
 
         throw error
@@ -11304,9 +12725,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyVolumeAttributeAsync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func modifyVolumeAttributeAsync(
+            input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyVolumeAttributeAsyncOverride = modifyVolumeAttributeAsyncOverride {
-            return try modifyVolumeAttributeAsyncOverride(input, completion)
+            return try modifyVolumeAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -11318,9 +12742,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ModifyVolumeAttributeRequest object being passed to this operation.
      */
-    public func modifyVolumeAttributeSync(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest) throws {
+    public func modifyVolumeAttributeSync(
+            input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let modifyVolumeAttributeSyncOverride = modifyVolumeAttributeSyncOverride {
-            return try modifyVolumeAttributeSyncOverride(input)
+            return try modifyVolumeAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -11334,9 +12760,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyVpcAttributeAsync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func modifyVpcAttributeAsync(
+            input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let modifyVpcAttributeAsyncOverride = modifyVpcAttributeAsyncOverride {
-            return try modifyVpcAttributeAsyncOverride(input, completion)
+            return try modifyVpcAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -11348,9 +12777,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ModifyVpcAttributeRequest object being passed to this operation.
      */
-    public func modifyVpcAttributeSync(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest) throws {
+    public func modifyVpcAttributeSync(
+            input: ElasticComputeCloudModel.ModifyVpcAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let modifyVpcAttributeSyncOverride = modifyVpcAttributeSyncOverride {
-            return try modifyVpcAttributeSyncOverride(input)
+            return try modifyVpcAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -11365,12 +12796,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyVpcEndpointResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointAsync(input: ElasticComputeCloudModel.ModifyVpcEndpointRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcEndpointResult>) -> ()) throws {
+    public func modifyVpcEndpointAsync(
+            input: ElasticComputeCloudModel.ModifyVpcEndpointRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, HTTPClientError>) -> ()) throws {
         if let modifyVpcEndpointAsyncOverride = modifyVpcEndpointAsyncOverride {
-            return try modifyVpcEndpointAsyncOverride(input, completion)
+            return try modifyVpcEndpointAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11381,9 +12815,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyVpcEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointSync(input: ElasticComputeCloudModel.ModifyVpcEndpointRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointResult {
+    public func modifyVpcEndpointSync(
+            input: ElasticComputeCloudModel.ModifyVpcEndpointRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcEndpointResult {
         if let modifyVpcEndpointSyncOverride = modifyVpcEndpointSyncOverride {
-            return try modifyVpcEndpointSyncOverride(input)
+            return try modifyVpcEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -11398,12 +12834,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyVpcEndpointConnectionNotificationResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointConnectionNotificationAsync(input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult>) -> ()) throws {
+    public func modifyVpcEndpointConnectionNotificationAsync(
+            input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, HTTPClientError>) -> ()) throws {
         if let modifyVpcEndpointConnectionNotificationAsyncOverride = modifyVpcEndpointConnectionNotificationAsyncOverride {
-            return try modifyVpcEndpointConnectionNotificationAsyncOverride(input, completion)
+            return try modifyVpcEndpointConnectionNotificationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11414,9 +12853,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyVpcEndpointConnectionNotificationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointConnectionNotificationSync(input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult {
+    public func modifyVpcEndpointConnectionNotificationSync(
+            input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult {
         if let modifyVpcEndpointConnectionNotificationSyncOverride = modifyVpcEndpointConnectionNotificationSyncOverride {
-            return try modifyVpcEndpointConnectionNotificationSyncOverride(input)
+            return try modifyVpcEndpointConnectionNotificationSyncOverride(input, reporting)
         }
 
         throw error
@@ -11431,12 +12872,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyVpcEndpointServiceConfigurationResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointServiceConfigurationAsync(input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult>) -> ()) throws {
+    public func modifyVpcEndpointServiceConfigurationAsync(
+            input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, HTTPClientError>) -> ()) throws {
         if let modifyVpcEndpointServiceConfigurationAsyncOverride = modifyVpcEndpointServiceConfigurationAsyncOverride {
-            return try modifyVpcEndpointServiceConfigurationAsyncOverride(input, completion)
+            return try modifyVpcEndpointServiceConfigurationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11447,9 +12891,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyVpcEndpointServiceConfigurationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointServiceConfigurationSync(input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult {
+    public func modifyVpcEndpointServiceConfigurationSync(
+            input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult {
         if let modifyVpcEndpointServiceConfigurationSyncOverride = modifyVpcEndpointServiceConfigurationSyncOverride {
-            return try modifyVpcEndpointServiceConfigurationSyncOverride(input)
+            return try modifyVpcEndpointServiceConfigurationSyncOverride(input, reporting)
         }
 
         throw error
@@ -11464,12 +12910,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyVpcEndpointServicePermissionsResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointServicePermissionsAsync(input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult>) -> ()) throws {
+    public func modifyVpcEndpointServicePermissionsAsync(
+            input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, HTTPClientError>) -> ()) throws {
         if let modifyVpcEndpointServicePermissionsAsyncOverride = modifyVpcEndpointServicePermissionsAsyncOverride {
-            return try modifyVpcEndpointServicePermissionsAsyncOverride(input, completion)
+            return try modifyVpcEndpointServicePermissionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11480,9 +12929,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyVpcEndpointServicePermissionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointServicePermissionsSync(input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult {
+    public func modifyVpcEndpointServicePermissionsSync(
+            input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult {
         if let modifyVpcEndpointServicePermissionsSyncOverride = modifyVpcEndpointServicePermissionsSyncOverride {
-            return try modifyVpcEndpointServicePermissionsSyncOverride(input)
+            return try modifyVpcEndpointServicePermissionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -11497,12 +12948,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyVpcPeeringConnectionOptionsResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcPeeringConnectionOptionsAsync(input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult>) -> ()) throws {
+    public func modifyVpcPeeringConnectionOptionsAsync(
+            input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, HTTPClientError>) -> ()) throws {
         if let modifyVpcPeeringConnectionOptionsAsyncOverride = modifyVpcPeeringConnectionOptionsAsyncOverride {
-            return try modifyVpcPeeringConnectionOptionsAsyncOverride(input, completion)
+            return try modifyVpcPeeringConnectionOptionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11513,9 +12967,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyVpcPeeringConnectionOptionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcPeeringConnectionOptionsSync(input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult {
+    public func modifyVpcPeeringConnectionOptionsSync(
+            input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult {
         if let modifyVpcPeeringConnectionOptionsSyncOverride = modifyVpcPeeringConnectionOptionsSyncOverride {
-            return try modifyVpcPeeringConnectionOptionsSyncOverride(input)
+            return try modifyVpcPeeringConnectionOptionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -11530,12 +12986,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyVpcTenancyResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcTenancyAsync(input: ElasticComputeCloudModel.ModifyVpcTenancyRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpcTenancyResult>) -> ()) throws {
+    public func modifyVpcTenancyAsync(
+            input: ElasticComputeCloudModel.ModifyVpcTenancyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, HTTPClientError>) -> ()) throws {
         if let modifyVpcTenancyAsyncOverride = modifyVpcTenancyAsyncOverride {
-            return try modifyVpcTenancyAsyncOverride(input, completion)
+            return try modifyVpcTenancyAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11546,9 +13005,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyVpcTenancyResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcTenancySync(input: ElasticComputeCloudModel.ModifyVpcTenancyRequest) throws -> ElasticComputeCloudModel.ModifyVpcTenancyResult {
+    public func modifyVpcTenancySync(
+            input: ElasticComputeCloudModel.ModifyVpcTenancyRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcTenancyResult {
         if let modifyVpcTenancySyncOverride = modifyVpcTenancySyncOverride {
-            return try modifyVpcTenancySyncOverride(input)
+            return try modifyVpcTenancySyncOverride(input, reporting)
         }
 
         throw error
@@ -11563,12 +13024,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ModifyVpnConnectionResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpnConnectionAsync(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyVpnConnectionResult>) -> ()) throws {
+    public func modifyVpnConnectionAsync(
+            input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, HTTPClientError>) -> ()) throws {
         if let modifyVpnConnectionAsyncOverride = modifyVpnConnectionAsyncOverride {
-            return try modifyVpnConnectionAsyncOverride(input, completion)
+            return try modifyVpnConnectionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11579,9 +13043,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ModifyVpnConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpnConnectionSync(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
+    public func modifyVpnConnectionSync(
+            input: ElasticComputeCloudModel.ModifyVpnConnectionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
         if let modifyVpnConnectionSyncOverride = modifyVpnConnectionSyncOverride {
-            return try modifyVpnConnectionSyncOverride(input)
+            return try modifyVpnConnectionSyncOverride(input, reporting)
         }
 
         throw error
@@ -11596,12 +13062,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The MonitorInstancesResult
            object will be validated before being returned to caller.
      */
-    public func monitorInstancesAsync(input: ElasticComputeCloudModel.MonitorInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.MonitorInstancesResult>) -> ()) throws {
+    public func monitorInstancesAsync(
+            input: ElasticComputeCloudModel.MonitorInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.MonitorInstancesResult, HTTPClientError>) -> ()) throws {
         if let monitorInstancesAsyncOverride = monitorInstancesAsyncOverride {
-            return try monitorInstancesAsyncOverride(input, completion)
+            return try monitorInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11612,9 +13081,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The MonitorInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func monitorInstancesSync(input: ElasticComputeCloudModel.MonitorInstancesRequest) throws -> ElasticComputeCloudModel.MonitorInstancesResult {
+    public func monitorInstancesSync(
+            input: ElasticComputeCloudModel.MonitorInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.MonitorInstancesResult {
         if let monitorInstancesSyncOverride = monitorInstancesSyncOverride {
-            return try monitorInstancesSyncOverride(input)
+            return try monitorInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -11629,12 +13100,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The MoveAddressToVpcResult
            object will be validated before being returned to caller.
      */
-    public func moveAddressToVpcAsync(input: ElasticComputeCloudModel.MoveAddressToVpcRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.MoveAddressToVpcResult>) -> ()) throws {
+    public func moveAddressToVpcAsync(
+            input: ElasticComputeCloudModel.MoveAddressToVpcRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.MoveAddressToVpcResult, HTTPClientError>) -> ()) throws {
         if let moveAddressToVpcAsyncOverride = moveAddressToVpcAsyncOverride {
-            return try moveAddressToVpcAsyncOverride(input, completion)
+            return try moveAddressToVpcAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11645,9 +13119,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The MoveAddressToVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func moveAddressToVpcSync(input: ElasticComputeCloudModel.MoveAddressToVpcRequest) throws -> ElasticComputeCloudModel.MoveAddressToVpcResult {
+    public func moveAddressToVpcSync(
+            input: ElasticComputeCloudModel.MoveAddressToVpcRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.MoveAddressToVpcResult {
         if let moveAddressToVpcSyncOverride = moveAddressToVpcSyncOverride {
-            return try moveAddressToVpcSyncOverride(input)
+            return try moveAddressToVpcSyncOverride(input, reporting)
         }
 
         throw error
@@ -11662,12 +13138,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ProvisionByoipCidrResult
            object will be validated before being returned to caller.
      */
-    public func provisionByoipCidrAsync(input: ElasticComputeCloudModel.ProvisionByoipCidrRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ProvisionByoipCidrResult>) -> ()) throws {
+    public func provisionByoipCidrAsync(
+            input: ElasticComputeCloudModel.ProvisionByoipCidrRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, HTTPClientError>) -> ()) throws {
         if let provisionByoipCidrAsyncOverride = provisionByoipCidrAsyncOverride {
-            return try provisionByoipCidrAsyncOverride(input, completion)
+            return try provisionByoipCidrAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11678,9 +13157,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ProvisionByoipCidrResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func provisionByoipCidrSync(input: ElasticComputeCloudModel.ProvisionByoipCidrRequest) throws -> ElasticComputeCloudModel.ProvisionByoipCidrResult {
+    public func provisionByoipCidrSync(
+            input: ElasticComputeCloudModel.ProvisionByoipCidrRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ProvisionByoipCidrResult {
         if let provisionByoipCidrSyncOverride = provisionByoipCidrSyncOverride {
-            return try provisionByoipCidrSyncOverride(input)
+            return try provisionByoipCidrSyncOverride(input, reporting)
         }
 
         throw error
@@ -11695,12 +13176,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The PurchaseHostReservationResult
            object will be validated before being returned to caller.
      */
-    public func purchaseHostReservationAsync(input: ElasticComputeCloudModel.PurchaseHostReservationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.PurchaseHostReservationResult>) -> ()) throws {
+    public func purchaseHostReservationAsync(
+            input: ElasticComputeCloudModel.PurchaseHostReservationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseHostReservationResult, HTTPClientError>) -> ()) throws {
         if let purchaseHostReservationAsyncOverride = purchaseHostReservationAsyncOverride {
-            return try purchaseHostReservationAsyncOverride(input, completion)
+            return try purchaseHostReservationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11711,9 +13195,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The PurchaseHostReservationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func purchaseHostReservationSync(input: ElasticComputeCloudModel.PurchaseHostReservationRequest) throws -> ElasticComputeCloudModel.PurchaseHostReservationResult {
+    public func purchaseHostReservationSync(
+            input: ElasticComputeCloudModel.PurchaseHostReservationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.PurchaseHostReservationResult {
         if let purchaseHostReservationSyncOverride = purchaseHostReservationSyncOverride {
-            return try purchaseHostReservationSyncOverride(input)
+            return try purchaseHostReservationSyncOverride(input, reporting)
         }
 
         throw error
@@ -11728,12 +13214,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The PurchaseReservedInstancesOfferingResult
            object will be validated before being returned to caller.
      */
-    public func purchaseReservedInstancesOfferingAsync(input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult>) -> ()) throws {
+    public func purchaseReservedInstancesOfferingAsync(
+            input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, HTTPClientError>) -> ()) throws {
         if let purchaseReservedInstancesOfferingAsyncOverride = purchaseReservedInstancesOfferingAsyncOverride {
-            return try purchaseReservedInstancesOfferingAsyncOverride(input, completion)
+            return try purchaseReservedInstancesOfferingAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11744,9 +13233,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The PurchaseReservedInstancesOfferingResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func purchaseReservedInstancesOfferingSync(input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest) throws -> ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult {
+    public func purchaseReservedInstancesOfferingSync(
+            input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult {
         if let purchaseReservedInstancesOfferingSyncOverride = purchaseReservedInstancesOfferingSyncOverride {
-            return try purchaseReservedInstancesOfferingSyncOverride(input)
+            return try purchaseReservedInstancesOfferingSyncOverride(input, reporting)
         }
 
         throw error
@@ -11761,12 +13252,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The PurchaseScheduledInstancesResult
            object will be validated before being returned to caller.
      */
-    public func purchaseScheduledInstancesAsync(input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.PurchaseScheduledInstancesResult>) -> ()) throws {
+    public func purchaseScheduledInstancesAsync(
+            input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, HTTPClientError>) -> ()) throws {
         if let purchaseScheduledInstancesAsyncOverride = purchaseScheduledInstancesAsyncOverride {
-            return try purchaseScheduledInstancesAsyncOverride(input, completion)
+            return try purchaseScheduledInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11777,9 +13271,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The PurchaseScheduledInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func purchaseScheduledInstancesSync(input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest) throws -> ElasticComputeCloudModel.PurchaseScheduledInstancesResult {
+    public func purchaseScheduledInstancesSync(
+            input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.PurchaseScheduledInstancesResult {
         if let purchaseScheduledInstancesSyncOverride = purchaseScheduledInstancesSyncOverride {
-            return try purchaseScheduledInstancesSyncOverride(input)
+            return try purchaseScheduledInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -11793,9 +13289,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func rebootInstancesAsync(input: ElasticComputeCloudModel.RebootInstancesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func rebootInstancesAsync(
+            input: ElasticComputeCloudModel.RebootInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let rebootInstancesAsyncOverride = rebootInstancesAsyncOverride {
-            return try rebootInstancesAsyncOverride(input, completion)
+            return try rebootInstancesAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -11807,9 +13306,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated RebootInstancesRequest object being passed to this operation.
      */
-    public func rebootInstancesSync(input: ElasticComputeCloudModel.RebootInstancesRequest) throws {
+    public func rebootInstancesSync(
+            input: ElasticComputeCloudModel.RebootInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let rebootInstancesSyncOverride = rebootInstancesSyncOverride {
-            return try rebootInstancesSyncOverride(input)
+            return try rebootInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -11824,12 +13325,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The RegisterImageResult
            object will be validated before being returned to caller.
      */
-    public func registerImageAsync(input: ElasticComputeCloudModel.RegisterImageRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RegisterImageResult>) -> ()) throws {
+    public func registerImageAsync(
+            input: ElasticComputeCloudModel.RegisterImageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterImageResult, HTTPClientError>) -> ()) throws {
         if let registerImageAsyncOverride = registerImageAsyncOverride {
-            return try registerImageAsyncOverride(input, completion)
+            return try registerImageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11840,9 +13344,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The RegisterImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func registerImageSync(input: ElasticComputeCloudModel.RegisterImageRequest) throws -> ElasticComputeCloudModel.RegisterImageResult {
+    public func registerImageSync(
+            input: ElasticComputeCloudModel.RegisterImageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RegisterImageResult {
         if let registerImageSyncOverride = registerImageSyncOverride {
-            return try registerImageSyncOverride(input)
+            return try registerImageSyncOverride(input, reporting)
         }
 
         throw error
@@ -11857,12 +13363,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The RejectTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func rejectTransitGatewayVpcAttachmentAsync(input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult>) -> ()) throws {
+    public func rejectTransitGatewayVpcAttachmentAsync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         if let rejectTransitGatewayVpcAttachmentAsyncOverride = rejectTransitGatewayVpcAttachmentAsyncOverride {
-            return try rejectTransitGatewayVpcAttachmentAsyncOverride(input, completion)
+            return try rejectTransitGatewayVpcAttachmentAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11873,9 +13382,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The RejectTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func rejectTransitGatewayVpcAttachmentSync(input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult {
+    public func rejectTransitGatewayVpcAttachmentSync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult {
         if let rejectTransitGatewayVpcAttachmentSyncOverride = rejectTransitGatewayVpcAttachmentSyncOverride {
-            return try rejectTransitGatewayVpcAttachmentSyncOverride(input)
+            return try rejectTransitGatewayVpcAttachmentSyncOverride(input, reporting)
         }
 
         throw error
@@ -11890,12 +13401,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The RejectVpcEndpointConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func rejectVpcEndpointConnectionsAsync(input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult>) -> ()) throws {
+    public func rejectVpcEndpointConnectionsAsync(
+            input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
         if let rejectVpcEndpointConnectionsAsyncOverride = rejectVpcEndpointConnectionsAsyncOverride {
-            return try rejectVpcEndpointConnectionsAsyncOverride(input, completion)
+            return try rejectVpcEndpointConnectionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11906,9 +13420,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The RejectVpcEndpointConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func rejectVpcEndpointConnectionsSync(input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult {
+    public func rejectVpcEndpointConnectionsSync(
+            input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult {
         if let rejectVpcEndpointConnectionsSyncOverride = rejectVpcEndpointConnectionsSyncOverride {
-            return try rejectVpcEndpointConnectionsSyncOverride(input)
+            return try rejectVpcEndpointConnectionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -11923,12 +13439,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The RejectVpcPeeringConnectionResult
            object will be validated before being returned to caller.
      */
-    public func rejectVpcPeeringConnectionAsync(input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult>) -> ()) throws {
+    public func rejectVpcPeeringConnectionAsync(
+            input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
         if let rejectVpcPeeringConnectionAsyncOverride = rejectVpcPeeringConnectionAsyncOverride {
-            return try rejectVpcPeeringConnectionAsyncOverride(input, completion)
+            return try rejectVpcPeeringConnectionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -11939,9 +13458,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The RejectVpcPeeringConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func rejectVpcPeeringConnectionSync(input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult {
+    public func rejectVpcPeeringConnectionSync(
+            input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult {
         if let rejectVpcPeeringConnectionSyncOverride = rejectVpcPeeringConnectionSyncOverride {
-            return try rejectVpcPeeringConnectionSyncOverride(input)
+            return try rejectVpcPeeringConnectionSyncOverride(input, reporting)
         }
 
         throw error
@@ -11955,9 +13476,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func releaseAddressAsync(input: ElasticComputeCloudModel.ReleaseAddressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func releaseAddressAsync(
+            input: ElasticComputeCloudModel.ReleaseAddressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let releaseAddressAsyncOverride = releaseAddressAsyncOverride {
-            return try releaseAddressAsyncOverride(input, completion)
+            return try releaseAddressAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -11969,9 +13493,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ReleaseAddressRequest object being passed to this operation.
      */
-    public func releaseAddressSync(input: ElasticComputeCloudModel.ReleaseAddressRequest) throws {
+    public func releaseAddressSync(
+            input: ElasticComputeCloudModel.ReleaseAddressRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let releaseAddressSyncOverride = releaseAddressSyncOverride {
-            return try releaseAddressSyncOverride(input)
+            return try releaseAddressSyncOverride(input, reporting)
         }
 
         throw error
@@ -11986,12 +13512,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ReleaseHostsResult
            object will be validated before being returned to caller.
      */
-    public func releaseHostsAsync(input: ElasticComputeCloudModel.ReleaseHostsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReleaseHostsResult>) -> ()) throws {
+    public func releaseHostsAsync(
+            input: ElasticComputeCloudModel.ReleaseHostsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ReleaseHostsResult, HTTPClientError>) -> ()) throws {
         if let releaseHostsAsyncOverride = releaseHostsAsyncOverride {
-            return try releaseHostsAsyncOverride(input, completion)
+            return try releaseHostsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12002,9 +13531,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ReleaseHostsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func releaseHostsSync(input: ElasticComputeCloudModel.ReleaseHostsRequest) throws -> ElasticComputeCloudModel.ReleaseHostsResult {
+    public func releaseHostsSync(
+            input: ElasticComputeCloudModel.ReleaseHostsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReleaseHostsResult {
         if let releaseHostsSyncOverride = releaseHostsSyncOverride {
-            return try releaseHostsSyncOverride(input)
+            return try releaseHostsSyncOverride(input, reporting)
         }
 
         throw error
@@ -12019,12 +13550,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ReplaceIamInstanceProfileAssociationResult
            object will be validated before being returned to caller.
      */
-    public func replaceIamInstanceProfileAssociationAsync(input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult>) -> ()) throws {
+    public func replaceIamInstanceProfileAssociationAsync(
+            input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, HTTPClientError>) -> ()) throws {
         if let replaceIamInstanceProfileAssociationAsyncOverride = replaceIamInstanceProfileAssociationAsyncOverride {
-            return try replaceIamInstanceProfileAssociationAsyncOverride(input, completion)
+            return try replaceIamInstanceProfileAssociationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12035,9 +13569,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ReplaceIamInstanceProfileAssociationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func replaceIamInstanceProfileAssociationSync(input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult {
+    public func replaceIamInstanceProfileAssociationSync(
+            input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult {
         if let replaceIamInstanceProfileAssociationSyncOverride = replaceIamInstanceProfileAssociationSyncOverride {
-            return try replaceIamInstanceProfileAssociationSyncOverride(input)
+            return try replaceIamInstanceProfileAssociationSyncOverride(input, reporting)
         }
 
         throw error
@@ -12052,12 +13588,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ReplaceNetworkAclAssociationResult
            object will be validated before being returned to caller.
      */
-    public func replaceNetworkAclAssociationAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult>) -> ()) throws {
+    public func replaceNetworkAclAssociationAsync(
+            input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, HTTPClientError>) -> ()) throws {
         if let replaceNetworkAclAssociationAsyncOverride = replaceNetworkAclAssociationAsyncOverride {
-            return try replaceNetworkAclAssociationAsyncOverride(input, completion)
+            return try replaceNetworkAclAssociationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12068,9 +13607,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ReplaceNetworkAclAssociationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func replaceNetworkAclAssociationSync(input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult {
+    public func replaceNetworkAclAssociationSync(
+            input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult {
         if let replaceNetworkAclAssociationSyncOverride = replaceNetworkAclAssociationSyncOverride {
-            return try replaceNetworkAclAssociationSyncOverride(input)
+            return try replaceNetworkAclAssociationSyncOverride(input, reporting)
         }
 
         throw error
@@ -12084,9 +13625,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func replaceNetworkAclEntryAsync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func replaceNetworkAclEntryAsync(
+            input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let replaceNetworkAclEntryAsyncOverride = replaceNetworkAclEntryAsyncOverride {
-            return try replaceNetworkAclEntryAsyncOverride(input, completion)
+            return try replaceNetworkAclEntryAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12098,9 +13642,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ReplaceNetworkAclEntryRequest object being passed to this operation.
      */
-    public func replaceNetworkAclEntrySync(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest) throws {
+    public func replaceNetworkAclEntrySync(
+            input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let replaceNetworkAclEntrySyncOverride = replaceNetworkAclEntrySyncOverride {
-            return try replaceNetworkAclEntrySyncOverride(input)
+            return try replaceNetworkAclEntrySyncOverride(input, reporting)
         }
 
         throw error
@@ -12114,9 +13660,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func replaceRouteAsync(input: ElasticComputeCloudModel.ReplaceRouteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func replaceRouteAsync(
+            input: ElasticComputeCloudModel.ReplaceRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let replaceRouteAsyncOverride = replaceRouteAsyncOverride {
-            return try replaceRouteAsyncOverride(input, completion)
+            return try replaceRouteAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12128,9 +13677,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ReplaceRouteRequest object being passed to this operation.
      */
-    public func replaceRouteSync(input: ElasticComputeCloudModel.ReplaceRouteRequest) throws {
+    public func replaceRouteSync(
+            input: ElasticComputeCloudModel.ReplaceRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let replaceRouteSyncOverride = replaceRouteSyncOverride {
-            return try replaceRouteSyncOverride(input)
+            return try replaceRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -12145,12 +13696,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ReplaceRouteTableAssociationResult
            object will be validated before being returned to caller.
      */
-    public func replaceRouteTableAssociationAsync(input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult>) -> ()) throws {
+    public func replaceRouteTableAssociationAsync(
+            input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, HTTPClientError>) -> ()) throws {
         if let replaceRouteTableAssociationAsyncOverride = replaceRouteTableAssociationAsyncOverride {
-            return try replaceRouteTableAssociationAsyncOverride(input, completion)
+            return try replaceRouteTableAssociationAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12161,9 +13715,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ReplaceRouteTableAssociationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func replaceRouteTableAssociationSync(input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult {
+    public func replaceRouteTableAssociationSync(
+            input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult {
         if let replaceRouteTableAssociationSyncOverride = replaceRouteTableAssociationSyncOverride {
-            return try replaceRouteTableAssociationSyncOverride(input)
+            return try replaceRouteTableAssociationSyncOverride(input, reporting)
         }
 
         throw error
@@ -12178,12 +13734,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ReplaceTransitGatewayRouteResult
            object will be validated before being returned to caller.
      */
-    public func replaceTransitGatewayRouteAsync(input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult>) -> ()) throws {
+    public func replaceTransitGatewayRouteAsync(
+            input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
         if let replaceTransitGatewayRouteAsyncOverride = replaceTransitGatewayRouteAsyncOverride {
-            return try replaceTransitGatewayRouteAsyncOverride(input, completion)
+            return try replaceTransitGatewayRouteAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12194,9 +13753,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ReplaceTransitGatewayRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func replaceTransitGatewayRouteSync(input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult {
+    public func replaceTransitGatewayRouteSync(
+            input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult {
         if let replaceTransitGatewayRouteSyncOverride = replaceTransitGatewayRouteSyncOverride {
-            return try replaceTransitGatewayRouteSyncOverride(input)
+            return try replaceTransitGatewayRouteSyncOverride(input, reporting)
         }
 
         throw error
@@ -12210,9 +13771,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func reportInstanceStatusAsync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func reportInstanceStatusAsync(
+            input: ElasticComputeCloudModel.ReportInstanceStatusRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let reportInstanceStatusAsyncOverride = reportInstanceStatusAsyncOverride {
-            return try reportInstanceStatusAsyncOverride(input, completion)
+            return try reportInstanceStatusAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12224,9 +13788,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ReportInstanceStatusRequest object being passed to this operation.
      */
-    public func reportInstanceStatusSync(input: ElasticComputeCloudModel.ReportInstanceStatusRequest) throws {
+    public func reportInstanceStatusSync(
+            input: ElasticComputeCloudModel.ReportInstanceStatusRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let reportInstanceStatusSyncOverride = reportInstanceStatusSyncOverride {
-            return try reportInstanceStatusSyncOverride(input)
+            return try reportInstanceStatusSyncOverride(input, reporting)
         }
 
         throw error
@@ -12241,12 +13807,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The RequestSpotFleetResponse
            object will be validated before being returned to caller.
      */
-    public func requestSpotFleetAsync(input: ElasticComputeCloudModel.RequestSpotFleetRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RequestSpotFleetResponse>) -> ()) throws {
+    public func requestSpotFleetAsync(
+            input: ElasticComputeCloudModel.RequestSpotFleetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotFleetResponse, HTTPClientError>) -> ()) throws {
         if let requestSpotFleetAsyncOverride = requestSpotFleetAsyncOverride {
-            return try requestSpotFleetAsyncOverride(input, completion)
+            return try requestSpotFleetAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12257,9 +13826,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The RequestSpotFleetResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func requestSpotFleetSync(input: ElasticComputeCloudModel.RequestSpotFleetRequest) throws -> ElasticComputeCloudModel.RequestSpotFleetResponse {
+    public func requestSpotFleetSync(
+            input: ElasticComputeCloudModel.RequestSpotFleetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RequestSpotFleetResponse {
         if let requestSpotFleetSyncOverride = requestSpotFleetSyncOverride {
-            return try requestSpotFleetSyncOverride(input)
+            return try requestSpotFleetSyncOverride(input, reporting)
         }
 
         throw error
@@ -12274,12 +13845,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The RequestSpotInstancesResult
            object will be validated before being returned to caller.
      */
-    public func requestSpotInstancesAsync(input: ElasticComputeCloudModel.RequestSpotInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RequestSpotInstancesResult>) -> ()) throws {
+    public func requestSpotInstancesAsync(
+            input: ElasticComputeCloudModel.RequestSpotInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotInstancesResult, HTTPClientError>) -> ()) throws {
         if let requestSpotInstancesAsyncOverride = requestSpotInstancesAsyncOverride {
-            return try requestSpotInstancesAsyncOverride(input, completion)
+            return try requestSpotInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12290,9 +13864,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The RequestSpotInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func requestSpotInstancesSync(input: ElasticComputeCloudModel.RequestSpotInstancesRequest) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult {
+    public func requestSpotInstancesSync(
+            input: ElasticComputeCloudModel.RequestSpotInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult {
         if let requestSpotInstancesSyncOverride = requestSpotInstancesSyncOverride {
-            return try requestSpotInstancesSyncOverride(input)
+            return try requestSpotInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12307,12 +13883,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ResetEbsDefaultKmsKeyIdResult
            object will be validated before being returned to caller.
      */
-    public func resetEbsDefaultKmsKeyIdAsync(input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult>) -> ()) throws {
+    public func resetEbsDefaultKmsKeyIdAsync(
+            input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
         if let resetEbsDefaultKmsKeyIdAsyncOverride = resetEbsDefaultKmsKeyIdAsyncOverride {
-            return try resetEbsDefaultKmsKeyIdAsyncOverride(input, completion)
+            return try resetEbsDefaultKmsKeyIdAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12323,9 +13902,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ResetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func resetEbsDefaultKmsKeyIdSync(input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult {
+    public func resetEbsDefaultKmsKeyIdSync(
+            input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult {
         if let resetEbsDefaultKmsKeyIdSyncOverride = resetEbsDefaultKmsKeyIdSyncOverride {
-            return try resetEbsDefaultKmsKeyIdSyncOverride(input)
+            return try resetEbsDefaultKmsKeyIdSyncOverride(input, reporting)
         }
 
         throw error
@@ -12340,12 +13921,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The ResetFpgaImageAttributeResult
            object will be validated before being returned to caller.
      */
-    public func resetFpgaImageAttributeAsync(input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ResetFpgaImageAttributeResult>) -> ()) throws {
+    public func resetFpgaImageAttributeAsync(
+            input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
         if let resetFpgaImageAttributeAsyncOverride = resetFpgaImageAttributeAsyncOverride {
-            return try resetFpgaImageAttributeAsyncOverride(input, completion)
+            return try resetFpgaImageAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12356,9 +13940,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The ResetFpgaImageAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func resetFpgaImageAttributeSync(input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult {
+    public func resetFpgaImageAttributeSync(
+            input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult {
         if let resetFpgaImageAttributeSyncOverride = resetFpgaImageAttributeSyncOverride {
-            return try resetFpgaImageAttributeSyncOverride(input)
+            return try resetFpgaImageAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -12372,9 +13958,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetImageAttributeAsync(input: ElasticComputeCloudModel.ResetImageAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func resetImageAttributeAsync(
+            input: ElasticComputeCloudModel.ResetImageAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let resetImageAttributeAsyncOverride = resetImageAttributeAsyncOverride {
-            return try resetImageAttributeAsyncOverride(input, completion)
+            return try resetImageAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12386,9 +13975,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ResetImageAttributeRequest object being passed to this operation.
      */
-    public func resetImageAttributeSync(input: ElasticComputeCloudModel.ResetImageAttributeRequest) throws {
+    public func resetImageAttributeSync(
+            input: ElasticComputeCloudModel.ResetImageAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let resetImageAttributeSyncOverride = resetImageAttributeSyncOverride {
-            return try resetImageAttributeSyncOverride(input)
+            return try resetImageAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -12402,9 +13993,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetInstanceAttributeAsync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func resetInstanceAttributeAsync(
+            input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let resetInstanceAttributeAsyncOverride = resetInstanceAttributeAsyncOverride {
-            return try resetInstanceAttributeAsyncOverride(input, completion)
+            return try resetInstanceAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12416,9 +14010,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ResetInstanceAttributeRequest object being passed to this operation.
      */
-    public func resetInstanceAttributeSync(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest) throws {
+    public func resetInstanceAttributeSync(
+            input: ElasticComputeCloudModel.ResetInstanceAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let resetInstanceAttributeSyncOverride = resetInstanceAttributeSyncOverride {
-            return try resetInstanceAttributeSyncOverride(input)
+            return try resetInstanceAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -12432,9 +14028,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetNetworkInterfaceAttributeAsync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func resetNetworkInterfaceAttributeAsync(
+            input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let resetNetworkInterfaceAttributeAsyncOverride = resetNetworkInterfaceAttributeAsyncOverride {
-            return try resetNetworkInterfaceAttributeAsyncOverride(input, completion)
+            return try resetNetworkInterfaceAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12446,9 +14045,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ResetNetworkInterfaceAttributeRequest object being passed to this operation.
      */
-    public func resetNetworkInterfaceAttributeSync(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest) throws {
+    public func resetNetworkInterfaceAttributeSync(
+            input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let resetNetworkInterfaceAttributeSyncOverride = resetNetworkInterfaceAttributeSyncOverride {
-            return try resetNetworkInterfaceAttributeSyncOverride(input)
+            return try resetNetworkInterfaceAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -12462,9 +14063,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetSnapshotAttributeAsync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func resetSnapshotAttributeAsync(
+            input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let resetSnapshotAttributeAsyncOverride = resetSnapshotAttributeAsyncOverride {
-            return try resetSnapshotAttributeAsyncOverride(input, completion)
+            return try resetSnapshotAttributeAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12476,9 +14080,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated ResetSnapshotAttributeRequest object being passed to this operation.
      */
-    public func resetSnapshotAttributeSync(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest) throws {
+    public func resetSnapshotAttributeSync(
+            input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let resetSnapshotAttributeSyncOverride = resetSnapshotAttributeSyncOverride {
-            return try resetSnapshotAttributeSyncOverride(input)
+            return try resetSnapshotAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -12493,12 +14099,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The RestoreAddressToClassicResult
            object will be validated before being returned to caller.
      */
-    public func restoreAddressToClassicAsync(input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RestoreAddressToClassicResult>) -> ()) throws {
+    public func restoreAddressToClassicAsync(
+            input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, HTTPClientError>) -> ()) throws {
         if let restoreAddressToClassicAsyncOverride = restoreAddressToClassicAsyncOverride {
-            return try restoreAddressToClassicAsyncOverride(input, completion)
+            return try restoreAddressToClassicAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12509,9 +14118,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The RestoreAddressToClassicResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func restoreAddressToClassicSync(input: ElasticComputeCloudModel.RestoreAddressToClassicRequest) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult {
+    public func restoreAddressToClassicSync(
+            input: ElasticComputeCloudModel.RestoreAddressToClassicRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult {
         if let restoreAddressToClassicSyncOverride = restoreAddressToClassicSyncOverride {
-            return try restoreAddressToClassicSyncOverride(input)
+            return try restoreAddressToClassicSyncOverride(input, reporting)
         }
 
         throw error
@@ -12526,12 +14137,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The RevokeClientVpnIngressResult
            object will be validated before being returned to caller.
      */
-    public func revokeClientVpnIngressAsync(input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RevokeClientVpnIngressResult>) -> ()) throws {
+    public func revokeClientVpnIngressAsync(
+            input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, HTTPClientError>) -> ()) throws {
         if let revokeClientVpnIngressAsyncOverride = revokeClientVpnIngressAsyncOverride {
-            return try revokeClientVpnIngressAsyncOverride(input, completion)
+            return try revokeClientVpnIngressAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12542,9 +14156,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The RevokeClientVpnIngressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func revokeClientVpnIngressSync(input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult {
+    public func revokeClientVpnIngressSync(
+            input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult {
         if let revokeClientVpnIngressSyncOverride = revokeClientVpnIngressSyncOverride {
-            return try revokeClientVpnIngressSyncOverride(input)
+            return try revokeClientVpnIngressSyncOverride(input, reporting)
         }
 
         throw error
@@ -12558,9 +14174,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func revokeSecurityGroupEgressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func revokeSecurityGroupEgressAsync(
+            input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let revokeSecurityGroupEgressAsyncOverride = revokeSecurityGroupEgressAsyncOverride {
-            return try revokeSecurityGroupEgressAsyncOverride(input, completion)
+            return try revokeSecurityGroupEgressAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12572,9 +14191,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
      */
-    public func revokeSecurityGroupEgressSync(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws {
+    public func revokeSecurityGroupEgressSync(
+            input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let revokeSecurityGroupEgressSyncOverride = revokeSecurityGroupEgressSyncOverride {
-            return try revokeSecurityGroupEgressSyncOverride(input)
+            return try revokeSecurityGroupEgressSyncOverride(input, reporting)
         }
 
         throw error
@@ -12588,9 +14209,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func revokeSecurityGroupIngressAsync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func revokeSecurityGroupIngressAsync(
+            input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let revokeSecurityGroupIngressAsyncOverride = revokeSecurityGroupIngressAsyncOverride {
-            return try revokeSecurityGroupIngressAsyncOverride(input, completion)
+            return try revokeSecurityGroupIngressAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12602,9 +14226,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
      */
-    public func revokeSecurityGroupIngressSync(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws {
+    public func revokeSecurityGroupIngressSync(
+            input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let revokeSecurityGroupIngressSyncOverride = revokeSecurityGroupIngressSyncOverride {
-            return try revokeSecurityGroupIngressSyncOverride(input)
+            return try revokeSecurityGroupIngressSyncOverride(input, reporting)
         }
 
         throw error
@@ -12619,12 +14245,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The Reservation
            object will be validated before being returned to caller.
      */
-    public func runInstancesAsync(input: ElasticComputeCloudModel.RunInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.Reservation>) -> ()) throws {
+    public func runInstancesAsync(
+            input: ElasticComputeCloudModel.RunInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.Reservation, HTTPClientError>) -> ()) throws {
         if let runInstancesAsyncOverride = runInstancesAsyncOverride {
-            return try runInstancesAsyncOverride(input, completion)
+            return try runInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12635,9 +14264,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The Reservation object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func runInstancesSync(input: ElasticComputeCloudModel.RunInstancesRequest) throws -> ElasticComputeCloudModel.Reservation {
+    public func runInstancesSync(
+            input: ElasticComputeCloudModel.RunInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.Reservation {
         if let runInstancesSyncOverride = runInstancesSyncOverride {
-            return try runInstancesSyncOverride(input)
+            return try runInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12652,12 +14283,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The RunScheduledInstancesResult
            object will be validated before being returned to caller.
      */
-    public func runScheduledInstancesAsync(input: ElasticComputeCloudModel.RunScheduledInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RunScheduledInstancesResult>) -> ()) throws {
+    public func runScheduledInstancesAsync(
+            input: ElasticComputeCloudModel.RunScheduledInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RunScheduledInstancesResult, HTTPClientError>) -> ()) throws {
         if let runScheduledInstancesAsyncOverride = runScheduledInstancesAsyncOverride {
-            return try runScheduledInstancesAsyncOverride(input, completion)
+            return try runScheduledInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12668,9 +14302,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The RunScheduledInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func runScheduledInstancesSync(input: ElasticComputeCloudModel.RunScheduledInstancesRequest) throws -> ElasticComputeCloudModel.RunScheduledInstancesResult {
+    public func runScheduledInstancesSync(
+            input: ElasticComputeCloudModel.RunScheduledInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RunScheduledInstancesResult {
         if let runScheduledInstancesSyncOverride = runScheduledInstancesSyncOverride {
-            return try runScheduledInstancesSyncOverride(input)
+            return try runScheduledInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12685,12 +14321,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The SearchTransitGatewayRoutesResult
            object will be validated before being returned to caller.
      */
-    public func searchTransitGatewayRoutesAsync(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult>) -> ()) throws {
+    public func searchTransitGatewayRoutesAsync(
+            input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, HTTPClientError>) -> ()) throws {
         if let searchTransitGatewayRoutesAsyncOverride = searchTransitGatewayRoutesAsyncOverride {
-            return try searchTransitGatewayRoutesAsyncOverride(input, completion)
+            return try searchTransitGatewayRoutesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12701,9 +14340,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The SearchTransitGatewayRoutesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func searchTransitGatewayRoutesSync(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
+    public func searchTransitGatewayRoutesSync(
+            input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
         if let searchTransitGatewayRoutesSyncOverride = searchTransitGatewayRoutesSyncOverride {
-            return try searchTransitGatewayRoutesSyncOverride(input)
+            return try searchTransitGatewayRoutesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12718,12 +14359,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The StartInstancesResult
            object will be validated before being returned to caller.
      */
-    public func startInstancesAsync(input: ElasticComputeCloudModel.StartInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.StartInstancesResult>) -> ()) throws {
+    public func startInstancesAsync(
+            input: ElasticComputeCloudModel.StartInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.StartInstancesResult, HTTPClientError>) -> ()) throws {
         if let startInstancesAsyncOverride = startInstancesAsyncOverride {
-            return try startInstancesAsyncOverride(input, completion)
+            return try startInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12734,9 +14378,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The StartInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func startInstancesSync(input: ElasticComputeCloudModel.StartInstancesRequest) throws -> ElasticComputeCloudModel.StartInstancesResult {
+    public func startInstancesSync(
+            input: ElasticComputeCloudModel.StartInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.StartInstancesResult {
         if let startInstancesSyncOverride = startInstancesSyncOverride {
-            return try startInstancesSyncOverride(input)
+            return try startInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12751,12 +14397,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The StopInstancesResult
            object will be validated before being returned to caller.
      */
-    public func stopInstancesAsync(input: ElasticComputeCloudModel.StopInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.StopInstancesResult>) -> ()) throws {
+    public func stopInstancesAsync(
+            input: ElasticComputeCloudModel.StopInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.StopInstancesResult, HTTPClientError>) -> ()) throws {
         if let stopInstancesAsyncOverride = stopInstancesAsyncOverride {
-            return try stopInstancesAsyncOverride(input, completion)
+            return try stopInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12767,9 +14416,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The StopInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func stopInstancesSync(input: ElasticComputeCloudModel.StopInstancesRequest) throws -> ElasticComputeCloudModel.StopInstancesResult {
+    public func stopInstancesSync(
+            input: ElasticComputeCloudModel.StopInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.StopInstancesResult {
         if let stopInstancesSyncOverride = stopInstancesSyncOverride {
-            return try stopInstancesSyncOverride(input)
+            return try stopInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12784,12 +14435,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The TerminateClientVpnConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func terminateClientVpnConnectionsAsync(input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult>) -> ()) throws {
+    public func terminateClientVpnConnectionsAsync(
+            input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, HTTPClientError>) -> ()) throws {
         if let terminateClientVpnConnectionsAsyncOverride = terminateClientVpnConnectionsAsyncOverride {
-            return try terminateClientVpnConnectionsAsyncOverride(input, completion)
+            return try terminateClientVpnConnectionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12800,9 +14454,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The TerminateClientVpnConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func terminateClientVpnConnectionsSync(input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult {
+    public func terminateClientVpnConnectionsSync(
+            input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult {
         if let terminateClientVpnConnectionsSyncOverride = terminateClientVpnConnectionsSyncOverride {
-            return try terminateClientVpnConnectionsSyncOverride(input)
+            return try terminateClientVpnConnectionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -12817,12 +14473,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The TerminateInstancesResult
            object will be validated before being returned to caller.
      */
-    public func terminateInstancesAsync(input: ElasticComputeCloudModel.TerminateInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.TerminateInstancesResult>) -> ()) throws {
+    public func terminateInstancesAsync(
+            input: ElasticComputeCloudModel.TerminateInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.TerminateInstancesResult, HTTPClientError>) -> ()) throws {
         if let terminateInstancesAsyncOverride = terminateInstancesAsyncOverride {
-            return try terminateInstancesAsyncOverride(input, completion)
+            return try terminateInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12833,9 +14492,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The TerminateInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func terminateInstancesSync(input: ElasticComputeCloudModel.TerminateInstancesRequest) throws -> ElasticComputeCloudModel.TerminateInstancesResult {
+    public func terminateInstancesSync(
+            input: ElasticComputeCloudModel.TerminateInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.TerminateInstancesResult {
         if let terminateInstancesSyncOverride = terminateInstancesSyncOverride {
-            return try terminateInstancesSyncOverride(input)
+            return try terminateInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12850,12 +14511,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The UnassignIpv6AddressesResult
            object will be validated before being returned to caller.
      */
-    public func unassignIpv6AddressesAsync(input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.UnassignIpv6AddressesResult>) -> ()) throws {
+    public func unassignIpv6AddressesAsync(
+            input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, HTTPClientError>) -> ()) throws {
         if let unassignIpv6AddressesAsyncOverride = unassignIpv6AddressesAsyncOverride {
-            return try unassignIpv6AddressesAsyncOverride(input, completion)
+            return try unassignIpv6AddressesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12866,9 +14530,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The UnassignIpv6AddressesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func unassignIpv6AddressesSync(input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.UnassignIpv6AddressesResult {
+    public func unassignIpv6AddressesSync(
+            input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.UnassignIpv6AddressesResult {
         if let unassignIpv6AddressesSyncOverride = unassignIpv6AddressesSyncOverride {
-            return try unassignIpv6AddressesSyncOverride(input)
+            return try unassignIpv6AddressesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12882,9 +14548,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func unassignPrivateIpAddressesAsync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func unassignPrivateIpAddressesAsync(
+            input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let unassignPrivateIpAddressesAsyncOverride = unassignPrivateIpAddressesAsyncOverride {
-            return try unassignPrivateIpAddressesAsyncOverride(input, completion)
+            return try unassignPrivateIpAddressesAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -12896,9 +14565,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Parameters:
          - input: The validated UnassignPrivateIpAddressesRequest object being passed to this operation.
      */
-    public func unassignPrivateIpAddressesSync(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest) throws {
+    public func unassignPrivateIpAddressesSync(
+            input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let unassignPrivateIpAddressesSyncOverride = unassignPrivateIpAddressesSyncOverride {
-            return try unassignPrivateIpAddressesSyncOverride(input)
+            return try unassignPrivateIpAddressesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12913,12 +14584,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The UnmonitorInstancesResult
            object will be validated before being returned to caller.
      */
-    public func unmonitorInstancesAsync(input: ElasticComputeCloudModel.UnmonitorInstancesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.UnmonitorInstancesResult>) -> ()) throws {
+    public func unmonitorInstancesAsync(
+            input: ElasticComputeCloudModel.UnmonitorInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.UnmonitorInstancesResult, HTTPClientError>) -> ()) throws {
         if let unmonitorInstancesAsyncOverride = unmonitorInstancesAsyncOverride {
-            return try unmonitorInstancesAsyncOverride(input, completion)
+            return try unmonitorInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12929,9 +14603,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The UnmonitorInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func unmonitorInstancesSync(input: ElasticComputeCloudModel.UnmonitorInstancesRequest) throws -> ElasticComputeCloudModel.UnmonitorInstancesResult {
+    public func unmonitorInstancesSync(
+            input: ElasticComputeCloudModel.UnmonitorInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.UnmonitorInstancesResult {
         if let unmonitorInstancesSyncOverride = unmonitorInstancesSyncOverride {
-            return try unmonitorInstancesSyncOverride(input)
+            return try unmonitorInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -12946,12 +14622,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The UpdateSecurityGroupRuleDescriptionsEgressResult
            object will be validated before being returned to caller.
      */
-    public func updateSecurityGroupRuleDescriptionsEgressAsync(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult>) -> ()) throws {
+    public func updateSecurityGroupRuleDescriptionsEgressAsync(
+            input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, HTTPClientError>) -> ()) throws {
         if let updateSecurityGroupRuleDescriptionsEgressAsyncOverride = updateSecurityGroupRuleDescriptionsEgressAsyncOverride {
-            return try updateSecurityGroupRuleDescriptionsEgressAsyncOverride(input, completion)
+            return try updateSecurityGroupRuleDescriptionsEgressAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12962,9 +14641,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The UpdateSecurityGroupRuleDescriptionsEgressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func updateSecurityGroupRuleDescriptionsEgressSync(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult {
+    public func updateSecurityGroupRuleDescriptionsEgressSync(
+            input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult {
         if let updateSecurityGroupRuleDescriptionsEgressSyncOverride = updateSecurityGroupRuleDescriptionsEgressSyncOverride {
-            return try updateSecurityGroupRuleDescriptionsEgressSyncOverride(input)
+            return try updateSecurityGroupRuleDescriptionsEgressSyncOverride(input, reporting)
         }
 
         throw error
@@ -12979,12 +14660,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The UpdateSecurityGroupRuleDescriptionsIngressResult
            object will be validated before being returned to caller.
      */
-    public func updateSecurityGroupRuleDescriptionsIngressAsync(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult>) -> ()) throws {
+    public func updateSecurityGroupRuleDescriptionsIngressAsync(
+            input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, HTTPClientError>) -> ()) throws {
         if let updateSecurityGroupRuleDescriptionsIngressAsyncOverride = updateSecurityGroupRuleDescriptionsIngressAsyncOverride {
-            return try updateSecurityGroupRuleDescriptionsIngressAsyncOverride(input, completion)
+            return try updateSecurityGroupRuleDescriptionsIngressAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -12995,9 +14679,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The UpdateSecurityGroupRuleDescriptionsIngressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func updateSecurityGroupRuleDescriptionsIngressSync(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult {
+    public func updateSecurityGroupRuleDescriptionsIngressSync(
+            input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult {
         if let updateSecurityGroupRuleDescriptionsIngressSyncOverride = updateSecurityGroupRuleDescriptionsIngressSyncOverride {
-            return try updateSecurityGroupRuleDescriptionsIngressSyncOverride(input)
+            return try updateSecurityGroupRuleDescriptionsIngressSyncOverride(input, reporting)
         }
 
         throw error
@@ -13012,12 +14698,15 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
            callback when the operation is complete. The WithdrawByoipCidrResult
            object will be validated before being returned to caller.
      */
-    public func withdrawByoipCidrAsync(input: ElasticComputeCloudModel.WithdrawByoipCidrRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.WithdrawByoipCidrResult>) -> ()) throws {
+    public func withdrawByoipCidrAsync(
+            input: ElasticComputeCloudModel.WithdrawByoipCidrRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, HTTPClientError>) -> ()) throws {
         if let withdrawByoipCidrAsyncOverride = withdrawByoipCidrAsyncOverride {
-            return try withdrawByoipCidrAsyncOverride(input, completion)
+            return try withdrawByoipCidrAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -13028,9 +14717,11 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      - Returns: The WithdrawByoipCidrResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func withdrawByoipCidrSync(input: ElasticComputeCloudModel.WithdrawByoipCidrRequest) throws -> ElasticComputeCloudModel.WithdrawByoipCidrResult {
+    public func withdrawByoipCidrSync(
+            input: ElasticComputeCloudModel.WithdrawByoipCidrRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.WithdrawByoipCidrResult {
         if let withdrawByoipCidrSyncOverride = withdrawByoipCidrSyncOverride {
-            return try withdrawByoipCidrSyncOverride(input)
+            return try withdrawByoipCidrSyncOverride(input, reporting)
         }
 
         throw error

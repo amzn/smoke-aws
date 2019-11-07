@@ -21,56 +21,167 @@
 
 import Foundation
 import StepFunctionsModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
  Client Protocol for the StepFunctions service.
  */
 public protocol StepFunctionsClientProtocol {
-    typealias CreateActivitySyncType = (_ input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput
-    typealias CreateActivityAsyncType = (_ input: StepFunctionsModel.CreateActivityInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.CreateActivityOutput>) -> ()) throws -> ()
-    typealias CreateStateMachineSyncType = (_ input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput
-    typealias CreateStateMachineAsyncType = (_ input: StepFunctionsModel.CreateStateMachineInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.CreateStateMachineOutput>) -> ()) throws -> ()
-    typealias DeleteActivitySyncType = (_ input: StepFunctionsModel.DeleteActivityInput) throws -> StepFunctionsModel.DeleteActivityOutput
-    typealias DeleteActivityAsyncType = (_ input: StepFunctionsModel.DeleteActivityInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.DeleteActivityOutput>) -> ()) throws -> ()
-    typealias DeleteStateMachineSyncType = (_ input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput
-    typealias DeleteStateMachineAsyncType = (_ input: StepFunctionsModel.DeleteStateMachineInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.DeleteStateMachineOutput>) -> ()) throws -> ()
-    typealias DescribeActivitySyncType = (_ input: StepFunctionsModel.DescribeActivityInput) throws -> StepFunctionsModel.DescribeActivityOutput
-    typealias DescribeActivityAsyncType = (_ input: StepFunctionsModel.DescribeActivityInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.DescribeActivityOutput>) -> ()) throws -> ()
-    typealias DescribeExecutionSyncType = (_ input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput
-    typealias DescribeExecutionAsyncType = (_ input: StepFunctionsModel.DescribeExecutionInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.DescribeExecutionOutput>) -> ()) throws -> ()
-    typealias DescribeStateMachineSyncType = (_ input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput
-    typealias DescribeStateMachineAsyncType = (_ input: StepFunctionsModel.DescribeStateMachineInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.DescribeStateMachineOutput>) -> ()) throws -> ()
-    typealias DescribeStateMachineForExecutionSyncType = (_ input: StepFunctionsModel.DescribeStateMachineForExecutionInput) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput
-    typealias DescribeStateMachineForExecutionAsyncType = (_ input: StepFunctionsModel.DescribeStateMachineForExecutionInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.DescribeStateMachineForExecutionOutput>) -> ()) throws -> ()
-    typealias GetActivityTaskSyncType = (_ input: StepFunctionsModel.GetActivityTaskInput) throws -> StepFunctionsModel.GetActivityTaskOutput
-    typealias GetActivityTaskAsyncType = (_ input: StepFunctionsModel.GetActivityTaskInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.GetActivityTaskOutput>) -> ()) throws -> ()
-    typealias GetExecutionHistorySyncType = (_ input: StepFunctionsModel.GetExecutionHistoryInput) throws -> StepFunctionsModel.GetExecutionHistoryOutput
-    typealias GetExecutionHistoryAsyncType = (_ input: StepFunctionsModel.GetExecutionHistoryInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.GetExecutionHistoryOutput>) -> ()) throws -> ()
-    typealias ListActivitiesSyncType = (_ input: StepFunctionsModel.ListActivitiesInput) throws -> StepFunctionsModel.ListActivitiesOutput
-    typealias ListActivitiesAsyncType = (_ input: StepFunctionsModel.ListActivitiesInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.ListActivitiesOutput>) -> ()) throws -> ()
-    typealias ListExecutionsSyncType = (_ input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput
-    typealias ListExecutionsAsyncType = (_ input: StepFunctionsModel.ListExecutionsInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.ListExecutionsOutput>) -> ()) throws -> ()
-    typealias ListStateMachinesSyncType = (_ input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput
-    typealias ListStateMachinesAsyncType = (_ input: StepFunctionsModel.ListStateMachinesInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.ListStateMachinesOutput>) -> ()) throws -> ()
-    typealias ListTagsForResourceSyncType = (_ input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput
-    typealias ListTagsForResourceAsyncType = (_ input: StepFunctionsModel.ListTagsForResourceInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.ListTagsForResourceOutput>) -> ()) throws -> ()
-    typealias SendTaskFailureSyncType = (_ input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput
-    typealias SendTaskFailureAsyncType = (_ input: StepFunctionsModel.SendTaskFailureInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskFailureOutput>) -> ()) throws -> ()
-    typealias SendTaskHeartbeatSyncType = (_ input: StepFunctionsModel.SendTaskHeartbeatInput) throws -> StepFunctionsModel.SendTaskHeartbeatOutput
-    typealias SendTaskHeartbeatAsyncType = (_ input: StepFunctionsModel.SendTaskHeartbeatInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskHeartbeatOutput>) -> ()) throws -> ()
-    typealias SendTaskSuccessSyncType = (_ input: StepFunctionsModel.SendTaskSuccessInput) throws -> StepFunctionsModel.SendTaskSuccessOutput
-    typealias SendTaskSuccessAsyncType = (_ input: StepFunctionsModel.SendTaskSuccessInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskSuccessOutput>) -> ()) throws -> ()
-    typealias StartExecutionSyncType = (_ input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput
-    typealias StartExecutionAsyncType = (_ input: StepFunctionsModel.StartExecutionInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.StartExecutionOutput>) -> ()) throws -> ()
-    typealias StopExecutionSyncType = (_ input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput
-    typealias StopExecutionAsyncType = (_ input: StepFunctionsModel.StopExecutionInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.StopExecutionOutput>) -> ()) throws -> ()
-    typealias TagResourceSyncType = (_ input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput
-    typealias TagResourceAsyncType = (_ input: StepFunctionsModel.TagResourceInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.TagResourceOutput>) -> ()) throws -> ()
-    typealias UntagResourceSyncType = (_ input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput
-    typealias UntagResourceAsyncType = (_ input: StepFunctionsModel.UntagResourceInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.UntagResourceOutput>) -> ()) throws -> ()
-    typealias UpdateStateMachineSyncType = (_ input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput
-    typealias UpdateStateMachineAsyncType = (_ input: StepFunctionsModel.UpdateStateMachineInput, _ completion: @escaping (HTTPResult<StepFunctionsModel.UpdateStateMachineOutput>) -> ()) throws -> ()
+    typealias CreateActivitySyncType = (
+            _ input: StepFunctionsModel.CreateActivityInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateActivityOutput
+    typealias CreateActivityAsyncType = (
+            _ input: StepFunctionsModel.CreateActivityInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias CreateStateMachineSyncType = (
+            _ input: StepFunctionsModel.CreateStateMachineInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateStateMachineOutput
+    typealias CreateStateMachineAsyncType = (
+            _ input: StepFunctionsModel.CreateStateMachineInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias DeleteActivitySyncType = (
+            _ input: StepFunctionsModel.DeleteActivityInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteActivityOutput
+    typealias DeleteActivityAsyncType = (
+            _ input: StepFunctionsModel.DeleteActivityInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias DeleteStateMachineSyncType = (
+            _ input: StepFunctionsModel.DeleteStateMachineInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteStateMachineOutput
+    typealias DeleteStateMachineAsyncType = (
+            _ input: StepFunctionsModel.DeleteStateMachineInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeActivitySyncType = (
+            _ input: StepFunctionsModel.DescribeActivityInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeActivityOutput
+    typealias DescribeActivityAsyncType = (
+            _ input: StepFunctionsModel.DescribeActivityInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeExecutionSyncType = (
+            _ input: StepFunctionsModel.DescribeExecutionInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeExecutionOutput
+    typealias DescribeExecutionAsyncType = (
+            _ input: StepFunctionsModel.DescribeExecutionInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeStateMachineSyncType = (
+            _ input: StepFunctionsModel.DescribeStateMachineInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineOutput
+    typealias DescribeStateMachineAsyncType = (
+            _ input: StepFunctionsModel.DescribeStateMachineInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeStateMachineForExecutionSyncType = (
+            _ input: StepFunctionsModel.DescribeStateMachineForExecutionInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput
+    typealias DescribeStateMachineForExecutionAsyncType = (
+            _ input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias GetActivityTaskSyncType = (
+            _ input: StepFunctionsModel.GetActivityTaskInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetActivityTaskOutput
+    typealias GetActivityTaskAsyncType = (
+            _ input: StepFunctionsModel.GetActivityTaskInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias GetExecutionHistorySyncType = (
+            _ input: StepFunctionsModel.GetExecutionHistoryInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetExecutionHistoryOutput
+    typealias GetExecutionHistoryAsyncType = (
+            _ input: StepFunctionsModel.GetExecutionHistoryInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias ListActivitiesSyncType = (
+            _ input: StepFunctionsModel.ListActivitiesInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListActivitiesOutput
+    typealias ListActivitiesAsyncType = (
+            _ input: StepFunctionsModel.ListActivitiesInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias ListExecutionsSyncType = (
+            _ input: StepFunctionsModel.ListExecutionsInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListExecutionsOutput
+    typealias ListExecutionsAsyncType = (
+            _ input: StepFunctionsModel.ListExecutionsInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias ListStateMachinesSyncType = (
+            _ input: StepFunctionsModel.ListStateMachinesInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListStateMachinesOutput
+    typealias ListStateMachinesAsyncType = (
+            _ input: StepFunctionsModel.ListStateMachinesInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias ListTagsForResourceSyncType = (
+            _ input: StepFunctionsModel.ListTagsForResourceInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListTagsForResourceOutput
+    typealias ListTagsForResourceAsyncType = (
+            _ input: StepFunctionsModel.ListTagsForResourceInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias SendTaskFailureSyncType = (
+            _ input: StepFunctionsModel.SendTaskFailureInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskFailureOutput
+    typealias SendTaskFailureAsyncType = (
+            _ input: StepFunctionsModel.SendTaskFailureInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias SendTaskHeartbeatSyncType = (
+            _ input: StepFunctionsModel.SendTaskHeartbeatInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskHeartbeatOutput
+    typealias SendTaskHeartbeatAsyncType = (
+            _ input: StepFunctionsModel.SendTaskHeartbeatInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias SendTaskSuccessSyncType = (
+            _ input: StepFunctionsModel.SendTaskSuccessInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskSuccessOutput
+    typealias SendTaskSuccessAsyncType = (
+            _ input: StepFunctionsModel.SendTaskSuccessInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias StartExecutionSyncType = (
+            _ input: StepFunctionsModel.StartExecutionInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StartExecutionOutput
+    typealias StartExecutionAsyncType = (
+            _ input: StepFunctionsModel.StartExecutionInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias StopExecutionSyncType = (
+            _ input: StepFunctionsModel.StopExecutionInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StopExecutionOutput
+    typealias StopExecutionAsyncType = (
+            _ input: StepFunctionsModel.StopExecutionInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias TagResourceSyncType = (
+            _ input: StepFunctionsModel.TagResourceInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.TagResourceOutput
+    typealias TagResourceAsyncType = (
+            _ input: StepFunctionsModel.TagResourceInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias UntagResourceSyncType = (
+            _ input: StepFunctionsModel.UntagResourceInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UntagResourceOutput
+    typealias UntagResourceAsyncType = (
+            _ input: StepFunctionsModel.UntagResourceInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias UpdateStateMachineSyncType = (
+            _ input: StepFunctionsModel.UpdateStateMachineInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UpdateStateMachineOutput
+    typealias UpdateStateMachineAsyncType = (
+            _ input: StepFunctionsModel.UpdateStateMachineInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws -> ()
 
     /**
      Invokes the CreateActivity operation returning immediately and passing the response to a callback.
@@ -82,7 +193,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityLimitExceeded, invalidName, tooManyTags.
      */
-    func createActivityAsync(input: StepFunctionsModel.CreateActivityInput, completion: @escaping (HTTPResult<StepFunctionsModel.CreateActivityOutput>) -> ()) throws
+    func createActivityAsync(
+            input: StepFunctionsModel.CreateActivityInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the CreateActivity operation waiting for the response before returning.
@@ -93,7 +207,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityLimitExceeded, invalidName, tooManyTags.
      */
-    func createActivitySync(input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput
+    func createActivitySync(
+            input: StepFunctionsModel.CreateActivityInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateActivityOutput
 
     /**
      Invokes the CreateStateMachine operation returning immediately and passing the response to a callback.
@@ -105,7 +221,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
      */
-    func createStateMachineAsync(input: StepFunctionsModel.CreateStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.CreateStateMachineOutput>) -> ()) throws
+    func createStateMachineAsync(
+            input: StepFunctionsModel.CreateStateMachineInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the CreateStateMachine operation waiting for the response before returning.
@@ -116,7 +235,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
      */
-    func createStateMachineSync(input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput
+    func createStateMachineSync(
+            input: StepFunctionsModel.CreateStateMachineInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateStateMachineOutput
 
     /**
      Invokes the DeleteActivity operation returning immediately and passing the response to a callback.
@@ -128,7 +249,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    func deleteActivityAsync(input: StepFunctionsModel.DeleteActivityInput, completion: @escaping (HTTPResult<StepFunctionsModel.DeleteActivityOutput>) -> ()) throws
+    func deleteActivityAsync(
+            input: StepFunctionsModel.DeleteActivityInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the DeleteActivity operation waiting for the response before returning.
@@ -139,7 +263,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    func deleteActivitySync(input: StepFunctionsModel.DeleteActivityInput) throws -> StepFunctionsModel.DeleteActivityOutput
+    func deleteActivitySync(
+            input: StepFunctionsModel.DeleteActivityInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteActivityOutput
 
     /**
      Invokes the DeleteStateMachine operation returning immediately and passing the response to a callback.
@@ -151,7 +277,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    func deleteStateMachineAsync(input: StepFunctionsModel.DeleteStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.DeleteStateMachineOutput>) -> ()) throws
+    func deleteStateMachineAsync(
+            input: StepFunctionsModel.DeleteStateMachineInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the DeleteStateMachine operation waiting for the response before returning.
@@ -162,7 +291,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    func deleteStateMachineSync(input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput
+    func deleteStateMachineSync(
+            input: StepFunctionsModel.DeleteStateMachineInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteStateMachineOutput
 
     /**
      Invokes the DescribeActivity operation returning immediately and passing the response to a callback.
@@ -174,7 +305,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, invalidArn.
      */
-    func describeActivityAsync(input: StepFunctionsModel.DescribeActivityInput, completion: @escaping (HTTPResult<StepFunctionsModel.DescribeActivityOutput>) -> ()) throws
+    func describeActivityAsync(
+            input: StepFunctionsModel.DescribeActivityInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the DescribeActivity operation waiting for the response before returning.
@@ -185,7 +319,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, invalidArn.
      */
-    func describeActivitySync(input: StepFunctionsModel.DescribeActivityInput) throws -> StepFunctionsModel.DescribeActivityOutput
+    func describeActivitySync(
+            input: StepFunctionsModel.DescribeActivityInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeActivityOutput
 
     /**
      Invokes the DescribeExecution operation returning immediately and passing the response to a callback.
@@ -197,7 +333,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    func describeExecutionAsync(input: StepFunctionsModel.DescribeExecutionInput, completion: @escaping (HTTPResult<StepFunctionsModel.DescribeExecutionOutput>) -> ()) throws
+    func describeExecutionAsync(
+            input: StepFunctionsModel.DescribeExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the DescribeExecution operation waiting for the response before returning.
@@ -208,7 +347,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    func describeExecutionSync(input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput
+    func describeExecutionSync(
+            input: StepFunctionsModel.DescribeExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeExecutionOutput
 
     /**
      Invokes the DescribeStateMachine operation returning immediately and passing the response to a callback.
@@ -220,7 +361,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, stateMachineDoesNotExist.
      */
-    func describeStateMachineAsync(input: StepFunctionsModel.DescribeStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.DescribeStateMachineOutput>) -> ()) throws
+    func describeStateMachineAsync(
+            input: StepFunctionsModel.DescribeStateMachineInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the DescribeStateMachine operation waiting for the response before returning.
@@ -231,7 +375,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, stateMachineDoesNotExist.
      */
-    func describeStateMachineSync(input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput
+    func describeStateMachineSync(
+            input: StepFunctionsModel.DescribeStateMachineInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineOutput
 
     /**
      Invokes the DescribeStateMachineForExecution operation returning immediately and passing the response to a callback.
@@ -243,7 +389,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    func describeStateMachineForExecutionAsync(input: StepFunctionsModel.DescribeStateMachineForExecutionInput, completion: @escaping (HTTPResult<StepFunctionsModel.DescribeStateMachineForExecutionOutput>) -> ()) throws
+    func describeStateMachineForExecutionAsync(
+            input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the DescribeStateMachineForExecution operation waiting for the response before returning.
@@ -254,7 +403,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    func describeStateMachineForExecutionSync(input: StepFunctionsModel.DescribeStateMachineForExecutionInput) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput
+    func describeStateMachineForExecutionSync(
+            input: StepFunctionsModel.DescribeStateMachineForExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput
 
     /**
      Invokes the GetActivityTask operation returning immediately and passing the response to a callback.
@@ -266,7 +417,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    func getActivityTaskAsync(input: StepFunctionsModel.GetActivityTaskInput, completion: @escaping (HTTPResult<StepFunctionsModel.GetActivityTaskOutput>) -> ()) throws
+    func getActivityTaskAsync(
+            input: StepFunctionsModel.GetActivityTaskInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the GetActivityTask operation waiting for the response before returning.
@@ -277,7 +431,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    func getActivityTaskSync(input: StepFunctionsModel.GetActivityTaskInput) throws -> StepFunctionsModel.GetActivityTaskOutput
+    func getActivityTaskSync(
+            input: StepFunctionsModel.GetActivityTaskInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetActivityTaskOutput
 
     /**
      Invokes the GetExecutionHistory operation returning immediately and passing the response to a callback.
@@ -289,7 +445,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn, invalidToken.
      */
-    func getExecutionHistoryAsync(input: StepFunctionsModel.GetExecutionHistoryInput, completion: @escaping (HTTPResult<StepFunctionsModel.GetExecutionHistoryOutput>) -> ()) throws
+    func getExecutionHistoryAsync(
+            input: StepFunctionsModel.GetExecutionHistoryInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the GetExecutionHistory operation waiting for the response before returning.
@@ -300,7 +459,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn, invalidToken.
      */
-    func getExecutionHistorySync(input: StepFunctionsModel.GetExecutionHistoryInput) throws -> StepFunctionsModel.GetExecutionHistoryOutput
+    func getExecutionHistorySync(
+            input: StepFunctionsModel.GetExecutionHistoryInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetExecutionHistoryOutput
 
     /**
      Invokes the ListActivities operation returning immediately and passing the response to a callback.
@@ -312,7 +473,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    func listActivitiesAsync(input: StepFunctionsModel.ListActivitiesInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListActivitiesOutput>) -> ()) throws
+    func listActivitiesAsync(
+            input: StepFunctionsModel.ListActivitiesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the ListActivities operation waiting for the response before returning.
@@ -323,7 +487,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    func listActivitiesSync(input: StepFunctionsModel.ListActivitiesInput) throws -> StepFunctionsModel.ListActivitiesOutput
+    func listActivitiesSync(
+            input: StepFunctionsModel.ListActivitiesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListActivitiesOutput
 
     /**
      Invokes the ListExecutions operation returning immediately and passing the response to a callback.
@@ -335,7 +501,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist.
      */
-    func listExecutionsAsync(input: StepFunctionsModel.ListExecutionsInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListExecutionsOutput>) -> ()) throws
+    func listExecutionsAsync(
+            input: StepFunctionsModel.ListExecutionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the ListExecutions operation waiting for the response before returning.
@@ -346,7 +515,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidToken, stateMachineDoesNotExist.
      */
-    func listExecutionsSync(input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput
+    func listExecutionsSync(
+            input: StepFunctionsModel.ListExecutionsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListExecutionsOutput
 
     /**
      Invokes the ListStateMachines operation returning immediately and passing the response to a callback.
@@ -358,7 +529,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    func listStateMachinesAsync(input: StepFunctionsModel.ListStateMachinesInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListStateMachinesOutput>) -> ()) throws
+    func listStateMachinesAsync(
+            input: StepFunctionsModel.ListStateMachinesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the ListStateMachines operation waiting for the response before returning.
@@ -369,7 +543,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    func listStateMachinesSync(input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput
+    func listStateMachinesSync(
+            input: StepFunctionsModel.ListStateMachinesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListStateMachinesOutput
 
     /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
@@ -381,7 +557,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    func listTagsForResourceAsync(input: StepFunctionsModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListTagsForResourceOutput>) -> ()) throws
+    func listTagsForResourceAsync(
+            input: StepFunctionsModel.ListTagsForResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the ListTagsForResource operation waiting for the response before returning.
@@ -392,7 +571,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    func listTagsForResourceSync(input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput
+    func listTagsForResourceSync(
+            input: StepFunctionsModel.ListTagsForResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListTagsForResourceOutput
 
     /**
      Invokes the SendTaskFailure operation returning immediately and passing the response to a callback.
@@ -404,7 +585,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    func sendTaskFailureAsync(input: StepFunctionsModel.SendTaskFailureInput, completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskFailureOutput>) -> ()) throws
+    func sendTaskFailureAsync(
+            input: StepFunctionsModel.SendTaskFailureInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the SendTaskFailure operation waiting for the response before returning.
@@ -415,7 +599,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    func sendTaskFailureSync(input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput
+    func sendTaskFailureSync(
+            input: StepFunctionsModel.SendTaskFailureInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskFailureOutput
 
     /**
      Invokes the SendTaskHeartbeat operation returning immediately and passing the response to a callback.
@@ -427,7 +613,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    func sendTaskHeartbeatAsync(input: StepFunctionsModel.SendTaskHeartbeatInput, completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskHeartbeatOutput>) -> ()) throws
+    func sendTaskHeartbeatAsync(
+            input: StepFunctionsModel.SendTaskHeartbeatInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the SendTaskHeartbeat operation waiting for the response before returning.
@@ -438,7 +627,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    func sendTaskHeartbeatSync(input: StepFunctionsModel.SendTaskHeartbeatInput) throws -> StepFunctionsModel.SendTaskHeartbeatOutput
+    func sendTaskHeartbeatSync(
+            input: StepFunctionsModel.SendTaskHeartbeatInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskHeartbeatOutput
 
     /**
      Invokes the SendTaskSuccess operation returning immediately and passing the response to a callback.
@@ -450,7 +641,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    func sendTaskSuccessAsync(input: StepFunctionsModel.SendTaskSuccessInput, completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskSuccessOutput>) -> ()) throws
+    func sendTaskSuccessAsync(
+            input: StepFunctionsModel.SendTaskSuccessInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the SendTaskSuccess operation waiting for the response before returning.
@@ -461,7 +655,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    func sendTaskSuccessSync(input: StepFunctionsModel.SendTaskSuccessInput) throws -> StepFunctionsModel.SendTaskSuccessOutput
+    func sendTaskSuccessSync(
+            input: StepFunctionsModel.SendTaskSuccessInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskSuccessOutput
 
     /**
      Invokes the StartExecution operation returning immediately and passing the response to a callback.
@@ -473,7 +669,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    func startExecutionAsync(input: StepFunctionsModel.StartExecutionInput, completion: @escaping (HTTPResult<StepFunctionsModel.StartExecutionOutput>) -> ()) throws
+    func startExecutionAsync(
+            input: StepFunctionsModel.StartExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the StartExecution operation waiting for the response before returning.
@@ -484,7 +683,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    func startExecutionSync(input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput
+    func startExecutionSync(
+            input: StepFunctionsModel.StartExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StartExecutionOutput
 
     /**
      Invokes the StopExecution operation returning immediately and passing the response to a callback.
@@ -496,7 +697,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    func stopExecutionAsync(input: StepFunctionsModel.StopExecutionInput, completion: @escaping (HTTPResult<StepFunctionsModel.StopExecutionOutput>) -> ()) throws
+    func stopExecutionAsync(
+            input: StepFunctionsModel.StopExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the StopExecution operation waiting for the response before returning.
@@ -507,7 +711,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    func stopExecutionSync(input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput
+    func stopExecutionSync(
+            input: StepFunctionsModel.StopExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StopExecutionOutput
 
     /**
      Invokes the TagResource operation returning immediately and passing the response to a callback.
@@ -519,7 +725,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound, tooManyTags.
      */
-    func tagResourceAsync(input: StepFunctionsModel.TagResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.TagResourceOutput>) -> ()) throws
+    func tagResourceAsync(
+            input: StepFunctionsModel.TagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the TagResource operation waiting for the response before returning.
@@ -530,7 +739,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound, tooManyTags.
      */
-    func tagResourceSync(input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput
+    func tagResourceSync(
+            input: StepFunctionsModel.TagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.TagResourceOutput
 
     /**
      Invokes the UntagResource operation returning immediately and passing the response to a callback.
@@ -542,7 +753,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    func untagResourceAsync(input: StepFunctionsModel.UntagResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.UntagResourceOutput>) -> ()) throws
+    func untagResourceAsync(
+            input: StepFunctionsModel.UntagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the UntagResource operation waiting for the response before returning.
@@ -553,7 +767,9 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    func untagResourceSync(input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput
+    func untagResourceSync(
+            input: StepFunctionsModel.UntagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UntagResourceOutput
 
     /**
      Invokes the UpdateStateMachine operation returning immediately and passing the response to a callback.
@@ -565,7 +781,10 @@ public protocol StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    func updateStateMachineAsync(input: StepFunctionsModel.UpdateStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.UpdateStateMachineOutput>) -> ()) throws
+    func updateStateMachineAsync(
+            input: StepFunctionsModel.UpdateStateMachineInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the UpdateStateMachine operation waiting for the response before returning.
@@ -576,5 +795,7 @@ public protocol StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    func updateStateMachineSync(input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput
+    func updateStateMachineSync(
+            input: StepFunctionsModel.UpdateStateMachineInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UpdateStateMachineOutput
 }

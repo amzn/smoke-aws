@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let authorizationErrorIdentity = "AuthorizationError"
 private let concurrentAccessIdentity = "ConcurrentAccess"
@@ -47,12 +47,6 @@ private let throttledIdentity = "Throttled"
 private let topicLimitExceededIdentity = "TopicLimitExceeded"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum SimpleNotificationCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum SimpleNotificationError: Swift.Error, Decodable {
     case authorizationError(AuthorizationErrorException)
     case concurrentAccess(ConcurrentAccessException)
@@ -78,6 +72,8 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case throttled(ThrottledException)
     case topicLimitExceeded(TopicLimitExceededException)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "Code"
@@ -166,7 +162,7 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw SimpleNotificationCodingError.unrecognizedError(errorReason, errorMessage)
+            self = SimpleNotificationError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

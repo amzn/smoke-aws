@@ -240,11 +240,11 @@ public typealias Timestamp = Double
 extension StepFunctionsModel.Arn {
     public func validateAsArn() throws {
         if self.count < 1 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Arn violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to Arn violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Arn violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to Arn violated the maximum length constraint.")
         }
     }
 }
@@ -255,11 +255,11 @@ extension StepFunctionsModel.Arn {
 extension StepFunctionsModel.ConnectorParameters {
     public func validateAsConnectorParameters() throws {
         if self.count < 0 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to ConnectorParameters violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to ConnectorParameters violated the minimum length constraint.")
         }
 
         if self.count > 32768 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to ConnectorParameters violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to ConnectorParameters violated the maximum length constraint.")
         }
     }
 }
@@ -270,11 +270,11 @@ extension StepFunctionsModel.ConnectorParameters {
 extension StepFunctionsModel.Definition {
     public func validateAsDefinition() throws {
         if self.count < 1 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Definition violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to Definition violated the minimum length constraint.")
         }
 
         if self.count > 1048576 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Definition violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to Definition violated the maximum length constraint.")
         }
     }
 }
@@ -286,7 +286,7 @@ extension StepFunctionsModel.Identity {
     public func validateAsIdentity() throws {
 
         if self.count > 256 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Identity violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to Identity violated the maximum length constraint.")
         }
     }
 }
@@ -297,11 +297,11 @@ extension StepFunctionsModel.Identity {
 extension StepFunctionsModel.Name {
     public func validateAsName() throws {
         if self.count < 1 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Name violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to Name violated the minimum length constraint.")
         }
 
         if self.count > 80 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to Name violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to Name violated the maximum length constraint.")
         }
     }
 }
@@ -312,11 +312,11 @@ extension StepFunctionsModel.Name {
 extension StepFunctionsModel.PageSize {
     public func validateAsPageSize() throws {
         if self < 0 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to PageSize violated the minimum range constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to PageSize violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to PageSize violated the maximum range constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to PageSize violated the maximum range constraint.")
         }
     }
 }
@@ -327,11 +327,11 @@ extension StepFunctionsModel.PageSize {
 extension StepFunctionsModel.PageToken {
     public func validateAsPageToken() throws {
         if self.count < 1 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to PageToken violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to PageToken violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to PageToken violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to PageToken violated the maximum length constraint.")
         }
     }
 }
@@ -342,11 +342,11 @@ extension StepFunctionsModel.PageToken {
 extension StepFunctionsModel.SensitiveCause {
     public func validateAsSensitiveCause() throws {
         if self.count < 0 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveCause violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to SensitiveCause violated the minimum length constraint.")
         }
 
         if self.count > 32768 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveCause violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to SensitiveCause violated the maximum length constraint.")
         }
     }
 }
@@ -358,7 +358,7 @@ extension StepFunctionsModel.SensitiveData {
     public func validateAsSensitiveData() throws {
 
         if self.count > 32768 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveData violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to SensitiveData violated the maximum length constraint.")
         }
     }
 }
@@ -370,7 +370,7 @@ extension StepFunctionsModel.SensitiveDataJobInput {
     public func validateAsSensitiveDataJobInput() throws {
 
         if self.count > 65536 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveDataJobInput violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to SensitiveDataJobInput violated the maximum length constraint.")
         }
     }
 }
@@ -381,11 +381,11 @@ extension StepFunctionsModel.SensitiveDataJobInput {
 extension StepFunctionsModel.SensitiveError {
     public func validateAsSensitiveError() throws {
         if self.count < 0 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveError violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to SensitiveError violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to SensitiveError violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to SensitiveError violated the maximum length constraint.")
         }
     }
 }
@@ -396,11 +396,11 @@ extension StepFunctionsModel.SensitiveError {
 extension StepFunctionsModel.TagKey {
     public func validateAsTagKey() throws {
         if self.count < 1 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
         }
     }
 }
@@ -411,11 +411,11 @@ extension StepFunctionsModel.TagKey {
 extension StepFunctionsModel.TagValue {
     public func validateAsTagValue() throws {
         if self.count < 0 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
         }
     }
 }
@@ -426,11 +426,11 @@ extension StepFunctionsModel.TagValue {
 extension StepFunctionsModel.TaskToken {
     public func validateAsTaskToken() throws {
         if self.count < 1 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to TaskToken violated the minimum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to TaskToken violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw StepFunctionsCodingError.validationError(reason: "The provided value to TaskToken violated the maximum length constraint.")
+            throw StepFunctionsError.validationError(reason: "The provided value to TaskToken violated the maximum length constraint.")
         }
     }
 }

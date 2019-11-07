@@ -21,8 +21,8 @@
 
 import Foundation
 import SecurityTokenModel
-import SmokeHTTPClient
 import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
@@ -61,6 +61,14 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
+
+    let assumeRoleOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    let assumeRoleWithSAMLOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    let assumeRoleWithWebIdentityOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    let decodeAuthorizationMessageOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    let getCallerIdentityOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    let getFederationTokenOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    let getSessionTokenOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
                 endpointHostName: String = "sts.amazonaws.com",
@@ -68,9 +76,11 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
                 service: String = "sts",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2011-06-15",
-                connectionTimeoutSeconds: Int = 10,
+                connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                reportingConfiguration: SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>
+                    = SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
@@ -86,6 +96,21 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
         self.retryConfiguration = retryConfiguration
         self.retryOnErrorProvider = { error in error.isRetriable() }
         self.apiVersion = apiVersion
+
+        self.assumeRoleOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSSecurityTokenClient", operation: .assumeRole, configuration: reportingConfiguration)
+        self.assumeRoleWithSAMLOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSSecurityTokenClient", operation: .assumeRoleWithSAML, configuration: reportingConfiguration)
+        self.assumeRoleWithWebIdentityOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSSecurityTokenClient", operation: .assumeRoleWithWebIdentity, configuration: reportingConfiguration)
+        self.decodeAuthorizationMessageOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSSecurityTokenClient", operation: .decodeAuthorizationMessage, configuration: reportingConfiguration)
+        self.getCallerIdentityOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSSecurityTokenClient", operation: .getCallerIdentity, configuration: reportingConfiguration)
+        self.getFederationTokenOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSSecurityTokenClient", operation: .getFederationToken, configuration: reportingConfiguration)
+        self.getSessionTokenOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSSecurityTokenClient", operation: .getSessionToken, configuration: reportingConfiguration)
     }
 
     /**
@@ -114,13 +139,19 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleAsync(input: SecurityTokenModel.AssumeRoleRequest, completion: @escaping (HTTPResult<SecurityTokenModel.AssumeRoleResponseForAssumeRole>) -> ()) throws {
+    public func assumeRoleAsync(
+            input: SecurityTokenModel.AssumeRoleRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: assumeRoleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = AssumeRoleOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -133,7 +164,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -147,13 +178,18 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleSync(input: SecurityTokenModel.AssumeRoleRequest) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole {
+    public func assumeRoleSync(
+            input: SecurityTokenModel.AssumeRoleRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: assumeRoleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = AssumeRoleOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -165,7 +201,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -180,13 +216,19 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: expiredToken, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleWithSAMLAsync(input: SecurityTokenModel.AssumeRoleWithSAMLRequest, completion: @escaping (HTTPResult<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML>) -> ()) throws {
+    public func assumeRoleWithSAMLAsync(
+            input: SecurityTokenModel.AssumeRoleWithSAMLRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: assumeRoleWithSAMLOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = AssumeRoleWithSAMLOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -199,7 +241,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -213,13 +255,18 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: expiredToken, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleWithSAMLSync(input: SecurityTokenModel.AssumeRoleWithSAMLRequest) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML {
+    public func assumeRoleWithSAMLSync(
+            input: SecurityTokenModel.AssumeRoleWithSAMLRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: assumeRoleWithSAMLOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = AssumeRoleWithSAMLOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -231,7 +278,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -246,13 +293,19 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: expiredToken, iDPCommunicationError, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleWithWebIdentityAsync(input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, completion: @escaping (HTTPResult<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity>) -> ()) throws {
+    public func assumeRoleWithWebIdentityAsync(
+            input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: assumeRoleWithWebIdentityOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = AssumeRoleWithWebIdentityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -265,7 +318,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -279,13 +332,18 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: expiredToken, iDPCommunicationError, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleWithWebIdentitySync(input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity {
+    public func assumeRoleWithWebIdentitySync(
+            input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: assumeRoleWithWebIdentityOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = AssumeRoleWithWebIdentityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -297,7 +355,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -312,13 +370,19 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidAuthorizationMessage.
      */
-    public func decodeAuthorizationMessageAsync(input: SecurityTokenModel.DecodeAuthorizationMessageRequest, completion: @escaping (HTTPResult<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage>) -> ()) throws {
+    public func decodeAuthorizationMessageAsync(
+            input: SecurityTokenModel.DecodeAuthorizationMessageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: decodeAuthorizationMessageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DecodeAuthorizationMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -331,7 +395,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -345,13 +409,18 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidAuthorizationMessage.
      */
-    public func decodeAuthorizationMessageSync(input: SecurityTokenModel.DecodeAuthorizationMessageRequest) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage {
+    public func decodeAuthorizationMessageSync(
+            input: SecurityTokenModel.DecodeAuthorizationMessageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: decodeAuthorizationMessageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DecodeAuthorizationMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -363,7 +432,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -377,13 +446,19 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
            callback when the operation is complete. The GetCallerIdentityResponseForGetCallerIdentity
            object will be validated before being returned to caller.
      */
-    public func getCallerIdentityAsync(input: SecurityTokenModel.GetCallerIdentityRequest, completion: @escaping (HTTPResult<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity>) -> ()) throws {
+    public func getCallerIdentityAsync(
+            input: SecurityTokenModel.GetCallerIdentityRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getCallerIdentityOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetCallerIdentityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -396,7 +471,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -409,13 +484,18 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
      - Returns: The GetCallerIdentityResponseForGetCallerIdentity object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getCallerIdentitySync(input: SecurityTokenModel.GetCallerIdentityRequest) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity {
+    public func getCallerIdentitySync(
+            input: SecurityTokenModel.GetCallerIdentityRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getCallerIdentityOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetCallerIdentityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -427,7 +507,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -442,13 +522,19 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func getFederationTokenAsync(input: SecurityTokenModel.GetFederationTokenRequest, completion: @escaping (HTTPResult<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken>) -> ()) throws {
+    public func getFederationTokenAsync(
+            input: SecurityTokenModel.GetFederationTokenRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getFederationTokenOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetFederationTokenOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -461,7 +547,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -475,13 +561,18 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func getFederationTokenSync(input: SecurityTokenModel.GetFederationTokenRequest) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken {
+    public func getFederationTokenSync(
+            input: SecurityTokenModel.GetFederationTokenRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getFederationTokenOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetFederationTokenOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -493,7 +584,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -508,13 +599,19 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: regionDisabled.
      */
-    public func getSessionTokenAsync(input: SecurityTokenModel.GetSessionTokenRequest, completion: @escaping (HTTPResult<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken>) -> ()) throws {
+    public func getSessionTokenAsync(
+            input: SecurityTokenModel.GetSessionTokenRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getSessionTokenOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetSessionTokenOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -527,7 +624,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -541,13 +638,18 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: regionDisabled.
      */
-    public func getSessionTokenSync(input: SecurityTokenModel.GetSessionTokenRequest) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken {
+    public func getSessionTokenSync(
+            input: SecurityTokenModel.GetSessionTokenRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getSessionTokenOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetSessionTokenOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -559,7 +661,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }

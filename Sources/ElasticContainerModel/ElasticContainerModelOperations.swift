@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the ElasticContainerModel.
  */
-public enum ElasticContainerModelOperations: String {
+public enum ElasticContainerModelOperations: String, Hashable, CustomStringConvertible {
     case createCluster = "CreateCluster"
     case createService = "CreateService"
     case createTaskSet = "CreateTaskSet"
@@ -69,6 +69,10 @@ public enum ElasticContainerModelOperations: String {
     case updateService = "UpdateService"
     case updateServicePrimaryTaskSet = "UpdateServicePrimaryTaskSet"
     case updateTaskSet = "UpdateTaskSet"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

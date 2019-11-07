@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the RDSModel.
  */
-public enum RDSModelOperations: String {
+public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case addRoleToDBCluster = "AddRoleToDBCluster"
     case addRoleToDBInstance = "AddRoleToDBInstance"
     case addSourceIdentifierToSubscription = "AddSourceIdentifierToSubscription"
@@ -136,6 +136,10 @@ public enum RDSModelOperations: String {
     case stopActivityStream = "StopActivityStream"
     case stopDBCluster = "StopDBCluster"
     case stopDBInstance = "StopDBInstance"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

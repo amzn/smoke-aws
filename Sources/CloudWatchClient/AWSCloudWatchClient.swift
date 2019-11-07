@@ -21,8 +21,8 @@
 
 import Foundation
 import CloudWatchModel
-import SmokeHTTPClient
 import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
@@ -66,6 +66,27 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
+
+    let deleteAlarmsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let deleteDashboardsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let describeAlarmHistoryOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let describeAlarmsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let describeAlarmsForMetricOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let disableAlarmActionsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let enableAlarmActionsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let getDashboardOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let getMetricDataOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let getMetricStatisticsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let getMetricWidgetImageOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let listDashboardsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let listMetricsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let putDashboardOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let putMetricAlarmOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let putMetricDataOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let setAlarmStateOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let tagResourceOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let untagResourceOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
@@ -73,9 +94,11 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
                 service: String = "monitoring",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2010-08-01",
-                connectionTimeoutSeconds: Int = 10,
+                connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>
+                    = SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>()
 
         self.httpClient = HTTPClient(endpointHostName: endpointHostName,
@@ -91,6 +114,47 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
         self.retryConfiguration = retryConfiguration
         self.retryOnErrorProvider = { error in error.isRetriable() }
         self.apiVersion = apiVersion
+
+        self.deleteAlarmsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .deleteAlarms, configuration: reportingConfiguration)
+        self.deleteDashboardsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .deleteDashboards, configuration: reportingConfiguration)
+        self.describeAlarmHistoryOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .describeAlarmHistory, configuration: reportingConfiguration)
+        self.describeAlarmsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .describeAlarms, configuration: reportingConfiguration)
+        self.describeAlarmsForMetricOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .describeAlarmsForMetric, configuration: reportingConfiguration)
+        self.disableAlarmActionsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .disableAlarmActions, configuration: reportingConfiguration)
+        self.enableAlarmActionsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .enableAlarmActions, configuration: reportingConfiguration)
+        self.getDashboardOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .getDashboard, configuration: reportingConfiguration)
+        self.getMetricDataOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .getMetricData, configuration: reportingConfiguration)
+        self.getMetricStatisticsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .getMetricStatistics, configuration: reportingConfiguration)
+        self.getMetricWidgetImageOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .getMetricWidgetImage, configuration: reportingConfiguration)
+        self.listDashboardsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .listDashboards, configuration: reportingConfiguration)
+        self.listMetricsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .listMetrics, configuration: reportingConfiguration)
+        self.listTagsForResourceOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .listTagsForResource, configuration: reportingConfiguration)
+        self.putDashboardOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .putDashboard, configuration: reportingConfiguration)
+        self.putMetricAlarmOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .putMetricAlarm, configuration: reportingConfiguration)
+        self.putMetricDataOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .putMetricData, configuration: reportingConfiguration)
+        self.setAlarmStateOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .setAlarmState, configuration: reportingConfiguration)
+        self.tagResourceOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .tagResource, configuration: reportingConfiguration)
+        self.untagResourceOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .untagResource, configuration: reportingConfiguration)
     }
 
     /**
@@ -118,13 +182,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: resourceNotFound.
      */
-    public func deleteAlarmsAsync(input: CloudWatchModel.DeleteAlarmsInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteAlarmsAsync(
+            input: CloudWatchModel.DeleteAlarmsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteAlarmsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteAlarmsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -137,7 +207,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -149,13 +219,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated DeleteAlarmsInput object being passed to this operation.
      - Throws: resourceNotFound.
      */
-    public func deleteAlarmsSync(input: CloudWatchModel.DeleteAlarmsInput) throws {
+    public func deleteAlarmsSync(
+            input: CloudWatchModel.DeleteAlarmsInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteAlarmsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteAlarmsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -167,7 +242,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -182,13 +257,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func deleteDashboardsAsync(input: CloudWatchModel.DeleteDashboardsInput, completion: @escaping (HTTPResult<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards>) -> ()) throws {
+    public func deleteDashboardsAsync(
+            input: CloudWatchModel.DeleteDashboardsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteDashboardsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDashboardsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -201,7 +282,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -215,13 +296,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func deleteDashboardsSync(input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
+    public func deleteDashboardsSync(
+            input: CloudWatchModel.DeleteDashboardsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteDashboardsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDashboardsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -233,7 +319,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -248,13 +334,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeAlarmHistoryAsync(input: CloudWatchModel.DescribeAlarmHistoryInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory>) -> ()) throws {
+    public func describeAlarmHistoryAsync(
+            input: CloudWatchModel.DescribeAlarmHistoryInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeAlarmHistoryOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeAlarmHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -267,7 +359,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -281,13 +373,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeAlarmHistorySync(input: CloudWatchModel.DescribeAlarmHistoryInput) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
+    public func describeAlarmHistorySync(
+            input: CloudWatchModel.DescribeAlarmHistoryInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeAlarmHistoryOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeAlarmHistoryOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -299,7 +396,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -314,13 +411,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeAlarmsAsync(input: CloudWatchModel.DescribeAlarmsInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms>) -> ()) throws {
+    public func describeAlarmsAsync(
+            input: CloudWatchModel.DescribeAlarmsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeAlarmsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeAlarmsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -333,7 +436,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -347,13 +450,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeAlarmsSync(input: CloudWatchModel.DescribeAlarmsInput) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
+    public func describeAlarmsSync(
+            input: CloudWatchModel.DescribeAlarmsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeAlarmsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeAlarmsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -365,7 +473,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -379,13 +487,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            callback when the operation is complete. The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
            object will be validated before being returned to caller.
      */
-    public func describeAlarmsForMetricAsync(input: CloudWatchModel.DescribeAlarmsForMetricInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric>) -> ()) throws {
+    public func describeAlarmsForMetricAsync(
+            input: CloudWatchModel.DescribeAlarmsForMetricInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeAlarmsForMetricOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeAlarmsForMetricOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -398,7 +512,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -411,13 +525,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
      - Returns: The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAlarmsForMetricSync(input: CloudWatchModel.DescribeAlarmsForMetricInput) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
+    public func describeAlarmsForMetricSync(
+            input: CloudWatchModel.DescribeAlarmsForMetricInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeAlarmsForMetricOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeAlarmsForMetricOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -429,7 +548,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -442,13 +561,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableAlarmActionsAsync(input: CloudWatchModel.DisableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func disableAlarmActionsAsync(
+            input: CloudWatchModel.DisableAlarmActionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: disableAlarmActionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DisableAlarmActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -461,7 +586,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -472,13 +597,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
      - Parameters:
          - input: The validated DisableAlarmActionsInput object being passed to this operation.
      */
-    public func disableAlarmActionsSync(input: CloudWatchModel.DisableAlarmActionsInput) throws {
+    public func disableAlarmActionsSync(
+            input: CloudWatchModel.DisableAlarmActionsInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: disableAlarmActionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = DisableAlarmActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -490,7 +620,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -503,13 +633,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableAlarmActionsAsync(input: CloudWatchModel.EnableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func enableAlarmActionsAsync(
+            input: CloudWatchModel.EnableAlarmActionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: enableAlarmActionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = EnableAlarmActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -522,7 +658,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -533,13 +669,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
      - Parameters:
          - input: The validated EnableAlarmActionsInput object being passed to this operation.
      */
-    public func enableAlarmActionsSync(input: CloudWatchModel.EnableAlarmActionsInput) throws {
+    public func enableAlarmActionsSync(
+            input: CloudWatchModel.EnableAlarmActionsInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: enableAlarmActionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = EnableAlarmActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -551,7 +692,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -566,13 +707,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func getDashboardAsync(input: CloudWatchModel.GetDashboardInput, completion: @escaping (HTTPResult<CloudWatchModel.GetDashboardOutputForGetDashboard>) -> ()) throws {
+    public func getDashboardAsync(
+            input: CloudWatchModel.GetDashboardInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getDashboardOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetDashboardOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -585,7 +732,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -599,13 +746,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func getDashboardSync(input: CloudWatchModel.GetDashboardInput) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
+    public func getDashboardSync(
+            input: CloudWatchModel.GetDashboardInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getDashboardOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetDashboardOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -617,7 +769,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -632,13 +784,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func getMetricDataAsync(input: CloudWatchModel.GetMetricDataInput, completion: @escaping (HTTPResult<CloudWatchModel.GetMetricDataOutputForGetMetricData>) -> ()) throws {
+    public func getMetricDataAsync(
+            input: CloudWatchModel.GetMetricDataInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getMetricDataOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetMetricDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -651,7 +809,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -665,13 +823,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func getMetricDataSync(input: CloudWatchModel.GetMetricDataInput) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
+    public func getMetricDataSync(
+            input: CloudWatchModel.GetMetricDataInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getMetricDataOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetMetricDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -683,7 +846,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -698,13 +861,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func getMetricStatisticsAsync(input: CloudWatchModel.GetMetricStatisticsInput, completion: @escaping (HTTPResult<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics>) -> ()) throws {
+    public func getMetricStatisticsAsync(
+            input: CloudWatchModel.GetMetricStatisticsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getMetricStatisticsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetMetricStatisticsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -717,7 +886,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -731,13 +900,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func getMetricStatisticsSync(input: CloudWatchModel.GetMetricStatisticsInput) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
+    public func getMetricStatisticsSync(
+            input: CloudWatchModel.GetMetricStatisticsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getMetricStatisticsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetMetricStatisticsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -749,7 +923,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -763,13 +937,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            callback when the operation is complete. The GetMetricWidgetImageOutputForGetMetricWidgetImage
            object will be validated before being returned to caller.
      */
-    public func getMetricWidgetImageAsync(input: CloudWatchModel.GetMetricWidgetImageInput, completion: @escaping (HTTPResult<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage>) -> ()) throws {
+    public func getMetricWidgetImageAsync(
+            input: CloudWatchModel.GetMetricWidgetImageInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getMetricWidgetImageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetMetricWidgetImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -782,7 +962,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -795,13 +975,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
      - Returns: The GetMetricWidgetImageOutputForGetMetricWidgetImage object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getMetricWidgetImageSync(input: CloudWatchModel.GetMetricWidgetImageInput) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
+    public func getMetricWidgetImageSync(
+            input: CloudWatchModel.GetMetricWidgetImageInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getMetricWidgetImageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = GetMetricWidgetImageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -813,7 +998,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -828,13 +1013,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    public func listDashboardsAsync(input: CloudWatchModel.ListDashboardsInput, completion: @escaping (HTTPResult<CloudWatchModel.ListDashboardsOutputForListDashboards>) -> ()) throws {
+    public func listDashboardsAsync(
+            input: CloudWatchModel.ListDashboardsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listDashboardsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = ListDashboardsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -847,7 +1038,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -861,13 +1052,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    public func listDashboardsSync(input: CloudWatchModel.ListDashboardsInput) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
+    public func listDashboardsSync(
+            input: CloudWatchModel.ListDashboardsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listDashboardsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = ListDashboardsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -879,7 +1075,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -894,13 +1090,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    public func listMetricsAsync(input: CloudWatchModel.ListMetricsInput, completion: @escaping (HTTPResult<CloudWatchModel.ListMetricsOutputForListMetrics>) -> ()) throws {
+    public func listMetricsAsync(
+            input: CloudWatchModel.ListMetricsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listMetricsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = ListMetricsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -913,7 +1115,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -927,13 +1129,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    public func listMetricsSync(input: CloudWatchModel.ListMetricsInput) throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
+    public func listMetricsSync(
+            input: CloudWatchModel.ListMetricsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listMetricsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = ListMetricsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -945,7 +1152,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -960,13 +1167,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, resourceNotFound.
      */
-    public func listTagsForResourceAsync(input: CloudWatchModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource>) -> ()) throws {
+    public func listTagsForResourceAsync(
+            input: CloudWatchModel.ListTagsForResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -979,7 +1192,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -993,13 +1206,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, resourceNotFound.
      */
-    public func listTagsForResourceSync(input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
+    public func listTagsForResourceSync(
+            input: CloudWatchModel.ListTagsForResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1011,7 +1229,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1026,13 +1244,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardInvalidInput, internalService.
      */
-    public func putDashboardAsync(input: CloudWatchModel.PutDashboardInput, completion: @escaping (HTTPResult<CloudWatchModel.PutDashboardOutputForPutDashboard>) -> ()) throws {
+    public func putDashboardAsync(
+            input: CloudWatchModel.PutDashboardInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putDashboardOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = PutDashboardOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1045,7 +1269,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1059,13 +1283,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardInvalidInput, internalService.
      */
-    public func putDashboardSync(input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
+    public func putDashboardSync(
+            input: CloudWatchModel.PutDashboardInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putDashboardOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = PutDashboardOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1077,7 +1306,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1091,13 +1320,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: limitExceeded.
      */
-    public func putMetricAlarmAsync(input: CloudWatchModel.PutMetricAlarmInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putMetricAlarmAsync(
+            input: CloudWatchModel.PutMetricAlarmInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putMetricAlarmOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = PutMetricAlarmOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1110,7 +1345,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1122,13 +1357,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated PutMetricAlarmInput object being passed to this operation.
      - Throws: limitExceeded.
      */
-    public func putMetricAlarmSync(input: CloudWatchModel.PutMetricAlarmInput) throws {
+    public func putMetricAlarmSync(
+            input: CloudWatchModel.PutMetricAlarmInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putMetricAlarmOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = PutMetricAlarmOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1140,7 +1380,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1154,13 +1394,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataAsync(input: CloudWatchModel.PutMetricDataInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putMetricDataAsync(
+            input: CloudWatchModel.PutMetricDataInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putMetricDataOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = PutMetricDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1173,7 +1419,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1185,13 +1431,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated PutMetricDataInput object being passed to this operation.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataSync(input: CloudWatchModel.PutMetricDataInput) throws {
+    public func putMetricDataSync(
+            input: CloudWatchModel.PutMetricDataInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putMetricDataOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = PutMetricDataOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1203,7 +1454,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1217,13 +1468,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateAsync(input: CloudWatchModel.SetAlarmStateInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func setAlarmStateAsync(
+            input: CloudWatchModel.SetAlarmStateInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: setAlarmStateOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = SetAlarmStateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1236,7 +1493,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1248,13 +1505,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated SetAlarmStateInput object being passed to this operation.
      - Throws: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateSync(input: CloudWatchModel.SetAlarmStateInput) throws {
+    public func setAlarmStateSync(
+            input: CloudWatchModel.SetAlarmStateInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: setAlarmStateOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = SetAlarmStateOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1266,7 +1528,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1281,13 +1543,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func tagResourceAsync(input: CloudWatchModel.TagResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.TagResourceOutputForTagResource>) -> ()) throws {
+    public func tagResourceAsync(
+            input: CloudWatchModel.TagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = TagResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1300,7 +1568,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1314,13 +1582,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func tagResourceSync(input: CloudWatchModel.TagResourceInput) throws -> CloudWatchModel.TagResourceOutputForTagResource {
+    public func tagResourceSync(
+            input: CloudWatchModel.TagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.TagResourceOutputForTagResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = TagResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1332,7 +1605,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1347,13 +1620,19 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func untagResourceAsync(input: CloudWatchModel.UntagResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.UntagResourceOutputForUntagResource>) -> ()) throws {
+    public func untagResourceAsync(
+            input: CloudWatchModel.UntagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = UntagResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1366,7 +1645,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1380,13 +1659,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func untagResourceSync(input: CloudWatchModel.UntagResourceInput) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
+    public func untagResourceSync(
+            input: CloudWatchModel.UntagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let wrappedInput = UntagResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1398,7 +1682,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }

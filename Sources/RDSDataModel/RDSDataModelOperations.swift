@@ -24,13 +24,17 @@ import Foundation
 /**
  Operation enumeration for the RDSDataModel.
  */
-public enum RDSDataModelOperations: String {
+public enum RDSDataModelOperations: String, Hashable, CustomStringConvertible {
     case batchExecuteStatement = "BatchExecuteStatement"
     case beginTransaction = "BeginTransaction"
     case commitTransaction = "CommitTransaction"
     case executeSql = "ExecuteSql"
     case executeStatement = "ExecuteStatement"
     case rollbackTransaction = "RollbackTransaction"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

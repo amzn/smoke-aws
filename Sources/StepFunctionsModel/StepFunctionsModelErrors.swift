@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let activityDoesNotExistIdentity = "ActivityDoesNotExist"
 private let activityLimitExceededIdentity = "ActivityLimitExceeded"
@@ -45,12 +45,6 @@ private let taskTimedOutIdentity = "TaskTimedOut"
 private let tooManyTagsIdentity = "TooManyTags"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum StepFunctionsCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum StepFunctionsError: Swift.Error, Decodable {
     case activityDoesNotExist(ActivityDoesNotExist)
     case activityLimitExceeded(ActivityLimitExceeded)
@@ -74,6 +68,8 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case taskTimedOut(TaskTimedOut)
     case tooManyTags(TooManyTags)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "__type"
@@ -156,7 +152,7 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw StepFunctionsCodingError.unrecognizedError(errorReason, errorMessage)
+            self = StepFunctionsError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

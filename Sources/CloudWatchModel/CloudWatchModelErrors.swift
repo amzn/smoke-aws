@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let concurrentModificationIdentity = "ConcurrentModificationException"
 private let dashboardInvalidInputIdentity = "InvalidParameterInput"
@@ -36,12 +36,6 @@ private let resourceNotFoundIdentity = "ResourceNotFound"
 private let resourceNotFoundExceptionIdentity = "ResourceNotFoundException"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum CloudWatchCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum CloudWatchError: Swift.Error, Decodable {
     case concurrentModification(ConcurrentModificationException)
     case dashboardInvalidInput(DashboardInvalidInputError)
@@ -56,6 +50,8 @@ public enum CloudWatchError: Swift.Error, Decodable {
     case resourceNotFound(ResourceNotFound)
     case resourceNotFoundException(ResourceNotFoundException)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "Code"
@@ -111,7 +107,7 @@ public enum CloudWatchError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw CloudWatchCodingError.unrecognizedError(errorReason, errorMessage)
+            self = CloudWatchError.unrecognizedError(errorReason, errorMessage)
         }
     }
     
