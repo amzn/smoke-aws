@@ -99,11 +99,12 @@ let package = Package(
             targets: ["SmokeAWSHttp"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio.git", from: "1.8.0"),
-        .package(url: "https://github.com/apple/swift-nio-ssl.git", from: "1.0.0"),
-        .package(url: "https://github.com/IBM-Swift/LoggerAPI.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/apple/swift-nio.git", from: "2.0.0"),
+        .package(url: "https://github.com/apple/swift-nio-ssl.git", from: "2.0.0"),
+        .package(url: "https://github.com/apple/swift-log", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/apple/swift-metrics", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/LiveUI/XMLCoding.git", .upToNextMajor(from: "0.4.1")),
-        .package(url: "https://github.com/amzn/smoke-http.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/amzn/smoke-http.git", .branch("2.0.0.alpha.1")),
         .package(url: "https://github.com/IBM-Swift/BlueCryptor.git", .upToNextMajor(from: "1.0.0")),
     ],
     targets: [
@@ -112,79 +113,79 @@ let package = Package(
             dependencies: ["CloudWatchModel", "SmokeAWSHttp"]),
         .target(
             name: "CloudWatchModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "DynamoDBClient",
             dependencies: ["DynamoDBModel", "SmokeAWSHttp"]),
         .target(
             name: "DynamoDBModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "ElasticComputeCloudClient",
             dependencies: ["ElasticComputeCloudModel", "SmokeAWSHttp"]),
         .target(
             name: "ElasticComputeCloudModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "ElasticContainerClient",
             dependencies: ["ElasticContainerModel", "SmokeAWSHttp"]),
         .target(
             name: "ElasticContainerModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "RDSClient",
             dependencies: ["RDSModel", "SmokeAWSHttp"]),
         .target(
             name: "RDSModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "RDSDataClient",
             dependencies: ["RDSDataModel", "SmokeAWSHttp"]),
         .target(
             name: "RDSDataModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "S3Client",
             dependencies: ["S3Model", "SmokeAWSHttp"]),
         .target(
             name: "S3Model",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "SecurityTokenClient",
             dependencies: ["SecurityTokenModel", "SmokeAWSHttp"]),
         .target(
             name: "SecurityTokenModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "SimpleNotificationClient",
             dependencies: ["SimpleNotificationModel", "SmokeAWSHttp"]),
         .target(
             name: "SimpleNotificationModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "SimpleQueueClient",
             dependencies: ["SimpleQueueModel", "SmokeAWSHttp"]),
         .target(
             name: "SimpleQueueModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "SimpleWorkflowClient",
             dependencies: ["SimpleWorkflowModel", "SmokeAWSHttp"]),
         .target(
             name: "SimpleWorkflowModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "StepFunctionsClient",
             dependencies: ["StepFunctionsModel", "SmokeAWSHttp"]),
         .target(
             name: "StepFunctionsModel",
-            dependencies: ["LoggerAPI"]),
+            dependencies: ["Logging"]),
         .target(
             name: "SmokeAWSCore",
-            dependencies: ["LoggerAPI", "XMLCoding"]),
+            dependencies: ["Logging", "Metrics", "XMLCoding"]),
         .target(
             name: "SmokeAWSHttp",
-            dependencies: ["LoggerAPI", "NIO", "NIOHTTP1", "NIOOpenSSL",
+            dependencies: ["Logging", "NIO", "NIOHTTP1",
                            "SmokeAWSCore", "SmokeHTTPClient", "QueryCoding",
                            "HTTPPathCoding", "HTTPHeadersCoding", "Cryptor"]),
         .testTarget(

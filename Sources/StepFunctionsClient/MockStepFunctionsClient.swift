@@ -21,6 +21,7 @@
 
 import Foundation
 import StepFunctionsModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
@@ -177,14 +178,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityLimitExceeded, invalidName, tooManyTags.
      */
-    public func createActivityAsync(input: StepFunctionsModel.CreateActivityInput, completion: @escaping (HTTPResult<StepFunctionsModel.CreateActivityOutput>) -> ()) throws {
+    public func createActivityAsync(
+            input: StepFunctionsModel.CreateActivityInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws {
         if let createActivityAsyncOverride = createActivityAsyncOverride {
-            return try createActivityAsyncOverride(input, completion)
+            return try createActivityAsyncOverride(input, reporting, completion)
         }
 
         let result = CreateActivityOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -196,9 +200,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityLimitExceeded, invalidName, tooManyTags.
      */
-    public func createActivitySync(input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput {
+    public func createActivitySync(
+            input: StepFunctionsModel.CreateActivityInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateActivityOutput {
         if let createActivitySyncOverride = createActivitySyncOverride {
-            return try createActivitySyncOverride(input)
+            return try createActivitySyncOverride(input, reporting)
         }
 
         return CreateActivityOutput.__default
@@ -214,14 +220,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
      */
-    public func createStateMachineAsync(input: StepFunctionsModel.CreateStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.CreateStateMachineOutput>) -> ()) throws {
+    public func createStateMachineAsync(
+            input: StepFunctionsModel.CreateStateMachineInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws {
         if let createStateMachineAsyncOverride = createStateMachineAsyncOverride {
-            return try createStateMachineAsyncOverride(input, completion)
+            return try createStateMachineAsyncOverride(input, reporting, completion)
         }
 
         let result = CreateStateMachineOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -233,9 +242,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
      */
-    public func createStateMachineSync(input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput {
+    public func createStateMachineSync(
+            input: StepFunctionsModel.CreateStateMachineInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateStateMachineOutput {
         if let createStateMachineSyncOverride = createStateMachineSyncOverride {
-            return try createStateMachineSyncOverride(input)
+            return try createStateMachineSyncOverride(input, reporting)
         }
 
         return CreateStateMachineOutput.__default
@@ -251,14 +262,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    public func deleteActivityAsync(input: StepFunctionsModel.DeleteActivityInput, completion: @escaping (HTTPResult<StepFunctionsModel.DeleteActivityOutput>) -> ()) throws {
+    public func deleteActivityAsync(
+            input: StepFunctionsModel.DeleteActivityInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws {
         if let deleteActivityAsyncOverride = deleteActivityAsyncOverride {
-            return try deleteActivityAsyncOverride(input, completion)
+            return try deleteActivityAsyncOverride(input, reporting, completion)
         }
 
         let result = DeleteActivityOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -270,9 +284,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    public func deleteActivitySync(input: StepFunctionsModel.DeleteActivityInput) throws -> StepFunctionsModel.DeleteActivityOutput {
+    public func deleteActivitySync(
+            input: StepFunctionsModel.DeleteActivityInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteActivityOutput {
         if let deleteActivitySyncOverride = deleteActivitySyncOverride {
-            return try deleteActivitySyncOverride(input)
+            return try deleteActivitySyncOverride(input, reporting)
         }
 
         return DeleteActivityOutput.__default
@@ -288,14 +304,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    public func deleteStateMachineAsync(input: StepFunctionsModel.DeleteStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.DeleteStateMachineOutput>) -> ()) throws {
+    public func deleteStateMachineAsync(
+            input: StepFunctionsModel.DeleteStateMachineInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws {
         if let deleteStateMachineAsyncOverride = deleteStateMachineAsyncOverride {
-            return try deleteStateMachineAsyncOverride(input, completion)
+            return try deleteStateMachineAsyncOverride(input, reporting, completion)
         }
 
         let result = DeleteStateMachineOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -307,9 +326,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    public func deleteStateMachineSync(input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput {
+    public func deleteStateMachineSync(
+            input: StepFunctionsModel.DeleteStateMachineInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteStateMachineOutput {
         if let deleteStateMachineSyncOverride = deleteStateMachineSyncOverride {
-            return try deleteStateMachineSyncOverride(input)
+            return try deleteStateMachineSyncOverride(input, reporting)
         }
 
         return DeleteStateMachineOutput.__default
@@ -325,14 +346,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, invalidArn.
      */
-    public func describeActivityAsync(input: StepFunctionsModel.DescribeActivityInput, completion: @escaping (HTTPResult<StepFunctionsModel.DescribeActivityOutput>) -> ()) throws {
+    public func describeActivityAsync(
+            input: StepFunctionsModel.DescribeActivityInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws {
         if let describeActivityAsyncOverride = describeActivityAsyncOverride {
-            return try describeActivityAsyncOverride(input, completion)
+            return try describeActivityAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeActivityOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -344,9 +368,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, invalidArn.
      */
-    public func describeActivitySync(input: StepFunctionsModel.DescribeActivityInput) throws -> StepFunctionsModel.DescribeActivityOutput {
+    public func describeActivitySync(
+            input: StepFunctionsModel.DescribeActivityInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeActivityOutput {
         if let describeActivitySyncOverride = describeActivitySyncOverride {
-            return try describeActivitySyncOverride(input)
+            return try describeActivitySyncOverride(input, reporting)
         }
 
         return DescribeActivityOutput.__default
@@ -362,14 +388,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func describeExecutionAsync(input: StepFunctionsModel.DescribeExecutionInput, completion: @escaping (HTTPResult<StepFunctionsModel.DescribeExecutionOutput>) -> ()) throws {
+    public func describeExecutionAsync(
+            input: StepFunctionsModel.DescribeExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws {
         if let describeExecutionAsyncOverride = describeExecutionAsyncOverride {
-            return try describeExecutionAsyncOverride(input, completion)
+            return try describeExecutionAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeExecutionOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -381,9 +410,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func describeExecutionSync(input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput {
+    public func describeExecutionSync(
+            input: StepFunctionsModel.DescribeExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeExecutionOutput {
         if let describeExecutionSyncOverride = describeExecutionSyncOverride {
-            return try describeExecutionSyncOverride(input)
+            return try describeExecutionSyncOverride(input, reporting)
         }
 
         return DescribeExecutionOutput.__default
@@ -399,14 +430,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, stateMachineDoesNotExist.
      */
-    public func describeStateMachineAsync(input: StepFunctionsModel.DescribeStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.DescribeStateMachineOutput>) -> ()) throws {
+    public func describeStateMachineAsync(
+            input: StepFunctionsModel.DescribeStateMachineInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws {
         if let describeStateMachineAsyncOverride = describeStateMachineAsyncOverride {
-            return try describeStateMachineAsyncOverride(input, completion)
+            return try describeStateMachineAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeStateMachineOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -418,9 +452,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, stateMachineDoesNotExist.
      */
-    public func describeStateMachineSync(input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput {
+    public func describeStateMachineSync(
+            input: StepFunctionsModel.DescribeStateMachineInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineOutput {
         if let describeStateMachineSyncOverride = describeStateMachineSyncOverride {
-            return try describeStateMachineSyncOverride(input)
+            return try describeStateMachineSyncOverride(input, reporting)
         }
 
         return DescribeStateMachineOutput.__default
@@ -436,14 +472,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func describeStateMachineForExecutionAsync(input: StepFunctionsModel.DescribeStateMachineForExecutionInput, completion: @escaping (HTTPResult<StepFunctionsModel.DescribeStateMachineForExecutionOutput>) -> ()) throws {
+    public func describeStateMachineForExecutionAsync(
+            input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws {
         if let describeStateMachineForExecutionAsyncOverride = describeStateMachineForExecutionAsyncOverride {
-            return try describeStateMachineForExecutionAsyncOverride(input, completion)
+            return try describeStateMachineForExecutionAsyncOverride(input, reporting, completion)
         }
 
         let result = DescribeStateMachineForExecutionOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -455,9 +494,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func describeStateMachineForExecutionSync(input: StepFunctionsModel.DescribeStateMachineForExecutionInput) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
+    public func describeStateMachineForExecutionSync(
+            input: StepFunctionsModel.DescribeStateMachineForExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
         if let describeStateMachineForExecutionSyncOverride = describeStateMachineForExecutionSyncOverride {
-            return try describeStateMachineForExecutionSyncOverride(input)
+            return try describeStateMachineForExecutionSyncOverride(input, reporting)
         }
 
         return DescribeStateMachineForExecutionOutput.__default
@@ -473,14 +514,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    public func getActivityTaskAsync(input: StepFunctionsModel.GetActivityTaskInput, completion: @escaping (HTTPResult<StepFunctionsModel.GetActivityTaskOutput>) -> ()) throws {
+    public func getActivityTaskAsync(
+            input: StepFunctionsModel.GetActivityTaskInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws {
         if let getActivityTaskAsyncOverride = getActivityTaskAsyncOverride {
-            return try getActivityTaskAsyncOverride(input, completion)
+            return try getActivityTaskAsyncOverride(input, reporting, completion)
         }
 
         let result = GetActivityTaskOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -492,9 +536,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    public func getActivityTaskSync(input: StepFunctionsModel.GetActivityTaskInput) throws -> StepFunctionsModel.GetActivityTaskOutput {
+    public func getActivityTaskSync(
+            input: StepFunctionsModel.GetActivityTaskInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetActivityTaskOutput {
         if let getActivityTaskSyncOverride = getActivityTaskSyncOverride {
-            return try getActivityTaskSyncOverride(input)
+            return try getActivityTaskSyncOverride(input, reporting)
         }
 
         return GetActivityTaskOutput.__default
@@ -510,14 +556,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn, invalidToken.
      */
-    public func getExecutionHistoryAsync(input: StepFunctionsModel.GetExecutionHistoryInput, completion: @escaping (HTTPResult<StepFunctionsModel.GetExecutionHistoryOutput>) -> ()) throws {
+    public func getExecutionHistoryAsync(
+            input: StepFunctionsModel.GetExecutionHistoryInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws {
         if let getExecutionHistoryAsyncOverride = getExecutionHistoryAsyncOverride {
-            return try getExecutionHistoryAsyncOverride(input, completion)
+            return try getExecutionHistoryAsyncOverride(input, reporting, completion)
         }
 
         let result = GetExecutionHistoryOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -529,9 +578,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn, invalidToken.
      */
-    public func getExecutionHistorySync(input: StepFunctionsModel.GetExecutionHistoryInput) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
+    public func getExecutionHistorySync(
+            input: StepFunctionsModel.GetExecutionHistoryInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
         if let getExecutionHistorySyncOverride = getExecutionHistorySyncOverride {
-            return try getExecutionHistorySyncOverride(input)
+            return try getExecutionHistorySyncOverride(input, reporting)
         }
 
         return GetExecutionHistoryOutput.__default
@@ -547,14 +598,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    public func listActivitiesAsync(input: StepFunctionsModel.ListActivitiesInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListActivitiesOutput>) -> ()) throws {
+    public func listActivitiesAsync(
+            input: StepFunctionsModel.ListActivitiesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws {
         if let listActivitiesAsyncOverride = listActivitiesAsyncOverride {
-            return try listActivitiesAsyncOverride(input, completion)
+            return try listActivitiesAsyncOverride(input, reporting, completion)
         }
 
         let result = ListActivitiesOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -566,9 +620,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    public func listActivitiesSync(input: StepFunctionsModel.ListActivitiesInput) throws -> StepFunctionsModel.ListActivitiesOutput {
+    public func listActivitiesSync(
+            input: StepFunctionsModel.ListActivitiesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListActivitiesOutput {
         if let listActivitiesSyncOverride = listActivitiesSyncOverride {
-            return try listActivitiesSyncOverride(input)
+            return try listActivitiesSyncOverride(input, reporting)
         }
 
         return ListActivitiesOutput.__default
@@ -584,14 +640,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist.
      */
-    public func listExecutionsAsync(input: StepFunctionsModel.ListExecutionsInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListExecutionsOutput>) -> ()) throws {
+    public func listExecutionsAsync(
+            input: StepFunctionsModel.ListExecutionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws {
         if let listExecutionsAsyncOverride = listExecutionsAsyncOverride {
-            return try listExecutionsAsyncOverride(input, completion)
+            return try listExecutionsAsyncOverride(input, reporting, completion)
         }
 
         let result = ListExecutionsOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -603,9 +662,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidToken, stateMachineDoesNotExist.
      */
-    public func listExecutionsSync(input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput {
+    public func listExecutionsSync(
+            input: StepFunctionsModel.ListExecutionsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListExecutionsOutput {
         if let listExecutionsSyncOverride = listExecutionsSyncOverride {
-            return try listExecutionsSyncOverride(input)
+            return try listExecutionsSyncOverride(input, reporting)
         }
 
         return ListExecutionsOutput.__default
@@ -621,14 +682,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    public func listStateMachinesAsync(input: StepFunctionsModel.ListStateMachinesInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListStateMachinesOutput>) -> ()) throws {
+    public func listStateMachinesAsync(
+            input: StepFunctionsModel.ListStateMachinesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws {
         if let listStateMachinesAsyncOverride = listStateMachinesAsyncOverride {
-            return try listStateMachinesAsyncOverride(input, completion)
+            return try listStateMachinesAsyncOverride(input, reporting, completion)
         }
 
         let result = ListStateMachinesOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -640,9 +704,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    public func listStateMachinesSync(input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput {
+    public func listStateMachinesSync(
+            input: StepFunctionsModel.ListStateMachinesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListStateMachinesOutput {
         if let listStateMachinesSyncOverride = listStateMachinesSyncOverride {
-            return try listStateMachinesSyncOverride(input)
+            return try listStateMachinesSyncOverride(input, reporting)
         }
 
         return ListStateMachinesOutput.__default
@@ -658,14 +724,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    public func listTagsForResourceAsync(input: StepFunctionsModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListTagsForResourceOutput>) -> ()) throws {
+    public func listTagsForResourceAsync(
+            input: StepFunctionsModel.ListTagsForResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, completion)
+            return try listTagsForResourceAsyncOverride(input, reporting, completion)
         }
 
         let result = ListTagsForResourceOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -677,9 +746,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    public func listTagsForResourceSync(input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput {
+    public func listTagsForResourceSync(
+            input: StepFunctionsModel.ListTagsForResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListTagsForResourceOutput {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input)
+            return try listTagsForResourceSyncOverride(input, reporting)
         }
 
         return ListTagsForResourceOutput.__default
@@ -695,14 +766,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskFailureAsync(input: StepFunctionsModel.SendTaskFailureInput, completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskFailureOutput>) -> ()) throws {
+    public func sendTaskFailureAsync(
+            input: StepFunctionsModel.SendTaskFailureInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws {
         if let sendTaskFailureAsyncOverride = sendTaskFailureAsyncOverride {
-            return try sendTaskFailureAsyncOverride(input, completion)
+            return try sendTaskFailureAsyncOverride(input, reporting, completion)
         }
 
         let result = SendTaskFailureOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -714,9 +788,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskFailureSync(input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput {
+    public func sendTaskFailureSync(
+            input: StepFunctionsModel.SendTaskFailureInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskFailureOutput {
         if let sendTaskFailureSyncOverride = sendTaskFailureSyncOverride {
-            return try sendTaskFailureSyncOverride(input)
+            return try sendTaskFailureSyncOverride(input, reporting)
         }
 
         return SendTaskFailureOutput.__default
@@ -732,14 +808,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskHeartbeatAsync(input: StepFunctionsModel.SendTaskHeartbeatInput, completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskHeartbeatOutput>) -> ()) throws {
+    public func sendTaskHeartbeatAsync(
+            input: StepFunctionsModel.SendTaskHeartbeatInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws {
         if let sendTaskHeartbeatAsyncOverride = sendTaskHeartbeatAsyncOverride {
-            return try sendTaskHeartbeatAsyncOverride(input, completion)
+            return try sendTaskHeartbeatAsyncOverride(input, reporting, completion)
         }
 
         let result = SendTaskHeartbeatOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -751,9 +830,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskHeartbeatSync(input: StepFunctionsModel.SendTaskHeartbeatInput) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
+    public func sendTaskHeartbeatSync(
+            input: StepFunctionsModel.SendTaskHeartbeatInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
         if let sendTaskHeartbeatSyncOverride = sendTaskHeartbeatSyncOverride {
-            return try sendTaskHeartbeatSyncOverride(input)
+            return try sendTaskHeartbeatSyncOverride(input, reporting)
         }
 
         return SendTaskHeartbeatOutput.__default
@@ -769,14 +850,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskSuccessAsync(input: StepFunctionsModel.SendTaskSuccessInput, completion: @escaping (HTTPResult<StepFunctionsModel.SendTaskSuccessOutput>) -> ()) throws {
+    public func sendTaskSuccessAsync(
+            input: StepFunctionsModel.SendTaskSuccessInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws {
         if let sendTaskSuccessAsyncOverride = sendTaskSuccessAsyncOverride {
-            return try sendTaskSuccessAsyncOverride(input, completion)
+            return try sendTaskSuccessAsyncOverride(input, reporting, completion)
         }
 
         let result = SendTaskSuccessOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -788,9 +872,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskSuccessSync(input: StepFunctionsModel.SendTaskSuccessInput) throws -> StepFunctionsModel.SendTaskSuccessOutput {
+    public func sendTaskSuccessSync(
+            input: StepFunctionsModel.SendTaskSuccessInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskSuccessOutput {
         if let sendTaskSuccessSyncOverride = sendTaskSuccessSyncOverride {
-            return try sendTaskSuccessSyncOverride(input)
+            return try sendTaskSuccessSyncOverride(input, reporting)
         }
 
         return SendTaskSuccessOutput.__default
@@ -806,14 +892,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func startExecutionAsync(input: StepFunctionsModel.StartExecutionInput, completion: @escaping (HTTPResult<StepFunctionsModel.StartExecutionOutput>) -> ()) throws {
+    public func startExecutionAsync(
+            input: StepFunctionsModel.StartExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws {
         if let startExecutionAsyncOverride = startExecutionAsyncOverride {
-            return try startExecutionAsyncOverride(input, completion)
+            return try startExecutionAsyncOverride(input, reporting, completion)
         }
 
         let result = StartExecutionOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -825,9 +914,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func startExecutionSync(input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput {
+    public func startExecutionSync(
+            input: StepFunctionsModel.StartExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StartExecutionOutput {
         if let startExecutionSyncOverride = startExecutionSyncOverride {
-            return try startExecutionSyncOverride(input)
+            return try startExecutionSyncOverride(input, reporting)
         }
 
         return StartExecutionOutput.__default
@@ -843,14 +934,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func stopExecutionAsync(input: StepFunctionsModel.StopExecutionInput, completion: @escaping (HTTPResult<StepFunctionsModel.StopExecutionOutput>) -> ()) throws {
+    public func stopExecutionAsync(
+            input: StepFunctionsModel.StopExecutionInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws {
         if let stopExecutionAsyncOverride = stopExecutionAsyncOverride {
-            return try stopExecutionAsyncOverride(input, completion)
+            return try stopExecutionAsyncOverride(input, reporting, completion)
         }
 
         let result = StopExecutionOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -862,9 +956,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func stopExecutionSync(input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput {
+    public func stopExecutionSync(
+            input: StepFunctionsModel.StopExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StopExecutionOutput {
         if let stopExecutionSyncOverride = stopExecutionSyncOverride {
-            return try stopExecutionSyncOverride(input)
+            return try stopExecutionSyncOverride(input, reporting)
         }
 
         return StopExecutionOutput.__default
@@ -880,14 +976,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound, tooManyTags.
      */
-    public func tagResourceAsync(input: StepFunctionsModel.TagResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.TagResourceOutput>) -> ()) throws {
+    public func tagResourceAsync(
+            input: StepFunctionsModel.TagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, completion)
+            return try tagResourceAsyncOverride(input, reporting, completion)
         }
 
         let result = TagResourceOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -899,9 +998,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound, tooManyTags.
      */
-    public func tagResourceSync(input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput {
+    public func tagResourceSync(
+            input: StepFunctionsModel.TagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.TagResourceOutput {
         if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input)
+            return try tagResourceSyncOverride(input, reporting)
         }
 
         return TagResourceOutput.__default
@@ -917,14 +1018,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    public func untagResourceAsync(input: StepFunctionsModel.UntagResourceInput, completion: @escaping (HTTPResult<StepFunctionsModel.UntagResourceOutput>) -> ()) throws {
+    public func untagResourceAsync(
+            input: StepFunctionsModel.UntagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, completion)
+            return try untagResourceAsyncOverride(input, reporting, completion)
         }
 
         let result = UntagResourceOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -936,9 +1040,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    public func untagResourceSync(input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput {
+    public func untagResourceSync(
+            input: StepFunctionsModel.UntagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UntagResourceOutput {
         if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input)
+            return try untagResourceSyncOverride(input, reporting)
         }
 
         return UntagResourceOutput.__default
@@ -954,14 +1060,17 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func updateStateMachineAsync(input: StepFunctionsModel.UpdateStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.UpdateStateMachineOutput>) -> ()) throws {
+    public func updateStateMachineAsync(
+            input: StepFunctionsModel.UpdateStateMachineInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws {
         if let updateStateMachineAsyncOverride = updateStateMachineAsyncOverride {
-            return try updateStateMachineAsyncOverride(input, completion)
+            return try updateStateMachineAsyncOverride(input, reporting, completion)
         }
 
         let result = UpdateStateMachineOutput.__default
         
-        completion(.response(result))
+        completion(.success(result))
     }
 
     /**
@@ -973,9 +1082,11 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func updateStateMachineSync(input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput {
+    public func updateStateMachineSync(
+            input: StepFunctionsModel.UpdateStateMachineInput,
+            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UpdateStateMachineOutput {
         if let updateStateMachineSyncOverride = updateStateMachineSyncOverride {
-            return try updateStateMachineSyncOverride(input)
+            return try updateStateMachineSyncOverride(input, reporting)
         }
 
         return UpdateStateMachineOutput.__default

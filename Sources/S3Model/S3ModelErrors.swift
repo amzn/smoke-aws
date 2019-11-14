@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let bucketAlreadyExistsIdentity = "BucketAlreadyExists"
 private let bucketAlreadyOwnedByYouIdentity = "BucketAlreadyOwnedByYou"
@@ -31,12 +31,6 @@ private let objectAlreadyInActiveTierIdentity = "ObjectAlreadyInActiveTierError"
 private let objectNotInActiveTierIdentity = "ObjectNotInActiveTierError"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum S3CodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum S3Error: Swift.Error, Decodable {
     case bucketAlreadyExists(BucketAlreadyExists)
     case bucketAlreadyOwnedByYou(BucketAlreadyOwnedByYou)
@@ -46,6 +40,8 @@ public enum S3Error: Swift.Error, Decodable {
     case objectAlreadyInActiveTier(ObjectAlreadyInActiveTierError)
     case objectNotInActiveTier(ObjectNotInActiveTierError)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "Code"
@@ -86,7 +82,7 @@ public enum S3Error: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw S3CodingError.unrecognizedError(errorReason, errorMessage)
+            self = S3Error.unrecognizedError(errorReason, errorMessage)
         }
     }
     

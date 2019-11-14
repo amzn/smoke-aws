@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let defaultUndefinedIdentity = "DefaultUndefinedFault"
 private let domainAlreadyExistsIdentity = "DomainAlreadyExistsFault"
@@ -33,12 +33,6 @@ private let unknownResourceIdentity = "UnknownResourceFault"
 private let workflowExecutionAlreadyStartedIdentity = "WorkflowExecutionAlreadyStartedFault"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum SimpleWorkflowCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum SimpleWorkflowError: Swift.Error, Decodable {
     case defaultUndefined(DefaultUndefinedFault)
     case domainAlreadyExists(DomainAlreadyExistsFault)
@@ -50,6 +44,8 @@ public enum SimpleWorkflowError: Swift.Error, Decodable {
     case unknownResource(UnknownResourceFault)
     case workflowExecutionAlreadyStarted(WorkflowExecutionAlreadyStartedFault)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "__type"
@@ -96,7 +92,7 @@ public enum SimpleWorkflowError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw SimpleWorkflowCodingError.unrecognizedError(errorReason, errorMessage)
+            self = SimpleWorkflowError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

@@ -163,7 +163,7 @@ extension RDSDataModel.Arn {
     public func validateAsArn() throws {
 
         if self.count > 100 {
-            throw RDSDataCodingError.validationError(reason: "The provided value to Arn violated the maximum length constraint.")
+            throw RDSDataError.validationError(reason: "The provided value to Arn violated the maximum length constraint.")
         }
     }
 }
@@ -175,7 +175,7 @@ extension RDSDataModel.DbName {
     public func validateAsDbName() throws {
 
         if self.count > 64 {
-            throw RDSDataCodingError.validationError(reason: "The provided value to DbName violated the maximum length constraint.")
+            throw RDSDataError.validationError(reason: "The provided value to DbName violated the maximum length constraint.")
         }
     }
 }
@@ -187,7 +187,7 @@ extension RDSDataModel.Id {
     public func validateAsId() throws {
 
         if self.count > 192 {
-            throw RDSDataCodingError.validationError(reason: "The provided value to Id violated the maximum length constraint.")
+            throw RDSDataError.validationError(reason: "The provided value to Id violated the maximum length constraint.")
         }
     }
 }
@@ -199,7 +199,7 @@ extension RDSDataModel.SqlStatement {
     public func validateAsSqlStatement() throws {
 
         if self.count > 65536 {
-            throw RDSDataCodingError.validationError(reason: "The provided value to SqlStatement violated the maximum length constraint.")
+            throw RDSDataError.validationError(reason: "The provided value to SqlStatement violated the maximum length constraint.")
         }
     }
 }
@@ -211,7 +211,7 @@ extension RDSDataModel.TransactionStatus {
     public func validateAsTransactionStatus() throws {
 
         if self.count > 128 {
-            throw RDSDataCodingError.validationError(reason: "The provided value to TransactionStatus violated the maximum length constraint.")
+            throw RDSDataError.validationError(reason: "The provided value to TransactionStatus violated the maximum length constraint.")
         }
     }
 }

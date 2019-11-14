@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let backupInUseIdentity = "BackupInUseException"
 private let backupNotFoundIdentity = "BackupNotFoundException"
@@ -49,12 +49,6 @@ private let transactionConflictIdentity = "TransactionConflictException"
 private let transactionInProgressIdentity = "TransactionInProgressException"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum DynamoDBCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum DynamoDBError: Swift.Error, Decodable {
     case backupInUse(BackupInUseException)
     case backupNotFound(BackupNotFoundException)
@@ -82,6 +76,8 @@ public enum DynamoDBError: Swift.Error, Decodable {
     case transactionConflict(TransactionConflictException)
     case transactionInProgress(TransactionInProgressException)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "__type"
@@ -176,7 +172,7 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw DynamoDBCodingError.unrecognizedError(errorReason, errorMessage)
+            self = DynamoDBError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

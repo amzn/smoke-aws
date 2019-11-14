@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the CloudWatchModel.
  */
-public enum CloudWatchModelOperations: String {
+public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible {
     case deleteAlarms = "DeleteAlarms"
     case deleteDashboards = "DeleteDashboards"
     case describeAlarmHistory = "DescribeAlarmHistory"
@@ -45,6 +45,10 @@ public enum CloudWatchModelOperations: String {
     case setAlarmState = "SetAlarmState"
     case tagResource = "TagResource"
     case untagResource = "UntagResource"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

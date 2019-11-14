@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the SecurityTokenModel.
  */
-public enum SecurityTokenModelOperations: String {
+public enum SecurityTokenModelOperations: String, Hashable, CustomStringConvertible {
     case assumeRole = "AssumeRole"
     case assumeRoleWithSAML = "AssumeRoleWithSAML"
     case assumeRoleWithWebIdentity = "AssumeRoleWithWebIdentity"
@@ -32,6 +32,10 @@ public enum SecurityTokenModelOperations: String {
     case getCallerIdentity = "GetCallerIdentity"
     case getFederationToken = "GetFederationToken"
     case getSessionToken = "GetSessionToken"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

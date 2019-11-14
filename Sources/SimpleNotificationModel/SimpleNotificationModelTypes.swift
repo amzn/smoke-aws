@@ -217,11 +217,11 @@ public typealias TopicName = String
 extension SimpleNotificationModel.AmazonResourceName {
     public func validateAsAmazonResourceName() throws {
         if self.count < 1 {
-            throw SimpleNotificationCodingError.validationError(reason: "The provided value to AmazonResourceName violated the minimum length constraint.")
+            throw SimpleNotificationError.validationError(reason: "The provided value to AmazonResourceName violated the minimum length constraint.")
         }
 
         if self.count > 1011 {
-            throw SimpleNotificationCodingError.validationError(reason: "The provided value to AmazonResourceName violated the maximum length constraint.")
+            throw SimpleNotificationError.validationError(reason: "The provided value to AmazonResourceName violated the maximum length constraint.")
         }
     }
 }
@@ -232,11 +232,11 @@ extension SimpleNotificationModel.AmazonResourceName {
 extension SimpleNotificationModel.TagKey {
     public func validateAsTagKey() throws {
         if self.count < 1 {
-            throw SimpleNotificationCodingError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
+            throw SimpleNotificationError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw SimpleNotificationCodingError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
+            throw SimpleNotificationError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
         }
     }
 }
@@ -247,11 +247,11 @@ extension SimpleNotificationModel.TagKey {
 extension SimpleNotificationModel.TagValue {
     public func validateAsTagValue() throws {
         if self.count < 0 {
-            throw SimpleNotificationCodingError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
+            throw SimpleNotificationError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleNotificationCodingError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
+            throw SimpleNotificationError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
         }
     }
 }

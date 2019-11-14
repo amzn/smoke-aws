@@ -21,13 +21,14 @@
 
 import Foundation
 import CloudWatchModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
  Mock Client for the CloudWatch service that by default always throws from its methods.
  */
 public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
-    let error: Swift.Error
+    let error: HTTPClientError
     let deleteAlarmsAsyncOverride: CloudWatchClientProtocol.DeleteAlarmsAsyncType?
     let deleteAlarmsSyncOverride: CloudWatchClientProtocol.DeleteAlarmsSyncType?
     let deleteDashboardsAsyncOverride: CloudWatchClientProtocol.DeleteDashboardsAsyncType?
@@ -73,7 +74,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: Swift.Error,
+    public init(error: HTTPClientError,
             deleteAlarmsAsync: CloudWatchClientProtocol.DeleteAlarmsAsyncType? = nil,
             deleteAlarmsSync: CloudWatchClientProtocol.DeleteAlarmsSyncType? = nil,
             deleteDashboardsAsync: CloudWatchClientProtocol.DeleteDashboardsAsyncType? = nil,
@@ -166,9 +167,12 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: resourceNotFound.
      */
-    public func deleteAlarmsAsync(input: CloudWatchModel.DeleteAlarmsInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteAlarmsAsync(
+            input: CloudWatchModel.DeleteAlarmsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteAlarmsAsyncOverride = deleteAlarmsAsyncOverride {
-            return try deleteAlarmsAsyncOverride(input, completion)
+            return try deleteAlarmsAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -181,9 +185,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated DeleteAlarmsInput object being passed to this operation.
      - Throws: resourceNotFound.
      */
-    public func deleteAlarmsSync(input: CloudWatchModel.DeleteAlarmsInput) throws {
+    public func deleteAlarmsSync(
+            input: CloudWatchModel.DeleteAlarmsInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteAlarmsSyncOverride = deleteAlarmsSyncOverride {
-            return try deleteAlarmsSyncOverride(input)
+            return try deleteAlarmsSyncOverride(input, reporting)
         }
 
         throw error
@@ -199,12 +205,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func deleteDashboardsAsync(input: CloudWatchModel.DeleteDashboardsInput, completion: @escaping (HTTPResult<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards>) -> ()) throws {
+    public func deleteDashboardsAsync(
+            input: CloudWatchModel.DeleteDashboardsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) -> ()) throws {
         if let deleteDashboardsAsyncOverride = deleteDashboardsAsyncOverride {
-            return try deleteDashboardsAsyncOverride(input, completion)
+            return try deleteDashboardsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -216,9 +225,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func deleteDashboardsSync(input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
+    public func deleteDashboardsSync(
+            input: CloudWatchModel.DeleteDashboardsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
         if let deleteDashboardsSyncOverride = deleteDashboardsSyncOverride {
-            return try deleteDashboardsSyncOverride(input)
+            return try deleteDashboardsSyncOverride(input, reporting)
         }
 
         throw error
@@ -234,12 +245,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeAlarmHistoryAsync(input: CloudWatchModel.DescribeAlarmHistoryInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory>) -> ()) throws {
+    public func describeAlarmHistoryAsync(
+            input: CloudWatchModel.DescribeAlarmHistoryInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) -> ()) throws {
         if let describeAlarmHistoryAsyncOverride = describeAlarmHistoryAsyncOverride {
-            return try describeAlarmHistoryAsyncOverride(input, completion)
+            return try describeAlarmHistoryAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -251,9 +265,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeAlarmHistorySync(input: CloudWatchModel.DescribeAlarmHistoryInput) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
+    public func describeAlarmHistorySync(
+            input: CloudWatchModel.DescribeAlarmHistoryInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
         if let describeAlarmHistorySyncOverride = describeAlarmHistorySyncOverride {
-            return try describeAlarmHistorySyncOverride(input)
+            return try describeAlarmHistorySyncOverride(input, reporting)
         }
 
         throw error
@@ -269,12 +285,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeAlarmsAsync(input: CloudWatchModel.DescribeAlarmsInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms>) -> ()) throws {
+    public func describeAlarmsAsync(
+            input: CloudWatchModel.DescribeAlarmsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) -> ()) throws {
         if let describeAlarmsAsyncOverride = describeAlarmsAsyncOverride {
-            return try describeAlarmsAsyncOverride(input, completion)
+            return try describeAlarmsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -286,9 +305,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeAlarmsSync(input: CloudWatchModel.DescribeAlarmsInput) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
+    public func describeAlarmsSync(
+            input: CloudWatchModel.DescribeAlarmsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
         if let describeAlarmsSyncOverride = describeAlarmsSyncOverride {
-            return try describeAlarmsSyncOverride(input)
+            return try describeAlarmsSyncOverride(input, reporting)
         }
 
         throw error
@@ -303,12 +324,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            callback when the operation is complete. The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
            object will be validated before being returned to caller.
      */
-    public func describeAlarmsForMetricAsync(input: CloudWatchModel.DescribeAlarmsForMetricInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric>) -> ()) throws {
+    public func describeAlarmsForMetricAsync(
+            input: CloudWatchModel.DescribeAlarmsForMetricInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) -> ()) throws {
         if let describeAlarmsForMetricAsyncOverride = describeAlarmsForMetricAsyncOverride {
-            return try describeAlarmsForMetricAsyncOverride(input, completion)
+            return try describeAlarmsForMetricAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -319,9 +343,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      - Returns: The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAlarmsForMetricSync(input: CloudWatchModel.DescribeAlarmsForMetricInput) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
+    public func describeAlarmsForMetricSync(
+            input: CloudWatchModel.DescribeAlarmsForMetricInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
         if let describeAlarmsForMetricSyncOverride = describeAlarmsForMetricSyncOverride {
-            return try describeAlarmsForMetricSyncOverride(input)
+            return try describeAlarmsForMetricSyncOverride(input, reporting)
         }
 
         throw error
@@ -335,9 +361,12 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableAlarmActionsAsync(input: CloudWatchModel.DisableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func disableAlarmActionsAsync(
+            input: CloudWatchModel.DisableAlarmActionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let disableAlarmActionsAsyncOverride = disableAlarmActionsAsyncOverride {
-            return try disableAlarmActionsAsyncOverride(input, completion)
+            return try disableAlarmActionsAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -349,9 +378,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      - Parameters:
          - input: The validated DisableAlarmActionsInput object being passed to this operation.
      */
-    public func disableAlarmActionsSync(input: CloudWatchModel.DisableAlarmActionsInput) throws {
+    public func disableAlarmActionsSync(
+            input: CloudWatchModel.DisableAlarmActionsInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let disableAlarmActionsSyncOverride = disableAlarmActionsSyncOverride {
-            return try disableAlarmActionsSyncOverride(input)
+            return try disableAlarmActionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -365,9 +396,12 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableAlarmActionsAsync(input: CloudWatchModel.EnableAlarmActionsInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func enableAlarmActionsAsync(
+            input: CloudWatchModel.EnableAlarmActionsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let enableAlarmActionsAsyncOverride = enableAlarmActionsAsyncOverride {
-            return try enableAlarmActionsAsyncOverride(input, completion)
+            return try enableAlarmActionsAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -379,9 +413,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      - Parameters:
          - input: The validated EnableAlarmActionsInput object being passed to this operation.
      */
-    public func enableAlarmActionsSync(input: CloudWatchModel.EnableAlarmActionsInput) throws {
+    public func enableAlarmActionsSync(
+            input: CloudWatchModel.EnableAlarmActionsInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let enableAlarmActionsSyncOverride = enableAlarmActionsSyncOverride {
-            return try enableAlarmActionsSyncOverride(input)
+            return try enableAlarmActionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -397,12 +433,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func getDashboardAsync(input: CloudWatchModel.GetDashboardInput, completion: @escaping (HTTPResult<CloudWatchModel.GetDashboardOutputForGetDashboard>) -> ()) throws {
+    public func getDashboardAsync(
+            input: CloudWatchModel.GetDashboardInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) -> ()) throws {
         if let getDashboardAsyncOverride = getDashboardAsyncOverride {
-            return try getDashboardAsyncOverride(input, completion)
+            return try getDashboardAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -414,9 +453,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func getDashboardSync(input: CloudWatchModel.GetDashboardInput) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
+    public func getDashboardSync(
+            input: CloudWatchModel.GetDashboardInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
         if let getDashboardSyncOverride = getDashboardSyncOverride {
-            return try getDashboardSyncOverride(input)
+            return try getDashboardSyncOverride(input, reporting)
         }
 
         throw error
@@ -432,12 +473,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func getMetricDataAsync(input: CloudWatchModel.GetMetricDataInput, completion: @escaping (HTTPResult<CloudWatchModel.GetMetricDataOutputForGetMetricData>) -> ()) throws {
+    public func getMetricDataAsync(
+            input: CloudWatchModel.GetMetricDataInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) -> ()) throws {
         if let getMetricDataAsyncOverride = getMetricDataAsyncOverride {
-            return try getMetricDataAsyncOverride(input, completion)
+            return try getMetricDataAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -449,9 +493,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func getMetricDataSync(input: CloudWatchModel.GetMetricDataInput) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
+    public func getMetricDataSync(
+            input: CloudWatchModel.GetMetricDataInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
         if let getMetricDataSyncOverride = getMetricDataSyncOverride {
-            return try getMetricDataSyncOverride(input)
+            return try getMetricDataSyncOverride(input, reporting)
         }
 
         throw error
@@ -467,12 +513,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func getMetricStatisticsAsync(input: CloudWatchModel.GetMetricStatisticsInput, completion: @escaping (HTTPResult<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics>) -> ()) throws {
+    public func getMetricStatisticsAsync(
+            input: CloudWatchModel.GetMetricStatisticsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) -> ()) throws {
         if let getMetricStatisticsAsyncOverride = getMetricStatisticsAsyncOverride {
-            return try getMetricStatisticsAsyncOverride(input, completion)
+            return try getMetricStatisticsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -484,9 +533,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func getMetricStatisticsSync(input: CloudWatchModel.GetMetricStatisticsInput) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
+    public func getMetricStatisticsSync(
+            input: CloudWatchModel.GetMetricStatisticsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
         if let getMetricStatisticsSyncOverride = getMetricStatisticsSyncOverride {
-            return try getMetricStatisticsSyncOverride(input)
+            return try getMetricStatisticsSyncOverride(input, reporting)
         }
 
         throw error
@@ -501,12 +552,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            callback when the operation is complete. The GetMetricWidgetImageOutputForGetMetricWidgetImage
            object will be validated before being returned to caller.
      */
-    public func getMetricWidgetImageAsync(input: CloudWatchModel.GetMetricWidgetImageInput, completion: @escaping (HTTPResult<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage>) -> ()) throws {
+    public func getMetricWidgetImageAsync(
+            input: CloudWatchModel.GetMetricWidgetImageInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) -> ()) throws {
         if let getMetricWidgetImageAsyncOverride = getMetricWidgetImageAsyncOverride {
-            return try getMetricWidgetImageAsyncOverride(input, completion)
+            return try getMetricWidgetImageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -517,9 +571,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      - Returns: The GetMetricWidgetImageOutputForGetMetricWidgetImage object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getMetricWidgetImageSync(input: CloudWatchModel.GetMetricWidgetImageInput) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
+    public func getMetricWidgetImageSync(
+            input: CloudWatchModel.GetMetricWidgetImageInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
         if let getMetricWidgetImageSyncOverride = getMetricWidgetImageSyncOverride {
-            return try getMetricWidgetImageSyncOverride(input)
+            return try getMetricWidgetImageSyncOverride(input, reporting)
         }
 
         throw error
@@ -535,12 +591,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    public func listDashboardsAsync(input: CloudWatchModel.ListDashboardsInput, completion: @escaping (HTTPResult<CloudWatchModel.ListDashboardsOutputForListDashboards>) -> ()) throws {
+    public func listDashboardsAsync(
+            input: CloudWatchModel.ListDashboardsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) -> ()) throws {
         if let listDashboardsAsyncOverride = listDashboardsAsyncOverride {
-            return try listDashboardsAsyncOverride(input, completion)
+            return try listDashboardsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -552,9 +611,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    public func listDashboardsSync(input: CloudWatchModel.ListDashboardsInput) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
+    public func listDashboardsSync(
+            input: CloudWatchModel.ListDashboardsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
         if let listDashboardsSyncOverride = listDashboardsSyncOverride {
-            return try listDashboardsSyncOverride(input)
+            return try listDashboardsSyncOverride(input, reporting)
         }
 
         throw error
@@ -570,12 +631,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    public func listMetricsAsync(input: CloudWatchModel.ListMetricsInput, completion: @escaping (HTTPResult<CloudWatchModel.ListMetricsOutputForListMetrics>) -> ()) throws {
+    public func listMetricsAsync(
+            input: CloudWatchModel.ListMetricsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) -> ()) throws {
         if let listMetricsAsyncOverride = listMetricsAsyncOverride {
-            return try listMetricsAsyncOverride(input, completion)
+            return try listMetricsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -587,9 +651,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    public func listMetricsSync(input: CloudWatchModel.ListMetricsInput) throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
+    public func listMetricsSync(
+            input: CloudWatchModel.ListMetricsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
         if let listMetricsSyncOverride = listMetricsSyncOverride {
-            return try listMetricsSyncOverride(input)
+            return try listMetricsSyncOverride(input, reporting)
         }
 
         throw error
@@ -605,12 +671,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, resourceNotFound.
      */
-    public func listTagsForResourceAsync(input: CloudWatchModel.ListTagsForResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource>) -> ()) throws {
+    public func listTagsForResourceAsync(
+            input: CloudWatchModel.ListTagsForResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, completion)
+            return try listTagsForResourceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -622,9 +691,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, resourceNotFound.
      */
-    public func listTagsForResourceSync(input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
+    public func listTagsForResourceSync(
+            input: CloudWatchModel.ListTagsForResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input)
+            return try listTagsForResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -640,12 +711,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardInvalidInput, internalService.
      */
-    public func putDashboardAsync(input: CloudWatchModel.PutDashboardInput, completion: @escaping (HTTPResult<CloudWatchModel.PutDashboardOutputForPutDashboard>) -> ()) throws {
+    public func putDashboardAsync(
+            input: CloudWatchModel.PutDashboardInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) -> ()) throws {
         if let putDashboardAsyncOverride = putDashboardAsyncOverride {
-            return try putDashboardAsyncOverride(input, completion)
+            return try putDashboardAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -657,9 +731,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardInvalidInput, internalService.
      */
-    public func putDashboardSync(input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
+    public func putDashboardSync(
+            input: CloudWatchModel.PutDashboardInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
         if let putDashboardSyncOverride = putDashboardSyncOverride {
-            return try putDashboardSyncOverride(input)
+            return try putDashboardSyncOverride(input, reporting)
         }
 
         throw error
@@ -674,9 +750,12 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: limitExceeded.
      */
-    public func putMetricAlarmAsync(input: CloudWatchModel.PutMetricAlarmInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putMetricAlarmAsync(
+            input: CloudWatchModel.PutMetricAlarmInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let putMetricAlarmAsyncOverride = putMetricAlarmAsyncOverride {
-            return try putMetricAlarmAsyncOverride(input, completion)
+            return try putMetricAlarmAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -689,9 +768,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated PutMetricAlarmInput object being passed to this operation.
      - Throws: limitExceeded.
      */
-    public func putMetricAlarmSync(input: CloudWatchModel.PutMetricAlarmInput) throws {
+    public func putMetricAlarmSync(
+            input: CloudWatchModel.PutMetricAlarmInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let putMetricAlarmSyncOverride = putMetricAlarmSyncOverride {
-            return try putMetricAlarmSyncOverride(input)
+            return try putMetricAlarmSyncOverride(input, reporting)
         }
 
         throw error
@@ -706,9 +787,12 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataAsync(input: CloudWatchModel.PutMetricDataInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putMetricDataAsync(
+            input: CloudWatchModel.PutMetricDataInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let putMetricDataAsyncOverride = putMetricDataAsyncOverride {
-            return try putMetricDataAsyncOverride(input, completion)
+            return try putMetricDataAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -721,9 +805,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated PutMetricDataInput object being passed to this operation.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataSync(input: CloudWatchModel.PutMetricDataInput) throws {
+    public func putMetricDataSync(
+            input: CloudWatchModel.PutMetricDataInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let putMetricDataSyncOverride = putMetricDataSyncOverride {
-            return try putMetricDataSyncOverride(input)
+            return try putMetricDataSyncOverride(input, reporting)
         }
 
         throw error
@@ -738,9 +824,12 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateAsync(input: CloudWatchModel.SetAlarmStateInput, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func setAlarmStateAsync(
+            input: CloudWatchModel.SetAlarmStateInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let setAlarmStateAsyncOverride = setAlarmStateAsyncOverride {
-            return try setAlarmStateAsyncOverride(input, completion)
+            return try setAlarmStateAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -753,9 +842,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated SetAlarmStateInput object being passed to this operation.
      - Throws: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateSync(input: CloudWatchModel.SetAlarmStateInput) throws {
+    public func setAlarmStateSync(
+            input: CloudWatchModel.SetAlarmStateInput,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let setAlarmStateSyncOverride = setAlarmStateSyncOverride {
-            return try setAlarmStateSyncOverride(input)
+            return try setAlarmStateSyncOverride(input, reporting)
         }
 
         throw error
@@ -771,12 +862,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func tagResourceAsync(input: CloudWatchModel.TagResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.TagResourceOutputForTagResource>) -> ()) throws {
+    public func tagResourceAsync(
+            input: CloudWatchModel.TagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, completion)
+            return try tagResourceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -788,9 +882,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func tagResourceSync(input: CloudWatchModel.TagResourceInput) throws -> CloudWatchModel.TagResourceOutputForTagResource {
+    public func tagResourceSync(
+            input: CloudWatchModel.TagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.TagResourceOutputForTagResource {
         if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input)
+            return try tagResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -806,12 +902,15 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func untagResourceAsync(input: CloudWatchModel.UntagResourceInput, completion: @escaping (HTTPResult<CloudWatchModel.UntagResourceOutputForUntagResource>) -> ()) throws {
+    public func untagResourceAsync(
+            input: CloudWatchModel.UntagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, completion)
+            return try untagResourceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -823,9 +922,11 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func untagResourceSync(input: CloudWatchModel.UntagResourceInput) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
+    public func untagResourceSync(
+            input: CloudWatchModel.UntagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
         if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input)
+            return try untagResourceSyncOverride(input, reporting)
         }
 
         throw error

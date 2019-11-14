@@ -712,11 +712,11 @@ public typealias WorkflowTypeInfoList = [WorkflowTypeInfo]
 extension SimpleWorkflowModel.ActivityId {
     public func validateAsActivityId() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to ActivityId violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to ActivityId violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to ActivityId violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to ActivityId violated the maximum length constraint.")
         }
     }
 }
@@ -727,11 +727,11 @@ extension SimpleWorkflowModel.ActivityId {
 extension SimpleWorkflowModel.Arn {
     public func validateAsArn() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Arn violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Arn violated the minimum length constraint.")
         }
 
         if self.count > 1600 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Arn violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Arn violated the maximum length constraint.")
         }
     }
 }
@@ -743,7 +743,7 @@ extension SimpleWorkflowModel.CauseMessage {
     public func validateAsCauseMessage() throws {
 
         if self.count > 1728 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to CauseMessage violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to CauseMessage violated the maximum length constraint.")
         }
     }
 }
@@ -754,7 +754,7 @@ extension SimpleWorkflowModel.CauseMessage {
 extension SimpleWorkflowModel.Count {
     public func validateAsCount() throws {
         if self < 0 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Count violated the minimum range constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Count violated the minimum range constraint.")
         }
 
     }
@@ -767,7 +767,7 @@ extension SimpleWorkflowModel.Data {
     public func validateAsData() throws {
 
         if self.count > 32768 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Data violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Data violated the maximum length constraint.")
         }
     }
 }
@@ -779,7 +779,7 @@ extension SimpleWorkflowModel.Description {
     public func validateAsDescription() throws {
 
         if self.count > 1024 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Description violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Description violated the maximum length constraint.")
         }
     }
 }
@@ -790,11 +790,11 @@ extension SimpleWorkflowModel.Description {
 extension SimpleWorkflowModel.DomainName {
     public func validateAsDomainName() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to DomainName violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to DomainName violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to DomainName violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to DomainName violated the maximum length constraint.")
         }
     }
 }
@@ -805,11 +805,11 @@ extension SimpleWorkflowModel.DomainName {
 extension SimpleWorkflowModel.DurationInDays {
     public func validateAsDurationInDays() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to DurationInDays violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to DurationInDays violated the minimum length constraint.")
         }
 
         if self.count > 8 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to DurationInDays violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to DurationInDays violated the maximum length constraint.")
         }
     }
 }
@@ -820,11 +820,11 @@ extension SimpleWorkflowModel.DurationInDays {
 extension SimpleWorkflowModel.DurationInSeconds {
     public func validateAsDurationInSeconds() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to DurationInSeconds violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to DurationInSeconds violated the minimum length constraint.")
         }
 
         if self.count > 8 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to DurationInSeconds violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to DurationInSeconds violated the maximum length constraint.")
         }
     }
 }
@@ -836,7 +836,7 @@ extension SimpleWorkflowModel.DurationInSecondsOptional {
     public func validateAsDurationInSecondsOptional() throws {
 
         if self.count > 8 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to DurationInSecondsOptional violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to DurationInSecondsOptional violated the maximum length constraint.")
         }
     }
 }
@@ -848,7 +848,7 @@ extension SimpleWorkflowModel.FailureReason {
     public func validateAsFailureReason() throws {
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to FailureReason violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to FailureReason violated the maximum length constraint.")
         }
     }
 }
@@ -859,11 +859,11 @@ extension SimpleWorkflowModel.FailureReason {
 extension SimpleWorkflowModel.FunctionId {
     public func validateAsFunctionId() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to FunctionId violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to FunctionId violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to FunctionId violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to FunctionId violated the maximum length constraint.")
         }
     }
 }
@@ -874,11 +874,11 @@ extension SimpleWorkflowModel.FunctionId {
 extension SimpleWorkflowModel.FunctionInput {
     public func validateAsFunctionInput() throws {
         if self.count < 0 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to FunctionInput violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to FunctionInput violated the minimum length constraint.")
         }
 
         if self.count > 32768 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to FunctionInput violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to FunctionInput violated the maximum length constraint.")
         }
     }
 }
@@ -889,11 +889,11 @@ extension SimpleWorkflowModel.FunctionInput {
 extension SimpleWorkflowModel.FunctionName {
     public func validateAsFunctionName() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to FunctionName violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to FunctionName violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to FunctionName violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to FunctionName violated the maximum length constraint.")
         }
     }
 }
@@ -905,7 +905,7 @@ extension SimpleWorkflowModel.Identity {
     public func validateAsIdentity() throws {
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Identity violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Identity violated the maximum length constraint.")
         }
     }
 }
@@ -917,7 +917,7 @@ extension SimpleWorkflowModel.LimitedData {
     public func validateAsLimitedData() throws {
 
         if self.count > 2048 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to LimitedData violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to LimitedData violated the maximum length constraint.")
         }
     }
 }
@@ -928,11 +928,11 @@ extension SimpleWorkflowModel.LimitedData {
 extension SimpleWorkflowModel.MarkerName {
     public func validateAsMarkerName() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to MarkerName violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to MarkerName violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to MarkerName violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to MarkerName violated the maximum length constraint.")
         }
     }
 }
@@ -943,11 +943,11 @@ extension SimpleWorkflowModel.MarkerName {
 extension SimpleWorkflowModel.Name {
     public func validateAsName() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Name violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Name violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Name violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Name violated the maximum length constraint.")
         }
     }
 }
@@ -958,11 +958,11 @@ extension SimpleWorkflowModel.Name {
 extension SimpleWorkflowModel.OpenDecisionTasksCount {
     public func validateAsOpenDecisionTasksCount() throws {
         if self < 0 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to OpenDecisionTasksCount violated the minimum range constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to OpenDecisionTasksCount violated the minimum range constraint.")
         }
 
         if self > 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to OpenDecisionTasksCount violated the maximum range constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to OpenDecisionTasksCount violated the maximum range constraint.")
         }
     }
 }
@@ -973,11 +973,11 @@ extension SimpleWorkflowModel.OpenDecisionTasksCount {
 extension SimpleWorkflowModel.PageSize {
     public func validateAsPageSize() throws {
         if self < 0 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to PageSize violated the minimum range constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to PageSize violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to PageSize violated the maximum range constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to PageSize violated the maximum range constraint.")
         }
     }
 }
@@ -989,7 +989,7 @@ extension SimpleWorkflowModel.PageToken {
     public func validateAsPageToken() throws {
 
         if self.count > 2048 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to PageToken violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to PageToken violated the maximum length constraint.")
         }
     }
 }
@@ -1000,11 +1000,11 @@ extension SimpleWorkflowModel.PageToken {
 extension SimpleWorkflowModel.SignalName {
     public func validateAsSignalName() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to SignalName violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to SignalName violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to SignalName violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to SignalName violated the maximum length constraint.")
         }
     }
 }
@@ -1015,11 +1015,11 @@ extension SimpleWorkflowModel.SignalName {
 extension SimpleWorkflowModel.Tag {
     public func validateAsTag() throws {
         if self.count < 0 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Tag violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Tag violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Tag violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Tag violated the maximum length constraint.")
         }
     }
 }
@@ -1031,7 +1031,7 @@ extension Array where Element == SimpleWorkflowModel.Tag {
     public func validateAsTagList() throws {
 
         if self.count > 5 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to TagList violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to TagList violated the maximum length constraint.")
         }
     }
 }
@@ -1042,11 +1042,11 @@ extension Array where Element == SimpleWorkflowModel.Tag {
 extension SimpleWorkflowModel.TaskToken {
     public func validateAsTaskToken() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to TaskToken violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to TaskToken violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to TaskToken violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to TaskToken violated the maximum length constraint.")
         }
     }
 }
@@ -1058,7 +1058,7 @@ extension SimpleWorkflowModel.TerminateReason {
     public func validateAsTerminateReason() throws {
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to TerminateReason violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to TerminateReason violated the maximum length constraint.")
         }
     }
 }
@@ -1069,11 +1069,11 @@ extension SimpleWorkflowModel.TerminateReason {
 extension SimpleWorkflowModel.TimerId {
     public func validateAsTimerId() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to TimerId violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to TimerId violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to TimerId violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to TimerId violated the maximum length constraint.")
         }
     }
 }
@@ -1084,11 +1084,11 @@ extension SimpleWorkflowModel.TimerId {
 extension SimpleWorkflowModel.Version {
     public func validateAsVersion() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Version violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Version violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to Version violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to Version violated the maximum length constraint.")
         }
     }
 }
@@ -1100,7 +1100,7 @@ extension SimpleWorkflowModel.VersionOptional {
     public func validateAsVersionOptional() throws {
 
         if self.count > 64 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to VersionOptional violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to VersionOptional violated the maximum length constraint.")
         }
     }
 }
@@ -1111,11 +1111,11 @@ extension SimpleWorkflowModel.VersionOptional {
 extension SimpleWorkflowModel.WorkflowId {
     public func validateAsWorkflowId() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to WorkflowId violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to WorkflowId violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to WorkflowId violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to WorkflowId violated the maximum length constraint.")
         }
     }
 }
@@ -1126,11 +1126,11 @@ extension SimpleWorkflowModel.WorkflowId {
 extension SimpleWorkflowModel.WorkflowRunId {
     public func validateAsWorkflowRunId() throws {
         if self.count < 1 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to WorkflowRunId violated the minimum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to WorkflowRunId violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to WorkflowRunId violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to WorkflowRunId violated the maximum length constraint.")
         }
     }
 }
@@ -1142,7 +1142,7 @@ extension SimpleWorkflowModel.WorkflowRunIdOptional {
     public func validateAsWorkflowRunIdOptional() throws {
 
         if self.count > 64 {
-            throw SimpleWorkflowCodingError.validationError(reason: "The provided value to WorkflowRunIdOptional violated the maximum length constraint.")
+            throw SimpleWorkflowError.validationError(reason: "The provided value to WorkflowRunIdOptional violated the maximum length constraint.")
         }
     }
 }

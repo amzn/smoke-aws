@@ -21,13 +21,14 @@
 
 import Foundation
 import SimpleQueueModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
  Mock Client for the SimpleQueue service that by default always throws from its methods.
  */
 public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
-    let error: Swift.Error
+    let error: HTTPClientError
     let addPermissionAsyncOverride: SimpleQueueClientProtocol.AddPermissionAsyncType?
     let addPermissionSyncOverride: SimpleQueueClientProtocol.AddPermissionSyncType?
     let changeMessageVisibilityAsyncOverride: SimpleQueueClientProtocol.ChangeMessageVisibilityAsyncType?
@@ -73,7 +74,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: Swift.Error,
+    public init(error: HTTPClientError,
             addPermissionAsync: SimpleQueueClientProtocol.AddPermissionAsyncType? = nil,
             addPermissionSync: SimpleQueueClientProtocol.AddPermissionSyncType? = nil,
             changeMessageVisibilityAsync: SimpleQueueClientProtocol.ChangeMessageVisibilityAsyncType? = nil,
@@ -166,9 +167,12 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: overLimit.
      */
-    public func addPermissionAsync(input: SimpleQueueModel.AddPermissionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func addPermissionAsync(
+            input: SimpleQueueModel.AddPermissionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let addPermissionAsyncOverride = addPermissionAsyncOverride {
-            return try addPermissionAsyncOverride(input, completion)
+            return try addPermissionAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -181,9 +185,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated AddPermissionRequest object being passed to this operation.
      - Throws: overLimit.
      */
-    public func addPermissionSync(input: SimpleQueueModel.AddPermissionRequest) throws {
+    public func addPermissionSync(
+            input: SimpleQueueModel.AddPermissionRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let addPermissionSyncOverride = addPermissionSyncOverride {
-            return try addPermissionSyncOverride(input)
+            return try addPermissionSyncOverride(input, reporting)
         }
 
         throw error
@@ -198,9 +204,12 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: messageNotInflight, receiptHandleIsInvalid.
      */
-    public func changeMessageVisibilityAsync(input: SimpleQueueModel.ChangeMessageVisibilityRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func changeMessageVisibilityAsync(
+            input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let changeMessageVisibilityAsyncOverride = changeMessageVisibilityAsyncOverride {
-            return try changeMessageVisibilityAsyncOverride(input, completion)
+            return try changeMessageVisibilityAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -213,9 +222,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated ChangeMessageVisibilityRequest object being passed to this operation.
      - Throws: messageNotInflight, receiptHandleIsInvalid.
      */
-    public func changeMessageVisibilitySync(input: SimpleQueueModel.ChangeMessageVisibilityRequest) throws {
+    public func changeMessageVisibilitySync(
+            input: SimpleQueueModel.ChangeMessageVisibilityRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let changeMessageVisibilitySyncOverride = changeMessageVisibilitySyncOverride {
-            return try changeMessageVisibilitySyncOverride(input)
+            return try changeMessageVisibilitySyncOverride(input, reporting)
         }
 
         throw error
@@ -231,12 +242,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    public func changeMessageVisibilityBatchAsync(input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, completion: @escaping (HTTPResult<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch>) -> ()) throws {
+    public func changeMessageVisibilityBatchAsync(
+            input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) -> ()) throws {
         if let changeMessageVisibilityBatchAsyncOverride = changeMessageVisibilityBatchAsyncOverride {
-            return try changeMessageVisibilityBatchAsyncOverride(input, completion)
+            return try changeMessageVisibilityBatchAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -248,9 +262,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    public func changeMessageVisibilityBatchSync(input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
+    public func changeMessageVisibilityBatchSync(
+            input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
         if let changeMessageVisibilityBatchSyncOverride = changeMessageVisibilityBatchSyncOverride {
-            return try changeMessageVisibilityBatchSyncOverride(input)
+            return try changeMessageVisibilityBatchSyncOverride(input, reporting)
         }
 
         throw error
@@ -266,12 +282,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: queueDeletedRecently, queueNameExists.
      */
-    public func createQueueAsync(input: SimpleQueueModel.CreateQueueRequest, completion: @escaping (HTTPResult<SimpleQueueModel.CreateQueueResultForCreateQueue>) -> ()) throws {
+    public func createQueueAsync(
+            input: SimpleQueueModel.CreateQueueRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) -> ()) throws {
         if let createQueueAsyncOverride = createQueueAsyncOverride {
-            return try createQueueAsyncOverride(input, completion)
+            return try createQueueAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -283,9 +302,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: queueDeletedRecently, queueNameExists.
      */
-    public func createQueueSync(input: SimpleQueueModel.CreateQueueRequest) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue {
+    public func createQueueSync(
+            input: SimpleQueueModel.CreateQueueRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue {
         if let createQueueSyncOverride = createQueueSyncOverride {
-            return try createQueueSyncOverride(input)
+            return try createQueueSyncOverride(input, reporting)
         }
 
         throw error
@@ -300,9 +321,12 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidIdFormat, receiptHandleIsInvalid.
      */
-    public func deleteMessageAsync(input: SimpleQueueModel.DeleteMessageRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteMessageAsync(
+            input: SimpleQueueModel.DeleteMessageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteMessageAsyncOverride = deleteMessageAsyncOverride {
-            return try deleteMessageAsyncOverride(input, completion)
+            return try deleteMessageAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -315,9 +339,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated DeleteMessageRequest object being passed to this operation.
      - Throws: invalidIdFormat, receiptHandleIsInvalid.
      */
-    public func deleteMessageSync(input: SimpleQueueModel.DeleteMessageRequest) throws {
+    public func deleteMessageSync(
+            input: SimpleQueueModel.DeleteMessageRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteMessageSyncOverride = deleteMessageSyncOverride {
-            return try deleteMessageSyncOverride(input)
+            return try deleteMessageSyncOverride(input, reporting)
         }
 
         throw error
@@ -333,12 +359,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    public func deleteMessageBatchAsync(input: SimpleQueueModel.DeleteMessageBatchRequest, completion: @escaping (HTTPResult<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch>) -> ()) throws {
+    public func deleteMessageBatchAsync(
+            input: SimpleQueueModel.DeleteMessageBatchRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) -> ()) throws {
         if let deleteMessageBatchAsyncOverride = deleteMessageBatchAsyncOverride {
-            return try deleteMessageBatchAsyncOverride(input, completion)
+            return try deleteMessageBatchAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -350,9 +379,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    public func deleteMessageBatchSync(input: SimpleQueueModel.DeleteMessageBatchRequest) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
+    public func deleteMessageBatchSync(
+            input: SimpleQueueModel.DeleteMessageBatchRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
         if let deleteMessageBatchSyncOverride = deleteMessageBatchSyncOverride {
-            return try deleteMessageBatchSyncOverride(input)
+            return try deleteMessageBatchSyncOverride(input, reporting)
         }
 
         throw error
@@ -366,9 +397,12 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteQueueAsync(input: SimpleQueueModel.DeleteQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteQueueAsync(
+            input: SimpleQueueModel.DeleteQueueRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteQueueAsyncOverride = deleteQueueAsyncOverride {
-            return try deleteQueueAsyncOverride(input, completion)
+            return try deleteQueueAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -380,9 +414,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated DeleteQueueRequest object being passed to this operation.
      */
-    public func deleteQueueSync(input: SimpleQueueModel.DeleteQueueRequest) throws {
+    public func deleteQueueSync(
+            input: SimpleQueueModel.DeleteQueueRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteQueueSyncOverride = deleteQueueSyncOverride {
-            return try deleteQueueSyncOverride(input)
+            return try deleteQueueSyncOverride(input, reporting)
         }
 
         throw error
@@ -398,12 +434,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidAttributeName.
      */
-    public func getQueueAttributesAsync(input: SimpleQueueModel.GetQueueAttributesRequest, completion: @escaping (HTTPResult<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes>) -> ()) throws {
+    public func getQueueAttributesAsync(
+            input: SimpleQueueModel.GetQueueAttributesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) -> ()) throws {
         if let getQueueAttributesAsyncOverride = getQueueAttributesAsyncOverride {
-            return try getQueueAttributesAsyncOverride(input, completion)
+            return try getQueueAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -415,9 +454,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidAttributeName.
      */
-    public func getQueueAttributesSync(input: SimpleQueueModel.GetQueueAttributesRequest) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
+    public func getQueueAttributesSync(
+            input: SimpleQueueModel.GetQueueAttributesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
         if let getQueueAttributesSyncOverride = getQueueAttributesSyncOverride {
-            return try getQueueAttributesSyncOverride(input)
+            return try getQueueAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -433,12 +474,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: queueDoesNotExist.
      */
-    public func getQueueUrlAsync(input: SimpleQueueModel.GetQueueUrlRequest, completion: @escaping (HTTPResult<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl>) -> ()) throws {
+    public func getQueueUrlAsync(
+            input: SimpleQueueModel.GetQueueUrlRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) -> ()) throws {
         if let getQueueUrlAsyncOverride = getQueueUrlAsyncOverride {
-            return try getQueueUrlAsyncOverride(input, completion)
+            return try getQueueUrlAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -450,9 +494,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: queueDoesNotExist.
      */
-    public func getQueueUrlSync(input: SimpleQueueModel.GetQueueUrlRequest) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
+    public func getQueueUrlSync(
+            input: SimpleQueueModel.GetQueueUrlRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
         if let getQueueUrlSyncOverride = getQueueUrlSyncOverride {
-            return try getQueueUrlSyncOverride(input)
+            return try getQueueUrlSyncOverride(input, reporting)
         }
 
         throw error
@@ -468,12 +514,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: queueDoesNotExist.
      */
-    public func listDeadLetterSourceQueuesAsync(input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, completion: @escaping (HTTPResult<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues>) -> ()) throws {
+    public func listDeadLetterSourceQueuesAsync(
+            input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) -> ()) throws {
         if let listDeadLetterSourceQueuesAsyncOverride = listDeadLetterSourceQueuesAsyncOverride {
-            return try listDeadLetterSourceQueuesAsyncOverride(input, completion)
+            return try listDeadLetterSourceQueuesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -485,9 +534,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: queueDoesNotExist.
      */
-    public func listDeadLetterSourceQueuesSync(input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
+    public func listDeadLetterSourceQueuesSync(
+            input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
         if let listDeadLetterSourceQueuesSyncOverride = listDeadLetterSourceQueuesSyncOverride {
-            return try listDeadLetterSourceQueuesSyncOverride(input)
+            return try listDeadLetterSourceQueuesSyncOverride(input, reporting)
         }
 
         throw error
@@ -502,12 +553,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            callback when the operation is complete. The ListQueueTagsResultForListQueueTags
            object will be validated before being returned to caller.
      */
-    public func listQueueTagsAsync(input: SimpleQueueModel.ListQueueTagsRequest, completion: @escaping (HTTPResult<SimpleQueueModel.ListQueueTagsResultForListQueueTags>) -> ()) throws {
+    public func listQueueTagsAsync(
+            input: SimpleQueueModel.ListQueueTagsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) -> ()) throws {
         if let listQueueTagsAsyncOverride = listQueueTagsAsyncOverride {
-            return try listQueueTagsAsyncOverride(input, completion)
+            return try listQueueTagsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -518,9 +572,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      - Returns: The ListQueueTagsResultForListQueueTags object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listQueueTagsSync(input: SimpleQueueModel.ListQueueTagsRequest) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
+    public func listQueueTagsSync(
+            input: SimpleQueueModel.ListQueueTagsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
         if let listQueueTagsSyncOverride = listQueueTagsSyncOverride {
-            return try listQueueTagsSyncOverride(input)
+            return try listQueueTagsSyncOverride(input, reporting)
         }
 
         throw error
@@ -535,12 +591,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            callback when the operation is complete. The ListQueuesResultForListQueues
            object will be validated before being returned to caller.
      */
-    public func listQueuesAsync(input: SimpleQueueModel.ListQueuesRequest, completion: @escaping (HTTPResult<SimpleQueueModel.ListQueuesResultForListQueues>) -> ()) throws {
+    public func listQueuesAsync(
+            input: SimpleQueueModel.ListQueuesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) -> ()) throws {
         if let listQueuesAsyncOverride = listQueuesAsyncOverride {
-            return try listQueuesAsyncOverride(input, completion)
+            return try listQueuesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -551,9 +610,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      - Returns: The ListQueuesResultForListQueues object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listQueuesSync(input: SimpleQueueModel.ListQueuesRequest) throws -> SimpleQueueModel.ListQueuesResultForListQueues {
+    public func listQueuesSync(
+            input: SimpleQueueModel.ListQueuesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ListQueuesResultForListQueues {
         if let listQueuesSyncOverride = listQueuesSyncOverride {
-            return try listQueuesSyncOverride(input)
+            return try listQueuesSyncOverride(input, reporting)
         }
 
         throw error
@@ -568,9 +629,12 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: purgeQueueInProgress, queueDoesNotExist.
      */
-    public func purgeQueueAsync(input: SimpleQueueModel.PurgeQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func purgeQueueAsync(
+            input: SimpleQueueModel.PurgeQueueRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let purgeQueueAsyncOverride = purgeQueueAsyncOverride {
-            return try purgeQueueAsyncOverride(input, completion)
+            return try purgeQueueAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -583,9 +647,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated PurgeQueueRequest object being passed to this operation.
      - Throws: purgeQueueInProgress, queueDoesNotExist.
      */
-    public func purgeQueueSync(input: SimpleQueueModel.PurgeQueueRequest) throws {
+    public func purgeQueueSync(
+            input: SimpleQueueModel.PurgeQueueRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let purgeQueueSyncOverride = purgeQueueSyncOverride {
-            return try purgeQueueSyncOverride(input)
+            return try purgeQueueSyncOverride(input, reporting)
         }
 
         throw error
@@ -601,12 +667,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: overLimit.
      */
-    public func receiveMessageAsync(input: SimpleQueueModel.ReceiveMessageRequest, completion: @escaping (HTTPResult<SimpleQueueModel.ReceiveMessageResultForReceiveMessage>) -> ()) throws {
+    public func receiveMessageAsync(
+            input: SimpleQueueModel.ReceiveMessageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) -> ()) throws {
         if let receiveMessageAsyncOverride = receiveMessageAsyncOverride {
-            return try receiveMessageAsyncOverride(input, completion)
+            return try receiveMessageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -618,9 +687,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: overLimit.
      */
-    public func receiveMessageSync(input: SimpleQueueModel.ReceiveMessageRequest) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
+    public func receiveMessageSync(
+            input: SimpleQueueModel.ReceiveMessageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
         if let receiveMessageSyncOverride = receiveMessageSyncOverride {
-            return try receiveMessageSyncOverride(input)
+            return try receiveMessageSyncOverride(input, reporting)
         }
 
         throw error
@@ -634,9 +705,12 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func removePermissionAsync(input: SimpleQueueModel.RemovePermissionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func removePermissionAsync(
+            input: SimpleQueueModel.RemovePermissionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let removePermissionAsyncOverride = removePermissionAsyncOverride {
-            return try removePermissionAsyncOverride(input, completion)
+            return try removePermissionAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -648,9 +722,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated RemovePermissionRequest object being passed to this operation.
      */
-    public func removePermissionSync(input: SimpleQueueModel.RemovePermissionRequest) throws {
+    public func removePermissionSync(
+            input: SimpleQueueModel.RemovePermissionRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let removePermissionSyncOverride = removePermissionSyncOverride {
-            return try removePermissionSyncOverride(input)
+            return try removePermissionSyncOverride(input, reporting)
         }
 
         throw error
@@ -666,12 +742,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidMessageContents, unsupportedOperation.
      */
-    public func sendMessageAsync(input: SimpleQueueModel.SendMessageRequest, completion: @escaping (HTTPResult<SimpleQueueModel.SendMessageResultForSendMessage>) -> ()) throws {
+    public func sendMessageAsync(
+            input: SimpleQueueModel.SendMessageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) -> ()) throws {
         if let sendMessageAsyncOverride = sendMessageAsyncOverride {
-            return try sendMessageAsyncOverride(input, completion)
+            return try sendMessageAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -683,9 +762,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidMessageContents, unsupportedOperation.
      */
-    public func sendMessageSync(input: SimpleQueueModel.SendMessageRequest) throws -> SimpleQueueModel.SendMessageResultForSendMessage {
+    public func sendMessageSync(
+            input: SimpleQueueModel.SendMessageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.SendMessageResultForSendMessage {
         if let sendMessageSyncOverride = sendMessageSyncOverride {
-            return try sendMessageSyncOverride(input)
+            return try sendMessageSyncOverride(input, reporting)
         }
 
         throw error
@@ -701,12 +782,15 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest, unsupportedOperation.
      */
-    public func sendMessageBatchAsync(input: SimpleQueueModel.SendMessageBatchRequest, completion: @escaping (HTTPResult<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch>) -> ()) throws {
+    public func sendMessageBatchAsync(
+            input: SimpleQueueModel.SendMessageBatchRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) -> ()) throws {
         if let sendMessageBatchAsyncOverride = sendMessageBatchAsyncOverride {
-            return try sendMessageBatchAsyncOverride(input, completion)
+            return try sendMessageBatchAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -718,9 +802,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest, unsupportedOperation.
      */
-    public func sendMessageBatchSync(input: SimpleQueueModel.SendMessageBatchRequest) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
+    public func sendMessageBatchSync(
+            input: SimpleQueueModel.SendMessageBatchRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
         if let sendMessageBatchSyncOverride = sendMessageBatchSyncOverride {
-            return try sendMessageBatchSyncOverride(input)
+            return try sendMessageBatchSyncOverride(input, reporting)
         }
 
         throw error
@@ -735,9 +821,12 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidAttributeName.
      */
-    public func setQueueAttributesAsync(input: SimpleQueueModel.SetQueueAttributesRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func setQueueAttributesAsync(
+            input: SimpleQueueModel.SetQueueAttributesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let setQueueAttributesAsyncOverride = setQueueAttributesAsyncOverride {
-            return try setQueueAttributesAsyncOverride(input, completion)
+            return try setQueueAttributesAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -750,9 +839,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated SetQueueAttributesRequest object being passed to this operation.
      - Throws: invalidAttributeName.
      */
-    public func setQueueAttributesSync(input: SimpleQueueModel.SetQueueAttributesRequest) throws {
+    public func setQueueAttributesSync(
+            input: SimpleQueueModel.SetQueueAttributesRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let setQueueAttributesSyncOverride = setQueueAttributesSyncOverride {
-            return try setQueueAttributesSyncOverride(input)
+            return try setQueueAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -766,9 +857,12 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func tagQueueAsync(input: SimpleQueueModel.TagQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func tagQueueAsync(
+            input: SimpleQueueModel.TagQueueRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let tagQueueAsyncOverride = tagQueueAsyncOverride {
-            return try tagQueueAsyncOverride(input, completion)
+            return try tagQueueAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -780,9 +874,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated TagQueueRequest object being passed to this operation.
      */
-    public func tagQueueSync(input: SimpleQueueModel.TagQueueRequest) throws {
+    public func tagQueueSync(
+            input: SimpleQueueModel.TagQueueRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let tagQueueSyncOverride = tagQueueSyncOverride {
-            return try tagQueueSyncOverride(input)
+            return try tagQueueSyncOverride(input, reporting)
         }
 
         throw error
@@ -796,9 +892,12 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func untagQueueAsync(input: SimpleQueueModel.UntagQueueRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func untagQueueAsync(
+            input: SimpleQueueModel.UntagQueueRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let untagQueueAsyncOverride = untagQueueAsyncOverride {
-            return try untagQueueAsyncOverride(input, completion)
+            return try untagQueueAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -810,9 +909,11 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated UntagQueueRequest object being passed to this operation.
      */
-    public func untagQueueSync(input: SimpleQueueModel.UntagQueueRequest) throws {
+    public func untagQueueSync(
+            input: SimpleQueueModel.UntagQueueRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let untagQueueSyncOverride = untagQueueSyncOverride {
-            return try untagQueueSyncOverride(input)
+            return try untagQueueSyncOverride(input, reporting)
         }
 
         throw error

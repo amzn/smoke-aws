@@ -21,13 +21,14 @@
 
 import Foundation
 import RDSModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
  Mock Client for the RDS service that by default always throws from its methods.
  */
 public struct ThrowingRDSClient: RDSClientProtocol {
-    let error: Swift.Error
+    let error: HTTPClientError
     let addRoleToDBClusterAsyncOverride: RDSClientProtocol.AddRoleToDBClusterAsyncType?
     let addRoleToDBClusterSyncOverride: RDSClientProtocol.AddRoleToDBClusterSyncType?
     let addRoleToDBInstanceAsyncOverride: RDSClientProtocol.AddRoleToDBInstanceAsyncType?
@@ -255,7 +256,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: Swift.Error,
+    public init(error: HTTPClientError,
             addRoleToDBClusterAsync: RDSClientProtocol.AddRoleToDBClusterAsyncType? = nil,
             addRoleToDBClusterSync: RDSClientProtocol.AddRoleToDBClusterSyncType? = nil,
             addRoleToDBInstanceAsync: RDSClientProtocol.AddRoleToDBInstanceAsyncType? = nil,
@@ -712,9 +713,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
-    public func addRoleToDBClusterAsync(input: RDSModel.AddRoleToDBClusterMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func addRoleToDBClusterAsync(
+            input: RDSModel.AddRoleToDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let addRoleToDBClusterAsyncOverride = addRoleToDBClusterAsyncOverride {
-            return try addRoleToDBClusterAsyncOverride(input, completion)
+            return try addRoleToDBClusterAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -727,9 +731,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated AddRoleToDBClusterMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
-    public func addRoleToDBClusterSync(input: RDSModel.AddRoleToDBClusterMessage) throws {
+    public func addRoleToDBClusterSync(
+            input: RDSModel.AddRoleToDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let addRoleToDBClusterSyncOverride = addRoleToDBClusterSyncOverride {
-            return try addRoleToDBClusterSyncOverride(input)
+            return try addRoleToDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -744,9 +750,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
-    public func addRoleToDBInstanceAsync(input: RDSModel.AddRoleToDBInstanceMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func addRoleToDBInstanceAsync(
+            input: RDSModel.AddRoleToDBInstanceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let addRoleToDBInstanceAsyncOverride = addRoleToDBInstanceAsyncOverride {
-            return try addRoleToDBInstanceAsyncOverride(input, completion)
+            return try addRoleToDBInstanceAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -759,9 +768,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated AddRoleToDBInstanceMessage object being passed to this operation.
      - Throws: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
-    public func addRoleToDBInstanceSync(input: RDSModel.AddRoleToDBInstanceMessage) throws {
+    public func addRoleToDBInstanceSync(
+            input: RDSModel.AddRoleToDBInstanceMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let addRoleToDBInstanceSyncOverride = addRoleToDBInstanceSyncOverride {
-            return try addRoleToDBInstanceSyncOverride(input)
+            return try addRoleToDBInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -777,12 +788,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: sourceNotFound, subscriptionNotFound.
      */
-    public func addSourceIdentifierToSubscriptionAsync(input: RDSModel.AddSourceIdentifierToSubscriptionMessage, completion: @escaping (HTTPResult<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription>) -> ()) throws {
+    public func addSourceIdentifierToSubscriptionAsync(
+            input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws {
         if let addSourceIdentifierToSubscriptionAsyncOverride = addSourceIdentifierToSubscriptionAsyncOverride {
-            return try addSourceIdentifierToSubscriptionAsyncOverride(input, completion)
+            return try addSourceIdentifierToSubscriptionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -794,9 +808,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: sourceNotFound, subscriptionNotFound.
      */
-    public func addSourceIdentifierToSubscriptionSync(input: RDSModel.AddSourceIdentifierToSubscriptionMessage) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
+    public func addSourceIdentifierToSubscriptionSync(
+            input: RDSModel.AddSourceIdentifierToSubscriptionMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
         if let addSourceIdentifierToSubscriptionSyncOverride = addSourceIdentifierToSubscriptionSyncOverride {
-            return try addSourceIdentifierToSubscriptionSyncOverride(input)
+            return try addSourceIdentifierToSubscriptionSyncOverride(input, reporting)
         }
 
         throw error
@@ -811,9 +827,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func addTagsToResourceAsync(input: RDSModel.AddTagsToResourceMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func addTagsToResourceAsync(
+            input: RDSModel.AddTagsToResourceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let addTagsToResourceAsyncOverride = addTagsToResourceAsyncOverride {
-            return try addTagsToResourceAsyncOverride(input, completion)
+            return try addTagsToResourceAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -826,9 +845,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated AddTagsToResourceMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func addTagsToResourceSync(input: RDSModel.AddTagsToResourceMessage) throws {
+    public func addTagsToResourceSync(
+            input: RDSModel.AddTagsToResourceMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let addTagsToResourceSyncOverride = addTagsToResourceSyncOverride {
-            return try addTagsToResourceSyncOverride(input)
+            return try addTagsToResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -844,12 +865,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func applyPendingMaintenanceActionAsync(input: RDSModel.ApplyPendingMaintenanceActionMessage, completion: @escaping (HTTPResult<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction>) -> ()) throws {
+    public func applyPendingMaintenanceActionAsync(
+            input: RDSModel.ApplyPendingMaintenanceActionMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws {
         if let applyPendingMaintenanceActionAsyncOverride = applyPendingMaintenanceActionAsyncOverride {
-            return try applyPendingMaintenanceActionAsyncOverride(input, completion)
+            return try applyPendingMaintenanceActionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -861,9 +885,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func applyPendingMaintenanceActionSync(input: RDSModel.ApplyPendingMaintenanceActionMessage) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
+    public func applyPendingMaintenanceActionSync(
+            input: RDSModel.ApplyPendingMaintenanceActionMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
         if let applyPendingMaintenanceActionSyncOverride = applyPendingMaintenanceActionSyncOverride {
-            return try applyPendingMaintenanceActionSyncOverride(input)
+            return try applyPendingMaintenanceActionSyncOverride(input, reporting)
         }
 
         throw error
@@ -879,12 +905,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func authorizeDBSecurityGroupIngressAsync(input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, completion: @escaping (HTTPResult<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress>) -> ()) throws {
+    public func authorizeDBSecurityGroupIngressAsync(
+            input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
         if let authorizeDBSecurityGroupIngressAsyncOverride = authorizeDBSecurityGroupIngressAsyncOverride {
-            return try authorizeDBSecurityGroupIngressAsyncOverride(input, completion)
+            return try authorizeDBSecurityGroupIngressAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -896,9 +925,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func authorizeDBSecurityGroupIngressSync(input: RDSModel.AuthorizeDBSecurityGroupIngressMessage) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
+    public func authorizeDBSecurityGroupIngressSync(
+            input: RDSModel.AuthorizeDBSecurityGroupIngressMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
         if let authorizeDBSecurityGroupIngressSyncOverride = authorizeDBSecurityGroupIngressSyncOverride {
-            return try authorizeDBSecurityGroupIngressSyncOverride(input)
+            return try authorizeDBSecurityGroupIngressSyncOverride(input, reporting)
         }
 
         throw error
@@ -914,12 +945,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState.
      */
-    public func backtrackDBClusterAsync(input: RDSModel.BacktrackDBClusterMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterBacktrackForBacktrackDBCluster>) -> ()) throws {
+    public func backtrackDBClusterAsync(
+            input: RDSModel.BacktrackDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws {
         if let backtrackDBClusterAsyncOverride = backtrackDBClusterAsyncOverride {
-            return try backtrackDBClusterAsyncOverride(input, completion)
+            return try backtrackDBClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -931,9 +965,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
-    public func backtrackDBClusterSync(input: RDSModel.BacktrackDBClusterMessage) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
+    public func backtrackDBClusterSync(
+            input: RDSModel.BacktrackDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
         if let backtrackDBClusterSyncOverride = backtrackDBClusterSyncOverride {
-            return try backtrackDBClusterSyncOverride(input)
+            return try backtrackDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -949,12 +985,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBClusterParameterGroupAsync(input: RDSModel.CopyDBClusterParameterGroupMessage, completion: @escaping (HTTPResult<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup>) -> ()) throws {
+    public func copyDBClusterParameterGroupAsync(
+            input: RDSModel.CopyDBClusterParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         if let copyDBClusterParameterGroupAsyncOverride = copyDBClusterParameterGroupAsyncOverride {
-            return try copyDBClusterParameterGroupAsyncOverride(input, completion)
+            return try copyDBClusterParameterGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -966,9 +1005,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBClusterParameterGroupSync(input: RDSModel.CopyDBClusterParameterGroupMessage) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
+    public func copyDBClusterParameterGroupSync(
+            input: RDSModel.CopyDBClusterParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
         if let copyDBClusterParameterGroupSyncOverride = copyDBClusterParameterGroupSyncOverride {
-            return try copyDBClusterParameterGroupSyncOverride(input)
+            return try copyDBClusterParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -984,12 +1025,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBClusterSnapshotAsync(input: RDSModel.CopyDBClusterSnapshotMessage, completion: @escaping (HTTPResult<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot>) -> ()) throws {
+    public func copyDBClusterSnapshotAsync(
+            input: RDSModel.CopyDBClusterSnapshotMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws {
         if let copyDBClusterSnapshotAsyncOverride = copyDBClusterSnapshotAsyncOverride {
-            return try copyDBClusterSnapshotAsyncOverride(input, completion)
+            return try copyDBClusterSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1001,9 +1045,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBClusterSnapshotSync(input: RDSModel.CopyDBClusterSnapshotMessage) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
+    public func copyDBClusterSnapshotSync(
+            input: RDSModel.CopyDBClusterSnapshotMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
         if let copyDBClusterSnapshotSyncOverride = copyDBClusterSnapshotSyncOverride {
-            return try copyDBClusterSnapshotSyncOverride(input)
+            return try copyDBClusterSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -1019,12 +1065,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBParameterGroupAsync(input: RDSModel.CopyDBParameterGroupMessage, completion: @escaping (HTTPResult<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup>) -> ()) throws {
+    public func copyDBParameterGroupAsync(
+            input: RDSModel.CopyDBParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws {
         if let copyDBParameterGroupAsyncOverride = copyDBParameterGroupAsyncOverride {
-            return try copyDBParameterGroupAsyncOverride(input, completion)
+            return try copyDBParameterGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1036,9 +1085,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBParameterGroupSync(input: RDSModel.CopyDBParameterGroupMessage) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
+    public func copyDBParameterGroupSync(
+            input: RDSModel.CopyDBParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
         if let copyDBParameterGroupSyncOverride = copyDBParameterGroupSyncOverride {
-            return try copyDBParameterGroupSyncOverride(input)
+            return try copyDBParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1054,12 +1105,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBSnapshotAsync(input: RDSModel.CopyDBSnapshotMessage, completion: @escaping (HTTPResult<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot>) -> ()) throws {
+    public func copyDBSnapshotAsync(
+            input: RDSModel.CopyDBSnapshotMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws {
         if let copyDBSnapshotAsyncOverride = copyDBSnapshotAsyncOverride {
-            return try copyDBSnapshotAsyncOverride(input, completion)
+            return try copyDBSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1071,9 +1125,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBSnapshotSync(input: RDSModel.CopyDBSnapshotMessage) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
+    public func copyDBSnapshotSync(
+            input: RDSModel.CopyDBSnapshotMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
         if let copyDBSnapshotSyncOverride = copyDBSnapshotSyncOverride {
-            return try copyDBSnapshotSyncOverride(input)
+            return try copyDBSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -1089,12 +1145,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
-    public func copyOptionGroupAsync(input: RDSModel.CopyOptionGroupMessage, completion: @escaping (HTTPResult<RDSModel.CopyOptionGroupResultForCopyOptionGroup>) -> ()) throws {
+    public func copyOptionGroupAsync(
+            input: RDSModel.CopyOptionGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws {
         if let copyOptionGroupAsyncOverride = copyOptionGroupAsyncOverride {
-            return try copyOptionGroupAsyncOverride(input, completion)
+            return try copyOptionGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1106,9 +1165,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
-    public func copyOptionGroupSync(input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
+    public func copyOptionGroupSync(
+            input: RDSModel.CopyOptionGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
         if let copyOptionGroupSyncOverride = copyOptionGroupSyncOverride {
-            return try copyOptionGroupSyncOverride(input)
+            return try copyOptionGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1124,12 +1185,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func createDBClusterAsync(input: RDSModel.CreateDBClusterMessage, completion: @escaping (HTTPResult<RDSModel.CreateDBClusterResultForCreateDBCluster>) -> ()) throws {
+    public func createDBClusterAsync(
+            input: RDSModel.CreateDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws {
         if let createDBClusterAsyncOverride = createDBClusterAsyncOverride {
-            return try createDBClusterAsyncOverride(input, completion)
+            return try createDBClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1141,9 +1205,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func createDBClusterSync(input: RDSModel.CreateDBClusterMessage) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
+    public func createDBClusterSync(
+            input: RDSModel.CreateDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
         if let createDBClusterSyncOverride = createDBClusterSyncOverride {
-            return try createDBClusterSyncOverride(input)
+            return try createDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -1159,12 +1225,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func createDBClusterEndpointAsync(input: RDSModel.CreateDBClusterEndpointMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint>) -> ()) throws {
+    public func createDBClusterEndpointAsync(
+            input: RDSModel.CreateDBClusterEndpointMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws {
         if let createDBClusterEndpointAsyncOverride = createDBClusterEndpointAsyncOverride {
-            return try createDBClusterEndpointAsyncOverride(input, completion)
+            return try createDBClusterEndpointAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1176,9 +1245,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func createDBClusterEndpointSync(input: RDSModel.CreateDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
+    public func createDBClusterEndpointSync(
+            input: RDSModel.CreateDBClusterEndpointMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
         if let createDBClusterEndpointSyncOverride = createDBClusterEndpointSyncOverride {
-            return try createDBClusterEndpointSyncOverride(input)
+            return try createDBClusterEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -1194,12 +1265,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBClusterParameterGroupAsync(input: RDSModel.CreateDBClusterParameterGroupMessage, completion: @escaping (HTTPResult<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup>) -> ()) throws {
+    public func createDBClusterParameterGroupAsync(
+            input: RDSModel.CreateDBClusterParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         if let createDBClusterParameterGroupAsyncOverride = createDBClusterParameterGroupAsyncOverride {
-            return try createDBClusterParameterGroupAsyncOverride(input, completion)
+            return try createDBClusterParameterGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1211,9 +1285,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBClusterParameterGroupSync(input: RDSModel.CreateDBClusterParameterGroupMessage) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
+    public func createDBClusterParameterGroupSync(
+            input: RDSModel.CreateDBClusterParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
         if let createDBClusterParameterGroupSyncOverride = createDBClusterParameterGroupSyncOverride {
-            return try createDBClusterParameterGroupSyncOverride(input)
+            return try createDBClusterParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1229,12 +1305,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func createDBClusterSnapshotAsync(input: RDSModel.CreateDBClusterSnapshotMessage, completion: @escaping (HTTPResult<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot>) -> ()) throws {
+    public func createDBClusterSnapshotAsync(
+            input: RDSModel.CreateDBClusterSnapshotMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws {
         if let createDBClusterSnapshotAsyncOverride = createDBClusterSnapshotAsyncOverride {
-            return try createDBClusterSnapshotAsyncOverride(input, completion)
+            return try createDBClusterSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1246,9 +1325,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func createDBClusterSnapshotSync(input: RDSModel.CreateDBClusterSnapshotMessage) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
+    public func createDBClusterSnapshotSync(
+            input: RDSModel.CreateDBClusterSnapshotMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
         if let createDBClusterSnapshotSyncOverride = createDBClusterSnapshotSyncOverride {
-            return try createDBClusterSnapshotSyncOverride(input)
+            return try createDBClusterSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -1264,12 +1345,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceAsync(input: RDSModel.CreateDBInstanceMessage, completion: @escaping (HTTPResult<RDSModel.CreateDBInstanceResultForCreateDBInstance>) -> ()) throws {
+    public func createDBInstanceAsync(
+            input: RDSModel.CreateDBInstanceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws {
         if let createDBInstanceAsyncOverride = createDBInstanceAsyncOverride {
-            return try createDBInstanceAsyncOverride(input, completion)
+            return try createDBInstanceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1281,9 +1365,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceSync(input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
+    public func createDBInstanceSync(
+            input: RDSModel.CreateDBInstanceMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
         if let createDBInstanceSyncOverride = createDBInstanceSyncOverride {
-            return try createDBInstanceSyncOverride(input)
+            return try createDBInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -1299,12 +1385,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceReadReplicaAsync(input: RDSModel.CreateDBInstanceReadReplicaMessage, completion: @escaping (HTTPResult<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica>) -> ()) throws {
+    public func createDBInstanceReadReplicaAsync(
+            input: RDSModel.CreateDBInstanceReadReplicaMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws {
         if let createDBInstanceReadReplicaAsyncOverride = createDBInstanceReadReplicaAsyncOverride {
-            return try createDBInstanceReadReplicaAsyncOverride(input, completion)
+            return try createDBInstanceReadReplicaAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1316,9 +1405,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceReadReplicaSync(input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
+    public func createDBInstanceReadReplicaSync(
+            input: RDSModel.CreateDBInstanceReadReplicaMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
         if let createDBInstanceReadReplicaSyncOverride = createDBInstanceReadReplicaSyncOverride {
-            return try createDBInstanceReadReplicaSyncOverride(input)
+            return try createDBInstanceReadReplicaSyncOverride(input, reporting)
         }
 
         throw error
@@ -1334,12 +1425,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBParameterGroupAsync(input: RDSModel.CreateDBParameterGroupMessage, completion: @escaping (HTTPResult<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup>) -> ()) throws {
+    public func createDBParameterGroupAsync(
+            input: RDSModel.CreateDBParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws {
         if let createDBParameterGroupAsyncOverride = createDBParameterGroupAsyncOverride {
-            return try createDBParameterGroupAsyncOverride(input, completion)
+            return try createDBParameterGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1351,9 +1445,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBParameterGroupSync(input: RDSModel.CreateDBParameterGroupMessage) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
+    public func createDBParameterGroupSync(
+            input: RDSModel.CreateDBParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
         if let createDBParameterGroupSyncOverride = createDBParameterGroupSyncOverride {
-            return try createDBParameterGroupSyncOverride(input)
+            return try createDBParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1369,12 +1465,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
-    public func createDBSecurityGroupAsync(input: RDSModel.CreateDBSecurityGroupMessage, completion: @escaping (HTTPResult<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup>) -> ()) throws {
+    public func createDBSecurityGroupAsync(
+            input: RDSModel.CreateDBSecurityGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws {
         if let createDBSecurityGroupAsyncOverride = createDBSecurityGroupAsyncOverride {
-            return try createDBSecurityGroupAsyncOverride(input, completion)
+            return try createDBSecurityGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1386,9 +1485,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
-    public func createDBSecurityGroupSync(input: RDSModel.CreateDBSecurityGroupMessage) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
+    public func createDBSecurityGroupSync(
+            input: RDSModel.CreateDBSecurityGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
         if let createDBSecurityGroupSyncOverride = createDBSecurityGroupSyncOverride {
-            return try createDBSecurityGroupSyncOverride(input)
+            return try createDBSecurityGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1404,12 +1505,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func createDBSnapshotAsync(input: RDSModel.CreateDBSnapshotMessage, completion: @escaping (HTTPResult<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot>) -> ()) throws {
+    public func createDBSnapshotAsync(
+            input: RDSModel.CreateDBSnapshotMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws {
         if let createDBSnapshotAsyncOverride = createDBSnapshotAsyncOverride {
-            return try createDBSnapshotAsyncOverride(input, completion)
+            return try createDBSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1421,9 +1525,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func createDBSnapshotSync(input: RDSModel.CreateDBSnapshotMessage) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
+    public func createDBSnapshotSync(
+            input: RDSModel.CreateDBSnapshotMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
         if let createDBSnapshotSyncOverride = createDBSnapshotSyncOverride {
-            return try createDBSnapshotSyncOverride(input)
+            return try createDBSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -1439,12 +1545,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
-    public func createDBSubnetGroupAsync(input: RDSModel.CreateDBSubnetGroupMessage, completion: @escaping (HTTPResult<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup>) -> ()) throws {
+    public func createDBSubnetGroupAsync(
+            input: RDSModel.CreateDBSubnetGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws {
         if let createDBSubnetGroupAsyncOverride = createDBSubnetGroupAsyncOverride {
-            return try createDBSubnetGroupAsyncOverride(input, completion)
+            return try createDBSubnetGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1456,9 +1565,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
-    public func createDBSubnetGroupSync(input: RDSModel.CreateDBSubnetGroupMessage) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
+    public func createDBSubnetGroupSync(
+            input: RDSModel.CreateDBSubnetGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
         if let createDBSubnetGroupSyncOverride = createDBSubnetGroupSyncOverride {
-            return try createDBSubnetGroupSyncOverride(input)
+            return try createDBSubnetGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1474,12 +1585,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
-    public func createEventSubscriptionAsync(input: RDSModel.CreateEventSubscriptionMessage, completion: @escaping (HTTPResult<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription>) -> ()) throws {
+    public func createEventSubscriptionAsync(
+            input: RDSModel.CreateEventSubscriptionMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws {
         if let createEventSubscriptionAsyncOverride = createEventSubscriptionAsyncOverride {
-            return try createEventSubscriptionAsyncOverride(input, completion)
+            return try createEventSubscriptionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1491,9 +1605,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
-    public func createEventSubscriptionSync(input: RDSModel.CreateEventSubscriptionMessage) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
+    public func createEventSubscriptionSync(
+            input: RDSModel.CreateEventSubscriptionMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
         if let createEventSubscriptionSyncOverride = createEventSubscriptionSyncOverride {
-            return try createEventSubscriptionSyncOverride(input)
+            return try createEventSubscriptionSyncOverride(input, reporting)
         }
 
         throw error
@@ -1509,12 +1625,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
-    public func createGlobalClusterAsync(input: RDSModel.CreateGlobalClusterMessage, completion: @escaping (HTTPResult<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster>) -> ()) throws {
+    public func createGlobalClusterAsync(
+            input: RDSModel.CreateGlobalClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws {
         if let createGlobalClusterAsyncOverride = createGlobalClusterAsyncOverride {
-            return try createGlobalClusterAsyncOverride(input, completion)
+            return try createGlobalClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1526,9 +1645,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
-    public func createGlobalClusterSync(input: RDSModel.CreateGlobalClusterMessage) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
+    public func createGlobalClusterSync(
+            input: RDSModel.CreateGlobalClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
         if let createGlobalClusterSyncOverride = createGlobalClusterSyncOverride {
-            return try createGlobalClusterSyncOverride(input)
+            return try createGlobalClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -1544,12 +1665,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
-    public func createOptionGroupAsync(input: RDSModel.CreateOptionGroupMessage, completion: @escaping (HTTPResult<RDSModel.CreateOptionGroupResultForCreateOptionGroup>) -> ()) throws {
+    public func createOptionGroupAsync(
+            input: RDSModel.CreateOptionGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws {
         if let createOptionGroupAsyncOverride = createOptionGroupAsyncOverride {
-            return try createOptionGroupAsyncOverride(input, completion)
+            return try createOptionGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1561,9 +1685,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
-    public func createOptionGroupSync(input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
+    public func createOptionGroupSync(
+            input: RDSModel.CreateOptionGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
         if let createOptionGroupSyncOverride = createOptionGroupSyncOverride {
-            return try createOptionGroupSyncOverride(input)
+            return try createOptionGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1579,12 +1705,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func deleteDBClusterAsync(input: RDSModel.DeleteDBClusterMessage, completion: @escaping (HTTPResult<RDSModel.DeleteDBClusterResultForDeleteDBCluster>) -> ()) throws {
+    public func deleteDBClusterAsync(
+            input: RDSModel.DeleteDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws {
         if let deleteDBClusterAsyncOverride = deleteDBClusterAsyncOverride {
-            return try deleteDBClusterAsyncOverride(input, completion)
+            return try deleteDBClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1596,9 +1725,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func deleteDBClusterSync(input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
+    public func deleteDBClusterSync(
+            input: RDSModel.DeleteDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
         if let deleteDBClusterSyncOverride = deleteDBClusterSyncOverride {
-            return try deleteDBClusterSyncOverride(input)
+            return try deleteDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -1614,12 +1745,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
-    public func deleteDBClusterEndpointAsync(input: RDSModel.DeleteDBClusterEndpointMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint>) -> ()) throws {
+    public func deleteDBClusterEndpointAsync(
+            input: RDSModel.DeleteDBClusterEndpointMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws {
         if let deleteDBClusterEndpointAsyncOverride = deleteDBClusterEndpointAsyncOverride {
-            return try deleteDBClusterEndpointAsyncOverride(input, completion)
+            return try deleteDBClusterEndpointAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1631,9 +1765,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
-    public func deleteDBClusterEndpointSync(input: RDSModel.DeleteDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
+    public func deleteDBClusterEndpointSync(
+            input: RDSModel.DeleteDBClusterEndpointMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
         if let deleteDBClusterEndpointSyncOverride = deleteDBClusterEndpointSyncOverride {
-            return try deleteDBClusterEndpointSyncOverride(input)
+            return try deleteDBClusterEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -1648,9 +1784,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBClusterParameterGroupAsync(input: RDSModel.DeleteDBClusterParameterGroupMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteDBClusterParameterGroupAsync(
+            input: RDSModel.DeleteDBClusterParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteDBClusterParameterGroupAsyncOverride = deleteDBClusterParameterGroupAsyncOverride {
-            return try deleteDBClusterParameterGroupAsyncOverride(input, completion)
+            return try deleteDBClusterParameterGroupAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1663,9 +1802,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBClusterParameterGroupMessage object being passed to this operation.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBClusterParameterGroupSync(input: RDSModel.DeleteDBClusterParameterGroupMessage) throws {
+    public func deleteDBClusterParameterGroupSync(
+            input: RDSModel.DeleteDBClusterParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteDBClusterParameterGroupSyncOverride = deleteDBClusterParameterGroupSyncOverride {
-            return try deleteDBClusterParameterGroupSyncOverride(input)
+            return try deleteDBClusterParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1681,12 +1822,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
-    public func deleteDBClusterSnapshotAsync(input: RDSModel.DeleteDBClusterSnapshotMessage, completion: @escaping (HTTPResult<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot>) -> ()) throws {
+    public func deleteDBClusterSnapshotAsync(
+            input: RDSModel.DeleteDBClusterSnapshotMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws {
         if let deleteDBClusterSnapshotAsyncOverride = deleteDBClusterSnapshotAsyncOverride {
-            return try deleteDBClusterSnapshotAsyncOverride(input, completion)
+            return try deleteDBClusterSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1698,9 +1842,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
-    public func deleteDBClusterSnapshotSync(input: RDSModel.DeleteDBClusterSnapshotMessage) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
+    public func deleteDBClusterSnapshotSync(
+            input: RDSModel.DeleteDBClusterSnapshotMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
         if let deleteDBClusterSnapshotSyncOverride = deleteDBClusterSnapshotSyncOverride {
-            return try deleteDBClusterSnapshotSyncOverride(input)
+            return try deleteDBClusterSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -1716,12 +1862,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func deleteDBInstanceAsync(input: RDSModel.DeleteDBInstanceMessage, completion: @escaping (HTTPResult<RDSModel.DeleteDBInstanceResultForDeleteDBInstance>) -> ()) throws {
+    public func deleteDBInstanceAsync(
+            input: RDSModel.DeleteDBInstanceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws {
         if let deleteDBInstanceAsyncOverride = deleteDBInstanceAsyncOverride {
-            return try deleteDBInstanceAsyncOverride(input, completion)
+            return try deleteDBInstanceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1733,9 +1882,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func deleteDBInstanceSync(input: RDSModel.DeleteDBInstanceMessage) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
+    public func deleteDBInstanceSync(
+            input: RDSModel.DeleteDBInstanceMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
         if let deleteDBInstanceSyncOverride = deleteDBInstanceSyncOverride {
-            return try deleteDBInstanceSyncOverride(input)
+            return try deleteDBInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -1751,12 +1902,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
-    public func deleteDBInstanceAutomatedBackupAsync(input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, completion: @escaping (HTTPResult<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup>) -> ()) throws {
+    public func deleteDBInstanceAutomatedBackupAsync(
+            input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws {
         if let deleteDBInstanceAutomatedBackupAsyncOverride = deleteDBInstanceAutomatedBackupAsyncOverride {
-            return try deleteDBInstanceAutomatedBackupAsyncOverride(input, completion)
+            return try deleteDBInstanceAutomatedBackupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1768,9 +1922,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
-    public func deleteDBInstanceAutomatedBackupSync(input: RDSModel.DeleteDBInstanceAutomatedBackupMessage) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
+    public func deleteDBInstanceAutomatedBackupSync(
+            input: RDSModel.DeleteDBInstanceAutomatedBackupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
         if let deleteDBInstanceAutomatedBackupSyncOverride = deleteDBInstanceAutomatedBackupSyncOverride {
-            return try deleteDBInstanceAutomatedBackupSyncOverride(input)
+            return try deleteDBInstanceAutomatedBackupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1785,9 +1941,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBParameterGroupAsync(input: RDSModel.DeleteDBParameterGroupMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteDBParameterGroupAsync(
+            input: RDSModel.DeleteDBParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteDBParameterGroupAsyncOverride = deleteDBParameterGroupAsyncOverride {
-            return try deleteDBParameterGroupAsyncOverride(input, completion)
+            return try deleteDBParameterGroupAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1800,9 +1959,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBParameterGroupMessage object being passed to this operation.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBParameterGroupSync(input: RDSModel.DeleteDBParameterGroupMessage) throws {
+    public func deleteDBParameterGroupSync(
+            input: RDSModel.DeleteDBParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteDBParameterGroupSyncOverride = deleteDBParameterGroupSyncOverride {
-            return try deleteDBParameterGroupSyncOverride(input)
+            return try deleteDBParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1817,9 +1978,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func deleteDBSecurityGroupAsync(input: RDSModel.DeleteDBSecurityGroupMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteDBSecurityGroupAsync(
+            input: RDSModel.DeleteDBSecurityGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteDBSecurityGroupAsyncOverride = deleteDBSecurityGroupAsyncOverride {
-            return try deleteDBSecurityGroupAsyncOverride(input, completion)
+            return try deleteDBSecurityGroupAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1832,9 +1996,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBSecurityGroupMessage object being passed to this operation.
      - Throws: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func deleteDBSecurityGroupSync(input: RDSModel.DeleteDBSecurityGroupMessage) throws {
+    public func deleteDBSecurityGroupSync(
+            input: RDSModel.DeleteDBSecurityGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteDBSecurityGroupSyncOverride = deleteDBSecurityGroupSyncOverride {
-            return try deleteDBSecurityGroupSyncOverride(input)
+            return try deleteDBSecurityGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1850,12 +2016,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound, invalidDBSnapshotState.
      */
-    public func deleteDBSnapshotAsync(input: RDSModel.DeleteDBSnapshotMessage, completion: @escaping (HTTPResult<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot>) -> ()) throws {
+    public func deleteDBSnapshotAsync(
+            input: RDSModel.DeleteDBSnapshotMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws {
         if let deleteDBSnapshotAsyncOverride = deleteDBSnapshotAsyncOverride {
-            return try deleteDBSnapshotAsyncOverride(input, completion)
+            return try deleteDBSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1867,9 +2036,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState.
      */
-    public func deleteDBSnapshotSync(input: RDSModel.DeleteDBSnapshotMessage) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
+    public func deleteDBSnapshotSync(
+            input: RDSModel.DeleteDBSnapshotMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
         if let deleteDBSnapshotSyncOverride = deleteDBSnapshotSyncOverride {
-            return try deleteDBSnapshotSyncOverride(input)
+            return try deleteDBSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -1884,9 +2055,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
-    public func deleteDBSubnetGroupAsync(input: RDSModel.DeleteDBSubnetGroupMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteDBSubnetGroupAsync(
+            input: RDSModel.DeleteDBSubnetGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteDBSubnetGroupAsyncOverride = deleteDBSubnetGroupAsyncOverride {
-            return try deleteDBSubnetGroupAsyncOverride(input, completion)
+            return try deleteDBSubnetGroupAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -1899,9 +2073,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBSubnetGroupMessage object being passed to this operation.
      - Throws: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
-    public func deleteDBSubnetGroupSync(input: RDSModel.DeleteDBSubnetGroupMessage) throws {
+    public func deleteDBSubnetGroupSync(
+            input: RDSModel.DeleteDBSubnetGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteDBSubnetGroupSyncOverride = deleteDBSubnetGroupSyncOverride {
-            return try deleteDBSubnetGroupSyncOverride(input)
+            return try deleteDBSubnetGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -1917,12 +2093,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidEventSubscriptionState, subscriptionNotFound.
      */
-    public func deleteEventSubscriptionAsync(input: RDSModel.DeleteEventSubscriptionMessage, completion: @escaping (HTTPResult<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription>) -> ()) throws {
+    public func deleteEventSubscriptionAsync(
+            input: RDSModel.DeleteEventSubscriptionMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws {
         if let deleteEventSubscriptionAsyncOverride = deleteEventSubscriptionAsyncOverride {
-            return try deleteEventSubscriptionAsyncOverride(input, completion)
+            return try deleteEventSubscriptionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1934,9 +2113,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidEventSubscriptionState, subscriptionNotFound.
      */
-    public func deleteEventSubscriptionSync(input: RDSModel.DeleteEventSubscriptionMessage) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
+    public func deleteEventSubscriptionSync(
+            input: RDSModel.DeleteEventSubscriptionMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
         if let deleteEventSubscriptionSyncOverride = deleteEventSubscriptionSyncOverride {
-            return try deleteEventSubscriptionSyncOverride(input)
+            return try deleteEventSubscriptionSyncOverride(input, reporting)
         }
 
         throw error
@@ -1952,12 +2133,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func deleteGlobalClusterAsync(input: RDSModel.DeleteGlobalClusterMessage, completion: @escaping (HTTPResult<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster>) -> ()) throws {
+    public func deleteGlobalClusterAsync(
+            input: RDSModel.DeleteGlobalClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws {
         if let deleteGlobalClusterAsyncOverride = deleteGlobalClusterAsyncOverride {
-            return try deleteGlobalClusterAsyncOverride(input, completion)
+            return try deleteGlobalClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -1969,9 +2153,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func deleteGlobalClusterSync(input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
+    public func deleteGlobalClusterSync(
+            input: RDSModel.DeleteGlobalClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
         if let deleteGlobalClusterSyncOverride = deleteGlobalClusterSyncOverride {
-            return try deleteGlobalClusterSyncOverride(input)
+            return try deleteGlobalClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -1986,9 +2172,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func deleteOptionGroupAsync(input: RDSModel.DeleteOptionGroupMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteOptionGroupAsync(
+            input: RDSModel.DeleteOptionGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let deleteOptionGroupAsyncOverride = deleteOptionGroupAsyncOverride {
-            return try deleteOptionGroupAsyncOverride(input, completion)
+            return try deleteOptionGroupAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -2001,9 +2190,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated DeleteOptionGroupMessage object being passed to this operation.
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func deleteOptionGroupSync(input: RDSModel.DeleteOptionGroupMessage) throws {
+    public func deleteOptionGroupSync(
+            input: RDSModel.DeleteOptionGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let deleteOptionGroupSyncOverride = deleteOptionGroupSyncOverride {
-            return try deleteOptionGroupSyncOverride(input)
+            return try deleteOptionGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -2018,12 +2209,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            callback when the operation is complete. The AccountAttributesMessageForDescribeAccountAttributes
            object will be validated before being returned to caller.
      */
-    public func describeAccountAttributesAsync(input: RDSModel.DescribeAccountAttributesMessage, completion: @escaping (HTTPResult<RDSModel.AccountAttributesMessageForDescribeAccountAttributes>) -> ()) throws {
+    public func describeAccountAttributesAsync(
+            input: RDSModel.DescribeAccountAttributesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws {
         if let describeAccountAttributesAsyncOverride = describeAccountAttributesAsyncOverride {
-            return try describeAccountAttributesAsyncOverride(input, completion)
+            return try describeAccountAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2034,9 +2228,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      - Returns: The AccountAttributesMessageForDescribeAccountAttributes object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAccountAttributesSync(input: RDSModel.DescribeAccountAttributesMessage) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
+    public func describeAccountAttributesSync(
+            input: RDSModel.DescribeAccountAttributesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
         if let describeAccountAttributesSyncOverride = describeAccountAttributesSyncOverride {
-            return try describeAccountAttributesSyncOverride(input)
+            return try describeAccountAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -2052,12 +2248,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: certificateNotFound.
      */
-    public func describeCertificatesAsync(input: RDSModel.DescribeCertificatesMessage, completion: @escaping (HTTPResult<RDSModel.CertificateMessageForDescribeCertificates>) -> ()) throws {
+    public func describeCertificatesAsync(
+            input: RDSModel.DescribeCertificatesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws {
         if let describeCertificatesAsyncOverride = describeCertificatesAsyncOverride {
-            return try describeCertificatesAsyncOverride(input, completion)
+            return try describeCertificatesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2069,9 +2268,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: certificateNotFound.
      */
-    public func describeCertificatesSync(input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates {
+    public func describeCertificatesSync(
+            input: RDSModel.DescribeCertificatesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CertificateMessageForDescribeCertificates {
         if let describeCertificatesSyncOverride = describeCertificatesSyncOverride {
-            return try describeCertificatesSyncOverride(input)
+            return try describeCertificatesSyncOverride(input, reporting)
         }
 
         throw error
@@ -2087,12 +2288,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
-    public func describeDBClusterBacktracksAsync(input: RDSModel.DescribeDBClusterBacktracksMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks>) -> ()) throws {
+    public func describeDBClusterBacktracksAsync(
+            input: RDSModel.DescribeDBClusterBacktracksMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws {
         if let describeDBClusterBacktracksAsyncOverride = describeDBClusterBacktracksAsyncOverride {
-            return try describeDBClusterBacktracksAsyncOverride(input, completion)
+            return try describeDBClusterBacktracksAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2104,9 +2308,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
-    public func describeDBClusterBacktracksSync(input: RDSModel.DescribeDBClusterBacktracksMessage) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
+    public func describeDBClusterBacktracksSync(
+            input: RDSModel.DescribeDBClusterBacktracksMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
         if let describeDBClusterBacktracksSyncOverride = describeDBClusterBacktracksSyncOverride {
-            return try describeDBClusterBacktracksSyncOverride(input)
+            return try describeDBClusterBacktracksSyncOverride(input, reporting)
         }
 
         throw error
@@ -2122,12 +2328,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound.
      */
-    public func describeDBClusterEndpointsAsync(input: RDSModel.DescribeDBClusterEndpointsMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints>) -> ()) throws {
+    public func describeDBClusterEndpointsAsync(
+            input: RDSModel.DescribeDBClusterEndpointsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws {
         if let describeDBClusterEndpointsAsyncOverride = describeDBClusterEndpointsAsyncOverride {
-            return try describeDBClusterEndpointsAsyncOverride(input, completion)
+            return try describeDBClusterEndpointsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2139,9 +2348,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound.
      */
-    public func describeDBClusterEndpointsSync(input: RDSModel.DescribeDBClusterEndpointsMessage) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
+    public func describeDBClusterEndpointsSync(
+            input: RDSModel.DescribeDBClusterEndpointsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
         if let describeDBClusterEndpointsSyncOverride = describeDBClusterEndpointsSyncOverride {
-            return try describeDBClusterEndpointsSyncOverride(input)
+            return try describeDBClusterEndpointsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2157,12 +2368,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParameterGroupsAsync(input: RDSModel.DescribeDBClusterParameterGroupsMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups>) -> ()) throws {
+    public func describeDBClusterParameterGroupsAsync(
+            input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws {
         if let describeDBClusterParameterGroupsAsyncOverride = describeDBClusterParameterGroupsAsyncOverride {
-            return try describeDBClusterParameterGroupsAsyncOverride(input, completion)
+            return try describeDBClusterParameterGroupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2174,9 +2388,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParameterGroupsSync(input: RDSModel.DescribeDBClusterParameterGroupsMessage) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
+    public func describeDBClusterParameterGroupsSync(
+            input: RDSModel.DescribeDBClusterParameterGroupsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
         if let describeDBClusterParameterGroupsSyncOverride = describeDBClusterParameterGroupsSyncOverride {
-            return try describeDBClusterParameterGroupsSyncOverride(input)
+            return try describeDBClusterParameterGroupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2192,12 +2408,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParametersAsync(input: RDSModel.DescribeDBClusterParametersMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters>) -> ()) throws {
+    public func describeDBClusterParametersAsync(
+            input: RDSModel.DescribeDBClusterParametersMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws {
         if let describeDBClusterParametersAsyncOverride = describeDBClusterParametersAsyncOverride {
-            return try describeDBClusterParametersAsyncOverride(input, completion)
+            return try describeDBClusterParametersAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2209,9 +2428,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParametersSync(input: RDSModel.DescribeDBClusterParametersMessage) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
+    public func describeDBClusterParametersSync(
+            input: RDSModel.DescribeDBClusterParametersMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
         if let describeDBClusterParametersSyncOverride = describeDBClusterParametersSyncOverride {
-            return try describeDBClusterParametersSyncOverride(input)
+            return try describeDBClusterParametersSyncOverride(input, reporting)
         }
 
         throw error
@@ -2227,12 +2448,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotAttributesAsync(input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, completion: @escaping (HTTPResult<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes>) -> ()) throws {
+    public func describeDBClusterSnapshotAttributesAsync(
+            input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws {
         if let describeDBClusterSnapshotAttributesAsyncOverride = describeDBClusterSnapshotAttributesAsyncOverride {
-            return try describeDBClusterSnapshotAttributesAsyncOverride(input, completion)
+            return try describeDBClusterSnapshotAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2244,9 +2468,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotAttributesSync(input: RDSModel.DescribeDBClusterSnapshotAttributesMessage) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
+    public func describeDBClusterSnapshotAttributesSync(
+            input: RDSModel.DescribeDBClusterSnapshotAttributesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
         if let describeDBClusterSnapshotAttributesSyncOverride = describeDBClusterSnapshotAttributesSyncOverride {
-            return try describeDBClusterSnapshotAttributesSyncOverride(input)
+            return try describeDBClusterSnapshotAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -2262,12 +2488,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotsAsync(input: RDSModel.DescribeDBClusterSnapshotsMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots>) -> ()) throws {
+    public func describeDBClusterSnapshotsAsync(
+            input: RDSModel.DescribeDBClusterSnapshotsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws {
         if let describeDBClusterSnapshotsAsyncOverride = describeDBClusterSnapshotsAsyncOverride {
-            return try describeDBClusterSnapshotsAsyncOverride(input, completion)
+            return try describeDBClusterSnapshotsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2279,9 +2508,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotsSync(input: RDSModel.DescribeDBClusterSnapshotsMessage) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
+    public func describeDBClusterSnapshotsSync(
+            input: RDSModel.DescribeDBClusterSnapshotsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
         if let describeDBClusterSnapshotsSyncOverride = describeDBClusterSnapshotsSyncOverride {
-            return try describeDBClusterSnapshotsSyncOverride(input)
+            return try describeDBClusterSnapshotsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2297,12 +2528,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound.
      */
-    public func describeDBClustersAsync(input: RDSModel.DescribeDBClustersMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterMessageForDescribeDBClusters>) -> ()) throws {
+    public func describeDBClustersAsync(
+            input: RDSModel.DescribeDBClustersMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws {
         if let describeDBClustersAsyncOverride = describeDBClustersAsyncOverride {
-            return try describeDBClustersAsyncOverride(input, completion)
+            return try describeDBClustersAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2314,9 +2548,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound.
      */
-    public func describeDBClustersSync(input: RDSModel.DescribeDBClustersMessage) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
+    public func describeDBClustersSync(
+            input: RDSModel.DescribeDBClustersMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
         if let describeDBClustersSyncOverride = describeDBClustersSyncOverride {
-            return try describeDBClustersSyncOverride(input)
+            return try describeDBClustersSyncOverride(input, reporting)
         }
 
         throw error
@@ -2331,12 +2567,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DBEngineVersionMessageForDescribeDBEngineVersions
            object will be validated before being returned to caller.
      */
-    public func describeDBEngineVersionsAsync(input: RDSModel.DescribeDBEngineVersionsMessage, completion: @escaping (HTTPResult<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions>) -> ()) throws {
+    public func describeDBEngineVersionsAsync(
+            input: RDSModel.DescribeDBEngineVersionsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws {
         if let describeDBEngineVersionsAsyncOverride = describeDBEngineVersionsAsyncOverride {
-            return try describeDBEngineVersionsAsyncOverride(input, completion)
+            return try describeDBEngineVersionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2347,9 +2586,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      - Returns: The DBEngineVersionMessageForDescribeDBEngineVersions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeDBEngineVersionsSync(input: RDSModel.DescribeDBEngineVersionsMessage) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
+    public func describeDBEngineVersionsSync(
+            input: RDSModel.DescribeDBEngineVersionsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
         if let describeDBEngineVersionsSyncOverride = describeDBEngineVersionsSyncOverride {
-            return try describeDBEngineVersionsSyncOverride(input)
+            return try describeDBEngineVersionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2365,12 +2606,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupNotFound.
      */
-    public func describeDBInstanceAutomatedBackupsAsync(input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, completion: @escaping (HTTPResult<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups>) -> ()) throws {
+    public func describeDBInstanceAutomatedBackupsAsync(
+            input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws {
         if let describeDBInstanceAutomatedBackupsAsyncOverride = describeDBInstanceAutomatedBackupsAsyncOverride {
-            return try describeDBInstanceAutomatedBackupsAsyncOverride(input, completion)
+            return try describeDBInstanceAutomatedBackupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2382,9 +2626,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupNotFound.
      */
-    public func describeDBInstanceAutomatedBackupsSync(input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
+    public func describeDBInstanceAutomatedBackupsSync(
+            input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
         if let describeDBInstanceAutomatedBackupsSyncOverride = describeDBInstanceAutomatedBackupsSyncOverride {
-            return try describeDBInstanceAutomatedBackupsSyncOverride(input)
+            return try describeDBInstanceAutomatedBackupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2400,12 +2646,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound.
      */
-    public func describeDBInstancesAsync(input: RDSModel.DescribeDBInstancesMessage, completion: @escaping (HTTPResult<RDSModel.DBInstanceMessageForDescribeDBInstances>) -> ()) throws {
+    public func describeDBInstancesAsync(
+            input: RDSModel.DescribeDBInstancesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws {
         if let describeDBInstancesAsyncOverride = describeDBInstancesAsyncOverride {
-            return try describeDBInstancesAsyncOverride(input, completion)
+            return try describeDBInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2417,9 +2666,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound.
      */
-    public func describeDBInstancesSync(input: RDSModel.DescribeDBInstancesMessage) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
+    public func describeDBInstancesSync(
+            input: RDSModel.DescribeDBInstancesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
         if let describeDBInstancesSyncOverride = describeDBInstancesSyncOverride {
-            return try describeDBInstancesSyncOverride(input)
+            return try describeDBInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -2435,12 +2686,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound.
      */
-    public func describeDBLogFilesAsync(input: RDSModel.DescribeDBLogFilesMessage, completion: @escaping (HTTPResult<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles>) -> ()) throws {
+    public func describeDBLogFilesAsync(
+            input: RDSModel.DescribeDBLogFilesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws {
         if let describeDBLogFilesAsyncOverride = describeDBLogFilesAsyncOverride {
-            return try describeDBLogFilesAsyncOverride(input, completion)
+            return try describeDBLogFilesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2452,9 +2706,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound.
      */
-    public func describeDBLogFilesSync(input: RDSModel.DescribeDBLogFilesMessage) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
+    public func describeDBLogFilesSync(
+            input: RDSModel.DescribeDBLogFilesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
         if let describeDBLogFilesSyncOverride = describeDBLogFilesSyncOverride {
-            return try describeDBLogFilesSyncOverride(input)
+            return try describeDBLogFilesSyncOverride(input, reporting)
         }
 
         throw error
@@ -2470,12 +2726,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBParameterGroupsAsync(input: RDSModel.DescribeDBParameterGroupsMessage, completion: @escaping (HTTPResult<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups>) -> ()) throws {
+    public func describeDBParameterGroupsAsync(
+            input: RDSModel.DescribeDBParameterGroupsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws {
         if let describeDBParameterGroupsAsyncOverride = describeDBParameterGroupsAsyncOverride {
-            return try describeDBParameterGroupsAsyncOverride(input, completion)
+            return try describeDBParameterGroupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2487,9 +2746,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBParameterGroupsSync(input: RDSModel.DescribeDBParameterGroupsMessage) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
+    public func describeDBParameterGroupsSync(
+            input: RDSModel.DescribeDBParameterGroupsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
         if let describeDBParameterGroupsSyncOverride = describeDBParameterGroupsSyncOverride {
-            return try describeDBParameterGroupsSyncOverride(input)
+            return try describeDBParameterGroupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2505,12 +2766,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBParametersAsync(input: RDSModel.DescribeDBParametersMessage, completion: @escaping (HTTPResult<RDSModel.DBParameterGroupDetailsForDescribeDBParameters>) -> ()) throws {
+    public func describeDBParametersAsync(
+            input: RDSModel.DescribeDBParametersMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws {
         if let describeDBParametersAsyncOverride = describeDBParametersAsyncOverride {
-            return try describeDBParametersAsyncOverride(input, completion)
+            return try describeDBParametersAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2522,9 +2786,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBParametersSync(input: RDSModel.DescribeDBParametersMessage) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
+    public func describeDBParametersSync(
+            input: RDSModel.DescribeDBParametersMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
         if let describeDBParametersSyncOverride = describeDBParametersSyncOverride {
-            return try describeDBParametersSyncOverride(input)
+            return try describeDBParametersSyncOverride(input, reporting)
         }
 
         throw error
@@ -2540,12 +2806,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSecurityGroupNotFound.
      */
-    public func describeDBSecurityGroupsAsync(input: RDSModel.DescribeDBSecurityGroupsMessage, completion: @escaping (HTTPResult<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups>) -> ()) throws {
+    public func describeDBSecurityGroupsAsync(
+            input: RDSModel.DescribeDBSecurityGroupsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws {
         if let describeDBSecurityGroupsAsyncOverride = describeDBSecurityGroupsAsyncOverride {
-            return try describeDBSecurityGroupsAsyncOverride(input, completion)
+            return try describeDBSecurityGroupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2557,9 +2826,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSecurityGroupNotFound.
      */
-    public func describeDBSecurityGroupsSync(input: RDSModel.DescribeDBSecurityGroupsMessage) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
+    public func describeDBSecurityGroupsSync(
+            input: RDSModel.DescribeDBSecurityGroupsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
         if let describeDBSecurityGroupsSyncOverride = describeDBSecurityGroupsSyncOverride {
-            return try describeDBSecurityGroupsSyncOverride(input)
+            return try describeDBSecurityGroupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2575,12 +2846,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotAttributesAsync(input: RDSModel.DescribeDBSnapshotAttributesMessage, completion: @escaping (HTTPResult<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes>) -> ()) throws {
+    public func describeDBSnapshotAttributesAsync(
+            input: RDSModel.DescribeDBSnapshotAttributesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws {
         if let describeDBSnapshotAttributesAsyncOverride = describeDBSnapshotAttributesAsyncOverride {
-            return try describeDBSnapshotAttributesAsyncOverride(input, completion)
+            return try describeDBSnapshotAttributesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2592,9 +2866,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotAttributesSync(input: RDSModel.DescribeDBSnapshotAttributesMessage) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
+    public func describeDBSnapshotAttributesSync(
+            input: RDSModel.DescribeDBSnapshotAttributesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
         if let describeDBSnapshotAttributesSyncOverride = describeDBSnapshotAttributesSyncOverride {
-            return try describeDBSnapshotAttributesSyncOverride(input)
+            return try describeDBSnapshotAttributesSyncOverride(input, reporting)
         }
 
         throw error
@@ -2610,12 +2886,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotsAsync(input: RDSModel.DescribeDBSnapshotsMessage, completion: @escaping (HTTPResult<RDSModel.DBSnapshotMessageForDescribeDBSnapshots>) -> ()) throws {
+    public func describeDBSnapshotsAsync(
+            input: RDSModel.DescribeDBSnapshotsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws {
         if let describeDBSnapshotsAsyncOverride = describeDBSnapshotsAsyncOverride {
-            return try describeDBSnapshotsAsyncOverride(input, completion)
+            return try describeDBSnapshotsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2627,9 +2906,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotsSync(input: RDSModel.DescribeDBSnapshotsMessage) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
+    public func describeDBSnapshotsSync(
+            input: RDSModel.DescribeDBSnapshotsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
         if let describeDBSnapshotsSyncOverride = describeDBSnapshotsSyncOverride {
-            return try describeDBSnapshotsSyncOverride(input)
+            return try describeDBSnapshotsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2645,12 +2926,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupNotFound.
      */
-    public func describeDBSubnetGroupsAsync(input: RDSModel.DescribeDBSubnetGroupsMessage, completion: @escaping (HTTPResult<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups>) -> ()) throws {
+    public func describeDBSubnetGroupsAsync(
+            input: RDSModel.DescribeDBSubnetGroupsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws {
         if let describeDBSubnetGroupsAsyncOverride = describeDBSubnetGroupsAsyncOverride {
-            return try describeDBSubnetGroupsAsyncOverride(input, completion)
+            return try describeDBSubnetGroupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2662,9 +2946,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupNotFound.
      */
-    public func describeDBSubnetGroupsSync(input: RDSModel.DescribeDBSubnetGroupsMessage) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
+    public func describeDBSubnetGroupsSync(
+            input: RDSModel.DescribeDBSubnetGroupsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
         if let describeDBSubnetGroupsSyncOverride = describeDBSubnetGroupsSyncOverride {
-            return try describeDBSubnetGroupsSyncOverride(input)
+            return try describeDBSubnetGroupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2679,12 +2965,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters
            object will be validated before being returned to caller.
      */
-    public func describeEngineDefaultClusterParametersAsync(input: RDSModel.DescribeEngineDefaultClusterParametersMessage, completion: @escaping (HTTPResult<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters>) -> ()) throws {
+    public func describeEngineDefaultClusterParametersAsync(
+            input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws {
         if let describeEngineDefaultClusterParametersAsyncOverride = describeEngineDefaultClusterParametersAsyncOverride {
-            return try describeEngineDefaultClusterParametersAsyncOverride(input, completion)
+            return try describeEngineDefaultClusterParametersAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2695,9 +2984,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      - Returns: The DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEngineDefaultClusterParametersSync(input: RDSModel.DescribeEngineDefaultClusterParametersMessage) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
+    public func describeEngineDefaultClusterParametersSync(
+            input: RDSModel.DescribeEngineDefaultClusterParametersMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
         if let describeEngineDefaultClusterParametersSyncOverride = describeEngineDefaultClusterParametersSyncOverride {
-            return try describeEngineDefaultClusterParametersSyncOverride(input)
+            return try describeEngineDefaultClusterParametersSyncOverride(input, reporting)
         }
 
         throw error
@@ -2712,12 +3003,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters
            object will be validated before being returned to caller.
      */
-    public func describeEngineDefaultParametersAsync(input: RDSModel.DescribeEngineDefaultParametersMessage, completion: @escaping (HTTPResult<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters>) -> ()) throws {
+    public func describeEngineDefaultParametersAsync(
+            input: RDSModel.DescribeEngineDefaultParametersMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws {
         if let describeEngineDefaultParametersAsyncOverride = describeEngineDefaultParametersAsyncOverride {
-            return try describeEngineDefaultParametersAsyncOverride(input, completion)
+            return try describeEngineDefaultParametersAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2728,9 +3022,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      - Returns: The DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEngineDefaultParametersSync(input: RDSModel.DescribeEngineDefaultParametersMessage) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
+    public func describeEngineDefaultParametersSync(
+            input: RDSModel.DescribeEngineDefaultParametersMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
         if let describeEngineDefaultParametersSyncOverride = describeEngineDefaultParametersSyncOverride {
-            return try describeEngineDefaultParametersSyncOverride(input)
+            return try describeEngineDefaultParametersSyncOverride(input, reporting)
         }
 
         throw error
@@ -2745,12 +3041,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            callback when the operation is complete. The EventCategoriesMessageForDescribeEventCategories
            object will be validated before being returned to caller.
      */
-    public func describeEventCategoriesAsync(input: RDSModel.DescribeEventCategoriesMessage, completion: @escaping (HTTPResult<RDSModel.EventCategoriesMessageForDescribeEventCategories>) -> ()) throws {
+    public func describeEventCategoriesAsync(
+            input: RDSModel.DescribeEventCategoriesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws {
         if let describeEventCategoriesAsyncOverride = describeEventCategoriesAsyncOverride {
-            return try describeEventCategoriesAsyncOverride(input, completion)
+            return try describeEventCategoriesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2761,9 +3060,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      - Returns: The EventCategoriesMessageForDescribeEventCategories object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEventCategoriesSync(input: RDSModel.DescribeEventCategoriesMessage) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
+    public func describeEventCategoriesSync(
+            input: RDSModel.DescribeEventCategoriesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
         if let describeEventCategoriesSyncOverride = describeEventCategoriesSyncOverride {
-            return try describeEventCategoriesSyncOverride(input)
+            return try describeEventCategoriesSyncOverride(input, reporting)
         }
 
         throw error
@@ -2779,12 +3080,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: subscriptionNotFound.
      */
-    public func describeEventSubscriptionsAsync(input: RDSModel.DescribeEventSubscriptionsMessage, completion: @escaping (HTTPResult<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions>) -> ()) throws {
+    public func describeEventSubscriptionsAsync(
+            input: RDSModel.DescribeEventSubscriptionsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws {
         if let describeEventSubscriptionsAsyncOverride = describeEventSubscriptionsAsyncOverride {
-            return try describeEventSubscriptionsAsyncOverride(input, completion)
+            return try describeEventSubscriptionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2796,9 +3100,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: subscriptionNotFound.
      */
-    public func describeEventSubscriptionsSync(input: RDSModel.DescribeEventSubscriptionsMessage) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
+    public func describeEventSubscriptionsSync(
+            input: RDSModel.DescribeEventSubscriptionsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
         if let describeEventSubscriptionsSyncOverride = describeEventSubscriptionsSyncOverride {
-            return try describeEventSubscriptionsSyncOverride(input)
+            return try describeEventSubscriptionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2813,12 +3119,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            callback when the operation is complete. The EventsMessageForDescribeEvents
            object will be validated before being returned to caller.
      */
-    public func describeEventsAsync(input: RDSModel.DescribeEventsMessage, completion: @escaping (HTTPResult<RDSModel.EventsMessageForDescribeEvents>) -> ()) throws {
+    public func describeEventsAsync(
+            input: RDSModel.DescribeEventsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws {
         if let describeEventsAsyncOverride = describeEventsAsyncOverride {
-            return try describeEventsAsyncOverride(input, completion)
+            return try describeEventsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2829,9 +3138,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      - Returns: The EventsMessageForDescribeEvents object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEventsSync(input: RDSModel.DescribeEventsMessage) throws -> RDSModel.EventsMessageForDescribeEvents {
+    public func describeEventsSync(
+            input: RDSModel.DescribeEventsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventsMessageForDescribeEvents {
         if let describeEventsSyncOverride = describeEventsSyncOverride {
-            return try describeEventsSyncOverride(input)
+            return try describeEventsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2847,12 +3158,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound.
      */
-    public func describeGlobalClustersAsync(input: RDSModel.DescribeGlobalClustersMessage, completion: @escaping (HTTPResult<RDSModel.GlobalClustersMessageForDescribeGlobalClusters>) -> ()) throws {
+    public func describeGlobalClustersAsync(
+            input: RDSModel.DescribeGlobalClustersMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws {
         if let describeGlobalClustersAsyncOverride = describeGlobalClustersAsyncOverride {
-            return try describeGlobalClustersAsyncOverride(input, completion)
+            return try describeGlobalClustersAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2864,9 +3178,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound.
      */
-    public func describeGlobalClustersSync(input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
+    public func describeGlobalClustersSync(
+            input: RDSModel.DescribeGlobalClustersMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
         if let describeGlobalClustersSyncOverride = describeGlobalClustersSyncOverride {
-            return try describeGlobalClustersSyncOverride(input)
+            return try describeGlobalClustersSyncOverride(input, reporting)
         }
 
         throw error
@@ -2881,12 +3197,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            callback when the operation is complete. The OptionGroupOptionsMessageForDescribeOptionGroupOptions
            object will be validated before being returned to caller.
      */
-    public func describeOptionGroupOptionsAsync(input: RDSModel.DescribeOptionGroupOptionsMessage, completion: @escaping (HTTPResult<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions>) -> ()) throws {
+    public func describeOptionGroupOptionsAsync(
+            input: RDSModel.DescribeOptionGroupOptionsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws {
         if let describeOptionGroupOptionsAsyncOverride = describeOptionGroupOptionsAsyncOverride {
-            return try describeOptionGroupOptionsAsyncOverride(input, completion)
+            return try describeOptionGroupOptionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2897,9 +3216,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      - Returns: The OptionGroupOptionsMessageForDescribeOptionGroupOptions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeOptionGroupOptionsSync(input: RDSModel.DescribeOptionGroupOptionsMessage) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
+    public func describeOptionGroupOptionsSync(
+            input: RDSModel.DescribeOptionGroupOptionsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
         if let describeOptionGroupOptionsSyncOverride = describeOptionGroupOptionsSyncOverride {
-            return try describeOptionGroupOptionsSyncOverride(input)
+            return try describeOptionGroupOptionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2915,12 +3236,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupNotFound.
      */
-    public func describeOptionGroupsAsync(input: RDSModel.DescribeOptionGroupsMessage, completion: @escaping (HTTPResult<RDSModel.OptionGroupsForDescribeOptionGroups>) -> ()) throws {
+    public func describeOptionGroupsAsync(
+            input: RDSModel.DescribeOptionGroupsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws {
         if let describeOptionGroupsAsyncOverride = describeOptionGroupsAsyncOverride {
-            return try describeOptionGroupsAsyncOverride(input, completion)
+            return try describeOptionGroupsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2932,9 +3256,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupNotFound.
      */
-    public func describeOptionGroupsSync(input: RDSModel.DescribeOptionGroupsMessage) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
+    public func describeOptionGroupsSync(
+            input: RDSModel.DescribeOptionGroupsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
         if let describeOptionGroupsSyncOverride = describeOptionGroupsSyncOverride {
-            return try describeOptionGroupsSyncOverride(input)
+            return try describeOptionGroupsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2949,12 +3275,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            callback when the operation is complete. The OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions
            object will be validated before being returned to caller.
      */
-    public func describeOrderableDBInstanceOptionsAsync(input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, completion: @escaping (HTTPResult<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions>) -> ()) throws {
+    public func describeOrderableDBInstanceOptionsAsync(
+            input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws {
         if let describeOrderableDBInstanceOptionsAsyncOverride = describeOrderableDBInstanceOptionsAsyncOverride {
-            return try describeOrderableDBInstanceOptionsAsyncOverride(input, completion)
+            return try describeOrderableDBInstanceOptionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -2965,9 +3294,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      - Returns: The OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeOrderableDBInstanceOptionsSync(input: RDSModel.DescribeOrderableDBInstanceOptionsMessage) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
+    public func describeOrderableDBInstanceOptionsSync(
+            input: RDSModel.DescribeOrderableDBInstanceOptionsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
         if let describeOrderableDBInstanceOptionsSyncOverride = describeOrderableDBInstanceOptionsSyncOverride {
-            return try describeOrderableDBInstanceOptionsSyncOverride(input)
+            return try describeOrderableDBInstanceOptionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -2983,12 +3314,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: resourceNotFound.
      */
-    public func describePendingMaintenanceActionsAsync(input: RDSModel.DescribePendingMaintenanceActionsMessage, completion: @escaping (HTTPResult<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions>) -> ()) throws {
+    public func describePendingMaintenanceActionsAsync(
+            input: RDSModel.DescribePendingMaintenanceActionsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws {
         if let describePendingMaintenanceActionsAsyncOverride = describePendingMaintenanceActionsAsyncOverride {
-            return try describePendingMaintenanceActionsAsyncOverride(input, completion)
+            return try describePendingMaintenanceActionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3000,9 +3334,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: resourceNotFound.
      */
-    public func describePendingMaintenanceActionsSync(input: RDSModel.DescribePendingMaintenanceActionsMessage) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
+    public func describePendingMaintenanceActionsSync(
+            input: RDSModel.DescribePendingMaintenanceActionsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
         if let describePendingMaintenanceActionsSyncOverride = describePendingMaintenanceActionsSyncOverride {
-            return try describePendingMaintenanceActionsSyncOverride(input)
+            return try describePendingMaintenanceActionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -3018,12 +3354,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstanceNotFound.
      */
-    public func describeReservedDBInstancesAsync(input: RDSModel.DescribeReservedDBInstancesMessage, completion: @escaping (HTTPResult<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances>) -> ()) throws {
+    public func describeReservedDBInstancesAsync(
+            input: RDSModel.DescribeReservedDBInstancesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws {
         if let describeReservedDBInstancesAsyncOverride = describeReservedDBInstancesAsyncOverride {
-            return try describeReservedDBInstancesAsyncOverride(input, completion)
+            return try describeReservedDBInstancesAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3035,9 +3374,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstanceNotFound.
      */
-    public func describeReservedDBInstancesSync(input: RDSModel.DescribeReservedDBInstancesMessage) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
+    public func describeReservedDBInstancesSync(
+            input: RDSModel.DescribeReservedDBInstancesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
         if let describeReservedDBInstancesSyncOverride = describeReservedDBInstancesSyncOverride {
-            return try describeReservedDBInstancesSyncOverride(input)
+            return try describeReservedDBInstancesSyncOverride(input, reporting)
         }
 
         throw error
@@ -3053,12 +3394,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstancesOfferingNotFound.
      */
-    public func describeReservedDBInstancesOfferingsAsync(input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, completion: @escaping (HTTPResult<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings>) -> ()) throws {
+    public func describeReservedDBInstancesOfferingsAsync(
+            input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws {
         if let describeReservedDBInstancesOfferingsAsyncOverride = describeReservedDBInstancesOfferingsAsyncOverride {
-            return try describeReservedDBInstancesOfferingsAsyncOverride(input, completion)
+            return try describeReservedDBInstancesOfferingsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3070,9 +3414,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstancesOfferingNotFound.
      */
-    public func describeReservedDBInstancesOfferingsSync(input: RDSModel.DescribeReservedDBInstancesOfferingsMessage) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
+    public func describeReservedDBInstancesOfferingsSync(
+            input: RDSModel.DescribeReservedDBInstancesOfferingsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
         if let describeReservedDBInstancesOfferingsSyncOverride = describeReservedDBInstancesOfferingsSyncOverride {
-            return try describeReservedDBInstancesOfferingsSyncOverride(input)
+            return try describeReservedDBInstancesOfferingsSyncOverride(input, reporting)
         }
 
         throw error
@@ -3087,12 +3433,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            callback when the operation is complete. The SourceRegionMessageForDescribeSourceRegions
            object will be validated before being returned to caller.
      */
-    public func describeSourceRegionsAsync(input: RDSModel.DescribeSourceRegionsMessage, completion: @escaping (HTTPResult<RDSModel.SourceRegionMessageForDescribeSourceRegions>) -> ()) throws {
+    public func describeSourceRegionsAsync(
+            input: RDSModel.DescribeSourceRegionsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws {
         if let describeSourceRegionsAsyncOverride = describeSourceRegionsAsyncOverride {
-            return try describeSourceRegionsAsyncOverride(input, completion)
+            return try describeSourceRegionsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3103,9 +3452,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
      - Returns: The SourceRegionMessageForDescribeSourceRegions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSourceRegionsSync(input: RDSModel.DescribeSourceRegionsMessage) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
+    public func describeSourceRegionsSync(
+            input: RDSModel.DescribeSourceRegionsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
         if let describeSourceRegionsSyncOverride = describeSourceRegionsSyncOverride {
-            return try describeSourceRegionsSyncOverride(input)
+            return try describeSourceRegionsSyncOverride(input, reporting)
         }
 
         throw error
@@ -3121,12 +3472,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func describeValidDBInstanceModificationsAsync(input: RDSModel.DescribeValidDBInstanceModificationsMessage, completion: @escaping (HTTPResult<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications>) -> ()) throws {
+    public func describeValidDBInstanceModificationsAsync(
+            input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws {
         if let describeValidDBInstanceModificationsAsyncOverride = describeValidDBInstanceModificationsAsyncOverride {
-            return try describeValidDBInstanceModificationsAsyncOverride(input, completion)
+            return try describeValidDBInstanceModificationsAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3138,9 +3492,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func describeValidDBInstanceModificationsSync(input: RDSModel.DescribeValidDBInstanceModificationsMessage) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
+    public func describeValidDBInstanceModificationsSync(
+            input: RDSModel.DescribeValidDBInstanceModificationsMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
         if let describeValidDBInstanceModificationsSyncOverride = describeValidDBInstanceModificationsSyncOverride {
-            return try describeValidDBInstanceModificationsSyncOverride(input)
+            return try describeValidDBInstanceModificationsSyncOverride(input, reporting)
         }
 
         throw error
@@ -3156,12 +3512,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBLogFileNotFound.
      */
-    public func downloadDBLogFilePortionAsync(input: RDSModel.DownloadDBLogFilePortionMessage, completion: @escaping (HTTPResult<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion>) -> ()) throws {
+    public func downloadDBLogFilePortionAsync(
+            input: RDSModel.DownloadDBLogFilePortionMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws {
         if let downloadDBLogFilePortionAsyncOverride = downloadDBLogFilePortionAsyncOverride {
-            return try downloadDBLogFilePortionAsyncOverride(input, completion)
+            return try downloadDBLogFilePortionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3173,9 +3532,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBLogFileNotFound.
      */
-    public func downloadDBLogFilePortionSync(input: RDSModel.DownloadDBLogFilePortionMessage) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
+    public func downloadDBLogFilePortionSync(
+            input: RDSModel.DownloadDBLogFilePortionMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
         if let downloadDBLogFilePortionSyncOverride = downloadDBLogFilePortionSyncOverride {
-            return try downloadDBLogFilePortionSyncOverride(input)
+            return try downloadDBLogFilePortionSyncOverride(input, reporting)
         }
 
         throw error
@@ -3191,12 +3552,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func failoverDBClusterAsync(input: RDSModel.FailoverDBClusterMessage, completion: @escaping (HTTPResult<RDSModel.FailoverDBClusterResultForFailoverDBCluster>) -> ()) throws {
+    public func failoverDBClusterAsync(
+            input: RDSModel.FailoverDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws {
         if let failoverDBClusterAsyncOverride = failoverDBClusterAsyncOverride {
-            return try failoverDBClusterAsyncOverride(input, completion)
+            return try failoverDBClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3208,9 +3572,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func failoverDBClusterSync(input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
+    public func failoverDBClusterSync(
+            input: RDSModel.FailoverDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
         if let failoverDBClusterSyncOverride = failoverDBClusterSyncOverride {
-            return try failoverDBClusterSyncOverride(input)
+            return try failoverDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -3226,12 +3592,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func listTagsForResourceAsync(input: RDSModel.ListTagsForResourceMessage, completion: @escaping (HTTPResult<RDSModel.TagListMessageForListTagsForResource>) -> ()) throws {
+    public func listTagsForResourceAsync(
+            input: RDSModel.ListTagsForResourceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, completion)
+            return try listTagsForResourceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3243,9 +3612,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func listTagsForResourceSync(input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource {
+    public func listTagsForResourceSync(
+            input: RDSModel.ListTagsForResourceMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.TagListMessageForListTagsForResource {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input)
+            return try listTagsForResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -3261,12 +3632,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
-    public func modifyCurrentDBClusterCapacityAsync(input: RDSModel.ModifyCurrentDBClusterCapacityMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity>) -> ()) throws {
+    public func modifyCurrentDBClusterCapacityAsync(
+            input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws {
         if let modifyCurrentDBClusterCapacityAsyncOverride = modifyCurrentDBClusterCapacityAsyncOverride {
-            return try modifyCurrentDBClusterCapacityAsyncOverride(input, completion)
+            return try modifyCurrentDBClusterCapacityAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3278,9 +3652,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
-    public func modifyCurrentDBClusterCapacitySync(input: RDSModel.ModifyCurrentDBClusterCapacityMessage) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
+    public func modifyCurrentDBClusterCapacitySync(
+            input: RDSModel.ModifyCurrentDBClusterCapacityMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
         if let modifyCurrentDBClusterCapacitySyncOverride = modifyCurrentDBClusterCapacitySyncOverride {
-            return try modifyCurrentDBClusterCapacitySyncOverride(input)
+            return try modifyCurrentDBClusterCapacitySyncOverride(input, reporting)
         }
 
         throw error
@@ -3296,12 +3672,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
-    public func modifyDBClusterAsync(input: RDSModel.ModifyDBClusterMessage, completion: @escaping (HTTPResult<RDSModel.ModifyDBClusterResultForModifyDBCluster>) -> ()) throws {
+    public func modifyDBClusterAsync(
+            input: RDSModel.ModifyDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws {
         if let modifyDBClusterAsyncOverride = modifyDBClusterAsyncOverride {
-            return try modifyDBClusterAsyncOverride(input, completion)
+            return try modifyDBClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3313,9 +3692,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
-    public func modifyDBClusterSync(input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
+    public func modifyDBClusterSync(
+            input: RDSModel.ModifyDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
         if let modifyDBClusterSyncOverride = modifyDBClusterSyncOverride {
-            return try modifyDBClusterSyncOverride(input)
+            return try modifyDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -3331,12 +3712,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func modifyDBClusterEndpointAsync(input: RDSModel.ModifyDBClusterEndpointMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint>) -> ()) throws {
+    public func modifyDBClusterEndpointAsync(
+            input: RDSModel.ModifyDBClusterEndpointMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws {
         if let modifyDBClusterEndpointAsyncOverride = modifyDBClusterEndpointAsyncOverride {
-            return try modifyDBClusterEndpointAsyncOverride(input, completion)
+            return try modifyDBClusterEndpointAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3348,9 +3732,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func modifyDBClusterEndpointSync(input: RDSModel.ModifyDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
+    public func modifyDBClusterEndpointSync(
+            input: RDSModel.ModifyDBClusterEndpointMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
         if let modifyDBClusterEndpointSyncOverride = modifyDBClusterEndpointSyncOverride {
-            return try modifyDBClusterEndpointSyncOverride(input)
+            return try modifyDBClusterEndpointSyncOverride(input, reporting)
         }
 
         throw error
@@ -3366,12 +3752,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBClusterParameterGroupAsync(input: RDSModel.ModifyDBClusterParameterGroupMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup>) -> ()) throws {
+    public func modifyDBClusterParameterGroupAsync(
+            input: RDSModel.ModifyDBClusterParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         if let modifyDBClusterParameterGroupAsyncOverride = modifyDBClusterParameterGroupAsyncOverride {
-            return try modifyDBClusterParameterGroupAsyncOverride(input, completion)
+            return try modifyDBClusterParameterGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3383,9 +3772,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBClusterParameterGroupSync(input: RDSModel.ModifyDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
+    public func modifyDBClusterParameterGroupSync(
+            input: RDSModel.ModifyDBClusterParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
         if let modifyDBClusterParameterGroupSyncOverride = modifyDBClusterParameterGroupSyncOverride {
-            return try modifyDBClusterParameterGroupSyncOverride(input)
+            return try modifyDBClusterParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -3401,12 +3792,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBClusterSnapshotAttributeAsync(input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, completion: @escaping (HTTPResult<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute>) -> ()) throws {
+    public func modifyDBClusterSnapshotAttributeAsync(
+            input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws {
         if let modifyDBClusterSnapshotAttributeAsyncOverride = modifyDBClusterSnapshotAttributeAsyncOverride {
-            return try modifyDBClusterSnapshotAttributeAsyncOverride(input, completion)
+            return try modifyDBClusterSnapshotAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3418,9 +3812,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBClusterSnapshotAttributeSync(input: RDSModel.ModifyDBClusterSnapshotAttributeMessage) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
+    public func modifyDBClusterSnapshotAttributeSync(
+            input: RDSModel.ModifyDBClusterSnapshotAttributeMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
         if let modifyDBClusterSnapshotAttributeSyncOverride = modifyDBClusterSnapshotAttributeSyncOverride {
-            return try modifyDBClusterSnapshotAttributeSyncOverride(input)
+            return try modifyDBClusterSnapshotAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -3436,12 +3832,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func modifyDBInstanceAsync(input: RDSModel.ModifyDBInstanceMessage, completion: @escaping (HTTPResult<RDSModel.ModifyDBInstanceResultForModifyDBInstance>) -> ()) throws {
+    public func modifyDBInstanceAsync(
+            input: RDSModel.ModifyDBInstanceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws {
         if let modifyDBInstanceAsyncOverride = modifyDBInstanceAsyncOverride {
-            return try modifyDBInstanceAsyncOverride(input, completion)
+            return try modifyDBInstanceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3453,9 +3852,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func modifyDBInstanceSync(input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
+    public func modifyDBInstanceSync(
+            input: RDSModel.ModifyDBInstanceMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
         if let modifyDBInstanceSyncOverride = modifyDBInstanceSyncOverride {
-            return try modifyDBInstanceSyncOverride(input)
+            return try modifyDBInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -3471,12 +3872,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBParameterGroupAsync(input: RDSModel.ModifyDBParameterGroupMessage, completion: @escaping (HTTPResult<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup>) -> ()) throws {
+    public func modifyDBParameterGroupAsync(
+            input: RDSModel.ModifyDBParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws {
         if let modifyDBParameterGroupAsyncOverride = modifyDBParameterGroupAsyncOverride {
-            return try modifyDBParameterGroupAsyncOverride(input, completion)
+            return try modifyDBParameterGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3488,9 +3892,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBParameterGroupSync(input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
+    public func modifyDBParameterGroupSync(
+            input: RDSModel.ModifyDBParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
         if let modifyDBParameterGroupSyncOverride = modifyDBParameterGroupSyncOverride {
-            return try modifyDBParameterGroupSyncOverride(input)
+            return try modifyDBParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -3506,12 +3912,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func modifyDBSnapshotAsync(input: RDSModel.ModifyDBSnapshotMessage, completion: @escaping (HTTPResult<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot>) -> ()) throws {
+    public func modifyDBSnapshotAsync(
+            input: RDSModel.ModifyDBSnapshotMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws {
         if let modifyDBSnapshotAsyncOverride = modifyDBSnapshotAsyncOverride {
-            return try modifyDBSnapshotAsyncOverride(input, completion)
+            return try modifyDBSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3523,9 +3932,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func modifyDBSnapshotSync(input: RDSModel.ModifyDBSnapshotMessage) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
+    public func modifyDBSnapshotSync(
+            input: RDSModel.ModifyDBSnapshotMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
         if let modifyDBSnapshotSyncOverride = modifyDBSnapshotSyncOverride {
-            return try modifyDBSnapshotSyncOverride(input)
+            return try modifyDBSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -3541,12 +3952,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBSnapshotAttributeAsync(input: RDSModel.ModifyDBSnapshotAttributeMessage, completion: @escaping (HTTPResult<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute>) -> ()) throws {
+    public func modifyDBSnapshotAttributeAsync(
+            input: RDSModel.ModifyDBSnapshotAttributeMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws {
         if let modifyDBSnapshotAttributeAsyncOverride = modifyDBSnapshotAttributeAsyncOverride {
-            return try modifyDBSnapshotAttributeAsyncOverride(input, completion)
+            return try modifyDBSnapshotAttributeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3558,9 +3972,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBSnapshotAttributeSync(input: RDSModel.ModifyDBSnapshotAttributeMessage) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
+    public func modifyDBSnapshotAttributeSync(
+            input: RDSModel.ModifyDBSnapshotAttributeMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
         if let modifyDBSnapshotAttributeSyncOverride = modifyDBSnapshotAttributeSyncOverride {
-            return try modifyDBSnapshotAttributeSyncOverride(input)
+            return try modifyDBSnapshotAttributeSyncOverride(input, reporting)
         }
 
         throw error
@@ -3576,12 +3992,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
-    public func modifyDBSubnetGroupAsync(input: RDSModel.ModifyDBSubnetGroupMessage, completion: @escaping (HTTPResult<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup>) -> ()) throws {
+    public func modifyDBSubnetGroupAsync(
+            input: RDSModel.ModifyDBSubnetGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws {
         if let modifyDBSubnetGroupAsyncOverride = modifyDBSubnetGroupAsyncOverride {
-            return try modifyDBSubnetGroupAsyncOverride(input, completion)
+            return try modifyDBSubnetGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3593,9 +4012,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
-    public func modifyDBSubnetGroupSync(input: RDSModel.ModifyDBSubnetGroupMessage) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
+    public func modifyDBSubnetGroupSync(
+            input: RDSModel.ModifyDBSubnetGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
         if let modifyDBSubnetGroupSyncOverride = modifyDBSubnetGroupSyncOverride {
-            return try modifyDBSubnetGroupSyncOverride(input)
+            return try modifyDBSubnetGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -3611,12 +4032,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
-    public func modifyEventSubscriptionAsync(input: RDSModel.ModifyEventSubscriptionMessage, completion: @escaping (HTTPResult<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription>) -> ()) throws {
+    public func modifyEventSubscriptionAsync(
+            input: RDSModel.ModifyEventSubscriptionMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws {
         if let modifyEventSubscriptionAsyncOverride = modifyEventSubscriptionAsyncOverride {
-            return try modifyEventSubscriptionAsyncOverride(input, completion)
+            return try modifyEventSubscriptionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3628,9 +4052,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
-    public func modifyEventSubscriptionSync(input: RDSModel.ModifyEventSubscriptionMessage) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
+    public func modifyEventSubscriptionSync(
+            input: RDSModel.ModifyEventSubscriptionMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
         if let modifyEventSubscriptionSyncOverride = modifyEventSubscriptionSyncOverride {
-            return try modifyEventSubscriptionSyncOverride(input)
+            return try modifyEventSubscriptionSyncOverride(input, reporting)
         }
 
         throw error
@@ -3646,12 +4072,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func modifyGlobalClusterAsync(input: RDSModel.ModifyGlobalClusterMessage, completion: @escaping (HTTPResult<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster>) -> ()) throws {
+    public func modifyGlobalClusterAsync(
+            input: RDSModel.ModifyGlobalClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws {
         if let modifyGlobalClusterAsyncOverride = modifyGlobalClusterAsyncOverride {
-            return try modifyGlobalClusterAsyncOverride(input, completion)
+            return try modifyGlobalClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3663,9 +4092,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func modifyGlobalClusterSync(input: RDSModel.ModifyGlobalClusterMessage) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
+    public func modifyGlobalClusterSync(
+            input: RDSModel.ModifyGlobalClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
         if let modifyGlobalClusterSyncOverride = modifyGlobalClusterSyncOverride {
-            return try modifyGlobalClusterSyncOverride(input)
+            return try modifyGlobalClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -3681,12 +4112,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func modifyOptionGroupAsync(input: RDSModel.ModifyOptionGroupMessage, completion: @escaping (HTTPResult<RDSModel.ModifyOptionGroupResultForModifyOptionGroup>) -> ()) throws {
+    public func modifyOptionGroupAsync(
+            input: RDSModel.ModifyOptionGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws {
         if let modifyOptionGroupAsyncOverride = modifyOptionGroupAsyncOverride {
-            return try modifyOptionGroupAsyncOverride(input, completion)
+            return try modifyOptionGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3698,9 +4132,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func modifyOptionGroupSync(input: RDSModel.ModifyOptionGroupMessage) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
+    public func modifyOptionGroupSync(
+            input: RDSModel.ModifyOptionGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
         if let modifyOptionGroupSyncOverride = modifyOptionGroupSyncOverride {
-            return try modifyOptionGroupSyncOverride(input)
+            return try modifyOptionGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -3716,12 +4152,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func promoteReadReplicaAsync(input: RDSModel.PromoteReadReplicaMessage, completion: @escaping (HTTPResult<RDSModel.PromoteReadReplicaResultForPromoteReadReplica>) -> ()) throws {
+    public func promoteReadReplicaAsync(
+            input: RDSModel.PromoteReadReplicaMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws {
         if let promoteReadReplicaAsyncOverride = promoteReadReplicaAsyncOverride {
-            return try promoteReadReplicaAsyncOverride(input, completion)
+            return try promoteReadReplicaAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3733,9 +4172,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func promoteReadReplicaSync(input: RDSModel.PromoteReadReplicaMessage) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
+    public func promoteReadReplicaSync(
+            input: RDSModel.PromoteReadReplicaMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
         if let promoteReadReplicaSyncOverride = promoteReadReplicaSyncOverride {
-            return try promoteReadReplicaSyncOverride(input)
+            return try promoteReadReplicaSyncOverride(input, reporting)
         }
 
         throw error
@@ -3751,12 +4192,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState.
      */
-    public func promoteReadReplicaDBClusterAsync(input: RDSModel.PromoteReadReplicaDBClusterMessage, completion: @escaping (HTTPResult<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster>) -> ()) throws {
+    public func promoteReadReplicaDBClusterAsync(
+            input: RDSModel.PromoteReadReplicaDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws {
         if let promoteReadReplicaDBClusterAsyncOverride = promoteReadReplicaDBClusterAsyncOverride {
-            return try promoteReadReplicaDBClusterAsyncOverride(input, completion)
+            return try promoteReadReplicaDBClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3768,9 +4212,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
-    public func promoteReadReplicaDBClusterSync(input: RDSModel.PromoteReadReplicaDBClusterMessage) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
+    public func promoteReadReplicaDBClusterSync(
+            input: RDSModel.PromoteReadReplicaDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
         if let promoteReadReplicaDBClusterSyncOverride = promoteReadReplicaDBClusterSyncOverride {
-            return try promoteReadReplicaDBClusterSyncOverride(input)
+            return try promoteReadReplicaDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -3786,12 +4232,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
-    public func purchaseReservedDBInstancesOfferingAsync(input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, completion: @escaping (HTTPResult<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering>) -> ()) throws {
+    public func purchaseReservedDBInstancesOfferingAsync(
+            input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws {
         if let purchaseReservedDBInstancesOfferingAsyncOverride = purchaseReservedDBInstancesOfferingAsyncOverride {
-            return try purchaseReservedDBInstancesOfferingAsyncOverride(input, completion)
+            return try purchaseReservedDBInstancesOfferingAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3803,9 +4252,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
-    public func purchaseReservedDBInstancesOfferingSync(input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
+    public func purchaseReservedDBInstancesOfferingSync(
+            input: RDSModel.PurchaseReservedDBInstancesOfferingMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
         if let purchaseReservedDBInstancesOfferingSyncOverride = purchaseReservedDBInstancesOfferingSyncOverride {
-            return try purchaseReservedDBInstancesOfferingSyncOverride(input)
+            return try purchaseReservedDBInstancesOfferingSyncOverride(input, reporting)
         }
 
         throw error
@@ -3821,12 +4272,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func rebootDBInstanceAsync(input: RDSModel.RebootDBInstanceMessage, completion: @escaping (HTTPResult<RDSModel.RebootDBInstanceResultForRebootDBInstance>) -> ()) throws {
+    public func rebootDBInstanceAsync(
+            input: RDSModel.RebootDBInstanceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws {
         if let rebootDBInstanceAsyncOverride = rebootDBInstanceAsyncOverride {
-            return try rebootDBInstanceAsyncOverride(input, completion)
+            return try rebootDBInstanceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3838,9 +4292,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func rebootDBInstanceSync(input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
+    public func rebootDBInstanceSync(
+            input: RDSModel.RebootDBInstanceMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
         if let rebootDBInstanceSyncOverride = rebootDBInstanceSyncOverride {
-            return try rebootDBInstanceSyncOverride(input)
+            return try rebootDBInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -3856,12 +4312,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func removeFromGlobalClusterAsync(input: RDSModel.RemoveFromGlobalClusterMessage, completion: @escaping (HTTPResult<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster>) -> ()) throws {
+    public func removeFromGlobalClusterAsync(
+            input: RDSModel.RemoveFromGlobalClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws {
         if let removeFromGlobalClusterAsyncOverride = removeFromGlobalClusterAsyncOverride {
-            return try removeFromGlobalClusterAsyncOverride(input, completion)
+            return try removeFromGlobalClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3873,9 +4332,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func removeFromGlobalClusterSync(input: RDSModel.RemoveFromGlobalClusterMessage) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
+    public func removeFromGlobalClusterSync(
+            input: RDSModel.RemoveFromGlobalClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
         if let removeFromGlobalClusterSyncOverride = removeFromGlobalClusterSyncOverride {
-            return try removeFromGlobalClusterSyncOverride(input)
+            return try removeFromGlobalClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -3890,9 +4351,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
-    public func removeRoleFromDBClusterAsync(input: RDSModel.RemoveRoleFromDBClusterMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func removeRoleFromDBClusterAsync(
+            input: RDSModel.RemoveRoleFromDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let removeRoleFromDBClusterAsyncOverride = removeRoleFromDBClusterAsyncOverride {
-            return try removeRoleFromDBClusterAsyncOverride(input, completion)
+            return try removeRoleFromDBClusterAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -3905,9 +4369,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated RemoveRoleFromDBClusterMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
-    public func removeRoleFromDBClusterSync(input: RDSModel.RemoveRoleFromDBClusterMessage) throws {
+    public func removeRoleFromDBClusterSync(
+            input: RDSModel.RemoveRoleFromDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let removeRoleFromDBClusterSyncOverride = removeRoleFromDBClusterSyncOverride {
-            return try removeRoleFromDBClusterSyncOverride(input)
+            return try removeRoleFromDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -3922,9 +4388,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
-    public func removeRoleFromDBInstanceAsync(input: RDSModel.RemoveRoleFromDBInstanceMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func removeRoleFromDBInstanceAsync(
+            input: RDSModel.RemoveRoleFromDBInstanceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let removeRoleFromDBInstanceAsyncOverride = removeRoleFromDBInstanceAsyncOverride {
-            return try removeRoleFromDBInstanceAsyncOverride(input, completion)
+            return try removeRoleFromDBInstanceAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -3937,9 +4406,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated RemoveRoleFromDBInstanceMessage object being passed to this operation.
      - Throws: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
-    public func removeRoleFromDBInstanceSync(input: RDSModel.RemoveRoleFromDBInstanceMessage) throws {
+    public func removeRoleFromDBInstanceSync(
+            input: RDSModel.RemoveRoleFromDBInstanceMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let removeRoleFromDBInstanceSyncOverride = removeRoleFromDBInstanceSyncOverride {
-            return try removeRoleFromDBInstanceSyncOverride(input)
+            return try removeRoleFromDBInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -3955,12 +4426,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: sourceNotFound, subscriptionNotFound.
      */
-    public func removeSourceIdentifierFromSubscriptionAsync(input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, completion: @escaping (HTTPResult<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription>) -> ()) throws {
+    public func removeSourceIdentifierFromSubscriptionAsync(
+            input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws {
         if let removeSourceIdentifierFromSubscriptionAsyncOverride = removeSourceIdentifierFromSubscriptionAsyncOverride {
-            return try removeSourceIdentifierFromSubscriptionAsyncOverride(input, completion)
+            return try removeSourceIdentifierFromSubscriptionAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -3972,9 +4446,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: sourceNotFound, subscriptionNotFound.
      */
-    public func removeSourceIdentifierFromSubscriptionSync(input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
+    public func removeSourceIdentifierFromSubscriptionSync(
+            input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
         if let removeSourceIdentifierFromSubscriptionSyncOverride = removeSourceIdentifierFromSubscriptionSyncOverride {
-            return try removeSourceIdentifierFromSubscriptionSyncOverride(input)
+            return try removeSourceIdentifierFromSubscriptionSyncOverride(input, reporting)
         }
 
         throw error
@@ -3989,9 +4465,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func removeTagsFromResourceAsync(input: RDSModel.RemoveTagsFromResourceMessage, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func removeTagsFromResourceAsync(
+            input: RDSModel.RemoveTagsFromResourceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         if let removeTagsFromResourceAsyncOverride = removeTagsFromResourceAsyncOverride {
-            return try removeTagsFromResourceAsyncOverride(input, completion)
+            return try removeTagsFromResourceAsyncOverride(input, reporting, completion)
         }
 
         completion(error)
@@ -4004,9 +4483,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated RemoveTagsFromResourceMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func removeTagsFromResourceSync(input: RDSModel.RemoveTagsFromResourceMessage) throws {
+    public func removeTagsFromResourceSync(
+            input: RDSModel.RemoveTagsFromResourceMessage,
+            reporting: SmokeAWSInvocationReporting) throws {
         if let removeTagsFromResourceSyncOverride = removeTagsFromResourceSyncOverride {
-            return try removeTagsFromResourceSyncOverride(input)
+            return try removeTagsFromResourceSyncOverride(input, reporting)
         }
 
         throw error
@@ -4022,12 +4503,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBClusterParameterGroupAsync(input: RDSModel.ResetDBClusterParameterGroupMessage, completion: @escaping (HTTPResult<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup>) -> ()) throws {
+    public func resetDBClusterParameterGroupAsync(
+            input: RDSModel.ResetDBClusterParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         if let resetDBClusterParameterGroupAsyncOverride = resetDBClusterParameterGroupAsyncOverride {
-            return try resetDBClusterParameterGroupAsyncOverride(input, completion)
+            return try resetDBClusterParameterGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4039,9 +4523,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBClusterParameterGroupSync(input: RDSModel.ResetDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
+    public func resetDBClusterParameterGroupSync(
+            input: RDSModel.ResetDBClusterParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
         if let resetDBClusterParameterGroupSyncOverride = resetDBClusterParameterGroupSyncOverride {
-            return try resetDBClusterParameterGroupSyncOverride(input)
+            return try resetDBClusterParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -4057,12 +4543,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBParameterGroupAsync(input: RDSModel.ResetDBParameterGroupMessage, completion: @escaping (HTTPResult<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup>) -> ()) throws {
+    public func resetDBParameterGroupAsync(
+            input: RDSModel.ResetDBParameterGroupMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws {
         if let resetDBParameterGroupAsyncOverride = resetDBParameterGroupAsyncOverride {
-            return try resetDBParameterGroupAsyncOverride(input, completion)
+            return try resetDBParameterGroupAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4074,9 +4563,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBParameterGroupSync(input: RDSModel.ResetDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
+    public func resetDBParameterGroupSync(
+            input: RDSModel.ResetDBParameterGroupMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
         if let resetDBParameterGroupSyncOverride = resetDBParameterGroupSyncOverride {
-            return try resetDBParameterGroupSyncOverride(input)
+            return try resetDBParameterGroupSyncOverride(input, reporting)
         }
 
         throw error
@@ -4092,12 +4583,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromS3Async(input: RDSModel.RestoreDBClusterFromS3Message, completion: @escaping (HTTPResult<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3>) -> ()) throws {
+    public func restoreDBClusterFromS3Async(
+            input: RDSModel.RestoreDBClusterFromS3Message, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws {
         if let restoreDBClusterFromS3AsyncOverride = restoreDBClusterFromS3AsyncOverride {
-            return try restoreDBClusterFromS3AsyncOverride(input, completion)
+            return try restoreDBClusterFromS3AsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4109,9 +4603,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromS3Sync(input: RDSModel.RestoreDBClusterFromS3Message) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
+    public func restoreDBClusterFromS3Sync(
+            input: RDSModel.RestoreDBClusterFromS3Message,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
         if let restoreDBClusterFromS3SyncOverride = restoreDBClusterFromS3SyncOverride {
-            return try restoreDBClusterFromS3SyncOverride(input)
+            return try restoreDBClusterFromS3SyncOverride(input, reporting)
         }
 
         throw error
@@ -4127,12 +4623,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromSnapshotAsync(input: RDSModel.RestoreDBClusterFromSnapshotMessage, completion: @escaping (HTTPResult<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot>) -> ()) throws {
+    public func restoreDBClusterFromSnapshotAsync(
+            input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws {
         if let restoreDBClusterFromSnapshotAsyncOverride = restoreDBClusterFromSnapshotAsyncOverride {
-            return try restoreDBClusterFromSnapshotAsyncOverride(input, completion)
+            return try restoreDBClusterFromSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4144,9 +4643,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromSnapshotSync(input: RDSModel.RestoreDBClusterFromSnapshotMessage) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
+    public func restoreDBClusterFromSnapshotSync(
+            input: RDSModel.RestoreDBClusterFromSnapshotMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
         if let restoreDBClusterFromSnapshotSyncOverride = restoreDBClusterFromSnapshotSyncOverride {
-            return try restoreDBClusterFromSnapshotSyncOverride(input)
+            return try restoreDBClusterFromSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -4162,12 +4663,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
-    public func restoreDBClusterToPointInTimeAsync(input: RDSModel.RestoreDBClusterToPointInTimeMessage, completion: @escaping (HTTPResult<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime>) -> ()) throws {
+    public func restoreDBClusterToPointInTimeAsync(
+            input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws {
         if let restoreDBClusterToPointInTimeAsyncOverride = restoreDBClusterToPointInTimeAsyncOverride {
-            return try restoreDBClusterToPointInTimeAsyncOverride(input, completion)
+            return try restoreDBClusterToPointInTimeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4179,9 +4683,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
-    public func restoreDBClusterToPointInTimeSync(input: RDSModel.RestoreDBClusterToPointInTimeMessage) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
+    public func restoreDBClusterToPointInTimeSync(
+            input: RDSModel.RestoreDBClusterToPointInTimeMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
         if let restoreDBClusterToPointInTimeSyncOverride = restoreDBClusterToPointInTimeSyncOverride {
-            return try restoreDBClusterToPointInTimeSyncOverride(input)
+            return try restoreDBClusterToPointInTimeSyncOverride(input, reporting)
         }
 
         throw error
@@ -4197,12 +4703,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromDBSnapshotAsync(input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, completion: @escaping (HTTPResult<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot>) -> ()) throws {
+    public func restoreDBInstanceFromDBSnapshotAsync(
+            input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws {
         if let restoreDBInstanceFromDBSnapshotAsyncOverride = restoreDBInstanceFromDBSnapshotAsyncOverride {
-            return try restoreDBInstanceFromDBSnapshotAsyncOverride(input, completion)
+            return try restoreDBInstanceFromDBSnapshotAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4214,9 +4723,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromDBSnapshotSync(input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
+    public func restoreDBInstanceFromDBSnapshotSync(
+            input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
         if let restoreDBInstanceFromDBSnapshotSyncOverride = restoreDBInstanceFromDBSnapshotSyncOverride {
-            return try restoreDBInstanceFromDBSnapshotSyncOverride(input)
+            return try restoreDBInstanceFromDBSnapshotSyncOverride(input, reporting)
         }
 
         throw error
@@ -4232,12 +4743,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromS3Async(input: RDSModel.RestoreDBInstanceFromS3Message, completion: @escaping (HTTPResult<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3>) -> ()) throws {
+    public func restoreDBInstanceFromS3Async(
+            input: RDSModel.RestoreDBInstanceFromS3Message, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws {
         if let restoreDBInstanceFromS3AsyncOverride = restoreDBInstanceFromS3AsyncOverride {
-            return try restoreDBInstanceFromS3AsyncOverride(input, completion)
+            return try restoreDBInstanceFromS3AsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4249,9 +4763,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromS3Sync(input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
+    public func restoreDBInstanceFromS3Sync(
+            input: RDSModel.RestoreDBInstanceFromS3Message,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
         if let restoreDBInstanceFromS3SyncOverride = restoreDBInstanceFromS3SyncOverride {
-            return try restoreDBInstanceFromS3SyncOverride(input)
+            return try restoreDBInstanceFromS3SyncOverride(input, reporting)
         }
 
         throw error
@@ -4267,12 +4783,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceToPointInTimeAsync(input: RDSModel.RestoreDBInstanceToPointInTimeMessage, completion: @escaping (HTTPResult<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime>) -> ()) throws {
+    public func restoreDBInstanceToPointInTimeAsync(
+            input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws {
         if let restoreDBInstanceToPointInTimeAsyncOverride = restoreDBInstanceToPointInTimeAsyncOverride {
-            return try restoreDBInstanceToPointInTimeAsyncOverride(input, completion)
+            return try restoreDBInstanceToPointInTimeAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4284,9 +4803,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceToPointInTimeSync(input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
+    public func restoreDBInstanceToPointInTimeSync(
+            input: RDSModel.RestoreDBInstanceToPointInTimeMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
         if let restoreDBInstanceToPointInTimeSyncOverride = restoreDBInstanceToPointInTimeSyncOverride {
-            return try restoreDBInstanceToPointInTimeSyncOverride(input)
+            return try restoreDBInstanceToPointInTimeSyncOverride(input, reporting)
         }
 
         throw error
@@ -4302,12 +4823,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func revokeDBSecurityGroupIngressAsync(input: RDSModel.RevokeDBSecurityGroupIngressMessage, completion: @escaping (HTTPResult<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress>) -> ()) throws {
+    public func revokeDBSecurityGroupIngressAsync(
+            input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
         if let revokeDBSecurityGroupIngressAsyncOverride = revokeDBSecurityGroupIngressAsyncOverride {
-            return try revokeDBSecurityGroupIngressAsyncOverride(input, completion)
+            return try revokeDBSecurityGroupIngressAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4319,9 +4843,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func revokeDBSecurityGroupIngressSync(input: RDSModel.RevokeDBSecurityGroupIngressMessage) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
+    public func revokeDBSecurityGroupIngressSync(
+            input: RDSModel.RevokeDBSecurityGroupIngressMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
         if let revokeDBSecurityGroupIngressSyncOverride = revokeDBSecurityGroupIngressSyncOverride {
-            return try revokeDBSecurityGroupIngressSyncOverride(input)
+            return try revokeDBSecurityGroupIngressSyncOverride(input, reporting)
         }
 
         throw error
@@ -4337,12 +4863,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
-    public func startActivityStreamAsync(input: RDSModel.StartActivityStreamRequest, completion: @escaping (HTTPResult<RDSModel.StartActivityStreamResponseForStartActivityStream>) -> ()) throws {
+    public func startActivityStreamAsync(
+            input: RDSModel.StartActivityStreamRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws {
         if let startActivityStreamAsyncOverride = startActivityStreamAsyncOverride {
-            return try startActivityStreamAsyncOverride(input, completion)
+            return try startActivityStreamAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4354,9 +4883,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
-    public func startActivityStreamSync(input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
+    public func startActivityStreamSync(
+            input: RDSModel.StartActivityStreamRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
         if let startActivityStreamSyncOverride = startActivityStreamSyncOverride {
-            return try startActivityStreamSyncOverride(input)
+            return try startActivityStreamSyncOverride(input, reporting)
         }
 
         throw error
@@ -4372,12 +4903,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func startDBClusterAsync(input: RDSModel.StartDBClusterMessage, completion: @escaping (HTTPResult<RDSModel.StartDBClusterResultForStartDBCluster>) -> ()) throws {
+    public func startDBClusterAsync(
+            input: RDSModel.StartDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws {
         if let startDBClusterAsyncOverride = startDBClusterAsyncOverride {
-            return try startDBClusterAsyncOverride(input, completion)
+            return try startDBClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4389,9 +4923,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func startDBClusterSync(input: RDSModel.StartDBClusterMessage) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
+    public func startDBClusterSync(
+            input: RDSModel.StartDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
         if let startDBClusterSyncOverride = startDBClusterSyncOverride {
-            return try startDBClusterSyncOverride(input)
+            return try startDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -4407,12 +4943,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
-    public func startDBInstanceAsync(input: RDSModel.StartDBInstanceMessage, completion: @escaping (HTTPResult<RDSModel.StartDBInstanceResultForStartDBInstance>) -> ()) throws {
+    public func startDBInstanceAsync(
+            input: RDSModel.StartDBInstanceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws {
         if let startDBInstanceAsyncOverride = startDBInstanceAsyncOverride {
-            return try startDBInstanceAsyncOverride(input, completion)
+            return try startDBInstanceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4424,9 +4963,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
-    public func startDBInstanceSync(input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
+    public func startDBInstanceSync(
+            input: RDSModel.StartDBInstanceMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
         if let startDBInstanceSyncOverride = startDBInstanceSyncOverride {
-            return try startDBInstanceSyncOverride(input)
+            return try startDBInstanceSyncOverride(input, reporting)
         }
 
         throw error
@@ -4442,12 +4983,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func stopActivityStreamAsync(input: RDSModel.StopActivityStreamRequest, completion: @escaping (HTTPResult<RDSModel.StopActivityStreamResponseForStopActivityStream>) -> ()) throws {
+    public func stopActivityStreamAsync(
+            input: RDSModel.StopActivityStreamRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws {
         if let stopActivityStreamAsyncOverride = stopActivityStreamAsyncOverride {
-            return try stopActivityStreamAsyncOverride(input, completion)
+            return try stopActivityStreamAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4459,9 +5003,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func stopActivityStreamSync(input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
+    public func stopActivityStreamSync(
+            input: RDSModel.StopActivityStreamRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
         if let stopActivityStreamSyncOverride = stopActivityStreamSyncOverride {
-            return try stopActivityStreamSyncOverride(input)
+            return try stopActivityStreamSyncOverride(input, reporting)
         }
 
         throw error
@@ -4477,12 +5023,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func stopDBClusterAsync(input: RDSModel.StopDBClusterMessage, completion: @escaping (HTTPResult<RDSModel.StopDBClusterResultForStopDBCluster>) -> ()) throws {
+    public func stopDBClusterAsync(
+            input: RDSModel.StopDBClusterMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws {
         if let stopDBClusterAsyncOverride = stopDBClusterAsyncOverride {
-            return try stopDBClusterAsyncOverride(input, completion)
+            return try stopDBClusterAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4494,9 +5043,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func stopDBClusterSync(input: RDSModel.StopDBClusterMessage) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
+    public func stopDBClusterSync(
+            input: RDSModel.StopDBClusterMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
         if let stopDBClusterSyncOverride = stopDBClusterSyncOverride {
-            return try stopDBClusterSyncOverride(input)
+            return try stopDBClusterSyncOverride(input, reporting)
         }
 
         throw error
@@ -4512,12 +5063,15 @@ public struct ThrowingRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func stopDBInstanceAsync(input: RDSModel.StopDBInstanceMessage, completion: @escaping (HTTPResult<RDSModel.StopDBInstanceResultForStopDBInstance>) -> ()) throws {
+    public func stopDBInstanceAsync(
+            input: RDSModel.StopDBInstanceMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws {
         if let stopDBInstanceAsyncOverride = stopDBInstanceAsyncOverride {
-            return try stopDBInstanceAsyncOverride(input, completion)
+            return try stopDBInstanceAsyncOverride(input, reporting, completion)
         }
 
-        completion(.error(error))
+        completion(.failure(error))
     }
 
     /**
@@ -4529,9 +5083,11 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func stopDBInstanceSync(input: RDSModel.StopDBInstanceMessage) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
+    public func stopDBInstanceSync(
+            input: RDSModel.StopDBInstanceMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
         if let stopDBInstanceSyncOverride = stopDBInstanceSyncOverride {
-            return try stopDBInstanceSyncOverride(input)
+            return try stopDBInstanceSyncOverride(input, reporting)
         }
 
         throw error

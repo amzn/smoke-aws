@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the SimpleWorkflowModel.
  */
-public enum SimpleWorkflowModelOperations: String {
+public enum SimpleWorkflowModelOperations: String, Hashable, CustomStringConvertible {
     case countClosedWorkflowExecutions = "CountClosedWorkflowExecutions"
     case countOpenWorkflowExecutions = "CountOpenWorkflowExecutions"
     case countPendingActivityTasks = "CountPendingActivityTasks"
@@ -56,6 +56,10 @@ public enum SimpleWorkflowModelOperations: String {
     case signalWorkflowExecution = "SignalWorkflowExecution"
     case startWorkflowExecution = "StartWorkflowExecution"
     case terminateWorkflowExecution = "TerminateWorkflowExecution"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the ElasticComputeCloudModel.
  */
-public enum ElasticComputeCloudModelOperations: String {
+public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringConvertible {
     case acceptReservedInstancesExchangeQuote = "AcceptReservedInstancesExchangeQuote"
     case acceptTransitGatewayVpcAttachment = "AcceptTransitGatewayVpcAttachment"
     case acceptVpcEndpointConnections = "AcceptVpcEndpointConnections"
@@ -363,6 +363,10 @@ public enum ElasticComputeCloudModelOperations: String {
     case updateSecurityGroupRuleDescriptionsEgress = "UpdateSecurityGroupRuleDescriptionsEgress"
     case updateSecurityGroupRuleDescriptionsIngress = "UpdateSecurityGroupRuleDescriptionsIngress"
     case withdrawByoipCidr = "WithdrawByoipCidr"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

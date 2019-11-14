@@ -16,7 +16,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 import NIOHTTP1
 import SmokeAWSCore
 import SmokeHTTPClient
@@ -51,16 +51,16 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
     }
     
     /// The headers that need to be signed for this request
-    private var headersToBeSigned: [String: String] {
+    private func getHeadersToBeSigned(logger: Logging.Logger) -> [String: String] {
         var headersToBeSigned: [String: String] = [:]
         
         guard let operation = operation else {
-            Log.verbose("Operation not found for HTTP header for \(service) request, no headers needed for signing.")
+            logger.debug("Operation not found for HTTP header for \(service) request, no headers needed for signing.")
             return headersToBeSigned
         }
         
         guard let target = target else {
-            Log.verbose("Target not found for HTTP header, assigning \(operation) to x-amzn-target header.")
+            logger.debug("Target not found for HTTP header, assigning \(operation) to x-amzn-target header.")
             headersToBeSigned["x-amz-target"] = operation
             return headersToBeSigned
         }
@@ -70,22 +70,23 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
         return headersToBeSigned
     }
     
-    public func addClientSpecificHeaders(handler: HTTPClientChannelInboundHandler) -> [(String, String)] {
+    public func addClientSpecificHeaders(handler: HTTPClientChannelInboundHandler, invocationReporting: HTTPClientInvocationReporting) -> [(String, String)] {
         let v4Signer = V4Signer(credentials: credentialsProvider.credentials, region: awsRegion,
                                 service: service,
                                 signAllHeaders: signAllHeaders)
         var headers: [(String, String)]
+        let logger = invocationReporting.logger
         
         let allHeadersToBeSigned: [String: String]
         if signAllHeaders {
-            var headers = headersToBeSigned
+            var headers = getHeadersToBeSigned(logger: logger)
             handler.additionalHeaders.forEach { header in
                 headers[header.0] = header.1
             }
             
             allHeadersToBeSigned = headers
         } else {
-            allHeadersToBeSigned = headersToBeSigned
+            allHeadersToBeSigned = getHeadersToBeSigned(logger: logger)
         }
         
         if (isV4SignRequest) {
@@ -100,13 +101,13 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
         return headers
     }
     
-    public func handleErrorResponses(responseHead: HTTPResponseHead, responseBodyData: Data?) -> Error? {
+    public func handleErrorResponses(responseHead: HTTPResponseHead, responseBodyData: Data?, invocationReporting: HTTPClientInvocationReporting) -> HTTPClientError? {
         // Place the permanently moved location into the HTTPError
         if case .movedPermanently = responseHead.status {
             let locationHeader = responseHead.headers["Location"]
             let location = locationHeader.count > 0 ? locationHeader[0] : "<unknown>"
-            let error = HTTPError.movedPermanently(location: location)
-            return error
+            let cause = HTTPError.movedPermanently(location: location)
+            return HTTPClientError(responseCode: 301, cause: cause)
         }
         
         // All other errors handled by default behavior

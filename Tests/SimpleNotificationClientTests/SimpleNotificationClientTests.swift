@@ -30,9 +30,10 @@ class SimpleNotificationClientTests: XCTestCase {
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>()
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
-                                                        responseComponents: components)
+                                                        responseComponents: components,
+                                                        invocationReporting: StandardHTTPClientInvocationReporting())
         
-        guard case let SimpleNotificationError.authorizationError(returnedPayload) = error else {
+        guard case let SimpleNotificationError.authorizationError(returnedPayload) = error.cause else {
             return XCTFail()
         }
         
@@ -59,11 +60,43 @@ class SimpleNotificationClientTests: XCTestCase {
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = DataAWSHttpClientDelegate<SimpleNotificationError>()
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
-                                                        responseComponents: components)
+                                                        responseComponents: components,
+                                                        invocationReporting: SmokeHTTPClient.StandardHTTPClientInvocationReporting())
         
-        guard case SimpleNotificationError.invalidParameter = error else {
+        guard case SimpleNotificationError.invalidParameter = error.cause else {
             return XCTFail()
         }
+    }
+    
+    func testUnknownErrorDecode() throws {
+        let code = "SignatureDoesNotMatch"
+        let message = "The request signature we calculated does not match the signature you provided. Check your AWS Secret Access Key and signing method. Consult the service documentation for details."
+        let errorResponse = """
+            <ErrorResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+              <Error>
+                <Type>Sender</Type>
+                <Code>\(code)</Code>
+                <Message>\(message)</Message>
+              </Error>
+              <RequestId>c734492c-e5cc-5e2c-9b0e-1cd08e965067</RequestId>
+            </ErrorResponse>
+            """
+        
+        let responseHead = HTTPResponseHead(version: .init(major: 1, minor: 1),
+                                            status: .badRequest)
+        let components = HTTPResponseComponents(headers: [],
+                                                body: errorResponse.data(using: .utf8)!)
+        let clientDelegate = DataAWSHttpClientDelegate<SimpleNotificationError>()
+        let error = try clientDelegate.getResponseError(responseHead: responseHead,
+                                                        responseComponents: components,
+                                                        invocationReporting: SmokeHTTPClient.StandardHTTPClientInvocationReporting())
+        
+        guard case let SimpleNotificationError.unrecognizedError(receivedCode, receivedMessage) = error.cause else {
+            return XCTFail()
+        }
+        
+        XCTAssertEqual(code, receivedCode)
+        XCTAssertEqual(message, receivedMessage)
     }
 
     static var allTests = [

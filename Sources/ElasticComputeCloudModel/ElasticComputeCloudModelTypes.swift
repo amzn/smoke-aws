@@ -4400,11 +4400,11 @@ public enum Scope: String, Codable, CustomStringConvertible {
 extension Array where Element == ElasticComputeCloudModel.ClassicLoadBalancer {
     public func validateAsClassicLoadBalancers() throws {
         if self.count < 1 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to ClassicLoadBalancers violated the minimum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ClassicLoadBalancers violated the minimum length constraint.")
         }
 
         if self.count > 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to ClassicLoadBalancers violated the maximum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ClassicLoadBalancers violated the maximum length constraint.")
         }
     }
 }
@@ -4415,11 +4415,11 @@ extension Array where Element == ElasticComputeCloudModel.ClassicLoadBalancer {
 extension ElasticComputeCloudModel.DescribeCapacityReservationsMaxResults {
     public func validateAsDescribeCapacityReservationsMaxResults() throws {
         if self < 1 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeCapacityReservationsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeCapacityReservationsMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeCapacityReservationsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeCapacityReservationsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4430,11 +4430,11 @@ extension ElasticComputeCloudModel.DescribeCapacityReservationsMaxResults {
 extension ElasticComputeCloudModel.DescribeDhcpOptionsMaxResults {
     public func validateAsDescribeDhcpOptionsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeDhcpOptionsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeDhcpOptionsMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeDhcpOptionsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeDhcpOptionsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4445,11 +4445,11 @@ extension ElasticComputeCloudModel.DescribeDhcpOptionsMaxResults {
 extension ElasticComputeCloudModel.DescribeElasticGpusMaxResults {
     public func validateAsDescribeElasticGpusMaxResults() throws {
         if self < 10 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeElasticGpusMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeElasticGpusMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeElasticGpusMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeElasticGpusMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4460,11 +4460,11 @@ extension ElasticComputeCloudModel.DescribeElasticGpusMaxResults {
 extension ElasticComputeCloudModel.DescribeHostReservationsMaxResults {
     public func validateAsDescribeHostReservationsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeHostReservationsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeHostReservationsMaxResults violated the minimum range constraint.")
         }
 
         if self > 500 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeHostReservationsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeHostReservationsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4475,11 +4475,11 @@ extension ElasticComputeCloudModel.DescribeHostReservationsMaxResults {
 extension ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsMaxResults {
     public func validateAsDescribeInstanceCreditSpecificationsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeInstanceCreditSpecificationsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeInstanceCreditSpecificationsMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeInstanceCreditSpecificationsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeInstanceCreditSpecificationsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4490,11 +4490,11 @@ extension ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsMaxResult
 extension ElasticComputeCloudModel.DescribeInternetGatewaysMaxResults {
     public func validateAsDescribeInternetGatewaysMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeInternetGatewaysMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeInternetGatewaysMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeInternetGatewaysMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeInternetGatewaysMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4505,11 +4505,11 @@ extension ElasticComputeCloudModel.DescribeInternetGatewaysMaxResults {
 extension ElasticComputeCloudModel.DescribeLaunchTemplatesMaxResults {
     public func validateAsDescribeLaunchTemplatesMaxResults() throws {
         if self < 1 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeLaunchTemplatesMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeLaunchTemplatesMaxResults violated the minimum range constraint.")
         }
 
         if self > 200 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeLaunchTemplatesMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeLaunchTemplatesMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4520,11 +4520,11 @@ extension ElasticComputeCloudModel.DescribeLaunchTemplatesMaxResults {
 extension ElasticComputeCloudModel.DescribeNetworkAclsMaxResults {
     public func validateAsDescribeNetworkAclsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkAclsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeNetworkAclsMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkAclsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeNetworkAclsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4535,11 +4535,11 @@ extension ElasticComputeCloudModel.DescribeNetworkAclsMaxResults {
 extension ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsMaxResults {
     public func validateAsDescribeNetworkInterfacePermissionsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkInterfacePermissionsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeNetworkInterfacePermissionsMaxResults violated the minimum range constraint.")
         }
 
         if self > 255 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkInterfacePermissionsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeNetworkInterfacePermissionsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4550,11 +4550,11 @@ extension ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsMaxResults
 extension ElasticComputeCloudModel.DescribeNetworkInterfacesMaxResults {
     public func validateAsDescribeNetworkInterfacesMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkInterfacesMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeNetworkInterfacesMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeNetworkInterfacesMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeNetworkInterfacesMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4565,11 +4565,11 @@ extension ElasticComputeCloudModel.DescribeNetworkInterfacesMaxResults {
 extension ElasticComputeCloudModel.DescribeRouteTablesMaxResults {
     public func validateAsDescribeRouteTablesMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeRouteTablesMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeRouteTablesMaxResults violated the minimum range constraint.")
         }
 
         if self > 100 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeRouteTablesMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeRouteTablesMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4580,11 +4580,11 @@ extension ElasticComputeCloudModel.DescribeRouteTablesMaxResults {
 extension ElasticComputeCloudModel.DescribeSecurityGroupsMaxResults {
     public func validateAsDescribeSecurityGroupsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeSecurityGroupsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeSecurityGroupsMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeSecurityGroupsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeSecurityGroupsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4595,11 +4595,11 @@ extension ElasticComputeCloudModel.DescribeSecurityGroupsMaxResults {
 extension ElasticComputeCloudModel.DescribeStaleSecurityGroupsMaxResults {
     public func validateAsDescribeStaleSecurityGroupsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsMaxResults violated the minimum range constraint.")
         }
 
         if self > 255 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4610,11 +4610,11 @@ extension ElasticComputeCloudModel.DescribeStaleSecurityGroupsMaxResults {
 extension ElasticComputeCloudModel.DescribeStaleSecurityGroupsNextToken {
     public func validateAsDescribeStaleSecurityGroupsNextToken() throws {
         if self.count < 1 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsNextToken violated the minimum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsNextToken violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsNextToken violated the maximum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsNextToken violated the maximum length constraint.")
         }
     }
 }
@@ -4625,11 +4625,11 @@ extension ElasticComputeCloudModel.DescribeStaleSecurityGroupsNextToken {
 extension ElasticComputeCloudModel.DescribeSubnetsMaxResults {
     public func validateAsDescribeSubnetsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeSubnetsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeSubnetsMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeSubnetsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeSubnetsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4640,11 +4640,11 @@ extension ElasticComputeCloudModel.DescribeSubnetsMaxResults {
 extension ElasticComputeCloudModel.DescribeVpcPeeringConnectionsMaxResults {
     public func validateAsDescribeVpcPeeringConnectionsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeVpcPeeringConnectionsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVpcPeeringConnectionsMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeVpcPeeringConnectionsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVpcPeeringConnectionsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4655,11 +4655,11 @@ extension ElasticComputeCloudModel.DescribeVpcPeeringConnectionsMaxResults {
 extension ElasticComputeCloudModel.DescribeVpcsMaxResults {
     public func validateAsDescribeVpcsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeVpcsMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVpcsMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to DescribeVpcsMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVpcsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4671,7 +4671,7 @@ extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateCon
     public func validateAsFleetLaunchTemplateConfigListRequest() throws {
 
         if self.count > 50 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to FleetLaunchTemplateConfigListRequest violated the maximum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateConfigListRequest violated the maximum length constraint.")
         }
     }
 }
@@ -4683,7 +4683,7 @@ extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateOve
     public func validateAsFleetLaunchTemplateOverridesListRequest() throws {
 
         if self.count > 50 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to FleetLaunchTemplateOverridesListRequest violated the maximum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateOverridesListRequest violated the maximum length constraint.")
         }
     }
 }
@@ -4694,16 +4694,16 @@ extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateOve
 extension ElasticComputeCloudModel.LaunchTemplateName {
     public func validateAsLaunchTemplateName() throws {
         if self.count < 3 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to LaunchTemplateName violated the minimum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to LaunchTemplateName violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to LaunchTemplateName violated the maximum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to LaunchTemplateName violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[a-zA-Z0-9\\(\\)\\.\\-/_]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw ElasticComputeCloudCodingError.validationError(
+                throw ElasticComputeCloudError.validationError(
                     reason: "The provided value to LaunchTemplateName violated the regular expression constraint.")
         }
     }
@@ -4715,11 +4715,11 @@ extension ElasticComputeCloudModel.LaunchTemplateName {
 extension ElasticComputeCloudModel.MaxResults {
     public func validateAsMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to MaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to MaxResults violated the minimum range constraint.")
         }
 
         if self > 255 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to MaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to MaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4730,11 +4730,11 @@ extension ElasticComputeCloudModel.MaxResults {
 extension ElasticComputeCloudModel.NextToken {
     public func validateAsNextToken() throws {
         if self.count < 1 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to NextToken violated the minimum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to NextToken violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to NextToken violated the maximum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to NextToken violated the maximum length constraint.")
         }
     }
 }
@@ -4745,11 +4745,11 @@ extension ElasticComputeCloudModel.NextToken {
 extension ElasticComputeCloudModel.PoolMaxResults {
     public func validateAsPoolMaxResults() throws {
         if self < 1 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to PoolMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to PoolMaxResults violated the minimum range constraint.")
         }
 
         if self > 10 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to PoolMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to PoolMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4760,7 +4760,7 @@ extension ElasticComputeCloudModel.PoolMaxResults {
 extension Array where Element == ElasticComputeCloudModel.PurchaseRequest {
     public func validateAsPurchaseRequestSet() throws {
         if self.count < 1 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to PurchaseRequestSet violated the minimum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to PurchaseRequestSet violated the minimum length constraint.")
         }
 
     }
@@ -4772,11 +4772,11 @@ extension Array where Element == ElasticComputeCloudModel.PurchaseRequest {
 extension Array where Element == ElasticComputeCloudModel.TargetGroup {
     public func validateAsTargetGroups() throws {
         if self.count < 1 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to TargetGroups violated the minimum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to TargetGroups violated the minimum length constraint.")
         }
 
         if self.count > 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to TargetGroups violated the maximum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to TargetGroups violated the maximum length constraint.")
         }
     }
 }
@@ -4787,11 +4787,11 @@ extension Array where Element == ElasticComputeCloudModel.TargetGroup {
 extension ElasticComputeCloudModel.TransitGatewayMaxResults {
     public func validateAsTransitGatewayMaxResults() throws {
         if self < 5 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to TransitGatewayMaxResults violated the minimum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to TransitGatewayMaxResults violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to TransitGatewayMaxResults violated the maximum range constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to TransitGatewayMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -4803,7 +4803,7 @@ extension ElasticComputeCloudModel.VersionDescription {
     public func validateAsVersionDescription() throws {
 
         if self.count > 255 {
-            throw ElasticComputeCloudCodingError.validationError(reason: "The provided value to VersionDescription violated the maximum length constraint.")
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to VersionDescription violated the maximum length constraint.")
         }
     }
 }

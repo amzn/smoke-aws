@@ -24,7 +24,7 @@ import Foundation
 /**
  Operation enumeration for the StepFunctionsModel.
  */
-public enum StepFunctionsModelOperations: String {
+public enum StepFunctionsModelOperations: String, Hashable, CustomStringConvertible {
     case createActivity = "CreateActivity"
     case createStateMachine = "CreateStateMachine"
     case deleteActivity = "DeleteActivity"
@@ -47,6 +47,10 @@ public enum StepFunctionsModelOperations: String {
     case tagResource = "TagResource"
     case untagResource = "UntagResource"
     case updateStateMachine = "UpdateStateMachine"
+
+    public var description: String {
+        return rawValue
+    }
 
     public var operationPath: String {
         switch self {

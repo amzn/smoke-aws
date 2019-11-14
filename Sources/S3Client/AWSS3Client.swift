@@ -21,8 +21,8 @@
 
 import Foundation
 import S3Model
-import SmokeHTTPClient
 import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
@@ -61,6 +61,95 @@ public struct AWSS3Client: S3ClientProtocol {
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
+
+    let abortMultipartUploadOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let completeMultipartUploadOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let copyObjectOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let createBucketOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let createMultipartUploadOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketAnalyticsConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketCorsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketEncryptionOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketInventoryConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketLifecycleOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketMetricsConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketPolicyOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketReplicationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketTaggingOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketWebsiteOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteObjectOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteObjectTaggingOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteObjectsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deletePublicAccessBlockOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketAccelerateConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketAclOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketAnalyticsConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketCorsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketEncryptionOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketInventoryConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketLifecycleOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketLifecycleConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketLocationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketLoggingOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketMetricsConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketNotificationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketNotificationConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketPolicyOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketPolicyStatusOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketReplicationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketRequestPaymentOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketTaggingOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketVersioningOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketWebsiteOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getObjectOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getObjectAclOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getObjectLegalHoldOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getObjectLockConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getObjectRetentionOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getObjectTaggingOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getObjectTorrentOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getPublicAccessBlockOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let headBucketOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let headObjectOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listBucketAnalyticsConfigurationsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listBucketInventoryConfigurationsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listBucketMetricsConfigurationsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listBucketsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listMultipartUploadsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listObjectVersionsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listObjectsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listObjectsV2OperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listPartsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketAccelerateConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketAclOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketAnalyticsConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketCorsOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketEncryptionOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketInventoryConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketLifecycleOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketLifecycleConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketLoggingOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketMetricsConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketNotificationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketNotificationConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketPolicyOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketReplicationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketRequestPaymentOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketTaggingOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketVersioningOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketWebsiteOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putObjectOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putObjectAclOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putObjectLegalHoldOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putObjectLockConfigurationOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putObjectRetentionOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putObjectTaggingOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putPublicAccessBlockOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let restoreObjectOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let selectObjectContentOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let uploadPartOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let uploadPartCopyOperationReporting: StandardSmokeAWSOperationReporting<S3ModelOperations>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
                 endpointHostName: String = "s3.amazonaws.com",
@@ -68,9 +157,11 @@ public struct AWSS3Client: S3ClientProtocol {
                 service: String = "s3",
                 contentType: String = "application/x-amz-rest-xml",
                 target: String? = nil,
-                connectionTimeoutSeconds: Int = 10,
+                connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads) {
+                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ModelOperations>
+                    = SmokeAWSClientReportingConfiguration<S3ModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<S3Error>()
 
         let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>()
@@ -93,6 +184,183 @@ public struct AWSS3Client: S3ClientProtocol {
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
         self.retryOnErrorProvider = { error in error.isRetriable() }
+
+        self.abortMultipartUploadOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .abortMultipartUpload, configuration: reportingConfiguration)
+        self.completeMultipartUploadOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .completeMultipartUpload, configuration: reportingConfiguration)
+        self.copyObjectOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .copyObject, configuration: reportingConfiguration)
+        self.createBucketOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .createBucket, configuration: reportingConfiguration)
+        self.createMultipartUploadOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .createMultipartUpload, configuration: reportingConfiguration)
+        self.deleteBucketOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucket, configuration: reportingConfiguration)
+        self.deleteBucketAnalyticsConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketAnalyticsConfiguration, configuration: reportingConfiguration)
+        self.deleteBucketCorsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketCors, configuration: reportingConfiguration)
+        self.deleteBucketEncryptionOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketEncryption, configuration: reportingConfiguration)
+        self.deleteBucketInventoryConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketInventoryConfiguration, configuration: reportingConfiguration)
+        self.deleteBucketLifecycleOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketLifecycle, configuration: reportingConfiguration)
+        self.deleteBucketMetricsConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketMetricsConfiguration, configuration: reportingConfiguration)
+        self.deleteBucketPolicyOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketPolicy, configuration: reportingConfiguration)
+        self.deleteBucketReplicationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketReplication, configuration: reportingConfiguration)
+        self.deleteBucketTaggingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketTagging, configuration: reportingConfiguration)
+        self.deleteBucketWebsiteOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteBucketWebsite, configuration: reportingConfiguration)
+        self.deleteObjectOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteObject, configuration: reportingConfiguration)
+        self.deleteObjectTaggingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteObjectTagging, configuration: reportingConfiguration)
+        self.deleteObjectsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deleteObjects, configuration: reportingConfiguration)
+        self.deletePublicAccessBlockOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .deletePublicAccessBlock, configuration: reportingConfiguration)
+        self.getBucketAccelerateConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketAccelerateConfiguration, configuration: reportingConfiguration)
+        self.getBucketAclOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketAcl, configuration: reportingConfiguration)
+        self.getBucketAnalyticsConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketAnalyticsConfiguration, configuration: reportingConfiguration)
+        self.getBucketCorsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketCors, configuration: reportingConfiguration)
+        self.getBucketEncryptionOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketEncryption, configuration: reportingConfiguration)
+        self.getBucketInventoryConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketInventoryConfiguration, configuration: reportingConfiguration)
+        self.getBucketLifecycleOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketLifecycle, configuration: reportingConfiguration)
+        self.getBucketLifecycleConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketLifecycleConfiguration, configuration: reportingConfiguration)
+        self.getBucketLocationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketLocation, configuration: reportingConfiguration)
+        self.getBucketLoggingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketLogging, configuration: reportingConfiguration)
+        self.getBucketMetricsConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketMetricsConfiguration, configuration: reportingConfiguration)
+        self.getBucketNotificationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketNotification, configuration: reportingConfiguration)
+        self.getBucketNotificationConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketNotificationConfiguration, configuration: reportingConfiguration)
+        self.getBucketPolicyOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketPolicy, configuration: reportingConfiguration)
+        self.getBucketPolicyStatusOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketPolicyStatus, configuration: reportingConfiguration)
+        self.getBucketReplicationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketReplication, configuration: reportingConfiguration)
+        self.getBucketRequestPaymentOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketRequestPayment, configuration: reportingConfiguration)
+        self.getBucketTaggingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketTagging, configuration: reportingConfiguration)
+        self.getBucketVersioningOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketVersioning, configuration: reportingConfiguration)
+        self.getBucketWebsiteOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getBucketWebsite, configuration: reportingConfiguration)
+        self.getObjectOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getObject, configuration: reportingConfiguration)
+        self.getObjectAclOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getObjectAcl, configuration: reportingConfiguration)
+        self.getObjectLegalHoldOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getObjectLegalHold, configuration: reportingConfiguration)
+        self.getObjectLockConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getObjectLockConfiguration, configuration: reportingConfiguration)
+        self.getObjectRetentionOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getObjectRetention, configuration: reportingConfiguration)
+        self.getObjectTaggingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getObjectTagging, configuration: reportingConfiguration)
+        self.getObjectTorrentOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getObjectTorrent, configuration: reportingConfiguration)
+        self.getPublicAccessBlockOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .getPublicAccessBlock, configuration: reportingConfiguration)
+        self.headBucketOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .headBucket, configuration: reportingConfiguration)
+        self.headObjectOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .headObject, configuration: reportingConfiguration)
+        self.listBucketAnalyticsConfigurationsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .listBucketAnalyticsConfigurations, configuration: reportingConfiguration)
+        self.listBucketInventoryConfigurationsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .listBucketInventoryConfigurations, configuration: reportingConfiguration)
+        self.listBucketMetricsConfigurationsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .listBucketMetricsConfigurations, configuration: reportingConfiguration)
+        self.listBucketsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .listBuckets, configuration: reportingConfiguration)
+        self.listMultipartUploadsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .listMultipartUploads, configuration: reportingConfiguration)
+        self.listObjectVersionsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .listObjectVersions, configuration: reportingConfiguration)
+        self.listObjectsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .listObjects, configuration: reportingConfiguration)
+        self.listObjectsV2OperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .listObjectsV2, configuration: reportingConfiguration)
+        self.listPartsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .listParts, configuration: reportingConfiguration)
+        self.putBucketAccelerateConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketAccelerateConfiguration, configuration: reportingConfiguration)
+        self.putBucketAclOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketAcl, configuration: reportingConfiguration)
+        self.putBucketAnalyticsConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketAnalyticsConfiguration, configuration: reportingConfiguration)
+        self.putBucketCorsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketCors, configuration: reportingConfiguration)
+        self.putBucketEncryptionOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketEncryption, configuration: reportingConfiguration)
+        self.putBucketInventoryConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketInventoryConfiguration, configuration: reportingConfiguration)
+        self.putBucketLifecycleOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketLifecycle, configuration: reportingConfiguration)
+        self.putBucketLifecycleConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketLifecycleConfiguration, configuration: reportingConfiguration)
+        self.putBucketLoggingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketLogging, configuration: reportingConfiguration)
+        self.putBucketMetricsConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketMetricsConfiguration, configuration: reportingConfiguration)
+        self.putBucketNotificationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketNotification, configuration: reportingConfiguration)
+        self.putBucketNotificationConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketNotificationConfiguration, configuration: reportingConfiguration)
+        self.putBucketPolicyOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketPolicy, configuration: reportingConfiguration)
+        self.putBucketReplicationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketReplication, configuration: reportingConfiguration)
+        self.putBucketRequestPaymentOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketRequestPayment, configuration: reportingConfiguration)
+        self.putBucketTaggingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketTagging, configuration: reportingConfiguration)
+        self.putBucketVersioningOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketVersioning, configuration: reportingConfiguration)
+        self.putBucketWebsiteOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putBucketWebsite, configuration: reportingConfiguration)
+        self.putObjectOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putObject, configuration: reportingConfiguration)
+        self.putObjectAclOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putObjectAcl, configuration: reportingConfiguration)
+        self.putObjectLegalHoldOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putObjectLegalHold, configuration: reportingConfiguration)
+        self.putObjectLockConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putObjectLockConfiguration, configuration: reportingConfiguration)
+        self.putObjectRetentionOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putObjectRetention, configuration: reportingConfiguration)
+        self.putObjectTaggingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putObjectTagging, configuration: reportingConfiguration)
+        self.putPublicAccessBlockOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .putPublicAccessBlock, configuration: reportingConfiguration)
+        self.restoreObjectOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .restoreObject, configuration: reportingConfiguration)
+        self.selectObjectContentOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .selectObjectContent, configuration: reportingConfiguration)
+        self.uploadPartOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .uploadPart, configuration: reportingConfiguration)
+        self.uploadPartCopyOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSS3Client", operation: .uploadPartCopy, configuration: reportingConfiguration)
     }
 
     /**
@@ -123,7 +391,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchUpload.
      */
-    public func abortMultipartUploadAsync(input: S3Model.AbortMultipartUploadRequest, completion: @escaping (HTTPResult<S3Model.AbortMultipartUploadOutput>) -> ()) throws {
+    public func abortMultipartUploadAsync(
+            input: S3Model.AbortMultipartUploadRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -132,6 +403,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: abortMultipartUploadOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = AbortMultipartUploadOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -139,7 +413,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -153,7 +427,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchUpload.
      */
-    public func abortMultipartUploadSync(input: S3Model.AbortMultipartUploadRequest) throws -> S3Model.AbortMultipartUploadOutput {
+    public func abortMultipartUploadSync(
+            input: S3Model.AbortMultipartUploadRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.AbortMultipartUploadOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -162,13 +438,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: abortMultipartUploadOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = AbortMultipartUploadOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -182,7 +461,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The CompleteMultipartUploadOutput
            object will be validated before being returned to caller.
      */
-    public func completeMultipartUploadAsync(input: S3Model.CompleteMultipartUploadRequest, completion: @escaping (HTTPResult<S3Model.CompleteMultipartUploadOutput>) -> ()) throws {
+    public func completeMultipartUploadAsync(
+            input: S3Model.CompleteMultipartUploadRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -191,6 +473,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: completeMultipartUploadOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = CompleteMultipartUploadOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -198,7 +483,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -211,7 +496,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The CompleteMultipartUploadOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func completeMultipartUploadSync(input: S3Model.CompleteMultipartUploadRequest) throws -> S3Model.CompleteMultipartUploadOutput {
+    public func completeMultipartUploadSync(
+            input: S3Model.CompleteMultipartUploadRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CompleteMultipartUploadOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -220,13 +507,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: completeMultipartUploadOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = CompleteMultipartUploadOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -241,7 +531,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: objectNotInActiveTier.
      */
-    public func copyObjectAsync(input: S3Model.CopyObjectRequest, completion: @escaping (HTTPResult<S3Model.CopyObjectOutput>) -> ()) throws {
+    public func copyObjectAsync(
+            input: S3Model.CopyObjectRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.CopyObjectOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -250,6 +543,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: copyObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = CopyObjectOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -257,7 +553,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -271,7 +567,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: objectNotInActiveTier.
      */
-    public func copyObjectSync(input: S3Model.CopyObjectRequest) throws -> S3Model.CopyObjectOutput {
+    public func copyObjectSync(
+            input: S3Model.CopyObjectRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CopyObjectOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -280,13 +578,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: copyObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = CopyObjectOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -301,7 +602,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: bucketAlreadyExists, bucketAlreadyOwnedByYou.
      */
-    public func createBucketAsync(input: S3Model.CreateBucketRequest, completion: @escaping (HTTPResult<S3Model.CreateBucketOutput>) -> ()) throws {
+    public func createBucketAsync(
+            input: S3Model.CreateBucketRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.CreateBucketOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -310,6 +614,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createBucketOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = CreateBucketOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -317,7 +624,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -331,7 +638,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: bucketAlreadyExists, bucketAlreadyOwnedByYou.
      */
-    public func createBucketSync(input: S3Model.CreateBucketRequest) throws -> S3Model.CreateBucketOutput {
+    public func createBucketSync(
+            input: S3Model.CreateBucketRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CreateBucketOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -340,13 +649,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createBucketOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = CreateBucketOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -360,7 +672,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The CreateMultipartUploadOutput
            object will be validated before being returned to caller.
      */
-    public func createMultipartUploadAsync(input: S3Model.CreateMultipartUploadRequest, completion: @escaping (HTTPResult<S3Model.CreateMultipartUploadOutput>) -> ()) throws {
+    public func createMultipartUploadAsync(
+            input: S3Model.CreateMultipartUploadRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -369,6 +684,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createMultipartUploadOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = CreateMultipartUploadOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -376,7 +694,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -389,7 +707,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The CreateMultipartUploadOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createMultipartUploadSync(input: S3Model.CreateMultipartUploadRequest) throws -> S3Model.CreateMultipartUploadOutput {
+    public func createMultipartUploadSync(
+            input: S3Model.CreateMultipartUploadRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CreateMultipartUploadOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -398,13 +718,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createMultipartUploadOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = CreateMultipartUploadOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?uploads",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -417,7 +740,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketAsync(input: S3Model.DeleteBucketRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketAsync(
+            input: S3Model.DeleteBucketRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -426,6 +752,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -433,7 +762,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -444,7 +773,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketRequest object being passed to this operation.
      */
-    public func deleteBucketSync(input: S3Model.DeleteBucketRequest) throws {
+    public func deleteBucketSync(
+            input: S3Model.DeleteBucketRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -453,13 +784,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -472,7 +806,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketAnalyticsConfigurationAsync(input: S3Model.DeleteBucketAnalyticsConfigurationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketAnalyticsConfigurationAsync(
+            input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -481,6 +818,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketAnalyticsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -488,7 +828,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -499,7 +839,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
-    public func deleteBucketAnalyticsConfigurationSync(input: S3Model.DeleteBucketAnalyticsConfigurationRequest) throws {
+    public func deleteBucketAnalyticsConfigurationSync(
+            input: S3Model.DeleteBucketAnalyticsConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -508,13 +850,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketAnalyticsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -527,7 +872,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketCorsAsync(input: S3Model.DeleteBucketCorsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketCorsAsync(
+            input: S3Model.DeleteBucketCorsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -536,6 +884,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketCorsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketCorsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -543,7 +894,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -554,7 +905,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketCorsRequest object being passed to this operation.
      */
-    public func deleteBucketCorsSync(input: S3Model.DeleteBucketCorsRequest) throws {
+    public func deleteBucketCorsSync(
+            input: S3Model.DeleteBucketCorsRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -563,13 +916,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketCorsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketCorsOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -582,7 +938,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketEncryptionAsync(input: S3Model.DeleteBucketEncryptionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketEncryptionAsync(
+            input: S3Model.DeleteBucketEncryptionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -591,6 +950,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketEncryptionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -598,7 +960,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -609,7 +971,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketEncryptionRequest object being passed to this operation.
      */
-    public func deleteBucketEncryptionSync(input: S3Model.DeleteBucketEncryptionRequest) throws {
+    public func deleteBucketEncryptionSync(
+            input: S3Model.DeleteBucketEncryptionRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -618,13 +982,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketEncryptionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -637,7 +1004,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketInventoryConfigurationAsync(input: S3Model.DeleteBucketInventoryConfigurationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketInventoryConfigurationAsync(
+            input: S3Model.DeleteBucketInventoryConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -646,6 +1016,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketInventoryConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -653,7 +1026,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -664,7 +1037,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketInventoryConfigurationRequest object being passed to this operation.
      */
-    public func deleteBucketInventoryConfigurationSync(input: S3Model.DeleteBucketInventoryConfigurationRequest) throws {
+    public func deleteBucketInventoryConfigurationSync(
+            input: S3Model.DeleteBucketInventoryConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -673,13 +1048,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketInventoryConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -692,7 +1070,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketLifecycleAsync(input: S3Model.DeleteBucketLifecycleRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketLifecycleAsync(
+            input: S3Model.DeleteBucketLifecycleRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -701,6 +1082,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketLifecycleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -708,7 +1092,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -719,7 +1103,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketLifecycleRequest object being passed to this operation.
      */
-    public func deleteBucketLifecycleSync(input: S3Model.DeleteBucketLifecycleRequest) throws {
+    public func deleteBucketLifecycleSync(
+            input: S3Model.DeleteBucketLifecycleRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -728,13 +1114,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketLifecycleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -747,7 +1136,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketMetricsConfigurationAsync(input: S3Model.DeleteBucketMetricsConfigurationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketMetricsConfigurationAsync(
+            input: S3Model.DeleteBucketMetricsConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -756,6 +1148,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketMetricsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -763,7 +1158,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -774,7 +1169,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketMetricsConfigurationRequest object being passed to this operation.
      */
-    public func deleteBucketMetricsConfigurationSync(input: S3Model.DeleteBucketMetricsConfigurationRequest) throws {
+    public func deleteBucketMetricsConfigurationSync(
+            input: S3Model.DeleteBucketMetricsConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -783,13 +1180,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketMetricsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -802,7 +1202,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketPolicyAsync(input: S3Model.DeleteBucketPolicyRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketPolicyAsync(
+            input: S3Model.DeleteBucketPolicyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -811,6 +1214,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketPolicyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketPolicyOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -818,7 +1224,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -829,7 +1235,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketPolicyRequest object being passed to this operation.
      */
-    public func deleteBucketPolicySync(input: S3Model.DeleteBucketPolicyRequest) throws {
+    public func deleteBucketPolicySync(
+            input: S3Model.DeleteBucketPolicyRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -838,13 +1246,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketPolicyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketPolicyOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -857,7 +1268,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketReplicationAsync(input: S3Model.DeleteBucketReplicationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketReplicationAsync(
+            input: S3Model.DeleteBucketReplicationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -866,6 +1280,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketReplicationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketReplicationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -873,7 +1290,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -884,7 +1301,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketReplicationRequest object being passed to this operation.
      */
-    public func deleteBucketReplicationSync(input: S3Model.DeleteBucketReplicationRequest) throws {
+    public func deleteBucketReplicationSync(
+            input: S3Model.DeleteBucketReplicationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -893,13 +1312,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketReplicationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketReplicationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -912,7 +1334,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketTaggingAsync(input: S3Model.DeleteBucketTaggingRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketTaggingAsync(
+            input: S3Model.DeleteBucketTaggingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -921,6 +1346,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketTaggingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -928,7 +1356,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -939,7 +1367,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketTaggingRequest object being passed to this operation.
      */
-    public func deleteBucketTaggingSync(input: S3Model.DeleteBucketTaggingRequest) throws {
+    public func deleteBucketTaggingSync(
+            input: S3Model.DeleteBucketTaggingRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -948,13 +1378,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketTaggingOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -967,7 +1400,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketWebsiteAsync(input: S3Model.DeleteBucketWebsiteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deleteBucketWebsiteAsync(
+            input: S3Model.DeleteBucketWebsiteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -976,6 +1412,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketWebsiteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -983,7 +1422,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -994,7 +1433,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketWebsiteRequest object being passed to this operation.
      */
-    public func deleteBucketWebsiteSync(input: S3Model.DeleteBucketWebsiteRequest) throws {
+    public func deleteBucketWebsiteSync(
+            input: S3Model.DeleteBucketWebsiteRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1003,13 +1444,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteBucketWebsiteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1023,7 +1467,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The DeleteObjectOutput
            object will be validated before being returned to caller.
      */
-    public func deleteObjectAsync(input: S3Model.DeleteObjectRequest, completion: @escaping (HTTPResult<S3Model.DeleteObjectOutput>) -> ()) throws {
+    public func deleteObjectAsync(
+            input: S3Model.DeleteObjectRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.DeleteObjectOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1032,6 +1479,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1039,7 +1489,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1052,7 +1502,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The DeleteObjectOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteObjectSync(input: S3Model.DeleteObjectRequest) throws -> S3Model.DeleteObjectOutput {
+    public func deleteObjectSync(
+            input: S3Model.DeleteObjectRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.DeleteObjectOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1061,13 +1513,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1081,7 +1536,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The DeleteObjectTaggingOutput
            object will be validated before being returned to caller.
      */
-    public func deleteObjectTaggingAsync(input: S3Model.DeleteObjectTaggingRequest, completion: @escaping (HTTPResult<S3Model.DeleteObjectTaggingOutput>) -> ()) throws {
+    public func deleteObjectTaggingAsync(
+            input: S3Model.DeleteObjectTaggingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1090,6 +1548,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteObjectTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectTaggingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1097,7 +1558,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1110,7 +1571,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The DeleteObjectTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteObjectTaggingSync(input: S3Model.DeleteObjectTaggingRequest) throws -> S3Model.DeleteObjectTaggingOutput {
+    public func deleteObjectTaggingSync(
+            input: S3Model.DeleteObjectTaggingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.DeleteObjectTaggingOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1119,13 +1582,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteObjectTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectTaggingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1139,7 +1605,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The DeleteObjectsOutput
            object will be validated before being returned to caller.
      */
-    public func deleteObjectsAsync(input: S3Model.DeleteObjectsRequest, completion: @escaping (HTTPResult<S3Model.DeleteObjectsOutput>) -> ()) throws {
+    public func deleteObjectsAsync(
+            input: S3Model.DeleteObjectsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.DeleteObjectsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1148,6 +1617,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteObjectsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1155,7 +1627,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1168,7 +1640,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The DeleteObjectsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteObjectsSync(input: S3Model.DeleteObjectsRequest) throws -> S3Model.DeleteObjectsOutput {
+    public func deleteObjectsSync(
+            input: S3Model.DeleteObjectsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.DeleteObjectsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1177,13 +1651,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteObjectsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?delete",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1196,7 +1673,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deletePublicAccessBlockAsync(input: S3Model.DeletePublicAccessBlockRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func deletePublicAccessBlockAsync(
+            input: S3Model.DeletePublicAccessBlockRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1205,6 +1685,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deletePublicAccessBlockOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeletePublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -1212,7 +1695,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .DELETE,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1223,7 +1706,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeletePublicAccessBlockRequest object being passed to this operation.
      */
-    public func deletePublicAccessBlockSync(input: S3Model.DeletePublicAccessBlockRequest) throws {
+    public func deletePublicAccessBlockSync(
+            input: S3Model.DeletePublicAccessBlockRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1232,13 +1717,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deletePublicAccessBlockOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeletePublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .DELETE,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1252,7 +1740,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketAccelerateConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketAccelerateConfigurationAsync(input: S3Model.GetBucketAccelerateConfigurationRequest, completion: @escaping (HTTPResult<S3Model.GetBucketAccelerateConfigurationOutput>) -> ()) throws {
+    public func getBucketAccelerateConfigurationAsync(
+            input: S3Model.GetBucketAccelerateConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1261,6 +1752,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketAccelerateConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1268,7 +1762,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1281,7 +1775,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketAccelerateConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketAccelerateConfigurationSync(input: S3Model.GetBucketAccelerateConfigurationRequest) throws -> S3Model.GetBucketAccelerateConfigurationOutput {
+    public func getBucketAccelerateConfigurationSync(
+            input: S3Model.GetBucketAccelerateConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketAccelerateConfigurationOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1290,13 +1786,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketAccelerateConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?accelerate",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1310,7 +1809,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketAclOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketAclAsync(input: S3Model.GetBucketAclRequest, completion: @escaping (HTTPResult<S3Model.GetBucketAclOutput>) -> ()) throws {
+    public func getBucketAclAsync(
+            input: S3Model.GetBucketAclRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketAclOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1319,6 +1821,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketAclOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAclOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1326,7 +1831,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1339,7 +1844,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketAclOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketAclSync(input: S3Model.GetBucketAclRequest) throws -> S3Model.GetBucketAclOutput {
+    public func getBucketAclSync(
+            input: S3Model.GetBucketAclRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketAclOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1348,13 +1855,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketAclOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAclOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?acl",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1368,7 +1878,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketAnalyticsConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketAnalyticsConfigurationAsync(input: S3Model.GetBucketAnalyticsConfigurationRequest, completion: @escaping (HTTPResult<S3Model.GetBucketAnalyticsConfigurationOutput>) -> ()) throws {
+    public func getBucketAnalyticsConfigurationAsync(
+            input: S3Model.GetBucketAnalyticsConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1377,6 +1890,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketAnalyticsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1384,7 +1900,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1397,7 +1913,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketAnalyticsConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketAnalyticsConfigurationSync(input: S3Model.GetBucketAnalyticsConfigurationRequest) throws -> S3Model.GetBucketAnalyticsConfigurationOutput {
+    public func getBucketAnalyticsConfigurationSync(
+            input: S3Model.GetBucketAnalyticsConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketAnalyticsConfigurationOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1406,13 +1924,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketAnalyticsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1426,7 +1947,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketCorsOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketCorsAsync(input: S3Model.GetBucketCorsRequest, completion: @escaping (HTTPResult<S3Model.GetBucketCorsOutput>) -> ()) throws {
+    public func getBucketCorsAsync(
+            input: S3Model.GetBucketCorsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketCorsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1435,6 +1959,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketCorsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketCorsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1442,7 +1969,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1455,7 +1982,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketCorsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketCorsSync(input: S3Model.GetBucketCorsRequest) throws -> S3Model.GetBucketCorsOutput {
+    public func getBucketCorsSync(
+            input: S3Model.GetBucketCorsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketCorsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1464,13 +1993,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketCorsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketCorsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1484,7 +2016,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketEncryptionOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketEncryptionAsync(input: S3Model.GetBucketEncryptionRequest, completion: @escaping (HTTPResult<S3Model.GetBucketEncryptionOutput>) -> ()) throws {
+    public func getBucketEncryptionAsync(
+            input: S3Model.GetBucketEncryptionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1493,6 +2028,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketEncryptionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1500,7 +2038,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1513,7 +2051,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketEncryptionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketEncryptionSync(input: S3Model.GetBucketEncryptionRequest) throws -> S3Model.GetBucketEncryptionOutput {
+    public func getBucketEncryptionSync(
+            input: S3Model.GetBucketEncryptionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketEncryptionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1522,13 +2062,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketEncryptionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1542,7 +2085,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketInventoryConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketInventoryConfigurationAsync(input: S3Model.GetBucketInventoryConfigurationRequest, completion: @escaping (HTTPResult<S3Model.GetBucketInventoryConfigurationOutput>) -> ()) throws {
+    public func getBucketInventoryConfigurationAsync(
+            input: S3Model.GetBucketInventoryConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1551,6 +2097,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketInventoryConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1558,7 +2107,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1571,7 +2120,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketInventoryConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketInventoryConfigurationSync(input: S3Model.GetBucketInventoryConfigurationRequest) throws -> S3Model.GetBucketInventoryConfigurationOutput {
+    public func getBucketInventoryConfigurationSync(
+            input: S3Model.GetBucketInventoryConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketInventoryConfigurationOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1580,13 +2131,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketInventoryConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1600,7 +2154,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketLifecycleOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketLifecycleAsync(input: S3Model.GetBucketLifecycleRequest, completion: @escaping (HTTPResult<S3Model.GetBucketLifecycleOutput>) -> ()) throws {
+    public func getBucketLifecycleAsync(
+            input: S3Model.GetBucketLifecycleRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1609,6 +2166,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketLifecycleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1616,7 +2176,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1629,7 +2189,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketLifecycleOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketLifecycleSync(input: S3Model.GetBucketLifecycleRequest) throws -> S3Model.GetBucketLifecycleOutput {
+    public func getBucketLifecycleSync(
+            input: S3Model.GetBucketLifecycleRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLifecycleOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1638,13 +2200,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketLifecycleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1658,7 +2223,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketLifecycleConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketLifecycleConfigurationAsync(input: S3Model.GetBucketLifecycleConfigurationRequest, completion: @escaping (HTTPResult<S3Model.GetBucketLifecycleConfigurationOutput>) -> ()) throws {
+    public func getBucketLifecycleConfigurationAsync(
+            input: S3Model.GetBucketLifecycleConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1667,6 +2235,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketLifecycleConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1674,7 +2245,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1687,7 +2258,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketLifecycleConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketLifecycleConfigurationSync(input: S3Model.GetBucketLifecycleConfigurationRequest) throws -> S3Model.GetBucketLifecycleConfigurationOutput {
+    public func getBucketLifecycleConfigurationSync(
+            input: S3Model.GetBucketLifecycleConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLifecycleConfigurationOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1696,13 +2269,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketLifecycleConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1716,7 +2292,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketLocationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketLocationAsync(input: S3Model.GetBucketLocationRequest, completion: @escaping (HTTPResult<S3Model.GetBucketLocationOutput>) -> ()) throws {
+    public func getBucketLocationAsync(
+            input: S3Model.GetBucketLocationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketLocationOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1725,6 +2304,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketLocationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLocationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1732,7 +2314,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1745,7 +2327,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketLocationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketLocationSync(input: S3Model.GetBucketLocationRequest) throws -> S3Model.GetBucketLocationOutput {
+    public func getBucketLocationSync(
+            input: S3Model.GetBucketLocationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLocationOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1754,13 +2338,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketLocationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLocationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?location",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1774,7 +2361,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketLoggingOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketLoggingAsync(input: S3Model.GetBucketLoggingRequest, completion: @escaping (HTTPResult<S3Model.GetBucketLoggingOutput>) -> ()) throws {
+    public func getBucketLoggingAsync(
+            input: S3Model.GetBucketLoggingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1783,6 +2373,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketLoggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLoggingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1790,7 +2383,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1803,7 +2396,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketLoggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketLoggingSync(input: S3Model.GetBucketLoggingRequest) throws -> S3Model.GetBucketLoggingOutput {
+    public func getBucketLoggingSync(
+            input: S3Model.GetBucketLoggingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLoggingOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1812,13 +2407,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketLoggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLoggingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?logging",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1832,7 +2430,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketMetricsConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketMetricsConfigurationAsync(input: S3Model.GetBucketMetricsConfigurationRequest, completion: @escaping (HTTPResult<S3Model.GetBucketMetricsConfigurationOutput>) -> ()) throws {
+    public func getBucketMetricsConfigurationAsync(
+            input: S3Model.GetBucketMetricsConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1841,6 +2442,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketMetricsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1848,7 +2452,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1861,7 +2465,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketMetricsConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketMetricsConfigurationSync(input: S3Model.GetBucketMetricsConfigurationRequest) throws -> S3Model.GetBucketMetricsConfigurationOutput {
+    public func getBucketMetricsConfigurationSync(
+            input: S3Model.GetBucketMetricsConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketMetricsConfigurationOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1870,13 +2476,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketMetricsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1890,7 +2499,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The NotificationConfigurationDeprecated
            object will be validated before being returned to caller.
      */
-    public func getBucketNotificationAsync(input: S3Model.GetBucketNotificationConfigurationRequest, completion: @escaping (HTTPResult<S3Model.NotificationConfigurationDeprecated>) -> ()) throws {
+    public func getBucketNotificationAsync(
+            input: S3Model.GetBucketNotificationConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1899,6 +2511,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketNotificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketNotificationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1906,7 +2521,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1919,7 +2534,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The NotificationConfigurationDeprecated object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketNotificationSync(input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfigurationDeprecated {
+    public func getBucketNotificationSync(
+            input: S3Model.GetBucketNotificationConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.NotificationConfigurationDeprecated {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1928,13 +2545,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketNotificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketNotificationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1948,7 +2568,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The NotificationConfiguration
            object will be validated before being returned to caller.
      */
-    public func getBucketNotificationConfigurationAsync(input: S3Model.GetBucketNotificationConfigurationRequest, completion: @escaping (HTTPResult<S3Model.NotificationConfiguration>) -> ()) throws {
+    public func getBucketNotificationConfigurationAsync(
+            input: S3Model.GetBucketNotificationConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.NotificationConfiguration, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1957,6 +2580,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketNotificationConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1964,7 +2590,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -1977,7 +2603,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The NotificationConfiguration object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketNotificationConfigurationSync(input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfiguration {
+    public func getBucketNotificationConfigurationSync(
+            input: S3Model.GetBucketNotificationConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.NotificationConfiguration {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1986,13 +2614,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketNotificationConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2006,7 +2637,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketPolicyOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketPolicyAsync(input: S3Model.GetBucketPolicyRequest, completion: @escaping (HTTPResult<S3Model.GetBucketPolicyOutput>) -> ()) throws {
+    public func getBucketPolicyAsync(
+            input: S3Model.GetBucketPolicyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2015,6 +2649,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketPolicyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketPolicyOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2022,7 +2659,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2035,7 +2672,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketPolicyOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketPolicySync(input: S3Model.GetBucketPolicyRequest) throws -> S3Model.GetBucketPolicyOutput {
+    public func getBucketPolicySync(
+            input: S3Model.GetBucketPolicyRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketPolicyOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2044,13 +2683,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketPolicyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketPolicyOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2064,7 +2706,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketPolicyStatusOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketPolicyStatusAsync(input: S3Model.GetBucketPolicyStatusRequest, completion: @escaping (HTTPResult<S3Model.GetBucketPolicyStatusOutput>) -> ()) throws {
+    public func getBucketPolicyStatusAsync(
+            input: S3Model.GetBucketPolicyStatusRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2073,6 +2718,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketPolicyStatusOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketPolicyStatusOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2080,7 +2728,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2093,7 +2741,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketPolicyStatusOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketPolicyStatusSync(input: S3Model.GetBucketPolicyStatusRequest) throws -> S3Model.GetBucketPolicyStatusOutput {
+    public func getBucketPolicyStatusSync(
+            input: S3Model.GetBucketPolicyStatusRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketPolicyStatusOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2102,13 +2752,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketPolicyStatusOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketPolicyStatusOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?policyStatus",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2122,7 +2775,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketReplicationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketReplicationAsync(input: S3Model.GetBucketReplicationRequest, completion: @escaping (HTTPResult<S3Model.GetBucketReplicationOutput>) -> ()) throws {
+    public func getBucketReplicationAsync(
+            input: S3Model.GetBucketReplicationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2131,6 +2787,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketReplicationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketReplicationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2138,7 +2797,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2151,7 +2810,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketReplicationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketReplicationSync(input: S3Model.GetBucketReplicationRequest) throws -> S3Model.GetBucketReplicationOutput {
+    public func getBucketReplicationSync(
+            input: S3Model.GetBucketReplicationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketReplicationOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2160,13 +2821,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketReplicationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketReplicationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2180,7 +2844,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketRequestPaymentOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketRequestPaymentAsync(input: S3Model.GetBucketRequestPaymentRequest, completion: @escaping (HTTPResult<S3Model.GetBucketRequestPaymentOutput>) -> ()) throws {
+    public func getBucketRequestPaymentAsync(
+            input: S3Model.GetBucketRequestPaymentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2189,6 +2856,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketRequestPaymentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2196,7 +2866,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2209,7 +2879,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketRequestPaymentOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketRequestPaymentSync(input: S3Model.GetBucketRequestPaymentRequest) throws -> S3Model.GetBucketRequestPaymentOutput {
+    public func getBucketRequestPaymentSync(
+            input: S3Model.GetBucketRequestPaymentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketRequestPaymentOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2218,13 +2890,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketRequestPaymentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?requestPayment",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2238,7 +2913,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketTaggingOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketTaggingAsync(input: S3Model.GetBucketTaggingRequest, completion: @escaping (HTTPResult<S3Model.GetBucketTaggingOutput>) -> ()) throws {
+    public func getBucketTaggingAsync(
+            input: S3Model.GetBucketTaggingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2247,6 +2925,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketTaggingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2254,7 +2935,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2267,7 +2948,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketTaggingSync(input: S3Model.GetBucketTaggingRequest) throws -> S3Model.GetBucketTaggingOutput {
+    public func getBucketTaggingSync(
+            input: S3Model.GetBucketTaggingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketTaggingOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2276,13 +2959,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketTaggingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2296,7 +2982,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketVersioningOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketVersioningAsync(input: S3Model.GetBucketVersioningRequest, completion: @escaping (HTTPResult<S3Model.GetBucketVersioningOutput>) -> ()) throws {
+    public func getBucketVersioningAsync(
+            input: S3Model.GetBucketVersioningRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2305,6 +2994,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketVersioningOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketVersioningOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2312,7 +3004,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2325,7 +3017,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketVersioningOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketVersioningSync(input: S3Model.GetBucketVersioningRequest) throws -> S3Model.GetBucketVersioningOutput {
+    public func getBucketVersioningSync(
+            input: S3Model.GetBucketVersioningRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketVersioningOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2334,13 +3028,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketVersioningOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketVersioningOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?versioning",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2354,7 +3051,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketWebsiteOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketWebsiteAsync(input: S3Model.GetBucketWebsiteRequest, completion: @escaping (HTTPResult<S3Model.GetBucketWebsiteOutput>) -> ()) throws {
+    public func getBucketWebsiteAsync(
+            input: S3Model.GetBucketWebsiteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2363,6 +3063,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketWebsiteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2370,7 +3073,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2383,7 +3086,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetBucketWebsiteOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketWebsiteSync(input: S3Model.GetBucketWebsiteRequest) throws -> S3Model.GetBucketWebsiteOutput {
+    public func getBucketWebsiteSync(
+            input: S3Model.GetBucketWebsiteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketWebsiteOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2392,13 +3097,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getBucketWebsiteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2413,7 +3121,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    public func getObjectAsync(input: S3Model.GetObjectRequest, completion: @escaping (HTTPResult<S3Model.GetObjectOutput>) -> ()) throws {
+    public func getObjectAsync(
+            input: S3Model.GetObjectRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetObjectOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2422,6 +3133,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectOperationHTTPRequestInput(encodable: input)
 
         _ = try dataHttpClient.executeAsyncRetriableWithOutput(
@@ -2429,7 +3143,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2443,7 +3157,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    public func getObjectSync(input: S3Model.GetObjectRequest) throws -> S3Model.GetObjectOutput {
+    public func getObjectSync(
+            input: S3Model.GetObjectRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2452,13 +3168,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectOperationHTTPRequestInput(encodable: input)
 
         return try dataHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2473,7 +3192,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    public func getObjectAclAsync(input: S3Model.GetObjectAclRequest, completion: @escaping (HTTPResult<S3Model.GetObjectAclOutput>) -> ()) throws {
+    public func getObjectAclAsync(
+            input: S3Model.GetObjectAclRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetObjectAclOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2482,6 +3204,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectAclOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectAclOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2489,7 +3214,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2503,7 +3228,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    public func getObjectAclSync(input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput {
+    public func getObjectAclSync(
+            input: S3Model.GetObjectAclRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectAclOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2512,13 +3239,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectAclOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectAclOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?acl",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2532,7 +3262,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectLegalHoldOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectLegalHoldAsync(input: S3Model.GetObjectLegalHoldRequest, completion: @escaping (HTTPResult<S3Model.GetObjectLegalHoldOutput>) -> ()) throws {
+    public func getObjectLegalHoldAsync(
+            input: S3Model.GetObjectLegalHoldRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2541,6 +3274,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectLegalHoldOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2548,7 +3284,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2561,7 +3297,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetObjectLegalHoldOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectLegalHoldSync(input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput {
+    public func getObjectLegalHoldSync(
+            input: S3Model.GetObjectLegalHoldRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectLegalHoldOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2570,13 +3308,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectLegalHoldOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?legal-hold",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2590,7 +3331,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectLockConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectLockConfigurationAsync(input: S3Model.GetObjectLockConfigurationRequest, completion: @escaping (HTTPResult<S3Model.GetObjectLockConfigurationOutput>) -> ()) throws {
+    public func getObjectLockConfigurationAsync(
+            input: S3Model.GetObjectLockConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2599,6 +3343,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectLockConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2606,7 +3353,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2619,7 +3366,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetObjectLockConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectLockConfigurationSync(input: S3Model.GetObjectLockConfigurationRequest) throws -> S3Model.GetObjectLockConfigurationOutput {
+    public func getObjectLockConfigurationSync(
+            input: S3Model.GetObjectLockConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectLockConfigurationOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2628,13 +3377,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectLockConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?object-lock",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2648,7 +3400,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectRetentionOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectRetentionAsync(input: S3Model.GetObjectRetentionRequest, completion: @escaping (HTTPResult<S3Model.GetObjectRetentionOutput>) -> ()) throws {
+    public func getObjectRetentionAsync(
+            input: S3Model.GetObjectRetentionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2657,6 +3412,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectRetentionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectRetentionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2664,7 +3422,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2677,7 +3435,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetObjectRetentionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectRetentionSync(input: S3Model.GetObjectRetentionRequest) throws -> S3Model.GetObjectRetentionOutput {
+    public func getObjectRetentionSync(
+            input: S3Model.GetObjectRetentionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectRetentionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2686,13 +3446,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectRetentionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectRetentionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?retention",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2706,7 +3469,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectTaggingOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectTaggingAsync(input: S3Model.GetObjectTaggingRequest, completion: @escaping (HTTPResult<S3Model.GetObjectTaggingOutput>) -> ()) throws {
+    public func getObjectTaggingAsync(
+            input: S3Model.GetObjectTaggingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2715,6 +3481,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectTaggingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2722,7 +3491,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2735,7 +3504,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetObjectTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectTaggingSync(input: S3Model.GetObjectTaggingRequest) throws -> S3Model.GetObjectTaggingOutput {
+    public func getObjectTaggingSync(
+            input: S3Model.GetObjectTaggingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectTaggingOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2744,13 +3515,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectTaggingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2764,7 +3538,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectTorrentOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectTorrentAsync(input: S3Model.GetObjectTorrentRequest, completion: @escaping (HTTPResult<S3Model.GetObjectTorrentOutput>) -> ()) throws {
+    public func getObjectTorrentAsync(
+            input: S3Model.GetObjectTorrentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2773,6 +3550,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectTorrentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectTorrentOperationHTTPRequestInput(encodable: input)
 
         _ = try dataHttpClient.executeAsyncRetriableWithOutput(
@@ -2780,7 +3560,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2793,7 +3573,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetObjectTorrentOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectTorrentSync(input: S3Model.GetObjectTorrentRequest) throws -> S3Model.GetObjectTorrentOutput {
+    public func getObjectTorrentSync(
+            input: S3Model.GetObjectTorrentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectTorrentOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2802,13 +3584,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getObjectTorrentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetObjectTorrentOperationHTTPRequestInput(encodable: input)
 
         return try dataHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?torrent",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2822,7 +3607,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetPublicAccessBlockOutput
            object will be validated before being returned to caller.
      */
-    public func getPublicAccessBlockAsync(input: S3Model.GetPublicAccessBlockRequest, completion: @escaping (HTTPResult<S3Model.GetPublicAccessBlockOutput>) -> ()) throws {
+    public func getPublicAccessBlockAsync(
+            input: S3Model.GetPublicAccessBlockRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2831,6 +3619,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getPublicAccessBlockOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2838,7 +3629,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2851,7 +3642,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The GetPublicAccessBlockOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getPublicAccessBlockSync(input: S3Model.GetPublicAccessBlockRequest) throws -> S3Model.GetPublicAccessBlockOutput {
+    public func getPublicAccessBlockSync(
+            input: S3Model.GetPublicAccessBlockRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetPublicAccessBlockOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2860,13 +3653,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getPublicAccessBlockOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = GetPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2880,7 +3676,10 @@ public struct AWSS3Client: S3ClientProtocol {
            is complete.
            The possible errors are: noSuchBucket.
      */
-    public func headBucketAsync(input: S3Model.HeadBucketRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func headBucketAsync(
+            input: S3Model.HeadBucketRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2889,6 +3688,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: headBucketOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = HeadBucketOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -2896,7 +3698,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .HEAD,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2908,7 +3710,9 @@ public struct AWSS3Client: S3ClientProtocol {
          - input: The validated HeadBucketRequest object being passed to this operation.
      - Throws: noSuchBucket.
      */
-    public func headBucketSync(input: S3Model.HeadBucketRequest) throws {
+    public func headBucketSync(
+            input: S3Model.HeadBucketRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2917,13 +3721,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: headBucketOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = HeadBucketOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .HEAD,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2938,7 +3745,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    public func headObjectAsync(input: S3Model.HeadObjectRequest, completion: @escaping (HTTPResult<S3Model.HeadObjectOutput>) -> ()) throws {
+    public func headObjectAsync(
+            input: S3Model.HeadObjectRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.HeadObjectOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2947,6 +3757,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: headObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = HeadObjectOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -2954,7 +3767,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .HEAD,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2968,7 +3781,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    public func headObjectSync(input: S3Model.HeadObjectRequest) throws -> S3Model.HeadObjectOutput {
+    public func headObjectSync(
+            input: S3Model.HeadObjectRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.HeadObjectOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2977,13 +3792,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: headObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = HeadObjectOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .HEAD,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -2997,7 +3815,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListBucketAnalyticsConfigurationsOutput
            object will be validated before being returned to caller.
      */
-    public func listBucketAnalyticsConfigurationsAsync(input: S3Model.ListBucketAnalyticsConfigurationsRequest, completion: @escaping (HTTPResult<S3Model.ListBucketAnalyticsConfigurationsOutput>) -> ()) throws {
+    public func listBucketAnalyticsConfigurationsAsync(
+            input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3006,6 +3827,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listBucketAnalyticsConfigurationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListBucketAnalyticsConfigurationsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -3013,7 +3837,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3026,7 +3850,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The ListBucketAnalyticsConfigurationsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listBucketAnalyticsConfigurationsSync(input: S3Model.ListBucketAnalyticsConfigurationsRequest) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
+    public func listBucketAnalyticsConfigurationsSync(
+            input: S3Model.ListBucketAnalyticsConfigurationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3035,13 +3861,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listBucketAnalyticsConfigurationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListBucketAnalyticsConfigurationsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3055,7 +3884,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListBucketInventoryConfigurationsOutput
            object will be validated before being returned to caller.
      */
-    public func listBucketInventoryConfigurationsAsync(input: S3Model.ListBucketInventoryConfigurationsRequest, completion: @escaping (HTTPResult<S3Model.ListBucketInventoryConfigurationsOutput>) -> ()) throws {
+    public func listBucketInventoryConfigurationsAsync(
+            input: S3Model.ListBucketInventoryConfigurationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3064,6 +3896,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listBucketInventoryConfigurationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListBucketInventoryConfigurationsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -3071,7 +3906,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3084,7 +3919,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The ListBucketInventoryConfigurationsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listBucketInventoryConfigurationsSync(input: S3Model.ListBucketInventoryConfigurationsRequest) throws -> S3Model.ListBucketInventoryConfigurationsOutput {
+    public func listBucketInventoryConfigurationsSync(
+            input: S3Model.ListBucketInventoryConfigurationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketInventoryConfigurationsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3093,13 +3930,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listBucketInventoryConfigurationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListBucketInventoryConfigurationsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3113,7 +3953,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListBucketMetricsConfigurationsOutput
            object will be validated before being returned to caller.
      */
-    public func listBucketMetricsConfigurationsAsync(input: S3Model.ListBucketMetricsConfigurationsRequest, completion: @escaping (HTTPResult<S3Model.ListBucketMetricsConfigurationsOutput>) -> ()) throws {
+    public func listBucketMetricsConfigurationsAsync(
+            input: S3Model.ListBucketMetricsConfigurationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3122,6 +3965,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listBucketMetricsConfigurationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListBucketMetricsConfigurationsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -3129,7 +3975,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3142,7 +3988,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The ListBucketMetricsConfigurationsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listBucketMetricsConfigurationsSync(input: S3Model.ListBucketMetricsConfigurationsRequest) throws -> S3Model.ListBucketMetricsConfigurationsOutput {
+    public func listBucketMetricsConfigurationsSync(
+            input: S3Model.ListBucketMetricsConfigurationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketMetricsConfigurationsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3151,13 +3999,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listBucketMetricsConfigurationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListBucketMetricsConfigurationsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3168,7 +4019,9 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListBucketsOutput
            object will be validated before being returned to caller.
      */
-    public func listBucketsAsync(completion: @escaping (HTTPResult<S3Model.ListBucketsOutput>) -> ()) throws {
+    public func listBucketsAsync(
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.ListBucketsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3177,6 +4030,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listBucketsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = NoHTTPRequestInput()
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -3184,7 +4040,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3194,7 +4050,8 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The ListBucketsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listBucketsSync() throws -> S3Model.ListBucketsOutput {
+    public func listBucketsSync(
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3203,13 +4060,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listBucketsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = NoHTTPRequestInput()
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3223,7 +4083,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListMultipartUploadsOutput
            object will be validated before being returned to caller.
      */
-    public func listMultipartUploadsAsync(input: S3Model.ListMultipartUploadsRequest, completion: @escaping (HTTPResult<S3Model.ListMultipartUploadsOutput>) -> ()) throws {
+    public func listMultipartUploadsAsync(
+            input: S3Model.ListMultipartUploadsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3232,6 +4095,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listMultipartUploadsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListMultipartUploadsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -3239,7 +4105,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3252,7 +4118,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The ListMultipartUploadsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listMultipartUploadsSync(input: S3Model.ListMultipartUploadsRequest) throws -> S3Model.ListMultipartUploadsOutput {
+    public func listMultipartUploadsSync(
+            input: S3Model.ListMultipartUploadsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListMultipartUploadsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3261,13 +4129,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listMultipartUploadsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListMultipartUploadsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?uploads",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3281,7 +4152,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListObjectVersionsOutput
            object will be validated before being returned to caller.
      */
-    public func listObjectVersionsAsync(input: S3Model.ListObjectVersionsRequest, completion: @escaping (HTTPResult<S3Model.ListObjectVersionsOutput>) -> ()) throws {
+    public func listObjectVersionsAsync(
+            input: S3Model.ListObjectVersionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3290,6 +4164,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listObjectVersionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListObjectVersionsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -3297,7 +4174,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3310,7 +4187,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The ListObjectVersionsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listObjectVersionsSync(input: S3Model.ListObjectVersionsRequest) throws -> S3Model.ListObjectVersionsOutput {
+    public func listObjectVersionsSync(
+            input: S3Model.ListObjectVersionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListObjectVersionsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3319,13 +4198,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listObjectVersionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListObjectVersionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?versions",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3340,7 +4222,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchBucket.
      */
-    public func listObjectsAsync(input: S3Model.ListObjectsRequest, completion: @escaping (HTTPResult<S3Model.ListObjectsOutput>) -> ()) throws {
+    public func listObjectsAsync(
+            input: S3Model.ListObjectsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.ListObjectsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3349,6 +4234,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listObjectsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListObjectsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -3356,7 +4244,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3370,7 +4258,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchBucket.
      */
-    public func listObjectsSync(input: S3Model.ListObjectsRequest) throws -> S3Model.ListObjectsOutput {
+    public func listObjectsSync(
+            input: S3Model.ListObjectsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListObjectsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3379,13 +4269,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listObjectsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListObjectsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3400,7 +4293,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchBucket.
      */
-    public func listObjectsV2Async(input: S3Model.ListObjectsV2Request, completion: @escaping (HTTPResult<S3Model.ListObjectsV2Output>) -> ()) throws {
+    public func listObjectsV2Async(
+            input: S3Model.ListObjectsV2Request, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.ListObjectsV2Output, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3409,6 +4305,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listObjectsV2OperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListObjectsV2OperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -3416,7 +4315,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3430,7 +4329,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchBucket.
      */
-    public func listObjectsV2Sync(input: S3Model.ListObjectsV2Request) throws -> S3Model.ListObjectsV2Output {
+    public func listObjectsV2Sync(
+            input: S3Model.ListObjectsV2Request,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListObjectsV2Output {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3439,13 +4340,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listObjectsV2OperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListObjectsV2OperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?list-type=2",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3459,7 +4363,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListPartsOutput
            object will be validated before being returned to caller.
      */
-    public func listPartsAsync(input: S3Model.ListPartsRequest, completion: @escaping (HTTPResult<S3Model.ListPartsOutput>) -> ()) throws {
+    public func listPartsAsync(
+            input: S3Model.ListPartsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.ListPartsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3468,6 +4375,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listPartsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListPartsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -3475,7 +4385,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .GET,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3488,7 +4398,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The ListPartsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listPartsSync(input: S3Model.ListPartsRequest) throws -> S3Model.ListPartsOutput {
+    public func listPartsSync(
+            input: S3Model.ListPartsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListPartsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3497,13 +4409,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listPartsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListPartsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .GET,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3516,7 +4431,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketAccelerateConfigurationAsync(input: S3Model.PutBucketAccelerateConfigurationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketAccelerateConfigurationAsync(
+            input: S3Model.PutBucketAccelerateConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3525,6 +4443,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketAccelerateConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -3532,7 +4453,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3543,7 +4464,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketAccelerateConfigurationRequest object being passed to this operation.
      */
-    public func putBucketAccelerateConfigurationSync(input: S3Model.PutBucketAccelerateConfigurationRequest) throws {
+    public func putBucketAccelerateConfigurationSync(
+            input: S3Model.PutBucketAccelerateConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3552,13 +4475,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketAccelerateConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?accelerate",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3571,7 +4497,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketAclAsync(input: S3Model.PutBucketAclRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketAclAsync(
+            input: S3Model.PutBucketAclRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3580,6 +4509,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketAclOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAclOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -3587,7 +4519,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3598,7 +4530,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketAclRequest object being passed to this operation.
      */
-    public func putBucketAclSync(input: S3Model.PutBucketAclRequest) throws {
+    public func putBucketAclSync(
+            input: S3Model.PutBucketAclRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3607,13 +4541,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketAclOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAclOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?acl",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3626,7 +4563,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketAnalyticsConfigurationAsync(input: S3Model.PutBucketAnalyticsConfigurationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketAnalyticsConfigurationAsync(
+            input: S3Model.PutBucketAnalyticsConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3635,6 +4575,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketAnalyticsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -3642,7 +4585,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3653,7 +4596,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
-    public func putBucketAnalyticsConfigurationSync(input: S3Model.PutBucketAnalyticsConfigurationRequest) throws {
+    public func putBucketAnalyticsConfigurationSync(
+            input: S3Model.PutBucketAnalyticsConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3662,13 +4607,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketAnalyticsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3681,7 +4629,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketCorsAsync(input: S3Model.PutBucketCorsRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketCorsAsync(
+            input: S3Model.PutBucketCorsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3690,6 +4641,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketCorsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketCorsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -3697,7 +4651,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3708,7 +4662,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketCorsRequest object being passed to this operation.
      */
-    public func putBucketCorsSync(input: S3Model.PutBucketCorsRequest) throws {
+    public func putBucketCorsSync(
+            input: S3Model.PutBucketCorsRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3717,13 +4673,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketCorsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketCorsOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3736,7 +4695,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketEncryptionAsync(input: S3Model.PutBucketEncryptionRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketEncryptionAsync(
+            input: S3Model.PutBucketEncryptionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3745,6 +4707,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketEncryptionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -3752,7 +4717,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3763,7 +4728,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketEncryptionRequest object being passed to this operation.
      */
-    public func putBucketEncryptionSync(input: S3Model.PutBucketEncryptionRequest) throws {
+    public func putBucketEncryptionSync(
+            input: S3Model.PutBucketEncryptionRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3772,13 +4739,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketEncryptionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3791,7 +4761,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketInventoryConfigurationAsync(input: S3Model.PutBucketInventoryConfigurationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketInventoryConfigurationAsync(
+            input: S3Model.PutBucketInventoryConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3800,6 +4773,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketInventoryConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -3807,7 +4783,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3818,7 +4794,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketInventoryConfigurationRequest object being passed to this operation.
      */
-    public func putBucketInventoryConfigurationSync(input: S3Model.PutBucketInventoryConfigurationRequest) throws {
+    public func putBucketInventoryConfigurationSync(
+            input: S3Model.PutBucketInventoryConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3827,13 +4805,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketInventoryConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3846,7 +4827,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketLifecycleAsync(input: S3Model.PutBucketLifecycleRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketLifecycleAsync(
+            input: S3Model.PutBucketLifecycleRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3855,6 +4839,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketLifecycleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -3862,7 +4849,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3873,7 +4860,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketLifecycleRequest object being passed to this operation.
      */
-    public func putBucketLifecycleSync(input: S3Model.PutBucketLifecycleRequest) throws {
+    public func putBucketLifecycleSync(
+            input: S3Model.PutBucketLifecycleRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3882,13 +4871,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketLifecycleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3901,7 +4893,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketLifecycleConfigurationAsync(input: S3Model.PutBucketLifecycleConfigurationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketLifecycleConfigurationAsync(
+            input: S3Model.PutBucketLifecycleConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3910,6 +4905,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketLifecycleConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -3917,7 +4915,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3928,7 +4926,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketLifecycleConfigurationRequest object being passed to this operation.
      */
-    public func putBucketLifecycleConfigurationSync(input: S3Model.PutBucketLifecycleConfigurationRequest) throws {
+    public func putBucketLifecycleConfigurationSync(
+            input: S3Model.PutBucketLifecycleConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3937,13 +4937,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketLifecycleConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3956,7 +4959,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketLoggingAsync(input: S3Model.PutBucketLoggingRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketLoggingAsync(
+            input: S3Model.PutBucketLoggingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3965,6 +4971,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketLoggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLoggingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -3972,7 +4981,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -3983,7 +4992,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketLoggingRequest object being passed to this operation.
      */
-    public func putBucketLoggingSync(input: S3Model.PutBucketLoggingRequest) throws {
+    public func putBucketLoggingSync(
+            input: S3Model.PutBucketLoggingRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3992,13 +5003,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketLoggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLoggingOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?logging",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4011,7 +5025,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketMetricsConfigurationAsync(input: S3Model.PutBucketMetricsConfigurationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketMetricsConfigurationAsync(
+            input: S3Model.PutBucketMetricsConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4020,6 +5037,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketMetricsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4027,7 +5047,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4038,7 +5058,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketMetricsConfigurationRequest object being passed to this operation.
      */
-    public func putBucketMetricsConfigurationSync(input: S3Model.PutBucketMetricsConfigurationRequest) throws {
+    public func putBucketMetricsConfigurationSync(
+            input: S3Model.PutBucketMetricsConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4047,13 +5069,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketMetricsConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4066,7 +5091,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketNotificationAsync(input: S3Model.PutBucketNotificationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketNotificationAsync(
+            input: S3Model.PutBucketNotificationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4075,6 +5103,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketNotificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketNotificationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4082,7 +5113,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4093,7 +5124,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketNotificationRequest object being passed to this operation.
      */
-    public func putBucketNotificationSync(input: S3Model.PutBucketNotificationRequest) throws {
+    public func putBucketNotificationSync(
+            input: S3Model.PutBucketNotificationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4102,13 +5135,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketNotificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketNotificationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4121,7 +5157,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketNotificationConfigurationAsync(input: S3Model.PutBucketNotificationConfigurationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketNotificationConfigurationAsync(
+            input: S3Model.PutBucketNotificationConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4130,6 +5169,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketNotificationConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4137,7 +5179,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4148,7 +5190,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketNotificationConfigurationRequest object being passed to this operation.
      */
-    public func putBucketNotificationConfigurationSync(input: S3Model.PutBucketNotificationConfigurationRequest) throws {
+    public func putBucketNotificationConfigurationSync(
+            input: S3Model.PutBucketNotificationConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4157,13 +5201,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketNotificationConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4176,7 +5223,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketPolicyAsync(input: S3Model.PutBucketPolicyRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketPolicyAsync(
+            input: S3Model.PutBucketPolicyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4185,6 +5235,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketPolicyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketPolicyOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4192,7 +5245,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4203,7 +5256,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketPolicyRequest object being passed to this operation.
      */
-    public func putBucketPolicySync(input: S3Model.PutBucketPolicyRequest) throws {
+    public func putBucketPolicySync(
+            input: S3Model.PutBucketPolicyRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4212,13 +5267,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketPolicyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketPolicyOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4231,7 +5289,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketReplicationAsync(input: S3Model.PutBucketReplicationRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketReplicationAsync(
+            input: S3Model.PutBucketReplicationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4240,6 +5301,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketReplicationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketReplicationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4247,7 +5311,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4258,7 +5322,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketReplicationRequest object being passed to this operation.
      */
-    public func putBucketReplicationSync(input: S3Model.PutBucketReplicationRequest) throws {
+    public func putBucketReplicationSync(
+            input: S3Model.PutBucketReplicationRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4267,13 +5333,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketReplicationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketReplicationOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4286,7 +5355,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketRequestPaymentAsync(input: S3Model.PutBucketRequestPaymentRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketRequestPaymentAsync(
+            input: S3Model.PutBucketRequestPaymentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4295,6 +5367,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketRequestPaymentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4302,7 +5377,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4313,7 +5388,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketRequestPaymentRequest object being passed to this operation.
      */
-    public func putBucketRequestPaymentSync(input: S3Model.PutBucketRequestPaymentRequest) throws {
+    public func putBucketRequestPaymentSync(
+            input: S3Model.PutBucketRequestPaymentRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4322,13 +5399,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketRequestPaymentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?requestPayment",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4341,7 +5421,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketTaggingAsync(input: S3Model.PutBucketTaggingRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketTaggingAsync(
+            input: S3Model.PutBucketTaggingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4350,6 +5433,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketTaggingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4357,7 +5443,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4368,7 +5454,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketTaggingRequest object being passed to this operation.
      */
-    public func putBucketTaggingSync(input: S3Model.PutBucketTaggingRequest) throws {
+    public func putBucketTaggingSync(
+            input: S3Model.PutBucketTaggingRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4377,13 +5465,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketTaggingOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4396,7 +5487,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketVersioningAsync(input: S3Model.PutBucketVersioningRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketVersioningAsync(
+            input: S3Model.PutBucketVersioningRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4405,6 +5499,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketVersioningOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketVersioningOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4412,7 +5509,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4423,7 +5520,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketVersioningRequest object being passed to this operation.
      */
-    public func putBucketVersioningSync(input: S3Model.PutBucketVersioningRequest) throws {
+    public func putBucketVersioningSync(
+            input: S3Model.PutBucketVersioningRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4432,13 +5531,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketVersioningOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketVersioningOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?versioning",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4451,7 +5553,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketWebsiteAsync(input: S3Model.PutBucketWebsiteRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putBucketWebsiteAsync(
+            input: S3Model.PutBucketWebsiteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4460,6 +5565,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketWebsiteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4467,7 +5575,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4478,7 +5586,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketWebsiteRequest object being passed to this operation.
      */
-    public func putBucketWebsiteSync(input: S3Model.PutBucketWebsiteRequest) throws {
+    public func putBucketWebsiteSync(
+            input: S3Model.PutBucketWebsiteRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4487,13 +5597,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putBucketWebsiteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4507,7 +5620,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectAsync(input: S3Model.PutObjectRequest, completion: @escaping (HTTPResult<S3Model.PutObjectOutput>) -> ()) throws {
+    public func putObjectAsync(
+            input: S3Model.PutObjectRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.PutObjectOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4516,6 +5632,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectOperationHTTPRequestInput(encodable: input)
 
         _ = try dataHttpClient.executeAsyncRetriableWithOutput(
@@ -4523,7 +5642,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4536,7 +5655,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The PutObjectOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectSync(input: S3Model.PutObjectRequest) throws -> S3Model.PutObjectOutput {
+    public func putObjectSync(
+            input: S3Model.PutObjectRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4545,13 +5666,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectOperationHTTPRequestInput(encodable: input)
 
         return try dataHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4566,7 +5690,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    public func putObjectAclAsync(input: S3Model.PutObjectAclRequest, completion: @escaping (HTTPResult<S3Model.PutObjectAclOutput>) -> ()) throws {
+    public func putObjectAclAsync(
+            input: S3Model.PutObjectAclRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.PutObjectAclOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4575,6 +5702,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectAclOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectAclOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -4582,7 +5712,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4596,7 +5726,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    public func putObjectAclSync(input: S3Model.PutObjectAclRequest) throws -> S3Model.PutObjectAclOutput {
+    public func putObjectAclSync(
+            input: S3Model.PutObjectAclRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectAclOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4605,13 +5737,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectAclOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectAclOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?acl",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4625,7 +5760,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectLegalHoldOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectLegalHoldAsync(input: S3Model.PutObjectLegalHoldRequest, completion: @escaping (HTTPResult<S3Model.PutObjectLegalHoldOutput>) -> ()) throws {
+    public func putObjectLegalHoldAsync(
+            input: S3Model.PutObjectLegalHoldRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4634,6 +5772,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectLegalHoldOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -4641,7 +5782,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4654,7 +5795,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The PutObjectLegalHoldOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectLegalHoldSync(input: S3Model.PutObjectLegalHoldRequest) throws -> S3Model.PutObjectLegalHoldOutput {
+    public func putObjectLegalHoldSync(
+            input: S3Model.PutObjectLegalHoldRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectLegalHoldOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4663,13 +5806,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectLegalHoldOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?legal-hold",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4683,7 +5829,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectLockConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectLockConfigurationAsync(input: S3Model.PutObjectLockConfigurationRequest, completion: @escaping (HTTPResult<S3Model.PutObjectLockConfigurationOutput>) -> ()) throws {
+    public func putObjectLockConfigurationAsync(
+            input: S3Model.PutObjectLockConfigurationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4692,6 +5841,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectLockConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -4699,7 +5851,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4712,7 +5864,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The PutObjectLockConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectLockConfigurationSync(input: S3Model.PutObjectLockConfigurationRequest) throws -> S3Model.PutObjectLockConfigurationOutput {
+    public func putObjectLockConfigurationSync(
+            input: S3Model.PutObjectLockConfigurationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectLockConfigurationOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4721,13 +5875,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectLockConfigurationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}?object-lock",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4741,7 +5898,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectRetentionOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectRetentionAsync(input: S3Model.PutObjectRetentionRequest, completion: @escaping (HTTPResult<S3Model.PutObjectRetentionOutput>) -> ()) throws {
+    public func putObjectRetentionAsync(
+            input: S3Model.PutObjectRetentionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4750,6 +5910,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectRetentionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectRetentionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -4757,7 +5920,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4770,7 +5933,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The PutObjectRetentionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectRetentionSync(input: S3Model.PutObjectRetentionRequest) throws -> S3Model.PutObjectRetentionOutput {
+    public func putObjectRetentionSync(
+            input: S3Model.PutObjectRetentionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectRetentionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4779,13 +5944,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectRetentionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectRetentionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?retention",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4799,7 +5967,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectTaggingOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectTaggingAsync(input: S3Model.PutObjectTaggingRequest, completion: @escaping (HTTPResult<S3Model.PutObjectTaggingOutput>) -> ()) throws {
+    public func putObjectTaggingAsync(
+            input: S3Model.PutObjectTaggingRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4808,6 +5979,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectTaggingOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -4815,7 +5989,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4828,7 +6002,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The PutObjectTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectTaggingSync(input: S3Model.PutObjectTaggingRequest) throws -> S3Model.PutObjectTaggingOutput {
+    public func putObjectTaggingSync(
+            input: S3Model.PutObjectTaggingRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectTaggingOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4837,13 +6013,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putObjectTaggingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutObjectTaggingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4856,7 +6035,10 @@ public struct AWSS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putPublicAccessBlockAsync(input: S3Model.PutPublicAccessBlockRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func putPublicAccessBlockAsync(
+            input: S3Model.PutPublicAccessBlockRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4865,6 +6047,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putPublicAccessBlockOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
@@ -4872,7 +6057,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4883,7 +6068,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutPublicAccessBlockRequest object being passed to this operation.
      */
-    public func putPublicAccessBlockSync(input: S3Model.PutPublicAccessBlockRequest) throws {
+    public func putPublicAccessBlockSync(
+            input: S3Model.PutPublicAccessBlockRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4892,13 +6079,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putPublicAccessBlockOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = PutPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4913,7 +6103,10 @@ public struct AWSS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: objectAlreadyInActiveTier.
      */
-    public func restoreObjectAsync(input: S3Model.RestoreObjectRequest, completion: @escaping (HTTPResult<S3Model.RestoreObjectOutput>) -> ()) throws {
+    public func restoreObjectAsync(
+            input: S3Model.RestoreObjectRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.RestoreObjectOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4922,6 +6115,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: restoreObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = RestoreObjectOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -4929,7 +6125,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4943,7 +6139,9 @@ public struct AWSS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: objectAlreadyInActiveTier.
      */
-    public func restoreObjectSync(input: S3Model.RestoreObjectRequest) throws -> S3Model.RestoreObjectOutput {
+    public func restoreObjectSync(
+            input: S3Model.RestoreObjectRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.RestoreObjectOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4952,13 +6150,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: restoreObjectOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = RestoreObjectOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?restore",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -4972,7 +6173,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The SelectObjectContentOutput
            object will be validated before being returned to caller.
      */
-    public func selectObjectContentAsync(input: S3Model.SelectObjectContentRequest, completion: @escaping (HTTPResult<S3Model.SelectObjectContentOutput>) -> ()) throws {
+    public func selectObjectContentAsync(
+            input: S3Model.SelectObjectContentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.SelectObjectContentOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4981,6 +6185,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: selectObjectContentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = SelectObjectContentOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -4988,7 +6195,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .POST,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -5001,7 +6208,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The SelectObjectContentOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func selectObjectContentSync(input: S3Model.SelectObjectContentRequest) throws -> S3Model.SelectObjectContentOutput {
+    public func selectObjectContentSync(
+            input: S3Model.SelectObjectContentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.SelectObjectContentOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5010,13 +6219,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: selectObjectContentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = SelectObjectContentOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?select&select-type=2",
             httpMethod: .POST,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -5030,7 +6242,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The UploadPartOutput
            object will be validated before being returned to caller.
      */
-    public func uploadPartAsync(input: S3Model.UploadPartRequest, completion: @escaping (HTTPResult<S3Model.UploadPartOutput>) -> ()) throws {
+    public func uploadPartAsync(
+            input: S3Model.UploadPartRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.UploadPartOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5039,6 +6254,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: uploadPartOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = UploadPartOperationHTTPRequestInput(encodable: input)
 
         _ = try dataHttpClient.executeAsyncRetriableWithOutput(
@@ -5046,7 +6264,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -5059,7 +6277,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The UploadPartOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func uploadPartSync(input: S3Model.UploadPartRequest) throws -> S3Model.UploadPartOutput {
+    public func uploadPartSync(
+            input: S3Model.UploadPartRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.UploadPartOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5068,13 +6288,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: uploadPartOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = UploadPartOperationHTTPRequestInput(encodable: input)
 
         return try dataHttpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -5088,7 +6311,10 @@ public struct AWSS3Client: S3ClientProtocol {
            callback when the operation is complete. The UploadPartCopyOutput
            object will be validated before being returned to caller.
      */
-    public func uploadPartCopyAsync(input: S3Model.UploadPartCopyRequest, completion: @escaping (HTTPResult<S3Model.UploadPartCopyOutput>) -> ()) throws {
+    public func uploadPartCopyAsync(
+            input: S3Model.UploadPartCopyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<S3Model.UploadPartCopyOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5097,6 +6323,9 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: uploadPartCopyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = UploadPartCopyOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -5104,7 +6333,7 @@ public struct AWSS3Client: S3ClientProtocol {
             httpMethod: .PUT,
             input: requestInput,
             completion: completion,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }
@@ -5117,7 +6346,9 @@ public struct AWSS3Client: S3ClientProtocol {
      - Returns: The UploadPartCopyOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func uploadPartCopySync(input: S3Model.UploadPartCopyRequest) throws -> S3Model.UploadPartCopyOutput {
+    public func uploadPartCopySync(
+            input: S3Model.UploadPartCopyRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> S3Model.UploadPartCopyOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5126,13 +6357,16 @@ public struct AWSS3Client: S3ClientProtocol {
                     target: target,
                     signAllHeaders: true)
 
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: uploadPartCopyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = UploadPartCopyOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            handlerDelegate: handlerDelegate,
+            invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
     }

@@ -922,16 +922,16 @@ public typealias VolumeList = [Volume]
 extension ElasticContainerModel.TagKey {
     public func validateAsTagKey() throws {
         if self.count < 1 {
-            throw ElasticContainerCodingError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
+            throw ElasticContainerError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw ElasticContainerCodingError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
+            throw ElasticContainerError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw ElasticContainerCodingError.validationError(
+                throw ElasticContainerError.validationError(
                     reason: "The provided value to TagKey violated the regular expression constraint.")
         }
     }
@@ -943,16 +943,16 @@ extension ElasticContainerModel.TagKey {
 extension ElasticContainerModel.TagValue {
     public func validateAsTagValue() throws {
         if self.count < 0 {
-            throw ElasticContainerCodingError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
+            throw ElasticContainerError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw ElasticContainerCodingError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
+            throw ElasticContainerError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw ElasticContainerCodingError.validationError(
+                throw ElasticContainerError.validationError(
                     reason: "The provided value to TagValue violated the regular expression constraint.")
         }
     }
@@ -964,11 +964,11 @@ extension ElasticContainerModel.TagValue {
 extension Array where Element == ElasticContainerModel.Tag {
     public func validateAsTags() throws {
         if self.count < 0 {
-            throw ElasticContainerCodingError.validationError(reason: "The provided value to Tags violated the minimum length constraint.")
+            throw ElasticContainerError.validationError(reason: "The provided value to Tags violated the minimum length constraint.")
         }
 
         if self.count > 50 {
-            throw ElasticContainerCodingError.validationError(reason: "The provided value to Tags violated the maximum length constraint.")
+            throw ElasticContainerError.validationError(reason: "The provided value to Tags violated the maximum length constraint.")
         }
     }
 }

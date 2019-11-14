@@ -1,3 +1,15 @@
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License").
+// You may not use this file except in compliance with the License.
+// A copy of the License is located at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// or in the "license" file accompanying this file. This file is distributed
+// on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+// express or implied. See the License for the specific language governing
+// permissions and limitations under the License.
 //
 // S3Object.swift
 // S3Client
@@ -11,11 +23,25 @@ import NIO
 import NIOHTTP1
 
 /**
+ Operation enumeration for the StepFunctionsModel.
+ */
+public enum S3ObjectOperations: String, Hashable, CustomStringConvertible {
+    case get = "Get"
+
+    public var description: String {
+        return rawValue
+    }
+}
+
+
+/**
  Retrieves objects from an S3 bucket.
  */
 public struct S3Object: S3ObjectProtocol {
     let httpClient: HTTPClient
     let handlerDelegate: AWSClientChannelInboundHandlerDelegate
+    
+    let getOperationReporting: StandardSmokeAWSOperationReporting<S3ObjectOperations>
     
     /**
      Initializer.
@@ -29,7 +55,9 @@ public struct S3Object: S3ObjectProtocol {
     public init(credentialsProvider: CredentialsProvider,
                 bucketName: String,
                 contentType: String,
-                clientDelegate: HTTPClientDelegate) {
+                clientDelegate: HTTPClientDelegate,
+                reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ObjectOperations>
+                    = SmokeAWSClientReportingConfiguration<S3ObjectOperations>()) {
         self.httpClient = HTTPClient(endpointHostName: "\(bucketName).s3.amazonaws.com",
                                      endpointPort: 443,
                                      contentType: contentType,
@@ -40,6 +68,9 @@ public struct S3Object: S3ObjectProtocol {
                     service: "s3",
                     target: nil,
                     signAllHeaders: true)
+        
+        self.getOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "S3Object", operation: .get, configuration: reportingConfiguration)
     }
     
     /**
@@ -78,13 +109,15 @@ public struct S3Object: S3ObjectProtocol {
      Gets an object from the S3 bucket, returning the decoded response in the
      completion handler.
      */
-    public func getAsync<OutputType: Codable>(objectPath: String, completion: @escaping (HTTPResult<OutputType>) -> ()) throws {
-        func innerCompletion(result: HTTPResult<BodyHTTPRequestOutput<OutputType>>) {
+    public func getAsync<OutputType: Codable>(objectPath: String,
+                                              reporting: SmokeAWSInvocationReporting,
+                                              completion: @escaping (Result<OutputType, HTTPClientError>) -> ()) throws {
+        func innerCompletion(result: Result<BodyHTTPRequestOutput<OutputType>, HTTPClientError>) {
             switch result {
-            case .response(let result):
-                completion(.response(result.body))
-            case .error(let error):
-                completion(.error(error))
+            case .success(let result):
+                completion(.success(result.body))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
         
@@ -96,18 +129,21 @@ public struct S3Object: S3ObjectProtocol {
             fullEndpointPath = "/" + objectPath
         }
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         _ = try httpClient.executeAsyncWithOutput(
             endpointPath: fullEndpointPath,
             httpMethod: .GET,
             input: NoHTTPRequestInput(),
             completion: innerCompletion,
-            handlerDelegate: handlerDelegate)
+            invocationContext: invocationContext)
     }
 
     /**
      Gets an object from the S3 bucket, returning the decoded response.
      */
-    public func getSync<OutputType: Codable>(objectPath: String) throws -> OutputType {
+    public func getSync<OutputType: Codable>(objectPath: String, reporting: SmokeAWSInvocationReporting) throws -> OutputType {
         // make sure the object path is submitted starting with a "/"
         let fullEndpointPath: String
         if let first = objectPath.first, first == "/" {
@@ -116,12 +152,15 @@ public struct S3Object: S3ObjectProtocol {
             fullEndpointPath = "/" + objectPath
         }
         
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let responseOutput: BodyHTTPRequestOutput<OutputType> =
             try httpClient.executeSyncWithOutput(
                 endpointPath: fullEndpointPath,
                 httpMethod: .GET,
                 input: NoHTTPRequestInput(),
-                handlerDelegate: handlerDelegate)
+                invocationContext: invocationContext)
         
         return responseOutput.body
     }

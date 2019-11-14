@@ -1007,7 +1007,7 @@ extension DynamoDBModel.AttributeName {
     public func validateAsAttributeName() throws {
 
         if self.count > 65535 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to AttributeName violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to AttributeName violated the maximum length constraint.")
         }
     }
 }
@@ -1018,7 +1018,7 @@ extension DynamoDBModel.AttributeName {
 extension Array where Element == DynamoDBModel.AttributeName {
     public func validateAsAttributeNameList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to AttributeNameList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to AttributeNameList violated the minimum length constraint.")
         }
 
     }
@@ -1030,16 +1030,16 @@ extension Array where Element == DynamoDBModel.AttributeName {
 extension DynamoDBModel.AutoScalingPolicyName {
     public func validateAsAutoScalingPolicyName() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to AutoScalingPolicyName violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to AutoScalingPolicyName violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to AutoScalingPolicyName violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to AutoScalingPolicyName violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "\\p{Print}+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(
+                throw DynamoDBError.validationError(
                     reason: "The provided value to AutoScalingPolicyName violated the regular expression constraint.")
         }
     }
@@ -1051,16 +1051,16 @@ extension DynamoDBModel.AutoScalingPolicyName {
 extension DynamoDBModel.AutoScalingRoleArn {
     public func validateAsAutoScalingRoleArn() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to AutoScalingRoleArn violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to AutoScalingRoleArn violated the minimum length constraint.")
         }
 
         if self.count > 1600 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to AutoScalingRoleArn violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to AutoScalingRoleArn violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(
+                throw DynamoDBError.validationError(
                     reason: "The provided value to AutoScalingRoleArn violated the regular expression constraint.")
         }
     }
@@ -1072,11 +1072,11 @@ extension DynamoDBModel.AutoScalingRoleArn {
 extension DynamoDBModel.BackupArn {
     public func validateAsBackupArn() throws {
         if self.count < 37 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to BackupArn violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to BackupArn violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to BackupArn violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to BackupArn violated the maximum length constraint.")
         }
     }
 }
@@ -1087,16 +1087,16 @@ extension DynamoDBModel.BackupArn {
 extension DynamoDBModel.BackupName {
     public func validateAsBackupName() throws {
         if self.count < 3 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to BackupName violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to BackupName violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to BackupName violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to BackupName violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[a-zA-Z0-9_.-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(
+                throw DynamoDBError.validationError(
                     reason: "The provided value to BackupName violated the regular expression constraint.")
         }
     }
@@ -1108,7 +1108,7 @@ extension DynamoDBModel.BackupName {
 extension DynamoDBModel.BackupSizeBytes {
     public func validateAsBackupSizeBytes() throws {
         if self < 0 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to BackupSizeBytes violated the minimum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to BackupSizeBytes violated the minimum range constraint.")
         }
 
     }
@@ -1120,11 +1120,11 @@ extension DynamoDBModel.BackupSizeBytes {
 extension DynamoDBModel.BackupsInputLimit {
     public func validateAsBackupsInputLimit() throws {
         if self < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to BackupsInputLimit violated the minimum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to BackupsInputLimit violated the minimum range constraint.")
         }
 
         if self > 100 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to BackupsInputLimit violated the maximum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to BackupsInputLimit violated the maximum range constraint.")
         }
     }
 }
@@ -1135,11 +1135,11 @@ extension DynamoDBModel.BackupsInputLimit {
 extension Array where Element == DynamoDBModel.CancellationReason {
     public func validateAsCancellationReasonList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to CancellationReasonList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to CancellationReasonList violated the minimum length constraint.")
         }
 
         if self.count > 10 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to CancellationReasonList violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to CancellationReasonList violated the maximum length constraint.")
         }
     }
 }
@@ -1150,11 +1150,11 @@ extension Array where Element == DynamoDBModel.CancellationReason {
 extension DynamoDBModel.ClientRequestToken {
     public func validateAsClientRequestToken() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ClientRequestToken violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ClientRequestToken violated the minimum length constraint.")
         }
 
         if self.count > 36 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ClientRequestToken violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ClientRequestToken violated the maximum length constraint.")
         }
     }
 }
@@ -1165,11 +1165,11 @@ extension DynamoDBModel.ClientRequestToken {
 extension Array where Element == DynamoDBModel.GlobalTableGlobalSecondaryIndexSettingsUpdate {
     public func validateAsGlobalTableGlobalSecondaryIndexSettingsUpdateList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to GlobalTableGlobalSecondaryIndexSettingsUpdateList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to GlobalTableGlobalSecondaryIndexSettingsUpdateList violated the minimum length constraint.")
         }
 
         if self.count > 20 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to GlobalTableGlobalSecondaryIndexSettingsUpdateList violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to GlobalTableGlobalSecondaryIndexSettingsUpdateList violated the maximum length constraint.")
         }
     }
 }
@@ -1180,16 +1180,16 @@ extension Array where Element == DynamoDBModel.GlobalTableGlobalSecondaryIndexSe
 extension DynamoDBModel.IndexName {
     public func validateAsIndexName() throws {
         if self.count < 3 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to IndexName violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to IndexName violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to IndexName violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to IndexName violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[a-zA-Z0-9_.-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(
+                throw DynamoDBError.validationError(
                     reason: "The provided value to IndexName violated the regular expression constraint.")
         }
     }
@@ -1201,7 +1201,7 @@ extension DynamoDBModel.IndexName {
 extension DynamoDBModel.ItemCount {
     public func validateAsItemCount() throws {
         if self < 0 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ItemCount violated the minimum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ItemCount violated the minimum range constraint.")
         }
 
     }
@@ -1213,11 +1213,11 @@ extension DynamoDBModel.ItemCount {
 extension Array where Element == DynamoDBModel.ItemResponse {
     public func validateAsItemResponseList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ItemResponseList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ItemResponseList violated the minimum length constraint.")
         }
 
         if self.count > 10 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ItemResponseList violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ItemResponseList violated the maximum length constraint.")
         }
     }
 }
@@ -1228,11 +1228,11 @@ extension Array where Element == DynamoDBModel.ItemResponse {
 extension Array where Element == DynamoDBModel.Key {
     public func validateAsKeyList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to KeyList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to KeyList violated the minimum length constraint.")
         }
 
         if self.count > 100 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to KeyList violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to KeyList violated the maximum length constraint.")
         }
     }
 }
@@ -1243,11 +1243,11 @@ extension Array where Element == DynamoDBModel.Key {
 extension Array where Element == DynamoDBModel.KeySchemaElement {
     public func validateAsKeySchema() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to KeySchema violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to KeySchema violated the minimum length constraint.")
         }
 
         if self.count > 2 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to KeySchema violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to KeySchema violated the maximum length constraint.")
         }
     }
 }
@@ -1258,11 +1258,11 @@ extension Array where Element == DynamoDBModel.KeySchemaElement {
 extension DynamoDBModel.KeySchemaAttributeName {
     public func validateAsKeySchemaAttributeName() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to KeySchemaAttributeName violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to KeySchemaAttributeName violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to KeySchemaAttributeName violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to KeySchemaAttributeName violated the maximum length constraint.")
         }
     }
 }
@@ -1273,11 +1273,11 @@ extension DynamoDBModel.KeySchemaAttributeName {
 extension DynamoDBModel.ListTablesInputLimit {
     public func validateAsListTablesInputLimit() throws {
         if self < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ListTablesInputLimit violated the minimum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ListTablesInputLimit violated the minimum range constraint.")
         }
 
         if self > 100 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ListTablesInputLimit violated the maximum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ListTablesInputLimit violated the maximum range constraint.")
         }
     }
 }
@@ -1288,11 +1288,11 @@ extension DynamoDBModel.ListTablesInputLimit {
 extension DynamoDBModel.NonKeyAttributeName {
     public func validateAsNonKeyAttributeName() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to NonKeyAttributeName violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to NonKeyAttributeName violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to NonKeyAttributeName violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to NonKeyAttributeName violated the maximum length constraint.")
         }
     }
 }
@@ -1303,11 +1303,11 @@ extension DynamoDBModel.NonKeyAttributeName {
 extension Array where Element == DynamoDBModel.NonKeyAttributeName {
     public func validateAsNonKeyAttributeNameList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to NonKeyAttributeNameList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to NonKeyAttributeNameList violated the minimum length constraint.")
         }
 
         if self.count > 20 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to NonKeyAttributeNameList violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to NonKeyAttributeNameList violated the maximum length constraint.")
         }
     }
 }
@@ -1318,7 +1318,7 @@ extension Array where Element == DynamoDBModel.NonKeyAttributeName {
 extension DynamoDBModel.NonNegativeLongObject {
     public func validateAsNonNegativeLongObject() throws {
         if self < 0 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to NonNegativeLongObject violated the minimum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to NonNegativeLongObject violated the minimum range constraint.")
         }
 
     }
@@ -1330,7 +1330,7 @@ extension DynamoDBModel.NonNegativeLongObject {
 extension DynamoDBModel.PositiveIntegerObject {
     public func validateAsPositiveIntegerObject() throws {
         if self < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to PositiveIntegerObject violated the minimum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to PositiveIntegerObject violated the minimum range constraint.")
         }
 
     }
@@ -1342,7 +1342,7 @@ extension DynamoDBModel.PositiveIntegerObject {
 extension DynamoDBModel.PositiveLongObject {
     public func validateAsPositiveLongObject() throws {
         if self < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to PositiveLongObject violated the minimum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to PositiveLongObject violated the minimum range constraint.")
         }
 
     }
@@ -1354,11 +1354,11 @@ extension DynamoDBModel.PositiveLongObject {
 extension Array where Element == DynamoDBModel.ReplicaGlobalSecondaryIndexSettingsUpdate {
     public func validateAsReplicaGlobalSecondaryIndexSettingsUpdateList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ReplicaGlobalSecondaryIndexSettingsUpdateList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ReplicaGlobalSecondaryIndexSettingsUpdateList violated the minimum length constraint.")
         }
 
         if self.count > 20 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ReplicaGlobalSecondaryIndexSettingsUpdateList violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ReplicaGlobalSecondaryIndexSettingsUpdateList violated the maximum length constraint.")
         }
     }
 }
@@ -1369,11 +1369,11 @@ extension Array where Element == DynamoDBModel.ReplicaGlobalSecondaryIndexSettin
 extension Array where Element == DynamoDBModel.ReplicaSettingsUpdate {
     public func validateAsReplicaSettingsUpdateList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ReplicaSettingsUpdateList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ReplicaSettingsUpdateList violated the minimum length constraint.")
         }
 
         if self.count > 50 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ReplicaSettingsUpdateList violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ReplicaSettingsUpdateList violated the maximum length constraint.")
         }
     }
 }
@@ -1384,11 +1384,11 @@ extension Array where Element == DynamoDBModel.ReplicaSettingsUpdate {
 extension DynamoDBModel.ResourceArnString {
     public func validateAsResourceArnString() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ResourceArnString violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ResourceArnString violated the minimum length constraint.")
         }
 
         if self.count > 1283 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ResourceArnString violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ResourceArnString violated the maximum length constraint.")
         }
     }
 }
@@ -1399,11 +1399,11 @@ extension DynamoDBModel.ResourceArnString {
 extension DynamoDBModel.ScanSegment {
     public func validateAsScanSegment() throws {
         if self < 0 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ScanSegment violated the minimum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ScanSegment violated the minimum range constraint.")
         }
 
         if self > 999999 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ScanSegment violated the maximum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ScanSegment violated the maximum range constraint.")
         }
     }
 }
@@ -1414,11 +1414,11 @@ extension DynamoDBModel.ScanSegment {
 extension DynamoDBModel.ScanTotalSegments {
     public func validateAsScanTotalSegments() throws {
         if self < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ScanTotalSegments violated the minimum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ScanTotalSegments violated the minimum range constraint.")
         }
 
         if self > 1000000 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to ScanTotalSegments violated the maximum range constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to ScanTotalSegments violated the maximum range constraint.")
         }
     }
 }
@@ -1429,11 +1429,11 @@ extension DynamoDBModel.ScanTotalSegments {
 extension DynamoDBModel.StreamArn {
     public func validateAsStreamArn() throws {
         if self.count < 37 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to StreamArn violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to StreamArn violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to StreamArn violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to StreamArn violated the maximum length constraint.")
         }
     }
 }
@@ -1445,7 +1445,7 @@ extension DynamoDBModel.TableId {
     public func validateAsTableId() throws {
         guard let matchingRange = self.range(of: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(
+                throw DynamoDBError.validationError(
                     reason: "The provided value to TableId violated the regular expression constraint.")
         }
     }
@@ -1457,16 +1457,16 @@ extension DynamoDBModel.TableId {
 extension DynamoDBModel.TableName {
     public func validateAsTableName() throws {
         if self.count < 3 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TableName violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TableName violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TableName violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TableName violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "[a-zA-Z0-9_.-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw DynamoDBCodingError.validationError(
+                throw DynamoDBError.validationError(
                     reason: "The provided value to TableName violated the regular expression constraint.")
         }
     }
@@ -1478,11 +1478,11 @@ extension DynamoDBModel.TableName {
 extension DynamoDBModel.TagKeyString {
     public func validateAsTagKeyString() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TagKeyString violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TagKeyString violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TagKeyString violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TagKeyString violated the maximum length constraint.")
         }
     }
 }
@@ -1493,11 +1493,11 @@ extension DynamoDBModel.TagKeyString {
 extension DynamoDBModel.TagValueString {
     public func validateAsTagValueString() throws {
         if self.count < 0 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TagValueString violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TagValueString violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TagValueString violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TagValueString violated the maximum length constraint.")
         }
     }
 }
@@ -1508,11 +1508,11 @@ extension DynamoDBModel.TagValueString {
 extension DynamoDBModel.TimeToLiveAttributeName {
     public func validateAsTimeToLiveAttributeName() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TimeToLiveAttributeName violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TimeToLiveAttributeName violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TimeToLiveAttributeName violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TimeToLiveAttributeName violated the maximum length constraint.")
         }
     }
 }
@@ -1523,11 +1523,11 @@ extension DynamoDBModel.TimeToLiveAttributeName {
 extension Array where Element == DynamoDBModel.TransactGetItem {
     public func validateAsTransactGetItemList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TransactGetItemList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TransactGetItemList violated the minimum length constraint.")
         }
 
         if self.count > 10 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TransactGetItemList violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TransactGetItemList violated the maximum length constraint.")
         }
     }
 }
@@ -1538,11 +1538,11 @@ extension Array where Element == DynamoDBModel.TransactGetItem {
 extension Array where Element == DynamoDBModel.TransactWriteItem {
     public func validateAsTransactWriteItemList() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TransactWriteItemList violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TransactWriteItemList violated the minimum length constraint.")
         }
 
         if self.count > 10 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to TransactWriteItemList violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to TransactWriteItemList violated the maximum length constraint.")
         }
     }
 }
@@ -1553,11 +1553,11 @@ extension Array where Element == DynamoDBModel.TransactWriteItem {
 extension Array where Element == DynamoDBModel.WriteRequest {
     public func validateAsWriteRequests() throws {
         if self.count < 1 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to WriteRequests violated the minimum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to WriteRequests violated the minimum length constraint.")
         }
 
         if self.count > 25 {
-            throw DynamoDBCodingError.validationError(reason: "The provided value to WriteRequests violated the maximum length constraint.")
+            throw DynamoDBError.validationError(reason: "The provided value to WriteRequests violated the maximum length constraint.")
         }
     }
 }

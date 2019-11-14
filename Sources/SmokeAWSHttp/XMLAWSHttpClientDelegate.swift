@@ -19,7 +19,7 @@ import Foundation
 import NIOHTTP1
 import XMLCoding
 import SmokeAWSCore
-import LoggerAPI
+import Logging
 import SmokeHTTPClient
 import QueryCoding
 import HTTPHeadersCoding
@@ -116,7 +116,7 @@ struct ErrorWrapper<ErrorType: Error & Decodable>: Error & Decodable {
 /**
  Struct conforming to the AWSHttpClientDelegate protocol that encodes and decode the request
  and response body to and from XML. The generic ErrorType is used to generate errors based
- on the decoding a XML error payload from the response body. 
+ on the decoding a XML error payload from the response body.
  */
 public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
     private let inputBodyRootKey: String?
@@ -141,20 +141,24 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
     }
     
     public func getResponseError(responseHead: HTTPResponseHead,
-                                 responseComponents: HTTPResponseComponents) throws -> Error {
+                                 responseComponents: HTTPResponseComponents,
+                                 invocationReporting: HTTPClientInvocationReporting) throws -> HTTPClientError {
         guard let bodyData = responseComponents.body else {
             throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
         }
         
         // Convert bodyData to a debug string only if debug logging is enabled
-        Log.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
+        invocationReporting.logger.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
         
-        return try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
+        let cause = try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
+        
+        return HTTPClientError(responseCode: Int(responseHead.status.code), cause: cause)
     }
     
     public func encodeInputAndQueryString<InputType>(
         input: InputType,
-        httpPath: String) throws -> HTTPRequestComponents
+        httpPath: String,
+        invocationReporting: HTTPClientInvocationReporting) throws -> HTTPRequestComponents
         where InputType: HTTPRequestInputProtocol {
             
             let pathPostfix = input.pathPostfix ?? ""
@@ -224,8 +228,8 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
                                          body: body)
     }
     
-    public func decodeOutput<OutputType>(output: Data?,
-                                  headers: [(String, String)]) throws -> OutputType
+    public func decodeOutput<OutputType>(output: Data?, headers: [(String, String)],
+                                         invocationReporting: HTTPClientInvocationReporting) throws -> OutputType
     where OutputType: HTTPResponseOutputProtocol {
         let decoder = XMLDecoder.awsCompatibleDecoder()
         
@@ -238,7 +242,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         }
         
         // Convert output to a debug string only if debug logging is enabled
-        Log.debug("Attempting to decode result data into XML: \(output.debugString)")
+        invocationReporting.logger.debug("Attempting to decode result data into XML: \(output.debugString)")
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
             // we are expecting a response body

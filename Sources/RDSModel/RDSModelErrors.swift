@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let authorizationAlreadyExistsIdentity = "AuthorizationAlreadyExists"
 private let authorizationNotFoundIdentity = "AuthorizationNotFound"
@@ -117,12 +117,6 @@ private let subscriptionCategoryNotFoundIdentity = "SubscriptionCategoryNotFound
 private let subscriptionNotFoundIdentity = "SubscriptionNotFound"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum RDSCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum RDSError: Swift.Error, Decodable {
     case authorizationAlreadyExists(AuthorizationAlreadyExistsFault)
     case authorizationNotFound(AuthorizationNotFoundFault)
@@ -218,6 +212,8 @@ public enum RDSError: Swift.Error, Decodable {
     case subscriptionCategoryNotFound(SubscriptionCategoryNotFoundFault)
     case subscriptionNotFound(SubscriptionNotFoundFault)
     case accessDenied(message: String?)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "Code"
@@ -516,7 +512,7 @@ public enum RDSError: Swift.Error, Decodable {
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            throw RDSCodingError.unrecognizedError(errorReason, errorMessage)
+            self = RDSError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

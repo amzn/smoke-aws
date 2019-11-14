@@ -21,24 +21,55 @@
 
 import Foundation
 import RDSDataModel
+import SmokeAWSCore
 import SmokeHTTPClient
 
 /**
  Client Protocol for the RDSData service.
  */
 public protocol RDSDataClientProtocol {
-    typealias BatchExecuteStatementSyncType = (_ input: RDSDataModel.BatchExecuteStatementRequest) throws -> RDSDataModel.BatchExecuteStatementResponse
-    typealias BatchExecuteStatementAsyncType = (_ input: RDSDataModel.BatchExecuteStatementRequest, _ completion: @escaping (HTTPResult<RDSDataModel.BatchExecuteStatementResponse>) -> ()) throws -> ()
-    typealias BeginTransactionSyncType = (_ input: RDSDataModel.BeginTransactionRequest) throws -> RDSDataModel.BeginTransactionResponse
-    typealias BeginTransactionAsyncType = (_ input: RDSDataModel.BeginTransactionRequest, _ completion: @escaping (HTTPResult<RDSDataModel.BeginTransactionResponse>) -> ()) throws -> ()
-    typealias CommitTransactionSyncType = (_ input: RDSDataModel.CommitTransactionRequest) throws -> RDSDataModel.CommitTransactionResponse
-    typealias CommitTransactionAsyncType = (_ input: RDSDataModel.CommitTransactionRequest, _ completion: @escaping (HTTPResult<RDSDataModel.CommitTransactionResponse>) -> ()) throws -> ()
-    typealias ExecuteSqlSyncType = (_ input: RDSDataModel.ExecuteSqlRequest) throws -> RDSDataModel.ExecuteSqlResponse
-    typealias ExecuteSqlAsyncType = (_ input: RDSDataModel.ExecuteSqlRequest, _ completion: @escaping (HTTPResult<RDSDataModel.ExecuteSqlResponse>) -> ()) throws -> ()
-    typealias ExecuteStatementSyncType = (_ input: RDSDataModel.ExecuteStatementRequest) throws -> RDSDataModel.ExecuteStatementResponse
-    typealias ExecuteStatementAsyncType = (_ input: RDSDataModel.ExecuteStatementRequest, _ completion: @escaping (HTTPResult<RDSDataModel.ExecuteStatementResponse>) -> ()) throws -> ()
-    typealias RollbackTransactionSyncType = (_ input: RDSDataModel.RollbackTransactionRequest) throws -> RDSDataModel.RollbackTransactionResponse
-    typealias RollbackTransactionAsyncType = (_ input: RDSDataModel.RollbackTransactionRequest, _ completion: @escaping (HTTPResult<RDSDataModel.RollbackTransactionResponse>) -> ()) throws -> ()
+    typealias BatchExecuteStatementSyncType = (
+            _ input: RDSDataModel.BatchExecuteStatementRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BatchExecuteStatementResponse
+    typealias BatchExecuteStatementAsyncType = (
+            _ input: RDSDataModel.BatchExecuteStatementRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws -> ()
+    typealias BeginTransactionSyncType = (
+            _ input: RDSDataModel.BeginTransactionRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BeginTransactionResponse
+    typealias BeginTransactionAsyncType = (
+            _ input: RDSDataModel.BeginTransactionRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws -> ()
+    typealias CommitTransactionSyncType = (
+            _ input: RDSDataModel.CommitTransactionRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.CommitTransactionResponse
+    typealias CommitTransactionAsyncType = (
+            _ input: RDSDataModel.CommitTransactionRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws -> ()
+    typealias ExecuteSqlSyncType = (
+            _ input: RDSDataModel.ExecuteSqlRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteSqlResponse
+    typealias ExecuteSqlAsyncType = (
+            _ input: RDSDataModel.ExecuteSqlRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws -> ()
+    typealias ExecuteStatementSyncType = (
+            _ input: RDSDataModel.ExecuteStatementRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteStatementResponse
+    typealias ExecuteStatementAsyncType = (
+            _ input: RDSDataModel.ExecuteStatementRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws -> ()
+    typealias RollbackTransactionSyncType = (
+            _ input: RDSDataModel.RollbackTransactionRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.RollbackTransactionResponse
+    typealias RollbackTransactionAsyncType = (
+            _ input: RDSDataModel.RollbackTransactionRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws -> ()
 
     /**
      Invokes the BatchExecuteStatement operation returning immediately and passing the response to a callback.
@@ -50,7 +81,10 @@ public protocol RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    func batchExecuteStatementAsync(input: RDSDataModel.BatchExecuteStatementRequest, completion: @escaping (HTTPResult<RDSDataModel.BatchExecuteStatementResponse>) -> ()) throws
+    func batchExecuteStatementAsync(
+            input: RDSDataModel.BatchExecuteStatementRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the BatchExecuteStatement operation waiting for the response before returning.
@@ -61,7 +95,9 @@ public protocol RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    func batchExecuteStatementSync(input: RDSDataModel.BatchExecuteStatementRequest) throws -> RDSDataModel.BatchExecuteStatementResponse
+    func batchExecuteStatementSync(
+            input: RDSDataModel.BatchExecuteStatementRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BatchExecuteStatementResponse
 
     /**
      Invokes the BeginTransaction operation returning immediately and passing the response to a callback.
@@ -73,7 +109,10 @@ public protocol RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    func beginTransactionAsync(input: RDSDataModel.BeginTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.BeginTransactionResponse>) -> ()) throws
+    func beginTransactionAsync(
+            input: RDSDataModel.BeginTransactionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the BeginTransaction operation waiting for the response before returning.
@@ -84,7 +123,9 @@ public protocol RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    func beginTransactionSync(input: RDSDataModel.BeginTransactionRequest) throws -> RDSDataModel.BeginTransactionResponse
+    func beginTransactionSync(
+            input: RDSDataModel.BeginTransactionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BeginTransactionResponse
 
     /**
      Invokes the CommitTransaction operation returning immediately and passing the response to a callback.
@@ -96,7 +137,10 @@ public protocol RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
      */
-    func commitTransactionAsync(input: RDSDataModel.CommitTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.CommitTransactionResponse>) -> ()) throws
+    func commitTransactionAsync(
+            input: RDSDataModel.CommitTransactionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the CommitTransaction operation waiting for the response before returning.
@@ -107,7 +151,9 @@ public protocol RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
      */
-    func commitTransactionSync(input: RDSDataModel.CommitTransactionRequest) throws -> RDSDataModel.CommitTransactionResponse
+    func commitTransactionSync(
+            input: RDSDataModel.CommitTransactionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.CommitTransactionResponse
 
     /**
      Invokes the ExecuteSql operation returning immediately and passing the response to a callback.
@@ -119,7 +165,10 @@ public protocol RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable.
      */
-    func executeSqlAsync(input: RDSDataModel.ExecuteSqlRequest, completion: @escaping (HTTPResult<RDSDataModel.ExecuteSqlResponse>) -> ()) throws
+    func executeSqlAsync(
+            input: RDSDataModel.ExecuteSqlRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the ExecuteSql operation waiting for the response before returning.
@@ -130,7 +179,9 @@ public protocol RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable.
      */
-    func executeSqlSync(input: RDSDataModel.ExecuteSqlRequest) throws -> RDSDataModel.ExecuteSqlResponse
+    func executeSqlSync(
+            input: RDSDataModel.ExecuteSqlRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteSqlResponse
 
     /**
      Invokes the ExecuteStatement operation returning immediately and passing the response to a callback.
@@ -142,7 +193,10 @@ public protocol RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    func executeStatementAsync(input: RDSDataModel.ExecuteStatementRequest, completion: @escaping (HTTPResult<RDSDataModel.ExecuteStatementResponse>) -> ()) throws
+    func executeStatementAsync(
+            input: RDSDataModel.ExecuteStatementRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the ExecuteStatement operation waiting for the response before returning.
@@ -153,7 +207,9 @@ public protocol RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    func executeStatementSync(input: RDSDataModel.ExecuteStatementRequest) throws -> RDSDataModel.ExecuteStatementResponse
+    func executeStatementSync(
+            input: RDSDataModel.ExecuteStatementRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteStatementResponse
 
     /**
      Invokes the RollbackTransaction operation returning immediately and passing the response to a callback.
@@ -165,7 +221,10 @@ public protocol RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
      */
-    func rollbackTransactionAsync(input: RDSDataModel.RollbackTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.RollbackTransactionResponse>) -> ()) throws
+    func rollbackTransactionAsync(
+            input: RDSDataModel.RollbackTransactionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws
 
     /**
      Invokes the RollbackTransaction operation waiting for the response before returning.
@@ -176,5 +235,7 @@ public protocol RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
      */
-    func rollbackTransactionSync(input: RDSDataModel.RollbackTransactionRequest) throws -> RDSDataModel.RollbackTransactionResponse
+    func rollbackTransactionSync(
+            input: RDSDataModel.RollbackTransactionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.RollbackTransactionResponse
 }

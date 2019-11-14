@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import LoggerAPI
+import Logging
 
 private let accessDeniedIdentity = "AccessDeniedException"
 private let attributeLimitExceededIdentity = "AttributeLimitExceededException"
@@ -44,12 +44,6 @@ private let taskSetNotFoundIdentity = "TaskSetNotFoundException"
 private let unsupportedFeatureIdentity = "UnsupportedFeatureException"
 private let updateInProgressIdentity = "UpdateInProgressException"
 
-public enum ElasticContainerCodingError: Swift.Error {
-    case unknownError
-    case validationError(reason: String)
-    case unrecognizedError(String, String?)
-}
-
 public enum ElasticContainerError: Swift.Error, Decodable {
     case accessDenied(AccessDeniedException)
     case attributeLimitExceeded(AttributeLimitExceededException)
@@ -72,6 +66,8 @@ public enum ElasticContainerError: Swift.Error, Decodable {
     case taskSetNotFound(TaskSetNotFoundException)
     case unsupportedFeature(UnsupportedFeatureException)
     case updateInProgress(UpdateInProgressException)
+    case validationError(reason: String)
+    case unrecognizedError(String, String?)
 
     enum CodingKeys: String, CodingKey {
         case type = "__type"
@@ -152,7 +148,7 @@ public enum ElasticContainerError: Swift.Error, Decodable {
             let errorPayload = try UpdateInProgressException(from: decoder)
             self = ElasticContainerError.updateInProgress(errorPayload)
         default:
-            throw ElasticContainerCodingError.unrecognizedError(errorReason, errorMessage)
+            self = ElasticContainerError.unrecognizedError(errorReason, errorMessage)
         }
     }
     
