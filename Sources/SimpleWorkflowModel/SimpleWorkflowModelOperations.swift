@@ -41,6 +41,7 @@ public enum SimpleWorkflowModelOperations: String, Hashable, CustomStringConvert
     case listClosedWorkflowExecutions = "ListClosedWorkflowExecutions"
     case listDomains = "ListDomains"
     case listOpenWorkflowExecutions = "ListOpenWorkflowExecutions"
+    case listTagsForResource = "ListTagsForResource"
     case listWorkflowTypes = "ListWorkflowTypes"
     case pollForActivityTask = "PollForActivityTask"
     case pollForDecisionTask = "PollForDecisionTask"
@@ -55,7 +56,12 @@ public enum SimpleWorkflowModelOperations: String, Hashable, CustomStringConvert
     case respondDecisionTaskCompleted = "RespondDecisionTaskCompleted"
     case signalWorkflowExecution = "SignalWorkflowExecution"
     case startWorkflowExecution = "StartWorkflowExecution"
+    case tagResource = "TagResource"
     case terminateWorkflowExecution = "TerminateWorkflowExecution"
+    case undeprecateActivityType = "UndeprecateActivityType"
+    case undeprecateDomain = "UndeprecateDomain"
+    case undeprecateWorkflowType = "UndeprecateWorkflowType"
+    case untagResource = "UntagResource"
 
     public var description: String {
         return rawValue
@@ -95,6 +101,8 @@ public enum SimpleWorkflowModelOperations: String, Hashable, CustomStringConvert
             return "/"
         case .listOpenWorkflowExecutions:
             return "/"
+        case .listTagsForResource:
+            return "/"
         case .listWorkflowTypes:
             return "/"
         case .pollForActivityTask:
@@ -123,7 +131,17 @@ public enum SimpleWorkflowModelOperations: String, Hashable, CustomStringConvert
             return "/"
         case .startWorkflowExecution:
             return "/"
+        case .tagResource:
+            return "/"
         case .terminateWorkflowExecution:
+            return "/"
+        case .undeprecateActivityType:
+            return "/"
+        case .undeprecateDomain:
+            return "/"
+        case .undeprecateWorkflowType:
+            return "/"
+        case .untagResource:
             return "/"
         }
     }

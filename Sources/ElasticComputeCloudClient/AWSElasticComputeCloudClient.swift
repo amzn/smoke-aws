@@ -133,6 +133,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let createSpotDatafeedSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createSubnetOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTagsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTrafficMirrorFilterOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTrafficMirrorFilterRuleOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTrafficMirrorSessionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTrafficMirrorTargetOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayRouteOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayRouteTableOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -164,6 +168,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteNetworkInterfaceOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteNetworkInterfacePermissionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deletePlacementGroupOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteQueuedReservedInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteRouteOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteRouteTableOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteSecurityGroupOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -171,6 +176,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteSpotDatafeedSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteSubnetOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTagsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTrafficMirrorFilterOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTrafficMirrorFilterRuleOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTrafficMirrorSessionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTrafficMirrorTargetOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayRouteOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayRouteTableOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -204,6 +213,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeDhcpOptionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeEgressOnlyInternetGatewaysOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeElasticGpusOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeExportImageTasksOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeExportTasksOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeFleetHistoryOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeFleetInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -260,6 +270,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeStaleSecurityGroupsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeSubnetsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTagsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTrafficMirrorFiltersOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTrafficMirrorSessionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTrafficMirrorTargetsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayAttachmentsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayRouteTablesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayVpcAttachmentsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -306,7 +319,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let enableVpcClassicLinkDnsSupportOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let exportClientVpnClientCertificateRevocationListOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let exportClientVpnClientConfigurationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let exportImageOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let exportTransitGatewayRoutesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getCapacityReservationUsageOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getConsoleOutputOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getConsoleScreenshotOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getEbsDefaultKmsKeyIdOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -344,6 +359,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let modifySnapshotAttributeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifySpotFleetRequestOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifySubnetAttributeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyTrafficMirrorFilterNetworkServicesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyTrafficMirrorFilterRuleOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyTrafficMirrorSessionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyTransitGatewayVpcAttachmentOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyVolumeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyVolumeAttributeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -355,6 +373,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let modifyVpcPeeringConnectionOptionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyVpcTenancyOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyVpnConnectionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpnTunnelCertificateOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpnTunnelOptionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let monitorInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let moveAddressToVpcOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let provisionByoipCidrOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -390,6 +410,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let runInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let runScheduledInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let searchTransitGatewayRoutesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let sendDiagnosticInterruptOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let startInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let stopInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let terminateClientVpnConnectionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -572,6 +593,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .createSubnet, configuration: reportingConfiguration)
         self.createTagsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .createTags, configuration: reportingConfiguration)
+        self.createTrafficMirrorFilterOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .createTrafficMirrorFilter, configuration: reportingConfiguration)
+        self.createTrafficMirrorFilterRuleOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .createTrafficMirrorFilterRule, configuration: reportingConfiguration)
+        self.createTrafficMirrorSessionOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .createTrafficMirrorSession, configuration: reportingConfiguration)
+        self.createTrafficMirrorTargetOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .createTrafficMirrorTarget, configuration: reportingConfiguration)
         self.createTransitGatewayOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .createTransitGateway, configuration: reportingConfiguration)
         self.createTransitGatewayRouteOperationReporting = StandardSmokeAWSOperationReporting(
@@ -634,6 +663,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .deleteNetworkInterfacePermission, configuration: reportingConfiguration)
         self.deletePlacementGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .deletePlacementGroup, configuration: reportingConfiguration)
+        self.deleteQueuedReservedInstancesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deleteQueuedReservedInstances, configuration: reportingConfiguration)
         self.deleteRouteOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .deleteRoute, configuration: reportingConfiguration)
         self.deleteRouteTableOperationReporting = StandardSmokeAWSOperationReporting(
@@ -648,6 +679,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .deleteSubnet, configuration: reportingConfiguration)
         self.deleteTagsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .deleteTags, configuration: reportingConfiguration)
+        self.deleteTrafficMirrorFilterOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deleteTrafficMirrorFilter, configuration: reportingConfiguration)
+        self.deleteTrafficMirrorFilterRuleOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deleteTrafficMirrorFilterRule, configuration: reportingConfiguration)
+        self.deleteTrafficMirrorSessionOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deleteTrafficMirrorSession, configuration: reportingConfiguration)
+        self.deleteTrafficMirrorTargetOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deleteTrafficMirrorTarget, configuration: reportingConfiguration)
         self.deleteTransitGatewayOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .deleteTransitGateway, configuration: reportingConfiguration)
         self.deleteTransitGatewayRouteOperationReporting = StandardSmokeAWSOperationReporting(
@@ -714,6 +753,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .describeEgressOnlyInternetGateways, configuration: reportingConfiguration)
         self.describeElasticGpusOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeElasticGpus, configuration: reportingConfiguration)
+        self.describeExportImageTasksOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeExportImageTasks, configuration: reportingConfiguration)
         self.describeExportTasksOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeExportTasks, configuration: reportingConfiguration)
         self.describeFleetHistoryOperationReporting = StandardSmokeAWSOperationReporting(
@@ -826,6 +867,12 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .describeSubnets, configuration: reportingConfiguration)
         self.describeTagsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeTags, configuration: reportingConfiguration)
+        self.describeTrafficMirrorFiltersOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeTrafficMirrorFilters, configuration: reportingConfiguration)
+        self.describeTrafficMirrorSessionsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeTrafficMirrorSessions, configuration: reportingConfiguration)
+        self.describeTrafficMirrorTargetsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeTrafficMirrorTargets, configuration: reportingConfiguration)
         self.describeTransitGatewayAttachmentsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeTransitGatewayAttachments, configuration: reportingConfiguration)
         self.describeTransitGatewayRouteTablesOperationReporting = StandardSmokeAWSOperationReporting(
@@ -918,8 +965,12 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .exportClientVpnClientCertificateRevocationList, configuration: reportingConfiguration)
         self.exportClientVpnClientConfigurationOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .exportClientVpnClientConfiguration, configuration: reportingConfiguration)
+        self.exportImageOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .exportImage, configuration: reportingConfiguration)
         self.exportTransitGatewayRoutesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .exportTransitGatewayRoutes, configuration: reportingConfiguration)
+        self.getCapacityReservationUsageOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .getCapacityReservationUsage, configuration: reportingConfiguration)
         self.getConsoleOutputOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .getConsoleOutput, configuration: reportingConfiguration)
         self.getConsoleScreenshotOperationReporting = StandardSmokeAWSOperationReporting(
@@ -994,6 +1045,12 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .modifySpotFleetRequest, configuration: reportingConfiguration)
         self.modifySubnetAttributeOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .modifySubnetAttribute, configuration: reportingConfiguration)
+        self.modifyTrafficMirrorFilterNetworkServicesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .modifyTrafficMirrorFilterNetworkServices, configuration: reportingConfiguration)
+        self.modifyTrafficMirrorFilterRuleOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .modifyTrafficMirrorFilterRule, configuration: reportingConfiguration)
+        self.modifyTrafficMirrorSessionOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .modifyTrafficMirrorSession, configuration: reportingConfiguration)
         self.modifyTransitGatewayVpcAttachmentOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .modifyTransitGatewayVpcAttachment, configuration: reportingConfiguration)
         self.modifyVolumeOperationReporting = StandardSmokeAWSOperationReporting(
@@ -1016,6 +1073,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .modifyVpcTenancy, configuration: reportingConfiguration)
         self.modifyVpnConnectionOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .modifyVpnConnection, configuration: reportingConfiguration)
+        self.modifyVpnTunnelCertificateOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .modifyVpnTunnelCertificate, configuration: reportingConfiguration)
+        self.modifyVpnTunnelOptionsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .modifyVpnTunnelOptions, configuration: reportingConfiguration)
         self.monitorInstancesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .monitorInstances, configuration: reportingConfiguration)
         self.moveAddressToVpcOperationReporting = StandardSmokeAWSOperationReporting(
@@ -1086,6 +1147,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .runScheduledInstances, configuration: reportingConfiguration)
         self.searchTransitGatewayRoutesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .searchTransitGatewayRoutes, configuration: reportingConfiguration)
+        self.sendDiagnosticInterruptOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .sendDiagnosticInterrupt, configuration: reportingConfiguration)
         self.startInstancesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .startInstances, configuration: reportingConfiguration)
         self.stopInstancesOperationReporting = StandardSmokeAWSOperationReporting(
@@ -1804,13 +1867,14 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated AssignPrivateIpAddressesRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The AssignPrivateIpAddressesResult object or an error will be passed to this 
+           callback when the operation is complete. The AssignPrivateIpAddressesResult
+           object will be validated before being returned to caller.
      */
     public func assignPrivateIpAddressesAsync(
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, 
             reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1827,7 +1891,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.assignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -1842,10 +1906,12 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated AssignPrivateIpAddressesRequest object being passed to this operation.
+     - Returns: The AssignPrivateIpAddressesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func assignPrivateIpAddressesSync(
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssignPrivateIpAddressesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1862,7 +1928,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             action: ElasticComputeCloudModelOperations.assignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -6420,6 +6486,306 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateTrafficMirrorFilter operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorFilterResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorFilterResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterAsync(
+            input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTrafficMirrorFilterOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTrafficMirrorFilterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorFilter.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorFilter operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorFilterResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterSync(
+            input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTrafficMirrorFilterOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTrafficMirrorFilterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorFilter.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorFilterRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRuleRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorFilterRuleResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorFilterRuleResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterRuleAsync(
+            input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTrafficMirrorFilterRuleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorFilterRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorFilterRuleRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorFilterRuleSync(
+            input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTrafficMirrorFilterRuleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorSession operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorSessionRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorSessionResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorSessionResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorSessionAsync(
+            input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTrafficMirrorSessionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorSession operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorSessionRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorSessionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorSessionSync(
+            input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTrafficMirrorSessionResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTrafficMirrorSessionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorTarget operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorTargetRequest object being passed to this operation.
+         - completion: The CreateTrafficMirrorTargetResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTrafficMirrorTargetResult
+           object will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorTargetAsync(
+            input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTrafficMirrorTargetOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTrafficMirrorTargetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorTarget.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTrafficMirrorTarget operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTrafficMirrorTargetRequest object being passed to this operation.
+     - Returns: The CreateTrafficMirrorTargetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTrafficMirrorTargetSync(
+            input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTrafficMirrorTargetResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTrafficMirrorTargetOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTrafficMirrorTargetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTrafficMirrorTarget.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the CreateTransitGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8718,6 +9084,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteQueuedReservedInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteQueuedReservedInstancesRequest object being passed to this operation.
+         - completion: The DeleteQueuedReservedInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteQueuedReservedInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteQueuedReservedInstancesAsync(
+            input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteQueuedReservedInstancesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteQueuedReservedInstancesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteQueuedReservedInstances.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteQueuedReservedInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteQueuedReservedInstancesRequest object being passed to this operation.
+     - Returns: The DeleteQueuedReservedInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteQueuedReservedInstancesSync(
+            input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteQueuedReservedInstancesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteQueuedReservedInstancesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteQueuedReservedInstances.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DeleteRoute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9213,6 +9654,306 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             version: apiVersion)
 
         try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilter operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorFilterResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorFilterResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterAsync(
+            input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTrafficMirrorFilterOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTrafficMirrorFilterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilter.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilter operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorFilterResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterSync(
+            input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTrafficMirrorFilterOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTrafficMirrorFilterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilter.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilterRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRuleRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorFilterRuleResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorFilterRuleResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterRuleAsync(
+            input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTrafficMirrorFilterRuleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorFilterRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorFilterRuleRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorFilterRuleSync(
+            input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTrafficMirrorFilterRuleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorSession operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorSessionRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorSessionResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorSessionResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorSessionAsync(
+            input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTrafficMirrorSessionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorSession operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorSessionRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorSessionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorSessionSync(
+            input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTrafficMirrorSessionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorTarget operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorTargetRequest object being passed to this operation.
+         - completion: The DeleteTrafficMirrorTargetResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTrafficMirrorTargetResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorTargetAsync(
+            input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTrafficMirrorTargetOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTrafficMirrorTargetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorTarget.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTrafficMirrorTarget operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTrafficMirrorTargetRequest object being passed to this operation.
+     - Returns: The DeleteTrafficMirrorTargetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTrafficMirrorTargetSync(
+            input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTrafficMirrorTargetOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTrafficMirrorTargetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTrafficMirrorTarget.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -11667,6 +12408,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeElasticGpus.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeExportImageTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportImageTasksRequest object being passed to this operation.
+         - completion: The DescribeExportImageTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeExportImageTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeExportImageTasksAsync(
+            input: ElasticComputeCloudModel.DescribeExportImageTasksRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeExportImageTasksOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeExportImageTasksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeExportImageTasks.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeExportImageTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportImageTasksRequest object being passed to this operation.
+     - Returns: The DescribeExportImageTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeExportImageTasksSync(
+            input: ElasticComputeCloudModel.DescribeExportImageTasksRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeExportImageTasksResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeExportImageTasksOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeExportImageTasksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeExportImageTasks.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -15879,6 +16695,231 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeTrafficMirrorFilters operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorFiltersRequest object being passed to this operation.
+         - completion: The DescribeTrafficMirrorFiltersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrafficMirrorFiltersResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorFiltersAsync(
+            input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTrafficMirrorFiltersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTrafficMirrorFiltersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorFilters.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorFilters operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorFiltersRequest object being passed to this operation.
+     - Returns: The DescribeTrafficMirrorFiltersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorFiltersSync(
+            input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTrafficMirrorFiltersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTrafficMirrorFiltersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorFilters.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorSessions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorSessionsRequest object being passed to this operation.
+         - completion: The DescribeTrafficMirrorSessionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrafficMirrorSessionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorSessionsAsync(
+            input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTrafficMirrorSessionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTrafficMirrorSessionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorSessions.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorSessions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorSessionsRequest object being passed to this operation.
+     - Returns: The DescribeTrafficMirrorSessionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorSessionsSync(
+            input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTrafficMirrorSessionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTrafficMirrorSessionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorSessions.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorTargetsRequest object being passed to this operation.
+         - completion: The DescribeTrafficMirrorTargetsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrafficMirrorTargetsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorTargetsAsync(
+            input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTrafficMirrorTargetsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTrafficMirrorTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorTargets.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrafficMirrorTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrafficMirrorTargetsRequest object being passed to this operation.
+     - Returns: The DescribeTrafficMirrorTargetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrafficMirrorTargetsSync(
+            input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTrafficMirrorTargetsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTrafficMirrorTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrafficMirrorTargets.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeTransitGatewayAttachments operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -19305,6 +20346,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ExportImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportImageRequest object being passed to this operation.
+         - completion: The ExportImageResult object or an error will be passed to this 
+           callback when the operation is complete. The ExportImageResult
+           object will be validated before being returned to caller.
+     */
+    public func exportImageAsync(
+            input: ElasticComputeCloudModel.ExportImageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportImageResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: exportImageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ExportImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportImage.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ExportImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportImageRequest object being passed to this operation.
+     - Returns: The ExportImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func exportImageSync(
+            input: ElasticComputeCloudModel.ExportImageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ExportImageResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: exportImageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ExportImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.exportImage.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ExportTransitGatewayRoutes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -19368,6 +20484,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.exportTransitGatewayRoutes.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetCapacityReservationUsage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetCapacityReservationUsageRequest object being passed to this operation.
+         - completion: The GetCapacityReservationUsageResult object or an error will be passed to this 
+           callback when the operation is complete. The GetCapacityReservationUsageResult
+           object will be validated before being returned to caller.
+     */
+    public func getCapacityReservationUsageAsync(
+            input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getCapacityReservationUsageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetCapacityReservationUsageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getCapacityReservationUsage.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetCapacityReservationUsage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetCapacityReservationUsageRequest object being passed to this operation.
+     - Returns: The GetCapacityReservationUsageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getCapacityReservationUsageSync(
+            input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetCapacityReservationUsageResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getCapacityReservationUsageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetCapacityReservationUsageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getCapacityReservationUsage.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -22134,6 +23325,231 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ModifyTrafficMirrorFilterNetworkServices operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterNetworkServicesRequest object being passed to this operation.
+         - completion: The ModifyTrafficMirrorFilterNetworkServicesResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTrafficMirrorFilterNetworkServicesResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterNetworkServicesAsync(
+            input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyTrafficMirrorFilterNetworkServicesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTrafficMirrorFilterNetworkServicesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterNetworkServices.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorFilterNetworkServices operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterNetworkServicesRequest object being passed to this operation.
+     - Returns: The ModifyTrafficMirrorFilterNetworkServicesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterNetworkServicesSync(
+            input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyTrafficMirrorFilterNetworkServicesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTrafficMirrorFilterNetworkServicesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterNetworkServices.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorFilterRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterRuleRequest object being passed to this operation.
+         - completion: The ModifyTrafficMirrorFilterRuleResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTrafficMirrorFilterRuleResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterRuleAsync(
+            input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyTrafficMirrorFilterRuleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorFilterRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorFilterRuleRequest object being passed to this operation.
+     - Returns: The ModifyTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorFilterRuleSync(
+            input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyTrafficMirrorFilterRuleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTrafficMirrorFilterRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterRule.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorSession operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorSessionRequest object being passed to this operation.
+         - completion: The ModifyTrafficMirrorSessionResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTrafficMirrorSessionResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorSessionAsync(
+            input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyTrafficMirrorSessionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTrafficMirrorSession operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTrafficMirrorSessionRequest object being passed to this operation.
+     - Returns: The ModifyTrafficMirrorSessionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTrafficMirrorSessionSync(
+            input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyTrafficMirrorSessionOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTrafficMirrorSessionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ModifyTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -22941,6 +24357,156 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyVpnConnection.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelCertificate operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelCertificateRequest object being passed to this operation.
+         - completion: The ModifyVpnTunnelCertificateResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnTunnelCertificateResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelCertificateAsync(
+            input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyVpnTunnelCertificateOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyVpnTunnelCertificateOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnTunnelCertificate.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelCertificate operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelCertificateRequest object being passed to this operation.
+     - Returns: The ModifyVpnTunnelCertificateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelCertificateSync(
+            input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyVpnTunnelCertificateOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyVpnTunnelCertificateOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnTunnelCertificate.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelOptionsRequest object being passed to this operation.
+         - completion: The ModifyVpnTunnelOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnTunnelOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelOptionsAsync(
+            input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyVpnTunnelOptionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyVpnTunnelOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnTunnelOptions.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnTunnelOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnTunnelOptionsRequest object being passed to this operation.
+     - Returns: The ModifyVpnTunnelOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnTunnelOptionsSync(
+            input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyVpnTunnelOptionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyVpnTunnelOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnTunnelOptions.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -25536,6 +27102,78 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SendDiagnosticInterrupt operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SendDiagnosticInterruptRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func sendDiagnosticInterruptAsync(
+            input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: sendDiagnosticInterruptOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = SendDiagnosticInterruptOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.sendDiagnosticInterrupt.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SendDiagnosticInterrupt operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SendDiagnosticInterruptRequest object being passed to this operation.
+     */
+    public func sendDiagnosticInterruptSync(
+            input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest,
+            reporting: SmokeAWSInvocationReporting) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: sendDiagnosticInterruptOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = SendDiagnosticInterruptOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.sendDiagnosticInterrupt.rawValue,
+            version: apiVersion)
+
+        try httpClient.executeSyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,

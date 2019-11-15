@@ -1138,7 +1138,7 @@ extension Array where Element == DynamoDBModel.CancellationReason {
             throw DynamoDBError.validationError(reason: "The provided value to CancellationReasonList violated the minimum length constraint.")
         }
 
-        if self.count > 10 {
+        if self.count > 25 {
             throw DynamoDBError.validationError(reason: "The provided value to CancellationReasonList violated the maximum length constraint.")
         }
     }
@@ -1216,7 +1216,7 @@ extension Array where Element == DynamoDBModel.ItemResponse {
             throw DynamoDBError.validationError(reason: "The provided value to ItemResponseList violated the minimum length constraint.")
         }
 
-        if self.count > 10 {
+        if self.count > 25 {
             throw DynamoDBError.validationError(reason: "The provided value to ItemResponseList violated the maximum length constraint.")
         }
     }
@@ -1526,7 +1526,7 @@ extension Array where Element == DynamoDBModel.TransactGetItem {
             throw DynamoDBError.validationError(reason: "The provided value to TransactGetItemList violated the minimum length constraint.")
         }
 
-        if self.count > 10 {
+        if self.count > 25 {
             throw DynamoDBError.validationError(reason: "The provided value to TransactGetItemList violated the maximum length constraint.")
         }
     }
@@ -1541,7 +1541,7 @@ extension Array where Element == DynamoDBModel.TransactWriteItem {
             throw DynamoDBError.validationError(reason: "The provided value to TransactWriteItemList violated the minimum length constraint.")
         }
 
-        if self.count > 10 {
+        if self.count > 25 {
             throw DynamoDBError.validationError(reason: "The provided value to TransactWriteItemList violated the maximum length constraint.")
         }
     }

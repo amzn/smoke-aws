@@ -219,6 +219,11 @@ public typealias TagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias UntagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the UpdateClusterSettings operation in a HTTP client.
+ */
+public typealias UpdateClusterSettingsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the UpdateContainerAgent operation in a HTTP client.
  */
 public typealias UpdateContainerAgentOperationHTTPRequestInput = BodyHTTPRequestInput

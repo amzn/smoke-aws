@@ -1723,6 +1723,10 @@ public extension RestoreTableFromBackupInput {
     static let __default: DynamoDBModel.RestoreTableFromBackupInput = {
         let defaultInstance = DynamoDBModel.RestoreTableFromBackupInput(
             backupArn: "0123456789012345678901234567890123456",
+            billingModeOverride: nil,
+            globalSecondaryIndexOverride: nil,
+            localSecondaryIndexOverride: nil,
+            provisionedThroughputOverride: nil,
             targetTableName: "012")
 
         return defaultInstance
@@ -1747,6 +1751,10 @@ public extension RestoreTableToPointInTimeInput {
      */
     static let __default: DynamoDBModel.RestoreTableToPointInTimeInput = {
         let defaultInstance = DynamoDBModel.RestoreTableToPointInTimeInput(
+            billingModeOverride: nil,
+            globalSecondaryIndexOverride: nil,
+            localSecondaryIndexOverride: nil,
+            provisionedThroughputOverride: nil,
             restoreDateTime: nil,
             sourceTableName: "012",
             targetTableName: "012",

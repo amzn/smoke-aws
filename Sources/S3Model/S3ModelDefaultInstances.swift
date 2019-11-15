@@ -410,6 +410,7 @@ public extension CopyObjectOutput {
             requestCharged: nil,
             sSECustomerAlgorithm: nil,
             sSECustomerKeyMD5: nil,
+            sSEKMSEncryptionContext: nil,
             sSEKMSKeyId: nil,
             serverSideEncryption: nil,
             versionId: nil)
@@ -454,6 +455,7 @@ public extension CopyObjectRequest {
             sSECustomerAlgorithm: nil,
             sSECustomerKey: nil,
             sSECustomerKeyMD5: nil,
+            sSEKMSEncryptionContext: nil,
             sSEKMSKeyId: nil,
             serverSideEncryption: nil,
             storageClass: nil,
@@ -548,6 +550,7 @@ public extension CreateMultipartUploadOutput {
             requestCharged: nil,
             sSECustomerAlgorithm: nil,
             sSECustomerKeyMD5: nil,
+            sSEKMSEncryptionContext: nil,
             sSEKMSKeyId: nil,
             serverSideEncryption: nil,
             uploadId: nil)
@@ -583,6 +586,7 @@ public extension CreateMultipartUploadRequest {
             sSECustomerAlgorithm: nil,
             sSECustomerKey: nil,
             sSECustomerKeyMD5: nil,
+            sSEKMSEncryptionContext: nil,
             sSEKMSKeyId: nil,
             serverSideEncryption: nil,
             storageClass: nil,
@@ -3134,6 +3138,7 @@ public extension PutObjectOutput {
             requestCharged: nil,
             sSECustomerAlgorithm: nil,
             sSECustomerKeyMD5: nil,
+            sSEKMSEncryptionContext: nil,
             sSEKMSKeyId: nil,
             serverSideEncryption: nil,
             versionId: nil)
@@ -3172,6 +3177,7 @@ public extension PutObjectRequest {
             sSECustomerAlgorithm: nil,
             sSECustomerKey: nil,
             sSECustomerKeyMD5: nil,
+            sSEKMSEncryptionContext: nil,
             sSEKMSKeyId: nil,
             serverSideEncryption: nil,
             storageClass: nil,
@@ -3539,6 +3545,19 @@ public extension SSES3 {
     }()
 }
 
+public extension ScanRange {
+    /**
+     Default instance of the ScanRange structure.
+     */
+    static let __default: S3Model.ScanRange = {
+        let defaultInstance = S3Model.ScanRange(
+            end: nil,
+            start: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension SelectObjectContentEventStream {
     /**
      Default instance of the SelectObjectContentEventStream structure.
@@ -3582,7 +3601,8 @@ public extension SelectObjectContentRequest {
             requestProgress: nil,
             sSECustomerAlgorithm: nil,
             sSECustomerKey: nil,
-            sSECustomerKeyMD5: nil)
+            sSECustomerKeyMD5: nil,
+            scanRange: nil)
 
         return defaultInstance
     }()

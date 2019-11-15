@@ -105,6 +105,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     let submitTaskStateChangeOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let tagResourceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let untagResourceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    let updateClusterSettingsOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let updateContainerAgentOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let updateContainerInstancesStateOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let updateServiceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
@@ -215,6 +216,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
             clientName: "AWSElasticContainerClient", operation: .tagResource, configuration: reportingConfiguration)
         self.untagResourceOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticContainerClient", operation: .untagResource, configuration: reportingConfiguration)
+        self.updateClusterSettingsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticContainerClient", operation: .updateClusterSettings, configuration: reportingConfiguration)
         self.updateContainerAgentOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticContainerClient", operation: .updateContainerAgent, configuration: reportingConfiguration)
         self.updateContainerInstancesStateOperationReporting = StandardSmokeAWSOperationReporting(
@@ -2735,7 +2738,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The SubmitTaskStateChangeResponse object or an error will be passed to this 
            callback when the operation is complete. The SubmitTaskStateChangeResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, client, server.
+           The possible errors are: accessDenied, client, invalidParameter, server.
      */
     public func submitTaskStateChangeAsync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
@@ -2770,7 +2773,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated SubmitTaskStateChangeRequest object being passed to this operation.
      - Returns: The SubmitTaskStateChangeResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, server.
+     - Throws: accessDenied, client, invalidParameter, server.
      */
     public func submitTaskStateChangeSync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest,
@@ -2924,6 +2927,75 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                                                                                   smokeAWSOperationReporting: untagResourceOperationReporting)
         let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateClusterSettings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+         - completion: The UpdateClusterSettingsResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateClusterSettingsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateClusterSettingsAsync(
+            input: ElasticContainerModel.UpdateClusterSettingsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateClusterSettings.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: updateClusterSettingsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = UpdateClusterSettingsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateClusterSettings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+     - Returns: The UpdateClusterSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateClusterSettingsSync(
+            input: ElasticContainerModel.UpdateClusterSettingsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateClusterSettings.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: updateClusterSettingsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = UpdateClusterSettingsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",

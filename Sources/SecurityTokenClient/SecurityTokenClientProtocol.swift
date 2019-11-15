@@ -56,6 +56,13 @@ public protocol SecurityTokenClientProtocol {
             _ input: SecurityTokenModel.DecodeAuthorizationMessageRequest, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, HTTPClientError>) -> ()) throws -> ()
+    typealias GetAccessKeyInfoSyncType = (
+            _ input: SecurityTokenModel.GetAccessKeyInfoRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo
+    typealias GetAccessKeyInfoAsyncType = (
+            _ input: SecurityTokenModel.GetAccessKeyInfoRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws -> ()
     typealias GetCallerIdentitySyncType = (
             _ input: SecurityTokenModel.GetCallerIdentityRequest,
             _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity
@@ -189,6 +196,32 @@ public protocol SecurityTokenClientProtocol {
     func decodeAuthorizationMessageSync(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest,
             reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage
+
+    /**
+     Invokes the GetAccessKeyInfo operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+         - completion: The GetAccessKeyInfoResponseForGetAccessKeyInfo object or an error will be passed to this 
+           callback when the operation is complete. The GetAccessKeyInfoResponseForGetAccessKeyInfo
+           object will be validated before being returned to caller.
+     */
+    func getAccessKeyInfoAsync(
+            input: SecurityTokenModel.GetAccessKeyInfoRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the GetAccessKeyInfo operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+     - Returns: The GetAccessKeyInfoResponseForGetAccessKeyInfo object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getAccessKeyInfoSync(
+            input: SecurityTokenModel.GetAccessKeyInfoRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo
 
     /**
      Invokes the GetCallerIdentity operation returning immediately and passing the response to a callback.

@@ -37,6 +37,8 @@ public struct ThrowingSecurityTokenClient: SecurityTokenClientProtocol {
     let assumeRoleWithWebIdentitySyncOverride: SecurityTokenClientProtocol.AssumeRoleWithWebIdentitySyncType?
     let decodeAuthorizationMessageAsyncOverride: SecurityTokenClientProtocol.DecodeAuthorizationMessageAsyncType?
     let decodeAuthorizationMessageSyncOverride: SecurityTokenClientProtocol.DecodeAuthorizationMessageSyncType?
+    let getAccessKeyInfoAsyncOverride: SecurityTokenClientProtocol.GetAccessKeyInfoAsyncType?
+    let getAccessKeyInfoSyncOverride: SecurityTokenClientProtocol.GetAccessKeyInfoSyncType?
     let getCallerIdentityAsyncOverride: SecurityTokenClientProtocol.GetCallerIdentityAsyncType?
     let getCallerIdentitySyncOverride: SecurityTokenClientProtocol.GetCallerIdentitySyncType?
     let getFederationTokenAsyncOverride: SecurityTokenClientProtocol.GetFederationTokenAsyncType?
@@ -57,6 +59,8 @@ public struct ThrowingSecurityTokenClient: SecurityTokenClientProtocol {
             assumeRoleWithWebIdentitySync: SecurityTokenClientProtocol.AssumeRoleWithWebIdentitySyncType? = nil,
             decodeAuthorizationMessageAsync: SecurityTokenClientProtocol.DecodeAuthorizationMessageAsyncType? = nil,
             decodeAuthorizationMessageSync: SecurityTokenClientProtocol.DecodeAuthorizationMessageSyncType? = nil,
+            getAccessKeyInfoAsync: SecurityTokenClientProtocol.GetAccessKeyInfoAsyncType? = nil,
+            getAccessKeyInfoSync: SecurityTokenClientProtocol.GetAccessKeyInfoSyncType? = nil,
             getCallerIdentityAsync: SecurityTokenClientProtocol.GetCallerIdentityAsyncType? = nil,
             getCallerIdentitySync: SecurityTokenClientProtocol.GetCallerIdentitySyncType? = nil,
             getFederationTokenAsync: SecurityTokenClientProtocol.GetFederationTokenAsyncType? = nil,
@@ -72,6 +76,8 @@ public struct ThrowingSecurityTokenClient: SecurityTokenClientProtocol {
         self.assumeRoleWithWebIdentitySyncOverride = assumeRoleWithWebIdentitySync
         self.decodeAuthorizationMessageAsyncOverride = decodeAuthorizationMessageAsync
         self.decodeAuthorizationMessageSyncOverride = decodeAuthorizationMessageSync
+        self.getAccessKeyInfoAsyncOverride = getAccessKeyInfoAsync
+        self.getAccessKeyInfoSyncOverride = getAccessKeyInfoSync
         self.getCallerIdentityAsyncOverride = getCallerIdentityAsync
         self.getCallerIdentitySyncOverride = getCallerIdentitySync
         self.getFederationTokenAsyncOverride = getFederationTokenAsync
@@ -235,6 +241,44 @@ public struct ThrowingSecurityTokenClient: SecurityTokenClientProtocol {
             reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage {
         if let decodeAuthorizationMessageSyncOverride = decodeAuthorizationMessageSyncOverride {
             return try decodeAuthorizationMessageSyncOverride(input, reporting)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetAccessKeyInfo operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+         - completion: The GetAccessKeyInfoResponseForGetAccessKeyInfo object or an error will be passed to this 
+           callback when the operation is complete. The GetAccessKeyInfoResponseForGetAccessKeyInfo
+           object will be validated before being returned to caller.
+     */
+    public func getAccessKeyInfoAsync(
+            input: SecurityTokenModel.GetAccessKeyInfoRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws {
+        if let getAccessKeyInfoAsyncOverride = getAccessKeyInfoAsyncOverride {
+            return try getAccessKeyInfoAsyncOverride(input, reporting, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetAccessKeyInfo operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+     - Returns: The GetAccessKeyInfoResponseForGetAccessKeyInfo object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getAccessKeyInfoSync(
+            input: SecurityTokenModel.GetAccessKeyInfoRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo {
+        if let getAccessKeyInfoSyncOverride = getAccessKeyInfoSyncOverride {
+            return try getAccessKeyInfoSyncOverride(input, reporting)
         }
 
         throw error

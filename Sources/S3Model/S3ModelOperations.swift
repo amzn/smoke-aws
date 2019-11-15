@@ -621,6 +621,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
     public var storageClass: StorageClass?
@@ -656,6 +657,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 storageClass: StorageClass? = nil,
@@ -690,6 +692,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
         self.storageClass = storageClass
@@ -727,6 +730,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
         case storageClass = "x-amz-storage-class"
@@ -771,6 +775,7 @@ public extension CopyObjectRequest {
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption,
             storageClass: storageClass,
@@ -790,6 +795,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
     public var requestCharged: RequestCharged?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
     public var versionId: ObjectVersionId?
@@ -799,6 +805,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
                 requestCharged: RequestCharged? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 versionId: ObjectVersionId? = nil) {
@@ -807,6 +814,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
         self.requestCharged = requestCharged
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
         self.versionId = versionId
@@ -818,6 +826,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
         case requestCharged = "x-amz-request-charged"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
         case versionId = "x-amz-version-id"
@@ -835,6 +844,7 @@ public extension CopyObjectOutput {
             requestCharged: requestCharged,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption,
             versionId: versionId)
@@ -979,6 +989,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
     public var storageClass: StorageClass?
@@ -1004,6 +1015,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 storageClass: StorageClass? = nil,
@@ -1028,6 +1040,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
         self.storageClass = storageClass
@@ -1055,6 +1068,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
         case storageClass = "x-amz-storage-class"
@@ -1088,6 +1102,7 @@ public extension CreateMultipartUploadRequest {
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption,
             storageClass: storageClass,
@@ -1143,6 +1158,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
     public var requestCharged: RequestCharged?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
 
@@ -1151,6 +1167,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
                 requestCharged: RequestCharged? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil) {
         self.abortDate = abortDate
@@ -1158,6 +1175,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
         self.requestCharged = requestCharged
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
     }
@@ -1168,6 +1186,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
         case requestCharged = "x-amz-request-charged"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
     }
@@ -1184,6 +1203,7 @@ public extension CreateMultipartUploadOutput {
             requestCharged: requestCharged,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption)
     }
@@ -5175,6 +5195,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSEncryptionContext: SSEKMSEncryptionContext?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
     public var storageClass: StorageClass?
@@ -5202,6 +5223,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSEncryptionContext: SSEKMSEncryptionContext? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 storageClass: StorageClass? = nil,
@@ -5228,6 +5250,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSEncryptionContext = sSEKMSEncryptionContext
         self.sSEKMSKeyId = sSEKMSKeyId
         self.serverSideEncryption = serverSideEncryption
         self.storageClass = storageClass
@@ -5257,6 +5280,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSEncryptionContext = "x-amz-server-side-encryption-context"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
         case serverSideEncryption = "x-amz-server-side-encryption"
         case storageClass = "x-amz-storage-class"
@@ -5292,6 +5316,7 @@ public extension PutObjectRequest {
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSEncryptionContext: sSEKMSEncryptionContext,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption,
             storageClass: storageClass,
@@ -5926,17 +5951,20 @@ public struct SelectObjectContentOperationInputBody: Codable, Equatable {
     public var inputSerialization: InputSerialization
     public var outputSerialization: OutputSerialization
     public var requestProgress: RequestProgress?
+    public var scanRange: ScanRange?
 
     public init(expression: Expression,
                 expressionType: ExpressionType,
                 inputSerialization: InputSerialization,
                 outputSerialization: OutputSerialization,
-                requestProgress: RequestProgress? = nil) {
+                requestProgress: RequestProgress? = nil,
+                scanRange: ScanRange? = nil) {
         self.expression = expression
         self.expressionType = expressionType
         self.inputSerialization = inputSerialization
         self.outputSerialization = outputSerialization
         self.requestProgress = requestProgress
+        self.scanRange = scanRange
     }
 
     enum CodingKeys: String, CodingKey {
@@ -5945,12 +5973,14 @@ public struct SelectObjectContentOperationInputBody: Codable, Equatable {
         case inputSerialization = "InputSerialization"
         case outputSerialization = "OutputSerialization"
         case requestProgress = "RequestProgress"
+        case scanRange = "ScanRange"
     }
 
     public func validate() throws {
         try inputSerialization.validate()
         try outputSerialization.validate()
         try requestProgress?.validate()
+        try scanRange?.validate()
     }
 }
 
@@ -5961,7 +5991,8 @@ public extension SelectObjectContentRequest {
             expressionType: expressionType,
             inputSerialization: inputSerialization,
             outputSerialization: outputSerialization,
-            requestProgress: requestProgress)
+            requestProgress: requestProgress,
+            scanRange: scanRange)
     }
 }
 

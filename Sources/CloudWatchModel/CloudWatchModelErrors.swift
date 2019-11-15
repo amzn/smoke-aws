@@ -30,7 +30,8 @@ private let invalidFormatIdentity = "InvalidFormat"
 private let invalidNextTokenIdentity = "InvalidNextToken"
 private let invalidParameterCombinationIdentity = "InvalidParameterCombination"
 private let invalidParameterValueIdentity = "InvalidParameterValue"
-private let limitExceededIdentity = "LimitExceeded"
+private let limitExceededExceptionIdentity = "LimitExceededException"
+private let limitExceededFaultIdentity = "LimitExceeded"
 private let missingRequiredParameterIdentity = "MissingParameter"
 private let resourceNotFoundIdentity = "ResourceNotFound"
 private let resourceNotFoundExceptionIdentity = "ResourceNotFoundException"
@@ -45,7 +46,8 @@ public enum CloudWatchError: Swift.Error, Decodable {
     case invalidNextToken(InvalidNextToken)
     case invalidParameterCombination(InvalidParameterCombinationException)
     case invalidParameterValue(InvalidParameterValueException)
-    case limitExceeded(LimitExceededFault)
+    case limitExceededException(LimitExceededException)
+    case limitExceededFault(LimitExceededFault)
     case missingRequiredParameter(MissingRequiredParameterException)
     case resourceNotFound(ResourceNotFound)
     case resourceNotFoundException(ResourceNotFoundException)
@@ -92,9 +94,12 @@ public enum CloudWatchError: Swift.Error, Decodable {
         case invalidParameterValueIdentity:
             let errorPayload = try InvalidParameterValueException(from: decoder)
             self = CloudWatchError.invalidParameterValue(errorPayload)
-        case limitExceededIdentity:
+        case limitExceededExceptionIdentity:
+            let errorPayload = try LimitExceededException(from: decoder)
+            self = CloudWatchError.limitExceededException(errorPayload)
+        case limitExceededFaultIdentity:
             let errorPayload = try LimitExceededFault(from: decoder)
-            self = CloudWatchError.limitExceeded(errorPayload)
+            self = CloudWatchError.limitExceededFault(errorPayload)
         case missingRequiredParameterIdentity:
             let errorPayload = try MissingRequiredParameterException(from: decoder)
             self = CloudWatchError.missingRequiredParameter(errorPayload)

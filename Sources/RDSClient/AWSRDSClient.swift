@@ -74,6 +74,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let copyDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let copyDBSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let copyOptionGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let createCustomAvailabilityZoneOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBClusterEndpointOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBClusterParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -87,6 +88,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let createEventSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createGlobalClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createOptionGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let deleteCustomAvailabilityZoneOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBClusterEndpointOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBClusterParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -99,9 +101,11 @@ public struct AWSRDSClient: RDSClientProtocol {
     let deleteDBSubnetGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteEventSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteGlobalClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let deleteInstallationMediaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteOptionGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeAccountAttributesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeCertificatesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let describeCustomAvailabilityZonesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBClusterBacktracksOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBClusterEndpointsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBClusterParameterGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -125,6 +129,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let describeEventSubscriptionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeEventsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeGlobalClustersOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let describeInstallationMediaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeOptionGroupOptionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeOptionGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeOrderableDBInstanceOptionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -135,6 +140,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let describeValidDBInstanceModificationsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let downloadDBLogFilePortionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let failoverDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let importInstallationMediaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyCurrentDBClusterCapacityOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -225,6 +231,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .copyDBSnapshot, configuration: reportingConfiguration)
         self.copyOptionGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .copyOptionGroup, configuration: reportingConfiguration)
+        self.createCustomAvailabilityZoneOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .createCustomAvailabilityZone, configuration: reportingConfiguration)
         self.createDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .createDBCluster, configuration: reportingConfiguration)
         self.createDBClusterEndpointOperationReporting = StandardSmokeAWSOperationReporting(
@@ -251,6 +259,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .createGlobalCluster, configuration: reportingConfiguration)
         self.createOptionGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .createOptionGroup, configuration: reportingConfiguration)
+        self.deleteCustomAvailabilityZoneOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .deleteCustomAvailabilityZone, configuration: reportingConfiguration)
         self.deleteDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .deleteDBCluster, configuration: reportingConfiguration)
         self.deleteDBClusterEndpointOperationReporting = StandardSmokeAWSOperationReporting(
@@ -275,12 +285,16 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .deleteEventSubscription, configuration: reportingConfiguration)
         self.deleteGlobalClusterOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .deleteGlobalCluster, configuration: reportingConfiguration)
+        self.deleteInstallationMediaOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .deleteInstallationMedia, configuration: reportingConfiguration)
         self.deleteOptionGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .deleteOptionGroup, configuration: reportingConfiguration)
         self.describeAccountAttributesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeAccountAttributes, configuration: reportingConfiguration)
         self.describeCertificatesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeCertificates, configuration: reportingConfiguration)
+        self.describeCustomAvailabilityZonesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .describeCustomAvailabilityZones, configuration: reportingConfiguration)
         self.describeDBClusterBacktracksOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeDBClusterBacktracks, configuration: reportingConfiguration)
         self.describeDBClusterEndpointsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -327,6 +341,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .describeEvents, configuration: reportingConfiguration)
         self.describeGlobalClustersOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeGlobalClusters, configuration: reportingConfiguration)
+        self.describeInstallationMediaOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .describeInstallationMedia, configuration: reportingConfiguration)
         self.describeOptionGroupOptionsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeOptionGroupOptions, configuration: reportingConfiguration)
         self.describeOptionGroupsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -347,6 +363,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .downloadDBLogFilePortion, configuration: reportingConfiguration)
         self.failoverDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .failoverDBCluster, configuration: reportingConfiguration)
+        self.importInstallationMediaOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .importInstallationMedia, configuration: reportingConfiguration)
         self.listTagsForResourceOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .listTagsForResource, configuration: reportingConfiguration)
         self.modifyCurrentDBClusterCapacityOperationReporting = StandardSmokeAWSOperationReporting(
@@ -1357,6 +1375,83 @@ public struct AWSRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the CreateCustomAvailabilityZone operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
+         - completion: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object or an error will be passed to this 
+           callback when the operation is complete. The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
+     */
+    public func createCustomAvailabilityZoneAsync(
+            input: RDSModel.CreateCustomAvailabilityZoneMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createCustomAvailabilityZoneOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.createCustomAvailabilityZone.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateCustomAvailabilityZone operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
+     - Returns: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
+     */
+    public func createCustomAvailabilityZoneSync(
+            input: RDSModel.CreateCustomAvailabilityZoneMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createCustomAvailabilityZoneOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.createCustomAvailabilityZone.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the CreateDBCluster operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1364,7 +1459,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - completion: The CreateDBClusterResultForCreateDBCluster object or an error will be passed to this 
            callback when the operation is complete. The CreateDBClusterResultForCreateDBCluster
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
     public func createDBClusterAsync(
             input: RDSModel.CreateDBClusterMessage, 
@@ -1403,7 +1498,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated CreateDBClusterMessage object being passed to this operation.
      - Returns: The CreateDBClusterResultForCreateDBCluster object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
     public func createDBClusterSync(
             input: RDSModel.CreateDBClusterMessage,
@@ -1749,7 +1844,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - completion: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object or an error will be passed to this 
            callback when the operation is complete. The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
            object will be validated before being returned to caller.
-           The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
@@ -1788,7 +1883,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated CreateDBInstanceReadReplicaMessage object being passed to this operation.
      - Returns: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceReadReplicaSync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage,
@@ -2346,6 +2441,83 @@ public struct AWSRDSClient: RDSClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.createOptionGroup.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteCustomAvailabilityZone operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
+         - completion: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object or an error will be passed to this 
+           callback when the operation is complete. The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
+     */
+    public func deleteCustomAvailabilityZoneAsync(
+            input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteCustomAvailabilityZoneOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteCustomAvailabilityZone.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteCustomAvailabilityZone operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
+     - Returns: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
+     */
+    public func deleteCustomAvailabilityZoneSync(
+            input: RDSModel.DeleteCustomAvailabilityZoneMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteCustomAvailabilityZoneOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteCustomAvailabilityZone.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3270,6 +3442,83 @@ public struct AWSRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the DeleteInstallationMedia operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
+         - completion: The InstallationMediaForDeleteInstallationMedia object or an error will be passed to this 
+           callback when the operation is complete. The InstallationMediaForDeleteInstallationMedia
+           object will be validated before being returned to caller.
+           The possible errors are: installationMediaNotFound.
+     */
+    public func deleteInstallationMediaAsync(
+            input: RDSModel.DeleteInstallationMediaMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteInstallationMediaOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteInstallationMediaOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteInstallationMedia.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteInstallationMedia operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
+     - Returns: The InstallationMediaForDeleteInstallationMedia object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: installationMediaNotFound.
+     */
+    public func deleteInstallationMediaSync(
+            input: RDSModel.DeleteInstallationMediaMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteInstallationMediaOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteInstallationMediaOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteInstallationMedia.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DeleteOptionGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3484,6 +3733,83 @@ public struct AWSRDSClient: RDSClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.describeCertificates.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeCustomAvailabilityZones operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
+         - completion: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object or an error will be passed to this 
+           callback when the operation is complete. The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneNotFound.
+     */
+    public func describeCustomAvailabilityZonesAsync(
+            input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeCustomAvailabilityZonesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeCustomAvailabilityZonesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeCustomAvailabilityZones.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeCustomAvailabilityZones operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
+     - Returns: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneNotFound.
+     */
+    public func describeCustomAvailabilityZonesSync(
+            input: RDSModel.DescribeCustomAvailabilityZonesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeCustomAvailabilityZonesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeCustomAvailabilityZonesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeCustomAvailabilityZones.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -5257,6 +5583,83 @@ public struct AWSRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the DescribeInstallationMedia operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
+         - completion: The InstallationMediaMessageForDescribeInstallationMedia object or an error will be passed to this 
+           callback when the operation is complete. The InstallationMediaMessageForDescribeInstallationMedia
+           object will be validated before being returned to caller.
+           The possible errors are: installationMediaNotFound.
+     */
+    public func describeInstallationMediaAsync(
+            input: RDSModel.DescribeInstallationMediaMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeInstallationMediaOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstallationMediaOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeInstallationMedia.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeInstallationMedia operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
+     - Returns: The InstallationMediaMessageForDescribeInstallationMedia object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: installationMediaNotFound.
+     */
+    public func describeInstallationMediaSync(
+            input: RDSModel.DescribeInstallationMediaMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeInstallationMediaOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstallationMediaOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeInstallationMedia.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeOptionGroupOptions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6021,6 +6424,83 @@ public struct AWSRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the ImportInstallationMedia operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
+         - completion: The InstallationMediaForImportInstallationMedia object or an error will be passed to this 
+           callback when the operation is complete. The InstallationMediaForImportInstallationMedia
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
+     */
+    public func importInstallationMediaAsync(
+            input: RDSModel.ImportInstallationMediaMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: importInstallationMediaOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ImportInstallationMediaOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.importInstallationMedia.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ImportInstallationMedia operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
+     - Returns: The InstallationMediaForImportInstallationMedia object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
+     */
+    public func importInstallationMediaSync(
+            input: RDSModel.ImportInstallationMediaMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: importInstallationMediaOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ImportInstallationMediaOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.importInstallationMedia.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6182,7 +6662,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - completion: The ModifyDBClusterResultForModifyDBCluster object or an error will be passed to this 
            callback when the operation is complete. The ModifyDBClusterResultForModifyDBCluster
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
     public func modifyDBClusterAsync(
             input: RDSModel.ModifyDBClusterMessage, 
@@ -6221,7 +6701,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated ModifyDBClusterMessage object being passed to this operation.
      - Returns: The ModifyDBClusterResultForModifyDBCluster object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
     public func modifyDBClusterSync(
             input: RDSModel.ModifyDBClusterMessage,
@@ -7944,7 +8424,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - completion: The RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
     public func restoreDBClusterFromS3Async(
             input: RDSModel.RestoreDBClusterFromS3Message, 
@@ -7983,7 +8463,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated RestoreDBClusterFromS3Message object being passed to this operation.
      - Returns: The RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
     public func restoreDBClusterFromS3Sync(
             input: RDSModel.RestoreDBClusterFromS3Message,
@@ -8021,7 +8501,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - completion: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     public func restoreDBClusterFromSnapshotAsync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
@@ -8060,7 +8540,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated RestoreDBClusterFromSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     public func restoreDBClusterFromSnapshotSync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage,
@@ -8098,7 +8578,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - completion: The RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
     public func restoreDBClusterToPointInTimeAsync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
@@ -8137,7 +8617,7 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated RestoreDBClusterToPointInTimeMessage object being passed to this operation.
      - Returns: The RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
     public func restoreDBClusterToPointInTimeSync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage,

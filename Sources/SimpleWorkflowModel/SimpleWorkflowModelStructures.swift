@@ -1375,25 +1375,30 @@ public struct DomainDetail: Codable, Equatable {
 }
 
 public struct DomainInfo: Codable, Equatable {
+    public var arn: Arn?
     public var description: Description?
     public var name: DomainName
     public var status: RegistrationStatus
 
-    public init(description: Description? = nil,
+    public init(arn: Arn? = nil,
+                description: Description? = nil,
                 name: DomainName,
                 status: RegistrationStatus) {
+        self.arn = arn
         self.description = description
         self.name = name
         self.status = status
     }
 
     enum CodingKeys: String, CodingKey {
+        case arn
         case description
         case name
         case status
     }
 
     public func validate() throws {
+        try arn?.validateAsArn()
         try description?.validateAsDescription()
         try name.validateAsDomainName()
     }
@@ -2190,6 +2195,37 @@ public struct ListOpenWorkflowExecutionsInput: Codable, Equatable {
     }
 }
 
+public struct ListTagsForResourceInput: Codable, Equatable {
+    public var resourceArn: Arn
+
+    public init(resourceArn: Arn) {
+        self.resourceArn = resourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn
+    }
+
+    public func validate() throws {
+        try resourceArn.validateAsArn()
+    }
+}
+
+public struct ListTagsForResourceOutput: Codable, Equatable {
+    public var tags: ResourceTagList?
+
+    public init(tags: ResourceTagList? = nil) {
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tags
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ListWorkflowTypesInput: Codable, Equatable {
     public var domain: DomainName
     public var maximumPageSize: PageSize?
@@ -2484,19 +2520,23 @@ public struct RegisterActivityTypeInput: Codable, Equatable {
 public struct RegisterDomainInput: Codable, Equatable {
     public var description: Description?
     public var name: DomainName
+    public var tags: ResourceTagList?
     public var workflowExecutionRetentionPeriodInDays: DurationInDays
 
     public init(description: Description? = nil,
                 name: DomainName,
+                tags: ResourceTagList? = nil,
                 workflowExecutionRetentionPeriodInDays: DurationInDays) {
         self.description = description
         self.name = name
+        self.tags = tags
         self.workflowExecutionRetentionPeriodInDays = workflowExecutionRetentionPeriodInDays
     }
 
     enum CodingKeys: String, CodingKey {
         case description
         case name
+        case tags
         case workflowExecutionRetentionPeriodInDays
     }
 
@@ -2723,6 +2763,27 @@ public struct RequestCancelWorkflowExecutionInput: Codable, Equatable {
         try domain.validateAsDomainName()
         try runId?.validateAsWorkflowRunIdOptional()
         try workflowId.validateAsWorkflowId()
+    }
+}
+
+public struct ResourceTag: Codable, Equatable {
+    public var key: ResourceTagKey
+    public var value: ResourceTagValue?
+
+    public init(key: ResourceTagKey,
+                value: ResourceTagValue? = nil) {
+        self.key = key
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case key
+        case value
+    }
+
+    public func validate() throws {
+        try key.validateAsResourceTagKey()
+        try value?.validateAsResourceTagValue()
     }
 }
 
@@ -3463,6 +3524,26 @@ public struct TagFilter: Codable, Equatable {
     }
 }
 
+public struct TagResourceInput: Codable, Equatable {
+    public var resourceArn: Arn
+    public var tags: ResourceTagList
+
+    public init(resourceArn: Arn,
+                tags: ResourceTagList) {
+        self.resourceArn = resourceArn
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn
+        case tags
+    }
+
+    public func validate() throws {
+        try resourceArn.validateAsArn()
+    }
+}
+
 public struct TaskList: Codable, Equatable {
     public var name: Name
 
@@ -3593,6 +3674,21 @@ public struct TimerStartedEventAttributes: Codable, Equatable {
     }
 }
 
+public struct TooManyTagsFault: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct TypeAlreadyExistsFault: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -3623,6 +3719,64 @@ public struct TypeDeprecatedFault: Codable, Equatable {
     }
 }
 
+public struct UndeprecateActivityTypeInput: Codable, Equatable {
+    public var activityType: ActivityType
+    public var domain: DomainName
+
+    public init(activityType: ActivityType,
+                domain: DomainName) {
+        self.activityType = activityType
+        self.domain = domain
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case activityType
+        case domain
+    }
+
+    public func validate() throws {
+        try activityType.validate()
+        try domain.validateAsDomainName()
+    }
+}
+
+public struct UndeprecateDomainInput: Codable, Equatable {
+    public var name: DomainName
+
+    public init(name: DomainName) {
+        self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+    }
+
+    public func validate() throws {
+        try name.validateAsDomainName()
+    }
+}
+
+public struct UndeprecateWorkflowTypeInput: Codable, Equatable {
+    public var domain: DomainName
+    public var workflowType: WorkflowType
+
+    public init(domain: DomainName,
+                workflowType: WorkflowType) {
+        self.domain = domain
+        self.workflowType = workflowType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case domain
+        case workflowType
+    }
+
+    public func validate() throws {
+        try domain.validateAsDomainName()
+        try workflowType.validate()
+    }
+}
+
 public struct UnknownResourceFault: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -3635,6 +3789,26 @@ public struct UnknownResourceFault: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct UntagResourceInput: Codable, Equatable {
+    public var resourceArn: Arn
+    public var tagKeys: ResourceTagKeyList
+
+    public init(resourceArn: Arn,
+                tagKeys: ResourceTagKeyList) {
+        self.resourceArn = resourceArn
+        self.tagKeys = tagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn
+        case tagKeys
+    }
+
+    public func validate() throws {
+        try resourceArn.validateAsArn()
     }
 }
 

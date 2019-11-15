@@ -211,16 +211,20 @@ public struct ChangeMessageVisibilityRequest: Codable, Equatable {
 public struct CreateQueueRequest: Codable, Equatable {
     public var attributes: QueueAttributeMap?
     public var queueName: String
+    public var tags: TagMap?
 
     public init(attributes: QueueAttributeMap? = nil,
-                queueName: String) {
+                queueName: String,
+                tags: TagMap? = nil) {
         self.attributes = attributes
         self.queueName = queueName
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
         case attributes = "Attribute"
         case queueName = "QueueName"
+        case tags = "Tag"
     }
 
     public func validate() throws {
@@ -742,6 +746,37 @@ public struct MessageNotInflight: Codable, Equatable {
     }
 }
 
+public struct MessageSystemAttributeValue: Codable, Equatable {
+    public var binaryListValues: BinaryList?
+    public var binaryValue: Binary?
+    public var dataType: String
+    public var stringListValues: StringList?
+    public var stringValue: String?
+
+    public init(binaryListValues: BinaryList? = nil,
+                binaryValue: Binary? = nil,
+                dataType: String,
+                stringListValues: StringList? = nil,
+                stringValue: String? = nil) {
+        self.binaryListValues = binaryListValues
+        self.binaryValue = binaryValue
+        self.dataType = dataType
+        self.stringListValues = stringListValues
+        self.stringValue = stringValue
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case binaryListValues = "BinaryListValue"
+        case binaryValue = "BinaryValue"
+        case dataType = "DataType"
+        case stringListValues = "StringListValue"
+        case stringValue = "StringValue"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct OverLimit: Codable, Equatable {
 
     public init() {
@@ -926,19 +961,22 @@ public struct SendMessageBatchRequestEntry: Codable, Equatable {
     public var messageBody: String
     public var messageDeduplicationId: String?
     public var messageGroupId: String?
+    public var messageSystemAttributes: MessageBodySystemAttributeMap?
 
     public init(delaySeconds: Integer? = nil,
                 id: String,
                 messageAttributes: MessageBodyAttributeMap? = nil,
                 messageBody: String,
                 messageDeduplicationId: String? = nil,
-                messageGroupId: String? = nil) {
+                messageGroupId: String? = nil,
+                messageSystemAttributes: MessageBodySystemAttributeMap? = nil) {
         self.delaySeconds = delaySeconds
         self.id = id
         self.messageAttributes = messageAttributes
         self.messageBody = messageBody
         self.messageDeduplicationId = messageDeduplicationId
         self.messageGroupId = messageGroupId
+        self.messageSystemAttributes = messageSystemAttributes
     }
 
     enum CodingKeys: String, CodingKey {
@@ -948,6 +986,7 @@ public struct SendMessageBatchRequestEntry: Codable, Equatable {
         case messageBody = "MessageBody"
         case messageDeduplicationId = "MessageDeduplicationId"
         case messageGroupId = "MessageGroupId"
+        case messageSystemAttributes = "MessageSystemAttribute"
     }
 
     public func validate() throws {
@@ -977,17 +1016,20 @@ public struct SendMessageBatchResultEntry: Codable, Equatable {
     public var id: String
     public var mD5OfMessageAttributes: String?
     public var mD5OfMessageBody: String
+    public var mD5OfMessageSystemAttributes: String?
     public var messageId: String
     public var sequenceNumber: String?
 
     public init(id: String,
                 mD5OfMessageAttributes: String? = nil,
                 mD5OfMessageBody: String,
+                mD5OfMessageSystemAttributes: String? = nil,
                 messageId: String,
                 sequenceNumber: String? = nil) {
         self.id = id
         self.mD5OfMessageAttributes = mD5OfMessageAttributes
         self.mD5OfMessageBody = mD5OfMessageBody
+        self.mD5OfMessageSystemAttributes = mD5OfMessageSystemAttributes
         self.messageId = messageId
         self.sequenceNumber = sequenceNumber
     }
@@ -996,6 +1038,7 @@ public struct SendMessageBatchResultEntry: Codable, Equatable {
         case id = "Id"
         case mD5OfMessageAttributes = "MD5OfMessageAttributes"
         case mD5OfMessageBody = "MD5OfMessageBody"
+        case mD5OfMessageSystemAttributes = "MD5OfMessageSystemAttributes"
         case messageId = "MessageId"
         case sequenceNumber = "SequenceNumber"
     }
@@ -1026,6 +1069,7 @@ public struct SendMessageRequest: Codable, Equatable {
     public var messageBody: String
     public var messageDeduplicationId: String?
     public var messageGroupId: String?
+    public var messageSystemAttributes: MessageBodySystemAttributeMap?
     public var queueUrl: String
 
     public init(delaySeconds: Integer? = nil,
@@ -1033,12 +1077,14 @@ public struct SendMessageRequest: Codable, Equatable {
                 messageBody: String,
                 messageDeduplicationId: String? = nil,
                 messageGroupId: String? = nil,
+                messageSystemAttributes: MessageBodySystemAttributeMap? = nil,
                 queueUrl: String) {
         self.delaySeconds = delaySeconds
         self.messageAttributes = messageAttributes
         self.messageBody = messageBody
         self.messageDeduplicationId = messageDeduplicationId
         self.messageGroupId = messageGroupId
+        self.messageSystemAttributes = messageSystemAttributes
         self.queueUrl = queueUrl
     }
 
@@ -1048,6 +1094,7 @@ public struct SendMessageRequest: Codable, Equatable {
         case messageBody = "MessageBody"
         case messageDeduplicationId = "MessageDeduplicationId"
         case messageGroupId = "MessageGroupId"
+        case messageSystemAttributes = "MessageSystemAttribute"
         case queueUrl = "QueueUrl"
     }
 
@@ -1058,15 +1105,18 @@ public struct SendMessageRequest: Codable, Equatable {
 public struct SendMessageResult: Codable, Equatable {
     public var mD5OfMessageAttributes: String?
     public var mD5OfMessageBody: String?
+    public var mD5OfMessageSystemAttributes: String?
     public var messageId: String?
     public var sequenceNumber: String?
 
     public init(mD5OfMessageAttributes: String? = nil,
                 mD5OfMessageBody: String? = nil,
+                mD5OfMessageSystemAttributes: String? = nil,
                 messageId: String? = nil,
                 sequenceNumber: String? = nil) {
         self.mD5OfMessageAttributes = mD5OfMessageAttributes
         self.mD5OfMessageBody = mD5OfMessageBody
+        self.mD5OfMessageSystemAttributes = mD5OfMessageSystemAttributes
         self.messageId = messageId
         self.sequenceNumber = sequenceNumber
     }
@@ -1074,6 +1124,7 @@ public struct SendMessageResult: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case mD5OfMessageAttributes = "MD5OfMessageAttributes"
         case mD5OfMessageBody = "MD5OfMessageBody"
+        case mD5OfMessageSystemAttributes = "MD5OfMessageSystemAttributes"
         case messageId = "MessageId"
         case sequenceNumber = "SequenceNumber"
     }

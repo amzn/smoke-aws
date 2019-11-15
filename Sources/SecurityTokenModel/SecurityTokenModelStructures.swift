@@ -447,6 +447,53 @@ public struct FederatedUser: Codable, Equatable {
     }
 }
 
+public struct GetAccessKeyInfoRequest: Codable, Equatable {
+    public var accessKeyId: AccessKeyIdType
+
+    public init(accessKeyId: AccessKeyIdType) {
+        self.accessKeyId = accessKeyId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case accessKeyId = "AccessKeyId"
+    }
+
+    public func validate() throws {
+        try accessKeyId.validateAsAccessKeyIdType()
+    }
+}
+
+public struct GetAccessKeyInfoResponse: Codable, Equatable {
+    public var account: AccountType?
+
+    public init(account: AccountType? = nil) {
+        self.account = account
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case account = "Account"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetAccessKeyInfoResponseForGetAccessKeyInfo: Codable, Equatable {
+    public var getAccessKeyInfoResult: GetAccessKeyInfoResponse
+
+    public init(getAccessKeyInfoResult: GetAccessKeyInfoResponse) {
+        self.getAccessKeyInfoResult = getAccessKeyInfoResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case getAccessKeyInfoResult = "GetAccessKeyInfoResult"
+    }
+
+    public func validate() throws {
+        try getAccessKeyInfoResult.validate()
+    }
+}
+
 public struct GetCallerIdentityRequest: Codable, Equatable {
 
     public init() {

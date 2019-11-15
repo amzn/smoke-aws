@@ -2922,21 +2922,38 @@ public struct RestoreSummary: Codable, Equatable {
 
 public struct RestoreTableFromBackupInput: Codable, Equatable {
     public var backupArn: BackupArn
+    public var billingModeOverride: BillingMode?
+    public var globalSecondaryIndexOverride: GlobalSecondaryIndexList?
+    public var localSecondaryIndexOverride: LocalSecondaryIndexList?
+    public var provisionedThroughputOverride: ProvisionedThroughput?
     public var targetTableName: TableName
 
     public init(backupArn: BackupArn,
+                billingModeOverride: BillingMode? = nil,
+                globalSecondaryIndexOverride: GlobalSecondaryIndexList? = nil,
+                localSecondaryIndexOverride: LocalSecondaryIndexList? = nil,
+                provisionedThroughputOverride: ProvisionedThroughput? = nil,
                 targetTableName: TableName) {
         self.backupArn = backupArn
+        self.billingModeOverride = billingModeOverride
+        self.globalSecondaryIndexOverride = globalSecondaryIndexOverride
+        self.localSecondaryIndexOverride = localSecondaryIndexOverride
+        self.provisionedThroughputOverride = provisionedThroughputOverride
         self.targetTableName = targetTableName
     }
 
     enum CodingKeys: String, CodingKey {
         case backupArn = "BackupArn"
+        case billingModeOverride = "BillingModeOverride"
+        case globalSecondaryIndexOverride = "GlobalSecondaryIndexOverride"
+        case localSecondaryIndexOverride = "LocalSecondaryIndexOverride"
+        case provisionedThroughputOverride = "ProvisionedThroughputOverride"
         case targetTableName = "TargetTableName"
     }
 
     public func validate() throws {
         try backupArn.validateAsBackupArn()
+        try provisionedThroughputOverride?.validate()
         try targetTableName.validateAsTableName()
     }
 }
@@ -2958,15 +2975,27 @@ public struct RestoreTableFromBackupOutput: Codable, Equatable {
 }
 
 public struct RestoreTableToPointInTimeInput: Codable, Equatable {
+    public var billingModeOverride: BillingMode?
+    public var globalSecondaryIndexOverride: GlobalSecondaryIndexList?
+    public var localSecondaryIndexOverride: LocalSecondaryIndexList?
+    public var provisionedThroughputOverride: ProvisionedThroughput?
     public var restoreDateTime: Date?
     public var sourceTableName: TableName
     public var targetTableName: TableName
     public var useLatestRestorableTime: BooleanObject?
 
-    public init(restoreDateTime: Date? = nil,
+    public init(billingModeOverride: BillingMode? = nil,
+                globalSecondaryIndexOverride: GlobalSecondaryIndexList? = nil,
+                localSecondaryIndexOverride: LocalSecondaryIndexList? = nil,
+                provisionedThroughputOverride: ProvisionedThroughput? = nil,
+                restoreDateTime: Date? = nil,
                 sourceTableName: TableName,
                 targetTableName: TableName,
                 useLatestRestorableTime: BooleanObject? = nil) {
+        self.billingModeOverride = billingModeOverride
+        self.globalSecondaryIndexOverride = globalSecondaryIndexOverride
+        self.localSecondaryIndexOverride = localSecondaryIndexOverride
+        self.provisionedThroughputOverride = provisionedThroughputOverride
         self.restoreDateTime = restoreDateTime
         self.sourceTableName = sourceTableName
         self.targetTableName = targetTableName
@@ -2974,6 +3003,10 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case billingModeOverride = "BillingModeOverride"
+        case globalSecondaryIndexOverride = "GlobalSecondaryIndexOverride"
+        case localSecondaryIndexOverride = "LocalSecondaryIndexOverride"
+        case provisionedThroughputOverride = "ProvisionedThroughputOverride"
         case restoreDateTime = "RestoreDateTime"
         case sourceTableName = "SourceTableName"
         case targetTableName = "TargetTableName"
@@ -2981,6 +3014,7 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try provisionedThroughputOverride?.validate()
         try sourceTableName.validateAsTableName()
         try targetTableName.validateAsTableName()
     }
