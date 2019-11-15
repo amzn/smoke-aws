@@ -379,6 +379,26 @@ public typealias CreateSubnetOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias CreateTagsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateTrafficMirrorFilter operation in a HTTP client.
+ */
+public typealias CreateTrafficMirrorFilterOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateTrafficMirrorFilterRule operation in a HTTP client.
+ */
+public typealias CreateTrafficMirrorFilterRuleOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateTrafficMirrorSession operation in a HTTP client.
+ */
+public typealias CreateTrafficMirrorSessionOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateTrafficMirrorTarget operation in a HTTP client.
+ */
+public typealias CreateTrafficMirrorTargetOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateTransitGateway operation in a HTTP client.
  */
 public typealias CreateTransitGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -534,6 +554,11 @@ public typealias DeleteNetworkInterfacePermissionOperationHTTPRequestInput = Que
 public typealias DeletePlacementGroupOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteQueuedReservedInstances operation in a HTTP client.
+ */
+public typealias DeleteQueuedReservedInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteRoute operation in a HTTP client.
  */
 public typealias DeleteRouteOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -567,6 +592,26 @@ public typealias DeleteSubnetOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the DeleteTags operation in a HTTP client.
  */
 public typealias DeleteTagsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTrafficMirrorFilter operation in a HTTP client.
+ */
+public typealias DeleteTrafficMirrorFilterOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTrafficMirrorFilterRule operation in a HTTP client.
+ */
+public typealias DeleteTrafficMirrorFilterRuleOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTrafficMirrorSession operation in a HTTP client.
+ */
+public typealias DeleteTrafficMirrorSessionOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTrafficMirrorTarget operation in a HTTP client.
+ */
+public typealias DeleteTrafficMirrorTargetOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteTransitGateway operation in a HTTP client.
@@ -732,6 +777,11 @@ public typealias DescribeEgressOnlyInternetGatewaysOperationHTTPRequestInput = Q
  Type to handle the input to the DescribeElasticGpus operation in a HTTP client.
  */
 public typealias DescribeElasticGpusOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeExportImageTasks operation in a HTTP client.
+ */
+public typealias DescribeExportImageTasksOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeExportTasks operation in a HTTP client.
@@ -1014,6 +1064,21 @@ public typealias DescribeSubnetsOperationHTTPRequestInput = QueryHTTPRequestInpu
 public typealias DescribeTagsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeTrafficMirrorFilters operation in a HTTP client.
+ */
+public typealias DescribeTrafficMirrorFiltersOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeTrafficMirrorSessions operation in a HTTP client.
+ */
+public typealias DescribeTrafficMirrorSessionsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeTrafficMirrorTargets operation in a HTTP client.
+ */
+public typealias DescribeTrafficMirrorTargetsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeTransitGatewayAttachments operation in a HTTP client.
  */
 public typealias DescribeTransitGatewayAttachmentsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1244,9 +1309,19 @@ public typealias ExportClientVpnClientCertificateRevocationListOperationHTTPRequ
 public typealias ExportClientVpnClientConfigurationOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ExportImage operation in a HTTP client.
+ */
+public typealias ExportImageOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ExportTransitGatewayRoutes operation in a HTTP client.
  */
 public typealias ExportTransitGatewayRoutesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetCapacityReservationUsage operation in a HTTP client.
+ */
+public typealias GetCapacityReservationUsageOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetConsoleOutput operation in a HTTP client.
@@ -1434,6 +1509,21 @@ public typealias ModifySpotFleetRequestOperationHTTPRequestInput = QueryHTTPRequ
 public typealias ModifySubnetAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ModifyTrafficMirrorFilterNetworkServices operation in a HTTP client.
+ */
+public typealias ModifyTrafficMirrorFilterNetworkServicesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyTrafficMirrorFilterRule operation in a HTTP client.
+ */
+public typealias ModifyTrafficMirrorFilterRuleOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyTrafficMirrorSession operation in a HTTP client.
+ */
+public typealias ModifyTrafficMirrorSessionOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ModifyTransitGatewayVpcAttachment operation in a HTTP client.
  */
 public typealias ModifyTransitGatewayVpcAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1487,6 +1577,16 @@ public typealias ModifyVpcTenancyOperationHTTPRequestInput = QueryHTTPRequestInp
  Type to handle the input to the ModifyVpnConnection operation in a HTTP client.
  */
 public typealias ModifyVpnConnectionOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyVpnTunnelCertificate operation in a HTTP client.
+ */
+public typealias ModifyVpnTunnelCertificateOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyVpnTunnelOptions operation in a HTTP client.
+ */
+public typealias ModifyVpnTunnelOptionsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the MonitorInstances operation in a HTTP client.
@@ -1662,6 +1762,11 @@ public typealias RunScheduledInstancesOperationHTTPRequestInput = QueryHTTPReque
  Type to handle the input to the SearchTransitGatewayRoutes operation in a HTTP client.
  */
 public typealias SearchTransitGatewayRoutesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the SendDiagnosticInterrupt operation in a HTTP client.
+ */
+public typealias SendDiagnosticInterruptOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the StartInstances operation in a HTTP client.

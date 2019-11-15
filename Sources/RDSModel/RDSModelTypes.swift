@@ -106,6 +106,11 @@ public typealias BooleanOptional = Bool
 public typealias CertificateList = [Certificate]
 
 /**
+ Type definition for the CustomAvailabilityZoneList field.
+ */
+public typealias CustomAvailabilityZoneList = [CustomAvailabilityZone]
+
+/**
  Type definition for the DBClusterBacktrackList field.
  */
 public typealias DBClusterBacktrackList = [DBClusterBacktrack]
@@ -294,6 +299,11 @@ public typealias GlobalClusterMemberList = [GlobalClusterMember]
  Type definition for the IPRangeList field.
  */
 public typealias IPRangeList = [IPRange]
+
+/**
+ Type definition for the InstallationMediaList field.
+ */
+public typealias InstallationMediaList = [InstallationMedia]
 
 /**
  Type definition for the Integer field.
@@ -487,6 +497,11 @@ public enum SourceType: String, Codable, CustomStringConvertible {
  Type definition for the StringList field.
  */
 public typealias StringList = [String]
+
+/**
+ Type definition for the StringSensitive field.
+ */
+public typealias StringSensitive = String
 
 /**
  Type definition for the SubnetIdentifierList field.

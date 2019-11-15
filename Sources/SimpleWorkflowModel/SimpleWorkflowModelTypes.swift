@@ -475,6 +475,26 @@ public enum RequestCancelExternalWorkflowExecutionFailedCause: String, Codable, 
 }
 
 /**
+ Type definition for the ResourceTagKey field.
+ */
+public typealias ResourceTagKey = String
+
+/**
+ Type definition for the ResourceTagKeyList field.
+ */
+public typealias ResourceTagKeyList = [ResourceTagKey]
+
+/**
+ Type definition for the ResourceTagList field.
+ */
+public typealias ResourceTagList = [ResourceTag]
+
+/**
+ Type definition for the ResourceTagValue field.
+ */
+public typealias ResourceTagValue = String
+
+/**
  Type definition for the ReverseOrder field.
  */
 public typealias ReverseOrder = Bool
@@ -990,6 +1010,33 @@ extension SimpleWorkflowModel.PageToken {
 
         if self.count > 2048 {
             throw SimpleWorkflowError.validationError(reason: "The provided value to PageToken violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ResourceTagKey field.
+*/
+extension SimpleWorkflowModel.ResourceTagKey {
+    public func validateAsResourceTagKey() throws {
+        if self.count < 1 {
+            throw SimpleWorkflowError.validationError(reason: "The provided value to ResourceTagKey violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw SimpleWorkflowError.validationError(reason: "The provided value to ResourceTagKey violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ResourceTagValue field.
+*/
+extension SimpleWorkflowModel.ResourceTagValue {
+    public func validateAsResourceTagValue() throws {
+
+        if self.count > 256 {
+            throw SimpleWorkflowError.validationError(reason: "The provided value to ResourceTagValue violated the maximum length constraint.")
         }
     }
 }

@@ -104,6 +104,11 @@ public typealias ListDomainsOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias ListOpenWorkflowExecutionsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the ListTagsForResource operation in a HTTP client.
+ */
+public typealias ListTagsForResourceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the ListWorkflowTypes operation in a HTTP client.
  */
 public typealias ListWorkflowTypesOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -174,6 +179,31 @@ public typealias SignalWorkflowExecutionOperationHTTPRequestInput = BodyHTTPRequ
 public typealias StartWorkflowExecutionOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the TagResource operation in a HTTP client.
+ */
+public typealias TagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the TerminateWorkflowExecution operation in a HTTP client.
  */
 public typealias TerminateWorkflowExecutionOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UndeprecateActivityType operation in a HTTP client.
+ */
+public typealias UndeprecateActivityTypeOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UndeprecateDomain operation in a HTTP client.
+ */
+public typealias UndeprecateDomainOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UndeprecateWorkflowType operation in a HTTP client.
+ */
+public typealias UndeprecateWorkflowTypeOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UntagResource operation in a HTTP client.
+ */
+public typealias UntagResourceOperationHTTPRequestInput = BodyHTTPRequestInput

@@ -141,6 +141,19 @@ extension AssignIpv6AddressesResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the AssignPrivateIpAddresses operation in a HTTP client.
+ */
+extension AssignPrivateIpAddressesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AssignPrivateIpAddressesResult
+    public typealias HeadersType = AssignPrivateIpAddressesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AssignPrivateIpAddressesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the AssociateAddress operation in a HTTP client.
  */
 extension AssociateAddressResult: HTTPResponseOutputProtocol {
@@ -817,6 +830,58 @@ extension CreateSubnetResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateTrafficMirrorFilter operation in a HTTP client.
+ */
+extension CreateTrafficMirrorFilterResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateTrafficMirrorFilterResult
+    public typealias HeadersType = CreateTrafficMirrorFilterResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateTrafficMirrorFilterResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateTrafficMirrorFilterRule operation in a HTTP client.
+ */
+extension CreateTrafficMirrorFilterRuleResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateTrafficMirrorFilterRuleResult
+    public typealias HeadersType = CreateTrafficMirrorFilterRuleResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateTrafficMirrorFilterRuleResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateTrafficMirrorSession operation in a HTTP client.
+ */
+extension CreateTrafficMirrorSessionResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateTrafficMirrorSessionResult
+    public typealias HeadersType = CreateTrafficMirrorSessionResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateTrafficMirrorSessionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateTrafficMirrorTarget operation in a HTTP client.
+ */
+extension CreateTrafficMirrorTargetResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateTrafficMirrorTargetResult
+    public typealias HeadersType = CreateTrafficMirrorTargetResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateTrafficMirrorTargetResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateTransitGateway operation in a HTTP client.
  */
 extension CreateTransitGatewayResult: HTTPResponseOutputProtocol {
@@ -1098,6 +1163,71 @@ extension DeleteNetworkInterfacePermissionResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteNetworkInterfacePermissionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteQueuedReservedInstances operation in a HTTP client.
+ */
+extension DeleteQueuedReservedInstancesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteQueuedReservedInstancesResult
+    public typealias HeadersType = DeleteQueuedReservedInstancesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteQueuedReservedInstancesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteTrafficMirrorFilter operation in a HTTP client.
+ */
+extension DeleteTrafficMirrorFilterResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTrafficMirrorFilterResult
+    public typealias HeadersType = DeleteTrafficMirrorFilterResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTrafficMirrorFilterResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteTrafficMirrorFilterRule operation in a HTTP client.
+ */
+extension DeleteTrafficMirrorFilterRuleResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTrafficMirrorFilterRuleResult
+    public typealias HeadersType = DeleteTrafficMirrorFilterRuleResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTrafficMirrorFilterRuleResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteTrafficMirrorSession operation in a HTTP client.
+ */
+extension DeleteTrafficMirrorSessionResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTrafficMirrorSessionResult
+    public typealias HeadersType = DeleteTrafficMirrorSessionResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTrafficMirrorSessionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteTrafficMirrorTarget operation in a HTTP client.
+ */
+extension DeleteTrafficMirrorTargetResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTrafficMirrorTargetResult
+    public typealias HeadersType = DeleteTrafficMirrorTargetResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTrafficMirrorTargetResult {
         return try bodyDecodableProvider()
     }
 }
@@ -1449,6 +1579,19 @@ extension DescribeElasticGpusResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeElasticGpusResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeExportImageTasks operation in a HTTP client.
+ */
+extension DescribeExportImageTasksResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeExportImageTasksResult
+    public typealias HeadersType = DescribeExportImageTasksResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeExportImageTasksResult {
         return try bodyDecodableProvider()
     }
 }
@@ -2182,6 +2325,45 @@ extension DescribeTagsResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeTrafficMirrorFilters operation in a HTTP client.
+ */
+extension DescribeTrafficMirrorFiltersResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTrafficMirrorFiltersResult
+    public typealias HeadersType = DescribeTrafficMirrorFiltersResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTrafficMirrorFiltersResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeTrafficMirrorSessions operation in a HTTP client.
+ */
+extension DescribeTrafficMirrorSessionsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTrafficMirrorSessionsResult
+    public typealias HeadersType = DescribeTrafficMirrorSessionsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTrafficMirrorSessionsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeTrafficMirrorTargets operation in a HTTP client.
+ */
+extension DescribeTrafficMirrorTargetsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTrafficMirrorTargetsResult
+    public typealias HeadersType = DescribeTrafficMirrorTargetsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTrafficMirrorTargetsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeTransitGatewayAttachments operation in a HTTP client.
  */
 extension DescribeTransitGatewayAttachmentsResult: HTTPResponseOutputProtocol {
@@ -2663,6 +2845,19 @@ extension ExportClientVpnClientConfigurationResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ExportImage operation in a HTTP client.
+ */
+extension ExportImageResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExportImageResult
+    public typealias HeadersType = ExportImageResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExportImageResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ExportTransitGatewayRoutes operation in a HTTP client.
  */
 extension ExportTransitGatewayRoutesResult: HTTPResponseOutputProtocol {
@@ -2671,6 +2866,19 @@ extension ExportTransitGatewayRoutesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ExportTransitGatewayRoutesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetCapacityReservationUsage operation in a HTTP client.
+ */
+extension GetCapacityReservationUsageResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetCapacityReservationUsageResult
+    public typealias HeadersType = GetCapacityReservationUsageResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetCapacityReservationUsageResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3066,6 +3274,45 @@ extension ModifySpotFleetRequestResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyTrafficMirrorFilterNetworkServices operation in a HTTP client.
+ */
+extension ModifyTrafficMirrorFilterNetworkServicesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyTrafficMirrorFilterNetworkServicesResult
+    public typealias HeadersType = ModifyTrafficMirrorFilterNetworkServicesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyTrafficMirrorFilterNetworkServicesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyTrafficMirrorFilterRule operation in a HTTP client.
+ */
+extension ModifyTrafficMirrorFilterRuleResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyTrafficMirrorFilterRuleResult
+    public typealias HeadersType = ModifyTrafficMirrorFilterRuleResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyTrafficMirrorFilterRuleResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyTrafficMirrorSession operation in a HTTP client.
+ */
+extension ModifyTrafficMirrorSessionResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyTrafficMirrorSessionResult
+    public typealias HeadersType = ModifyTrafficMirrorSessionResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyTrafficMirrorSessionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyTransitGatewayVpcAttachment operation in a HTTP client.
  */
 extension ModifyTransitGatewayVpcAttachmentResult: HTTPResponseOutputProtocol {
@@ -3178,6 +3425,32 @@ extension ModifyVpnConnectionResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVpnConnectionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVpnTunnelCertificate operation in a HTTP client.
+ */
+extension ModifyVpnTunnelCertificateResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVpnTunnelCertificateResult
+    public typealias HeadersType = ModifyVpnTunnelCertificateResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVpnTunnelCertificateResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVpnTunnelOptions operation in a HTTP client.
+ */
+extension ModifyVpnTunnelOptionsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVpnTunnelOptionsResult
+    public typealias HeadersType = ModifyVpnTunnelOptionsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVpnTunnelOptionsResult {
         return try bodyDecodableProvider()
     }
 }

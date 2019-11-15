@@ -27,6 +27,7 @@ private let domainAlreadyExistsIdentity = "DomainAlreadyExistsFault"
 private let domainDeprecatedIdentity = "DomainDeprecatedFault"
 private let limitExceededIdentity = "LimitExceededFault"
 private let operationNotPermittedIdentity = "OperationNotPermittedFault"
+private let tooManyTagsIdentity = "TooManyTagsFault"
 private let typeAlreadyExistsIdentity = "TypeAlreadyExistsFault"
 private let typeDeprecatedIdentity = "TypeDeprecatedFault"
 private let unknownResourceIdentity = "UnknownResourceFault"
@@ -39,6 +40,7 @@ public enum SimpleWorkflowError: Swift.Error, Decodable {
     case domainDeprecated(DomainDeprecatedFault)
     case limitExceeded(LimitExceededFault)
     case operationNotPermitted(OperationNotPermittedFault)
+    case tooManyTags(TooManyTagsFault)
     case typeAlreadyExists(TypeAlreadyExistsFault)
     case typeDeprecated(TypeDeprecatedFault)
     case unknownResource(UnknownResourceFault)
@@ -77,6 +79,9 @@ public enum SimpleWorkflowError: Swift.Error, Decodable {
         case operationNotPermittedIdentity:
             let errorPayload = try OperationNotPermittedFault(from: decoder)
             self = SimpleWorkflowError.operationNotPermitted(errorPayload)
+        case tooManyTagsIdentity:
+            let errorPayload = try TooManyTagsFault(from: decoder)
+            self = SimpleWorkflowError.tooManyTags(errorPayload)
         case typeAlreadyExistsIdentity:
             let errorPayload = try TypeAlreadyExistsFault(from: decoder)
             self = SimpleWorkflowError.typeAlreadyExists(errorPayload)

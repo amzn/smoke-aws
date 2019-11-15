@@ -250,6 +250,42 @@ public extension FederatedUser {
     }()
 }
 
+public extension GetAccessKeyInfoRequest {
+    /**
+     Default instance of the GetAccessKeyInfoRequest structure.
+     */
+    static let __default: SecurityTokenModel.GetAccessKeyInfoRequest = {
+        let defaultInstance = SecurityTokenModel.GetAccessKeyInfoRequest(
+            accessKeyId: "0123456789012345")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetAccessKeyInfoResponse {
+    /**
+     Default instance of the GetAccessKeyInfoResponse structure.
+     */
+    static let __default: SecurityTokenModel.GetAccessKeyInfoResponse = {
+        let defaultInstance = SecurityTokenModel.GetAccessKeyInfoResponse(
+            account: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetAccessKeyInfoResponseForGetAccessKeyInfo {
+    /**
+     Default instance of the GetAccessKeyInfoResponseForGetAccessKeyInfo structure.
+     */
+    static let __default: SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo = {
+        let defaultInstance = SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo(
+            getAccessKeyInfoResult: GetAccessKeyInfoResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension GetCallerIdentityRequest {
     /**
      Default instance of the GetCallerIdentityRequest structure.

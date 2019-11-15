@@ -64,6 +64,7 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
     case submitTaskStateChange = "SubmitTaskStateChange"
     case tagResource = "TagResource"
     case untagResource = "UntagResource"
+    case updateClusterSettings = "UpdateClusterSettings"
     case updateContainerAgent = "UpdateContainerAgent"
     case updateContainerInstancesState = "UpdateContainerInstancesState"
     case updateService = "UpdateService"
@@ -153,6 +154,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
         case .tagResource:
             return "/"
         case .untagResource:
+            return "/"
+        case .updateClusterSettings:
             return "/"
         case .updateContainerAgent:
             return "/"

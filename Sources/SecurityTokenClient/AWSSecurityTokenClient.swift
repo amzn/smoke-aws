@@ -66,6 +66,7 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
     let assumeRoleWithSAMLOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
     let assumeRoleWithWebIdentityOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
     let decodeAuthorizationMessageOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    let getAccessKeyInfoOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
     let getCallerIdentityOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
     let getFederationTokenOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
     let getSessionTokenOperationReporting: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
@@ -105,6 +106,8 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
             clientName: "AWSSecurityTokenClient", operation: .assumeRoleWithWebIdentity, configuration: reportingConfiguration)
         self.decodeAuthorizationMessageOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSSecurityTokenClient", operation: .decodeAuthorizationMessage, configuration: reportingConfiguration)
+        self.getAccessKeyInfoOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSSecurityTokenClient", operation: .getAccessKeyInfo, configuration: reportingConfiguration)
         self.getCallerIdentityOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSSecurityTokenClient", operation: .getCallerIdentity, configuration: reportingConfiguration)
         self.getFederationTokenOperationReporting = StandardSmokeAWSOperationReporting(
@@ -426,6 +429,81 @@ public struct AWSSecurityTokenClient: SecurityTokenClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: SecurityTokenModelOperations.decodeAuthorizationMessage.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetAccessKeyInfo operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+         - completion: The GetAccessKeyInfoResponseForGetAccessKeyInfo object or an error will be passed to this 
+           callback when the operation is complete. The GetAccessKeyInfoResponseForGetAccessKeyInfo
+           object will be validated before being returned to caller.
+     */
+    public func getAccessKeyInfoAsync(
+            input: SecurityTokenModel.GetAccessKeyInfoRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getAccessKeyInfoOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetAccessKeyInfoOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SecurityTokenModelOperations.getAccessKeyInfo.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetAccessKeyInfo operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAccessKeyInfoRequest object being passed to this operation.
+     - Returns: The GetAccessKeyInfoResponseForGetAccessKeyInfo object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getAccessKeyInfoSync(
+            input: SecurityTokenModel.GetAccessKeyInfoRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getAccessKeyInfoOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetAccessKeyInfoOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SecurityTokenModelOperations.getAccessKeyInfo.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(

@@ -141,6 +141,19 @@ extension CopyOptionGroupResultForCopyOptionGroup: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateCustomAvailabilityZone operation in a HTTP client.
+ */
+extension CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+    public typealias HeadersType = CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateDBCluster operation in a HTTP client.
  */
 extension CreateDBClusterResultForCreateDBCluster: HTTPResponseOutputProtocol {
@@ -310,6 +323,19 @@ extension CreateOptionGroupResultForCreateOptionGroup: HTTPResponseOutputProtoco
 }
 
 /**
+ Type to handle the output from the DeleteCustomAvailabilityZone operation in a HTTP client.
+ */
+extension DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+    public typealias HeadersType = DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteDBCluster operation in a HTTP client.
  */
 extension DeleteDBClusterResultForDeleteDBCluster: HTTPResponseOutputProtocol {
@@ -414,6 +440,19 @@ extension DeleteGlobalClusterResultForDeleteGlobalCluster: HTTPResponseOutputPro
 }
 
 /**
+ Type to handle the output from the DeleteInstallationMedia operation in a HTTP client.
+ */
+extension InstallationMediaForDeleteInstallationMedia: HTTPResponseOutputProtocol {
+    public typealias BodyType = InstallationMediaForDeleteInstallationMedia
+    public typealias HeadersType = InstallationMediaForDeleteInstallationMedia
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> InstallationMediaForDeleteInstallationMedia {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeAccountAttributes operation in a HTTP client.
  */
 extension AccountAttributesMessageForDescribeAccountAttributes: HTTPResponseOutputProtocol {
@@ -435,6 +474,19 @@ extension CertificateMessageForDescribeCertificates: HTTPResponseOutputProtocol 
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CertificateMessageForDescribeCertificates {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeCustomAvailabilityZones operation in a HTTP client.
+ */
+extension CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones: HTTPResponseOutputProtocol {
+    public typealias BodyType = CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+    public typealias HeadersType = CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
         return try bodyDecodableProvider()
     }
 }
@@ -739,6 +791,19 @@ extension GlobalClustersMessageForDescribeGlobalClusters: HTTPResponseOutputProt
 }
 
 /**
+ Type to handle the output from the DescribeInstallationMedia operation in a HTTP client.
+ */
+extension InstallationMediaMessageForDescribeInstallationMedia: HTTPResponseOutputProtocol {
+    public typealias BodyType = InstallationMediaMessageForDescribeInstallationMedia
+    public typealias HeadersType = InstallationMediaMessageForDescribeInstallationMedia
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> InstallationMediaMessageForDescribeInstallationMedia {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeOptionGroupOptions operation in a HTTP client.
  */
 extension OptionGroupOptionsMessageForDescribeOptionGroupOptions: HTTPResponseOutputProtocol {
@@ -864,6 +929,19 @@ extension FailoverDBClusterResultForFailoverDBCluster: HTTPResponseOutputProtoco
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> FailoverDBClusterResultForFailoverDBCluster {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ImportInstallationMedia operation in a HTTP client.
+ */
+extension InstallationMediaForImportInstallationMedia: HTTPResponseOutputProtocol {
+    public typealias BodyType = InstallationMediaForImportInstallationMedia
+    public typealias HeadersType = InstallationMediaForImportInstallationMedia
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> InstallationMediaForImportInstallationMedia {
         return try bodyDecodableProvider()
     }
 }

@@ -2085,7 +2085,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The TransactGetItemsOutput object or an error will be passed to this 
            callback when the operation is complete. The TransactGetItemsOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
     public func transactGetItemsAsync(
             input: DynamoDBModel.TransactGetItemsInput, 
@@ -2120,7 +2120,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated TransactGetItemsInput object being passed to this operation.
      - Returns: The TransactGetItemsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
     public func transactGetItemsSync(
             input: DynamoDBModel.TransactGetItemsInput,
@@ -2154,7 +2154,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The TransactWriteItemsOutput object or an error will be passed to this 
            callback when the operation is complete. The TransactWriteItemsOutput
            object will be validated before being returned to caller.
-           The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+           The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
     public func transactWriteItemsAsync(
             input: DynamoDBModel.TransactWriteItemsInput, 
@@ -2189,7 +2189,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated TransactWriteItemsInput object being passed to this operation.
      - Returns: The TransactWriteItemsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
     public func transactWriteItemsSync(
             input: DynamoDBModel.TransactWriteItemsInput,

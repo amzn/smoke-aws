@@ -301,6 +301,13 @@ public protocol ElasticContainerClientProtocol {
             _ input: ElasticContainerModel.UntagResourceRequest, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws -> ()
+    typealias UpdateClusterSettingsSyncType = (
+            _ input: ElasticContainerModel.UpdateClusterSettingsRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
+    typealias UpdateClusterSettingsAsyncType = (
+            _ input: ElasticContainerModel.UpdateClusterSettingsRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws -> ()
     typealias UpdateContainerAgentSyncType = (
             _ input: ElasticContainerModel.UpdateContainerAgentRequest,
             _ reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateContainerAgentResponse
@@ -1353,7 +1360,7 @@ public protocol ElasticContainerClientProtocol {
          - completion: The SubmitTaskStateChangeResponse object or an error will be passed to this 
            callback when the operation is complete. The SubmitTaskStateChangeResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, client, server.
+           The possible errors are: accessDenied, client, invalidParameter, server.
      */
     func submitTaskStateChangeAsync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
@@ -1367,7 +1374,7 @@ public protocol ElasticContainerClientProtocol {
          - input: The validated SubmitTaskStateChangeRequest object being passed to this operation.
      - Returns: The SubmitTaskStateChangeResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, server.
+     - Throws: accessDenied, client, invalidParameter, server.
      */
     func submitTaskStateChangeSync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest,
@@ -1428,6 +1435,34 @@ public protocol ElasticContainerClientProtocol {
     func untagResourceSync(
             input: ElasticContainerModel.UntagResourceRequest,
             reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UntagResourceResponse
+
+    /**
+     Invokes the UpdateClusterSettings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+         - completion: The UpdateClusterSettingsResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateClusterSettingsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    func updateClusterSettingsAsync(
+            input: ElasticContainerModel.UpdateClusterSettingsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the UpdateClusterSettings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+     - Returns: The UpdateClusterSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    func updateClusterSettingsSync(
+            input: ElasticContainerModel.UpdateClusterSettingsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
 
     /**
      Invokes the UpdateContainerAgent operation returning immediately and passing the response to a callback.

@@ -36,7 +36,7 @@ public enum CloudWatchClientError: Swift.Error {
 private extension CloudWatchError {
     func isRetriable() -> Bool {
         switch self {
-        case .limitExceeded:
+        case .limitExceededException, .limitExceededFault:
             return true
         default:
             return false
@@ -68,10 +68,12 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     let credentialsProvider: CredentialsProvider
 
     let deleteAlarmsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let deleteAnomalyDetectorOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let deleteDashboardsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let describeAlarmHistoryOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let describeAlarmsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let describeAlarmsForMetricOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let describeAnomalyDetectorsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let disableAlarmActionsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let enableAlarmActionsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let getDashboardOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
@@ -81,6 +83,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     let listDashboardsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let listMetricsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let putAnomalyDetectorOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putDashboardOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putMetricAlarmOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putMetricDataOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
@@ -117,6 +120,8 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
 
         self.deleteAlarmsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .deleteAlarms, configuration: reportingConfiguration)
+        self.deleteAnomalyDetectorOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .deleteAnomalyDetector, configuration: reportingConfiguration)
         self.deleteDashboardsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .deleteDashboards, configuration: reportingConfiguration)
         self.describeAlarmHistoryOperationReporting = StandardSmokeAWSOperationReporting(
@@ -125,6 +130,8 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             clientName: "AWSCloudWatchClient", operation: .describeAlarms, configuration: reportingConfiguration)
         self.describeAlarmsForMetricOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .describeAlarmsForMetric, configuration: reportingConfiguration)
+        self.describeAnomalyDetectorsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .describeAnomalyDetectors, configuration: reportingConfiguration)
         self.disableAlarmActionsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .disableAlarmActions, configuration: reportingConfiguration)
         self.enableAlarmActionsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -143,6 +150,8 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             clientName: "AWSCloudWatchClient", operation: .listMetrics, configuration: reportingConfiguration)
         self.listTagsForResourceOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .listTagsForResource, configuration: reportingConfiguration)
+        self.putAnomalyDetectorOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .putAnomalyDetector, configuration: reportingConfiguration)
         self.putDashboardOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .putDashboard, configuration: reportingConfiguration)
         self.putMetricAlarmOperationReporting = StandardSmokeAWSOperationReporting(
@@ -239,6 +248,83 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             version: apiVersion)
 
         try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteAnomalyDetector operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteAnomalyDetectorInput object being passed to this operation.
+         - completion: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object or an error will be passed to this 
+           callback when the operation is complete. The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func deleteAnomalyDetectorAsync(
+            input: CloudWatchModel.DeleteAnomalyDetectorInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteAnomalyDetectorOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteAnomalyDetectorOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.deleteAnomalyDetector.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteAnomalyDetector operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteAnomalyDetectorInput object being passed to this operation.
+     - Returns: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func deleteAnomalyDetectorSync(
+            input: CloudWatchModel.DeleteAnomalyDetectorInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteAnomalyDetectorOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteAnomalyDetectorOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.deleteAnomalyDetector.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -542,6 +628,83 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudWatchModelOperations.describeAlarmsForMetric.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeAnomalyDetectors operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAnomalyDetectorsInput object being passed to this operation.
+         - completion: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidNextToken, invalidParameterValue.
+     */
+    public func describeAnomalyDetectorsAsync(
+            input: CloudWatchModel.DescribeAnomalyDetectorsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeAnomalyDetectorsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeAnomalyDetectorsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.describeAnomalyDetectors.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeAnomalyDetectors operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAnomalyDetectorsInput object being passed to this operation.
+     - Returns: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidNextToken, invalidParameterValue.
+     */
+    public func describeAnomalyDetectorsSync(
+            input: CloudWatchModel.DescribeAnomalyDetectorsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeAnomalyDetectorsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeAnomalyDetectorsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.describeAnomalyDetectors.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1223,6 +1386,83 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudWatchModelOperations.listTagsForResource.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutAnomalyDetector operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutAnomalyDetectorInput object being passed to this operation.
+         - completion: The PutAnomalyDetectorOutputForPutAnomalyDetector object or an error will be passed to this 
+           callback when the operation is complete. The PutAnomalyDetectorOutputForPutAnomalyDetector
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putAnomalyDetectorAsync(
+            input: CloudWatchModel.PutAnomalyDetectorInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putAnomalyDetectorOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = PutAnomalyDetectorOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putAnomalyDetector.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutAnomalyDetector operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutAnomalyDetectorInput object being passed to this operation.
+     - Returns: The PutAnomalyDetectorOutputForPutAnomalyDetector object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putAnomalyDetectorSync(
+            input: CloudWatchModel.PutAnomalyDetectorInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putAnomalyDetectorOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = PutAnomalyDetectorOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putAnomalyDetector.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(

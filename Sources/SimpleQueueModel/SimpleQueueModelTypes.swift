@@ -97,6 +97,11 @@ public typealias MessageAttributeNameList = [MessageAttributeName]
 public typealias MessageBodyAttributeMap = [String: MessageAttributeValue]
 
 /**
+ Type definition for the MessageBodySystemAttributeMap field.
+ */
+public typealias MessageBodySystemAttributeMap = [MessageSystemAttributeNameForSends: MessageSystemAttributeValue]
+
+/**
  Type definition for the MessageList field.
  */
 public typealias MessageList = [Message]
@@ -110,6 +115,7 @@ public typealias MessageSystemAttributeMap = [MessageSystemAttributeName: String
  Enumeration restricting the values of the MessageSystemAttributeName field.
  */
 public enum MessageSystemAttributeName: String, Codable, CustomStringConvertible {
+    case awstraceheader = "AWSTraceHeader"
     case approximatefirstreceivetimestamp = "ApproximateFirstReceiveTimestamp"
     case approximatereceivecount = "ApproximateReceiveCount"
     case messagededuplicationid = "MessageDeduplicationId"
@@ -122,7 +128,20 @@ public enum MessageSystemAttributeName: String, Codable, CustomStringConvertible
         return rawValue
     }
     
-    public static let __default: MessageSystemAttributeName = .approximatefirstreceivetimestamp
+    public static let __default: MessageSystemAttributeName = .awstraceheader
+}
+
+/**
+ Enumeration restricting the values of the MessageSystemAttributeNameForSends field.
+ */
+public enum MessageSystemAttributeNameForSends: String, Codable, CustomStringConvertible {
+    case awstraceheader = "AWSTraceHeader"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: MessageSystemAttributeNameForSends = .awstraceheader
 }
 
 /**

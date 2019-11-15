@@ -106,6 +106,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
     let tagResourceSyncOverride: ElasticContainerClientProtocol.TagResourceSyncType?
     let untagResourceAsyncOverride: ElasticContainerClientProtocol.UntagResourceAsyncType?
     let untagResourceSyncOverride: ElasticContainerClientProtocol.UntagResourceSyncType?
+    let updateClusterSettingsAsyncOverride: ElasticContainerClientProtocol.UpdateClusterSettingsAsyncType?
+    let updateClusterSettingsSyncOverride: ElasticContainerClientProtocol.UpdateClusterSettingsSyncType?
     let updateContainerAgentAsyncOverride: ElasticContainerClientProtocol.UpdateContainerAgentAsyncType?
     let updateContainerAgentSyncOverride: ElasticContainerClientProtocol.UpdateContainerAgentSyncType?
     let updateContainerInstancesStateAsyncOverride: ElasticContainerClientProtocol.UpdateContainerInstancesStateAsyncType?
@@ -200,6 +202,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
             tagResourceSync: ElasticContainerClientProtocol.TagResourceSyncType? = nil,
             untagResourceAsync: ElasticContainerClientProtocol.UntagResourceAsyncType? = nil,
             untagResourceSync: ElasticContainerClientProtocol.UntagResourceSyncType? = nil,
+            updateClusterSettingsAsync: ElasticContainerClientProtocol.UpdateClusterSettingsAsyncType? = nil,
+            updateClusterSettingsSync: ElasticContainerClientProtocol.UpdateClusterSettingsSyncType? = nil,
             updateContainerAgentAsync: ElasticContainerClientProtocol.UpdateContainerAgentAsyncType? = nil,
             updateContainerAgentSync: ElasticContainerClientProtocol.UpdateContainerAgentSyncType? = nil,
             updateContainerInstancesStateAsync: ElasticContainerClientProtocol.UpdateContainerInstancesStateAsyncType? = nil,
@@ -288,6 +292,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         self.tagResourceSyncOverride = tagResourceSync
         self.untagResourceAsyncOverride = untagResourceAsync
         self.untagResourceSyncOverride = untagResourceSync
+        self.updateClusterSettingsAsyncOverride = updateClusterSettingsAsync
+        self.updateClusterSettingsSyncOverride = updateClusterSettingsSync
         self.updateContainerAgentAsyncOverride = updateContainerAgentAsync
         self.updateContainerAgentSyncOverride = updateContainerAgentSync
         self.updateContainerInstancesStateAsyncOverride = updateContainerInstancesStateAsync
@@ -1820,7 +1826,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The SubmitTaskStateChangeResponse object or an error will be passed to this 
            callback when the operation is complete. The SubmitTaskStateChangeResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, client, server.
+           The possible errors are: accessDenied, client, invalidParameter, server.
      */
     public func submitTaskStateChangeAsync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
@@ -1842,7 +1848,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated SubmitTaskStateChangeRequest object being passed to this operation.
      - Returns: The SubmitTaskStateChangeResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, server.
+     - Throws: accessDenied, client, invalidParameter, server.
      */
     public func submitTaskStateChangeSync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest,
@@ -1936,6 +1942,48 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         }
 
         return UntagResourceResponse.__default
+    }
+
+    /**
+     Invokes the UpdateClusterSettings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+         - completion: The UpdateClusterSettingsResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateClusterSettingsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateClusterSettingsAsync(
+            input: ElasticContainerModel.UpdateClusterSettingsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws {
+        if let updateClusterSettingsAsyncOverride = updateClusterSettingsAsyncOverride {
+            return try updateClusterSettingsAsyncOverride(input, reporting, completion)
+        }
+
+        let result = UpdateClusterSettingsResponse.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the UpdateClusterSettings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+     - Returns: The UpdateClusterSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateClusterSettingsSync(
+            input: ElasticContainerModel.UpdateClusterSettingsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
+        if let updateClusterSettingsSyncOverride = updateClusterSettingsSyncOverride {
+            return try updateClusterSettingsSyncOverride(input, reporting)
+        }
+
+        return UpdateClusterSettingsResponse.__default
     }
 
     /**

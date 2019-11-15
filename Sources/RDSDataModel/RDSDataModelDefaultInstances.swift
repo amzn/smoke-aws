@@ -21,6 +21,22 @@
 
 import Foundation
 
+public extension ArrayValue {
+    /**
+     Default instance of the ArrayValue structure.
+     */
+    static let __default: RDSDataModel.ArrayValue = {
+        let defaultInstance = RDSDataModel.ArrayValue(
+            arrayValues: nil,
+            booleanValues: nil,
+            doubleValues: nil,
+            longValues: nil,
+            stringValues: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension BadRequestException {
     /**
      Default instance of the BadRequestException structure.
@@ -41,9 +57,9 @@ public extension BatchExecuteStatementRequest {
         let defaultInstance = RDSDataModel.BatchExecuteStatementRequest(
             database: nil,
             parameterSets: nil,
-            resourceArn: "",
+            resourceArn: "01234567890",
             schema: nil,
-            secretArn: "",
+            secretArn: "01234567890",
             sql: "",
             transactionId: nil)
 
@@ -70,9 +86,9 @@ public extension BeginTransactionRequest {
     static let __default: RDSDataModel.BeginTransactionRequest = {
         let defaultInstance = RDSDataModel.BeginTransactionRequest(
             database: nil,
-            resourceArn: "",
+            resourceArn: "01234567890",
             schema: nil,
-            secretArn: "")
+            secretArn: "01234567890")
 
         return defaultInstance
     }()
@@ -121,8 +137,8 @@ public extension CommitTransactionRequest {
      */
     static let __default: RDSDataModel.CommitTransactionRequest = {
         let defaultInstance = RDSDataModel.CommitTransactionRequest(
-            resourceArn: "",
-            secretArn: "",
+            resourceArn: "01234567890",
+            secretArn: "01234567890",
             transactionId: "")
 
         return defaultInstance
@@ -147,9 +163,9 @@ public extension ExecuteSqlRequest {
      */
     static let __default: RDSDataModel.ExecuteSqlRequest = {
         let defaultInstance = RDSDataModel.ExecuteSqlRequest(
-            awsSecretStoreArn: "",
+            awsSecretStoreArn: "01234567890",
             database: nil,
-            dbClusterOrInstanceArn: "",
+            dbClusterOrInstanceArn: "01234567890",
             schema: nil,
             sqlStatements: "")
 
@@ -179,9 +195,10 @@ public extension ExecuteStatementRequest {
             database: nil,
             includeResultMetadata: nil,
             parameters: nil,
-            resourceArn: "",
+            resourceArn: "01234567890",
+            resultSetOptions: nil,
             schema: nil,
-            secretArn: "",
+            secretArn: "01234567890",
             sql: "",
             transactionId: nil)
 
@@ -210,6 +227,7 @@ public extension Field {
      */
     static let __default: RDSDataModel.Field = {
         let defaultInstance = RDSDataModel.Field(
+            arrayValue: nil,
             blobValue: nil,
             booleanValue: nil,
             doubleValue: nil,
@@ -294,14 +312,26 @@ public extension ResultSetMetadata {
     }()
 }
 
+public extension ResultSetOptions {
+    /**
+     Default instance of the ResultSetOptions structure.
+     */
+    static let __default: RDSDataModel.ResultSetOptions = {
+        let defaultInstance = RDSDataModel.ResultSetOptions(
+            decimalReturnType: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension RollbackTransactionRequest {
     /**
      Default instance of the RollbackTransactionRequest structure.
      */
     static let __default: RDSDataModel.RollbackTransactionRequest = {
         let defaultInstance = RDSDataModel.RollbackTransactionRequest(
-            resourceArn: "",
-            secretArn: "",
+            resourceArn: "01234567890",
+            secretArn: "01234567890",
             transactionId: "")
 
         return defaultInstance

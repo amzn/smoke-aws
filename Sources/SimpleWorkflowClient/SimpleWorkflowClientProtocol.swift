@@ -140,6 +140,13 @@ public protocol SimpleWorkflowClientProtocol {
             _ input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws -> ()
+    typealias ListTagsForResourceSyncType = (
+            _ input: SimpleWorkflowModel.ListTagsForResourceInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ListTagsForResourceOutput
+    typealias ListTagsForResourceAsyncType = (
+            _ input: SimpleWorkflowModel.ListTagsForResourceInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws -> ()
     typealias ListWorkflowTypesSyncType = (
             _ input: SimpleWorkflowModel.ListWorkflowTypesInput,
             _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeInfos
@@ -238,11 +245,46 @@ public protocol SimpleWorkflowClientProtocol {
             _ input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<SimpleWorkflowModel.Run, HTTPClientError>) -> ()) throws -> ()
+    typealias TagResourceSyncType = (
+            _ input: SimpleWorkflowModel.TagResourceInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+    typealias TagResourceAsyncType = (
+            _ input: SimpleWorkflowModel.TagResourceInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias TerminateWorkflowExecutionSyncType = (
             _ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput,
             _ reporting: SmokeAWSInvocationReporting) throws -> ()
     typealias TerminateWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias UndeprecateActivityTypeSyncType = (
+            _ input: SimpleWorkflowModel.UndeprecateActivityTypeInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+    typealias UndeprecateActivityTypeAsyncType = (
+            _ input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias UndeprecateDomainSyncType = (
+            _ input: SimpleWorkflowModel.UndeprecateDomainInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+    typealias UndeprecateDomainAsyncType = (
+            _ input: SimpleWorkflowModel.UndeprecateDomainInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias UndeprecateWorkflowTypeSyncType = (
+            _ input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+    typealias UndeprecateWorkflowTypeAsyncType = (
+            _ input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias UntagResourceSyncType = (
+            _ input: SimpleWorkflowModel.UntagResourceInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+    typealias UntagResourceAsyncType = (
+            _ input: SimpleWorkflowModel.UntagResourceInput, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
 
@@ -686,6 +728,34 @@ public protocol SimpleWorkflowClientProtocol {
             reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
 
     /**
+     Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+         - completion: The ListTagsForResourceOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListTagsForResourceOutput
+           object will be validated before being returned to caller.
+           The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    func listTagsForResourceAsync(
+            input: SimpleWorkflowModel.ListTagsForResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the ListTagsForResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    func listTagsForResourceSync(
+            input: SimpleWorkflowModel.ListTagsForResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ListTagsForResourceOutput
+
+    /**
      Invokes the ListWorkflowTypes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -829,7 +899,7 @@ public protocol SimpleWorkflowClientProtocol {
          - input: The validated RegisterDomainInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted.
+           The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     func registerDomainAsync(
             input: SimpleWorkflowModel.RegisterDomainInput, 
@@ -841,7 +911,7 @@ public protocol SimpleWorkflowClientProtocol {
 
      - Parameters:
          - input: The validated RegisterDomainInput object being passed to this operation.
-     - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted.
+     - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     func registerDomainSync(
             input: SimpleWorkflowModel.RegisterDomainInput,
@@ -1051,6 +1121,31 @@ public protocol SimpleWorkflowClientProtocol {
             reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.Run
 
     /**
+     Invokes the TagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
+     */
+    func tagResourceAsync(
+            input: SimpleWorkflowModel.TagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the TagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Throws: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
+     */
+    func tagResourceSync(
+            input: SimpleWorkflowModel.TagResourceInput,
+            reporting: SmokeAWSInvocationReporting) throws
+
+    /**
      Invokes the TerminateWorkflowExecution operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1073,5 +1168,105 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func terminateWorkflowExecutionSync(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput,
+            reporting: SmokeAWSInvocationReporting) throws
+
+    /**
+     Invokes the UndeprecateActivityType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateActivityTypeInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    func undeprecateActivityTypeAsync(
+            input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the UndeprecateActivityType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateActivityTypeInput object being passed to this operation.
+     - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    func undeprecateActivityTypeSync(
+            input: SimpleWorkflowModel.UndeprecateActivityTypeInput,
+            reporting: SmokeAWSInvocationReporting) throws
+
+    /**
+     Invokes the UndeprecateDomain operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateDomainInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: domainAlreadyExists, operationNotPermitted, unknownResource.
+     */
+    func undeprecateDomainAsync(
+            input: SimpleWorkflowModel.UndeprecateDomainInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the UndeprecateDomain operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateDomainInput object being passed to this operation.
+     - Throws: domainAlreadyExists, operationNotPermitted, unknownResource.
+     */
+    func undeprecateDomainSync(
+            input: SimpleWorkflowModel.UndeprecateDomainInput,
+            reporting: SmokeAWSInvocationReporting) throws
+
+    /**
+     Invokes the UndeprecateWorkflowType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UndeprecateWorkflowTypeInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    func undeprecateWorkflowTypeAsync(
+            input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the UndeprecateWorkflowType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UndeprecateWorkflowTypeInput object being passed to this operation.
+     - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
+     */
+    func undeprecateWorkflowTypeSync(
+            input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput,
+            reporting: SmokeAWSInvocationReporting) throws
+
+    /**
+     Invokes the UntagResource operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    func untagResourceAsync(
+            input: SimpleWorkflowModel.UntagResourceInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the UntagResource operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Throws: limitExceeded, operationNotPermitted, unknownResource.
+     */
+    func untagResourceSync(
+            input: SimpleWorkflowModel.UntagResourceInput,
             reporting: SmokeAWSInvocationReporting) throws
 }

@@ -459,6 +459,11 @@ public enum EncodingType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the End field.
+ */
+public typealias End = Int
+
+/**
  Type definition for the Errors field.
  */
 public typealias Errors = [Error]
@@ -731,6 +736,7 @@ public enum InventoryIncludedObjectVersions: String, Codable, CustomStringConver
 public enum InventoryOptionalField: String, Codable, CustomStringConvertible {
     case etag = "ETag"
     case encryptionstatus = "EncryptionStatus"
+    case intelligenttieringaccesstier = "IntelligentTieringAccessTier"
     case ismultipartuploaded = "IsMultipartUploaded"
     case lastmodifieddate = "LastModifiedDate"
     case objectlocklegalholdstatus = "ObjectLockLegalHoldStatus"
@@ -1441,6 +1447,11 @@ public typealias SSECustomerKey = String
 public typealias SSECustomerKeyMD5 = String
 
 /**
+ Type definition for the SSEKMSEncryptionContext field.
+ */
+public typealias SSEKMSEncryptionContext = String
+
+/**
  Type definition for the SSEKMSKeyId field.
  */
 public typealias SSEKMSKeyId = String
@@ -1487,6 +1498,11 @@ public enum SseKmsEncryptedObjectsStatus: String, Codable, CustomStringConvertib
     
     public static let __default: SseKmsEncryptedObjectsStatus = .disabled
 }
+
+/**
+ Type definition for the Start field.
+ */
+public typealias Start = Int
 
 /**
  Type definition for the StartAfter field.

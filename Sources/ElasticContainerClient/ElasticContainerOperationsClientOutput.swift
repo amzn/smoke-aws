@@ -531,6 +531,19 @@ extension UntagResourceResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the UpdateClusterSettings operation in a HTTP client.
+ */
+extension UpdateClusterSettingsResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateClusterSettingsResponse
+    public typealias HeadersType = UpdateClusterSettingsResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateClusterSettingsResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the UpdateContainerAgent operation in a HTTP client.
  */
 extension UpdateContainerAgentResponse: HTTPResponseOutputProtocol {

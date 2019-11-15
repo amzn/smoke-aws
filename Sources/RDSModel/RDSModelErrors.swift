@@ -27,6 +27,9 @@ private let authorizationNotFoundIdentity = "AuthorizationNotFound"
 private let authorizationQuotaExceededIdentity = "AuthorizationQuotaExceeded"
 private let backupPolicyNotFoundIdentity = "BackupPolicyNotFoundFault"
 private let certificateNotFoundIdentity = "CertificateNotFound"
+private let customAvailabilityZoneAlreadyExistsIdentity = "CustomAvailabilityZoneAlreadyExists"
+private let customAvailabilityZoneNotFoundIdentity = "CustomAvailabilityZoneNotFound"
+private let customAvailabilityZoneQuotaExceededIdentity = "CustomAvailabilityZoneQuotaExceeded"
 private let dBClusterAlreadyExistsIdentity = "DBClusterAlreadyExistsFault"
 private let dBClusterBacktrackNotFoundIdentity = "DBClusterBacktrackNotFoundFault"
 private let dBClusterEndpointAlreadyExistsIdentity = "DBClusterEndpointAlreadyExistsFault"
@@ -69,6 +72,8 @@ private let eventSubscriptionQuotaExceededIdentity = "EventSubscriptionQuotaExce
 private let globalClusterAlreadyExistsIdentity = "GlobalClusterAlreadyExistsFault"
 private let globalClusterNotFoundIdentity = "GlobalClusterNotFoundFault"
 private let globalClusterQuotaExceededIdentity = "GlobalClusterQuotaExceededFault"
+private let installationMediaAlreadyExistsIdentity = "InstallationMediaAlreadyExists"
+private let installationMediaNotFoundIdentity = "InstallationMediaNotFound"
 private let instanceQuotaExceededIdentity = "InstanceQuotaExceeded"
 private let insufficientDBClusterCapacityIdentity = "InsufficientDBClusterCapacityFault"
 private let insufficientDBInstanceCapacityIdentity = "InsufficientDBInstanceCapacity"
@@ -123,6 +128,9 @@ public enum RDSError: Swift.Error, Decodable {
     case authorizationQuotaExceeded(AuthorizationQuotaExceededFault)
     case backupPolicyNotFound(BackupPolicyNotFoundFault)
     case certificateNotFound(CertificateNotFoundFault)
+    case customAvailabilityZoneAlreadyExists(CustomAvailabilityZoneAlreadyExistsFault)
+    case customAvailabilityZoneNotFound(CustomAvailabilityZoneNotFoundFault)
+    case customAvailabilityZoneQuotaExceeded(CustomAvailabilityZoneQuotaExceededFault)
     case dBClusterAlreadyExists(DBClusterAlreadyExistsFault)
     case dBClusterBacktrackNotFound(DBClusterBacktrackNotFoundFault)
     case dBClusterEndpointAlreadyExists(DBClusterEndpointAlreadyExistsFault)
@@ -165,6 +173,8 @@ public enum RDSError: Swift.Error, Decodable {
     case globalClusterAlreadyExists(GlobalClusterAlreadyExistsFault)
     case globalClusterNotFound(GlobalClusterNotFoundFault)
     case globalClusterQuotaExceeded(GlobalClusterQuotaExceededFault)
+    case installationMediaAlreadyExists(InstallationMediaAlreadyExistsFault)
+    case installationMediaNotFound(InstallationMediaNotFoundFault)
     case instanceQuotaExceeded(InstanceQuotaExceededFault)
     case insufficientDBClusterCapacity(InsufficientDBClusterCapacityFault)
     case insufficientDBInstanceCapacity(InsufficientDBInstanceCapacityFault)
@@ -245,6 +255,15 @@ public enum RDSError: Swift.Error, Decodable {
         case certificateNotFoundIdentity:
             let errorPayload = try CertificateNotFoundFault(from: decoder)
             self = RDSError.certificateNotFound(errorPayload)
+        case customAvailabilityZoneAlreadyExistsIdentity:
+            let errorPayload = try CustomAvailabilityZoneAlreadyExistsFault(from: decoder)
+            self = RDSError.customAvailabilityZoneAlreadyExists(errorPayload)
+        case customAvailabilityZoneNotFoundIdentity:
+            let errorPayload = try CustomAvailabilityZoneNotFoundFault(from: decoder)
+            self = RDSError.customAvailabilityZoneNotFound(errorPayload)
+        case customAvailabilityZoneQuotaExceededIdentity:
+            let errorPayload = try CustomAvailabilityZoneQuotaExceededFault(from: decoder)
+            self = RDSError.customAvailabilityZoneQuotaExceeded(errorPayload)
         case dBClusterAlreadyExistsIdentity:
             let errorPayload = try DBClusterAlreadyExistsFault(from: decoder)
             self = RDSError.dBClusterAlreadyExists(errorPayload)
@@ -371,6 +390,12 @@ public enum RDSError: Swift.Error, Decodable {
         case globalClusterQuotaExceededIdentity:
             let errorPayload = try GlobalClusterQuotaExceededFault(from: decoder)
             self = RDSError.globalClusterQuotaExceeded(errorPayload)
+        case installationMediaAlreadyExistsIdentity:
+            let errorPayload = try InstallationMediaAlreadyExistsFault(from: decoder)
+            self = RDSError.installationMediaAlreadyExists(errorPayload)
+        case installationMediaNotFoundIdentity:
+            let errorPayload = try InstallationMediaNotFoundFault(from: decoder)
+            self = RDSError.installationMediaNotFound(errorPayload)
         case instanceQuotaExceededIdentity:
             let errorPayload = try InstanceQuotaExceededFault(from: decoder)
             self = RDSError.instanceQuotaExceeded(errorPayload)
