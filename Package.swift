@@ -13,11 +13,14 @@
 // express or implied. See the License for the specific language governing
 // permissions and limitations under the License.
 //
-    
+
 import PackageDescription
 
 let package = Package(
     name: "SmokeAWS",
+    platforms: [
+        .macOS(.v10_12), .iOS(.v10)
+        ],
     products: [
         .library(
             name: "CloudWatchClient",
@@ -206,5 +209,6 @@ let package = Package(
         .testTarget(
             name: "RDSClientTests",
             dependencies: ["RDSClient"]),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
