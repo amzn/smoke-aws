@@ -61,17 +61,20 @@ public struct AnomalyDetector: Codable, Equatable {
     public var metricName: MetricName?
     public var namespace: Namespace?
     public var stat: Stat?
+    public var stateValue: AnomalyDetectorStateValue?
 
     public init(configuration: AnomalyDetectorConfiguration? = nil,
                 dimensions: Dimensions? = nil,
                 metricName: MetricName? = nil,
                 namespace: Namespace? = nil,
-                stat: Stat? = nil) {
+                stat: Stat? = nil,
+                stateValue: AnomalyDetectorStateValue? = nil) {
         self.configuration = configuration
         self.dimensions = dimensions
         self.metricName = metricName
         self.namespace = namespace
         self.stat = stat
+        self.stateValue = stateValue
     }
 
     enum CodingKeys: String, CodingKey {
@@ -80,6 +83,7 @@ public struct AnomalyDetector: Codable, Equatable {
         case metricName = "MetricName"
         case namespace = "Namespace"
         case stat = "Stat"
+        case stateValue = "StateValue"
     }
 
     public func validate() throws {
@@ -349,6 +353,52 @@ public struct DeleteDashboardsOutputForDeleteDashboards: Codable, Equatable {
 
     public func validate() throws {
         try deleteDashboardsResult.validate()
+    }
+}
+
+public struct DeleteInsightRulesInput: Codable, Equatable {
+    public var ruleNames: InsightRuleNames
+
+    public init(ruleNames: InsightRuleNames) {
+        self.ruleNames = ruleNames
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ruleNames = "RuleNames"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteInsightRulesOutput: Codable, Equatable {
+    public var failures: BatchFailures?
+
+    public init(failures: BatchFailures? = nil) {
+        self.failures = failures
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failures = "Failures"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteInsightRulesOutputForDeleteInsightRules: Codable, Equatable {
+    public var deleteInsightRulesResult: DeleteInsightRulesOutput
+
+    public init(deleteInsightRulesResult: DeleteInsightRulesOutput) {
+        self.deleteInsightRulesResult = deleteInsightRulesResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deleteInsightRulesResult = "DeleteInsightRulesResult"
+    }
+
+    public func validate() throws {
+        try deleteInsightRulesResult.validate()
     }
 }
 
@@ -643,6 +693,61 @@ public struct DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors: Codable
     }
 }
 
+public struct DescribeInsightRulesInput: Codable, Equatable {
+    public var maxResults: InsightRuleMaxResults?
+    public var nextToken: NextToken?
+
+    public init(maxResults: InsightRuleMaxResults? = nil,
+                nextToken: NextToken? = nil) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsInsightRuleMaxResults()
+    }
+}
+
+public struct DescribeInsightRulesOutput: Codable, Equatable {
+    public var insightRules: InsightRules?
+    public var nextToken: NextToken?
+
+    public init(insightRules: InsightRules? = nil,
+                nextToken: NextToken? = nil) {
+        self.insightRules = insightRules
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case insightRules = "InsightRules"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeInsightRulesOutputForDescribeInsightRules: Codable, Equatable {
+    public var describeInsightRulesResult: DescribeInsightRulesOutput
+
+    public init(describeInsightRulesResult: DescribeInsightRulesOutput) {
+        self.describeInsightRulesResult = describeInsightRulesResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeInsightRulesResult = "DescribeInsightRulesResult"
+    }
+
+    public func validate() throws {
+        try describeInsightRulesResult.validate()
+    }
+}
+
 public struct Dimension: Codable, Equatable {
     public var name: DimensionName
     public var value: DimensionValue
@@ -701,6 +806,52 @@ public struct DisableAlarmActionsInput: Codable, Equatable {
     }
 }
 
+public struct DisableInsightRulesInput: Codable, Equatable {
+    public var ruleNames: InsightRuleNames
+
+    public init(ruleNames: InsightRuleNames) {
+        self.ruleNames = ruleNames
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ruleNames = "RuleNames"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DisableInsightRulesOutput: Codable, Equatable {
+    public var failures: BatchFailures?
+
+    public init(failures: BatchFailures? = nil) {
+        self.failures = failures
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failures = "Failures"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DisableInsightRulesOutputForDisableInsightRules: Codable, Equatable {
+    public var disableInsightRulesResult: DisableInsightRulesOutput
+
+    public init(disableInsightRulesResult: DisableInsightRulesOutput) {
+        self.disableInsightRulesResult = disableInsightRulesResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case disableInsightRulesResult = "DisableInsightRulesResult"
+    }
+
+    public func validate() throws {
+        try disableInsightRulesResult.validate()
+    }
+}
+
 public struct EnableAlarmActionsInput: Codable, Equatable {
     public var alarmNames: AlarmNames
 
@@ -714,6 +865,52 @@ public struct EnableAlarmActionsInput: Codable, Equatable {
 
     public func validate() throws {
         try alarmNames.validateAsAlarmNames()
+    }
+}
+
+public struct EnableInsightRulesInput: Codable, Equatable {
+    public var ruleNames: InsightRuleNames
+
+    public init(ruleNames: InsightRuleNames) {
+        self.ruleNames = ruleNames
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ruleNames = "RuleNames"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EnableInsightRulesOutput: Codable, Equatable {
+    public var failures: BatchFailures?
+
+    public init(failures: BatchFailures? = nil) {
+        self.failures = failures
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failures = "Failures"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EnableInsightRulesOutputForEnableInsightRules: Codable, Equatable {
+    public var enableInsightRulesResult: EnableInsightRulesOutput
+
+    public init(enableInsightRulesResult: EnableInsightRulesOutput) {
+        self.enableInsightRulesResult = enableInsightRulesResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case enableInsightRulesResult = "EnableInsightRulesResult"
+    }
+
+    public func validate() throws {
+        try enableInsightRulesResult.validate()
     }
 }
 
@@ -768,6 +965,99 @@ public struct GetDashboardOutputForGetDashboard: Codable, Equatable {
 
     public func validate() throws {
         try getDashboardResult.validate()
+    }
+}
+
+public struct GetInsightRuleReportInput: Codable, Equatable {
+    public var endTime: Timestamp
+    public var maxContributorCount: InsightRuleUnboundInteger?
+    public var metrics: InsightRuleMetricList?
+    public var orderBy: InsightRuleOrderBy?
+    public var period: Period
+    public var ruleName: InsightRuleName
+    public var startTime: Timestamp
+
+    public init(endTime: Timestamp,
+                maxContributorCount: InsightRuleUnboundInteger? = nil,
+                metrics: InsightRuleMetricList? = nil,
+                orderBy: InsightRuleOrderBy? = nil,
+                period: Period,
+                ruleName: InsightRuleName,
+                startTime: Timestamp) {
+        self.endTime = endTime
+        self.maxContributorCount = maxContributorCount
+        self.metrics = metrics
+        self.orderBy = orderBy
+        self.period = period
+        self.ruleName = ruleName
+        self.startTime = startTime
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case endTime = "EndTime"
+        case maxContributorCount = "MaxContributorCount"
+        case metrics = "Metrics"
+        case orderBy = "OrderBy"
+        case period = "Period"
+        case ruleName = "RuleName"
+        case startTime = "StartTime"
+    }
+
+    public func validate() throws {
+        try orderBy?.validateAsInsightRuleOrderBy()
+        try period.validateAsPeriod()
+        try ruleName.validateAsInsightRuleName()
+    }
+}
+
+public struct GetInsightRuleReportOutput: Codable, Equatable {
+    public var aggregateValue: InsightRuleUnboundDouble?
+    public var aggregationStatistic: InsightRuleAggregationStatistic?
+    public var approximateUniqueCount: InsightRuleUnboundLong?
+    public var contributors: InsightRuleContributors?
+    public var keyLabels: InsightRuleContributorKeyLabels?
+    public var metricDatapoints: InsightRuleMetricDatapoints?
+
+    public init(aggregateValue: InsightRuleUnboundDouble? = nil,
+                aggregationStatistic: InsightRuleAggregationStatistic? = nil,
+                approximateUniqueCount: InsightRuleUnboundLong? = nil,
+                contributors: InsightRuleContributors? = nil,
+                keyLabels: InsightRuleContributorKeyLabels? = nil,
+                metricDatapoints: InsightRuleMetricDatapoints? = nil) {
+        self.aggregateValue = aggregateValue
+        self.aggregationStatistic = aggregationStatistic
+        self.approximateUniqueCount = approximateUniqueCount
+        self.contributors = contributors
+        self.keyLabels = keyLabels
+        self.metricDatapoints = metricDatapoints
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case aggregateValue = "AggregateValue"
+        case aggregationStatistic = "AggregationStatistic"
+        case approximateUniqueCount = "ApproximateUniqueCount"
+        case contributors = "Contributors"
+        case keyLabels = "KeyLabels"
+        case metricDatapoints = "MetricDatapoints"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetInsightRuleReportOutputForGetInsightRuleReport: Codable, Equatable {
+    public var getInsightRuleReportResult: GetInsightRuleReportOutput
+
+    public init(getInsightRuleReportResult: GetInsightRuleReportOutput) {
+        self.getInsightRuleReportResult = getInsightRuleReportResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case getInsightRuleReportResult = "GetInsightRuleReportResult"
+    }
+
+    public func validate() throws {
+        try getInsightRuleReportResult.validate()
     }
 }
 
@@ -980,6 +1270,121 @@ public struct GetMetricWidgetImageOutputForGetMetricWidgetImage: Codable, Equata
 
     public func validate() throws {
         try getMetricWidgetImageResult.validate()
+    }
+}
+
+public struct InsightRule: Codable, Equatable {
+    public var definition: InsightRuleDefinition
+    public var name: InsightRuleName
+    public var schema: InsightRuleSchema
+    public var state: InsightRuleState
+
+    public init(definition: InsightRuleDefinition,
+                name: InsightRuleName,
+                schema: InsightRuleSchema,
+                state: InsightRuleState) {
+        self.definition = definition
+        self.name = name
+        self.schema = schema
+        self.state = state
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case definition = "Definition"
+        case name = "Name"
+        case schema = "Schema"
+        case state = "State"
+    }
+
+    public func validate() throws {
+        try definition.validateAsInsightRuleDefinition()
+        try name.validateAsInsightRuleName()
+        try state.validateAsInsightRuleState()
+    }
+}
+
+public struct InsightRuleContributor: Codable, Equatable {
+    public var approximateAggregateValue: InsightRuleUnboundDouble
+    public var datapoints: InsightRuleContributorDatapoints
+    public var keys: InsightRuleContributorKeys
+
+    public init(approximateAggregateValue: InsightRuleUnboundDouble,
+                datapoints: InsightRuleContributorDatapoints,
+                keys: InsightRuleContributorKeys) {
+        self.approximateAggregateValue = approximateAggregateValue
+        self.datapoints = datapoints
+        self.keys = keys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case approximateAggregateValue = "ApproximateAggregateValue"
+        case datapoints = "Datapoints"
+        case keys = "Keys"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InsightRuleContributorDatapoint: Codable, Equatable {
+    public var approximateValue: InsightRuleUnboundDouble
+    public var timestamp: Timestamp
+
+    public init(approximateValue: InsightRuleUnboundDouble,
+                timestamp: Timestamp) {
+        self.approximateValue = approximateValue
+        self.timestamp = timestamp
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case approximateValue = "ApproximateValue"
+        case timestamp = "Timestamp"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InsightRuleMetricDatapoint: Codable, Equatable {
+    public var average: InsightRuleUnboundDouble?
+    public var maxContributorValue: InsightRuleUnboundDouble?
+    public var maximum: InsightRuleUnboundDouble?
+    public var minimum: InsightRuleUnboundDouble?
+    public var sampleCount: InsightRuleUnboundDouble?
+    public var sum: InsightRuleUnboundDouble?
+    public var timestamp: Timestamp
+    public var uniqueContributors: InsightRuleUnboundDouble?
+
+    public init(average: InsightRuleUnboundDouble? = nil,
+                maxContributorValue: InsightRuleUnboundDouble? = nil,
+                maximum: InsightRuleUnboundDouble? = nil,
+                minimum: InsightRuleUnboundDouble? = nil,
+                sampleCount: InsightRuleUnboundDouble? = nil,
+                sum: InsightRuleUnboundDouble? = nil,
+                timestamp: Timestamp,
+                uniqueContributors: InsightRuleUnboundDouble? = nil) {
+        self.average = average
+        self.maxContributorValue = maxContributorValue
+        self.maximum = maximum
+        self.minimum = minimum
+        self.sampleCount = sampleCount
+        self.sum = sum
+        self.timestamp = timestamp
+        self.uniqueContributors = uniqueContributors
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case average = "Average"
+        case maxContributorValue = "MaxContributorValue"
+        case maximum = "Maximum"
+        case minimum = "Minimum"
+        case sampleCount = "SampleCount"
+        case sum = "Sum"
+        case timestamp = "Timestamp"
+        case uniqueContributors = "UniqueContributors"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -1438,17 +1843,20 @@ public struct MetricDataQuery: Codable, Equatable {
     public var id: MetricId
     public var label: MetricLabel?
     public var metricStat: MetricStat?
+    public var period: Period?
     public var returnData: ReturnData?
 
     public init(expression: MetricExpression? = nil,
                 id: MetricId,
                 label: MetricLabel? = nil,
                 metricStat: MetricStat? = nil,
+                period: Period? = nil,
                 returnData: ReturnData? = nil) {
         self.expression = expression
         self.id = id
         self.label = label
         self.metricStat = metricStat
+        self.period = period
         self.returnData = returnData
     }
 
@@ -1457,6 +1865,7 @@ public struct MetricDataQuery: Codable, Equatable {
         case id = "Id"
         case label = "Label"
         case metricStat = "MetricStat"
+        case period = "Period"
         case returnData = "ReturnData"
     }
 
@@ -1464,6 +1873,7 @@ public struct MetricDataQuery: Codable, Equatable {
         try expression?.validateAsMetricExpression()
         try id.validateAsMetricId()
         try metricStat?.validate()
+        try period?.validateAsPeriod()
     }
 }
 
@@ -1598,6 +2008,33 @@ public struct MissingRequiredParameterException: Codable, Equatable {
     }
 }
 
+public struct PartialFailure: Codable, Equatable {
+    public var exceptionType: ExceptionType?
+    public var failureCode: FailureCode?
+    public var failureDescription: FailureDescription?
+    public var failureResource: FailureResource?
+
+    public init(exceptionType: ExceptionType? = nil,
+                failureCode: FailureCode? = nil,
+                failureDescription: FailureDescription? = nil,
+                failureResource: FailureResource? = nil) {
+        self.exceptionType = exceptionType
+        self.failureCode = failureCode
+        self.failureDescription = failureDescription
+        self.failureResource = failureResource
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exceptionType = "ExceptionType"
+        case failureCode = "FailureCode"
+        case failureDescription = "FailureDescription"
+        case failureResource = "FailureResource"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct PutAnomalyDetectorInput: Codable, Equatable {
     public var configuration: AnomalyDetectorConfiguration?
     public var dimensions: Dimensions?
@@ -1705,6 +2142,57 @@ public struct PutDashboardOutputForPutDashboard: Codable, Equatable {
 
     public func validate() throws {
         try putDashboardResult.validate()
+    }
+}
+
+public struct PutInsightRuleInput: Codable, Equatable {
+    public var ruleDefinition: InsightRuleDefinition
+    public var ruleName: InsightRuleName
+    public var ruleState: InsightRuleState?
+
+    public init(ruleDefinition: InsightRuleDefinition,
+                ruleName: InsightRuleName,
+                ruleState: InsightRuleState? = nil) {
+        self.ruleDefinition = ruleDefinition
+        self.ruleName = ruleName
+        self.ruleState = ruleState
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ruleDefinition = "RuleDefinition"
+        case ruleName = "RuleName"
+        case ruleState = "RuleState"
+    }
+
+    public func validate() throws {
+        try ruleDefinition.validateAsInsightRuleDefinition()
+        try ruleName.validateAsInsightRuleName()
+        try ruleState?.validateAsInsightRuleState()
+    }
+}
+
+public struct PutInsightRuleOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PutInsightRuleOutputForPutInsightRule: Codable, Equatable {
+    public var putInsightRuleResult: PutInsightRuleOutput
+
+    public init(putInsightRuleResult: PutInsightRuleOutput) {
+        self.putInsightRuleResult = putInsightRuleResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case putInsightRuleResult = "PutInsightRuleResult"
+    }
+
+    public func validate() throws {
+        try putInsightRuleResult.validate()
     }
 }
 

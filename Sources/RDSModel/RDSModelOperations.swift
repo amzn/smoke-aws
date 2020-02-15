@@ -32,11 +32,13 @@ public enum RDSModelOperations: String {
     case applyPendingMaintenanceAction = "ApplyPendingMaintenanceAction"
     case authorizeDBSecurityGroupIngress = "AuthorizeDBSecurityGroupIngress"
     case backtrackDBCluster = "BacktrackDBCluster"
+    case cancelExportTask = "CancelExportTask"
     case copyDBClusterParameterGroup = "CopyDBClusterParameterGroup"
     case copyDBClusterSnapshot = "CopyDBClusterSnapshot"
     case copyDBParameterGroup = "CopyDBParameterGroup"
     case copyDBSnapshot = "CopyDBSnapshot"
     case copyOptionGroup = "CopyOptionGroup"
+    case createCustomAvailabilityZone = "CreateCustomAvailabilityZone"
     case createDBCluster = "CreateDBCluster"
     case createDBClusterEndpoint = "CreateDBClusterEndpoint"
     case createDBClusterParameterGroup = "CreateDBClusterParameterGroup"
@@ -44,12 +46,14 @@ public enum RDSModelOperations: String {
     case createDBInstance = "CreateDBInstance"
     case createDBInstanceReadReplica = "CreateDBInstanceReadReplica"
     case createDBParameterGroup = "CreateDBParameterGroup"
+    case createDBProxy = "CreateDBProxy"
     case createDBSecurityGroup = "CreateDBSecurityGroup"
     case createDBSnapshot = "CreateDBSnapshot"
     case createDBSubnetGroup = "CreateDBSubnetGroup"
     case createEventSubscription = "CreateEventSubscription"
     case createGlobalCluster = "CreateGlobalCluster"
     case createOptionGroup = "CreateOptionGroup"
+    case deleteCustomAvailabilityZone = "DeleteCustomAvailabilityZone"
     case deleteDBCluster = "DeleteDBCluster"
     case deleteDBClusterEndpoint = "DeleteDBClusterEndpoint"
     case deleteDBClusterParameterGroup = "DeleteDBClusterParameterGroup"
@@ -57,14 +61,18 @@ public enum RDSModelOperations: String {
     case deleteDBInstance = "DeleteDBInstance"
     case deleteDBInstanceAutomatedBackup = "DeleteDBInstanceAutomatedBackup"
     case deleteDBParameterGroup = "DeleteDBParameterGroup"
+    case deleteDBProxy = "DeleteDBProxy"
     case deleteDBSecurityGroup = "DeleteDBSecurityGroup"
     case deleteDBSnapshot = "DeleteDBSnapshot"
     case deleteDBSubnetGroup = "DeleteDBSubnetGroup"
     case deleteEventSubscription = "DeleteEventSubscription"
     case deleteGlobalCluster = "DeleteGlobalCluster"
+    case deleteInstallationMedia = "DeleteInstallationMedia"
     case deleteOptionGroup = "DeleteOptionGroup"
+    case deregisterDBProxyTargets = "DeregisterDBProxyTargets"
     case describeAccountAttributes = "DescribeAccountAttributes"
     case describeCertificates = "DescribeCertificates"
+    case describeCustomAvailabilityZones = "DescribeCustomAvailabilityZones"
     case describeDBClusterBacktracks = "DescribeDBClusterBacktracks"
     case describeDBClusterEndpoints = "DescribeDBClusterEndpoints"
     case describeDBClusterParameterGroups = "DescribeDBClusterParameterGroups"
@@ -78,6 +86,9 @@ public enum RDSModelOperations: String {
     case describeDBLogFiles = "DescribeDBLogFiles"
     case describeDBParameterGroups = "DescribeDBParameterGroups"
     case describeDBParameters = "DescribeDBParameters"
+    case describeDBProxies = "DescribeDBProxies"
+    case describeDBProxyTargetGroups = "DescribeDBProxyTargetGroups"
+    case describeDBProxyTargets = "DescribeDBProxyTargets"
     case describeDBSecurityGroups = "DescribeDBSecurityGroups"
     case describeDBSnapshotAttributes = "DescribeDBSnapshotAttributes"
     case describeDBSnapshots = "DescribeDBSnapshots"
@@ -87,7 +98,9 @@ public enum RDSModelOperations: String {
     case describeEventCategories = "DescribeEventCategories"
     case describeEventSubscriptions = "DescribeEventSubscriptions"
     case describeEvents = "DescribeEvents"
+    case describeExportTasks = "DescribeExportTasks"
     case describeGlobalClusters = "DescribeGlobalClusters"
+    case describeInstallationMedia = "DescribeInstallationMedia"
     case describeOptionGroupOptions = "DescribeOptionGroupOptions"
     case describeOptionGroups = "DescribeOptionGroups"
     case describeOrderableDBInstanceOptions = "DescribeOrderableDBInstanceOptions"
@@ -98,7 +111,9 @@ public enum RDSModelOperations: String {
     case describeValidDBInstanceModifications = "DescribeValidDBInstanceModifications"
     case downloadDBLogFilePortion = "DownloadDBLogFilePortion"
     case failoverDBCluster = "FailoverDBCluster"
+    case importInstallationMedia = "ImportInstallationMedia"
     case listTagsForResource = "ListTagsForResource"
+    case modifyCertificates = "ModifyCertificates"
     case modifyCurrentDBClusterCapacity = "ModifyCurrentDBClusterCapacity"
     case modifyDBCluster = "ModifyDBCluster"
     case modifyDBClusterEndpoint = "ModifyDBClusterEndpoint"
@@ -106,6 +121,8 @@ public enum RDSModelOperations: String {
     case modifyDBClusterSnapshotAttribute = "ModifyDBClusterSnapshotAttribute"
     case modifyDBInstance = "ModifyDBInstance"
     case modifyDBParameterGroup = "ModifyDBParameterGroup"
+    case modifyDBProxy = "ModifyDBProxy"
+    case modifyDBProxyTargetGroup = "ModifyDBProxyTargetGroup"
     case modifyDBSnapshot = "ModifyDBSnapshot"
     case modifyDBSnapshotAttribute = "ModifyDBSnapshotAttribute"
     case modifyDBSubnetGroup = "ModifyDBSubnetGroup"
@@ -116,6 +133,7 @@ public enum RDSModelOperations: String {
     case promoteReadReplicaDBCluster = "PromoteReadReplicaDBCluster"
     case purchaseReservedDBInstancesOffering = "PurchaseReservedDBInstancesOffering"
     case rebootDBInstance = "RebootDBInstance"
+    case registerDBProxyTargets = "RegisterDBProxyTargets"
     case removeFromGlobalCluster = "RemoveFromGlobalCluster"
     case removeRoleFromDBCluster = "RemoveRoleFromDBCluster"
     case removeRoleFromDBInstance = "RemoveRoleFromDBInstance"
@@ -133,6 +151,7 @@ public enum RDSModelOperations: String {
     case startActivityStream = "StartActivityStream"
     case startDBCluster = "StartDBCluster"
     case startDBInstance = "StartDBInstance"
+    case startExportTask = "StartExportTask"
     case stopActivityStream = "StopActivityStream"
     case stopDBCluster = "StopDBCluster"
     case stopDBInstance = "StopDBInstance"
@@ -153,6 +172,8 @@ public enum RDSModelOperations: String {
             return "/"
         case .backtrackDBCluster:
             return "/"
+        case .cancelExportTask:
+            return "/"
         case .copyDBClusterParameterGroup:
             return "/"
         case .copyDBClusterSnapshot:
@@ -162,6 +183,8 @@ public enum RDSModelOperations: String {
         case .copyDBSnapshot:
             return "/"
         case .copyOptionGroup:
+            return "/"
+        case .createCustomAvailabilityZone:
             return "/"
         case .createDBCluster:
             return "/"
@@ -177,6 +200,8 @@ public enum RDSModelOperations: String {
             return "/"
         case .createDBParameterGroup:
             return "/"
+        case .createDBProxy:
+            return "/"
         case .createDBSecurityGroup:
             return "/"
         case .createDBSnapshot:
@@ -188,6 +213,8 @@ public enum RDSModelOperations: String {
         case .createGlobalCluster:
             return "/"
         case .createOptionGroup:
+            return "/"
+        case .deleteCustomAvailabilityZone:
             return "/"
         case .deleteDBCluster:
             return "/"
@@ -203,6 +230,8 @@ public enum RDSModelOperations: String {
             return "/"
         case .deleteDBParameterGroup:
             return "/"
+        case .deleteDBProxy:
+            return "/"
         case .deleteDBSecurityGroup:
             return "/"
         case .deleteDBSnapshot:
@@ -213,11 +242,17 @@ public enum RDSModelOperations: String {
             return "/"
         case .deleteGlobalCluster:
             return "/"
+        case .deleteInstallationMedia:
+            return "/"
         case .deleteOptionGroup:
+            return "/"
+        case .deregisterDBProxyTargets:
             return "/"
         case .describeAccountAttributes:
             return "/"
         case .describeCertificates:
+            return "/"
+        case .describeCustomAvailabilityZones:
             return "/"
         case .describeDBClusterBacktracks:
             return "/"
@@ -245,6 +280,12 @@ public enum RDSModelOperations: String {
             return "/"
         case .describeDBParameters:
             return "/"
+        case .describeDBProxies:
+            return "/"
+        case .describeDBProxyTargetGroups:
+            return "/"
+        case .describeDBProxyTargets:
+            return "/"
         case .describeDBSecurityGroups:
             return "/"
         case .describeDBSnapshotAttributes:
@@ -263,7 +304,11 @@ public enum RDSModelOperations: String {
             return "/"
         case .describeEvents:
             return "/"
+        case .describeExportTasks:
+            return "/"
         case .describeGlobalClusters:
+            return "/"
+        case .describeInstallationMedia:
             return "/"
         case .describeOptionGroupOptions:
             return "/"
@@ -285,7 +330,11 @@ public enum RDSModelOperations: String {
             return "/"
         case .failoverDBCluster:
             return "/"
+        case .importInstallationMedia:
+            return "/"
         case .listTagsForResource:
+            return "/"
+        case .modifyCertificates:
             return "/"
         case .modifyCurrentDBClusterCapacity:
             return "/"
@@ -300,6 +349,10 @@ public enum RDSModelOperations: String {
         case .modifyDBInstance:
             return "/"
         case .modifyDBParameterGroup:
+            return "/"
+        case .modifyDBProxy:
+            return "/"
+        case .modifyDBProxyTargetGroup:
             return "/"
         case .modifyDBSnapshot:
             return "/"
@@ -320,6 +373,8 @@ public enum RDSModelOperations: String {
         case .purchaseReservedDBInstancesOffering:
             return "/"
         case .rebootDBInstance:
+            return "/"
+        case .registerDBProxyTargets:
             return "/"
         case .removeFromGlobalCluster:
             return "/"
@@ -354,6 +409,8 @@ public enum RDSModelOperations: String {
         case .startDBCluster:
             return "/"
         case .startDBInstance:
+            return "/"
+        case .startExportTask:
             return "/"
         case .stopActivityStream:
             return "/"

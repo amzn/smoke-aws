@@ -103,7 +103,7 @@ public protocol StepFunctionsClientProtocol {
          - completion: The CreateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The CreateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
+           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
      */
     func createStateMachineAsync(input: StepFunctionsModel.CreateStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.CreateStateMachineOutput>) -> ()) throws
 
@@ -114,7 +114,7 @@ public protocol StepFunctionsClientProtocol {
          - input: The validated CreateStateMachineInput object being passed to this operation.
      - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, tooManyTags.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
      */
     func createStateMachineSync(input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput
 
@@ -333,7 +333,7 @@ public protocol StepFunctionsClientProtocol {
          - completion: The ListExecutionsOutput object or an error will be passed to this 
            callback when the operation is complete. The ListExecutionsOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist.
+           The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
      */
     func listExecutionsAsync(input: StepFunctionsModel.ListExecutionsInput, completion: @escaping (HTTPResult<StepFunctionsModel.ListExecutionsOutput>) -> ()) throws
 
@@ -344,7 +344,7 @@ public protocol StepFunctionsClientProtocol {
          - input: The validated ListExecutionsInput object being passed to this operation.
      - Returns: The ListExecutionsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidToken, stateMachineDoesNotExist.
+     - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
      */
     func listExecutionsSync(input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput
 
@@ -563,7 +563,7 @@ public protocol StepFunctionsClientProtocol {
          - completion: The UpdateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The UpdateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
     func updateStateMachineAsync(input: StepFunctionsModel.UpdateStateMachineInput, completion: @escaping (HTTPResult<StepFunctionsModel.UpdateStateMachineOutput>) -> ()) throws
 
@@ -574,7 +574,7 @@ public protocol StepFunctionsClientProtocol {
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
     func updateStateMachineSync(input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput
 }

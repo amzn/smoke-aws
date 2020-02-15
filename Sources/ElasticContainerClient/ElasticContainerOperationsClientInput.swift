@@ -24,6 +24,11 @@ import SmokeHTTPClient
 import ElasticContainerModel
 
 /**
+ Type to handle the input to the CreateCapacityProvider operation in a HTTP client.
+ */
+public typealias CreateCapacityProviderOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the CreateCluster operation in a HTTP client.
  */
 public typealias CreateClusterOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -72,6 +77,11 @@ public typealias DeregisterContainerInstanceOperationHTTPRequestInput = BodyHTTP
  Type to handle the input to the DeregisterTaskDefinition operation in a HTTP client.
  */
 public typealias DeregisterTaskDefinitionOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeCapacityProviders operation in a HTTP client.
+ */
+public typealias DescribeCapacityProvidersOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeClusters operation in a HTTP client.
@@ -167,6 +177,11 @@ public typealias PutAccountSettingDefaultOperationHTTPRequestInput = BodyHTTPReq
  Type to handle the input to the PutAttributes operation in a HTTP client.
  */
 public typealias PutAttributesOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the PutClusterCapacityProviders operation in a HTTP client.
+ */
+public typealias PutClusterCapacityProvidersOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the RegisterContainerInstance operation in a HTTP client.

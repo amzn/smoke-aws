@@ -74,6 +74,11 @@ public typealias DescribeBackupOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias DescribeContinuousBackupsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeContributorInsights operation in a HTTP client.
+ */
+public typealias DescribeContributorInsightsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeEndpoints operation in a HTTP client.
  */
 public typealias DescribeEndpointsOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -99,6 +104,11 @@ public typealias DescribeLimitsOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias DescribeTableOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeTableReplicaAutoScaling operation in a HTTP client.
+ */
+public typealias DescribeTableReplicaAutoScalingOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeTimeToLive operation in a HTTP client.
  */
 public typealias DescribeTimeToLiveOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -112,6 +122,11 @@ public typealias GetItemOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the ListBackups operation in a HTTP client.
  */
 public typealias ListBackupsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the ListContributorInsights operation in a HTTP client.
+ */
+public typealias ListContributorInsightsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the ListGlobalTables operation in a HTTP client.
@@ -179,6 +194,11 @@ public typealias UntagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias UpdateContinuousBackupsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the UpdateContributorInsights operation in a HTTP client.
+ */
+public typealias UpdateContributorInsightsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the UpdateGlobalTable operation in a HTTP client.
  */
 public typealias UpdateGlobalTableOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -197,6 +217,11 @@ public typealias UpdateItemOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the UpdateTable operation in a HTTP client.
  */
 public typealias UpdateTableOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UpdateTableReplicaAutoScaling operation in a HTTP client.
+ */
+public typealias UpdateTableReplicaAutoScalingOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the UpdateTimeToLive operation in a HTTP client.

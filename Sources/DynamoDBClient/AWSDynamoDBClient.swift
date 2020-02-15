@@ -688,6 +688,64 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+         - completion: The DescribeContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func describeContributorInsightsAsync(input: DynamoDBModel.DescribeContributorInsightsInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeContributorInsightsOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeContributorInsights.rawValue,
+                    target: target)
+
+        let requestInput = DescribeContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+     - Returns: The DescribeContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeContributorInsightsSync(input: DynamoDBModel.DescribeContributorInsightsInput) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeContributorInsights.rawValue,
+                    target: target)
+
+        let requestInput = DescribeContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeEndpoints operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -976,6 +1034,64 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The DescribeTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func describeTableReplicaAutoScalingAsync(input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeTableReplicaAutoScalingOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let requestInput = DescribeTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The DescribeTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeTableReplicaAutoScalingSync(input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let requestInput = DescribeTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeTimeToLive operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1139,6 +1255,64 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     target: target)
 
         let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+         - completion: The ListContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func listContributorInsightsAsync(input: DynamoDBModel.ListContributorInsightsInput, completion: @escaping (HTTPResult<DynamoDBModel.ListContributorInsightsOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listContributorInsights.rawValue,
+                    target: target)
+
+        let requestInput = ListContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+     - Returns: The ListContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func listContributorInsightsSync(input: DynamoDBModel.ListContributorInsightsInput) throws -> DynamoDBModel.ListContributorInsightsOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listContributorInsights.rawValue,
+                    target: target)
+
+        let requestInput = ListContributorInsightsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
@@ -1676,7 +1850,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The TransactGetItemsOutput object or an error will be passed to this 
            callback when the operation is complete. The TransactGetItemsOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
     public func transactGetItemsAsync(input: DynamoDBModel.TransactGetItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactGetItemsOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1705,7 +1879,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated TransactGetItemsInput object being passed to this operation.
      - Returns: The TransactGetItemsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
     public func transactGetItemsSync(input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1734,7 +1908,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - completion: The TransactWriteItemsOutput object or an error will be passed to this 
            callback when the operation is complete. The TransactWriteItemsOutput
            object will be validated before being returned to caller.
-           The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+           The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
     public func transactWriteItemsAsync(input: DynamoDBModel.TransactWriteItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactWriteItemsOutput>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1763,7 +1937,7 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated TransactWriteItemsInput object being passed to this operation.
      - Returns: The TransactWriteItemsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
     public func transactWriteItemsSync(input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -1887,6 +2061,64 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     target: target)
 
         let requestInput = UpdateContinuousBackupsOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+         - completion: The UpdateContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func updateContributorInsightsAsync(input: DynamoDBModel.UpdateContributorInsightsInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateContributorInsightsOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateContributorInsights.rawValue,
+                    target: target)
+
+        let requestInput = UpdateContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+     - Returns: The UpdateContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func updateContributorInsightsSync(input: DynamoDBModel.UpdateContributorInsightsInput) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateContributorInsights.rawValue,
+                    target: target)
+
+        let requestInput = UpdateContributorInsightsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
@@ -2119,6 +2351,64 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                     target: target)
 
         let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The UpdateTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func updateTableReplicaAutoScalingAsync(input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateTableReplicaAutoScalingOutput>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let requestInput = UpdateTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The UpdateTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func updateTableReplicaAutoScalingSync(input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let requestInput = UpdateTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",

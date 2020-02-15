@@ -620,16 +620,20 @@ public struct ServiceUnavailableError: Codable, Equatable {
 
 public struct SqlParameter: Codable, Equatable {
     public var name: ParameterName?
+    public var typeHint: TypeHint?
     public var value: Field?
 
     public init(name: ParameterName? = nil,
+                typeHint: TypeHint? = nil,
                 value: Field? = nil) {
         self.name = name
+        self.typeHint = typeHint
         self.value = value
     }
 
     enum CodingKeys: String, CodingKey {
         case name
+        case typeHint
         case value
     }
 

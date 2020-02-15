@@ -22,6 +22,11 @@
 import Foundation
 
 /**
+ Type definition for the ArchivalReason field.
+ */
+public typealias ArchivalReason = String
+
+/**
  Enumeration restricting the values of the AttributeAction field.
  */
 public enum AttributeAction: String, Codable, CustomStringConvertible {
@@ -300,6 +305,52 @@ public enum ContinuousBackupsStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the ContributorInsightsAction field.
+ */
+public enum ContributorInsightsAction: String, Codable, CustomStringConvertible {
+    case disable = "DISABLE"
+    case enable = "ENABLE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ContributorInsightsAction = .disable
+}
+
+/**
+ Type definition for the ContributorInsightsRule field.
+ */
+public typealias ContributorInsightsRule = String
+
+/**
+ Type definition for the ContributorInsightsRuleList field.
+ */
+public typealias ContributorInsightsRuleList = [ContributorInsightsRule]
+
+/**
+ Enumeration restricting the values of the ContributorInsightsStatus field.
+ */
+public enum ContributorInsightsStatus: String, Codable, CustomStringConvertible {
+    case disabled = "DISABLED"
+    case disabling = "DISABLING"
+    case enabled = "ENABLED"
+    case enabling = "ENABLING"
+    case failed = "FAILED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ContributorInsightsStatus = .disabled
+}
+
+/**
+ Type definition for the ContributorInsightsSummaries field.
+ */
+public typealias ContributorInsightsSummaries = [ContributorInsightsSummary]
+
+/**
  Type definition for the Date field.
  */
 public typealias Date = String
@@ -313,6 +364,16 @@ public typealias Endpoints = [Endpoint]
  Type definition for the ErrorMessage field.
  */
 public typealias ErrorMessage = String
+
+/**
+ Type definition for the ExceptionDescription field.
+ */
+public typealias ExceptionDescription = String
+
+/**
+ Type definition for the ExceptionName field.
+ */
+public typealias ExceptionName = String
 
 /**
  Type definition for the ExpectedAttributeMap field.
@@ -343,6 +404,11 @@ public typealias ExpressionAttributeValueVariable = String
  Type definition for the FilterConditionMap field.
  */
 public typealias FilterConditionMap = [AttributeName: Condition]
+
+/**
+ Type definition for the GlobalSecondaryIndexAutoScalingUpdateList field.
+ */
+public typealias GlobalSecondaryIndexAutoScalingUpdateList = [GlobalSecondaryIndexAutoScalingUpdate]
 
 /**
  Type definition for the GlobalSecondaryIndexDescriptionList field.
@@ -521,9 +587,19 @@ public enum KeyType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the LastUpdateDateTime field.
+ */
+public typealias LastUpdateDateTime = String
+
+/**
  Type definition for the ListAttributeValue field.
  */
 public typealias ListAttributeValue = [AttributeValue]
+
+/**
+ Type definition for the ListContributorInsightsLimit field.
+ */
+public typealias ListContributorInsightsLimit = Int
 
 /**
  Type definition for the ListTablesInputLimit field.
@@ -645,9 +721,39 @@ public typealias PutItemInputAttributeMap = [AttributeName: AttributeValue]
 public typealias RegionName = String
 
 /**
+ Type definition for the ReplicaAutoScalingDescriptionList field.
+ */
+public typealias ReplicaAutoScalingDescriptionList = [ReplicaAutoScalingDescription]
+
+/**
+ Type definition for the ReplicaAutoScalingUpdateList field.
+ */
+public typealias ReplicaAutoScalingUpdateList = [ReplicaAutoScalingUpdate]
+
+/**
  Type definition for the ReplicaDescriptionList field.
  */
 public typealias ReplicaDescriptionList = [ReplicaDescription]
+
+/**
+ Type definition for the ReplicaGlobalSecondaryIndexAutoScalingDescriptionList field.
+ */
+public typealias ReplicaGlobalSecondaryIndexAutoScalingDescriptionList = [ReplicaGlobalSecondaryIndexAutoScalingDescription]
+
+/**
+ Type definition for the ReplicaGlobalSecondaryIndexAutoScalingUpdateList field.
+ */
+public typealias ReplicaGlobalSecondaryIndexAutoScalingUpdateList = [ReplicaGlobalSecondaryIndexAutoScalingUpdate]
+
+/**
+ Type definition for the ReplicaGlobalSecondaryIndexDescriptionList field.
+ */
+public typealias ReplicaGlobalSecondaryIndexDescriptionList = [ReplicaGlobalSecondaryIndexDescription]
+
+/**
+ Type definition for the ReplicaGlobalSecondaryIndexList field.
+ */
+public typealias ReplicaGlobalSecondaryIndexList = [ReplicaGlobalSecondaryIndex]
 
 /**
  Type definition for the ReplicaGlobalSecondaryIndexSettingsDescriptionList field.
@@ -680,6 +786,7 @@ public typealias ReplicaSettingsUpdateList = [ReplicaSettingsUpdate]
 public enum ReplicaStatus: String, Codable, CustomStringConvertible {
     case active = "ACTIVE"
     case creating = "CREATING"
+    case creationFailed = "CREATION_FAILED"
     case deleting = "DELETING"
     case updating = "UPDATING"
 
@@ -691,9 +798,24 @@ public enum ReplicaStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ReplicaStatusDescription field.
+ */
+public typealias ReplicaStatusDescription = String
+
+/**
+ Type definition for the ReplicaStatusPercentProgress field.
+ */
+public typealias ReplicaStatusPercentProgress = String
+
+/**
  Type definition for the ReplicaUpdateList field.
  */
 public typealias ReplicaUpdateList = [ReplicaUpdate]
+
+/**
+ Type definition for the ReplicationGroupUpdateList field.
+ */
+public typealias ReplicationGroupUpdateList = [ReplicationGroupUpdate]
 
 /**
  Type definition for the ResourceArnString field.
@@ -913,8 +1035,11 @@ public typealias TableNameList = [TableName]
  */
 public enum TableStatus: String, Codable, CustomStringConvertible {
     case active = "ACTIVE"
+    case archived = "ARCHIVED"
+    case archiving = "ARCHIVING"
     case creating = "CREATING"
     case deleting = "DELETING"
+    case inaccessibleEncryptionCredentials = "INACCESSIBLE_ENCRYPTION_CREDENTIALS"
     case updating = "UPDATING"
 
     public var description: String {
@@ -1138,7 +1263,7 @@ extension Array where Element == DynamoDBModel.CancellationReason {
             throw DynamoDBCodingError.validationError(reason: "The provided value to CancellationReasonList violated the minimum length constraint.")
         }
 
-        if self.count > 10 {
+        if self.count > 25 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to CancellationReasonList violated the maximum length constraint.")
         }
     }
@@ -1156,6 +1281,31 @@ extension DynamoDBModel.ClientRequestToken {
         if self.count > 36 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to ClientRequestToken violated the maximum length constraint.")
         }
+    }
+}
+
+/**
+ Validation for the ContributorInsightsRule field.
+*/
+extension DynamoDBModel.ContributorInsightsRule {
+    public func validateAsContributorInsightsRule() throws {
+        guard let matchingRange = self.range(of: "[A-Za-z0-9][A-Za-z0-9\\-\\_\\.]{0,126}[A-Za-z0-9]", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw DynamoDBCodingError.validationError(
+                    reason: "The provided value to ContributorInsightsRule violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the GlobalSecondaryIndexAutoScalingUpdateList field.
+*/
+extension Array where Element == DynamoDBModel.GlobalSecondaryIndexAutoScalingUpdate {
+    public func validateAsGlobalSecondaryIndexAutoScalingUpdateList() throws {
+        if self.count < 1 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to GlobalSecondaryIndexAutoScalingUpdateList violated the minimum length constraint.")
+        }
+
     }
 }
 
@@ -1216,7 +1366,7 @@ extension Array where Element == DynamoDBModel.ItemResponse {
             throw DynamoDBCodingError.validationError(reason: "The provided value to ItemResponseList violated the minimum length constraint.")
         }
 
-        if self.count > 10 {
+        if self.count > 25 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to ItemResponseList violated the maximum length constraint.")
         }
     }
@@ -1263,6 +1413,18 @@ extension DynamoDBModel.KeySchemaAttributeName {
 
         if self.count > 255 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to KeySchemaAttributeName violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ListContributorInsightsLimit field.
+*/
+extension DynamoDBModel.ListContributorInsightsLimit {
+    public func validateAsListContributorInsightsLimit() throws {
+
+        if self > 100 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to ListContributorInsightsLimit violated the maximum range constraint.")
         }
     }
 }
@@ -1349,6 +1511,30 @@ extension DynamoDBModel.PositiveLongObject {
 }
 
 /**
+ Validation for the ReplicaAutoScalingUpdateList field.
+*/
+extension Array where Element == DynamoDBModel.ReplicaAutoScalingUpdate {
+    public func validateAsReplicaAutoScalingUpdateList() throws {
+        if self.count < 1 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to ReplicaAutoScalingUpdateList violated the minimum length constraint.")
+        }
+
+    }
+}
+
+/**
+ Validation for the ReplicaGlobalSecondaryIndexList field.
+*/
+extension Array where Element == DynamoDBModel.ReplicaGlobalSecondaryIndex {
+    public func validateAsReplicaGlobalSecondaryIndexList() throws {
+        if self.count < 1 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to ReplicaGlobalSecondaryIndexList violated the minimum length constraint.")
+        }
+
+    }
+}
+
+/**
  Validation for the ReplicaGlobalSecondaryIndexSettingsUpdateList field.
 */
 extension Array where Element == DynamoDBModel.ReplicaGlobalSecondaryIndexSettingsUpdate {
@@ -1375,6 +1561,18 @@ extension Array where Element == DynamoDBModel.ReplicaSettingsUpdate {
         if self.count > 50 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to ReplicaSettingsUpdateList violated the maximum length constraint.")
         }
+    }
+}
+
+/**
+ Validation for the ReplicationGroupUpdateList field.
+*/
+extension Array where Element == DynamoDBModel.ReplicationGroupUpdate {
+    public func validateAsReplicationGroupUpdateList() throws {
+        if self.count < 1 {
+            throw DynamoDBCodingError.validationError(reason: "The provided value to ReplicationGroupUpdateList violated the minimum length constraint.")
+        }
+
     }
 }
 
@@ -1526,7 +1724,7 @@ extension Array where Element == DynamoDBModel.TransactGetItem {
             throw DynamoDBCodingError.validationError(reason: "The provided value to TransactGetItemList violated the minimum length constraint.")
         }
 
-        if self.count > 10 {
+        if self.count > 25 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to TransactGetItemList violated the maximum length constraint.")
         }
     }
@@ -1541,7 +1739,7 @@ extension Array where Element == DynamoDBModel.TransactWriteItem {
             throw DynamoDBCodingError.validationError(reason: "The provided value to TransactWriteItemList violated the minimum length constraint.")
         }
 
-        if self.count > 10 {
+        if self.count > 25 {
             throw DynamoDBCodingError.validationError(reason: "The provided value to TransactWriteItemList violated the maximum length constraint.")
         }
     }

@@ -33,6 +33,8 @@ public protocol CloudWatchClientProtocol {
     typealias DeleteAnomalyDetectorAsyncType = (_ input: CloudWatchModel.DeleteAnomalyDetectorInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector>) -> ()) throws -> ()
     typealias DeleteDashboardsSyncType = (_ input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards
     typealias DeleteDashboardsAsyncType = (_ input: CloudWatchModel.DeleteDashboardsInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards>) -> ()) throws -> ()
+    typealias DeleteInsightRulesSyncType = (_ input: CloudWatchModel.DeleteInsightRulesInput) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules
+    typealias DeleteInsightRulesAsyncType = (_ input: CloudWatchModel.DeleteInsightRulesInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules>) -> ()) throws -> ()
     typealias DescribeAlarmHistorySyncType = (_ input: CloudWatchModel.DescribeAlarmHistoryInput) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory
     typealias DescribeAlarmHistoryAsyncType = (_ input: CloudWatchModel.DescribeAlarmHistoryInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory>) -> ()) throws -> ()
     typealias DescribeAlarmsSyncType = (_ input: CloudWatchModel.DescribeAlarmsInput) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms
@@ -41,12 +43,20 @@ public protocol CloudWatchClientProtocol {
     typealias DescribeAlarmsForMetricAsyncType = (_ input: CloudWatchModel.DescribeAlarmsForMetricInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric>) -> ()) throws -> ()
     typealias DescribeAnomalyDetectorsSyncType = (_ input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
     typealias DescribeAnomalyDetectorsAsyncType = (_ input: CloudWatchModel.DescribeAnomalyDetectorsInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors>) -> ()) throws -> ()
+    typealias DescribeInsightRulesSyncType = (_ input: CloudWatchModel.DescribeInsightRulesInput) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules
+    typealias DescribeInsightRulesAsyncType = (_ input: CloudWatchModel.DescribeInsightRulesInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules>) -> ()) throws -> ()
     typealias DisableAlarmActionsSyncType = (_ input: CloudWatchModel.DisableAlarmActionsInput) throws -> ()
     typealias DisableAlarmActionsAsyncType = (_ input: CloudWatchModel.DisableAlarmActionsInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DisableInsightRulesSyncType = (_ input: CloudWatchModel.DisableInsightRulesInput) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules
+    typealias DisableInsightRulesAsyncType = (_ input: CloudWatchModel.DisableInsightRulesInput, _ completion: @escaping (HTTPResult<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules>) -> ()) throws -> ()
     typealias EnableAlarmActionsSyncType = (_ input: CloudWatchModel.EnableAlarmActionsInput) throws -> ()
     typealias EnableAlarmActionsAsyncType = (_ input: CloudWatchModel.EnableAlarmActionsInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias EnableInsightRulesSyncType = (_ input: CloudWatchModel.EnableInsightRulesInput) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules
+    typealias EnableInsightRulesAsyncType = (_ input: CloudWatchModel.EnableInsightRulesInput, _ completion: @escaping (HTTPResult<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules>) -> ()) throws -> ()
     typealias GetDashboardSyncType = (_ input: CloudWatchModel.GetDashboardInput) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard
     typealias GetDashboardAsyncType = (_ input: CloudWatchModel.GetDashboardInput, _ completion: @escaping (HTTPResult<CloudWatchModel.GetDashboardOutputForGetDashboard>) -> ()) throws -> ()
+    typealias GetInsightRuleReportSyncType = (_ input: CloudWatchModel.GetInsightRuleReportInput) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport
+    typealias GetInsightRuleReportAsyncType = (_ input: CloudWatchModel.GetInsightRuleReportInput, _ completion: @escaping (HTTPResult<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport>) -> ()) throws -> ()
     typealias GetMetricDataSyncType = (_ input: CloudWatchModel.GetMetricDataInput) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData
     typealias GetMetricDataAsyncType = (_ input: CloudWatchModel.GetMetricDataInput, _ completion: @escaping (HTTPResult<CloudWatchModel.GetMetricDataOutputForGetMetricData>) -> ()) throws -> ()
     typealias GetMetricStatisticsSyncType = (_ input: CloudWatchModel.GetMetricStatisticsInput) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics
@@ -63,6 +73,8 @@ public protocol CloudWatchClientProtocol {
     typealias PutAnomalyDetectorAsyncType = (_ input: CloudWatchModel.PutAnomalyDetectorInput, _ completion: @escaping (HTTPResult<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector>) -> ()) throws -> ()
     typealias PutDashboardSyncType = (_ input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
     typealias PutDashboardAsyncType = (_ input: CloudWatchModel.PutDashboardInput, _ completion: @escaping (HTTPResult<CloudWatchModel.PutDashboardOutputForPutDashboard>) -> ()) throws -> ()
+    typealias PutInsightRuleSyncType = (_ input: CloudWatchModel.PutInsightRuleInput) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule
+    typealias PutInsightRuleAsyncType = (_ input: CloudWatchModel.PutInsightRuleInput, _ completion: @escaping (HTTPResult<CloudWatchModel.PutInsightRuleOutputForPutInsightRule>) -> ()) throws -> ()
     typealias PutMetricAlarmSyncType = (_ input: CloudWatchModel.PutMetricAlarmInput) throws -> ()
     typealias PutMetricAlarmAsyncType = (_ input: CloudWatchModel.PutMetricAlarmInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias PutMetricDataSyncType = (_ input: CloudWatchModel.PutMetricDataInput) throws -> ()
@@ -139,6 +151,29 @@ public protocol CloudWatchClientProtocol {
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
     func deleteDashboardsSync(input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards
+
+    /**
+     Invokes the DeleteInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInsightRulesInput object being passed to this operation.
+         - completion: The DeleteInsightRulesOutputForDeleteInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The DeleteInsightRulesOutputForDeleteInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter.
+     */
+    func deleteInsightRulesAsync(input: CloudWatchModel.DeleteInsightRulesInput, completion: @escaping (HTTPResult<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules>) -> ()) throws
+
+    /**
+     Invokes the DeleteInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInsightRulesInput object being passed to this operation.
+     - Returns: The DeleteInsightRulesOutputForDeleteInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    func deleteInsightRulesSync(input: CloudWatchModel.DeleteInsightRulesInput) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules
 
     /**
      Invokes the DescribeAlarmHistory operation returning immediately and passing the response to a callback.
@@ -231,6 +266,29 @@ public protocol CloudWatchClientProtocol {
     func describeAnomalyDetectorsSync(input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
 
     /**
+     Invokes the DescribeInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInsightRulesInput object being passed to this operation.
+         - completion: The DescribeInsightRulesOutputForDescribeInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInsightRulesOutputForDescribeInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidNextToken.
+     */
+    func describeInsightRulesAsync(input: CloudWatchModel.DescribeInsightRulesInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules>) -> ()) throws
+
+    /**
+     Invokes the DescribeInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInsightRulesInput object being passed to this operation.
+     - Returns: The DescribeInsightRulesOutputForDescribeInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken.
+     */
+    func describeInsightRulesSync(input: CloudWatchModel.DescribeInsightRulesInput) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules
+
+    /**
      Invokes the DisableAlarmActions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -249,6 +307,29 @@ public protocol CloudWatchClientProtocol {
     func disableAlarmActionsSync(input: CloudWatchModel.DisableAlarmActionsInput) throws
 
     /**
+     Invokes the DisableInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableInsightRulesInput object being passed to this operation.
+         - completion: The DisableInsightRulesOutputForDisableInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The DisableInsightRulesOutputForDisableInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter.
+     */
+    func disableInsightRulesAsync(input: CloudWatchModel.DisableInsightRulesInput, completion: @escaping (HTTPResult<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules>) -> ()) throws
+
+    /**
+     Invokes the DisableInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableInsightRulesInput object being passed to this operation.
+     - Returns: The DisableInsightRulesOutputForDisableInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    func disableInsightRulesSync(input: CloudWatchModel.DisableInsightRulesInput) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules
+
+    /**
      Invokes the EnableAlarmActions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -265,6 +346,29 @@ public protocol CloudWatchClientProtocol {
          - input: The validated EnableAlarmActionsInput object being passed to this operation.
      */
     func enableAlarmActionsSync(input: CloudWatchModel.EnableAlarmActionsInput) throws
+
+    /**
+     Invokes the EnableInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableInsightRulesInput object being passed to this operation.
+         - completion: The EnableInsightRulesOutputForEnableInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The EnableInsightRulesOutputForEnableInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    func enableInsightRulesAsync(input: CloudWatchModel.EnableInsightRulesInput, completion: @escaping (HTTPResult<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules>) -> ()) throws
+
+    /**
+     Invokes the EnableInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableInsightRulesInput object being passed to this operation.
+     - Returns: The EnableInsightRulesOutputForEnableInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    func enableInsightRulesSync(input: CloudWatchModel.EnableInsightRulesInput) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules
 
     /**
      Invokes the GetDashboard operation returning immediately and passing the response to a callback.
@@ -288,6 +392,29 @@ public protocol CloudWatchClientProtocol {
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
     func getDashboardSync(input: CloudWatchModel.GetDashboardInput) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard
+
+    /**
+     Invokes the GetInsightRuleReport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetInsightRuleReportInput object being passed to this operation.
+         - completion: The GetInsightRuleReportOutputForGetInsightRuleReport object or an error will be passed to this 
+           callback when the operation is complete. The GetInsightRuleReportOutputForGetInsightRuleReport
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    func getInsightRuleReportAsync(input: CloudWatchModel.GetInsightRuleReportInput, completion: @escaping (HTTPResult<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport>) -> ()) throws
+
+    /**
+     Invokes the GetInsightRuleReport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetInsightRuleReportInput object being passed to this operation.
+     - Returns: The GetInsightRuleReportOutputForGetInsightRuleReport object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    func getInsightRuleReportSync(input: CloudWatchModel.GetInsightRuleReportInput) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport
 
     /**
      Invokes the GetMetricData operation returning immediately and passing the response to a callback.
@@ -470,6 +597,29 @@ public protocol CloudWatchClientProtocol {
      - Throws: dashboardInvalidInput, internalService.
      */
     func putDashboardSync(input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
+
+    /**
+     Invokes the PutInsightRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutInsightRuleInput object being passed to this operation.
+         - completion: The PutInsightRuleOutputForPutInsightRule object or an error will be passed to this 
+           callback when the operation is complete. The PutInsightRuleOutputForPutInsightRule
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    func putInsightRuleAsync(input: CloudWatchModel.PutInsightRuleInput, completion: @escaping (HTTPResult<CloudWatchModel.PutInsightRuleOutputForPutInsightRule>) -> ()) throws
+
+    /**
+     Invokes the PutInsightRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutInsightRuleInput object being passed to this operation.
+     - Returns: The PutInsightRuleOutputForPutInsightRule object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    func putInsightRuleSync(input: CloudWatchModel.PutInsightRuleInput) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule
 
     /**
      Invokes the PutMetricAlarm operation returning immediately and passing the response to a callback.

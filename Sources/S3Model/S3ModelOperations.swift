@@ -5947,17 +5947,20 @@ public struct SelectObjectContentOperationInputBody: Codable, Equatable {
     public var inputSerialization: InputSerialization
     public var outputSerialization: OutputSerialization
     public var requestProgress: RequestProgress?
+    public var scanRange: ScanRange?
 
     public init(expression: Expression,
                 expressionType: ExpressionType,
                 inputSerialization: InputSerialization,
                 outputSerialization: OutputSerialization,
-                requestProgress: RequestProgress? = nil) {
+                requestProgress: RequestProgress? = nil,
+                scanRange: ScanRange? = nil) {
         self.expression = expression
         self.expressionType = expressionType
         self.inputSerialization = inputSerialization
         self.outputSerialization = outputSerialization
         self.requestProgress = requestProgress
+        self.scanRange = scanRange
     }
 
     enum CodingKeys: String, CodingKey {
@@ -5966,12 +5969,14 @@ public struct SelectObjectContentOperationInputBody: Codable, Equatable {
         case inputSerialization = "InputSerialization"
         case outputSerialization = "OutputSerialization"
         case requestProgress = "RequestProgress"
+        case scanRange = "ScanRange"
     }
 
     public func validate() throws {
         try inputSerialization.validate()
         try outputSerialization.validate()
         try requestProgress?.validate()
+        try scanRange?.validate()
     }
 }
 
@@ -5982,7 +5987,8 @@ public extension SelectObjectContentRequest {
             expressionType: expressionType,
             inputSerialization: inputSerialization,
             outputSerialization: outputSerialization,
-            requestProgress: requestProgress)
+            requestProgress: requestProgress,
+            scanRange: scanRange)
     }
 }
 

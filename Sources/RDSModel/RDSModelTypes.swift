@@ -76,6 +76,19 @@ public enum ApplyMethod: String, Codable, CustomStringConvertible {
 public typealias AttributeValueList = [String]
 
 /**
+ Enumeration restricting the values of the AuthScheme field.
+ */
+public enum AuthScheme: String, Codable, CustomStringConvertible {
+    case secrets = "SECRETS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AuthScheme = .secrets
+}
+
+/**
  Type definition for the AvailabilityZoneList field.
  */
 public typealias AvailabilityZoneList = [AvailabilityZone]
@@ -104,6 +117,11 @@ public typealias BooleanOptional = Bool
  Type definition for the CertificateList field.
  */
 public typealias CertificateList = [Certificate]
+
+/**
+ Type definition for the CustomAvailabilityZoneList field.
+ */
+public typealias CustomAvailabilityZoneList = [CustomAvailabilityZone]
 
 /**
  Type definition for the DBClusterBacktrackList field.
@@ -186,6 +204,29 @@ public typealias DBParameterGroupList = [DBParameterGroup]
 public typealias DBParameterGroupStatusList = [DBParameterGroupStatus]
 
 /**
+ Type definition for the DBProxyList field.
+ */
+public typealias DBProxyList = [DBProxy]
+
+/**
+ Enumeration restricting the values of the DBProxyStatus field.
+ */
+public enum DBProxyStatus: String, Codable, CustomStringConvertible {
+    case available
+    case creating
+    case deleting
+    case incompatibleNetwork = "incompatible-network"
+    case insufficientResourceLimits = "insufficient-resource-limits"
+    case modifying
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DBProxyStatus = .available
+}
+
+/**
  Type definition for the DBSecurityGroupMembershipList field.
  */
 public typealias DBSecurityGroupMembershipList = [DBSecurityGroupMembership]
@@ -241,6 +282,19 @@ public typealias DoubleRangeList = [DoubleRange]
 public typealias EC2SecurityGroupList = [EC2SecurityGroup]
 
 /**
+ Enumeration restricting the values of the EngineFamily field.
+ */
+public enum EngineFamily: String, Codable, CustomStringConvertible {
+    case mysql = "MYSQL"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: EngineFamily = .mysql
+}
+
+/**
  Type definition for the EngineModeList field.
  */
 public typealias EngineModeList = [String]
@@ -264,6 +318,11 @@ public typealias EventList = [Event]
  Type definition for the EventSubscriptionsList field.
  */
 public typealias EventSubscriptionsList = [EventSubscription]
+
+/**
+ Type definition for the ExportTasksList field.
+ */
+public typealias ExportTasksList = [ExportTask]
 
 /**
  Type definition for the FeatureNameList field.
@@ -291,9 +350,28 @@ public typealias GlobalClusterList = [GlobalCluster]
 public typealias GlobalClusterMemberList = [GlobalClusterMember]
 
 /**
+ Enumeration restricting the values of the IAMAuthMode field.
+ */
+public enum IAMAuthMode: String, Codable, CustomStringConvertible {
+    case disabled = "DISABLED"
+    case required = "REQUIRED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IAMAuthMode = .disabled
+}
+
+/**
  Type definition for the IPRangeList field.
  */
 public typealias IPRangeList = [IPRange]
+
+/**
+ Type definition for the InstallationMediaList field.
+ */
+public typealias InstallationMediaList = [InstallationMedia]
 
 /**
  Type definition for the Integer field.
@@ -324,6 +402,11 @@ public typealias Long = Int
  Type definition for the LongOptional field.
  */
 public typealias LongOptional = Int
+
+/**
+ Type definition for the MaxRecords field.
+ */
+public typealias MaxRecords = Int
 
 /**
  Type definition for the MinimumEngineVersionPerAllowedValueList field.
@@ -489,6 +572,11 @@ public enum SourceType: String, Codable, CustomStringConvertible {
 public typealias StringList = [String]
 
 /**
+ Type definition for the StringSensitive field.
+ */
+public typealias StringSensitive = String
+
+/**
  Type definition for the SubnetIdentifierList field.
  */
 public typealias SubnetIdentifierList = [String]
@@ -519,6 +607,41 @@ public typealias TStamp = String
 public typealias TagList = [Tag]
 
 /**
+ Type definition for the TargetGroupList field.
+ */
+public typealias TargetGroupList = [DBProxyTargetGroup]
+
+/**
+ Type definition for the TargetList field.
+ */
+public typealias TargetList = [DBProxyTarget]
+
+/**
+ Enumeration restricting the values of the TargetType field.
+ */
+public enum TargetType: String, Codable, CustomStringConvertible {
+    case rdsInstance = "RDS_INSTANCE"
+    case rdsServerlessEndpoint = "RDS_SERVERLESS_ENDPOINT"
+    case trackedCluster = "TRACKED_CLUSTER"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TargetType = .rdsInstance
+}
+
+/**
+ Type definition for the UserAuthConfigInfoList field.
+ */
+public typealias UserAuthConfigInfoList = [UserAuthConfigInfo]
+
+/**
+ Type definition for the UserAuthConfigList field.
+ */
+public typealias UserAuthConfigList = [UserAuthConfig]
+
+/**
  Type definition for the ValidStorageOptionsList field.
  */
 public typealias ValidStorageOptionsList = [ValidStorageOptions]
@@ -537,3 +660,18 @@ public typealias VpcSecurityGroupIdList = [String]
  Type definition for the VpcSecurityGroupMembershipList field.
  */
 public typealias VpcSecurityGroupMembershipList = [VpcSecurityGroupMembership]
+
+/**
+ Validation for the MaxRecords field.
+*/
+extension RDSModel.MaxRecords {
+    public func validateAsMaxRecords() throws {
+        if self < 20 {
+            throw RDSCodingError.validationError(reason: "The provided value to MaxRecords violated the minimum range constraint.")
+        }
+
+        if self > 100 {
+            throw RDSCodingError.validationError(reason: "The provided value to MaxRecords violated the maximum range constraint.")
+        }
+    }
+}

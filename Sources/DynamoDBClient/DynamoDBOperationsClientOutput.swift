@@ -154,6 +154,19 @@ extension DescribeContinuousBackupsOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeContributorInsights operation in a HTTP client.
+ */
+extension DescribeContributorInsightsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeContributorInsightsOutput
+    public typealias HeadersType = DescribeContributorInsightsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeContributorInsightsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeEndpoints operation in a HTTP client.
  */
 extension DescribeEndpointsResponse: HTTPResponseOutputProtocol {
@@ -219,6 +232,19 @@ extension DescribeTableOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeTableReplicaAutoScaling operation in a HTTP client.
+ */
+extension DescribeTableReplicaAutoScalingOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTableReplicaAutoScalingOutput
+    public typealias HeadersType = DescribeTableReplicaAutoScalingOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTableReplicaAutoScalingOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeTimeToLive operation in a HTTP client.
  */
 extension DescribeTimeToLiveOutput: HTTPResponseOutputProtocol {
@@ -253,6 +279,19 @@ extension ListBackupsOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListBackupsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListContributorInsights operation in a HTTP client.
+ */
+extension ListContributorInsightsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListContributorInsightsOutput
+    public typealias HeadersType = ListContributorInsightsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListContributorInsightsOutput {
         return try bodyDecodableProvider()
     }
 }
@@ -401,6 +440,19 @@ extension UpdateContinuousBackupsOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the UpdateContributorInsights operation in a HTTP client.
+ */
+extension UpdateContributorInsightsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateContributorInsightsOutput
+    public typealias HeadersType = UpdateContributorInsightsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateContributorInsightsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the UpdateGlobalTable operation in a HTTP client.
  */
 extension UpdateGlobalTableOutput: HTTPResponseOutputProtocol {
@@ -448,6 +500,19 @@ extension UpdateTableOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> UpdateTableOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateTableReplicaAutoScaling operation in a HTTP client.
+ */
+extension UpdateTableReplicaAutoScalingOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateTableReplicaAutoScalingOutput
+    public typealias HeadersType = UpdateTableReplicaAutoScalingOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateTableReplicaAutoScalingOutput {
         return try bodyDecodableProvider()
     }
 }

@@ -86,6 +86,20 @@ public extension AttributeLimitExceededException {
     }()
 }
 
+public extension AutoScalingGroupProvider {
+    /**
+     Default instance of the AutoScalingGroupProvider structure.
+     */
+    static let __default: ElasticContainerModel.AutoScalingGroupProvider = {
+        let defaultInstance = ElasticContainerModel.AutoScalingGroupProvider(
+            autoScalingGroupArn: "value",
+            managedScaling: nil,
+            managedTerminationProtection: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension AwsVpcConfiguration {
     /**
      Default instance of the AwsVpcConfiguration structure.
@@ -111,6 +125,36 @@ public extension BlockedException {
     }()
 }
 
+public extension CapacityProvider {
+    /**
+     Default instance of the CapacityProvider structure.
+     */
+    static let __default: ElasticContainerModel.CapacityProvider = {
+        let defaultInstance = ElasticContainerModel.CapacityProvider(
+            autoScalingGroupProvider: nil,
+            capacityProviderArn: nil,
+            name: nil,
+            status: nil,
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CapacityProviderStrategyItem {
+    /**
+     Default instance of the CapacityProviderStrategyItem structure.
+     */
+    static let __default: ElasticContainerModel.CapacityProviderStrategyItem = {
+        let defaultInstance = ElasticContainerModel.CapacityProviderStrategyItem(
+            base: nil,
+            capacityProvider: "value",
+            weight: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ClientException {
     /**
      Default instance of the ClientException structure.
@@ -130,8 +174,12 @@ public extension Cluster {
     static let __default: ElasticContainerModel.Cluster = {
         let defaultInstance = ElasticContainerModel.Cluster(
             activeServicesCount: nil,
+            attachments: nil,
+            attachmentsStatus: nil,
+            capacityProviders: nil,
             clusterArn: nil,
             clusterName: nil,
+            defaultCapacityProviderStrategy: nil,
             pendingTasksCount: nil,
             registeredContainerInstancesCount: nil,
             runningTasksCount: nil,
@@ -300,6 +348,7 @@ public extension ContainerInstance {
             agentUpdateStatus: nil,
             attachments: nil,
             attributes: nil,
+            capacityProviderName: nil,
             containerInstanceArn: nil,
             ec2InstanceId: nil,
             pendingTasksCount: nil,
@@ -353,13 +402,41 @@ public extension ContainerStateChange {
     }()
 }
 
+public extension CreateCapacityProviderRequest {
+    /**
+     Default instance of the CreateCapacityProviderRequest structure.
+     */
+    static let __default: ElasticContainerModel.CreateCapacityProviderRequest = {
+        let defaultInstance = ElasticContainerModel.CreateCapacityProviderRequest(
+            autoScalingGroupProvider: AutoScalingGroupProvider.__default,
+            name: "value",
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateCapacityProviderResponse {
+    /**
+     Default instance of the CreateCapacityProviderResponse structure.
+     */
+    static let __default: ElasticContainerModel.CreateCapacityProviderResponse = {
+        let defaultInstance = ElasticContainerModel.CreateCapacityProviderResponse(
+            capacityProvider: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateClusterRequest {
     /**
      Default instance of the CreateClusterRequest structure.
      */
     static let __default: ElasticContainerModel.CreateClusterRequest = {
         let defaultInstance = ElasticContainerModel.CreateClusterRequest(
+            capacityProviders: nil,
             clusterName: nil,
+            defaultCapacityProviderStrategy: nil,
             settings: nil,
             tags: nil)
 
@@ -385,6 +462,7 @@ public extension CreateServiceRequest {
      */
     static let __default: ElasticContainerModel.CreateServiceRequest = {
         let defaultInstance = ElasticContainerModel.CreateServiceRequest(
+            capacityProviderStrategy: nil,
             clientToken: nil,
             cluster: nil,
             deploymentConfiguration: nil,
@@ -428,6 +506,7 @@ public extension CreateTaskSetRequest {
      */
     static let __default: ElasticContainerModel.CreateTaskSetRequest = {
         let defaultInstance = ElasticContainerModel.CreateTaskSetRequest(
+            capacityProviderStrategy: nil,
             clientToken: nil,
             cluster: "value",
             externalId: nil,
@@ -438,6 +517,7 @@ public extension CreateTaskSetRequest {
             scale: nil,
             service: "value",
             serviceRegistries: nil,
+            tags: nil,
             taskDefinition: "value")
 
         return defaultInstance
@@ -589,6 +669,7 @@ public extension Deployment {
      */
     static let __default: ElasticContainerModel.Deployment = {
         let defaultInstance = ElasticContainerModel.Deployment(
+            capacityProviderStrategy: nil,
             createdAt: nil,
             desiredCount: nil,
             id: nil,
@@ -675,6 +756,35 @@ public extension DeregisterTaskDefinitionResponse {
     static let __default: ElasticContainerModel.DeregisterTaskDefinitionResponse = {
         let defaultInstance = ElasticContainerModel.DeregisterTaskDefinitionResponse(
             taskDefinition: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeCapacityProvidersRequest {
+    /**
+     Default instance of the DescribeCapacityProvidersRequest structure.
+     */
+    static let __default: ElasticContainerModel.DescribeCapacityProvidersRequest = {
+        let defaultInstance = ElasticContainerModel.DescribeCapacityProvidersRequest(
+            capacityProviders: nil,
+            include: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeCapacityProvidersResponse {
+    /**
+     Default instance of the DescribeCapacityProvidersResponse structure.
+     */
+    static let __default: ElasticContainerModel.DescribeCapacityProvidersResponse = {
+        let defaultInstance = ElasticContainerModel.DescribeCapacityProvidersResponse(
+            capacityProviders: nil,
+            failures: nil,
+            nextToken: nil)
 
         return defaultInstance
     }()
@@ -793,6 +903,7 @@ public extension DescribeTaskSetsRequest {
     static let __default: ElasticContainerModel.DescribeTaskSetsRequest = {
         let defaultInstance = ElasticContainerModel.DescribeTaskSetsRequest(
             cluster: "value",
+            include: nil,
             service: "value",
             taskSets: nil)
 
@@ -896,6 +1007,19 @@ public extension DockerVolumeConfiguration {
     }()
 }
 
+public extension EFSVolumeConfiguration {
+    /**
+     Default instance of the EFSVolumeConfiguration structure.
+     */
+    static let __default: ElasticContainerModel.EFSVolumeConfiguration = {
+        let defaultInstance = ElasticContainerModel.EFSVolumeConfiguration(
+            fileSystemId: "value",
+            rootDirectory: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Failure {
     /**
      Default instance of the Failure structure.
@@ -903,6 +1027,7 @@ public extension Failure {
     static let __default: ElasticContainerModel.Failure = {
         let defaultInstance = ElasticContainerModel.Failure(
             arn: nil,
+            detail: nil,
             reason: nil)
 
         return defaultInstance
@@ -1021,6 +1146,17 @@ public extension KeyValuePair {
         let defaultInstance = ElasticContainerModel.KeyValuePair(
             name: nil,
             value: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension LimitExceededException {
+    /**
+     Default instance of the LimitExceededException structure.
+     */
+    static let __default: ElasticContainerModel.LimitExceededException = {
+        let defaultInstance = ElasticContainerModel.LimitExceededException()
 
         return defaultInstance
     }()
@@ -1331,6 +1467,21 @@ public extension LogConfiguration {
     }()
 }
 
+public extension ManagedScaling {
+    /**
+     Default instance of the ManagedScaling structure.
+     */
+    static let __default: ElasticContainerModel.ManagedScaling = {
+        let defaultInstance = ElasticContainerModel.ManagedScaling(
+            maximumScalingStepSize: nil,
+            minimumScalingStepSize: nil,
+            status: nil,
+            targetCapacity: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension MissingVersionException {
     /**
      Default instance of the MissingVersionException structure.
@@ -1573,6 +1724,32 @@ public extension PutAttributesResponse {
     }()
 }
 
+public extension PutClusterCapacityProvidersRequest {
+    /**
+     Default instance of the PutClusterCapacityProvidersRequest structure.
+     */
+    static let __default: ElasticContainerModel.PutClusterCapacityProvidersRequest = {
+        let defaultInstance = ElasticContainerModel.PutClusterCapacityProvidersRequest(
+            capacityProviders: [],
+            cluster: "value",
+            defaultCapacityProviderStrategy: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension PutClusterCapacityProvidersResponse {
+    /**
+     Default instance of the PutClusterCapacityProvidersResponse structure.
+     */
+    static let __default: ElasticContainerModel.PutClusterCapacityProvidersResponse = {
+        let defaultInstance = ElasticContainerModel.PutClusterCapacityProvidersResponse(
+            cluster: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension RegisterContainerInstanceRequest {
     /**
      Default instance of the RegisterContainerInstanceRequest structure.
@@ -1673,6 +1850,17 @@ public extension Resource {
     }()
 }
 
+public extension ResourceInUseException {
+    /**
+     Default instance of the ResourceInUseException structure.
+     */
+    static let __default: ElasticContainerModel.ResourceInUseException = {
+        let defaultInstance = ElasticContainerModel.ResourceInUseException()
+
+        return defaultInstance
+    }()
+}
+
 public extension ResourceNotFoundException {
     /**
      Default instance of the ResourceNotFoundException structure.
@@ -1703,6 +1891,7 @@ public extension RunTaskRequest {
      */
     static let __default: ElasticContainerModel.RunTaskRequest = {
         let defaultInstance = ElasticContainerModel.RunTaskRequest(
+            capacityProviderStrategy: nil,
             cluster: nil,
             count: nil,
             enableECSManagedTags: nil,
@@ -1714,6 +1903,7 @@ public extension RunTaskRequest {
             placementStrategy: nil,
             platformVersion: nil,
             propagateTags: nil,
+            referenceId: nil,
             startedBy: nil,
             tags: nil,
             taskDefinition: "value")
@@ -1779,6 +1969,7 @@ public extension Service {
      */
     static let __default: ElasticContainerModel.Service = {
         let defaultInstance = ElasticContainerModel.Service(
+            capacityProviderStrategy: nil,
             clusterArn: nil,
             createdAt: nil,
             createdBy: nil,
@@ -1890,6 +2081,7 @@ public extension StartTaskRequest {
             networkConfiguration: nil,
             overrides: nil,
             propagateTags: nil,
+            referenceId: nil,
             startedBy: nil,
             tags: nil,
             taskDefinition: "value")
@@ -2093,6 +2285,9 @@ public extension Task {
     static let __default: ElasticContainerModel.Task = {
         let defaultInstance = ElasticContainerModel.Task(
             attachments: nil,
+            attributes: nil,
+            availabilityZone: nil,
+            capacityProviderName: nil,
             clusterArn: nil,
             connectivity: nil,
             connectivityAt: nil,
@@ -2138,6 +2333,7 @@ public extension TaskDefinition {
             cpu: nil,
             executionRoleArn: nil,
             family: nil,
+            inferenceAccelerators: nil,
             ipcMode: nil,
             memory: nil,
             networkMode: nil,
@@ -2176,8 +2372,10 @@ public extension TaskOverride {
     static let __default: ElasticContainerModel.TaskOverride = {
         let defaultInstance = ElasticContainerModel.TaskOverride(
             containerOverrides: nil,
+            cpu: nil,
             executionRoleArn: nil,
             inferenceAcceleratorOverrides: nil,
+            memory: nil,
             taskRoleArn: nil)
 
         return defaultInstance
@@ -2190,6 +2388,7 @@ public extension TaskSet {
      */
     static let __default: ElasticContainerModel.TaskSet = {
         let defaultInstance = ElasticContainerModel.TaskSet(
+            capacityProviderStrategy: nil,
             clusterArn: nil,
             computedDesiredCount: nil,
             createdAt: nil,
@@ -2208,6 +2407,7 @@ public extension TaskSet {
             stabilityStatusAt: nil,
             startedBy: nil,
             status: nil,
+            tags: nil,
             taskDefinition: nil,
             taskSetArn: nil,
             updatedAt: nil)
@@ -2410,6 +2610,7 @@ public extension UpdateServiceRequest {
      */
     static let __default: ElasticContainerModel.UpdateServiceRequest = {
         let defaultInstance = ElasticContainerModel.UpdateServiceRequest(
+            capacityProviderStrategy: nil,
             cluster: nil,
             deploymentConfiguration: nil,
             desiredCount: nil,
@@ -2484,6 +2685,7 @@ public extension Volume {
     static let __default: ElasticContainerModel.Volume = {
         let defaultInstance = ElasticContainerModel.Volume(
             dockerVolumeConfiguration: nil,
+            efsVolumeConfiguration: nil,
             host: nil,
             name: nil)
 

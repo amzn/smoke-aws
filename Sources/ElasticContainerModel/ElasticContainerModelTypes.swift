@@ -89,9 +89,62 @@ public typealias BoxedBoolean = Bool
 public typealias BoxedInteger = Int
 
 /**
+ Enumeration restricting the values of the CapacityProviderField field.
+ */
+public enum CapacityProviderField: String, Codable, CustomStringConvertible {
+    case tags = "TAGS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: CapacityProviderField = .tags
+}
+
+/**
+ Type definition for the CapacityProviderFieldList field.
+ */
+public typealias CapacityProviderFieldList = [CapacityProviderField]
+
+/**
+ Enumeration restricting the values of the CapacityProviderStatus field.
+ */
+public enum CapacityProviderStatus: String, Codable, CustomStringConvertible {
+    case active = "ACTIVE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: CapacityProviderStatus = .active
+}
+
+/**
+ Type definition for the CapacityProviderStrategy field.
+ */
+public typealias CapacityProviderStrategy = [CapacityProviderStrategyItem]
+
+/**
+ Type definition for the CapacityProviderStrategyItemBase field.
+ */
+public typealias CapacityProviderStrategyItemBase = Int
+
+/**
+ Type definition for the CapacityProviderStrategyItemWeight field.
+ */
+public typealias CapacityProviderStrategyItemWeight = Int
+
+/**
+ Type definition for the CapacityProviders field.
+ */
+public typealias CapacityProviders = [CapacityProvider]
+
+/**
  Enumeration restricting the values of the ClusterField field.
  */
 public enum ClusterField: String, Codable, CustomStringConvertible {
+    case attachments = "ATTACHMENTS"
+    case settings = "SETTINGS"
     case statistics = "STATISTICS"
     case tags = "TAGS"
 
@@ -99,7 +152,7 @@ public enum ClusterField: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: ClusterField = .statistics
+    public static let __default: ClusterField = .attachments
 }
 
 /**
@@ -441,6 +494,44 @@ public enum LogDriver: String, Codable, CustomStringConvertible {
  Type definition for the Long field.
  */
 public typealias Long = Int
+
+/**
+ Enumeration restricting the values of the ManagedScalingStatus field.
+ */
+public enum ManagedScalingStatus: String, Codable, CustomStringConvertible {
+    case disabled = "DISABLED"
+    case enabled = "ENABLED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ManagedScalingStatus = .disabled
+}
+
+/**
+ Type definition for the ManagedScalingStepSize field.
+ */
+public typealias ManagedScalingStepSize = Int
+
+/**
+ Type definition for the ManagedScalingTargetCapacity field.
+ */
+public typealias ManagedScalingTargetCapacity = Int
+
+/**
+ Enumeration restricting the values of the ManagedTerminationProtection field.
+ */
+public enum ManagedTerminationProtection: String, Codable, CustomStringConvertible {
+    case disabled = "DISABLED"
+    case enabled = "ENABLED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ManagedTerminationProtection = .disabled
+}
 
 /**
  Type definition for the MountPointList field.
@@ -876,6 +967,24 @@ public enum TaskField: String, Codable, CustomStringConvertible {
 public typealias TaskFieldList = [TaskField]
 
 /**
+ Enumeration restricting the values of the TaskSetField field.
+ */
+public enum TaskSetField: String, Codable, CustomStringConvertible {
+    case tags = "TAGS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TaskSetField = .tags
+}
+
+/**
+ Type definition for the TaskSetFieldList field.
+ */
+public typealias TaskSetFieldList = [TaskSetField]
+
+/**
  Type definition for the TaskSets field.
  */
 public typealias TaskSets = [TaskSet]
@@ -965,6 +1074,66 @@ public typealias VolumeFromList = [VolumeFrom]
  Type definition for the VolumeList field.
  */
 public typealias VolumeList = [Volume]
+
+/**
+ Validation for the CapacityProviderStrategyItemBase field.
+*/
+extension ElasticContainerModel.CapacityProviderStrategyItemBase {
+    public func validateAsCapacityProviderStrategyItemBase() throws {
+        if self < 0 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to CapacityProviderStrategyItemBase violated the minimum range constraint.")
+        }
+
+        if self > 100000 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to CapacityProviderStrategyItemBase violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the CapacityProviderStrategyItemWeight field.
+*/
+extension ElasticContainerModel.CapacityProviderStrategyItemWeight {
+    public func validateAsCapacityProviderStrategyItemWeight() throws {
+        if self < 0 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to CapacityProviderStrategyItemWeight violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to CapacityProviderStrategyItemWeight violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ManagedScalingStepSize field.
+*/
+extension ElasticContainerModel.ManagedScalingStepSize {
+    public func validateAsManagedScalingStepSize() throws {
+        if self < 1 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to ManagedScalingStepSize violated the minimum range constraint.")
+        }
+
+        if self > 10000 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to ManagedScalingStepSize violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ManagedScalingTargetCapacity field.
+*/
+extension ElasticContainerModel.ManagedScalingTargetCapacity {
+    public func validateAsManagedScalingTargetCapacity() throws {
+        if self < 1 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to ManagedScalingTargetCapacity violated the minimum range constraint.")
+        }
+
+        if self > 100 {
+            throw ElasticContainerCodingError.validationError(reason: "The provided value to ManagedScalingTargetCapacity violated the maximum range constraint.")
+        }
+    }
+}
 
 /**
  Validation for the TagKey field.

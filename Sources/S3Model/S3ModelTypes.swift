@@ -459,6 +459,11 @@ public enum EncodingType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the End field.
+ */
+public typealias End = Int
+
+/**
  Type definition for the Errors field.
  */
 public typealias Errors = [Error]
@@ -475,9 +480,15 @@ public enum Event: String, Codable, CustomStringConvertible {
     case s3ObjectRemovedStar = "s3:ObjectRemoved:*"
     case s3ObjectRemovedDelete = "s3:ObjectRemoved:Delete"
     case s3ObjectRemovedDeleteMarkerCreated = "s3:ObjectRemoved:DeleteMarkerCreated"
+    case s3ObjectRestoreStar = "s3:ObjectRestore:*"
     case s3ObjectRestoreCompleted = "s3:ObjectRestore:Completed"
     case s3ObjectRestorePost = "s3:ObjectRestore:Post"
     case s3ReducedRedundancyLostObject = "s3:ReducedRedundancyLostObject"
+    case s3ReplicationStar = "s3:Replication:*"
+    case s3ReplicationOperationFailedReplication = "s3:Replication:OperationFailedReplication"
+    case s3ReplicationOperationMissedThreshold = "s3:Replication:OperationMissedThreshold"
+    case s3ReplicationOperationNotTracked = "s3:Replication:OperationNotTracked"
+    case s3ReplicationOperationReplicatedAfterThreshold = "s3:Replication:OperationReplicatedAfterThreshold"
 
     public var description: String {
         return rawValue
@@ -490,6 +501,20 @@ public enum Event: String, Codable, CustomStringConvertible {
  Type definition for the EventList field.
  */
 public typealias EventList = [Event]
+
+/**
+ Enumeration restricting the values of the ExistingObjectReplicationStatus field.
+ */
+public enum ExistingObjectReplicationStatus: String, Codable, CustomStringConvertible {
+    case disabled = "Disabled"
+    case enabled = "Enabled"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ExistingObjectReplicationStatus = .disabled
+}
 
 /**
  Type definition for the Expiration field.
@@ -731,6 +756,7 @@ public enum InventoryIncludedObjectVersions: String, Codable, CustomStringConver
 public enum InventoryOptionalField: String, Codable, CustomStringConvertible {
     case etag = "ETag"
     case encryptionstatus = "EncryptionStatus"
+    case intelligenttieringaccesstier = "IntelligentTieringAccessTier"
     case ismultipartuploaded = "IsMultipartUploaded"
     case lastmodifieddate = "LastModifiedDate"
     case objectlocklegalholdstatus = "ObjectLockLegalHoldStatus"
@@ -937,6 +963,25 @@ public typealias MetricsConfigurationList = [MetricsConfiguration]
  Type definition for the MetricsId field.
  */
 public typealias MetricsId = String
+
+/**
+ Enumeration restricting the values of the MetricsStatus field.
+ */
+public enum MetricsStatus: String, Codable, CustomStringConvertible {
+    case disabled = "Disabled"
+    case enabled = "Enabled"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: MetricsStatus = .disabled
+}
+
+/**
+ Type definition for the Minutes field.
+ */
+public typealias Minutes = Int
 
 /**
  Type definition for the MissingMeta field.
@@ -1332,6 +1377,20 @@ public enum ReplicationStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the ReplicationTimeStatus field.
+ */
+public enum ReplicationTimeStatus: String, Codable, CustomStringConvertible {
+    case disabled = "Disabled"
+    case enabled = "Enabled"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ReplicationTimeStatus = .disabled
+}
+
+/**
  Enumeration restricting the values of the RequestCharged field.
  */
 public enum RequestCharged: String, Codable, CustomStringConvertible {
@@ -1492,6 +1551,11 @@ public enum SseKmsEncryptedObjectsStatus: String, Codable, CustomStringConvertib
     
     public static let __default: SseKmsEncryptedObjectsStatus = .disabled
 }
+
+/**
+ Type definition for the Start field.
+ */
+public typealias Start = Int
 
 /**
  Type definition for the StartAfter field.

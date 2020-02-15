@@ -39,6 +39,11 @@ public typealias DeleteAnomalyDetectorOperationHTTPRequestInput = QueryHTTPReque
 public typealias DeleteDashboardsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteInsightRules operation in a HTTP client.
+ */
+public typealias DeleteInsightRulesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeAlarmHistory operation in a HTTP client.
  */
 public typealias DescribeAlarmHistoryOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -59,9 +64,19 @@ public typealias DescribeAlarmsForMetricOperationHTTPRequestInput = QueryHTTPReq
 public typealias DescribeAnomalyDetectorsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeInsightRules operation in a HTTP client.
+ */
+public typealias DescribeInsightRulesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisableAlarmActions operation in a HTTP client.
  */
 public typealias DisableAlarmActionsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DisableInsightRules operation in a HTTP client.
+ */
+public typealias DisableInsightRulesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the EnableAlarmActions operation in a HTTP client.
@@ -69,9 +84,19 @@ public typealias DisableAlarmActionsOperationHTTPRequestInput = QueryHTTPRequest
 public typealias EnableAlarmActionsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the EnableInsightRules operation in a HTTP client.
+ */
+public typealias EnableInsightRulesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the GetDashboard operation in a HTTP client.
  */
 public typealias GetDashboardOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetInsightRuleReport operation in a HTTP client.
+ */
+public typealias GetInsightRuleReportOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetMetricData operation in a HTTP client.
@@ -112,6 +137,11 @@ public typealias PutAnomalyDetectorOperationHTTPRequestInput = QueryHTTPRequestI
  Type to handle the input to the PutDashboard operation in a HTTP client.
  */
 public typealias PutDashboardOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the PutInsightRule operation in a HTTP client.
+ */
+public typealias PutInsightRuleOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the PutMetricAlarm operation in a HTTP client.

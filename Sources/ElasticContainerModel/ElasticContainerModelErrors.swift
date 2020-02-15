@@ -31,10 +31,12 @@ private let clusterContainsServicesIdentity = "ClusterContainsServicesException"
 private let clusterContainsTasksIdentity = "ClusterContainsTasksException"
 private let clusterNotFoundIdentity = "ClusterNotFoundException"
 private let invalidParameterIdentity = "InvalidParameterException"
+private let limitExceededIdentity = "LimitExceededException"
 private let missingVersionIdentity = "MissingVersionException"
 private let noUpdateAvailableIdentity = "NoUpdateAvailableException"
 private let platformTaskDefinitionIncompatibilityIdentity = "PlatformTaskDefinitionIncompatibilityException"
 private let platformUnknownIdentity = "PlatformUnknownException"
+private let resourceInUseIdentity = "ResourceInUseException"
 private let resourceNotFoundIdentity = "ResourceNotFoundException"
 private let serverIdentity = "ServerException"
 private let serviceNotActiveIdentity = "ServiceNotActiveException"
@@ -60,10 +62,12 @@ public enum ElasticContainerError: Swift.Error, Decodable {
     case clusterContainsTasks(ClusterContainsTasksException)
     case clusterNotFound(ClusterNotFoundException)
     case invalidParameter(InvalidParameterException)
+    case limitExceeded(LimitExceededException)
     case missingVersion(MissingVersionException)
     case noUpdateAvailable(NoUpdateAvailableException)
     case platformTaskDefinitionIncompatibility(PlatformTaskDefinitionIncompatibilityException)
     case platformUnknown(PlatformUnknownException)
+    case resourceInUse(ResourceInUseException)
     case resourceNotFound(ResourceNotFoundException)
     case server(ServerException)
     case serviceNotActive(ServiceNotActiveException)
@@ -115,6 +119,9 @@ public enum ElasticContainerError: Swift.Error, Decodable {
         case invalidParameterIdentity:
             let errorPayload = try InvalidParameterException(from: decoder)
             self = ElasticContainerError.invalidParameter(errorPayload)
+        case limitExceededIdentity:
+            let errorPayload = try LimitExceededException(from: decoder)
+            self = ElasticContainerError.limitExceeded(errorPayload)
         case missingVersionIdentity:
             let errorPayload = try MissingVersionException(from: decoder)
             self = ElasticContainerError.missingVersion(errorPayload)
@@ -127,6 +134,9 @@ public enum ElasticContainerError: Swift.Error, Decodable {
         case platformUnknownIdentity:
             let errorPayload = try PlatformUnknownException(from: decoder)
             self = ElasticContainerError.platformUnknown(errorPayload)
+        case resourceInUseIdentity:
+            let errorPayload = try ResourceInUseException(from: decoder)
+            self = ElasticContainerError.resourceInUse(errorPayload)
         case resourceNotFoundIdentity:
             let errorPayload = try ResourceNotFoundException(from: decoder)
             self = ElasticContainerError.resourceNotFound(errorPayload)

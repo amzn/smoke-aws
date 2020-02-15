@@ -26,6 +26,7 @@ import Foundation
  */
 public enum ElasticComputeCloudModelOperations: String {
     case acceptReservedInstancesExchangeQuote = "AcceptReservedInstancesExchangeQuote"
+    case acceptTransitGatewayPeeringAttachment = "AcceptTransitGatewayPeeringAttachment"
     case acceptTransitGatewayVpcAttachment = "AcceptTransitGatewayVpcAttachment"
     case acceptVpcEndpointConnections = "AcceptVpcEndpointConnections"
     case acceptVpcPeeringConnection = "AcceptVpcPeeringConnection"
@@ -41,6 +42,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case associateIamInstanceProfile = "AssociateIamInstanceProfile"
     case associateRouteTable = "AssociateRouteTable"
     case associateSubnetCidrBlock = "AssociateSubnetCidrBlock"
+    case associateTransitGatewayMulticastDomain = "AssociateTransitGatewayMulticastDomain"
     case associateTransitGatewayRouteTable = "AssociateTransitGatewayRouteTable"
     case associateVpcCidrBlock = "AssociateVpcCidrBlock"
     case attachClassicLinkVpc = "AttachClassicLinkVpc"
@@ -81,6 +83,8 @@ public enum ElasticComputeCloudModelOperations: String {
     case createKeyPair = "CreateKeyPair"
     case createLaunchTemplate = "CreateLaunchTemplate"
     case createLaunchTemplateVersion = "CreateLaunchTemplateVersion"
+    case createLocalGatewayRoute = "CreateLocalGatewayRoute"
+    case createLocalGatewayRouteTableVpcAssociation = "CreateLocalGatewayRouteTableVpcAssociation"
     case createNatGateway = "CreateNatGateway"
     case createNetworkAcl = "CreateNetworkAcl"
     case createNetworkAclEntry = "CreateNetworkAclEntry"
@@ -101,6 +105,8 @@ public enum ElasticComputeCloudModelOperations: String {
     case createTrafficMirrorSession = "CreateTrafficMirrorSession"
     case createTrafficMirrorTarget = "CreateTrafficMirrorTarget"
     case createTransitGateway = "CreateTransitGateway"
+    case createTransitGatewayMulticastDomain = "CreateTransitGatewayMulticastDomain"
+    case createTransitGatewayPeeringAttachment = "CreateTransitGatewayPeeringAttachment"
     case createTransitGatewayRoute = "CreateTransitGatewayRoute"
     case createTransitGatewayRouteTable = "CreateTransitGatewayRouteTable"
     case createTransitGatewayVpcAttachment = "CreateTransitGatewayVpcAttachment"
@@ -125,12 +131,15 @@ public enum ElasticComputeCloudModelOperations: String {
     case deleteKeyPair = "DeleteKeyPair"
     case deleteLaunchTemplate = "DeleteLaunchTemplate"
     case deleteLaunchTemplateVersions = "DeleteLaunchTemplateVersions"
+    case deleteLocalGatewayRoute = "DeleteLocalGatewayRoute"
+    case deleteLocalGatewayRouteTableVpcAssociation = "DeleteLocalGatewayRouteTableVpcAssociation"
     case deleteNatGateway = "DeleteNatGateway"
     case deleteNetworkAcl = "DeleteNetworkAcl"
     case deleteNetworkAclEntry = "DeleteNetworkAclEntry"
     case deleteNetworkInterface = "DeleteNetworkInterface"
     case deleteNetworkInterfacePermission = "DeleteNetworkInterfacePermission"
     case deletePlacementGroup = "DeletePlacementGroup"
+    case deleteQueuedReservedInstances = "DeleteQueuedReservedInstances"
     case deleteRoute = "DeleteRoute"
     case deleteRouteTable = "DeleteRouteTable"
     case deleteSecurityGroup = "DeleteSecurityGroup"
@@ -143,6 +152,8 @@ public enum ElasticComputeCloudModelOperations: String {
     case deleteTrafficMirrorSession = "DeleteTrafficMirrorSession"
     case deleteTrafficMirrorTarget = "DeleteTrafficMirrorTarget"
     case deleteTransitGateway = "DeleteTransitGateway"
+    case deleteTransitGatewayMulticastDomain = "DeleteTransitGatewayMulticastDomain"
+    case deleteTransitGatewayPeeringAttachment = "DeleteTransitGatewayPeeringAttachment"
     case deleteTransitGatewayRoute = "DeleteTransitGatewayRoute"
     case deleteTransitGatewayRouteTable = "DeleteTransitGatewayRouteTable"
     case deleteTransitGatewayVpcAttachment = "DeleteTransitGatewayVpcAttachment"
@@ -157,6 +168,8 @@ public enum ElasticComputeCloudModelOperations: String {
     case deleteVpnGateway = "DeleteVpnGateway"
     case deprovisionByoipCidr = "DeprovisionByoipCidr"
     case deregisterImage = "DeregisterImage"
+    case deregisterTransitGatewayMulticastGroupMembers = "DeregisterTransitGatewayMulticastGroupMembers"
+    case deregisterTransitGatewayMulticastGroupSources = "DeregisterTransitGatewayMulticastGroupSources"
     case describeAccountAttributes = "DescribeAccountAttributes"
     case describeAddresses = "DescribeAddresses"
     case describeAggregateIdFormat = "DescribeAggregateIdFormat"
@@ -170,6 +183,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case describeClientVpnEndpoints = "DescribeClientVpnEndpoints"
     case describeClientVpnRoutes = "DescribeClientVpnRoutes"
     case describeClientVpnTargetNetworks = "DescribeClientVpnTargetNetworks"
+    case describeCoipPools = "DescribeCoipPools"
     case describeConversionTasks = "DescribeConversionTasks"
     case describeCustomerGateways = "DescribeCustomerGateways"
     case describeDhcpOptions = "DescribeDhcpOptions"
@@ -177,6 +191,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case describeElasticGpus = "DescribeElasticGpus"
     case describeExportImageTasks = "DescribeExportImageTasks"
     case describeExportTasks = "DescribeExportTasks"
+    case describeFastSnapshotRestores = "DescribeFastSnapshotRestores"
     case describeFleetHistory = "DescribeFleetHistory"
     case describeFleetInstances = "DescribeFleetInstances"
     case describeFleets = "DescribeFleets"
@@ -196,11 +211,20 @@ public enum ElasticComputeCloudModelOperations: String {
     case describeInstanceAttribute = "DescribeInstanceAttribute"
     case describeInstanceCreditSpecifications = "DescribeInstanceCreditSpecifications"
     case describeInstanceStatus = "DescribeInstanceStatus"
+    case describeInstanceTypeOfferings = "DescribeInstanceTypeOfferings"
+    case describeInstanceTypes = "DescribeInstanceTypes"
     case describeInstances = "DescribeInstances"
     case describeInternetGateways = "DescribeInternetGateways"
+    case describeIpv6Pools = "DescribeIpv6Pools"
     case describeKeyPairs = "DescribeKeyPairs"
     case describeLaunchTemplateVersions = "DescribeLaunchTemplateVersions"
     case describeLaunchTemplates = "DescribeLaunchTemplates"
+    case describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations = "DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations"
+    case describeLocalGatewayRouteTableVpcAssociations = "DescribeLocalGatewayRouteTableVpcAssociations"
+    case describeLocalGatewayRouteTables = "DescribeLocalGatewayRouteTables"
+    case describeLocalGatewayVirtualInterfaceGroups = "DescribeLocalGatewayVirtualInterfaceGroups"
+    case describeLocalGatewayVirtualInterfaces = "DescribeLocalGatewayVirtualInterfaces"
+    case describeLocalGateways = "DescribeLocalGateways"
     case describeMovingAddresses = "DescribeMovingAddresses"
     case describeNatGateways = "DescribeNatGateways"
     case describeNetworkAcls = "DescribeNetworkAcls"
@@ -236,6 +260,8 @@ public enum ElasticComputeCloudModelOperations: String {
     case describeTrafficMirrorSessions = "DescribeTrafficMirrorSessions"
     case describeTrafficMirrorTargets = "DescribeTrafficMirrorTargets"
     case describeTransitGatewayAttachments = "DescribeTransitGatewayAttachments"
+    case describeTransitGatewayMulticastDomains = "DescribeTransitGatewayMulticastDomains"
+    case describeTransitGatewayPeeringAttachments = "DescribeTransitGatewayPeeringAttachments"
     case describeTransitGatewayRouteTables = "DescribeTransitGatewayRouteTables"
     case describeTransitGatewayVpcAttachments = "DescribeTransitGatewayVpcAttachments"
     case describeTransitGateways = "DescribeTransitGateways"
@@ -262,6 +288,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case detachVolume = "DetachVolume"
     case detachVpnGateway = "DetachVpnGateway"
     case disableEbsEncryptionByDefault = "DisableEbsEncryptionByDefault"
+    case disableFastSnapshotRestores = "DisableFastSnapshotRestores"
     case disableTransitGatewayRouteTablePropagation = "DisableTransitGatewayRouteTablePropagation"
     case disableVgwRoutePropagation = "DisableVgwRoutePropagation"
     case disableVpcClassicLink = "DisableVpcClassicLink"
@@ -271,9 +298,11 @@ public enum ElasticComputeCloudModelOperations: String {
     case disassociateIamInstanceProfile = "DisassociateIamInstanceProfile"
     case disassociateRouteTable = "DisassociateRouteTable"
     case disassociateSubnetCidrBlock = "DisassociateSubnetCidrBlock"
+    case disassociateTransitGatewayMulticastDomain = "DisassociateTransitGatewayMulticastDomain"
     case disassociateTransitGatewayRouteTable = "DisassociateTransitGatewayRouteTable"
     case disassociateVpcCidrBlock = "DisassociateVpcCidrBlock"
     case enableEbsEncryptionByDefault = "EnableEbsEncryptionByDefault"
+    case enableFastSnapshotRestores = "EnableFastSnapshotRestores"
     case enableTransitGatewayRouteTablePropagation = "EnableTransitGatewayRouteTablePropagation"
     case enableVgwRoutePropagation = "EnableVgwRoutePropagation"
     case enableVolumeIO = "EnableVolumeIO"
@@ -283,9 +312,12 @@ public enum ElasticComputeCloudModelOperations: String {
     case exportClientVpnClientConfiguration = "ExportClientVpnClientConfiguration"
     case exportImage = "ExportImage"
     case exportTransitGatewayRoutes = "ExportTransitGatewayRoutes"
+    case getAssociatedIpv6PoolCidrs = "GetAssociatedIpv6PoolCidrs"
     case getCapacityReservationUsage = "GetCapacityReservationUsage"
+    case getCoipPoolUsage = "GetCoipPoolUsage"
     case getConsoleOutput = "GetConsoleOutput"
     case getConsoleScreenshot = "GetConsoleScreenshot"
+    case getDefaultCreditSpecification = "GetDefaultCreditSpecification"
     case getEbsDefaultKmsKeyId = "GetEbsDefaultKmsKeyId"
     case getEbsEncryptionByDefault = "GetEbsEncryptionByDefault"
     case getHostReservationPurchasePreview = "GetHostReservationPurchasePreview"
@@ -293,6 +325,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case getPasswordData = "GetPasswordData"
     case getReservedInstancesExchangeQuote = "GetReservedInstancesExchangeQuote"
     case getTransitGatewayAttachmentPropagations = "GetTransitGatewayAttachmentPropagations"
+    case getTransitGatewayMulticastDomainAssociations = "GetTransitGatewayMulticastDomainAssociations"
     case getTransitGatewayRouteTableAssociations = "GetTransitGatewayRouteTableAssociations"
     case getTransitGatewayRouteTablePropagations = "GetTransitGatewayRouteTablePropagations"
     case importClientVpnClientCertificateRevocationList = "ImportClientVpnClientCertificateRevocationList"
@@ -303,6 +336,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case importVolume = "ImportVolume"
     case modifyCapacityReservation = "ModifyCapacityReservation"
     case modifyClientVpnEndpoint = "ModifyClientVpnEndpoint"
+    case modifyDefaultCreditSpecification = "ModifyDefaultCreditSpecification"
     case modifyEbsDefaultKmsKeyId = "ModifyEbsDefaultKmsKeyId"
     case modifyFleet = "ModifyFleet"
     case modifyFpgaImageAttribute = "ModifyFpgaImageAttribute"
@@ -314,6 +348,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case modifyInstanceCapacityReservationAttributes = "ModifyInstanceCapacityReservationAttributes"
     case modifyInstanceCreditSpecification = "ModifyInstanceCreditSpecification"
     case modifyInstanceEventStartTime = "ModifyInstanceEventStartTime"
+    case modifyInstanceMetadataOptions = "ModifyInstanceMetadataOptions"
     case modifyInstancePlacement = "ModifyInstancePlacement"
     case modifyLaunchTemplate = "ModifyLaunchTemplate"
     case modifyNetworkInterfaceAttribute = "ModifyNetworkInterfaceAttribute"
@@ -345,6 +380,9 @@ public enum ElasticComputeCloudModelOperations: String {
     case purchaseScheduledInstances = "PurchaseScheduledInstances"
     case rebootInstances = "RebootInstances"
     case registerImage = "RegisterImage"
+    case registerTransitGatewayMulticastGroupMembers = "RegisterTransitGatewayMulticastGroupMembers"
+    case registerTransitGatewayMulticastGroupSources = "RegisterTransitGatewayMulticastGroupSources"
+    case rejectTransitGatewayPeeringAttachment = "RejectTransitGatewayPeeringAttachment"
     case rejectTransitGatewayVpcAttachment = "RejectTransitGatewayVpcAttachment"
     case rejectVpcEndpointConnections = "RejectVpcEndpointConnections"
     case rejectVpcPeeringConnection = "RejectVpcPeeringConnection"
@@ -371,9 +409,12 @@ public enum ElasticComputeCloudModelOperations: String {
     case revokeSecurityGroupIngress = "RevokeSecurityGroupIngress"
     case runInstances = "RunInstances"
     case runScheduledInstances = "RunScheduledInstances"
+    case searchLocalGatewayRoutes = "SearchLocalGatewayRoutes"
+    case searchTransitGatewayMulticastGroups = "SearchTransitGatewayMulticastGroups"
     case searchTransitGatewayRoutes = "SearchTransitGatewayRoutes"
     case sendDiagnosticInterrupt = "SendDiagnosticInterrupt"
     case startInstances = "StartInstances"
+    case startVpcEndpointServicePrivateDnsVerification = "StartVpcEndpointServicePrivateDnsVerification"
     case stopInstances = "StopInstances"
     case terminateClientVpnConnections = "TerminateClientVpnConnections"
     case terminateInstances = "TerminateInstances"
@@ -387,6 +428,8 @@ public enum ElasticComputeCloudModelOperations: String {
     public var operationPath: String {
         switch self {
         case .acceptReservedInstancesExchangeQuote:
+            return "/"
+        case .acceptTransitGatewayPeeringAttachment:
             return "/"
         case .acceptTransitGatewayVpcAttachment:
             return "/"
@@ -417,6 +460,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .associateRouteTable:
             return "/"
         case .associateSubnetCidrBlock:
+            return "/"
+        case .associateTransitGatewayMulticastDomain:
             return "/"
         case .associateTransitGatewayRouteTable:
             return "/"
@@ -498,6 +543,10 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .createLaunchTemplateVersion:
             return "/"
+        case .createLocalGatewayRoute:
+            return "/"
+        case .createLocalGatewayRouteTableVpcAssociation:
+            return "/"
         case .createNatGateway:
             return "/"
         case .createNetworkAcl:
@@ -537,6 +586,10 @@ public enum ElasticComputeCloudModelOperations: String {
         case .createTrafficMirrorTarget:
             return "/"
         case .createTransitGateway:
+            return "/"
+        case .createTransitGatewayMulticastDomain:
+            return "/"
+        case .createTransitGatewayPeeringAttachment:
             return "/"
         case .createTransitGatewayRoute:
             return "/"
@@ -586,6 +639,10 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .deleteLaunchTemplateVersions:
             return "/"
+        case .deleteLocalGatewayRoute:
+            return "/"
+        case .deleteLocalGatewayRouteTableVpcAssociation:
+            return "/"
         case .deleteNatGateway:
             return "/"
         case .deleteNetworkAcl:
@@ -597,6 +654,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .deleteNetworkInterfacePermission:
             return "/"
         case .deletePlacementGroup:
+            return "/"
+        case .deleteQueuedReservedInstances:
             return "/"
         case .deleteRoute:
             return "/"
@@ -621,6 +680,10 @@ public enum ElasticComputeCloudModelOperations: String {
         case .deleteTrafficMirrorTarget:
             return "/"
         case .deleteTransitGateway:
+            return "/"
+        case .deleteTransitGatewayMulticastDomain:
+            return "/"
+        case .deleteTransitGatewayPeeringAttachment:
             return "/"
         case .deleteTransitGatewayRoute:
             return "/"
@@ -650,6 +713,10 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .deregisterImage:
             return "/"
+        case .deregisterTransitGatewayMulticastGroupMembers:
+            return "/"
+        case .deregisterTransitGatewayMulticastGroupSources:
+            return "/"
         case .describeAccountAttributes:
             return "/"
         case .describeAddresses:
@@ -676,6 +743,8 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .describeClientVpnTargetNetworks:
             return "/"
+        case .describeCoipPools:
+            return "/"
         case .describeConversionTasks:
             return "/"
         case .describeCustomerGateways:
@@ -689,6 +758,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .describeExportImageTasks:
             return "/"
         case .describeExportTasks:
+            return "/"
+        case .describeFastSnapshotRestores:
             return "/"
         case .describeFleetHistory:
             return "/"
@@ -728,15 +799,33 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .describeInstanceStatus:
             return "/"
+        case .describeInstanceTypeOfferings:
+            return "/"
+        case .describeInstanceTypes:
+            return "/"
         case .describeInstances:
             return "/"
         case .describeInternetGateways:
+            return "/"
+        case .describeIpv6Pools:
             return "/"
         case .describeKeyPairs:
             return "/"
         case .describeLaunchTemplateVersions:
             return "/"
         case .describeLaunchTemplates:
+            return "/"
+        case .describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations:
+            return "/"
+        case .describeLocalGatewayRouteTableVpcAssociations:
+            return "/"
+        case .describeLocalGatewayRouteTables:
+            return "/"
+        case .describeLocalGatewayVirtualInterfaceGroups:
+            return "/"
+        case .describeLocalGatewayVirtualInterfaces:
+            return "/"
+        case .describeLocalGateways:
             return "/"
         case .describeMovingAddresses:
             return "/"
@@ -808,6 +897,10 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .describeTransitGatewayAttachments:
             return "/"
+        case .describeTransitGatewayMulticastDomains:
+            return "/"
+        case .describeTransitGatewayPeeringAttachments:
+            return "/"
         case .describeTransitGatewayRouteTables:
             return "/"
         case .describeTransitGatewayVpcAttachments:
@@ -860,6 +953,8 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .disableEbsEncryptionByDefault:
             return "/"
+        case .disableFastSnapshotRestores:
+            return "/"
         case .disableTransitGatewayRouteTablePropagation:
             return "/"
         case .disableVgwRoutePropagation:
@@ -878,11 +973,15 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .disassociateSubnetCidrBlock:
             return "/"
+        case .disassociateTransitGatewayMulticastDomain:
+            return "/"
         case .disassociateTransitGatewayRouteTable:
             return "/"
         case .disassociateVpcCidrBlock:
             return "/"
         case .enableEbsEncryptionByDefault:
+            return "/"
+        case .enableFastSnapshotRestores:
             return "/"
         case .enableTransitGatewayRouteTablePropagation:
             return "/"
@@ -902,11 +1001,17 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .exportTransitGatewayRoutes:
             return "/"
+        case .getAssociatedIpv6PoolCidrs:
+            return "/"
         case .getCapacityReservationUsage:
+            return "/"
+        case .getCoipPoolUsage:
             return "/"
         case .getConsoleOutput:
             return "/"
         case .getConsoleScreenshot:
+            return "/"
+        case .getDefaultCreditSpecification:
             return "/"
         case .getEbsDefaultKmsKeyId:
             return "/"
@@ -921,6 +1026,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .getReservedInstancesExchangeQuote:
             return "/"
         case .getTransitGatewayAttachmentPropagations:
+            return "/"
+        case .getTransitGatewayMulticastDomainAssociations:
             return "/"
         case .getTransitGatewayRouteTableAssociations:
             return "/"
@@ -941,6 +1048,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .modifyCapacityReservation:
             return "/"
         case .modifyClientVpnEndpoint:
+            return "/"
+        case .modifyDefaultCreditSpecification:
             return "/"
         case .modifyEbsDefaultKmsKeyId:
             return "/"
@@ -963,6 +1072,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .modifyInstanceCreditSpecification:
             return "/"
         case .modifyInstanceEventStartTime:
+            return "/"
+        case .modifyInstanceMetadataOptions:
             return "/"
         case .modifyInstancePlacement:
             return "/"
@@ -1026,6 +1137,12 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .registerImage:
             return "/"
+        case .registerTransitGatewayMulticastGroupMembers:
+            return "/"
+        case .registerTransitGatewayMulticastGroupSources:
+            return "/"
+        case .rejectTransitGatewayPeeringAttachment:
+            return "/"
         case .rejectTransitGatewayVpcAttachment:
             return "/"
         case .rejectVpcEndpointConnections:
@@ -1078,11 +1195,17 @@ public enum ElasticComputeCloudModelOperations: String {
             return "/"
         case .runScheduledInstances:
             return "/"
+        case .searchLocalGatewayRoutes:
+            return "/"
+        case .searchTransitGatewayMulticastGroups:
+            return "/"
         case .searchTransitGatewayRoutes:
             return "/"
         case .sendDiagnosticInterrupt:
             return "/"
         case .startInstances:
+            return "/"
+        case .startVpcEndpointServicePrivateDnsVerification:
             return "/"
         case .stopInstances:
             return "/"

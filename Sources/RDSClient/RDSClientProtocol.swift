@@ -41,6 +41,8 @@ public protocol RDSClientProtocol {
     typealias AuthorizeDBSecurityGroupIngressAsyncType = (_ input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, _ completion: @escaping (HTTPResult<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress>) -> ()) throws -> ()
     typealias BacktrackDBClusterSyncType = (_ input: RDSModel.BacktrackDBClusterMessage) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster
     typealias BacktrackDBClusterAsyncType = (_ input: RDSModel.BacktrackDBClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.DBClusterBacktrackForBacktrackDBCluster>) -> ()) throws -> ()
+    typealias CancelExportTaskSyncType = (_ input: RDSModel.CancelExportTaskMessage) throws -> RDSModel.ExportTaskForCancelExportTask
+    typealias CancelExportTaskAsyncType = (_ input: RDSModel.CancelExportTaskMessage, _ completion: @escaping (HTTPResult<RDSModel.ExportTaskForCancelExportTask>) -> ()) throws -> ()
     typealias CopyDBClusterParameterGroupSyncType = (_ input: RDSModel.CopyDBClusterParameterGroupMessage) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup
     typealias CopyDBClusterParameterGroupAsyncType = (_ input: RDSModel.CopyDBClusterParameterGroupMessage, _ completion: @escaping (HTTPResult<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup>) -> ()) throws -> ()
     typealias CopyDBClusterSnapshotSyncType = (_ input: RDSModel.CopyDBClusterSnapshotMessage) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot
@@ -51,6 +53,8 @@ public protocol RDSClientProtocol {
     typealias CopyDBSnapshotAsyncType = (_ input: RDSModel.CopyDBSnapshotMessage, _ completion: @escaping (HTTPResult<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot>) -> ()) throws -> ()
     typealias CopyOptionGroupSyncType = (_ input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup
     typealias CopyOptionGroupAsyncType = (_ input: RDSModel.CopyOptionGroupMessage, _ completion: @escaping (HTTPResult<RDSModel.CopyOptionGroupResultForCopyOptionGroup>) -> ()) throws -> ()
+    typealias CreateCustomAvailabilityZoneSyncType = (_ input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+    typealias CreateCustomAvailabilityZoneAsyncType = (_ input: RDSModel.CreateCustomAvailabilityZoneMessage, _ completion: @escaping (HTTPResult<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone>) -> ()) throws -> ()
     typealias CreateDBClusterSyncType = (_ input: RDSModel.CreateDBClusterMessage) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster
     typealias CreateDBClusterAsyncType = (_ input: RDSModel.CreateDBClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.CreateDBClusterResultForCreateDBCluster>) -> ()) throws -> ()
     typealias CreateDBClusterEndpointSyncType = (_ input: RDSModel.CreateDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint
@@ -65,6 +69,8 @@ public protocol RDSClientProtocol {
     typealias CreateDBInstanceReadReplicaAsyncType = (_ input: RDSModel.CreateDBInstanceReadReplicaMessage, _ completion: @escaping (HTTPResult<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica>) -> ()) throws -> ()
     typealias CreateDBParameterGroupSyncType = (_ input: RDSModel.CreateDBParameterGroupMessage) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup
     typealias CreateDBParameterGroupAsyncType = (_ input: RDSModel.CreateDBParameterGroupMessage, _ completion: @escaping (HTTPResult<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup>) -> ()) throws -> ()
+    typealias CreateDBProxySyncType = (_ input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
+    typealias CreateDBProxyAsyncType = (_ input: RDSModel.CreateDBProxyRequest, _ completion: @escaping (HTTPResult<RDSModel.CreateDBProxyResponseForCreateDBProxy>) -> ()) throws -> ()
     typealias CreateDBSecurityGroupSyncType = (_ input: RDSModel.CreateDBSecurityGroupMessage) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup
     typealias CreateDBSecurityGroupAsyncType = (_ input: RDSModel.CreateDBSecurityGroupMessage, _ completion: @escaping (HTTPResult<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup>) -> ()) throws -> ()
     typealias CreateDBSnapshotSyncType = (_ input: RDSModel.CreateDBSnapshotMessage) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot
@@ -77,6 +83,8 @@ public protocol RDSClientProtocol {
     typealias CreateGlobalClusterAsyncType = (_ input: RDSModel.CreateGlobalClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster>) -> ()) throws -> ()
     typealias CreateOptionGroupSyncType = (_ input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup
     typealias CreateOptionGroupAsyncType = (_ input: RDSModel.CreateOptionGroupMessage, _ completion: @escaping (HTTPResult<RDSModel.CreateOptionGroupResultForCreateOptionGroup>) -> ()) throws -> ()
+    typealias DeleteCustomAvailabilityZoneSyncType = (_ input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+    typealias DeleteCustomAvailabilityZoneAsyncType = (_ input: RDSModel.DeleteCustomAvailabilityZoneMessage, _ completion: @escaping (HTTPResult<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone>) -> ()) throws -> ()
     typealias DeleteDBClusterSyncType = (_ input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster
     typealias DeleteDBClusterAsyncType = (_ input: RDSModel.DeleteDBClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.DeleteDBClusterResultForDeleteDBCluster>) -> ()) throws -> ()
     typealias DeleteDBClusterEndpointSyncType = (_ input: RDSModel.DeleteDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint
@@ -91,6 +99,8 @@ public protocol RDSClientProtocol {
     typealias DeleteDBInstanceAutomatedBackupAsyncType = (_ input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, _ completion: @escaping (HTTPResult<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup>) -> ()) throws -> ()
     typealias DeleteDBParameterGroupSyncType = (_ input: RDSModel.DeleteDBParameterGroupMessage) throws -> ()
     typealias DeleteDBParameterGroupAsyncType = (_ input: RDSModel.DeleteDBParameterGroupMessage, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DeleteDBProxySyncType = (_ input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
+    typealias DeleteDBProxyAsyncType = (_ input: RDSModel.DeleteDBProxyRequest, _ completion: @escaping (HTTPResult<RDSModel.DeleteDBProxyResponseForDeleteDBProxy>) -> ()) throws -> ()
     typealias DeleteDBSecurityGroupSyncType = (_ input: RDSModel.DeleteDBSecurityGroupMessage) throws -> ()
     typealias DeleteDBSecurityGroupAsyncType = (_ input: RDSModel.DeleteDBSecurityGroupMessage, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias DeleteDBSnapshotSyncType = (_ input: RDSModel.DeleteDBSnapshotMessage) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot
@@ -101,12 +111,18 @@ public protocol RDSClientProtocol {
     typealias DeleteEventSubscriptionAsyncType = (_ input: RDSModel.DeleteEventSubscriptionMessage, _ completion: @escaping (HTTPResult<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription>) -> ()) throws -> ()
     typealias DeleteGlobalClusterSyncType = (_ input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster
     typealias DeleteGlobalClusterAsyncType = (_ input: RDSModel.DeleteGlobalClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster>) -> ()) throws -> ()
+    typealias DeleteInstallationMediaSyncType = (_ input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia
+    typealias DeleteInstallationMediaAsyncType = (_ input: RDSModel.DeleteInstallationMediaMessage, _ completion: @escaping (HTTPResult<RDSModel.InstallationMediaForDeleteInstallationMedia>) -> ()) throws -> ()
     typealias DeleteOptionGroupSyncType = (_ input: RDSModel.DeleteOptionGroupMessage) throws -> ()
     typealias DeleteOptionGroupAsyncType = (_ input: RDSModel.DeleteOptionGroupMessage, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DeregisterDBProxyTargetsSyncType = (_ input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+    typealias DeregisterDBProxyTargetsAsyncType = (_ input: RDSModel.DeregisterDBProxyTargetsRequest, _ completion: @escaping (HTTPResult<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets>) -> ()) throws -> ()
     typealias DescribeAccountAttributesSyncType = (_ input: RDSModel.DescribeAccountAttributesMessage) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes
     typealias DescribeAccountAttributesAsyncType = (_ input: RDSModel.DescribeAccountAttributesMessage, _ completion: @escaping (HTTPResult<RDSModel.AccountAttributesMessageForDescribeAccountAttributes>) -> ()) throws -> ()
     typealias DescribeCertificatesSyncType = (_ input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates
     typealias DescribeCertificatesAsyncType = (_ input: RDSModel.DescribeCertificatesMessage, _ completion: @escaping (HTTPResult<RDSModel.CertificateMessageForDescribeCertificates>) -> ()) throws -> ()
+    typealias DescribeCustomAvailabilityZonesSyncType = (_ input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+    typealias DescribeCustomAvailabilityZonesAsyncType = (_ input: RDSModel.DescribeCustomAvailabilityZonesMessage, _ completion: @escaping (HTTPResult<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones>) -> ()) throws -> ()
     typealias DescribeDBClusterBacktracksSyncType = (_ input: RDSModel.DescribeDBClusterBacktracksMessage) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks
     typealias DescribeDBClusterBacktracksAsyncType = (_ input: RDSModel.DescribeDBClusterBacktracksMessage, _ completion: @escaping (HTTPResult<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks>) -> ()) throws -> ()
     typealias DescribeDBClusterEndpointsSyncType = (_ input: RDSModel.DescribeDBClusterEndpointsMessage) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints
@@ -133,6 +149,12 @@ public protocol RDSClientProtocol {
     typealias DescribeDBParameterGroupsAsyncType = (_ input: RDSModel.DescribeDBParameterGroupsMessage, _ completion: @escaping (HTTPResult<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups>) -> ()) throws -> ()
     typealias DescribeDBParametersSyncType = (_ input: RDSModel.DescribeDBParametersMessage) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters
     typealias DescribeDBParametersAsyncType = (_ input: RDSModel.DescribeDBParametersMessage, _ completion: @escaping (HTTPResult<RDSModel.DBParameterGroupDetailsForDescribeDBParameters>) -> ()) throws -> ()
+    typealias DescribeDBProxiesSyncType = (_ input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
+    typealias DescribeDBProxiesAsyncType = (_ input: RDSModel.DescribeDBProxiesRequest, _ completion: @escaping (HTTPResult<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies>) -> ()) throws -> ()
+    typealias DescribeDBProxyTargetGroupsSyncType = (_ input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+    typealias DescribeDBProxyTargetGroupsAsyncType = (_ input: RDSModel.DescribeDBProxyTargetGroupsRequest, _ completion: @escaping (HTTPResult<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups>) -> ()) throws -> ()
+    typealias DescribeDBProxyTargetsSyncType = (_ input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+    typealias DescribeDBProxyTargetsAsyncType = (_ input: RDSModel.DescribeDBProxyTargetsRequest, _ completion: @escaping (HTTPResult<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets>) -> ()) throws -> ()
     typealias DescribeDBSecurityGroupsSyncType = (_ input: RDSModel.DescribeDBSecurityGroupsMessage) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups
     typealias DescribeDBSecurityGroupsAsyncType = (_ input: RDSModel.DescribeDBSecurityGroupsMessage, _ completion: @escaping (HTTPResult<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups>) -> ()) throws -> ()
     typealias DescribeDBSnapshotAttributesSyncType = (_ input: RDSModel.DescribeDBSnapshotAttributesMessage) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes
@@ -151,8 +173,12 @@ public protocol RDSClientProtocol {
     typealias DescribeEventSubscriptionsAsyncType = (_ input: RDSModel.DescribeEventSubscriptionsMessage, _ completion: @escaping (HTTPResult<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions>) -> ()) throws -> ()
     typealias DescribeEventsSyncType = (_ input: RDSModel.DescribeEventsMessage) throws -> RDSModel.EventsMessageForDescribeEvents
     typealias DescribeEventsAsyncType = (_ input: RDSModel.DescribeEventsMessage, _ completion: @escaping (HTTPResult<RDSModel.EventsMessageForDescribeEvents>) -> ()) throws -> ()
+    typealias DescribeExportTasksSyncType = (_ input: RDSModel.DescribeExportTasksMessage) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks
+    typealias DescribeExportTasksAsyncType = (_ input: RDSModel.DescribeExportTasksMessage, _ completion: @escaping (HTTPResult<RDSModel.ExportTasksMessageForDescribeExportTasks>) -> ()) throws -> ()
     typealias DescribeGlobalClustersSyncType = (_ input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters
     typealias DescribeGlobalClustersAsyncType = (_ input: RDSModel.DescribeGlobalClustersMessage, _ completion: @escaping (HTTPResult<RDSModel.GlobalClustersMessageForDescribeGlobalClusters>) -> ()) throws -> ()
+    typealias DescribeInstallationMediaSyncType = (_ input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia
+    typealias DescribeInstallationMediaAsyncType = (_ input: RDSModel.DescribeInstallationMediaMessage, _ completion: @escaping (HTTPResult<RDSModel.InstallationMediaMessageForDescribeInstallationMedia>) -> ()) throws -> ()
     typealias DescribeOptionGroupOptionsSyncType = (_ input: RDSModel.DescribeOptionGroupOptionsMessage) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions
     typealias DescribeOptionGroupOptionsAsyncType = (_ input: RDSModel.DescribeOptionGroupOptionsMessage, _ completion: @escaping (HTTPResult<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions>) -> ()) throws -> ()
     typealias DescribeOptionGroupsSyncType = (_ input: RDSModel.DescribeOptionGroupsMessage) throws -> RDSModel.OptionGroupsForDescribeOptionGroups
@@ -173,8 +199,12 @@ public protocol RDSClientProtocol {
     typealias DownloadDBLogFilePortionAsyncType = (_ input: RDSModel.DownloadDBLogFilePortionMessage, _ completion: @escaping (HTTPResult<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion>) -> ()) throws -> ()
     typealias FailoverDBClusterSyncType = (_ input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster
     typealias FailoverDBClusterAsyncType = (_ input: RDSModel.FailoverDBClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.FailoverDBClusterResultForFailoverDBCluster>) -> ()) throws -> ()
+    typealias ImportInstallationMediaSyncType = (_ input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia
+    typealias ImportInstallationMediaAsyncType = (_ input: RDSModel.ImportInstallationMediaMessage, _ completion: @escaping (HTTPResult<RDSModel.InstallationMediaForImportInstallationMedia>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (_ input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource
     typealias ListTagsForResourceAsyncType = (_ input: RDSModel.ListTagsForResourceMessage, _ completion: @escaping (HTTPResult<RDSModel.TagListMessageForListTagsForResource>) -> ()) throws -> ()
+    typealias ModifyCertificatesSyncType = (_ input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
+    typealias ModifyCertificatesAsyncType = (_ input: RDSModel.ModifyCertificatesMessage, _ completion: @escaping (HTTPResult<RDSModel.ModifyCertificatesResultForModifyCertificates>) -> ()) throws -> ()
     typealias ModifyCurrentDBClusterCapacitySyncType = (_ input: RDSModel.ModifyCurrentDBClusterCapacityMessage) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity
     typealias ModifyCurrentDBClusterCapacityAsyncType = (_ input: RDSModel.ModifyCurrentDBClusterCapacityMessage, _ completion: @escaping (HTTPResult<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity>) -> ()) throws -> ()
     typealias ModifyDBClusterSyncType = (_ input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster
@@ -189,6 +219,10 @@ public protocol RDSClientProtocol {
     typealias ModifyDBInstanceAsyncType = (_ input: RDSModel.ModifyDBInstanceMessage, _ completion: @escaping (HTTPResult<RDSModel.ModifyDBInstanceResultForModifyDBInstance>) -> ()) throws -> ()
     typealias ModifyDBParameterGroupSyncType = (_ input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup
     typealias ModifyDBParameterGroupAsyncType = (_ input: RDSModel.ModifyDBParameterGroupMessage, _ completion: @escaping (HTTPResult<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup>) -> ()) throws -> ()
+    typealias ModifyDBProxySyncType = (_ input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
+    typealias ModifyDBProxyAsyncType = (_ input: RDSModel.ModifyDBProxyRequest, _ completion: @escaping (HTTPResult<RDSModel.ModifyDBProxyResponseForModifyDBProxy>) -> ()) throws -> ()
+    typealias ModifyDBProxyTargetGroupSyncType = (_ input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+    typealias ModifyDBProxyTargetGroupAsyncType = (_ input: RDSModel.ModifyDBProxyTargetGroupRequest, _ completion: @escaping (HTTPResult<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup>) -> ()) throws -> ()
     typealias ModifyDBSnapshotSyncType = (_ input: RDSModel.ModifyDBSnapshotMessage) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot
     typealias ModifyDBSnapshotAsyncType = (_ input: RDSModel.ModifyDBSnapshotMessage, _ completion: @escaping (HTTPResult<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot>) -> ()) throws -> ()
     typealias ModifyDBSnapshotAttributeSyncType = (_ input: RDSModel.ModifyDBSnapshotAttributeMessage) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute
@@ -209,6 +243,8 @@ public protocol RDSClientProtocol {
     typealias PurchaseReservedDBInstancesOfferingAsyncType = (_ input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, _ completion: @escaping (HTTPResult<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering>) -> ()) throws -> ()
     typealias RebootDBInstanceSyncType = (_ input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance
     typealias RebootDBInstanceAsyncType = (_ input: RDSModel.RebootDBInstanceMessage, _ completion: @escaping (HTTPResult<RDSModel.RebootDBInstanceResultForRebootDBInstance>) -> ()) throws -> ()
+    typealias RegisterDBProxyTargetsSyncType = (_ input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+    typealias RegisterDBProxyTargetsAsyncType = (_ input: RDSModel.RegisterDBProxyTargetsRequest, _ completion: @escaping (HTTPResult<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets>) -> ()) throws -> ()
     typealias RemoveFromGlobalClusterSyncType = (_ input: RDSModel.RemoveFromGlobalClusterMessage) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster
     typealias RemoveFromGlobalClusterAsyncType = (_ input: RDSModel.RemoveFromGlobalClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster>) -> ()) throws -> ()
     typealias RemoveRoleFromDBClusterSyncType = (_ input: RDSModel.RemoveRoleFromDBClusterMessage) throws -> ()
@@ -243,6 +279,8 @@ public protocol RDSClientProtocol {
     typealias StartDBClusterAsyncType = (_ input: RDSModel.StartDBClusterMessage, _ completion: @escaping (HTTPResult<RDSModel.StartDBClusterResultForStartDBCluster>) -> ()) throws -> ()
     typealias StartDBInstanceSyncType = (_ input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
     typealias StartDBInstanceAsyncType = (_ input: RDSModel.StartDBInstanceMessage, _ completion: @escaping (HTTPResult<RDSModel.StartDBInstanceResultForStartDBInstance>) -> ()) throws -> ()
+    typealias StartExportTaskSyncType = (_ input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask
+    typealias StartExportTaskAsyncType = (_ input: RDSModel.StartExportTaskMessage, _ completion: @escaping (HTTPResult<RDSModel.ExportTaskForStartExportTask>) -> ()) throws -> ()
     typealias StopActivityStreamSyncType = (_ input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream
     typealias StopActivityStreamAsyncType = (_ input: RDSModel.StopActivityStreamRequest, _ completion: @escaping (HTTPResult<RDSModel.StopActivityStreamResponseForStopActivityStream>) -> ()) throws -> ()
     typealias StopDBClusterSyncType = (_ input: RDSModel.StopDBClusterMessage) throws -> RDSModel.StopDBClusterResultForStopDBCluster
@@ -403,6 +441,29 @@ public protocol RDSClientProtocol {
     func backtrackDBClusterSync(input: RDSModel.BacktrackDBClusterMessage) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster
 
     /**
+     Invokes the CancelExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelExportTaskMessage object being passed to this operation.
+         - completion: The ExportTaskForCancelExportTask object or an error will be passed to this 
+           callback when the operation is complete. The ExportTaskForCancelExportTask
+           object will be validated before being returned to caller.
+           The possible errors are: exportTaskNotFound, invalidExportTaskState.
+     */
+    func cancelExportTaskAsync(input: RDSModel.CancelExportTaskMessage, completion: @escaping (HTTPResult<RDSModel.ExportTaskForCancelExportTask>) -> ()) throws
+
+    /**
+     Invokes the CancelExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelExportTaskMessage object being passed to this operation.
+     - Returns: The ExportTaskForCancelExportTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportTaskNotFound, invalidExportTaskState.
+     */
+    func cancelExportTaskSync(input: RDSModel.CancelExportTaskMessage) throws -> RDSModel.ExportTaskForCancelExportTask
+
+    /**
      Invokes the CopyDBClusterParameterGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -516,6 +577,29 @@ public protocol RDSClientProtocol {
      - Throws: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
     func copyOptionGroupSync(input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup
+
+    /**
+     Invokes the CreateCustomAvailabilityZone operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
+         - completion: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object or an error will be passed to this 
+           callback when the operation is complete. The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
+     */
+    func createCustomAvailabilityZoneAsync(input: RDSModel.CreateCustomAvailabilityZoneMessage, completion: @escaping (HTTPResult<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone>) -> ()) throws
+
+    /**
+     Invokes the CreateCustomAvailabilityZone operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
+     - Returns: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
+     */
+    func createCustomAvailabilityZoneSync(input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
 
     /**
      Invokes the CreateDBCluster operation returning immediately and passing the response to a callback.
@@ -679,6 +763,29 @@ public protocol RDSClientProtocol {
     func createDBParameterGroupSync(input: RDSModel.CreateDBParameterGroupMessage) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup
 
     /**
+     Invokes the CreateDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDBProxyRequest object being passed to this operation.
+         - completion: The CreateDBProxyResponseForCreateDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The CreateDBProxyResponseForCreateDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
+     */
+    func createDBProxyAsync(input: RDSModel.CreateDBProxyRequest, completion: @escaping (HTTPResult<RDSModel.CreateDBProxyResponseForCreateDBProxy>) -> ()) throws
+
+    /**
+     Invokes the CreateDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDBProxyRequest object being passed to this operation.
+     - Returns: The CreateDBProxyResponseForCreateDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
+     */
+    func createDBProxySync(input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
+
+    /**
      Invokes the CreateDBSecurityGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -815,6 +922,29 @@ public protocol RDSClientProtocol {
      - Throws: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
     func createOptionGroupSync(input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup
+
+    /**
+     Invokes the DeleteCustomAvailabilityZone operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
+         - completion: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object or an error will be passed to this 
+           callback when the operation is complete. The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
+     */
+    func deleteCustomAvailabilityZoneAsync(input: RDSModel.DeleteCustomAvailabilityZoneMessage, completion: @escaping (HTTPResult<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone>) -> ()) throws
+
+    /**
+     Invokes the DeleteCustomAvailabilityZone operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
+     - Returns: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
+     */
+    func deleteCustomAvailabilityZoneSync(input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
 
     /**
      Invokes the DeleteDBCluster operation returning immediately and passing the response to a callback.
@@ -972,6 +1102,29 @@ public protocol RDSClientProtocol {
     func deleteDBParameterGroupSync(input: RDSModel.DeleteDBParameterGroupMessage) throws
 
     /**
+     Invokes the DeleteDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyRequest object being passed to this operation.
+         - completion: The DeleteDBProxyResponseForDeleteDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The DeleteDBProxyResponseForDeleteDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, invalidDBProxyState.
+     */
+    func deleteDBProxyAsync(input: RDSModel.DeleteDBProxyRequest, completion: @escaping (HTTPResult<RDSModel.DeleteDBProxyResponseForDeleteDBProxy>) -> ()) throws
+
+    /**
+     Invokes the DeleteDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyRequest object being passed to this operation.
+     - Returns: The DeleteDBProxyResponseForDeleteDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, invalidDBProxyState.
+     */
+    func deleteDBProxySync(input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
+
+    /**
      Invokes the DeleteDBSecurityGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1081,6 +1234,29 @@ public protocol RDSClientProtocol {
     func deleteGlobalClusterSync(input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster
 
     /**
+     Invokes the DeleteInstallationMedia operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
+         - completion: The InstallationMediaForDeleteInstallationMedia object or an error will be passed to this 
+           callback when the operation is complete. The InstallationMediaForDeleteInstallationMedia
+           object will be validated before being returned to caller.
+           The possible errors are: installationMediaNotFound.
+     */
+    func deleteInstallationMediaAsync(input: RDSModel.DeleteInstallationMediaMessage, completion: @escaping (HTTPResult<RDSModel.InstallationMediaForDeleteInstallationMedia>) -> ()) throws
+
+    /**
+     Invokes the DeleteInstallationMedia operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
+     - Returns: The InstallationMediaForDeleteInstallationMedia object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: installationMediaNotFound.
+     */
+    func deleteInstallationMediaSync(input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia
+
+    /**
      Invokes the DeleteOptionGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1099,6 +1275,29 @@ public protocol RDSClientProtocol {
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
     func deleteOptionGroupSync(input: RDSModel.DeleteOptionGroupMessage) throws
+
+    /**
+     Invokes the DeregisterDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterDBProxyTargetsRequest object being passed to this operation.
+         - completion: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    func deregisterDBProxyTargetsAsync(input: RDSModel.DeregisterDBProxyTargetsRequest, completion: @escaping (HTTPResult<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets>) -> ()) throws
+
+    /**
+     Invokes the DeregisterDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    func deregisterDBProxyTargetsSync(input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
 
     /**
      Invokes the DescribeAccountAttributes operation returning immediately and passing the response to a callback.
@@ -1143,6 +1342,29 @@ public protocol RDSClientProtocol {
      - Throws: certificateNotFound.
      */
     func describeCertificatesSync(input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates
+
+    /**
+     Invokes the DescribeCustomAvailabilityZones operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
+         - completion: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object or an error will be passed to this 
+           callback when the operation is complete. The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneNotFound.
+     */
+    func describeCustomAvailabilityZonesAsync(input: RDSModel.DescribeCustomAvailabilityZonesMessage, completion: @escaping (HTTPResult<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones>) -> ()) throws
+
+    /**
+     Invokes the DescribeCustomAvailabilityZones operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
+     - Returns: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneNotFound.
+     */
+    func describeCustomAvailabilityZonesSync(input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
 
     /**
      Invokes the DescribeDBClusterBacktracks operation returning immediately and passing the response to a callback.
@@ -1442,6 +1664,75 @@ public protocol RDSClientProtocol {
     func describeDBParametersSync(input: RDSModel.DescribeDBParametersMessage) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters
 
     /**
+     Invokes the DescribeDBProxies operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxiesRequest object being passed to this operation.
+         - completion: The DescribeDBProxiesResponseForDescribeDBProxies object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxiesResponseForDescribeDBProxies
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound.
+     */
+    func describeDBProxiesAsync(input: RDSModel.DescribeDBProxiesRequest, completion: @escaping (HTTPResult<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies>) -> ()) throws
+
+    /**
+     Invokes the DescribeDBProxies operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxiesRequest object being passed to this operation.
+     - Returns: The DescribeDBProxiesResponseForDescribeDBProxies object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound.
+     */
+    func describeDBProxiesSync(input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
+
+    /**
+     Invokes the DescribeDBProxyTargetGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetGroupsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyTargetGroupNotFound.
+     */
+    func describeDBProxyTargetGroupsAsync(input: RDSModel.DescribeDBProxyTargetGroupsRequest, completion: @escaping (HTTPResult<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups>) -> ()) throws
+
+    /**
+     Invokes the DescribeDBProxyTargetGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetGroupsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyTargetGroupNotFound.
+     */
+    func describeDBProxyTargetGroupsSync(input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+
+    /**
+     Invokes the DescribeDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    func describeDBProxyTargetsAsync(input: RDSModel.DescribeDBProxyTargetsRequest, completion: @escaping (HTTPResult<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets>) -> ()) throws
+
+    /**
+     Invokes the DescribeDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    func describeDBProxyTargetsSync(input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+
+    /**
      Invokes the DescribeDBSecurityGroups operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1641,6 +1932,29 @@ public protocol RDSClientProtocol {
     func describeEventsSync(input: RDSModel.DescribeEventsMessage) throws -> RDSModel.EventsMessageForDescribeEvents
 
     /**
+     Invokes the DescribeExportTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksMessage object being passed to this operation.
+         - completion: The ExportTasksMessageForDescribeExportTasks object or an error will be passed to this 
+           callback when the operation is complete. The ExportTasksMessageForDescribeExportTasks
+           object will be validated before being returned to caller.
+           The possible errors are: exportTaskNotFound.
+     */
+    func describeExportTasksAsync(input: RDSModel.DescribeExportTasksMessage, completion: @escaping (HTTPResult<RDSModel.ExportTasksMessageForDescribeExportTasks>) -> ()) throws
+
+    /**
+     Invokes the DescribeExportTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksMessage object being passed to this operation.
+     - Returns: The ExportTasksMessageForDescribeExportTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportTaskNotFound.
+     */
+    func describeExportTasksSync(input: RDSModel.DescribeExportTasksMessage) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks
+
+    /**
      Invokes the DescribeGlobalClusters operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1662,6 +1976,29 @@ public protocol RDSClientProtocol {
      - Throws: globalClusterNotFound.
      */
     func describeGlobalClustersSync(input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters
+
+    /**
+     Invokes the DescribeInstallationMedia operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
+         - completion: The InstallationMediaMessageForDescribeInstallationMedia object or an error will be passed to this 
+           callback when the operation is complete. The InstallationMediaMessageForDescribeInstallationMedia
+           object will be validated before being returned to caller.
+           The possible errors are: installationMediaNotFound.
+     */
+    func describeInstallationMediaAsync(input: RDSModel.DescribeInstallationMediaMessage, completion: @escaping (HTTPResult<RDSModel.InstallationMediaMessageForDescribeInstallationMedia>) -> ()) throws
+
+    /**
+     Invokes the DescribeInstallationMedia operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
+     - Returns: The InstallationMediaMessageForDescribeInstallationMedia object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: installationMediaNotFound.
+     */
+    func describeInstallationMediaSync(input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia
 
     /**
      Invokes the DescribeOptionGroupOptions operation returning immediately and passing the response to a callback.
@@ -1888,6 +2225,29 @@ public protocol RDSClientProtocol {
     func failoverDBClusterSync(input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster
 
     /**
+     Invokes the ImportInstallationMedia operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
+         - completion: The InstallationMediaForImportInstallationMedia object or an error will be passed to this 
+           callback when the operation is complete. The InstallationMediaForImportInstallationMedia
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
+     */
+    func importInstallationMediaAsync(input: RDSModel.ImportInstallationMediaMessage, completion: @escaping (HTTPResult<RDSModel.InstallationMediaForImportInstallationMedia>) -> ()) throws
+
+    /**
+     Invokes the ImportInstallationMedia operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
+     - Returns: The InstallationMediaForImportInstallationMedia object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
+     */
+    func importInstallationMediaSync(input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia
+
+    /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1909,6 +2269,29 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
     func listTagsForResourceSync(input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource
+
+    /**
+     Invokes the ModifyCertificates operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCertificatesMessage object being passed to this operation.
+         - completion: The ModifyCertificatesResultForModifyCertificates object or an error will be passed to this 
+           callback when the operation is complete. The ModifyCertificatesResultForModifyCertificates
+           object will be validated before being returned to caller.
+           The possible errors are: certificateNotFound.
+     */
+    func modifyCertificatesAsync(input: RDSModel.ModifyCertificatesMessage, completion: @escaping (HTTPResult<RDSModel.ModifyCertificatesResultForModifyCertificates>) -> ()) throws
+
+    /**
+     Invokes the ModifyCertificates operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCertificatesMessage object being passed to this operation.
+     - Returns: The ModifyCertificatesResultForModifyCertificates object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: certificateNotFound.
+     */
+    func modifyCertificatesSync(input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
 
     /**
      Invokes the ModifyCurrentDBClusterCapacity operation returning immediately and passing the response to a callback.
@@ -2070,6 +2453,52 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     func modifyDBParameterGroupSync(input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup
+
+    /**
+     Invokes the ModifyDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyRequest object being passed to this operation.
+         - completion: The ModifyDBProxyResponseForModifyDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyResponseForModifyDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
+     */
+    func modifyDBProxyAsync(input: RDSModel.ModifyDBProxyRequest, completion: @escaping (HTTPResult<RDSModel.ModifyDBProxyResponseForModifyDBProxy>) -> ()) throws
+
+    /**
+     Invokes the ModifyDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyResponseForModifyDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
+     */
+    func modifyDBProxySync(input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
+
+    /**
+     Invokes the ModifyDBProxyTargetGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyTargetGroupRequest object being passed to this operation.
+         - completion: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound.
+     */
+    func modifyDBProxyTargetGroupAsync(input: RDSModel.ModifyDBProxyTargetGroupRequest, completion: @escaping (HTTPResult<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup>) -> ()) throws
+
+    /**
+     Invokes the ModifyDBProxyTargetGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyTargetGroupRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
+     */
+    func modifyDBProxyTargetGroupSync(input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
 
     /**
      Invokes the ModifyDBSnapshot operation returning immediately and passing the response to a callback.
@@ -2300,6 +2729,29 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
     func rebootDBInstanceSync(input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance
+
+    /**
+     Invokes the RegisterDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterDBProxyTargetsRequest object being passed to this operation.
+         - completion: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    func registerDBProxyTargetsAsync(input: RDSModel.RegisterDBProxyTargetsRequest, completion: @escaping (HTTPResult<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets>) -> ()) throws
+
+    /**
+     Invokes the RegisterDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    func registerDBProxyTargetsSync(input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
 
     /**
      Invokes the RemoveFromGlobalCluster operation returning immediately and passing the response to a callback.
@@ -2682,6 +3134,29 @@ public protocol RDSClientProtocol {
      - Throws: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
     func startDBInstanceSync(input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
+
+    /**
+     Invokes the StartExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartExportTaskMessage object being passed to this operation.
+         - completion: The ExportTaskForStartExportTask object or an error will be passed to this 
+           callback when the operation is complete. The ExportTaskForStartExportTask
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     */
+    func startExportTaskAsync(input: RDSModel.StartExportTaskMessage, completion: @escaping (HTTPResult<RDSModel.ExportTaskForStartExportTask>) -> ()) throws
+
+    /**
+     Invokes the StartExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartExportTaskMessage object being passed to this operation.
+     - Returns: The ExportTaskForStartExportTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     */
+    func startExportTaskSync(input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask
 
     /**
      Invokes the StopActivityStream operation returning immediately and passing the response to a callback.

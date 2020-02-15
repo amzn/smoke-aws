@@ -21,6 +21,30 @@
 
 import Foundation
 
+public struct ArchivalSummary: Codable, Equatable {
+    public var archivalBackupArn: BackupArn?
+    public var archivalDateTime: Date?
+    public var archivalReason: ArchivalReason?
+
+    public init(archivalBackupArn: BackupArn? = nil,
+                archivalDateTime: Date? = nil,
+                archivalReason: ArchivalReason? = nil) {
+        self.archivalBackupArn = archivalBackupArn
+        self.archivalDateTime = archivalDateTime
+        self.archivalReason = archivalReason
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case archivalBackupArn = "ArchivalBackupArn"
+        case archivalDateTime = "ArchivalDateTime"
+        case archivalReason = "ArchivalReason"
+    }
+
+    public func validate() throws {
+        try archivalBackupArn?.validateAsBackupArn()
+    }
+}
+
 public struct AttributeDefinition: Codable, Equatable {
     public var attributeName: KeySchemaAttributeName
     public var attributeType: ScalarAttributeType
@@ -729,6 +753,31 @@ public struct ContinuousBackupsUnavailableException: Codable, Equatable {
     }
 }
 
+public struct ContributorInsightsSummary: Codable, Equatable {
+    public var contributorInsightsStatus: ContributorInsightsStatus?
+    public var indexName: IndexName?
+    public var tableName: TableName?
+
+    public init(contributorInsightsStatus: ContributorInsightsStatus? = nil,
+                indexName: IndexName? = nil,
+                tableName: TableName? = nil) {
+        self.contributorInsightsStatus = contributorInsightsStatus
+        self.indexName = indexName
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case contributorInsightsStatus = "ContributorInsightsStatus"
+        case indexName = "IndexName"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try indexName?.validateAsIndexName()
+        try tableName?.validateAsTableName()
+    }
+}
+
 public struct CreateBackupInput: Codable, Equatable {
     public var backupName: BackupName
     public var tableName: TableName
@@ -845,6 +894,35 @@ public struct CreateReplicaAction: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct CreateReplicationGroupMemberAction: Codable, Equatable {
+    public var globalSecondaryIndexes: ReplicaGlobalSecondaryIndexList?
+    public var kMSMasterKeyId: KMSMasterKeyId?
+    public var provisionedThroughputOverride: ProvisionedThroughputOverride?
+    public var regionName: RegionName
+
+    public init(globalSecondaryIndexes: ReplicaGlobalSecondaryIndexList? = nil,
+                kMSMasterKeyId: KMSMasterKeyId? = nil,
+                provisionedThroughputOverride: ProvisionedThroughputOverride? = nil,
+                regionName: RegionName) {
+        self.globalSecondaryIndexes = globalSecondaryIndexes
+        self.kMSMasterKeyId = kMSMasterKeyId
+        self.provisionedThroughputOverride = provisionedThroughputOverride
+        self.regionName = regionName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case globalSecondaryIndexes = "GlobalSecondaryIndexes"
+        case kMSMasterKeyId = "KMSMasterKeyId"
+        case provisionedThroughputOverride = "ProvisionedThroughputOverride"
+        case regionName = "RegionName"
+    }
+
+    public func validate() throws {
+        try globalSecondaryIndexes?.validateAsReplicaGlobalSecondaryIndexList()
+        try provisionedThroughputOverride?.validate()
     }
 }
 
@@ -1096,6 +1174,21 @@ public struct DeleteReplicaAction: Codable, Equatable {
     }
 }
 
+public struct DeleteReplicationGroupMemberAction: Codable, Equatable {
+    public var regionName: RegionName
+
+    public init(regionName: RegionName) {
+        self.regionName = regionName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case regionName = "RegionName"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DeleteRequest: Codable, Equatable {
     public var key: Key
 
@@ -1204,6 +1297,65 @@ public struct DescribeContinuousBackupsOutput: Codable, Equatable {
 
     public func validate() throws {
         try continuousBackupsDescription?.validate()
+    }
+}
+
+public struct DescribeContributorInsightsInput: Codable, Equatable {
+    public var indexName: IndexName?
+    public var tableName: TableName
+
+    public init(indexName: IndexName? = nil,
+                tableName: TableName) {
+        self.indexName = indexName
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case indexName = "IndexName"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try indexName?.validateAsIndexName()
+        try tableName.validateAsTableName()
+    }
+}
+
+public struct DescribeContributorInsightsOutput: Codable, Equatable {
+    public var contributorInsightsRuleList: ContributorInsightsRuleList?
+    public var contributorInsightsStatus: ContributorInsightsStatus?
+    public var failureException: FailureException?
+    public var indexName: IndexName?
+    public var lastUpdateDateTime: LastUpdateDateTime?
+    public var tableName: TableName?
+
+    public init(contributorInsightsRuleList: ContributorInsightsRuleList? = nil,
+                contributorInsightsStatus: ContributorInsightsStatus? = nil,
+                failureException: FailureException? = nil,
+                indexName: IndexName? = nil,
+                lastUpdateDateTime: LastUpdateDateTime? = nil,
+                tableName: TableName? = nil) {
+        self.contributorInsightsRuleList = contributorInsightsRuleList
+        self.contributorInsightsStatus = contributorInsightsStatus
+        self.failureException = failureException
+        self.indexName = indexName
+        self.lastUpdateDateTime = lastUpdateDateTime
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case contributorInsightsRuleList = "ContributorInsightsRuleList"
+        case contributorInsightsStatus = "ContributorInsightsStatus"
+        case failureException = "FailureException"
+        case indexName = "IndexName"
+        case lastUpdateDateTime = "LastUpdateDateTime"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try failureException?.validate()
+        try indexName?.validateAsIndexName()
+        try tableName?.validateAsTableName()
     }
 }
 
@@ -1371,6 +1523,38 @@ public struct DescribeTableOutput: Codable, Equatable {
     }
 }
 
+public struct DescribeTableReplicaAutoScalingInput: Codable, Equatable {
+    public var tableName: TableName
+
+    public init(tableName: TableName) {
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try tableName.validateAsTableName()
+    }
+}
+
+public struct DescribeTableReplicaAutoScalingOutput: Codable, Equatable {
+    public var tableAutoScalingDescription: TableAutoScalingDescription?
+
+    public init(tableAutoScalingDescription: TableAutoScalingDescription? = nil) {
+        self.tableAutoScalingDescription = tableAutoScalingDescription
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tableAutoScalingDescription = "TableAutoScalingDescription"
+    }
+
+    public func validate() throws {
+        try tableAutoScalingDescription?.validate()
+    }
+}
+
 public struct DescribeTimeToLiveInput: Codable, Equatable {
     public var tableName: TableName
 
@@ -1447,6 +1631,25 @@ public struct ExpectedAttributeValue: Codable, Equatable {
 
     public func validate() throws {
         try value?.validate()
+    }
+}
+
+public struct FailureException: Codable, Equatable {
+    public var exceptionDescription: ExceptionDescription?
+    public var exceptionName: ExceptionName?
+
+    public init(exceptionDescription: ExceptionDescription? = nil,
+                exceptionName: ExceptionName? = nil) {
+        self.exceptionDescription = exceptionDescription
+        self.exceptionName = exceptionName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exceptionDescription = "ExceptionDescription"
+        case exceptionName = "ExceptionName"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -1567,6 +1770,27 @@ public struct GlobalSecondaryIndex: Codable, Equatable {
         try keySchema.validateAsKeySchema()
         try projection.validate()
         try provisionedThroughput?.validate()
+    }
+}
+
+public struct GlobalSecondaryIndexAutoScalingUpdate: Codable, Equatable {
+    public var indexName: IndexName?
+    public var provisionedWriteCapacityAutoScalingUpdate: AutoScalingSettingsUpdate?
+
+    public init(indexName: IndexName? = nil,
+                provisionedWriteCapacityAutoScalingUpdate: AutoScalingSettingsUpdate? = nil) {
+        self.indexName = indexName
+        self.provisionedWriteCapacityAutoScalingUpdate = provisionedWriteCapacityAutoScalingUpdate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case indexName = "IndexName"
+        case provisionedWriteCapacityAutoScalingUpdate = "ProvisionedWriteCapacityAutoScalingUpdate"
+    }
+
+    public func validate() throws {
+        try indexName?.validateAsIndexName()
+        try provisionedWriteCapacityAutoScalingUpdate?.validate()
     }
 }
 
@@ -2021,6 +2245,50 @@ public struct ListBackupsOutput: Codable, Equatable {
     }
 }
 
+public struct ListContributorInsightsInput: Codable, Equatable {
+    public var maxResults: ListContributorInsightsLimit?
+    public var nextToken: NextTokenString?
+    public var tableName: TableName?
+
+    public init(maxResults: ListContributorInsightsLimit? = nil,
+                nextToken: NextTokenString? = nil,
+                tableName: TableName? = nil) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsListContributorInsightsLimit()
+        try tableName?.validateAsTableName()
+    }
+}
+
+public struct ListContributorInsightsOutput: Codable, Equatable {
+    public var contributorInsightsSummaries: ContributorInsightsSummaries?
+    public var nextToken: NextTokenString?
+
+    public init(contributorInsightsSummaries: ContributorInsightsSummaries? = nil,
+                nextToken: NextTokenString? = nil) {
+        self.contributorInsightsSummaries = contributorInsightsSummaries
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case contributorInsightsSummaries = "ContributorInsightsSummaries"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ListGlobalTablesInput: Codable, Equatable {
     public var exclusiveStartGlobalTableName: TableName?
     public var limit: PositiveIntegerObject?
@@ -2379,6 +2647,22 @@ public struct ProvisionedThroughputExceededException: Codable, Equatable {
     }
 }
 
+public struct ProvisionedThroughputOverride: Codable, Equatable {
+    public var readCapacityUnits: PositiveLongObject?
+
+    public init(readCapacityUnits: PositiveLongObject? = nil) {
+        self.readCapacityUnits = readCapacityUnits
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case readCapacityUnits = "ReadCapacityUnits"
+    }
+
+    public func validate() throws {
+        try readCapacityUnits?.validateAsPositiveLongObject()
+    }
+}
+
 public struct Put: Codable, Equatable {
     public var conditionExpression: ConditionExpression?
     public var expressionAttributeNames: ExpressionAttributeNameMap?
@@ -2652,18 +2936,193 @@ public struct ReplicaAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct ReplicaDescription: Codable, Equatable {
+public struct ReplicaAutoScalingDescription: Codable, Equatable {
+    public var globalSecondaryIndexes: ReplicaGlobalSecondaryIndexAutoScalingDescriptionList?
     public var regionName: RegionName?
+    public var replicaProvisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+    public var replicaProvisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+    public var replicaStatus: ReplicaStatus?
 
-    public init(regionName: RegionName? = nil) {
+    public init(globalSecondaryIndexes: ReplicaGlobalSecondaryIndexAutoScalingDescriptionList? = nil,
+                regionName: RegionName? = nil,
+                replicaProvisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription? = nil,
+                replicaProvisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription? = nil,
+                replicaStatus: ReplicaStatus? = nil) {
+        self.globalSecondaryIndexes = globalSecondaryIndexes
         self.regionName = regionName
+        self.replicaProvisionedReadCapacityAutoScalingSettings = replicaProvisionedReadCapacityAutoScalingSettings
+        self.replicaProvisionedWriteCapacityAutoScalingSettings = replicaProvisionedWriteCapacityAutoScalingSettings
+        self.replicaStatus = replicaStatus
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case globalSecondaryIndexes = "GlobalSecondaryIndexes"
+        case regionName = "RegionName"
+        case replicaProvisionedReadCapacityAutoScalingSettings = "ReplicaProvisionedReadCapacityAutoScalingSettings"
+        case replicaProvisionedWriteCapacityAutoScalingSettings = "ReplicaProvisionedWriteCapacityAutoScalingSettings"
+        case replicaStatus = "ReplicaStatus"
+    }
+
+    public func validate() throws {
+        try replicaProvisionedReadCapacityAutoScalingSettings?.validate()
+        try replicaProvisionedWriteCapacityAutoScalingSettings?.validate()
+    }
+}
+
+public struct ReplicaAutoScalingUpdate: Codable, Equatable {
+    public var regionName: RegionName
+    public var replicaGlobalSecondaryIndexUpdates: ReplicaGlobalSecondaryIndexAutoScalingUpdateList?
+    public var replicaProvisionedReadCapacityAutoScalingUpdate: AutoScalingSettingsUpdate?
+
+    public init(regionName: RegionName,
+                replicaGlobalSecondaryIndexUpdates: ReplicaGlobalSecondaryIndexAutoScalingUpdateList? = nil,
+                replicaProvisionedReadCapacityAutoScalingUpdate: AutoScalingSettingsUpdate? = nil) {
+        self.regionName = regionName
+        self.replicaGlobalSecondaryIndexUpdates = replicaGlobalSecondaryIndexUpdates
+        self.replicaProvisionedReadCapacityAutoScalingUpdate = replicaProvisionedReadCapacityAutoScalingUpdate
     }
 
     enum CodingKeys: String, CodingKey {
         case regionName = "RegionName"
+        case replicaGlobalSecondaryIndexUpdates = "ReplicaGlobalSecondaryIndexUpdates"
+        case replicaProvisionedReadCapacityAutoScalingUpdate = "ReplicaProvisionedReadCapacityAutoScalingUpdate"
     }
 
     public func validate() throws {
+        try replicaProvisionedReadCapacityAutoScalingUpdate?.validate()
+    }
+}
+
+public struct ReplicaDescription: Codable, Equatable {
+    public var globalSecondaryIndexes: ReplicaGlobalSecondaryIndexDescriptionList?
+    public var kMSMasterKeyId: KMSMasterKeyId?
+    public var provisionedThroughputOverride: ProvisionedThroughputOverride?
+    public var regionName: RegionName?
+    public var replicaStatus: ReplicaStatus?
+    public var replicaStatusDescription: ReplicaStatusDescription?
+    public var replicaStatusPercentProgress: ReplicaStatusPercentProgress?
+
+    public init(globalSecondaryIndexes: ReplicaGlobalSecondaryIndexDescriptionList? = nil,
+                kMSMasterKeyId: KMSMasterKeyId? = nil,
+                provisionedThroughputOverride: ProvisionedThroughputOverride? = nil,
+                regionName: RegionName? = nil,
+                replicaStatus: ReplicaStatus? = nil,
+                replicaStatusDescription: ReplicaStatusDescription? = nil,
+                replicaStatusPercentProgress: ReplicaStatusPercentProgress? = nil) {
+        self.globalSecondaryIndexes = globalSecondaryIndexes
+        self.kMSMasterKeyId = kMSMasterKeyId
+        self.provisionedThroughputOverride = provisionedThroughputOverride
+        self.regionName = regionName
+        self.replicaStatus = replicaStatus
+        self.replicaStatusDescription = replicaStatusDescription
+        self.replicaStatusPercentProgress = replicaStatusPercentProgress
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case globalSecondaryIndexes = "GlobalSecondaryIndexes"
+        case kMSMasterKeyId = "KMSMasterKeyId"
+        case provisionedThroughputOverride = "ProvisionedThroughputOverride"
+        case regionName = "RegionName"
+        case replicaStatus = "ReplicaStatus"
+        case replicaStatusDescription = "ReplicaStatusDescription"
+        case replicaStatusPercentProgress = "ReplicaStatusPercentProgress"
+    }
+
+    public func validate() throws {
+        try provisionedThroughputOverride?.validate()
+    }
+}
+
+public struct ReplicaGlobalSecondaryIndex: Codable, Equatable {
+    public var indexName: IndexName
+    public var provisionedThroughputOverride: ProvisionedThroughputOverride?
+
+    public init(indexName: IndexName,
+                provisionedThroughputOverride: ProvisionedThroughputOverride? = nil) {
+        self.indexName = indexName
+        self.provisionedThroughputOverride = provisionedThroughputOverride
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case indexName = "IndexName"
+        case provisionedThroughputOverride = "ProvisionedThroughputOverride"
+    }
+
+    public func validate() throws {
+        try indexName.validateAsIndexName()
+        try provisionedThroughputOverride?.validate()
+    }
+}
+
+public struct ReplicaGlobalSecondaryIndexAutoScalingDescription: Codable, Equatable {
+    public var indexName: IndexName?
+    public var indexStatus: IndexStatus?
+    public var provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+    public var provisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+
+    public init(indexName: IndexName? = nil,
+                indexStatus: IndexStatus? = nil,
+                provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription? = nil,
+                provisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription? = nil) {
+        self.indexName = indexName
+        self.indexStatus = indexStatus
+        self.provisionedReadCapacityAutoScalingSettings = provisionedReadCapacityAutoScalingSettings
+        self.provisionedWriteCapacityAutoScalingSettings = provisionedWriteCapacityAutoScalingSettings
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case indexName = "IndexName"
+        case indexStatus = "IndexStatus"
+        case provisionedReadCapacityAutoScalingSettings = "ProvisionedReadCapacityAutoScalingSettings"
+        case provisionedWriteCapacityAutoScalingSettings = "ProvisionedWriteCapacityAutoScalingSettings"
+    }
+
+    public func validate() throws {
+        try indexName?.validateAsIndexName()
+        try provisionedReadCapacityAutoScalingSettings?.validate()
+        try provisionedWriteCapacityAutoScalingSettings?.validate()
+    }
+}
+
+public struct ReplicaGlobalSecondaryIndexAutoScalingUpdate: Codable, Equatable {
+    public var indexName: IndexName?
+    public var provisionedReadCapacityAutoScalingUpdate: AutoScalingSettingsUpdate?
+
+    public init(indexName: IndexName? = nil,
+                provisionedReadCapacityAutoScalingUpdate: AutoScalingSettingsUpdate? = nil) {
+        self.indexName = indexName
+        self.provisionedReadCapacityAutoScalingUpdate = provisionedReadCapacityAutoScalingUpdate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case indexName = "IndexName"
+        case provisionedReadCapacityAutoScalingUpdate = "ProvisionedReadCapacityAutoScalingUpdate"
+    }
+
+    public func validate() throws {
+        try indexName?.validateAsIndexName()
+        try provisionedReadCapacityAutoScalingUpdate?.validate()
+    }
+}
+
+public struct ReplicaGlobalSecondaryIndexDescription: Codable, Equatable {
+    public var indexName: IndexName?
+    public var provisionedThroughputOverride: ProvisionedThroughputOverride?
+
+    public init(indexName: IndexName? = nil,
+                provisionedThroughputOverride: ProvisionedThroughputOverride? = nil) {
+        self.indexName = indexName
+        self.provisionedThroughputOverride = provisionedThroughputOverride
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case indexName = "IndexName"
+        case provisionedThroughputOverride = "ProvisionedThroughputOverride"
+    }
+
+    public func validate() throws {
+        try indexName?.validateAsIndexName()
+        try provisionedThroughputOverride?.validate()
     }
 }
 
@@ -2847,6 +3306,32 @@ public struct ReplicaUpdate: Codable, Equatable {
     }
 }
 
+public struct ReplicationGroupUpdate: Codable, Equatable {
+    public var create: CreateReplicationGroupMemberAction?
+    public var delete: DeleteReplicationGroupMemberAction?
+    public var update: UpdateReplicationGroupMemberAction?
+
+    public init(create: CreateReplicationGroupMemberAction? = nil,
+                delete: DeleteReplicationGroupMemberAction? = nil,
+                update: UpdateReplicationGroupMemberAction? = nil) {
+        self.create = create
+        self.delete = delete
+        self.update = update
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case create = "Create"
+        case delete = "Delete"
+        case update = "Update"
+    }
+
+    public func validate() throws {
+        try create?.validate()
+        try delete?.validate()
+        try update?.validate()
+    }
+}
+
 public struct RequestLimitExceeded: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -2922,21 +3407,38 @@ public struct RestoreSummary: Codable, Equatable {
 
 public struct RestoreTableFromBackupInput: Codable, Equatable {
     public var backupArn: BackupArn
+    public var billingModeOverride: BillingMode?
+    public var globalSecondaryIndexOverride: GlobalSecondaryIndexList?
+    public var localSecondaryIndexOverride: LocalSecondaryIndexList?
+    public var provisionedThroughputOverride: ProvisionedThroughput?
     public var targetTableName: TableName
 
     public init(backupArn: BackupArn,
+                billingModeOverride: BillingMode? = nil,
+                globalSecondaryIndexOverride: GlobalSecondaryIndexList? = nil,
+                localSecondaryIndexOverride: LocalSecondaryIndexList? = nil,
+                provisionedThroughputOverride: ProvisionedThroughput? = nil,
                 targetTableName: TableName) {
         self.backupArn = backupArn
+        self.billingModeOverride = billingModeOverride
+        self.globalSecondaryIndexOverride = globalSecondaryIndexOverride
+        self.localSecondaryIndexOverride = localSecondaryIndexOverride
+        self.provisionedThroughputOverride = provisionedThroughputOverride
         self.targetTableName = targetTableName
     }
 
     enum CodingKeys: String, CodingKey {
         case backupArn = "BackupArn"
+        case billingModeOverride = "BillingModeOverride"
+        case globalSecondaryIndexOverride = "GlobalSecondaryIndexOverride"
+        case localSecondaryIndexOverride = "LocalSecondaryIndexOverride"
+        case provisionedThroughputOverride = "ProvisionedThroughputOverride"
         case targetTableName = "TargetTableName"
     }
 
     public func validate() throws {
         try backupArn.validateAsBackupArn()
+        try provisionedThroughputOverride?.validate()
         try targetTableName.validateAsTableName()
     }
 }
@@ -2958,15 +3460,27 @@ public struct RestoreTableFromBackupOutput: Codable, Equatable {
 }
 
 public struct RestoreTableToPointInTimeInput: Codable, Equatable {
+    public var billingModeOverride: BillingMode?
+    public var globalSecondaryIndexOverride: GlobalSecondaryIndexList?
+    public var localSecondaryIndexOverride: LocalSecondaryIndexList?
+    public var provisionedThroughputOverride: ProvisionedThroughput?
     public var restoreDateTime: Date?
     public var sourceTableName: TableName
     public var targetTableName: TableName
     public var useLatestRestorableTime: BooleanObject?
 
-    public init(restoreDateTime: Date? = nil,
+    public init(billingModeOverride: BillingMode? = nil,
+                globalSecondaryIndexOverride: GlobalSecondaryIndexList? = nil,
+                localSecondaryIndexOverride: LocalSecondaryIndexList? = nil,
+                provisionedThroughputOverride: ProvisionedThroughput? = nil,
+                restoreDateTime: Date? = nil,
                 sourceTableName: TableName,
                 targetTableName: TableName,
                 useLatestRestorableTime: BooleanObject? = nil) {
+        self.billingModeOverride = billingModeOverride
+        self.globalSecondaryIndexOverride = globalSecondaryIndexOverride
+        self.localSecondaryIndexOverride = localSecondaryIndexOverride
+        self.provisionedThroughputOverride = provisionedThroughputOverride
         self.restoreDateTime = restoreDateTime
         self.sourceTableName = sourceTableName
         self.targetTableName = targetTableName
@@ -2974,6 +3488,10 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case billingModeOverride = "BillingModeOverride"
+        case globalSecondaryIndexOverride = "GlobalSecondaryIndexOverride"
+        case localSecondaryIndexOverride = "LocalSecondaryIndexOverride"
+        case provisionedThroughputOverride = "ProvisionedThroughputOverride"
         case restoreDateTime = "RestoreDateTime"
         case sourceTableName = "SourceTableName"
         case targetTableName = "TargetTableName"
@@ -2981,6 +3499,7 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try provisionedThroughputOverride?.validate()
         try sourceTableName.validateAsTableName()
         try targetTableName.validateAsTableName()
     }
@@ -3003,19 +3522,23 @@ public struct RestoreTableToPointInTimeOutput: Codable, Equatable {
 }
 
 public struct SSEDescription: Codable, Equatable {
+    public var inaccessibleEncryptionDateTime: Date?
     public var kMSMasterKeyArn: KMSMasterKeyArn?
     public var sSEType: SSEType?
     public var status: SSEStatus?
 
-    public init(kMSMasterKeyArn: KMSMasterKeyArn? = nil,
+    public init(inaccessibleEncryptionDateTime: Date? = nil,
+                kMSMasterKeyArn: KMSMasterKeyArn? = nil,
                 sSEType: SSEType? = nil,
                 status: SSEStatus? = nil) {
+        self.inaccessibleEncryptionDateTime = inaccessibleEncryptionDateTime
         self.kMSMasterKeyArn = kMSMasterKeyArn
         self.sSEType = sSEType
         self.status = status
     }
 
     enum CodingKeys: String, CodingKey {
+        case inaccessibleEncryptionDateTime = "InaccessibleEncryptionDateTime"
         case kMSMasterKeyArn = "KMSMasterKeyArn"
         case sSEType = "SSEType"
         case status = "Status"
@@ -3248,10 +3771,10 @@ public struct SourceTableFeatureDetails: Codable, Equatable {
 }
 
 public struct StreamSpecification: Codable, Equatable {
-    public var streamEnabled: StreamEnabled?
+    public var streamEnabled: StreamEnabled
     public var streamViewType: StreamViewType?
 
-    public init(streamEnabled: StreamEnabled? = nil,
+    public init(streamEnabled: StreamEnabled,
                 streamViewType: StreamViewType? = nil) {
         self.streamEnabled = streamEnabled
         self.streamViewType = streamViewType
@@ -3281,17 +3804,44 @@ public struct TableAlreadyExistsException: Codable, Equatable {
     }
 }
 
+public struct TableAutoScalingDescription: Codable, Equatable {
+    public var replicas: ReplicaAutoScalingDescriptionList?
+    public var tableName: TableName?
+    public var tableStatus: TableStatus?
+
+    public init(replicas: ReplicaAutoScalingDescriptionList? = nil,
+                tableName: TableName? = nil,
+                tableStatus: TableStatus? = nil) {
+        self.replicas = replicas
+        self.tableName = tableName
+        self.tableStatus = tableStatus
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case replicas = "Replicas"
+        case tableName = "TableName"
+        case tableStatus = "TableStatus"
+    }
+
+    public func validate() throws {
+        try tableName?.validateAsTableName()
+    }
+}
+
 public struct TableDescription: Codable, Equatable {
+    public var archivalSummary: ArchivalSummary?
     public var attributeDefinitions: AttributeDefinitions?
     public var billingModeSummary: BillingModeSummary?
     public var creationDateTime: Date?
     public var globalSecondaryIndexes: GlobalSecondaryIndexDescriptionList?
+    public var globalTableVersion: String?
     public var itemCount: Long?
     public var keySchema: KeySchema?
     public var latestStreamArn: StreamArn?
     public var latestStreamLabel: String?
     public var localSecondaryIndexes: LocalSecondaryIndexDescriptionList?
     public var provisionedThroughput: ProvisionedThroughputDescription?
+    public var replicas: ReplicaDescriptionList?
     public var restoreSummary: RestoreSummary?
     public var sSEDescription: SSEDescription?
     public var streamSpecification: StreamSpecification?
@@ -3301,16 +3851,19 @@ public struct TableDescription: Codable, Equatable {
     public var tableSizeBytes: Long?
     public var tableStatus: TableStatus?
 
-    public init(attributeDefinitions: AttributeDefinitions? = nil,
+    public init(archivalSummary: ArchivalSummary? = nil,
+                attributeDefinitions: AttributeDefinitions? = nil,
                 billingModeSummary: BillingModeSummary? = nil,
                 creationDateTime: Date? = nil,
                 globalSecondaryIndexes: GlobalSecondaryIndexDescriptionList? = nil,
+                globalTableVersion: String? = nil,
                 itemCount: Long? = nil,
                 keySchema: KeySchema? = nil,
                 latestStreamArn: StreamArn? = nil,
                 latestStreamLabel: String? = nil,
                 localSecondaryIndexes: LocalSecondaryIndexDescriptionList? = nil,
                 provisionedThroughput: ProvisionedThroughputDescription? = nil,
+                replicas: ReplicaDescriptionList? = nil,
                 restoreSummary: RestoreSummary? = nil,
                 sSEDescription: SSEDescription? = nil,
                 streamSpecification: StreamSpecification? = nil,
@@ -3319,16 +3872,19 @@ public struct TableDescription: Codable, Equatable {
                 tableName: TableName? = nil,
                 tableSizeBytes: Long? = nil,
                 tableStatus: TableStatus? = nil) {
+        self.archivalSummary = archivalSummary
         self.attributeDefinitions = attributeDefinitions
         self.billingModeSummary = billingModeSummary
         self.creationDateTime = creationDateTime
         self.globalSecondaryIndexes = globalSecondaryIndexes
+        self.globalTableVersion = globalTableVersion
         self.itemCount = itemCount
         self.keySchema = keySchema
         self.latestStreamArn = latestStreamArn
         self.latestStreamLabel = latestStreamLabel
         self.localSecondaryIndexes = localSecondaryIndexes
         self.provisionedThroughput = provisionedThroughput
+        self.replicas = replicas
         self.restoreSummary = restoreSummary
         self.sSEDescription = sSEDescription
         self.streamSpecification = streamSpecification
@@ -3340,16 +3896,19 @@ public struct TableDescription: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case archivalSummary = "ArchivalSummary"
         case attributeDefinitions = "AttributeDefinitions"
         case billingModeSummary = "BillingModeSummary"
         case creationDateTime = "CreationDateTime"
         case globalSecondaryIndexes = "GlobalSecondaryIndexes"
+        case globalTableVersion = "GlobalTableVersion"
         case itemCount = "ItemCount"
         case keySchema = "KeySchema"
         case latestStreamArn = "LatestStreamArn"
         case latestStreamLabel = "LatestStreamLabel"
         case localSecondaryIndexes = "LocalSecondaryIndexes"
         case provisionedThroughput = "ProvisionedThroughput"
+        case replicas = "Replicas"
         case restoreSummary = "RestoreSummary"
         case sSEDescription = "SSEDescription"
         case streamSpecification = "StreamSpecification"
@@ -3361,6 +3920,7 @@ public struct TableDescription: Codable, Equatable {
     }
 
     public func validate() throws {
+        try archivalSummary?.validate()
         try billingModeSummary?.validate()
         try keySchema?.validateAsKeySchema()
         try latestStreamArn?.validateAsStreamArn()
@@ -3766,6 +4326,56 @@ public struct UpdateContinuousBackupsOutput: Codable, Equatable {
     }
 }
 
+public struct UpdateContributorInsightsInput: Codable, Equatable {
+    public var contributorInsightsAction: ContributorInsightsAction
+    public var indexName: IndexName?
+    public var tableName: TableName
+
+    public init(contributorInsightsAction: ContributorInsightsAction,
+                indexName: IndexName? = nil,
+                tableName: TableName) {
+        self.contributorInsightsAction = contributorInsightsAction
+        self.indexName = indexName
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case contributorInsightsAction = "ContributorInsightsAction"
+        case indexName = "IndexName"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try indexName?.validateAsIndexName()
+        try tableName.validateAsTableName()
+    }
+}
+
+public struct UpdateContributorInsightsOutput: Codable, Equatable {
+    public var contributorInsightsStatus: ContributorInsightsStatus?
+    public var indexName: IndexName?
+    public var tableName: TableName?
+
+    public init(contributorInsightsStatus: ContributorInsightsStatus? = nil,
+                indexName: IndexName? = nil,
+                tableName: TableName? = nil) {
+        self.contributorInsightsStatus = contributorInsightsStatus
+        self.indexName = indexName
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case contributorInsightsStatus = "ContributorInsightsStatus"
+        case indexName = "IndexName"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try indexName?.validateAsIndexName()
+        try tableName?.validateAsTableName()
+    }
+}
+
 public struct UpdateGlobalSecondaryIndexAction: Codable, Equatable {
     public var indexName: IndexName
     public var provisionedThroughput: ProvisionedThroughput
@@ -3968,11 +4578,41 @@ public struct UpdateItemOutput: Codable, Equatable {
     }
 }
 
+public struct UpdateReplicationGroupMemberAction: Codable, Equatable {
+    public var globalSecondaryIndexes: ReplicaGlobalSecondaryIndexList?
+    public var kMSMasterKeyId: KMSMasterKeyId?
+    public var provisionedThroughputOverride: ProvisionedThroughputOverride?
+    public var regionName: RegionName
+
+    public init(globalSecondaryIndexes: ReplicaGlobalSecondaryIndexList? = nil,
+                kMSMasterKeyId: KMSMasterKeyId? = nil,
+                provisionedThroughputOverride: ProvisionedThroughputOverride? = nil,
+                regionName: RegionName) {
+        self.globalSecondaryIndexes = globalSecondaryIndexes
+        self.kMSMasterKeyId = kMSMasterKeyId
+        self.provisionedThroughputOverride = provisionedThroughputOverride
+        self.regionName = regionName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case globalSecondaryIndexes = "GlobalSecondaryIndexes"
+        case kMSMasterKeyId = "KMSMasterKeyId"
+        case provisionedThroughputOverride = "ProvisionedThroughputOverride"
+        case regionName = "RegionName"
+    }
+
+    public func validate() throws {
+        try globalSecondaryIndexes?.validateAsReplicaGlobalSecondaryIndexList()
+        try provisionedThroughputOverride?.validate()
+    }
+}
+
 public struct UpdateTableInput: Codable, Equatable {
     public var attributeDefinitions: AttributeDefinitions?
     public var billingMode: BillingMode?
     public var globalSecondaryIndexUpdates: GlobalSecondaryIndexUpdateList?
     public var provisionedThroughput: ProvisionedThroughput?
+    public var replicaUpdates: ReplicationGroupUpdateList?
     public var sSESpecification: SSESpecification?
     public var streamSpecification: StreamSpecification?
     public var tableName: TableName
@@ -3981,6 +4621,7 @@ public struct UpdateTableInput: Codable, Equatable {
                 billingMode: BillingMode? = nil,
                 globalSecondaryIndexUpdates: GlobalSecondaryIndexUpdateList? = nil,
                 provisionedThroughput: ProvisionedThroughput? = nil,
+                replicaUpdates: ReplicationGroupUpdateList? = nil,
                 sSESpecification: SSESpecification? = nil,
                 streamSpecification: StreamSpecification? = nil,
                 tableName: TableName) {
@@ -3988,6 +4629,7 @@ public struct UpdateTableInput: Codable, Equatable {
         self.billingMode = billingMode
         self.globalSecondaryIndexUpdates = globalSecondaryIndexUpdates
         self.provisionedThroughput = provisionedThroughput
+        self.replicaUpdates = replicaUpdates
         self.sSESpecification = sSESpecification
         self.streamSpecification = streamSpecification
         self.tableName = tableName
@@ -3998,6 +4640,7 @@ public struct UpdateTableInput: Codable, Equatable {
         case billingMode = "BillingMode"
         case globalSecondaryIndexUpdates = "GlobalSecondaryIndexUpdates"
         case provisionedThroughput = "ProvisionedThroughput"
+        case replicaUpdates = "ReplicaUpdates"
         case sSESpecification = "SSESpecification"
         case streamSpecification = "StreamSpecification"
         case tableName = "TableName"
@@ -4005,6 +4648,7 @@ public struct UpdateTableInput: Codable, Equatable {
 
     public func validate() throws {
         try provisionedThroughput?.validate()
+        try replicaUpdates?.validateAsReplicationGroupUpdateList()
         try sSESpecification?.validate()
         try streamSpecification?.validate()
         try tableName.validateAsTableName()
@@ -4024,6 +4668,53 @@ public struct UpdateTableOutput: Codable, Equatable {
 
     public func validate() throws {
         try tableDescription?.validate()
+    }
+}
+
+public struct UpdateTableReplicaAutoScalingInput: Codable, Equatable {
+    public var globalSecondaryIndexUpdates: GlobalSecondaryIndexAutoScalingUpdateList?
+    public var provisionedWriteCapacityAutoScalingUpdate: AutoScalingSettingsUpdate?
+    public var replicaUpdates: ReplicaAutoScalingUpdateList?
+    public var tableName: TableName
+
+    public init(globalSecondaryIndexUpdates: GlobalSecondaryIndexAutoScalingUpdateList? = nil,
+                provisionedWriteCapacityAutoScalingUpdate: AutoScalingSettingsUpdate? = nil,
+                replicaUpdates: ReplicaAutoScalingUpdateList? = nil,
+                tableName: TableName) {
+        self.globalSecondaryIndexUpdates = globalSecondaryIndexUpdates
+        self.provisionedWriteCapacityAutoScalingUpdate = provisionedWriteCapacityAutoScalingUpdate
+        self.replicaUpdates = replicaUpdates
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case globalSecondaryIndexUpdates = "GlobalSecondaryIndexUpdates"
+        case provisionedWriteCapacityAutoScalingUpdate = "ProvisionedWriteCapacityAutoScalingUpdate"
+        case replicaUpdates = "ReplicaUpdates"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try globalSecondaryIndexUpdates?.validateAsGlobalSecondaryIndexAutoScalingUpdateList()
+        try provisionedWriteCapacityAutoScalingUpdate?.validate()
+        try replicaUpdates?.validateAsReplicaAutoScalingUpdateList()
+        try tableName.validateAsTableName()
+    }
+}
+
+public struct UpdateTableReplicaAutoScalingOutput: Codable, Equatable {
+    public var tableAutoScalingDescription: TableAutoScalingDescription?
+
+    public init(tableAutoScalingDescription: TableAutoScalingDescription? = nil) {
+        self.tableAutoScalingDescription = tableAutoScalingDescription
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tableAutoScalingDescription = "TableAutoScalingDescription"
+    }
+
+    public func validate() throws {
+        try tableAutoScalingDescription?.validate()
     }
 }
 
