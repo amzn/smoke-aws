@@ -47,6 +47,8 @@ public protocol DynamoDBClientProtocol {
     typealias DescribeBackupAsyncType = (_ input: DynamoDBModel.DescribeBackupInput, _ completion: @escaping (HTTPResult<DynamoDBModel.DescribeBackupOutput>) -> ()) throws -> ()
     typealias DescribeContinuousBackupsSyncType = (_ input: DynamoDBModel.DescribeContinuousBackupsInput) throws -> DynamoDBModel.DescribeContinuousBackupsOutput
     typealias DescribeContinuousBackupsAsyncType = (_ input: DynamoDBModel.DescribeContinuousBackupsInput, _ completion: @escaping (HTTPResult<DynamoDBModel.DescribeContinuousBackupsOutput>) -> ()) throws -> ()
+    typealias DescribeContributorInsightsSyncType = (_ input: DynamoDBModel.DescribeContributorInsightsInput) throws -> DynamoDBModel.DescribeContributorInsightsOutput
+    typealias DescribeContributorInsightsAsyncType = (_ input: DynamoDBModel.DescribeContributorInsightsInput, _ completion: @escaping (HTTPResult<DynamoDBModel.DescribeContributorInsightsOutput>) -> ()) throws -> ()
     typealias DescribeEndpointsSyncType = (_ input: DynamoDBModel.DescribeEndpointsRequest) throws -> DynamoDBModel.DescribeEndpointsResponse
     typealias DescribeEndpointsAsyncType = (_ input: DynamoDBModel.DescribeEndpointsRequest, _ completion: @escaping (HTTPResult<DynamoDBModel.DescribeEndpointsResponse>) -> ()) throws -> ()
     typealias DescribeGlobalTableSyncType = (_ input: DynamoDBModel.DescribeGlobalTableInput) throws -> DynamoDBModel.DescribeGlobalTableOutput
@@ -57,12 +59,16 @@ public protocol DynamoDBClientProtocol {
     typealias DescribeLimitsAsyncType = (_ input: DynamoDBModel.DescribeLimitsInput, _ completion: @escaping (HTTPResult<DynamoDBModel.DescribeLimitsOutput>) -> ()) throws -> ()
     typealias DescribeTableSyncType = (_ input: DynamoDBModel.DescribeTableInput) throws -> DynamoDBModel.DescribeTableOutput
     typealias DescribeTableAsyncType = (_ input: DynamoDBModel.DescribeTableInput, _ completion: @escaping (HTTPResult<DynamoDBModel.DescribeTableOutput>) -> ()) throws -> ()
+    typealias DescribeTableReplicaAutoScalingSyncType = (_ input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput
+    typealias DescribeTableReplicaAutoScalingAsyncType = (_ input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, _ completion: @escaping (HTTPResult<DynamoDBModel.DescribeTableReplicaAutoScalingOutput>) -> ()) throws -> ()
     typealias DescribeTimeToLiveSyncType = (_ input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput
     typealias DescribeTimeToLiveAsyncType = (_ input: DynamoDBModel.DescribeTimeToLiveInput, _ completion: @escaping (HTTPResult<DynamoDBModel.DescribeTimeToLiveOutput>) -> ()) throws -> ()
     typealias GetItemSyncType = (_ input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput
     typealias GetItemAsyncType = (_ input: DynamoDBModel.GetItemInput, _ completion: @escaping (HTTPResult<DynamoDBModel.GetItemOutput>) -> ()) throws -> ()
     typealias ListBackupsSyncType = (_ input: DynamoDBModel.ListBackupsInput) throws -> DynamoDBModel.ListBackupsOutput
     typealias ListBackupsAsyncType = (_ input: DynamoDBModel.ListBackupsInput, _ completion: @escaping (HTTPResult<DynamoDBModel.ListBackupsOutput>) -> ()) throws -> ()
+    typealias ListContributorInsightsSyncType = (_ input: DynamoDBModel.ListContributorInsightsInput) throws -> DynamoDBModel.ListContributorInsightsOutput
+    typealias ListContributorInsightsAsyncType = (_ input: DynamoDBModel.ListContributorInsightsInput, _ completion: @escaping (HTTPResult<DynamoDBModel.ListContributorInsightsOutput>) -> ()) throws -> ()
     typealias ListGlobalTablesSyncType = (_ input: DynamoDBModel.ListGlobalTablesInput) throws -> DynamoDBModel.ListGlobalTablesOutput
     typealias ListGlobalTablesAsyncType = (_ input: DynamoDBModel.ListGlobalTablesInput, _ completion: @escaping (HTTPResult<DynamoDBModel.ListGlobalTablesOutput>) -> ()) throws -> ()
     typealias ListTablesSyncType = (_ input: DynamoDBModel.ListTablesInput) throws -> DynamoDBModel.ListTablesOutput
@@ -89,6 +95,8 @@ public protocol DynamoDBClientProtocol {
     typealias UntagResourceAsyncType = (_ input: DynamoDBModel.UntagResourceInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias UpdateContinuousBackupsSyncType = (_ input: DynamoDBModel.UpdateContinuousBackupsInput) throws -> DynamoDBModel.UpdateContinuousBackupsOutput
     typealias UpdateContinuousBackupsAsyncType = (_ input: DynamoDBModel.UpdateContinuousBackupsInput, _ completion: @escaping (HTTPResult<DynamoDBModel.UpdateContinuousBackupsOutput>) -> ()) throws -> ()
+    typealias UpdateContributorInsightsSyncType = (_ input: DynamoDBModel.UpdateContributorInsightsInput) throws -> DynamoDBModel.UpdateContributorInsightsOutput
+    typealias UpdateContributorInsightsAsyncType = (_ input: DynamoDBModel.UpdateContributorInsightsInput, _ completion: @escaping (HTTPResult<DynamoDBModel.UpdateContributorInsightsOutput>) -> ()) throws -> ()
     typealias UpdateGlobalTableSyncType = (_ input: DynamoDBModel.UpdateGlobalTableInput) throws -> DynamoDBModel.UpdateGlobalTableOutput
     typealias UpdateGlobalTableAsyncType = (_ input: DynamoDBModel.UpdateGlobalTableInput, _ completion: @escaping (HTTPResult<DynamoDBModel.UpdateGlobalTableOutput>) -> ()) throws -> ()
     typealias UpdateGlobalTableSettingsSyncType = (_ input: DynamoDBModel.UpdateGlobalTableSettingsInput) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput
@@ -97,6 +105,8 @@ public protocol DynamoDBClientProtocol {
     typealias UpdateItemAsyncType = (_ input: DynamoDBModel.UpdateItemInput, _ completion: @escaping (HTTPResult<DynamoDBModel.UpdateItemOutput>) -> ()) throws -> ()
     typealias UpdateTableSyncType = (_ input: DynamoDBModel.UpdateTableInput) throws -> DynamoDBModel.UpdateTableOutput
     typealias UpdateTableAsyncType = (_ input: DynamoDBModel.UpdateTableInput, _ completion: @escaping (HTTPResult<DynamoDBModel.UpdateTableOutput>) -> ()) throws -> ()
+    typealias UpdateTableReplicaAutoScalingSyncType = (_ input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput
+    typealias UpdateTableReplicaAutoScalingAsyncType = (_ input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, _ completion: @escaping (HTTPResult<DynamoDBModel.UpdateTableReplicaAutoScalingOutput>) -> ()) throws -> ()
     typealias UpdateTimeToLiveSyncType = (_ input: DynamoDBModel.UpdateTimeToLiveInput) throws -> DynamoDBModel.UpdateTimeToLiveOutput
     typealias UpdateTimeToLiveAsyncType = (_ input: DynamoDBModel.UpdateTimeToLiveInput, _ completion: @escaping (HTTPResult<DynamoDBModel.UpdateTimeToLiveOutput>) -> ()) throws -> ()
 
@@ -331,6 +341,29 @@ public protocol DynamoDBClientProtocol {
     func describeContinuousBackupsSync(input: DynamoDBModel.DescribeContinuousBackupsInput) throws -> DynamoDBModel.DescribeContinuousBackupsOutput
 
     /**
+     Invokes the DescribeContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+         - completion: The DescribeContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    func describeContributorInsightsAsync(input: DynamoDBModel.DescribeContributorInsightsInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeContributorInsightsOutput>) -> ()) throws
+
+    /**
+     Invokes the DescribeContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+     - Returns: The DescribeContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    func describeContributorInsightsSync(input: DynamoDBModel.DescribeContributorInsightsInput) throws -> DynamoDBModel.DescribeContributorInsightsOutput
+
+    /**
      Invokes the DescribeEndpoints operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -444,6 +477,29 @@ public protocol DynamoDBClientProtocol {
     func describeTableSync(input: DynamoDBModel.DescribeTableInput) throws -> DynamoDBModel.DescribeTableOutput
 
     /**
+     Invokes the DescribeTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The DescribeTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    func describeTableReplicaAutoScalingAsync(input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, completion: @escaping (HTTPResult<DynamoDBModel.DescribeTableReplicaAutoScalingOutput>) -> ()) throws
+
+    /**
+     Invokes the DescribeTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The DescribeTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    func describeTableReplicaAutoScalingSync(input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput
+
+    /**
      Invokes the DescribeTimeToLive operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -511,6 +567,29 @@ public protocol DynamoDBClientProtocol {
      - Throws: internalServer.
      */
     func listBackupsSync(input: DynamoDBModel.ListBackupsInput) throws -> DynamoDBModel.ListBackupsOutput
+
+    /**
+     Invokes the ListContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+         - completion: The ListContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    func listContributorInsightsAsync(input: DynamoDBModel.ListContributorInsightsInput, completion: @escaping (HTTPResult<DynamoDBModel.ListContributorInsightsOutput>) -> ()) throws
+
+    /**
+     Invokes the ListContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+     - Returns: The ListContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    func listContributorInsightsSync(input: DynamoDBModel.ListContributorInsightsInput) throws -> DynamoDBModel.ListContributorInsightsOutput
 
     /**
      Invokes the ListGlobalTables operation returning immediately and passing the response to a callback.
@@ -724,7 +803,7 @@ public protocol DynamoDBClientProtocol {
          - completion: The TransactGetItemsOutput object or an error will be passed to this 
            callback when the operation is complete. The TransactGetItemsOutput
            object will be validated before being returned to caller.
-           The possible errors are: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
+           The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
     func transactGetItemsAsync(input: DynamoDBModel.TransactGetItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactGetItemsOutput>) -> ()) throws
 
@@ -735,7 +814,7 @@ public protocol DynamoDBClientProtocol {
          - input: The validated TransactGetItemsInput object being passed to this operation.
      - Returns: The TransactGetItemsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
     func transactGetItemsSync(input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput
 
@@ -747,7 +826,7 @@ public protocol DynamoDBClientProtocol {
          - completion: The TransactWriteItemsOutput object or an error will be passed to this 
            callback when the operation is complete. The TransactWriteItemsOutput
            object will be validated before being returned to caller.
-           The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+           The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
     func transactWriteItemsAsync(input: DynamoDBModel.TransactWriteItemsInput, completion: @escaping (HTTPResult<DynamoDBModel.TransactWriteItemsOutput>) -> ()) throws
 
@@ -758,7 +837,7 @@ public protocol DynamoDBClientProtocol {
          - input: The validated TransactWriteItemsInput object being passed to this operation.
      - Returns: The TransactWriteItemsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
     func transactWriteItemsSync(input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput
 
@@ -804,6 +883,29 @@ public protocol DynamoDBClientProtocol {
      - Throws: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
     func updateContinuousBackupsSync(input: DynamoDBModel.UpdateContinuousBackupsInput) throws -> DynamoDBModel.UpdateContinuousBackupsOutput
+
+    /**
+     Invokes the UpdateContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+         - completion: The UpdateContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    func updateContributorInsightsAsync(input: DynamoDBModel.UpdateContributorInsightsInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateContributorInsightsOutput>) -> ()) throws
+
+    /**
+     Invokes the UpdateContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+     - Returns: The UpdateContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    func updateContributorInsightsSync(input: DynamoDBModel.UpdateContributorInsightsInput) throws -> DynamoDBModel.UpdateContributorInsightsOutput
 
     /**
      Invokes the UpdateGlobalTable operation returning immediately and passing the response to a callback.
@@ -896,6 +998,29 @@ public protocol DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
     func updateTableSync(input: DynamoDBModel.UpdateTableInput) throws -> DynamoDBModel.UpdateTableOutput
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The UpdateTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    func updateTableReplicaAutoScalingAsync(input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, completion: @escaping (HTTPResult<DynamoDBModel.UpdateTableReplicaAutoScalingOutput>) -> ()) throws
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The UpdateTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    func updateTableReplicaAutoScalingSync(input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput
 
     /**
      Invokes the UpdateTimeToLive operation returning immediately and passing the response to a callback.

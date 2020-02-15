@@ -34,7 +34,9 @@ public extension AssumeRoleRequest {
             roleArn: "01234567890123456789",
             roleSessionName: "01",
             serialNumber: nil,
-            tokenCode: nil)
+            tags: nil,
+            tokenCode: nil,
+            transitiveTagKeys: nil)
 
         return defaultInstance
     }()
@@ -332,7 +334,8 @@ public extension GetFederationTokenRequest {
             durationSeconds: nil,
             name: "01",
             policy: nil,
-            policyArns: nil)
+            policyArns: nil,
+            tags: nil)
 
         return defaultInstance
     }()
@@ -493,6 +496,19 @@ public extension RegionDisabledException {
     static let __default: SecurityTokenModel.RegionDisabledException = {
         let defaultInstance = SecurityTokenModel.RegionDisabledException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension Tag {
+    /**
+     Default instance of the Tag structure.
+     */
+    static let __default: SecurityTokenModel.Tag = {
+        let defaultInstance = SecurityTokenModel.Tag(
+            key: "0",
+            value: "")
 
         return defaultInstance
     }()

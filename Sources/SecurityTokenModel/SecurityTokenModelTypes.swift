@@ -182,6 +182,26 @@ public typealias SerialNumberType = String
 public typealias SessionPolicyDocumentType = String
 
 /**
+ Type definition for the TagKeyListType field.
+ */
+public typealias TagKeyListType = [TagKeyType]
+
+/**
+ Type definition for the TagKeyType field.
+ */
+public typealias TagKeyType = String
+
+/**
+ Type definition for the TagListType field.
+ */
+public typealias TagListType = [Tag]
+
+/**
+ Type definition for the TagValueType field.
+ */
+public typealias TagValueType = String
+
+/**
  Type definition for the TokenCodeType field.
  */
 public typealias TokenCodeType = String
@@ -462,6 +482,72 @@ extension SecurityTokenModel.SessionPolicyDocumentType {
             matchingRange == startIndex..<endIndex else {
                 throw SecurityTokenCodingError.validationError(
                     reason: "The provided value to sessionPolicyDocumentType violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagKeyListType field.
+*/
+extension Array where Element == SecurityTokenModel.TagKeyType {
+    public func validateAsTagKeyListType() throws {
+
+        if self.count > 50 {
+            throw SecurityTokenCodingError.validationError(reason: "The provided value to tagKeyListType violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagKeyType field.
+*/
+extension SecurityTokenModel.TagKeyType {
+    public func validateAsTagKeyType() throws {
+        if self.count < 1 {
+            throw SecurityTokenCodingError.validationError(reason: "The provided value to tagKeyType violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw SecurityTokenCodingError.validationError(reason: "The provided value to tagKeyType violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to tagKeyType violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagListType field.
+*/
+extension Array where Element == SecurityTokenModel.Tag {
+    public func validateAsTagListType() throws {
+
+        if self.count > 50 {
+            throw SecurityTokenCodingError.validationError(reason: "The provided value to tagListType violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TagValueType field.
+*/
+extension SecurityTokenModel.TagValueType {
+    public func validateAsTagValueType() throws {
+        if self.count < 0 {
+            throw SecurityTokenCodingError.validationError(reason: "The provided value to tagValueType violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw SecurityTokenCodingError.validationError(reason: "The provided value to tagValueType violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw SecurityTokenCodingError.validationError(
+                    reason: "The provided value to tagValueType violated the regular expression constraint.")
         }
     }
 }

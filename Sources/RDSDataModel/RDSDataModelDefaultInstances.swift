@@ -368,6 +368,7 @@ public extension SqlParameter {
     static let __default: RDSDataModel.SqlParameter = {
         let defaultInstance = RDSDataModel.SqlParameter(
             name: nil,
+            typeHint: nil,
             value: nil)
 
         return defaultInstance

@@ -27,6 +27,8 @@ import SmokeHTTPClient
  Client Protocol for the ElasticContainer service.
  */
 public protocol ElasticContainerClientProtocol {
+    typealias CreateCapacityProviderSyncType = (_ input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse
+    typealias CreateCapacityProviderAsyncType = (_ input: ElasticContainerModel.CreateCapacityProviderRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.CreateCapacityProviderResponse>) -> ()) throws -> ()
     typealias CreateClusterSyncType = (_ input: ElasticContainerModel.CreateClusterRequest) throws -> ElasticContainerModel.CreateClusterResponse
     typealias CreateClusterAsyncType = (_ input: ElasticContainerModel.CreateClusterRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.CreateClusterResponse>) -> ()) throws -> ()
     typealias CreateServiceSyncType = (_ input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse
@@ -47,6 +49,8 @@ public protocol ElasticContainerClientProtocol {
     typealias DeregisterContainerInstanceAsyncType = (_ input: ElasticContainerModel.DeregisterContainerInstanceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DeregisterContainerInstanceResponse>) -> ()) throws -> ()
     typealias DeregisterTaskDefinitionSyncType = (_ input: ElasticContainerModel.DeregisterTaskDefinitionRequest) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse
     typealias DeregisterTaskDefinitionAsyncType = (_ input: ElasticContainerModel.DeregisterTaskDefinitionRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DeregisterTaskDefinitionResponse>) -> ()) throws -> ()
+    typealias DescribeCapacityProvidersSyncType = (_ input: ElasticContainerModel.DescribeCapacityProvidersRequest) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse
+    typealias DescribeCapacityProvidersAsyncType = (_ input: ElasticContainerModel.DescribeCapacityProvidersRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DescribeCapacityProvidersResponse>) -> ()) throws -> ()
     typealias DescribeClustersSyncType = (_ input: ElasticContainerModel.DescribeClustersRequest) throws -> ElasticContainerModel.DescribeClustersResponse
     typealias DescribeClustersAsyncType = (_ input: ElasticContainerModel.DescribeClustersRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.DescribeClustersResponse>) -> ()) throws -> ()
     typealias DescribeContainerInstancesSyncType = (_ input: ElasticContainerModel.DescribeContainerInstancesRequest) throws -> ElasticContainerModel.DescribeContainerInstancesResponse
@@ -85,6 +89,8 @@ public protocol ElasticContainerClientProtocol {
     typealias PutAccountSettingDefaultAsyncType = (_ input: ElasticContainerModel.PutAccountSettingDefaultRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.PutAccountSettingDefaultResponse>) -> ()) throws -> ()
     typealias PutAttributesSyncType = (_ input: ElasticContainerModel.PutAttributesRequest) throws -> ElasticContainerModel.PutAttributesResponse
     typealias PutAttributesAsyncType = (_ input: ElasticContainerModel.PutAttributesRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.PutAttributesResponse>) -> ()) throws -> ()
+    typealias PutClusterCapacityProvidersSyncType = (_ input: ElasticContainerModel.PutClusterCapacityProvidersRequest) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse
+    typealias PutClusterCapacityProvidersAsyncType = (_ input: ElasticContainerModel.PutClusterCapacityProvidersRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.PutClusterCapacityProvidersResponse>) -> ()) throws -> ()
     typealias RegisterContainerInstanceSyncType = (_ input: ElasticContainerModel.RegisterContainerInstanceRequest) throws -> ElasticContainerModel.RegisterContainerInstanceResponse
     typealias RegisterContainerInstanceAsyncType = (_ input: ElasticContainerModel.RegisterContainerInstanceRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.RegisterContainerInstanceResponse>) -> ()) throws -> ()
     typealias RegisterTaskDefinitionSyncType = (_ input: ElasticContainerModel.RegisterTaskDefinitionRequest) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse
@@ -117,6 +123,29 @@ public protocol ElasticContainerClientProtocol {
     typealias UpdateServicePrimaryTaskSetAsyncType = (_ input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse>) -> ()) throws -> ()
     typealias UpdateTaskSetSyncType = (_ input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse
     typealias UpdateTaskSetAsyncType = (_ input: ElasticContainerModel.UpdateTaskSetRequest, _ completion: @escaping (HTTPResult<ElasticContainerModel.UpdateTaskSetResponse>) -> ()) throws -> ()
+
+    /**
+     Invokes the CreateCapacityProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCapacityProviderRequest object being passed to this operation.
+         - completion: The CreateCapacityProviderResponse object or an error will be passed to this 
+           callback when the operation is complete. The CreateCapacityProviderResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, limitExceeded, server.
+     */
+    func createCapacityProviderAsync(input: ElasticContainerModel.CreateCapacityProviderRequest, completion: @escaping (HTTPResult<ElasticContainerModel.CreateCapacityProviderResponse>) -> ()) throws
+
+    /**
+     Invokes the CreateCapacityProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCapacityProviderRequest object being passed to this operation.
+     - Returns: The CreateCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, limitExceeded, server.
+     */
+    func createCapacityProviderSync(input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse
 
     /**
      Invokes the CreateCluster operation returning immediately and passing the response to a callback.
@@ -241,7 +270,7 @@ public protocol ElasticContainerClientProtocol {
          - completion: The DeleteClusterResponse object or an error will be passed to this 
            callback when the operation is complete. The DeleteClusterResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server.
+           The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
     func deleteClusterAsync(input: ElasticContainerModel.DeleteClusterRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DeleteClusterResponse>) -> ()) throws
 
@@ -252,7 +281,7 @@ public protocol ElasticContainerClientProtocol {
          - input: The validated DeleteClusterRequest object being passed to this operation.
      - Returns: The DeleteClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
     func deleteClusterSync(input: ElasticContainerModel.DeleteClusterRequest) throws -> ElasticContainerModel.DeleteClusterResponse
 
@@ -347,6 +376,29 @@ public protocol ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     func deregisterTaskDefinitionSync(input: ElasticContainerModel.DeregisterTaskDefinitionRequest) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse
+
+    /**
+     Invokes the DescribeCapacityProviders operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCapacityProvidersRequest object being passed to this operation.
+         - completion: The DescribeCapacityProvidersResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCapacityProvidersResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    func describeCapacityProvidersAsync(input: ElasticContainerModel.DescribeCapacityProvidersRequest, completion: @escaping (HTTPResult<ElasticContainerModel.DescribeCapacityProvidersResponse>) -> ()) throws
+
+    /**
+     Invokes the DescribeCapacityProviders operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCapacityProvidersRequest object being passed to this operation.
+     - Returns: The DescribeCapacityProvidersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    func describeCapacityProvidersSync(input: ElasticContainerModel.DescribeCapacityProvidersRequest) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse
 
     /**
      Invokes the DescribeClusters operation returning immediately and passing the response to a callback.
@@ -786,6 +838,29 @@ public protocol ElasticContainerClientProtocol {
     func putAttributesSync(input: ElasticContainerModel.PutAttributesRequest) throws -> ElasticContainerModel.PutAttributesResponse
 
     /**
+     Invokes the PutClusterCapacityProviders operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutClusterCapacityProvidersRequest object being passed to this operation.
+         - completion: The PutClusterCapacityProvidersResponse object or an error will be passed to this 
+           callback when the operation is complete. The PutClusterCapacityProvidersResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
+     */
+    func putClusterCapacityProvidersAsync(input: ElasticContainerModel.PutClusterCapacityProvidersRequest, completion: @escaping (HTTPResult<ElasticContainerModel.PutClusterCapacityProvidersResponse>) -> ()) throws
+
+    /**
+     Invokes the PutClusterCapacityProviders operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutClusterCapacityProvidersRequest object being passed to this operation.
+     - Returns: The PutClusterCapacityProvidersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
+     */
+    func putClusterCapacityProvidersSync(input: ElasticContainerModel.PutClusterCapacityProvidersRequest) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse
+
+    /**
      Invokes the RegisterContainerInstance operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1115,7 +1190,7 @@ public protocol ElasticContainerClientProtocol {
          - completion: The UpdateServicePrimaryTaskSetResponse object or an error will be passed to this 
            callback when the operation is complete. The UpdateServicePrimaryTaskSetResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
     func updateServicePrimaryTaskSetAsync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, completion: @escaping (HTTPResult<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse>) -> ()) throws
 
@@ -1126,7 +1201,7 @@ public protocol ElasticContainerClientProtocol {
          - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
      - Returns: The UpdateServicePrimaryTaskSetResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
     func updateServicePrimaryTaskSetSync(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse
 

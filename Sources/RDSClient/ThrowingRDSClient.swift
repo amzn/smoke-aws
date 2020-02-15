@@ -42,6 +42,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let authorizeDBSecurityGroupIngressSyncOverride: RDSClientProtocol.AuthorizeDBSecurityGroupIngressSyncType?
     let backtrackDBClusterAsyncOverride: RDSClientProtocol.BacktrackDBClusterAsyncType?
     let backtrackDBClusterSyncOverride: RDSClientProtocol.BacktrackDBClusterSyncType?
+    let cancelExportTaskAsyncOverride: RDSClientProtocol.CancelExportTaskAsyncType?
+    let cancelExportTaskSyncOverride: RDSClientProtocol.CancelExportTaskSyncType?
     let copyDBClusterParameterGroupAsyncOverride: RDSClientProtocol.CopyDBClusterParameterGroupAsyncType?
     let copyDBClusterParameterGroupSyncOverride: RDSClientProtocol.CopyDBClusterParameterGroupSyncType?
     let copyDBClusterSnapshotAsyncOverride: RDSClientProtocol.CopyDBClusterSnapshotAsyncType?
@@ -52,6 +54,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let copyDBSnapshotSyncOverride: RDSClientProtocol.CopyDBSnapshotSyncType?
     let copyOptionGroupAsyncOverride: RDSClientProtocol.CopyOptionGroupAsyncType?
     let copyOptionGroupSyncOverride: RDSClientProtocol.CopyOptionGroupSyncType?
+    let createCustomAvailabilityZoneAsyncOverride: RDSClientProtocol.CreateCustomAvailabilityZoneAsyncType?
+    let createCustomAvailabilityZoneSyncOverride: RDSClientProtocol.CreateCustomAvailabilityZoneSyncType?
     let createDBClusterAsyncOverride: RDSClientProtocol.CreateDBClusterAsyncType?
     let createDBClusterSyncOverride: RDSClientProtocol.CreateDBClusterSyncType?
     let createDBClusterEndpointAsyncOverride: RDSClientProtocol.CreateDBClusterEndpointAsyncType?
@@ -66,6 +70,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let createDBInstanceReadReplicaSyncOverride: RDSClientProtocol.CreateDBInstanceReadReplicaSyncType?
     let createDBParameterGroupAsyncOverride: RDSClientProtocol.CreateDBParameterGroupAsyncType?
     let createDBParameterGroupSyncOverride: RDSClientProtocol.CreateDBParameterGroupSyncType?
+    let createDBProxyAsyncOverride: RDSClientProtocol.CreateDBProxyAsyncType?
+    let createDBProxySyncOverride: RDSClientProtocol.CreateDBProxySyncType?
     let createDBSecurityGroupAsyncOverride: RDSClientProtocol.CreateDBSecurityGroupAsyncType?
     let createDBSecurityGroupSyncOverride: RDSClientProtocol.CreateDBSecurityGroupSyncType?
     let createDBSnapshotAsyncOverride: RDSClientProtocol.CreateDBSnapshotAsyncType?
@@ -78,6 +84,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let createGlobalClusterSyncOverride: RDSClientProtocol.CreateGlobalClusterSyncType?
     let createOptionGroupAsyncOverride: RDSClientProtocol.CreateOptionGroupAsyncType?
     let createOptionGroupSyncOverride: RDSClientProtocol.CreateOptionGroupSyncType?
+    let deleteCustomAvailabilityZoneAsyncOverride: RDSClientProtocol.DeleteCustomAvailabilityZoneAsyncType?
+    let deleteCustomAvailabilityZoneSyncOverride: RDSClientProtocol.DeleteCustomAvailabilityZoneSyncType?
     let deleteDBClusterAsyncOverride: RDSClientProtocol.DeleteDBClusterAsyncType?
     let deleteDBClusterSyncOverride: RDSClientProtocol.DeleteDBClusterSyncType?
     let deleteDBClusterEndpointAsyncOverride: RDSClientProtocol.DeleteDBClusterEndpointAsyncType?
@@ -92,6 +100,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let deleteDBInstanceAutomatedBackupSyncOverride: RDSClientProtocol.DeleteDBInstanceAutomatedBackupSyncType?
     let deleteDBParameterGroupAsyncOverride: RDSClientProtocol.DeleteDBParameterGroupAsyncType?
     let deleteDBParameterGroupSyncOverride: RDSClientProtocol.DeleteDBParameterGroupSyncType?
+    let deleteDBProxyAsyncOverride: RDSClientProtocol.DeleteDBProxyAsyncType?
+    let deleteDBProxySyncOverride: RDSClientProtocol.DeleteDBProxySyncType?
     let deleteDBSecurityGroupAsyncOverride: RDSClientProtocol.DeleteDBSecurityGroupAsyncType?
     let deleteDBSecurityGroupSyncOverride: RDSClientProtocol.DeleteDBSecurityGroupSyncType?
     let deleteDBSnapshotAsyncOverride: RDSClientProtocol.DeleteDBSnapshotAsyncType?
@@ -102,12 +112,18 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let deleteEventSubscriptionSyncOverride: RDSClientProtocol.DeleteEventSubscriptionSyncType?
     let deleteGlobalClusterAsyncOverride: RDSClientProtocol.DeleteGlobalClusterAsyncType?
     let deleteGlobalClusterSyncOverride: RDSClientProtocol.DeleteGlobalClusterSyncType?
+    let deleteInstallationMediaAsyncOverride: RDSClientProtocol.DeleteInstallationMediaAsyncType?
+    let deleteInstallationMediaSyncOverride: RDSClientProtocol.DeleteInstallationMediaSyncType?
     let deleteOptionGroupAsyncOverride: RDSClientProtocol.DeleteOptionGroupAsyncType?
     let deleteOptionGroupSyncOverride: RDSClientProtocol.DeleteOptionGroupSyncType?
+    let deregisterDBProxyTargetsAsyncOverride: RDSClientProtocol.DeregisterDBProxyTargetsAsyncType?
+    let deregisterDBProxyTargetsSyncOverride: RDSClientProtocol.DeregisterDBProxyTargetsSyncType?
     let describeAccountAttributesAsyncOverride: RDSClientProtocol.DescribeAccountAttributesAsyncType?
     let describeAccountAttributesSyncOverride: RDSClientProtocol.DescribeAccountAttributesSyncType?
     let describeCertificatesAsyncOverride: RDSClientProtocol.DescribeCertificatesAsyncType?
     let describeCertificatesSyncOverride: RDSClientProtocol.DescribeCertificatesSyncType?
+    let describeCustomAvailabilityZonesAsyncOverride: RDSClientProtocol.DescribeCustomAvailabilityZonesAsyncType?
+    let describeCustomAvailabilityZonesSyncOverride: RDSClientProtocol.DescribeCustomAvailabilityZonesSyncType?
     let describeDBClusterBacktracksAsyncOverride: RDSClientProtocol.DescribeDBClusterBacktracksAsyncType?
     let describeDBClusterBacktracksSyncOverride: RDSClientProtocol.DescribeDBClusterBacktracksSyncType?
     let describeDBClusterEndpointsAsyncOverride: RDSClientProtocol.DescribeDBClusterEndpointsAsyncType?
@@ -134,6 +150,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let describeDBParameterGroupsSyncOverride: RDSClientProtocol.DescribeDBParameterGroupsSyncType?
     let describeDBParametersAsyncOverride: RDSClientProtocol.DescribeDBParametersAsyncType?
     let describeDBParametersSyncOverride: RDSClientProtocol.DescribeDBParametersSyncType?
+    let describeDBProxiesAsyncOverride: RDSClientProtocol.DescribeDBProxiesAsyncType?
+    let describeDBProxiesSyncOverride: RDSClientProtocol.DescribeDBProxiesSyncType?
+    let describeDBProxyTargetGroupsAsyncOverride: RDSClientProtocol.DescribeDBProxyTargetGroupsAsyncType?
+    let describeDBProxyTargetGroupsSyncOverride: RDSClientProtocol.DescribeDBProxyTargetGroupsSyncType?
+    let describeDBProxyTargetsAsyncOverride: RDSClientProtocol.DescribeDBProxyTargetsAsyncType?
+    let describeDBProxyTargetsSyncOverride: RDSClientProtocol.DescribeDBProxyTargetsSyncType?
     let describeDBSecurityGroupsAsyncOverride: RDSClientProtocol.DescribeDBSecurityGroupsAsyncType?
     let describeDBSecurityGroupsSyncOverride: RDSClientProtocol.DescribeDBSecurityGroupsSyncType?
     let describeDBSnapshotAttributesAsyncOverride: RDSClientProtocol.DescribeDBSnapshotAttributesAsyncType?
@@ -152,8 +174,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let describeEventSubscriptionsSyncOverride: RDSClientProtocol.DescribeEventSubscriptionsSyncType?
     let describeEventsAsyncOverride: RDSClientProtocol.DescribeEventsAsyncType?
     let describeEventsSyncOverride: RDSClientProtocol.DescribeEventsSyncType?
+    let describeExportTasksAsyncOverride: RDSClientProtocol.DescribeExportTasksAsyncType?
+    let describeExportTasksSyncOverride: RDSClientProtocol.DescribeExportTasksSyncType?
     let describeGlobalClustersAsyncOverride: RDSClientProtocol.DescribeGlobalClustersAsyncType?
     let describeGlobalClustersSyncOverride: RDSClientProtocol.DescribeGlobalClustersSyncType?
+    let describeInstallationMediaAsyncOverride: RDSClientProtocol.DescribeInstallationMediaAsyncType?
+    let describeInstallationMediaSyncOverride: RDSClientProtocol.DescribeInstallationMediaSyncType?
     let describeOptionGroupOptionsAsyncOverride: RDSClientProtocol.DescribeOptionGroupOptionsAsyncType?
     let describeOptionGroupOptionsSyncOverride: RDSClientProtocol.DescribeOptionGroupOptionsSyncType?
     let describeOptionGroupsAsyncOverride: RDSClientProtocol.DescribeOptionGroupsAsyncType?
@@ -174,8 +200,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let downloadDBLogFilePortionSyncOverride: RDSClientProtocol.DownloadDBLogFilePortionSyncType?
     let failoverDBClusterAsyncOverride: RDSClientProtocol.FailoverDBClusterAsyncType?
     let failoverDBClusterSyncOverride: RDSClientProtocol.FailoverDBClusterSyncType?
+    let importInstallationMediaAsyncOverride: RDSClientProtocol.ImportInstallationMediaAsyncType?
+    let importInstallationMediaSyncOverride: RDSClientProtocol.ImportInstallationMediaSyncType?
     let listTagsForResourceAsyncOverride: RDSClientProtocol.ListTagsForResourceAsyncType?
     let listTagsForResourceSyncOverride: RDSClientProtocol.ListTagsForResourceSyncType?
+    let modifyCertificatesAsyncOverride: RDSClientProtocol.ModifyCertificatesAsyncType?
+    let modifyCertificatesSyncOverride: RDSClientProtocol.ModifyCertificatesSyncType?
     let modifyCurrentDBClusterCapacityAsyncOverride: RDSClientProtocol.ModifyCurrentDBClusterCapacityAsyncType?
     let modifyCurrentDBClusterCapacitySyncOverride: RDSClientProtocol.ModifyCurrentDBClusterCapacitySyncType?
     let modifyDBClusterAsyncOverride: RDSClientProtocol.ModifyDBClusterAsyncType?
@@ -190,6 +220,10 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let modifyDBInstanceSyncOverride: RDSClientProtocol.ModifyDBInstanceSyncType?
     let modifyDBParameterGroupAsyncOverride: RDSClientProtocol.ModifyDBParameterGroupAsyncType?
     let modifyDBParameterGroupSyncOverride: RDSClientProtocol.ModifyDBParameterGroupSyncType?
+    let modifyDBProxyAsyncOverride: RDSClientProtocol.ModifyDBProxyAsyncType?
+    let modifyDBProxySyncOverride: RDSClientProtocol.ModifyDBProxySyncType?
+    let modifyDBProxyTargetGroupAsyncOverride: RDSClientProtocol.ModifyDBProxyTargetGroupAsyncType?
+    let modifyDBProxyTargetGroupSyncOverride: RDSClientProtocol.ModifyDBProxyTargetGroupSyncType?
     let modifyDBSnapshotAsyncOverride: RDSClientProtocol.ModifyDBSnapshotAsyncType?
     let modifyDBSnapshotSyncOverride: RDSClientProtocol.ModifyDBSnapshotSyncType?
     let modifyDBSnapshotAttributeAsyncOverride: RDSClientProtocol.ModifyDBSnapshotAttributeAsyncType?
@@ -210,6 +244,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let purchaseReservedDBInstancesOfferingSyncOverride: RDSClientProtocol.PurchaseReservedDBInstancesOfferingSyncType?
     let rebootDBInstanceAsyncOverride: RDSClientProtocol.RebootDBInstanceAsyncType?
     let rebootDBInstanceSyncOverride: RDSClientProtocol.RebootDBInstanceSyncType?
+    let registerDBProxyTargetsAsyncOverride: RDSClientProtocol.RegisterDBProxyTargetsAsyncType?
+    let registerDBProxyTargetsSyncOverride: RDSClientProtocol.RegisterDBProxyTargetsSyncType?
     let removeFromGlobalClusterAsyncOverride: RDSClientProtocol.RemoveFromGlobalClusterAsyncType?
     let removeFromGlobalClusterSyncOverride: RDSClientProtocol.RemoveFromGlobalClusterSyncType?
     let removeRoleFromDBClusterAsyncOverride: RDSClientProtocol.RemoveRoleFromDBClusterAsyncType?
@@ -244,6 +280,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let startDBClusterSyncOverride: RDSClientProtocol.StartDBClusterSyncType?
     let startDBInstanceAsyncOverride: RDSClientProtocol.StartDBInstanceAsyncType?
     let startDBInstanceSyncOverride: RDSClientProtocol.StartDBInstanceSyncType?
+    let startExportTaskAsyncOverride: RDSClientProtocol.StartExportTaskAsyncType?
+    let startExportTaskSyncOverride: RDSClientProtocol.StartExportTaskSyncType?
     let stopActivityStreamAsyncOverride: RDSClientProtocol.StopActivityStreamAsyncType?
     let stopActivityStreamSyncOverride: RDSClientProtocol.StopActivityStreamSyncType?
     let stopDBClusterAsyncOverride: RDSClientProtocol.StopDBClusterAsyncType?
@@ -270,6 +308,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             authorizeDBSecurityGroupIngressSync: RDSClientProtocol.AuthorizeDBSecurityGroupIngressSyncType? = nil,
             backtrackDBClusterAsync: RDSClientProtocol.BacktrackDBClusterAsyncType? = nil,
             backtrackDBClusterSync: RDSClientProtocol.BacktrackDBClusterSyncType? = nil,
+            cancelExportTaskAsync: RDSClientProtocol.CancelExportTaskAsyncType? = nil,
+            cancelExportTaskSync: RDSClientProtocol.CancelExportTaskSyncType? = nil,
             copyDBClusterParameterGroupAsync: RDSClientProtocol.CopyDBClusterParameterGroupAsyncType? = nil,
             copyDBClusterParameterGroupSync: RDSClientProtocol.CopyDBClusterParameterGroupSyncType? = nil,
             copyDBClusterSnapshotAsync: RDSClientProtocol.CopyDBClusterSnapshotAsyncType? = nil,
@@ -280,6 +320,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             copyDBSnapshotSync: RDSClientProtocol.CopyDBSnapshotSyncType? = nil,
             copyOptionGroupAsync: RDSClientProtocol.CopyOptionGroupAsyncType? = nil,
             copyOptionGroupSync: RDSClientProtocol.CopyOptionGroupSyncType? = nil,
+            createCustomAvailabilityZoneAsync: RDSClientProtocol.CreateCustomAvailabilityZoneAsyncType? = nil,
+            createCustomAvailabilityZoneSync: RDSClientProtocol.CreateCustomAvailabilityZoneSyncType? = nil,
             createDBClusterAsync: RDSClientProtocol.CreateDBClusterAsyncType? = nil,
             createDBClusterSync: RDSClientProtocol.CreateDBClusterSyncType? = nil,
             createDBClusterEndpointAsync: RDSClientProtocol.CreateDBClusterEndpointAsyncType? = nil,
@@ -294,6 +336,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             createDBInstanceReadReplicaSync: RDSClientProtocol.CreateDBInstanceReadReplicaSyncType? = nil,
             createDBParameterGroupAsync: RDSClientProtocol.CreateDBParameterGroupAsyncType? = nil,
             createDBParameterGroupSync: RDSClientProtocol.CreateDBParameterGroupSyncType? = nil,
+            createDBProxyAsync: RDSClientProtocol.CreateDBProxyAsyncType? = nil,
+            createDBProxySync: RDSClientProtocol.CreateDBProxySyncType? = nil,
             createDBSecurityGroupAsync: RDSClientProtocol.CreateDBSecurityGroupAsyncType? = nil,
             createDBSecurityGroupSync: RDSClientProtocol.CreateDBSecurityGroupSyncType? = nil,
             createDBSnapshotAsync: RDSClientProtocol.CreateDBSnapshotAsyncType? = nil,
@@ -306,6 +350,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             createGlobalClusterSync: RDSClientProtocol.CreateGlobalClusterSyncType? = nil,
             createOptionGroupAsync: RDSClientProtocol.CreateOptionGroupAsyncType? = nil,
             createOptionGroupSync: RDSClientProtocol.CreateOptionGroupSyncType? = nil,
+            deleteCustomAvailabilityZoneAsync: RDSClientProtocol.DeleteCustomAvailabilityZoneAsyncType? = nil,
+            deleteCustomAvailabilityZoneSync: RDSClientProtocol.DeleteCustomAvailabilityZoneSyncType? = nil,
             deleteDBClusterAsync: RDSClientProtocol.DeleteDBClusterAsyncType? = nil,
             deleteDBClusterSync: RDSClientProtocol.DeleteDBClusterSyncType? = nil,
             deleteDBClusterEndpointAsync: RDSClientProtocol.DeleteDBClusterEndpointAsyncType? = nil,
@@ -320,6 +366,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             deleteDBInstanceAutomatedBackupSync: RDSClientProtocol.DeleteDBInstanceAutomatedBackupSyncType? = nil,
             deleteDBParameterGroupAsync: RDSClientProtocol.DeleteDBParameterGroupAsyncType? = nil,
             deleteDBParameterGroupSync: RDSClientProtocol.DeleteDBParameterGroupSyncType? = nil,
+            deleteDBProxyAsync: RDSClientProtocol.DeleteDBProxyAsyncType? = nil,
+            deleteDBProxySync: RDSClientProtocol.DeleteDBProxySyncType? = nil,
             deleteDBSecurityGroupAsync: RDSClientProtocol.DeleteDBSecurityGroupAsyncType? = nil,
             deleteDBSecurityGroupSync: RDSClientProtocol.DeleteDBSecurityGroupSyncType? = nil,
             deleteDBSnapshotAsync: RDSClientProtocol.DeleteDBSnapshotAsyncType? = nil,
@@ -330,12 +378,18 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             deleteEventSubscriptionSync: RDSClientProtocol.DeleteEventSubscriptionSyncType? = nil,
             deleteGlobalClusterAsync: RDSClientProtocol.DeleteGlobalClusterAsyncType? = nil,
             deleteGlobalClusterSync: RDSClientProtocol.DeleteGlobalClusterSyncType? = nil,
+            deleteInstallationMediaAsync: RDSClientProtocol.DeleteInstallationMediaAsyncType? = nil,
+            deleteInstallationMediaSync: RDSClientProtocol.DeleteInstallationMediaSyncType? = nil,
             deleteOptionGroupAsync: RDSClientProtocol.DeleteOptionGroupAsyncType? = nil,
             deleteOptionGroupSync: RDSClientProtocol.DeleteOptionGroupSyncType? = nil,
+            deregisterDBProxyTargetsAsync: RDSClientProtocol.DeregisterDBProxyTargetsAsyncType? = nil,
+            deregisterDBProxyTargetsSync: RDSClientProtocol.DeregisterDBProxyTargetsSyncType? = nil,
             describeAccountAttributesAsync: RDSClientProtocol.DescribeAccountAttributesAsyncType? = nil,
             describeAccountAttributesSync: RDSClientProtocol.DescribeAccountAttributesSyncType? = nil,
             describeCertificatesAsync: RDSClientProtocol.DescribeCertificatesAsyncType? = nil,
             describeCertificatesSync: RDSClientProtocol.DescribeCertificatesSyncType? = nil,
+            describeCustomAvailabilityZonesAsync: RDSClientProtocol.DescribeCustomAvailabilityZonesAsyncType? = nil,
+            describeCustomAvailabilityZonesSync: RDSClientProtocol.DescribeCustomAvailabilityZonesSyncType? = nil,
             describeDBClusterBacktracksAsync: RDSClientProtocol.DescribeDBClusterBacktracksAsyncType? = nil,
             describeDBClusterBacktracksSync: RDSClientProtocol.DescribeDBClusterBacktracksSyncType? = nil,
             describeDBClusterEndpointsAsync: RDSClientProtocol.DescribeDBClusterEndpointsAsyncType? = nil,
@@ -362,6 +416,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             describeDBParameterGroupsSync: RDSClientProtocol.DescribeDBParameterGroupsSyncType? = nil,
             describeDBParametersAsync: RDSClientProtocol.DescribeDBParametersAsyncType? = nil,
             describeDBParametersSync: RDSClientProtocol.DescribeDBParametersSyncType? = nil,
+            describeDBProxiesAsync: RDSClientProtocol.DescribeDBProxiesAsyncType? = nil,
+            describeDBProxiesSync: RDSClientProtocol.DescribeDBProxiesSyncType? = nil,
+            describeDBProxyTargetGroupsAsync: RDSClientProtocol.DescribeDBProxyTargetGroupsAsyncType? = nil,
+            describeDBProxyTargetGroupsSync: RDSClientProtocol.DescribeDBProxyTargetGroupsSyncType? = nil,
+            describeDBProxyTargetsAsync: RDSClientProtocol.DescribeDBProxyTargetsAsyncType? = nil,
+            describeDBProxyTargetsSync: RDSClientProtocol.DescribeDBProxyTargetsSyncType? = nil,
             describeDBSecurityGroupsAsync: RDSClientProtocol.DescribeDBSecurityGroupsAsyncType? = nil,
             describeDBSecurityGroupsSync: RDSClientProtocol.DescribeDBSecurityGroupsSyncType? = nil,
             describeDBSnapshotAttributesAsync: RDSClientProtocol.DescribeDBSnapshotAttributesAsyncType? = nil,
@@ -380,8 +440,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             describeEventSubscriptionsSync: RDSClientProtocol.DescribeEventSubscriptionsSyncType? = nil,
             describeEventsAsync: RDSClientProtocol.DescribeEventsAsyncType? = nil,
             describeEventsSync: RDSClientProtocol.DescribeEventsSyncType? = nil,
+            describeExportTasksAsync: RDSClientProtocol.DescribeExportTasksAsyncType? = nil,
+            describeExportTasksSync: RDSClientProtocol.DescribeExportTasksSyncType? = nil,
             describeGlobalClustersAsync: RDSClientProtocol.DescribeGlobalClustersAsyncType? = nil,
             describeGlobalClustersSync: RDSClientProtocol.DescribeGlobalClustersSyncType? = nil,
+            describeInstallationMediaAsync: RDSClientProtocol.DescribeInstallationMediaAsyncType? = nil,
+            describeInstallationMediaSync: RDSClientProtocol.DescribeInstallationMediaSyncType? = nil,
             describeOptionGroupOptionsAsync: RDSClientProtocol.DescribeOptionGroupOptionsAsyncType? = nil,
             describeOptionGroupOptionsSync: RDSClientProtocol.DescribeOptionGroupOptionsSyncType? = nil,
             describeOptionGroupsAsync: RDSClientProtocol.DescribeOptionGroupsAsyncType? = nil,
@@ -402,8 +466,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             downloadDBLogFilePortionSync: RDSClientProtocol.DownloadDBLogFilePortionSyncType? = nil,
             failoverDBClusterAsync: RDSClientProtocol.FailoverDBClusterAsyncType? = nil,
             failoverDBClusterSync: RDSClientProtocol.FailoverDBClusterSyncType? = nil,
+            importInstallationMediaAsync: RDSClientProtocol.ImportInstallationMediaAsyncType? = nil,
+            importInstallationMediaSync: RDSClientProtocol.ImportInstallationMediaSyncType? = nil,
             listTagsForResourceAsync: RDSClientProtocol.ListTagsForResourceAsyncType? = nil,
             listTagsForResourceSync: RDSClientProtocol.ListTagsForResourceSyncType? = nil,
+            modifyCertificatesAsync: RDSClientProtocol.ModifyCertificatesAsyncType? = nil,
+            modifyCertificatesSync: RDSClientProtocol.ModifyCertificatesSyncType? = nil,
             modifyCurrentDBClusterCapacityAsync: RDSClientProtocol.ModifyCurrentDBClusterCapacityAsyncType? = nil,
             modifyCurrentDBClusterCapacitySync: RDSClientProtocol.ModifyCurrentDBClusterCapacitySyncType? = nil,
             modifyDBClusterAsync: RDSClientProtocol.ModifyDBClusterAsyncType? = nil,
@@ -418,6 +486,10 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             modifyDBInstanceSync: RDSClientProtocol.ModifyDBInstanceSyncType? = nil,
             modifyDBParameterGroupAsync: RDSClientProtocol.ModifyDBParameterGroupAsyncType? = nil,
             modifyDBParameterGroupSync: RDSClientProtocol.ModifyDBParameterGroupSyncType? = nil,
+            modifyDBProxyAsync: RDSClientProtocol.ModifyDBProxyAsyncType? = nil,
+            modifyDBProxySync: RDSClientProtocol.ModifyDBProxySyncType? = nil,
+            modifyDBProxyTargetGroupAsync: RDSClientProtocol.ModifyDBProxyTargetGroupAsyncType? = nil,
+            modifyDBProxyTargetGroupSync: RDSClientProtocol.ModifyDBProxyTargetGroupSyncType? = nil,
             modifyDBSnapshotAsync: RDSClientProtocol.ModifyDBSnapshotAsyncType? = nil,
             modifyDBSnapshotSync: RDSClientProtocol.ModifyDBSnapshotSyncType? = nil,
             modifyDBSnapshotAttributeAsync: RDSClientProtocol.ModifyDBSnapshotAttributeAsyncType? = nil,
@@ -438,6 +510,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             purchaseReservedDBInstancesOfferingSync: RDSClientProtocol.PurchaseReservedDBInstancesOfferingSyncType? = nil,
             rebootDBInstanceAsync: RDSClientProtocol.RebootDBInstanceAsyncType? = nil,
             rebootDBInstanceSync: RDSClientProtocol.RebootDBInstanceSyncType? = nil,
+            registerDBProxyTargetsAsync: RDSClientProtocol.RegisterDBProxyTargetsAsyncType? = nil,
+            registerDBProxyTargetsSync: RDSClientProtocol.RegisterDBProxyTargetsSyncType? = nil,
             removeFromGlobalClusterAsync: RDSClientProtocol.RemoveFromGlobalClusterAsyncType? = nil,
             removeFromGlobalClusterSync: RDSClientProtocol.RemoveFromGlobalClusterSyncType? = nil,
             removeRoleFromDBClusterAsync: RDSClientProtocol.RemoveRoleFromDBClusterAsyncType? = nil,
@@ -472,6 +546,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             startDBClusterSync: RDSClientProtocol.StartDBClusterSyncType? = nil,
             startDBInstanceAsync: RDSClientProtocol.StartDBInstanceAsyncType? = nil,
             startDBInstanceSync: RDSClientProtocol.StartDBInstanceSyncType? = nil,
+            startExportTaskAsync: RDSClientProtocol.StartExportTaskAsyncType? = nil,
+            startExportTaskSync: RDSClientProtocol.StartExportTaskSyncType? = nil,
             stopActivityStreamAsync: RDSClientProtocol.StopActivityStreamAsyncType? = nil,
             stopActivityStreamSync: RDSClientProtocol.StopActivityStreamSyncType? = nil,
             stopDBClusterAsync: RDSClientProtocol.StopDBClusterAsyncType? = nil,
@@ -493,6 +569,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.authorizeDBSecurityGroupIngressSyncOverride = authorizeDBSecurityGroupIngressSync
         self.backtrackDBClusterAsyncOverride = backtrackDBClusterAsync
         self.backtrackDBClusterSyncOverride = backtrackDBClusterSync
+        self.cancelExportTaskAsyncOverride = cancelExportTaskAsync
+        self.cancelExportTaskSyncOverride = cancelExportTaskSync
         self.copyDBClusterParameterGroupAsyncOverride = copyDBClusterParameterGroupAsync
         self.copyDBClusterParameterGroupSyncOverride = copyDBClusterParameterGroupSync
         self.copyDBClusterSnapshotAsyncOverride = copyDBClusterSnapshotAsync
@@ -503,6 +581,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.copyDBSnapshotSyncOverride = copyDBSnapshotSync
         self.copyOptionGroupAsyncOverride = copyOptionGroupAsync
         self.copyOptionGroupSyncOverride = copyOptionGroupSync
+        self.createCustomAvailabilityZoneAsyncOverride = createCustomAvailabilityZoneAsync
+        self.createCustomAvailabilityZoneSyncOverride = createCustomAvailabilityZoneSync
         self.createDBClusterAsyncOverride = createDBClusterAsync
         self.createDBClusterSyncOverride = createDBClusterSync
         self.createDBClusterEndpointAsyncOverride = createDBClusterEndpointAsync
@@ -517,6 +597,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.createDBInstanceReadReplicaSyncOverride = createDBInstanceReadReplicaSync
         self.createDBParameterGroupAsyncOverride = createDBParameterGroupAsync
         self.createDBParameterGroupSyncOverride = createDBParameterGroupSync
+        self.createDBProxyAsyncOverride = createDBProxyAsync
+        self.createDBProxySyncOverride = createDBProxySync
         self.createDBSecurityGroupAsyncOverride = createDBSecurityGroupAsync
         self.createDBSecurityGroupSyncOverride = createDBSecurityGroupSync
         self.createDBSnapshotAsyncOverride = createDBSnapshotAsync
@@ -529,6 +611,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.createGlobalClusterSyncOverride = createGlobalClusterSync
         self.createOptionGroupAsyncOverride = createOptionGroupAsync
         self.createOptionGroupSyncOverride = createOptionGroupSync
+        self.deleteCustomAvailabilityZoneAsyncOverride = deleteCustomAvailabilityZoneAsync
+        self.deleteCustomAvailabilityZoneSyncOverride = deleteCustomAvailabilityZoneSync
         self.deleteDBClusterAsyncOverride = deleteDBClusterAsync
         self.deleteDBClusterSyncOverride = deleteDBClusterSync
         self.deleteDBClusterEndpointAsyncOverride = deleteDBClusterEndpointAsync
@@ -543,6 +627,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.deleteDBInstanceAutomatedBackupSyncOverride = deleteDBInstanceAutomatedBackupSync
         self.deleteDBParameterGroupAsyncOverride = deleteDBParameterGroupAsync
         self.deleteDBParameterGroupSyncOverride = deleteDBParameterGroupSync
+        self.deleteDBProxyAsyncOverride = deleteDBProxyAsync
+        self.deleteDBProxySyncOverride = deleteDBProxySync
         self.deleteDBSecurityGroupAsyncOverride = deleteDBSecurityGroupAsync
         self.deleteDBSecurityGroupSyncOverride = deleteDBSecurityGroupSync
         self.deleteDBSnapshotAsyncOverride = deleteDBSnapshotAsync
@@ -553,12 +639,18 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.deleteEventSubscriptionSyncOverride = deleteEventSubscriptionSync
         self.deleteGlobalClusterAsyncOverride = deleteGlobalClusterAsync
         self.deleteGlobalClusterSyncOverride = deleteGlobalClusterSync
+        self.deleteInstallationMediaAsyncOverride = deleteInstallationMediaAsync
+        self.deleteInstallationMediaSyncOverride = deleteInstallationMediaSync
         self.deleteOptionGroupAsyncOverride = deleteOptionGroupAsync
         self.deleteOptionGroupSyncOverride = deleteOptionGroupSync
+        self.deregisterDBProxyTargetsAsyncOverride = deregisterDBProxyTargetsAsync
+        self.deregisterDBProxyTargetsSyncOverride = deregisterDBProxyTargetsSync
         self.describeAccountAttributesAsyncOverride = describeAccountAttributesAsync
         self.describeAccountAttributesSyncOverride = describeAccountAttributesSync
         self.describeCertificatesAsyncOverride = describeCertificatesAsync
         self.describeCertificatesSyncOverride = describeCertificatesSync
+        self.describeCustomAvailabilityZonesAsyncOverride = describeCustomAvailabilityZonesAsync
+        self.describeCustomAvailabilityZonesSyncOverride = describeCustomAvailabilityZonesSync
         self.describeDBClusterBacktracksAsyncOverride = describeDBClusterBacktracksAsync
         self.describeDBClusterBacktracksSyncOverride = describeDBClusterBacktracksSync
         self.describeDBClusterEndpointsAsyncOverride = describeDBClusterEndpointsAsync
@@ -585,6 +677,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.describeDBParameterGroupsSyncOverride = describeDBParameterGroupsSync
         self.describeDBParametersAsyncOverride = describeDBParametersAsync
         self.describeDBParametersSyncOverride = describeDBParametersSync
+        self.describeDBProxiesAsyncOverride = describeDBProxiesAsync
+        self.describeDBProxiesSyncOverride = describeDBProxiesSync
+        self.describeDBProxyTargetGroupsAsyncOverride = describeDBProxyTargetGroupsAsync
+        self.describeDBProxyTargetGroupsSyncOverride = describeDBProxyTargetGroupsSync
+        self.describeDBProxyTargetsAsyncOverride = describeDBProxyTargetsAsync
+        self.describeDBProxyTargetsSyncOverride = describeDBProxyTargetsSync
         self.describeDBSecurityGroupsAsyncOverride = describeDBSecurityGroupsAsync
         self.describeDBSecurityGroupsSyncOverride = describeDBSecurityGroupsSync
         self.describeDBSnapshotAttributesAsyncOverride = describeDBSnapshotAttributesAsync
@@ -603,8 +701,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.describeEventSubscriptionsSyncOverride = describeEventSubscriptionsSync
         self.describeEventsAsyncOverride = describeEventsAsync
         self.describeEventsSyncOverride = describeEventsSync
+        self.describeExportTasksAsyncOverride = describeExportTasksAsync
+        self.describeExportTasksSyncOverride = describeExportTasksSync
         self.describeGlobalClustersAsyncOverride = describeGlobalClustersAsync
         self.describeGlobalClustersSyncOverride = describeGlobalClustersSync
+        self.describeInstallationMediaAsyncOverride = describeInstallationMediaAsync
+        self.describeInstallationMediaSyncOverride = describeInstallationMediaSync
         self.describeOptionGroupOptionsAsyncOverride = describeOptionGroupOptionsAsync
         self.describeOptionGroupOptionsSyncOverride = describeOptionGroupOptionsSync
         self.describeOptionGroupsAsyncOverride = describeOptionGroupsAsync
@@ -625,8 +727,12 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.downloadDBLogFilePortionSyncOverride = downloadDBLogFilePortionSync
         self.failoverDBClusterAsyncOverride = failoverDBClusterAsync
         self.failoverDBClusterSyncOverride = failoverDBClusterSync
+        self.importInstallationMediaAsyncOverride = importInstallationMediaAsync
+        self.importInstallationMediaSyncOverride = importInstallationMediaSync
         self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
         self.listTagsForResourceSyncOverride = listTagsForResourceSync
+        self.modifyCertificatesAsyncOverride = modifyCertificatesAsync
+        self.modifyCertificatesSyncOverride = modifyCertificatesSync
         self.modifyCurrentDBClusterCapacityAsyncOverride = modifyCurrentDBClusterCapacityAsync
         self.modifyCurrentDBClusterCapacitySyncOverride = modifyCurrentDBClusterCapacitySync
         self.modifyDBClusterAsyncOverride = modifyDBClusterAsync
@@ -641,6 +747,10 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.modifyDBInstanceSyncOverride = modifyDBInstanceSync
         self.modifyDBParameterGroupAsyncOverride = modifyDBParameterGroupAsync
         self.modifyDBParameterGroupSyncOverride = modifyDBParameterGroupSync
+        self.modifyDBProxyAsyncOverride = modifyDBProxyAsync
+        self.modifyDBProxySyncOverride = modifyDBProxySync
+        self.modifyDBProxyTargetGroupAsyncOverride = modifyDBProxyTargetGroupAsync
+        self.modifyDBProxyTargetGroupSyncOverride = modifyDBProxyTargetGroupSync
         self.modifyDBSnapshotAsyncOverride = modifyDBSnapshotAsync
         self.modifyDBSnapshotSyncOverride = modifyDBSnapshotSync
         self.modifyDBSnapshotAttributeAsyncOverride = modifyDBSnapshotAttributeAsync
@@ -661,6 +771,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.purchaseReservedDBInstancesOfferingSyncOverride = purchaseReservedDBInstancesOfferingSync
         self.rebootDBInstanceAsyncOverride = rebootDBInstanceAsync
         self.rebootDBInstanceSyncOverride = rebootDBInstanceSync
+        self.registerDBProxyTargetsAsyncOverride = registerDBProxyTargetsAsync
+        self.registerDBProxyTargetsSyncOverride = registerDBProxyTargetsSync
         self.removeFromGlobalClusterAsyncOverride = removeFromGlobalClusterAsync
         self.removeFromGlobalClusterSyncOverride = removeFromGlobalClusterSync
         self.removeRoleFromDBClusterAsyncOverride = removeRoleFromDBClusterAsync
@@ -695,6 +807,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.startDBClusterSyncOverride = startDBClusterSync
         self.startDBInstanceAsyncOverride = startDBInstanceAsync
         self.startDBInstanceSyncOverride = startDBInstanceSync
+        self.startExportTaskAsyncOverride = startExportTaskAsync
+        self.startExportTaskSyncOverride = startExportTaskSync
         self.stopActivityStreamAsyncOverride = stopActivityStreamAsync
         self.stopActivityStreamSyncOverride = stopActivityStreamSync
         self.stopDBClusterAsyncOverride = stopDBClusterAsync
@@ -940,6 +1054,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the CancelExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelExportTaskMessage object being passed to this operation.
+         - completion: The ExportTaskForCancelExportTask object or an error will be passed to this 
+           callback when the operation is complete. The ExportTaskForCancelExportTask
+           object will be validated before being returned to caller.
+           The possible errors are: exportTaskNotFound, invalidExportTaskState.
+     */
+    public func cancelExportTaskAsync(input: RDSModel.CancelExportTaskMessage, completion: @escaping (HTTPResult<RDSModel.ExportTaskForCancelExportTask>) -> ()) throws {
+        if let cancelExportTaskAsyncOverride = cancelExportTaskAsyncOverride {
+            return try cancelExportTaskAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CancelExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelExportTaskMessage object being passed to this operation.
+     - Returns: The ExportTaskForCancelExportTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportTaskNotFound, invalidExportTaskState.
+     */
+    public func cancelExportTaskSync(input: RDSModel.CancelExportTaskMessage) throws -> RDSModel.ExportTaskForCancelExportTask {
+        if let cancelExportTaskSyncOverride = cancelExportTaskSyncOverride {
+            return try cancelExportTaskSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the CopyDBClusterParameterGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1109,6 +1258,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func copyOptionGroupSync(input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
         if let copyOptionGroupSyncOverride = copyOptionGroupSyncOverride {
             return try copyOptionGroupSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateCustomAvailabilityZone operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
+         - completion: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object or an error will be passed to this 
+           callback when the operation is complete. The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
+     */
+    public func createCustomAvailabilityZoneAsync(input: RDSModel.CreateCustomAvailabilityZoneMessage, completion: @escaping (HTTPResult<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone>) -> ()) throws {
+        if let createCustomAvailabilityZoneAsyncOverride = createCustomAvailabilityZoneAsyncOverride {
+            return try createCustomAvailabilityZoneAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateCustomAvailabilityZone operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
+     - Returns: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
+     */
+    public func createCustomAvailabilityZoneSync(input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
+        if let createCustomAvailabilityZoneSyncOverride = createCustomAvailabilityZoneSyncOverride {
+            return try createCustomAvailabilityZoneSyncOverride(input)
         }
 
         throw error
@@ -1360,6 +1544,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the CreateDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDBProxyRequest object being passed to this operation.
+         - completion: The CreateDBProxyResponseForCreateDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The CreateDBProxyResponseForCreateDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
+     */
+    public func createDBProxyAsync(input: RDSModel.CreateDBProxyRequest, completion: @escaping (HTTPResult<RDSModel.CreateDBProxyResponseForCreateDBProxy>) -> ()) throws {
+        if let createDBProxyAsyncOverride = createDBProxyAsyncOverride {
+            return try createDBProxyAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the CreateDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDBProxyRequest object being passed to this operation.
+     - Returns: The CreateDBProxyResponseForCreateDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
+     */
+    public func createDBProxySync(input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
+        if let createDBProxySyncOverride = createDBProxySyncOverride {
+            return try createDBProxySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the CreateDBSecurityGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1564,6 +1783,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func createOptionGroupSync(input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
         if let createOptionGroupSyncOverride = createOptionGroupSyncOverride {
             return try createOptionGroupSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteCustomAvailabilityZone operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
+         - completion: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object or an error will be passed to this 
+           callback when the operation is complete. The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
+     */
+    public func deleteCustomAvailabilityZoneAsync(input: RDSModel.DeleteCustomAvailabilityZoneMessage, completion: @escaping (HTTPResult<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone>) -> ()) throws {
+        if let deleteCustomAvailabilityZoneAsyncOverride = deleteCustomAvailabilityZoneAsyncOverride {
+            return try deleteCustomAvailabilityZoneAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteCustomAvailabilityZone operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
+     - Returns: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
+     */
+    public func deleteCustomAvailabilityZoneSync(input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
+        if let deleteCustomAvailabilityZoneSyncOverride = deleteCustomAvailabilityZoneSyncOverride {
+            return try deleteCustomAvailabilityZoneSyncOverride(input)
         }
 
         throw error
@@ -1809,6 +2063,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the DeleteDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyRequest object being passed to this operation.
+         - completion: The DeleteDBProxyResponseForDeleteDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The DeleteDBProxyResponseForDeleteDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, invalidDBProxyState.
+     */
+    public func deleteDBProxyAsync(input: RDSModel.DeleteDBProxyRequest, completion: @escaping (HTTPResult<RDSModel.DeleteDBProxyResponseForDeleteDBProxy>) -> ()) throws {
+        if let deleteDBProxyAsyncOverride = deleteDBProxyAsyncOverride {
+            return try deleteDBProxyAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyRequest object being passed to this operation.
+     - Returns: The DeleteDBProxyResponseForDeleteDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, invalidDBProxyState.
+     */
+    public func deleteDBProxySync(input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
+        if let deleteDBProxySyncOverride = deleteDBProxySyncOverride {
+            return try deleteDBProxySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DeleteDBSecurityGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1978,6 +2267,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the DeleteInstallationMedia operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
+         - completion: The InstallationMediaForDeleteInstallationMedia object or an error will be passed to this 
+           callback when the operation is complete. The InstallationMediaForDeleteInstallationMedia
+           object will be validated before being returned to caller.
+           The possible errors are: installationMediaNotFound.
+     */
+    public func deleteInstallationMediaAsync(input: RDSModel.DeleteInstallationMediaMessage, completion: @escaping (HTTPResult<RDSModel.InstallationMediaForDeleteInstallationMedia>) -> ()) throws {
+        if let deleteInstallationMediaAsyncOverride = deleteInstallationMediaAsyncOverride {
+            return try deleteInstallationMediaAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteInstallationMedia operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
+     - Returns: The InstallationMediaForDeleteInstallationMedia object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: installationMediaNotFound.
+     */
+    public func deleteInstallationMediaSync(input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
+        if let deleteInstallationMediaSyncOverride = deleteInstallationMediaSyncOverride {
+            return try deleteInstallationMediaSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DeleteOptionGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2004,6 +2328,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func deleteOptionGroupSync(input: RDSModel.DeleteOptionGroupMessage) throws {
         if let deleteOptionGroupSyncOverride = deleteOptionGroupSyncOverride {
             return try deleteOptionGroupSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeregisterDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterDBProxyTargetsRequest object being passed to this operation.
+         - completion: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    public func deregisterDBProxyTargetsAsync(input: RDSModel.DeregisterDBProxyTargetsRequest, completion: @escaping (HTTPResult<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets>) -> ()) throws {
+        if let deregisterDBProxyTargetsAsyncOverride = deregisterDBProxyTargetsAsyncOverride {
+            return try deregisterDBProxyTargetsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeregisterDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    public func deregisterDBProxyTargetsSync(input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
+        if let deregisterDBProxyTargetsSyncOverride = deregisterDBProxyTargetsSyncOverride {
+            return try deregisterDBProxyTargetsSyncOverride(input)
         }
 
         throw error
@@ -2072,6 +2431,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func describeCertificatesSync(input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates {
         if let describeCertificatesSyncOverride = describeCertificatesSyncOverride {
             return try describeCertificatesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeCustomAvailabilityZones operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
+         - completion: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object or an error will be passed to this 
+           callback when the operation is complete. The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneNotFound.
+     */
+    public func describeCustomAvailabilityZonesAsync(input: RDSModel.DescribeCustomAvailabilityZonesMessage, completion: @escaping (HTTPResult<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones>) -> ()) throws {
+        if let describeCustomAvailabilityZonesAsyncOverride = describeCustomAvailabilityZonesAsyncOverride {
+            return try describeCustomAvailabilityZonesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeCustomAvailabilityZones operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
+     - Returns: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneNotFound.
+     */
+    public func describeCustomAvailabilityZonesSync(input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
+        if let describeCustomAvailabilityZonesSyncOverride = describeCustomAvailabilityZonesSyncOverride {
+            return try describeCustomAvailabilityZonesSyncOverride(input)
         }
 
         throw error
@@ -2531,6 +2925,111 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the DescribeDBProxies operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxiesRequest object being passed to this operation.
+         - completion: The DescribeDBProxiesResponseForDescribeDBProxies object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxiesResponseForDescribeDBProxies
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound.
+     */
+    public func describeDBProxiesAsync(input: RDSModel.DescribeDBProxiesRequest, completion: @escaping (HTTPResult<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies>) -> ()) throws {
+        if let describeDBProxiesAsyncOverride = describeDBProxiesAsyncOverride {
+            return try describeDBProxiesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeDBProxies operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxiesRequest object being passed to this operation.
+     - Returns: The DescribeDBProxiesResponseForDescribeDBProxies object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound.
+     */
+    public func describeDBProxiesSync(input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
+        if let describeDBProxiesSyncOverride = describeDBProxiesSyncOverride {
+            return try describeDBProxiesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeDBProxyTargetGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetGroupsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyTargetGroupNotFound.
+     */
+    public func describeDBProxyTargetGroupsAsync(input: RDSModel.DescribeDBProxyTargetGroupsRequest, completion: @escaping (HTTPResult<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups>) -> ()) throws {
+        if let describeDBProxyTargetGroupsAsyncOverride = describeDBProxyTargetGroupsAsyncOverride {
+            return try describeDBProxyTargetGroupsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeDBProxyTargetGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetGroupsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyTargetGroupNotFound.
+     */
+    public func describeDBProxyTargetGroupsSync(input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
+        if let describeDBProxyTargetGroupsSyncOverride = describeDBProxyTargetGroupsSyncOverride {
+            return try describeDBProxyTargetGroupsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    public func describeDBProxyTargetsAsync(input: RDSModel.DescribeDBProxyTargetsRequest, completion: @escaping (HTTPResult<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets>) -> ()) throws {
+        if let describeDBProxyTargetsAsyncOverride = describeDBProxyTargetsAsyncOverride {
+            return try describeDBProxyTargetsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    public func describeDBProxyTargetsSync(input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
+        if let describeDBProxyTargetsSyncOverride = describeDBProxyTargetsSyncOverride {
+            return try describeDBProxyTargetsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DescribeDBSecurityGroups operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2838,6 +3337,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the DescribeExportTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksMessage object being passed to this operation.
+         - completion: The ExportTasksMessageForDescribeExportTasks object or an error will be passed to this 
+           callback when the operation is complete. The ExportTasksMessageForDescribeExportTasks
+           object will be validated before being returned to caller.
+           The possible errors are: exportTaskNotFound.
+     */
+    public func describeExportTasksAsync(input: RDSModel.DescribeExportTasksMessage, completion: @escaping (HTTPResult<RDSModel.ExportTasksMessageForDescribeExportTasks>) -> ()) throws {
+        if let describeExportTasksAsyncOverride = describeExportTasksAsyncOverride {
+            return try describeExportTasksAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeExportTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksMessage object being passed to this operation.
+     - Returns: The ExportTasksMessageForDescribeExportTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportTaskNotFound.
+     */
+    public func describeExportTasksSync(input: RDSModel.DescribeExportTasksMessage) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
+        if let describeExportTasksSyncOverride = describeExportTasksSyncOverride {
+            return try describeExportTasksSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DescribeGlobalClusters operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2867,6 +3401,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func describeGlobalClustersSync(input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
         if let describeGlobalClustersSyncOverride = describeGlobalClustersSyncOverride {
             return try describeGlobalClustersSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeInstallationMedia operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
+         - completion: The InstallationMediaMessageForDescribeInstallationMedia object or an error will be passed to this 
+           callback when the operation is complete. The InstallationMediaMessageForDescribeInstallationMedia
+           object will be validated before being returned to caller.
+           The possible errors are: installationMediaNotFound.
+     */
+    public func describeInstallationMediaAsync(input: RDSModel.DescribeInstallationMediaMessage, completion: @escaping (HTTPResult<RDSModel.InstallationMediaMessageForDescribeInstallationMedia>) -> ()) throws {
+        if let describeInstallationMediaAsyncOverride = describeInstallationMediaAsyncOverride {
+            return try describeInstallationMediaAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeInstallationMedia operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
+     - Returns: The InstallationMediaMessageForDescribeInstallationMedia object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: installationMediaNotFound.
+     */
+    public func describeInstallationMediaSync(input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
+        if let describeInstallationMediaSyncOverride = describeInstallationMediaSyncOverride {
+            return try describeInstallationMediaSyncOverride(input)
         }
 
         throw error
@@ -3217,6 +3786,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the ImportInstallationMedia operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
+         - completion: The InstallationMediaForImportInstallationMedia object or an error will be passed to this 
+           callback when the operation is complete. The InstallationMediaForImportInstallationMedia
+           object will be validated before being returned to caller.
+           The possible errors are: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
+     */
+    public func importInstallationMediaAsync(input: RDSModel.ImportInstallationMediaMessage, completion: @escaping (HTTPResult<RDSModel.InstallationMediaForImportInstallationMedia>) -> ()) throws {
+        if let importInstallationMediaAsyncOverride = importInstallationMediaAsyncOverride {
+            return try importInstallationMediaAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ImportInstallationMedia operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
+     - Returns: The InstallationMediaForImportInstallationMedia object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
+     */
+    public func importInstallationMediaSync(input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
+        if let importInstallationMediaSyncOverride = importInstallationMediaSyncOverride {
+            return try importInstallationMediaSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3246,6 +3850,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func listTagsForResourceSync(input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
             return try listTagsForResourceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyCertificates operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCertificatesMessage object being passed to this operation.
+         - completion: The ModifyCertificatesResultForModifyCertificates object or an error will be passed to this 
+           callback when the operation is complete. The ModifyCertificatesResultForModifyCertificates
+           object will be validated before being returned to caller.
+           The possible errors are: certificateNotFound.
+     */
+    public func modifyCertificatesAsync(input: RDSModel.ModifyCertificatesMessage, completion: @escaping (HTTPResult<RDSModel.ModifyCertificatesResultForModifyCertificates>) -> ()) throws {
+        if let modifyCertificatesAsyncOverride = modifyCertificatesAsyncOverride {
+            return try modifyCertificatesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyCertificates operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCertificatesMessage object being passed to this operation.
+     - Returns: The ModifyCertificatesResultForModifyCertificates object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: certificateNotFound.
+     */
+    public func modifyCertificatesSync(input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
+        if let modifyCertificatesSyncOverride = modifyCertificatesSyncOverride {
+            return try modifyCertificatesSyncOverride(input)
         }
 
         throw error
@@ -3491,6 +4130,76 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func modifyDBParameterGroupSync(input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
         if let modifyDBParameterGroupSyncOverride = modifyDBParameterGroupSyncOverride {
             return try modifyDBParameterGroupSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyRequest object being passed to this operation.
+         - completion: The ModifyDBProxyResponseForModifyDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyResponseForModifyDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
+     */
+    public func modifyDBProxyAsync(input: RDSModel.ModifyDBProxyRequest, completion: @escaping (HTTPResult<RDSModel.ModifyDBProxyResponseForModifyDBProxy>) -> ()) throws {
+        if let modifyDBProxyAsyncOverride = modifyDBProxyAsyncOverride {
+            return try modifyDBProxyAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyResponseForModifyDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
+     */
+    public func modifyDBProxySync(input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
+        if let modifyDBProxySyncOverride = modifyDBProxySyncOverride {
+            return try modifyDBProxySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyDBProxyTargetGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyTargetGroupRequest object being passed to this operation.
+         - completion: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound.
+     */
+    public func modifyDBProxyTargetGroupAsync(input: RDSModel.ModifyDBProxyTargetGroupRequest, completion: @escaping (HTTPResult<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup>) -> ()) throws {
+        if let modifyDBProxyTargetGroupAsyncOverride = modifyDBProxyTargetGroupAsyncOverride {
+            return try modifyDBProxyTargetGroupAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the ModifyDBProxyTargetGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyTargetGroupRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
+     */
+    public func modifyDBProxyTargetGroupSync(input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
+        if let modifyDBProxyTargetGroupSyncOverride = modifyDBProxyTargetGroupSyncOverride {
+            return try modifyDBProxyTargetGroupSyncOverride(input)
         }
 
         throw error
@@ -3841,6 +4550,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func rebootDBInstanceSync(input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
         if let rebootDBInstanceSyncOverride = rebootDBInstanceSyncOverride {
             return try rebootDBInstanceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the RegisterDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterDBProxyTargetsRequest object being passed to this operation.
+         - completion: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    public func registerDBProxyTargetsAsync(input: RDSModel.RegisterDBProxyTargetsRequest, completion: @escaping (HTTPResult<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets>) -> ()) throws {
+        if let registerDBProxyTargetsAsyncOverride = registerDBProxyTargetsAsyncOverride {
+            return try registerDBProxyTargetsAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the RegisterDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    public func registerDBProxyTargetsSync(input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
+        if let registerDBProxyTargetsSyncOverride = registerDBProxyTargetsSyncOverride {
+            return try registerDBProxyTargetsSyncOverride(input)
         }
 
         throw error
@@ -4427,6 +5171,41 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     public func startDBInstanceSync(input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
         if let startDBInstanceSyncOverride = startDBInstanceSyncOverride {
             return try startDBInstanceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the StartExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartExportTaskMessage object being passed to this operation.
+         - completion: The ExportTaskForStartExportTask object or an error will be passed to this 
+           callback when the operation is complete. The ExportTaskForStartExportTask
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     */
+    public func startExportTaskAsync(input: RDSModel.StartExportTaskMessage, completion: @escaping (HTTPResult<RDSModel.ExportTaskForStartExportTask>) -> ()) throws {
+        if let startExportTaskAsyncOverride = startExportTaskAsyncOverride {
+            return try startExportTaskAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the StartExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartExportTaskMessage object being passed to this operation.
+     - Returns: The ExportTaskForStartExportTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     */
+    public func startExportTaskSync(input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask {
+        if let startExportTaskSyncOverride = startExportTaskSyncOverride {
+            return try startExportTaskSyncOverride(input)
         }
 
         throw error

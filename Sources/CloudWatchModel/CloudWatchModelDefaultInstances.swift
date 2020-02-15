@@ -47,7 +47,8 @@ public extension AnomalyDetector {
             dimensions: nil,
             metricName: nil,
             namespace: nil,
-            stat: nil)
+            stat: nil,
+            stateValue: nil)
 
         return defaultInstance
     }()
@@ -234,6 +235,42 @@ public extension DeleteDashboardsOutputForDeleteDashboards {
     }()
 }
 
+public extension DeleteInsightRulesInput {
+    /**
+     Default instance of the DeleteInsightRulesInput structure.
+     */
+    static let __default: CloudWatchModel.DeleteInsightRulesInput = {
+        let defaultInstance = CloudWatchModel.DeleteInsightRulesInput(
+            ruleNames: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteInsightRulesOutput {
+    /**
+     Default instance of the DeleteInsightRulesOutput structure.
+     */
+    static let __default: CloudWatchModel.DeleteInsightRulesOutput = {
+        let defaultInstance = CloudWatchModel.DeleteInsightRulesOutput(
+            failures: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteInsightRulesOutputForDeleteInsightRules {
+    /**
+     Default instance of the DeleteInsightRulesOutputForDeleteInsightRules structure.
+     */
+    static let __default: CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules = {
+        let defaultInstance = CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules(
+            deleteInsightRulesResult: DeleteInsightRulesOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeAlarmHistoryInput {
     /**
      Default instance of the DescribeAlarmHistoryInput structure.
@@ -401,6 +438,44 @@ public extension DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
     }()
 }
 
+public extension DescribeInsightRulesInput {
+    /**
+     Default instance of the DescribeInsightRulesInput structure.
+     */
+    static let __default: CloudWatchModel.DescribeInsightRulesInput = {
+        let defaultInstance = CloudWatchModel.DescribeInsightRulesInput(
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeInsightRulesOutput {
+    /**
+     Default instance of the DescribeInsightRulesOutput structure.
+     */
+    static let __default: CloudWatchModel.DescribeInsightRulesOutput = {
+        let defaultInstance = CloudWatchModel.DescribeInsightRulesOutput(
+            insightRules: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeInsightRulesOutputForDescribeInsightRules {
+    /**
+     Default instance of the DescribeInsightRulesOutputForDescribeInsightRules structure.
+     */
+    static let __default: CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules = {
+        let defaultInstance = CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules(
+            describeInsightRulesResult: DescribeInsightRulesOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension Dimension {
     /**
      Default instance of the Dimension structure.
@@ -439,6 +514,42 @@ public extension DisableAlarmActionsInput {
     }()
 }
 
+public extension DisableInsightRulesInput {
+    /**
+     Default instance of the DisableInsightRulesInput structure.
+     */
+    static let __default: CloudWatchModel.DisableInsightRulesInput = {
+        let defaultInstance = CloudWatchModel.DisableInsightRulesInput(
+            ruleNames: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension DisableInsightRulesOutput {
+    /**
+     Default instance of the DisableInsightRulesOutput structure.
+     */
+    static let __default: CloudWatchModel.DisableInsightRulesOutput = {
+        let defaultInstance = CloudWatchModel.DisableInsightRulesOutput(
+            failures: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DisableInsightRulesOutputForDisableInsightRules {
+    /**
+     Default instance of the DisableInsightRulesOutputForDisableInsightRules structure.
+     */
+    static let __default: CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules = {
+        let defaultInstance = CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules(
+            disableInsightRulesResult: DisableInsightRulesOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension EnableAlarmActionsInput {
     /**
      Default instance of the EnableAlarmActionsInput structure.
@@ -446,6 +557,42 @@ public extension EnableAlarmActionsInput {
     static let __default: CloudWatchModel.EnableAlarmActionsInput = {
         let defaultInstance = CloudWatchModel.EnableAlarmActionsInput(
             alarmNames: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableInsightRulesInput {
+    /**
+     Default instance of the EnableInsightRulesInput structure.
+     */
+    static let __default: CloudWatchModel.EnableInsightRulesInput = {
+        let defaultInstance = CloudWatchModel.EnableInsightRulesInput(
+            ruleNames: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableInsightRulesOutput {
+    /**
+     Default instance of the EnableInsightRulesOutput structure.
+     */
+    static let __default: CloudWatchModel.EnableInsightRulesOutput = {
+        let defaultInstance = CloudWatchModel.EnableInsightRulesOutput(
+            failures: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableInsightRulesOutputForEnableInsightRules {
+    /**
+     Default instance of the EnableInsightRulesOutputForEnableInsightRules structure.
+     */
+    static let __default: CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules = {
+        let defaultInstance = CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules(
+            enableInsightRulesResult: EnableInsightRulesOutput.__default)
 
         return defaultInstance
     }()
@@ -484,6 +631,53 @@ public extension GetDashboardOutputForGetDashboard {
     static let __default: CloudWatchModel.GetDashboardOutputForGetDashboard = {
         let defaultInstance = CloudWatchModel.GetDashboardOutputForGetDashboard(
             getDashboardResult: GetDashboardOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetInsightRuleReportInput {
+    /**
+     Default instance of the GetInsightRuleReportInput structure.
+     */
+    static let __default: CloudWatchModel.GetInsightRuleReportInput = {
+        let defaultInstance = CloudWatchModel.GetInsightRuleReportInput(
+            endTime: "2013-02-18T17:00:00Z",
+            maxContributorCount: nil,
+            metrics: nil,
+            orderBy: nil,
+            period: 0,
+            ruleName: "0",
+            startTime: "2013-02-18T17:00:00Z")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetInsightRuleReportOutput {
+    /**
+     Default instance of the GetInsightRuleReportOutput structure.
+     */
+    static let __default: CloudWatchModel.GetInsightRuleReportOutput = {
+        let defaultInstance = CloudWatchModel.GetInsightRuleReportOutput(
+            aggregateValue: nil,
+            aggregationStatistic: nil,
+            approximateUniqueCount: nil,
+            contributors: nil,
+            keyLabels: nil,
+            metricDatapoints: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetInsightRuleReportOutputForGetInsightRuleReport {
+    /**
+     Default instance of the GetInsightRuleReportOutputForGetInsightRuleReport structure.
+     */
+    static let __default: CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport = {
+        let defaultInstance = CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport(
+            getInsightRuleReportResult: GetInsightRuleReportOutput.__default)
 
         return defaultInstance
     }()
@@ -609,6 +803,67 @@ public extension GetMetricWidgetImageOutputForGetMetricWidgetImage {
     static let __default: CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage = {
         let defaultInstance = CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage(
             getMetricWidgetImageResult: GetMetricWidgetImageOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension InsightRule {
+    /**
+     Default instance of the InsightRule structure.
+     */
+    static let __default: CloudWatchModel.InsightRule = {
+        let defaultInstance = CloudWatchModel.InsightRule(
+            definition: "0",
+            name: "0",
+            schema: "value",
+            state: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension InsightRuleContributor {
+    /**
+     Default instance of the InsightRuleContributor structure.
+     */
+    static let __default: CloudWatchModel.InsightRuleContributor = {
+        let defaultInstance = CloudWatchModel.InsightRuleContributor(
+            approximateAggregateValue: 0.0,
+            datapoints: [],
+            keys: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension InsightRuleContributorDatapoint {
+    /**
+     Default instance of the InsightRuleContributorDatapoint structure.
+     */
+    static let __default: CloudWatchModel.InsightRuleContributorDatapoint = {
+        let defaultInstance = CloudWatchModel.InsightRuleContributorDatapoint(
+            approximateValue: 0.0,
+            timestamp: "2013-02-18T17:00:00Z")
+
+        return defaultInstance
+    }()
+}
+
+public extension InsightRuleMetricDatapoint {
+    /**
+     Default instance of the InsightRuleMetricDatapoint structure.
+     */
+    static let __default: CloudWatchModel.InsightRuleMetricDatapoint = {
+        let defaultInstance = CloudWatchModel.InsightRuleMetricDatapoint(
+            average: nil,
+            maxContributorValue: nil,
+            maximum: nil,
+            minimum: nil,
+            sampleCount: nil,
+            sum: nil,
+            timestamp: "2013-02-18T17:00:00Z",
+            uniqueContributors: nil)
 
         return defaultInstance
     }()
@@ -886,6 +1141,7 @@ public extension MetricDataQuery {
             id: "0",
             label: nil,
             metricStat: nil,
+            period: nil,
             returnData: nil)
 
         return defaultInstance
@@ -951,6 +1207,21 @@ public extension MissingRequiredParameterException {
     static let __default: CloudWatchModel.MissingRequiredParameterException = {
         let defaultInstance = CloudWatchModel.MissingRequiredParameterException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PartialFailure {
+    /**
+     Default instance of the PartialFailure structure.
+     */
+    static let __default: CloudWatchModel.PartialFailure = {
+        let defaultInstance = CloudWatchModel.PartialFailure(
+            exceptionType: nil,
+            failureCode: nil,
+            failureDescription: nil,
+            failureResource: nil)
 
         return defaultInstance
     }()
@@ -1027,6 +1298,43 @@ public extension PutDashboardOutputForPutDashboard {
     static let __default: CloudWatchModel.PutDashboardOutputForPutDashboard = {
         let defaultInstance = CloudWatchModel.PutDashboardOutputForPutDashboard(
             putDashboardResult: PutDashboardOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutInsightRuleInput {
+    /**
+     Default instance of the PutInsightRuleInput structure.
+     */
+    static let __default: CloudWatchModel.PutInsightRuleInput = {
+        let defaultInstance = CloudWatchModel.PutInsightRuleInput(
+            ruleDefinition: "0",
+            ruleName: "0",
+            ruleState: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutInsightRuleOutput {
+    /**
+     Default instance of the PutInsightRuleOutput structure.
+     */
+    static let __default: CloudWatchModel.PutInsightRuleOutput = {
+        let defaultInstance = CloudWatchModel.PutInsightRuleOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension PutInsightRuleOutputForPutInsightRule {
+    /**
+     Default instance of the PutInsightRuleOutputForPutInsightRule structure.
+     */
+    static let __default: CloudWatchModel.PutInsightRuleOutputForPutInsightRule = {
+        let defaultInstance = CloudWatchModel.PutInsightRuleOutputForPutInsightRule(
+            putInsightRuleResult: PutInsightRuleOutput.__default)
 
         return defaultInstance
     }()

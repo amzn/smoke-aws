@@ -410,10 +410,27 @@ public struct BackupPolicyNotFoundFault: Codable, Equatable {
     }
 }
 
+public struct CancelExportTaskMessage: Codable, Equatable {
+    public var exportTaskIdentifier: String
+
+    public init(exportTaskIdentifier: String) {
+        self.exportTaskIdentifier = exportTaskIdentifier
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportTaskIdentifier = "ExportTaskIdentifier"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Certificate: Codable, Equatable {
     public var certificateArn: String?
     public var certificateIdentifier: String?
     public var certificateType: String?
+    public var customerOverride: BooleanOptional?
+    public var customerOverrideValidTill: TStamp?
     public var thumbprint: String?
     public var validFrom: TStamp?
     public var validTill: TStamp?
@@ -421,12 +438,16 @@ public struct Certificate: Codable, Equatable {
     public init(certificateArn: String? = nil,
                 certificateIdentifier: String? = nil,
                 certificateType: String? = nil,
+                customerOverride: BooleanOptional? = nil,
+                customerOverrideValidTill: TStamp? = nil,
                 thumbprint: String? = nil,
                 validFrom: TStamp? = nil,
                 validTill: TStamp? = nil) {
         self.certificateArn = certificateArn
         self.certificateIdentifier = certificateIdentifier
         self.certificateType = certificateType
+        self.customerOverride = customerOverride
+        self.customerOverrideValidTill = customerOverrideValidTill
         self.thumbprint = thumbprint
         self.validFrom = validFrom
         self.validTill = validTill
@@ -436,6 +457,8 @@ public struct Certificate: Codable, Equatable {
         case certificateArn = "CertificateArn"
         case certificateIdentifier = "CertificateIdentifier"
         case certificateType = "CertificateType"
+        case customerOverride = "CustomerOverride"
+        case customerOverrideValidTill = "CustomerOverrideValidTill"
         case thumbprint = "Thumbprint"
         case validFrom = "ValidFrom"
         case validTill = "ValidTill"
@@ -521,6 +544,68 @@ public struct CloudwatchLogsExportConfiguration: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case disableLogTypes = "DisableLogTypes"
         case enableLogTypes = "EnableLogTypes"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ConnectionPoolConfiguration: Codable, Equatable {
+    public var connectionBorrowTimeout: IntegerOptional?
+    public var initQuery: String?
+    public var maxConnectionsPercent: IntegerOptional?
+    public var maxIdleConnectionsPercent: IntegerOptional?
+    public var sessionPinningFilters: StringList?
+
+    public init(connectionBorrowTimeout: IntegerOptional? = nil,
+                initQuery: String? = nil,
+                maxConnectionsPercent: IntegerOptional? = nil,
+                maxIdleConnectionsPercent: IntegerOptional? = nil,
+                sessionPinningFilters: StringList? = nil) {
+        self.connectionBorrowTimeout = connectionBorrowTimeout
+        self.initQuery = initQuery
+        self.maxConnectionsPercent = maxConnectionsPercent
+        self.maxIdleConnectionsPercent = maxIdleConnectionsPercent
+        self.sessionPinningFilters = sessionPinningFilters
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case connectionBorrowTimeout = "ConnectionBorrowTimeout"
+        case initQuery = "InitQuery"
+        case maxConnectionsPercent = "MaxConnectionsPercent"
+        case maxIdleConnectionsPercent = "MaxIdleConnectionsPercent"
+        case sessionPinningFilters = "SessionPinningFilters"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ConnectionPoolConfigurationInfo: Codable, Equatable {
+    public var connectionBorrowTimeout: Integer?
+    public var initQuery: String?
+    public var maxConnectionsPercent: Integer?
+    public var maxIdleConnectionsPercent: Integer?
+    public var sessionPinningFilters: StringList?
+
+    public init(connectionBorrowTimeout: Integer? = nil,
+                initQuery: String? = nil,
+                maxConnectionsPercent: Integer? = nil,
+                maxIdleConnectionsPercent: Integer? = nil,
+                sessionPinningFilters: StringList? = nil) {
+        self.connectionBorrowTimeout = connectionBorrowTimeout
+        self.initQuery = initQuery
+        self.maxConnectionsPercent = maxConnectionsPercent
+        self.maxIdleConnectionsPercent = maxIdleConnectionsPercent
+        self.sessionPinningFilters = sessionPinningFilters
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case connectionBorrowTimeout = "ConnectionBorrowTimeout"
+        case initQuery = "InitQuery"
+        case maxConnectionsPercent = "MaxConnectionsPercent"
+        case maxIdleConnectionsPercent = "MaxIdleConnectionsPercent"
+        case sessionPinningFilters = "SessionPinningFilters"
     }
 
     public func validate() throws {
@@ -842,23 +927,85 @@ public struct CopyOptionGroupResultForCopyOptionGroup: Codable, Equatable {
     }
 }
 
+public struct CreateCustomAvailabilityZoneMessage: Codable, Equatable {
+    public var customAvailabilityZoneName: String
+    public var existingVpnId: String?
+    public var newVpnTunnelName: String?
+    public var vpnTunnelOriginatorIP: String?
+
+    public init(customAvailabilityZoneName: String,
+                existingVpnId: String? = nil,
+                newVpnTunnelName: String? = nil,
+                vpnTunnelOriginatorIP: String? = nil) {
+        self.customAvailabilityZoneName = customAvailabilityZoneName
+        self.existingVpnId = existingVpnId
+        self.newVpnTunnelName = newVpnTunnelName
+        self.vpnTunnelOriginatorIP = vpnTunnelOriginatorIP
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customAvailabilityZoneName = "CustomAvailabilityZoneName"
+        case existingVpnId = "ExistingVpnId"
+        case newVpnTunnelName = "NewVpnTunnelName"
+        case vpnTunnelOriginatorIP = "VpnTunnelOriginatorIP"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CreateCustomAvailabilityZoneResult: Codable, Equatable {
+    public var customAvailabilityZone: CustomAvailabilityZone?
+
+    public init(customAvailabilityZone: CustomAvailabilityZone? = nil) {
+        self.customAvailabilityZone = customAvailabilityZone
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customAvailabilityZone = "CustomAvailabilityZone"
+    }
+
+    public func validate() throws {
+        try customAvailabilityZone?.validate()
+    }
+}
+
+public struct CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone: Codable, Equatable {
+    public var createCustomAvailabilityZoneResult: CreateCustomAvailabilityZoneResult
+
+    public init(createCustomAvailabilityZoneResult: CreateCustomAvailabilityZoneResult) {
+        self.createCustomAvailabilityZoneResult = createCustomAvailabilityZoneResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createCustomAvailabilityZoneResult = "CreateCustomAvailabilityZoneResult"
+    }
+
+    public func validate() throws {
+        try createCustomAvailabilityZoneResult.validate()
+    }
+}
+
 public struct CreateDBClusterEndpointMessage: Codable, Equatable {
     public var dBClusterEndpointIdentifier: String
     public var dBClusterIdentifier: String
     public var endpointType: String
     public var excludedMembers: StringList?
     public var staticMembers: StringList?
+    public var tags: TagList?
 
     public init(dBClusterEndpointIdentifier: String,
                 dBClusterIdentifier: String,
                 endpointType: String,
                 excludedMembers: StringList? = nil,
-                staticMembers: StringList? = nil) {
+                staticMembers: StringList? = nil,
+                tags: TagList? = nil) {
         self.dBClusterEndpointIdentifier = dBClusterEndpointIdentifier
         self.dBClusterIdentifier = dBClusterIdentifier
         self.endpointType = endpointType
         self.excludedMembers = excludedMembers
         self.staticMembers = staticMembers
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
@@ -867,6 +1014,7 @@ public struct CreateDBClusterEndpointMessage: Codable, Equatable {
         case endpointType = "EndpointType"
         case excludedMembers = "ExcludedMembers"
         case staticMembers = "StaticMembers"
+        case tags = "Tags"
     }
 
     public func validate() throws {
@@ -1600,6 +1748,89 @@ public struct CreateDBParameterGroupResultForCreateDBParameterGroup: Codable, Eq
     }
 }
 
+public struct CreateDBProxyRequest: Codable, Equatable {
+    public var auth: UserAuthConfigList
+    public var dBProxyName: String
+    public var debugLogging: Boolean?
+    public var engineFamily: EngineFamily
+    public var idleClientTimeout: IntegerOptional?
+    public var requireTLS: Boolean?
+    public var roleArn: String
+    public var tags: TagList?
+    public var vpcSecurityGroupIds: StringList?
+    public var vpcSubnetIds: StringList
+
+    public init(auth: UserAuthConfigList,
+                dBProxyName: String,
+                debugLogging: Boolean? = nil,
+                engineFamily: EngineFamily,
+                idleClientTimeout: IntegerOptional? = nil,
+                requireTLS: Boolean? = nil,
+                roleArn: String,
+                tags: TagList? = nil,
+                vpcSecurityGroupIds: StringList? = nil,
+                vpcSubnetIds: StringList) {
+        self.auth = auth
+        self.dBProxyName = dBProxyName
+        self.debugLogging = debugLogging
+        self.engineFamily = engineFamily
+        self.idleClientTimeout = idleClientTimeout
+        self.requireTLS = requireTLS
+        self.roleArn = roleArn
+        self.tags = tags
+        self.vpcSecurityGroupIds = vpcSecurityGroupIds
+        self.vpcSubnetIds = vpcSubnetIds
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case auth = "Auth"
+        case dBProxyName = "DBProxyName"
+        case debugLogging = "DebugLogging"
+        case engineFamily = "EngineFamily"
+        case idleClientTimeout = "IdleClientTimeout"
+        case requireTLS = "RequireTLS"
+        case roleArn = "RoleArn"
+        case tags = "Tags"
+        case vpcSecurityGroupIds = "VpcSecurityGroupIds"
+        case vpcSubnetIds = "VpcSubnetIds"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CreateDBProxyResponse: Codable, Equatable {
+    public var dBProxy: DBProxy?
+
+    public init(dBProxy: DBProxy? = nil) {
+        self.dBProxy = dBProxy
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxy = "DBProxy"
+    }
+
+    public func validate() throws {
+        try dBProxy?.validate()
+    }
+}
+
+public struct CreateDBProxyResponseForCreateDBProxy: Codable, Equatable {
+    public var createDBProxyResult: CreateDBProxyResponse
+
+    public init(createDBProxyResult: CreateDBProxyResponse) {
+        self.createDBProxyResult = createDBProxyResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createDBProxyResult = "CreateDBProxyResult"
+    }
+
+    public func validate() throws {
+        try createDBProxyResult.validate()
+    }
+}
+
 public struct CreateDBSecurityGroupMessage: Codable, Equatable {
     public var dBSecurityGroupDescription: String
     public var dBSecurityGroupName: String
@@ -1971,6 +2202,96 @@ public struct CreateOptionGroupResultForCreateOptionGroup: Codable, Equatable {
 
     public func validate() throws {
         try createOptionGroupResult.validate()
+    }
+}
+
+public struct CustomAvailabilityZone: Codable, Equatable {
+    public var customAvailabilityZoneId: String?
+    public var customAvailabilityZoneName: String?
+    public var customAvailabilityZoneStatus: String?
+    public var vpnDetails: VpnDetails?
+
+    public init(customAvailabilityZoneId: String? = nil,
+                customAvailabilityZoneName: String? = nil,
+                customAvailabilityZoneStatus: String? = nil,
+                vpnDetails: VpnDetails? = nil) {
+        self.customAvailabilityZoneId = customAvailabilityZoneId
+        self.customAvailabilityZoneName = customAvailabilityZoneName
+        self.customAvailabilityZoneStatus = customAvailabilityZoneStatus
+        self.vpnDetails = vpnDetails
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
+        case customAvailabilityZoneName = "CustomAvailabilityZoneName"
+        case customAvailabilityZoneStatus = "CustomAvailabilityZoneStatus"
+        case vpnDetails = "VpnDetails"
+    }
+
+    public func validate() throws {
+        try vpnDetails?.validate()
+    }
+}
+
+public struct CustomAvailabilityZoneAlreadyExistsFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CustomAvailabilityZoneMessage: Codable, Equatable {
+    public var customAvailabilityZones: CustomAvailabilityZoneList?
+    public var marker: String?
+
+    public init(customAvailabilityZones: CustomAvailabilityZoneList? = nil,
+                marker: String? = nil) {
+        self.customAvailabilityZones = customAvailabilityZones
+        self.marker = marker
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customAvailabilityZones = "CustomAvailabilityZones"
+        case marker = "Marker"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones: Codable, Equatable {
+    public var describeCustomAvailabilityZonesResult: CustomAvailabilityZoneMessage
+
+    public init(describeCustomAvailabilityZonesResult: CustomAvailabilityZoneMessage) {
+        self.describeCustomAvailabilityZonesResult = describeCustomAvailabilityZonesResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeCustomAvailabilityZonesResult = "DescribeCustomAvailabilityZonesResult"
+    }
+
+    public func validate() throws {
+        try describeCustomAvailabilityZonesResult.validate()
+    }
+}
+
+public struct CustomAvailabilityZoneNotFoundFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CustomAvailabilityZoneQuotaExceededFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -3826,6 +4147,206 @@ public struct DBParameterGroupsMessageForDescribeDBParameterGroups: Codable, Equ
     }
 }
 
+public struct DBProxy: Codable, Equatable {
+    public var auth: UserAuthConfigInfoList?
+    public var createdDate: TStamp?
+    public var dBProxyArn: String?
+    public var dBProxyName: String?
+    public var debugLogging: Boolean?
+    public var endpoint: String?
+    public var engineFamily: String?
+    public var idleClientTimeout: Integer?
+    public var requireTLS: Boolean?
+    public var roleArn: String?
+    public var status: DBProxyStatus?
+    public var updatedDate: TStamp?
+    public var vpcSecurityGroupIds: StringList?
+    public var vpcSubnetIds: StringList?
+
+    public init(auth: UserAuthConfigInfoList? = nil,
+                createdDate: TStamp? = nil,
+                dBProxyArn: String? = nil,
+                dBProxyName: String? = nil,
+                debugLogging: Boolean? = nil,
+                endpoint: String? = nil,
+                engineFamily: String? = nil,
+                idleClientTimeout: Integer? = nil,
+                requireTLS: Boolean? = nil,
+                roleArn: String? = nil,
+                status: DBProxyStatus? = nil,
+                updatedDate: TStamp? = nil,
+                vpcSecurityGroupIds: StringList? = nil,
+                vpcSubnetIds: StringList? = nil) {
+        self.auth = auth
+        self.createdDate = createdDate
+        self.dBProxyArn = dBProxyArn
+        self.dBProxyName = dBProxyName
+        self.debugLogging = debugLogging
+        self.endpoint = endpoint
+        self.engineFamily = engineFamily
+        self.idleClientTimeout = idleClientTimeout
+        self.requireTLS = requireTLS
+        self.roleArn = roleArn
+        self.status = status
+        self.updatedDate = updatedDate
+        self.vpcSecurityGroupIds = vpcSecurityGroupIds
+        self.vpcSubnetIds = vpcSubnetIds
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case auth = "Auth"
+        case createdDate = "CreatedDate"
+        case dBProxyArn = "DBProxyArn"
+        case dBProxyName = "DBProxyName"
+        case debugLogging = "DebugLogging"
+        case endpoint = "Endpoint"
+        case engineFamily = "EngineFamily"
+        case idleClientTimeout = "IdleClientTimeout"
+        case requireTLS = "RequireTLS"
+        case roleArn = "RoleArn"
+        case status = "Status"
+        case updatedDate = "UpdatedDate"
+        case vpcSecurityGroupIds = "VpcSecurityGroupIds"
+        case vpcSubnetIds = "VpcSubnetIds"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyAlreadyExistsFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyNotFoundFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyQuotaExceededFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyTarget: Codable, Equatable {
+    public var endpoint: String?
+    public var port: Integer?
+    public var rdsResourceId: String?
+    public var targetArn: String?
+    public var trackedClusterId: String?
+    public var type: TargetType?
+
+    public init(endpoint: String? = nil,
+                port: Integer? = nil,
+                rdsResourceId: String? = nil,
+                targetArn: String? = nil,
+                trackedClusterId: String? = nil,
+                type: TargetType? = nil) {
+        self.endpoint = endpoint
+        self.port = port
+        self.rdsResourceId = rdsResourceId
+        self.targetArn = targetArn
+        self.trackedClusterId = trackedClusterId
+        self.type = type
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case endpoint = "Endpoint"
+        case port = "Port"
+        case rdsResourceId = "RdsResourceId"
+        case targetArn = "TargetArn"
+        case trackedClusterId = "TrackedClusterId"
+        case type = "Type"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyTargetAlreadyRegisteredFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyTargetGroup: Codable, Equatable {
+    public var connectionPoolConfig: ConnectionPoolConfigurationInfo?
+    public var createdDate: TStamp?
+    public var dBProxyName: String?
+    public var isDefault: Boolean?
+    public var status: String?
+    public var targetGroupArn: String?
+    public var targetGroupName: String?
+    public var updatedDate: TStamp?
+
+    public init(connectionPoolConfig: ConnectionPoolConfigurationInfo? = nil,
+                createdDate: TStamp? = nil,
+                dBProxyName: String? = nil,
+                isDefault: Boolean? = nil,
+                status: String? = nil,
+                targetGroupArn: String? = nil,
+                targetGroupName: String? = nil,
+                updatedDate: TStamp? = nil) {
+        self.connectionPoolConfig = connectionPoolConfig
+        self.createdDate = createdDate
+        self.dBProxyName = dBProxyName
+        self.isDefault = isDefault
+        self.status = status
+        self.targetGroupArn = targetGroupArn
+        self.targetGroupName = targetGroupName
+        self.updatedDate = updatedDate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case connectionPoolConfig = "ConnectionPoolConfig"
+        case createdDate = "CreatedDate"
+        case dBProxyName = "DBProxyName"
+        case isDefault = "IsDefault"
+        case status = "Status"
+        case targetGroupArn = "TargetGroupArn"
+        case targetGroupName = "TargetGroupName"
+        case updatedDate = "UpdatedDate"
+    }
+
+    public func validate() throws {
+        try connectionPoolConfig?.validate()
+    }
+}
+
+public struct DBProxyTargetGroupNotFoundFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyTargetNotFoundFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DBSecurityGroup: Codable, Equatable {
     public var dBSecurityGroupArn: String?
     public var dBSecurityGroupDescription: String?
@@ -4302,6 +4823,53 @@ public struct DBUpgradeDependencyFailureFault: Codable, Equatable {
     }
 }
 
+public struct DeleteCustomAvailabilityZoneMessage: Codable, Equatable {
+    public var customAvailabilityZoneId: String
+
+    public init(customAvailabilityZoneId: String) {
+        self.customAvailabilityZoneId = customAvailabilityZoneId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteCustomAvailabilityZoneResult: Codable, Equatable {
+    public var customAvailabilityZone: CustomAvailabilityZone?
+
+    public init(customAvailabilityZone: CustomAvailabilityZone? = nil) {
+        self.customAvailabilityZone = customAvailabilityZone
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customAvailabilityZone = "CustomAvailabilityZone"
+    }
+
+    public func validate() throws {
+        try customAvailabilityZone?.validate()
+    }
+}
+
+public struct DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone: Codable, Equatable {
+    public var deleteCustomAvailabilityZoneResult: DeleteCustomAvailabilityZoneResult
+
+    public init(deleteCustomAvailabilityZoneResult: DeleteCustomAvailabilityZoneResult) {
+        self.deleteCustomAvailabilityZoneResult = deleteCustomAvailabilityZoneResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deleteCustomAvailabilityZoneResult = "DeleteCustomAvailabilityZoneResult"
+    }
+
+    public func validate() throws {
+        try deleteCustomAvailabilityZoneResult.validate()
+    }
+}
+
 public struct DeleteDBClusterEndpointMessage: Codable, Equatable {
     public var dBClusterEndpointIdentifier: String
 
@@ -4555,6 +5123,53 @@ public struct DeleteDBParameterGroupMessage: Codable, Equatable {
     }
 }
 
+public struct DeleteDBProxyRequest: Codable, Equatable {
+    public var dBProxyName: String
+
+    public init(dBProxyName: String) {
+        self.dBProxyName = dBProxyName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyName = "DBProxyName"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteDBProxyResponse: Codable, Equatable {
+    public var dBProxy: DBProxy?
+
+    public init(dBProxy: DBProxy? = nil) {
+        self.dBProxy = dBProxy
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxy = "DBProxy"
+    }
+
+    public func validate() throws {
+        try dBProxy?.validate()
+    }
+}
+
+public struct DeleteDBProxyResponseForDeleteDBProxy: Codable, Equatable {
+    public var deleteDBProxyResult: DeleteDBProxyResponse
+
+    public init(deleteDBProxyResult: DeleteDBProxyResponse) {
+        self.deleteDBProxyResult = deleteDBProxyResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deleteDBProxyResult = "DeleteDBProxyResult"
+    }
+
+    public func validate() throws {
+        try deleteDBProxyResult.validate()
+    }
+}
+
 public struct DeleteDBSecurityGroupMessage: Codable, Equatable {
     public var dBSecurityGroupName: String
 
@@ -4726,6 +5341,21 @@ public struct DeleteGlobalClusterResultForDeleteGlobalCluster: Codable, Equatabl
     }
 }
 
+public struct DeleteInstallationMediaMessage: Codable, Equatable {
+    public var installationMediaId: String
+
+    public init(installationMediaId: String) {
+        self.installationMediaId = installationMediaId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case installationMediaId = "InstallationMediaId"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DeleteOptionGroupMessage: Codable, Equatable {
     public var optionGroupName: String
 
@@ -4738,6 +5368,58 @@ public struct DeleteOptionGroupMessage: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct DeregisterDBProxyTargetsRequest: Codable, Equatable {
+    public var dBClusterIdentifiers: StringList?
+    public var dBInstanceIdentifiers: StringList?
+    public var dBProxyName: String
+    public var targetGroupName: String?
+
+    public init(dBClusterIdentifiers: StringList? = nil,
+                dBInstanceIdentifiers: StringList? = nil,
+                dBProxyName: String,
+                targetGroupName: String? = nil) {
+        self.dBClusterIdentifiers = dBClusterIdentifiers
+        self.dBInstanceIdentifiers = dBInstanceIdentifiers
+        self.dBProxyName = dBProxyName
+        self.targetGroupName = targetGroupName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBClusterIdentifiers = "DBClusterIdentifiers"
+        case dBInstanceIdentifiers = "DBInstanceIdentifiers"
+        case dBProxyName = "DBProxyName"
+        case targetGroupName = "TargetGroupName"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeregisterDBProxyTargetsResponse: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets: Codable, Equatable {
+    public var deregisterDBProxyTargetsResult: DeregisterDBProxyTargetsResponse
+
+    public init(deregisterDBProxyTargetsResult: DeregisterDBProxyTargetsResponse) {
+        self.deregisterDBProxyTargetsResult = deregisterDBProxyTargetsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deregisterDBProxyTargetsResult = "DeregisterDBProxyTargetsResult"
+    }
+
+    public func validate() throws {
+        try deregisterDBProxyTargetsResult.validate()
     }
 }
 
@@ -4768,6 +5450,33 @@ public struct DescribeCertificatesMessage: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case certificateIdentifier = "CertificateIdentifier"
+        case filters = "Filters"
+        case marker = "Marker"
+        case maxRecords = "MaxRecords"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeCustomAvailabilityZonesMessage: Codable, Equatable {
+    public var customAvailabilityZoneId: String?
+    public var filters: FilterList?
+    public var marker: String?
+    public var maxRecords: IntegerOptional?
+
+    public init(customAvailabilityZoneId: String? = nil,
+                filters: FilterList? = nil,
+                marker: String? = nil,
+                maxRecords: IntegerOptional? = nil) {
+        self.customAvailabilityZoneId = customAvailabilityZoneId
+        self.filters = filters
+        self.marker = marker
+        self.maxRecords = maxRecords
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
         case filters = "Filters"
         case marker = "Marker"
         case maxRecords = "MaxRecords"
@@ -5282,6 +5991,203 @@ public struct DescribeDBParametersMessage: Codable, Equatable {
     }
 }
 
+public struct DescribeDBProxiesRequest: Codable, Equatable {
+    public var dBProxyName: String?
+    public var filters: FilterList?
+    public var marker: String?
+    public var maxRecords: MaxRecords?
+
+    public init(dBProxyName: String? = nil,
+                filters: FilterList? = nil,
+                marker: String? = nil,
+                maxRecords: MaxRecords? = nil) {
+        self.dBProxyName = dBProxyName
+        self.filters = filters
+        self.marker = marker
+        self.maxRecords = maxRecords
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyName = "DBProxyName"
+        case filters = "Filters"
+        case marker = "Marker"
+        case maxRecords = "MaxRecords"
+    }
+
+    public func validate() throws {
+        try maxRecords?.validateAsMaxRecords()
+    }
+}
+
+public struct DescribeDBProxiesResponse: Codable, Equatable {
+    public var dBProxies: DBProxyList?
+    public var marker: String?
+
+    public init(dBProxies: DBProxyList? = nil,
+                marker: String? = nil) {
+        self.dBProxies = dBProxies
+        self.marker = marker
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxies = "DBProxies"
+        case marker = "Marker"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeDBProxiesResponseForDescribeDBProxies: Codable, Equatable {
+    public var describeDBProxiesResult: DescribeDBProxiesResponse
+
+    public init(describeDBProxiesResult: DescribeDBProxiesResponse) {
+        self.describeDBProxiesResult = describeDBProxiesResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeDBProxiesResult = "DescribeDBProxiesResult"
+    }
+
+    public func validate() throws {
+        try describeDBProxiesResult.validate()
+    }
+}
+
+public struct DescribeDBProxyTargetGroupsRequest: Codable, Equatable {
+    public var dBProxyName: String
+    public var filters: FilterList?
+    public var marker: String?
+    public var maxRecords: MaxRecords?
+    public var targetGroupName: String?
+
+    public init(dBProxyName: String,
+                filters: FilterList? = nil,
+                marker: String? = nil,
+                maxRecords: MaxRecords? = nil,
+                targetGroupName: String? = nil) {
+        self.dBProxyName = dBProxyName
+        self.filters = filters
+        self.marker = marker
+        self.maxRecords = maxRecords
+        self.targetGroupName = targetGroupName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyName = "DBProxyName"
+        case filters = "Filters"
+        case marker = "Marker"
+        case maxRecords = "MaxRecords"
+        case targetGroupName = "TargetGroupName"
+    }
+
+    public func validate() throws {
+        try maxRecords?.validateAsMaxRecords()
+    }
+}
+
+public struct DescribeDBProxyTargetGroupsResponse: Codable, Equatable {
+    public var marker: String?
+    public var targetGroups: TargetGroupList?
+
+    public init(marker: String? = nil,
+                targetGroups: TargetGroupList? = nil) {
+        self.marker = marker
+        self.targetGroups = targetGroups
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case marker = "Marker"
+        case targetGroups = "TargetGroups"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups: Codable, Equatable {
+    public var describeDBProxyTargetGroupsResult: DescribeDBProxyTargetGroupsResponse
+
+    public init(describeDBProxyTargetGroupsResult: DescribeDBProxyTargetGroupsResponse) {
+        self.describeDBProxyTargetGroupsResult = describeDBProxyTargetGroupsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeDBProxyTargetGroupsResult = "DescribeDBProxyTargetGroupsResult"
+    }
+
+    public func validate() throws {
+        try describeDBProxyTargetGroupsResult.validate()
+    }
+}
+
+public struct DescribeDBProxyTargetsRequest: Codable, Equatable {
+    public var dBProxyName: String
+    public var filters: FilterList?
+    public var marker: String?
+    public var maxRecords: MaxRecords?
+    public var targetGroupName: String?
+
+    public init(dBProxyName: String,
+                filters: FilterList? = nil,
+                marker: String? = nil,
+                maxRecords: MaxRecords? = nil,
+                targetGroupName: String? = nil) {
+        self.dBProxyName = dBProxyName
+        self.filters = filters
+        self.marker = marker
+        self.maxRecords = maxRecords
+        self.targetGroupName = targetGroupName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyName = "DBProxyName"
+        case filters = "Filters"
+        case marker = "Marker"
+        case maxRecords = "MaxRecords"
+        case targetGroupName = "TargetGroupName"
+    }
+
+    public func validate() throws {
+        try maxRecords?.validateAsMaxRecords()
+    }
+}
+
+public struct DescribeDBProxyTargetsResponse: Codable, Equatable {
+    public var marker: String?
+    public var targets: TargetList?
+
+    public init(marker: String? = nil,
+                targets: TargetList? = nil) {
+        self.marker = marker
+        self.targets = targets
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case marker = "Marker"
+        case targets = "Targets"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeDBProxyTargetsResponseForDescribeDBProxyTargets: Codable, Equatable {
+    public var describeDBProxyTargetsResult: DescribeDBProxyTargetsResponse
+
+    public init(describeDBProxyTargetsResult: DescribeDBProxyTargetsResponse) {
+        self.describeDBProxyTargetsResult = describeDBProxyTargetsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeDBProxyTargetsResult = "DescribeDBProxyTargetsResult"
+    }
+
+    public func validate() throws {
+        try describeDBProxyTargetsResult.validate()
+    }
+}
+
 public struct DescribeDBSecurityGroupsMessage: Codable, Equatable {
     public var dBSecurityGroupName: String?
     public var filters: FilterList?
@@ -5641,6 +6547,37 @@ public struct DescribeEventsMessage: Codable, Equatable {
     }
 }
 
+public struct DescribeExportTasksMessage: Codable, Equatable {
+    public var exportTaskIdentifier: String?
+    public var filters: FilterList?
+    public var marker: String?
+    public var maxRecords: String?
+    public var sourceArn: String?
+
+    public init(exportTaskIdentifier: String? = nil,
+                filters: FilterList? = nil,
+                marker: String? = nil,
+                maxRecords: String? = nil,
+                sourceArn: String? = nil) {
+        self.exportTaskIdentifier = exportTaskIdentifier
+        self.filters = filters
+        self.marker = marker
+        self.maxRecords = maxRecords
+        self.sourceArn = sourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportTaskIdentifier = "ExportTaskIdentifier"
+        case filters = "Filters"
+        case marker = "Marker"
+        case maxRecords = "MaxRecords"
+        case sourceArn = "SourceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DescribeGlobalClustersMessage: Codable, Equatable {
     public var filters: FilterList?
     public var globalClusterIdentifier: String?
@@ -5660,6 +6597,33 @@ public struct DescribeGlobalClustersMessage: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case filters = "Filters"
         case globalClusterIdentifier = "GlobalClusterIdentifier"
+        case marker = "Marker"
+        case maxRecords = "MaxRecords"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeInstallationMediaMessage: Codable, Equatable {
+    public var filters: FilterList?
+    public var installationMediaId: String?
+    public var marker: String?
+    public var maxRecords: IntegerOptional?
+
+    public init(filters: FilterList? = nil,
+                installationMediaId: String? = nil,
+                marker: String? = nil,
+                maxRecords: IntegerOptional? = nil) {
+        self.filters = filters
+        self.installationMediaId = installationMediaId
+        self.marker = marker
+        self.maxRecords = maxRecords
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case filters = "Filters"
+        case installationMediaId = "InstallationMediaId"
         case marker = "Marker"
         case maxRecords = "MaxRecords"
     }
@@ -6389,6 +7353,162 @@ public struct EventsMessageForDescribeEvents: Codable, Equatable {
     }
 }
 
+public struct ExportTask: Codable, Equatable {
+    public var exportOnly: StringList?
+    public var exportTaskIdentifier: String?
+    public var failureCause: String?
+    public var iamRoleArn: String?
+    public var kmsKeyId: String?
+    public var percentProgress: Integer?
+    public var s3Bucket: String?
+    public var s3Prefix: String?
+    public var snapshotTime: TStamp?
+    public var sourceArn: String?
+    public var status: String?
+    public var taskEndTime: TStamp?
+    public var taskStartTime: TStamp?
+    public var totalExtractedDataInGB: Integer?
+    public var warningMessage: String?
+
+    public init(exportOnly: StringList? = nil,
+                exportTaskIdentifier: String? = nil,
+                failureCause: String? = nil,
+                iamRoleArn: String? = nil,
+                kmsKeyId: String? = nil,
+                percentProgress: Integer? = nil,
+                s3Bucket: String? = nil,
+                s3Prefix: String? = nil,
+                snapshotTime: TStamp? = nil,
+                sourceArn: String? = nil,
+                status: String? = nil,
+                taskEndTime: TStamp? = nil,
+                taskStartTime: TStamp? = nil,
+                totalExtractedDataInGB: Integer? = nil,
+                warningMessage: String? = nil) {
+        self.exportOnly = exportOnly
+        self.exportTaskIdentifier = exportTaskIdentifier
+        self.failureCause = failureCause
+        self.iamRoleArn = iamRoleArn
+        self.kmsKeyId = kmsKeyId
+        self.percentProgress = percentProgress
+        self.s3Bucket = s3Bucket
+        self.s3Prefix = s3Prefix
+        self.snapshotTime = snapshotTime
+        self.sourceArn = sourceArn
+        self.status = status
+        self.taskEndTime = taskEndTime
+        self.taskStartTime = taskStartTime
+        self.totalExtractedDataInGB = totalExtractedDataInGB
+        self.warningMessage = warningMessage
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportOnly = "ExportOnly"
+        case exportTaskIdentifier = "ExportTaskIdentifier"
+        case failureCause = "FailureCause"
+        case iamRoleArn = "IamRoleArn"
+        case kmsKeyId = "KmsKeyId"
+        case percentProgress = "PercentProgress"
+        case s3Bucket = "S3Bucket"
+        case s3Prefix = "S3Prefix"
+        case snapshotTime = "SnapshotTime"
+        case sourceArn = "SourceArn"
+        case status = "Status"
+        case taskEndTime = "TaskEndTime"
+        case taskStartTime = "TaskStartTime"
+        case totalExtractedDataInGB = "TotalExtractedDataInGB"
+        case warningMessage = "WarningMessage"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ExportTaskAlreadyExistsFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ExportTaskForCancelExportTask: Codable, Equatable {
+    public var cancelExportTaskResult: ExportTask
+
+    public init(cancelExportTaskResult: ExportTask) {
+        self.cancelExportTaskResult = cancelExportTaskResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cancelExportTaskResult = "CancelExportTaskResult"
+    }
+
+    public func validate() throws {
+        try cancelExportTaskResult.validate()
+    }
+}
+
+public struct ExportTaskForStartExportTask: Codable, Equatable {
+    public var startExportTaskResult: ExportTask
+
+    public init(startExportTaskResult: ExportTask) {
+        self.startExportTaskResult = startExportTaskResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case startExportTaskResult = "StartExportTaskResult"
+    }
+
+    public func validate() throws {
+        try startExportTaskResult.validate()
+    }
+}
+
+public struct ExportTaskNotFoundFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ExportTasksMessage: Codable, Equatable {
+    public var exportTasks: ExportTasksList?
+    public var marker: String?
+
+    public init(exportTasks: ExportTasksList? = nil,
+                marker: String? = nil) {
+        self.exportTasks = exportTasks
+        self.marker = marker
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportTasks = "ExportTasks"
+        case marker = "Marker"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ExportTasksMessageForDescribeExportTasks: Codable, Equatable {
+    public var describeExportTasksResult: ExportTasksMessage
+
+    public init(describeExportTasksResult: ExportTasksMessage) {
+        self.describeExportTasksResult = describeExportTasksResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeExportTasksResult = "DescribeExportTasksResult"
+    }
+
+    public func validate() throws {
+        try describeExportTasksResult.validate()
+    }
+}
+
 public struct FailoverDBClusterMessage: Codable, Equatable {
     public var dBClusterIdentifier: String
     public var targetDBInstanceIdentifier: String?
@@ -6614,6 +7734,199 @@ public struct IPRange: Codable, Equatable {
     }
 }
 
+public struct IamRoleMissingPermissionsFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct IamRoleNotFoundFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ImportInstallationMediaMessage: Codable, Equatable {
+    public var customAvailabilityZoneId: String
+    public var engine: String
+    public var engineInstallationMediaPath: String
+    public var engineVersion: String
+    public var oSInstallationMediaPath: String
+
+    public init(customAvailabilityZoneId: String,
+                engine: String,
+                engineInstallationMediaPath: String,
+                engineVersion: String,
+                oSInstallationMediaPath: String) {
+        self.customAvailabilityZoneId = customAvailabilityZoneId
+        self.engine = engine
+        self.engineInstallationMediaPath = engineInstallationMediaPath
+        self.engineVersion = engineVersion
+        self.oSInstallationMediaPath = oSInstallationMediaPath
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
+        case engine = "Engine"
+        case engineInstallationMediaPath = "EngineInstallationMediaPath"
+        case engineVersion = "EngineVersion"
+        case oSInstallationMediaPath = "OSInstallationMediaPath"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InstallationMedia: Codable, Equatable {
+    public var customAvailabilityZoneId: String?
+    public var engine: String?
+    public var engineInstallationMediaPath: String?
+    public var engineVersion: String?
+    public var failureCause: InstallationMediaFailureCause?
+    public var installationMediaId: String?
+    public var oSInstallationMediaPath: String?
+    public var status: String?
+
+    public init(customAvailabilityZoneId: String? = nil,
+                engine: String? = nil,
+                engineInstallationMediaPath: String? = nil,
+                engineVersion: String? = nil,
+                failureCause: InstallationMediaFailureCause? = nil,
+                installationMediaId: String? = nil,
+                oSInstallationMediaPath: String? = nil,
+                status: String? = nil) {
+        self.customAvailabilityZoneId = customAvailabilityZoneId
+        self.engine = engine
+        self.engineInstallationMediaPath = engineInstallationMediaPath
+        self.engineVersion = engineVersion
+        self.failureCause = failureCause
+        self.installationMediaId = installationMediaId
+        self.oSInstallationMediaPath = oSInstallationMediaPath
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
+        case engine = "Engine"
+        case engineInstallationMediaPath = "EngineInstallationMediaPath"
+        case engineVersion = "EngineVersion"
+        case failureCause = "FailureCause"
+        case installationMediaId = "InstallationMediaId"
+        case oSInstallationMediaPath = "OSInstallationMediaPath"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+        try failureCause?.validate()
+    }
+}
+
+public struct InstallationMediaAlreadyExistsFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InstallationMediaFailureCause: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message = "Message"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InstallationMediaForDeleteInstallationMedia: Codable, Equatable {
+    public var deleteInstallationMediaResult: InstallationMedia
+
+    public init(deleteInstallationMediaResult: InstallationMedia) {
+        self.deleteInstallationMediaResult = deleteInstallationMediaResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deleteInstallationMediaResult = "DeleteInstallationMediaResult"
+    }
+
+    public func validate() throws {
+        try deleteInstallationMediaResult.validate()
+    }
+}
+
+public struct InstallationMediaForImportInstallationMedia: Codable, Equatable {
+    public var importInstallationMediaResult: InstallationMedia
+
+    public init(importInstallationMediaResult: InstallationMedia) {
+        self.importInstallationMediaResult = importInstallationMediaResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case importInstallationMediaResult = "ImportInstallationMediaResult"
+    }
+
+    public func validate() throws {
+        try importInstallationMediaResult.validate()
+    }
+}
+
+public struct InstallationMediaMessage: Codable, Equatable {
+    public var installationMedia: InstallationMediaList?
+    public var marker: String?
+
+    public init(installationMedia: InstallationMediaList? = nil,
+                marker: String? = nil) {
+        self.installationMedia = installationMedia
+        self.marker = marker
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case installationMedia = "InstallationMedia"
+        case marker = "Marker"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InstallationMediaMessageForDescribeInstallationMedia: Codable, Equatable {
+    public var describeInstallationMediaResult: InstallationMediaMessage
+
+    public init(describeInstallationMediaResult: InstallationMediaMessage) {
+        self.describeInstallationMediaResult = describeInstallationMediaResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeInstallationMediaResult = "DescribeInstallationMediaResult"
+    }
+
+    public func validate() throws {
+        try describeInstallationMediaResult.validate()
+    }
+}
+
+public struct InstallationMediaNotFoundFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InstanceQuotaExceededFault: Codable, Equatable {
 
     public init() {
@@ -6713,6 +8026,15 @@ public struct InvalidDBParameterGroupStateFault: Codable, Equatable {
     }
 }
 
+public struct InvalidDBProxyStateFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InvalidDBSecurityGroupStateFault: Codable, Equatable {
 
     public init() {
@@ -6759,6 +8081,33 @@ public struct InvalidDBSubnetStateFault: Codable, Equatable {
 }
 
 public struct InvalidEventSubscriptionStateFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InvalidExportOnlyFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InvalidExportSourceStateFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InvalidExportTaskStateFault: Codable, Equatable {
 
     public init() {
     }
@@ -6865,6 +8214,57 @@ public struct MinimumEngineVersionPerAllowedValue: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ModifyCertificatesMessage: Codable, Equatable {
+    public var certificateIdentifier: String?
+    public var removeCustomerOverride: BooleanOptional?
+
+    public init(certificateIdentifier: String? = nil,
+                removeCustomerOverride: BooleanOptional? = nil) {
+        self.certificateIdentifier = certificateIdentifier
+        self.removeCustomerOverride = removeCustomerOverride
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case certificateIdentifier = "CertificateIdentifier"
+        case removeCustomerOverride = "RemoveCustomerOverride"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ModifyCertificatesResult: Codable, Equatable {
+    public var certificate: Certificate?
+
+    public init(certificate: Certificate? = nil) {
+        self.certificate = certificate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case certificate = "Certificate"
+    }
+
+    public func validate() throws {
+        try certificate?.validate()
+    }
+}
+
+public struct ModifyCertificatesResultForModifyCertificates: Codable, Equatable {
+    public var modifyCertificatesResult: ModifyCertificatesResult
+
+    public init(modifyCertificatesResult: ModifyCertificatesResult) {
+        self.modifyCertificatesResult = modifyCertificatesResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case modifyCertificatesResult = "ModifyCertificatesResult"
+    }
+
+    public func validate() throws {
+        try modifyCertificatesResult.validate()
     }
 }
 
@@ -7136,6 +8536,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var backupRetentionPeriod: IntegerOptional?
     public var cACertificateIdentifier: String?
+    public var certificateRotationRestart: BooleanOptional?
     public var cloudwatchLogsExportConfiguration: CloudwatchLogsExportConfiguration?
     public var copyTagsToSnapshot: BooleanOptional?
     public var dBInstanceClass: String?
@@ -7178,6 +8579,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
                 autoMinorVersionUpgrade: BooleanOptional? = nil,
                 backupRetentionPeriod: IntegerOptional? = nil,
                 cACertificateIdentifier: String? = nil,
+                certificateRotationRestart: BooleanOptional? = nil,
                 cloudwatchLogsExportConfiguration: CloudwatchLogsExportConfiguration? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
                 dBInstanceClass: String? = nil,
@@ -7219,6 +8621,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.backupRetentionPeriod = backupRetentionPeriod
         self.cACertificateIdentifier = cACertificateIdentifier
+        self.certificateRotationRestart = certificateRotationRestart
         self.cloudwatchLogsExportConfiguration = cloudwatchLogsExportConfiguration
         self.copyTagsToSnapshot = copyTagsToSnapshot
         self.dBInstanceClass = dBInstanceClass
@@ -7263,6 +8666,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case backupRetentionPeriod = "BackupRetentionPeriod"
         case cACertificateIdentifier = "CACertificateIdentifier"
+        case certificateRotationRestart = "CertificateRotationRestart"
         case cloudwatchLogsExportConfiguration = "CloudwatchLogsExportConfiguration"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
         case dBInstanceClass = "DBInstanceClass"
@@ -7353,6 +8757,141 @@ public struct ModifyDBParameterGroupMessage: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ModifyDBProxyRequest: Codable, Equatable {
+    public var auth: UserAuthConfigList?
+    public var dBProxyName: String
+    public var debugLogging: BooleanOptional?
+    public var idleClientTimeout: IntegerOptional?
+    public var newDBProxyName: String?
+    public var requireTLS: BooleanOptional?
+    public var roleArn: String?
+    public var securityGroups: StringList?
+
+    public init(auth: UserAuthConfigList? = nil,
+                dBProxyName: String,
+                debugLogging: BooleanOptional? = nil,
+                idleClientTimeout: IntegerOptional? = nil,
+                newDBProxyName: String? = nil,
+                requireTLS: BooleanOptional? = nil,
+                roleArn: String? = nil,
+                securityGroups: StringList? = nil) {
+        self.auth = auth
+        self.dBProxyName = dBProxyName
+        self.debugLogging = debugLogging
+        self.idleClientTimeout = idleClientTimeout
+        self.newDBProxyName = newDBProxyName
+        self.requireTLS = requireTLS
+        self.roleArn = roleArn
+        self.securityGroups = securityGroups
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case auth = "Auth"
+        case dBProxyName = "DBProxyName"
+        case debugLogging = "DebugLogging"
+        case idleClientTimeout = "IdleClientTimeout"
+        case newDBProxyName = "NewDBProxyName"
+        case requireTLS = "RequireTLS"
+        case roleArn = "RoleArn"
+        case securityGroups = "SecurityGroups"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ModifyDBProxyResponse: Codable, Equatable {
+    public var dBProxy: DBProxy?
+
+    public init(dBProxy: DBProxy? = nil) {
+        self.dBProxy = dBProxy
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxy = "DBProxy"
+    }
+
+    public func validate() throws {
+        try dBProxy?.validate()
+    }
+}
+
+public struct ModifyDBProxyResponseForModifyDBProxy: Codable, Equatable {
+    public var modifyDBProxyResult: ModifyDBProxyResponse
+
+    public init(modifyDBProxyResult: ModifyDBProxyResponse) {
+        self.modifyDBProxyResult = modifyDBProxyResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case modifyDBProxyResult = "ModifyDBProxyResult"
+    }
+
+    public func validate() throws {
+        try modifyDBProxyResult.validate()
+    }
+}
+
+public struct ModifyDBProxyTargetGroupRequest: Codable, Equatable {
+    public var connectionPoolConfig: ConnectionPoolConfiguration?
+    public var dBProxyName: String
+    public var newName: String?
+    public var targetGroupName: String
+
+    public init(connectionPoolConfig: ConnectionPoolConfiguration? = nil,
+                dBProxyName: String,
+                newName: String? = nil,
+                targetGroupName: String) {
+        self.connectionPoolConfig = connectionPoolConfig
+        self.dBProxyName = dBProxyName
+        self.newName = newName
+        self.targetGroupName = targetGroupName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case connectionPoolConfig = "ConnectionPoolConfig"
+        case dBProxyName = "DBProxyName"
+        case newName = "NewName"
+        case targetGroupName = "TargetGroupName"
+    }
+
+    public func validate() throws {
+        try connectionPoolConfig?.validate()
+    }
+}
+
+public struct ModifyDBProxyTargetGroupResponse: Codable, Equatable {
+    public var dBProxyTargetGroup: DBProxyTargetGroup?
+
+    public init(dBProxyTargetGroup: DBProxyTargetGroup? = nil) {
+        self.dBProxyTargetGroup = dBProxyTargetGroup
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyTargetGroup = "DBProxyTargetGroup"
+    }
+
+    public func validate() throws {
+        try dBProxyTargetGroup?.validate()
+    }
+}
+
+public struct ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup: Codable, Equatable {
+    public var modifyDBProxyTargetGroupResult: ModifyDBProxyTargetGroupResponse
+
+    public init(modifyDBProxyTargetGroupResult: ModifyDBProxyTargetGroupResponse) {
+        self.modifyDBProxyTargetGroupResult = modifyDBProxyTargetGroupResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case modifyDBProxyTargetGroupResult = "ModifyDBProxyTargetGroupResult"
+    }
+
+    public func validate() throws {
+        try modifyDBProxyTargetGroupResult.validate()
     }
 }
 
@@ -8773,6 +10312,64 @@ public struct RecurringCharge: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct RegisterDBProxyTargetsRequest: Codable, Equatable {
+    public var dBClusterIdentifiers: StringList?
+    public var dBInstanceIdentifiers: StringList?
+    public var dBProxyName: String
+    public var targetGroupName: String?
+
+    public init(dBClusterIdentifiers: StringList? = nil,
+                dBInstanceIdentifiers: StringList? = nil,
+                dBProxyName: String,
+                targetGroupName: String? = nil) {
+        self.dBClusterIdentifiers = dBClusterIdentifiers
+        self.dBInstanceIdentifiers = dBInstanceIdentifiers
+        self.dBProxyName = dBProxyName
+        self.targetGroupName = targetGroupName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBClusterIdentifiers = "DBClusterIdentifiers"
+        case dBInstanceIdentifiers = "DBInstanceIdentifiers"
+        case dBProxyName = "DBProxyName"
+        case targetGroupName = "TargetGroupName"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct RegisterDBProxyTargetsResponse: Codable, Equatable {
+    public var dBProxyTargets: TargetList?
+
+    public init(dBProxyTargets: TargetList? = nil) {
+        self.dBProxyTargets = dBProxyTargets
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyTargets = "DBProxyTargets"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct RegisterDBProxyTargetsResponseForRegisterDBProxyTargets: Codable, Equatable {
+    public var registerDBProxyTargetsResult: RegisterDBProxyTargetsResponse
+
+    public init(registerDBProxyTargetsResult: RegisterDBProxyTargetsResponse) {
+        self.registerDBProxyTargetsResult = registerDBProxyTargetsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case registerDBProxyTargetsResult = "RegisterDBProxyTargetsResult"
+    }
+
+    public func validate() throws {
+        try registerDBProxyTargetsResult.validate()
     }
 }
 
@@ -10604,6 +12201,45 @@ public struct StartDBInstanceResultForStartDBInstance: Codable, Equatable {
     }
 }
 
+public struct StartExportTaskMessage: Codable, Equatable {
+    public var exportOnly: StringList?
+    public var exportTaskIdentifier: String
+    public var iamRoleArn: String
+    public var kmsKeyId: String
+    public var s3BucketName: String
+    public var s3Prefix: String?
+    public var sourceArn: String
+
+    public init(exportOnly: StringList? = nil,
+                exportTaskIdentifier: String,
+                iamRoleArn: String,
+                kmsKeyId: String,
+                s3BucketName: String,
+                s3Prefix: String? = nil,
+                sourceArn: String) {
+        self.exportOnly = exportOnly
+        self.exportTaskIdentifier = exportTaskIdentifier
+        self.iamRoleArn = iamRoleArn
+        self.kmsKeyId = kmsKeyId
+        self.s3BucketName = s3BucketName
+        self.s3Prefix = s3Prefix
+        self.sourceArn = sourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportOnly = "ExportOnly"
+        case exportTaskIdentifier = "ExportTaskIdentifier"
+        case iamRoleArn = "IamRoleArn"
+        case kmsKeyId = "KmsKeyId"
+        case s3BucketName = "S3BucketName"
+        case s3Prefix = "S3Prefix"
+        case sourceArn = "SourceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct StopActivityStreamRequest: Codable, Equatable {
     public var applyImmediately: BooleanOptional?
     public var resourceArn: String
@@ -10934,6 +12570,68 @@ public struct UpgradeTarget: Codable, Equatable {
     }
 }
 
+public struct UserAuthConfig: Codable, Equatable {
+    public var authScheme: AuthScheme?
+    public var description: String?
+    public var iAMAuth: IAMAuthMode?
+    public var secretArn: String?
+    public var userName: String?
+
+    public init(authScheme: AuthScheme? = nil,
+                description: String? = nil,
+                iAMAuth: IAMAuthMode? = nil,
+                secretArn: String? = nil,
+                userName: String? = nil) {
+        self.authScheme = authScheme
+        self.description = description
+        self.iAMAuth = iAMAuth
+        self.secretArn = secretArn
+        self.userName = userName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case authScheme = "AuthScheme"
+        case description = "Description"
+        case iAMAuth = "IAMAuth"
+        case secretArn = "SecretArn"
+        case userName = "UserName"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct UserAuthConfigInfo: Codable, Equatable {
+    public var authScheme: AuthScheme?
+    public var description: String?
+    public var iAMAuth: IAMAuthMode?
+    public var secretArn: String?
+    public var userName: String?
+
+    public init(authScheme: AuthScheme? = nil,
+                description: String? = nil,
+                iAMAuth: IAMAuthMode? = nil,
+                secretArn: String? = nil,
+                userName: String? = nil) {
+        self.authScheme = authScheme
+        self.description = description
+        self.iAMAuth = iAMAuth
+        self.secretArn = secretArn
+        self.userName = userName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case authScheme = "AuthScheme"
+        case description = "Description"
+        case iAMAuth = "IAMAuth"
+        case secretArn = "SecretArn"
+        case userName = "UserName"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ValidDBInstanceModificationsMessage: Codable, Equatable {
     public var storage: ValidStorageOptionsList?
     public var validProcessorFeatures: AvailableProcessorFeatureList?
@@ -10997,6 +12695,41 @@ public struct VpcSecurityGroupMembership: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case status = "Status"
         case vpcSecurityGroupId = "VpcSecurityGroupId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct VpnDetails: Codable, Equatable {
+    public var vpnGatewayIp: String?
+    public var vpnId: String?
+    public var vpnName: String?
+    public var vpnPSK: StringSensitive?
+    public var vpnState: String?
+    public var vpnTunnelOriginatorIP: String?
+
+    public init(vpnGatewayIp: String? = nil,
+                vpnId: String? = nil,
+                vpnName: String? = nil,
+                vpnPSK: StringSensitive? = nil,
+                vpnState: String? = nil,
+                vpnTunnelOriginatorIP: String? = nil) {
+        self.vpnGatewayIp = vpnGatewayIp
+        self.vpnId = vpnId
+        self.vpnName = vpnName
+        self.vpnPSK = vpnPSK
+        self.vpnState = vpnState
+        self.vpnTunnelOriginatorIP = vpnTunnelOriginatorIP
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case vpnGatewayIp = "VpnGatewayIp"
+        case vpnId = "VpnId"
+        case vpnName = "VpnName"
+        case vpnPSK = "VpnPSK"
+        case vpnState = "VpnState"
+        case vpnTunnelOriginatorIP = "VpnTunnelOriginatorIP"
     }
 
     public func validate() throws {

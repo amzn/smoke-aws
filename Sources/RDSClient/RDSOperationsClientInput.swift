@@ -59,6 +59,11 @@ public typealias AuthorizeDBSecurityGroupIngressOperationHTTPRequestInput = Quer
 public typealias BacktrackDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CancelExportTask operation in a HTTP client.
+ */
+public typealias CancelExportTaskOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CopyDBClusterParameterGroup operation in a HTTP client.
  */
 public typealias CopyDBClusterParameterGroupOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -82,6 +87,11 @@ public typealias CopyDBSnapshotOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the CopyOptionGroup operation in a HTTP client.
  */
 public typealias CopyOptionGroupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateCustomAvailabilityZone operation in a HTTP client.
+ */
+public typealias CreateCustomAvailabilityZoneOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the CreateDBCluster operation in a HTTP client.
@@ -119,6 +129,11 @@ public typealias CreateDBInstanceReadReplicaOperationHTTPRequestInput = QueryHTT
 public typealias CreateDBParameterGroupOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateDBProxy operation in a HTTP client.
+ */
+public typealias CreateDBProxyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateDBSecurityGroup operation in a HTTP client.
  */
 public typealias CreateDBSecurityGroupOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -147,6 +162,11 @@ public typealias CreateGlobalClusterOperationHTTPRequestInput = QueryHTTPRequest
  Type to handle the input to the CreateOptionGroup operation in a HTTP client.
  */
 public typealias CreateOptionGroupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteCustomAvailabilityZone operation in a HTTP client.
+ */
+public typealias DeleteCustomAvailabilityZoneOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteDBCluster operation in a HTTP client.
@@ -184,6 +204,11 @@ public typealias DeleteDBInstanceAutomatedBackupOperationHTTPRequestInput = Quer
 public typealias DeleteDBParameterGroupOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteDBProxy operation in a HTTP client.
+ */
+public typealias DeleteDBProxyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteDBSecurityGroup operation in a HTTP client.
  */
 public typealias DeleteDBSecurityGroupOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -209,9 +234,19 @@ public typealias DeleteEventSubscriptionOperationHTTPRequestInput = QueryHTTPReq
 public typealias DeleteGlobalClusterOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteInstallationMedia operation in a HTTP client.
+ */
+public typealias DeleteInstallationMediaOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteOptionGroup operation in a HTTP client.
  */
 public typealias DeleteOptionGroupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeregisterDBProxyTargets operation in a HTTP client.
+ */
+public typealias DeregisterDBProxyTargetsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeAccountAttributes operation in a HTTP client.
@@ -222,6 +257,11 @@ public typealias DescribeAccountAttributesOperationHTTPRequestInput = QueryHTTPR
  Type to handle the input to the DescribeCertificates operation in a HTTP client.
  */
 public typealias DescribeCertificatesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeCustomAvailabilityZones operation in a HTTP client.
+ */
+public typealias DescribeCustomAvailabilityZonesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeDBClusterBacktracks operation in a HTTP client.
@@ -289,6 +329,21 @@ public typealias DescribeDBParameterGroupsOperationHTTPRequestInput = QueryHTTPR
 public typealias DescribeDBParametersOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeDBProxies operation in a HTTP client.
+ */
+public typealias DescribeDBProxiesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeDBProxyTargetGroups operation in a HTTP client.
+ */
+public typealias DescribeDBProxyTargetGroupsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeDBProxyTargets operation in a HTTP client.
+ */
+public typealias DescribeDBProxyTargetsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeDBSecurityGroups operation in a HTTP client.
  */
 public typealias DescribeDBSecurityGroupsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -334,9 +389,19 @@ public typealias DescribeEventSubscriptionsOperationHTTPRequestInput = QueryHTTP
 public typealias DescribeEventsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeExportTasks operation in a HTTP client.
+ */
+public typealias DescribeExportTasksOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeGlobalClusters operation in a HTTP client.
  */
 public typealias DescribeGlobalClustersOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeInstallationMedia operation in a HTTP client.
+ */
+public typealias DescribeInstallationMediaOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeOptionGroupOptions operation in a HTTP client.
@@ -389,9 +454,19 @@ public typealias DownloadDBLogFilePortionOperationHTTPRequestInput = QueryHTTPRe
 public typealias FailoverDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ImportInstallationMedia operation in a HTTP client.
+ */
+public typealias ImportInstallationMediaOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ListTagsForResource operation in a HTTP client.
  */
 public typealias ListTagsForResourceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyCertificates operation in a HTTP client.
+ */
+public typealias ModifyCertificatesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyCurrentDBClusterCapacity operation in a HTTP client.
@@ -427,6 +502,16 @@ public typealias ModifyDBInstanceOperationHTTPRequestInput = QueryHTTPRequestInp
  Type to handle the input to the ModifyDBParameterGroup operation in a HTTP client.
  */
 public typealias ModifyDBParameterGroupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyDBProxy operation in a HTTP client.
+ */
+public typealias ModifyDBProxyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyDBProxyTargetGroup operation in a HTTP client.
+ */
+public typealias ModifyDBProxyTargetGroupOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyDBSnapshot operation in a HTTP client.
@@ -477,6 +562,11 @@ public typealias PurchaseReservedDBInstancesOfferingOperationHTTPRequestInput = 
  Type to handle the input to the RebootDBInstance operation in a HTTP client.
  */
 public typealias RebootDBInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the RegisterDBProxyTargets operation in a HTTP client.
+ */
+public typealias RegisterDBProxyTargetsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the RemoveFromGlobalCluster operation in a HTTP client.
@@ -562,6 +652,11 @@ public typealias StartDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the StartDBInstance operation in a HTTP client.
  */
 public typealias StartDBInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the StartExportTask operation in a HTTP client.
+ */
+public typealias StartExportTaskOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the StopActivityStream operation in a HTTP client.

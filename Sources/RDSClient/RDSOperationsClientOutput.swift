@@ -76,6 +76,19 @@ extension DBClusterBacktrackForBacktrackDBCluster: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CancelExportTask operation in a HTTP client.
+ */
+extension ExportTaskForCancelExportTask: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExportTaskForCancelExportTask
+    public typealias HeadersType = ExportTaskForCancelExportTask
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExportTaskForCancelExportTask {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CopyDBClusterParameterGroup operation in a HTTP client.
  */
 extension CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup: HTTPResponseOutputProtocol {
@@ -136,6 +149,19 @@ extension CopyOptionGroupResultForCopyOptionGroup: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CopyOptionGroupResultForCopyOptionGroup {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateCustomAvailabilityZone operation in a HTTP client.
+ */
+extension CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+    public typealias HeadersType = CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
         return try bodyDecodableProvider()
     }
 }
@@ -232,6 +258,19 @@ extension CreateDBParameterGroupResultForCreateDBParameterGroup: HTTPResponseOut
 }
 
 /**
+ Type to handle the output from the CreateDBProxy operation in a HTTP client.
+ */
+extension CreateDBProxyResponseForCreateDBProxy: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateDBProxyResponseForCreateDBProxy
+    public typealias HeadersType = CreateDBProxyResponseForCreateDBProxy
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateDBProxyResponseForCreateDBProxy {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateDBSecurityGroup operation in a HTTP client.
  */
 extension CreateDBSecurityGroupResultForCreateDBSecurityGroup: HTTPResponseOutputProtocol {
@@ -310,6 +349,19 @@ extension CreateOptionGroupResultForCreateOptionGroup: HTTPResponseOutputProtoco
 }
 
 /**
+ Type to handle the output from the DeleteCustomAvailabilityZone operation in a HTTP client.
+ */
+extension DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+    public typealias HeadersType = DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteDBCluster operation in a HTTP client.
  */
 extension DeleteDBClusterResultForDeleteDBCluster: HTTPResponseOutputProtocol {
@@ -375,6 +427,19 @@ extension DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBacku
 }
 
 /**
+ Type to handle the output from the DeleteDBProxy operation in a HTTP client.
+ */
+extension DeleteDBProxyResponseForDeleteDBProxy: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteDBProxyResponseForDeleteDBProxy
+    public typealias HeadersType = DeleteDBProxyResponseForDeleteDBProxy
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteDBProxyResponseForDeleteDBProxy {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteDBSnapshot operation in a HTTP client.
  */
 extension DeleteDBSnapshotResultForDeleteDBSnapshot: HTTPResponseOutputProtocol {
@@ -414,6 +479,32 @@ extension DeleteGlobalClusterResultForDeleteGlobalCluster: HTTPResponseOutputPro
 }
 
 /**
+ Type to handle the output from the DeleteInstallationMedia operation in a HTTP client.
+ */
+extension InstallationMediaForDeleteInstallationMedia: HTTPResponseOutputProtocol {
+    public typealias BodyType = InstallationMediaForDeleteInstallationMedia
+    public typealias HeadersType = InstallationMediaForDeleteInstallationMedia
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> InstallationMediaForDeleteInstallationMedia {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeregisterDBProxyTargets operation in a HTTP client.
+ */
+extension DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+    public typealias HeadersType = DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeAccountAttributes operation in a HTTP client.
  */
 extension AccountAttributesMessageForDescribeAccountAttributes: HTTPResponseOutputProtocol {
@@ -435,6 +526,19 @@ extension CertificateMessageForDescribeCertificates: HTTPResponseOutputProtocol 
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CertificateMessageForDescribeCertificates {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeCustomAvailabilityZones operation in a HTTP client.
+ */
+extension CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones: HTTPResponseOutputProtocol {
+    public typealias BodyType = CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+    public typealias HeadersType = CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
         return try bodyDecodableProvider()
     }
 }
@@ -609,6 +713,45 @@ extension DBParameterGroupDetailsForDescribeDBParameters: HTTPResponseOutputProt
 }
 
 /**
+ Type to handle the output from the DescribeDBProxies operation in a HTTP client.
+ */
+extension DescribeDBProxiesResponseForDescribeDBProxies: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeDBProxiesResponseForDescribeDBProxies
+    public typealias HeadersType = DescribeDBProxiesResponseForDescribeDBProxies
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeDBProxiesResponseForDescribeDBProxies {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeDBProxyTargetGroups operation in a HTTP client.
+ */
+extension DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+    public typealias HeadersType = DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeDBProxyTargets operation in a HTTP client.
+ */
+extension DescribeDBProxyTargetsResponseForDescribeDBProxyTargets: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+    public typealias HeadersType = DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeDBSecurityGroups operation in a HTTP client.
  */
 extension DBSecurityGroupMessageForDescribeDBSecurityGroups: HTTPResponseOutputProtocol {
@@ -726,6 +869,19 @@ extension EventsMessageForDescribeEvents: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeExportTasks operation in a HTTP client.
+ */
+extension ExportTasksMessageForDescribeExportTasks: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExportTasksMessageForDescribeExportTasks
+    public typealias HeadersType = ExportTasksMessageForDescribeExportTasks
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExportTasksMessageForDescribeExportTasks {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeGlobalClusters operation in a HTTP client.
  */
 extension GlobalClustersMessageForDescribeGlobalClusters: HTTPResponseOutputProtocol {
@@ -734,6 +890,19 @@ extension GlobalClustersMessageForDescribeGlobalClusters: HTTPResponseOutputProt
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GlobalClustersMessageForDescribeGlobalClusters {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeInstallationMedia operation in a HTTP client.
+ */
+extension InstallationMediaMessageForDescribeInstallationMedia: HTTPResponseOutputProtocol {
+    public typealias BodyType = InstallationMediaMessageForDescribeInstallationMedia
+    public typealias HeadersType = InstallationMediaMessageForDescribeInstallationMedia
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> InstallationMediaMessageForDescribeInstallationMedia {
         return try bodyDecodableProvider()
     }
 }
@@ -869,6 +1038,19 @@ extension FailoverDBClusterResultForFailoverDBCluster: HTTPResponseOutputProtoco
 }
 
 /**
+ Type to handle the output from the ImportInstallationMedia operation in a HTTP client.
+ */
+extension InstallationMediaForImportInstallationMedia: HTTPResponseOutputProtocol {
+    public typealias BodyType = InstallationMediaForImportInstallationMedia
+    public typealias HeadersType = InstallationMediaForImportInstallationMedia
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> InstallationMediaForImportInstallationMedia {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListTagsForResource operation in a HTTP client.
  */
 extension TagListMessageForListTagsForResource: HTTPResponseOutputProtocol {
@@ -877,6 +1059,19 @@ extension TagListMessageForListTagsForResource: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> TagListMessageForListTagsForResource {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyCertificates operation in a HTTP client.
+ */
+extension ModifyCertificatesResultForModifyCertificates: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyCertificatesResultForModifyCertificates
+    public typealias HeadersType = ModifyCertificatesResultForModifyCertificates
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyCertificatesResultForModifyCertificates {
         return try bodyDecodableProvider()
     }
 }
@@ -968,6 +1163,32 @@ extension DBParameterGroupNameMessageForModifyDBParameterGroup: HTTPResponseOutp
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DBParameterGroupNameMessageForModifyDBParameterGroup {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyDBProxy operation in a HTTP client.
+ */
+extension ModifyDBProxyResponseForModifyDBProxy: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyDBProxyResponseForModifyDBProxy
+    public typealias HeadersType = ModifyDBProxyResponseForModifyDBProxy
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyDBProxyResponseForModifyDBProxy {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyDBProxyTargetGroup operation in a HTTP client.
+ */
+extension ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+    public typealias HeadersType = ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
         return try bodyDecodableProvider()
     }
 }
@@ -1098,6 +1319,19 @@ extension RebootDBInstanceResultForRebootDBInstance: HTTPResponseOutputProtocol 
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> RebootDBInstanceResultForRebootDBInstance {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the RegisterDBProxyTargets operation in a HTTP client.
+ */
+extension RegisterDBProxyTargetsResponseForRegisterDBProxyTargets: HTTPResponseOutputProtocol {
+    public typealias BodyType = RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+    public typealias HeadersType = RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
         return try bodyDecodableProvider()
     }
 }
@@ -1280,6 +1514,19 @@ extension StartDBInstanceResultForStartDBInstance: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StartDBInstanceResultForStartDBInstance {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the StartExportTask operation in a HTTP client.
+ */
+extension ExportTaskForStartExportTask: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExportTaskForStartExportTask
+    public typealias HeadersType = ExportTaskForStartExportTask
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExportTaskForStartExportTask {
         return try bodyDecodableProvider()
     }
 }

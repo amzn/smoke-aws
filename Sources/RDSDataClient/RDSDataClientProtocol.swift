@@ -94,7 +94,7 @@ public protocol RDSDataClientProtocol {
          - completion: The CommitTransactionResponse object or an error will be passed to this 
            callback when the operation is complete. The CommitTransactionResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
+           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     func commitTransactionAsync(input: RDSDataModel.CommitTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.CommitTransactionResponse>) -> ()) throws
 
@@ -105,7 +105,7 @@ public protocol RDSDataClientProtocol {
          - input: The validated CommitTransactionRequest object being passed to this operation.
      - Returns: The CommitTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
+     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     func commitTransactionSync(input: RDSDataModel.CommitTransactionRequest) throws -> RDSDataModel.CommitTransactionResponse
 
@@ -163,7 +163,7 @@ public protocol RDSDataClientProtocol {
          - completion: The RollbackTransactionResponse object or an error will be passed to this 
            callback when the operation is complete. The RollbackTransactionResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
+           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     func rollbackTransactionAsync(input: RDSDataModel.RollbackTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.RollbackTransactionResponse>) -> ()) throws
 
@@ -174,7 +174,7 @@ public protocol RDSDataClientProtocol {
          - input: The validated RollbackTransactionRequest object being passed to this operation.
      - Returns: The RollbackTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
+     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     func rollbackTransactionSync(input: RDSDataModel.RollbackTransactionRequest) throws -> RDSDataModel.RollbackTransactionResponse
 }

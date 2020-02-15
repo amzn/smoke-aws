@@ -34,6 +34,8 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
     let deleteAnomalyDetectorSyncOverride: CloudWatchClientProtocol.DeleteAnomalyDetectorSyncType?
     let deleteDashboardsAsyncOverride: CloudWatchClientProtocol.DeleteDashboardsAsyncType?
     let deleteDashboardsSyncOverride: CloudWatchClientProtocol.DeleteDashboardsSyncType?
+    let deleteInsightRulesAsyncOverride: CloudWatchClientProtocol.DeleteInsightRulesAsyncType?
+    let deleteInsightRulesSyncOverride: CloudWatchClientProtocol.DeleteInsightRulesSyncType?
     let describeAlarmHistoryAsyncOverride: CloudWatchClientProtocol.DescribeAlarmHistoryAsyncType?
     let describeAlarmHistorySyncOverride: CloudWatchClientProtocol.DescribeAlarmHistorySyncType?
     let describeAlarmsAsyncOverride: CloudWatchClientProtocol.DescribeAlarmsAsyncType?
@@ -42,12 +44,20 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
     let describeAlarmsForMetricSyncOverride: CloudWatchClientProtocol.DescribeAlarmsForMetricSyncType?
     let describeAnomalyDetectorsAsyncOverride: CloudWatchClientProtocol.DescribeAnomalyDetectorsAsyncType?
     let describeAnomalyDetectorsSyncOverride: CloudWatchClientProtocol.DescribeAnomalyDetectorsSyncType?
+    let describeInsightRulesAsyncOverride: CloudWatchClientProtocol.DescribeInsightRulesAsyncType?
+    let describeInsightRulesSyncOverride: CloudWatchClientProtocol.DescribeInsightRulesSyncType?
     let disableAlarmActionsAsyncOverride: CloudWatchClientProtocol.DisableAlarmActionsAsyncType?
     let disableAlarmActionsSyncOverride: CloudWatchClientProtocol.DisableAlarmActionsSyncType?
+    let disableInsightRulesAsyncOverride: CloudWatchClientProtocol.DisableInsightRulesAsyncType?
+    let disableInsightRulesSyncOverride: CloudWatchClientProtocol.DisableInsightRulesSyncType?
     let enableAlarmActionsAsyncOverride: CloudWatchClientProtocol.EnableAlarmActionsAsyncType?
     let enableAlarmActionsSyncOverride: CloudWatchClientProtocol.EnableAlarmActionsSyncType?
+    let enableInsightRulesAsyncOverride: CloudWatchClientProtocol.EnableInsightRulesAsyncType?
+    let enableInsightRulesSyncOverride: CloudWatchClientProtocol.EnableInsightRulesSyncType?
     let getDashboardAsyncOverride: CloudWatchClientProtocol.GetDashboardAsyncType?
     let getDashboardSyncOverride: CloudWatchClientProtocol.GetDashboardSyncType?
+    let getInsightRuleReportAsyncOverride: CloudWatchClientProtocol.GetInsightRuleReportAsyncType?
+    let getInsightRuleReportSyncOverride: CloudWatchClientProtocol.GetInsightRuleReportSyncType?
     let getMetricDataAsyncOverride: CloudWatchClientProtocol.GetMetricDataAsyncType?
     let getMetricDataSyncOverride: CloudWatchClientProtocol.GetMetricDataSyncType?
     let getMetricStatisticsAsyncOverride: CloudWatchClientProtocol.GetMetricStatisticsAsyncType?
@@ -64,6 +74,8 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
     let putAnomalyDetectorSyncOverride: CloudWatchClientProtocol.PutAnomalyDetectorSyncType?
     let putDashboardAsyncOverride: CloudWatchClientProtocol.PutDashboardAsyncType?
     let putDashboardSyncOverride: CloudWatchClientProtocol.PutDashboardSyncType?
+    let putInsightRuleAsyncOverride: CloudWatchClientProtocol.PutInsightRuleAsyncType?
+    let putInsightRuleSyncOverride: CloudWatchClientProtocol.PutInsightRuleSyncType?
     let putMetricAlarmAsyncOverride: CloudWatchClientProtocol.PutMetricAlarmAsyncType?
     let putMetricAlarmSyncOverride: CloudWatchClientProtocol.PutMetricAlarmSyncType?
     let putMetricDataAsyncOverride: CloudWatchClientProtocol.PutMetricDataAsyncType?
@@ -86,6 +98,8 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
             deleteAnomalyDetectorSync: CloudWatchClientProtocol.DeleteAnomalyDetectorSyncType? = nil,
             deleteDashboardsAsync: CloudWatchClientProtocol.DeleteDashboardsAsyncType? = nil,
             deleteDashboardsSync: CloudWatchClientProtocol.DeleteDashboardsSyncType? = nil,
+            deleteInsightRulesAsync: CloudWatchClientProtocol.DeleteInsightRulesAsyncType? = nil,
+            deleteInsightRulesSync: CloudWatchClientProtocol.DeleteInsightRulesSyncType? = nil,
             describeAlarmHistoryAsync: CloudWatchClientProtocol.DescribeAlarmHistoryAsyncType? = nil,
             describeAlarmHistorySync: CloudWatchClientProtocol.DescribeAlarmHistorySyncType? = nil,
             describeAlarmsAsync: CloudWatchClientProtocol.DescribeAlarmsAsyncType? = nil,
@@ -94,12 +108,20 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
             describeAlarmsForMetricSync: CloudWatchClientProtocol.DescribeAlarmsForMetricSyncType? = nil,
             describeAnomalyDetectorsAsync: CloudWatchClientProtocol.DescribeAnomalyDetectorsAsyncType? = nil,
             describeAnomalyDetectorsSync: CloudWatchClientProtocol.DescribeAnomalyDetectorsSyncType? = nil,
+            describeInsightRulesAsync: CloudWatchClientProtocol.DescribeInsightRulesAsyncType? = nil,
+            describeInsightRulesSync: CloudWatchClientProtocol.DescribeInsightRulesSyncType? = nil,
             disableAlarmActionsAsync: CloudWatchClientProtocol.DisableAlarmActionsAsyncType? = nil,
             disableAlarmActionsSync: CloudWatchClientProtocol.DisableAlarmActionsSyncType? = nil,
+            disableInsightRulesAsync: CloudWatchClientProtocol.DisableInsightRulesAsyncType? = nil,
+            disableInsightRulesSync: CloudWatchClientProtocol.DisableInsightRulesSyncType? = nil,
             enableAlarmActionsAsync: CloudWatchClientProtocol.EnableAlarmActionsAsyncType? = nil,
             enableAlarmActionsSync: CloudWatchClientProtocol.EnableAlarmActionsSyncType? = nil,
+            enableInsightRulesAsync: CloudWatchClientProtocol.EnableInsightRulesAsyncType? = nil,
+            enableInsightRulesSync: CloudWatchClientProtocol.EnableInsightRulesSyncType? = nil,
             getDashboardAsync: CloudWatchClientProtocol.GetDashboardAsyncType? = nil,
             getDashboardSync: CloudWatchClientProtocol.GetDashboardSyncType? = nil,
+            getInsightRuleReportAsync: CloudWatchClientProtocol.GetInsightRuleReportAsyncType? = nil,
+            getInsightRuleReportSync: CloudWatchClientProtocol.GetInsightRuleReportSyncType? = nil,
             getMetricDataAsync: CloudWatchClientProtocol.GetMetricDataAsyncType? = nil,
             getMetricDataSync: CloudWatchClientProtocol.GetMetricDataSyncType? = nil,
             getMetricStatisticsAsync: CloudWatchClientProtocol.GetMetricStatisticsAsyncType? = nil,
@@ -116,6 +138,8 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
             putAnomalyDetectorSync: CloudWatchClientProtocol.PutAnomalyDetectorSyncType? = nil,
             putDashboardAsync: CloudWatchClientProtocol.PutDashboardAsyncType? = nil,
             putDashboardSync: CloudWatchClientProtocol.PutDashboardSyncType? = nil,
+            putInsightRuleAsync: CloudWatchClientProtocol.PutInsightRuleAsyncType? = nil,
+            putInsightRuleSync: CloudWatchClientProtocol.PutInsightRuleSyncType? = nil,
             putMetricAlarmAsync: CloudWatchClientProtocol.PutMetricAlarmAsyncType? = nil,
             putMetricAlarmSync: CloudWatchClientProtocol.PutMetricAlarmSyncType? = nil,
             putMetricDataAsync: CloudWatchClientProtocol.PutMetricDataAsyncType? = nil,
@@ -133,6 +157,8 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
         self.deleteAnomalyDetectorSyncOverride = deleteAnomalyDetectorSync
         self.deleteDashboardsAsyncOverride = deleteDashboardsAsync
         self.deleteDashboardsSyncOverride = deleteDashboardsSync
+        self.deleteInsightRulesAsyncOverride = deleteInsightRulesAsync
+        self.deleteInsightRulesSyncOverride = deleteInsightRulesSync
         self.describeAlarmHistoryAsyncOverride = describeAlarmHistoryAsync
         self.describeAlarmHistorySyncOverride = describeAlarmHistorySync
         self.describeAlarmsAsyncOverride = describeAlarmsAsync
@@ -141,12 +167,20 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
         self.describeAlarmsForMetricSyncOverride = describeAlarmsForMetricSync
         self.describeAnomalyDetectorsAsyncOverride = describeAnomalyDetectorsAsync
         self.describeAnomalyDetectorsSyncOverride = describeAnomalyDetectorsSync
+        self.describeInsightRulesAsyncOverride = describeInsightRulesAsync
+        self.describeInsightRulesSyncOverride = describeInsightRulesSync
         self.disableAlarmActionsAsyncOverride = disableAlarmActionsAsync
         self.disableAlarmActionsSyncOverride = disableAlarmActionsSync
+        self.disableInsightRulesAsyncOverride = disableInsightRulesAsync
+        self.disableInsightRulesSyncOverride = disableInsightRulesSync
         self.enableAlarmActionsAsyncOverride = enableAlarmActionsAsync
         self.enableAlarmActionsSyncOverride = enableAlarmActionsSync
+        self.enableInsightRulesAsyncOverride = enableInsightRulesAsync
+        self.enableInsightRulesSyncOverride = enableInsightRulesSync
         self.getDashboardAsyncOverride = getDashboardAsync
         self.getDashboardSyncOverride = getDashboardSync
+        self.getInsightRuleReportAsyncOverride = getInsightRuleReportAsync
+        self.getInsightRuleReportSyncOverride = getInsightRuleReportSync
         self.getMetricDataAsyncOverride = getMetricDataAsync
         self.getMetricDataSyncOverride = getMetricDataSync
         self.getMetricStatisticsAsyncOverride = getMetricStatisticsAsync
@@ -163,6 +197,8 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
         self.putAnomalyDetectorSyncOverride = putAnomalyDetectorSync
         self.putDashboardAsyncOverride = putDashboardAsync
         self.putDashboardSyncOverride = putDashboardSync
+        self.putInsightRuleAsyncOverride = putInsightRuleAsync
+        self.putInsightRuleSyncOverride = putInsightRuleSync
         self.putMetricAlarmAsyncOverride = putMetricAlarmAsync
         self.putMetricAlarmSyncOverride = putMetricAlarmSync
         self.putMetricDataAsyncOverride = putMetricDataAsync
@@ -272,6 +308,41 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
     public func deleteDashboardsSync(input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
         if let deleteDashboardsSyncOverride = deleteDashboardsSyncOverride {
             return try deleteDashboardsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInsightRulesInput object being passed to this operation.
+         - completion: The DeleteInsightRulesOutputForDeleteInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The DeleteInsightRulesOutputForDeleteInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter.
+     */
+    public func deleteInsightRulesAsync(input: CloudWatchModel.DeleteInsightRulesInput, completion: @escaping (HTTPResult<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules>) -> ()) throws {
+        if let deleteInsightRulesAsyncOverride = deleteInsightRulesAsyncOverride {
+            return try deleteInsightRulesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeleteInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInsightRulesInput object being passed to this operation.
+     - Returns: The DeleteInsightRulesOutputForDeleteInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    public func deleteInsightRulesSync(input: CloudWatchModel.DeleteInsightRulesInput) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules {
+        if let deleteInsightRulesSyncOverride = deleteInsightRulesSyncOverride {
+            return try deleteInsightRulesSyncOverride(input)
         }
 
         throw error
@@ -416,6 +487,41 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the DescribeInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInsightRulesInput object being passed to this operation.
+         - completion: The DescribeInsightRulesOutputForDescribeInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInsightRulesOutputForDescribeInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidNextToken.
+     */
+    public func describeInsightRulesAsync(input: CloudWatchModel.DescribeInsightRulesInput, completion: @escaping (HTTPResult<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules>) -> ()) throws {
+        if let describeInsightRulesAsyncOverride = describeInsightRulesAsyncOverride {
+            return try describeInsightRulesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInsightRulesInput object being passed to this operation.
+     - Returns: The DescribeInsightRulesOutputForDescribeInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken.
+     */
+    public func describeInsightRulesSync(input: CloudWatchModel.DescribeInsightRulesInput) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules {
+        if let describeInsightRulesSyncOverride = describeInsightRulesSyncOverride {
+            return try describeInsightRulesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DisableAlarmActions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -440,6 +546,41 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
     public func disableAlarmActionsSync(input: CloudWatchModel.DisableAlarmActionsInput) throws {
         if let disableAlarmActionsSyncOverride = disableAlarmActionsSyncOverride {
             return try disableAlarmActionsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DisableInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableInsightRulesInput object being passed to this operation.
+         - completion: The DisableInsightRulesOutputForDisableInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The DisableInsightRulesOutputForDisableInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter.
+     */
+    public func disableInsightRulesAsync(input: CloudWatchModel.DisableInsightRulesInput, completion: @escaping (HTTPResult<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules>) -> ()) throws {
+        if let disableInsightRulesAsyncOverride = disableInsightRulesAsyncOverride {
+            return try disableInsightRulesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DisableInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableInsightRulesInput object being passed to this operation.
+     - Returns: The DisableInsightRulesOutputForDisableInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    public func disableInsightRulesSync(input: CloudWatchModel.DisableInsightRulesInput) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules {
+        if let disableInsightRulesSyncOverride = disableInsightRulesSyncOverride {
+            return try disableInsightRulesSyncOverride(input)
         }
 
         throw error
@@ -476,6 +617,41 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the EnableInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableInsightRulesInput object being passed to this operation.
+         - completion: The EnableInsightRulesOutputForEnableInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The EnableInsightRulesOutputForEnableInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func enableInsightRulesAsync(input: CloudWatchModel.EnableInsightRulesInput, completion: @escaping (HTTPResult<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules>) -> ()) throws {
+        if let enableInsightRulesAsyncOverride = enableInsightRulesAsyncOverride {
+            return try enableInsightRulesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the EnableInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableInsightRulesInput object being passed to this operation.
+     - Returns: The EnableInsightRulesOutputForEnableInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func enableInsightRulesSync(input: CloudWatchModel.EnableInsightRulesInput) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules {
+        if let enableInsightRulesSyncOverride = enableInsightRulesSyncOverride {
+            return try enableInsightRulesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the GetDashboard operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -505,6 +681,41 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
     public func getDashboardSync(input: CloudWatchModel.GetDashboardInput) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
         if let getDashboardSyncOverride = getDashboardSyncOverride {
             return try getDashboardSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetInsightRuleReport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetInsightRuleReportInput object being passed to this operation.
+         - completion: The GetInsightRuleReportOutputForGetInsightRuleReport object or an error will be passed to this 
+           callback when the operation is complete. The GetInsightRuleReportOutputForGetInsightRuleReport
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func getInsightRuleReportAsync(input: CloudWatchModel.GetInsightRuleReportInput, completion: @escaping (HTTPResult<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport>) -> ()) throws {
+        if let getInsightRuleReportAsyncOverride = getInsightRuleReportAsyncOverride {
+            return try getInsightRuleReportAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the GetInsightRuleReport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetInsightRuleReportInput object being passed to this operation.
+     - Returns: The GetInsightRuleReportOutputForGetInsightRuleReport object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func getInsightRuleReportSync(input: CloudWatchModel.GetInsightRuleReportInput) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport {
+        if let getInsightRuleReportSyncOverride = getInsightRuleReportSyncOverride {
+            return try getInsightRuleReportSyncOverride(input)
         }
 
         throw error
@@ -783,6 +994,41 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
     public func putDashboardSync(input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
         if let putDashboardSyncOverride = putDashboardSyncOverride {
             return try putDashboardSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the PutInsightRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutInsightRuleInput object being passed to this operation.
+         - completion: The PutInsightRuleOutputForPutInsightRule object or an error will be passed to this 
+           callback when the operation is complete. The PutInsightRuleOutputForPutInsightRule
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putInsightRuleAsync(input: CloudWatchModel.PutInsightRuleInput, completion: @escaping (HTTPResult<CloudWatchModel.PutInsightRuleOutputForPutInsightRule>) -> ()) throws {
+        if let putInsightRuleAsyncOverride = putInsightRuleAsyncOverride {
+            return try putInsightRuleAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the PutInsightRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutInsightRuleInput object being passed to this operation.
+     - Returns: The PutInsightRuleOutputForPutInsightRule object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putInsightRuleSync(input: CloudWatchModel.PutInsightRuleInput) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule {
+        if let putInsightRuleSyncOverride = putInsightRuleSyncOverride {
+            return try putInsightRuleSyncOverride(input)
         }
 
         throw error

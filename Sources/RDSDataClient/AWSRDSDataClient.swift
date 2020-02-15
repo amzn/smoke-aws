@@ -226,7 +226,7 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          - completion: The CommitTransactionResponse object or an error will be passed to this 
            callback when the operation is complete. The CommitTransactionResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
+           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func commitTransactionAsync(input: RDSDataModel.CommitTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.CommitTransactionResponse>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -255,7 +255,7 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          - input: The validated CommitTransactionRequest object being passed to this operation.
      - Returns: The CommitTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
+     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func commitTransactionSync(input: RDSDataModel.CommitTransactionRequest) throws -> RDSDataModel.CommitTransactionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -400,7 +400,7 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          - completion: The RollbackTransactionResponse object or an error will be passed to this 
            callback when the operation is complete. The RollbackTransactionResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
+           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func rollbackTransactionAsync(input: RDSDataModel.RollbackTransactionRequest, completion: @escaping (HTTPResult<RDSDataModel.RollbackTransactionResponse>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
@@ -429,7 +429,7 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          - input: The validated RollbackTransactionRequest object being passed to this operation.
      - Returns: The RollbackTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable.
+     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func rollbackTransactionSync(input: RDSDataModel.RollbackTransactionRequest) throws -> RDSDataModel.RollbackTransactionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(

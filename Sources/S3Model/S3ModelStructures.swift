@@ -1583,17 +1583,23 @@ public struct Destination: Codable, Equatable {
     public var account: AccountId?
     public var bucket: BucketName
     public var encryptionConfiguration: EncryptionConfiguration?
+    public var metrics: Metrics?
+    public var replicationTime: ReplicationTime?
     public var storageClass: StorageClass?
 
     public init(accessControlTranslation: AccessControlTranslation? = nil,
                 account: AccountId? = nil,
                 bucket: BucketName,
                 encryptionConfiguration: EncryptionConfiguration? = nil,
+                metrics: Metrics? = nil,
+                replicationTime: ReplicationTime? = nil,
                 storageClass: StorageClass? = nil) {
         self.accessControlTranslation = accessControlTranslation
         self.account = account
         self.bucket = bucket
         self.encryptionConfiguration = encryptionConfiguration
+        self.metrics = metrics
+        self.replicationTime = replicationTime
         self.storageClass = storageClass
     }
 
@@ -1602,12 +1608,16 @@ public struct Destination: Codable, Equatable {
         case account = "Account"
         case bucket = "Bucket"
         case encryptionConfiguration = "EncryptionConfiguration"
+        case metrics = "Metrics"
+        case replicationTime = "ReplicationTime"
         case storageClass = "StorageClass"
     }
 
     public func validate() throws {
         try accessControlTranslation?.validate()
         try encryptionConfiguration?.validate()
+        try metrics?.validate()
+        try replicationTime?.validate()
     }
 }
 
@@ -1699,6 +1709,21 @@ public struct ErrorDocument: Codable, Equatable {
 
     public func validate() throws {
         try key.validateAsObjectKey()
+    }
+}
+
+public struct ExistingObjectReplication: Codable, Equatable {
+    public var status: ExistingObjectReplicationStatus
+
+    public init(status: ExistingObjectReplicationStatus) {
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case status = "Status"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -4192,6 +4217,26 @@ public struct MetadataEntry: Codable, Equatable {
     }
 }
 
+public struct Metrics: Codable, Equatable {
+    public var eventThreshold: ReplicationTimeValue
+    public var status: MetricsStatus
+
+    public init(eventThreshold: ReplicationTimeValue,
+                status: MetricsStatus) {
+        self.eventThreshold = eventThreshold
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case eventThreshold = "EventThreshold"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+        try eventThreshold.validate()
+    }
+}
+
 public struct MetricsAndOperator: Codable, Equatable {
     public var prefix: Prefix?
     public var tags: TagSet?
@@ -5858,6 +5903,7 @@ public struct ReplicationConfiguration: Codable, Equatable {
 public struct ReplicationRule: Codable, Equatable {
     public var deleteMarkerReplication: DeleteMarkerReplication?
     public var destination: Destination
+    public var existingObjectReplication: ExistingObjectReplication?
     public var filter: ReplicationRuleFilter?
     public var iD: ID?
     public var priority: Priority?
@@ -5866,6 +5912,7 @@ public struct ReplicationRule: Codable, Equatable {
 
     public init(deleteMarkerReplication: DeleteMarkerReplication? = nil,
                 destination: Destination,
+                existingObjectReplication: ExistingObjectReplication? = nil,
                 filter: ReplicationRuleFilter? = nil,
                 iD: ID? = nil,
                 priority: Priority? = nil,
@@ -5873,6 +5920,7 @@ public struct ReplicationRule: Codable, Equatable {
                 status: ReplicationRuleStatus) {
         self.deleteMarkerReplication = deleteMarkerReplication
         self.destination = destination
+        self.existingObjectReplication = existingObjectReplication
         self.filter = filter
         self.iD = iD
         self.priority = priority
@@ -5883,6 +5931,7 @@ public struct ReplicationRule: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case deleteMarkerReplication = "DeleteMarkerReplication"
         case destination = "Destination"
+        case existingObjectReplication = "ExistingObjectReplication"
         case filter = "Filter"
         case iD = "ID"
         case priority = "Priority"
@@ -5893,6 +5942,7 @@ public struct ReplicationRule: Codable, Equatable {
     public func validate() throws {
         try deleteMarkerReplication?.validate()
         try destination.validate()
+        try existingObjectReplication?.validate()
         try filter?.validate()
         try sourceSelectionCriteria?.validate()
     }
@@ -5939,6 +5989,41 @@ public struct ReplicationRuleFilter: Codable, Equatable {
     public func validate() throws {
         try and?.validate()
         try tag?.validate()
+    }
+}
+
+public struct ReplicationTime: Codable, Equatable {
+    public var status: ReplicationTimeStatus
+    public var time: ReplicationTimeValue
+
+    public init(status: ReplicationTimeStatus,
+                time: ReplicationTimeValue) {
+        self.status = status
+        self.time = time
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case status = "Status"
+        case time = "Time"
+    }
+
+    public func validate() throws {
+        try time.validate()
+    }
+}
+
+public struct ReplicationTimeValue: Codable, Equatable {
+    public var minutes: Minutes?
+
+    public init(minutes: Minutes? = nil) {
+        self.minutes = minutes
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case minutes = "Minutes"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -6219,6 +6304,25 @@ public struct SSES3: Codable, Equatable {
     }
 }
 
+public struct ScanRange: Codable, Equatable {
+    public var end: End?
+    public var start: Start?
+
+    public init(end: End? = nil,
+                start: Start? = nil) {
+        self.end = end
+        self.start = start
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case end = "End"
+        case start = "Start"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct SelectObjectContentEventStream: Codable, Equatable {
     public var cont: ContinuationEvent?
     public var end: EndEvent?
@@ -6282,6 +6386,7 @@ public struct SelectObjectContentRequest: Codable, Equatable {
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var scanRange: ScanRange?
 
     public init(bucket: BucketName,
                 expression: Expression,
@@ -6292,7 +6397,8 @@ public struct SelectObjectContentRequest: Codable, Equatable {
                 requestProgress: RequestProgress? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
-                sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
+                sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                scanRange: ScanRange? = nil) {
         self.bucket = bucket
         self.expression = expression
         self.expressionType = expressionType
@@ -6303,6 +6409,7 @@ public struct SelectObjectContentRequest: Codable, Equatable {
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.scanRange = scanRange
     }
 
     enum CodingKeys: String, CodingKey {
@@ -6316,6 +6423,7 @@ public struct SelectObjectContentRequest: Codable, Equatable {
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+        case scanRange = "ScanRange"
     }
 
     public func validate() throws {
@@ -6323,6 +6431,7 @@ public struct SelectObjectContentRequest: Codable, Equatable {
         try key.validateAsObjectKey()
         try outputSerialization.validate()
         try requestProgress?.validate()
+        try scanRange?.validate()
     }
 }
 

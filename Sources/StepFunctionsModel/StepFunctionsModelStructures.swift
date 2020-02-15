@@ -215,6 +215,22 @@ public struct ActivityWorkerLimitExceeded: Codable, Equatable {
     }
 }
 
+public struct CloudWatchLogsLogGroup: Codable, Equatable {
+    public var logGroupArn: Arn?
+
+    public init(logGroupArn: Arn? = nil) {
+        self.logGroupArn = logGroupArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case logGroupArn
+    }
+
+    public func validate() throws {
+        try logGroupArn?.validateAsArn()
+    }
+}
+
 public struct CreateActivityInput: Codable, Equatable {
     public var name: Name
     public var tags: TagList?
@@ -257,29 +273,38 @@ public struct CreateActivityOutput: Codable, Equatable {
 
 public struct CreateStateMachineInput: Codable, Equatable {
     public var definition: Definition
+    public var loggingConfiguration: LoggingConfiguration?
     public var name: Name
     public var roleArn: Arn
     public var tags: TagList?
+    public var type: StateMachineType?
 
     public init(definition: Definition,
+                loggingConfiguration: LoggingConfiguration? = nil,
                 name: Name,
                 roleArn: Arn,
-                tags: TagList? = nil) {
+                tags: TagList? = nil,
+                type: StateMachineType? = nil) {
         self.definition = definition
+        self.loggingConfiguration = loggingConfiguration
         self.name = name
         self.roleArn = roleArn
         self.tags = tags
+        self.type = type
     }
 
     enum CodingKeys: String, CodingKey {
         case definition
+        case loggingConfiguration
         case name
         case roleArn
         case tags
+        case type
     }
 
     public func validate() throws {
         try definition.validateAsDefinition()
+        try loggingConfiguration?.validate()
         try name.validateAsName()
         try roleArn.validateAsArn()
     }
@@ -530,36 +555,45 @@ public struct DescribeStateMachineInput: Codable, Equatable {
 public struct DescribeStateMachineOutput: Codable, Equatable {
     public var creationDate: Timestamp
     public var definition: Definition
+    public var loggingConfiguration: LoggingConfiguration?
     public var name: Name
     public var roleArn: Arn
     public var stateMachineArn: Arn
     public var status: StateMachineStatus?
+    public var type: StateMachineType
 
     public init(creationDate: Timestamp,
                 definition: Definition,
+                loggingConfiguration: LoggingConfiguration? = nil,
                 name: Name,
                 roleArn: Arn,
                 stateMachineArn: Arn,
-                status: StateMachineStatus? = nil) {
+                status: StateMachineStatus? = nil,
+                type: StateMachineType) {
         self.creationDate = creationDate
         self.definition = definition
+        self.loggingConfiguration = loggingConfiguration
         self.name = name
         self.roleArn = roleArn
         self.stateMachineArn = stateMachineArn
         self.status = status
+        self.type = type
     }
 
     enum CodingKeys: String, CodingKey {
         case creationDate
         case definition
+        case loggingConfiguration
         case name
         case roleArn
         case stateMachineArn
         case status
+        case type
     }
 
     public func validate() throws {
         try definition.validateAsDefinition()
+        try loggingConfiguration?.validate()
         try name.validateAsName()
         try roleArn.validateAsArn()
         try stateMachineArn.validateAsArn()
@@ -1073,6 +1107,21 @@ public struct InvalidExecutionInput: Codable, Equatable {
     }
 }
 
+public struct InvalidLoggingConfiguration: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InvalidName: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -1406,6 +1455,45 @@ public struct ListTagsForResourceOutput: Codable, Equatable {
     }
 }
 
+public struct LogDestination: Codable, Equatable {
+    public var cloudWatchLogsLogGroup: CloudWatchLogsLogGroup?
+
+    public init(cloudWatchLogsLogGroup: CloudWatchLogsLogGroup? = nil) {
+        self.cloudWatchLogsLogGroup = cloudWatchLogsLogGroup
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cloudWatchLogsLogGroup
+    }
+
+    public func validate() throws {
+        try cloudWatchLogsLogGroup?.validate()
+    }
+}
+
+public struct LoggingConfiguration: Codable, Equatable {
+    public var destinations: LogDestinationList?
+    public var includeExecutionData: IncludeExecutionData?
+    public var level: LogLevel?
+
+    public init(destinations: LogDestinationList? = nil,
+                includeExecutionData: IncludeExecutionData? = nil,
+                level: LogLevel? = nil) {
+        self.destinations = destinations
+        self.includeExecutionData = includeExecutionData
+        self.level = level
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case destinations
+        case includeExecutionData
+        case level
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct MapIterationEventDetails: Codable, Equatable {
     public var index: UnsignedInteger?
     public var name: Name?
@@ -1720,24 +1808,43 @@ public struct StateMachineListItem: Codable, Equatable {
     public var creationDate: Timestamp
     public var name: Name
     public var stateMachineArn: Arn
+    public var type: StateMachineType
 
     public init(creationDate: Timestamp,
                 name: Name,
-                stateMachineArn: Arn) {
+                stateMachineArn: Arn,
+                type: StateMachineType) {
         self.creationDate = creationDate
         self.name = name
         self.stateMachineArn = stateMachineArn
+        self.type = type
     }
 
     enum CodingKeys: String, CodingKey {
         case creationDate
         case name
         case stateMachineArn
+        case type
     }
 
     public func validate() throws {
         try name.validateAsName()
         try stateMachineArn.validateAsArn()
+    }
+}
+
+public struct StateMachineTypeNotSupported: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -2145,25 +2252,30 @@ public struct UntagResourceOutput: Codable, Equatable {
 
 public struct UpdateStateMachineInput: Codable, Equatable {
     public var definition: Definition?
+    public var loggingConfiguration: LoggingConfiguration?
     public var roleArn: Arn?
     public var stateMachineArn: Arn
 
     public init(definition: Definition? = nil,
+                loggingConfiguration: LoggingConfiguration? = nil,
                 roleArn: Arn? = nil,
                 stateMachineArn: Arn) {
         self.definition = definition
+        self.loggingConfiguration = loggingConfiguration
         self.roleArn = roleArn
         self.stateMachineArn = stateMachineArn
     }
 
     enum CodingKeys: String, CodingKey {
         case definition
+        case loggingConfiguration
         case roleArn
         case stateMachineArn
     }
 
     public func validate() throws {
         try definition?.validateAsDefinition()
+        try loggingConfiguration?.validate()
         try roleArn?.validateAsArn()
         try stateMachineArn.validateAsArn()
     }

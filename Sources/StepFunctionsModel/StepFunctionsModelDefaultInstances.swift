@@ -149,6 +149,18 @@ public extension ActivityWorkerLimitExceeded {
     }()
 }
 
+public extension CloudWatchLogsLogGroup {
+    /**
+     Default instance of the CloudWatchLogsLogGroup structure.
+     */
+    static let __default: StepFunctionsModel.CloudWatchLogsLogGroup = {
+        let defaultInstance = StepFunctionsModel.CloudWatchLogsLogGroup(
+            logGroupArn: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateActivityInput {
     /**
      Default instance of the CreateActivityInput structure.
@@ -182,9 +194,11 @@ public extension CreateStateMachineInput {
     static let __default: StepFunctionsModel.CreateStateMachineInput = {
         let defaultInstance = StepFunctionsModel.CreateStateMachineInput(
             definition: "0",
+            loggingConfiguration: nil,
             name: "0",
             roleArn: "0",
-            tags: nil)
+            tags: nil,
+            type: nil)
 
         return defaultInstance
     }()
@@ -354,10 +368,12 @@ public extension DescribeStateMachineOutput {
         let defaultInstance = StepFunctionsModel.DescribeStateMachineOutput(
             creationDate: 1.52953091375E9,
             definition: "0",
+            loggingConfiguration: nil,
             name: "0",
             roleArn: "0",
             stateMachineArn: "0",
-            status: nil)
+            status: nil,
+            type: .__default)
 
         return defaultInstance
     }()
@@ -617,6 +633,18 @@ public extension InvalidExecutionInput {
     }()
 }
 
+public extension InvalidLoggingConfiguration {
+    /**
+     Default instance of the InvalidLoggingConfiguration structure.
+     */
+    static let __default: StepFunctionsModel.InvalidLoggingConfiguration = {
+        let defaultInstance = StepFunctionsModel.InvalidLoggingConfiguration(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension InvalidName {
     /**
      Default instance of the InvalidName structure.
@@ -830,6 +858,32 @@ public extension ListTagsForResourceOutput {
     static let __default: StepFunctionsModel.ListTagsForResourceOutput = {
         let defaultInstance = StepFunctionsModel.ListTagsForResourceOutput(
             tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension LogDestination {
+    /**
+     Default instance of the LogDestination structure.
+     */
+    static let __default: StepFunctionsModel.LogDestination = {
+        let defaultInstance = StepFunctionsModel.LogDestination(
+            cloudWatchLogsLogGroup: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension LoggingConfiguration {
+    /**
+     Default instance of the LoggingConfiguration structure.
+     */
+    static let __default: StepFunctionsModel.LoggingConfiguration = {
+        let defaultInstance = StepFunctionsModel.LoggingConfiguration(
+            destinations: nil,
+            includeExecutionData: nil,
+            level: nil)
 
         return defaultInstance
     }()
@@ -1066,7 +1120,20 @@ public extension StateMachineListItem {
         let defaultInstance = StepFunctionsModel.StateMachineListItem(
             creationDate: 1.52953091375E9,
             name: "0",
-            stateMachineArn: "0")
+            stateMachineArn: "0",
+            type: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension StateMachineTypeNotSupported {
+    /**
+     Default instance of the StateMachineTypeNotSupported structure.
+     */
+    static let __default: StepFunctionsModel.StateMachineTypeNotSupported = {
+        let defaultInstance = StepFunctionsModel.StateMachineTypeNotSupported(
+            message: nil)
 
         return defaultInstance
     }()
@@ -1320,6 +1387,7 @@ public extension UpdateStateMachineInput {
     static let __default: StepFunctionsModel.UpdateStateMachineInput = {
         let defaultInstance = StepFunctionsModel.UpdateStateMachineInput(
             definition: nil,
+            loggingConfiguration: nil,
             roleArn: nil,
             stateMachineArn: "0")
 
