@@ -911,6 +911,8 @@ public extension Destination {
             account: nil,
             bucket: "value",
             encryptionConfiguration: nil,
+            metrics: nil,
+            replicationTime: nil,
             storageClass: nil)
 
         return defaultInstance
@@ -976,6 +978,18 @@ public extension ErrorDocument {
     static let __default: S3Model.ErrorDocument = {
         let defaultInstance = S3Model.ErrorDocument(
             key: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ExistingObjectReplication {
+    /**
+     Default instance of the ExistingObjectReplication structure.
+     */
+    static let __default: S3Model.ExistingObjectReplication = {
+        let defaultInstance = S3Model.ExistingObjectReplication(
+            status: .__default)
 
         return defaultInstance
     }()
@@ -2384,6 +2398,19 @@ public extension MetadataEntry {
     }()
 }
 
+public extension Metrics {
+    /**
+     Default instance of the Metrics structure.
+     */
+    static let __default: S3Model.Metrics = {
+        let defaultInstance = S3Model.Metrics(
+            eventThreshold: ReplicationTimeValue.__default,
+            status: .__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension MetricsAndOperator {
     /**
      Default instance of the MetricsAndOperator structure.
@@ -3351,6 +3378,7 @@ public extension ReplicationRule {
         let defaultInstance = S3Model.ReplicationRule(
             deleteMarkerReplication: nil,
             destination: Destination.__default,
+            existingObjectReplication: nil,
             filter: nil,
             iD: nil,
             priority: nil,
@@ -3383,6 +3411,31 @@ public extension ReplicationRuleFilter {
             and: nil,
             prefix: nil,
             tag: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplicationTime {
+    /**
+     Default instance of the ReplicationTime structure.
+     */
+    static let __default: S3Model.ReplicationTime = {
+        let defaultInstance = S3Model.ReplicationTime(
+            status: .__default,
+            time: ReplicationTimeValue.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplicationTimeValue {
+    /**
+     Default instance of the ReplicationTimeValue structure.
+     */
+    static let __default: S3Model.ReplicationTimeValue = {
+        let defaultInstance = S3Model.ReplicationTimeValue(
+            minutes: nil)
 
         return defaultInstance
     }()

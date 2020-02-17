@@ -28,6 +28,8 @@ import SmokeHTTPClient
  Mock Client for the ElasticContainer service by default returns the `__default` property of its return type.
  */
 public struct MockElasticContainerClient: ElasticContainerClientProtocol {
+    let createCapacityProviderAsyncOverride: ElasticContainerClientProtocol.CreateCapacityProviderAsyncType?
+    let createCapacityProviderSyncOverride: ElasticContainerClientProtocol.CreateCapacityProviderSyncType?
     let createClusterAsyncOverride: ElasticContainerClientProtocol.CreateClusterAsyncType?
     let createClusterSyncOverride: ElasticContainerClientProtocol.CreateClusterSyncType?
     let createServiceAsyncOverride: ElasticContainerClientProtocol.CreateServiceAsyncType?
@@ -48,6 +50,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
     let deregisterContainerInstanceSyncOverride: ElasticContainerClientProtocol.DeregisterContainerInstanceSyncType?
     let deregisterTaskDefinitionAsyncOverride: ElasticContainerClientProtocol.DeregisterTaskDefinitionAsyncType?
     let deregisterTaskDefinitionSyncOverride: ElasticContainerClientProtocol.DeregisterTaskDefinitionSyncType?
+    let describeCapacityProvidersAsyncOverride: ElasticContainerClientProtocol.DescribeCapacityProvidersAsyncType?
+    let describeCapacityProvidersSyncOverride: ElasticContainerClientProtocol.DescribeCapacityProvidersSyncType?
     let describeClustersAsyncOverride: ElasticContainerClientProtocol.DescribeClustersAsyncType?
     let describeClustersSyncOverride: ElasticContainerClientProtocol.DescribeClustersSyncType?
     let describeContainerInstancesAsyncOverride: ElasticContainerClientProtocol.DescribeContainerInstancesAsyncType?
@@ -86,6 +90,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
     let putAccountSettingDefaultSyncOverride: ElasticContainerClientProtocol.PutAccountSettingDefaultSyncType?
     let putAttributesAsyncOverride: ElasticContainerClientProtocol.PutAttributesAsyncType?
     let putAttributesSyncOverride: ElasticContainerClientProtocol.PutAttributesSyncType?
+    let putClusterCapacityProvidersAsyncOverride: ElasticContainerClientProtocol.PutClusterCapacityProvidersAsyncType?
+    let putClusterCapacityProvidersSyncOverride: ElasticContainerClientProtocol.PutClusterCapacityProvidersSyncType?
     let registerContainerInstanceAsyncOverride: ElasticContainerClientProtocol.RegisterContainerInstanceAsyncType?
     let registerContainerInstanceSyncOverride: ElasticContainerClientProtocol.RegisterContainerInstanceSyncType?
     let registerTaskDefinitionAsyncOverride: ElasticContainerClientProtocol.RegisterTaskDefinitionAsyncType?
@@ -124,6 +130,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
      functions can be overridden by passing them to this initializer.
      */
     public init(
+            createCapacityProviderAsync: ElasticContainerClientProtocol.CreateCapacityProviderAsyncType? = nil,
+            createCapacityProviderSync: ElasticContainerClientProtocol.CreateCapacityProviderSyncType? = nil,
             createClusterAsync: ElasticContainerClientProtocol.CreateClusterAsyncType? = nil,
             createClusterSync: ElasticContainerClientProtocol.CreateClusterSyncType? = nil,
             createServiceAsync: ElasticContainerClientProtocol.CreateServiceAsyncType? = nil,
@@ -144,6 +152,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
             deregisterContainerInstanceSync: ElasticContainerClientProtocol.DeregisterContainerInstanceSyncType? = nil,
             deregisterTaskDefinitionAsync: ElasticContainerClientProtocol.DeregisterTaskDefinitionAsyncType? = nil,
             deregisterTaskDefinitionSync: ElasticContainerClientProtocol.DeregisterTaskDefinitionSyncType? = nil,
+            describeCapacityProvidersAsync: ElasticContainerClientProtocol.DescribeCapacityProvidersAsyncType? = nil,
+            describeCapacityProvidersSync: ElasticContainerClientProtocol.DescribeCapacityProvidersSyncType? = nil,
             describeClustersAsync: ElasticContainerClientProtocol.DescribeClustersAsyncType? = nil,
             describeClustersSync: ElasticContainerClientProtocol.DescribeClustersSyncType? = nil,
             describeContainerInstancesAsync: ElasticContainerClientProtocol.DescribeContainerInstancesAsyncType? = nil,
@@ -182,6 +192,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
             putAccountSettingDefaultSync: ElasticContainerClientProtocol.PutAccountSettingDefaultSyncType? = nil,
             putAttributesAsync: ElasticContainerClientProtocol.PutAttributesAsyncType? = nil,
             putAttributesSync: ElasticContainerClientProtocol.PutAttributesSyncType? = nil,
+            putClusterCapacityProvidersAsync: ElasticContainerClientProtocol.PutClusterCapacityProvidersAsyncType? = nil,
+            putClusterCapacityProvidersSync: ElasticContainerClientProtocol.PutClusterCapacityProvidersSyncType? = nil,
             registerContainerInstanceAsync: ElasticContainerClientProtocol.RegisterContainerInstanceAsyncType? = nil,
             registerContainerInstanceSync: ElasticContainerClientProtocol.RegisterContainerInstanceSyncType? = nil,
             registerTaskDefinitionAsync: ElasticContainerClientProtocol.RegisterTaskDefinitionAsyncType? = nil,
@@ -214,6 +226,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
             updateServicePrimaryTaskSetSync: ElasticContainerClientProtocol.UpdateServicePrimaryTaskSetSyncType? = nil,
             updateTaskSetAsync: ElasticContainerClientProtocol.UpdateTaskSetAsyncType? = nil,
             updateTaskSetSync: ElasticContainerClientProtocol.UpdateTaskSetSyncType? = nil) {
+        self.createCapacityProviderAsyncOverride = createCapacityProviderAsync
+        self.createCapacityProviderSyncOverride = createCapacityProviderSync
         self.createClusterAsyncOverride = createClusterAsync
         self.createClusterSyncOverride = createClusterSync
         self.createServiceAsyncOverride = createServiceAsync
@@ -234,6 +248,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         self.deregisterContainerInstanceSyncOverride = deregisterContainerInstanceSync
         self.deregisterTaskDefinitionAsyncOverride = deregisterTaskDefinitionAsync
         self.deregisterTaskDefinitionSyncOverride = deregisterTaskDefinitionSync
+        self.describeCapacityProvidersAsyncOverride = describeCapacityProvidersAsync
+        self.describeCapacityProvidersSyncOverride = describeCapacityProvidersSync
         self.describeClustersAsyncOverride = describeClustersAsync
         self.describeClustersSyncOverride = describeClustersSync
         self.describeContainerInstancesAsyncOverride = describeContainerInstancesAsync
@@ -272,6 +288,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         self.putAccountSettingDefaultSyncOverride = putAccountSettingDefaultSync
         self.putAttributesAsyncOverride = putAttributesAsync
         self.putAttributesSyncOverride = putAttributesSync
+        self.putClusterCapacityProvidersAsyncOverride = putClusterCapacityProvidersAsync
+        self.putClusterCapacityProvidersSyncOverride = putClusterCapacityProvidersSync
         self.registerContainerInstanceAsyncOverride = registerContainerInstanceAsync
         self.registerContainerInstanceSyncOverride = registerContainerInstanceSync
         self.registerTaskDefinitionAsyncOverride = registerTaskDefinitionAsync
@@ -304,6 +322,48 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         self.updateServicePrimaryTaskSetSyncOverride = updateServicePrimaryTaskSetSync
         self.updateTaskSetAsyncOverride = updateTaskSetAsync
         self.updateTaskSetSyncOverride = updateTaskSetSync
+    }
+
+    /**
+     Invokes the CreateCapacityProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCapacityProviderRequest object being passed to this operation.
+         - completion: The CreateCapacityProviderResponse object or an error will be passed to this 
+           callback when the operation is complete. The CreateCapacityProviderResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, limitExceeded, server.
+     */
+    public func createCapacityProviderAsync(
+            input: ElasticContainerModel.CreateCapacityProviderRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws {
+        if let createCapacityProviderAsyncOverride = createCapacityProviderAsyncOverride {
+            return try createCapacityProviderAsyncOverride(input, reporting, completion)
+        }
+
+        let result = CreateCapacityProviderResponse.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateCapacityProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCapacityProviderRequest object being passed to this operation.
+     - Returns: The CreateCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, limitExceeded, server.
+     */
+    public func createCapacityProviderSync(
+            input: ElasticContainerModel.CreateCapacityProviderRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
+        if let createCapacityProviderSyncOverride = createCapacityProviderSyncOverride {
+            return try createCapacityProviderSyncOverride(input, reporting)
+        }
+
+        return CreateCapacityProviderResponse.__default
     }
 
     /**
@@ -524,7 +584,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The DeleteClusterResponse object or an error will be passed to this 
            callback when the operation is complete. The DeleteClusterResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server.
+           The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
     public func deleteClusterAsync(
             input: ElasticContainerModel.DeleteClusterRequest, 
@@ -546,7 +606,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated DeleteClusterRequest object being passed to this operation.
      - Returns: The DeleteClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
     public func deleteClusterSync(
             input: ElasticContainerModel.DeleteClusterRequest,
@@ -724,6 +784,48 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         }
 
         return DeregisterTaskDefinitionResponse.__default
+    }
+
+    /**
+     Invokes the DescribeCapacityProviders operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCapacityProvidersRequest object being passed to this operation.
+         - completion: The DescribeCapacityProvidersResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCapacityProvidersResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func describeCapacityProvidersAsync(
+            input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
+        if let describeCapacityProvidersAsyncOverride = describeCapacityProvidersAsyncOverride {
+            return try describeCapacityProvidersAsyncOverride(input, reporting, completion)
+        }
+
+        let result = DescribeCapacityProvidersResponse.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeCapacityProviders operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCapacityProvidersRequest object being passed to this operation.
+     - Returns: The DescribeCapacityProvidersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func describeCapacityProvidersSync(
+            input: ElasticContainerModel.DescribeCapacityProvidersRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
+        if let describeCapacityProvidersSyncOverride = describeCapacityProvidersSyncOverride {
+            return try describeCapacityProvidersSyncOverride(input, reporting)
+        }
+
+        return DescribeCapacityProvidersResponse.__default
     }
 
     /**
@@ -1525,6 +1627,48 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the PutClusterCapacityProviders operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutClusterCapacityProvidersRequest object being passed to this operation.
+         - completion: The PutClusterCapacityProvidersResponse object or an error will be passed to this 
+           callback when the operation is complete. The PutClusterCapacityProvidersResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
+     */
+    public func putClusterCapacityProvidersAsync(
+            input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
+        if let putClusterCapacityProvidersAsyncOverride = putClusterCapacityProvidersAsyncOverride {
+            return try putClusterCapacityProvidersAsyncOverride(input, reporting, completion)
+        }
+
+        let result = PutClusterCapacityProvidersResponse.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the PutClusterCapacityProviders operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutClusterCapacityProvidersRequest object being passed to this operation.
+     - Returns: The PutClusterCapacityProvidersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
+     */
+    public func putClusterCapacityProvidersSync(
+            input: ElasticContainerModel.PutClusterCapacityProvidersRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
+        if let putClusterCapacityProvidersSyncOverride = putClusterCapacityProvidersSyncOverride {
+            return try putClusterCapacityProvidersSyncOverride(input, reporting)
+        }
+
+        return PutClusterCapacityProvidersResponse.__default
+    }
+
+    /**
      Invokes the RegisterContainerInstance operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2120,7 +2264,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The UpdateServicePrimaryTaskSetResponse object or an error will be passed to this 
            callback when the operation is complete. The UpdateServicePrimaryTaskSetResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
     public func updateServicePrimaryTaskSetAsync(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
@@ -2142,7 +2286,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
      - Returns: The UpdateServicePrimaryTaskSetResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
     public func updateServicePrimaryTaskSetSync(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest,

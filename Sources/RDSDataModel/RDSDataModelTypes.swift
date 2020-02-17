@@ -191,6 +191,22 @@ public typealias StringArray = [String]
 public typealias TransactionStatus = String
 
 /**
+ Enumeration restricting the values of the TypeHint field.
+ */
+public enum TypeHint: String, Codable, CustomStringConvertible {
+    case date = "DATE"
+    case decimal = "DECIMAL"
+    case time = "TIME"
+    case timestamp = "TIMESTAMP"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TypeHint = .date
+}
+
+/**
  Type definition for the UpdateResults field.
  */
 public typealias UpdateResults = [UpdateResult]

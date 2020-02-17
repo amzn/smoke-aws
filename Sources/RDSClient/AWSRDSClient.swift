@@ -69,6 +69,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let applyPendingMaintenanceActionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let authorizeDBSecurityGroupIngressOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let backtrackDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let cancelExportTaskOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let copyDBClusterParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let copyDBClusterSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let copyDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -82,6 +83,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let createDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBInstanceReadReplicaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let createDBProxyOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBSecurityGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBSubnetGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -96,6 +98,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let deleteDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBInstanceAutomatedBackupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let deleteDBProxyOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBSecurityGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBSubnetGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -103,6 +106,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let deleteGlobalClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteInstallationMediaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteOptionGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let deregisterDBProxyTargetsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeAccountAttributesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeCertificatesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeCustomAvailabilityZonesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -119,6 +123,9 @@ public struct AWSRDSClient: RDSClientProtocol {
     let describeDBLogFilesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBParameterGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBParametersOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let describeDBProxiesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let describeDBProxyTargetGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let describeDBProxyTargetsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBSecurityGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBSnapshotAttributesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBSnapshotsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -128,6 +135,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let describeEventCategoriesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeEventSubscriptionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeEventsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let describeExportTasksOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeGlobalClustersOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeInstallationMediaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeOptionGroupOptionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -142,6 +150,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let failoverDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let importInstallationMediaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let modifyCertificatesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyCurrentDBClusterCapacityOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBClusterEndpointOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -149,6 +158,8 @@ public struct AWSRDSClient: RDSClientProtocol {
     let modifyDBClusterSnapshotAttributeOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let modifyDBProxyOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let modifyDBProxyTargetGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBSnapshotAttributeOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBSubnetGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -159,6 +170,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let promoteReadReplicaDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let purchaseReservedDBInstancesOfferingOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let rebootDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let registerDBProxyTargetsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let removeFromGlobalClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let removeRoleFromDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let removeRoleFromDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -176,6 +188,7 @@ public struct AWSRDSClient: RDSClientProtocol {
     let startActivityStreamOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let startDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let startDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let startExportTaskOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let stopActivityStreamOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let stopDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let stopDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -221,6 +234,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .authorizeDBSecurityGroupIngress, configuration: reportingConfiguration)
         self.backtrackDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .backtrackDBCluster, configuration: reportingConfiguration)
+        self.cancelExportTaskOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .cancelExportTask, configuration: reportingConfiguration)
         self.copyDBClusterParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .copyDBClusterParameterGroup, configuration: reportingConfiguration)
         self.copyDBClusterSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
@@ -247,6 +262,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .createDBInstanceReadReplica, configuration: reportingConfiguration)
         self.createDBParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .createDBParameterGroup, configuration: reportingConfiguration)
+        self.createDBProxyOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .createDBProxy, configuration: reportingConfiguration)
         self.createDBSecurityGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .createDBSecurityGroup, configuration: reportingConfiguration)
         self.createDBSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
@@ -275,6 +292,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .deleteDBInstanceAutomatedBackup, configuration: reportingConfiguration)
         self.deleteDBParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .deleteDBParameterGroup, configuration: reportingConfiguration)
+        self.deleteDBProxyOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .deleteDBProxy, configuration: reportingConfiguration)
         self.deleteDBSecurityGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .deleteDBSecurityGroup, configuration: reportingConfiguration)
         self.deleteDBSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
@@ -289,6 +308,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .deleteInstallationMedia, configuration: reportingConfiguration)
         self.deleteOptionGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .deleteOptionGroup, configuration: reportingConfiguration)
+        self.deregisterDBProxyTargetsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .deregisterDBProxyTargets, configuration: reportingConfiguration)
         self.describeAccountAttributesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeAccountAttributes, configuration: reportingConfiguration)
         self.describeCertificatesOperationReporting = StandardSmokeAWSOperationReporting(
@@ -321,6 +342,12 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .describeDBParameterGroups, configuration: reportingConfiguration)
         self.describeDBParametersOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeDBParameters, configuration: reportingConfiguration)
+        self.describeDBProxiesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .describeDBProxies, configuration: reportingConfiguration)
+        self.describeDBProxyTargetGroupsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .describeDBProxyTargetGroups, configuration: reportingConfiguration)
+        self.describeDBProxyTargetsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .describeDBProxyTargets, configuration: reportingConfiguration)
         self.describeDBSecurityGroupsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeDBSecurityGroups, configuration: reportingConfiguration)
         self.describeDBSnapshotAttributesOperationReporting = StandardSmokeAWSOperationReporting(
@@ -339,6 +366,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .describeEventSubscriptions, configuration: reportingConfiguration)
         self.describeEventsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeEvents, configuration: reportingConfiguration)
+        self.describeExportTasksOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .describeExportTasks, configuration: reportingConfiguration)
         self.describeGlobalClustersOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .describeGlobalClusters, configuration: reportingConfiguration)
         self.describeInstallationMediaOperationReporting = StandardSmokeAWSOperationReporting(
@@ -367,6 +396,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .importInstallationMedia, configuration: reportingConfiguration)
         self.listTagsForResourceOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .listTagsForResource, configuration: reportingConfiguration)
+        self.modifyCertificatesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .modifyCertificates, configuration: reportingConfiguration)
         self.modifyCurrentDBClusterCapacityOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .modifyCurrentDBClusterCapacity, configuration: reportingConfiguration)
         self.modifyDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
@@ -381,6 +412,10 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .modifyDBInstance, configuration: reportingConfiguration)
         self.modifyDBParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .modifyDBParameterGroup, configuration: reportingConfiguration)
+        self.modifyDBProxyOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .modifyDBProxy, configuration: reportingConfiguration)
+        self.modifyDBProxyTargetGroupOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .modifyDBProxyTargetGroup, configuration: reportingConfiguration)
         self.modifyDBSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .modifyDBSnapshot, configuration: reportingConfiguration)
         self.modifyDBSnapshotAttributeOperationReporting = StandardSmokeAWSOperationReporting(
@@ -401,6 +436,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .purchaseReservedDBInstancesOffering, configuration: reportingConfiguration)
         self.rebootDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .rebootDBInstance, configuration: reportingConfiguration)
+        self.registerDBProxyTargetsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .registerDBProxyTargets, configuration: reportingConfiguration)
         self.removeFromGlobalClusterOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .removeFromGlobalCluster, configuration: reportingConfiguration)
         self.removeRoleFromDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
@@ -435,6 +472,8 @@ public struct AWSRDSClient: RDSClientProtocol {
             clientName: "AWSRDSClient", operation: .startDBCluster, configuration: reportingConfiguration)
         self.startDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .startDBInstance, configuration: reportingConfiguration)
+        self.startExportTaskOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSRDSClient", operation: .startExportTask, configuration: reportingConfiguration)
         self.stopActivityStreamOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSRDSClient", operation: .stopActivityStream, configuration: reportingConfiguration)
         self.stopDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
@@ -978,6 +1017,83 @@ public struct AWSRDSClient: RDSClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.backtrackDBCluster.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CancelExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelExportTaskMessage object being passed to this operation.
+         - completion: The ExportTaskForCancelExportTask object or an error will be passed to this 
+           callback when the operation is complete. The ExportTaskForCancelExportTask
+           object will be validated before being returned to caller.
+           The possible errors are: exportTaskNotFound, invalidExportTaskState.
+     */
+    public func cancelExportTaskAsync(
+            input: RDSModel.CancelExportTaskMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: cancelExportTaskOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CancelExportTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.cancelExportTask.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CancelExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelExportTaskMessage object being passed to this operation.
+     - Returns: The ExportTaskForCancelExportTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportTaskNotFound, invalidExportTaskState.
+     */
+    public func cancelExportTaskSync(
+            input: RDSModel.CancelExportTaskMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForCancelExportTask {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: cancelExportTaskOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CancelExportTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.cancelExportTask.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1979,6 +2095,83 @@ public struct AWSRDSClient: RDSClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.createDBParameterGroup.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDBProxyRequest object being passed to this operation.
+         - completion: The CreateDBProxyResponseForCreateDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The CreateDBProxyResponseForCreateDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
+     */
+    public func createDBProxyAsync(
+            input: RDSModel.CreateDBProxyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createDBProxyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateDBProxyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.createDBProxy.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDBProxyRequest object being passed to this operation.
+     - Returns: The CreateDBProxyResponseForCreateDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
+     */
+    public func createDBProxySync(
+            input: RDSModel.CreateDBProxyRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createDBProxyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateDBProxyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.createDBProxy.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3063,6 +3256,83 @@ public struct AWSRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the DeleteDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyRequest object being passed to this operation.
+         - completion: The DeleteDBProxyResponseForDeleteDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The DeleteDBProxyResponseForDeleteDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, invalidDBProxyState.
+     */
+    public func deleteDBProxyAsync(
+            input: RDSModel.DeleteDBProxyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteDBProxyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteDBProxyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteDBProxy.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyRequest object being passed to this operation.
+     - Returns: The DeleteDBProxyResponseForDeleteDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, invalidDBProxyState.
+     */
+    public func deleteDBProxySync(
+            input: RDSModel.DeleteDBProxyRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteDBProxyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteDBProxyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteDBProxy.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DeleteDBSecurityGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3584,6 +3854,83 @@ public struct AWSRDSClient: RDSClientProtocol {
             version: apiVersion)
 
         try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeregisterDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterDBProxyTargetsRequest object being passed to this operation.
+         - completion: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    public func deregisterDBProxyTargetsAsync(
+            input: RDSModel.DeregisterDBProxyTargetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deregisterDBProxyTargetsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeregisterDBProxyTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deregisterDBProxyTargets.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeregisterDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    public func deregisterDBProxyTargetsSync(
+            input: RDSModel.DeregisterDBProxyTargetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deregisterDBProxyTargetsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeregisterDBProxyTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deregisterDBProxyTargets.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -4821,6 +5168,237 @@ public struct AWSRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the DescribeDBProxies operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxiesRequest object being passed to this operation.
+         - completion: The DescribeDBProxiesResponseForDescribeDBProxies object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxiesResponseForDescribeDBProxies
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound.
+     */
+    public func describeDBProxiesAsync(
+            input: RDSModel.DescribeDBProxiesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeDBProxiesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBProxiesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBProxies.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeDBProxies operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxiesRequest object being passed to this operation.
+     - Returns: The DescribeDBProxiesResponseForDescribeDBProxies object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound.
+     */
+    public func describeDBProxiesSync(
+            input: RDSModel.DescribeDBProxiesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeDBProxiesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBProxiesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBProxies.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeDBProxyTargetGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetGroupsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyTargetGroupNotFound.
+     */
+    public func describeDBProxyTargetGroupsAsync(
+            input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeDBProxyTargetGroupsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBProxyTargetGroupsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBProxyTargetGroups.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeDBProxyTargetGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetGroupsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyTargetGroupNotFound.
+     */
+    public func describeDBProxyTargetGroupsSync(
+            input: RDSModel.DescribeDBProxyTargetGroupsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeDBProxyTargetGroupsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBProxyTargetGroupsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBProxyTargetGroups.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    public func describeDBProxyTargetsAsync(
+            input: RDSModel.DescribeDBProxyTargetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeDBProxyTargetsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBProxyTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBProxyTargets.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    public func describeDBProxyTargetsSync(
+            input: RDSModel.DescribeDBProxyTargetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeDBProxyTargetsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBProxyTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBProxyTargets.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeDBSecurityGroups operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5494,6 +6072,83 @@ public struct AWSRDSClient: RDSClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.describeEvents.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeExportTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksMessage object being passed to this operation.
+         - completion: The ExportTasksMessageForDescribeExportTasks object or an error will be passed to this 
+           callback when the operation is complete. The ExportTasksMessageForDescribeExportTasks
+           object will be validated before being returned to caller.
+           The possible errors are: exportTaskNotFound.
+     */
+    public func describeExportTasksAsync(
+            input: RDSModel.DescribeExportTasksMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeExportTasksOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeExportTasksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeExportTasks.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeExportTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksMessage object being passed to this operation.
+     - Returns: The ExportTasksMessageForDescribeExportTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportTaskNotFound.
+     */
+    public func describeExportTasksSync(
+            input: RDSModel.DescribeExportTasksMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeExportTasksOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeExportTasksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeExportTasks.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -6578,6 +7233,83 @@ public struct AWSRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the ModifyCertificates operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCertificatesMessage object being passed to this operation.
+         - completion: The ModifyCertificatesResultForModifyCertificates object or an error will be passed to this 
+           callback when the operation is complete. The ModifyCertificatesResultForModifyCertificates
+           object will be validated before being returned to caller.
+           The possible errors are: certificateNotFound.
+     */
+    public func modifyCertificatesAsync(
+            input: RDSModel.ModifyCertificatesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyCertificatesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyCertificatesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyCertificates.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyCertificates operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCertificatesMessage object being passed to this operation.
+     - Returns: The ModifyCertificatesResultForModifyCertificates object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: certificateNotFound.
+     */
+    public func modifyCertificatesSync(
+            input: RDSModel.ModifyCertificatesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyCertificatesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyCertificatesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyCertificates.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ModifyCurrentDBClusterCapacity operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7105,6 +7837,160 @@ public struct AWSRDSClient: RDSClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.modifyDBParameterGroup.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyRequest object being passed to this operation.
+         - completion: The ModifyDBProxyResponseForModifyDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyResponseForModifyDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
+     */
+    public func modifyDBProxyAsync(
+            input: RDSModel.ModifyDBProxyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyDBProxyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyDBProxyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyDBProxy.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyResponseForModifyDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
+     */
+    public func modifyDBProxySync(
+            input: RDSModel.ModifyDBProxyRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyDBProxyOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyDBProxyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyDBProxy.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyDBProxyTargetGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyTargetGroupRequest object being passed to this operation.
+         - completion: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound.
+     */
+    public func modifyDBProxyTargetGroupAsync(
+            input: RDSModel.ModifyDBProxyTargetGroupRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyDBProxyTargetGroupOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyDBProxyTargetGroupOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyDBProxyTargetGroup.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyDBProxyTargetGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyTargetGroupRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
+     */
+    public func modifyDBProxyTargetGroupSync(
+            input: RDSModel.ModifyDBProxyTargetGroupRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyDBProxyTargetGroupOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyDBProxyTargetGroupOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyDBProxyTargetGroup.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -7875,6 +8761,83 @@ public struct AWSRDSClient: RDSClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.rebootDBInstance.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RegisterDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterDBProxyTargetsRequest object being passed to this operation.
+         - completion: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    public func registerDBProxyTargetsAsync(
+            input: RDSModel.RegisterDBProxyTargetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: registerDBProxyTargetsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterDBProxyTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.registerDBProxyTargets.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RegisterDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    public func registerDBProxyTargetsSync(
+            input: RDSModel.RegisterDBProxyTargetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: registerDBProxyTargetsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterDBProxyTargetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.registerDBProxyTargets.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -9175,6 +10138,83 @@ public struct AWSRDSClient: RDSClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.startDBInstance.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartExportTaskMessage object being passed to this operation.
+         - completion: The ExportTaskForStartExportTask object or an error will be passed to this 
+           callback when the operation is complete. The ExportTaskForStartExportTask
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     */
+    public func startExportTaskAsync(
+            input: RDSModel.StartExportTaskMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: startExportTaskOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = StartExportTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.startExportTask.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartExportTaskMessage object being passed to this operation.
+     - Returns: The ExportTaskForStartExportTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     */
+    public func startExportTaskSync(
+            input: RDSModel.StartExportTaskMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForStartExportTask {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: startExportTaskOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = StartExportTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.startExportTask.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(

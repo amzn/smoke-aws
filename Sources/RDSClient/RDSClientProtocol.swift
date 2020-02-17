@@ -77,6 +77,13 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.BacktrackDBClusterMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws -> ()
+    typealias CancelExportTaskSyncType = (
+            _ input: RDSModel.CancelExportTaskMessage,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForCancelExportTask
+    typealias CancelExportTaskAsyncType = (
+            _ input: RDSModel.CancelExportTaskMessage, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws -> ()
     typealias CopyDBClusterParameterGroupSyncType = (
             _ input: RDSModel.CopyDBClusterParameterGroupMessage,
             _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup
@@ -168,6 +175,13 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.CreateDBParameterGroupMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+    typealias CreateDBProxySyncType = (
+            _ input: RDSModel.CreateDBProxyRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
+    typealias CreateDBProxyAsyncType = (
+            _ input: RDSModel.CreateDBProxyRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws -> ()
     typealias CreateDBSecurityGroupSyncType = (
             _ input: RDSModel.CreateDBSecurityGroupMessage,
             _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup
@@ -266,6 +280,13 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.DeleteDBParameterGroupMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DeleteDBProxySyncType = (
+            _ input: RDSModel.DeleteDBProxyRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
+    typealias DeleteDBProxyAsyncType = (
+            _ input: RDSModel.DeleteDBProxyRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws -> ()
     typealias DeleteDBSecurityGroupSyncType = (
             _ input: RDSModel.DeleteDBSecurityGroupMessage,
             _ reporting: SmokeAWSInvocationReporting) throws -> ()
@@ -315,6 +336,13 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.DeleteOptionGroupMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+    typealias DeregisterDBProxyTargetsSyncType = (
+            _ input: RDSModel.DeregisterDBProxyTargetsRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+    typealias DeregisterDBProxyTargetsAsyncType = (
+            _ input: RDSModel.DeregisterDBProxyTargetsRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws -> ()
     typealias DescribeAccountAttributesSyncType = (
             _ input: RDSModel.DescribeAccountAttributesMessage,
             _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes
@@ -427,6 +455,27 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.DescribeDBParametersMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeDBProxiesSyncType = (
+            _ input: RDSModel.DescribeDBProxiesRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
+    typealias DescribeDBProxiesAsyncType = (
+            _ input: RDSModel.DescribeDBProxiesRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeDBProxyTargetGroupsSyncType = (
+            _ input: RDSModel.DescribeDBProxyTargetGroupsRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+    typealias DescribeDBProxyTargetGroupsAsyncType = (
+            _ input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeDBProxyTargetsSyncType = (
+            _ input: RDSModel.DescribeDBProxyTargetsRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+    typealias DescribeDBProxyTargetsAsyncType = (
+            _ input: RDSModel.DescribeDBProxyTargetsRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws -> ()
     typealias DescribeDBSecurityGroupsSyncType = (
             _ input: RDSModel.DescribeDBSecurityGroupsMessage,
             _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups
@@ -490,6 +539,13 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.DescribeEventsMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeExportTasksSyncType = (
+            _ input: RDSModel.DescribeExportTasksMessage,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks
+    typealias DescribeExportTasksAsyncType = (
+            _ input: RDSModel.DescribeExportTasksMessage, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws -> ()
     typealias DescribeGlobalClustersSyncType = (
             _ input: RDSModel.DescribeGlobalClustersMessage,
             _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters
@@ -588,6 +644,13 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.ListTagsForResourceMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws -> ()
+    typealias ModifyCertificatesSyncType = (
+            _ input: RDSModel.ModifyCertificatesMessage,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
+    typealias ModifyCertificatesAsyncType = (
+            _ input: RDSModel.ModifyCertificatesMessage, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws -> ()
     typealias ModifyCurrentDBClusterCapacitySyncType = (
             _ input: RDSModel.ModifyCurrentDBClusterCapacityMessage,
             _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity
@@ -637,6 +700,20 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.ModifyDBParameterGroupMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+    typealias ModifyDBProxySyncType = (
+            _ input: RDSModel.ModifyDBProxyRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
+    typealias ModifyDBProxyAsyncType = (
+            _ input: RDSModel.ModifyDBProxyRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws -> ()
+    typealias ModifyDBProxyTargetGroupSyncType = (
+            _ input: RDSModel.ModifyDBProxyTargetGroupRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+    typealias ModifyDBProxyTargetGroupAsyncType = (
+            _ input: RDSModel.ModifyDBProxyTargetGroupRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws -> ()
     typealias ModifyDBSnapshotSyncType = (
             _ input: RDSModel.ModifyDBSnapshotMessage,
             _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot
@@ -707,6 +784,13 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.RebootDBInstanceMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws -> ()
+    typealias RegisterDBProxyTargetsSyncType = (
+            _ input: RDSModel.RegisterDBProxyTargetsRequest,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+    typealias RegisterDBProxyTargetsAsyncType = (
+            _ input: RDSModel.RegisterDBProxyTargetsRequest, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws -> ()
     typealias RemoveFromGlobalClusterSyncType = (
             _ input: RDSModel.RemoveFromGlobalClusterMessage,
             _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster
@@ -826,6 +910,13 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.StartDBInstanceMessage, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws -> ()
+    typealias StartExportTaskSyncType = (
+            _ input: RDSModel.StartExportTaskMessage,
+            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForStartExportTask
+    typealias StartExportTaskAsyncType = (
+            _ input: RDSModel.StartExportTaskMessage, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws -> ()
     typealias StopActivityStreamSyncType = (
             _ input: RDSModel.StopActivityStreamRequest,
             _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream
@@ -1034,6 +1125,34 @@ public protocol RDSClientProtocol {
     func backtrackDBClusterSync(
             input: RDSModel.BacktrackDBClusterMessage,
             reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster
+
+    /**
+     Invokes the CancelExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelExportTaskMessage object being passed to this operation.
+         - completion: The ExportTaskForCancelExportTask object or an error will be passed to this 
+           callback when the operation is complete. The ExportTaskForCancelExportTask
+           object will be validated before being returned to caller.
+           The possible errors are: exportTaskNotFound, invalidExportTaskState.
+     */
+    func cancelExportTaskAsync(
+            input: RDSModel.CancelExportTaskMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the CancelExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelExportTaskMessage object being passed to this operation.
+     - Returns: The ExportTaskForCancelExportTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportTaskNotFound, invalidExportTaskState.
+     */
+    func cancelExportTaskSync(
+            input: RDSModel.CancelExportTaskMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForCancelExportTask
 
     /**
      Invokes the CopyDBClusterParameterGroup operation returning immediately and passing the response to a callback.
@@ -1398,6 +1517,34 @@ public protocol RDSClientProtocol {
     func createDBParameterGroupSync(
             input: RDSModel.CreateDBParameterGroupMessage,
             reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup
+
+    /**
+     Invokes the CreateDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDBProxyRequest object being passed to this operation.
+         - completion: The CreateDBProxyResponseForCreateDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The CreateDBProxyResponseForCreateDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
+     */
+    func createDBProxyAsync(
+            input: RDSModel.CreateDBProxyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the CreateDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDBProxyRequest object being passed to this operation.
+     - Returns: The CreateDBProxyResponseForCreateDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
+     */
+    func createDBProxySync(
+            input: RDSModel.CreateDBProxyRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
 
     /**
      Invokes the CreateDBSecurityGroup operation returning immediately and passing the response to a callback.
@@ -1786,6 +1933,34 @@ public protocol RDSClientProtocol {
             reporting: SmokeAWSInvocationReporting) throws
 
     /**
+     Invokes the DeleteDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyRequest object being passed to this operation.
+         - completion: The DeleteDBProxyResponseForDeleteDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The DeleteDBProxyResponseForDeleteDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, invalidDBProxyState.
+     */
+    func deleteDBProxyAsync(
+            input: RDSModel.DeleteDBProxyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the DeleteDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyRequest object being passed to this operation.
+     - Returns: The DeleteDBProxyResponseForDeleteDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, invalidDBProxyState.
+     */
+    func deleteDBProxySync(
+            input: RDSModel.DeleteDBProxyRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
+
+    /**
      Invokes the DeleteDBSecurityGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1971,6 +2146,34 @@ public protocol RDSClientProtocol {
     func deleteOptionGroupSync(
             input: RDSModel.DeleteOptionGroupMessage,
             reporting: SmokeAWSInvocationReporting) throws
+
+    /**
+     Invokes the DeregisterDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterDBProxyTargetsRequest object being passed to this operation.
+         - completion: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    func deregisterDBProxyTargetsAsync(
+            input: RDSModel.DeregisterDBProxyTargetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the DeregisterDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    func deregisterDBProxyTargetsSync(
+            input: RDSModel.DeregisterDBProxyTargetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
 
     /**
      Invokes the DescribeAccountAttributes operation returning immediately and passing the response to a callback.
@@ -2417,6 +2620,90 @@ public protocol RDSClientProtocol {
             reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters
 
     /**
+     Invokes the DescribeDBProxies operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxiesRequest object being passed to this operation.
+         - completion: The DescribeDBProxiesResponseForDescribeDBProxies object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxiesResponseForDescribeDBProxies
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound.
+     */
+    func describeDBProxiesAsync(
+            input: RDSModel.DescribeDBProxiesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the DescribeDBProxies operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxiesRequest object being passed to this operation.
+     - Returns: The DescribeDBProxiesResponseForDescribeDBProxies object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound.
+     */
+    func describeDBProxiesSync(
+            input: RDSModel.DescribeDBProxiesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
+
+    /**
+     Invokes the DescribeDBProxyTargetGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetGroupsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyTargetGroupNotFound.
+     */
+    func describeDBProxyTargetGroupsAsync(
+            input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the DescribeDBProxyTargetGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetGroupsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyTargetGroupNotFound.
+     */
+    func describeDBProxyTargetGroupsSync(
+            input: RDSModel.DescribeDBProxyTargetGroupsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+
+    /**
+     Invokes the DescribeDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    func describeDBProxyTargetsAsync(
+            input: RDSModel.DescribeDBProxyTargetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the DescribeDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     */
+    func describeDBProxyTargetsSync(
+            input: RDSModel.DescribeDBProxyTargetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+
+    /**
      Invokes the DescribeDBSecurityGroups operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2659,6 +2946,34 @@ public protocol RDSClientProtocol {
     func describeEventsSync(
             input: RDSModel.DescribeEventsMessage,
             reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventsMessageForDescribeEvents
+
+    /**
+     Invokes the DescribeExportTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksMessage object being passed to this operation.
+         - completion: The ExportTasksMessageForDescribeExportTasks object or an error will be passed to this 
+           callback when the operation is complete. The ExportTasksMessageForDescribeExportTasks
+           object will be validated before being returned to caller.
+           The possible errors are: exportTaskNotFound.
+     */
+    func describeExportTasksAsync(
+            input: RDSModel.DescribeExportTasksMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the DescribeExportTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportTasksMessage object being passed to this operation.
+     - Returns: The ExportTasksMessageForDescribeExportTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportTaskNotFound.
+     */
+    func describeExportTasksSync(
+            input: RDSModel.DescribeExportTasksMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks
 
     /**
      Invokes the DescribeGlobalClusters operation returning immediately and passing the response to a callback.
@@ -3047,6 +3362,34 @@ public protocol RDSClientProtocol {
             reporting: SmokeAWSInvocationReporting) throws -> RDSModel.TagListMessageForListTagsForResource
 
     /**
+     Invokes the ModifyCertificates operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCertificatesMessage object being passed to this operation.
+         - completion: The ModifyCertificatesResultForModifyCertificates object or an error will be passed to this 
+           callback when the operation is complete. The ModifyCertificatesResultForModifyCertificates
+           object will be validated before being returned to caller.
+           The possible errors are: certificateNotFound.
+     */
+    func modifyCertificatesAsync(
+            input: RDSModel.ModifyCertificatesMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the ModifyCertificates operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCertificatesMessage object being passed to this operation.
+     - Returns: The ModifyCertificatesResultForModifyCertificates object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: certificateNotFound.
+     */
+    func modifyCertificatesSync(
+            input: RDSModel.ModifyCertificatesMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
+
+    /**
      Invokes the ModifyCurrentDBClusterCapacity operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3241,6 +3584,62 @@ public protocol RDSClientProtocol {
     func modifyDBParameterGroupSync(
             input: RDSModel.ModifyDBParameterGroupMessage,
             reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup
+
+    /**
+     Invokes the ModifyDBProxy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyRequest object being passed to this operation.
+         - completion: The ModifyDBProxyResponseForModifyDBProxy object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyResponseForModifyDBProxy
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
+     */
+    func modifyDBProxyAsync(
+            input: RDSModel.ModifyDBProxyRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the ModifyDBProxy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyResponseForModifyDBProxy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
+     */
+    func modifyDBProxySync(
+            input: RDSModel.ModifyDBProxyRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
+
+    /**
+     Invokes the ModifyDBProxyTargetGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyTargetGroupRequest object being passed to this operation.
+         - completion: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound.
+     */
+    func modifyDBProxyTargetGroupAsync(
+            input: RDSModel.ModifyDBProxyTargetGroupRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the ModifyDBProxyTargetGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyTargetGroupRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
+     */
+    func modifyDBProxyTargetGroupSync(
+            input: RDSModel.ModifyDBProxyTargetGroupRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
 
     /**
      Invokes the ModifyDBSnapshot operation returning immediately and passing the response to a callback.
@@ -3521,6 +3920,34 @@ public protocol RDSClientProtocol {
     func rebootDBInstanceSync(
             input: RDSModel.RebootDBInstanceMessage,
             reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance
+
+    /**
+     Invokes the RegisterDBProxyTargets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterDBProxyTargetsRequest object being passed to this operation.
+         - completion: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object or an error will be passed to this 
+           callback when the operation is complete. The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    func registerDBProxyTargetsAsync(
+            input: RDSModel.RegisterDBProxyTargetsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the RegisterDBProxyTargets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterDBProxyTargetsRequest object being passed to this operation.
+     - Returns: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    func registerDBProxyTargetsSync(
+            input: RDSModel.RegisterDBProxyTargetsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
 
     /**
      Invokes the RemoveFromGlobalCluster operation returning immediately and passing the response to a callback.
@@ -3988,6 +4415,34 @@ public protocol RDSClientProtocol {
     func startDBInstanceSync(
             input: RDSModel.StartDBInstanceMessage,
             reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
+
+    /**
+     Invokes the StartExportTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartExportTaskMessage object being passed to this operation.
+         - completion: The ExportTaskForStartExportTask object or an error will be passed to this 
+           callback when the operation is complete. The ExportTaskForStartExportTask
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     */
+    func startExportTaskAsync(
+            input: RDSModel.StartExportTaskMessage, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the StartExportTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartExportTaskMessage object being passed to this operation.
+     - Returns: The ExportTaskForStartExportTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     */
+    func startExportTaskSync(
+            input: RDSModel.StartExportTaskMessage,
+            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForStartExportTask
 
     /**
      Invokes the StopActivityStream operation returning immediately and passing the response to a callback.

@@ -300,6 +300,18 @@ public extension BackupPolicyNotFoundFault {
     }()
 }
 
+public extension CancelExportTaskMessage {
+    /**
+     Default instance of the CancelExportTaskMessage structure.
+     */
+    static let __default: RDSModel.CancelExportTaskMessage = {
+        let defaultInstance = RDSModel.CancelExportTaskMessage(
+            exportTaskIdentifier: "value")
+
+        return defaultInstance
+    }()
+}
+
 public extension Certificate {
     /**
      Default instance of the Certificate structure.
@@ -309,6 +321,8 @@ public extension Certificate {
             certificateArn: nil,
             certificateIdentifier: nil,
             certificateType: nil,
+            customerOverride: nil,
+            customerOverrideValidTill: nil,
             thumbprint: nil,
             validFrom: nil,
             validTill: nil)
@@ -374,6 +388,38 @@ public extension CloudwatchLogsExportConfiguration {
         let defaultInstance = RDSModel.CloudwatchLogsExportConfiguration(
             disableLogTypes: nil,
             enableLogTypes: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ConnectionPoolConfiguration {
+    /**
+     Default instance of the ConnectionPoolConfiguration structure.
+     */
+    static let __default: RDSModel.ConnectionPoolConfiguration = {
+        let defaultInstance = RDSModel.ConnectionPoolConfiguration(
+            connectionBorrowTimeout: nil,
+            initQuery: nil,
+            maxConnectionsPercent: nil,
+            maxIdleConnectionsPercent: nil,
+            sessionPinningFilters: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ConnectionPoolConfigurationInfo {
+    /**
+     Default instance of the ConnectionPoolConfigurationInfo structure.
+     */
+    static let __default: RDSModel.ConnectionPoolConfigurationInfo = {
+        let defaultInstance = RDSModel.ConnectionPoolConfigurationInfo(
+            connectionBorrowTimeout: nil,
+            initQuery: nil,
+            maxConnectionsPercent: nil,
+            maxIdleConnectionsPercent: nil,
+            sessionPinningFilters: nil)
 
         return defaultInstance
     }()
@@ -628,7 +674,8 @@ public extension CreateDBClusterEndpointMessage {
             dBClusterIdentifier: "value",
             endpointType: "value",
             excludedMembers: nil,
-            staticMembers: nil)
+            staticMembers: nil,
+            tags: nil)
 
         return defaultInstance
     }()
@@ -956,6 +1003,51 @@ public extension CreateDBParameterGroupResultForCreateDBParameterGroup {
     static let __default: RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup = {
         let defaultInstance = RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup(
             createDBParameterGroupResult: CreateDBParameterGroupResult.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateDBProxyRequest {
+    /**
+     Default instance of the CreateDBProxyRequest structure.
+     */
+    static let __default: RDSModel.CreateDBProxyRequest = {
+        let defaultInstance = RDSModel.CreateDBProxyRequest(
+            auth: [],
+            dBProxyName: "value",
+            debugLogging: nil,
+            engineFamily: .__default,
+            idleClientTimeout: nil,
+            requireTLS: nil,
+            roleArn: "value",
+            tags: nil,
+            vpcSecurityGroupIds: nil,
+            vpcSubnetIds: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateDBProxyResponse {
+    /**
+     Default instance of the CreateDBProxyResponse structure.
+     */
+    static let __default: RDSModel.CreateDBProxyResponse = {
+        let defaultInstance = RDSModel.CreateDBProxyResponse(
+            dBProxy: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateDBProxyResponseForCreateDBProxy {
+    /**
+     Default instance of the CreateDBProxyResponseForCreateDBProxy structure.
+     */
+    static let __default: RDSModel.CreateDBProxyResponseForCreateDBProxy = {
+        let defaultInstance = RDSModel.CreateDBProxyResponseForCreateDBProxy(
+            createDBProxyResult: CreateDBProxyResponse.__default)
 
         return defaultInstance
     }()
@@ -2360,6 +2452,133 @@ public extension DBParameterGroupsMessageForDescribeDBParameterGroups {
     }()
 }
 
+public extension DBProxy {
+    /**
+     Default instance of the DBProxy structure.
+     */
+    static let __default: RDSModel.DBProxy = {
+        let defaultInstance = RDSModel.DBProxy(
+            auth: nil,
+            createdDate: nil,
+            dBProxyArn: nil,
+            dBProxyName: nil,
+            debugLogging: nil,
+            endpoint: nil,
+            engineFamily: nil,
+            idleClientTimeout: nil,
+            requireTLS: nil,
+            roleArn: nil,
+            status: nil,
+            updatedDate: nil,
+            vpcSecurityGroupIds: nil,
+            vpcSubnetIds: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyAlreadyExistsFault {
+    /**
+     Default instance of the DBProxyAlreadyExistsFault structure.
+     */
+    static let __default: RDSModel.DBProxyAlreadyExistsFault = {
+        let defaultInstance = RDSModel.DBProxyAlreadyExistsFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyNotFoundFault {
+    /**
+     Default instance of the DBProxyNotFoundFault structure.
+     */
+    static let __default: RDSModel.DBProxyNotFoundFault = {
+        let defaultInstance = RDSModel.DBProxyNotFoundFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyQuotaExceededFault {
+    /**
+     Default instance of the DBProxyQuotaExceededFault structure.
+     */
+    static let __default: RDSModel.DBProxyQuotaExceededFault = {
+        let defaultInstance = RDSModel.DBProxyQuotaExceededFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyTarget {
+    /**
+     Default instance of the DBProxyTarget structure.
+     */
+    static let __default: RDSModel.DBProxyTarget = {
+        let defaultInstance = RDSModel.DBProxyTarget(
+            endpoint: nil,
+            port: nil,
+            rdsResourceId: nil,
+            targetArn: nil,
+            trackedClusterId: nil,
+            type: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyTargetAlreadyRegisteredFault {
+    /**
+     Default instance of the DBProxyTargetAlreadyRegisteredFault structure.
+     */
+    static let __default: RDSModel.DBProxyTargetAlreadyRegisteredFault = {
+        let defaultInstance = RDSModel.DBProxyTargetAlreadyRegisteredFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyTargetGroup {
+    /**
+     Default instance of the DBProxyTargetGroup structure.
+     */
+    static let __default: RDSModel.DBProxyTargetGroup = {
+        let defaultInstance = RDSModel.DBProxyTargetGroup(
+            connectionPoolConfig: nil,
+            createdDate: nil,
+            dBProxyName: nil,
+            isDefault: nil,
+            status: nil,
+            targetGroupArn: nil,
+            targetGroupName: nil,
+            updatedDate: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyTargetGroupNotFoundFault {
+    /**
+     Default instance of the DBProxyTargetGroupNotFoundFault structure.
+     */
+    static let __default: RDSModel.DBProxyTargetGroupNotFoundFault = {
+        let defaultInstance = RDSModel.DBProxyTargetGroupNotFoundFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyTargetNotFoundFault {
+    /**
+     Default instance of the DBProxyTargetNotFoundFault structure.
+     */
+    static let __default: RDSModel.DBProxyTargetNotFoundFault = {
+        let defaultInstance = RDSModel.DBProxyTargetNotFoundFault()
+
+        return defaultInstance
+    }()
+}
+
 public extension DBSecurityGroup {
     /**
      Default instance of the DBSecurityGroup structure.
@@ -2912,6 +3131,42 @@ public extension DeleteDBParameterGroupMessage {
     }()
 }
 
+public extension DeleteDBProxyRequest {
+    /**
+     Default instance of the DeleteDBProxyRequest structure.
+     */
+    static let __default: RDSModel.DeleteDBProxyRequest = {
+        let defaultInstance = RDSModel.DeleteDBProxyRequest(
+            dBProxyName: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteDBProxyResponse {
+    /**
+     Default instance of the DeleteDBProxyResponse structure.
+     */
+    static let __default: RDSModel.DeleteDBProxyResponse = {
+        let defaultInstance = RDSModel.DeleteDBProxyResponse(
+            dBProxy: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteDBProxyResponseForDeleteDBProxy {
+    /**
+     Default instance of the DeleteDBProxyResponseForDeleteDBProxy structure.
+     */
+    static let __default: RDSModel.DeleteDBProxyResponseForDeleteDBProxy = {
+        let defaultInstance = RDSModel.DeleteDBProxyResponseForDeleteDBProxy(
+            deleteDBProxyResult: DeleteDBProxyResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteDBSecurityGroupMessage {
     /**
      Default instance of the DeleteDBSecurityGroupMessage structure.
@@ -3063,6 +3318,44 @@ public extension DeleteOptionGroupMessage {
     static let __default: RDSModel.DeleteOptionGroupMessage = {
         let defaultInstance = RDSModel.DeleteOptionGroupMessage(
             optionGroupName: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeregisterDBProxyTargetsRequest {
+    /**
+     Default instance of the DeregisterDBProxyTargetsRequest structure.
+     */
+    static let __default: RDSModel.DeregisterDBProxyTargetsRequest = {
+        let defaultInstance = RDSModel.DeregisterDBProxyTargetsRequest(
+            dBClusterIdentifiers: nil,
+            dBInstanceIdentifiers: nil,
+            dBProxyName: "value",
+            targetGroupName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeregisterDBProxyTargetsResponse {
+    /**
+     Default instance of the DeregisterDBProxyTargetsResponse structure.
+     */
+    static let __default: RDSModel.DeregisterDBProxyTargetsResponse = {
+        let defaultInstance = RDSModel.DeregisterDBProxyTargetsResponse()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
+    /**
+     Default instance of the DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets structure.
+     */
+    static let __default: RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets = {
+        let defaultInstance = RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets(
+            deregisterDBProxyTargetsResult: DeregisterDBProxyTargetsResponse.__default)
 
         return defaultInstance
     }()
@@ -3383,6 +3676,128 @@ public extension DescribeDBParametersMessage {
     }()
 }
 
+public extension DescribeDBProxiesRequest {
+    /**
+     Default instance of the DescribeDBProxiesRequest structure.
+     */
+    static let __default: RDSModel.DescribeDBProxiesRequest = {
+        let defaultInstance = RDSModel.DescribeDBProxiesRequest(
+            dBProxyName: nil,
+            filters: nil,
+            marker: nil,
+            maxRecords: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxiesResponse {
+    /**
+     Default instance of the DescribeDBProxiesResponse structure.
+     */
+    static let __default: RDSModel.DescribeDBProxiesResponse = {
+        let defaultInstance = RDSModel.DescribeDBProxiesResponse(
+            dBProxies: nil,
+            marker: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxiesResponseForDescribeDBProxies {
+    /**
+     Default instance of the DescribeDBProxiesResponseForDescribeDBProxies structure.
+     */
+    static let __default: RDSModel.DescribeDBProxiesResponseForDescribeDBProxies = {
+        let defaultInstance = RDSModel.DescribeDBProxiesResponseForDescribeDBProxies(
+            describeDBProxiesResult: DescribeDBProxiesResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxyTargetGroupsRequest {
+    /**
+     Default instance of the DescribeDBProxyTargetGroupsRequest structure.
+     */
+    static let __default: RDSModel.DescribeDBProxyTargetGroupsRequest = {
+        let defaultInstance = RDSModel.DescribeDBProxyTargetGroupsRequest(
+            dBProxyName: "value",
+            filters: nil,
+            marker: nil,
+            maxRecords: nil,
+            targetGroupName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxyTargetGroupsResponse {
+    /**
+     Default instance of the DescribeDBProxyTargetGroupsResponse structure.
+     */
+    static let __default: RDSModel.DescribeDBProxyTargetGroupsResponse = {
+        let defaultInstance = RDSModel.DescribeDBProxyTargetGroupsResponse(
+            marker: nil,
+            targetGroups: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
+    /**
+     Default instance of the DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups structure.
+     */
+    static let __default: RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups = {
+        let defaultInstance = RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups(
+            describeDBProxyTargetGroupsResult: DescribeDBProxyTargetGroupsResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxyTargetsRequest {
+    /**
+     Default instance of the DescribeDBProxyTargetsRequest structure.
+     */
+    static let __default: RDSModel.DescribeDBProxyTargetsRequest = {
+        let defaultInstance = RDSModel.DescribeDBProxyTargetsRequest(
+            dBProxyName: "value",
+            filters: nil,
+            marker: nil,
+            maxRecords: nil,
+            targetGroupName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxyTargetsResponse {
+    /**
+     Default instance of the DescribeDBProxyTargetsResponse structure.
+     */
+    static let __default: RDSModel.DescribeDBProxyTargetsResponse = {
+        let defaultInstance = RDSModel.DescribeDBProxyTargetsResponse(
+            marker: nil,
+            targets: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
+    /**
+     Default instance of the DescribeDBProxyTargetsResponseForDescribeDBProxyTargets structure.
+     */
+    static let __default: RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets = {
+        let defaultInstance = RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets(
+            describeDBProxyTargetsResult: DescribeDBProxyTargetsResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeDBSecurityGroupsMessage {
     /**
      Default instance of the DescribeDBSecurityGroupsMessage structure.
@@ -3590,6 +4005,22 @@ public extension DescribeEventsMessage {
             sourceIdentifier: nil,
             sourceType: nil,
             startTime: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeExportTasksMessage {
+    /**
+     Default instance of the DescribeExportTasksMessage structure.
+     */
+    static let __default: RDSModel.DescribeExportTasksMessage = {
+        let defaultInstance = RDSModel.DescribeExportTasksMessage(
+            exportTaskIdentifier: nil,
+            filters: nil,
+            marker: nil,
+            maxRecords: nil,
+            sourceArn: nil)
 
         return defaultInstance
     }()
@@ -4044,6 +4475,103 @@ public extension EventsMessageForDescribeEvents {
     }()
 }
 
+public extension ExportTask {
+    /**
+     Default instance of the ExportTask structure.
+     */
+    static let __default: RDSModel.ExportTask = {
+        let defaultInstance = RDSModel.ExportTask(
+            exportOnly: nil,
+            exportTaskIdentifier: nil,
+            failureCause: nil,
+            iamRoleArn: nil,
+            kmsKeyId: nil,
+            percentProgress: nil,
+            s3Bucket: nil,
+            s3Prefix: nil,
+            snapshotTime: nil,
+            sourceArn: nil,
+            status: nil,
+            taskEndTime: nil,
+            taskStartTime: nil,
+            totalExtractedDataInGB: nil,
+            warningMessage: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportTaskAlreadyExistsFault {
+    /**
+     Default instance of the ExportTaskAlreadyExistsFault structure.
+     */
+    static let __default: RDSModel.ExportTaskAlreadyExistsFault = {
+        let defaultInstance = RDSModel.ExportTaskAlreadyExistsFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportTaskForCancelExportTask {
+    /**
+     Default instance of the ExportTaskForCancelExportTask structure.
+     */
+    static let __default: RDSModel.ExportTaskForCancelExportTask = {
+        let defaultInstance = RDSModel.ExportTaskForCancelExportTask(
+            cancelExportTaskResult: ExportTask.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportTaskForStartExportTask {
+    /**
+     Default instance of the ExportTaskForStartExportTask structure.
+     */
+    static let __default: RDSModel.ExportTaskForStartExportTask = {
+        let defaultInstance = RDSModel.ExportTaskForStartExportTask(
+            startExportTaskResult: ExportTask.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportTaskNotFoundFault {
+    /**
+     Default instance of the ExportTaskNotFoundFault structure.
+     */
+    static let __default: RDSModel.ExportTaskNotFoundFault = {
+        let defaultInstance = RDSModel.ExportTaskNotFoundFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportTasksMessage {
+    /**
+     Default instance of the ExportTasksMessage structure.
+     */
+    static let __default: RDSModel.ExportTasksMessage = {
+        let defaultInstance = RDSModel.ExportTasksMessage(
+            exportTasks: nil,
+            marker: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportTasksMessageForDescribeExportTasks {
+    /**
+     Default instance of the ExportTasksMessageForDescribeExportTasks structure.
+     */
+    static let __default: RDSModel.ExportTasksMessageForDescribeExportTasks = {
+        let defaultInstance = RDSModel.ExportTasksMessageForDescribeExportTasks(
+            describeExportTasksResult: ExportTasksMessage.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension FailoverDBClusterMessage {
     /**
      Default instance of the FailoverDBClusterMessage structure.
@@ -4195,6 +4723,28 @@ public extension IPRange {
         let defaultInstance = RDSModel.IPRange(
             cIDRIP: nil,
             status: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IamRoleMissingPermissionsFault {
+    /**
+     Default instance of the IamRoleMissingPermissionsFault structure.
+     */
+    static let __default: RDSModel.IamRoleMissingPermissionsFault = {
+        let defaultInstance = RDSModel.IamRoleMissingPermissionsFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension IamRoleNotFoundFault {
+    /**
+     Default instance of the IamRoleNotFoundFault structure.
+     */
+    static let __default: RDSModel.IamRoleNotFoundFault = {
+        let defaultInstance = RDSModel.IamRoleNotFoundFault()
 
         return defaultInstance
     }()
@@ -4439,6 +4989,17 @@ public extension InvalidDBParameterGroupStateFault {
     }()
 }
 
+public extension InvalidDBProxyStateFault {
+    /**
+     Default instance of the InvalidDBProxyStateFault structure.
+     */
+    static let __default: RDSModel.InvalidDBProxyStateFault = {
+        let defaultInstance = RDSModel.InvalidDBProxyStateFault()
+
+        return defaultInstance
+    }()
+}
+
 public extension InvalidDBSecurityGroupStateFault {
     /**
      Default instance of the InvalidDBSecurityGroupStateFault structure.
@@ -4500,6 +5061,39 @@ public extension InvalidEventSubscriptionStateFault {
      */
     static let __default: RDSModel.InvalidEventSubscriptionStateFault = {
         let defaultInstance = RDSModel.InvalidEventSubscriptionStateFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension InvalidExportOnlyFault {
+    /**
+     Default instance of the InvalidExportOnlyFault structure.
+     */
+    static let __default: RDSModel.InvalidExportOnlyFault = {
+        let defaultInstance = RDSModel.InvalidExportOnlyFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension InvalidExportSourceStateFault {
+    /**
+     Default instance of the InvalidExportSourceStateFault structure.
+     */
+    static let __default: RDSModel.InvalidExportSourceStateFault = {
+        let defaultInstance = RDSModel.InvalidExportSourceStateFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension InvalidExportTaskStateFault {
+    /**
+     Default instance of the InvalidExportTaskStateFault structure.
+     */
+    static let __default: RDSModel.InvalidExportTaskStateFault = {
+        let defaultInstance = RDSModel.InvalidExportTaskStateFault()
 
         return defaultInstance
     }()
@@ -4603,6 +5197,43 @@ public extension MinimumEngineVersionPerAllowedValue {
         let defaultInstance = RDSModel.MinimumEngineVersionPerAllowedValue(
             allowedValue: nil,
             minimumEngineVersion: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyCertificatesMessage {
+    /**
+     Default instance of the ModifyCertificatesMessage structure.
+     */
+    static let __default: RDSModel.ModifyCertificatesMessage = {
+        let defaultInstance = RDSModel.ModifyCertificatesMessage(
+            certificateIdentifier: nil,
+            removeCustomerOverride: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyCertificatesResult {
+    /**
+     Default instance of the ModifyCertificatesResult structure.
+     */
+    static let __default: RDSModel.ModifyCertificatesResult = {
+        let defaultInstance = RDSModel.ModifyCertificatesResult(
+            certificate: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyCertificatesResultForModifyCertificates {
+    /**
+     Default instance of the ModifyCertificatesResultForModifyCertificates structure.
+     */
+    static let __default: RDSModel.ModifyCertificatesResultForModifyCertificates = {
+        let defaultInstance = RDSModel.ModifyCertificatesResultForModifyCertificates(
+            modifyCertificatesResult: ModifyCertificatesResult.__default)
 
         return defaultInstance
     }()
@@ -4758,6 +5389,7 @@ public extension ModifyDBInstanceMessage {
             autoMinorVersionUpgrade: nil,
             backupRetentionPeriod: nil,
             cACertificateIdentifier: nil,
+            certificateRotationRestart: nil,
             cloudwatchLogsExportConfiguration: nil,
             copyTagsToSnapshot: nil,
             dBInstanceClass: nil,
@@ -4830,6 +5462,88 @@ public extension ModifyDBParameterGroupMessage {
         let defaultInstance = RDSModel.ModifyDBParameterGroupMessage(
             dBParameterGroupName: "value",
             parameters: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyDBProxyRequest {
+    /**
+     Default instance of the ModifyDBProxyRequest structure.
+     */
+    static let __default: RDSModel.ModifyDBProxyRequest = {
+        let defaultInstance = RDSModel.ModifyDBProxyRequest(
+            auth: nil,
+            dBProxyName: "value",
+            debugLogging: nil,
+            idleClientTimeout: nil,
+            newDBProxyName: nil,
+            requireTLS: nil,
+            roleArn: nil,
+            securityGroups: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyDBProxyResponse {
+    /**
+     Default instance of the ModifyDBProxyResponse structure.
+     */
+    static let __default: RDSModel.ModifyDBProxyResponse = {
+        let defaultInstance = RDSModel.ModifyDBProxyResponse(
+            dBProxy: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyDBProxyResponseForModifyDBProxy {
+    /**
+     Default instance of the ModifyDBProxyResponseForModifyDBProxy structure.
+     */
+    static let __default: RDSModel.ModifyDBProxyResponseForModifyDBProxy = {
+        let defaultInstance = RDSModel.ModifyDBProxyResponseForModifyDBProxy(
+            modifyDBProxyResult: ModifyDBProxyResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyDBProxyTargetGroupRequest {
+    /**
+     Default instance of the ModifyDBProxyTargetGroupRequest structure.
+     */
+    static let __default: RDSModel.ModifyDBProxyTargetGroupRequest = {
+        let defaultInstance = RDSModel.ModifyDBProxyTargetGroupRequest(
+            connectionPoolConfig: nil,
+            dBProxyName: "value",
+            newName: nil,
+            targetGroupName: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyDBProxyTargetGroupResponse {
+    /**
+     Default instance of the ModifyDBProxyTargetGroupResponse structure.
+     */
+    static let __default: RDSModel.ModifyDBProxyTargetGroupResponse = {
+        let defaultInstance = RDSModel.ModifyDBProxyTargetGroupResponse(
+            dBProxyTargetGroup: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
+    /**
+     Default instance of the ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup structure.
+     */
+    static let __default: RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup = {
+        let defaultInstance = RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup(
+            modifyDBProxyTargetGroupResult: ModifyDBProxyTargetGroupResponse.__default)
 
         return defaultInstance
     }()
@@ -5668,6 +6382,45 @@ public extension RecurringCharge {
         let defaultInstance = RDSModel.RecurringCharge(
             recurringChargeAmount: nil,
             recurringChargeFrequency: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterDBProxyTargetsRequest {
+    /**
+     Default instance of the RegisterDBProxyTargetsRequest structure.
+     */
+    static let __default: RDSModel.RegisterDBProxyTargetsRequest = {
+        let defaultInstance = RDSModel.RegisterDBProxyTargetsRequest(
+            dBClusterIdentifiers: nil,
+            dBInstanceIdentifiers: nil,
+            dBProxyName: "value",
+            targetGroupName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterDBProxyTargetsResponse {
+    /**
+     Default instance of the RegisterDBProxyTargetsResponse structure.
+     */
+    static let __default: RDSModel.RegisterDBProxyTargetsResponse = {
+        let defaultInstance = RDSModel.RegisterDBProxyTargetsResponse(
+            dBProxyTargets: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
+    /**
+     Default instance of the RegisterDBProxyTargetsResponseForRegisterDBProxyTargets structure.
+     */
+    static let __default: RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets = {
+        let defaultInstance = RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets(
+            registerDBProxyTargetsResult: RegisterDBProxyTargetsResponse.__default)
 
         return defaultInstance
     }()
@@ -6665,6 +7418,24 @@ public extension StartDBInstanceResultForStartDBInstance {
     }()
 }
 
+public extension StartExportTaskMessage {
+    /**
+     Default instance of the StartExportTaskMessage structure.
+     */
+    static let __default: RDSModel.StartExportTaskMessage = {
+        let defaultInstance = RDSModel.StartExportTaskMessage(
+            exportOnly: nil,
+            exportTaskIdentifier: "value",
+            iamRoleArn: "value",
+            kmsKeyId: "value",
+            s3BucketName: "value",
+            s3Prefix: nil,
+            sourceArn: "value")
+
+        return defaultInstance
+    }()
+}
+
 public extension StopActivityStreamRequest {
     /**
      Default instance of the StopActivityStreamRequest structure.
@@ -6917,6 +7688,38 @@ public extension UpgradeTarget {
             engine: nil,
             engineVersion: nil,
             isMajorVersionUpgrade: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension UserAuthConfig {
+    /**
+     Default instance of the UserAuthConfig structure.
+     */
+    static let __default: RDSModel.UserAuthConfig = {
+        let defaultInstance = RDSModel.UserAuthConfig(
+            authScheme: nil,
+            description: nil,
+            iAMAuth: nil,
+            secretArn: nil,
+            userName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension UserAuthConfigInfo {
+    /**
+     Default instance of the UserAuthConfigInfo structure.
+     */
+    static let __default: RDSModel.UserAuthConfigInfo = {
+        let defaultInstance = RDSModel.UserAuthConfigInfo(
+            authScheme: nil,
+            description: nil,
+            iAMAuth: nil,
+            secretArn: nil,
+            userName: nil)
 
         return defaultInstance
     }()

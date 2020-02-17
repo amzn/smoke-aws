@@ -63,6 +63,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let credentialsProvider: CredentialsProvider
 
     let acceptReservedInstancesExchangeQuoteOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let acceptTransitGatewayPeeringAttachmentOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let acceptTransitGatewayVpcAttachmentOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let acceptVpcEndpointConnectionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let acceptVpcPeeringConnectionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -78,6 +79,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let associateIamInstanceProfileOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let associateRouteTableOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let associateSubnetCidrBlockOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateTransitGatewayMulticastDomainOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let associateTransitGatewayRouteTableOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let associateVpcCidrBlockOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let attachClassicLinkVpcOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -118,6 +120,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let createKeyPairOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createLaunchTemplateOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createLaunchTemplateVersionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createLocalGatewayRouteOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createLocalGatewayRouteTableVpcAssociationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createNatGatewayOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createNetworkAclOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createNetworkAclEntryOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -138,6 +142,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let createTrafficMirrorSessionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTrafficMirrorTargetOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGatewayMulticastDomainOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGatewayPeeringAttachmentOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayRouteOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayRouteTableOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayVpcAttachmentOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -162,6 +168,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteKeyPairOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteLaunchTemplateOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteLaunchTemplateVersionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteLocalGatewayRouteOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteLocalGatewayRouteTableVpcAssociationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteNatGatewayOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteNetworkAclOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteNetworkAclEntryOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -181,6 +189,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteTrafficMirrorSessionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTrafficMirrorTargetOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGatewayMulticastDomainOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGatewayPeeringAttachmentOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayRouteOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayRouteTableOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayVpcAttachmentOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -195,6 +205,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteVpnGatewayOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deprovisionByoipCidrOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deregisterImageOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deregisterTransitGatewayMulticastGroupMembersOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deregisterTransitGatewayMulticastGroupSourcesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeAccountAttributesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeAddressesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeAggregateIdFormatOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -208,6 +220,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeClientVpnEndpointsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeClientVpnRoutesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeClientVpnTargetNetworksOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeCoipPoolsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeConversionTasksOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeCustomerGatewaysOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeDhcpOptionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -215,6 +228,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeElasticGpusOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeExportImageTasksOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeExportTasksOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeFastSnapshotRestoresOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeFleetHistoryOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeFleetInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeFleetsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -234,11 +248,20 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeInstanceAttributeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeInstanceCreditSpecificationsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeInstanceStatusOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInstanceTypeOfferingsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInstanceTypesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeInternetGatewaysOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeIpv6PoolsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeKeyPairsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeLaunchTemplateVersionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeLaunchTemplatesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayRouteTableVpcAssociationsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayRouteTablesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayVirtualInterfaceGroupsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayVirtualInterfacesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewaysOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeMovingAddressesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeNatGatewaysOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeNetworkAclsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -274,6 +297,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeTrafficMirrorSessionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTrafficMirrorTargetsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayAttachmentsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGatewayMulticastDomainsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGatewayPeeringAttachmentsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayRouteTablesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayVpcAttachmentsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewaysOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -300,6 +325,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let detachVolumeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let detachVpnGatewayOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disableEbsEncryptionByDefaultOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disableFastSnapshotRestoresOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disableTransitGatewayRouteTablePropagationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disableVgwRoutePropagationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disableVpcClassicLinkOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -309,9 +335,11 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let disassociateIamInstanceProfileOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disassociateRouteTableOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disassociateSubnetCidrBlockOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateTransitGatewayMulticastDomainOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disassociateTransitGatewayRouteTableOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disassociateVpcCidrBlockOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let enableEbsEncryptionByDefaultOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let enableFastSnapshotRestoresOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let enableTransitGatewayRouteTablePropagationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let enableVgwRoutePropagationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let enableVolumeIOOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -321,9 +349,12 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let exportClientVpnClientConfigurationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let exportImageOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let exportTransitGatewayRoutesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getAssociatedIpv6PoolCidrsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getCapacityReservationUsageOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getCoipPoolUsageOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getConsoleOutputOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getConsoleScreenshotOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getDefaultCreditSpecificationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getEbsDefaultKmsKeyIdOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getEbsEncryptionByDefaultOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getHostReservationPurchasePreviewOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -331,6 +362,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getPasswordDataOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getReservedInstancesExchangeQuoteOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getTransitGatewayAttachmentPropagationsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getTransitGatewayMulticastDomainAssociationsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getTransitGatewayRouteTableAssociationsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getTransitGatewayRouteTablePropagationsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let importClientVpnClientCertificateRevocationListOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -341,6 +373,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let importVolumeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyCapacityReservationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyClientVpnEndpointOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyDefaultCreditSpecificationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyEbsDefaultKmsKeyIdOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyFleetOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyFpgaImageAttributeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -352,6 +385,7 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let modifyInstanceCapacityReservationAttributesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyInstanceCreditSpecificationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyInstanceEventStartTimeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyInstanceMetadataOptionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyInstancePlacementOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyLaunchTemplateOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyNetworkInterfaceAttributeOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -383,6 +417,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let purchaseScheduledInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let rebootInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let registerImageOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let registerTransitGatewayMulticastGroupMembersOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let registerTransitGatewayMulticastGroupSourcesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let rejectTransitGatewayPeeringAttachmentOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let rejectTransitGatewayVpcAttachmentOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let rejectVpcEndpointConnectionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let rejectVpcPeeringConnectionOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -409,9 +446,12 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let revokeSecurityGroupIngressOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let runInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let runScheduledInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let searchLocalGatewayRoutesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let searchTransitGatewayMulticastGroupsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let searchTransitGatewayRoutesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let sendDiagnosticInterruptOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let startInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let startVpcEndpointServicePrivateDnsVerificationOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let stopInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let terminateClientVpnConnectionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let terminateInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -453,6 +493,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
         self.acceptReservedInstancesExchangeQuoteOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .acceptReservedInstancesExchangeQuote, configuration: reportingConfiguration)
+        self.acceptTransitGatewayPeeringAttachmentOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .acceptTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
         self.acceptTransitGatewayVpcAttachmentOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .acceptTransitGatewayVpcAttachment, configuration: reportingConfiguration)
         self.acceptVpcEndpointConnectionsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -483,6 +525,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .associateRouteTable, configuration: reportingConfiguration)
         self.associateSubnetCidrBlockOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .associateSubnetCidrBlock, configuration: reportingConfiguration)
+        self.associateTransitGatewayMulticastDomainOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .associateTransitGatewayMulticastDomain, configuration: reportingConfiguration)
         self.associateTransitGatewayRouteTableOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .associateTransitGatewayRouteTable, configuration: reportingConfiguration)
         self.associateVpcCidrBlockOperationReporting = StandardSmokeAWSOperationReporting(
@@ -563,6 +607,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .createLaunchTemplate, configuration: reportingConfiguration)
         self.createLaunchTemplateVersionOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .createLaunchTemplateVersion, configuration: reportingConfiguration)
+        self.createLocalGatewayRouteOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .createLocalGatewayRoute, configuration: reportingConfiguration)
+        self.createLocalGatewayRouteTableVpcAssociationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .createLocalGatewayRouteTableVpcAssociation, configuration: reportingConfiguration)
         self.createNatGatewayOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .createNatGateway, configuration: reportingConfiguration)
         self.createNetworkAclOperationReporting = StandardSmokeAWSOperationReporting(
@@ -603,6 +651,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .createTrafficMirrorTarget, configuration: reportingConfiguration)
         self.createTransitGatewayOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .createTransitGateway, configuration: reportingConfiguration)
+        self.createTransitGatewayMulticastDomainOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .createTransitGatewayMulticastDomain, configuration: reportingConfiguration)
+        self.createTransitGatewayPeeringAttachmentOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .createTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
         self.createTransitGatewayRouteOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .createTransitGatewayRoute, configuration: reportingConfiguration)
         self.createTransitGatewayRouteTableOperationReporting = StandardSmokeAWSOperationReporting(
@@ -651,6 +703,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .deleteLaunchTemplate, configuration: reportingConfiguration)
         self.deleteLaunchTemplateVersionsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .deleteLaunchTemplateVersions, configuration: reportingConfiguration)
+        self.deleteLocalGatewayRouteOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deleteLocalGatewayRoute, configuration: reportingConfiguration)
+        self.deleteLocalGatewayRouteTableVpcAssociationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deleteLocalGatewayRouteTableVpcAssociation, configuration: reportingConfiguration)
         self.deleteNatGatewayOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .deleteNatGateway, configuration: reportingConfiguration)
         self.deleteNetworkAclOperationReporting = StandardSmokeAWSOperationReporting(
@@ -689,6 +745,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .deleteTrafficMirrorTarget, configuration: reportingConfiguration)
         self.deleteTransitGatewayOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .deleteTransitGateway, configuration: reportingConfiguration)
+        self.deleteTransitGatewayMulticastDomainOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deleteTransitGatewayMulticastDomain, configuration: reportingConfiguration)
+        self.deleteTransitGatewayPeeringAttachmentOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deleteTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
         self.deleteTransitGatewayRouteOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .deleteTransitGatewayRoute, configuration: reportingConfiguration)
         self.deleteTransitGatewayRouteTableOperationReporting = StandardSmokeAWSOperationReporting(
@@ -717,6 +777,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .deprovisionByoipCidr, configuration: reportingConfiguration)
         self.deregisterImageOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .deregisterImage, configuration: reportingConfiguration)
+        self.deregisterTransitGatewayMulticastGroupMembersOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deregisterTransitGatewayMulticastGroupMembers, configuration: reportingConfiguration)
+        self.deregisterTransitGatewayMulticastGroupSourcesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .deregisterTransitGatewayMulticastGroupSources, configuration: reportingConfiguration)
         self.describeAccountAttributesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeAccountAttributes, configuration: reportingConfiguration)
         self.describeAddressesOperationReporting = StandardSmokeAWSOperationReporting(
@@ -743,6 +807,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .describeClientVpnRoutes, configuration: reportingConfiguration)
         self.describeClientVpnTargetNetworksOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeClientVpnTargetNetworks, configuration: reportingConfiguration)
+        self.describeCoipPoolsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeCoipPools, configuration: reportingConfiguration)
         self.describeConversionTasksOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeConversionTasks, configuration: reportingConfiguration)
         self.describeCustomerGatewaysOperationReporting = StandardSmokeAWSOperationReporting(
@@ -757,6 +823,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .describeExportImageTasks, configuration: reportingConfiguration)
         self.describeExportTasksOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeExportTasks, configuration: reportingConfiguration)
+        self.describeFastSnapshotRestoresOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeFastSnapshotRestores, configuration: reportingConfiguration)
         self.describeFleetHistoryOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeFleetHistory, configuration: reportingConfiguration)
         self.describeFleetInstancesOperationReporting = StandardSmokeAWSOperationReporting(
@@ -795,16 +863,34 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .describeInstanceCreditSpecifications, configuration: reportingConfiguration)
         self.describeInstanceStatusOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeInstanceStatus, configuration: reportingConfiguration)
+        self.describeInstanceTypeOfferingsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeInstanceTypeOfferings, configuration: reportingConfiguration)
+        self.describeInstanceTypesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeInstanceTypes, configuration: reportingConfiguration)
         self.describeInstancesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeInstances, configuration: reportingConfiguration)
         self.describeInternetGatewaysOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeInternetGateways, configuration: reportingConfiguration)
+        self.describeIpv6PoolsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeIpv6Pools, configuration: reportingConfiguration)
         self.describeKeyPairsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeKeyPairs, configuration: reportingConfiguration)
         self.describeLaunchTemplateVersionsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeLaunchTemplateVersions, configuration: reportingConfiguration)
         self.describeLaunchTemplatesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeLaunchTemplates, configuration: reportingConfiguration)
+        self.describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations, configuration: reportingConfiguration)
+        self.describeLocalGatewayRouteTableVpcAssociationsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeLocalGatewayRouteTableVpcAssociations, configuration: reportingConfiguration)
+        self.describeLocalGatewayRouteTablesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeLocalGatewayRouteTables, configuration: reportingConfiguration)
+        self.describeLocalGatewayVirtualInterfaceGroupsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeLocalGatewayVirtualInterfaceGroups, configuration: reportingConfiguration)
+        self.describeLocalGatewayVirtualInterfacesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeLocalGatewayVirtualInterfaces, configuration: reportingConfiguration)
+        self.describeLocalGatewaysOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeLocalGateways, configuration: reportingConfiguration)
         self.describeMovingAddressesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeMovingAddresses, configuration: reportingConfiguration)
         self.describeNatGatewaysOperationReporting = StandardSmokeAWSOperationReporting(
@@ -875,6 +961,10 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .describeTrafficMirrorTargets, configuration: reportingConfiguration)
         self.describeTransitGatewayAttachmentsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeTransitGatewayAttachments, configuration: reportingConfiguration)
+        self.describeTransitGatewayMulticastDomainsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeTransitGatewayMulticastDomains, configuration: reportingConfiguration)
+        self.describeTransitGatewayPeeringAttachmentsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .describeTransitGatewayPeeringAttachments, configuration: reportingConfiguration)
         self.describeTransitGatewayRouteTablesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .describeTransitGatewayRouteTables, configuration: reportingConfiguration)
         self.describeTransitGatewayVpcAttachmentsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -927,6 +1017,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .detachVpnGateway, configuration: reportingConfiguration)
         self.disableEbsEncryptionByDefaultOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .disableEbsEncryptionByDefault, configuration: reportingConfiguration)
+        self.disableFastSnapshotRestoresOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .disableFastSnapshotRestores, configuration: reportingConfiguration)
         self.disableTransitGatewayRouteTablePropagationOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .disableTransitGatewayRouteTablePropagation, configuration: reportingConfiguration)
         self.disableVgwRoutePropagationOperationReporting = StandardSmokeAWSOperationReporting(
@@ -945,12 +1037,16 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .disassociateRouteTable, configuration: reportingConfiguration)
         self.disassociateSubnetCidrBlockOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .disassociateSubnetCidrBlock, configuration: reportingConfiguration)
+        self.disassociateTransitGatewayMulticastDomainOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .disassociateTransitGatewayMulticastDomain, configuration: reportingConfiguration)
         self.disassociateTransitGatewayRouteTableOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .disassociateTransitGatewayRouteTable, configuration: reportingConfiguration)
         self.disassociateVpcCidrBlockOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .disassociateVpcCidrBlock, configuration: reportingConfiguration)
         self.enableEbsEncryptionByDefaultOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .enableEbsEncryptionByDefault, configuration: reportingConfiguration)
+        self.enableFastSnapshotRestoresOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .enableFastSnapshotRestores, configuration: reportingConfiguration)
         self.enableTransitGatewayRouteTablePropagationOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .enableTransitGatewayRouteTablePropagation, configuration: reportingConfiguration)
         self.enableVgwRoutePropagationOperationReporting = StandardSmokeAWSOperationReporting(
@@ -969,12 +1065,18 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .exportImage, configuration: reportingConfiguration)
         self.exportTransitGatewayRoutesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .exportTransitGatewayRoutes, configuration: reportingConfiguration)
+        self.getAssociatedIpv6PoolCidrsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .getAssociatedIpv6PoolCidrs, configuration: reportingConfiguration)
         self.getCapacityReservationUsageOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .getCapacityReservationUsage, configuration: reportingConfiguration)
+        self.getCoipPoolUsageOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .getCoipPoolUsage, configuration: reportingConfiguration)
         self.getConsoleOutputOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .getConsoleOutput, configuration: reportingConfiguration)
         self.getConsoleScreenshotOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .getConsoleScreenshot, configuration: reportingConfiguration)
+        self.getDefaultCreditSpecificationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .getDefaultCreditSpecification, configuration: reportingConfiguration)
         self.getEbsDefaultKmsKeyIdOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .getEbsDefaultKmsKeyId, configuration: reportingConfiguration)
         self.getEbsEncryptionByDefaultOperationReporting = StandardSmokeAWSOperationReporting(
@@ -989,6 +1091,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .getReservedInstancesExchangeQuote, configuration: reportingConfiguration)
         self.getTransitGatewayAttachmentPropagationsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .getTransitGatewayAttachmentPropagations, configuration: reportingConfiguration)
+        self.getTransitGatewayMulticastDomainAssociationsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .getTransitGatewayMulticastDomainAssociations, configuration: reportingConfiguration)
         self.getTransitGatewayRouteTableAssociationsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .getTransitGatewayRouteTableAssociations, configuration: reportingConfiguration)
         self.getTransitGatewayRouteTablePropagationsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -1009,6 +1113,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .modifyCapacityReservation, configuration: reportingConfiguration)
         self.modifyClientVpnEndpointOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .modifyClientVpnEndpoint, configuration: reportingConfiguration)
+        self.modifyDefaultCreditSpecificationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .modifyDefaultCreditSpecification, configuration: reportingConfiguration)
         self.modifyEbsDefaultKmsKeyIdOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .modifyEbsDefaultKmsKeyId, configuration: reportingConfiguration)
         self.modifyFleetOperationReporting = StandardSmokeAWSOperationReporting(
@@ -1031,6 +1137,8 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .modifyInstanceCreditSpecification, configuration: reportingConfiguration)
         self.modifyInstanceEventStartTimeOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .modifyInstanceEventStartTime, configuration: reportingConfiguration)
+        self.modifyInstanceMetadataOptionsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .modifyInstanceMetadataOptions, configuration: reportingConfiguration)
         self.modifyInstancePlacementOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .modifyInstancePlacement, configuration: reportingConfiguration)
         self.modifyLaunchTemplateOperationReporting = StandardSmokeAWSOperationReporting(
@@ -1093,6 +1201,12 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .rebootInstances, configuration: reportingConfiguration)
         self.registerImageOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .registerImage, configuration: reportingConfiguration)
+        self.registerTransitGatewayMulticastGroupMembersOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .registerTransitGatewayMulticastGroupMembers, configuration: reportingConfiguration)
+        self.registerTransitGatewayMulticastGroupSourcesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .registerTransitGatewayMulticastGroupSources, configuration: reportingConfiguration)
+        self.rejectTransitGatewayPeeringAttachmentOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .rejectTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
         self.rejectTransitGatewayVpcAttachmentOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .rejectTransitGatewayVpcAttachment, configuration: reportingConfiguration)
         self.rejectVpcEndpointConnectionsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -1145,12 +1259,18 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             clientName: "AWSElasticComputeCloudClient", operation: .runInstances, configuration: reportingConfiguration)
         self.runScheduledInstancesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .runScheduledInstances, configuration: reportingConfiguration)
+        self.searchLocalGatewayRoutesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .searchLocalGatewayRoutes, configuration: reportingConfiguration)
+        self.searchTransitGatewayMulticastGroupsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .searchTransitGatewayMulticastGroups, configuration: reportingConfiguration)
         self.searchTransitGatewayRoutesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .searchTransitGatewayRoutes, configuration: reportingConfiguration)
         self.sendDiagnosticInterruptOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .sendDiagnosticInterrupt, configuration: reportingConfiguration)
         self.startInstancesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .startInstances, configuration: reportingConfiguration)
+        self.startVpcEndpointServicePrivateDnsVerificationOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticComputeCloudClient", operation: .startVpcEndpointServicePrivateDnsVerification, configuration: reportingConfiguration)
         self.stopInstancesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticComputeCloudClient", operation: .stopInstances, configuration: reportingConfiguration)
         self.terminateClientVpnConnectionsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -1251,6 +1371,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.acceptReservedInstancesExchangeQuote.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AcceptTransitGatewayPeeringAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayPeeringAttachmentRequest object being passed to this operation.
+         - completion: The AcceptTransitGatewayPeeringAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptTransitGatewayPeeringAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayPeeringAttachmentAsync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: acceptTransitGatewayPeeringAttachmentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = AcceptTransitGatewayPeeringAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.acceptTransitGatewayPeeringAttachment.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AcceptTransitGatewayPeeringAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayPeeringAttachmentRequest object being passed to this operation.
+     - Returns: The AcceptTransitGatewayPeeringAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayPeeringAttachmentSync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: acceptTransitGatewayPeeringAttachmentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = AcceptTransitGatewayPeeringAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.acceptTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2373,6 +2568,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.associateSubnetCidrBlock.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AssociateTransitGatewayMulticastDomain operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateTransitGatewayMulticastDomainRequest object being passed to this operation.
+         - completion: The AssociateTransitGatewayMulticastDomainResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateTransitGatewayMulticastDomainResult
+           object will be validated before being returned to caller.
+     */
+    public func associateTransitGatewayMulticastDomainAsync(
+            input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: associateTransitGatewayMulticastDomainOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateTransitGatewayMulticastDomainOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateTransitGatewayMulticastDomain.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AssociateTransitGatewayMulticastDomain operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateTransitGatewayMulticastDomainRequest object being passed to this operation.
+     - Returns: The AssociateTransitGatewayMulticastDomainResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateTransitGatewayMulticastDomainSync(
+            input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: associateTransitGatewayMulticastDomainOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateTransitGatewayMulticastDomainOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateTransitGatewayMulticastDomain.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -5370,6 +5640,156 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateLocalGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateLocalGatewayRouteRequest object being passed to this operation.
+         - completion: The CreateLocalGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateLocalGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func createLocalGatewayRouteAsync(
+            input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createLocalGatewayRouteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateLocalGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createLocalGatewayRoute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateLocalGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateLocalGatewayRouteRequest object being passed to this operation.
+     - Returns: The CreateLocalGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createLocalGatewayRouteSync(
+            input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createLocalGatewayRouteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateLocalGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createLocalGatewayRoute.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateLocalGatewayRouteTableVpcAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateLocalGatewayRouteTableVpcAssociationRequest object being passed to this operation.
+         - completion: The CreateLocalGatewayRouteTableVpcAssociationResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateLocalGatewayRouteTableVpcAssociationResult
+           object will be validated before being returned to caller.
+     */
+    public func createLocalGatewayRouteTableVpcAssociationAsync(
+            input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createLocalGatewayRouteTableVpcAssociationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateLocalGatewayRouteTableVpcAssociationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createLocalGatewayRouteTableVpcAssociation.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateLocalGatewayRouteTableVpcAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateLocalGatewayRouteTableVpcAssociationRequest object being passed to this operation.
+     - Returns: The CreateLocalGatewayRouteTableVpcAssociationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createLocalGatewayRouteTableVpcAssociationSync(
+            input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createLocalGatewayRouteTableVpcAssociationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateLocalGatewayRouteTableVpcAssociationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createLocalGatewayRouteTableVpcAssociation.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the CreateNatGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6849,6 +7269,156 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createTransitGateway.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayMulticastDomain operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayMulticastDomainRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayMulticastDomainResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayMulticastDomainResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayMulticastDomainAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTransitGatewayMulticastDomainOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayMulticastDomainOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayMulticastDomain.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayMulticastDomain operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayMulticastDomainRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayMulticastDomainResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayMulticastDomainSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTransitGatewayMulticastDomainOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayMulticastDomainOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayMulticastDomain.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayPeeringAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayPeeringAttachmentRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayPeeringAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayPeeringAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayPeeringAttachmentAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTransitGatewayPeeringAttachmentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayPeeringAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayPeeringAttachment.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayPeeringAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayPeeringAttachmentRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayPeeringAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayPeeringAttachmentSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createTransitGatewayPeeringAttachmentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayPeeringAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -8646,6 +9216,156 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteLocalGatewayRoute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteLocalGatewayRouteRequest object being passed to this operation.
+         - completion: The DeleteLocalGatewayRouteResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteLocalGatewayRouteResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteLocalGatewayRouteAsync(
+            input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteLocalGatewayRouteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteLocalGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteLocalGatewayRoute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteLocalGatewayRoute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteLocalGatewayRouteRequest object being passed to this operation.
+     - Returns: The DeleteLocalGatewayRouteResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteLocalGatewayRouteSync(
+            input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteLocalGatewayRouteOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteLocalGatewayRouteOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteLocalGatewayRoute.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteLocalGatewayRouteTableVpcAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteLocalGatewayRouteTableVpcAssociationRequest object being passed to this operation.
+         - completion: The DeleteLocalGatewayRouteTableVpcAssociationResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteLocalGatewayRouteTableVpcAssociationResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteLocalGatewayRouteTableVpcAssociationAsync(
+            input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteLocalGatewayRouteTableVpcAssociationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteLocalGatewayRouteTableVpcAssociationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteLocalGatewayRouteTableVpcAssociation.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteLocalGatewayRouteTableVpcAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteLocalGatewayRouteTableVpcAssociationRequest object being passed to this operation.
+     - Returns: The DeleteLocalGatewayRouteTableVpcAssociationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteLocalGatewayRouteTableVpcAssociationSync(
+            input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteLocalGatewayRouteTableVpcAssociationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteLocalGatewayRouteTableVpcAssociationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteLocalGatewayRouteTableVpcAssociation.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DeleteNatGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10038,6 +10758,156 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteTransitGatewayMulticastDomain operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayMulticastDomainRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayMulticastDomainResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayMulticastDomainResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayMulticastDomainAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTransitGatewayMulticastDomainOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayMulticastDomainOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayMulticastDomain.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayMulticastDomain operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayMulticastDomainRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayMulticastDomainResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayMulticastDomainSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTransitGatewayMulticastDomainOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayMulticastDomainOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayMulticastDomain.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayPeeringAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayPeeringAttachmentRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayPeeringAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayPeeringAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayPeeringAttachmentAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTransitGatewayPeeringAttachmentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayPeeringAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayPeeringAttachment.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayPeeringAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayPeeringAttachmentRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayPeeringAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayPeeringAttachmentSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteTransitGatewayPeeringAttachmentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayPeeringAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayPeeringAttachment.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DeleteTransitGatewayRoute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11070,6 +11940,156 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeregisterTransitGatewayMulticastGroupMembers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterTransitGatewayMulticastGroupMembersRequest object being passed to this operation.
+         - completion: The DeregisterTransitGatewayMulticastGroupMembersResult object or an error will be passed to this 
+           callback when the operation is complete. The DeregisterTransitGatewayMulticastGroupMembersResult
+           object will be validated before being returned to caller.
+     */
+    public func deregisterTransitGatewayMulticastGroupMembersAsync(
+            input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deregisterTransitGatewayMulticastGroupMembersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeregisterTransitGatewayMulticastGroupMembersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deregisterTransitGatewayMulticastGroupMembers.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeregisterTransitGatewayMulticastGroupMembers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterTransitGatewayMulticastGroupMembersRequest object being passed to this operation.
+     - Returns: The DeregisterTransitGatewayMulticastGroupMembersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deregisterTransitGatewayMulticastGroupMembersSync(
+            input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deregisterTransitGatewayMulticastGroupMembersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeregisterTransitGatewayMulticastGroupMembersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deregisterTransitGatewayMulticastGroupMembers.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeregisterTransitGatewayMulticastGroupSources operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterTransitGatewayMulticastGroupSourcesRequest object being passed to this operation.
+         - completion: The DeregisterTransitGatewayMulticastGroupSourcesResult object or an error will be passed to this 
+           callback when the operation is complete. The DeregisterTransitGatewayMulticastGroupSourcesResult
+           object will be validated before being returned to caller.
+     */
+    public func deregisterTransitGatewayMulticastGroupSourcesAsync(
+            input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deregisterTransitGatewayMulticastGroupSourcesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeregisterTransitGatewayMulticastGroupSourcesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deregisterTransitGatewayMulticastGroupSources.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeregisterTransitGatewayMulticastGroupSources operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterTransitGatewayMulticastGroupSourcesRequest object being passed to this operation.
+     - Returns: The DeregisterTransitGatewayMulticastGroupSourcesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deregisterTransitGatewayMulticastGroupSourcesSync(
+            input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deregisterTransitGatewayMulticastGroupSourcesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeregisterTransitGatewayMulticastGroupSourcesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deregisterTransitGatewayMulticastGroupSources.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeAccountAttributes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -12045,6 +13065,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeCoipPools operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCoipPoolsRequest object being passed to this operation.
+         - completion: The DescribeCoipPoolsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCoipPoolsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeCoipPoolsAsync(
+            input: ElasticComputeCloudModel.DescribeCoipPoolsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeCoipPoolsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeCoipPoolsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeCoipPools.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeCoipPools operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCoipPoolsRequest object being passed to this operation.
+     - Returns: The DescribeCoipPoolsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeCoipPoolsSync(
+            input: ElasticComputeCloudModel.DescribeCoipPoolsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeCoipPoolsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeCoipPoolsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeCoipPoolsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeCoipPools.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeConversionTasks operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -12558,6 +13653,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeExportTasks.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeFastSnapshotRestores operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeFastSnapshotRestoresRequest object being passed to this operation.
+         - completion: The DescribeFastSnapshotRestoresResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeFastSnapshotRestoresResult
+           object will be validated before being returned to caller.
+     */
+    public func describeFastSnapshotRestoresAsync(
+            input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeFastSnapshotRestoresOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeFastSnapshotRestoresOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeFastSnapshotRestores.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeFastSnapshotRestores operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeFastSnapshotRestoresRequest object being passed to this operation.
+     - Returns: The DescribeFastSnapshotRestoresResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeFastSnapshotRestoresSync(
+            input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeFastSnapshotRestoresOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeFastSnapshotRestoresOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeFastSnapshotRestores.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -13995,6 +15165,156 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeInstanceTypeOfferings operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceTypeOfferingsRequest object being passed to this operation.
+         - completion: The DescribeInstanceTypeOfferingsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceTypeOfferingsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceTypeOfferingsAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeInstanceTypeOfferingsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceTypeOfferingsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceTypeOfferings.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeInstanceTypeOfferings operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceTypeOfferingsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceTypeOfferingsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceTypeOfferingsSync(
+            input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeInstanceTypeOfferingsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceTypeOfferingsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceTypeOfferings.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeInstanceTypes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceTypesRequest object being passed to this operation.
+         - completion: The DescribeInstanceTypesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceTypesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceTypesAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceTypesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeInstanceTypesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceTypesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceTypes.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeInstanceTypes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceTypesRequest object being passed to this operation.
+     - Returns: The DescribeInstanceTypesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceTypesSync(
+            input: ElasticComputeCloudModel.DescribeInstanceTypesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstanceTypesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeInstanceTypesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceTypesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceTypes.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -14133,6 +15453,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeInternetGateways.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeIpv6Pools operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeIpv6PoolsRequest object being passed to this operation.
+         - completion: The DescribeIpv6PoolsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeIpv6PoolsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeIpv6PoolsAsync(
+            input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeIpv6PoolsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeIpv6PoolsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeIpv6Pools.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeIpv6Pools operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeIpv6PoolsRequest object being passed to this operation.
+     - Returns: The DescribeIpv6PoolsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIpv6PoolsSync(
+            input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeIpv6PoolsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeIpv6PoolsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeIpv6PoolsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeIpv6Pools.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -14358,6 +15753,456 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeLaunchTemplates.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest object being passed to this operation.
+         - completion: The DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsSync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayRouteTableVpcAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayRouteTableVpcAssociationsRequest object being passed to this operation.
+         - completion: The DescribeLocalGatewayRouteTableVpcAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeLocalGatewayRouteTableVpcAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayRouteTableVpcAssociationsAsync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayRouteTableVpcAssociationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayRouteTableVpcAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTableVpcAssociations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayRouteTableVpcAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayRouteTableVpcAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeLocalGatewayRouteTableVpcAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayRouteTableVpcAssociationsSync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayRouteTableVpcAssociationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayRouteTableVpcAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTableVpcAssociations.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayRouteTables operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayRouteTablesRequest object being passed to this operation.
+         - completion: The DescribeLocalGatewayRouteTablesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeLocalGatewayRouteTablesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayRouteTablesAsync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayRouteTablesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayRouteTablesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTables.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayRouteTables operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayRouteTablesRequest object being passed to this operation.
+     - Returns: The DescribeLocalGatewayRouteTablesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayRouteTablesSync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayRouteTablesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayRouteTablesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTables.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayVirtualInterfaceGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayVirtualInterfaceGroupsRequest object being passed to this operation.
+         - completion: The DescribeLocalGatewayVirtualInterfaceGroupsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeLocalGatewayVirtualInterfaceGroupsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayVirtualInterfaceGroupsAsync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayVirtualInterfaceGroupsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayVirtualInterfaceGroupsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayVirtualInterfaceGroups.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayVirtualInterfaceGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayVirtualInterfaceGroupsRequest object being passed to this operation.
+     - Returns: The DescribeLocalGatewayVirtualInterfaceGroupsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayVirtualInterfaceGroupsSync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayVirtualInterfaceGroupsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayVirtualInterfaceGroupsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayVirtualInterfaceGroups.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayVirtualInterfaces operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayVirtualInterfacesRequest object being passed to this operation.
+         - completion: The DescribeLocalGatewayVirtualInterfacesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeLocalGatewayVirtualInterfacesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayVirtualInterfacesAsync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayVirtualInterfacesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayVirtualInterfacesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayVirtualInterfaces.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGatewayVirtualInterfaces operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewayVirtualInterfacesRequest object being passed to this operation.
+     - Returns: The DescribeLocalGatewayVirtualInterfacesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeLocalGatewayVirtualInterfacesSync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewayVirtualInterfacesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewayVirtualInterfacesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGatewayVirtualInterfaces.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewaysRequest object being passed to this operation.
+         - completion: The DescribeLocalGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeLocalGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeLocalGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewaysOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewaysOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGateways.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeLocalGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeLocalGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeLocalGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeLocalGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewaysResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeLocalGatewaysOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeLocalGatewaysOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeLocalGateways.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -16995,6 +18840,156 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeTransitGatewayMulticastDomains operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayMulticastDomainsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayMulticastDomainsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayMulticastDomainsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayMulticastDomainsAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTransitGatewayMulticastDomainsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTransitGatewayMulticastDomainsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayMulticastDomains.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayMulticastDomains operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayMulticastDomainsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayMulticastDomainsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayMulticastDomainsSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTransitGatewayMulticastDomainsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTransitGatewayMulticastDomainsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayMulticastDomains.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayPeeringAttachments operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayPeeringAttachmentsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayPeeringAttachmentsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayPeeringAttachmentsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayPeeringAttachmentsAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTransitGatewayPeeringAttachmentsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTransitGatewayPeeringAttachmentsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayPeeringAttachments.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayPeeringAttachments operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayPeeringAttachmentsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayPeeringAttachmentsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayPeeringAttachmentsSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTransitGatewayPeeringAttachmentsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTransitGatewayPeeringAttachmentsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayPeeringAttachments.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeTransitGatewayRouteTables operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -18936,6 +20931,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisableFastSnapshotRestores operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableFastSnapshotRestoresRequest object being passed to this operation.
+         - completion: The DisableFastSnapshotRestoresResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableFastSnapshotRestoresResult
+           object will be validated before being returned to caller.
+     */
+    public func disableFastSnapshotRestoresAsync(
+            input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: disableFastSnapshotRestoresOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableFastSnapshotRestoresOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableFastSnapshotRestores.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisableFastSnapshotRestores operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableFastSnapshotRestoresRequest object being passed to this operation.
+     - Returns: The DisableFastSnapshotRestoresResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableFastSnapshotRestoresSync(
+            input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: disableFastSnapshotRestoresOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableFastSnapshotRestoresOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableFastSnapshotRestores.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DisableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -19602,6 +21672,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisassociateTransitGatewayMulticastDomain operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateTransitGatewayMulticastDomainRequest object being passed to this operation.
+         - completion: The DisassociateTransitGatewayMulticastDomainResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateTransitGatewayMulticastDomainResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateTransitGatewayMulticastDomainAsync(
+            input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: disassociateTransitGatewayMulticastDomainOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateTransitGatewayMulticastDomainOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateTransitGatewayMulticastDomain.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisassociateTransitGatewayMulticastDomain operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateTransitGatewayMulticastDomainRequest object being passed to this operation.
+     - Returns: The DisassociateTransitGatewayMulticastDomainResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateTransitGatewayMulticastDomainSync(
+            input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: disassociateTransitGatewayMulticastDomainOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateTransitGatewayMulticastDomainOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateTransitGatewayMulticastDomain.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DisassociateTransitGatewayRouteTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -19815,6 +21960,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.enableEbsEncryptionByDefault.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the EnableFastSnapshotRestores operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableFastSnapshotRestoresRequest object being passed to this operation.
+         - completion: The EnableFastSnapshotRestoresResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableFastSnapshotRestoresResult
+           object will be validated before being returned to caller.
+     */
+    public func enableFastSnapshotRestoresAsync(
+            input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: enableFastSnapshotRestoresOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableFastSnapshotRestoresOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableFastSnapshotRestores.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the EnableFastSnapshotRestores operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableFastSnapshotRestoresRequest object being passed to this operation.
+     - Returns: The EnableFastSnapshotRestoresResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableFastSnapshotRestoresSync(
+            input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: enableFastSnapshotRestoresOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableFastSnapshotRestoresOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableFastSnapshotRestores.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -20496,6 +22716,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the GetAssociatedIpv6PoolCidrs operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAssociatedIpv6PoolCidrsRequest object being passed to this operation.
+         - completion: The GetAssociatedIpv6PoolCidrsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetAssociatedIpv6PoolCidrsResult
+           object will be validated before being returned to caller.
+     */
+    public func getAssociatedIpv6PoolCidrsAsync(
+            input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getAssociatedIpv6PoolCidrsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetAssociatedIpv6PoolCidrsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getAssociatedIpv6PoolCidrs.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetAssociatedIpv6PoolCidrs operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAssociatedIpv6PoolCidrsRequest object being passed to this operation.
+     - Returns: The GetAssociatedIpv6PoolCidrsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getAssociatedIpv6PoolCidrsSync(
+            input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getAssociatedIpv6PoolCidrsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetAssociatedIpv6PoolCidrsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getAssociatedIpv6PoolCidrs.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the GetCapacityReservationUsage operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -20559,6 +22854,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getCapacityReservationUsage.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetCoipPoolUsage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetCoipPoolUsageRequest object being passed to this operation.
+         - completion: The GetCoipPoolUsageResult object or an error will be passed to this 
+           callback when the operation is complete. The GetCoipPoolUsageResult
+           object will be validated before being returned to caller.
+     */
+    public func getCoipPoolUsageAsync(
+            input: ElasticComputeCloudModel.GetCoipPoolUsageRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getCoipPoolUsageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetCoipPoolUsageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getCoipPoolUsage.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetCoipPoolUsage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetCoipPoolUsageRequest object being passed to this operation.
+     - Returns: The GetCoipPoolUsageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getCoipPoolUsageSync(
+            input: ElasticComputeCloudModel.GetCoipPoolUsageRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetCoipPoolUsageResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getCoipPoolUsageOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetCoipPoolUsageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getCoipPoolUsage.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -20709,6 +23079,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getConsoleScreenshot.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetDefaultCreditSpecification operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetDefaultCreditSpecificationRequest object being passed to this operation.
+         - completion: The GetDefaultCreditSpecificationResult object or an error will be passed to this 
+           callback when the operation is complete. The GetDefaultCreditSpecificationResult
+           object will be validated before being returned to caller.
+     */
+    public func getDefaultCreditSpecificationAsync(
+            input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getDefaultCreditSpecificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetDefaultCreditSpecificationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getDefaultCreditSpecification.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetDefaultCreditSpecification operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetDefaultCreditSpecificationRequest object being passed to this operation.
+     - Returns: The GetDefaultCreditSpecificationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getDefaultCreditSpecificationSync(
+            input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetDefaultCreditSpecificationResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getDefaultCreditSpecificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetDefaultCreditSpecificationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getDefaultCreditSpecification.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -21234,6 +23679,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getTransitGatewayAttachmentPropagations.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetTransitGatewayMulticastDomainAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+         - completion: The GetTransitGatewayMulticastDomainAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayMulticastDomainAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getTransitGatewayMulticastDomainAssociationsAsync(
+            input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getTransitGatewayMulticastDomainAssociationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetTransitGatewayMulticastDomainAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayMulticastDomainAssociations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetTransitGatewayMulticastDomainAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayMulticastDomainAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getTransitGatewayMulticastDomainAssociationsSync(
+            input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getTransitGatewayMulticastDomainAssociationsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetTransitGatewayMulticastDomainAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayMulticastDomainAssociations.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -21984,6 +24504,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyClientVpnEndpoint.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyDefaultCreditSpecification operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDefaultCreditSpecificationRequest object being passed to this operation.
+         - completion: The ModifyDefaultCreditSpecificationResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDefaultCreditSpecificationResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyDefaultCreditSpecificationAsync(
+            input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyDefaultCreditSpecificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyDefaultCreditSpecificationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyDefaultCreditSpecification.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyDefaultCreditSpecification operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDefaultCreditSpecificationRequest object being passed to this operation.
+     - Returns: The ModifyDefaultCreditSpecificationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyDefaultCreditSpecificationSync(
+            input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyDefaultCreditSpecificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyDefaultCreditSpecificationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyDefaultCreditSpecification.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -22797,6 +25392,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyInstanceEventStartTime.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyInstanceMetadataOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstanceMetadataOptionsRequest object being passed to this operation.
+         - completion: The ModifyInstanceMetadataOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyInstanceMetadataOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyInstanceMetadataOptionsAsync(
+            input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyInstanceMetadataOptionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyInstanceMetadataOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyInstanceMetadataOptions.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyInstanceMetadataOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstanceMetadataOptionsRequest object being passed to this operation.
+     - Returns: The ModifyInstanceMetadataOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyInstanceMetadataOptionsSync(
+            input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: modifyInstanceMetadataOptionsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyInstanceMetadataOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyInstanceMetadataOptions.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -25116,6 +27786,231 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the RegisterTransitGatewayMulticastGroupMembers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterTransitGatewayMulticastGroupMembersRequest object being passed to this operation.
+         - completion: The RegisterTransitGatewayMulticastGroupMembersResult object or an error will be passed to this 
+           callback when the operation is complete. The RegisterTransitGatewayMulticastGroupMembersResult
+           object will be validated before being returned to caller.
+     */
+    public func registerTransitGatewayMulticastGroupMembersAsync(
+            input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: registerTransitGatewayMulticastGroupMembersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterTransitGatewayMulticastGroupMembersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.registerTransitGatewayMulticastGroupMembers.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RegisterTransitGatewayMulticastGroupMembers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterTransitGatewayMulticastGroupMembersRequest object being passed to this operation.
+     - Returns: The RegisterTransitGatewayMulticastGroupMembersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func registerTransitGatewayMulticastGroupMembersSync(
+            input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: registerTransitGatewayMulticastGroupMembersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterTransitGatewayMulticastGroupMembersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.registerTransitGatewayMulticastGroupMembers.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RegisterTransitGatewayMulticastGroupSources operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterTransitGatewayMulticastGroupSourcesRequest object being passed to this operation.
+         - completion: The RegisterTransitGatewayMulticastGroupSourcesResult object or an error will be passed to this 
+           callback when the operation is complete. The RegisterTransitGatewayMulticastGroupSourcesResult
+           object will be validated before being returned to caller.
+     */
+    public func registerTransitGatewayMulticastGroupSourcesAsync(
+            input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: registerTransitGatewayMulticastGroupSourcesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterTransitGatewayMulticastGroupSourcesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.registerTransitGatewayMulticastGroupSources.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RegisterTransitGatewayMulticastGroupSources operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterTransitGatewayMulticastGroupSourcesRequest object being passed to this operation.
+     - Returns: The RegisterTransitGatewayMulticastGroupSourcesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func registerTransitGatewayMulticastGroupSourcesSync(
+            input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: registerTransitGatewayMulticastGroupSourcesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterTransitGatewayMulticastGroupSourcesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.registerTransitGatewayMulticastGroupSources.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RejectTransitGatewayPeeringAttachment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayPeeringAttachmentRequest object being passed to this operation.
+         - completion: The RejectTransitGatewayPeeringAttachmentResult object or an error will be passed to this 
+           callback when the operation is complete. The RejectTransitGatewayPeeringAttachmentResult
+           object will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayPeeringAttachmentAsync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: rejectTransitGatewayPeeringAttachmentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = RejectTransitGatewayPeeringAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.rejectTransitGatewayPeeringAttachment.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RejectTransitGatewayPeeringAttachment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayPeeringAttachmentRequest object being passed to this operation.
+     - Returns: The RejectTransitGatewayPeeringAttachmentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayPeeringAttachmentSync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: rejectTransitGatewayPeeringAttachmentOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = RejectTransitGatewayPeeringAttachmentOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.rejectTransitGatewayPeeringAttachment.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the RejectTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -27036,6 +29931,156 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the SearchLocalGatewayRoutes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SearchLocalGatewayRoutesRequest object being passed to this operation.
+         - completion: The SearchLocalGatewayRoutesResult object or an error will be passed to this 
+           callback when the operation is complete. The SearchLocalGatewayRoutesResult
+           object will be validated before being returned to caller.
+     */
+    public func searchLocalGatewayRoutesAsync(
+            input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: searchLocalGatewayRoutesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = SearchLocalGatewayRoutesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.searchLocalGatewayRoutes.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SearchLocalGatewayRoutes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SearchLocalGatewayRoutesRequest object being passed to this operation.
+     - Returns: The SearchLocalGatewayRoutesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func searchLocalGatewayRoutesSync(
+            input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.SearchLocalGatewayRoutesResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: searchLocalGatewayRoutesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = SearchLocalGatewayRoutesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.searchLocalGatewayRoutes.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SearchTransitGatewayMulticastGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SearchTransitGatewayMulticastGroupsRequest object being passed to this operation.
+         - completion: The SearchTransitGatewayMulticastGroupsResult object or an error will be passed to this 
+           callback when the operation is complete. The SearchTransitGatewayMulticastGroupsResult
+           object will be validated before being returned to caller.
+     */
+    public func searchTransitGatewayMulticastGroupsAsync(
+            input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: searchTransitGatewayMulticastGroupsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = SearchTransitGatewayMulticastGroupsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.searchTransitGatewayMulticastGroups.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SearchTransitGatewayMulticastGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SearchTransitGatewayMulticastGroupsRequest object being passed to this operation.
+     - Returns: The SearchTransitGatewayMulticastGroupsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func searchTransitGatewayMulticastGroupsSync(
+            input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: searchTransitGatewayMulticastGroupsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = SearchTransitGatewayMulticastGroupsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.searchTransitGatewayMulticastGroups.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the SearchTransitGatewayRoutes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -27246,6 +30291,81 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.startInstances.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartVpcEndpointServicePrivateDnsVerification operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartVpcEndpointServicePrivateDnsVerificationRequest object being passed to this operation.
+         - completion: The StartVpcEndpointServicePrivateDnsVerificationResult object or an error will be passed to this 
+           callback when the operation is complete. The StartVpcEndpointServicePrivateDnsVerificationResult
+           object will be validated before being returned to caller.
+     */
+    public func startVpcEndpointServicePrivateDnsVerificationAsync(
+            input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: startVpcEndpointServicePrivateDnsVerificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = StartVpcEndpointServicePrivateDnsVerificationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.startVpcEndpointServicePrivateDnsVerification.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartVpcEndpointServicePrivateDnsVerification operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartVpcEndpointServicePrivateDnsVerificationRequest object being passed to this operation.
+     - Returns: The StartVpcEndpointServicePrivateDnsVerificationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func startVpcEndpointServicePrivateDnsVerificationSync(
+            input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: startVpcEndpointServicePrivateDnsVerificationOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = StartVpcEndpointServicePrivateDnsVerificationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.startVpcEndpointServicePrivateDnsVerification.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(

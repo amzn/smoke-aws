@@ -32,6 +32,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case applyPendingMaintenanceAction = "ApplyPendingMaintenanceAction"
     case authorizeDBSecurityGroupIngress = "AuthorizeDBSecurityGroupIngress"
     case backtrackDBCluster = "BacktrackDBCluster"
+    case cancelExportTask = "CancelExportTask"
     case copyDBClusterParameterGroup = "CopyDBClusterParameterGroup"
     case copyDBClusterSnapshot = "CopyDBClusterSnapshot"
     case copyDBParameterGroup = "CopyDBParameterGroup"
@@ -45,6 +46,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case createDBInstance = "CreateDBInstance"
     case createDBInstanceReadReplica = "CreateDBInstanceReadReplica"
     case createDBParameterGroup = "CreateDBParameterGroup"
+    case createDBProxy = "CreateDBProxy"
     case createDBSecurityGroup = "CreateDBSecurityGroup"
     case createDBSnapshot = "CreateDBSnapshot"
     case createDBSubnetGroup = "CreateDBSubnetGroup"
@@ -59,6 +61,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case deleteDBInstance = "DeleteDBInstance"
     case deleteDBInstanceAutomatedBackup = "DeleteDBInstanceAutomatedBackup"
     case deleteDBParameterGroup = "DeleteDBParameterGroup"
+    case deleteDBProxy = "DeleteDBProxy"
     case deleteDBSecurityGroup = "DeleteDBSecurityGroup"
     case deleteDBSnapshot = "DeleteDBSnapshot"
     case deleteDBSubnetGroup = "DeleteDBSubnetGroup"
@@ -66,6 +69,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case deleteGlobalCluster = "DeleteGlobalCluster"
     case deleteInstallationMedia = "DeleteInstallationMedia"
     case deleteOptionGroup = "DeleteOptionGroup"
+    case deregisterDBProxyTargets = "DeregisterDBProxyTargets"
     case describeAccountAttributes = "DescribeAccountAttributes"
     case describeCertificates = "DescribeCertificates"
     case describeCustomAvailabilityZones = "DescribeCustomAvailabilityZones"
@@ -82,6 +86,9 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case describeDBLogFiles = "DescribeDBLogFiles"
     case describeDBParameterGroups = "DescribeDBParameterGroups"
     case describeDBParameters = "DescribeDBParameters"
+    case describeDBProxies = "DescribeDBProxies"
+    case describeDBProxyTargetGroups = "DescribeDBProxyTargetGroups"
+    case describeDBProxyTargets = "DescribeDBProxyTargets"
     case describeDBSecurityGroups = "DescribeDBSecurityGroups"
     case describeDBSnapshotAttributes = "DescribeDBSnapshotAttributes"
     case describeDBSnapshots = "DescribeDBSnapshots"
@@ -91,6 +98,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case describeEventCategories = "DescribeEventCategories"
     case describeEventSubscriptions = "DescribeEventSubscriptions"
     case describeEvents = "DescribeEvents"
+    case describeExportTasks = "DescribeExportTasks"
     case describeGlobalClusters = "DescribeGlobalClusters"
     case describeInstallationMedia = "DescribeInstallationMedia"
     case describeOptionGroupOptions = "DescribeOptionGroupOptions"
@@ -105,6 +113,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case failoverDBCluster = "FailoverDBCluster"
     case importInstallationMedia = "ImportInstallationMedia"
     case listTagsForResource = "ListTagsForResource"
+    case modifyCertificates = "ModifyCertificates"
     case modifyCurrentDBClusterCapacity = "ModifyCurrentDBClusterCapacity"
     case modifyDBCluster = "ModifyDBCluster"
     case modifyDBClusterEndpoint = "ModifyDBClusterEndpoint"
@@ -112,6 +121,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case modifyDBClusterSnapshotAttribute = "ModifyDBClusterSnapshotAttribute"
     case modifyDBInstance = "ModifyDBInstance"
     case modifyDBParameterGroup = "ModifyDBParameterGroup"
+    case modifyDBProxy = "ModifyDBProxy"
+    case modifyDBProxyTargetGroup = "ModifyDBProxyTargetGroup"
     case modifyDBSnapshot = "ModifyDBSnapshot"
     case modifyDBSnapshotAttribute = "ModifyDBSnapshotAttribute"
     case modifyDBSubnetGroup = "ModifyDBSubnetGroup"
@@ -122,6 +133,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case promoteReadReplicaDBCluster = "PromoteReadReplicaDBCluster"
     case purchaseReservedDBInstancesOffering = "PurchaseReservedDBInstancesOffering"
     case rebootDBInstance = "RebootDBInstance"
+    case registerDBProxyTargets = "RegisterDBProxyTargets"
     case removeFromGlobalCluster = "RemoveFromGlobalCluster"
     case removeRoleFromDBCluster = "RemoveRoleFromDBCluster"
     case removeRoleFromDBInstance = "RemoveRoleFromDBInstance"
@@ -139,6 +151,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case startActivityStream = "StartActivityStream"
     case startDBCluster = "StartDBCluster"
     case startDBInstance = "StartDBInstance"
+    case startExportTask = "StartExportTask"
     case stopActivityStream = "StopActivityStream"
     case stopDBCluster = "StopDBCluster"
     case stopDBInstance = "StopDBInstance"
@@ -162,6 +175,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .authorizeDBSecurityGroupIngress:
             return "/"
         case .backtrackDBCluster:
+            return "/"
+        case .cancelExportTask:
             return "/"
         case .copyDBClusterParameterGroup:
             return "/"
@@ -188,6 +203,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .createDBInstanceReadReplica:
             return "/"
         case .createDBParameterGroup:
+            return "/"
+        case .createDBProxy:
             return "/"
         case .createDBSecurityGroup:
             return "/"
@@ -217,6 +234,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .deleteDBParameterGroup:
             return "/"
+        case .deleteDBProxy:
+            return "/"
         case .deleteDBSecurityGroup:
             return "/"
         case .deleteDBSnapshot:
@@ -230,6 +249,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .deleteInstallationMedia:
             return "/"
         case .deleteOptionGroup:
+            return "/"
+        case .deregisterDBProxyTargets:
             return "/"
         case .describeAccountAttributes:
             return "/"
@@ -263,6 +284,12 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .describeDBParameters:
             return "/"
+        case .describeDBProxies:
+            return "/"
+        case .describeDBProxyTargetGroups:
+            return "/"
+        case .describeDBProxyTargets:
+            return "/"
         case .describeDBSecurityGroups:
             return "/"
         case .describeDBSnapshotAttributes:
@@ -280,6 +307,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .describeEventSubscriptions:
             return "/"
         case .describeEvents:
+            return "/"
+        case .describeExportTasks:
             return "/"
         case .describeGlobalClusters:
             return "/"
@@ -309,6 +338,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .listTagsForResource:
             return "/"
+        case .modifyCertificates:
+            return "/"
         case .modifyCurrentDBClusterCapacity:
             return "/"
         case .modifyDBCluster:
@@ -322,6 +353,10 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .modifyDBInstance:
             return "/"
         case .modifyDBParameterGroup:
+            return "/"
+        case .modifyDBProxy:
+            return "/"
+        case .modifyDBProxyTargetGroup:
             return "/"
         case .modifyDBSnapshot:
             return "/"
@@ -342,6 +377,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .purchaseReservedDBInstancesOffering:
             return "/"
         case .rebootDBInstance:
+            return "/"
+        case .registerDBProxyTargets:
             return "/"
         case .removeFromGlobalCluster:
             return "/"
@@ -376,6 +413,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .startDBCluster:
             return "/"
         case .startDBInstance:
+            return "/"
+        case .startExportTask:
             return "/"
         case .stopActivityStream:
             return "/"

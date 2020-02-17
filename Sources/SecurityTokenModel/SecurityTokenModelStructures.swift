@@ -29,7 +29,9 @@ public struct AssumeRoleRequest: Codable, Equatable {
     public var roleArn: ArnType
     public var roleSessionName: RoleSessionNameType
     public var serialNumber: SerialNumberType?
+    public var tags: TagListType?
     public var tokenCode: TokenCodeType?
+    public var transitiveTagKeys: TagKeyListType?
 
     public init(durationSeconds: RoleDurationSecondsType? = nil,
                 externalId: ExternalIdType? = nil,
@@ -38,7 +40,9 @@ public struct AssumeRoleRequest: Codable, Equatable {
                 roleArn: ArnType,
                 roleSessionName: RoleSessionNameType,
                 serialNumber: SerialNumberType? = nil,
-                tokenCode: TokenCodeType? = nil) {
+                tags: TagListType? = nil,
+                tokenCode: TokenCodeType? = nil,
+                transitiveTagKeys: TagKeyListType? = nil) {
         self.durationSeconds = durationSeconds
         self.externalId = externalId
         self.policy = policy
@@ -46,7 +50,9 @@ public struct AssumeRoleRequest: Codable, Equatable {
         self.roleArn = roleArn
         self.roleSessionName = roleSessionName
         self.serialNumber = serialNumber
+        self.tags = tags
         self.tokenCode = tokenCode
+        self.transitiveTagKeys = transitiveTagKeys
     }
 
     enum CodingKeys: String, CodingKey {
@@ -57,7 +63,9 @@ public struct AssumeRoleRequest: Codable, Equatable {
         case roleArn = "RoleArn"
         case roleSessionName = "RoleSessionName"
         case serialNumber = "SerialNumber"
+        case tags = "Tags"
         case tokenCode = "TokenCode"
+        case transitiveTagKeys = "TransitiveTagKeys"
     }
 
     public func validate() throws {
@@ -67,7 +75,9 @@ public struct AssumeRoleRequest: Codable, Equatable {
         try roleArn.validateAsArnType()
         try roleSessionName.validateAsRoleSessionNameType()
         try serialNumber?.validateAsSerialNumberType()
+        try tags?.validateAsTagListType()
         try tokenCode?.validateAsTokenCodeType()
+        try transitiveTagKeys?.validateAsTagKeyListType()
     }
 }
 
@@ -548,15 +558,18 @@ public struct GetFederationTokenRequest: Codable, Equatable {
     public var name: UserNameType
     public var policy: SessionPolicyDocumentType?
     public var policyArns: PolicyDescriptorListType?
+    public var tags: TagListType?
 
     public init(durationSeconds: DurationSecondsType? = nil,
                 name: UserNameType,
                 policy: SessionPolicyDocumentType? = nil,
-                policyArns: PolicyDescriptorListType? = nil) {
+                policyArns: PolicyDescriptorListType? = nil,
+                tags: TagListType? = nil) {
         self.durationSeconds = durationSeconds
         self.name = name
         self.policy = policy
         self.policyArns = policyArns
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
@@ -564,12 +577,14 @@ public struct GetFederationTokenRequest: Codable, Equatable {
         case name = "Name"
         case policy = "Policy"
         case policyArns = "PolicyArns"
+        case tags = "Tags"
     }
 
     public func validate() throws {
         try durationSeconds?.validateAsDurationSecondsType()
         try name.validateAsUserNameType()
         try policy?.validateAsSessionPolicyDocumentType()
+        try tags?.validateAsTagListType()
     }
 }
 
@@ -791,5 +806,26 @@ public struct RegionDisabledException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct Tag: Codable, Equatable {
+    public var key: TagKeyType
+    public var value: TagValueType
+
+    public init(key: TagKeyType,
+                value: TagValueType) {
+        self.key = key
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case key = "Key"
+        case value = "Value"
+    }
+
+    public func validate() throws {
+        try key.validateAsTagKeyType()
+        try value.validateAsTagValueType()
     }
 }

@@ -54,6 +54,12 @@ private let dBLogFileNotFoundIdentity = "DBLogFileNotFoundFault"
 private let dBParameterGroupAlreadyExistsIdentity = "DBParameterGroupAlreadyExists"
 private let dBParameterGroupNotFoundIdentity = "DBParameterGroupNotFound"
 private let dBParameterGroupQuotaExceededIdentity = "DBParameterGroupQuotaExceeded"
+private let dBProxyAlreadyExistsIdentity = "DBProxyAlreadyExistsFault"
+private let dBProxyNotFoundIdentity = "DBProxyNotFoundFault"
+private let dBProxyQuotaExceededIdentity = "DBProxyQuotaExceededFault"
+private let dBProxyTargetAlreadyRegisteredIdentity = "DBProxyTargetAlreadyRegisteredFault"
+private let dBProxyTargetGroupNotFoundIdentity = "DBProxyTargetGroupNotFoundFault"
+private let dBProxyTargetNotFoundIdentity = "DBProxyTargetNotFoundFault"
 private let dBSecurityGroupAlreadyExistsIdentity = "DBSecurityGroupAlreadyExists"
 private let dBSecurityGroupNotFoundIdentity = "DBSecurityGroupNotFound"
 private let dBSecurityGroupNotSupportedIdentity = "DBSecurityGroupNotSupported"
@@ -69,9 +75,13 @@ private let dBSubnetQuotaExceededIdentity = "DBSubnetQuotaExceededFault"
 private let dBUpgradeDependencyFailureIdentity = "DBUpgradeDependencyFailure"
 private let domainNotFoundIdentity = "DomainNotFoundFault"
 private let eventSubscriptionQuotaExceededIdentity = "EventSubscriptionQuotaExceeded"
+private let exportTaskAlreadyExistsIdentity = "ExportTaskAlreadyExists"
+private let exportTaskNotFoundIdentity = "ExportTaskNotFound"
 private let globalClusterAlreadyExistsIdentity = "GlobalClusterAlreadyExistsFault"
 private let globalClusterNotFoundIdentity = "GlobalClusterNotFoundFault"
 private let globalClusterQuotaExceededIdentity = "GlobalClusterQuotaExceededFault"
+private let iamRoleMissingPermissionsIdentity = "IamRoleMissingPermissions"
+private let iamRoleNotFoundIdentity = "IamRoleNotFound"
 private let installationMediaAlreadyExistsIdentity = "InstallationMediaAlreadyExists"
 private let installationMediaNotFoundIdentity = "InstallationMediaNotFound"
 private let instanceQuotaExceededIdentity = "InstanceQuotaExceeded"
@@ -85,12 +95,16 @@ private let invalidDBClusterStateIdentity = "InvalidDBClusterStateFault"
 private let invalidDBInstanceAutomatedBackupStateIdentity = "InvalidDBInstanceAutomatedBackupState"
 private let invalidDBInstanceStateIdentity = "InvalidDBInstanceState"
 private let invalidDBParameterGroupStateIdentity = "InvalidDBParameterGroupState"
+private let invalidDBProxyStateIdentity = "InvalidDBProxyStateFault"
 private let invalidDBSecurityGroupStateIdentity = "InvalidDBSecurityGroupState"
 private let invalidDBSnapshotStateIdentity = "InvalidDBSnapshotState"
 private let invalidDBSubnetGroupIdentity = "InvalidDBSubnetGroupFault"
 private let invalidDBSubnetGroupStateIdentity = "InvalidDBSubnetGroupStateFault"
 private let invalidDBSubnetStateIdentity = "InvalidDBSubnetStateFault"
 private let invalidEventSubscriptionStateIdentity = "InvalidEventSubscriptionState"
+private let invalidExportOnlyIdentity = "InvalidExportOnly"
+private let invalidExportSourceStateIdentity = "InvalidExportSourceState"
+private let invalidExportTaskStateIdentity = "InvalidExportTaskStateFault"
 private let invalidGlobalClusterStateIdentity = "InvalidGlobalClusterStateFault"
 private let invalidOptionGroupStateIdentity = "InvalidOptionGroupStateFault"
 private let invalidRestoreIdentity = "InvalidRestoreFault"
@@ -155,6 +169,12 @@ public enum RDSError: Swift.Error, Decodable {
     case dBParameterGroupAlreadyExists(DBParameterGroupAlreadyExistsFault)
     case dBParameterGroupNotFound(DBParameterGroupNotFoundFault)
     case dBParameterGroupQuotaExceeded(DBParameterGroupQuotaExceededFault)
+    case dBProxyAlreadyExists(DBProxyAlreadyExistsFault)
+    case dBProxyNotFound(DBProxyNotFoundFault)
+    case dBProxyQuotaExceeded(DBProxyQuotaExceededFault)
+    case dBProxyTargetAlreadyRegistered(DBProxyTargetAlreadyRegisteredFault)
+    case dBProxyTargetGroupNotFound(DBProxyTargetGroupNotFoundFault)
+    case dBProxyTargetNotFound(DBProxyTargetNotFoundFault)
     case dBSecurityGroupAlreadyExists(DBSecurityGroupAlreadyExistsFault)
     case dBSecurityGroupNotFound(DBSecurityGroupNotFoundFault)
     case dBSecurityGroupNotSupported(DBSecurityGroupNotSupportedFault)
@@ -170,9 +190,13 @@ public enum RDSError: Swift.Error, Decodable {
     case dBUpgradeDependencyFailure(DBUpgradeDependencyFailureFault)
     case domainNotFound(DomainNotFoundFault)
     case eventSubscriptionQuotaExceeded(EventSubscriptionQuotaExceededFault)
+    case exportTaskAlreadyExists(ExportTaskAlreadyExistsFault)
+    case exportTaskNotFound(ExportTaskNotFoundFault)
     case globalClusterAlreadyExists(GlobalClusterAlreadyExistsFault)
     case globalClusterNotFound(GlobalClusterNotFoundFault)
     case globalClusterQuotaExceeded(GlobalClusterQuotaExceededFault)
+    case iamRoleMissingPermissions(IamRoleMissingPermissionsFault)
+    case iamRoleNotFound(IamRoleNotFoundFault)
     case installationMediaAlreadyExists(InstallationMediaAlreadyExistsFault)
     case installationMediaNotFound(InstallationMediaNotFoundFault)
     case instanceQuotaExceeded(InstanceQuotaExceededFault)
@@ -186,12 +210,16 @@ public enum RDSError: Swift.Error, Decodable {
     case invalidDBInstanceAutomatedBackupState(InvalidDBInstanceAutomatedBackupStateFault)
     case invalidDBInstanceState(InvalidDBInstanceStateFault)
     case invalidDBParameterGroupState(InvalidDBParameterGroupStateFault)
+    case invalidDBProxyState(InvalidDBProxyStateFault)
     case invalidDBSecurityGroupState(InvalidDBSecurityGroupStateFault)
     case invalidDBSnapshotState(InvalidDBSnapshotStateFault)
     case invalidDBSubnetGroup(InvalidDBSubnetGroupFault)
     case invalidDBSubnetGroupState(InvalidDBSubnetGroupStateFault)
     case invalidDBSubnetState(InvalidDBSubnetStateFault)
     case invalidEventSubscriptionState(InvalidEventSubscriptionStateFault)
+    case invalidExportOnly(InvalidExportOnlyFault)
+    case invalidExportSourceState(InvalidExportSourceStateFault)
+    case invalidExportTaskState(InvalidExportTaskStateFault)
     case invalidGlobalClusterState(InvalidGlobalClusterStateFault)
     case invalidOptionGroupState(InvalidOptionGroupStateFault)
     case invalidRestore(InvalidRestoreFault)
@@ -336,6 +364,24 @@ public enum RDSError: Swift.Error, Decodable {
         case dBParameterGroupQuotaExceededIdentity:
             let errorPayload = try DBParameterGroupQuotaExceededFault(from: decoder)
             self = RDSError.dBParameterGroupQuotaExceeded(errorPayload)
+        case dBProxyAlreadyExistsIdentity:
+            let errorPayload = try DBProxyAlreadyExistsFault(from: decoder)
+            self = RDSError.dBProxyAlreadyExists(errorPayload)
+        case dBProxyNotFoundIdentity:
+            let errorPayload = try DBProxyNotFoundFault(from: decoder)
+            self = RDSError.dBProxyNotFound(errorPayload)
+        case dBProxyQuotaExceededIdentity:
+            let errorPayload = try DBProxyQuotaExceededFault(from: decoder)
+            self = RDSError.dBProxyQuotaExceeded(errorPayload)
+        case dBProxyTargetAlreadyRegisteredIdentity:
+            let errorPayload = try DBProxyTargetAlreadyRegisteredFault(from: decoder)
+            self = RDSError.dBProxyTargetAlreadyRegistered(errorPayload)
+        case dBProxyTargetGroupNotFoundIdentity:
+            let errorPayload = try DBProxyTargetGroupNotFoundFault(from: decoder)
+            self = RDSError.dBProxyTargetGroupNotFound(errorPayload)
+        case dBProxyTargetNotFoundIdentity:
+            let errorPayload = try DBProxyTargetNotFoundFault(from: decoder)
+            self = RDSError.dBProxyTargetNotFound(errorPayload)
         case dBSecurityGroupAlreadyExistsIdentity:
             let errorPayload = try DBSecurityGroupAlreadyExistsFault(from: decoder)
             self = RDSError.dBSecurityGroupAlreadyExists(errorPayload)
@@ -381,6 +427,12 @@ public enum RDSError: Swift.Error, Decodable {
         case eventSubscriptionQuotaExceededIdentity:
             let errorPayload = try EventSubscriptionQuotaExceededFault(from: decoder)
             self = RDSError.eventSubscriptionQuotaExceeded(errorPayload)
+        case exportTaskAlreadyExistsIdentity:
+            let errorPayload = try ExportTaskAlreadyExistsFault(from: decoder)
+            self = RDSError.exportTaskAlreadyExists(errorPayload)
+        case exportTaskNotFoundIdentity:
+            let errorPayload = try ExportTaskNotFoundFault(from: decoder)
+            self = RDSError.exportTaskNotFound(errorPayload)
         case globalClusterAlreadyExistsIdentity:
             let errorPayload = try GlobalClusterAlreadyExistsFault(from: decoder)
             self = RDSError.globalClusterAlreadyExists(errorPayload)
@@ -390,6 +442,12 @@ public enum RDSError: Swift.Error, Decodable {
         case globalClusterQuotaExceededIdentity:
             let errorPayload = try GlobalClusterQuotaExceededFault(from: decoder)
             self = RDSError.globalClusterQuotaExceeded(errorPayload)
+        case iamRoleMissingPermissionsIdentity:
+            let errorPayload = try IamRoleMissingPermissionsFault(from: decoder)
+            self = RDSError.iamRoleMissingPermissions(errorPayload)
+        case iamRoleNotFoundIdentity:
+            let errorPayload = try IamRoleNotFoundFault(from: decoder)
+            self = RDSError.iamRoleNotFound(errorPayload)
         case installationMediaAlreadyExistsIdentity:
             let errorPayload = try InstallationMediaAlreadyExistsFault(from: decoder)
             self = RDSError.installationMediaAlreadyExists(errorPayload)
@@ -429,6 +487,9 @@ public enum RDSError: Swift.Error, Decodable {
         case invalidDBParameterGroupStateIdentity:
             let errorPayload = try InvalidDBParameterGroupStateFault(from: decoder)
             self = RDSError.invalidDBParameterGroupState(errorPayload)
+        case invalidDBProxyStateIdentity:
+            let errorPayload = try InvalidDBProxyStateFault(from: decoder)
+            self = RDSError.invalidDBProxyState(errorPayload)
         case invalidDBSecurityGroupStateIdentity:
             let errorPayload = try InvalidDBSecurityGroupStateFault(from: decoder)
             self = RDSError.invalidDBSecurityGroupState(errorPayload)
@@ -447,6 +508,15 @@ public enum RDSError: Swift.Error, Decodable {
         case invalidEventSubscriptionStateIdentity:
             let errorPayload = try InvalidEventSubscriptionStateFault(from: decoder)
             self = RDSError.invalidEventSubscriptionState(errorPayload)
+        case invalidExportOnlyIdentity:
+            let errorPayload = try InvalidExportOnlyFault(from: decoder)
+            self = RDSError.invalidExportOnly(errorPayload)
+        case invalidExportSourceStateIdentity:
+            let errorPayload = try InvalidExportSourceStateFault(from: decoder)
+            self = RDSError.invalidExportSourceState(errorPayload)
+        case invalidExportTaskStateIdentity:
+            let errorPayload = try InvalidExportTaskStateFault(from: decoder)
+            self = RDSError.invalidExportTaskState(errorPayload)
         case invalidGlobalClusterStateIdentity:
             let errorPayload = try InvalidGlobalClusterStateFault(from: decoder)
             self = RDSError.invalidGlobalClusterState(errorPayload)

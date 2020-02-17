@@ -24,6 +24,19 @@ import SmokeHTTPClient
 import ElasticContainerModel
 
 /**
+ Type to handle the output from the CreateCapacityProvider operation in a HTTP client.
+ */
+extension CreateCapacityProviderResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateCapacityProviderResponse
+    public typealias HeadersType = CreateCapacityProviderResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateCapacityProviderResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateCluster operation in a HTTP client.
  */
 extension CreateClusterResponse: HTTPResponseOutputProtocol {
@@ -149,6 +162,19 @@ extension DeregisterTaskDefinitionResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeregisterTaskDefinitionResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeCapacityProviders operation in a HTTP client.
+ */
+extension DescribeCapacityProvidersResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeCapacityProvidersResponse
+    public typealias HeadersType = DescribeCapacityProvidersResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeCapacityProvidersResponse {
         return try bodyDecodableProvider()
     }
 }
@@ -396,6 +422,19 @@ extension PutAttributesResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> PutAttributesResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutClusterCapacityProviders operation in a HTTP client.
+ */
+extension PutClusterCapacityProvidersResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutClusterCapacityProvidersResponse
+    public typealias HeadersType = PutClusterCapacityProvidersResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutClusterCapacityProvidersResponse {
         return try bodyDecodableProvider()
     }
 }

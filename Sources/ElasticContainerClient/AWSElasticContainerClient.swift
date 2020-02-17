@@ -66,6 +66,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
 
+    let createCapacityProviderOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let createClusterOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let createServiceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let createTaskSetOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
@@ -76,6 +77,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     let deleteTaskSetOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let deregisterContainerInstanceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let deregisterTaskDefinitionOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    let describeCapacityProvidersOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let describeClustersOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let describeContainerInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let describeServicesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
@@ -95,6 +97,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     let putAccountSettingOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let putAccountSettingDefaultOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let putAttributesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    let putClusterCapacityProvidersOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let registerContainerInstanceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let registerTaskDefinitionOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let runTaskOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
@@ -138,6 +141,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
         self.retryConfiguration = retryConfiguration
         self.retryOnErrorProvider = { error in error.isRetriable() }
 
+        self.createCapacityProviderOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticContainerClient", operation: .createCapacityProvider, configuration: reportingConfiguration)
         self.createClusterOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticContainerClient", operation: .createCluster, configuration: reportingConfiguration)
         self.createServiceOperationReporting = StandardSmokeAWSOperationReporting(
@@ -158,6 +163,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
             clientName: "AWSElasticContainerClient", operation: .deregisterContainerInstance, configuration: reportingConfiguration)
         self.deregisterTaskDefinitionOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticContainerClient", operation: .deregisterTaskDefinition, configuration: reportingConfiguration)
+        self.describeCapacityProvidersOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticContainerClient", operation: .describeCapacityProviders, configuration: reportingConfiguration)
         self.describeClustersOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticContainerClient", operation: .describeClusters, configuration: reportingConfiguration)
         self.describeContainerInstancesOperationReporting = StandardSmokeAWSOperationReporting(
@@ -196,6 +203,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
             clientName: "AWSElasticContainerClient", operation: .putAccountSettingDefault, configuration: reportingConfiguration)
         self.putAttributesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticContainerClient", operation: .putAttributes, configuration: reportingConfiguration)
+        self.putClusterCapacityProvidersOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSElasticContainerClient", operation: .putClusterCapacityProviders, configuration: reportingConfiguration)
         self.registerContainerInstanceOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSElasticContainerClient", operation: .registerContainerInstance, configuration: reportingConfiguration)
         self.registerTaskDefinitionOperationReporting = StandardSmokeAWSOperationReporting(
@@ -244,6 +253,75 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func wait() {
         httpClient.wait()
+    }
+
+    /**
+     Invokes the CreateCapacityProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCapacityProviderRequest object being passed to this operation.
+         - completion: The CreateCapacityProviderResponse object or an error will be passed to this 
+           callback when the operation is complete. The CreateCapacityProviderResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, limitExceeded, server.
+     */
+    public func createCapacityProviderAsync(
+            input: ElasticContainerModel.CreateCapacityProviderRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.createCapacityProvider.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createCapacityProviderOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = CreateCapacityProviderOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateCapacityProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCapacityProviderRequest object being passed to this operation.
+     - Returns: The CreateCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, limitExceeded, server.
+     */
+    public func createCapacityProviderSync(
+            input: ElasticContainerModel.CreateCapacityProviderRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.createCapacityProvider.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: createCapacityProviderOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = CreateCapacityProviderOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
     }
 
     /**
@@ -599,7 +677,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The DeleteClusterResponse object or an error will be passed to this 
            callback when the operation is complete. The DeleteClusterResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server.
+           The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
     public func deleteClusterAsync(
             input: ElasticContainerModel.DeleteClusterRequest, 
@@ -634,7 +712,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated DeleteClusterRequest object being passed to this operation.
      - Returns: The DeleteClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
     public func deleteClusterSync(
             input: ElasticContainerModel.DeleteClusterRequest,
@@ -926,6 +1004,75 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                                                                                   smokeAWSOperationReporting: deregisterTaskDefinitionOperationReporting)
         let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeCapacityProviders operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCapacityProvidersRequest object being passed to this operation.
+         - completion: The DescribeCapacityProvidersResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCapacityProvidersResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func describeCapacityProvidersAsync(
+            input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeCapacityProviders.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeCapacityProvidersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = DescribeCapacityProvidersOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeCapacityProviders operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCapacityProvidersRequest object being passed to this operation.
+     - Returns: The DescribeCapacityProvidersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func describeCapacityProvidersSync(
+            input: ElasticContainerModel.DescribeCapacityProvidersRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeCapacityProviders.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeCapacityProvidersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = DescribeCapacityProvidersOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
@@ -2248,6 +2395,75 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the PutClusterCapacityProviders operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutClusterCapacityProvidersRequest object being passed to this operation.
+         - completion: The PutClusterCapacityProvidersResponse object or an error will be passed to this 
+           callback when the operation is complete. The PutClusterCapacityProvidersResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
+     */
+    public func putClusterCapacityProvidersAsync(
+            input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.putClusterCapacityProviders.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putClusterCapacityProvidersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = PutClusterCapacityProvidersOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutClusterCapacityProviders operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutClusterCapacityProvidersRequest object being passed to this operation.
+     - Returns: The PutClusterCapacityProvidersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
+     */
+    public func putClusterCapacityProvidersSync(
+            input: ElasticContainerModel.PutClusterCapacityProvidersRequest,
+            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.putClusterCapacityProviders.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putClusterCapacityProvidersOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = PutClusterCapacityProvidersOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the RegisterContainerInstance operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3221,7 +3437,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The UpdateServicePrimaryTaskSetResponse object or an error will be passed to this 
            callback when the operation is complete. The UpdateServicePrimaryTaskSetResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
     public func updateServicePrimaryTaskSetAsync(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
@@ -3256,7 +3472,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
      - Returns: The UpdateServicePrimaryTaskSetResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
     public func updateServicePrimaryTaskSetSync(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest,

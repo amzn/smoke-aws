@@ -76,14 +76,17 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
     let deleteTableOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeBackupOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeContinuousBackupsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let describeContributorInsightsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeEndpointsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeGlobalTableOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeGlobalTableSettingsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeLimitsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeTableOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let describeTableReplicaAutoScalingOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeTimeToLiveOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let getItemOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listBackupsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let listContributorInsightsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listGlobalTablesOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listTablesOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listTagsOfResourceOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
@@ -97,10 +100,12 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
     let transactWriteItemsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let untagResourceOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let updateContinuousBackupsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let updateContributorInsightsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let updateGlobalTableOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let updateGlobalTableSettingsOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let updateItemOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let updateTableOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let updateTableReplicaAutoScalingOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let updateTimeToLiveOperationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -149,6 +154,8 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
             clientName: "AWSDynamoDBClient", operation: .describeBackup, configuration: reportingConfiguration)
         self.describeContinuousBackupsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .describeContinuousBackups, configuration: reportingConfiguration)
+        self.describeContributorInsightsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSDynamoDBClient", operation: .describeContributorInsights, configuration: reportingConfiguration)
         self.describeEndpointsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .describeEndpoints, configuration: reportingConfiguration)
         self.describeGlobalTableOperationReporting = StandardSmokeAWSOperationReporting(
@@ -159,12 +166,16 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
             clientName: "AWSDynamoDBClient", operation: .describeLimits, configuration: reportingConfiguration)
         self.describeTableOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .describeTable, configuration: reportingConfiguration)
+        self.describeTableReplicaAutoScalingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSDynamoDBClient", operation: .describeTableReplicaAutoScaling, configuration: reportingConfiguration)
         self.describeTimeToLiveOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .describeTimeToLive, configuration: reportingConfiguration)
         self.getItemOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .getItem, configuration: reportingConfiguration)
         self.listBackupsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .listBackups, configuration: reportingConfiguration)
+        self.listContributorInsightsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSDynamoDBClient", operation: .listContributorInsights, configuration: reportingConfiguration)
         self.listGlobalTablesOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .listGlobalTables, configuration: reportingConfiguration)
         self.listTablesOperationReporting = StandardSmokeAWSOperationReporting(
@@ -191,6 +202,8 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
             clientName: "AWSDynamoDBClient", operation: .untagResource, configuration: reportingConfiguration)
         self.updateContinuousBackupsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .updateContinuousBackups, configuration: reportingConfiguration)
+        self.updateContributorInsightsOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSDynamoDBClient", operation: .updateContributorInsights, configuration: reportingConfiguration)
         self.updateGlobalTableOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .updateGlobalTable, configuration: reportingConfiguration)
         self.updateGlobalTableSettingsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -199,6 +212,8 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
             clientName: "AWSDynamoDBClient", operation: .updateItem, configuration: reportingConfiguration)
         self.updateTableOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .updateTable, configuration: reportingConfiguration)
+        self.updateTableReplicaAutoScalingOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSDynamoDBClient", operation: .updateTableReplicaAutoScaling, configuration: reportingConfiguration)
         self.updateTimeToLiveOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSDynamoDBClient", operation: .updateTimeToLive, configuration: reportingConfiguration)
     }
@@ -910,6 +925,75 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+         - completion: The DescribeContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func describeContributorInsightsAsync(
+            input: DynamoDBModel.DescribeContributorInsightsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeContributorInsights.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeContributorInsightsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = DescribeContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+     - Returns: The DescribeContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeContributorInsightsSync(
+            input: DynamoDBModel.DescribeContributorInsightsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeContributorInsights.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeContributorInsightsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = DescribeContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeEndpoints operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1253,6 +1337,75 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The DescribeTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func describeTableReplicaAutoScalingAsync(
+            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTableReplicaAutoScalingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = DescribeTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The DescribeTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeTableReplicaAutoScalingSync(
+            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeTableReplicaAutoScalingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = DescribeTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DescribeTimeToLive operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1449,6 +1602,75 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                                                                                   smokeAWSOperationReporting: listBackupsOperationReporting)
         let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+         - completion: The ListContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func listContributorInsightsAsync(
+            input: DynamoDBModel.ListContributorInsightsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listContributorInsights.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listContributorInsightsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = ListContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+     - Returns: The ListContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func listContributorInsightsSync(
+            input: DynamoDBModel.ListContributorInsightsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListContributorInsightsOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listContributorInsights.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: listContributorInsightsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = ListContributorInsightsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
@@ -2351,6 +2573,75 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the UpdateContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+         - completion: The UpdateContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func updateContributorInsightsAsync(
+            input: DynamoDBModel.UpdateContributorInsightsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateContributorInsights.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: updateContributorInsightsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = UpdateContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+     - Returns: The UpdateContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func updateContributorInsightsSync(
+            input: DynamoDBModel.UpdateContributorInsightsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateContributorInsights.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: updateContributorInsightsOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = UpdateContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the UpdateGlobalTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2616,6 +2907,75 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
                                                                                   smokeAWSOperationReporting: updateTableOperationReporting)
         let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
         let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The UpdateTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func updateTableReplicaAutoScalingAsync(
+            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: updateTableReplicaAutoScalingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = UpdateTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The UpdateTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func updateTableReplicaAutoScalingSync(
+            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: updateTableReplicaAutoScalingOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let requestInput = UpdateTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
