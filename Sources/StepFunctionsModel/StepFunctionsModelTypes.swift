@@ -151,9 +151,35 @@ public enum HistoryEventType: String, Codable, CustomStringConvertible {
 public typealias Identity = String
 
 /**
+ Type definition for the IncludeExecutionData field.
+ */
+public typealias IncludeExecutionData = Bool
+
+/**
  Type definition for the ListExecutionsPageToken field.
  */
 public typealias ListExecutionsPageToken = String
+
+/**
+ Type definition for the LogDestinationList field.
+ */
+public typealias LogDestinationList = [LogDestination]
+
+/**
+ Enumeration restricting the values of the LogLevel field.
+ */
+public enum LogLevel: String, Codable, CustomStringConvertible {
+    case all = "ALL"
+    case error = "ERROR"
+    case fatal = "FATAL"
+    case off = "OFF"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: LogLevel = .all
+}
 
 /**
  Type definition for the Name field.
@@ -212,6 +238,20 @@ public enum StateMachineStatus: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: StateMachineStatus = .active
+}
+
+/**
+ Enumeration restricting the values of the StateMachineType field.
+ */
+public enum StateMachineType: String, Codable, CustomStringConvertible {
+    case express = "EXPRESS"
+    case standard = "STANDARD"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: StateMachineType = .express
 }
 
 /**

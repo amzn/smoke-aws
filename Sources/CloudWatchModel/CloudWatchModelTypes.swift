@@ -77,6 +77,21 @@ public typealias AnomalyDetectorExcludedTimeRanges = [Range]
 public typealias AnomalyDetectorMetricTimezone = String
 
 /**
+ Enumeration restricting the values of the AnomalyDetectorStateValue field.
+ */
+public enum AnomalyDetectorStateValue: String, Codable, CustomStringConvertible {
+    case pendingTraining = "PENDING_TRAINING"
+    case trained = "TRAINED"
+    case trainedInsufficientData = "TRAINED_INSUFFICIENT_DATA"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AnomalyDetectorStateValue = .pendingTraining
+}
+
+/**
  Type definition for the AnomalyDetectors field.
  */
 public typealias AnomalyDetectors = [AnomalyDetector]
@@ -85,6 +100,11 @@ public typealias AnomalyDetectors = [AnomalyDetector]
  Type definition for the AwsQueryErrorMessage field.
  */
 public typealias AwsQueryErrorMessage = String
+
+/**
+ Type definition for the BatchFailures field.
+ */
+public typealias BatchFailures = [PartialFailure]
 
 /**
  Enumeration restricting the values of the ComparisonOperator field.
@@ -216,6 +236,11 @@ public typealias EvaluateLowSampleCountPercentile = String
 public typealias EvaluationPeriods = Int
 
 /**
+ Type definition for the ExceptionType field.
+ */
+public typealias ExceptionType = String
+
+/**
  Type definition for the ExtendedStatistic field.
  */
 public typealias ExtendedStatistic = String
@@ -224,6 +249,21 @@ public typealias ExtendedStatistic = String
  Type definition for the ExtendedStatistics field.
  */
 public typealias ExtendedStatistics = [ExtendedStatistic]
+
+/**
+ Type definition for the FailureCode field.
+ */
+public typealias FailureCode = String
+
+/**
+ Type definition for the FailureDescription field.
+ */
+public typealias FailureDescription = String
+
+/**
+ Type definition for the FailureResource field.
+ */
+public typealias FailureResource = String
 
 /**
  Type definition for the FaultDescription field.
@@ -259,6 +299,111 @@ public enum HistoryItemType: String, Codable, CustomStringConvertible {
  Type definition for the HistorySummary field.
  */
 public typealias HistorySummary = String
+
+/**
+ Type definition for the InsightRuleAggregationStatistic field.
+ */
+public typealias InsightRuleAggregationStatistic = String
+
+/**
+ Type definition for the InsightRuleContributorDatapoints field.
+ */
+public typealias InsightRuleContributorDatapoints = [InsightRuleContributorDatapoint]
+
+/**
+ Type definition for the InsightRuleContributorKey field.
+ */
+public typealias InsightRuleContributorKey = String
+
+/**
+ Type definition for the InsightRuleContributorKeyLabel field.
+ */
+public typealias InsightRuleContributorKeyLabel = String
+
+/**
+ Type definition for the InsightRuleContributorKeyLabels field.
+ */
+public typealias InsightRuleContributorKeyLabels = [InsightRuleContributorKeyLabel]
+
+/**
+ Type definition for the InsightRuleContributorKeys field.
+ */
+public typealias InsightRuleContributorKeys = [InsightRuleContributorKey]
+
+/**
+ Type definition for the InsightRuleContributors field.
+ */
+public typealias InsightRuleContributors = [InsightRuleContributor]
+
+/**
+ Type definition for the InsightRuleDefinition field.
+ */
+public typealias InsightRuleDefinition = String
+
+/**
+ Type definition for the InsightRuleMaxResults field.
+ */
+public typealias InsightRuleMaxResults = Int
+
+/**
+ Type definition for the InsightRuleMetricDatapoints field.
+ */
+public typealias InsightRuleMetricDatapoints = [InsightRuleMetricDatapoint]
+
+/**
+ Type definition for the InsightRuleMetricList field.
+ */
+public typealias InsightRuleMetricList = [InsightRuleMetricName]
+
+/**
+ Type definition for the InsightRuleMetricName field.
+ */
+public typealias InsightRuleMetricName = String
+
+/**
+ Type definition for the InsightRuleName field.
+ */
+public typealias InsightRuleName = String
+
+/**
+ Type definition for the InsightRuleNames field.
+ */
+public typealias InsightRuleNames = [InsightRuleName]
+
+/**
+ Type definition for the InsightRuleOrderBy field.
+ */
+public typealias InsightRuleOrderBy = String
+
+/**
+ Type definition for the InsightRuleSchema field.
+ */
+public typealias InsightRuleSchema = String
+
+/**
+ Type definition for the InsightRuleState field.
+ */
+public typealias InsightRuleState = String
+
+/**
+ Type definition for the InsightRuleUnboundDouble field.
+ */
+public typealias InsightRuleUnboundDouble = Double
+
+/**
+ Type definition for the InsightRuleUnboundInteger field.
+ */
+public typealias InsightRuleUnboundInteger = Int
+
+/**
+ Type definition for the InsightRuleUnboundLong field.
+ */
+public typealias InsightRuleUnboundLong = Int
+
+/**
+ Type definition for the InsightRules field.
+ */
+public typealias InsightRules = [InsightRule]
 
 /**
  Type definition for the LastModified field.
@@ -834,6 +979,126 @@ extension CloudWatchModel.HistorySummary {
 
         if self.count > 255 {
             throw CloudWatchError.validationError(reason: "The provided value to HistorySummary violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the InsightRuleDefinition field.
+*/
+extension CloudWatchModel.InsightRuleDefinition {
+    public func validateAsInsightRuleDefinition() throws {
+        if self.count < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleDefinition violated the minimum length constraint.")
+        }
+
+        if self.count > 8192 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleDefinition violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\x00-\\x7F]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudWatchError.validationError(
+                    reason: "The provided value to InsightRuleDefinition violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the InsightRuleMaxResults field.
+*/
+extension CloudWatchModel.InsightRuleMaxResults {
+    public func validateAsInsightRuleMaxResults() throws {
+        if self < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 500 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the InsightRuleMetricName field.
+*/
+extension CloudWatchModel.InsightRuleMetricName {
+    public func validateAsInsightRuleMetricName() throws {
+        if self.count < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleMetricName violated the minimum length constraint.")
+        }
+
+        if self.count > 32 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleMetricName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\x20-\\x7E]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudWatchError.validationError(
+                    reason: "The provided value to InsightRuleMetricName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the InsightRuleName field.
+*/
+extension CloudWatchModel.InsightRuleName {
+    public func validateAsInsightRuleName() throws {
+        if self.count < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleName violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\x20-\\x7E]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudWatchError.validationError(
+                    reason: "The provided value to InsightRuleName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the InsightRuleOrderBy field.
+*/
+extension CloudWatchModel.InsightRuleOrderBy {
+    public func validateAsInsightRuleOrderBy() throws {
+        if self.count < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleOrderBy violated the minimum length constraint.")
+        }
+
+        if self.count > 32 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleOrderBy violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\x20-\\x7E]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudWatchError.validationError(
+                    reason: "The provided value to InsightRuleOrderBy violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the InsightRuleState field.
+*/
+extension CloudWatchModel.InsightRuleState {
+    public func validateAsInsightRuleState() throws {
+        if self.count < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleState violated the minimum length constraint.")
+        }
+
+        if self.count > 32 {
+            throw CloudWatchError.validationError(reason: "The provided value to InsightRuleState violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\x20-\\x7E]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudWatchError.validationError(
+                    reason: "The provided value to InsightRuleState violated the regular expression constraint.")
         }
     }
 }

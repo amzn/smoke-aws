@@ -28,13 +28,18 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
     case deleteAlarms = "DeleteAlarms"
     case deleteAnomalyDetector = "DeleteAnomalyDetector"
     case deleteDashboards = "DeleteDashboards"
+    case deleteInsightRules = "DeleteInsightRules"
     case describeAlarmHistory = "DescribeAlarmHistory"
     case describeAlarms = "DescribeAlarms"
     case describeAlarmsForMetric = "DescribeAlarmsForMetric"
     case describeAnomalyDetectors = "DescribeAnomalyDetectors"
+    case describeInsightRules = "DescribeInsightRules"
     case disableAlarmActions = "DisableAlarmActions"
+    case disableInsightRules = "DisableInsightRules"
     case enableAlarmActions = "EnableAlarmActions"
+    case enableInsightRules = "EnableInsightRules"
     case getDashboard = "GetDashboard"
+    case getInsightRuleReport = "GetInsightRuleReport"
     case getMetricData = "GetMetricData"
     case getMetricStatistics = "GetMetricStatistics"
     case getMetricWidgetImage = "GetMetricWidgetImage"
@@ -43,6 +48,7 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
     case listTagsForResource = "ListTagsForResource"
     case putAnomalyDetector = "PutAnomalyDetector"
     case putDashboard = "PutDashboard"
+    case putInsightRule = "PutInsightRule"
     case putMetricAlarm = "PutMetricAlarm"
     case putMetricData = "PutMetricData"
     case setAlarmState = "SetAlarmState"
@@ -61,6 +67,8 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
             return "/"
         case .deleteDashboards:
             return "/"
+        case .deleteInsightRules:
+            return "/"
         case .describeAlarmHistory:
             return "/"
         case .describeAlarms:
@@ -69,11 +77,19 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
             return "/"
         case .describeAnomalyDetectors:
             return "/"
+        case .describeInsightRules:
+            return "/"
         case .disableAlarmActions:
+            return "/"
+        case .disableInsightRules:
             return "/"
         case .enableAlarmActions:
             return "/"
+        case .enableInsightRules:
+            return "/"
         case .getDashboard:
+            return "/"
+        case .getInsightRuleReport:
             return "/"
         case .getMetricData:
             return "/"
@@ -90,6 +106,8 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
         case .putAnomalyDetector:
             return "/"
         case .putDashboard:
+            return "/"
+        case .putInsightRule:
             return "/"
         case .putMetricAlarm:
             return "/"

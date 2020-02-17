@@ -98,6 +98,13 @@ public protocol DynamoDBClientProtocol {
             _ input: DynamoDBModel.DescribeContinuousBackupsInput, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeContributorInsightsSyncType = (
+            _ input: DynamoDBModel.DescribeContributorInsightsInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContributorInsightsOutput
+    typealias DescribeContributorInsightsAsyncType = (
+            _ input: DynamoDBModel.DescribeContributorInsightsInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws -> ()
     typealias DescribeEndpointsSyncType = (
             _ input: DynamoDBModel.DescribeEndpointsRequest,
             _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeEndpointsResponse
@@ -133,6 +140,13 @@ public protocol DynamoDBClientProtocol {
             _ input: DynamoDBModel.DescribeTableInput, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias DescribeTableReplicaAutoScalingSyncType = (
+            _ input: DynamoDBModel.DescribeTableReplicaAutoScalingInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput
+    typealias DescribeTableReplicaAutoScalingAsyncType = (
+            _ input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws -> ()
     typealias DescribeTimeToLiveSyncType = (
             _ input: DynamoDBModel.DescribeTimeToLiveInput,
             _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTimeToLiveOutput
@@ -154,6 +168,13 @@ public protocol DynamoDBClientProtocol {
             _ input: DynamoDBModel.ListBackupsInput, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias ListContributorInsightsSyncType = (
+            _ input: DynamoDBModel.ListContributorInsightsInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListContributorInsightsOutput
+    typealias ListContributorInsightsAsyncType = (
+            _ input: DynamoDBModel.ListContributorInsightsInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws -> ()
     typealias ListGlobalTablesSyncType = (
             _ input: DynamoDBModel.ListGlobalTablesInput,
             _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListGlobalTablesOutput
@@ -245,6 +266,13 @@ public protocol DynamoDBClientProtocol {
             _ input: DynamoDBModel.UpdateContinuousBackupsInput, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias UpdateContributorInsightsSyncType = (
+            _ input: DynamoDBModel.UpdateContributorInsightsInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContributorInsightsOutput
+    typealias UpdateContributorInsightsAsyncType = (
+            _ input: DynamoDBModel.UpdateContributorInsightsInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws -> ()
     typealias UpdateGlobalTableSyncType = (
             _ input: DynamoDBModel.UpdateGlobalTableInput,
             _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateGlobalTableOutput
@@ -273,6 +301,13 @@ public protocol DynamoDBClientProtocol {
             _ input: DynamoDBModel.UpdateTableInput, 
             _ reporting: SmokeAWSInvocationReporting,
             _ completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws -> ()
+    typealias UpdateTableReplicaAutoScalingSyncType = (
+            _ input: DynamoDBModel.UpdateTableReplicaAutoScalingInput,
+            _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput
+    typealias UpdateTableReplicaAutoScalingAsyncType = (
+            _ input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
+            _ reporting: SmokeAWSInvocationReporting,
+            _ completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws -> ()
     typealias UpdateTimeToLiveSyncType = (
             _ input: DynamoDBModel.UpdateTimeToLiveInput,
             _ reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTimeToLiveOutput
@@ -562,6 +597,34 @@ public protocol DynamoDBClientProtocol {
             reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContinuousBackupsOutput
 
     /**
+     Invokes the DescribeContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+         - completion: The DescribeContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    func describeContributorInsightsAsync(
+            input: DynamoDBModel.DescribeContributorInsightsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the DescribeContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+     - Returns: The DescribeContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    func describeContributorInsightsSync(
+            input: DynamoDBModel.DescribeContributorInsightsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContributorInsightsOutput
+
+    /**
      Invokes the DescribeEndpoints operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -700,6 +763,34 @@ public protocol DynamoDBClientProtocol {
             reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableOutput
 
     /**
+     Invokes the DescribeTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The DescribeTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    func describeTableReplicaAutoScalingAsync(
+            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the DescribeTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The DescribeTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    func describeTableReplicaAutoScalingSync(
+            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput
+
+    /**
      Invokes the DescribeTimeToLive operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -782,6 +873,34 @@ public protocol DynamoDBClientProtocol {
     func listBackupsSync(
             input: DynamoDBModel.ListBackupsInput,
             reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListBackupsOutput
+
+    /**
+     Invokes the ListContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+         - completion: The ListContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    func listContributorInsightsAsync(
+            input: DynamoDBModel.ListContributorInsightsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the ListContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+     - Returns: The ListContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    func listContributorInsightsSync(
+            input: DynamoDBModel.ListContributorInsightsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListContributorInsightsOutput
 
     /**
      Invokes the ListGlobalTables operation returning immediately and passing the response to a callback.
@@ -1142,6 +1261,34 @@ public protocol DynamoDBClientProtocol {
             reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContinuousBackupsOutput
 
     /**
+     Invokes the UpdateContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+         - completion: The UpdateContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    func updateContributorInsightsAsync(
+            input: DynamoDBModel.UpdateContributorInsightsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the UpdateContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+     - Returns: The UpdateContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    func updateContributorInsightsSync(
+            input: DynamoDBModel.UpdateContributorInsightsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContributorInsightsOutput
+
+    /**
      Invokes the UpdateGlobalTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1252,6 +1399,34 @@ public protocol DynamoDBClientProtocol {
     func updateTableSync(
             input: DynamoDBModel.UpdateTableInput,
             reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableOutput
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The UpdateTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    func updateTableReplicaAutoScalingAsync(
+            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The UpdateTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    func updateTableReplicaAutoScalingSync(
+            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput
 
     /**
      Invokes the UpdateTimeToLive operation returning immediately and passing the response to a callback.

@@ -112,6 +112,30 @@ public struct AttributeLimitExceededException: Codable, Equatable {
     }
 }
 
+public struct AutoScalingGroupProvider: Codable, Equatable {
+    public var autoScalingGroupArn: String
+    public var managedScaling: ManagedScaling?
+    public var managedTerminationProtection: ManagedTerminationProtection?
+
+    public init(autoScalingGroupArn: String,
+                managedScaling: ManagedScaling? = nil,
+                managedTerminationProtection: ManagedTerminationProtection? = nil) {
+        self.autoScalingGroupArn = autoScalingGroupArn
+        self.managedScaling = managedScaling
+        self.managedTerminationProtection = managedTerminationProtection
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case autoScalingGroupArn
+        case managedScaling
+        case managedTerminationProtection
+    }
+
+    public func validate() throws {
+        try managedScaling?.validate()
+    }
+}
+
 public struct AwsVpcConfiguration: Codable, Equatable {
     public var assignPublicIp: AssignPublicIp?
     public var securityGroups: StringList?
@@ -144,6 +168,64 @@ public struct BlockedException: Codable, Equatable {
     }
 }
 
+public struct CapacityProvider: Codable, Equatable {
+    public var autoScalingGroupProvider: AutoScalingGroupProvider?
+    public var capacityProviderArn: String?
+    public var name: String?
+    public var status: CapacityProviderStatus?
+    public var tags: Tags?
+
+    public init(autoScalingGroupProvider: AutoScalingGroupProvider? = nil,
+                capacityProviderArn: String? = nil,
+                name: String? = nil,
+                status: CapacityProviderStatus? = nil,
+                tags: Tags? = nil) {
+        self.autoScalingGroupProvider = autoScalingGroupProvider
+        self.capacityProviderArn = capacityProviderArn
+        self.name = name
+        self.status = status
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case autoScalingGroupProvider
+        case capacityProviderArn
+        case name
+        case status
+        case tags
+    }
+
+    public func validate() throws {
+        try autoScalingGroupProvider?.validate()
+        try tags?.validateAsTags()
+    }
+}
+
+public struct CapacityProviderStrategyItem: Codable, Equatable {
+    public var base: CapacityProviderStrategyItemBase?
+    public var capacityProvider: String
+    public var weight: CapacityProviderStrategyItemWeight?
+
+    public init(base: CapacityProviderStrategyItemBase? = nil,
+                capacityProvider: String,
+                weight: CapacityProviderStrategyItemWeight? = nil) {
+        self.base = base
+        self.capacityProvider = capacityProvider
+        self.weight = weight
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case base
+        case capacityProvider
+        case weight
+    }
+
+    public func validate() throws {
+        try base?.validateAsCapacityProviderStrategyItemBase()
+        try weight?.validateAsCapacityProviderStrategyItemWeight()
+    }
+}
+
 public struct ClientException: Codable, Equatable {
     public var message: String?
 
@@ -161,8 +243,12 @@ public struct ClientException: Codable, Equatable {
 
 public struct Cluster: Codable, Equatable {
     public var activeServicesCount: Integer?
+    public var attachments: Attachments?
+    public var attachmentsStatus: String?
+    public var capacityProviders: StringList?
     public var clusterArn: String?
     public var clusterName: String?
+    public var defaultCapacityProviderStrategy: CapacityProviderStrategy?
     public var pendingTasksCount: Integer?
     public var registeredContainerInstancesCount: Integer?
     public var runningTasksCount: Integer?
@@ -172,8 +258,12 @@ public struct Cluster: Codable, Equatable {
     public var tags: Tags?
 
     public init(activeServicesCount: Integer? = nil,
+                attachments: Attachments? = nil,
+                attachmentsStatus: String? = nil,
+                capacityProviders: StringList? = nil,
                 clusterArn: String? = nil,
                 clusterName: String? = nil,
+                defaultCapacityProviderStrategy: CapacityProviderStrategy? = nil,
                 pendingTasksCount: Integer? = nil,
                 registeredContainerInstancesCount: Integer? = nil,
                 runningTasksCount: Integer? = nil,
@@ -182,8 +272,12 @@ public struct Cluster: Codable, Equatable {
                 status: String? = nil,
                 tags: Tags? = nil) {
         self.activeServicesCount = activeServicesCount
+        self.attachments = attachments
+        self.attachmentsStatus = attachmentsStatus
+        self.capacityProviders = capacityProviders
         self.clusterArn = clusterArn
         self.clusterName = clusterName
+        self.defaultCapacityProviderStrategy = defaultCapacityProviderStrategy
         self.pendingTasksCount = pendingTasksCount
         self.registeredContainerInstancesCount = registeredContainerInstancesCount
         self.runningTasksCount = runningTasksCount
@@ -195,8 +289,12 @@ public struct Cluster: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case activeServicesCount
+        case attachments
+        case attachmentsStatus
+        case capacityProviders
         case clusterArn
         case clusterName
+        case defaultCapacityProviderStrategy
         case pendingTasksCount
         case registeredContainerInstancesCount
         case runningTasksCount
@@ -533,6 +631,7 @@ public struct ContainerInstance: Codable, Equatable {
     public var agentUpdateStatus: AgentUpdateStatus?
     public var attachments: Attachments?
     public var attributes: Attributes?
+    public var capacityProviderName: String?
     public var containerInstanceArn: String?
     public var ec2InstanceId: String?
     public var pendingTasksCount: Integer?
@@ -550,6 +649,7 @@ public struct ContainerInstance: Codable, Equatable {
                 agentUpdateStatus: AgentUpdateStatus? = nil,
                 attachments: Attachments? = nil,
                 attributes: Attributes? = nil,
+                capacityProviderName: String? = nil,
                 containerInstanceArn: String? = nil,
                 ec2InstanceId: String? = nil,
                 pendingTasksCount: Integer? = nil,
@@ -566,6 +666,7 @@ public struct ContainerInstance: Codable, Equatable {
         self.agentUpdateStatus = agentUpdateStatus
         self.attachments = attachments
         self.attributes = attributes
+        self.capacityProviderName = capacityProviderName
         self.containerInstanceArn = containerInstanceArn
         self.ec2InstanceId = ec2InstanceId
         self.pendingTasksCount = pendingTasksCount
@@ -585,6 +686,7 @@ public struct ContainerInstance: Codable, Equatable {
         case agentUpdateStatus
         case attachments
         case attributes
+        case capacityProviderName
         case containerInstanceArn
         case ec2InstanceId
         case pendingTasksCount
@@ -683,21 +785,70 @@ public struct ContainerStateChange: Codable, Equatable {
     }
 }
 
+public struct CreateCapacityProviderRequest: Codable, Equatable {
+    public var autoScalingGroupProvider: AutoScalingGroupProvider
+    public var name: String
+    public var tags: Tags?
+
+    public init(autoScalingGroupProvider: AutoScalingGroupProvider,
+                name: String,
+                tags: Tags? = nil) {
+        self.autoScalingGroupProvider = autoScalingGroupProvider
+        self.name = name
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case autoScalingGroupProvider
+        case name
+        case tags
+    }
+
+    public func validate() throws {
+        try autoScalingGroupProvider.validate()
+        try tags?.validateAsTags()
+    }
+}
+
+public struct CreateCapacityProviderResponse: Codable, Equatable {
+    public var capacityProvider: CapacityProvider?
+
+    public init(capacityProvider: CapacityProvider? = nil) {
+        self.capacityProvider = capacityProvider
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityProvider
+    }
+
+    public func validate() throws {
+        try capacityProvider?.validate()
+    }
+}
+
 public struct CreateClusterRequest: Codable, Equatable {
+    public var capacityProviders: StringList?
     public var clusterName: String?
+    public var defaultCapacityProviderStrategy: CapacityProviderStrategy?
     public var settings: ClusterSettings?
     public var tags: Tags?
 
-    public init(clusterName: String? = nil,
+    public init(capacityProviders: StringList? = nil,
+                clusterName: String? = nil,
+                defaultCapacityProviderStrategy: CapacityProviderStrategy? = nil,
                 settings: ClusterSettings? = nil,
                 tags: Tags? = nil) {
+        self.capacityProviders = capacityProviders
         self.clusterName = clusterName
+        self.defaultCapacityProviderStrategy = defaultCapacityProviderStrategy
         self.settings = settings
         self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
+        case capacityProviders
         case clusterName
+        case defaultCapacityProviderStrategy
         case settings
         case tags
     }
@@ -724,6 +875,7 @@ public struct CreateClusterResponse: Codable, Equatable {
 }
 
 public struct CreateServiceRequest: Codable, Equatable {
+    public var capacityProviderStrategy: CapacityProviderStrategy?
     public var clientToken: String?
     public var cluster: String?
     public var deploymentConfiguration: DeploymentConfiguration?
@@ -745,7 +897,8 @@ public struct CreateServiceRequest: Codable, Equatable {
     public var tags: Tags?
     public var taskDefinition: String?
 
-    public init(clientToken: String? = nil,
+    public init(capacityProviderStrategy: CapacityProviderStrategy? = nil,
+                clientToken: String? = nil,
                 cluster: String? = nil,
                 deploymentConfiguration: DeploymentConfiguration? = nil,
                 deploymentController: DeploymentController? = nil,
@@ -765,6 +918,7 @@ public struct CreateServiceRequest: Codable, Equatable {
                 serviceRegistries: ServiceRegistries? = nil,
                 tags: Tags? = nil,
                 taskDefinition: String? = nil) {
+        self.capacityProviderStrategy = capacityProviderStrategy
         self.clientToken = clientToken
         self.cluster = cluster
         self.deploymentConfiguration = deploymentConfiguration
@@ -788,6 +942,7 @@ public struct CreateServiceRequest: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case capacityProviderStrategy
         case clientToken
         case cluster
         case deploymentConfiguration
@@ -835,6 +990,7 @@ public struct CreateServiceResponse: Codable, Equatable {
 }
 
 public struct CreateTaskSetRequest: Codable, Equatable {
+    public var capacityProviderStrategy: CapacityProviderStrategy?
     public var clientToken: String?
     public var cluster: String
     public var externalId: String?
@@ -845,9 +1001,11 @@ public struct CreateTaskSetRequest: Codable, Equatable {
     public var scale: Scale?
     public var service: String
     public var serviceRegistries: ServiceRegistries?
+    public var tags: Tags?
     public var taskDefinition: String
 
-    public init(clientToken: String? = nil,
+    public init(capacityProviderStrategy: CapacityProviderStrategy? = nil,
+                clientToken: String? = nil,
                 cluster: String,
                 externalId: String? = nil,
                 launchType: LaunchType? = nil,
@@ -857,7 +1015,9 @@ public struct CreateTaskSetRequest: Codable, Equatable {
                 scale: Scale? = nil,
                 service: String,
                 serviceRegistries: ServiceRegistries? = nil,
+                tags: Tags? = nil,
                 taskDefinition: String) {
+        self.capacityProviderStrategy = capacityProviderStrategy
         self.clientToken = clientToken
         self.cluster = cluster
         self.externalId = externalId
@@ -868,10 +1028,12 @@ public struct CreateTaskSetRequest: Codable, Equatable {
         self.scale = scale
         self.service = service
         self.serviceRegistries = serviceRegistries
+        self.tags = tags
         self.taskDefinition = taskDefinition
     }
 
     enum CodingKeys: String, CodingKey {
+        case capacityProviderStrategy
         case clientToken
         case cluster
         case externalId
@@ -882,12 +1044,14 @@ public struct CreateTaskSetRequest: Codable, Equatable {
         case scale
         case service
         case serviceRegistries
+        case tags
         case taskDefinition
     }
 
     public func validate() throws {
         try networkConfiguration?.validate()
         try scale?.validate()
+        try tags?.validateAsTags()
     }
 }
 
@@ -1090,6 +1254,7 @@ public struct DeleteTaskSetResponse: Codable, Equatable {
 }
 
 public struct Deployment: Codable, Equatable {
+    public var capacityProviderStrategy: CapacityProviderStrategy?
     public var createdAt: Timestamp?
     public var desiredCount: Integer?
     public var id: String?
@@ -1102,7 +1267,8 @@ public struct Deployment: Codable, Equatable {
     public var taskDefinition: String?
     public var updatedAt: Timestamp?
 
-    public init(createdAt: Timestamp? = nil,
+    public init(capacityProviderStrategy: CapacityProviderStrategy? = nil,
+                createdAt: Timestamp? = nil,
                 desiredCount: Integer? = nil,
                 id: String? = nil,
                 launchType: LaunchType? = nil,
@@ -1113,6 +1279,7 @@ public struct Deployment: Codable, Equatable {
                 status: String? = nil,
                 taskDefinition: String? = nil,
                 updatedAt: Timestamp? = nil) {
+        self.capacityProviderStrategy = capacityProviderStrategy
         self.createdAt = createdAt
         self.desiredCount = desiredCount
         self.id = id
@@ -1127,6 +1294,7 @@ public struct Deployment: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case capacityProviderStrategy
         case createdAt
         case desiredCount
         case id
@@ -1246,6 +1414,56 @@ public struct DeregisterTaskDefinitionResponse: Codable, Equatable {
 
     public func validate() throws {
         try taskDefinition?.validate()
+    }
+}
+
+public struct DescribeCapacityProvidersRequest: Codable, Equatable {
+    public var capacityProviders: StringList?
+    public var include: CapacityProviderFieldList?
+    public var maxResults: BoxedInteger?
+    public var nextToken: String?
+
+    public init(capacityProviders: StringList? = nil,
+                include: CapacityProviderFieldList? = nil,
+                maxResults: BoxedInteger? = nil,
+                nextToken: String? = nil) {
+        self.capacityProviders = capacityProviders
+        self.include = include
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityProviders
+        case include
+        case maxResults
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeCapacityProvidersResponse: Codable, Equatable {
+    public var capacityProviders: CapacityProviders?
+    public var failures: Failures?
+    public var nextToken: String?
+
+    public init(capacityProviders: CapacityProviders? = nil,
+                failures: Failures? = nil,
+                nextToken: String? = nil) {
+        self.capacityProviders = capacityProviders
+        self.failures = failures
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityProviders
+        case failures
+        case nextToken
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -1413,19 +1631,23 @@ public struct DescribeTaskDefinitionResponse: Codable, Equatable {
 
 public struct DescribeTaskSetsRequest: Codable, Equatable {
     public var cluster: String
+    public var include: TaskSetFieldList?
     public var service: String
     public var taskSets: StringList?
 
     public init(cluster: String,
+                include: TaskSetFieldList? = nil,
                 service: String,
                 taskSets: StringList? = nil) {
         self.cluster = cluster
+        self.include = include
         self.service = service
         self.taskSets = taskSets
     }
 
     enum CodingKeys: String, CodingKey {
         case cluster
+        case include
         case service
         case taskSets
     }
@@ -1587,18 +1809,41 @@ public struct DockerVolumeConfiguration: Codable, Equatable {
     }
 }
 
+public struct EFSVolumeConfiguration: Codable, Equatable {
+    public var fileSystemId: String
+    public var rootDirectory: String?
+
+    public init(fileSystemId: String,
+                rootDirectory: String? = nil) {
+        self.fileSystemId = fileSystemId
+        self.rootDirectory = rootDirectory
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case fileSystemId
+        case rootDirectory
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Failure: Codable, Equatable {
     public var arn: String?
+    public var detail: String?
     public var reason: String?
 
     public init(arn: String? = nil,
+                detail: String? = nil,
                 reason: String? = nil) {
         self.arn = arn
+        self.detail = detail
         self.reason = reason
     }
 
     enum CodingKeys: String, CodingKey {
         case arn
+        case detail
         case reason
     }
 
@@ -1769,6 +2014,15 @@ public struct KeyValuePair: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case name
         case value
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct LimitExceededException: Codable, Equatable {
+
+    public init() {
     }
 
     public func validate() throws {
@@ -2304,6 +2558,36 @@ public struct LogConfiguration: Codable, Equatable {
     }
 }
 
+public struct ManagedScaling: Codable, Equatable {
+    public var maximumScalingStepSize: ManagedScalingStepSize?
+    public var minimumScalingStepSize: ManagedScalingStepSize?
+    public var status: ManagedScalingStatus?
+    public var targetCapacity: ManagedScalingTargetCapacity?
+
+    public init(maximumScalingStepSize: ManagedScalingStepSize? = nil,
+                minimumScalingStepSize: ManagedScalingStepSize? = nil,
+                status: ManagedScalingStatus? = nil,
+                targetCapacity: ManagedScalingTargetCapacity? = nil) {
+        self.maximumScalingStepSize = maximumScalingStepSize
+        self.minimumScalingStepSize = minimumScalingStepSize
+        self.status = status
+        self.targetCapacity = targetCapacity
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maximumScalingStepSize
+        case minimumScalingStepSize
+        case status
+        case targetCapacity
+    }
+
+    public func validate() throws {
+        try maximumScalingStepSize?.validateAsManagedScalingStepSize()
+        try minimumScalingStepSize?.validateAsManagedScalingStepSize()
+        try targetCapacity?.validateAsManagedScalingTargetCapacity()
+    }
+}
+
 public struct MissingVersionException: Codable, Equatable {
 
     public init() {
@@ -2640,6 +2924,45 @@ public struct PutAttributesResponse: Codable, Equatable {
     }
 }
 
+public struct PutClusterCapacityProvidersRequest: Codable, Equatable {
+    public var capacityProviders: StringList
+    public var cluster: String
+    public var defaultCapacityProviderStrategy: CapacityProviderStrategy
+
+    public init(capacityProviders: StringList,
+                cluster: String,
+                defaultCapacityProviderStrategy: CapacityProviderStrategy) {
+        self.capacityProviders = capacityProviders
+        self.cluster = cluster
+        self.defaultCapacityProviderStrategy = defaultCapacityProviderStrategy
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityProviders
+        case cluster
+        case defaultCapacityProviderStrategy
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PutClusterCapacityProvidersResponse: Codable, Equatable {
+    public var cluster: Cluster?
+
+    public init(cluster: Cluster? = nil) {
+        self.cluster = cluster
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+    }
+
+    public func validate() throws {
+        try cluster?.validate()
+    }
+}
+
 public struct RegisterContainerInstanceRequest: Codable, Equatable {
     public var attributes: Attributes?
     public var cluster: String?
@@ -2849,6 +3172,15 @@ public struct Resource: Codable, Equatable {
     }
 }
 
+public struct ResourceInUseException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ResourceNotFoundException: Codable, Equatable {
 
     public init() {
@@ -2878,6 +3210,7 @@ public struct ResourceRequirement: Codable, Equatable {
 }
 
 public struct RunTaskRequest: Codable, Equatable {
+    public var capacityProviderStrategy: CapacityProviderStrategy?
     public var cluster: String?
     public var count: BoxedInteger?
     public var enableECSManagedTags: Boolean?
@@ -2889,11 +3222,13 @@ public struct RunTaskRequest: Codable, Equatable {
     public var placementStrategy: PlacementStrategies?
     public var platformVersion: String?
     public var propagateTags: PropagateTags?
+    public var referenceId: String?
     public var startedBy: String?
     public var tags: Tags?
     public var taskDefinition: String
 
-    public init(cluster: String? = nil,
+    public init(capacityProviderStrategy: CapacityProviderStrategy? = nil,
+                cluster: String? = nil,
                 count: BoxedInteger? = nil,
                 enableECSManagedTags: Boolean? = nil,
                 group: String? = nil,
@@ -2904,9 +3239,11 @@ public struct RunTaskRequest: Codable, Equatable {
                 placementStrategy: PlacementStrategies? = nil,
                 platformVersion: String? = nil,
                 propagateTags: PropagateTags? = nil,
+                referenceId: String? = nil,
                 startedBy: String? = nil,
                 tags: Tags? = nil,
                 taskDefinition: String) {
+        self.capacityProviderStrategy = capacityProviderStrategy
         self.cluster = cluster
         self.count = count
         self.enableECSManagedTags = enableECSManagedTags
@@ -2918,12 +3255,14 @@ public struct RunTaskRequest: Codable, Equatable {
         self.placementStrategy = placementStrategy
         self.platformVersion = platformVersion
         self.propagateTags = propagateTags
+        self.referenceId = referenceId
         self.startedBy = startedBy
         self.tags = tags
         self.taskDefinition = taskDefinition
     }
 
     enum CodingKeys: String, CodingKey {
+        case capacityProviderStrategy
         case cluster
         case count
         case enableECSManagedTags
@@ -2935,6 +3274,7 @@ public struct RunTaskRequest: Codable, Equatable {
         case placementStrategy
         case platformVersion
         case propagateTags
+        case referenceId
         case startedBy
         case tags
         case taskDefinition
@@ -3020,6 +3360,7 @@ public struct ServerException: Codable, Equatable {
 }
 
 public struct Service: Codable, Equatable {
+    public var capacityProviderStrategy: CapacityProviderStrategy?
     public var clusterArn: String?
     public var createdAt: Timestamp?
     public var createdBy: String?
@@ -3049,7 +3390,8 @@ public struct Service: Codable, Equatable {
     public var taskDefinition: String?
     public var taskSets: TaskSets?
 
-    public init(clusterArn: String? = nil,
+    public init(capacityProviderStrategy: CapacityProviderStrategy? = nil,
+                clusterArn: String? = nil,
                 createdAt: Timestamp? = nil,
                 createdBy: String? = nil,
                 deploymentConfiguration: DeploymentConfiguration? = nil,
@@ -3077,6 +3419,7 @@ public struct Service: Codable, Equatable {
                 tags: Tags? = nil,
                 taskDefinition: String? = nil,
                 taskSets: TaskSets? = nil) {
+        self.capacityProviderStrategy = capacityProviderStrategy
         self.clusterArn = clusterArn
         self.createdAt = createdAt
         self.createdBy = createdBy
@@ -3108,6 +3451,7 @@ public struct Service: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case capacityProviderStrategy
         case clusterArn
         case createdAt
         case createdBy
@@ -3245,6 +3589,7 @@ public struct StartTaskRequest: Codable, Equatable {
     public var networkConfiguration: NetworkConfiguration?
     public var overrides: TaskOverride?
     public var propagateTags: PropagateTags?
+    public var referenceId: String?
     public var startedBy: String?
     public var tags: Tags?
     public var taskDefinition: String
@@ -3256,6 +3601,7 @@ public struct StartTaskRequest: Codable, Equatable {
                 networkConfiguration: NetworkConfiguration? = nil,
                 overrides: TaskOverride? = nil,
                 propagateTags: PropagateTags? = nil,
+                referenceId: String? = nil,
                 startedBy: String? = nil,
                 tags: Tags? = nil,
                 taskDefinition: String) {
@@ -3266,6 +3612,7 @@ public struct StartTaskRequest: Codable, Equatable {
         self.networkConfiguration = networkConfiguration
         self.overrides = overrides
         self.propagateTags = propagateTags
+        self.referenceId = referenceId
         self.startedBy = startedBy
         self.tags = tags
         self.taskDefinition = taskDefinition
@@ -3279,6 +3626,7 @@ public struct StartTaskRequest: Codable, Equatable {
         case networkConfiguration
         case overrides
         case propagateTags
+        case referenceId
         case startedBy
         case tags
         case taskDefinition
@@ -3583,6 +3931,9 @@ public struct TargetNotFoundException: Codable, Equatable {
 
 public struct Task: Codable, Equatable {
     public var attachments: Attachments?
+    public var attributes: Attributes?
+    public var availabilityZone: String?
+    public var capacityProviderName: String?
     public var clusterArn: String?
     public var connectivity: Connectivity?
     public var connectivityAt: Timestamp?
@@ -3614,6 +3965,9 @@ public struct Task: Codable, Equatable {
     public var version: Long?
 
     public init(attachments: Attachments? = nil,
+                attributes: Attributes? = nil,
+                availabilityZone: String? = nil,
+                capacityProviderName: String? = nil,
                 clusterArn: String? = nil,
                 connectivity: Connectivity? = nil,
                 connectivityAt: Timestamp? = nil,
@@ -3644,6 +3998,9 @@ public struct Task: Codable, Equatable {
                 taskDefinitionArn: String? = nil,
                 version: Long? = nil) {
         self.attachments = attachments
+        self.attributes = attributes
+        self.availabilityZone = availabilityZone
+        self.capacityProviderName = capacityProviderName
         self.clusterArn = clusterArn
         self.connectivity = connectivity
         self.connectivityAt = connectivityAt
@@ -3677,6 +4034,9 @@ public struct Task: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case attachments
+        case attributes
+        case availabilityZone
+        case capacityProviderName
         case clusterArn
         case connectivity
         case connectivityAt
@@ -3720,6 +4080,7 @@ public struct TaskDefinition: Codable, Equatable {
     public var cpu: String?
     public var executionRoleArn: String?
     public var family: String?
+    public var inferenceAccelerators: InferenceAccelerators?
     public var ipcMode: IpcMode?
     public var memory: String?
     public var networkMode: NetworkMode?
@@ -3739,6 +4100,7 @@ public struct TaskDefinition: Codable, Equatable {
                 cpu: String? = nil,
                 executionRoleArn: String? = nil,
                 family: String? = nil,
+                inferenceAccelerators: InferenceAccelerators? = nil,
                 ipcMode: IpcMode? = nil,
                 memory: String? = nil,
                 networkMode: NetworkMode? = nil,
@@ -3757,6 +4119,7 @@ public struct TaskDefinition: Codable, Equatable {
         self.cpu = cpu
         self.executionRoleArn = executionRoleArn
         self.family = family
+        self.inferenceAccelerators = inferenceAccelerators
         self.ipcMode = ipcMode
         self.memory = memory
         self.networkMode = networkMode
@@ -3778,6 +4141,7 @@ public struct TaskDefinition: Codable, Equatable {
         case cpu
         case executionRoleArn
         case family
+        case inferenceAccelerators
         case ipcMode
         case memory
         case networkMode
@@ -3819,24 +4183,32 @@ public struct TaskDefinitionPlacementConstraint: Codable, Equatable {
 
 public struct TaskOverride: Codable, Equatable {
     public var containerOverrides: ContainerOverrides?
+    public var cpu: String?
     public var executionRoleArn: String?
     public var inferenceAcceleratorOverrides: InferenceAcceleratorOverrides?
+    public var memory: String?
     public var taskRoleArn: String?
 
     public init(containerOverrides: ContainerOverrides? = nil,
+                cpu: String? = nil,
                 executionRoleArn: String? = nil,
                 inferenceAcceleratorOverrides: InferenceAcceleratorOverrides? = nil,
+                memory: String? = nil,
                 taskRoleArn: String? = nil) {
         self.containerOverrides = containerOverrides
+        self.cpu = cpu
         self.executionRoleArn = executionRoleArn
         self.inferenceAcceleratorOverrides = inferenceAcceleratorOverrides
+        self.memory = memory
         self.taskRoleArn = taskRoleArn
     }
 
     enum CodingKeys: String, CodingKey {
         case containerOverrides
+        case cpu
         case executionRoleArn
         case inferenceAcceleratorOverrides
+        case memory
         case taskRoleArn
     }
 
@@ -3845,6 +4217,7 @@ public struct TaskOverride: Codable, Equatable {
 }
 
 public struct TaskSet: Codable, Equatable {
+    public var capacityProviderStrategy: CapacityProviderStrategy?
     public var clusterArn: String?
     public var computedDesiredCount: Integer?
     public var createdAt: Timestamp?
@@ -3863,11 +4236,13 @@ public struct TaskSet: Codable, Equatable {
     public var stabilityStatusAt: Timestamp?
     public var startedBy: String?
     public var status: String?
+    public var tags: Tags?
     public var taskDefinition: String?
     public var taskSetArn: String?
     public var updatedAt: Timestamp?
 
-    public init(clusterArn: String? = nil,
+    public init(capacityProviderStrategy: CapacityProviderStrategy? = nil,
+                clusterArn: String? = nil,
                 computedDesiredCount: Integer? = nil,
                 createdAt: Timestamp? = nil,
                 externalId: String? = nil,
@@ -3885,9 +4260,11 @@ public struct TaskSet: Codable, Equatable {
                 stabilityStatusAt: Timestamp? = nil,
                 startedBy: String? = nil,
                 status: String? = nil,
+                tags: Tags? = nil,
                 taskDefinition: String? = nil,
                 taskSetArn: String? = nil,
                 updatedAt: Timestamp? = nil) {
+        self.capacityProviderStrategy = capacityProviderStrategy
         self.clusterArn = clusterArn
         self.computedDesiredCount = computedDesiredCount
         self.createdAt = createdAt
@@ -3906,12 +4283,14 @@ public struct TaskSet: Codable, Equatable {
         self.stabilityStatusAt = stabilityStatusAt
         self.startedBy = startedBy
         self.status = status
+        self.tags = tags
         self.taskDefinition = taskDefinition
         self.taskSetArn = taskSetArn
         self.updatedAt = updatedAt
     }
 
     enum CodingKeys: String, CodingKey {
+        case capacityProviderStrategy
         case clusterArn
         case computedDesiredCount
         case createdAt
@@ -3930,6 +4309,7 @@ public struct TaskSet: Codable, Equatable {
         case stabilityStatusAt
         case startedBy
         case status
+        case tags
         case taskDefinition
         case taskSetArn
         case updatedAt
@@ -3938,6 +4318,7 @@ public struct TaskSet: Codable, Equatable {
     public func validate() throws {
         try networkConfiguration?.validate()
         try scale?.validate()
+        try tags?.validateAsTags()
     }
 }
 
@@ -4194,6 +4575,7 @@ public struct UpdateServicePrimaryTaskSetResponse: Codable, Equatable {
 }
 
 public struct UpdateServiceRequest: Codable, Equatable {
+    public var capacityProviderStrategy: CapacityProviderStrategy?
     public var cluster: String?
     public var deploymentConfiguration: DeploymentConfiguration?
     public var desiredCount: BoxedInteger?
@@ -4204,7 +4586,8 @@ public struct UpdateServiceRequest: Codable, Equatable {
     public var service: String
     public var taskDefinition: String?
 
-    public init(cluster: String? = nil,
+    public init(capacityProviderStrategy: CapacityProviderStrategy? = nil,
+                cluster: String? = nil,
                 deploymentConfiguration: DeploymentConfiguration? = nil,
                 desiredCount: BoxedInteger? = nil,
                 forceNewDeployment: Boolean? = nil,
@@ -4213,6 +4596,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
                 platformVersion: String? = nil,
                 service: String,
                 taskDefinition: String? = nil) {
+        self.capacityProviderStrategy = capacityProviderStrategy
         self.cluster = cluster
         self.deploymentConfiguration = deploymentConfiguration
         self.desiredCount = desiredCount
@@ -4225,6 +4609,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case capacityProviderStrategy
         case cluster
         case deploymentConfiguration
         case desiredCount
@@ -4327,25 +4712,30 @@ public struct VersionInfo: Codable, Equatable {
 
 public struct Volume: Codable, Equatable {
     public var dockerVolumeConfiguration: DockerVolumeConfiguration?
+    public var efsVolumeConfiguration: EFSVolumeConfiguration?
     public var host: HostVolumeProperties?
     public var name: String?
 
     public init(dockerVolumeConfiguration: DockerVolumeConfiguration? = nil,
+                efsVolumeConfiguration: EFSVolumeConfiguration? = nil,
                 host: HostVolumeProperties? = nil,
                 name: String? = nil) {
         self.dockerVolumeConfiguration = dockerVolumeConfiguration
+        self.efsVolumeConfiguration = efsVolumeConfiguration
         self.host = host
         self.name = name
     }
 
     enum CodingKeys: String, CodingKey {
         case dockerVolumeConfiguration
+        case efsVolumeConfiguration
         case host
         case name
     }
 
     public func validate() throws {
         try dockerVolumeConfiguration?.validate()
+        try efsVolumeConfiguration?.validate()
         try host?.validate()
     }
 }

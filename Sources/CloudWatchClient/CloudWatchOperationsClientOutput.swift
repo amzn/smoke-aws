@@ -50,6 +50,19 @@ extension DeleteDashboardsOutputForDeleteDashboards: HTTPResponseOutputProtocol 
 }
 
 /**
+ Type to handle the output from the DeleteInsightRules operation in a HTTP client.
+ */
+extension DeleteInsightRulesOutputForDeleteInsightRules: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteInsightRulesOutputForDeleteInsightRules
+    public typealias HeadersType = DeleteInsightRulesOutputForDeleteInsightRules
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteInsightRulesOutputForDeleteInsightRules {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeAlarmHistory operation in a HTTP client.
  */
 extension DescribeAlarmHistoryOutputForDescribeAlarmHistory: HTTPResponseOutputProtocol {
@@ -102,6 +115,45 @@ extension DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors: HTTPRespons
 }
 
 /**
+ Type to handle the output from the DescribeInsightRules operation in a HTTP client.
+ */
+extension DescribeInsightRulesOutputForDescribeInsightRules: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeInsightRulesOutputForDescribeInsightRules
+    public typealias HeadersType = DescribeInsightRulesOutputForDescribeInsightRules
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeInsightRulesOutputForDescribeInsightRules {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DisableInsightRules operation in a HTTP client.
+ */
+extension DisableInsightRulesOutputForDisableInsightRules: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableInsightRulesOutputForDisableInsightRules
+    public typealias HeadersType = DisableInsightRulesOutputForDisableInsightRules
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableInsightRulesOutputForDisableInsightRules {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the EnableInsightRules operation in a HTTP client.
+ */
+extension EnableInsightRulesOutputForEnableInsightRules: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableInsightRulesOutputForEnableInsightRules
+    public typealias HeadersType = EnableInsightRulesOutputForEnableInsightRules
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableInsightRulesOutputForEnableInsightRules {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetDashboard operation in a HTTP client.
  */
 extension GetDashboardOutputForGetDashboard: HTTPResponseOutputProtocol {
@@ -110,6 +162,19 @@ extension GetDashboardOutputForGetDashboard: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetDashboardOutputForGetDashboard {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetInsightRuleReport operation in a HTTP client.
+ */
+extension GetInsightRuleReportOutputForGetInsightRuleReport: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetInsightRuleReportOutputForGetInsightRuleReport
+    public typealias HeadersType = GetInsightRuleReportOutputForGetInsightRuleReport
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetInsightRuleReportOutputForGetInsightRuleReport {
         return try bodyDecodableProvider()
     }
 }
@@ -214,6 +279,19 @@ extension PutDashboardOutputForPutDashboard: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> PutDashboardOutputForPutDashboard {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutInsightRule operation in a HTTP client.
+ */
+extension PutInsightRuleOutputForPutInsightRule: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutInsightRuleOutputForPutInsightRule
+    public typealias HeadersType = PutInsightRuleOutputForPutInsightRule
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutInsightRuleOutputForPutInsightRule {
         return try bodyDecodableProvider()
     }
 }

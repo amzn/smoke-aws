@@ -25,6 +25,7 @@ import Foundation
  Operation enumeration for the ElasticContainerModel.
  */
 public enum ElasticContainerModelOperations: String, Hashable, CustomStringConvertible {
+    case createCapacityProvider = "CreateCapacityProvider"
     case createCluster = "CreateCluster"
     case createService = "CreateService"
     case createTaskSet = "CreateTaskSet"
@@ -35,6 +36,7 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
     case deleteTaskSet = "DeleteTaskSet"
     case deregisterContainerInstance = "DeregisterContainerInstance"
     case deregisterTaskDefinition = "DeregisterTaskDefinition"
+    case describeCapacityProviders = "DescribeCapacityProviders"
     case describeClusters = "DescribeClusters"
     case describeContainerInstances = "DescribeContainerInstances"
     case describeServices = "DescribeServices"
@@ -54,6 +56,7 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
     case putAccountSetting = "PutAccountSetting"
     case putAccountSettingDefault = "PutAccountSettingDefault"
     case putAttributes = "PutAttributes"
+    case putClusterCapacityProviders = "PutClusterCapacityProviders"
     case registerContainerInstance = "RegisterContainerInstance"
     case registerTaskDefinition = "RegisterTaskDefinition"
     case runTask = "RunTask"
@@ -77,6 +80,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
 
     public var operationPath: String {
         switch self {
+        case .createCapacityProvider:
+            return "/"
         case .createCluster:
             return "/"
         case .createService:
@@ -96,6 +101,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
         case .deregisterContainerInstance:
             return "/"
         case .deregisterTaskDefinition:
+            return "/"
+        case .describeCapacityProviders:
             return "/"
         case .describeClusters:
             return "/"
@@ -134,6 +141,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
         case .putAccountSettingDefault:
             return "/"
         case .putAttributes:
+            return "/"
+        case .putClusterCapacityProviders:
             return "/"
         case .registerContainerInstance:
             return "/"

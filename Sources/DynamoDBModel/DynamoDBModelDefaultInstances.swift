@@ -21,6 +21,20 @@
 
 import Foundation
 
+public extension ArchivalSummary {
+    /**
+     Default instance of the ArchivalSummary structure.
+     */
+    static let __default: DynamoDBModel.ArchivalSummary = {
+        let defaultInstance = DynamoDBModel.ArchivalSummary(
+            archivalBackupArn: nil,
+            archivalDateTime: nil,
+            archivalReason: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension AttributeDefinition {
     /**
      Default instance of the AttributeDefinition structure.
@@ -414,6 +428,20 @@ public extension ContinuousBackupsUnavailableException {
     }()
 }
 
+public extension ContributorInsightsSummary {
+    /**
+     Default instance of the ContributorInsightsSummary structure.
+     */
+    static let __default: DynamoDBModel.ContributorInsightsSummary = {
+        let defaultInstance = DynamoDBModel.ContributorInsightsSummary(
+            contributorInsightsStatus: nil,
+            indexName: nil,
+            tableName: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateBackupInput {
     /**
      Default instance of the CreateBackupInput structure.
@@ -485,6 +513,21 @@ public extension CreateReplicaAction {
      */
     static let __default: DynamoDBModel.CreateReplicaAction = {
         let defaultInstance = DynamoDBModel.CreateReplicaAction(
+            regionName: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateReplicationGroupMemberAction {
+    /**
+     Default instance of the CreateReplicationGroupMemberAction structure.
+     */
+    static let __default: DynamoDBModel.CreateReplicationGroupMemberAction = {
+        let defaultInstance = DynamoDBModel.CreateReplicationGroupMemberAction(
+            globalSecondaryIndexes: nil,
+            kMSMasterKeyId: nil,
+            provisionedThroughputOverride: nil,
             regionName: "value")
 
         return defaultInstance
@@ -624,6 +667,18 @@ public extension DeleteReplicaAction {
     }()
 }
 
+public extension DeleteReplicationGroupMemberAction {
+    /**
+     Default instance of the DeleteReplicationGroupMemberAction structure.
+     */
+    static let __default: DynamoDBModel.DeleteReplicationGroupMemberAction = {
+        let defaultInstance = DynamoDBModel.DeleteReplicationGroupMemberAction(
+            regionName: "value")
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteRequest {
     /**
      Default instance of the DeleteRequest structure.
@@ -703,6 +758,36 @@ public extension DescribeContinuousBackupsOutput {
     static let __default: DynamoDBModel.DescribeContinuousBackupsOutput = {
         let defaultInstance = DynamoDBModel.DescribeContinuousBackupsOutput(
             continuousBackupsDescription: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeContributorInsightsInput {
+    /**
+     Default instance of the DescribeContributorInsightsInput structure.
+     */
+    static let __default: DynamoDBModel.DescribeContributorInsightsInput = {
+        let defaultInstance = DynamoDBModel.DescribeContributorInsightsInput(
+            indexName: nil,
+            tableName: "012")
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeContributorInsightsOutput {
+    /**
+     Default instance of the DescribeContributorInsightsOutput structure.
+     */
+    static let __default: DynamoDBModel.DescribeContributorInsightsOutput = {
+        let defaultInstance = DynamoDBModel.DescribeContributorInsightsOutput(
+            contributorInsightsRuleList: nil,
+            contributorInsightsStatus: nil,
+            failureException: nil,
+            indexName: nil,
+            lastUpdateDateTime: nil,
+            tableName: nil)
 
         return defaultInstance
     }()
@@ -830,6 +915,30 @@ public extension DescribeTableOutput {
     }()
 }
 
+public extension DescribeTableReplicaAutoScalingInput {
+    /**
+     Default instance of the DescribeTableReplicaAutoScalingInput structure.
+     */
+    static let __default: DynamoDBModel.DescribeTableReplicaAutoScalingInput = {
+        let defaultInstance = DynamoDBModel.DescribeTableReplicaAutoScalingInput(
+            tableName: "012")
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeTableReplicaAutoScalingOutput {
+    /**
+     Default instance of the DescribeTableReplicaAutoScalingOutput structure.
+     */
+    static let __default: DynamoDBModel.DescribeTableReplicaAutoScalingOutput = {
+        let defaultInstance = DynamoDBModel.DescribeTableReplicaAutoScalingOutput(
+            tableAutoScalingDescription: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeTimeToLiveInput {
     /**
      Default instance of the DescribeTimeToLiveInput structure.
@@ -877,6 +986,19 @@ public extension ExpectedAttributeValue {
             comparisonOperator: nil,
             exists: nil,
             value: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension FailureException {
+    /**
+     Default instance of the FailureException structure.
+     */
+    static let __default: DynamoDBModel.FailureException = {
+        let defaultInstance = DynamoDBModel.FailureException(
+            exceptionDescription: nil,
+            exceptionName: nil)
 
         return defaultInstance
     }()
@@ -938,6 +1060,19 @@ public extension GlobalSecondaryIndex {
             keySchema: [KeySchemaElement.__default],
             projection: Projection.__default,
             provisionedThroughput: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GlobalSecondaryIndexAutoScalingUpdate {
+    /**
+     Default instance of the GlobalSecondaryIndexAutoScalingUpdate structure.
+     */
+    static let __default: DynamoDBModel.GlobalSecondaryIndexAutoScalingUpdate = {
+        let defaultInstance = DynamoDBModel.GlobalSecondaryIndexAutoScalingUpdate(
+            indexName: nil,
+            provisionedWriteCapacityAutoScalingUpdate: nil)
 
         return defaultInstance
     }()
@@ -1215,6 +1350,33 @@ public extension ListBackupsOutput {
     }()
 }
 
+public extension ListContributorInsightsInput {
+    /**
+     Default instance of the ListContributorInsightsInput structure.
+     */
+    static let __default: DynamoDBModel.ListContributorInsightsInput = {
+        let defaultInstance = DynamoDBModel.ListContributorInsightsInput(
+            maxResults: nil,
+            nextToken: nil,
+            tableName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListContributorInsightsOutput {
+    /**
+     Default instance of the ListContributorInsightsOutput structure.
+     */
+    static let __default: DynamoDBModel.ListContributorInsightsOutput = {
+        let defaultInstance = DynamoDBModel.ListContributorInsightsOutput(
+            contributorInsightsSummaries: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListGlobalTablesInput {
     /**
      Default instance of the ListGlobalTablesInput structure.
@@ -1431,6 +1593,18 @@ public extension ProvisionedThroughputExceededException {
     }()
 }
 
+public extension ProvisionedThroughputOverride {
+    /**
+     Default instance of the ProvisionedThroughputOverride structure.
+     */
+    static let __default: DynamoDBModel.ProvisionedThroughputOverride = {
+        let defaultInstance = DynamoDBModel.ProvisionedThroughputOverride(
+            readCapacityUnits: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Put {
     /**
      Default instance of the Put structure.
@@ -1563,13 +1737,103 @@ public extension ReplicaAlreadyExistsException {
     }()
 }
 
+public extension ReplicaAutoScalingDescription {
+    /**
+     Default instance of the ReplicaAutoScalingDescription structure.
+     */
+    static let __default: DynamoDBModel.ReplicaAutoScalingDescription = {
+        let defaultInstance = DynamoDBModel.ReplicaAutoScalingDescription(
+            globalSecondaryIndexes: nil,
+            regionName: nil,
+            replicaProvisionedReadCapacityAutoScalingSettings: nil,
+            replicaProvisionedWriteCapacityAutoScalingSettings: nil,
+            replicaStatus: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplicaAutoScalingUpdate {
+    /**
+     Default instance of the ReplicaAutoScalingUpdate structure.
+     */
+    static let __default: DynamoDBModel.ReplicaAutoScalingUpdate = {
+        let defaultInstance = DynamoDBModel.ReplicaAutoScalingUpdate(
+            regionName: "value",
+            replicaGlobalSecondaryIndexUpdates: nil,
+            replicaProvisionedReadCapacityAutoScalingUpdate: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ReplicaDescription {
     /**
      Default instance of the ReplicaDescription structure.
      */
     static let __default: DynamoDBModel.ReplicaDescription = {
         let defaultInstance = DynamoDBModel.ReplicaDescription(
-            regionName: nil)
+            globalSecondaryIndexes: nil,
+            kMSMasterKeyId: nil,
+            provisionedThroughputOverride: nil,
+            regionName: nil,
+            replicaStatus: nil,
+            replicaStatusDescription: nil,
+            replicaStatusPercentProgress: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplicaGlobalSecondaryIndex {
+    /**
+     Default instance of the ReplicaGlobalSecondaryIndex structure.
+     */
+    static let __default: DynamoDBModel.ReplicaGlobalSecondaryIndex = {
+        let defaultInstance = DynamoDBModel.ReplicaGlobalSecondaryIndex(
+            indexName: "012",
+            provisionedThroughputOverride: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplicaGlobalSecondaryIndexAutoScalingDescription {
+    /**
+     Default instance of the ReplicaGlobalSecondaryIndexAutoScalingDescription structure.
+     */
+    static let __default: DynamoDBModel.ReplicaGlobalSecondaryIndexAutoScalingDescription = {
+        let defaultInstance = DynamoDBModel.ReplicaGlobalSecondaryIndexAutoScalingDescription(
+            indexName: nil,
+            indexStatus: nil,
+            provisionedReadCapacityAutoScalingSettings: nil,
+            provisionedWriteCapacityAutoScalingSettings: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplicaGlobalSecondaryIndexAutoScalingUpdate {
+    /**
+     Default instance of the ReplicaGlobalSecondaryIndexAutoScalingUpdate structure.
+     */
+    static let __default: DynamoDBModel.ReplicaGlobalSecondaryIndexAutoScalingUpdate = {
+        let defaultInstance = DynamoDBModel.ReplicaGlobalSecondaryIndexAutoScalingUpdate(
+            indexName: nil,
+            provisionedReadCapacityAutoScalingUpdate: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplicaGlobalSecondaryIndexDescription {
+    /**
+     Default instance of the ReplicaGlobalSecondaryIndexDescription structure.
+     */
+    static let __default: DynamoDBModel.ReplicaGlobalSecondaryIndexDescription = {
+        let defaultInstance = DynamoDBModel.ReplicaGlobalSecondaryIndexDescription(
+            indexName: nil,
+            provisionedThroughputOverride: nil)
 
         return defaultInstance
     }()
@@ -1660,6 +1924,20 @@ public extension ReplicaUpdate {
         let defaultInstance = DynamoDBModel.ReplicaUpdate(
             create: nil,
             delete: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplicationGroupUpdate {
+    /**
+     Default instance of the ReplicationGroupUpdate structure.
+     */
+    static let __default: DynamoDBModel.ReplicationGroupUpdate = {
+        let defaultInstance = DynamoDBModel.ReplicationGroupUpdate(
+            create: nil,
+            delete: nil,
+            update: nil)
 
         return defaultInstance
     }()
@@ -1782,6 +2060,7 @@ public extension SSEDescription {
      */
     static let __default: DynamoDBModel.SSEDescription = {
         let defaultInstance = DynamoDBModel.SSEDescription(
+            inaccessibleEncryptionDateTime: nil,
             kMSMasterKeyArn: nil,
             sSEType: nil,
             status: nil)
@@ -1889,7 +2168,7 @@ public extension StreamSpecification {
      */
     static let __default: DynamoDBModel.StreamSpecification = {
         let defaultInstance = DynamoDBModel.StreamSpecification(
-            streamEnabled: nil,
+            streamEnabled: false,
             streamViewType: nil)
 
         return defaultInstance
@@ -1908,22 +2187,39 @@ public extension TableAlreadyExistsException {
     }()
 }
 
+public extension TableAutoScalingDescription {
+    /**
+     Default instance of the TableAutoScalingDescription structure.
+     */
+    static let __default: DynamoDBModel.TableAutoScalingDescription = {
+        let defaultInstance = DynamoDBModel.TableAutoScalingDescription(
+            replicas: nil,
+            tableName: nil,
+            tableStatus: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension TableDescription {
     /**
      Default instance of the TableDescription structure.
      */
     static let __default: DynamoDBModel.TableDescription = {
         let defaultInstance = DynamoDBModel.TableDescription(
+            archivalSummary: nil,
             attributeDefinitions: nil,
             billingModeSummary: nil,
             creationDateTime: nil,
             globalSecondaryIndexes: nil,
+            globalTableVersion: nil,
             itemCount: nil,
             keySchema: nil,
             latestStreamArn: nil,
             latestStreamLabel: nil,
             localSecondaryIndexes: nil,
             provisionedThroughput: nil,
+            replicas: nil,
             restoreSummary: nil,
             sSEDescription: nil,
             streamSpecification: nil,
@@ -2187,6 +2483,34 @@ public extension UpdateContinuousBackupsOutput {
     }()
 }
 
+public extension UpdateContributorInsightsInput {
+    /**
+     Default instance of the UpdateContributorInsightsInput structure.
+     */
+    static let __default: DynamoDBModel.UpdateContributorInsightsInput = {
+        let defaultInstance = DynamoDBModel.UpdateContributorInsightsInput(
+            contributorInsightsAction: .__default,
+            indexName: nil,
+            tableName: "012")
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateContributorInsightsOutput {
+    /**
+     Default instance of the UpdateContributorInsightsOutput structure.
+     */
+    static let __default: DynamoDBModel.UpdateContributorInsightsOutput = {
+        let defaultInstance = DynamoDBModel.UpdateContributorInsightsOutput(
+            contributorInsightsStatus: nil,
+            indexName: nil,
+            tableName: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension UpdateGlobalSecondaryIndexAction {
     /**
      Default instance of the UpdateGlobalSecondaryIndexAction structure.
@@ -2292,6 +2616,21 @@ public extension UpdateItemOutput {
     }()
 }
 
+public extension UpdateReplicationGroupMemberAction {
+    /**
+     Default instance of the UpdateReplicationGroupMemberAction structure.
+     */
+    static let __default: DynamoDBModel.UpdateReplicationGroupMemberAction = {
+        let defaultInstance = DynamoDBModel.UpdateReplicationGroupMemberAction(
+            globalSecondaryIndexes: nil,
+            kMSMasterKeyId: nil,
+            provisionedThroughputOverride: nil,
+            regionName: "value")
+
+        return defaultInstance
+    }()
+}
+
 public extension UpdateTableInput {
     /**
      Default instance of the UpdateTableInput structure.
@@ -2302,6 +2641,7 @@ public extension UpdateTableInput {
             billingMode: nil,
             globalSecondaryIndexUpdates: nil,
             provisionedThroughput: nil,
+            replicaUpdates: nil,
             sSESpecification: nil,
             streamSpecification: nil,
             tableName: "012")
@@ -2317,6 +2657,33 @@ public extension UpdateTableOutput {
     static let __default: DynamoDBModel.UpdateTableOutput = {
         let defaultInstance = DynamoDBModel.UpdateTableOutput(
             tableDescription: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateTableReplicaAutoScalingInput {
+    /**
+     Default instance of the UpdateTableReplicaAutoScalingInput structure.
+     */
+    static let __default: DynamoDBModel.UpdateTableReplicaAutoScalingInput = {
+        let defaultInstance = DynamoDBModel.UpdateTableReplicaAutoScalingInput(
+            globalSecondaryIndexUpdates: nil,
+            provisionedWriteCapacityAutoScalingUpdate: nil,
+            replicaUpdates: nil,
+            tableName: "012")
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateTableReplicaAutoScalingOutput {
+    /**
+     Default instance of the UpdateTableReplicaAutoScalingOutput structure.
+     */
+    static let __default: DynamoDBModel.UpdateTableReplicaAutoScalingOutput = {
+        let defaultInstance = DynamoDBModel.UpdateTableReplicaAutoScalingOutput(
+            tableAutoScalingDescription: nil)
 
         return defaultInstance
     }()

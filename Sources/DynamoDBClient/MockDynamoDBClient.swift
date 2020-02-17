@@ -48,6 +48,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     let describeBackupSyncOverride: DynamoDBClientProtocol.DescribeBackupSyncType?
     let describeContinuousBackupsAsyncOverride: DynamoDBClientProtocol.DescribeContinuousBackupsAsyncType?
     let describeContinuousBackupsSyncOverride: DynamoDBClientProtocol.DescribeContinuousBackupsSyncType?
+    let describeContributorInsightsAsyncOverride: DynamoDBClientProtocol.DescribeContributorInsightsAsyncType?
+    let describeContributorInsightsSyncOverride: DynamoDBClientProtocol.DescribeContributorInsightsSyncType?
     let describeEndpointsAsyncOverride: DynamoDBClientProtocol.DescribeEndpointsAsyncType?
     let describeEndpointsSyncOverride: DynamoDBClientProtocol.DescribeEndpointsSyncType?
     let describeGlobalTableAsyncOverride: DynamoDBClientProtocol.DescribeGlobalTableAsyncType?
@@ -58,12 +60,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     let describeLimitsSyncOverride: DynamoDBClientProtocol.DescribeLimitsSyncType?
     let describeTableAsyncOverride: DynamoDBClientProtocol.DescribeTableAsyncType?
     let describeTableSyncOverride: DynamoDBClientProtocol.DescribeTableSyncType?
+    let describeTableReplicaAutoScalingAsyncOverride: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingAsyncType?
+    let describeTableReplicaAutoScalingSyncOverride: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingSyncType?
     let describeTimeToLiveAsyncOverride: DynamoDBClientProtocol.DescribeTimeToLiveAsyncType?
     let describeTimeToLiveSyncOverride: DynamoDBClientProtocol.DescribeTimeToLiveSyncType?
     let getItemAsyncOverride: DynamoDBClientProtocol.GetItemAsyncType?
     let getItemSyncOverride: DynamoDBClientProtocol.GetItemSyncType?
     let listBackupsAsyncOverride: DynamoDBClientProtocol.ListBackupsAsyncType?
     let listBackupsSyncOverride: DynamoDBClientProtocol.ListBackupsSyncType?
+    let listContributorInsightsAsyncOverride: DynamoDBClientProtocol.ListContributorInsightsAsyncType?
+    let listContributorInsightsSyncOverride: DynamoDBClientProtocol.ListContributorInsightsSyncType?
     let listGlobalTablesAsyncOverride: DynamoDBClientProtocol.ListGlobalTablesAsyncType?
     let listGlobalTablesSyncOverride: DynamoDBClientProtocol.ListGlobalTablesSyncType?
     let listTablesAsyncOverride: DynamoDBClientProtocol.ListTablesAsyncType?
@@ -90,6 +96,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     let untagResourceSyncOverride: DynamoDBClientProtocol.UntagResourceSyncType?
     let updateContinuousBackupsAsyncOverride: DynamoDBClientProtocol.UpdateContinuousBackupsAsyncType?
     let updateContinuousBackupsSyncOverride: DynamoDBClientProtocol.UpdateContinuousBackupsSyncType?
+    let updateContributorInsightsAsyncOverride: DynamoDBClientProtocol.UpdateContributorInsightsAsyncType?
+    let updateContributorInsightsSyncOverride: DynamoDBClientProtocol.UpdateContributorInsightsSyncType?
     let updateGlobalTableAsyncOverride: DynamoDBClientProtocol.UpdateGlobalTableAsyncType?
     let updateGlobalTableSyncOverride: DynamoDBClientProtocol.UpdateGlobalTableSyncType?
     let updateGlobalTableSettingsAsyncOverride: DynamoDBClientProtocol.UpdateGlobalTableSettingsAsyncType?
@@ -98,6 +106,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     let updateItemSyncOverride: DynamoDBClientProtocol.UpdateItemSyncType?
     let updateTableAsyncOverride: DynamoDBClientProtocol.UpdateTableAsyncType?
     let updateTableSyncOverride: DynamoDBClientProtocol.UpdateTableSyncType?
+    let updateTableReplicaAutoScalingAsyncOverride: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingAsyncType?
+    let updateTableReplicaAutoScalingSyncOverride: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingSyncType?
     let updateTimeToLiveAsyncOverride: DynamoDBClientProtocol.UpdateTimeToLiveAsyncType?
     let updateTimeToLiveSyncOverride: DynamoDBClientProtocol.UpdateTimeToLiveSyncType?
 
@@ -126,6 +136,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
             describeBackupSync: DynamoDBClientProtocol.DescribeBackupSyncType? = nil,
             describeContinuousBackupsAsync: DynamoDBClientProtocol.DescribeContinuousBackupsAsyncType? = nil,
             describeContinuousBackupsSync: DynamoDBClientProtocol.DescribeContinuousBackupsSyncType? = nil,
+            describeContributorInsightsAsync: DynamoDBClientProtocol.DescribeContributorInsightsAsyncType? = nil,
+            describeContributorInsightsSync: DynamoDBClientProtocol.DescribeContributorInsightsSyncType? = nil,
             describeEndpointsAsync: DynamoDBClientProtocol.DescribeEndpointsAsyncType? = nil,
             describeEndpointsSync: DynamoDBClientProtocol.DescribeEndpointsSyncType? = nil,
             describeGlobalTableAsync: DynamoDBClientProtocol.DescribeGlobalTableAsyncType? = nil,
@@ -136,12 +148,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
             describeLimitsSync: DynamoDBClientProtocol.DescribeLimitsSyncType? = nil,
             describeTableAsync: DynamoDBClientProtocol.DescribeTableAsyncType? = nil,
             describeTableSync: DynamoDBClientProtocol.DescribeTableSyncType? = nil,
+            describeTableReplicaAutoScalingAsync: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingAsyncType? = nil,
+            describeTableReplicaAutoScalingSync: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingSyncType? = nil,
             describeTimeToLiveAsync: DynamoDBClientProtocol.DescribeTimeToLiveAsyncType? = nil,
             describeTimeToLiveSync: DynamoDBClientProtocol.DescribeTimeToLiveSyncType? = nil,
             getItemAsync: DynamoDBClientProtocol.GetItemAsyncType? = nil,
             getItemSync: DynamoDBClientProtocol.GetItemSyncType? = nil,
             listBackupsAsync: DynamoDBClientProtocol.ListBackupsAsyncType? = nil,
             listBackupsSync: DynamoDBClientProtocol.ListBackupsSyncType? = nil,
+            listContributorInsightsAsync: DynamoDBClientProtocol.ListContributorInsightsAsyncType? = nil,
+            listContributorInsightsSync: DynamoDBClientProtocol.ListContributorInsightsSyncType? = nil,
             listGlobalTablesAsync: DynamoDBClientProtocol.ListGlobalTablesAsyncType? = nil,
             listGlobalTablesSync: DynamoDBClientProtocol.ListGlobalTablesSyncType? = nil,
             listTablesAsync: DynamoDBClientProtocol.ListTablesAsyncType? = nil,
@@ -168,6 +184,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
             untagResourceSync: DynamoDBClientProtocol.UntagResourceSyncType? = nil,
             updateContinuousBackupsAsync: DynamoDBClientProtocol.UpdateContinuousBackupsAsyncType? = nil,
             updateContinuousBackupsSync: DynamoDBClientProtocol.UpdateContinuousBackupsSyncType? = nil,
+            updateContributorInsightsAsync: DynamoDBClientProtocol.UpdateContributorInsightsAsyncType? = nil,
+            updateContributorInsightsSync: DynamoDBClientProtocol.UpdateContributorInsightsSyncType? = nil,
             updateGlobalTableAsync: DynamoDBClientProtocol.UpdateGlobalTableAsyncType? = nil,
             updateGlobalTableSync: DynamoDBClientProtocol.UpdateGlobalTableSyncType? = nil,
             updateGlobalTableSettingsAsync: DynamoDBClientProtocol.UpdateGlobalTableSettingsAsyncType? = nil,
@@ -176,6 +194,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
             updateItemSync: DynamoDBClientProtocol.UpdateItemSyncType? = nil,
             updateTableAsync: DynamoDBClientProtocol.UpdateTableAsyncType? = nil,
             updateTableSync: DynamoDBClientProtocol.UpdateTableSyncType? = nil,
+            updateTableReplicaAutoScalingAsync: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingAsyncType? = nil,
+            updateTableReplicaAutoScalingSync: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingSyncType? = nil,
             updateTimeToLiveAsync: DynamoDBClientProtocol.UpdateTimeToLiveAsyncType? = nil,
             updateTimeToLiveSync: DynamoDBClientProtocol.UpdateTimeToLiveSyncType? = nil) {
         self.batchGetItemAsyncOverride = batchGetItemAsync
@@ -198,6 +218,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         self.describeBackupSyncOverride = describeBackupSync
         self.describeContinuousBackupsAsyncOverride = describeContinuousBackupsAsync
         self.describeContinuousBackupsSyncOverride = describeContinuousBackupsSync
+        self.describeContributorInsightsAsyncOverride = describeContributorInsightsAsync
+        self.describeContributorInsightsSyncOverride = describeContributorInsightsSync
         self.describeEndpointsAsyncOverride = describeEndpointsAsync
         self.describeEndpointsSyncOverride = describeEndpointsSync
         self.describeGlobalTableAsyncOverride = describeGlobalTableAsync
@@ -208,12 +230,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         self.describeLimitsSyncOverride = describeLimitsSync
         self.describeTableAsyncOverride = describeTableAsync
         self.describeTableSyncOverride = describeTableSync
+        self.describeTableReplicaAutoScalingAsyncOverride = describeTableReplicaAutoScalingAsync
+        self.describeTableReplicaAutoScalingSyncOverride = describeTableReplicaAutoScalingSync
         self.describeTimeToLiveAsyncOverride = describeTimeToLiveAsync
         self.describeTimeToLiveSyncOverride = describeTimeToLiveSync
         self.getItemAsyncOverride = getItemAsync
         self.getItemSyncOverride = getItemSync
         self.listBackupsAsyncOverride = listBackupsAsync
         self.listBackupsSyncOverride = listBackupsSync
+        self.listContributorInsightsAsyncOverride = listContributorInsightsAsync
+        self.listContributorInsightsSyncOverride = listContributorInsightsSync
         self.listGlobalTablesAsyncOverride = listGlobalTablesAsync
         self.listGlobalTablesSyncOverride = listGlobalTablesSync
         self.listTablesAsyncOverride = listTablesAsync
@@ -240,6 +266,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         self.untagResourceSyncOverride = untagResourceSync
         self.updateContinuousBackupsAsyncOverride = updateContinuousBackupsAsync
         self.updateContinuousBackupsSyncOverride = updateContinuousBackupsSync
+        self.updateContributorInsightsAsyncOverride = updateContributorInsightsAsync
+        self.updateContributorInsightsSyncOverride = updateContributorInsightsSync
         self.updateGlobalTableAsyncOverride = updateGlobalTableAsync
         self.updateGlobalTableSyncOverride = updateGlobalTableSync
         self.updateGlobalTableSettingsAsyncOverride = updateGlobalTableSettingsAsync
@@ -248,6 +276,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         self.updateItemSyncOverride = updateItemSync
         self.updateTableAsyncOverride = updateTableAsync
         self.updateTableSyncOverride = updateTableSync
+        self.updateTableReplicaAutoScalingAsyncOverride = updateTableReplicaAutoScalingAsync
+        self.updateTableReplicaAutoScalingSyncOverride = updateTableReplicaAutoScalingSync
         self.updateTimeToLiveAsyncOverride = updateTimeToLiveAsync
         self.updateTimeToLiveSyncOverride = updateTimeToLiveSync
     }
@@ -673,6 +703,48 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+         - completion: The DescribeContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func describeContributorInsightsAsync(
+            input: DynamoDBModel.DescribeContributorInsightsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+        if let describeContributorInsightsAsyncOverride = describeContributorInsightsAsyncOverride {
+            return try describeContributorInsightsAsyncOverride(input, reporting, completion)
+        }
+
+        let result = DescribeContributorInsightsOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+     - Returns: The DescribeContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeContributorInsightsSync(
+            input: DynamoDBModel.DescribeContributorInsightsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
+        if let describeContributorInsightsSyncOverride = describeContributorInsightsSyncOverride {
+            return try describeContributorInsightsSyncOverride(input, reporting)
+        }
+
+        return DescribeContributorInsightsOutput.__default
+    }
+
+    /**
      Invokes the DescribeEndpoints operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -881,6 +953,48 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The DescribeTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func describeTableReplicaAutoScalingAsync(
+            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+        if let describeTableReplicaAutoScalingAsyncOverride = describeTableReplicaAutoScalingAsyncOverride {
+            return try describeTableReplicaAutoScalingAsyncOverride(input, reporting, completion)
+        }
+
+        let result = DescribeTableReplicaAutoScalingOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The DescribeTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeTableReplicaAutoScalingSync(
+            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
+        if let describeTableReplicaAutoScalingSyncOverride = describeTableReplicaAutoScalingSyncOverride {
+            return try describeTableReplicaAutoScalingSyncOverride(input, reporting)
+        }
+
+        return DescribeTableReplicaAutoScalingOutput.__default
+    }
+
+    /**
      Invokes the DescribeTimeToLive operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1004,6 +1118,48 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         }
 
         return ListBackupsOutput.__default
+    }
+
+    /**
+     Invokes the ListContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+         - completion: The ListContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func listContributorInsightsAsync(
+            input: DynamoDBModel.ListContributorInsightsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+        if let listContributorInsightsAsyncOverride = listContributorInsightsAsyncOverride {
+            return try listContributorInsightsAsyncOverride(input, reporting, completion)
+        }
+
+        let result = ListContributorInsightsOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ListContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+     - Returns: The ListContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func listContributorInsightsSync(
+            input: DynamoDBModel.ListContributorInsightsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListContributorInsightsOutput {
+        if let listContributorInsightsSyncOverride = listContributorInsightsSyncOverride {
+            return try listContributorInsightsSyncOverride(input, reporting)
+        }
+
+        return ListContributorInsightsOutput.__default
     }
 
     /**
@@ -1541,6 +1697,48 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the UpdateContributorInsights operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+         - completion: The UpdateContributorInsightsOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateContributorInsightsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func updateContributorInsightsAsync(
+            input: DynamoDBModel.UpdateContributorInsightsInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+        if let updateContributorInsightsAsyncOverride = updateContributorInsightsAsyncOverride {
+            return try updateContributorInsightsAsyncOverride(input, reporting, completion)
+        }
+
+        let result = UpdateContributorInsightsOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the UpdateContributorInsights operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+     - Returns: The UpdateContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func updateContributorInsightsSync(
+            input: DynamoDBModel.UpdateContributorInsightsInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
+        if let updateContributorInsightsSyncOverride = updateContributorInsightsSyncOverride {
+            return try updateContributorInsightsSyncOverride(input, reporting)
+        }
+
+        return UpdateContributorInsightsOutput.__default
+    }
+
+    /**
      Invokes the UpdateGlobalTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1706,6 +1904,48 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         }
 
         return UpdateTableOutput.__default
+    }
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+         - completion: The UpdateTableReplicaAutoScalingOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateTableReplicaAutoScalingOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func updateTableReplicaAutoScalingAsync(
+            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+        if let updateTableReplicaAutoScalingAsyncOverride = updateTableReplicaAutoScalingAsyncOverride {
+            return try updateTableReplicaAutoScalingAsyncOverride(input, reporting, completion)
+        }
+
+        let result = UpdateTableReplicaAutoScalingOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The UpdateTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func updateTableReplicaAutoScalingSync(
+            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput,
+            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
+        if let updateTableReplicaAutoScalingSyncOverride = updateTableReplicaAutoScalingSyncOverride {
+            return try updateTableReplicaAutoScalingSyncOverride(input, reporting)
+        }
+
+        return UpdateTableReplicaAutoScalingOutput.__default
     }
 
     /**

@@ -70,13 +70,18 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     let deleteAlarmsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let deleteAnomalyDetectorOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let deleteDashboardsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let deleteInsightRulesOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let describeAlarmHistoryOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let describeAlarmsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let describeAlarmsForMetricOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let describeAnomalyDetectorsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let describeInsightRulesOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let disableAlarmActionsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let disableInsightRulesOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let enableAlarmActionsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let enableInsightRulesOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let getDashboardOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let getInsightRuleReportOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let getMetricDataOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let getMetricStatisticsOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let getMetricWidgetImageOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
@@ -85,6 +90,7 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putAnomalyDetectorOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putDashboardOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let putInsightRuleOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putMetricAlarmOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putMetricDataOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let setAlarmStateOperationReporting: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
@@ -124,6 +130,8 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             clientName: "AWSCloudWatchClient", operation: .deleteAnomalyDetector, configuration: reportingConfiguration)
         self.deleteDashboardsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .deleteDashboards, configuration: reportingConfiguration)
+        self.deleteInsightRulesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .deleteInsightRules, configuration: reportingConfiguration)
         self.describeAlarmHistoryOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .describeAlarmHistory, configuration: reportingConfiguration)
         self.describeAlarmsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -132,12 +140,20 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             clientName: "AWSCloudWatchClient", operation: .describeAlarmsForMetric, configuration: reportingConfiguration)
         self.describeAnomalyDetectorsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .describeAnomalyDetectors, configuration: reportingConfiguration)
+        self.describeInsightRulesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .describeInsightRules, configuration: reportingConfiguration)
         self.disableAlarmActionsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .disableAlarmActions, configuration: reportingConfiguration)
+        self.disableInsightRulesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .disableInsightRules, configuration: reportingConfiguration)
         self.enableAlarmActionsOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .enableAlarmActions, configuration: reportingConfiguration)
+        self.enableInsightRulesOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .enableInsightRules, configuration: reportingConfiguration)
         self.getDashboardOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .getDashboard, configuration: reportingConfiguration)
+        self.getInsightRuleReportOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .getInsightRuleReport, configuration: reportingConfiguration)
         self.getMetricDataOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .getMetricData, configuration: reportingConfiguration)
         self.getMetricStatisticsOperationReporting = StandardSmokeAWSOperationReporting(
@@ -154,6 +170,8 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             clientName: "AWSCloudWatchClient", operation: .putAnomalyDetector, configuration: reportingConfiguration)
         self.putDashboardOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .putDashboard, configuration: reportingConfiguration)
+        self.putInsightRuleOperationReporting = StandardSmokeAWSOperationReporting(
+            clientName: "AWSCloudWatchClient", operation: .putInsightRule, configuration: reportingConfiguration)
         self.putMetricAlarmOperationReporting = StandardSmokeAWSOperationReporting(
             clientName: "AWSCloudWatchClient", operation: .putMetricAlarm, configuration: reportingConfiguration)
         self.putMetricDataOperationReporting = StandardSmokeAWSOperationReporting(
@@ -399,6 +417,83 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudWatchModelOperations.deleteDashboards.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInsightRulesInput object being passed to this operation.
+         - completion: The DeleteInsightRulesOutputForDeleteInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The DeleteInsightRulesOutputForDeleteInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter.
+     */
+    public func deleteInsightRulesAsync(
+            input: CloudWatchModel.DeleteInsightRulesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteInsightRulesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.deleteInsightRules.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInsightRulesInput object being passed to this operation.
+     - Returns: The DeleteInsightRulesOutputForDeleteInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    public func deleteInsightRulesSync(
+            input: CloudWatchModel.DeleteInsightRulesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: deleteInsightRulesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.deleteInsightRules.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -717,6 +812,83 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the DescribeInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInsightRulesInput object being passed to this operation.
+         - completion: The DescribeInsightRulesOutputForDescribeInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInsightRulesOutputForDescribeInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidNextToken.
+     */
+    public func describeInsightRulesAsync(
+            input: CloudWatchModel.DescribeInsightRulesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeInsightRulesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.describeInsightRules.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInsightRulesInput object being passed to this operation.
+     - Returns: The DescribeInsightRulesOutputForDescribeInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken.
+     */
+    public func describeInsightRulesSync(
+            input: CloudWatchModel.DescribeInsightRulesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: describeInsightRulesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.describeInsightRules.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DisableAlarmActions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -780,6 +952,83 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
             version: apiVersion)
 
         try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisableInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableInsightRulesInput object being passed to this operation.
+         - completion: The DisableInsightRulesOutputForDisableInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The DisableInsightRulesOutputForDisableInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter.
+     */
+    public func disableInsightRulesAsync(
+            input: CloudWatchModel.DisableInsightRulesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: disableInsightRulesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.disableInsightRules.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisableInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableInsightRulesInput object being passed to this operation.
+     - Returns: The DisableInsightRulesOutputForDisableInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    public func disableInsightRulesSync(
+            input: CloudWatchModel.DisableInsightRulesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: disableInsightRulesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.disableInsightRules.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -861,6 +1110,83 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the EnableInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableInsightRulesInput object being passed to this operation.
+         - completion: The EnableInsightRulesOutputForEnableInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The EnableInsightRulesOutputForEnableInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func enableInsightRulesAsync(
+            input: CloudWatchModel.EnableInsightRulesInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: enableInsightRulesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.enableInsightRules.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the EnableInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableInsightRulesInput object being passed to this operation.
+     - Returns: The EnableInsightRulesOutputForEnableInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func enableInsightRulesSync(
+            input: CloudWatchModel.EnableInsightRulesInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: enableInsightRulesOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.enableInsightRules.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the GetDashboard operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -926,6 +1252,83 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudWatchModelOperations.getDashboard.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetInsightRuleReport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetInsightRuleReportInput object being passed to this operation.
+         - completion: The GetInsightRuleReportOutputForGetInsightRuleReport object or an error will be passed to this 
+           callback when the operation is complete. The GetInsightRuleReportOutputForGetInsightRuleReport
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func getInsightRuleReportAsync(
+            input: CloudWatchModel.GetInsightRuleReportInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getInsightRuleReportOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetInsightRuleReportOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.getInsightRuleReport.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetInsightRuleReport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetInsightRuleReportInput object being passed to this operation.
+     - Returns: The GetInsightRuleReportOutputForGetInsightRuleReport object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func getInsightRuleReportSync(
+            input: CloudWatchModel.GetInsightRuleReportInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: getInsightRuleReportOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = GetInsightRuleReportOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.getInsightRuleReport.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1540,6 +1943,83 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudWatchModelOperations.putDashboard.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutInsightRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutInsightRuleInput object being passed to this operation.
+         - completion: The PutInsightRuleOutputForPutInsightRule object or an error will be passed to this 
+           callback when the operation is complete. The PutInsightRuleOutputForPutInsightRule
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putInsightRuleAsync(
+            input: CloudWatchModel.PutInsightRuleInput, 
+            reporting: SmokeAWSInvocationReporting,
+            completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, HTTPClientError>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putInsightRuleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = PutInsightRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putInsightRule.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutInsightRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutInsightRuleInput object being passed to this operation.
+     - Returns: The PutInsightRuleOutputForPutInsightRule object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
+     */
+    public func putInsightRuleSync(
+            input: CloudWatchModel.PutInsightRuleInput,
+            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+                                                                                  smokeAWSOperationReporting: putInsightRuleOperationReporting)
+        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let wrappedInput = PutInsightRuleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putInsightRule.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(

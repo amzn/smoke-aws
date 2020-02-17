@@ -31,6 +31,7 @@ private let executionLimitExceededIdentity = "ExecutionLimitExceeded"
 private let invalidArnIdentity = "InvalidArn"
 private let invalidDefinitionIdentity = "InvalidDefinition"
 private let invalidExecutionInputIdentity = "InvalidExecutionInput"
+private let invalidLoggingConfigurationIdentity = "InvalidLoggingConfiguration"
 private let invalidNameIdentity = "InvalidName"
 private let invalidOutputIdentity = "InvalidOutput"
 private let invalidTokenIdentity = "InvalidToken"
@@ -40,6 +41,7 @@ private let stateMachineAlreadyExistsIdentity = "StateMachineAlreadyExists"
 private let stateMachineDeletingIdentity = "StateMachineDeleting"
 private let stateMachineDoesNotExistIdentity = "StateMachineDoesNotExist"
 private let stateMachineLimitExceededIdentity = "StateMachineLimitExceeded"
+private let stateMachineTypeNotSupportedIdentity = "StateMachineTypeNotSupported"
 private let taskDoesNotExistIdentity = "TaskDoesNotExist"
 private let taskTimedOutIdentity = "TaskTimedOut"
 private let tooManyTagsIdentity = "TooManyTags"
@@ -55,6 +57,7 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case invalidArn(InvalidArn)
     case invalidDefinition(InvalidDefinition)
     case invalidExecutionInput(InvalidExecutionInput)
+    case invalidLoggingConfiguration(InvalidLoggingConfiguration)
     case invalidName(InvalidName)
     case invalidOutput(InvalidOutput)
     case invalidToken(InvalidToken)
@@ -64,6 +67,7 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case stateMachineDeleting(StateMachineDeleting)
     case stateMachineDoesNotExist(StateMachineDoesNotExist)
     case stateMachineLimitExceeded(StateMachineLimitExceeded)
+    case stateMachineTypeNotSupported(StateMachineTypeNotSupported)
     case taskDoesNotExist(TaskDoesNotExist)
     case taskTimedOut(TaskTimedOut)
     case tooManyTags(TooManyTags)
@@ -113,6 +117,9 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case invalidExecutionInputIdentity:
             let errorPayload = try InvalidExecutionInput(from: decoder)
             self = StepFunctionsError.invalidExecutionInput(errorPayload)
+        case invalidLoggingConfigurationIdentity:
+            let errorPayload = try InvalidLoggingConfiguration(from: decoder)
+            self = StepFunctionsError.invalidLoggingConfiguration(errorPayload)
         case invalidNameIdentity:
             let errorPayload = try InvalidName(from: decoder)
             self = StepFunctionsError.invalidName(errorPayload)
@@ -140,6 +147,9 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case stateMachineLimitExceededIdentity:
             let errorPayload = try StateMachineLimitExceeded(from: decoder)
             self = StepFunctionsError.stateMachineLimitExceeded(errorPayload)
+        case stateMachineTypeNotSupportedIdentity:
+            let errorPayload = try StateMachineTypeNotSupported(from: decoder)
+            self = StepFunctionsError.stateMachineTypeNotSupported(errorPayload)
         case taskDoesNotExistIdentity:
             let errorPayload = try TaskDoesNotExist(from: decoder)
             self = StepFunctionsError.taskDoesNotExist(errorPayload)

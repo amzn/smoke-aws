@@ -35,14 +35,17 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
     case deleteTable = "DeleteTable"
     case describeBackup = "DescribeBackup"
     case describeContinuousBackups = "DescribeContinuousBackups"
+    case describeContributorInsights = "DescribeContributorInsights"
     case describeEndpoints = "DescribeEndpoints"
     case describeGlobalTable = "DescribeGlobalTable"
     case describeGlobalTableSettings = "DescribeGlobalTableSettings"
     case describeLimits = "DescribeLimits"
     case describeTable = "DescribeTable"
+    case describeTableReplicaAutoScaling = "DescribeTableReplicaAutoScaling"
     case describeTimeToLive = "DescribeTimeToLive"
     case getItem = "GetItem"
     case listBackups = "ListBackups"
+    case listContributorInsights = "ListContributorInsights"
     case listGlobalTables = "ListGlobalTables"
     case listTables = "ListTables"
     case listTagsOfResource = "ListTagsOfResource"
@@ -56,10 +59,12 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
     case transactWriteItems = "TransactWriteItems"
     case untagResource = "UntagResource"
     case updateContinuousBackups = "UpdateContinuousBackups"
+    case updateContributorInsights = "UpdateContributorInsights"
     case updateGlobalTable = "UpdateGlobalTable"
     case updateGlobalTableSettings = "UpdateGlobalTableSettings"
     case updateItem = "UpdateItem"
     case updateTable = "UpdateTable"
+    case updateTableReplicaAutoScaling = "UpdateTableReplicaAutoScaling"
     case updateTimeToLive = "UpdateTimeToLive"
 
     public var description: String {
@@ -88,6 +93,8 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .describeContinuousBackups:
             return "/"
+        case .describeContributorInsights:
+            return "/"
         case .describeEndpoints:
             return "/"
         case .describeGlobalTable:
@@ -98,11 +105,15 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .describeTable:
             return "/"
+        case .describeTableReplicaAutoScaling:
+            return "/"
         case .describeTimeToLive:
             return "/"
         case .getItem:
             return "/"
         case .listBackups:
+            return "/"
+        case .listContributorInsights:
             return "/"
         case .listGlobalTables:
             return "/"
@@ -130,6 +141,8 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .updateContinuousBackups:
             return "/"
+        case .updateContributorInsights:
+            return "/"
         case .updateGlobalTable:
             return "/"
         case .updateGlobalTableSettings:
@@ -137,6 +150,8 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
         case .updateItem:
             return "/"
         case .updateTable:
+            return "/"
+        case .updateTableReplicaAutoScaling:
             return "/"
         case .updateTimeToLive:
             return "/"
